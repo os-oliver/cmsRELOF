@@ -17,6 +17,28 @@
 
 3. Izmenite `.env` fajl da odgovara vašim podešavanjima baze
 
+## Arhitektura sistema
+
+Aplikacija je izgrađena po **Front Controller** i **MVC** obrascima: sav HTTP saobraćaj prolazi kroz jedinstveni ulaz (`index.php`), koji pomoću FastRoute rutiranja prosleđuje zahteve generičkim kontrolerima (`App/Controllers/*`). Kontroleri koriste sloj modela (`App/Models/*`) za pristup MySQL/MariaDB, izvršavanje CRUD operacija i poslovnu logiku, dok se pogledi renderuju iz:
+
+- `templates/[naziv]/*.php` (glavni šabloni)
+- `exportedPages/*.php` (statistički „izvezeni“ fajlovi ako je sajt inicijalizovan)
+- `pages/*.php` (fallback stranice)
+
+![Komponentni dijagram](out/diagram2/diagram2.png)
+
+## Tok kreiranja novog događaja
+
+Tok aktivnosti kreiranja događaja ilustruje:
+
+1. **Aplikacija** šalje `POST /events` [pritisak na dugme] sa formularom i fajlom.
+2. **Front Controller** rutira na `EventController::create()`.
+3. Validacija podataka; ako ne uspe, vraća se `422`.
+4. Fajl se otprema preko `FileUploader`, a model upisuje novi događaj u bazu.
+5. Na uspeh, vraća se `201 Created` sa JSON objektom događaja.
+
+![Dijagram aktivnosti](out/diagram3/diagram3.png)
+
 # Role korisnika i njihova prava u CMS sistemu
 
 ![Dijagram aktivnosti](out/diagram/diagram.png)

@@ -1,0 +1,41 @@
+@startuml
+title Komponentni dijagram aplikacije
+skinparam componentStyle uml2
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+package "Public Layer" {
+  component [index.php] as FC <<Front Controller>>
+}
+
+package "Routing Layer" {
+  component [FastRoute Dispatcher] as DR
+}
+
+package "Controller Layer" {
+  component [App/Controllers/*] as CTRL
+}
+
+package "Model Layer" {
+  component "App/Models/*" as MDL
+}
+
+package "View Layer" {
+  component "pages/*.php ili exportedPages/*.php" as V1
+  component "templates/[naziv]/*.php" as V2
+}
+
+database DB as "Database\n(MySQL/MariaDB)"
+
+FC --> DR : dispatch(request)
+DR --> CTRL : route to {home, gallery,\naboutUs, documents, ...}
+CTRL --> MDL : perform CRUD
+CTRL --> V1 : include & render
+CTRL --> V2 : include & render
+MDL --> DB : execute SQL
+
+note right of CTRL
+  • Centralni kontroleri za sve rute  
+  • Pozivaju modele i učitavaju poglede
+end note
+@enduml

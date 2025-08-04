@@ -1,0 +1,27 @@
+@startuml
+title Sekvencijski dijagram: Kreiranje novog događaja
+
+actor Editor
+participant FC as "index.php\n(Front Controller)"
+participant DR as "FastRoute\nDispatcher"
+participant EC as "EventController\n(create)"
+participant MD as "App\Models\Event"
+participant Uploader as "FileUploader"
+database DB as "Database\n(MySQL/MariaDB)"
+
+Editor -> FC       : POST /events\n(form data + file)
+FC     -> DR       : parseURI()\nmatch route
+DR     -> EC       : create()
+EC     -> EC       : validate(data)
+alt Validation fails
+    EC -> Editor   : 422 Unprocessable Entity\n{"error":"Validation failed"}
+else Validation succeeds
+    EC -> Uploader : upload(file)
+    Uploader --> EC : file path
+    EC -> MD       : save(data, file path)
+    MD --> DB      : INSERT event
+    DB --> MD      : success
+    MD --> EC      : Event object/id
+    EC -> Editor   : 201 Created\nJSON(Event)
+end
+@enduml
