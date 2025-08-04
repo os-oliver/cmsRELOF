@@ -1,0 +1,10 @@
+ErrorDocument 403 /pages/forbidden.html
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^pages/forbidden\.html$ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.\*)$ index.php [QSA,L]

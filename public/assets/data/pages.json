@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "",
+        "path": "pages\/.php",
+        "href": "\/",
+        "status": "active",
+        "date": "07.03.2025."
+    },
+    {
+        "id": 2,
+        "name": "O nama",
+        "path": "pages\/o_nama.php",
+        "href": "\/o-nama",
+        "status": "active",
+        "date": "07.03.2025."
+    },
+    {
+        "id": 3,
+        "name": "Cilj",
+        "path": "pages\/cilj.php",
+        "href": "\/o-nama\/cilj",
+        "status": "active",
+        "date": "07.03.2025."
+    },
+    {
+        "id": 4,
+        "name": "Zaposleni",
+        "path": "pages\/zaposleni.php",
+        "href": "\/o-nama\/zaposleni",
+        "status": "active",
+        "date": "07.03.2025."
+    },
+    {
+        "id": 5,
+        "name": "Misija",
+        "path": "pages\/misija.php",
+        "href": "\/o-nama\/misija",
+        "status": "active",
+        "date": "07.03.2025."
+    },
+    {
+        "id": 6,
+        "name": "dogadjaji",
+        "path": "pages\/dogadjaji.php",
+        "href": "\/dogadjaji",
+        "status": "active",
+        "date": "07.03.2025."
+    },
+    {
+        "id": 7,
+        "name": "galerija",
+        "path": "pages\/galerija.php",
+        "href": "\/galerija",
+        "status": "active",
+        "date": "07.03.2025."
+    },
+    {
+        "id": 8,
+        "name": "dokumenti",
+        "path": "pages\/dokumenti.php",
+        "href": "\/dokumenti",
+        "status": "active",
+        "date": "07.03.2025."
+    },
+    {
+        "id": 9,
+        "name": "kontakt",
+        "path": "pages\/kontakt.php",
+        "href": "\/kontakt",
+        "status": "active",
+        "date": "07.03.2025."
+    }
+]

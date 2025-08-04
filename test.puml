@@ -1,0 +1,53 @@
+@startuml
+top to bottom direction
+skinparam actorStyle awesome
+
+actor "Urednik" as ED
+actor "Super Admin" as SA
+ED <|-- SA
+
+actor "Javni Korisnik" as PU
+
+package "CMS Backend" {
+  usecase "Inicijalizacija sajta\n/buildingWizard" as Init
+  usecase "Podešavanje stilova i korisnika\n/sadmin/style" as StyleUsers
+
+  package "Kontrolna tabla" {
+    usecase "Upravljanje dokumentima"   as Docs
+    usecase "Upravljanje galerijom"     as Gal
+    usecase "Upravljanje promocijama"  as Promo
+    usecase "Čitanje korisničkih poruka\n/contact" as Msg
+    usecase "Izmena O nama"             as About
+  }
+}
+
+package "CMS Frontend" {
+  usecase "Pregled sajta\n/" as View
+}
+
+' Prava urednika
+ED --> Docs
+ED --> Gal
+ED --> Promo
+ED --> Msg
+ED --> About
+
+' Prava Super Admina
+SA --> Init
+SA --> StyleUsers
+
+' Javni korisnik pristupa sajtu (frontend)
+PU --> View : pristupa sajtu
+
+' Tok objavljivanja
+Init ..> View : objavi sajt
+StyleUsers ..> View : primeni stilove i korisnike
+Docs ..> View : objavi dokumenta
+Gal ..> View : objavi galeriju
+Promo ..> View : objavi promocije
+About ..> View : objavi O nama
+
+' Iz pregleda sajta ide strelica ka čitanju korisničkih poruka
+View --> Msg : prikazuje poruke korisnika
+
+@enduml
