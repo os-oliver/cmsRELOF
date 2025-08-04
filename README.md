@@ -19,7 +19,7 @@
 
 # Role korisnika i njihova prava u CMS sistemu
 
-![Dijagram aktivnosti](out/test/test.png)
+![Dijagram aktivnosti](out/diagram/diagram.png)
 
 | Uloga              | Opis prava                                                                                                                                      |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
