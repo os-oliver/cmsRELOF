@@ -1,10 +1,11 @@
 @startuml
-top to bottom direction
+left to right direction
 skinparam actorStyle awesome
 
 actor "Urednik" as ED
 actor "Super Admin" as SA
 ED <|-- SA
+
 
 actor "Javni Korisnik" as PU
 
