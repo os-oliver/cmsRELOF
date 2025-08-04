@@ -27,7 +27,7 @@ Aplikacija je izgrađena po **Front Controller** i **MVC** obrascima: sav HTTP s
 
 ![Komponentni dijagram](out/diagram2/diagram2.png)
 
-## Tok kreiranja novog događaja
+## Primer jednog od tokova aplikacije
 
 Tok aktivnosti kreiranja događaja ilustruje:
 
