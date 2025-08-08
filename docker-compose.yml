@@ -1,0 +1,25 @@
+services:
+  php-apache:
+    build: ./docker/php-apache
+    volumes:
+      - ~/.ssh:/root/.ssh
+      - ./project:/var/www/html:cached
+      # - ./docker/php-apache/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/php-apache/default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./docker/php-apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+    ports:
+      - 8000:80
+      - 443:443
+  mysql:
+    image: mysql/mysql-server:8.0
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=relof3
+    ports:
+      - 3306:3306
+
+volumes:
+  cache:

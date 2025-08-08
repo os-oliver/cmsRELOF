@@ -15,9 +15,6 @@ class Database
 
     public function __construct()
     {
-
-
-
         $host = $_ENV['DB_HOST'] ?? getenv('DB_HOST');
         $port = $_ENV['DB_PORT'] ?? getenv('DB_PORT') ?: 3306;
         $db = $_ENV['DB_NAME'] ?? getenv('DB_NAME');
@@ -25,6 +22,7 @@ class Database
         $pass = $_ENV['DB_PASS'] ?? getenv('DB_PASS');
 
         $dsn = "mysql:host={$host};port={$port};dbname={$db};charset=utf8mb4";
+
         error_log("dns:" . $dsn);
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

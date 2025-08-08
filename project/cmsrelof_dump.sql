@@ -1,4 +1,4 @@
-/*M!999999\- enable the sandbox mode */ 
+/*M!999999\- enable the sandbox mode */
 -- MariaDB dump 10.19-11.8.2-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: CMSrelof
@@ -373,7 +373,7 @@ CREATE TABLE `news` (
   `published_date` date NOT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `category_id` int(11) DEFAULT NULL,
-  `content` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_uca1400_ai_ci DEFAULT NULL,
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
