@@ -5,7 +5,7 @@
         "path": "pages\/.php",
         "href": "\/",
         "status": "active",
-        "date": "07.03.2025."
+        "date": "08.11.2025."
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "path": "pages\/o_nama.php",
         "href": "\/o-nama",
         "status": "active",
-        "date": "07.03.2025."
+        "date": "08.11.2025."
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "path": "pages\/cilj.php",
         "href": "\/o-nama\/cilj",
         "status": "active",
-        "date": "07.03.2025."
+        "date": "08.11.2025."
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "path": "pages\/zaposleni.php",
         "href": "\/o-nama\/zaposleni",
         "status": "active",
-        "date": "07.03.2025."
+        "date": "08.11.2025."
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "path": "pages\/misija.php",
         "href": "\/o-nama\/misija",
         "status": "active",
-        "date": "07.03.2025."
+        "date": "08.11.2025."
     },
     {
         "id": 6,
@@ -45,7 +45,7 @@
         "path": "pages\/dogadjaji.php",
         "href": "\/dogadjaji",
         "status": "active",
-        "date": "07.03.2025."
+        "date": "08.11.2025."
     },
     {
         "id": 7,
@@ -53,7 +53,7 @@
         "path": "pages\/galerija.php",
         "href": "\/galerija",
         "status": "active",
-        "date": "07.03.2025."
+        "date": "08.11.2025."
     },
     {
         "id": 8,
@@ -61,7 +61,7 @@
         "path": "pages\/dokumenti.php",
         "href": "\/dokumenti",
         "status": "active",
-        "date": "07.03.2025."
+        "date": "08.11.2025."
     },
     {
         "id": 9,
@@ -69,6 +69,6 @@
         "path": "pages\/kontakt.php",
         "href": "\/kontakt",
         "status": "active",
-        "date": "07.03.2025."
+        "date": "08.11.2025."
     }
 ]

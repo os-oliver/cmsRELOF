@@ -120,9 +120,6 @@ AuthController::requireEditor();
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
 
-        .floating-btn {
-            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.3);
-        }
 
         .action-card:hover {
             transform: scale(1.05);
@@ -228,69 +225,10 @@ AuthController::requireEditor();
     </div>
 
 
-    <script src="/assets/js/editor/editor.js"></script>
     <script src="/assets/js/WebDesigner/grapesjs/grapes.min.js"></script>
-    <script>
+    <script src="/assets/js/dashboard/promotionLoader.js"></script>
+    <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const editor = grapesjs.init({
-                container: "#gjs",
-                fromElement: false,
-                height: "100%",
-                width: "auto",
-                parser: {
-                    optionsHtml: {
-                        allowScripts: true,
-                    },
-                },
-                storageManager: false,
-
-                panels: { defaults: [] },
-
-                canvas: { scripts: ["https://cdn.tailwindcss.com"] },
-            });
-            document.getElementById("export").addEventListener("click", async () => {
-                const wrapper = editor.DomComponents.getWrapper();
-                const combinedHTML = wrapper.toHTML();
-                const formData = new FormData();
-                formData.append("cmp", '/exportedPages/landingPageComponents/landingPage/promocija.php');
-                formData.append("html", combinedHTML);
-
-                try {
-
-                    const res = await fetch("/saveLandigPageComponent", {
-                        method: "POST",
-                        body: formData,
-                    });
-
-                    if (!res.ok) {
-                        const text = await res.text();
-                        throw new Error(`Server error (${res.status}): ${text}`);
-                    }
-
-                    const json = await res.json();
-                    console.log("Saved successfully:", json);
-                    alert("Component saved! Bytes written: " + json.bytes_written);
-                } catch (err) {
-                    console.error("Save failed:", err);
-                    alert("Error saving component: " + err.message);
-                }
-
-            });
-            // Fetch and inject your component HTML
-            fetch('/exportedPages/landingPageComponents/landingPage/promocija.php')
-                .then((res) => {
-                    if (!res.ok) throw new Error('Network error');
-                    return res.text();
-                })
-                .then((html) => {
-                    editor.setComponents(html);
-                })
-                .catch((err) => {
-                    console.error('Could not load component.html:', err);
-                });
-        });
-    </script>
 </body>
 
 </html>
