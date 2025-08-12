@@ -1,149 +1,101 @@
-document.addEventListener("DOMContentLoaded", function () {
-  //Dashboard elements
-  const eventForm = document.getElementById("newDocument");
+document.addEventListener("DOMContentLoaded", () => {
+  const els = (id) => document.getElementById(id);
 
-  const newDocument = document.getElementById("NewDocument");
+  const formEls = {
+    eventForm: els("newDocument"),
+    form: els("documentForm"),
+    cancelBtn: els("cancelButton"),
+    nameInput: els("name"),
+    extInput: els("extension"),
+    sizeInput: els("fileSize"),
+    titleForm: els("titleForm"),
+    desc: els("descriptionForm"),
+    endpoint: els("endpoint"),
+    method: els("method"),
+    fileInput: els("fUpload"),
+    ctg: els("category"),
+    titleOfForm: els("typeForm"),
+  };
 
-  newDocument.addEventListener("click", insertDocument);
+  const modalEls = {
+    modal: els("documentModal"),
+    close: els("closeModal"),
+    title: els("modalTitle"),
+    description: els("docDescription"),
+    category: els("docCategory"),
+    status: els("docStatus"),
+    date: els("docDate"),
+    size: els("docSize"),
+    fileFrame: els("fileFrame"),
+    downloadBtn: els("downloadButton"),
+  };
 
-  function insertDocument() {
-    eventForm.classList.add("visible");
-    eventForm.classList.remove("invisible");
-  }
+  const showForm = () => {
+    formEls.eventForm.classList.add("visible");
+    formEls.eventForm.classList.remove("invisible");
+  };
 
-  document.addEventListener("click", function (event) {
-    const isClickInsideSidebar = sidebar.contains(event.target);
-    const isClickOnMobileMenu = mobileMenuBtn.contains(event.target);
+  const showModal = () => {
+    modalEls.modal.classList.remove("hidden");
+    document.body.classList.add("overflow-hidden");
+  };
 
-    if (
-      !isClickInsideSidebar &&
-      !isClickOnMobileMenu &&
-      window.innerWidth < 768 &&
-      sidebar.classList.contains("active")
-    ) {
-      toggleSidebar();
-    }
-  });
+  const hideModal = () => {
+    modalEls.modal.classList.add("hidden");
+    document.body.classList.remove("overflow-hidden");
+    modalEls.fileFrame.src = "";
+  };
 
-  // Document preview modal functionality
-  const documentModal = document.getElementById("documentModal");
-  const closeModal = document.getElementById("closeModal");
-  const modalTitle = document.getElementById("modalTitle");
-  const docDescription = document.getElementById("docDescription");
-  const docCategory = document.getElementById("docCategory");
-  const docStatus = document.getElementById("docStatus");
-  const docDate = document.getElementById("docDate");
-  const docSize = document.getElementById("docSize");
-  const fileFrame = document.getElementById("fileFrame");
-  const downloadButton = document.getElementById("downloadButton");
+  els("btnNewDocument").addEventListener("click", showForm);
 
-  // Add click events to document cards
-  const documentCards = document.querySelectorAll(".document-card");
-  documentCards.forEach((card) => {
-    const title = card.getAttribute("data-title");
-    const description = card.getAttribute("data-description");
-    const category = card.getAttribute("data-category");
-    const status = card.getAttribute("data-status");
-    const date = card.getAttribute("data-date");
-    const fileUrl = card.getAttribute("data-file-url");
-    const fileType = card.getAttribute("data-file-type");
-    const fileSize = card.getAttribute("data-file-size");
-    const documentID = card.getAttribute("data-id");
-    const cname = card.getAttribute("data-name");
-    const viewButton = card.querySelector(".viewDocument");
-    const editButton = card.querySelector(".edit");
-    console.log("date", date);
-    const deleteButton = card.querySelector(".delete");
-    editButton.addEventListener("click", function (e) {
-      const form = document.getElementById("documentForm");
-      const cancelBtn = document.getElementById("cancelButton");
-      const nameInput = document.getElementById("name");
-      const extInput = document.getElementById("extension");
-      const sizeInput = document.getElementById("fileSize");
-      const titleForm = document.getElementById("title");
-      const desc = document.getElementById("description");
-      const endpoint = document.getElementById("endpoint");
-      const method = document.getElementById("method");
-      const fileInput = document.getElementById("fUpload");
+  document.querySelectorAll(".document-card").forEach((card) => {
+    const data = card.dataset;
 
-      const ctg = document.getElementById("category");
-      const titleOfForm = document.getElementById("typeForm");
-
-      insertDocument();
-      method.value = "PUT";
-      endpoint.value = "/document/" + documentID;
-      nameInput.value = fileUrl;
-      extInput.value = fileType;
-      nameInput.value = title;
-      sizeInput.value = fileSize;
-      titleForm.value = title;
-      titleOfForm.innerHTML = "Izmena dokumenta";
-      desc.value = description;
-      ctg.value = category;
-      fileInput.classList.add("hidden");
+    card.querySelector(".edit").addEventListener("click", () => {
+      showForm();
+      formEls.method.value = "PUT";
+      formEls.endpoint.value = `/document/${data.id}`;
+      formEls.nameInput.value = data.title;
+      formEls.extInput.value = data.fileType;
+      formEls.sizeInput.value = data.fileSize;
+      formEls.titleForm.value = data.title;
+      formEls.desc.value = data.description;
+      formEls.ctg.value = data.category;
+      formEls.titleOfForm.innerHTML = "Izmena dokumenta";
+      formEls.fileInput.classList.add("hidden");
     });
-    deleteButton.addEventListener("click", async function (e) {
+
+    card.querySelector(".delete").addEventListener("click", async (e) => {
       e.preventDefault();
-
-      const confirmed = confirm(
-        "Da li ste sigurni da želite da obrišete dokument?"
-      );
-      if (!confirmed) return;
-
+      if (!confirm("Da li ste sigurni da želite da obrišete dokument?")) return;
       try {
-        const res = await fetch(`/document/${documentID}`, {
-          method: "DELETE",
-        });
-
-        if (!res.ok) throw new Error(`Greška prilikom brisanja: ${res.status}`);
-        window.location.reload();
-
+        const res = await fetch(`/document/${data.id}`, { method: "DELETE" });
+        if (!res.ok) throw new Error(`Greška: ${res.status}`);
         alert("Dokument uspešno obrisan.");
-      } catch (err) {
-        console.error(err);
+        location.reload();
+      } catch {
         alert("Greška prilikom brisanja dokumenta.");
       }
     });
 
-    viewButton.addEventListener("click", function (e) {
-      modalTitle.textContent = title;
-      docDescription.textContent = description;
-      docCategory.textContent = cname;
-      docDate.textContent = date;
-      docSize.textContent = fileSize;
-
-      // Update status with appropriate color
-      docStatus.textContent = status;
-      docStatus.className = "ml-2 text-xs font-medium px-2.5 py-1 rounded-full";
-
-      fileFrame.src = "/uploads/documents/" + fileUrl;
-      console.log("fileURL,", fileUrl);
-      // Update file preview based on type
-
-      // Set download button
-      downloadButton.onclick = function () {
-        window.location.href = fileUrl;
-      };
-
-      // Show modal
-      documentModal.classList.remove("hidden");
-      document.body.classList.add("overflow-hidden");
+    card.querySelector(".viewDocument").addEventListener("click", () => {
+      modalEls.title.textContent = data.title;
+      modalEls.description.textContent = data.description;
+      modalEls.category.textContent = data.name;
+      modalEls.date.textContent = data.date;
+      modalEls.size.textContent = data.fileSize;
+      modalEls.status.textContent = data.status;
+      modalEls.status.className =
+        "ml-2 text-xs font-medium px-2.5 py-1 rounded-full";
+      modalEls.fileFrame.src = `/uploads/documents/${data.fileUrl}`;
+      modalEls.downloadBtn.onclick = () =>
+        (window.location.href = data.fileUrl);
+      showModal();
     });
   });
 
-  // Close modal
-  closeModal.addEventListener("click", function () {
-    documentModal.classList.add("hidden");
-    document.body.classList.remove("overflow-hidden");
-    fileFrame.src = "";
-  });
-
-  // Close modal when clicking outside content
-  documentModal.addEventListener("click", function (e) {
-    if (e.target === documentModal) {
-      documentModal.classList.add("hidden");
-      document.body.classList.remove("overflow-hidden");
-      fileFrame.src = "";
-    }
+  modalEls.close.addEventListener("click", hideModal);
+  modalEls.modal.addEventListener("click", (e) => {
+    if (e.target === modalEls.modal) hideModal();
   });
 });

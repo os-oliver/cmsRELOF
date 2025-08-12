@@ -1,6 +1,6 @@
 <header class="glass-panel py-4 px-6 flex items-center justify-between border-b border-gray-200">
     <div class="flex items-center">
-        <button class="mobile-menu-btn mr-3 text-gray-600 lg:hidden" id="mobile-menu">
+        <button id="mobile-menu-btn" class=" mobile-menu-btn mr-3 text-gray-600 lg:hidden" id="mobile-menu">
             <i class="fas fa-bars text-xl"></i>
         </button>
         <h2 class="text-xl font-bold text-gray-800">Dobrodošli, <?= $name ?></h2>

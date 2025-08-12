@@ -463,6 +463,8 @@ $totalPages = (int) ceil($totalCount / $limit);
             });
         });
     </script>
+    <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
+
 </body>
 
 </html>

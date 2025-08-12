@@ -183,11 +183,11 @@ class User
         $username = $data['username'] ?? '';
         $password = $data['password'] ?? '';
 
-        // 1) Fetch user row
+        // Fetch user row
         $stmt = $this->pdo->prepare(
             'SELECT id, password, role,name, surname
-             FROM users 
-             WHERE username = :username'
+         FROM users 
+         WHERE username = :username'
         );
         $stmt->execute([':username' => $username]);
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -206,20 +206,22 @@ class User
             ];
         }
 
-        session_start();
-        session_regenerate_id(true);
+        // Set session cookie params BEFORE starting the session
         session_set_cookie_params([
             'lifetime' => 86400,
             'path' => '/',
             'httponly' => true,
             'samesite' => 'Strict',
         ]);
+
+        session_start();
+        session_regenerate_id(true);
+
         $_SESSION['user_id'] = (int) $user['id'];
         $_SESSION['role'] = $user['role'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['surname'] = $user['surname'];
 
-        // 5) Return success + role
         return [
             'success' => true,
             'user_id' => (int) $user['id'],
