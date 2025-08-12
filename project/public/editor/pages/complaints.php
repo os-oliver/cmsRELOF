@@ -73,9 +73,7 @@ AuthController::requireEditor();
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
 
-        .floating-btn {
-            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.3);
-        }
+
 
         .action-card:hover {
             transform: scale(1.05);
@@ -618,11 +616,6 @@ AuthController::requireEditor();
         </div>
     </div>
 
-    <!-- Floating Action Button -->
-    <button
-        class="floating-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-full flex items-center justify-center shadow-xl transition-all z-20">
-        <i class="fas fa-plus text-2xl"></i>
-    </button>
     <script src="/assets/js/editor/editor.js"></script>
     <script>
         // Mobile sidebar toggle functionality

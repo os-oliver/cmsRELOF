@@ -96,9 +96,6 @@ $categories = (new Event())->getCategories();
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
 
-        .floating-btn {
-            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.3);
-        }
 
         .action-card:hover {
             transform: scale(1.05);
@@ -280,8 +277,7 @@ $categories = (new Event())->getCategories();
                                                 <div class="flex items-center">
                                                     <div
                                                         class="flex-shrink-0 h-12 w-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center shadow-inner">
-                                                        <i
-                                                            class="fas fa-<?= $event['icon'] ?: 'calendar' ?> text-primary-600 text-lg"></i>
+                                                        <i class="fas fa-calendar text-primary-600 text-lg"></i>
                                                     </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-semibold text-gray-900">
@@ -361,38 +357,34 @@ $categories = (new Event())->getCategories();
         </div>
     </div>
 
-    <!-- Floating Action Button -->
-    <button
-        class="floating-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-full flex items-center justify-center shadow-xl transition-all z-20">
-        <i class="fas fa-plus text-2xl"></i>
-    </button>
+
     <script src="/assets/js/dashboard/dashboard.js"></script>
     <script>
-function deleteFunk(id) {
-                if (!confirm('Da li ste sigurni da želite da obrišete ovaj događaj?')) {
-                    return; // korisnik je otkazao brisanje
-    }
-
-                fetch(`/events/${id}`, {
-                    method: 'DELETE',
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Greška pri brisanju događaja');
-                        }
-                        return response.json(); // ako nema JSON, možeš i samo return;
-                    })
-                    .then(data => {
-                        window.location.reload();
-                        // ovde možeš osvežiti prikaz događaja ili obavestiti korisnika
-                    })
-                    .catch(error => {
-                        console.error('Greška:', error);
-                    });
+        function deleteFunk(id) {
+            if (!confirm('Da li ste sigurni da želite da obrišete ovaj događaj?')) {
+                return; // korisnik je otkazao brisanje
             }
+
+            fetch(`/events/${id}`, {
+                method: 'DELETE',
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Greška pri brisanju događaja');
+                    }
+                    return response.json(); // ako nema JSON, možeš i samo return;
+                })
+                .then(data => {
+                    window.location.reload();
+                    // ovde možeš osvežiti prikaz događaja ili obavestiti korisnika
+                })
+                .catch(error => {
+                    console.error('Greška:', error);
+                });
+        }
         // Mobile sidebar toggle functionality
         document.addEventListener('DOMContentLoaded', function () {
-            
+
             const mobileMenuBtn = document.getElementById('mobile-menu');
             const sidebar = document.getElementById('sidebar');
             const sidebarClose = document.getElementById('sidebar-close');
@@ -418,6 +410,11 @@ function deleteFunk(id) {
             });
         });
     </script>
+    <script src="/assets/js/dashboard/events.js" defer></script>
+
+    <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
+
 </body>
+
 
 </html>

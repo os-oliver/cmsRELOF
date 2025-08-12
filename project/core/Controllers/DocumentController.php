@@ -1,15 +1,9 @@
 <?php
 namespace App\Controllers;
-
-session_start();
-
-if (empty($_SESSION['user_id'])) {
-    echo "authentication: -1 BLEHHH";
-    exit;
-}
-
+use App\Controllers\AuthController;
 use App\Models\Document;
 use App\Utils\FileUploader;
+
 
 class DocumentController
 {
@@ -17,10 +11,10 @@ class DocumentController
 
     public function list(): void
     {
+
         if (isset($_GET['limit'], $_GET['offset'])) {
             $limit = is_numeric($_GET['limit']) ? (int) $_GET['limit'] : 0;
             $offset = is_numeric($_GET['offset']) ? (int) $_GET['offset'] : 0;
-
             header('Content-Type: application/json');
             echo json_encode((new Document())->list($limit, $offset));
         }

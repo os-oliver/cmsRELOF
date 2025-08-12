@@ -12,7 +12,6 @@ class AboutUSController
     public function __construct()
     {
         // Require editor (or adjust to your auth logic)
-        AuthController::requireEditor();
         header('Content-Type: application/json');
     }
 

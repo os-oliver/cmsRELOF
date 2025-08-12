@@ -151,7 +151,22 @@ class Event
 
     public function delete(int $id): bool
     {
+        $stmt = $this->pdo->prepare("SELECT image FROM events WHERE id = ?");
+        $stmt->execute([$id]);
+        $imagePath = $stmt->fetchColumn();
+
+        if ($imagePath) {
+            $fullPath = __DIR__ . '/../../public' . $imagePath;
+
+            if (file_exists($fullPath)) {
+                unlink($fullPath);
+            }
+        } else {
+            return false;
+        }
+
         $stmt = $this->pdo->prepare("DELETE FROM events WHERE id = ?");
         return $stmt->execute([$id]);
     }
+
 }

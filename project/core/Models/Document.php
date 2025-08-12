@@ -104,9 +104,27 @@ class Document
 
     public function delete(int $id): bool
     {
+        $stmt = $this->pdo->prepare("SELECT filepath FROM document WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $filepath = $stmt->fetchColumn();
+
+        if ($filepath) {
+            $fullPath = __DIR__ . '/../../public/uploads/documents/' . basename($filepath);
+
+            if (file_exists($fullPath)) {
+                unlink($fullPath);
+            }
+        } else {
+            return false;
+        }
+
         $stmt = $this->pdo->prepare("DELETE FROM document WHERE id = :id");
-        return $stmt->execute([':id' => $id]);
+        $result = $stmt->execute([':id' => $id]);
+
+        return $result;
     }
+
+
     public function search(string $term): array
     {
         // Prepare search term

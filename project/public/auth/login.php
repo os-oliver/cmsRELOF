@@ -362,7 +362,6 @@
                 alertContent.classList.add('animate-modal-in');
             }, 300);
         }
-
         function handleLogin(event) {
             event.preventDefault();
             const username = document.getElementById('username').value;
@@ -380,10 +379,15 @@
                     },
                     body: JSON.stringify({ username: username, password: password })
                 })
-                    .then(response => response.json())
-                    .then(data => {
+                    .then(response => response.text())  // Read raw response as text first
+                    .then(text => {
+                        console.log('Raw response:', text);  // Log raw response string
+
+                        // Now parse JSON manually
+                        const data = JSON.parse(text);
+
                         if (data.success) {
-                            window.location = "/dashboard"
+                            window.location = "/dashboard";
                         } else {
                             showAlert();
                         }
@@ -401,6 +405,7 @@
                 showAlert();
             }
         }
+
 
         // Close modal when clicking outside of it
         document.getElementById('alertModal').addEventListener('click', function (event) {

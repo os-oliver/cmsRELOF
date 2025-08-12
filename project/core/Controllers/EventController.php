@@ -4,10 +4,7 @@
 namespace App\Controllers;
 session_start();
 
-if (empty($_SESSION['user_id'])) {
-    echo "autentification: -1 BLEHHH";
-    exit;
-}
+
 
 use App\Models\Event;
 use App\Utils\FileUploader;

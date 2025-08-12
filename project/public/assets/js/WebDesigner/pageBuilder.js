@@ -234,7 +234,6 @@ editor.on("load", () => {
   // Dodavanje CSS fajlova u iframe
   const head = editor.Canvas.getFrameEl().contentDocument.head;
   [
-    "/output.css",
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
   ].forEach((href) =>
     head.appendChild(
@@ -493,13 +492,22 @@ editor.on("load", () => {
     const fullHtml = editor.getHtml();
     const scripts = fullHtml.match(/<script[\s\S]*?<\/script>/gi) || [];
     const js = scripts.join("\n").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-
+    console.log(
+      JSON.stringify({
+        css: css,
+        typeOfInstitution: tipUstanove,
+        components: landingPageFiles,
+        tree: tree,
+        js: js,
+      })
+    );
     // Slanje podataka na server
     fetch("/savePage", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         css: css,
+        typeOfInstitution: tipUstanove,
         components: landingPageFiles,
         tree: tree,
         js: js,

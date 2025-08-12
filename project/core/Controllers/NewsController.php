@@ -3,11 +3,6 @@ namespace App\Controllers;
 
 session_start();
 
-if (empty($_SESSION['user_id'])) {
-    echo "authentication: -1 BLEHHH";
-    exit;
-}
-
 use App\Models\News;
 use App\Utils\Validator;
 

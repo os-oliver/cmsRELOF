@@ -270,13 +270,11 @@ $totalPages = (int) ceil($totalCount / $limit);
         </div>
     </div>
 
-    <!-- Floating Action Button -->
-    <button
-        class="floating-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-full flex items-center justify-center shadow-xl transition-all z-20">
-        <i class="fas fa-plus text-2xl"></i>
-    </button>
+
     <script src="/assets/js/dashboard/gallery.js">
     </script>
+    <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
+
 </body>
 
 </html>

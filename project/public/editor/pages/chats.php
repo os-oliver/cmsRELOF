@@ -325,6 +325,8 @@ $totalPages = (int) ceil($totalCount / $limit);
         backdrop.addEventListener('click', closeModal);
         closeBtn.addEventListener('click', closeModal);</script>
     <script src="/assets/js/dashboard/dashboard.js"></script>
+    <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
+
 </body>
 
 </html>
