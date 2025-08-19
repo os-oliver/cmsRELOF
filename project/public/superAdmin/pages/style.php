@@ -1,6 +1,10 @@
 <?php
 use App\Controllers\AuthController;
 AuthController::requireAdmin();
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 <!DOCTYPE html>
 <html lang="sr">
@@ -8,7 +12,15 @@ AuthController::requireAdmin();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Uređivač Stranica</title>
+    <title>
+        <?php
+            switch ($locale) {
+                case 'sr': echo 'Admin Panel - Uređivač Stranica'; break;
+                case 'en': echo 'Admin Panel – Page editor'; break;
+                default: echo 'Админ Панел – Уређивач страница'; break;
+            }
+        ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -267,7 +279,16 @@ AuthController::requireAdmin();
         <div class="modal-content">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-xl font-bold text-gray-800" id="modalTitle">Nova Stranica</h3>
+                    <h3 class="text-xl font-bold text-gray-800" id="modalTitle">
+                        <?php
+                            switch ($locale) {
+                                case 'sr': echo 'Nova stranica'; break;
+                                case 'en': echo 'New page'; break;
+                                default: echo 'Нова страница'; break;
+                            }
+                        ?>
+                        
+                    </h3>
                     <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">
                         <i class="fas fa-times"></i>
                     </button>
@@ -277,43 +298,111 @@ AuthController::requireAdmin();
                     <input type="hidden" id="pageId">
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Naziv stranice</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            <?php
+                                switch ($locale) {
+                                    case 'sr': echo 'Naziv stranice'; break;
+                                    case 'en': echo 'Page title'; break;
+                                    default: echo 'Назив странице'; break;
+                                }
+                            ?>
+                        </label>
                         <input type="text" id="pageName" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Putanja (path)</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            <?php
+                                switch ($locale) {
+                                    case 'sr': echo 'Putanja (path)'; break;
+                                    case 'en': echo 'Path'; break;
+                                    default: echo 'Путања (path)'; break;
+                                }
+                            ?>
+                        </label>
                         <input type="text" id="pagePath" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">URL (href)</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            <?php
+                                switch ($locale) {
+                                    case 'sr': echo 'URL (href)'; break;
+                                    case 'en': echo 'URL (href)'; break;
+                                    default: echo 'УРЛ (href)'; break;
+                                }
+                            ?>
+                        </label>
                         <input type="text" id="pageHref" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            <?php
+                                switch ($locale) {
+                                    case 'sr': echo 'Status'; break;
+                                    case 'en': echo 'Status'; break;
+                                    default: echo 'Статус'; break;
+                                }
+                            ?>
+                        </label>
                         <div class="grid grid-cols-3 gap-2">
                             <button type="button" data-status="active"
-                                class="status-option bg-green-100 text-green-700 py-2 rounded-lg">Aktivan</button>
+                                class="status-option bg-green-100 text-green-700 py-2 rounded-lg">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Aktivan'; break;
+                                            case 'en': echo 'Active'; break;
+                                            default: echo 'Активан'; break;
+                                        }
+                                    ?>
+                            </button>
                             <button type="button" data-status="draft"
-                                class="status-option bg-yellow-100 text-yellow-700 py-2 rounded-lg">U izradi</button>
+                                class="status-option bg-yellow-100 text-yellow-700 py-2 rounded-lg">
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'U izradi'; break;
+                                        case 'en': echo 'In progress'; break;
+                                        default: echo 'У изради'; break;
+                                    }
+                                ?>
+                            </button>
                             <button type="button" data-status="inactive"
-                                class="status-option bg-red-100 text-red-700 py-2 rounded-lg">Neaktivan</button>
+                                class="status-option bg-red-100 text-red-700 py-2 rounded-lg">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Neaktivan'; break;
+                                            case 'en': echo 'Inactive'; break;
+                                            default: echo 'Неактиван'; break;
+                                        }
+                                    ?>
+                            </button>
                         </div>
                         <input type="hidden" id="pageStatus" value="active">
                     </div>
 
                     <div class="pt-4 flex space-x-3">
                         <button type="submit" class="btn-primary text-white px-6 py-2 rounded-lg font-medium flex-1">
-                            Sačuvaj
+                            <?php
+                                switch ($locale) {
+                                    case 'sr': echo 'Sačuvaj'; break;
+                                    case 'en': echo 'Save'; break;
+                                    default: echo 'Сачувај'; break;
+                                }
+                            ?>
                         </button>
                         <button type="button" id="cancelBtn"
                             class="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium flex-1">
-                            Otkaži
+                            <?php
+                                switch ($locale) {
+                                    case 'sr': echo 'Otkaži'; break;
+                                    case 'en': echo 'Cancel'; break;
+                                    default: echo 'Откажи'; break;
+                                }
+                            ?>
                         </button>
                     </div>
                 </form>
@@ -343,7 +432,15 @@ AuthController::requireAdmin();
                 <button class="text-gray-600 text-xl" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1 class="text-lg font-bold text-gray-800">Admin Panel</h1>
+                <h1 class="text-lg font-bold text-gray-800">
+                        <?php
+                            switch ($locale) {
+                                case 'sr': echo 'Admin panel'; break;
+                                case 'en': echo 'Admin panel'; break;
+                                default: echo 'Админ панел'; break;
+                            }
+                        ?>
+                </h1>
                 <div class="w-8"></div>
             </div>
 
@@ -355,21 +452,49 @@ AuthController::requireAdmin();
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                             <h3
                                 class="text-lg lg:text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                                Lista Stranica</h3>
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Lista Stranica'; break;
+                                        case 'en': echo 'Pages list'; break;
+                                        default: echo 'Листа страница'; break;
+                                    }
+                                ?>                               
+                            </h3>
                             <button id="newPageBtn"
                                 class="btn-primary text-white px-4 py-2 rounded-lg font-medium flex items-center w-full sm:w-auto justify-center">
-                                <i class="fas fa-plus mr-2"></i>Nova
+                                <i class="fas fa-plus mr-2"></i>
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Nova'; break;
+                                            case 'en': echo 'New'; break;
+                                            default: echo 'Нова'; break;
+                                        }
+                                    ?>
                             </button>
                             <button id="saveState"
                                 class="btn-primary text-white px-4 py-2 rounded-lg font-medium flex items-center w-full sm:w-auto justify-center">
-                                <i class="fas fa-floppy-disk mr-2"></i>Sačuvaj
+                                <i class="fas fa-floppy-disk mr-2"></i>
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Sačuvaj'; break;
+                                            case 'en': echo 'Save'; break;
+                                            default: echo 'Сачувај'; break;
+                                        }
+                                    ?>
                             </button>
                         </div>
 
                         <!-- Search and Filters -->
                         <div class="mb-6">
                             <div class="relative">
-                                <input type="text" placeholder="Pretraži stranice..."
+                                <input type="text" placeholder=
+                                    "<?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Pretraži stranice...'; break;
+                                            case 'en': echo 'Search pages...'; break;
+                                            default: echo 'Претражи странице...'; break;
+                                        }
+                                    ?>" 
                                     class="search-input w-full py-3 px-4 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary">
                                 <i class="fas fa-search absolute right-4 top-3.5 text-gray-400"></i>
                             </div>
@@ -377,23 +502,58 @@ AuthController::requireAdmin();
                             <div class="flex mt-4 space-x-2 overflow-x-auto pb-2">
                                 <button
                                     class="filter-btn active text-xs bg-primary text-white px-3 py-1.5 rounded-lg hover:bg-primary/80 transition whitespace-nowrap"
-                                    data-filter="all">Sve</button>
+                                    data-filter="all">                                    
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Sve'; break;
+                                            case 'en': echo 'All'; break;
+                                            default: echo 'Све'; break;
+                                        }
+                                    ?></button>
                                 <button
                                     class="filter-btn text-xs bg-green-100 text-green-700 px-3 py-1.5 rounded-lg hover:bg-green-200 transition whitespace-nowrap"
-                                    data-filter="active">Aktivne</button>
+                                    data-filter="active">                                    
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Aktivne'; break;
+                                            case 'en': echo 'Active'; break;
+                                            default: echo 'Активне'; break;
+                                        }
+                                    ?></button>
                                 <button
                                     class="filter-btn text-xs bg-yellow-100 text-yellow-700 px-3 py-1.5 rounded-lg hover:bg-yellow-200 transition whitespace-nowrap"
-                                    data-filter="draft">U izradi</button>
+                                    data-filter="draft">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'U izradi'; break;
+                                            case 'en': echo 'In progress'; break;
+                                            default: echo 'У изради'; break;
+                                        }
+                                    ?></button>
                                 <button
                                     class="filter-btn text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition whitespace-nowrap"
-                                    data-filter="inactive">Neaktivne</button>
+                                    data-filter="inactive">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Neaktivne'; break;
+                                            case 'en': echo 'Inactive'; break;
+                                            default: echo 'Неактивне'; break;
+                                        }
+                                    ?></button>
                             </div>
                         </div>
 
                         <!-- Loading Indicator -->
                         <div id="loading-indicator" class="text-center py-8">
                             <i class="fas fa-spinner fa-spin text-2xl text-primary"></i>
-                            <p class="text-gray-500 mt-2">Učitavanje stranica...</p>
+                            <p class="text-gray-500 mt-2">
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Učitavanje stranica...'; break;
+                                        case 'en': echo 'Loading paegs'; break;
+                                        default: echo 'Учитавање страница'; break;
+                                    }
+                                ?></p>
                         </div>
 
                         <!-- Pages List Container -->
@@ -405,7 +565,14 @@ AuthController::requireAdmin();
                         <!-- Error Message -->
                         <div id="error-message" class="text-center py-8 hidden">
                             <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
-                            <p class="text-red-500 mt-2">Greška pri učitavanju stranica</p>
+                            <p class="text-red-500 mt-2">
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Greška pri učitavanju stranica'; break;
+                                        case 'en': echo 'Error loading pages'; break;
+                                        default: echo 'Грешка при учитавању страница'; break;
+                                    }
+                                ?></p>
                         </div>
                     </div>
                 </div>
@@ -415,9 +582,24 @@ AuthController::requireAdmin();
                     <div class="glass-effect rounded-2xl shadow-2xl p-4 lg:p-6 animate-slide-up">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                             <div>
-                                <h1 class="text-xl lg:text-2xl font-bold text-gray-800">Upravljanje Stranicama</h1>
-                                <p class="text-gray-600 text-sm lg:text-base">Pregledajte i upravljajte svim stranicama
-                                    na vašoj web stranici</p>
+                                <h1 class="text-xl lg:text-2xl font-bold text-gray-800">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Upravljanje Stranicama'; break;
+                                            case 'en': echo 'Page management'; break;
+                                            default: echo 'Управљање страницама'; break;
+                                        }
+                                    ?>
+                                </h1>
+                                <p class="text-gray-600 text-sm lg:text-base">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Pregledajte i upravljajte svim stranicama na vašoj web stranici'; break;
+                                            case 'en': echo 'View and manage all pages on your website'; break;
+                                            default: echo 'Прегледајте и управљајте свим страницама на вашој веб страници'; break;
+                                        }
+                                    ?>
+                                    </p>
                             </div>
                             <div class="flex space-x-3">
                                 <button
@@ -435,13 +617,34 @@ AuthController::requireAdmin();
                         <div class="bg-white rounded-xl border border-gray-200 p-4 mb-8">
                             <div
                                 class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
-                                <h2 class="text-lg font-semibold text-gray-800" id="preview-title">Odaberite stranicu
+                                <h2 class="text-lg font-semibold text-gray-800" id="preview-title">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Odaberite stranicu'; break;
+                                            case 'en': echo 'Select a page'; break;
+                                            default: echo 'Одберите страницу'; break;
+                                        }
+                                    ?>
                                 </h2>
                                 <div class="flex space-x-2 w-full sm:w-auto">
                                     <button id="editPageBtn"
-                                        class="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition flex-1 sm:flex-none">Uredi</button>
+                                        class="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition flex-1 sm:flex-none">
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'Uredi'; break;
+                                                case 'en': echo 'Edit'; break;
+                                                default: echo 'Уреди'; break;
+                                            }
+                                        ?></button>
                                     <button id="deletePageBtn"
-                                        class="text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition flex-1 sm:flex-none">Obriši</button>
+                                        class="text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition flex-1 sm:flex-none">
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'Obriši'; break;
+                                                case 'en': echo 'Delete'; break;
+                                                default: echo 'Обриши'; break;
+                                            }
+                                        ?></button>
                                 </div>
                             </div>
 
@@ -449,22 +652,49 @@ AuthController::requireAdmin();
                                 class="h-32 lg:h-48 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg flex items-center justify-center mb-4">
                                 <div class="text-center">
                                     <i class="fas fa-globe text-2xl lg:text-4xl text-blue-400 mb-2"></i>
-                                    <p class="text-gray-600 text-sm lg:text-base" id="preview-url">Odaberite stranicu za
-                                        pregled</p>
+                                    <p class="text-gray-600 text-sm lg:text-base" id="preview-url">
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'Odaberite stranicu za pregled'; break;
+                                                case 'en': echo 'Select a page to view'; break;
+                                                default: echo 'Одберите страницу за преглед'; break;
+                                            }
+                                        ?></p>
                                 </div>
                             </div>
 
                             <div class="stats-grid grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div class="bg-gray-50 rounded-lg p-3">
-                                    <p class="text-xs text-gray-500">Status</p>
+                                    <p class="text-xs text-gray-500">
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'Status'; break;
+                                                case 'en': echo 'Status'; break;
+                                                default: echo 'Статус'; break;
+                                            }
+                                        ?></p>
                                     <p class="font-medium" id="preview-status">-</p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-3">
-                                    <p class="text-xs text-gray-500">Putanja</p>
+                                    <p class="text-xs text-gray-500">
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'Putanja'; break;
+                                                case 'en': echo 'Path'; break;
+                                                default: echo 'Путања'; break;
+                                            }
+                                        ?></p>
                                     <p class="font-medium text-xs lg:text-sm truncate" id="preview-path">-</p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-3">
-                                    <p class="text-xs text-gray-500">Datum</p>
+                                    <p class="text-xs text-gray-500">
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'Datum'; break;
+                                                case 'en': echo 'Date'; break;
+                                                default: echo 'Датум'; break;
+                                            }
+                                        ?></p>
                                     <p class="font-medium" id="preview-date">-</p>
                                 </div>
                             </div>
@@ -472,20 +702,45 @@ AuthController::requireAdmin();
 
                         <!-- Recent Activity -->
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Odredi trenutno stanje</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Odredi trenutno stanje'; break;
+                                        case 'en': echo 'Determine current status'; break;
+                                        default: echo 'Одреди тренутно стање'; break;
+                                    }
+                                ?></h3>
                             <div class="space-y-4">
                                 <div id="status-buttons" class="flex space-x-4">
                                     <button data-status="active"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-green-500 text-green-700 bg-green-100">
-                                        Aktivan
+                                            <?php
+                                                switch ($locale) {
+                                                    case 'sr': echo 'Aktivan'; break;
+                                                    case 'en': echo 'Active'; break;
+                                                    default: echo 'Активан'; break;
+                                                }
+                                            ?>
                                     </button>
                                     <button data-status="draft"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-gray-300 text-gray-600 bg-gray-100">
-                                        U izradi
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'U izradi'; break;
+                                                case 'en': echo 'In progress'; break;
+                                                default: echo 'У изради'; break;
+                                            }
+                                        ?>
                                     </button>
                                     <button data-status="inactive"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-gray-300 text-gray-600 bg-gray-100">
-                                        Neaktivan
+                                            <?php
+                                                switch ($locale) {
+                                                    case 'sr': echo 'Neaktivan'; break;
+                                                    case 'en': echo 'Inactive'; break;
+                                                    default: echo 'Неактиван'; break;
+                                                }
+                                            ?>
                                     </button>
                                 </div>
                             </div>
@@ -497,6 +752,7 @@ AuthController::requireAdmin();
     </div>
 
     <script>
+        const locale = "<?php echo $locale; ?>";
         let pagesData = [];
         // Sample data (in a real app, this would come from a server)
         async function loadPages() {
@@ -582,13 +838,31 @@ AuthController::requireAdmin();
         // Modal functionality
         function openModal(mode = 'create', pageData = null) {
             if (mode === 'create') {
-                modalTitle.textContent = 'Nova Stranica';
+                switch (locale) {
+                    case 'sr':
+                        modalTitle.textContent = 'Nova stranica';
+                        break;
+                    case 'en':
+                        modalTitle.textContent = 'New page';
+                        break;
+                    default:
+                        modalTitle.textContent = 'Нова страница';
+                }
                 pageForm.reset();
                 document.getElementById('pageId').value = '';
                 pageStatusInput.value = 'active';
                 resetStatusOptions('active');
             } else if (mode === 'edit' && pageData) {
-                modalTitle.textContent = 'Uredi Stranicu';
+                switch (locale) {
+                    case 'sr':
+                        modalTitle.textContent = 'Uredi stranicu';
+                        break;
+                    case 'en':
+                        modalTitle.textContent = 'Edit page';
+                        break;
+                    default:
+                        modalTitle.textContent = 'Уреди страницу';
+                }
                 document.getElementById('pageId').value = pageData.id;
                 document.getElementById('pageName').value = pageData.name;
                 document.getElementById('pagePath').value = pageData.path;
@@ -720,7 +994,19 @@ AuthController::requireAdmin();
         }
 
         function deletePage(id) {
-            if (confirm('Da li ste sigurni da želite da obrišete ovu stranicu?')) {
+            let message;
+            switch (locale) {
+                case 'sr':
+                    message = 'Da li ste sigurni da želite da obrišete ovu stranicu?';
+                    break;
+                case 'en':
+                    message = 'Are you sure you want to delete this page?';
+                    break;
+                default: 
+                    message = 'Да ли сте сигурни да желите да обришете ову страницу?';
+            }
+
+            if (confirm(message)) {
                 pagesData = pagesData.filter(page => page.id != id);
                 renderPages(pagesData);
 
@@ -754,7 +1040,18 @@ AuthController::requireAdmin();
         statusButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 if (!selectedPageId) {
-                    alert('Izaberite stranicu pre nego što promenite status');
+                    let alertMessage;
+                    switch (locale) {
+                        case 'sr':
+                            alertMessage = 'Izaberite stranicu pre nego što promenite status';
+                            break;
+                        case 'en':
+                            alertMessage = 'Select a page before changing the status';
+                            break;
+                        default: 
+                            alertMessage = 'Изаберите страницу пре него што промените статус';
+                    }
+                    alert(alertMessage);
                     return;
                 }
 
@@ -768,17 +1065,42 @@ AuthController::requireAdmin();
                 if (pageIndex !== -1) {
                     pagesData[pageIndex].status = status;
 
+                    // Funkcija za dobijanje prevedenog statusa
+                    function getStatusText(status) {
+                        switch (locale) {
+                            case 'sr':
+                                switch (status) {
+                                    case 'active': return 'Aktivan';
+                                    case 'draft': return 'U izradi';
+                                    case 'inactive': return 'Neaktivan';
+                                    default: return status;
+                                }
+                            case 'en':
+                                switch (status) {
+                                    case 'active': return 'Active';
+                                    case 'draft': return 'In progress';
+                                    case 'inactive': return 'Inactive';
+                                    default: return status;
+                                }
+                            default: // npr. 'sr-Cyrl'
+                                switch (status) {
+                                    case 'active': return 'Активан';
+                                    case 'draft': return 'У изради';
+                                    case 'inactive': return 'Неактиван';
+                                    default: return status;
+                                }
+                        }
+                    }
+
+                    const statusText = getStatusText(status);
+
                     // Update preview
-                    document.getElementById('preview-status').textContent =
-                        status === 'active' ? 'Aktivan' :
-                            status === 'draft' ? 'U izradi' : 'Neaktivan';
+                    document.getElementById('preview-status').textContent = statusText;
 
                     // Update the page card status badge
                     const statusBadge = document.querySelector(`.page-card[data-id="${selectedPageId}"] .status-badge`);
                     if (statusBadge) {
-                        statusBadge.textContent =
-                            status === 'active' ? 'Aktivan' :
-                                status === 'draft' ? 'U izradi' : 'Neaktivan';
+                        statusBadge.textContent = statusText;
 
                         // Update badge color
                         statusBadge.classList.remove(
@@ -796,6 +1118,7 @@ AuthController::requireAdmin();
                         }
                     }
                 }
+
             });
         });
 
@@ -806,7 +1129,18 @@ AuthController::requireAdmin();
 
         editPageBtn.addEventListener('click', () => {
             if (!selectedPageId) {
-                alert('Izaberite stranicu koju želite da uredite');
+                let alertMessage;
+                switch (locale) {
+                    case 'sr':
+                        alertMessage = 'Izaberite stranicu koju želite da uredite';
+                        break;
+                    case 'en':
+                        alertMessage = 'Select a page you want to edit';
+                        break;
+                    default: 
+                        alertMessage = 'Изаберите страницу коју желите да уредите';
+                }
+                alert(alertMessage);
                 return;
             }
 
@@ -818,7 +1152,18 @@ AuthController::requireAdmin();
 
         deletePageBtn.addEventListener('click', () => {
             if (!selectedPageId) {
-                alert('Izaberite stranicu koju želite da obrišete');
+                let alertMessage;
+                switch (locale) {
+                    case 'sr':
+                        alertMessage = 'Izaberite stranicu koju želite da obrišete';
+                        break;
+                    case 'en':
+                        alertMessage = 'Select a page you want to delete';
+                        break;
+                    default: 
+                        alertMessage = 'Изаберите страницу коју желите да обришете';
+                }
+                alert(alertMessage);
                 return;
             }
 
@@ -844,16 +1189,55 @@ AuthController::requireAdmin();
                 let statusClass = '';
                 let statusText = '';
 
-                if (page.status === 'active') {
-                    statusClass = 'from-green-400 to-green-600';
-                    statusText = 'Aktivan';
-                } else if (page.status === 'draft') {
-                    statusClass = 'from-yellow-400 to-orange-500';
-                    statusText = 'U izradi';
-                } else {
-                    statusClass = 'from-red-400 to-red-600';
-                    statusText = 'Neaktivan';
+                switch (locale) {
+                    case 'sr':
+                        switch (page.status) {
+                            case 'active':
+                                statusClass = 'from-green-400 to-green-600';
+                                statusText = 'Aktivan';
+                                break;
+                            case 'draft':
+                                statusClass = 'from-yellow-400 to-orange-500';
+                                statusText = 'U izradi';
+                                break;
+                            default: 
+                                statusClass = 'from-red-400 to-red-600';
+                                statusText = 'Neaktivan';
+                        }
+                        break;
+
+                    case 'en':
+                        switch (page.status) {
+                            case 'active':
+                                statusClass = 'from-green-400 to-green-600';
+                                statusText = 'Active';
+                                break;
+                            case 'draft':
+                                statusClass = 'from-yellow-400 to-orange-500';
+                                statusText = 'In progress';
+                                break;
+                            default:
+                                statusClass = 'from-red-400 to-red-600';
+                                statusText = 'Inactive';
+                        }
+                        break;
+
+                    default: 
+                        switch (page.status) {
+                            case 'active':
+                                statusClass = 'from-green-400 to-green-600';
+                                statusText = 'Активан';
+                                break;
+                            case 'draft':
+                                statusClass = 'from-yellow-400 to-orange-500';
+                                statusText = 'У изради';
+                                break;
+                            default:
+                                statusClass = 'from-red-400 to-red-600';
+                                statusText = 'Неактиван';
+                        }
                 }
+
 
                 const card = document.createElement('div');
                 card.className = 'page-card rounded-xl p-4 lg:p-5 cursor-pointer border-2 border-transparent hover:border-primary/30 transition-all duration-300 animate-fade-in';
@@ -897,9 +1281,31 @@ AuthController::requireAdmin();
                 // Update preview section
                 document.getElementById('preview-title').textContent = page.name;
                 document.getElementById('preview-url').textContent = page.href;
-                document.getElementById('preview-status').textContent =
-                    page.status === 'active' ? 'Aktivan' :
-                        page.status === 'draft' ? 'U izradi' : 'Neaktivan';
+                let statusText;
+                switch (locale) {
+                    case 'sr':
+                        switch (page.status) {
+                            case 'active': statusText = 'Aktivan'; break;
+                            case 'draft': statusText = 'U izradi'; break;
+                            default: statusText = 'Neaktivan';
+                        }
+                        break;
+                    case 'en':
+                        switch (page.status) {
+                            case 'active': statusText = 'Active'; break;
+                            case 'draft': statusText = 'In progress'; break;
+                            default: statusText = 'Inactive';
+                        }
+                        break;
+                    default: 
+                        switch (page.status) {
+                            case 'active': statusText = 'Активан'; break;
+                            case 'draft': statusText = 'У изради'; break;
+                            default: statusText = 'Неактиван';
+                        }
+                }
+                document.getElementById('preview-status').textContent = statusText;
+
                 document.getElementById('preview-path').textContent = page.path;
                 document.getElementById('preview-date').textContent = page.date;
 
