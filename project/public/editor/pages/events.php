@@ -24,6 +24,10 @@ $offset = ($page - 1) * $limit;
 $totalPages = (int) ceil($totalCount / $limit);
 $categories = (new Event())->getCategories();
 
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -31,7 +35,13 @@ $categories = (new Event())->getCategories();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - Administracija</title>
+    <title>
+        <?php switch ($locale) {
+            case 'sr': echo 'Događaji - Administracija'; break;
+            case 'en': echo 'Events - Administration'; break;
+            default: echo 'Догађаји - Администрација'; break;
+        } ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -175,15 +185,31 @@ $categories = (new Event())->getCategories();
                     <!-- Header Section -->
                     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                         <div>
-                            <h1 class="text-3xl font-bold text-gray-900 mb-2">Events Management</h1>
-                            <p class="text-light-600">Upravljajte svojim događajima i aktivnostima</p>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                                <?php switch ($locale) {
+                                    case 'sr': echo 'Upravljanje događajima'; break;
+                                    case 'en': echo 'Events Management'; break;
+                                    default: echo 'Управљање догађајима'; break;
+                                } ?>
+                            </h1>
+                            <p class="text-light-600">
+                                <?php switch ($locale) {
+                                    case 'sr': echo 'Upravljajte svojim događajima i aktivnostima'; break;
+                                    case 'en': echo 'Manage your events and activities'; break;
+                                    default: echo 'Управљајте својим догађајима и активностима'; break;
+                                } ?>
+                            </p>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-3">
 
                             <button id="newEventButton"
                                 class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
                                 <i class="fas fa-plus text-sm"></i>
-                                Dodaj Događaj
+                                <?php switch ($locale) {
+                                    case 'sr': echo 'Dodaj Događaj'; break;
+                                    case 'en': echo 'Add Event'; break;
+                                    default: echo 'Додај Догађај'; break;
+                                } ?>
                             </button>
                         </div>
                     </div>
@@ -198,13 +224,23 @@ $categories = (new Event())->getCategories();
                                     <i class="fas fa-search h-5 w-5 text-gray-400"></i>
                                 </div>
                                 <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
-                                    placeholder="Pretraži dokumenta..."
+                                    placeholder="<?php switch ($locale) {
+                                        case 'sr': echo 'Pretraži događaje...'; break;
+                                        case 'en': echo 'Search events...'; break;
+                                        default: echo 'Претражи догађаје...'; break;
+                                    } ?>"
                                     class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl …">
                             </div>
 
                             <!-- Category Filter -->
                             <select name="category" class="px-4 py-3 border rounded-xl">
-                                <option value="">Sve kategorije</option>
+                                <option value="">
+                                    <?php switch ($locale) {
+                                        case 'sr': echo 'Sve kategorije'; break;
+                                        case 'en': echo 'All categories'; break;
+                                        default: echo 'Све категорије'; break;
+                                    } ?>
+                                </option>
                                 <?php foreach ($categories as $category): ?>
                                     <option value="<?= htmlspecialchars($category['id']) ?>" <?= isset($_GET['category']) && $_GET['category'] == $category['id'] ? 'selected' : '' ?>>
                                         <?= htmlspecialchars($category['naziv']) ?>
@@ -217,16 +253,29 @@ $categories = (new Event())->getCategories();
                             <!-- Sort -->
                             <select name="sort" class="px-4 py-3 border rounded-xl …">
                                 <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>
-                                    Najnoviji prvo
+                                    <?php switch ($locale) {
+                                        case 'sr': echo 'Najnovije prvo'; break;
+                                        case 'en': echo 'Latest first'; break;
+                                        default: echo 'Најновије прво'; break;
+                                    } ?>
                                 </option>
                                 <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>
-                                    Najstariji prvo</option>
+                                    <?php switch ($locale) {
+                                        case 'sr': echo 'Najstarije prvo'; break;
+                                        case 'en': echo 'Oldest first'; break;
+                                        default: echo 'Најстарије прво'; break;
+                                    } ?>
+                                </option>
 
                             </select>
 
                             <button type="submit"
                                 class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl …">
-                                Primeni
+                                <?php switch ($locale) {
+                                    case 'sr': echo 'Primeni'; break;
+                                    case 'en': echo 'Apply'; break;
+                                    default: echo 'Примени'; break;
+                                } ?>
                             </button>
 
 
@@ -238,7 +287,13 @@ $categories = (new Event())->getCategories();
 
                     <div class="content-card rounded-xl overflow-hidden">
                         <div class="p-6 border-b border-light-200">
-                            <h2 class="text-xl font-semibold text-gray-900">Svi Događaji</h2>
+                            <h2 class="text-xl font-semibold text-gray-900">
+                                <?php switch ($locale) {
+                                    case 'sr': echo 'Svi Događaji'; break;
+                                    case 'en': echo 'All Events'; break;
+                                    default: echo 'Сви Догађаји'; break;
+                                } ?>
+                            </h2>
                         </div>
                         <div class="overflow-x-auto">
                             <table class="w-full">
@@ -246,19 +301,44 @@ $categories = (new Event())->getCategories();
                                     <tr>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Dogadjaj</th>
+                                            <?php switch ($locale) {
+                                                case 'sr': echo 'Događaj'; break;
+                                                case 'en': echo 'Event'; break;
+                                                default: echo 'Догађај'; break;
+                                            } ?>
+                                        </th>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Naziv</th>
+                                            <?php switch ($locale) {
+                                                case 'sr': echo 'Naziv'; break;
+                                                case 'en': echo 'Title'; break;
+                                                default: echo 'Назив'; break;
+                                            } ?>
+                                        </th>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Datum i vreme</th>
+                                            <?php switch ($locale) {
+                                                case 'sr': echo 'Datum i vreme'; break;
+                                                case 'en': echo 'Date and time'; break;
+                                                default: echo 'Датум и време'; break;
+                                            } ?>
+                                        </th>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Lokacija</th>
+                                            <?php switch ($locale) {
+                                                case 'sr': echo 'Lokacija'; break;
+                                                case 'en': echo 'Location'; break;
+                                                default: echo 'Локација'; break;
+                                            } ?>
+                                        </th>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Akcije</th>
+                                            <?php switch ($locale) {
+                                                case 'sr': echo 'Akcije'; break;
+                                                case 'en': echo 'Actions'; break;
+                                                default: echo 'Акције'; break;
+                                            } ?>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-light-200">
@@ -308,12 +388,20 @@ $categories = (new Event())->getCategories();
                                                 <div class="flex items-center space-x-2">
                                                     <button
                                                         class="edit p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition duration-200"
-                                                        title="Uredi">
+                                                        title="<?php switch ($locale) {
+                                                            case 'sr': echo 'Uredi'; break;
+                                                            case 'en': echo 'Edit'; break;
+                                                            default: echo 'Уреди'; break;
+                                                        } ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
                                                     <button onclick="deleteFunk(<?= $event['id'] ?>)"
                                                         class="delete p-2 text-red-600 hover:bg-red-50 rounded-lg transition duration-200"
-                                                        title="Obriši">
+                                                        title="<?php switch ($locale) {
+                                                            case 'sr': echo 'Obriši'; break;
+                                                            case 'en': echo 'Delete'; break;
+                                                            default: echo 'Обриши'; break;
+                                                        } ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>
@@ -328,8 +416,27 @@ $categories = (new Event())->getCategories();
                         <div
                             class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                             <div class="hidden md:block text-sm text-gray-700">
-                                Prikazano <span class="font-medium"><?= count($events) ?></span> od <span
-                                    class="font-medium"><?= $totalCount ?></span> događaja
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr':
+                                            $text = "Prikazano";
+                                            $ofText = "od";
+                                            $eventsText = "događaja";
+                                            break;
+                                        case 'en':
+                                            $text = "Shown";
+                                            $ofText = "of";
+                                            $eventsText = "events";
+                                            break;
+                                        default:
+                                            $text = "Приказано";
+                                            $ofText = "од";
+                                            $eventsText = "догађаја";
+                                            break;
+                                    }
+                                ?>
+                                <?= $text ?> <span class="font-medium"><?= count($events) ?></span> <?= $ofText ?> <span
+                                    class="font-medium"><?= $totalCount ?></span> <?= $eventsText ?>
                             </div>
                             <nav class="flex items-center gap-2">
                                 <button class="p-2 rounded-lg border text-gray-500 hover:bg-gray-50 disabled:opacity-50"
