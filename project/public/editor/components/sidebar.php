@@ -6,7 +6,13 @@
                 class="bg-gradient-to-r from-primary-600 to-primary-700 w-10 h-10 rounded-lg flex items-center justify-center shadow-lg">
                 <i class="fas fa-sliders-h text-white text-lg"></i>
             </div>
-            <h1 class="text-xl font-bold text-gray-800 ml-3 tracking-tight">Kontrolni Panel</h1>
+            <h1 class="text-xl font-bold text-gray-800 ml-3 tracking-tight">
+                <?php switch ($locale) {
+                    case 'sr': echo 'Kontrolni Panel'; break;
+                    case 'en': echo 'Control Panel'; break;
+                    default: echo 'Контролни Панел'; break;
+                } ?>
+            </h1>
         </div>
         <button class="sidebar-close-btn text-gray-600 hidden" id="sidebar-close">
             <i class="fas fa-times text-xl"></i>
@@ -15,7 +21,13 @@
 
     <!-- Navigation -->
     <div class="flex-1 mt-5 px-3 overflow-y-auto">
-        <h3 class="text-xs uppercase text-primary-600 tracking-wider font-medium mb-3 pl-3">Glavni Meni</h3>
+        <h3 class="text-xs uppercase text-primary-600 tracking-wider font-medium mb-3 pl-3">
+            <?php switch ($locale) {
+                case 'sr': echo 'Glavni Meni'; break;
+                case 'en': echo 'Main Menu'; break;
+                default: echo 'Главни Мени'; break;
+            } ?>
+        </h3>
         <ul>
             <li class="mb-1">
                 <a href="/dashboard" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'dashboard')
@@ -23,7 +35,13 @@
                     : 'text-gray-600 hover:bg-primary-900' ?>">
                     <i
                         class="fas fa-chart-line  <?= ($activeTab === 'dashboard') ? 'text-primary-200' : 'text-primary-500' ?> mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">Kontrolna Tabla</span>
+                    <span class="font-medium">
+                        <?php switch ($locale) {
+                            case 'sr': echo 'Kontrolna Tabla'; break;
+                            case 'en': echo 'Dashboard'; break;
+                            default: echo 'Контролна Табла'; break;
+                    } ?>
+                </span>
                 </a>
             </li>
             <li class="mb-1">
@@ -32,7 +50,13 @@
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i
                         class="fas fa-file-alt  <?= ($activeTab === 'documents') ? 'text-primary-200' : 'text-primary-500' ?> mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">Dokumenti</span>
+                    <span class="font-medium">
+                        <?php switch ($locale) {
+                            case 'sr': echo 'Dokumenti'; break;
+                            case 'en': echo 'Documents'; break;
+                            default: echo 'Документи'; break;
+                        } ?>
+                    </span>
                 </a>
             </li>
             <li class="mb-1">
@@ -40,7 +64,13 @@
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-calendar-alt text-primary-500 mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">Događaji</span>
+                    <span class="font-medium">
+                        <?php switch ($locale) {
+                            case 'sr': echo 'Događaji'; break;
+                            case 'en': echo 'Events'; break;
+                            default: echo 'Догађаји'; break;
+                        } ?>
+                    </span>
                 </a>
             </li>
             <li class="mb-1">
@@ -48,7 +78,13 @@
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-image text-primary-500 mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">Galerija</span>
+                    <span class="font-medium">
+                        <?php switch ($locale) {
+                            case 'sr': echo 'Galerija'; break;
+                            case 'en': echo 'Gallery'; break;
+                            default: echo 'Галерија'; break;
+                        } ?>
+                    </span>
                 </a>
             </li>
             <li class="mb-1">
@@ -56,7 +92,13 @@
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-users text-primary-500 mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">Promocija</span>
+                    <span class="font-medium">
+                        <?php switch ($locale) {
+                            case 'sr': echo 'Promocija'; break;
+                            case 'en': echo 'Promotion'; break;
+                            default: echo 'Промоција'; break;
+                        } ?>
+                    </span>
                 </a>
             </li>
             <li class="mb-1">
@@ -64,7 +106,13 @@
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-comments text-primary-500 mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">Poruke</span>
+                    <span class="font-medium">
+                        <?php switch ($locale) {
+                            case 'sr': echo 'Poruke'; break;
+                            case 'en': echo 'Messages'; break;
+                            default: echo 'Поруке'; break;
+                        } ?>
+                    </span>
                 </a>
             </li>
             <li class="mb-1">
@@ -72,10 +120,15 @@
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-info text-primary-500 mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">O nama</span>
+                    <span class="font-medium">
+                        <?php switch ($locale) {
+                            case 'sr': echo 'O nama'; break;
+                            case 'en': echo 'About Us'; break;
+                            default: echo 'О нама'; break;
+                        } ?>
+                    </span>
                 </a>
             </li>
-
         </ul>
 
     </div>
