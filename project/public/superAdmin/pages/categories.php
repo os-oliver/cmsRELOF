@@ -3,6 +3,11 @@ use App\Controllers\AuthController;
 use App\Models\Category;
 AuthController::requireAdmin();
 
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 // Simulated database functions
 $tabActive = $_GET['tab'] ?? 'events'; // 'events' or 'documents'
 
@@ -29,7 +34,15 @@ $totalPages = (int) ceil($totalCount / $limit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Upravljanje Kategorijama</title>
+    <title>
+        <?php
+            switch ($locale) {
+                case 'sr': echo 'Admin Panel - Upravljanje Kategorijama'; break;
+                case 'en': echo 'Admin Panel - Category Management'; break;
+                default: echo 'Админ Панел - Управљање Категоријама'; break;
+            }
+        ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -302,13 +315,35 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="mb-8">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
-                            <h1 class="text-3xl font-bold text-gray-900 mb-2">Upravljanje kategorijama</h1>
-                            <p class="text-gray-600">Dodajte, uredite ili uklonite kategorije sistema</p>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Upravljanje kategorijama'; break;
+                                        case 'en': echo 'Category management'; break;
+                                        default: echo 'Управљање категоријама'; break;
+                                    }
+                                ?>
+                            </h1>
+                            <p class="text-gray-600">
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Dodajte, uredite ili uklonite kategorije sistema'; break;
+                                        case 'en': echo 'Add, edit, or remove system categories'; break;
+                                        default: echo 'Додајте, уредите или уклоните категорије система'; break;
+                                    }
+                                ?>
+                            </p>
                         </div>
                         <button onclick="openCategoryModal('create')"
                             class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2">
                             <i class="fas fa-plus"></i>
-                            Nova kategorija
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Nova kategorija'; break;
+                                        case 'en': echo 'New category'; break;
+                                        default: echo 'Нова категорија'; break;
+                                    }
+                                ?>
                         </button>
                     </div>
                 </div>
@@ -317,11 +352,23 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="flex gap-2 mb-6">
                     <button class="tab-button <?= $tabActive === 'events' ? 'active' : '' ?>"
                         onclick="switchTab('events')">
-                        Kategorije događaja
+                            <?php
+                                switch ($locale) {
+                                    case 'sr': echo 'Kategorije događaja'; break;
+                                    case 'en': echo 'Event categories'; break;
+                                    default: echo 'Категорије догађаја'; break;
+                                }
+                            ?>
                     </button>
                     <button class="tab-button <?= $tabActive === 'documents' ? 'active' : '' ?>"
                         onclick="switchTab('documents')">
-                        Kategorije dokumenata
+                            <?php
+                                switch ($locale) {
+                                    case 'sr': echo 'Kategorije dokumenata'; break;
+                                    case 'en': echo 'Document categories'; break;
+                                    default: echo 'Категорије докумената'; break;
+                                }
+                            ?>
                     </button>
                 </div>
 
@@ -331,9 +378,33 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <table class="w-full">
                             <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
                                 <tr>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Naziv</th>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Boja</th>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Akcije</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'Naziv'; break;
+                                                case 'en': echo 'Name'; break;
+                                                default: echo 'Назив'; break;
+                                            }
+                                        ?>
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'Boja'; break;
+                                                case 'en': echo 'Color'; break;
+                                                default: echo 'Боја'; break;
+                                            }
+                                        ?>
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?php
+                                            switch ($locale) {
+                                                case 'sr': echo 'Akcije'; break;
+                                                case 'en': echo 'Actions'; break;
+                                                default: echo 'Акције'; break;
+                                            }
+                                        ?>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100">
@@ -410,7 +481,15 @@ $totalPages = (int) ceil($totalCount / $limit);
                     class="bg-white rounded-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
                     <div class="p-6 border-b border-gray-200">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-2xl font-bold text-gray-900" id="modalTitle">Nova kategorija</h3>
+                            <h3 class="text-2xl font-bold text-gray-900" id="modalTitle">
+                                <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Nova kategorija'; break;
+                                        case 'en': echo 'New category'; break;
+                                        default: echo 'Нова категорија'; break;
+                                    }
+                                ?>
+                            </h3>
                             <button onclick="closeCategoryModal()"
                                 class="text-gray-400 hover:text-gray-600 transition-colors">
                                 <i class="fas fa-times text-xl"></i>
@@ -424,19 +503,42 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                         <div class="grid grid-cols-1 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Naziv kategorije</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Naziv kategorije'; break;
+                                        case 'en': echo 'Category name'; break;
+                                        default: echo 'Назив категорије'; break;
+                                    }
+                                ?>
+                            </label>
                                 <input type="text" id="categoryName" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Boja</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Boja'; break;
+                                            case 'en': echo 'Color'; break;
+                                            default: echo 'Боја'; break;
+                                        }
+                                    ?>
+                                </label>
                                 <div class="flex items-center gap-4">
                                     <input type="color" id="colorPicker" value="#6366F1"
                                         class="w-16 h-16 rounded-lg border-0 cursor-pointer">
                                     <input type="text" id="colorCode" value="#6366F1" required
                                         class="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                                 </div>
-                                <p class="text-sm text-gray-500 mt-2">Unesite HEX kod boje ili koristite izbornik boja
+                                <p class="text-sm text-gray-500 mt-2">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Unesite HEX kod boje ili koristite izbornik boja'; break;
+                                            case 'en': echo 'Enter HEX color code or use the color picker'; break;
+                                            default: echo 'Унесите "HEX" код боје или користите изборник боја'; break;
+                                        }
+                                    ?>
                                 </p>
                             </div>
                         </div>
@@ -446,11 +548,23 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <button type="submit"
                                 class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                                 <i class="fas fa-save mr-2"></i>
-                                Sačuvaj kategoriju
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Sačuvaj kategoriju'; break;
+                                            case 'en': echo 'Save category'; break;
+                                            default: echo 'Сачувај категорију'; break;
+                                        }
+                                    ?>
                             </button>
                             <button type="button" onclick="closeCategoryModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                Otkaži
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Otkaži'; break;
+                                            case 'en': echo 'Cancel'; break;
+                                            default: echo 'Откажи'; break;
+                                        }
+                                    ?>
                             </button>
                         </div>
                     </form>
@@ -468,20 +582,56 @@ $totalPages = (int) ceil($totalCount / $limit);
                                 <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-bold text-gray-900">Obriši kategoriju</h3>
-                                <p class="text-gray-600">Ova akcija se ne može poništiti</p>
+                                <h3 class="text-lg font-bold text-gray-900">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Obriši kategoriju'; break;
+                                            case 'en': echo 'Delete category'; break;
+                                            default: echo 'Обриши категорију'; break;
+                                        }
+                                    ?>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Ova akcija se ne može poništiti'; break;
+                                            case 'en': echo 'This action cannot be undone'; break;
+                                            default: echo 'Ова акција се не може поништити'; break;
+                                        }
+                                    ?>
+                                </p>
                             </div>
                         </div>
-                        <p class="text-gray-700 mb-6">Da li ste sigurni da želite da obrišete kategoriju <strong
+                        <p class="text-gray-700 mb-6">
+                            <?php
+                                switch ($locale) {
+                                    case 'sr': echo 'Da li ste sigurni da želite da obrišete kategoriju'; break;
+                                    case 'en': echo 'Are you sure you want to delete the category'; break;
+                                    default: echo 'Да ли сте сигурни да желите да обришете категорију'; break;
+                                }
+                            ?>
+                             <strong
                                 id="deleteCategoryName"></strong>?</p>
                         <div class="flex gap-3">
                             <button onclick="confirmDelete()"
-                                class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">
-                                Da, obriši
+                                class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">    
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Da, obriši'; break;
+                                            case 'en': echo 'Yes, delete'; break;
+                                            default: echo 'Да, обриши'; break;
+                                        }
+                                    ?>
                             </button>
                             <button onclick="closeDeleteModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-4 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                Otkaži
+                                    <?php
+                                        switch ($locale) {
+                                            case 'sr': echo 'Otkaži'; break;
+                                            case 'en': echo 'Cancel'; break;
+                                            default: echo 'Откажи'; break;
+                                        }
+                                    ?>
                             </button>
                         </div>
                     </div>
@@ -551,26 +701,59 @@ $totalPages = (int) ceil($totalCount / $limit);
             const modalTitle = document.getElementById('modalTitle');
             const form = document.getElementById('categoryForm');
             const categoryTypeInput = document.getElementById('categoryType');
+            const locale = "<?php echo $locale; ?>";
 
             if (categoryType) {
                 categoryTypeInput.value = categoryType;
             }
 
             if (mode === 'create') {
-                modalTitle.textContent = 'Nova kategorija';
+                let titleText = '';
+
+                switch (locale) {
+                    case 'en':
+                        titleText = 'New category';
+                        break;
+                    case 'sr':
+                        titleText = 'Nova kategorija';
+                        break;
+                    case 'sr-Cyrl':
+                    default:
+                        titleText = 'Нова категорија';
+                        break;
+                }
+
+                modalTitle.textContent = titleText;
                 form.reset();
                 document.getElementById('categoryId').value = '';
                 document.getElementById('colorPicker').value = '#6366F1';
                 document.getElementById('colorCode').value = '#6366F1';
                 editingCategoryId = null;
+
             } else if (mode === 'edit' && categoryId) {
                 const category = categories.find(c => c.id === categoryId);
                 if (category) {
-                    modalTitle.textContent = 'Uredi kategoriju';
+                    let titleText = '';
+
+                    switch (locale) {
+                        case 'en':
+                            titleText = 'Edit category';
+                            break;
+                        case 'sr':
+                            titleText = 'Uredi kategoriju';
+                            break;
+                        case 'sr-Cyrl':
+                        default:
+                            titleText = 'Уреди категорију';
+                            break;
+                    }
+
+                    modalTitle.textContent = titleText;
                     populateForm(category);
                     editingCategoryId = categoryId;
                 }
             }
+
 
             modal.classList.remove('opacity-0', 'invisible');
             modal.classList.add('opacity-100', 'visible');
@@ -616,20 +799,61 @@ $totalPages = (int) ceil($totalCount / $limit);
             })
                 .then(response => response.json())
                 .then(data => {
+                    let message;
+
                     if (data.success) {
-                        showNotification(formData.id ?
-                            'Kategorija je uspešno ažurirana!' :
-                            'Kategorija je uspešno kreirana!', 'success');
+                        switch (locale) {
+                            case 'sr':
+                                message = formData.id ?
+                                    'Kategorija je uspešno ažurirana!' :
+                                    'Kategorija je uspešno kreirana!';
+                                break;
+                            case 'sr-Cyrl':
+                                message = formData.id ?
+                                    'Категорија је успешно ажурирана!' :
+                                    'Категорија је успешно креирана!';
+                                break;
+                            case 'en':
+                            default:
+                                message = formData.id ?
+                                    'Category updated successfully!' :
+                                    'Category created successfully!';
+                                break;
+                        }
+
+                        showNotification(message, 'success');
                         closeCategoryModal();
-                        // Refresh the page to see changes
                         setTimeout(() => location.reload(), 1000);
                     } else {
-                        alert(data.message || 'Greška prilikom čuvanja kategorije.');
+                        switch (locale) {
+                            case 'sr':
+                                message = data.message || 'Greška prilikom čuvanja kategorije.';
+                                break;
+                            case 'sr-Cyrl':
+                                message = data.message || 'Грешка приликом чувања категорије.';
+                                break;
+                            case 'en':
+                            default:
+                                message = data.message || 'Error saving category.';
+                                break;
+                        }
+                        alert(message);
                     }
                 })
                 .catch(error => {
                     console.error('Greška:', error);
-                    alert('Greška prilikom komunikacije sa serverom.');
+                    switch (locale) {
+                        case 'sr':
+                            alert('Greška prilikom komunikacije sa serverom.');
+                            break;
+                        case 'sr-Cyrl':
+                            alert('Грешка приликом комуникације са сервером.');
+                            break;
+                        case 'en':
+                        default:
+                            alert('Error communicating with the server.');
+                            break;
+                    }
                 });
         });
 
@@ -667,21 +891,59 @@ $totalPages = (int) ceil($totalCount / $limit);
                         'Content-Type': 'application/json',
                     }
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Greška pri brisanju kategorije.');
+                .then(response => {
+                    if (!response.ok) {
+                        let errorMessage;
+                        switch (locale) {
+                            case 'sr':
+                                errorMessage = 'Greška pri brisanju kategorije.';
+                                break;
+                            case 'sr-Cyrl':
+                                errorMessage = 'Грешка приликом брисања категорије.';
+                                break;
+                            case 'en':
+                            default:
+                                errorMessage = 'Error deleting category.';
+                                break;
                         }
-                        return response.json();
-                    })
-                    .then(data => {
-                        showNotification('Kategorija je uspešno obrisana!', 'success');
-                        closeDeleteModal();
-                        // Refresh the page to see changes
-                        setTimeout(() => location.reload(), 1000);
-                    })
-                    .catch(error => {
-                        showNotification('Greška: ' + error.message, 'error');
-                    });
+                        throw new Error(errorMessage);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    let successMessage;
+                    switch (locale) {
+                        case 'sr':
+                            successMessage = 'Kategorija je uspešno obrisana!';
+                            break;
+                        case 'sr-Cyrl':
+                            successMessage = 'Категорија је успешно обрисана!';
+                            break;
+                        case 'en':
+                        default:
+                            successMessage = 'Category deleted successfully!';
+                            break;
+                    }
+                    showNotification(successMessage, 'success');
+                    closeDeleteModal();
+                    setTimeout(() => location.reload(), 1000);
+                })
+                .catch(error => {
+                    let errorMsg;
+                    switch (locale) {
+                        case 'sr':
+                            errorMsg = 'Greška: ' + error.message;
+                            break;
+                        case 'sr-Cyrl':
+                            errorMsg = 'Грешка: ' + error.message;
+                            break;
+                        case 'en':
+                        default:
+                            errorMsg = 'Error: ' + error.message;
+                            break;
+                    }
+                    showNotification(errorMsg, 'error');
+                });
             }
         }
 
