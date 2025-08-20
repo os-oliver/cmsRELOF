@@ -6,9 +6,25 @@
 
 <div class="lg:col-span-2 content-card p-5 rounded-xl border border-gray-200">
     <div class="flex justify-between items-center mb-6">
-        <h3 class="text-lg font-semibold text-gray-800">Nedavni Dokumenti</h3>
+        <h3 class="text-lg font-semibold text-gray-800">
+            <?php
+            switch ($locale) {
+                case 'sr': echo 'Nedavni Dokumenti'; break;
+                case 'en': echo 'Recent Documents'; break;
+                default: echo 'Недавни документи'; break;
+            }
+            ?>
+        </h3>
         <a href="/dashboard/dokumenti" class="text-primary-600 hover:text-primary-800 flex items-center">
-            <span>Pogledaj sve</span>
+            <span>
+                <?php
+                switch ($locale) {
+                    case 'sr': echo 'Pogledaj sve'; break;
+                    case 'en': echo 'View All'; break;
+                    default: echo 'Погледај све'; break;
+                }
+                ?>
+            </span>
             <i class="fas fa-chevron-right ml-1 text-sm"></i>
         </a>
     </div>
@@ -41,6 +57,14 @@
     <button id="newDocumentBtn"
         class="mt-6 w-full py-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-lg flex items-center justify-center font-medium transition-all">
         <i class="fas fa-plus mr-2"></i>
-        <span>Dodaj Novi Dokument</span>
+        <span>
+        <?php
+        switch ($locale) {
+            case 'sr': echo 'Dodaj Novi Dokument'; break;
+            case 'en': echo 'Add New Document'; break;
+            default: echo 'Додај Нови Документ'; break;
+        }
+        ?>
+        </span>
     </button>
 </div>
