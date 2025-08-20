@@ -6,9 +6,9 @@
         <h2 id="typeForm" class="text-lg sm:text-2xl font-bold text-gray-800 mb-4">
             <?php
                 switch ($locale) {
-                    case 'sr': echo 'Unos Novog Dokumenta'; break;
-                    case 'en': echo 'Add New Document'; break;
-                    default: echo 'Унос Новог Документа'; break;
+                    case 'sr': echo 'Unos novog dokumenta'; break;
+                    case 'en': echo 'Add new document'; break;
+                    default: echo 'Унос новог документа'; break;
                 }
             ?>
         </h2>
@@ -65,42 +65,94 @@
                 <!-- File Name (readonly) -->
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?= $locale==='sr' ? 'Ime fajla*' : ($locale==='en' ? 'File Name*' : 'Име фајла*') ?>
+                        <?php
+                            switch ($locale) {
+                                case 'sr': echo 'Ime fajla'; break;
+                                case 'en': echo 'File name'; break;
+                                default: echo 'Име фајла'; break;
+                            }
+                        ?>
+                        <span class="text-red-500">*</span>
                     </label>
                     <input type="text" id="name" name="name" readonly required
                         class="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-sm"
-                        placeholder="<?= $locale==='sr' ? 'Automatski popunjeno' : ($locale==='en' ? 'Automatically filled' : 'Аутоматски попуњено') ?>" />
+                        placeholder="<?php
+                            switch ($locale) {
+                                case 'sr': echo 'Automatski popunjeno'; break;
+                                case 'en': echo 'Automatically filled'; break;
+                                default: echo 'Аутоматски попуњено'; break;
+                            }
+                        ?>" />
                 </div>
 
                 <!-- File Extension (readonly) -->
                 <div>
                     <label for="extension" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?= $locale==='sr' ? 'Ekstenzija*' : ($locale==='en' ? 'Extension*' : 'Екстензија*') ?>
+                        <?php
+                            switch ($locale) {
+                                case 'sr': echo 'Ekstenzija'; break;
+                                case 'en': echo 'Extension'; break;
+                                default: echo 'Екстензија'; break;
+                            }
+                        ?>
+                        <span class="text-red-500">*</span>
                     </label>
                     <input type="text" id="extension" name="extension" readonly required
                         class="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-sm"
-                        placeholder="<?= $locale==='sr' ? 'Automatski popunjeno' : ($locale==='en' ? 'Automatically filled' : 'Аутоматски попуњено') ?>" />
+                        placeholder="<?php
+                            switch ($locale) {
+                                case 'sr': echo 'Automatski popunjeno'; break;
+                                case 'en': echo 'Automatically filled'; break;
+                                default: echo 'Аутоматски попуњено'; break;
+                            }
+                        ?>" />
                 </div>
 
                 <!-- File Size (readonly) -->
                 <div>
                     <label for="fileSize" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?= $locale==='sr' ? 'Veličina (MB)*' : ($locale==='en' ? 'Size (MB)*' : 'Величина (MB)*') ?>
+                        <?php
+                            switch ($locale) {
+                                case 'sr': echo 'Veličina (MB)'; break;
+                                case 'en': echo 'Size (MB)'; break;
+                                default: echo 'Величина (MB'; break;
+                            }
+                        ?>
+                        <span class="text-red-500">*</span>
                     </label>
                     <input type="text" id="fileSize" name="fileSize" readonly required
                         class="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-sm"
-                        placeholder="<?= $locale==='sr' ? 'Automatski popunjeno' : ($locale==='en' ? 'Automatically filled' : 'Аутоматски попуњено') ?>" />
+                        placeholder="<?php
+                            switch ($locale) {
+                                case 'sr': echo 'Automatski popunjeno'; break;
+                                case 'en': echo 'Automatically filled'; break;
+                                default: echo 'Аутоматски попуњено'; break;
+                            }
+                        ?>" />
                 </div>
 
                 <!-- Kategorija -->
                 <div>
                     <label for="category" id="categoryForm" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?= $locale==='sr' ? 'Kategorija*' : ($locale==='en' ? 'Category*' : 'Категорија*') ?>
+                        <?php
+                            switch ($locale) {
+                                case 'sr': echo 'Kategorija'; break;
+                                case 'en': echo 'Category'; break;
+                                default: echo 'Категорија'; break;
+                            }
+                        ?>
+                        <span class="text-red-500">*</span>
                     </label>
                     <select id="category" name="category" required
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">
-                            <?= $locale==='sr' ? '-- Odaberite kategoriju --' : ($locale==='en' ? '-- Select category --' : '-- Одаберите категорију --') ?>
+                            <?php
+                            switch ($locale) {
+                                case 'sr': echo '-- Odaberite kategoriju --'; break;
+                                case 'en': echo '-- Select category --'; break;
+                                default: echo '-- Одаберите категорију --'; break;
+                            }
+                            ?>
                         </option>
                         <?php foreach ($DocumentCategories as $category): ?>
                             <option value="<?= htmlspecialchars($category['id']) ?>">
@@ -112,32 +164,70 @@
                 <!-- Title (span 2) -->
                 <div class="md:col-span-2">
                     <label for="titleForm" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?= $locale==='sr' ? 'Naslov dokumenta' : ($locale==='en' ? 'Document Title' : 'Наслов документа') ?>
+                        <?php
+                            switch ($locale) {
+                                case 'sr': echo 'Naslov dokumenta'; break;
+                                case 'en': echo 'Document title'; break;
+                                default: echo 'Наслов документа'; break;
+                            }
+                        ?>
                     </label>
                     <input type="text" id="titleForm" name="title"
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="<?= $locale==='sr' ? 'Opcioni naslov' : ($locale==='en' ? 'Optional title' : 'Опциони наслов') ?>" />
+                        placeholder="
+                        <?php
+                            switch ($locale) {
+                                case 'sr': echo 'Opcioni naslov'; break;
+                                case 'en': echo 'Optional title'; break;
+                                default: echo 'Опциони наслов'; break;
+                            }
+                        ?>" />
                 </div>
 
                 <!-- Description (span 2) -->
                 <div class="md:col-span-2">
                     <label for="descriptionForm" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?= $locale==='sr' ? 'Opis dokumenta' : ($locale==='en' ? 'Document Description' : 'Опис документа') ?>
+                        <?php
+                        switch ($locale) {
+                            case 'sr': echo 'Opis dokumenta'; break;
+                            case 'en': echo 'Document description'; break;
+                            default: echo 'Опис документа'; break;
+                        }
+                        ?>
                     </label>
                     <textarea id="descriptionForm" name="description" rows="4"
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="<?= $locale==='sr' ? 'Detaljan opis (opciono)' : ($locale==='en' ? 'Detailed description (optional)' : 'Детаљан опис (опционо)') ?>"></textarea>
+                        placeholder="
+                        <?php
+                            switch ($locale) {
+                                case 'sr': echo 'Detaljan opis (opciono)'; break;
+                                case 'en': echo 'Detailed description (optional)'; break;
+                                default: echo 'Детаљан опис (опционо)'; break;
+                            }
+                        ?>"></textarea>
                 </div>
             </div>
             <!-- Actions -->
             <div class="flex flex-col sm:flex-row sm:justify-end gap-3 mt-4">
                 <button id="cancelButton" type="button"
                     class="w-full sm:w-auto px-5 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
-                    <?= $locale==='sr' ? 'Odustani' : ($locale==='en' ? 'Cancel' : 'Откажи') ?>
+                    <?php
+                        switch ($locale) {
+                            case 'sr': echo 'Odustani'; break;
+                            case 'en': echo 'Cancel'; break;
+                            default: echo 'Откажи'; break;
+                        }
+                    ?>
                 </button>
                 <button type="submit"
                     class="w-full sm:w-auto px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                    <?= $locale==='sr' ? 'Sačuvaj Dokument' : ($locale==='en' ? 'Save Document' : 'Сачувај документ') ?>
+                    <?php
+                        switch ($locale) {
+                            case 'sr': echo 'Sačuvaj dokument'; break;
+                            case 'en': echo 'Save document'; break;
+                            default: echo 'Сачувај документ'; break;
+                        }
+                    ?>
                 </button>
             </div>
         </form>
