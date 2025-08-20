@@ -49,8 +49,8 @@
                         <?php
                             switch ($locale) {
                                 case 'sr': echo 'Opis dokumenta'; break;
-                                case 'en': echo 'Category'; break;
-                                default: echo 'Категорија'; break;
+                                case 'en': echo 'Document description'; break;
+                                default: echo 'Опис документа'; break;
                             }
                         ?>
                     </p>
