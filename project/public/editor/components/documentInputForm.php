@@ -128,18 +128,18 @@
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="<?= $locale==='sr' ? 'Detaljan opis (opciono)' : ($locale==='en' ? 'Detailed description (optional)' : 'Детаљан опис (опционо)') ?>"></textarea>
                 </div>
-
-                <!-- Actions -->
-                <div class="flex flex-col sm:flex-row sm:justify-end gap-3 mt-4">
-                    <button id="cancelButton" type="button"
-                        class="w-full sm:w-auto px-5 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
-                        <?= $locale==='sr' ? 'Odustani' : ($locale==='en' ? 'Cancel' : 'Откажи') ?>
-                    </button>
-                    <button type="submit"
-                        class="w-full sm:w-auto px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                        <?= $locale==='sr' ? 'Sačuvaj Dokument' : ($locale==='en' ? 'Save Document' : 'Сачувај документ') ?>
-                    </button>
-                </div>
+            </div>
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row sm:justify-end gap-3 mt-4">
+                <button id="cancelButton" type="button"
+                    class="w-full sm:w-auto px-5 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
+                    <?= $locale==='sr' ? 'Odustani' : ($locale==='en' ? 'Cancel' : 'Откажи') ?>
+                </button>
+                <button type="submit"
+                    class="w-full sm:w-auto px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    <?= $locale==='sr' ? 'Sačuvaj Dokument' : ($locale==='en' ? 'Save Document' : 'Сачувај документ') ?>
+                </button>
+            </div>
         </form>
     </div>
 </div>
