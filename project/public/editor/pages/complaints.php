@@ -174,9 +174,9 @@ AuthController::requireEditor();
                             <h1 class="text-3xl font-bold text-light-900 mb-2">
                                 <?php 
                                 switch ($locale) {
-                                    case 'sr': echo 'Žalbe i Pritužbe'; break;
-                                    case 'en': echo 'Complaints and Grievances'; break;
-                                    default: echo 'Жалбе и Притужбе'; break;
+                                    case 'sr': echo 'Žalbe i pritužbe'; break;
+                                    case 'en': echo 'Complaints and grievances'; break;
+                                    default: echo 'Жалбе и притужбе'; break;
                                 }
                                 ?>
                             </h1>
@@ -208,7 +208,7 @@ AuthController::requireEditor();
                                 <?php 
                                 switch ($locale) {
                                     case 'sr': echo 'Nova žalba'; break;
-                                    case 'en': echo 'New Complaint'; break;
+                                    case 'en': echo 'New complaint'; break;
                                     default: echo 'Нова жалба'; break;
                                 }
                                 ?>
@@ -226,7 +226,7 @@ AuthController::requireEditor();
                                 <p class="text-light-600 text-sm font-medium">
                                     <?php switch ($locale) {
                                         case 'sr': echo 'Ukupno žalbi'; break;
-                                        case 'en': echo 'Total Complaints'; break;
+                                        case 'en': echo 'Total complaints'; break;
                                         default: echo 'Укупно жалби'; break;
                                     } ?>
                                 </p>
@@ -311,7 +311,7 @@ AuthController::requireEditor();
                                 <p class="text-light-600 text-sm font-medium">
                                     <?php switch ($locale) {
                                         case 'sr': echo 'Prosečno vreme'; break;
-                                        case 'en': echo 'Average Time'; break;
+                                        case 'en': echo 'Average time'; break;
                                         default: echo 'Просечно време'; break;
                                     } ?>
                                 </p>
@@ -320,7 +320,7 @@ AuthController::requireEditor();
                                     <i class="fas fa-tachometer-alt text-xs"></i>
                                     <?php switch ($locale) {
                                         case 'sr': echo 'Vreme odgovora'; break;
-                                        case 'en': echo 'Response Time'; break;
+                                        case 'en': echo 'Response time'; break;
                                         default: echo 'Време одговора'; break;
                                     } ?>
                                 </p>
@@ -346,7 +346,7 @@ AuthController::requireEditor();
                                 <h3 class="font-semibold text-light-900">
                                     <?php switch ($locale) {
                                         case 'sr': echo 'Hitne žalbe'; break;
-                                        case 'en': echo 'Urgent Complaints'; break;
+                                        case 'en': echo 'Urgent complaints'; break;
                                         default: echo 'Хитне жалбе'; break;
                                     } ?>
                                 </h3>
@@ -372,7 +372,7 @@ AuthController::requireEditor();
                                 <h3 class="font-semibold text-light-900">
                                     <?php switch ($locale) {
                                         case 'sr': echo 'Mesečni izveštaj'; break;
-                                        case 'en': echo 'Monthly Report'; break;
+                                        case 'en': echo 'Monthly report'; break;
                                         default: echo 'Месечни извештај'; break;
                                     } ?>
                                 </h3>
@@ -398,7 +398,7 @@ AuthController::requireEditor();
                                 <h3 class="font-semibold text-light-900">
                                     <?php switch ($locale) {
                                         case 'sr': echo 'Korisnička podrška'; break;
-                                        case 'en': echo 'Customer Support'; break;
+                                        case 'en': echo 'Customer support'; break;
                                         default: echo 'Корисничка подршка'; break;
                                     } ?>
                                 </h3>
@@ -422,7 +422,7 @@ AuthController::requireEditor();
                             <h2 class="text-xl font-semibold text-light-900">
                                 <?php switch ($locale) {
                                     case 'sr': echo 'Najnovije žalbe'; break;
-                                    case 'en': echo 'Latest Complaints'; break;
+                                    case 'en': echo 'Latest complaints'; break;
                                     default: echo 'Најновије жалбе'; break;
                                 } ?>
                             </h2>
@@ -452,7 +452,7 @@ AuthController::requireEditor();
                                     <option>
                                         <?php switch ($locale) {
                                             case 'sr': echo 'Tehnički problemi'; break;
-                                            case 'en': echo 'Technical Issues'; break;
+                                            case 'en': echo 'Technical issues'; break;
                                             default: echo 'Технички проблеми'; break;
                                         } ?>
                                     </option>
@@ -632,13 +632,13 @@ AuthController::requireEditor();
                                             <?php switch ($locale) {
                                                 case 'en': echo 'Incorrect billing'; break;
                                                 case 'sr': echo 'Neispravna naplata'; break;
-                                                default: echo 'Нетачна наплата'; break;
+                                                default: echo 'Неисправна наплата'; break;
                                             } ?>
                                         </div>
                                         <div class="text-sm text-light-600">
                                             <?php switch ($locale) {
                                                 case 'en': echo 'A double amount was charged on the account...'; break;
-                                                case 'sr': echo 'Naplaćen je dupli iznos na računu...'; break;
+                                                case 'sr': echo 'Dupli iznos je naplaćen na računu...'; break;
                                                 default: echo 'Дупли износ је наплаћен на рачуну...'; break;
                                             } ?>
                                         </div>
@@ -658,7 +658,7 @@ AuthController::requireEditor();
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                             <i class="fas fa-cog text-blue-600 mr-1"></i>
                                             <?php switch ($locale) {
-                                                case 'en': echo 'In Progress'; break;
+                                                case 'en': echo 'In progress'; break;
                                                 case 'sr': echo 'U obradi'; break;
                                                 default: echo 'У обради'; break;
                                             } ?>
