@@ -140,7 +140,6 @@
                     <?= $locale==='sr' ? 'Sačuvaj Dokument' : ($locale==='en' ? 'Save Document' : 'Сачувај документ') ?>
                 </button>
             </div>
-            
         </form>
     </div>
 </div>

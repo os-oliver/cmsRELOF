@@ -79,7 +79,13 @@ function getFileConfig(string $ext): array
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokumenti - Administracija</title>
+    <title>
+        <?php switch ($locale) {
+            case 'sr': echo "Dokumenti - Administracija"; break;
+            case 'en': echo "Documents - Administration"; break;
+            default: echo "Документи - Администрација"; break;
+        } ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
