@@ -227,6 +227,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                             </option>
                         </select>
 
+                        
                         <button type="submit"
                             class="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition shadow-lg">
                             <?php switch ($locale) {
