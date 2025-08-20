@@ -45,6 +45,7 @@
                                 }
                             ?>
                         </span>
+                        
                         <span class="text-xs text-gray-400 mt-1">
                             <?php
                                 switch ($locale) {

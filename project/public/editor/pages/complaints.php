@@ -695,6 +695,7 @@ AuthController::requireEditor();
                                     </td>
                                 </tr>
 
+                                
                                 <!-- Row 3 -->
                                 <tr class="hover:bg-light-50 transition-colors duration-200">
                                     <td class="px-6 py-4 whitespace-nowrap">
