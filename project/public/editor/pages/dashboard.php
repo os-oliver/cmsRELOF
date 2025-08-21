@@ -100,6 +100,7 @@ $DocumentCategories = $documentModal->getCategories();
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <?php require_once __DIR__ . "/../components/transparencyScore.php" ?>
                     <?php require_once __DIR__ . "/../components/documents.php" ?>
                     <?php require_once __DIR__ . "/../components/events.php" ?>
                 </div>
