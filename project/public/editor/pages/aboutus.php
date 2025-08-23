@@ -265,14 +265,14 @@ $totalPages = (int) ceil($totalCount / $limit);
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
                                             <?php switch ($locale) {
                                                 case 'sr': echo 'Ime'; break;
-                                                case 'en': echo 'First Name'; break;
+                                                case 'en': echo 'First name'; break;
                                                 default: echo 'Име'; break;
                                             } ?>
                                         </th>
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
                                             <?php switch ($locale) {
                                                 case 'sr': echo 'Prezime'; break;
-                                                case 'en': echo 'Last Name'; break;
+                                                case 'en': echo 'Last name'; break;
                                                 default: echo 'Презиме'; break;
                                             } ?>
                                         </th>
@@ -393,7 +393,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
                         <?php switch ($locale) {
                             case 'sr': echo 'Ime'; break;
-                            case 'en': echo 'First Name'; break;
+                            case 'en': echo 'First name'; break;
                             default: echo 'Име'; break;
                         } ?>
                     </label>
@@ -405,7 +405,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <label for="surname" class="block text-sm font-medium text-gray-700 mb-1">
                         <?php switch ($locale) {
                             case 'sr': echo 'Prezime'; break;
-                            case 'en': echo 'Last Name'; break;
+                            case 'en': echo 'Last name'; break;
                             default: echo 'Презиме'; break;
                         } ?>
                     </label>
@@ -463,11 +463,11 @@ $totalPages = (int) ceil($totalCount / $limit);
         <?php
         switch ($locale) {
             case 'sr': // latinica
-                $emptyGoal = 'Polje Cilj ne može biti prazno.';
+                $emptyGoal = 'Polje "Cilj" ne može biti prazno.';
                 $savedGoal = 'Cilj uspešno sačuvan!';
                 $saveError = 'Greška pri čuvanju: ';
                 $consoleError = 'Greška:';
-                $emptyMission = 'Polje Misija ne može biti prazno.';
+                $emptyMission = 'Polje "Misija" ne može biti prazno.';
                 $saveSuccess = 'Misija uspešno sačuvana!';
                 $addMemberTitle = 'Dodaj novog člana tima';
                 $editMemberTitle = 'Uredi člana tima';
@@ -493,11 +493,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                 $saveSuccessMsg = 'Team member saved successfully!';
                 break;
             default: // ćirilica
-                $emptyGoal = 'Поље Циљ не може бити празно.';
+                $emptyGoal = 'Поље "Циљ" не може бити празно.';
                 $savedGoal = 'Циљ успешно сачуван!';
                 $saveError = 'Грешка при чувању: ';
                 $consoleError = 'Грешка:';
-                $emptyMission = 'Поље Мисија не може бити празно.';
+                $emptyMission = 'Поље "Мисија" не може бити празно.';
                 $saveSuccess = 'Мисија успешно сачувана!';
                 $addMemberTitle = 'Додај новог члана тима';
                 $editMemberTitle = 'Уреди члана тима';

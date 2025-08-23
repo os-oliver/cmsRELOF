@@ -9,8 +9,8 @@
         <h3 class="text-lg font-semibold text-gray-800">
             <?php
             switch ($locale) {
-                case 'sr': echo 'Nedavni Dokumenti'; break;
-                case 'en': echo 'Recent Documents'; break;
+                case 'sr': echo 'Nedavni dokumenti'; break;
+                case 'en': echo 'Recent documents'; break;
                 default: echo 'Недавни документи'; break;
             }
             ?>
@@ -20,7 +20,7 @@
                 <?php
                 switch ($locale) {
                     case 'sr': echo 'Pogledaj sve'; break;
-                    case 'en': echo 'View All'; break;
+                    case 'en': echo 'View all'; break;
                     default: echo 'Погледај све'; break;
                 }
                 ?>
@@ -60,9 +60,9 @@
         <span>
         <?php
         switch ($locale) {
-            case 'sr': echo 'Dodaj Novi Dokument'; break;
-            case 'en': echo 'Add New Document'; break;
-            default: echo 'Додај Нови Документ'; break;
+            case 'sr': echo 'Dodaj novi dokument'; break;
+            case 'en': echo 'Add new document'; break;
+            default: echo 'Додај нови документ'; break;
         }
         ?>
         </span>

@@ -110,7 +110,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <h2 class="text-xl font-semibold text-gray-900">
                     <?php switch ($locale) {
                         case 'sr': echo 'Detalji kontakta'; break;
-                        case 'en': echo 'Contact Details'; break;
+                        case 'en': echo 'Contact details'; break;
                         default: echo 'Детаљи контакта'; break;
                     } ?>
                 </h2>
@@ -129,9 +129,9 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                 <p><span class="font-medium">
                     <?php switch ($locale) {
-                        case 'sr': echo 'Email'; break;
+                        case 'sr': echo 'E-adresa'; break;
                         case 'en': echo 'Email'; break;
-                        default: echo 'Емаил'; break;
+                        default: echo 'E-адреса'; break;
                     } ?>:
                 </span> <span id="modal-email"></span></p>
 
@@ -177,9 +177,9 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">
                             <?php switch ($locale) {
-                                case 'sr': echo 'Upravljanje Kontaktima'; break;
-                                case 'en': echo 'Contact Management'; break;
-                                default: echo 'Управљање Контактима'; break;
+                                case 'sr': echo 'Upravljanje kontaktima'; break;
+                                case 'en': echo 'Contact management'; break;
+                                default: echo 'Управљање контактима'; break;
                             } ?>
                         </h1>
                         <p class="text-light-600">
@@ -201,9 +201,9 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <input type="text" name="search" value="<?= htmlspecialchars($search) ?>"
                                 placeholder="<?php 
                                     switch ($locale) {
-                                        case 'sr': echo 'Pretraži po imenu, email-u, poruci...'; break;
+                                        case 'sr': echo 'Pretraži po imenu, e-adresi, poruci...'; break;
                                         case 'en': echo 'Search by name, email, message...'; break;
-                                        default: echo 'Претражи по имену, емаил-у, поруци...'; break;
+                                        default: echo 'Претражи по имену, e-адреси, поруци...'; break;
                                     } 
                                 ?>"
                                 class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition">
