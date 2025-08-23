@@ -1,8 +1,18 @@
 <?php
 
 namespace App\Controllers;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class LanguageMapperController {
+
+    protected $translate;
+
+    public function __construct() {
+        $this->translate = new GoogleTranslate();
+        $this->translate->setSource('sr');
+        $this->translate->setTarget('en');
+    }
+    
     function latin_to_cyrillic($text) {
         $latin = [
             'Nj', 'Lj', 'Dž', 'nj', 'lj', 'dž', 
@@ -54,5 +64,9 @@ class LanguageMapperController {
             return 'cyrillic';
         }
         return 'latin';
+    }
+
+    public function translateToEng($text): string {
+        return $this->translate->translate($text);
     }
 }
