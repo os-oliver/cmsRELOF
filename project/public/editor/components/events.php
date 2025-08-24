@@ -1,13 +1,31 @@
 <?php
-
+    if (isset($_GET['locale'])) {
+        $_SESSION['locale'] = $_GET['locale'];
+    }
+    $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 
 <!-- Events Section -->
 <div class=" content-card p-5 rounded-xl border border-gray-200">
     <div class="flex justify-between items-center mb-6">
-        <h3 class="text-lg font-semibold text-gray-800">Predstojeći događaji u biblioteci</h3>
+        <h3 class="text-lg font-semibold text-gray-800">
+            <?php
+                switch ($locale) {
+                    case 'sr': echo 'Predstojeći događaji u biblioteci'; break;
+                    case 'en': echo 'Upcoming events in the library'; break;
+                    default: echo 'Предстојећи догађаји у библиотеци'; break;
+                }
+            ?></h3>
         <a href="/dashboard/dogadjaji" class="text-primary-600 hover:text-primary-800 flex items-center">
-            <span>Pogledaj sve</span>
+            <span>
+                <?php
+                    switch ($locale) {
+                        case 'sr': echo 'Pogledaj sve'; break;
+                        case 'en': echo 'View all'; break;
+                        default: echo 'Погледај све'; break;
+                    }
+                ?>
+            </span>
             <i class="fas fa-chevron-right ml-1 text-sm"></i>
         </a>
     </div>
@@ -58,6 +76,14 @@
     <button id="newEventButton"
         class="mt-6 w-full py-3 bg-white border border-primary-600 text-primary-600 hover:bg-primary-50 hover:text-primary-800 rounded-lg flex items-center justify-center font-medium transition-all">
         <i class="fas fa-plus mr-2"></i>
-        <span>Dodaj događaj</span>
+        <span>
+            <?php
+                switch ($locale) {
+                    case 'sr': echo 'Dodaj događaj'; break;
+                    case 'en': echo 'Add event'; break;
+                    default: echo 'Додај догађај'; break;
+                }
+            ?>
+        </span>
     </button>
 </div>
