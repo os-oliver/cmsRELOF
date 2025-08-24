@@ -18,6 +18,10 @@ $categories = $eventModel->getCategories();
 [$events, $totalEvents] = $eventModel->all();
 [$documents, $totalDocuments] = $documentModal->list(3);
 $DocumentCategories = $documentModal->getCategories();
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -25,7 +29,13 @@ $DocumentCategories = $documentModal->getCategories();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontrolni Panel - Administracija</title>
+    <title>
+        <?php switch ($locale) {
+            case 'sr': echo "Kontrolni panel - Administracija"; break;
+            case 'en': echo "Control panel - Administration"; break;
+            default: echo "Контролни панел - Администрација"; break;
+        } ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/assets/css/dashboard/structure.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,7 +63,15 @@ $DocumentCategories = $documentModal->getCategories();
                     <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-sm text-primary-600">Ukupno Pregleda</p>
+                                <p class="text-sm text-primary-600">
+                                    <?php
+                                    switch ($locale) {
+                                        case 'sr': echo 'Ukupno pregleda'; break;
+                                        case 'en': echo 'Total views'; break;
+                                        default: echo 'Укупно прегледа'; break;
+                                    }
+                                    ?>
+                                </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $views ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">
@@ -65,7 +83,13 @@ $DocumentCategories = $documentModal->getCategories();
                     <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-sm text-primary-600">Dokumenti</p>
+                                <p class="text-sm text-primary-600">
+                                    <?php switch ($locale) {
+                                        case 'sr': echo 'Dokumenti'; break;
+                                        case 'en': echo 'Documents'; break;
+                                        default: echo 'Документи'; break;
+                                    } ?>
+                                </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalDocuments ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">
@@ -77,7 +101,13 @@ $DocumentCategories = $documentModal->getCategories();
                     <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-sm text-primary-600">Događaji</p>
+                                <p class="text-sm text-primary-600">
+                                    <?php switch ($locale) {
+                                        case 'sr': echo 'Događaji'; break;
+                                        case 'en': echo 'Events'; break;
+                                        default: echo 'Догађаји'; break;
+                                    } ?>
+                                </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalEvents ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">
@@ -89,7 +119,13 @@ $DocumentCategories = $documentModal->getCategories();
                     <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-sm text-primary-600">Korisnici</p>
+                                <p class="text-sm text-primary-600">
+                                    <?php switch ($locale) {
+                                        case 'sr': echo 'Korisnici'; break;
+                                        case 'en': echo 'Users'; break;
+                                        default: echo 'Корисници'; break;
+                                    } ?>
+                                </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalUsers ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">

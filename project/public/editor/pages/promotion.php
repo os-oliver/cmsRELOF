@@ -3,6 +3,10 @@ use App\Controllers\AuthController;
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -10,7 +14,13 @@ AuthController::requireEditor();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - Administracija</title>
+    <title>
+        <?php switch ($locale) {
+            case 'sr': echo 'Promocija - Administracija'; break;
+            case 'en': echo 'Promotion - Administration'; break;
+            default: echo 'Промоција - Администрација'; break;
+        } ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="/assets/css/WebDesigner/grapes.min.css" rel="stylesheet" />
@@ -200,15 +210,31 @@ AuthController::requireEditor();
             <main class="flex-1 overflow-y-auto p-4 md:p-6">
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                     <div>
-                        <h1 class="text-3xl font-bold text-gray-900 mb-2">Upravljanje promocijom</h1>
-                        <p class="text-light-600">Pregled i upravljanje detaljima najjnovijih promocija</p>
+                        <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                            <?php switch ($locale) {
+                                case 'sr': echo 'Upravljanje promocijom'; break;
+                                case 'en': echo 'Promotion Management'; break;
+                                default: echo 'Управљање промоцијом'; break;
+                            } ?>
+                        </h1>
+                        <p class="text-light-600">
+                            <?php switch ($locale) {
+                                case 'sr': echo 'Pregled i upravljanje detaljima najnovijih promocija'; break;
+                                case 'en': echo 'View and manage latest promotion details'; break;
+                                default: echo 'Преглед и управљање детаљима најновијих промоција'; break;
+                            } ?>
+                        </p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-3">
 
                         <button id="export"
                             class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
                             <i class="fas fa-plus text-sm"></i>
-                            Sacuvaj
+                            <?php switch ($locale) {
+                                case 'sr': echo 'Sačuvaj'; break;
+                                case 'en': echo 'Save'; break;
+                                default: echo 'Сачувај'; break;
+                            } ?>
                         </button>
                     </div>
                 </div>
