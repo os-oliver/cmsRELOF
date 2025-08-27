@@ -32,5 +32,60 @@
     "superadmin_sidebar.pages": "Странице",
     "superadmin_sidebar.users": "Корисници",
     "superadmin_sidebar.categories": "Категорије",
-    "superadmin_sidebar.settings": "Подешавања"
+    "superadmin_sidebar.settings": "Подешавања",
+    "style.admin_panel": "Админ Панел – Уређивач страница",
+    "style.new_page": "Нова страница",
+    "style.page_title": "Назив странице",
+    "style.path": "Путања (path)",
+    "style.url": "УРЛ (href)",
+    "style.status": "Статус",
+    "style.active": "Активан",
+    "style.in_progress": "У изради",
+    "style.inactive": "Неактиван",
+    "style.save": "Сачувај",
+    "style.cancel": "Откажи",
+    "style.pages_list": "Листа страница",
+    "style.new": "Нова",
+    "style.search_placeholder": "Претражи странице...",
+    "style.all": "Све",
+    "style.active_plural": "Активне",
+    "style.inactive_plural": "Неактивне",
+    "style.loading_pages": "Учитавање страница...",
+    "style.error_loading_pages": "Грешка при учитавању страница",
+    "style.page_management": "Управљање страницама",
+    "style.admin_panel_short": "Админ панел",
+    "style.page_description": "Прегледајте и управљајте свим страницама на вашој веб страници",
+    "style.select_page": "Одберите страницу",
+    "style.edit": "Уреди",
+    "style.delete": "Обриши",
+    "style.select_page_view": "Одберите страницу за преглед",
+    "style.path_label": "Путања",
+    "style.date": "Датум",
+    "style.determine_status": "Одреди тренутно стање",
+    "style.edit_page": "Уреди страницу",
+    "style.delete_page_confirm": "Да ли сте сигурни да желите да обришете ову страницу?",
+    "style.select_page_before_status": "Изаберите страницу пре него што промените статус",
+    "style.status_active": "Активан",
+    "style.status_draft": "У изради",
+    "style.status_inactive": "Неактиван",
+    "style.select_page_to_edit": "Изаберите страницу коју желите да уредите",
+    "style.select_page_to_delete": "Изаберите страницу коју желите да обришете",
+    "style.status_text_active": "Активан",
+    "style.status_text_draft": "У изради",
+    "style.status_text_inactive": "Неактиван",
+    "style.status_text": "Статус",
+    "style.active_activity": "Активан",
+    "style.in_progress_activity": "У изради",
+    "style.inactive_activity": "Неактиван",
+    "style.in_progress_search": "У изради",
+    "style.save_button": "Сачувај"
+
+
+
+
+
+
+
+
+
 }

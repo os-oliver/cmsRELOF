@@ -32,5 +32,75 @@
     "superadmin_sidebar.pages": "Stranice",
     "superadmin_sidebar.users": "Korisnici",
     "superadmin_sidebar.categories": "Kategorije",
-    "superadmin_sidebar.settings": "Podešavanja"
+    "superadmin_sidebar.settings": "Podešavanja",
+    "style.admin_panel": "Admin Panel - Uređivač stranica",
+    "style.new_page": "Nova stranica",
+    "style.page_title": "Naziv stranice",
+    "style.path": "Putanja (path)",
+    "style.url": "URL (href)",
+    "style.status": "Status",
+    "style.active": "Aktivan",
+    "style.in_progress": "U izradi",
+    "style.inactive": "Neaktivan",
+    "style.save": "Sačuvaj",
+    "style.cancel": "Otkaži",
+    "style.pages_list": "Lista stranica",
+    "style.new": "Nova",
+    "style.search_placeholder": "Pretraži stranice...",
+    "style.all": "Sve",
+    "style.active_plural": "Aktivne",
+    "style.inactive_plural": "Neaktivne",
+    "style.loading_pages": "Učitavanje stranica...",
+    "style.error_loading_pages": "Greška pri učitavanju stranica",
+    "style.page_management": "Upravljanje Stranicama",
+    "style.admin_panel_short": "Admin panel",
+    "style.page_description": "Pregledajte i upravljajte svim stranicama na vašoj web stranici",
+    "style.select_page": "Odaberite stranicu",
+    "style.edit": "Uredi",
+    "style.delete": "Obriši",
+    "style.select_page_view": "Odaberite stranicu za pregled",
+    "style.path_label": "Putanja",
+    "style.date": "Datum",
+    "style.determine_status": "Odredi trenutno stanje",
+    "style.edit_page": "Uredi stranicu",
+    "style.delete_page_confirm": "Da li ste sigurni da želite da obrišete ovu stranicu?",
+    "style.select_page_before_status": "Izaberite stranicu pre nego što promenite status",
+    "style.status_active": "Aktivan",
+    "style.status_draft": "U izradi",
+    "style.status_inactive": "Neaktivan",
+    "style.select_page_to_edit": "Izaberite stranicu koju želite da uredite",
+    "style.select_page_to_delete": "Izaberite stranicu koju želite da obrišete",
+    "style.status_text_active": "Aktivan",
+    "style.status_text_draft": "U izradi",
+    "style.status_text_inactive": "Neaktivan",
+    "style.status_text": "Status",
+    "style.active_activity": "Aktivan",
+    "style.in_progress_activity": "U izradi",
+    "style.inactive_activity": "Neaktivan",
+    "style.in_progress_search": "U izradi",
+    "style.save_button": "Sačuvaj"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
