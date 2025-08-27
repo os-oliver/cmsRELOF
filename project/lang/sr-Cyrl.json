@@ -151,30 +151,9 @@
     "documentViewer.share": "Подели",
     "documentViewer.print": "Штампај",
     "documentViewer.link_copied": "Веза копирана у \"clipboard\"",
-    "documentViewer.copy_link_prompt": "Копирај линк ручно:"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    "documentViewer.copy_link_prompt": "Копирај линк ручно:",
+    "events.upcoming_in_library": "Предстојећи догађаји у библиотеци",
+    "events.view_all": "Погледај све",
+    "events.add_event": "Додај догађај",
+    "events.info": "Више информација"
 }

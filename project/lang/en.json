@@ -151,32 +151,9 @@
     "documentViewer.share": "Share",
     "documentViewer.print": "Print",
     "documentViewer.link_copied": "Link copied to clipboard",
-    "documentViewer.copy_link_prompt": "Copy link manually:"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    "documentViewer.copy_link_prompt": "Copy link manually:",
+    "events.upcoming_in_library": "Upcoming events in the library",
+    "events.view_all": "View all",
+    "events.add_event": "Add event",
+    "events.info": "More information"
 }
