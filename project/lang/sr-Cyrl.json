@@ -141,7 +141,24 @@
     "categories.server_error": "Грешка приликом комуникације са сервером.",
     "categories.deleted_success": "Категорија је успешно обрисана!",
     "categories.error_prefix": "Грешка: ",
-    "categories.error_delete": "Грешка приликом брисања категорије."
+    "categories.error_delete": "Грешка приликом брисања категорије.",
+    "documentViewer.document_name": "Назив документа",
+    "documentViewer.category": "Категорија",
+    "documentViewer.description": "Опис документа",
+    "documentViewer.date": "Датум",
+    "documentViewer.size": "Величина",
+    "documentViewer.download": "Преузми",
+    "documentViewer.share": "Подели",
+    "documentViewer.print": "Штампај",
+    "documentViewer.link_copied": "Веза копирана у \"clipboard\"",
+    "documentViewer.copy_link_prompt": "Копирај линк ручно:"
+
+
+
+
+
+
+
 
 
 

@@ -141,7 +141,24 @@
     "categories.server_error": "Greška prilikom komunikacije sa serverom.",
     "categories.deleted_success": "Kategorija je uspešno obrisana!",
     "categories.error_prefix": "Greška: ",
-    "categories.error_delete": "Greška pri brisanju kategorije."
+    "categories.error_delete": "Greška pri brisanju kategorije.",
+    "documentViewer.document_name": "Naziv dokumenta",
+    "documentViewer.category": "Kategorija",
+    "documentViewer.description": "Opis dokumenta",
+    "documentViewer.date": "Datum",
+    "documentViewer.size": "Veličina",
+    "documentViewer.download": "Preuzmi",
+    "documentViewer.share": "Podeli",
+    "documentViewer.print": "Štampaj",
+    "documentViewer.link_copied": "Veza kopirana u clipboard",
+    "documentViewer.copy_link_prompt": "Kopiraj link ručno:"
+
+
+
+
+
+
+
 
 
 
