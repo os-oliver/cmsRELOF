@@ -113,5 +113,51 @@
     "users.server_communication_error": "Грешка приликом комуникације са сервером.",
     "users.error_deleting_user": "Грешка при брисању корисника.",
     "users.user_deleted_success": "Корисник је успешно обрисан!",
-    "users.error_prefix": "Грешка:"
+    "users.error_prefix": "Грешка:",
+    "categories.admin_panel_title": "Админ Панел - Управљање категоријама",
+    "categories.admin_panel": "Управљање категоријама",
+    "categories.admin_panel_description": "Додајте, уредите или уклоните категорије система",
+    "categories.new_category": "Нова категорија",
+    "categories.event_categories": "Категорије догађаја",
+    "categories.document_categories": "Категорије докумената",
+    "categories.name": "Назив",
+    "categories.color": "Боја",
+    "categories.actions": "Акције",
+    "categories.new_category_cat_modal": "Нова категорија",
+    "categories.category_name": "Назив категорије",
+    "categories.color_cat_modal": "Боја",
+    "categories.color_help": "Унесите \"HEX\" код боје или користите изборник боја",
+    "categories.save_category": "Сачувај категорију",
+    "categories.cancel": "Откажи",
+    "categories.delete_category": "Обриши категорију",
+    "categories.cannot_undo": "Ова акција се не може поништити",
+    "categories.confirm_delete_message": "Да ли сте сигурни да желите да обришете категорију",
+    "categories.confirm_delete_button": "Да, обриши",
+    "categories.cancel_button": "Откажи",
+    "categories.edit_category_title": "Уреди категорију",
+    "categories.save_success_update": "Категорија је успешно ажурирана!",
+    "categories.save_success_create": "Категорија је успешно креирана!",
+    "categories.save_error": "Грешка приликом чувања категорије.",
+    "categories.server_error": "Грешка приликом комуникације са сервером.",
+    "categories.deleted_success": "Категорија је успешно обрисана!",
+    "categories.error_prefix": "Грешка: ",
+    "categories.error_delete": "Грешка приликом брисања категорије."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

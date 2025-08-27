@@ -113,5 +113,50 @@
     "users.server_communication_error": "Greška prilikom komunikacije sa serverom.",
     "users.error_deleting_user": "Greška pri brisanju korisnika.",
     "users.user_deleted_success": "Korisnik je uspešno obrisan!",
-    "users.error_prefix": "Greška:"
+    "users.error_prefix": "Greška:",
+    "categories.admin_panel_title": "Admin Panel - Upravljanje kategorijama",
+    "categories.admin_panel": "Upravljanje kategorijama",
+    "categories.admin_panel_description": "Dodajte, uredite ili uklonite kategorije sistema",
+    "categories.new_category": "Nova kategorija",
+    "categories.event_categories": "Kategorije događaja",
+    "categories.document_categories": "Kategorije dokumenata",
+    "categories.name": "Naziv",
+    "categories.color": "Boja",
+    "categories.actions": "Akcije",
+    "categories.new_category_cat_modal": "Nova kategorija",
+    "categories.category_name": "Naziv kategorije",
+    "categories.color_cat_modal": "Boja",
+    "categories.color_help": "Unesite HEX kod boje ili koristite izbornik boja",
+    "categories.save_category": "Sačuvaj kategoriju",
+    "categories.cancel": "Otkaži",
+    "categories.delete_category": "Obriši kategoriju",
+    "categories.cannot_undo": "Ova akcija se ne može poništiti",
+    "categories.confirm_delete_message": "Da li ste sigurni da želite da obrišete kategoriju",
+    "categories.confirm_delete_button": "Da, obriši",
+    "categories.cancel_button": "Otkaži",
+    "categories.edit_category_title": "Uredi kategoriju",
+    "categories.save_success_update": "Kategorija je uspešno ažurirana!",
+    "categories.save_success_create": "Kategorija je uspešno kreirana!",
+    "categories.save_error": "Greška prilikom čuvanja kategorije.",
+    "categories.server_error": "Greška prilikom komunikacije sa serverom.",
+    "categories.deleted_success": "Kategorija je uspešno obrisana!",
+    "categories.error_prefix": "Greška: ",
+    "categories.error_delete": "Greška pri brisanju kategorije."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
