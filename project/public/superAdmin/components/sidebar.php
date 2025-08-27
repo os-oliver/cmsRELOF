@@ -1,3 +1,9 @@
+<?php
+use App\Controllers\AuthController;
+AuthController::requireAdmin();
+[$name, $surname, $role] = AuthController::getUserInfo();
+error_log($name);
+?>
 <aside id="sidebar" class="flex flex-col sidebar w-64 min-h-screen fixed lg:relative text-white p-4">
     <div class="flex items-center justify-between mb-10">
         <div class="flex items-center space-x-2">
@@ -69,8 +75,8 @@
                 <i class="fas fa-user text-white"></i>
             </div>
             <div>
-                <p class="font-medium">Admin Korisnik</p>
-                <p class="text-xs text-gray-400">admin@example.com</p>
+                <p class="font-medium"><?=$name . ' ' . $surname?></p>
+                <p class="text-xs text-gray-400"><?=$role?></p>
             </div>
         </div>
     </div>
