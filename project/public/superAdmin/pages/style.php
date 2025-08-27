@@ -1,10 +1,6 @@
 <?php
 use App\Controllers\AuthController;
 AuthController::requireAdmin();
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 <!DOCTYPE html>
 <html lang="sr">
