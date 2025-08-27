@@ -32,5 +32,76 @@
     "superadmin_sidebar.pages": "Pages",
     "superadmin_sidebar.users": "Users",
     "superadmin_sidebar.categories": "Categories",
-    "superadmin_sidebar.settings": "Settings"
+    "superadmin_sidebar.settings": "Settings",
+    "style.admin_panel": "Admin Panel – Page editor",
+    "style.new_page": "New page",
+    "style.page_title": "Page title",
+    "style.path": "Path",
+    "style.url": "URL (href)",
+    "style.status": "Status",
+    "style.active": "Active",
+    "style.in_progress": "In progress",
+    "style.inactive": "Inactive",
+    "style.save": "Save",
+    "style.cancel": "Cancel",
+    "style.pages_list": "Pages list",
+    "style.new": "New",
+    "style.search_placeholder": "Search pages...",
+    "style.all": "All",
+    "style.active_plural": "Active",
+    "style.inactive_plural": "Inactive",
+    "style.loading_pages": "Loading pages...",
+    "style.error_loading_pages": "Error loading pages",
+    "style.page_management": "Page management",
+    "style.admin_panel_short": "Admin panel",
+    "style.page_description": "View and manage all pages on your website",
+    "style.select_page": "Select a page",
+    "style.edit": "Edit",
+    "style.delete": "Delete",
+    "style.select_page_view": "Select a page to view",
+    "style.path_label": "Path",
+    "style.date": "Date",
+    "style.determine_status": "Determine current status",
+    "style.edit_page": "Edit page",
+    "style.delete_page_confirm": "Are you sure you want to delete this page?",
+    "style.select_page_before_status": "Select a page before changing the status",
+    "style.status_active": "Active",
+    "style.status_draft": "In progress",
+    "style.status_inactive": "Inactive",
+    "style.select_page_to_edit": "Select a page you want to edit",
+    "style.select_page_to_delete": "Select a page you want to delete",
+    "style.status_text_active": "Active",
+    "style.status_text_draft": "In progress",
+    "style.status_text_inactive": "Inactive",
+    "style.status_text": "Status",
+    "style.active_activity": "Active",
+    "style.in_progress_activity": "In progress",
+    "style.inactive_activity": "Inactive",
+    "style.in_progress_search": "In progress",
+    "style.save_button": "Save"
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
