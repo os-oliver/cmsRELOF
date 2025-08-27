@@ -78,29 +78,40 @@
     "style.in_progress_activity": "U izradi",
     "style.inactive_activity": "Neaktivan",
     "style.in_progress_search": "U izradi",
-    "style.save_button": "Sačuvaj"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    "style.save_button": "Sačuvaj",
+    "users.admin_panel_title": "Admin Panel - Upravljanje korisnicima",
+    "users.user_management": "Upravljanje korisnicima",
+    "users.user_management_description": "Dodajte, uredite ili uklonite korisnike sistema",
+    "users.new_user": "Novi korisnik",
+    "users.user": "Korisnik",
+    "users.role": "Uloga",
+    "users.created": "Kreiran",
+    "users.actions": "Akcije",
+    "users.new_user_button": "Novi korisnik",
+    "users.name": "Ime",
+    "users.lastname": "Prezime",
+    "users.username": "Korisničko ime",
+    "users.user_role": "Uloga korisnika",
+    "users.role_admin": "Administrator",
+    "users.role_editor": "Editor",
+    "users.password": "Lozinka",
+    "users.confirm_password": "Potvrdite lozinku",
+    "users.save_user": "Sačuvaj korisnika",
+    "users.cancel": "Otkaži",
+    "users.delete_user": "Obriši korisnika",
+    "users.action_cannot_be_undone": "Ova akcija se ne može poništiti",
+    "users.confirm_delete_user": "Da li ste sigurni da želite da obrišete korisnika",
+    "users.yes_delete": "Da, obriši",
+    "users.cancel_del_modal": "Otkaži",
+    "users.modal_title_create": "Novi korisnik",
+    "users.modal_title_edit": "Uredi korisnika",
+    "users.passwords_do_not_match": "Lozinke se ne poklapaju!",
+    "users.password_min_length": "Lozinka mora imati najmanje 6 karaktera!",
+    "users.user_updated": "Korisnik je uspešno ažuriran!",
+    "users.user_created": "Korisnik je uspešno kreiran!",
+    "users.error_saving_user": "Greška prilikom čuvanja korisnika.",
+    "users.server_communication_error": "Greška prilikom komunikacije sa serverom.",
+    "users.error_deleting_user": "Greška pri brisanju korisnika.",
+    "users.user_deleted_success": "Korisnik je uspešno obrisan!",
+    "users.error_prefix": "Greška:"
 }

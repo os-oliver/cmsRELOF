@@ -78,30 +78,40 @@
     "style.in_progress_activity": "In progress",
     "style.inactive_activity": "Inactive",
     "style.in_progress_search": "In progress",
-    "style.save_button": "Save"
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    "style.save_button": "Save",
+    "users.admin_panel_title": "Admin Panel – User management",
+    "users.user_management": "User management",
+    "users.user_management_description": "Add, edit, or remove system users",
+    "users.new_user": "New user",
+    "users.user": "User",
+    "users.role": "Role",
+    "users.created": "Created",
+    "users.actions": "Actions",
+    "users.new_user_button": "New user",
+    "users.name": "Name",
+    "users.lastname": "Lastname",
+    "users.username": "Username",
+    "users.user_role": "User role",
+    "users.role_admin": "Admin",
+    "users.role_editor": "Editor",
+    "users.password": "Password",
+    "users.confirm_password": "Confirm password",
+    "users.save_user": "Save user",
+    "users.cancel": "Cancel",
+    "users.delete_user": "Delete user",
+    "users.action_cannot_be_undone": "This action cannot be undone",
+    "users.confirm_delete_user": "Are you sure you want to delete the user",
+    "users.yes_delete": "Yes, delete",
+    "users.cancel_del_modal": "Cancel",
+    "users.modal_title_create": "New User",
+    "users.modal_title_edit": "Edit User",
+    "users.passwords_do_not_match": "Passwords do not match!",
+    "users.password_min_length": "Password must be at least 6 characters long!",
+    "users.user_updated": "User updated successfully!",
+    "users.user_created": "User created successfully!",
+    "users.error_saving_user": "Error saving user.",
+    "users.server_communication_error": "Error communicating with the server.",
+    "users.error_deleting_user": "Error deleting user.",
+    "users.user_deleted_success": "User deleted successfully!",
+    "users.error_prefix": "Error:"
 }
