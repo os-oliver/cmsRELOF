@@ -141,7 +141,24 @@
     "categories.server_error": "Error communicating with the server.",
     "categories.deleted_success": "Category deleted successfully!",
     "categories.error_prefix": "Error: ",
-    "categories.error_delete": "Error deleting category."
+    "categories.error_delete": "Error deleting category.",
+    "documentViewer.document_name": "Document name",
+    "documentViewer.category": "Category",
+    "documentViewer.description": "Document description",
+    "documentViewer.date": "Date",
+    "documentViewer.size": "Size",
+    "documentViewer.download": "Download",
+    "documentViewer.share": "Share",
+    "documentViewer.print": "Print",
+    "documentViewer.link_copied": "Link copied to clipboard",
+    "documentViewer.copy_link_prompt": "Copy link manually:"
+
+
+
+
+
+
+
 
 
 
