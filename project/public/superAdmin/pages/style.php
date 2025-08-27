@@ -550,7 +550,6 @@ AuthController::requireAdmin();
     </div>
 
     <script>
-        const locale = "<?php echo $locale; ?>";
         let pagesData = [];
         // Sample data (in a real app, this would come from a server)
         async function loadPages() {

@@ -3,15 +3,8 @@ use App\Controllers\AuthController;
 use App\Models\User;
 AuthController::requireAdmin();
 
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-
 
 // Simulated database functions
-
-
 
 $search = $_GET['search'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
@@ -39,13 +32,7 @@ $totalPages = (int) ceil($totalCount / $limit);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php
-            switch ($locale) {
-                case 'sr': echo 'Admin Panel - Upravljanje korisnicima'; break;
-                case 'en': echo 'Admin Panel – User management'; break;
-                default: echo 'Админ Панел – Управљање корисницима'; break;
-            }
-        ?>
+        <h1><?= __('users.admin_panel_title') ?></h1>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -289,34 +276,16 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
                             <h1 class="text-3xl font-bold text-gray-900 mb-2">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Upravljanje korisnicima'; break;
-                                        case 'en': echo 'User management'; break;
-                                        default: echo 'Управљање корисницима'; break;
-                                    }
-                                ?>
+                                <?= __('users.user_management') ?>
                             </h1>
                             <p class="text-gray-600">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Dodajte, uredite ili uklonite korisnike sistema'; break;
-                                        case 'en': echo 'Add, edit, or remove system users'; break;
-                                        default: echo 'Додајте, уредите или уклоните кориснике система'; break;
-                                    }
-                                ?>
+                                <?= __('users.user_management_description') ?>
                             </p>
                         </div>
                         <button onclick="openUserModal('create')"
                             class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2">
                             <i class="fas fa-plus"></i>
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Novi korisnik'; break;
-                                        case 'en': echo 'New user'; break;
-                                        default: echo 'Нови корисник'; break;
-                                    }
-                                ?>
+                                <?= __('users.new_user') ?>
                         </button>
                     </div>
                 </div>
@@ -328,40 +297,16 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
                                 <tr>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Korisnik'; break;
-                                                case 'en': echo 'User'; break;
-                                                default: echo 'Корисник'; break;
-                                            }
-                                        ?>
+                                        <?= __('users.user') ?>
                                     </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Uloga'; break;
-                                                case 'en': echo 'Role'; break;
-                                                default: echo 'Улога'; break;
-                                            }
-                                        ?>
+                                        <?= __('users.role') ?>
                                     </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Kreiran'; break;
-                                                case 'en': echo 'Created'; break;
-                                                default: echo 'Креиран'; break;
-                                            }
-                                        ?>
+                                        <?= __('users.created') ?>
                                     </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Akcije'; break;
-                                                case 'en': echo 'Actions'; break;
-                                                default: echo 'Акције'; break;
-                                            }
-                                        ?>
+                                        <?= __('users.actions') ?>
                                     </th>
                                 </tr>
                             </thead>
@@ -472,13 +417,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div class="p-6 border-b border-gray-200">
                         <div class="flex items-center justify-between">
                             <h3 class="text-2xl font-bold text-gray-900" id="modalTitle">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Novi korisnik'; break;
-                                        case 'en': echo 'New user'; break;
-                                        default: echo 'Нови корисник'; break;
-                                    }
-                                ?>
+                                <?= __('users.new_user_button') ?>
                             </h3>
                             <button onclick="closeUserModal()"
                                 class="text-gray-400 hover:text-gray-600 transition-colors">
@@ -494,26 +433,14 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Ime'; break;
-                                            case 'en': echo 'Name'; break;
-                                            default: echo 'Име'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.name') ?>
                                 </label>
                                 <input type="text" id="name" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Prezime'; break;
-                                            case 'en': echo 'Lastname'; break;
-                                            default: echo 'Презиме'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.lastname') ?>
                                 </label>
                                 <input type="text" id="surname" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
@@ -525,13 +452,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Korisničko ime'; break;
-                                            case 'en': echo 'Username'; break;
-                                            default: echo 'Корисничко име'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.username') ?>
                                 </label>
                                 <input type="text" id="username" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
@@ -539,33 +460,15 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <!-- User Role -->
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Uloga korisnika'; break;
-                                            case 'en': echo 'User role'; break;
-                                            default: echo 'Улога корисника'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.user_role') ?>
                                 </label>
                                 <select id="userRole" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                                     <option value="admin">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Administrator'; break;
-                                                case 'en': echo 'Admin'; break;
-                                                default: echo 'Администратор'; break;
-                                            }
-                                        ?>
+                                        <?= __('users.role_admin') ?>
                                     </option>
                                     <option value="editor">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Editor'; break;
-                                                case 'en': echo 'Editor'; break;
-                                                default: echo 'Едитор'; break;
-                                            }
-                                        ?>
+                                        <?= __('users.role_editor') ?>
                                     </option>
                                 </select>
                             </div>
@@ -576,13 +479,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Lozinka'; break;
-                                            case 'en': echo 'Password'; break;
-                                            default: echo 'Лозинка'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.password') ?>
                                 </label>
                                 <div class="relative">
                                     <input type="password" id="userPassword" required
@@ -595,13 +492,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Potvrdite lozinku'; break;
-                                            case 'en': echo 'Confirm password'; break;
-                                            default: echo 'Потврдите лозинку'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.confirm_password') ?>
                                 </label>
                                 <div class="relative">
                                     <input type="password" id="confirmPassword" required
@@ -621,23 +512,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <button type="submit"
                                 class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                                 <i class="fas fa-save mr-2"></i>
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Sačuvaj korisnika'; break;
-                                            case 'en': echo 'Save user'; break;
-                                            default: echo 'Сачувај корисника'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.save_user') ?>
                             </button>
                             <button type="button" onclick="closeUserModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Otkaži'; break;
-                                            case 'en': echo 'Cancel'; break;
-                                            default: echo 'Откажи'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.cancel') ?>
                             </button>
                         </div>
                     </form>
@@ -656,55 +535,25 @@ $totalPages = (int) ceil($totalCount / $limit);
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-gray-900">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Obriši korisnika'; break;
-                                            case 'en': echo 'Delete user'; break;
-                                            default: echo 'Обриши корисника'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.delete_user') ?>
                                 </h3>
                                 <p class="text-gray-600">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Ova akcija se ne može poništiti'; break;
-                                            case 'en': echo 'This action cannot be undone'; break;
-                                            default: echo 'Ова акција се не може поништити'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.action_cannot_be_undone') ?>
                                 </p>
                             </div>
                         </div>
                         <p class="text-gray-700 mb-6">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'Da li ste sigurni da želite da obrišete korisnika'; break;
-                                    case 'en': echo 'Are you sure you want to delete the user'; break;
-                                    default: echo 'Да ли сте сигурни да желите да обришете корисника'; break;
-                                }
-                            ?>
+                            <?= __('users.confirm_delete_user') ?>
                             <strong
                                 id="deleteUserName"></strong>?</p>
                         <div class="flex gap-3">
                             <button onclick="confirmDelete()"
                                 class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Da, obriši'; break;
-                                            case 'en': echo 'Yes, delete'; break;
-                                            default: echo 'Да, избриши'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.yes_delete') ?>
                             </button>
                             <button onclick="closeDeleteModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-4 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Otkaži'; break;
-                                            case 'en': echo 'Cancel'; break;
-                                            default: echo 'Откажи'; break;
-                                        }
-                                    ?>
+                                    <?= __('users.cancel_del_modal') ?>
                             </button>
                         </div>
                     </div>
@@ -717,7 +566,6 @@ $totalPages = (int) ceil($totalCount / $limit);
         let users = <?= json_encode($users) ?>;
         let editingUserId = null;
         let deleteUserId = null;
-        const locale = "<?php echo $locale; ?>";
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function () {
@@ -755,22 +603,10 @@ $totalPages = (int) ceil($totalCount / $limit);
 
             let titleText = '';
 
-            switch (locale) {
-                case 'en':
-                    if (mode === 'create') titleText = 'New User';
-                    else if (mode === 'edit') titleText = 'Edit User';
-                    break;
-
-                case 'sr':
-                    if (mode === 'create') titleText = 'Novi korisnik';
-                    else if (mode === 'edit') titleText = 'Uredi korisnika';
-                    break;
-
-                case 'sr-Cyrl':
-                default:
-                    if (mode === 'create') titleText = 'Нови корисник';
-                    else if (mode === 'edit') titleText = 'Уреди корисника';
-                    break;
+            if (mode === 'create') {
+                titleText = "<?= __('users.modal_title_create') ?>";
+            } else if (mode === 'edit') {
+                titleText = "<?= __('users.modal_title_edit') ?>";
             }
 
             modalTitle.textContent = titleText;
@@ -845,36 +681,13 @@ $totalPages = (int) ceil($totalCount / $limit);
 
             // Provera lozinki
             if (!editingUserId && password !== confirmPassword) {
-                let message;
-
-                switch (locale) {
-                    case 'sr':
-                        message = 'Lozinke se ne poklapaju!';
-                        break;
-                    case 'sr-Cyrl':
-                        message = 'Лозинке се не поклапају!';
-                        break;
-                    case 'en':
-                        message = 'Passwords do not match!';
-                        break;
-                }
+                const message = "<?= __('users.passwords_do_not_match') ?>";
                 alert(message);
                 return;
             }
 
             if (!editingUserId && password.length < 6) {
-                let message;
-                switch (locale) {
-                    case 'sr':
-                        message = 'Lozinka mora imati najmanje 6 karaktera!';
-                        break;
-                    case 'sr-Cyrl':
-                        message = 'Лозинка мора имати најмање 6 карактера!';
-                        break;
-                    case 'en':
-                        message = 'Password must be at least 6 characters long!';
-                        break;
-                }
+                const message = "<?= __('users.password_min_length') ?>";
                 alert(message);
                 return;
             }
@@ -897,53 +710,19 @@ $totalPages = (int) ceil($totalCount / $limit);
                 .then(data => {
                     let message;
                     if (data.success) {
-                        switch (locale) {
-                            case 'sr':
-                                message = editingUserId ?
-                                    'Korisnik je uspešno ažuriran!' :
-                                    'Korisnik je uspešno kreiran!';
-                                break;
-                            case 'sr-Cyrl':
-                                message = editingUserId ?
-                                    'Корисник је успешно ажуриран!' :
-                                    'Корисник је успешно креиран!';
-                                break;
-                            case 'en':
-                                message = editingUserId ?
-                                    'User updated successfully!' :
-                                    'User created successfully!';
-                                break;
-                        }
+                        const message = editingUserId
+                            ? "<?= __('users.user_updated') ?>"
+                            : "<?= __('users.user_created') ?>";
+
                         showNotification(message, 'success');
                         closeUserModal();
                     } else {
-                        switch (locale) {
-                            case 'sr':
-                                message = data.message || 'Greška prilikom čuvanja korisnika.';
-                                break;
-                            case 'sr-Cyrl':
-                                message = data.message || 'Грешка приликом чувања корисника.';
-                                break;
-                            case 'en':
-                                message = data.message || 'Error saving user.';
-                                break;
-                        }
+                        const message = data.message || "<?= __('users.error_saving_user') ?>";
                         alert(message);
                     }
                 })
                 .catch(error => {
-                    let message;
-                    switch (locale) {
-                        case 'sr':
-                            message = 'Greška prilikom komunikacije sa serverom.';
-                            break;
-                        case 'sr-Cyrl':
-                            message = 'Грешка приликом комуникације са сервером.';
-                            break;
-                        case 'en':
-                            message = 'Error communicating with the server.';
-                            break;
-                    }
+                    const message = "<?= __('users.server_communication_error') ?>";
                     console.error('Greška:', error);
                     alert(message);
                 });
@@ -984,52 +763,18 @@ $totalPages = (int) ceil($totalCount / $limit);
                 })
                 .then(response => {
                     if (!response.ok) {
-                        let message;
-                        switch (locale) {
-                            case 'sr':
-                                message = 'Greška pri brisanju korisnika.';
-                                break;
-                            case 'sr-Cyrl':
-                                message = 'Грешка при брисању корисника.';
-                                break;
-                            case 'en':
-                                message = 'Error deleting user.';
-                                break;
-                        }
-                        throw new Error(message);
+                        throw new Error("<?= __('users.error_deleting_user') ?>");
                     }
                     return response.json(); // ako šalješ JSON response
                 })
                 .then(data => {
-                    let message;
-                    switch (locale) {
-                        case 'sr':
-                            message = 'Korisnik je uspešno obrisan!';
-                            break;
-                        case 'sr-Cyrl':
-                            message = 'Корисник је успешно обрисан!';
-                            break;
-                        case 'en':
-                            message = 'User deleted successfully!';
-                            break;
-                    }
+                    const message = "<?= __('users.user_deleted_success') ?>";
                     showNotification(message, 'success');
                     closeDeleteModal();
                     location.reload();
                 })
                 .catch(error => {
-                    let message;
-                    switch (locale) {
-                        case 'sr':
-                            message = 'Greška: ' + error.message;
-                            break;
-                        case 'sr-Cyrl':
-                            message = 'Грешка: ' + error.message;
-                            break;
-                        case 'en':
-                            message = 'Error: ' + error.message;
-                            break;
-                    }
+                    const message = "<?= __('users.error_prefix') ?> " + error.message;
                     showNotification(message, 'error');
                 });
             }

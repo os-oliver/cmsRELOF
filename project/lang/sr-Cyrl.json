@@ -78,14 +78,40 @@
     "style.in_progress_activity": "У изради",
     "style.inactive_activity": "Неактиван",
     "style.in_progress_search": "У изради",
-    "style.save_button": "Сачувај"
-
-
-
-
-
-
-
-
-
+    "style.save_button": "Сачувај",
+    "users.admin_panel_title": "Админ Панел – Управљање корисницима",
+    "users.user_management": "Управљање корисницима",
+    "users.user_management_description": "Додајте, уредите или уклоните кориснике система",
+    "users.new_user": "Нови корисник",
+    "users.user": "Корисник",
+    "users.role": "Улога",
+    "users.created": "Креиран",
+    "users.actions": "Акције",
+    "users.new_user_button": "Нови корисник",
+    "users.name": "Име",
+    "users.lastname": "Презиме",
+    "users.username": "Корисничко име",
+    "users.user_role": "Улога корисника",
+    "users.role_admin": "Администратор",
+    "users.role_editor": "Уредник",
+    "users.password": "Лозинка",
+    "users.confirm_password": "Потврдите лозинку",
+    "users.save_user": "Сачувај корисника",
+    "users.cancel": "Откажи",
+    "users.delete_user": "Обриши корисника",
+    "users.action_cannot_be_undone": "Ова акција се не може поништити",
+    "users.confirm_delete_user": "Да ли сте сигурни да желите да обришете корисника",
+    "users.yes_delete": "Да, избриши",
+    "users.cancel_del_modal": "Откажи",
+    "users.modal_title_create": "Нови корисник",
+    "users.modal_title_edit": "Уреди корисника",
+    "users.passwords_do_not_match": "Лозинке се не поклапају!",
+    "users.password_min_length": "Лозинка мора имати најмање 6 карактера!",
+    "users.user_updated": "Корисник је успешно ажуриран!",
+    "users.user_created": "Корисник је успешно креиран!",
+    "users.error_saving_user": "Грешка приликом чувања корисника.",
+    "users.server_communication_error": "Грешка приликом комуникације са сервером.",
+    "users.error_deleting_user": "Грешка при брисању корисника.",
+    "users.user_deleted_success": "Корисник је успешно обрисан!",
+    "users.error_prefix": "Грешка:"
 }
