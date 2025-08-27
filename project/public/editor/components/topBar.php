@@ -4,11 +4,7 @@
             <i class="fas fa-bars text-xl"></i>
         </button>
         <h2 class="text-xl font-bold text-gray-800">
-            <?php switch ($locale) {
-                case 'sr': echo "Dobrodošli, $name"; break;
-                case 'en': echo "Welcome, $name"; break;
-                default: echo "Добродошли, $name"; break;
-            } ?>
+            <?= __('topbar.welcome') . ', ' . $name ?>
         </h2>
     </div>
 
