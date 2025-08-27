@@ -113,5 +113,53 @@
     "users.server_communication_error": "Error communicating with the server.",
     "users.error_deleting_user": "Error deleting user.",
     "users.user_deleted_success": "User deleted successfully!",
-    "users.error_prefix": "Error:"
+    "users.error_prefix": "Error:",
+    "categories.admin_panel_title": "Admin Panel - Category management",
+    "categories.admin_panel": "Category management",
+    "categories.admin_panel_description": "Add, edit, or remove system categories",
+    "categories.new_category": "New category",
+    "categories.event_categories": "Event categories",
+    "categories.document_categories": "Document categories",
+    "categories.name": "Name",
+    "categories.color": "Color",
+    "categories.actions": "Actions",
+    "categories.new_category_cat_modal": "New category",
+    "categories.category_name": "Category name",
+    "categories.color_cat_modal": "Color",
+    "categories.color_help": "Enter HEX color code or use the color picker",
+    "categories.save_category": "Save category",
+    "categories.cancel": "Cancel",
+    "categories.delete_category": "Delete category",
+    "categories.cannot_undo": "This action cannot be undone",
+    "categories.confirm_delete_message": "Are you sure you want to delete the category",
+    "categories.confirm_delete_button": "Yes, delete",
+    "categories.cancel_button": "Cancel",
+    "categories.edit_category_title": "Edit category",
+    "categories.save_success_update": "Category updated successfully!",
+    "categories.save_success_create": "Category created successfully!",
+    "categories.save_error": "Error saving category.",
+    "categories.server_error": "Error communicating with the server.",
+    "categories.deleted_success": "Category deleted successfully!",
+    "categories.error_prefix": "Error: ",
+    "categories.error_delete": "Error deleting category."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
