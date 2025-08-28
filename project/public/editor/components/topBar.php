@@ -1,3 +1,9 @@
+<?php
+use App\Models\Contact;
+$contact = new Contact();
+$numOfContacts = $contact->count();
+?>
+
 <header class="glass-panel py-4 px-6 flex items-center justify-between border-b border-gray-200">
     <div class="flex items-center">
         <button id="mobile-menu-btn" class=" mobile-menu-btn mr-3 text-gray-600 lg:hidden" id="mobile-menu">
@@ -51,13 +57,9 @@
 
         <div class="flex space-x-4">
             <button class="relative text-gray-500 hover:text-gray-700">
-                <i class="fas fa-bell text-xl"></i>
-                <span
-                    class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
-            </button>
-
-            <button class="text-gray-500 hover:text-gray-700">
                 <i class="fas fa-envelope text-xl"></i>
+                <span
+                    class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center"><?= $numOfContacts ?></span>
             </button>
 
             <a href="/logout" class="text-gray-500 hover:text-gray-700">
