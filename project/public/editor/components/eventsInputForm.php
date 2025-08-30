@@ -3,22 +3,17 @@
     class="invisible z-50 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm p-4"
     role="dialog" aria-modal="true" aria-labelledby="newEventTitle">
     <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl mx-auto p-5 sm:p-6 max-h-[90vh] overflow-auto">
-        <h2 id="newEventTitle" class="text-lg sm:text-2xl font-bold text-gray-800 mb-4"><?php switch (
-            $locale) {
-            case 'sr': echo 'Unos Novog Događaja'; break;
-            case 'en': echo 'Add New Event'; break;
-            default: echo 'Унос Новог Догађаја'; break;
-        } ?></h2>
+        <h2 id="newEventTitle" class="text-lg sm:text-2xl font-bold text-gray-800 mb-4">
+            <?= __("events.modal_title") ?>
+        </h2>
 
         <form id="formEvent" class="event-form" enctype="multipart/form-data" novalidate>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- Image Upload (full width) -->
                 <div class="md:col-span-2" id="fUpload">
-                    <label for="file" class="block text-sm font-medium text-gray-700 mb-2"><?php switch ($locale) {
-                        case 'sr': echo 'Odaberite sliku'; break;
-                        case 'en': echo 'Choose image'; break;
-                        default: echo 'Одаберите слику'; break;
-                    } ?></label>
+                    <label for="file" class="block text-sm font-medium text-gray-700 mb-2">
+                        <?= __("events.choose_image") ?>
+                    </label>
 
                     <!-- Drag area -->
                     <label id="dropZone" for="file"
@@ -27,26 +22,18 @@
                         <div id="uploadContent" class="flex flex-col items-center justify-center">
                             <i class="fas fa-image text-3xl sm:text-4xl text-gray-400 group-hover:text-blue-500 mb-2 transition-colors"
                                 aria-hidden="true"></i>
-                            <span class="text-gray-600 group-hover:text-blue-600 text-sm"><?php switch ($locale) {
-                                case 'sr': echo 'Kliknite ili prevucite sliku ovde'; break;
-                                case 'en': echo 'Click or drag image here'; break;
-                                default: echo 'Кликните или превуците слику овде'; break;
-                            } ?></span>
-                            <span class="text-xs text-gray-400 mt-1"><?php switch ($locale) {
-                                case 'sr': echo 'Dozvoljeno: .jpg, .jpeg, .png (max 100 MB)'; break;
-                                case 'en': echo 'Allowed: .jpg, .jpeg, .png (max 100 MB)'; break;
-                                default: echo 'Дозвољено: .jpg, .jpeg, .png (макс 100 MB)'; break;
-                            } ?></span>
+                            <span class="text-gray-600 group-hover:text-blue-600 text-sm">
+                                <?= __("events.drag_image_here") ?>
+                            </span>
+                            <span class="text-xs text-gray-400 mt-1">
+                                <?= __("events.allowed_formats") ?>
+                            </span>
                         </div>
 
                         <!-- image preview (hidden until file selected) -->
                         <div id="previewWrapper"
                             class="hidden w-full h-full absolute inset-0 flex items-center justify-center p-2">
-                            <img id="imagePreview" src="#" alt="<?php switch ($locale) {
-                                case 'sr': echo 'Pregled slike'; break;
-                                case 'en': echo 'Image preview'; break;
-                                default: echo 'Преглед слике'; break;
-                            } ?>"
+                            <img id="imagePreview" src="#" alt="<?= __("events.image_preview") ?>"
                                 class="max-h-44 sm:max-h-60 w-full object-contain rounded-md shadow-sm" />
                             <!-- clear button -->
                             <button type="button" id="clearPreviewBtn"
@@ -66,35 +53,25 @@
 
                 <!-- Naziv događaja -->
                 <div>
-                    <label for="title" class="block text-sm font-medium text-gray-700 mb-1"><?php switch ($locale) {
-                        case 'sr': echo 'Naziv događaja*'; break;
-                        case 'en': echo 'Event title*'; break;
-                        default: echo 'Назив догађаја*'; break;
-                    } ?></label>
+                    <label for="title" class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("events.event_title_label") ?>
+                    </label>
                     <input type="text" id="title" name="title" required
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="<?php switch ($locale) {
-                            case 'sr': echo 'Unesite naziv događaja'; break;
-                            case 'en': echo 'Enter event title'; break;
-                            default: echo 'Унесите назив догађаја'; break;
-                        } ?>" />
+                        placeholder="<?= __("events.event_title_placeholder") ?>" />
                 </div>
 
                 <!-- Kategorija -->
                 <div>
                     <label for="category" id="categoryForm"
-                        class="block text-sm font-medium text-gray-700 mb-1"><?php switch ($locale) {
-                            case 'sr': echo 'Kategorija*'; break;
-                            case 'en': echo 'Category*'; break;
-                            default: echo 'Категорија*'; break;
-                        } ?></label>
+                        class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("events.category_label") ?>
+                    </label>
                     <select id="category" name="category" required
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option value=""><?php switch ($locale) {
-                            case 'sr': echo '-- Odaberite kategoriju --'; break;
-                            case 'en': echo '-- Choose category --'; break;
-                            default: echo '-- Одаберите категорију --'; break;
-                        } ?></option>
+                        <option value="">
+                            <?= __("events.category_placeholder") ?>
+                        </option>
                         <?php foreach ($categories as $category): ?>
                             <option value="<?= htmlspecialchars($category['id']) ?>">
                                 <?= htmlspecialchars($category['naziv']) ?>
@@ -105,59 +82,43 @@
 
                 <!-- Datum -->
                 <div>
-                    <label for="date" class="block text-sm font-medium text-gray-700 mb-1"><?php switch ($locale) {
-                        case 'sr': echo 'Datum*'; break;
-                        case 'en': echo 'Date*'; break;
-                        default: echo 'Датум*'; break;
-                    } ?></label>
+                    <label for="date" class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("events.date_label") ?>
+                    </label>
                     <input type="date" id="date" name="date" required
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
 
                 <!-- Vreme -->
                 <div>
-                    <label for="time" class="block text-sm font-medium text-gray-700 mb-1"><?php switch ($locale) {
-                        case 'sr': echo 'Vreme*'; break;
-                        case 'en': echo 'Time*'; break;
-                        default: echo 'Време*'; break;
-                    } ?></label>
+                    <label for="time" class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("events.time_label") ?>
+                    </label>
                     <input type="time" id="time" name="time" required
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
 
                 <!-- Lokacija (span 2) -->
                 <div class="md:col-span-2 relative">
-                    <label for="location" class="block text-sm font-medium text-gray-700 mb-1"><?php switch ($locale) {
-                        case 'sr': echo 'Lokacija*'; break;
-                        case 'en': echo 'Location*'; break;
-                        default: echo 'Локација*'; break;
-                    } ?></label>
+                    <label for="location" class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("events.location_label") ?>
+                    </label>
                     <div class="relative">
                         <input type="text" id="location" name="location" required
                             class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="<?php switch ($locale) {
-                                case 'sr': echo 'Unesite lokaciju događaja'; break;
-                                case 'en': echo 'Enter event location'; break;
-                                default: echo 'Унесите локацију догађаја'; break;
-                            } ?>" />
+                            placeholder="<?= __("events.location_placeholder") ?>" />
                         <i class="fas fa-map-marker-alt absolute left-3 top-3 text-gray-400" aria-hidden="true"></i>
                     </div>
                 </div>
 
                 <!-- Opis (span 2) -->
                 <div class="md:col-span-2">
-                    <label for="description" class="block text-sm font-medium text-gray-700 mb-1"><?php switch ($locale) {
-                        case 'sr': echo 'Opis događaja'; break;
-                        case 'en': echo 'Event description'; break;
-                        default: echo 'Опис догађаја'; break;
-                    } ?></label>
+                    <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("events.description_label") ?>
+                    </label>
                     <textarea id="description" name="description" rows="4"
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="<?php switch ($locale) {
-                            case 'sr': echo 'Detaljan opis događaja'; break;
-                            case 'en': echo 'Detailed event description'; break;
-                            default: echo 'Детаљан опис догађаја'; break;
-                        } ?>"></textarea>
+                        placeholder="<?= __("events.description_placeholder") ?>"></textarea>
                 </div>
             </div>
 
@@ -168,17 +129,13 @@
             <!-- Actions: responsive (stack on mobile) -->
             <div class="flex flex-col sm:flex-row sm:justify-end gap-3 mt-4">
                 <button id="eventCancelButton" type="button"
-                    class="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"><?php switch ($locale) {
-                        case 'sr': echo 'Odustani'; break;
-                        case 'en': echo 'Cancel'; break;
-                        default: echo 'Одустани'; break;
-                    } ?></button>
+                    class="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
+                    <?= __("events.cancel") ?>
+                </button>
                 <button type="submit"
-                    class="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"><?php switch ($locale) {
-                        case 'sr': echo 'Sačuvaj Događaj'; break;
-                        case 'en': echo 'Save Event'; break;
-                        default: echo 'Сачувај Догађај'; break;
-                    } ?></button>
+                    class="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    <?= __("events.save_event") ?>
+                </button>
             </div>
         </form>
     </div>
