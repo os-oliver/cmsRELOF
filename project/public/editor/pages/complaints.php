@@ -1,10 +1,7 @@
 <?php
 use App\Controllers\AuthController;
 
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
@@ -18,15 +15,7 @@ AuthController::requireEditor();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-    <?php
-    switch ($locale) {
-        case 'sr': echo 'Kontrolni Panel - Administracija'; break;
-        case 'en': echo 'Dashboard - Administration'; break;
-        default: echo 'Контролни Панел - Администрација'; break;
-    }
-    ?>
-    </title>
+    <title><?= __("complaints.dashboard") ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -172,46 +161,22 @@ AuthController::requireEditor();
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                         <div>
                             <h1 class="text-3xl font-bold text-light-900 mb-2">
-                                <?php 
-                                switch ($locale) {
-                                    case 'sr': echo 'Žalbe i pritužbe'; break;
-                                    case 'en': echo 'Complaints and grievances'; break;
-                                    default: echo 'Жалбе и притужбе'; break;
-                                }
-                                ?>
+                                <?= __("complaints.complaints") ?>
                             </h1>
                             <p class="text-light-600">
-                                <?php 
-                                switch ($locale) {
-                                    case 'sr': echo 'Upravljanje i praćenje korisničkih žalbi'; break;
-                                    case 'en': echo 'Managing and monitoring user complaints'; break;
-                                    default: echo 'Управљање и праћење корисничких жалби'; break;
-                                }
-                                ?>
+                               <?= __("complaints.managing") ?>
                             </p>
                         </div>
                         <div class="mt-4 md:mt-0 flex flex-wrap gap-3">
                             <button
                                 class="px-4 py-2 bg-white text-light-700 rounded-lg border border-light-200 hover:bg-light-50 transition-all duration-200 flex items-center gap-2">
                                 <i class="fas fa-filter"></i>
-                                <?php 
-                                switch ($locale) {
-                                    case 'sr': echo 'Filter'; break;
-                                    case 'en': echo 'Filter'; break;
-                                    default: echo 'Филтер'; break;
-                                }
-                                ?>
+                                <?= __("complaints.filter") ?>
                             </button>
                             <button
                                 class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all duration-200 flex items-center gap-2">
                                 <i class="fas fa-plus"></i>
-                                <?php 
-                                switch ($locale) {
-                                    case 'sr': echo 'Nova žalba'; break;
-                                    case 'en': echo 'New complaint'; break;
-                                    default: echo 'Нова жалба'; break;
-                                }
-                                ?>
+                                <?= __("complaints.new_complaint") ?>
                             </button>
                         </div>
                     </div>
@@ -224,21 +189,12 @@ AuthController::requireEditor();
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-light-600 text-sm font-medium">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Ukupno žalbi'; break;
-                                        case 'en': echo 'Total complaints'; break;
-                                        default: echo 'Укупно жалби'; break;
-                                    } ?>
+                                    <?= __("complaints.total_complaints") ?>
                                 </p>
                                 <p class="text-2xl font-bold text-light-900 mt-1">247</p>
                                 <p class="text-green-600 text-sm mt-1">
                                     <i class="fas fa-arrow-up text-xs"></i>
-                                    <?php switch ($locale) {
-                                        case 'sr': echo '+12% od prošlog meseca'; break;
-                                        case 'en': echo '+12% from last month'; break;
-                                        default: echo '+12% од прошлог месеца'; break;
-                                    } ?>
-
+                                    <?= __("complaints.last_month") ?>
                                 </p>
                             </div>
                             <div
@@ -253,20 +209,12 @@ AuthController::requireEditor();
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-light-600 text-sm font-medium">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Na čekanju'; break;
-                                        case 'en': echo 'Pending'; break;
-                                        default: echo 'На чекању'; break;
-                                    } ?>
+                                    <?= __("complaints.pending") ?>
                                 </p>
                                 <p class="text-2xl font-bold text-amber-600 mt-1">18</p>
                                 <p class="text-amber-600 text-sm mt-1">
                                     <i class="fas fa-clock text-xs"></i>
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Zahteva pažnju'; break;
-                                        case 'en': echo 'Requires attention'; break;
-                                        default: echo 'Захтева пажњу'; break;
-                                    } ?>
+                                    <?= __("complaints.requires_attention") ?>
                                 </p>
                             </div>
                             <div
@@ -281,20 +229,12 @@ AuthController::requireEditor();
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-light-600 text-sm font-medium">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Rešeno'; break;
-                                        case 'en': echo 'Resolved'; break;
-                                        default: echo 'Решено'; break;
-                                    } ?>
+                                    <?= __("complaints.resolved") ?>
                                 </p>
                                 <p class="text-2xl font-bold text-green-600 mt-1">201</p>
                                 <p class="text-green-600 text-sm mt-1">
                                     <i class="fas fa-check text-xs"></i>
-                                    <?php switch ($locale) {
-                                        case 'sr': echo '81.4% uspešnost'; break;
-                                        case 'en': echo '81.4% success rate'; break;
-                                        default: echo '81.4% успешност'; break;
-                                    } ?>
+                                    <?= __("complaints.success_rate") ?>
                                 </p>
                             </div>
                             <div
@@ -309,20 +249,12 @@ AuthController::requireEditor();
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-light-600 text-sm font-medium">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Prosečno vreme'; break;
-                                        case 'en': echo 'Average time'; break;
-                                        default: echo 'Просечно време'; break;
-                                    } ?>
+                                    <?= __("complaints.average_time") ?>
                                 </p>
                                 <p class="text-2xl font-bold text-primary-600 mt-1">2.4h</p>
                                 <p class="text-primary-600 text-sm mt-1">
                                     <i class="fas fa-tachometer-alt text-xs"></i>
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Vreme odgovora'; break;
-                                        case 'en': echo 'Response time'; break;
-                                        default: echo 'Време одговора'; break;
-                                    } ?>
+                                    <?= __("complaints.response_time") ?>
                                 </p>
                             </div>
                             <div
@@ -344,18 +276,10 @@ AuthController::requireEditor();
                             </div>
                             <div>
                                 <h3 class="font-semibold text-light-900">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Hitne žalbe'; break;
-                                        case 'en': echo 'Urgent complaints'; break;
-                                        default: echo 'Хитне жалбе'; break;
-                                    } ?>
+                                    <?= __("complaints.urgent_complaints") ?>
                                 </h3>
                                 <p class="text-light-600 text-sm">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo '3 žalbe zahtevaju hitnu pažnju'; break;
-                                        case 'en': echo '3 complaints require urgent attention'; break;
-                                        default: echo '3 жалбе захтевају хитну пажњу'; break;
-                                    } ?>
+                                    <?= __("complaints.urgent_attention") ?>
                                 </p>
                             </div>
                         </div>
@@ -370,18 +294,10 @@ AuthController::requireEditor();
                             </div>
                             <div>
                                 <h3 class="font-semibold text-light-900">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Mesečni izveštaj'; break;
-                                        case 'en': echo 'Monthly report'; break;
-                                        default: echo 'Месечни извештај'; break;
-                                    } ?>
+                                    <?= __("complaints.monthly_report") ?>
                                 </h3>
                                 <p class="text-light-600 text-sm">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Generiši izveštaj za ovaj mesec'; break;
-                                        case 'en': echo 'Generate report for this month'; break;
-                                        default: echo 'Генериши извештај за овај месец'; break;
-                                    } ?>
+                                    <?= __("complaints.generate_report") ?>
                                 </p>
                             </div>
                         </div>
@@ -396,18 +312,10 @@ AuthController::requireEditor();
                             </div>
                             <div>
                                 <h3 class="font-semibold text-light-900">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Korisnička podrška'; break;
-                                        case 'en': echo 'Customer support'; break;
-                                        default: echo 'Корисничка подршка'; break;
-                                    } ?>
+                                    <?= __("complaints.customer_support") ?>
                                 </h3>
                                 <p class="text-light-600 text-sm">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Kontaktiraj tim za podršku'; break;
-                                        case 'en': echo 'Contact the support team'; break;
-                                        default: echo 'Контактирај тим за подршку'; break;
-                                    } ?>
+                                    <?= __("complaints.contact_support") ?>
                                 </p>
                             </div>
                         </div>
@@ -420,22 +328,12 @@ AuthController::requireEditor();
                     <div class="p-6 border-b border-light-200">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                             <h2 class="text-xl font-semibold text-light-900">
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Najnovije žalbe'; break;
-                                    case 'en': echo 'Latest complaints'; break;
-                                    default: echo 'Најновије жалбе'; break;
-                                } ?>
+                                <?= __("complaints.latest_complaints") ?>
                             </h2>
                             <div class="mt-4 md:mt-0 flex items-center gap-3">
                                 <div class="relative">
                                     <input type="text" 
-                                        placeholder="<?php 
-                                            switch ($locale) {
-                                                case 'en': echo 'Search complaints...'; break;
-                                                case 'sr': echo 'Pretraži žalbe...'; break;
-                                                default: echo 'Претрага жалби...'; break;
-                                            } 
-                                        ?>"
+                                        placeholder="<?= __("complaints.search_complaints") ?>"
                                         class="pl-10 pr-4 py-2 border border-light-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
                                     <i
                                         class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-light-400"></i>
@@ -443,32 +341,16 @@ AuthController::requireEditor();
                                 <select
                                     class="px-3 py-2 border border-light-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
                                     <option>
-                                        <?php switch ($locale) {
-                                            case 'sr': echo 'Sve kategorije'; break;
-                                            case 'en': echo 'All categories'; break;
-                                            default: echo 'Све категорије'; break;
-                                        } ?>
+                                        <?= __("complaints.categories") ?>
                                     </option>
                                     <option>
-                                        <?php switch ($locale) {
-                                            case 'sr': echo 'Tehnički problemi'; break;
-                                            case 'en': echo 'Technical issues'; break;
-                                            default: echo 'Технички проблеми'; break;
-                                        } ?>
+                                        <?= __("complaints.technical_issues") ?>
                                     </option>
                                     <option>
-                                        <?php switch ($locale) {
-                                            case 'sr': echo 'Naplata'; break;
-                                            case 'en': echo 'Billing'; break;
-                                            default: echo 'Наплата'; break;
-                                        } ?>
+                                        <?= __("complaints.billing") ?>
                                     </option>
                                     <option>
-                                        <?php switch ($locale) {
-                                            case 'sr': echo 'Usluga'; break;
-                                            case 'en': echo 'Service'; break;
-                                            default: echo 'Услуга'; break;
-                                        } ?>
+                                        <?= __("complaints.service") ?>
                                     </option>
                                 </select>
                             </div>
@@ -481,51 +363,27 @@ AuthController::requireEditor();
                             <thead class="bg-light-50">
                                 <tr>
                                     <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        <?php switch ($locale) {
-                                            case 'en': echo 'ID / User'; break;
-                                            case 'sr': echo 'ID / Korisnik'; break;
-                                            default: echo 'ID / Корисник'; break;
-                                        } ?>
+                                        <?= __("complaints.user") ?>
                                     </th>
 
                                     <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        <?php switch ($locale) {
-                                            case 'en': echo 'Title'; break;
-                                            case 'sr': echo 'Naslov'; break;
-                                            default: echo 'Наслов'; break;
-                                        } ?>
+                                        <?= __("complaints.title") ?>
                                     </th>
 
                                     <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        <?php switch ($locale) {
-                                            case 'en': echo 'Category'; break;
-                                            case 'sr': echo 'Kategorija'; break;
-                                            default: echo 'Категорија'; break;
-                                        } ?>
+                                        <?= __("complaints.category") ?>>
                                     </th>
 
                                     <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        <?php switch ($locale) {
-                                            case 'en': echo 'Status'; break;
-                                            case 'sr': echo 'Status'; break;
-                                            default: echo 'Статус'; break;
-                                        } ?>
+                                        <?= __("complaints.status") ?>
                                     </th>
 
                                     <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        <?php switch ($locale) {
-                                            case 'en': echo 'Date'; break;
-                                            case 'sr': echo 'Datum'; break;
-                                            default: echo 'Датум'; break;
-                                        } ?>
+                                        <?= __("complaints.date") ?>
                                     </th>
 
                                     <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        <?php switch ($locale) {
-                                            case 'en': echo 'Actions'; break;
-                                            case 'sr': echo 'Akcije'; break;
-                                            default: echo 'Акције'; break;
-                                        } ?>
+                                        <?= __("complaints.actions") ?>
                                     </th>
 
                                 </tr>
@@ -547,49 +405,29 @@ AuthController::requireEditor();
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="text-sm text-light-900 font-medium">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Login issue'; break;
-                                                case 'sr': echo 'Problem sa prijavom na sistem'; break;
-                                                default: echo 'Проблем са пријавом на систем'; break;
-                                            } ?>
+                                            <?= __("complaints.login_issue") ?>
                                         </div>
                                         <div class="text-sm text-light-600">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'I have not been able to log in for 2 days...'; break;
-                                                case 'sr': echo 'Ne mogu da se prijavim već 2 dana...'; break;
-                                                default: echo 'Не могу да се пријавим већ 2 дана...'; break;
-                                            } ?>
+                                            <?= __("complaints.not_been_able") ?>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Technical'; break;
-                                                case 'sr': echo 'Tehnički'; break;
-                                                default: echo 'Технички'; break;
-                                            } ?>
+                                            <?= __("complaints.technical") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
                                             <i class="fas fa-clock text-amber-600 mr-1"></i>
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Pending'; break;
-                                                case 'sr': echo 'Na čekanju'; break;
-                                                default: echo 'На чекању'; break;
-                                            } ?>
+                                            <?= __("complaints.pending2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'High'; break;
-                                                case 'sr': echo 'Visok'; break;
-                                                default: echo 'Висок'; break;
-                                            } ?>
+                                            <?= __("complaints.high") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-light-600">
@@ -629,49 +467,29 @@ AuthController::requireEditor();
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="text-sm text-light-900 font-medium">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Incorrect billing'; break;
-                                                case 'sr': echo 'Neispravna naplata'; break;
-                                                default: echo 'Неисправна наплата'; break;
-                                            } ?>
+                                            <?= __("complaints.incorrect_billing") ?>
                                         </div>
                                         <div class="text-sm text-light-600">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'A double amount was charged on the account...'; break;
-                                                case 'sr': echo 'Dupli iznos je naplaćen na računu...'; break;
-                                                default: echo 'Дупли износ је наплаћен на рачуну...'; break;
-                                            } ?>
+                                            <?= __("complaints.double_amount") ?>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Billing'; break;
-                                                case 'sr': echo 'Naplata'; break;
-                                                default: echo 'Нaплата'; break;
-                                            } ?>
+                                            <?= __("complaints.billing2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                             <i class="fas fa-cog text-blue-600 mr-1"></i>
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'In progress'; break;
-                                                case 'sr': echo 'U obradi'; break;
-                                                default: echo 'У обради'; break;
-                                            } ?>
+                                            <?= __("complaints.in_progress") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Medium'; break;
-                                                case 'sr': echo 'Srednji'; break;
-                                                default: echo 'Средњи'; break;
-                                            } ?>
+                                            <?= __("complaints.medium") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-light-600">
@@ -712,49 +530,29 @@ AuthController::requireEditor();
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="text-sm text-light-900 font-medium">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Dissatisfaction with service'; break;
-                                                case 'sr': echo 'Nezadovoljstvo uslugom'; break;
-                                                default: echo 'Незадовољство услугом'; break;
-                                            } ?>
+                                            <?= __("complaints.dissatisfaction") ?>
                                         </div>
                                         <div class="text-sm text-light-600">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'The staff was unprofessional...'; break;
-                                                case 'sr': echo 'Osoblje je bilo neprofesionalno...'; break;
-                                                default: echo 'Особље је било непрофесионално...'; break;
-                                            } ?>
+                                            <?= __("complaints.unprofessional") ?>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Service'; break;
-                                                case 'sr': echo 'Usluga'; break;
-                                                default: echo 'Услуга'; break;
-                                            } ?>
+                                            <?= __("complaints.service2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                             <i class="fas fa-check text-green-600 mr-1"></i>
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Resolved'; break;
-                                                case 'sr': echo 'Rešeno'; break;
-                                                default: echo 'Решено'; break;
-                                            } ?>
+                                            <?= __("complaints.resolved2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Low'; break;
-                                                case 'sr': echo 'Nizak'; break;
-                                                default: echo 'Низак'; break;
-                                            } ?>
+                                            <?= __("complaints.low") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-light-600">
@@ -794,53 +592,29 @@ AuthController::requireEditor();
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="text-sm text-light-900 font-medium">
-                                            <?php 
-                                            switch ($locale) {
-                                                case 'en': echo 'Slow application performance'; break;
-                                                case 'sr': echo 'Spor rad aplikacije'; break;
-                                                default: echo 'Спор рад апликације'; break;
-                                            } 
-                                            ?>
+                                            <?= __("complaints.slow_performance") ?>
                                         </div>
                                         <div class="text-sm text-light-600">
-                                            <?php 
-                                            switch ($locale) {
-                                                case 'en': echo 'Application frequently crashes...'; break;
-                                                case 'sr': echo 'Aplikacija se često prekida...'; break;
-                                                default: echo 'Апликација се често прекида...'; break;
-                                            } 
-                                            ?>
+                                            <?= __("complaints.frequently_crashes") ?>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Technical'; break;
-                                                case 'sr': echo 'Tehnički'; break;
-                                                default: echo 'Технички'; break;
-                                            } ?>
+                                            <?= __("complaints.technical2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
                                             <i class="fas fa-clock text-amber-600 mr-1"></i>
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Pending'; break;
-                                                case 'sr': echo 'Na čekanju'; break;
-                                                default: echo 'На чекању'; break;
-                                            } ?>
+                                            <?= __("complaints.pending3") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                                            <?php switch ($locale) {
-                                                case 'en': echo 'Medium'; break;
-                                                case 'sr': echo 'Srednji'; break;
-                                                default: echo 'Средњи'; break;
-                                            } ?>
+                                            <?= __("complaints.medium2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-light-600">
@@ -871,11 +645,7 @@ AuthController::requireEditor();
                     <div class="px-6 py-4 border-t border-light-200">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                             <div class="text-sm text-light-600">
-                                <?php switch ($locale) {
-                                    case 'en': echo 'Showing 1-4 of 247 complaints'; break;
-                                    case 'sr': echo 'Prikazuje se 1-4 od 247 žalbi'; break;
-                                    default: echo 'Приказује се 1-4 од 247 жалби'; break;
-                                } ?>
+                                <?= __("complaints.showing") ?>
                             </div>
                             <div class="mt-3 md:mt-0">
                                 <nav class="flex items-center gap-1">

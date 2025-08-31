@@ -3,10 +3,7 @@
 use App\Models\Contact;
 use App\Controllers\AuthController;
 
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
@@ -40,11 +37,7 @@ $totalPages = (int) ceil($totalCount / $limit);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php switch ($locale) {
-            case 'sr': echo 'Dokumenti - Administracija'; break;
-            case 'en': echo 'Documents - Administration'; break;
-            default: echo 'Документи - Администрација'; break;
-        } ?>
+        <?= __("chats.chats") ?>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -108,11 +101,7 @@ $totalPages = (int) ceil($totalCount / $limit);
             <!-- header -->
             <div class="flex justify-between items-center p-4 border-b">
                 <h2 class="text-xl font-semibold text-gray-900">
-                    <?php switch ($locale) {
-                        case 'sr': echo 'Detalji kontakta'; break;
-                        case 'en': echo 'Contact details'; break;
-                        default: echo 'Детаљи контакта'; break;
-                    } ?>
+                    <?= __("chats.contact_details") ?>
                 </h2>
                 <button id="modal-close"
                     class="text-gray-500 hover:text-gray-900 text-2xl leading-none">&times;</button>
@@ -120,44 +109,24 @@ $totalPages = (int) ceil($totalCount / $limit);
             <!-- content -->
             <div class="p-6 space-y-4">
                 <p><span class="font-medium">
-                    <?php switch ($locale) {
-                        case 'sr': echo 'Ime'; break;
-                        case 'en': echo 'Name'; break;
-                        default: echo 'Име'; break;
-                    } ?>:
+                    <?= __("chats.name") ?>:
                 </span> <span id="modal-name"></span></p>
 
                 <p><span class="font-medium">
-                    <?php switch ($locale) {
-                        case 'sr': echo 'E-adresa'; break;
-                        case 'en': echo 'Email'; break;
-                        default: echo 'E-адреса'; break;
-                    } ?>:
+                    <?= __("chats.email") ?>:
                 </span> <span id="modal-email"></span></p>
 
                 <p><span class="font-medium">
-                    <?php switch ($locale) {
-                        case 'sr': echo 'Telefon'; break;
-                        case 'en': echo 'Phone'; break;
-                        default: echo 'Телефон'; break;
-                    } ?>:</span> <span id="modal-phone"></span></p>
+                    <?= __("chats.phone") ?>:</span> <span id="modal-phone"></span></p>
 
                 <p><span class="font-medium">
-                    <?php switch ($locale) {
-                        case 'sr': echo 'Poruka'; break;
-                        case 'en': echo 'Message'; break;
-                        default: echo 'Порука'; break;
-                    } ?>:
+                    <?= __("chats.message") ?>:
                 </span></p>
 
                 <div id="modal-message" class="whitespace-pre-wrap bg-gray-50 p-3 rounded-lg"></div>
 
                 <p class="text-sm text-gray-500"><span class="font-medium">
-                    <?php switch ($locale) {
-                        case 'sr': echo 'Poslato'; break;
-                        case 'en': echo 'Sent'; break;
-                        default: echo 'Послато'; break;
-                    } ?>:
+                    <?= __("chats.sent") ?>:
                 </span> <span id="modal-date"></span></p>
             </div>
         </div>
@@ -176,18 +145,10 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">
-                            <?php switch ($locale) {
-                                case 'sr': echo 'Upravljanje kontaktima'; break;
-                                case 'en': echo 'Contact management'; break;
-                                default: echo 'Управљање контактима'; break;
-                            } ?>
+                            <?= __("chats.contact_management") ?>
                         </h1>
                         <p class="text-light-600">
-                            <?php switch ($locale) {
-                                case 'sr': echo 'Pregled i upravljanje primljenim porukama'; break;
-                                case 'en': echo 'Overview and management of received messages'; break;
-                                default: echo 'Преглед и управљање примљеним порукама'; break;
-                            } ?>
+                            <?= __("chats.overview") ?>
                         </p>
                     </div>
                 </div>
@@ -199,42 +160,24 @@ $totalPages = (int) ceil($totalCount / $limit);
                                 <i class="fas fa-search h-5 w-5 text-gray-400"></i>
                             </div>
                             <input type="text" name="search" value="<?= htmlspecialchars($search) ?>"
-                                placeholder="<?php 
-                                    switch ($locale) {
-                                        case 'sr': echo 'Pretraži po imenu, e-adresi, poruci...'; break;
-                                        case 'en': echo 'Search by name, email, message...'; break;
-                                        default: echo 'Претражи по имену, e-адреси, поруци...'; break;
-                                    } 
-                                ?>"
+                                placeholder="<?= __("chats.search") ?>"
                                 class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition">
                             </div>
 
                         <select name="sort"
                             class="px-4 py-3 border border-gray-300 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition">
                             <option value="date_desc" <?= $sort === 'date_desc' ? 'selected' : '' ?>>
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Najnoviji prvo'; break;
-                                    case 'en': echo 'Newest first'; break;
-                                    default: echo 'Најновији прво'; break;
-                                } ?>
+                                <?= __("chats.newest_first") ?>
                             </option>
                             <option value="date_asc" <?= $sort === 'date_asc' ? 'selected' : '' ?>>
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Najstariji prvo'; break;
-                                    case 'en': echo 'Oldest first'; break;
-                                    default: echo 'Најстарији прво'; break;
-                                } ?>
+                                <?= __("chats.oldest_first") ?>
                             </option>
                         </select>
 
                         
                         <button type="submit"
                             class="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition shadow-lg">
-                            <?php switch ($locale) {
-                                case 'sr': echo 'Primeni'; break;
-                                case 'en': echo 'Apply'; break;
-                                default: echo 'Примени'; break;
-                            } ?>
+                            <?= __("chats.apply") ?>
                         </button>
                     </div>
                 </form>
@@ -242,11 +185,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                     <?php if (empty($contacts)): ?>
                         <p class="text-center text-gray-500 col-span-full">
-                            <?php switch ($locale) {
-                                case 'sr': echo 'Nema pronađenih kontakata.'; break;
-                                case 'en': echo 'No contacts found.'; break;
-                                default: echo 'Нема пронађених контаката.'; break;
-                            } ?>
+                            <?= __("chats.no_contacts") ?>
                         </p>
                     <?php else: ?>
                         <?php foreach ($contacts as $contact): ?>
@@ -267,24 +206,12 @@ $totalPages = (int) ceil($totalCount / $limit);
                                     <div class="flex gap-6">
                                         <button
                                             class="view-contact w-20 h-20 hover:bg-white/30 text-gray-700 rounded-full flex items-center justify-center transition hover:scale-110"
-                                            title="<?php 
-                                                switch ($locale) {
-                                                    case 'sr': echo 'Pogledaj poruku'; break;
-                                                    case 'en': echo 'View message'; break;
-                                                    default: echo 'Погледај поруку'; break;
-                                                } 
-                                            ?>">
+                                            title="<?= __("chats.view_message") ?>">
                                             <i class="hover:text-cyan-500 fas fa-eye text-3xl"></i>
                                         </button>
                                         <button
                                             class="delete-contact w-20 h-20 hover:bg-white/30 text-gray-700 rounded-full flex items-center justify-center transition hover:scale-110"
-                                            title="<?php 
-                                                switch ($locale) {
-                                                    case 'sr': echo 'Obriši'; break;
-                                                    case 'en': echo 'Delete'; break;
-                                                    default: echo 'Обриши'; break;
-                                                } 
-                                            ?>">
+                                            title="<?= __("chats.delete") ?>">
                                             <i class="hover:text-red-500 fas fa-trash text-3xl"></i>
                                         </button>
                                     </div>
@@ -318,13 +245,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                                             <span><?= $date ?></span>
                                         </div>
                                         <span class="text-xs font-medium text-green-700 bg-green-100 px-2.5 py-1 rounded-full">
-                                            <?php
-                                                switch ($locale) {
-                                                    case 'sr': echo 'Novo'; break;
-                                                    case 'en': echo 'New'; break;
-                                                    default: echo 'Ново'; break;
-                                                }
-                                            ?>
+                                            <?= __("chats.new") ?>
                                         </span>
                                     </div>
                                 </div>
@@ -335,15 +256,12 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div
                     class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-4 border border-gray-100">
                     <div class="hidden md:block text-sm text-gray-700">
-                        <?php
-                            switch ($locale) {
-                                case 'sr': $text = 'Prikazano'; $of = 'od'; $contactsWord = 'kontakata'; break;
-                                case 'en': $text = 'Showing'; $of = 'of'; $contactsWord = 'contacts'; break;
-                                default: $text = 'Приказано'; $of = 'од'; $contactsWord = 'контаката'; break;
-                            }
-                        ?>
                         <div class="hidden md:block text-sm text-gray-700">
-                            <?= $text ?> <span class="font-medium"><?= count($contacts) ?></span> <?= $of ?> <span class="font-medium"><?= $totalCount ?></span> <?= $contactsWord ?>
+                            <?= __("chats.showing") ?>
+                            <span class="font-medium"><?= count($contacts) ?></span> 
+                            <?= __("chats.of") ?>
+                            <span class="font-medium"><?= $totalCount ?></span>
+                            <?= __("chats.contacts") ?>
                         </div>
                     </div>
                     <nav class="flex items-center gap-2">
@@ -367,32 +285,12 @@ $totalPages = (int) ceil($totalCount / $limit);
         </div>
     </div>
     <script>
-        <?php
-        switch ($locale) {
-            case 'sr':
-                $deleteConfirmMsg = 'Jeste li sigurni da želite da obrišete ovaj kontakt?';
-                $deleteErrorMsg = 'Greška prilikom brisanja: ';
-                $networkErrorMsg = 'Došlo je do greške pri mrežnom zahtevu.';
-                break;
-            case 'en':
-                $deleteConfirmMsg = 'Are you sure you want to delete this contact?';
-                $deleteErrorMsg = 'Error while deleting: ';
-                $networkErrorMsg = 'A network error occurred.';
-                break;
-            default: 
-                $deleteConfirmMsg = 'Да ли сте сигурни да желите да обришете овај контакт?';
-                $deleteErrorMsg = 'Грешка при брисању: ';
-                $networkErrorMsg = 'Дошло је до грешке при мрежном захтеву.';
-                break;
-        }
-        ?>
-
         document.querySelectorAll('.delete-contact').forEach(btn => {
             btn.addEventListener('click', async () => {
                 const card = btn.closest('.contact-card');
                 const id = card.dataset.id;
 
-                if (!confirm('<?= $deleteConfirmMsg ?>')) {
+                if (!confirm('<?= __("chats.delete_confirm_msg") ?>')) {
                     return;
                 }
 
@@ -408,11 +306,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                         card.remove();
                     } else {
                         const err = await res.json();
-                        alert('<?= $deleteErrorMsg ?>' + (err.error || res.statusText));
+                        alert('<?= __("chats.delete_error_msg") ?>' + (err.error || res.statusText));
                     }
                 } catch (e) {
                     console.error(e);
-                    alert('<?= $networkErrorMsg ?>');
+                    alert('<?= __("chats.network_error_msg") ?>');
                 }
             });
         });
