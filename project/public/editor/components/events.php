@@ -16,7 +16,7 @@
                     default: echo 'Предстојећи догађаји у библиотеци'; break;
                 }
             ?></h3>
-        <a href="/dashboard/dogadjaji" class="text-primary-600 hover:text-primary-800 flex items-center">
+        <a href="/kontrolna-tabla/dogadjaji" class="text-primary-600 hover:text-primary-800 flex items-center">
             <span>
                 <?php
                     switch ($locale) {
