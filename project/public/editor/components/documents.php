@@ -15,7 +15,7 @@
             }
             ?>
         </h3>
-        <a href="/dashboard/dokumenti" class="text-primary-600 hover:text-primary-800 flex items-center">
+        <a href="/kontrolna-tabla/dokumenti" class="text-primary-600 hover:text-primary-800 flex items-center">
             <span>
                 <?php
                 switch ($locale) {
