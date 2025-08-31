@@ -519,7 +519,7 @@
                     <!-- Search Input - positioned to avoid nav overlap -->
                     <div id="searchInputContainer"
                         class="absolute right-0 top-full mt-2 hidden opacity-0 transition-all duration-300 ease-in-out z-50 min-w-[280px] bg-white rounded-md shadow-lg border border-gray-200 overflow-hidden">
-                        <form id="searchForm" class="flex items-center w-full p-1.5" action="/search" method="GET">
+                        <form id="searchForm" class="flex items-center w-full p-1.5" action="/pretraga" method="GET">
                             <input type="text" name="q" placeholder="Search..."
                                 class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-3 py-1.5 text-gray-700 placeholder-gray-400"
                                 id="searchInput" required />
