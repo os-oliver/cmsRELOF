@@ -24,7 +24,7 @@ error_log($name);
     </div>
 
     <nav class="space-y-2">
-        <a href="/sadmin/style"
+        <a href="/sadmin/stil-stranica"
             class="nav-item <?= $activeTab == 'pages' ? 'active' : '' ?> flex items-center space-x-3 p-3 rounded-lg">
             <i class="fas fa-file w-5 text-center"></i>
             <span>
@@ -35,7 +35,7 @@ error_log($name);
             } ?>
             </span>
         </a>
-        <a href="/sadmin/users"
+        <a href="/sadmin/korisnici"
             class="nav-item <?= $activeTab == 'users' ? 'active' : '' ?>  flex items-center space-x-3 p-3 rounded-lg">
             <i class="fas fa-users w-5 text-center"></i>
             <span>
@@ -46,7 +46,7 @@ error_log($name);
             } ?>
             </span>
         </a>
-        <a href="/sadmin/categories"
+        <a href="/sadmin/kategorije"
             class="nav-item flex items-center space-x-3 p-3 rounded-lg  <?= $activeTab == 'categories' ? 'active' : '' ?>">
             <i class="fas fa-chart-bar w-5 text-center"></i>
             <span>

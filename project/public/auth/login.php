@@ -387,7 +387,7 @@
                         const data = JSON.parse(text);
 
                         if (data.success) {
-                            window.location = "/dashboard";
+                            window.location = "/kontrolna-tabla";
                         } else {
                             showAlert();
                         }
