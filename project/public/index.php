@@ -12,37 +12,44 @@ $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
+    # UI/page routes + ones in assetes/data/pages.json
+    $r->addRoute('GET', '/kontrolna-tabla/galerija', 'PageController@gallery');
+    $r->addRoute('GET', '/kontrolna-tabla/promocija', 'PageController@promotion');
+    $r->addRoute('GET', '/kontrolna-tabla/zalbe', 'PageController@complaints');
+    $r->addRoute('GET', '/kontrolna-tabla', 'PageController@dashboard');
+    $r->addRoute('GET', '/kontrolna-tabla/dokumenti', 'PageController@documents');
+    $r->addRoute('GET', '/kontrolna-tabla/dogadjaji', 'PageController@events');
+    $r->addRoute('GET', '/kontrolna-tabla/poruke', 'PageController@chats');
+    $r->addRoute('GET', '/kontrolna-tabla/o-nama', 'PageController@aboutUS');
+
+    $r->addRoute('GET', '/sadmin/stil-stranica', 'PageController@adminStyle');
+    $r->addRoute('GET', '/sadmin/korisnici', 'PageController@userStyle');
+    $r->addRoute('GET', '/sadmin/kategorije', 'PageController@categoryStyle');
+
+    $r->addRoute('GET', '/pretraga', 'PageController@search');
+
+    # API/action routes - should stay in english
     $r->addRoute('GET', '/', 'PageController@home');
-    $r->addRoute('GET', '/search', 'PageController@search');
     $r->addRoute('GET', '/buildingWizard', 'PageController@buildWizard');
     $r->addRoute('GET', '/style', 'PageController@style');
     $r->addRoute('POST', '/savePage', 'PageController@savePage');
     $r->addRoute('GET', '/loadComponent', 'ComponentController@loadComponent');
     $r->addRoute('POST', '/saveComponent', 'ComponentController@saveComponent');
     $r->addRoute('POST', '/saveLandigPageComponent', 'ComponentController@saveLandigPageComponent');
-
     $r->addRoute('GET', '/template', 'PageController@template');
     $r->addRoute('GET', '/component', 'ComponentController@loadComponent');
-    $r->addRoute('GET', '/dashboard/gallery', 'PageController@gallery');
-    $r->addRoute('GET', '/dashboard/promotion', 'PageController@promotion');
-    $r->addRoute('GET', '/dashboard/complaints', 'PageController@complaints');
-    $r->addRoute('GET', '/dashboard', 'PageController@dashboard');
-    $r->addRoute('GET', '/dashboard/dokumenti', 'PageController@documents');
-    $r->addRoute('GET', '/dashboard/dogadjaji', 'PageController@events');
-    $r->addRoute('GET', '/dashboard/poruke', 'PageController@chats');
-    $r->addRoute('GET', '/dashboard/o-nama', 'PageController@aboutUS');
-
-    $r->addRoute('GET', '/sadmin/style', 'PageController@adminStyle');
-    $r->addRoute('GET', '/sadmin/users', 'PageController@userStyle');
-    $r->addRoute('GET', '/sadmin/categories', 'PageController@categoryStyle');
 
     $r->addRoute('POST', '/contact', 'ContactController@create');
+    $r->addRoute('DELETE', '/contact/{id:\d+}', 'ContactController@delete');
 
     $r->addRoute('POST', '/document', 'DocumentController@newDocument');
     $r->addRoute('GET', '/document', 'DocumentController@list');
     $r->addRoute('PUT', '/document/{id:\d+}', 'DocumentController@update');
     $r->addRoute('DELETE', '/document/{id:\d+}', 'DocumentController@delete');
+
+    #change this one for URL to be in serbian if needed
     $r->addRoute('GET', '/login', 'PageController@login');
+    
     $r->addRoute('POST', '/login', 'AuthController@auth');
     $r->addRoute('GET', '/logout', 'AuthController@logout');
 
@@ -51,6 +58,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('POST', '/events', 'EventController@create');
     $r->addRoute('PUT', '/events/{id:\d+}', 'EventController@update');
     $r->addRoute('DELETE', '/events/{id:\d+}', 'EventController@delete');
+
     $r->addRoute('PUT', '/aboutus/{id:\d+}', 'AboutUSController@aboutUs');
     $r->addRoute('POST', '/employees', 'AboutUSController@employees');
     $r->addRoute('PUT', '/employees/{id:\d+}', 'AboutUSController@employees');
@@ -61,9 +69,6 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('POST', '/gallery', 'GalleryController@newImage');
     $r->addRoute('PUT', '/gallery/{id:\d+}', 'GalleryController@update');
     $r->addRoute('DELETE', '/gallery/{id:\d+}', 'GalleryController@delete');
-    $r->addRoute('DELETE', '/contact/{id:\d+}', 'ContactController@delete');
-
-
 
     $r->addRoute('POST', '/users', 'UserController@create');
     $r->addRoute('PUT', '/users/{id:\d+}', 'UserController@update');

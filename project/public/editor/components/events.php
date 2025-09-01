@@ -4,7 +4,7 @@
         <h3 class="text-lg font-semibold text-gray-800">
             <?= __('events.upcoming_in_library') ?>
         </h3>
-        <a href="/dashboard/dogadjaji" class="text-primary-600 hover:text-primary-800 flex items-center">
+         <a href="/kontrolna-tabla/dogadjaji" class="text-primary-600 hover:text-primary-800 flex items-center">
             <span>
                 <?= __('events.view_all') ?>
             </span>
