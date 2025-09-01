@@ -1,10 +1,6 @@
 <?php
 use App\Controllers\AuthController;
 AuthController::requireAdmin();
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 <!DOCTYPE html>
 <html lang="sr">
@@ -13,13 +9,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php
-            switch ($locale) {
-                case 'sr': echo 'Admin Panel - Uređivač Stranica'; break;
-                case 'en': echo 'Admin Panel – Page editor'; break;
-                default: echo 'Админ Панел – Уређивач страница'; break;
-            }
-        ?>
+        <?= __('style.admin_panel') ?>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -280,14 +270,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
             <div class="p-6">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-xl font-bold text-gray-800" id="modalTitle">
-                        <?php
-                            switch ($locale) {
-                                case 'sr': echo 'Nova stranica'; break;
-                                case 'en': echo 'New page'; break;
-                                default: echo 'Нова страница'; break;
-                            }
-                        ?>
-                        
+                        <?= __('style.new_page') ?>
                     </h3>
                     <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">
                         <i class="fas fa-times"></i>
@@ -299,13 +282,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'Naziv stranice'; break;
-                                    case 'en': echo 'Page title'; break;
-                                    default: echo 'Назив странице'; break;
-                                }
-                            ?>
+                            <?= __('style.page_title') ?>
                         </label>
                         <input type="text" id="pageName" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
@@ -313,13 +290,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'Putanja (path)'; break;
-                                    case 'en': echo 'Path'; break;
-                                    default: echo 'Путања (path)'; break;
-                                }
-                            ?>
+                            <?= __('style.path') ?>
                         </label>
                         <input type="text" id="pagePath" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
@@ -327,13 +298,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'URL (href)'; break;
-                                    case 'en': echo 'URL (href)'; break;
-                                    default: echo 'УРЛ (href)'; break;
-                                }
-                            ?>
+                            <?= __('style.url') ?>
                         </label>
                         <input type="text" id="pageHref" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
@@ -341,44 +306,20 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'Status'; break;
-                                    case 'en': echo 'Status'; break;
-                                    default: echo 'Статус'; break;
-                                }
-                            ?>
+                            <?= __('style.status_text') ?>
                         </label>
                         <div class="grid grid-cols-3 gap-2">
                             <button type="button" data-status="active"
                                 class="status-option bg-green-100 text-green-700 py-2 rounded-lg">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Aktivan'; break;
-                                            case 'en': echo 'Active'; break;
-                                            default: echo 'Активан'; break;
-                                        }
-                                    ?>
+                                    <?= __('style.active') ?>
                             </button>
                             <button type="button" data-status="draft"
                                 class="status-option bg-yellow-100 text-yellow-700 py-2 rounded-lg">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'U izradi'; break;
-                                        case 'en': echo 'In progress'; break;
-                                        default: echo 'У изради'; break;
-                                    }
-                                ?>
+                                <?= __('style.in_progress') ?>
                             </button>
                             <button type="button" data-status="inactive"
                                 class="status-option bg-red-100 text-red-700 py-2 rounded-lg">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Neaktivan'; break;
-                                            case 'en': echo 'Inactive'; break;
-                                            default: echo 'Неактиван'; break;
-                                        }
-                                    ?>
+                                    <?= __('style.inactive') ?>
                             </button>
                         </div>
                         <input type="hidden" id="pageStatus" value="active">
@@ -386,23 +327,11 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
                     <div class="pt-4 flex space-x-3">
                         <button type="submit" class="btn-primary text-white px-6 py-2 rounded-lg font-medium flex-1">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'Sačuvaj'; break;
-                                    case 'en': echo 'Save'; break;
-                                    default: echo 'Сачувај'; break;
-                                }
-                            ?>
+                            <?= __('style.save') ?>
                         </button>
                         <button type="button" id="cancelBtn"
                             class="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium flex-1">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'Otkaži'; break;
-                                    case 'en': echo 'Cancel'; break;
-                                    default: echo 'Откажи'; break;
-                                }
-                            ?>
+                            <?= __('style.cancel') ?>
                         </button>
                     </div>
                 </form>
@@ -433,13 +362,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                     <i class="fas fa-bars"></i>
                 </button>
                 <h1 class="text-lg font-bold text-gray-800">
-                        <?php
-                            switch ($locale) {
-                                case 'sr': echo 'Admin panel'; break;
-                                case 'en': echo 'Admin panel'; break;
-                                default: echo 'Админ панел'; break;
-                            }
-                        ?>
+                    <?= __('style.admin_panel_short') ?>
                 </h1>
                 <div class="w-8"></div>
             </div>
@@ -452,35 +375,17 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                             <h3
                                 class="text-lg lg:text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Lista Stranica'; break;
-                                        case 'en': echo 'Pages list'; break;
-                                        default: echo 'Листа страница'; break;
-                                    }
-                                ?>                               
+                                <?= __('style.pages_list') ?>                               
                             </h3>
                             <button id="newPageBtn"
                                 class="btn-primary text-white px-4 py-2 rounded-lg font-medium flex items-center w-full sm:w-auto justify-center">
                                 <i class="fas fa-plus mr-2"></i>
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Nova'; break;
-                                            case 'en': echo 'New'; break;
-                                            default: echo 'Нова'; break;
-                                        }
-                                    ?>
+                                    <?= __('style.new') ?>
                             </button>
                             <button id="saveState"
                                 class="btn-primary text-white px-4 py-2 rounded-lg font-medium flex items-center w-full sm:w-auto justify-center">
                                 <i class="fas fa-floppy-disk mr-2"></i>
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Sačuvaj'; break;
-                                            case 'en': echo 'Save'; break;
-                                            default: echo 'Сачувај'; break;
-                                        }
-                                    ?>
+                                    <?= __('style.save_button') ?>
                             </button>
                         </div>
 
@@ -488,13 +393,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div class="mb-6">
                             <div class="relative">
                                 <input type="text" placeholder=
-                                    "<?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Pretraži stranice...'; break;
-                                            case 'en': echo 'Search pages...'; break;
-                                            default: echo 'Претражи странице...'; break;
-                                        }
-                                    ?>" 
+                                    "<?= __('style.search_placeholder') ?>" 
                                     class="search-input w-full py-3 px-4 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary">
                                 <i class="fas fa-search absolute right-4 top-3.5 text-gray-400"></i>
                             </div>
@@ -503,43 +402,23 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                 <button
                                     class="filter-btn active text-xs bg-primary text-white px-3 py-1.5 rounded-lg hover:bg-primary/80 transition whitespace-nowrap"
                                     data-filter="all">                                    
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Sve'; break;
-                                            case 'en': echo 'All'; break;
-                                            default: echo 'Све'; break;
-                                        }
-                                    ?></button>
+                                    <?= __('style.all') ?>
+                                </button>
                                 <button
                                     class="filter-btn text-xs bg-green-100 text-green-700 px-3 py-1.5 rounded-lg hover:bg-green-200 transition whitespace-nowrap"
                                     data-filter="active">                                    
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Aktivne'; break;
-                                            case 'en': echo 'Active'; break;
-                                            default: echo 'Активне'; break;
-                                        }
-                                    ?></button>
+                                    <?= __('style.active_plural') ?>
+                                </button>
                                 <button
                                     class="filter-btn text-xs bg-yellow-100 text-yellow-700 px-3 py-1.5 rounded-lg hover:bg-yellow-200 transition whitespace-nowrap"
                                     data-filter="draft">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'U izradi'; break;
-                                            case 'en': echo 'In progress'; break;
-                                            default: echo 'У изради'; break;
-                                        }
-                                    ?></button>
+                                    <?= __('style.in_progress_search') ?>
+                                </button>
                                 <button
                                     class="filter-btn text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition whitespace-nowrap"
                                     data-filter="inactive">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Neaktivne'; break;
-                                            case 'en': echo 'Inactive'; break;
-                                            default: echo 'Неактивне'; break;
-                                        }
-                                    ?></button>
+                                    <?= __('style.inactive_plural') ?>
+                                </button>
                             </div>
                         </div>
 
@@ -547,13 +426,8 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div id="loading-indicator" class="text-center py-8">
                             <i class="fas fa-spinner fa-spin text-2xl text-primary"></i>
                             <p class="text-gray-500 mt-2">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Učitavanje stranica...'; break;
-                                        case 'en': echo 'Loading paegs'; break;
-                                        default: echo 'Учитавање страница'; break;
-                                    }
-                                ?></p>
+                                <?= __('style.loading_pages') ?>
+                            </p>
                         </div>
 
                         <!-- Pages List Container -->
@@ -566,13 +440,8 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div id="error-message" class="text-center py-8 hidden">
                             <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
                             <p class="text-red-500 mt-2">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Greška pri učitavanju stranica'; break;
-                                        case 'en': echo 'Error loading pages'; break;
-                                        default: echo 'Грешка при учитавању страница'; break;
-                                    }
-                                ?></p>
+                                <?= __('style.error_loading_pages') ?>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -583,23 +452,11 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                             <div>
                                 <h1 class="text-xl lg:text-2xl font-bold text-gray-800">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Upravljanje Stranicama'; break;
-                                            case 'en': echo 'Page management'; break;
-                                            default: echo 'Управљање страницама'; break;
-                                        }
-                                    ?>
+                                    <?= __('style.page_management') ?>
                                 </h1>
                                 <p class="text-gray-600 text-sm lg:text-base">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Pregledajte i upravljajte svim stranicama na vašoj web stranici'; break;
-                                            case 'en': echo 'View and manage all pages on your website'; break;
-                                            default: echo 'Прегледајте и управљајте свим страницама на вашој веб страници'; break;
-                                        }
-                                    ?>
-                                    </p>
+                                    <?= __('style.page_description') ?>
+                                </p>
                             </div>
                             <div class="flex space-x-3">
                                 <button
@@ -618,33 +475,17 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             <div
                                 class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
                                 <h2 class="text-lg font-semibold text-gray-800" id="preview-title">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Odaberite stranicu'; break;
-                                            case 'en': echo 'Select a page'; break;
-                                            default: echo 'Одберите страницу'; break;
-                                        }
-                                    ?>
+                                    <?= __('style.select_page') ?>
                                 </h2>
                                 <div class="flex space-x-2 w-full sm:w-auto">
                                     <button id="editPageBtn"
                                         class="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition flex-1 sm:flex-none">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Uredi'; break;
-                                                case 'en': echo 'Edit'; break;
-                                                default: echo 'Уреди'; break;
-                                            }
-                                        ?></button>
+                                        <?= __('style.edit') ?>
+                                    </button>
                                     <button id="deletePageBtn"
                                         class="text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition flex-1 sm:flex-none">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Obriši'; break;
-                                                case 'en': echo 'Delete'; break;
-                                                default: echo 'Обриши'; break;
-                                            }
-                                        ?></button>
+                                        <?= __('style.delete') ?>
+                                    </button>
                                 </div>
                             </div>
 
@@ -653,48 +494,28 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                 <div class="text-center">
                                     <i class="fas fa-globe text-2xl lg:text-4xl text-blue-400 mb-2"></i>
                                     <p class="text-gray-600 text-sm lg:text-base" id="preview-url">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Odaberite stranicu za pregled'; break;
-                                                case 'en': echo 'Select a page to view'; break;
-                                                default: echo 'Одберите страницу за преглед'; break;
-                                            }
-                                        ?></p>
+                                        <?= __('style.select_page_view') ?>
+                                    </p>
                                 </div>
                             </div>
 
                             <div class="stats-grid grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div class="bg-gray-50 rounded-lg p-3">
                                     <p class="text-xs text-gray-500">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Status'; break;
-                                                case 'en': echo 'Status'; break;
-                                                default: echo 'Статус'; break;
-                                            }
-                                        ?></p>
+                                        <?= __('style.status') ?>
+                                    </p>
                                     <p class="font-medium" id="preview-status">-</p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-3">
                                     <p class="text-xs text-gray-500">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Putanja'; break;
-                                                case 'en': echo 'Path'; break;
-                                                default: echo 'Путања'; break;
-                                            }
-                                        ?></p>
+                                        <?= __('style.path_label') ?>
+                                    </p>
                                     <p class="font-medium text-xs lg:text-sm truncate" id="preview-path">-</p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-3">
                                     <p class="text-xs text-gray-500">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Datum'; break;
-                                                case 'en': echo 'Date'; break;
-                                                default: echo 'Датум'; break;
-                                            }
-                                        ?></p>
+                                        <?= __('style.date') ?>
+                                    </p>
                                     <p class="font-medium" id="preview-date">-</p>
                                 </div>
                             </div>
@@ -703,44 +524,21 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <!-- Recent Activity -->
                         <div>
                             <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Odredi trenutno stanje'; break;
-                                        case 'en': echo 'Determine current status'; break;
-                                        default: echo 'Одреди тренутно стање'; break;
-                                    }
-                                ?></h3>
+                                <?= __('style.determine_status') ?>
+                            </h3>
                             <div class="space-y-4">
                                 <div id="status-buttons" class="flex space-x-4">
                                     <button data-status="active"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-green-500 text-green-700 bg-green-100">
-                                            <?php
-                                                switch ($locale) {
-                                                    case 'sr': echo 'Aktivan'; break;
-                                                    case 'en': echo 'Active'; break;
-                                                    default: echo 'Активан'; break;
-                                                }
-                                            ?>
+                                            <?= __('style.active_activity') ?>
                                     </button>
                                     <button data-status="draft"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-gray-300 text-gray-600 bg-gray-100">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'U izradi'; break;
-                                                case 'en': echo 'In progress'; break;
-                                                default: echo 'У изради'; break;
-                                            }
-                                        ?>
+                                        <?= __('style.in_progress_activity') ?>
                                     </button>
                                     <button data-status="inactive"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-gray-300 text-gray-600 bg-gray-100">
-                                            <?php
-                                                switch ($locale) {
-                                                    case 'sr': echo 'Neaktivan'; break;
-                                                    case 'en': echo 'Inactive'; break;
-                                                    default: echo 'Неактиван'; break;
-                                                }
-                                            ?>
+                                            <?= __('style.inactive_activity') ?>
                                     </button>
                                 </div>
                             </div>
@@ -752,7 +550,6 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
     </div>
 
     <script>
-        const locale = "<?php echo $locale; ?>";
         let pagesData = [];
         // Sample data (in a real app, this would come from a server)
         async function loadPages() {
@@ -838,31 +635,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
         // Modal functionality
         function openModal(mode = 'create', pageData = null) {
             if (mode === 'create') {
-                switch (locale) {
-                    case 'sr':
-                        modalTitle.textContent = 'Nova stranica';
-                        break;
-                    case 'en':
-                        modalTitle.textContent = 'New page';
-                        break;
-                    default:
-                        modalTitle.textContent = 'Нова страница';
-                }
+                const modalTitleText = "<?= __('style.new_page') ?>";
+                modalTitle.textContent = modalTitleText;
                 pageForm.reset();
                 document.getElementById('pageId').value = '';
                 pageStatusInput.value = 'active';
                 resetStatusOptions('active');
             } else if (mode === 'edit' && pageData) {
-                switch (locale) {
-                    case 'sr':
-                        modalTitle.textContent = 'Uredi stranicu';
-                        break;
-                    case 'en':
-                        modalTitle.textContent = 'Edit page';
-                        break;
-                    default:
-                        modalTitle.textContent = 'Уреди страницу';
-                }
+                const modalTitleText = "<?= __('style.edit_page') ?>";
+                modalTitle.textContent = modalTitleText;
                 document.getElementById('pageId').value = pageData.id;
                 document.getElementById('pageName').value = pageData.name;
                 document.getElementById('pagePath').value = pageData.path;
@@ -994,17 +775,8 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
         }
 
         function deletePage(id) {
-            let message;
-            switch (locale) {
-                case 'sr':
-                    message = 'Da li ste sigurni da želite da obrišete ovu stranicu?';
-                    break;
-                case 'en':
-                    message = 'Are you sure you want to delete this page?';
-                    break;
-                default: 
-                    message = 'Да ли сте сигурни да желите да обришете ову страницу?';
-            }
+            const messagePhp = "<?= __('style.delete_page_confirm') ?>";
+            let message = messagePhp;
 
             if (confirm(message)) {
                 pagesData = pagesData.filter(page => page.id != id);
@@ -1040,17 +812,8 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
         statusButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 if (!selectedPageId) {
-                    let alertMessage;
-                    switch (locale) {
-                        case 'sr':
-                            alertMessage = 'Izaberite stranicu pre nego što promenite status';
-                            break;
-                        case 'en':
-                            alertMessage = 'Select a page before changing the status';
-                            break;
-                        default: 
-                            alertMessage = 'Изаберите страницу пре него што промените статус';
-                    }
+                    const messagePhp = "<?= __('style.select_page_before_status') ?>";
+                    let alertMessage = messagePhp;
                     alert(alertMessage);
                     return;
                 }
@@ -1067,29 +830,9 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
                     // Funkcija za dobijanje prevedenog statusa
                     function getStatusText(status) {
-                        switch (locale) {
-                            case 'sr':
-                                switch (status) {
-                                    case 'active': return 'Aktivan';
-                                    case 'draft': return 'U izradi';
-                                    case 'inactive': return 'Neaktivan';
-                                    default: return status;
-                                }
-                            case 'en':
-                                switch (status) {
-                                    case 'active': return 'Active';
-                                    case 'draft': return 'In progress';
-                                    case 'inactive': return 'Inactive';
-                                    default: return status;
-                                }
-                            default: // npr. 'sr-Cyrl'
-                                switch (status) {
-                                    case 'active': return 'Активан';
-                                    case 'draft': return 'У изради';
-                                    case 'inactive': return 'Неактиван';
-                                    default: return status;
-                                }
-                        }
+                        const key = "style.status_" + status; 
+                        const messagePhp = "<?= __('" + key + "') ?>";
+                        return messagePhp;
                     }
 
                     const statusText = getStatusText(status);
@@ -1129,17 +872,8 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
         editPageBtn.addEventListener('click', () => {
             if (!selectedPageId) {
-                let alertMessage;
-                switch (locale) {
-                    case 'sr':
-                        alertMessage = 'Izaberite stranicu koju želite da uredite';
-                        break;
-                    case 'en':
-                        alertMessage = 'Select a page you want to edit';
-                        break;
-                    default: 
-                        alertMessage = 'Изаберите страницу коју желите да уредите';
-                }
+                const messagePhp = "<?= __('style.select_page_to_edit') ?>";
+                let alertMessage = messagePhp;
                 alert(alertMessage);
                 return;
             }
@@ -1152,21 +886,11 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
         deletePageBtn.addEventListener('click', () => {
             if (!selectedPageId) {
-                let alertMessage;
-                switch (locale) {
-                    case 'sr':
-                        alertMessage = 'Izaberite stranicu koju želite da obrišete';
-                        break;
-                    case 'en':
-                        alertMessage = 'Select a page you want to delete';
-                        break;
-                    default: 
-                        alertMessage = 'Изаберите страницу коју желите да обришете';
-                }
+                const messagePhp = "<?= __('style.select_page_to_delete') ?>";
+                let alertMessage = messagePhp;
                 alert(alertMessage);
                 return;
             }
-
             deletePage(selectedPageId);
         });
 
@@ -1189,55 +913,19 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                 let statusClass = '';
                 let statusText = '';
 
-                switch (locale) {
-                    case 'sr':
-                        switch (page.status) {
-                            case 'active':
-                                statusClass = 'from-green-400 to-green-600';
-                                statusText = 'Aktivan';
-                                break;
-                            case 'draft':
-                                statusClass = 'from-yellow-400 to-orange-500';
-                                statusText = 'U izradi';
-                                break;
-                            default: 
-                                statusClass = 'from-red-400 to-red-600';
-                                statusText = 'Neaktivan';
-                        }
+                switch (page.status) {
+                    case 'active':
+                        statusClass = 'from-green-400 to-green-600';
+                        statusText = "<?= __('style.status_active') ?>";
                         break;
-
-                    case 'en':
-                        switch (page.status) {
-                            case 'active':
-                                statusClass = 'from-green-400 to-green-600';
-                                statusText = 'Active';
-                                break;
-                            case 'draft':
-                                statusClass = 'from-yellow-400 to-orange-500';
-                                statusText = 'In progress';
-                                break;
-                            default:
-                                statusClass = 'from-red-400 to-red-600';
-                                statusText = 'Inactive';
-                        }
+                    case 'draft':
+                        statusClass = 'from-yellow-400 to-orange-500';
+                        statusText = "<?= __('style.status_draft') ?>";
                         break;
-
-                    default: 
-                        switch (page.status) {
-                            case 'active':
-                                statusClass = 'from-green-400 to-green-600';
-                                statusText = 'Активан';
-                                break;
-                            case 'draft':
-                                statusClass = 'from-yellow-400 to-orange-500';
-                                statusText = 'У изради';
-                                break;
-                            default:
-                                statusClass = 'from-red-400 to-red-600';
-                                statusText = 'Неактиван';
-                        }
+                    default:
+                        statusClass = 'from-red-400 to-red-600';
+                        statusText = "<?= __('style.status_inactive') ?>";
                 }
-
 
                 const card = document.createElement('div');
                 card.className = 'page-card rounded-xl p-4 lg:p-5 cursor-pointer border-2 border-transparent hover:border-primary/30 transition-all duration-300 animate-fade-in';
@@ -1282,30 +970,18 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                 document.getElementById('preview-title').textContent = page.name;
                 document.getElementById('preview-url').textContent = page.href;
                 let statusText;
-                switch (locale) {
-                    case 'sr':
-                        switch (page.status) {
-                            case 'active': statusText = 'Aktivan'; break;
-                            case 'draft': statusText = 'U izradi'; break;
-                            default: statusText = 'Neaktivan';
-                        }
+                switch (page.status) {
+                    case 'active':
+                        statusText = "<?= __('style.status_text_active') ?>";
                         break;
-                    case 'en':
-                        switch (page.status) {
-                            case 'active': statusText = 'Active'; break;
-                            case 'draft': statusText = 'In progress'; break;
-                            default: statusText = 'Inactive';
-                        }
+                    case 'draft':
+                        statusText = "<?= __('style.status_text_draft') ?>";
                         break;
-                    default: 
-                        switch (page.status) {
-                            case 'active': statusText = 'Активан'; break;
-                            case 'draft': statusText = 'У изради'; break;
-                            default: statusText = 'Неактиван';
-                        }
+                    default:
+                        statusText = "<?= __('style.status_text_inactive') ?>";
                 }
-                document.getElementById('preview-status').textContent = statusText;
 
+                document.getElementById('preview-status').textContent = statusText;
                 document.getElementById('preview-path').textContent = page.path;
                 document.getElementById('preview-date').textContent = page.date;
 

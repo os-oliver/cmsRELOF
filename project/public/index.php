@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../core/Utils/translations.php';
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 define('PROJECT_ROOT', dirname(__DIR__));

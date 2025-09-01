@@ -4,10 +4,7 @@ use App\Models\AboutUs;
 use App\Models\Employee;
 use App\Models\TeamMember; // New model for team members
 
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
@@ -42,11 +39,7 @@ $totalPages = (int) ceil($totalCount / $limit);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php switch ($locale) {
-            case 'sr': echo 'O nama - Administracija'; break;
-            case 'en': echo 'About Us - Administration'; break;
-            default: echo 'О нама - Администрација'; break;
-        } ?>
+        <?= __("aboutus.about_us") ?>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -181,58 +174,30 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <!-- Goal -->
                         <div class="glass-panel rounded-2xl p-6">
                             <label for="cilj" class="block text-sm font-medium text-gray-700 mb-2">
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Cilj'; break;
-                                    case 'en': echo 'Goal'; break;
-                                    default: echo 'Циљ'; break;
-                                } ?>
+                                <?= __("aboutus.goal") ?>
                             </label>
                             <textarea id="cilj" rows="4"
                                 class="block w-full rounded-lg border border-gray-300 bg-white p-3 shadow-sm placeholder-gray-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
-                                placeholder="<?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Unesite cilj...'; break;
-                                        case 'en': echo 'Enter goal...'; break;
-                                        default: echo 'Унесите циљ...'; break;
-                                    }
-                                ?>"
+                                placeholder="<?= __("aboutus.enter_goal") ?>"
                             ><?= htmlspecialchars($aboutUsData['goal'] ?? '') ?></textarea>
                             <button id="goal"
                                 class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all shadow">
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Sačuvaj cilj'; break;
-                                    case 'en': echo 'Save goal'; break;
-                                    default: echo 'Сачувај циљ'; break;
-                                } ?>
+                                <?= __("aboutus.save_goal") ?>
                             </button>
                         </div>
 
                         <!-- Mission -->
                         <div class="glass-panel rounded-2xl p-6">
                             <label for="misija" class="block text-sm font-medium text-gray-700 mb-2">
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Misija'; break;
-                                    case 'en': echo 'Mission'; break;
-                                    default: echo 'Мисија'; break;
-                                } ?>
+                                <?= __("aboutus.mission") ?>
                             </label>
                             <textarea id="misija" rows="4"
                                 class="block w-full rounded-lg border border-gray-300 bg-white p-3 shadow-sm placeholder-gray-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
-                                placeholder="<?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Unesite misiju...'; break;
-                                        case 'en': echo 'Enter mission...'; break;
-                                        default: echo 'Унесите мисију...'; break;
-                                    }
-                                ?>"
+                                placeholder="<?= __("aboutus.enter_mission") ?>"
                             ><?= htmlspecialchars($aboutUsData['mission'] ?? '') ?></textarea>
                             <button id="mission"
                                 class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all shadow">
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Sačuvaj misiju'; break;
-                                    case 'en': echo 'Save mission'; break;
-                                    default: echo 'Сачувај мисију'; break;
-                                } ?>
+                                <?= __("aboutus.save_mission") ?>
                             </button>
                         </div>
                     </div>
@@ -242,19 +207,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div class="glass-panel rounded-2xl p-6">
                         <div class="flex justify-between items-center mb-6">
                             <h2 class="text-xl font-semibold text-gray-800">
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Zaposleni'; break;
-                                    case 'en': echo 'Employees'; break;
-                                    default: echo 'Запослени'; break;
-                                } ?></h2>
+                                <?= __("aboutus.employees") ?></h2>
                             <button id="addTeamMemberBtn"
                                 class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow">
                                 <i class="fas fa-plus mr-2"></i>
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Dodaj člana'; break;
-                                    case 'en': echo 'Add member'; break;
-                                    default: echo 'Додај члана'; break;
-                                } ?>
+                                <?= __("aboutus.add_member") ?>
                             </button>
                         </div>
 
@@ -263,32 +220,16 @@ $totalPages = (int) ceil($totalCount / $limit);
                                 <thead class="bg-gray-100">
                                     <tr>
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
-                                            <?php switch ($locale) {
-                                                case 'sr': echo 'Ime'; break;
-                                                case 'en': echo 'First name'; break;
-                                                default: echo 'Име'; break;
-                                            } ?>
+                                            <?= __("aboutus.first_name") ?>
                                         </th>
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
-                                            <?php switch ($locale) {
-                                                case 'sr': echo 'Prezime'; break;
-                                                case 'en': echo 'Last name'; break;
-                                                default: echo 'Презиме'; break;
-                                            } ?>
+                                            <?= __("aboutus.last_name") ?>
                                         </th>
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
-                                            <?php switch ($locale) {
-                                                case 'sr': echo 'Pozicija'; break;
-                                                case 'en': echo 'Position'; break;
-                                                default: echo 'Позиција'; break;
-                                            } ?>
+                                            <?= __("aboutus.position") ?>
                                         </th>
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
-                                            <?php switch ($locale) {
-                                                case 'sr': echo 'Akcije'; break;
-                                                case 'en': echo 'Actions'; break;
-                                                default: echo 'Акције'; break;
-                                            } ?>
+                                            <?= __("aboutus.actions") ?>
                                         </th>
                                     </tr>
                                 </thead>
@@ -333,23 +274,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div
                         class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-4 border border-gray-100">
                         <div class="hidden md:block text-sm text-gray-700">
-                            <?php switch ($locale) {
-                                case 'sr': echo 'Prikazano'; break;
-                                case 'en': echo 'Showing'; break;
-                                default: echo 'Приказано'; break;
-                            } ?>
+                            <?= __("aboutus.showing") ?>
                             <span class="font-medium"><?= count($teamMembers) ?></span>
-                            <?php switch ($locale) {
-                                case 'sr': echo 'od'; break;
-                                case 'en': echo 'of'; break;
-                                default: echo 'од'; break;
-                            } ?>
+                            <?= __("aboutus.of") ?>
                             <span class="font-medium"><?= $totalCount ?></span>
-                            <?php switch ($locale) {
-                                case 'sr': echo 'kontakata'; break;
-                                case 'en': echo 'contacts'; break;
-                                default: echo 'контаката'; break;
-                            } ?>
+                            <?= __("aboutus.contacts") ?>
                         </div>
                         <nav class="flex items-center gap-2">
                             <a href="?page=<?= $page - 1 ?>&search=<?= urlencode($search) ?>&sort=<?= $sort ?>"
@@ -379,11 +308,7 @@ $totalPages = (int) ceil($totalCount / $limit);
         <div class="bg-white rounded-2xl shadow-xl w-full max-w-md mx-4">
             <div class="border-b border-gray-200 px-6 py-4">
                 <h3 class="text-xl font-semibold text-gray-800" id="modalTitle">
-                    <?php switch ($locale) {
-                        case 'sr': echo 'Dodaj novog člana tima'; break;
-                        case 'en': echo 'Add new team member'; break;
-                        default: echo 'Додај новог члана тима'; break;
-                    } ?>
+                    <?= __("aboutus.add_new_member") ?>
                 </h3>
             </div>
             <form id="teamMemberForm" class="p-6">
@@ -391,11 +316,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                 <div class="mb-4">
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?php switch ($locale) {
-                            case 'sr': echo 'Ime'; break;
-                            case 'en': echo 'First name'; break;
-                            default: echo 'Име'; break;
-                        } ?>
+                        <?= __("aboutus.member_first_name") ?>
                     </label>
                     <input type="text" id="name" name="name" required
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all">
@@ -403,11 +324,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                 <div class="mb-4">
                     <label for="surname" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?php switch ($locale) {
-                            case 'sr': echo 'Prezime'; break;
-                            case 'en': echo 'Last name'; break;
-                            default: echo 'Презиме'; break;
-                        } ?>
+                        <?= __("aboutus.member_last_name") ?>
                     </label>
                     <input type="text" id="surname" name="surname" required
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all">
@@ -415,11 +332,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                 <div class="mb-4">
                     <label for="position" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?php switch ($locale) {
-                            case 'sr': echo 'Pozicija'; break;
-                            case 'en': echo 'Position'; break;
-                            default: echo 'Позиција'; break;
-                        } ?>
+                        <?= __("aboutus.member_position") ?>
                     </label>
                     <input type="text" id="position" name="position" required
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all">
@@ -427,11 +340,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                 <div class="mb-6">
                     <label for="biography" class="block text-sm font-medium text-gray-700 mb-1">
-                        <?php switch ($locale) {
-                            case 'sr': echo 'Biografija'; break;
-                            case 'en': echo 'Biography'; break;
-                            default: echo 'Биографија'; break;
-                        } ?>
+                        <?= __("aboutus.biography") ?>
                     </label>
                     <textarea id="biography" name="biography" rows="4"
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"></textarea>
@@ -440,19 +349,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="flex justify-end space-x-3 pt-4">
                     <button type="button" id="cancelMemberBtn"
                         class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-all">
-                        <?php switch ($locale) {
-                            case 'sr': echo 'Otkaži'; break;
-                            case 'en': echo 'Cancel'; break;
-                            default: echo 'Откажи'; break;
-                        } ?>
+                        <?= __("aboutus.cancel") ?>
                     </button>
                     <button type="submit"
                         class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow">
-                        <?php switch ($locale) {
-                            case 'sr': echo 'Sačuvaj'; break;
-                            case 'en': echo 'Save'; break;
-                            default: echo 'Сачувај'; break;
-                        } ?>
+                        <?= __("aboutus.save") ?>
                     </button>
                 </div>
             </form>
@@ -460,61 +361,11 @@ $totalPages = (int) ceil($totalCount / $limit);
     </div>
 
     <script>
-        <?php
-        switch ($locale) {
-            case 'sr': // latinica
-                $emptyGoal = 'Polje "Cilj" ne može biti prazno.';
-                $savedGoal = 'Cilj uspešno sačuvan!';
-                $saveError = 'Greška pri čuvanju: ';
-                $consoleError = 'Greška:';
-                $emptyMission = 'Polje "Misija" ne može biti prazno.';
-                $saveSuccess = 'Misija uspešno sačuvana!';
-                $addMemberTitle = 'Dodaj novog člana tima';
-                $editMemberTitle = 'Uredi člana tima';
-                $confirmDelete = 'Da li ste sigurni da želite da obrišete ovog člana tima?';
-                $successDelete = 'Član tima uspešno obrisan!';
-                $errorDelete = 'Greška pri brisanju';
-                $requiredFieldsMsg = 'Ime, prezime i pozicija su obavezna polja';
-                $saveSuccessMsg = 'Član tima uspešno sačuvan!';
-                break;
-            case 'en': // engleski
-                $emptyGoal = 'Goal field cannot be empty.';
-                $savedGoal = 'Goal saved successfully!';
-                $saveError = 'Error while saving: ';
-                $consoleError = 'Error:';
-                $emptyMission = 'Mission field cannot be empty.';
-                $saveSuccess = 'Mission saved successfully!';
-                $addMemberTitle = 'Add new team member';
-                $editMemberTitle = 'Edit team member';
-                $confirmDelete = 'Are you sure you want to delete this team member?';
-                $successDelete = 'Team member successfully deleted!';
-                $errorDelete = 'Error while deleting';
-                $requiredFieldsMsg = 'Name, surname and position are required fields';
-                $saveSuccessMsg = 'Team member saved successfully!';
-                break;
-            default: // ćirilica
-                $emptyGoal = 'Поље "Циљ" не може бити празно.';
-                $savedGoal = 'Циљ успешно сачуван!';
-                $saveError = 'Грешка при чувању: ';
-                $consoleError = 'Грешка:';
-                $emptyMission = 'Поље "Мисија" не може бити празно.';
-                $saveSuccess = 'Мисија успешно сачувана!';
-                $addMemberTitle = 'Додај новог члана тима';
-                $editMemberTitle = 'Уреди члана тима';
-                $confirmDelete = 'Да ли сте сигурни да желите да обришете овог члана тима?';
-                $successDelete = 'Члан тима успешно обрисан!';
-                $errorDelete = 'Грешка при брисању';
-                $requiredFieldsMsg = 'Име, презиме и позиција су обавезна поља';
-                $saveSuccessMsg = 'Члан тима успешно сачуван!';
-                break;
-        }
-        ?>
-
         document.addEventListener('DOMContentLoaded', () => {
             // Goal and mission saving
             document.getElementById('goal').addEventListener('click', async () => {
                 const goal = document.getElementById('cilj').value.trim();
-                if (!goal) return alert("<?= $emptyGoal ?>");
+                if (!goal) return alert("<?= __("aboutus.empty_goal") ?>");
 
                 try {
                     const response = await fetch('/aboutus/1', {
@@ -523,17 +374,17 @@ $totalPages = (int) ceil($totalCount / $limit);
                         body: JSON.stringify({ goal })
                     });
 
-                    if (!response.ok) throw new Error("<?= $saveError ?>" + response.statusText);
-                    alert("<?= $savedGoal ?>");
+                    if (!response.ok) throw new Error("<?= __("aboutus.save_error") ?>" + response.statusText);
+                    alert("<?= __("aboutus.saved_goal") ?>");
                 } catch (e) {
-                    console.error("<?= $consoleError ?>", e);
-                    alert("<?= $saveError ?>" + e.message);
+                    console.error("<?= __("aboutus.console_error") ?>", e);
+                    alert("<?= __("aboutus.save_error") ?>" + e.message);
                 }
             });
 
             document.getElementById('mission').addEventListener('click', async () => {
                 const mission = document.getElementById('misija').value.trim();
-                if (!mission) return alert('<?= $emptyMission ?>');
+                if (!mission) return alert('<?= __("aboutus.empty_mission") ?>');
 
                 try {
                     const response = await fetch('/aboutus/1', {
@@ -542,11 +393,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                         body: JSON.stringify({ mission })
                     });
 
-                    if (!response.ok) throw new Error('<?= $saveError ?>');
-                    alert('<?= $saveSuccess ?>');
+                    if (!response.ok) throw new Error('<?= __("aboutus.save_error") ?>');
+                    alert('<?= __("aboutus.save_success") ?>');
                 } catch (e) {
-                    console.error('<?= $consoleError ?>', e);
-                    alert('<?= $saveError ?>: ' + e.message);
+                    console.error('<?= __("aboutus.console_error") ?>', e);
+                    alert('<?= __("aboutus.save_error") ?>: ' + e.message);
                 }
             });
 
@@ -559,7 +410,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
             // Open modal for adding new member
             addBtn.addEventListener('click', () => {
-                modalTitle.textContent = '<?= $addMemberTitle ?>';
+                modalTitle.textContent = '<?= __("aboutus.add_member_title") ?>';
                 memberForm.reset();
                 document.getElementById('memberId').value = '';
                 modal.classList.remove('hidden');
@@ -568,7 +419,7 @@ $totalPages = (int) ceil($totalCount / $limit);
             // Open modal for editing existing member
             document.querySelectorAll('.edit-member').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    modalTitle.textContent = '<?= $editMemberTitle ?>';
+                    modalTitle.textContent = '<?= __("aboutus.edit_member_title") ?>';
                     document.getElementById('memberId').value = btn.dataset.id;
                     document.getElementById('name').value = btn.dataset.name;
                     document.getElementById('surname').value = btn.dataset.surname;
@@ -582,19 +433,19 @@ $totalPages = (int) ceil($totalCount / $limit);
             document.querySelectorAll('.delete-member').forEach(btn => {
                 btn.addEventListener('click', async () => {
                     const id = btn.dataset.id;
-                    if (!confirm('<?= $confirmDelete ?>')) return;
+                    if (!confirm('<?= __("aboutus.confirm_delete") ?>')) return;
 
                     try {
                         const response = await fetch(`/employees/${id}`, {
                             method: 'DELETE'
                         });
 
-                        if (!response.ok) throw new Error('<?= $errorDelete ?>');
-                        alert('<?= $successDelete ?>');
+                        if (!response.ok) throw new Error('<?= __("aboutus.error_delete") ?>');
+                        alert('<?= __("aboutus.success_delete") ?>');
                         location.reload();
                     } catch (e) {
-                        console.error('<?= $consoleError ?>', e);
-                        alert('<?= $errorDelete ?>: ' + e.message);
+                        console.error('<?= __("aboutus.console_error") ?>', e);
+                        alert('<?= __("aboutus.error_delete") ?>: ' + e.message);
                     }
                 });
             });
@@ -618,7 +469,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                 // Validation
                 if (!formData.name || !formData.surname || !formData.position) {
-                    return alert('<?= $requiredFieldsMsg ?>');
+                    return alert('<?= __("aboutus.required_fields_msg") ?>');
                 }
 
                 try {
@@ -631,13 +482,13 @@ $totalPages = (int) ceil($totalCount / $limit);
                         body: JSON.stringify(formData)
                     });
 
-                    if (!response.ok) throw new Error('<?= $saveError ?>');
-                    alert('<?= $saveSuccessMsg ?>');
+                    if (!response.ok) throw new Error('<?= __("aboutus.save_error") ?>');
+                    alert('<?= __("aboutus.save_success_msg") ?>');
                     modal.classList.add('hidden');
                     location.reload();
                 } catch (e) {
-                    console.error('<?= $consoleError ?>', e);
-                    alert('<?= $saveError ?> ' + e.message);
+                    console.error('<?= __("aboutus.console_error") ?>', e);
+                    alert('<?= __("aboutus.save_error") ?> ' + e.message);
                 }
             });
         });

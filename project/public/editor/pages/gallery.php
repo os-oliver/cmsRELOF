@@ -19,14 +19,8 @@ $documentModal = new Gallery();
     offset: $offset,
     sort: $sort,
     search: $search,
-
 );
 $totalPages = (int) ceil($totalCount / $limit);
-
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -34,13 +28,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?php switch ($locale) {
-            case 'sr': echo 'Galerija - Administracija'; break;
-            case 'en': echo 'Gallery - Administration'; break;
-            default: echo 'Галерија - Администрација'; break;
-        } ?>
-    </title>
+    <title><?= __('gallery.page_title') ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -97,7 +85,6 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
     <?php
     require_once __DIR__ . "/../components/documentViewer.php" ?>
 
-
     <div class="flex h-screen overflow-hidden">
         <?php
         $activeTab = 'gallery';
@@ -110,35 +97,20 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">
-                            <?php switch ($locale) {
-                                case 'sr': echo 'Upravljanje galerijom'; break;
-                                case 'en': echo 'Gallery Management'; break;
-                                default: echo 'Управљање галеријом'; break;
-                            } ?>
+                            <?= __('gallery.management_title') ?>
                         </h1>
                         <p class="text-light-600">
-                            <?php switch ($locale) {
-                                case 'sr': echo 'Pregled i upravljanje slikama galerije'; break;
-                                case 'en': echo 'View and manage gallery images'; break;
-                                default: echo 'Преглед и управљање сликама галерије'; break;
-                            } ?>
+                            <?= __('gallery.management_subtitle') ?>
                         </p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-3">
-
                         <button id="newPicture"
                             class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
                             <i class="fas fa-plus text-sm"></i>
-                            <?php switch ($locale) {
-                                case 'sr': echo 'Dodaj novu sliku'; break;
-                                case 'en': echo 'Add new image'; break;
-                                default: echo 'Додај нову слику'; break;
-                            } ?>
+                            <?= __('gallery.add_image') ?>
                         </button>
                     </div>
                 </div>
-
-
 
                 <!-- Search and Filters -->
                 <form method="GET" action="" class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
@@ -149,51 +121,27 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                 <i class="fas fa-search h-5 w-5 text-gray-400"></i>
                             </div>
                             <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
-                                placeholder="<?php switch ($locale) {
-                                    case 'sr': echo 'Pretraži slike...'; break;
-                                    case 'en': echo 'Search images...'; break;
-                                    default: echo 'Претражи слике...'; break;
-                                } ?>"
+                                placeholder="<?= __('gallery.search_placeholder') ?>"
                                 class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl …">
                         </div>
-
-
-
-
 
                         <!-- Sort -->
                         <select name="sort" class="px-4 py-3 border rounded-xl …">
                             <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Najnovije prvo'; break;
-                                    case 'en': echo 'Latest first'; break;
-                                    default: echo 'Најновије прво'; break;
-                                } ?>
+                                <?= __('gallery.latest_first') ?>
                             </option>
                             <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Najstarije prvo'; break;
-                                    case 'en': echo 'Oldest first'; break;
-                                    default: echo 'Најстарије прво'; break;
-                                } ?>
+                                <?= __('gallery.oldest_first') ?>
                             </option>
                             <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>
-                                <?php switch ($locale) {
-                                    case 'sr': echo 'Po nazivu'; break;
-                                    case 'en': echo 'By name'; break;
-                                    default: echo 'По називу'; break;
-                                } ?>
+                                <?= __('gallery.by_name') ?>
                             </option>
                         </select>
 
                         <!-- Submit -->
                         <button type="submit"
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl …">
-                            <?php switch ($locale) {
-                                case 'sr': echo 'Primeni'; break;
-                                case 'en': echo 'Apply'; break;
-                                default: echo 'Примени'; break;
-                            } ?>
+                            <?= __('gallery.apply') ?>
                         </button>
 
                         <!-- Add Document Button -->
@@ -201,7 +149,6 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                     </div>
 
                 </form>
-
 
                 <!-- Gallery Slots -->
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
@@ -223,26 +170,17 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             </div>
 
                             <!-- Glassmorphism Overlay with Action Icons -->
-                            <div
-                                class="absolute inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                            <div class="absolute inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
                                 <div class="flex gap-6">
 
                                     <button id="editGallery"
                                         class="gallery-edit edit w-20 h-20 hover:bg-white/30 text-black rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                                        title="<?php switch ($locale) {
-                                            case 'sr': echo 'Uredi'; break;
-                                            case 'en': echo 'Edit'; break;
-                                            default: echo 'Уреди'; break;
-                                        } ?>">
+                                        title="<?= __('gallery.edit') ?>">
                                         <i class="hover:text-yellow-500 fas fa-pencil-alt text-3xl"></i>
                                     </button>
                                     <button id="deleteGallery" onclick="deletePicture(<?= $image['id'] ?>)"
                                         class="delete w-20 h-20 hover:bg-white/30 text-black rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                                        title="<?php switch ($locale) {
-                                            case 'sr': echo 'Obriši'; break;
-                                            case 'en': echo 'Delete'; break;
-                                            default: echo 'Обриши'; break;
-                                        } ?>">
+                                        title="<?= __('gallery.delete') ?>">
                                         <i class="hover:text-red-500 fas fa-trash text-3xl"></i>
                                     </button>
                                 </div>
@@ -250,8 +188,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
                             <div class="p-6">
                                 <!-- Title -->
-                                <h3
-                                    class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
                                     <?= htmlspecialchars($image['title']) ?>
                                 </h3>
 
@@ -268,14 +205,9 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             </div>
 
                             <div class="px-5 z-40 relative py-4 bg-gray-50 border-t border-gray-100">
-                                <button
-                                    class="view-image w-full  flex items-center justify-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-blue-50">
+                                <button class="view-image w-full  flex items-center justify-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-blue-50">
                                     <i class="fas fa-expand fa-sm"></i>
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Prikaži celu sliku'; break;
-                                        case 'en': echo 'View full image'; break;
-                                        default: echo 'Прикажи целу слику'; break;
-                                    } ?>
+                                    <?= __('gallery.view_full_image') ?>
                                 </button>
                             </div>
                         </div>
@@ -286,40 +218,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                     <div class="relative max-w-4xl w-full mx-auto px-4">
                         <button id="closeFullImageModal"
                             class="absolute top-4 right-4 text-red-600 text-7xl hover:text-red-900 transition-all">&times;</button>
-                        <img id="modalFullImage" src="" alt="<?php switch ($locale) {
-                            case 'sr': echo 'Prikaz slike'; break;
-                            case 'en': echo 'Image preview'; break;
-                            default: echo 'Приказ слике'; break;
-                        } ?>"
+                        <img id="modalFullImage" src="" alt="<?= __('gallery.image_preview') ?>"
                             class="w-full h-auto max-h-[90vh] object-contain rounded-xl shadow-lg border-4 border-white">
                     </div>
                 </div>
 
                 <!-- Pagination -->
-                <div
-                    class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                <div class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                     <div class="hidden md:block text-sm text-gray-700">
-                        <?php
-                            switch ($locale) {
-                                case 'sr':
-                                    $text = "Prikazano";
-                                    $ofText = "od";
-                                    $imagesText = "slika";
-                                    break;
-                                case 'en':
-                                    $text = "Shown";
-                                    $ofText = "of";
-                                    $imagesText = "images";
-                                    break;
-                                default:
-                                    $text = "Приказано";
-                                    $ofText = "од";
-                                    $imagesText = "слика";
-                                    break;
-                            }
-                        ?>
-                        <?= $text ?> <span class="font-medium"><?= count($images) ?></span> <?= $ofText ?> <span
-                            class="font-medium"><?= $totalCount ?></span> <?= $imagesText ?>
+                        <?= __('gallery.pagination_summary', ['shown' => count($images), 'of' => $totalCount]) ?>
                     </div>
 
                     <nav class="flex items-center gap-2">
@@ -352,11 +259,8 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
         </div>
     </div>
 
-
     <script src="/assets/js/dashboard/gallery.js">
     </script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
-
 </body>
-
 </html>

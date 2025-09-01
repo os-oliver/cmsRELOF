@@ -11,11 +11,7 @@ error_log($name);
                 <i class="fas fa-cog text-white"></i>
             </div>
             <h2 class="text-xl font-bold">
-                <?php switch ($locale) {
-                    case 'sr': echo "Admin panel"; break;
-                    case 'en': echo "Admin panel"; break;
-                    default: echo "Админ панел"; break;
-                } ?>
+                <?= __("superadmin_sidebar.admin_panel") ?>
             </h2>
         </div>
         <button class="lg:hidden text-white text-xl" id="closeSidebarBtn">
@@ -28,43 +24,27 @@ error_log($name);
             class="nav-item <?= $activeTab == 'pages' ? 'active' : '' ?> flex items-center space-x-3 p-3 rounded-lg">
             <i class="fas fa-file w-5 text-center"></i>
             <span>
-            <?php switch ($locale) {
-                case 'sr': echo "Stranice"; break;
-                case 'en': echo "Pages"; break;
-                default: echo "Странице"; break;
-            } ?>
+                <?= __("superadmin_sidebar.pages") ?>
             </span>
         </a>
         <a href="/sadmin/korisnici"
             class="nav-item <?= $activeTab == 'users' ? 'active' : '' ?>  flex items-center space-x-3 p-3 rounded-lg">
             <i class="fas fa-users w-5 text-center"></i>
             <span>
-            <?php switch ($locale) {
-                case 'sr': echo "Korisnici"; break;
-                case 'en': echo "Users"; break;
-                default: echo "Корисници"; break;
-            } ?>
+                <?= __("superadmin_sidebar.users") ?>
             </span>
         </a>
         <a href="/sadmin/kategorije"
             class="nav-item flex items-center space-x-3 p-3 rounded-lg  <?= $activeTab == 'categories' ? 'active' : '' ?>">
             <i class="fas fa-chart-bar w-5 text-center"></i>
             <span>
-            <?php switch ($locale) {
-                case 'sr': echo "Kategorije"; break;
-                case 'en': echo "Categories"; break;
-                default: echo "Категорије"; break;
-            } ?>
+                <?= __("superadmin_sidebar.categories") ?>
             </span>
         </a>
         <a href="" class="nav-item flex items-center space-x-3 p-3 rounded-lg">
             <i class="fas fa-cog w-5 text-center"></i>
             <span>
-            <?php switch ($locale) {
-                case 'sr': echo "Podešavanja"; break;
-                case 'en': echo "Settings"; break;
-                default: echo "Подешавања"; break;
-            } ?>
+                <?= __("superadmin_sidebar.settings") ?>
             </span>
         </a>
     </nav>
