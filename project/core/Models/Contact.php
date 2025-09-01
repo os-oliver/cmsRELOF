@@ -54,4 +54,12 @@ class Contact
             ':poruka' => $data['poruka'],
         ]);
     }
+
+    public function count(): int
+    {
+        $sql = $this->pdo->query("SELECT COUNT(*) as total FROM contacts");
+        $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+        return (int) $row['total'];
+    }
 }

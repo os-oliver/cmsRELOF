@@ -22,7 +22,7 @@
         </h3>
         <ul>
             <li class="mb-1">
-                <a href="/dashboard" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'dashboard')
+                <a href="/kontrolna-tabla" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'dashboard')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:bg-primary-900' ?>">
                     <i
@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="/dashboard/dokumenti" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'documents')
+                <a href="/kontrolna-tabla/dokumenti" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'documents')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i
@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="/dashboard/dogadjaji" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'events')
+                <a href="/kontrolna-tabla/dogadjaji" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'events')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-calendar-alt text-primary-500 mr-3 text-lg w-6 text-center"></i>
@@ -54,7 +54,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="/dashboard/gallery" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'gallery')
+                <a href="/kontrolna-tabla/galerija" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'gallery')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-image text-primary-500 mr-3 text-lg w-6 text-center"></i>
@@ -64,7 +64,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="/dashboard/promotion" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'promotion')
+                <a href="/kontrolna-tabla/promocija" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'promotion')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-users text-primary-500 mr-3 text-lg w-6 text-center"></i>
@@ -74,7 +74,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="/dashboard/poruke" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'chats')
+                <a href="/kontrolna-tabla/poruke" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'chats')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-comments text-primary-500 mr-3 text-lg w-6 text-center"></i>
@@ -84,7 +84,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="/dashboard/o-nama" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'aboutus')
+                <a href="/kontrolna-tabla/o-nama" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'aboutus')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
                     <i class="fas fa-info text-primary-500 mr-3 text-lg w-6 text-center"></i>
