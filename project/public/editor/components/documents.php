@@ -7,23 +7,11 @@
 <div class="lg:col-span-2 content-card p-5 rounded-xl border border-gray-200">
     <div class="flex justify-between items-center mb-6">
         <h3 class="text-lg font-semibold text-gray-800">
-            <?php
-            switch ($locale) {
-                case 'sr': echo 'Nedavni dokumenti'; break;
-                case 'en': echo 'Recent documents'; break;
-                default: echo 'Недавни документи'; break;
-            }
-            ?>
+            <?= __("documents.recent_documents") ?>
         </h3>
         <a href="/kontrolna-tabla/dokumenti" class="text-primary-600 hover:text-primary-800 flex items-center">
             <span>
-                <?php
-                switch ($locale) {
-                    case 'sr': echo 'Pogledaj sve'; break;
-                    case 'en': echo 'View all'; break;
-                    default: echo 'Погледај све'; break;
-                }
-                ?>
+                <?= __("documents.view_all") ?>
             </span>
             <i class="fas fa-chevron-right ml-1 text-sm"></i>
         </a>
@@ -58,13 +46,7 @@
         class="mt-6 w-full py-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-lg flex items-center justify-center font-medium transition-all">
         <i class="fas fa-plus mr-2"></i>
         <span>
-        <?php
-        switch ($locale) {
-            case 'sr': echo 'Dodaj novi dokument'; break;
-            case 'en': echo 'Add new document'; break;
-            default: echo 'Додај нови документ'; break;
-        }
-        ?>
+        <?= __("documents.add_new_document") ?>
         </span>
         
     </button>

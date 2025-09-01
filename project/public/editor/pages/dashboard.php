@@ -18,10 +18,6 @@ $categories = $eventModel->getCategories();
 [$events, $totalEvents] = $eventModel->all();
 [$documents, $totalDocuments] = $documentModal->list(3);
 $DocumentCategories = $documentModal->getCategories();
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -30,11 +26,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php switch ($locale) {
-            case 'sr': echo "Kontrolni panel - Administracija"; break;
-            case 'en': echo "Control panel - Administration"; break;
-            default: echo "Контролни панел - Администрација"; break;
-        } ?>
+        <?= __("dashboard.admin_panel") ?>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/assets/css/dashboard/structure.css">
@@ -64,13 +56,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div class="flex justify-between items-center">
                             <div>
                                 <p class="text-sm text-primary-600">
-                                    <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Ukupno pregleda'; break;
-                                        case 'en': echo 'Total views'; break;
-                                        default: echo 'Укупно прегледа'; break;
-                                    }
-                                    ?>
+                                    <?= __("dashboard.total_views") ?>
                                 </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $views ?></p>
                             </div>
@@ -84,11 +70,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div class="flex justify-between items-center">
                             <div>
                                 <p class="text-sm text-primary-600">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Dokumenti'; break;
-                                        case 'en': echo 'Documents'; break;
-                                        default: echo 'Документи'; break;
-                                    } ?>
+                                    <?= __("dashboard.documents") ?>
                                 </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalDocuments ?></p>
                             </div>
@@ -102,11 +84,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div class="flex justify-between items-center">
                             <div>
                                 <p class="text-sm text-primary-600">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Događaji'; break;
-                                        case 'en': echo 'Events'; break;
-                                        default: echo 'Догађаји'; break;
-                                    } ?>
+                                    <?= __("dashboard.events") ?>
                                 </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalEvents ?></p>
                             </div>
@@ -120,11 +98,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div class="flex justify-between items-center">
                             <div>
                                 <p class="text-sm text-primary-600">
-                                    <?php switch ($locale) {
-                                        case 'sr': echo 'Korisnici'; break;
-                                        case 'en': echo 'Users'; break;
-                                        default: echo 'Корисници'; break;
-                                    } ?>
+                                    <?= __("dashboard.users") ?>
                                 </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalUsers ?></p>
                             </div>

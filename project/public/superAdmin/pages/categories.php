@@ -3,11 +3,6 @@ use App\Controllers\AuthController;
 use App\Models\Category;
 AuthController::requireAdmin();
 
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-
 // Simulated database functions
 $tabActive = $_GET['tab'] ?? 'events'; // 'events' or 'documents'
 
@@ -35,13 +30,7 @@ $totalPages = (int) ceil($totalCount / $limit);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php
-            switch ($locale) {
-                case 'sr': echo 'Admin Panel - Upravljanje Kategorijama'; break;
-                case 'en': echo 'Admin Panel - Category Management'; break;
-                default: echo 'Админ Панел - Управљање Категоријама'; break;
-            }
-        ?>
+        <?= __('categories.admin_panel_title') ?>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -316,34 +305,16 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
                             <h1 class="text-3xl font-bold text-gray-900 mb-2">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Upravljanje kategorijama'; break;
-                                        case 'en': echo 'Category management'; break;
-                                        default: echo 'Управљање категоријама'; break;
-                                    }
-                                ?>
+                                <?= __('categories.admin_panel') ?>
                             </h1>
                             <p class="text-gray-600">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Dodajte, uredite ili uklonite kategorije sistema'; break;
-                                        case 'en': echo 'Add, edit, or remove system categories'; break;
-                                        default: echo 'Додајте, уредите или уклоните категорије система'; break;
-                                    }
-                                ?>
+                                <?= __('categories.admin_panel_description') ?>
                             </p>
                         </div>
                         <button onclick="openCategoryModal('create')"
                             class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2">
                             <i class="fas fa-plus"></i>
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Nova kategorija'; break;
-                                        case 'en': echo 'New category'; break;
-                                        default: echo 'Нова категорија'; break;
-                                    }
-                                ?>
+                                <?= __('categories.new_category') ?>
                         </button>
                     </div>
                 </div>
@@ -352,23 +323,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="flex gap-2 mb-6">
                     <button class="tab-button <?= $tabActive === 'events' ? 'active' : '' ?>"
                         onclick="switchTab('events')">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'Kategorije događaja'; break;
-                                    case 'en': echo 'Event categories'; break;
-                                    default: echo 'Категорије догађаја'; break;
-                                }
-                            ?>
+                            <?= __('categories.event_categories') ?>
                     </button>
                     <button class="tab-button <?= $tabActive === 'documents' ? 'active' : '' ?>"
                         onclick="switchTab('documents')">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'Kategorije dokumenata'; break;
-                                    case 'en': echo 'Document categories'; break;
-                                    default: echo 'Категорије докумената'; break;
-                                }
-                            ?>
+                            <?= __('categories.document_categories') ?>
                     </button>
                 </div>
 
@@ -379,31 +338,13 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
                                 <tr>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Naziv'; break;
-                                                case 'en': echo 'Name'; break;
-                                                default: echo 'Назив'; break;
-                                            }
-                                        ?>
+                                        <?= __('categories.name') ?>
                                     </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Boja'; break;
-                                                case 'en': echo 'Color'; break;
-                                                default: echo 'Боја'; break;
-                                            }
-                                        ?>
+                                        <?= __('categories.color') ?>
                                     </th>
                                     <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
-                                        <?php
-                                            switch ($locale) {
-                                                case 'sr': echo 'Akcije'; break;
-                                                case 'en': echo 'Actions'; break;
-                                                default: echo 'Акције'; break;
-                                            }
-                                        ?>
+                                        <?= __('categories.actions') ?>
                                     </th>
                                 </tr>
                             </thead>
@@ -482,13 +423,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div class="p-6 border-b border-gray-200">
                         <div class="flex items-center justify-between">
                             <h3 class="text-2xl font-bold text-gray-900" id="modalTitle">
-                                <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Nova kategorija'; break;
-                                        case 'en': echo 'New category'; break;
-                                        default: echo 'Нова категорија'; break;
-                                    }
-                                ?>
+                                <?= __('categories.new_category_cat_modal') ?>
                             </h3>
                             <button onclick="closeCategoryModal()"
                                 class="text-gray-400 hover:text-gray-600 transition-colors">
@@ -504,26 +439,14 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <div class="grid grid-cols-1 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <?php
-                                    switch ($locale) {
-                                        case 'sr': echo 'Naziv kategorije'; break;
-                                        case 'en': echo 'Category name'; break;
-                                        default: echo 'Назив категорије'; break;
-                                    }
-                                ?>
+                                    <?= __('categories.category_name') ?>
                             </label>
                                 <input type="text" id="categoryName" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Boja'; break;
-                                            case 'en': echo 'Color'; break;
-                                            default: echo 'Боја'; break;
-                                        }
-                                    ?>
+                                    <?= __('categories.color_cat_modal') ?>
                                 </label>
                                 <div class="flex items-center gap-4">
                                     <input type="color" id="colorPicker" value="#6366F1"
@@ -532,13 +455,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                                         class="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                                 </div>
                                 <p class="text-sm text-gray-500 mt-2">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Unesite HEX kod boje ili koristite izbornik boja'; break;
-                                            case 'en': echo 'Enter HEX color code or use the color picker'; break;
-                                            default: echo 'Унесите "HEX" код боје или користите изборник боја'; break;
-                                        }
-                                    ?>
+                                    <?= __('categories.color_help') ?>
                                 </p>
                             </div>
                         </div>
@@ -548,23 +465,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <button type="submit"
                                 class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                                 <i class="fas fa-save mr-2"></i>
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Sačuvaj kategoriju'; break;
-                                            case 'en': echo 'Save category'; break;
-                                            default: echo 'Сачувај категорију'; break;
-                                        }
-                                    ?>
+                                    <?= __('categories.save_category') ?>
                             </button>
                             <button type="button" onclick="closeCategoryModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Otkaži'; break;
-                                            case 'en': echo 'Cancel'; break;
-                                            default: echo 'Откажи'; break;
-                                        }
-                                    ?>
+                                    <?= __('categories.cancel') ?>
                             </button>
                         </div>
                     </form>
@@ -583,55 +488,25 @@ $totalPages = (int) ceil($totalCount / $limit);
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-gray-900">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Obriši kategoriju'; break;
-                                            case 'en': echo 'Delete category'; break;
-                                            default: echo 'Обриши категорију'; break;
-                                        }
-                                    ?>
+                                    <?= __('categories.delete_category') ?>
                                 </h3>
                                 <p class="text-gray-600">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Ova akcija se ne može poništiti'; break;
-                                            case 'en': echo 'This action cannot be undone'; break;
-                                            default: echo 'Ова акција се не може поништити'; break;
-                                        }
-                                    ?>
+                                    <?= __('categories.cannot_undo') ?>
                                 </p>
                             </div>
                         </div>
                         <p class="text-gray-700 mb-6">
-                            <?php
-                                switch ($locale) {
-                                    case 'sr': echo 'Da li ste sigurni da želite da obrišete kategoriju'; break;
-                                    case 'en': echo 'Are you sure you want to delete the category'; break;
-                                    default: echo 'Да ли сте сигурни да желите да обришете категорију'; break;
-                                }
-                            ?>
+                            <?= __('categories.confirm_delete_message') ?>
                              <strong
                                 id="deleteCategoryName"></strong>?</p>
                         <div class="flex gap-3">
                             <button onclick="confirmDelete()"
                                 class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">    
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Da, obriši'; break;
-                                            case 'en': echo 'Yes, delete'; break;
-                                            default: echo 'Да, обриши'; break;
-                                        }
-                                    ?>
+                                    <?= __('categories.confirm_delete_button') ?>
                             </button>
                             <button onclick="closeDeleteModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-4 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                    <?php
-                                        switch ($locale) {
-                                            case 'sr': echo 'Otkaži'; break;
-                                            case 'en': echo 'Cancel'; break;
-                                            default: echo 'Откажи'; break;
-                                        }
-                                    ?>
+                                    <?= __('categories.cancel_button') ?>
                             </button>
                         </div>
                     </div>
@@ -701,27 +576,13 @@ $totalPages = (int) ceil($totalCount / $limit);
             const modalTitle = document.getElementById('modalTitle');
             const form = document.getElementById('categoryForm');
             const categoryTypeInput = document.getElementById('categoryType');
-            const locale = "<?php echo $locale; ?>";
 
             if (categoryType) {
                 categoryTypeInput.value = categoryType;
             }
 
             if (mode === 'create') {
-                let titleText = '';
-
-                switch (locale) {
-                    case 'en':
-                        titleText = 'New category';
-                        break;
-                    case 'sr':
-                        titleText = 'Nova kategorija';
-                        break;
-                    case 'sr-Cyrl':
-                    default:
-                        titleText = 'Нова категорија';
-                        break;
-                }
+                let titleText = "<?= __('categories.new_category_cat_modal') ?>";
 
                 modalTitle.textContent = titleText;
                 form.reset();
@@ -733,21 +594,7 @@ $totalPages = (int) ceil($totalCount / $limit);
             } else if (mode === 'edit' && categoryId) {
                 const category = categories.find(c => c.id === categoryId);
                 if (category) {
-                    let titleText = '';
-
-                    switch (locale) {
-                        case 'en':
-                            titleText = 'Edit category';
-                            break;
-                        case 'sr':
-                            titleText = 'Uredi kategoriju';
-                            break;
-                        case 'sr-Cyrl':
-                        default:
-                            titleText = 'Уреди категорију';
-                            break;
-                    }
-
+                    let titleText = "<?= __('categories.edit_category_title') ?>";
                     modalTitle.textContent = titleText;
                     populateForm(category);
                     editingCategoryId = categoryId;
@@ -802,58 +649,21 @@ $totalPages = (int) ceil($totalCount / $limit);
                     let message;
 
                     if (data.success) {
-                        switch (locale) {
-                            case 'sr':
-                                message = formData.id ?
-                                    'Kategorija je uspešno ažurirana!' :
-                                    'Kategorija je uspešno kreirana!';
-                                break;
-                            case 'sr-Cyrl':
-                                message = formData.id ?
-                                    'Категорија је успешно ажурирана!' :
-                                    'Категорија је успешно креирана!';
-                                break;
-                            case 'en':
-                            default:
-                                message = formData.id ?
-                                    'Category updated successfully!' :
-                                    'Category created successfully!';
-                                break;
-                        }
+                        let message = formData.id ?
+                            "<?= __('categories.save_success_update') ?>" :
+                            "<?= __('categories.save_success_create') ?>";
 
                         showNotification(message, 'success');
                         closeCategoryModal();
                         setTimeout(() => location.reload(), 1000);
                     } else {
-                        switch (locale) {
-                            case 'sr':
-                                message = data.message || 'Greška prilikom čuvanja kategorije.';
-                                break;
-                            case 'sr-Cyrl':
-                                message = data.message || 'Грешка приликом чувања категорије.';
-                                break;
-                            case 'en':
-                            default:
-                                message = data.message || 'Error saving category.';
-                                break;
-                        }
-                        alert(message);
+                       message = data.message || "<?= __('categories.save_error') ?>";
+                       alert(message);
                     }
                 })
                 .catch(error => {
                     console.error('Greška:', error);
-                    switch (locale) {
-                        case 'sr':
-                            alert('Greška prilikom komunikacije sa serverom.');
-                            break;
-                        case 'sr-Cyrl':
-                            alert('Грешка приликом комуникације са сервером.');
-                            break;
-                        case 'en':
-                        default:
-                            alert('Error communicating with the server.');
-                            break;
-                    }
+                    alert("<?= __('categories.server_error') ?>");
                 });
         });
 
@@ -893,55 +703,18 @@ $totalPages = (int) ceil($totalCount / $limit);
                 })
                 .then(response => {
                     if (!response.ok) {
-                        let errorMessage;
-                        switch (locale) {
-                            case 'sr':
-                                errorMessage = 'Greška pri brisanju kategorije.';
-                                break;
-                            case 'sr-Cyrl':
-                                errorMessage = 'Грешка приликом брисања категорије.';
-                                break;
-                            case 'en':
-                            default:
-                                errorMessage = 'Error deleting category.';
-                                break;
-                        }
-                        throw new Error(errorMessage);
+                        throw new Error("<?= __('categories.error_delete') ?>");
                     }
                     return response.json();
                 })
                 .then(data => {
-                    let successMessage;
-                    switch (locale) {
-                        case 'sr':
-                            successMessage = 'Kategorija je uspešno obrisana!';
-                            break;
-                        case 'sr-Cyrl':
-                            successMessage = 'Категорија је успешно обрисана!';
-                            break;
-                        case 'en':
-                        default:
-                            successMessage = 'Category deleted successfully!';
-                            break;
-                    }
+                    let successMessage = "<?= __('categories.deleted_success') ?>";
                     showNotification(successMessage, 'success');
                     closeDeleteModal();
                     setTimeout(() => location.reload(), 1000);
                 })
                 .catch(error => {
-                    let errorMsg;
-                    switch (locale) {
-                        case 'sr':
-                            errorMsg = 'Greška: ' + error.message;
-                            break;
-                        case 'sr-Cyrl':
-                            errorMsg = 'Грешка: ' + error.message;
-                            break;
-                        case 'en':
-                        default:
-                            errorMsg = 'Error: ' + error.message;
-                            break;
-                    }
+                    let errorMsg = "<?= __('categories.error_prefix') ?>" + error.message;
                     showNotification(errorMsg, 'error');
                 });
             }
