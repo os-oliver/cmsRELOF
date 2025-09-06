@@ -1,4 +1,11 @@
 <?php
+
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
+session_start();
 use App\Models\Event;
 use App\Controllers\AuthController;
 AuthController::requireEditor();
@@ -14,20 +21,16 @@ $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
 [$events, $totalCount] = (new Event())->all(
+    $locale,
     limit: $limit,
     offset: $offset,
     search: $search,
-    category: $category,
-    status: $status,
-    sort: $sort,
+
 );
 $totalPages = (int) ceil($totalCount / $limit);
 $categories = (new Event())->getCategories();
 
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -37,9 +40,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?php switch ($locale) {
-            case 'sr': echo 'Događaji - Administracija'; break;
-            case 'en': echo 'Events - Administration'; break;
-            default: echo 'Догађаји - Администрација'; break;
+            case 'sr':
+                echo 'Događaji - Administracija';
+                break;
+            case 'en':
+                echo 'Events - Administration';
+                break;
+            default:
+                echo 'Догађаји - Администрација';
+                break;
         } ?>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -187,16 +196,28 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div>
                             <h1 class="text-3xl font-bold text-gray-900 mb-2">
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Upravljanje događajima'; break;
-                                    case 'en': echo 'Events Management'; break;
-                                    default: echo 'Управљање догађајима'; break;
+                                    case 'sr':
+                                        echo 'Upravljanje događajima';
+                                        break;
+                                    case 'en':
+                                        echo 'Events Management';
+                                        break;
+                                    default:
+                                        echo 'Управљање догађајима';
+                                        break;
                                 } ?>
                             </h1>
                             <p class="text-light-600">
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Upravljajte svojim događajima i aktivnostima'; break;
-                                    case 'en': echo 'Manage your events and activities'; break;
-                                    default: echo 'Управљајте својим догађајима и активностима'; break;
+                                    case 'sr':
+                                        echo 'Upravljajte svojim događajima i aktivnostima';
+                                        break;
+                                    case 'en':
+                                        echo 'Manage your events and activities';
+                                        break;
+                                    default:
+                                        echo 'Управљајте својим догађајима и активностима';
+                                        break;
                                 } ?>
                             </p>
                         </div>
@@ -206,9 +227,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                 class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
                                 <i class="fas fa-plus text-sm"></i>
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Dodaj Događaj'; break;
-                                    case 'en': echo 'Add Event'; break;
-                                    default: echo 'Додај Догађај'; break;
+                                    case 'sr':
+                                        echo 'Dodaj Događaj';
+                                        break;
+                                    case 'en':
+                                        echo 'Add Event';
+                                        break;
+                                    default:
+                                        echo 'Додај Догађај';
+                                        break;
                                 } ?>
                             </button>
                         </div>
@@ -225,20 +252,31 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                 </div>
                                 <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
                                     placeholder="<?php switch ($locale) {
-                                        case 'sr': echo 'Pretraži događaje...'; break;
-                                        case 'en': echo 'Search events...'; break;
-                                        default: echo 'Претражи догађаје...'; break;
-                                    } ?>"
-                                    class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl …">
+                                        case 'sr':
+                                            echo 'Pretraži događaje...';
+                                            break;
+                                        case 'en':
+                                            echo 'Search events...';
+                                            break;
+                                        default:
+                                            echo 'Претражи догађаје...';
+                                            break;
+                                    } ?>" class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl …">
                             </div>
 
                             <!-- Category Filter -->
                             <select name="category" class="px-4 py-3 border rounded-xl">
                                 <option value="">
                                     <?php switch ($locale) {
-                                        case 'sr': echo 'Sve kategorije'; break;
-                                        case 'en': echo 'All categories'; break;
-                                        default: echo 'Све категорије'; break;
+                                        case 'sr':
+                                            echo 'Sve kategorije';
+                                            break;
+                                        case 'en':
+                                            echo 'All categories';
+                                            break;
+                                        default:
+                                            echo 'Све категорије';
+                                            break;
                                     } ?>
                                 </option>
                                 <?php foreach ($categories as $category): ?>
@@ -254,16 +292,28 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             <select name="sort" class="px-4 py-3 border rounded-xl …">
                                 <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>
                                     <?php switch ($locale) {
-                                        case 'sr': echo 'Najnovije prvo'; break;
-                                        case 'en': echo 'Latest first'; break;
-                                        default: echo 'Најновије прво'; break;
+                                        case 'sr':
+                                            echo 'Najnovije prvo';
+                                            break;
+                                        case 'en':
+                                            echo 'Latest first';
+                                            break;
+                                        default:
+                                            echo 'Најновије прво';
+                                            break;
                                     } ?>
                                 </option>
                                 <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>
                                     <?php switch ($locale) {
-                                        case 'sr': echo 'Najstarije prvo'; break;
-                                        case 'en': echo 'Oldest first'; break;
-                                        default: echo 'Најстарије прво'; break;
+                                        case 'sr':
+                                            echo 'Najstarije prvo';
+                                            break;
+                                        case 'en':
+                                            echo 'Oldest first';
+                                            break;
+                                        default:
+                                            echo 'Најстарије прво';
+                                            break;
                                     } ?>
                                 </option>
 
@@ -272,9 +322,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             <button type="submit"
                                 class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl …">
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Primeni'; break;
-                                    case 'en': echo 'Apply'; break;
-                                    default: echo 'Примени'; break;
+                                    case 'sr':
+                                        echo 'Primeni';
+                                        break;
+                                    case 'en':
+                                        echo 'Apply';
+                                        break;
+                                    default:
+                                        echo 'Примени';
+                                        break;
                                 } ?>
                             </button>
 
@@ -289,9 +345,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <div class="p-6 border-b border-light-200">
                             <h2 class="text-xl font-semibold text-gray-900">
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Svi Događaji'; break;
-                                    case 'en': echo 'All Events'; break;
-                                    default: echo 'Сви Догађаји'; break;
+                                    case 'sr':
+                                        echo 'Svi Događaji';
+                                        break;
+                                    case 'en':
+                                        echo 'All Events';
+                                        break;
+                                    default:
+                                        echo 'Сви Догађаји';
+                                        break;
                                 } ?>
                             </h2>
                         </div>
@@ -302,41 +364,71 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?php switch ($locale) {
-                                                case 'sr': echo 'Događaj'; break;
-                                                case 'en': echo 'Event'; break;
-                                                default: echo 'Догађај'; break;
+                                                case 'sr':
+                                                    echo 'Događaj';
+                                                    break;
+                                                case 'en':
+                                                    echo 'Event';
+                                                    break;
+                                                default:
+                                                    echo 'Догађај';
+                                                    break;
                                             } ?>
                                         </th>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?php switch ($locale) {
-                                                case 'sr': echo 'Naziv'; break;
-                                                case 'en': echo 'Title'; break;
-                                                default: echo 'Назив'; break;
+                                                case 'sr':
+                                                    echo 'Naziv';
+                                                    break;
+                                                case 'en':
+                                                    echo 'Title';
+                                                    break;
+                                                default:
+                                                    echo 'Назив';
+                                                    break;
                                             } ?>
                                         </th>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?php switch ($locale) {
-                                                case 'sr': echo 'Datum i vreme'; break;
-                                                case 'en': echo 'Date and time'; break;
-                                                default: echo 'Датум и време'; break;
+                                                case 'sr':
+                                                    echo 'Datum i vreme';
+                                                    break;
+                                                case 'en':
+                                                    echo 'Date and time';
+                                                    break;
+                                                default:
+                                                    echo 'Датум и време';
+                                                    break;
                                             } ?>
                                         </th>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?php switch ($locale) {
-                                                case 'sr': echo 'Lokacija'; break;
-                                                case 'en': echo 'Location'; break;
-                                                default: echo 'Локација'; break;
+                                                case 'sr':
+                                                    echo 'Lokacija';
+                                                    break;
+                                                case 'en':
+                                                    echo 'Location';
+                                                    break;
+                                                default:
+                                                    echo 'Локација';
+                                                    break;
                                             } ?>
                                         </th>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?php switch ($locale) {
-                                                case 'sr': echo 'Akcije'; break;
-                                                case 'en': echo 'Actions'; break;
-                                                default: echo 'Акције'; break;
+                                                case 'sr':
+                                                    echo 'Akcije';
+                                                    break;
+                                                case 'en':
+                                                    echo 'Actions';
+                                                    break;
+                                                default:
+                                                    echo 'Акције';
+                                                    break;
                                             } ?>
                                         </th>
                                     </tr>
@@ -344,14 +436,14 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                 <tbody class="bg-white divide-y divide-light-200">
                                     <?php foreach ($events as $event): ?>
                                         <tr class="dataCard hover:bg-light-50 transition-colors"
-                                            data-id="<?= $event['id'] ?>"
+                                            data-id="<?= $event['event_id'] ?>"
                                             data-category="<?= htmlspecialchars($event['category_id']) ?>"
                                             data-title="<?= htmlspecialchars($event['title']) ?>"
                                             data-description="<?= htmlspecialchars($event['description']) ?>"
                                             data-date="<?= htmlspecialchars($event['date']) ?>"
                                             data-time="<?= htmlspecialchars($event['time']) ?>"
                                             data-location="<?= htmlspecialchars($event['location']) ?>"
-                                            data-naziv="<?= htmlspecialchars($event['naziv']) ?>">
+                                            data-naziv="<?= htmlspecialchars($event['category_name']) ?>">
 
                                             <td class="px-6 py-4">
                                                 <div class="flex items-center">
@@ -361,7 +453,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                                     </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-semibold text-gray-900">
-                                                            <?= htmlspecialchars($event['naziv']) ?>
+                                                            <?= htmlspecialchars($event['category_name']) ?>
                                                         </div>
                                                         <div class="text-sm text-light-500">
                                                             <?= htmlspecialchars($event['description']) ?>
@@ -389,18 +481,30 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                                     <button
                                                         class="edit p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition duration-200"
                                                         title="<?php switch ($locale) {
-                                                            case 'sr': echo 'Uredi'; break;
-                                                            case 'en': echo 'Edit'; break;
-                                                            default: echo 'Уреди'; break;
+                                                            case 'sr':
+                                                                echo 'Uredi';
+                                                                break;
+                                                            case 'en':
+                                                                echo 'Edit';
+                                                                break;
+                                                            default:
+                                                                echo 'Уреди';
+                                                                break;
                                                         } ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
-                                                    <button onclick="deleteFunk(<?= $event['id'] ?>)"
+                                                    <button onclick="deleteFunk(<?= $event['event_id'] ?>)"
                                                         class="delete p-2 text-red-600 hover:bg-red-50 rounded-lg transition duration-200"
                                                         title="<?php switch ($locale) {
-                                                            case 'sr': echo 'Obriši'; break;
-                                                            case 'en': echo 'Delete'; break;
-                                                            default: echo 'Обриши'; break;
+                                                            case 'sr':
+                                                                echo 'Obriši';
+                                                                break;
+                                                            case 'en':
+                                                                echo 'Delete';
+                                                                break;
+                                                            default:
+                                                                echo 'Обриши';
+                                                                break;
                                                         } ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
@@ -417,23 +521,23 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                             <div class="hidden md:block text-sm text-gray-700">
                                 <?php
-                                    switch ($locale) {
-                                        case 'sr':
-                                            $text = "Prikazano";
-                                            $ofText = "od";
-                                            $eventsText = "događaja";
-                                            break;
-                                        case 'en':
-                                            $text = "Shown";
-                                            $ofText = "of";
-                                            $eventsText = "events";
-                                            break;
-                                        default:
-                                            $text = "Приказано";
-                                            $ofText = "од";
-                                            $eventsText = "догађаја";
-                                            break;
-                                    }
+                                switch ($locale) {
+                                    case 'sr':
+                                        $text = "Prikazano";
+                                        $ofText = "od";
+                                        $eventsText = "događaja";
+                                        break;
+                                    case 'en':
+                                        $text = "Shown";
+                                        $ofText = "of";
+                                        $eventsText = "events";
+                                        break;
+                                    default:
+                                        $text = "Приказано";
+                                        $ofText = "од";
+                                        $eventsText = "догађаја";
+                                        break;
+                                }
                                 ?>
                                 <?= $text ?> <span class="font-medium"><?= count($events) ?></span> <?= $ofText ?> <span
                                     class="font-medium"><?= $totalCount ?></span> <?= $eventsText ?>

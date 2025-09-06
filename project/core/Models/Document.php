@@ -5,19 +5,51 @@ use App\Database;
 class Document
 {
     private $pdo;
+
     public function __construct()
     {
         $db = new Database();
         $this->pdo = $db->GetPDO();
     }
 
-    public function getCategories()
+    /**
+     * Dohvati sve kategorije sa poljem 'name' iz text tabele (staticki element: name)
+     * Vraća niz asoc. nizova: id, color_code, name
+     */
+    public function getCategories(string $lang = 'sr'): array
     {
-        $sql = "select * from category_document;";
-        $result = $this->pdo->query($sql);
-        return $result->fetchAll(\PDO::FETCH_ASSOC);
+        $sql = "
+            SELECT
+                c.id,
+                c.color_code,
+                MAX(CASE WHEN t.field_name = 'name' THEN t.content END) AS name
+            FROM category_document c
+            LEFT JOIN text t
+              ON t.source_table = 'category_document'
+              AND t.source_id = c.id
+              AND t.field_name = 'name'
+              AND t.lang = :lang
+            GROUP BY c.id
+            ORDER BY c.id ASC
+        ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':lang', $lang, \PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?: [];
     }
+
+    /**
+     * Lista dokumenata. Svaki dokument sadrži sada direktno:
+     * - title
+     * - description
+     * - category_id
+     * - category_name (iz text table za category_document.field_name = 'name')
+     * - category_color_code
+     *
+     * Vraća [ $documentsArray, $totalCount ]
+     */
     public function list(
+        string $lang = 'sr',
         int $limit = 10,
         int $offset = 0,
         string $search = '',
@@ -25,146 +57,88 @@ class Document
         string $status = '',
         string $sort = 'date_desc'
     ): array {
-        $sql = "SELECT SQL_CALC_FOUND_ROWS document.id,filepath,extension,datetime, fileSize,title,description,category_id,name,color_code FROM document join category_document on document.category_id=category_document.id WHERE 1=1";
-        $params = [':limit' => $limit, ':offset' => $offset];
+        // WHERE delovi i parametri (za COUNT i za glavni upit)
+        $where = [];
+        $having = '';
+        $params = [];
 
         if ($search !== '') {
-            $sql .= " AND (title LIKE :s1 OR description LIKE :s2)";
-            $params[':s1'] = "%{$search}%";
-            $params[':s2'] = "%{$search}%";
+            // Pretražujemo u text.content za dokument
+            $having = "having title like :sss";
+            $params[':sss'] = $search;
         }
         if ($category !== '') {
-            $sql .= " AND category_id = :category";
+            $where[] = "d.category_id = :category";
             $params[':category'] = $category;
         }
         if ($status !== '') {
-            $sql .= " AND status = :status";
+            $where[] = "d.status = :status";
             $params[':status'] = $status;
         }
 
-        $sql .= match ($sort) {
-            'date_asc' => " ORDER BY datetime ASC",
-            'title' => " ORDER BY title ASC",
-            default => " ORDER BY datetime DESC",
+        $order = match ($sort) {
+            'date_asc' => "ORDER BY d.datetime ASC",
+            'title' => "ORDER BY COALESCE(MAX(CASE WHEN td.field_name = 'title' THEN td.content END), d.title) ASC",
+            default => "ORDER BY d.datetime DESC",
         };
 
-        $sql .= " LIMIT :limit OFFSET :offset";
+        $whereSql = $where ? ' WHERE ' . implode(' AND ', $where) : '';
 
-        $stmt = $this->pdo->prepare($sql);
+        // COUNT (ukupno dokumenata sa istim WHERE uslovima)
+        $countSql = "SELECT COUNT(*) FROM document d" . $whereSql;
+        $countStmt = $this->pdo->prepare($countSql);
+        // bind count params
         foreach ($params as $k => $v) {
-            $stmt->bindValue($k, $v, in_array($k, [':limit', ':offset']) ? \PDO::PARAM_INT : \PDO::PARAM_STR);
+            $countStmt->bindValue($k, $v, \PDO::PARAM_STR);
         }
-        $stmt->execute();
+        $countStmt->execute();
+        $total = (int) $countStmt->fetchColumn();
 
-        $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        $total = (int) $this->pdo->query("SELECT FOUND_ROWS()")->fetchColumn();
+        // Glavni upit: pivotujemo title/description iz text-a i dohvatimo category_name iz text-a za kategoriju
+        $sql = "
+            SELECT
+                d.*,
+                -- title i description iz text tabele (ako postoje), fallback na kolone u document ako su prazni
+                MAX(CASE WHEN td.field_name = 'title' THEN td.content END) AS title,
+                MAX(CASE WHEN td.field_name = 'description' THEN td.content END) AS description,
+                c.id AS category_id,
+                c.color_code AS category_color_code,
+                MAX(CASE WHEN tc.field_name = 'name' THEN tc.content END) AS category_name
+            FROM document d
+            LEFT JOIN text td
+              ON td.source_table = 'document'
+              AND td.source_id = d.id
+              AND td.lang = :lang_doc
+            LEFT JOIN category_document c
+              ON c.id = d.category_id
+            LEFT JOIN text tc
+              ON tc.source_table = 'category_document'
+              AND tc.source_id = c.id
+              AND tc.field_name = 'name'
+              AND tc.lang = :lang_cat
+            GROUP BY d.id
+            {$having}
+            {$order}
+            LIMIT :limit OFFSET :offset
+        ";
 
-        return [$data, $total];
-    }
-
-
-
-
-    public function insert(array $data): bool
-    {
-        error_log('INSERTING DATA: ' . json_encode($data));
-
-        $stmt = $this->pdo->prepare("
-            INSERT INTO document ( filepath, extension, title, description,fileSize,category_id,datetime)
-            VALUES ( :filepath, :extension, :title, :description,:fileSize,:category,NOW())
-        ");
-        return $stmt->execute([
-            ':filepath' => $data['filepath'],
-            ':extension' => $data['extension'],
-            ':title' => $data['title'],
-            ':description' => $data['description'],
-            ':fileSize' => $data['fileSize'],
-            ':category' => $data['category'],
-        ]);
-    }
-
-    public function update(int $id, array $data): bool
-    {
-        $stmt = $this->pdo->prepare("
-            UPDATE document SET 
-                title = :name,
-                description = :description,
-                category_id = :idc
-               
-            WHERE id = :id
-        ");
-        return $stmt->execute([
-            ':name' => $data['title'],
-            ':description' => $data['description'],
-            ':idc' => $data['category'],
-
-            ':id' => $id
-        ]);
-    }
-
-    public function delete(int $id): bool
-    {
-        $stmt = $this->pdo->prepare("SELECT filepath FROM document WHERE id = :id");
-        $stmt->execute([':id' => $id]);
-        $filepath = $stmt->fetchColumn();
-
-        if ($filepath) {
-            $fullPath = __DIR__ . '/../../public/uploads/documents/' . basename($filepath);
-
-            if (file_exists($fullPath)) {
-                unlink($fullPath);
-            }
-        } else {
-            return false;
-        }
-
-        $stmt = $this->pdo->prepare("DELETE FROM document WHERE id = :id");
-        $result = $stmt->execute([':id' => $id]);
-
-        return $result;
-    }
-
-
-    public function search(string $term): array
-    {
-        // Prepare search term
-        $search = '%' . $term . '%';
-
-        // Retrieve all column names
-        $colsStmt = $this->pdo->query("SHOW COLUMNS FROM document");
-        $columns = $colsStmt->fetchAll(\PDO::FETCH_COLUMN);
-
-        // Build WHERE clauses with unique placeholders
-        $conditions = [];
-        $params = [];
-        foreach ($columns as $i => $col) {
-            $placeholder = ":search{$i}";
-            $conditions[] = "CAST(`{$col}` AS CHAR) LIKE {$placeholder}";
-            $params[$placeholder] = $search;
-        }
-        $where = implode(' OR ', $conditions);
-
-        $sql = "SELECT * FROM document WHERE {$where} ORDER BY id";
         $stmt = $this->pdo->prepare($sql);
 
-        // Bind each placeholder
-        foreach ($params as $ph => $val) {
-            $stmt->bindValue($ph, $val, \PDO::PARAM_STR);
+        // bind where params (string params)
+        foreach ($params as $k => $v) {
+            $stmt->bindValue($k, $v, \PDO::PARAM_STR);
         }
+
+        // bind language params za dokument i za kategoriju
+        $stmt->bindValue(':lang_doc', $lang, \PDO::PARAM_STR);
+        $stmt->bindValue(':lang_cat', $lang, \PDO::PARAM_STR);
+
+        // bind limit/offset kao integer
+        $stmt->bindValue(':limit', (int) $limit, \PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int) $offset, \PDO::PARAM_INT);
+
         $stmt->execute();
-
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-
-    public function countSearch(string $query): int
-    {
-        $like = '%' . $query . '%';
-        $stmt = $this->pdo->prepare("
-            SELECT COUNT(*) FROM document 
-            WHERE name LIKE :query OR title LIKE :query OR description LIKE :query
-        ");
-        $stmt->execute([':query' => $like]);
-        return (int) $stmt->fetchColumn();
+        $documents = $stmt->fetchAll(\PDO::FETCH_ASSOC) ?: [];
+        return [$documents, $total];
     }
 }

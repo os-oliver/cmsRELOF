@@ -1,10 +1,16 @@
 <?php
+session_start();
+
 use App\Models\Document;
 use App\Controllers\AuthController;
 
-// ✅ Autentikacija i osnovne informacije o korisniku
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
+
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
 // ✅ Filter parametri iz GET-a
 $search = $_GET['search'] ?? '';
@@ -18,23 +24,21 @@ $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
 // ✅ Dobavljanje dokumenata iz modela
-$documentModal = new Document();
-[$documents, $totalCount] = $documentModal->list(
-    limit: $limit,
-    offset: $offset,
-    search: $search,
-    category: $category,
-    status: $status,
-    sort: $sort,
+$documentModel = new Document();
+[$documents, $totalCount] = $documentModel->list(
+    $locale,
+    $limit,
+    $offset,
+    $search,
+    $category,
+    $status,
+    $sort,
+
 );
-
 $totalPages = (int) ceil($totalCount / $limit);
-$DocumentCategories = $documentModal->getCategories();
+$DocumentCategories = $documentModel->getCategories($locale);
 
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 
 // ✅ Konfiguracija fajlova po ekstenziji
 function getFileConfig(string $ext): array
@@ -81,9 +85,15 @@ function getFileConfig(string $ext): array
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?php switch ($locale) {
-            case 'sr': echo "Dokumenti - Administracija"; break;
-            case 'en': echo "Documents - Administration"; break;
-            default: echo "Документи - Администрација"; break;
+            case 'sr':
+                echo "Dokumenti - Administracija";
+                break;
+            case 'en':
+                echo "Documents - Administration";
+                break;
+            default:
+                echo "Документи - Администрација";
+                break;
         } ?>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -115,26 +125,45 @@ function getFileConfig(string $ext): array
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">
                             <?php switch ($locale) {
-                                case 'sr': echo 'Upravljanje dokumentima'; break;
-                                case 'en': echo 'Document Management'; break;
-                                default: echo 'Управљање документима'; break;
+                                case 'sr':
+                                    echo 'Upravljanje dokumentima';
+                                    break;
+                                case 'en':
+                                    echo 'Document Management';
+                                    break;
+                                default:
+                                    echo 'Управљање документима';
+                                    break;
                             } ?>
                         </h1>
                         <p class="text-light-600">
                             <?php switch ($locale) {
-                                case 'sr': echo 'Pregled i upravljanje službenim dokumentima'; break;
-                                case 'en': echo 'View and manage official documents'; break;
-                                default: echo 'Преглед и управљање службеним документима'; break;
+                                case 'sr':
+                                    echo 'Pregled i upravljanje službenim dokumentima';
+                                    break;
+                                case 'en':
+                                    echo 'View and manage official documents';
+                                    break;
+                                default:
+                                    echo 'Преглед и управљање службеним документима';
+                                    break;
                             } ?>
                         </p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <button id="btnNewDocument" class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
+                        <button id="btnNewDocument"
+                            class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
                             <i class="fas fa-plus text-sm"></i>
                             <?php switch ($locale) {
-                                case 'sr': echo 'Dodaj novi dokument'; break;
-                                case 'en': echo 'Add new document'; break;
-                                default: echo 'Додај нови документ'; break;
+                                case 'sr':
+                                    echo 'Dodaj novi dokument';
+                                    break;
+                                case 'en':
+                                    echo 'Add new document';
+                                    break;
+                                default:
+                                    echo 'Додај нови документ';
+                                    break;
                             } ?>
                         </button>
                     </div>
@@ -149,19 +178,30 @@ function getFileConfig(string $ext): array
                             </div>
                             <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
                                 placeholder="<?php switch ($locale) {
-                                    case 'sr': echo 'Pretraži dokumenta...'; break;
-                                    case 'en': echo 'Search documents...'; break;
-                                    default: echo 'Претражи документа...'; break;
-                                } ?>"
-                                class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl">
+                                    case 'sr':
+                                        echo 'Pretraži dokumenta...';
+                                        break;
+                                    case 'en':
+                                        echo 'Search documents...';
+                                        break;
+                                    default:
+                                        echo 'Претражи документа...';
+                                        break;
+                                } ?>" class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl">
                         </div>
 
                         <select name="category" class="px-4 py-3 border rounded-xl">
                             <option value="">
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Sve kategorije'; break;
-                                    case 'en': echo 'All categories'; break;
-                                    default: echo 'Све категорије'; break;
+                                    case 'sr':
+                                        echo 'Sve kategorije';
+                                        break;
+                                    case 'en':
+                                        echo 'All categories';
+                                        break;
+                                    default:
+                                        echo 'Све категорије';
+                                        break;
                                 } ?>
                             </option>
                             <?php foreach ($DocumentCategories as $doc): ?>
@@ -172,23 +212,41 @@ function getFileConfig(string $ext): array
                         <select name="sort" class="px-4 py-3 border rounded-xl">
                             <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Najnovije prvo'; break;
-                                    case 'en': echo 'Latest first'; break;
-                                    default: echo 'Најновије прво'; break;
+                                    case 'sr':
+                                        echo 'Najnovije prvo';
+                                        break;
+                                    case 'en':
+                                        echo 'Latest first';
+                                        break;
+                                    default:
+                                        echo 'Најновије прво';
+                                        break;
                                 } ?>
                             </option>
                             <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Najstarije prvo'; break;
-                                    case 'en': echo 'Oldest first'; break;
-                                    default: echo 'Најстарије прво'; break;
+                                    case 'sr':
+                                        echo 'Najstarije prvo';
+                                        break;
+                                    case 'en':
+                                        echo 'Oldest first';
+                                        break;
+                                    default:
+                                        echo 'Најстарије прво';
+                                        break;
                                 } ?>
                             </option>
                             <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Po nazivu'; break;
-                                    case 'en': echo 'By name'; break;
-                                    default: echo 'По називу'; break;
+                                    case 'sr':
+                                        echo 'Po nazivu';
+                                        break;
+                                    case 'en':
+                                        echo 'By name';
+                                        break;
+                                    default:
+                                        echo 'По називу';
+                                        break;
                                 } ?>
                             </option>
                         </select>
@@ -196,9 +254,15 @@ function getFileConfig(string $ext): array
                         <button type="submit"
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl">
                             <?php switch ($locale) {
-                                case 'sr': echo 'Primeni'; break;
-                                case 'en': echo 'Apply'; break;
-                                default: echo 'Примени'; break;
+                                case 'sr':
+                                    echo 'Primeni';
+                                    break;
+                                case 'en':
+                                    echo 'Apply';
+                                    break;
+                                default:
+                                    echo 'Примени';
+                                    break;
                             } ?>
                         </button>
                     </div>
@@ -206,6 +270,7 @@ function getFileConfig(string $ext): array
 
                 <!-- ✅ Lista dokumenata -->
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+
                     <?php foreach ($documents as $doc): ?>
                         <?php
                         $cfg = getFileConfig($doc['extension']);
@@ -218,7 +283,7 @@ function getFileConfig(string $ext): array
                             data-file-url="<?= htmlspecialchars($doc['filepath']) ?>"
                             data-file-type="<?= htmlspecialchars($doc['extension']) ?>"
                             data-date="<?= htmlspecialchars($doc['datetime']) ?>"
-                            data-name="<?= htmlspecialchars($doc['name']) ?>"
+                            data-category-name="<?= htmlspecialchars($doc['category_name']) ?>"
                             data-file-size="<?= htmlspecialchars($doc['fileSize']) ?> MB"
                             data-id="<?= htmlspecialchars($doc['id']) ?>">
 
@@ -254,7 +319,7 @@ function getFileConfig(string $ext): array
                                         </div>
                                         <div>
                                             <span
-                                                class="text-sm font-medium <?= $cfg['text_color'] ?> bg-<?= $cfg['color'] ?>-50 px-2 py-1 rounded-lg"><?= htmlspecialchars($doc['name']) ?></span>
+                                                class="text-sm font-medium <?= $cfg['text_color'] ?> bg-<?= $cfg['color'] ?>-50 px-2 py-1 rounded-lg"><?= htmlspecialchars($doc['category_name']) ?></span>
                                         </div>
                                     </div>
                                     <button
@@ -283,9 +348,15 @@ function getFileConfig(string $ext): array
                                         class="z-50 download-btn flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-blue-50">
                                         <i class="fas fa-download fa-sm"></i>
                                         <?php switch ($locale) {
-                                            case 'sr': echo 'Preuzmi'; break;
-                                            case 'en': echo 'Download'; break;
-                                            default: echo 'Преузми'; break;
+                                            case 'sr':
+                                                echo 'Preuzmi';
+                                                break;
+                                            case 'en':
+                                                echo 'Download';
+                                                break;
+                                            default:
+                                                echo 'Преузми';
+                                                break;
                                         } ?>
                                     </a>
                                     <div class="text-xs text-black bg-gray-100 px-2.5 py-1.5 rounded-full">
@@ -295,6 +366,7 @@ function getFileConfig(string $ext): array
                             </div>
                         </div>
                     <?php endforeach; ?>
+
                 </div>
 
                 <!-- ✅ Paginacija -->
@@ -302,24 +374,24 @@ function getFileConfig(string $ext): array
                     class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                     <div class="hidden md:block text-sm text-gray-700">
                         <?php
-                            switch ($locale) {
-                                case 'sr':
-                                    $text = "Prikazano";
-                                    $ofText = "od";
-                                    $documentsText = "dokumenata";
-                                    break;
-                                case 'en':
-                                    $text = "Shown";
-                                    $ofText = "of";
-                                    $documentsText = "documents";
-                                    break;
-                                default:
-                                    $text = "Приказано";
-                                    $ofText = "од";
-                                    $documentsText = "докумената";
-                                    break;
-                            }
-                            ?>
+                        switch ($locale) {
+                            case 'sr':
+                                $text = "Prikazano";
+                                $ofText = "od";
+                                $documentsText = "dokumenata";
+                                break;
+                            case 'en':
+                                $text = "Shown";
+                                $ofText = "of";
+                                $documentsText = "documents";
+                                break;
+                            default:
+                                $text = "Приказано";
+                                $ofText = "од";
+                                $documentsText = "докумената";
+                                break;
+                        }
+                        ?>
                         <?= $text ?> <span class="font-medium"><?= count($documents) ?></span> <?= $ofText ?> <span
                             class="font-medium"><?= $totalCount ?></span> <?= $documentsText ?>
                     </div>

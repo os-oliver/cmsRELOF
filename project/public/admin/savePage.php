@@ -1,5 +1,6 @@
 <?php
 use App\Controllers\AuthController;
+use App\Models\Text;
 AuthController::requireAdmin();
 
 // save.php
@@ -8,6 +9,8 @@ header('Content-Type: text/plain');
 // 1) Decode JSON input
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true);
+
+(new Text())->insertFromJson(json_decode(($data["texts"]), true));
 
 if (!isset($data['components'], $data['tree'])) {
     http_response_code(400);
@@ -20,13 +23,30 @@ $compDir = "$baseDir/landingPageComponents";
 $pagesDir = "$baseDir/pages";
 
 // Create directories if they don't exist
-if (!is_dir($baseDir))
-    mkdir($baseDir, 0755, true);
-if (!is_dir($compDir))
-    mkdir($compDir, 0755, true);
-if (!is_dir($pagesDir))
-    mkdir($pagesDir, 0755, true);
+function clearDirectory(string $dir): void
+{
+    if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
+        return;
+    }
 
+    $files = array_diff(scandir($dir), ['.', '..']);
+    foreach ($files as $file) {
+        $path = $dir . DIRECTORY_SEPARATOR . $file;
+        if (is_dir($path)) {
+            // Recursively delete subdirectories
+            clearDirectory($path);
+            rmdir($path);
+        } else {
+            unlink($path); // Delete file
+        }
+    }
+}
+
+// Example usage
+clearDirectory($baseDir);
+clearDirectory($compDir);
+clearDirectory($pagesDir);
 // 3) Save components to landingPageComponents directory
 $headerPath = null;
 $footerPath = null;
@@ -34,19 +54,39 @@ $sectionPaths = [];
 
 foreach ($data['components'] as $component) {
     foreach ($component as $filePath => $content) {
-        // Create nested directories if needed
+        // Kreiraj putanju i foldere ako ne postoje
         $fullPath = "$compDir/$filePath";
-
         $dirPath = dirname($fullPath);
-        if (!is_dir($dirPath))
-            mkdir($dirPath, 0755, true);
-        if (strpos($filePath, 'promocija.php') !== false) {
-            $content = $content . '\n' . $data['js'];
 
+        if (!is_dir($dirPath)) {
+            mkdir($dirPath, 0755, true);
         }
+
+        // Ako je fajl PHP, ubaci automaticText i JS
+        if (strpos($filePath, '.php') !== false) {
+            $automaticText = '<?php use App\Models\Text;
+
+if (isset($_GET[\'locale\'])) {
+    $_SESSION[\'locale\'] = $_GET[\'locale\'];
+}
+$locale = $_SESSION[\'locale\'] ?? \'sr-Cyrl\';
+$dynamicText = (new Text())->getDynamicText($locale);
+?>';
+
+            $content = $automaticText . "\n" . $content;
+            $content = $content . "\n" . $data['js'];
+        }
+
+        // Zameni HTML escape-ove sa pravim znakovima
+        $content = str_replace(['&lt;', '&gt;'], ['<', '>'], $content);
+
+        // Upisi u svoj fajl
         file_put_contents($fullPath, $content);
 
-        // Record paths for special components
+        // Ako hoces da index.php uvek bude poslednja verzija
+        file_put_contents("$baseDir/index.php", $content);
+
+        // Snimi putanje specijalnih komponenti
         if (strpos($filePath, 'header.php') !== false) {
             $headerPath = $filePath;
         } elseif (strpos($filePath, 'footer.php') !== false) {
@@ -57,13 +97,25 @@ foreach ($data['components'] as $component) {
     }
 }
 
+
 // 4) Create index.php with dynamic includes
 $indexContent = '';
 $indexContent = '<?php
-use App\Models\Event;
-[$events, $totalEvents] = (new Event)->all();
+
+
+session_start();
 use App\Models\Gallery;
-[$images, $totalEvents] = (new Gallery)->list();
+use App\Models\Event;
+use App\Models\Text;
+if (isset($_GET[\'locale\'])) {
+    $_SESSION[\'locale\'] = $_GET[\'locale\'];
+}
+$locale = $_SESSION[\'locale\'] ?? \'sr-Cyrl\';
+define(\'dynamicText\', (new Text())->getDynamicText($locale));
+
+[$events, $totalEvents] = (new Event)->all();
+$dynamicText = (new Text())->getDynamicText($locale);
+[$images, $totalEvents] = (new Gallery)->all();
 ?>';
 $indexContent .= '<!DOCTYPE html>
 <html lang="en">
@@ -122,12 +174,16 @@ function galleryBody($name, $data)
     $head = <<<'PHP'
     <?php
     use App\Models\Gallery;
-    
+    if (isset($_GET[\'locale\'])) {
+    $_SESSION[\'locale\'] = $_GET[\'locale\'];
+    }
+    $locale = $_SESSION[\'locale\'] ?? \'sr-Cyrl\';
+    define(\'dynamicText\', (new Text())->getDynamicText($locale));
     $limit = 6;
     $page = max(1, (int) ($_GET['page'] ?? 1));
     $offset = ($page - 1) * $limit;
     $documentModal = new Gallery();
-    [$images, $totalCount] = $documentModal->list(
+    [$images, $totalCount] = $documentModal->all(
         limit: $limit,
         offset: $offset
     );
@@ -423,7 +479,15 @@ HTML;
 }
 function basicBody($name, $data)
 {
-    $head = <<<HTML
+    $head = '
+        <?php
+        use App\Models\Text;
+        if (isset($_GET[\'locale\'])) {
+            $_SESSION[\'locale\'] = $_GET[\'locale\'];
+        }
+        $locale = $_SESSION[\'locale\'] ?? \'sr-Cyrl\';
+        define(\'dynamicText\', (new Text())->getDynamicText($locale));?>';
+    $head .= <<<HTML
     
         <!DOCTYPE html>
         <html lang="en">
@@ -645,12 +709,19 @@ function eventsBody($name, $data)
     $head = <<<'PHP'
         <?php
         use App\Models\Event;
+        use App\Models\Text;
+        if (isset($_GET['locale'])) {
+            $_SESSION['locale'] = $_GET['locale'];
+        }
+        $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+        define('dynamicText', (new Text())->getDynamicText($locale));
 
         $limit = 6;
         $page = max(1, (int) ($_GET['page'] ?? 1));
         $offset = ($page - 1) * $limit;
 
         [$events, $totalCount] = (new Event())->all(
+            $locale,
             limit: $limit,
             offset: $offset
         );
@@ -1226,8 +1297,13 @@ function documentsBody($name, $data)
     <?php
     use App\Models\Document;
     use App\Controllers\AuthController;
-    
-    AuthController::requireEditor();
+    use App\Models\Text;
+
+    if (isset(\$_GET['locale'])) {
+    \$_SESSION['locale'] = \$_GET['locale'];
+    }
+    \$locale = \$_SESSION['locale'] ?? 'sr-Cyrl';
+    define('dynamicText', (new Text())->getDynamicText(\$locale));
     
     // defaults
     \$search = \$_GET['search'] ?? '';

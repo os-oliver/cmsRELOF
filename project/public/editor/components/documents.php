@@ -9,9 +9,15 @@
         <h3 class="text-lg font-semibold text-gray-800">
             <?php
             switch ($locale) {
-                case 'sr': echo 'Nedavni dokumenti'; break;
-                case 'en': echo 'Recent documents'; break;
-                default: echo 'Недавни документи'; break;
+                case 'sr':
+                    echo 'Nedavni dokumenti';
+                    break;
+                case 'en':
+                    echo 'Recent documents';
+                    break;
+                default:
+                    echo 'Недавни документи';
+                    break;
             }
             ?>
         </h3>
@@ -19,9 +25,15 @@
             <span>
                 <?php
                 switch ($locale) {
-                    case 'sr': echo 'Pogledaj sve'; break;
-                    case 'en': echo 'View all'; break;
-                    default: echo 'Погледај све'; break;
+                    case 'sr':
+                        echo 'Pogledaj sve';
+                        break;
+                    case 'en':
+                        echo 'View all';
+                        break;
+                    default:
+                        echo 'Погледај све';
+                        break;
                 }
                 ?>
             </span>
@@ -31,17 +43,26 @@
 
     <div class="space-y-4">
 
+
         <?php foreach ($documents as $doc): ?>
 
             <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 flex items-start">
                 <div class="bg-primary-100 p-2 rounded-lg mr-4">
-                    <i class="fas fa-file-pdf text-primary-600 text-xl"></i>
+                    <?php
+                    $extIcon = match (strtolower($doc['extension'])) {
+                        'pdf' => 'fas fa-file-pdf text-red-600',
+                        'doc', 'docx' => 'fas fa-file-word text-blue-600',
+                        'xls', 'xlsx' => 'fas fa-file-excel text-green-600',
+                        default => 'fas fa-file text-gray-600'
+                    };
+                    ?>
+                    <i class="<?= $extIcon ?> text-xl"></i>
                 </div>
                 <div class="flex-1">
                     <h4 class="font-medium text-gray-800"><?= htmlspecialchars($doc['title']) ?></h4>
                     <div class="flex items-center text-sm text-gray-600 mt-2">
                         <span class="mr-4"><i class="far fa-folder mr-1"></i>
-                            <?= htmlspecialchars($doc['name']) ?></span>
+                            <?= htmlspecialchars($doc['title']) ?></span>
                         <span><i class="far fa-clock mr-1"></i>
                             <?= date('j. F Y. \u\  H:i\h', strtotime($doc['datetime'])); ?></span>
                     </div>
@@ -58,14 +79,20 @@
         class="mt-6 w-full py-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-lg flex items-center justify-center font-medium transition-all">
         <i class="fas fa-plus mr-2"></i>
         <span>
-        <?php
-        switch ($locale) {
-            case 'sr': echo 'Dodaj novi dokument'; break;
-            case 'en': echo 'Add new document'; break;
-            default: echo 'Додај нови документ'; break;
-        }
-        ?>
+            <?php
+            switch ($locale) {
+                case 'sr':
+                    echo 'Dodaj novi dokument';
+                    break;
+                case 'en':
+                    echo 'Add new document';
+                    break;
+                default:
+                    echo 'Додај нови документ';
+                    break;
+            }
+            ?>
         </span>
-        
+
     </button>
 </div>

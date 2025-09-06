@@ -1,8 +1,15 @@
 <?php
-use App\Controllers\GalleryController;
-use App\Models\Document;
+session_start();
+
+
 use App\Controllers\AuthController;
 use App\Models\Gallery;
+
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
@@ -12,21 +19,20 @@ $search = $_GET['search'] ?? '';
 $limit = 3;
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
-$documentModal = new Gallery();
+$galleryModal = new Gallery();
+$category = '';
+$status = '';
 // now pass filters into your Document model
-[$images, $totalCount] = $documentModal->list(
-    limit: $limit,
-    offset: $offset,
-    sort: $sort,
-    search: $search,
+[$images, $totalCount] = $galleryModal->all(
+    $locale,
+    $limit,
+    $offset,
+    $search,
+    $category,
 
 );
 $totalPages = (int) ceil($totalCount / $limit);
 
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -36,9 +42,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?php switch ($locale) {
-            case 'sr': echo 'Galerija - Administracija'; break;
-            case 'en': echo 'Gallery - Administration'; break;
-            default: echo 'Галерија - Администрација'; break;
+            case 'sr':
+                echo 'Galerija - Administracija';
+                break;
+            case 'en':
+                echo 'Gallery - Administration';
+                break;
+            default:
+                echo 'Галерија - Администрација';
+                break;
         } ?>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -111,16 +123,28 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">
                             <?php switch ($locale) {
-                                case 'sr': echo 'Upravljanje galerijom'; break;
-                                case 'en': echo 'Gallery Management'; break;
-                                default: echo 'Управљање галеријом'; break;
+                                case 'sr':
+                                    echo 'Upravljanje galerijom';
+                                    break;
+                                case 'en':
+                                    echo 'Gallery Management';
+                                    break;
+                                default:
+                                    echo 'Управљање галеријом';
+                                    break;
                             } ?>
                         </h1>
                         <p class="text-light-600">
                             <?php switch ($locale) {
-                                case 'sr': echo 'Pregled i upravljanje slikama galerije'; break;
-                                case 'en': echo 'View and manage gallery images'; break;
-                                default: echo 'Преглед и управљање сликама галерије'; break;
+                                case 'sr':
+                                    echo 'Pregled i upravljanje slikama galerije';
+                                    break;
+                                case 'en':
+                                    echo 'View and manage gallery images';
+                                    break;
+                                default:
+                                    echo 'Преглед и управљање сликама галерије';
+                                    break;
                             } ?>
                         </p>
                     </div>
@@ -130,9 +154,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
                             <i class="fas fa-plus text-sm"></i>
                             <?php switch ($locale) {
-                                case 'sr': echo 'Dodaj novu sliku'; break;
-                                case 'en': echo 'Add new image'; break;
-                                default: echo 'Додај нову слику'; break;
+                                case 'sr':
+                                    echo 'Dodaj novu sliku';
+                                    break;
+                                case 'en':
+                                    echo 'Add new image';
+                                    break;
+                                default:
+                                    echo 'Додај нову слику';
+                                    break;
                             } ?>
                         </button>
                     </div>
@@ -150,11 +180,16 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             </div>
                             <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
                                 placeholder="<?php switch ($locale) {
-                                    case 'sr': echo 'Pretraži slike...'; break;
-                                    case 'en': echo 'Search images...'; break;
-                                    default: echo 'Претражи слике...'; break;
-                                } ?>"
-                                class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl …">
+                                    case 'sr':
+                                        echo 'Pretraži slike...';
+                                        break;
+                                    case 'en':
+                                        echo 'Search images...';
+                                        break;
+                                    default:
+                                        echo 'Претражи слике...';
+                                        break;
+                                } ?>" class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl …">
                         </div>
 
 
@@ -165,23 +200,41 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <select name="sort" class="px-4 py-3 border rounded-xl …">
                             <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Najnovije prvo'; break;
-                                    case 'en': echo 'Latest first'; break;
-                                    default: echo 'Најновије прво'; break;
+                                    case 'sr':
+                                        echo 'Najnovije prvo';
+                                        break;
+                                    case 'en':
+                                        echo 'Latest first';
+                                        break;
+                                    default:
+                                        echo 'Најновије прво';
+                                        break;
                                 } ?>
                             </option>
                             <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Najstarije prvo'; break;
-                                    case 'en': echo 'Oldest first'; break;
-                                    default: echo 'Најстарије прво'; break;
+                                    case 'sr':
+                                        echo 'Najstarije prvo';
+                                        break;
+                                    case 'en':
+                                        echo 'Oldest first';
+                                        break;
+                                    default:
+                                        echo 'Најстарије прво';
+                                        break;
                                 } ?>
                             </option>
                             <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>
                                 <?php switch ($locale) {
-                                    case 'sr': echo 'Po nazivu'; break;
-                                    case 'en': echo 'By name'; break;
-                                    default: echo 'По називу'; break;
+                                    case 'sr':
+                                        echo 'Po nazivu';
+                                        break;
+                                    case 'en':
+                                        echo 'By name';
+                                        break;
+                                    default:
+                                        echo 'По називу';
+                                        break;
                                 } ?>
                             </option>
                         </select>
@@ -190,9 +243,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <button type="submit"
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl …">
                             <?php switch ($locale) {
-                                case 'sr': echo 'Primeni'; break;
-                                case 'en': echo 'Apply'; break;
-                                default: echo 'Примени'; break;
+                                case 'sr':
+                                    echo 'Primeni';
+                                    break;
+                                case 'en':
+                                    echo 'Apply';
+                                    break;
+                                default:
+                                    echo 'Примени';
+                                    break;
                             } ?>
                         </button>
 
@@ -230,18 +289,30 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                     <button id="editGallery"
                                         class="gallery-edit edit w-20 h-20 hover:bg-white/30 text-black rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
                                         title="<?php switch ($locale) {
-                                            case 'sr': echo 'Uredi'; break;
-                                            case 'en': echo 'Edit'; break;
-                                            default: echo 'Уреди'; break;
+                                            case 'sr':
+                                                echo 'Uredi';
+                                                break;
+                                            case 'en':
+                                                echo 'Edit';
+                                                break;
+                                            default:
+                                                echo 'Уреди';
+                                                break;
                                         } ?>">
                                         <i class="hover:text-yellow-500 fas fa-pencil-alt text-3xl"></i>
                                     </button>
                                     <button id="deleteGallery" onclick="deletePicture(<?= $image['id'] ?>)"
                                         class="delete w-20 h-20 hover:bg-white/30 text-black rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
                                         title="<?php switch ($locale) {
-                                            case 'sr': echo 'Obriši'; break;
-                                            case 'en': echo 'Delete'; break;
-                                            default: echo 'Обриши'; break;
+                                            case 'sr':
+                                                echo 'Obriši';
+                                                break;
+                                            case 'en':
+                                                echo 'Delete';
+                                                break;
+                                            default:
+                                                echo 'Обриши';
+                                                break;
                                         } ?>">
                                         <i class="hover:text-red-500 fas fa-trash text-3xl"></i>
                                     </button>
@@ -272,9 +343,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                     class="view-image w-full  flex items-center justify-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-blue-50">
                                     <i class="fas fa-expand fa-sm"></i>
                                     <?php switch ($locale) {
-                                        case 'sr': echo 'Prikaži celu sliku'; break;
-                                        case 'en': echo 'View full image'; break;
-                                        default: echo 'Прикажи целу слику'; break;
+                                        case 'sr':
+                                            echo 'Prikaži celu sliku';
+                                            break;
+                                        case 'en':
+                                            echo 'View full image';
+                                            break;
+                                        default:
+                                            echo 'Прикажи целу слику';
+                                            break;
                                     } ?>
                                 </button>
                             </div>
@@ -287,9 +364,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                         <button id="closeFullImageModal"
                             class="absolute top-4 right-4 text-red-600 text-7xl hover:text-red-900 transition-all">&times;</button>
                         <img id="modalFullImage" src="" alt="<?php switch ($locale) {
-                            case 'sr': echo 'Prikaz slike'; break;
-                            case 'en': echo 'Image preview'; break;
-                            default: echo 'Приказ слике'; break;
+                            case 'sr':
+                                echo 'Prikaz slike';
+                                break;
+                            case 'en':
+                                echo 'Image preview';
+                                break;
+                            default:
+                                echo 'Приказ слике';
+                                break;
                         } ?>"
                             class="w-full h-auto max-h-[90vh] object-contain rounded-xl shadow-lg border-4 border-white">
                     </div>
@@ -300,23 +383,23 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                     class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                     <div class="hidden md:block text-sm text-gray-700">
                         <?php
-                            switch ($locale) {
-                                case 'sr':
-                                    $text = "Prikazano";
-                                    $ofText = "od";
-                                    $imagesText = "slika";
-                                    break;
-                                case 'en':
-                                    $text = "Shown";
-                                    $ofText = "of";
-                                    $imagesText = "images";
-                                    break;
-                                default:
-                                    $text = "Приказано";
-                                    $ofText = "од";
-                                    $imagesText = "слика";
-                                    break;
-                            }
+                        switch ($locale) {
+                            case 'sr':
+                                $text = "Prikazano";
+                                $ofText = "od";
+                                $imagesText = "slika";
+                                break;
+                            case 'en':
+                                $text = "Shown";
+                                $ofText = "of";
+                                $imagesText = "images";
+                                break;
+                            default:
+                                $text = "Приказано";
+                                $ofText = "од";
+                                $imagesText = "слика";
+                                break;
+                        }
                         ?>
                         <?= $text ?> <span class="font-medium"><?= count($images) ?></span> <?= $ofText ?> <span
                             class="font-medium"><?= $totalCount ?></span> <?= $imagesText ?>

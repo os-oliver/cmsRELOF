@@ -1,1 +1,0 @@
-<div class="section-divider w-full bg-white"></div>

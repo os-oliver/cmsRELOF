@@ -100,55 +100,6 @@ const editor = grapesjs.init({
   canvas: { scripts: ["https://cdn.tailwindcss.com"] },
 });
 
-// Azuriranje tipova linkova
-function updateLinkType(options) {
-  editor.DomComponents.removeType("link");
-  editor.DomComponents.addType("link", {
-    isComponent: (el) => el.tagName === "A",
-    model: {
-      defaults: {
-        tagName: "a",
-        traits: [
-          { type: "select", name: "href", options },
-          { type: "text", name: "title" },
-          { type: "text", name: "data-role" },
-          {
-            type: "select",
-            name: "target",
-            options: [
-              { value: "_self", name: "Same window" },
-              { value: "_blank", name: "New window" },
-            ],
-          },
-        ],
-      },
-      init() {
-        this.listenTo(
-          this,
-          "change:href change:title change:data-role change:target",
-          this.updateAttrs
-        ).updateAttrs();
-      },
-      updateAttrs() {
-        const {
-          href = "#",
-          title = "",
-          "data-role": dr,
-          target = "_self",
-        } = this.attributes;
-        this.setAttributes({
-          href,
-          title,
-          target,
-          ...(dr && { "data-role": dr }),
-        });
-      },
-    },
-    view: { events: { click: (e) => e.preventDefault() } },
-  });
-}
-updateLinkType(pages.map((p) => ({ value: p.slug, name: p.title })));
-
 // Obrada selektovanih komponenti
 editor.on("component:selected", (comp) => {
   if (!comp) return;
@@ -413,7 +364,10 @@ editor.on("load", () => {
         comp.addAttributes({ href: "/" + text });
         comp.view.render();
         tree.push({ root: text });
-      } else if (comp.getClasses().includes(dropDownclass)) {
+      } else if (
+        comp.getClasses().includes(dropDownclass) &&
+        !comp.getClasses().includes("nonPage")
+      ) {
         let current;
         comp.components().forEach((ch) => {
           const tag = ch.get("tagName");
@@ -450,6 +404,8 @@ editor.on("load", () => {
 
   // Eksport cele stranice
   function fullPageExport() {
+    var texts = replaceTextAndBuildJSON();
+
     const bodyComponent = editor.DomComponents.getWrapper();
     const landingPageFiles = [];
     const tree = [];
@@ -489,8 +445,10 @@ editor.on("load", () => {
     });
 
     const css = editor.getCss();
+
     const fullHtml = editor.getHtml();
     const scripts = fullHtml.match(/<script[\s\S]*?<\/script>/gi) || [];
+
     const js = scripts.join("\n").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     console.log(
       JSON.stringify({
@@ -501,6 +459,7 @@ editor.on("load", () => {
         js: js,
       })
     );
+    console.log(texts);
     // Slanje podataka na server
     fetch("/savePage", {
       method: "POST",
@@ -510,6 +469,7 @@ editor.on("load", () => {
         typeOfInstitution: tipUstanove,
         components: landingPageFiles,
         tree: tree,
+        texts: texts,
         js: js,
       }),
     })
@@ -572,6 +532,49 @@ editor.on("load", () => {
     }
   });
 });
+
+function replaceTextAndBuildJSON() {
+  const bodyWrapper = editor.DomComponents.getWrapper();
+  const tagsToReplace = ["h1", "h2", "h3", "h4", "h5", "p"];
+  let counter = 0;
+  const textMap = {};
+
+  function traverseDOMNodes(node) {
+    node.childNodes.forEach((child) => {
+      if (
+        child.nodeType === Node.TEXT_NODE &&
+        child.textContent.trim() !== ""
+      ) {
+        textMap[counter] = child.textContent.trim();
+        child.textContent = `<?=$dynamicText[${counter}]?>`;
+        counter++;
+      } else if (child.nodeType === Node.ELEMENT_NODE) {
+        traverseDOMNodes(child);
+      }
+    });
+  }
+
+  function traverseComponents(components) {
+    components.each((component) => {
+      const tag = component.get("tagName");
+
+      if (tagsToReplace.includes(tag)) {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = component.toHTML();
+        traverseDOMNodes(tempDiv);
+        component.components().reset();
+        component.set("content", tempDiv.innerHTML);
+      }
+
+      if (component.components().length > 0) {
+        traverseComponents(component.components());
+      }
+    });
+  }
+
+  traverseComponents(bodyWrapper.components());
+  return JSON.stringify(textMap, null, 2);
+}
 
 // Registracija blokova
 Object.entries({

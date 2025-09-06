@@ -1,55 +1,28 @@
+<?php use App\Models\Text;
 
-        <?php
-        use App\Models\Text;
-        if (isset($_GET['locale'])) {
-            $_SESSION['locale'] = $_GET['locale'];
-        }
-        $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-        define('dynamicText', (new Text())->getDynamicText($locale));?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O nama</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-
-<script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    * { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#ire5rg{animation-delay:1s;}#ix7dwq{animation-delay:2s;}#i4txff{animation-delay:3s;}#ioqi65{background-image:radial-gradient(#344e41 1px, transparent 1px);background-size:20px 20px;}#ikxw08{clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);}#i8l02e{clip-path:polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);}#i0p9pf{border:0;}@layer utilities{.nav-link::after{content:&quot;&quot;;display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-card{clip-path:polygon(0px 0px, 100% 0px, 100% 85%, 95% 100%, 0px 100%);transition-behavior:normal;transition-duration:0.4s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.artistic-card:hover{transform:translateY(-10px);box-shadow:rgba(0, 0, 0, 0.2) 0px 20px 30px -10px;}.artistic-frame{position:relative;}.artistic-frame::before{content:&quot;&quot;;position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:&quot;&quot;;position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.category-badge{position:absolute;top:15px;right:15px;padding-top:5px;padding-right:12px;padding-bottom:5px;padding-left:12px;border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-right-radius:20px;border-bottom-left-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;backdrop-filter:blur(4px);z-index:20;}.hero-gradient{background-image:linear-gradient(135deg, rgb(245, 235, 224) 0%, rgb(212, 163, 115) 100%);background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}.section-divider{height:100px;background-image:url(&quot;data:image/svg+xml;utf8,&lt;svg xmlns=\&quot;http://www.w3.org/2000/svg\&quot; viewBox=\&quot;0 0 1200 120\&quot; preserveAspectRatio=\&quot;none\&quot;&gt;&lt;path d=\&quot;M1200 120L0 16.48 0 0 1200 0 1200 120z\&quot; fill=\&quot;%23f5ebe0\&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&quot;);background-position-x:initial;background-position-y:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 100px;}.floating{animation-duration:6s;animation-timing-function:ease-in-out;animation-delay:0s;animation-iteration-count:infinite;animation-direction:normal;animation-fill-mode:none;animation-play-state:running;animation-name:floating;animation-timeline:auto;animation-range-start:normal;animation-range-end:normal;}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
-  </style>
-
-</head>
-<body class="min-h-screen flex flex-col">
-
-<?php
-// O nama page header include
-require_once __DIR__ . '/../landingPageComponents/landingPage/divmobileMenu.php';
-require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+$dynamicText = (new Text())->getDynamicText($locale);
 ?>
-
-<main class=>
-<div>
-        <button id="increaseFontBtn"
-            class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"
-            aria-label="Increase font size">
-            A+
-        </button>
-    </div>
-  <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient">
-    <!-- Decorative background elements -->
-    <div class="absolute inset-0 z-0"></div>
-    <div class="relative z-10 w-full max-w-3xl mx-auto text-center">
-      <h1 class="text-5xl font-bold mb-4">O nama</h1>
-      <p class="text-xl">Podesiti O nama stranicu!</p>
-    </div>
-  </section>
-</main>
-<?php
-// O nama page footer include
-require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
-?>
-
+<section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient"><!-- Decorative background elements --><div class="absolute inset-0 z-0"><!-- Floating paint elements --><div class="absolute top-20 left-10 w-80 h-40 bg-clay opacity-15 transform rotate-12 rounded-full floating">
+            </div><div class="absolute bottom-40 right-20 w-64 h-32 bg-deep-teal opacity-10 transform -rotate-6 rounded-full floating" id="ire5rg"></div><div class="absolute top-1/3 left-1/4 w-64 h-64 bg-ochre opacity-10 floating" id="ix7dwq">
+            </div><div class="absolute top-1/2 right-1/3 w-32 h-32 bg-crimson opacity-10 rounded-full floating" id="i4txff"></div><!-- Pattern overlay --><div class="absolute inset-0 opacity-10" id="ioqi65">
+            </div><!-- Paint splatters --><div class="absolute top-1/4 right-1/5 w-24 h-24 bg-ochre opacity-10 rounded-full" id="ikxw08"></div><div class="absolute bottom-1/3 left-1/6 w-20 h-20 bg-terracotta opacity-10" id="i8l02e"></div></div><div class="container max-w-full mx-10 px-4 py-24 relative z-10"><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"><div class="max-w-2xl"><div class="mb-8"><span class="inline-block bg-sage text-slate px-4 py-1 rounded-full text-sm font-medium mb-6"><i class="fas fa-star mr-2"></i>Istaknuto ovog meseca
+                        </span><h1 class="text-5xl md:text-6xl font-display font-bold leading-tight text-slate mb-6"><h1 class="text-5xl md:text-6xl font-display font-bold leading-tight text-slate mb-6"><span class="block artistic-underline"><?=$dynamicText[4]?></span></h1></h1></div><div class="mb-10 relative pl-6 border-l-4 border-ochre"><p class="text-xl text-slate-700 leading-relaxed max-w-lg mb-6"><p class="text-xl text-slate-700 leading-relaxed max-w-lg mb-6"><?=$dynamicText[5]?></p></p><p class="text-slate-600 italic"><p class="text-slate-600 italic"><?=$dynamicText[6]?><span class="block font-medium text-terracotta mt-2"><?=$dynamicText[7]?></span></p></p></div><!-- Quick links --><div class="mt-10 flex flex-wrap gap-3"><a href="#" class="flex items-center text-slate-600 hover:text-terracotta transition-colors"><span class="w-3 h-3 bg-ochre rounded-full mr-2"></span>
+                            Trenutne izložbe
+                        </a><a href="#" class="flex items-center text-slate-600 hover:text-terracotta transition-colors"><span class="w-3 h-3 bg-royal-blue rounded-full mr-2"></span>
+                            Raspored filmova
+                        </a><a href="#" class="flex items-center text-slate-600 hover:text-terracotta transition-colors"><span class="w-3 h-3 bg-velvet rounded-full mr-2"></span>
+                            Pozorišne predstave
+                        </a><a href="#" class="flex items-center text-slate-600 hover:text-terracotta transition-colors"><span class="w-3 h-3 bg-deep-teal rounded-full mr-2"></span>
+                            Muzički događaji
+                        </a></div></div><!-- Cultural Showcase Grid --><div class="relative"><div class="grid grid-cols-2 gap-6"><!-- Art Exhibition --><div class="artistic-card h-80 rounded-xl overflow-hidden relative"><div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center transform scale-105 hover:scale-100 transition-transform duration-500">
+                            </div><div class="category-badge bg-ochre/80 text-paper">Umetnost</div><div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate/90 to-transparent p-4 text-paper"><h3 class="font-display font-bold"><h3 class="font-display font-bold"><?=$dynamicText[8]?></h3></h3><p class="text-sm"><p class="text-sm"><?=$dynamicText[9]?></p></p></div></div><!-- Film --><div class="artistic-card h-80 rounded-xl overflow-hidden relative mt-12"><div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center transform scale-105 hover:scale-100 transition-transform duration-500">
+                            </div><div class="category-badge bg-royal-blue/80 text-paper">Bioskop</div><div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate/90 to-transparent p-4 text-paper"><h3 class="font-display font-bold"><h3 class="font-display font-bold"><?=$dynamicText[10]?></h3></h3><p class="text-sm"><p class="text-sm"><?=$dynamicText[11]?></p></p></div></div><!-- Theater --><div class="artistic-card h-64 rounded-xl overflow-hidden relative"><div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center transform scale-105 hover:scale-100 transition-transform duration-500">
+                            </div><div class="category-badge bg-velvet/80 text-paper">Pozorište</div><div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate/90 to-transparent p-4 text-paper"><h3 class="font-display font-bold"><h3 class="font-display font-bold"><?=$dynamicText[12]?></h3></h3><p class="text-sm"><p class="text-sm"><?=$dynamicText[13]?></p></p></div></div><!-- Music --><div class="artistic-card h-64 rounded-xl overflow-hidden relative -mt-6"><div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center transform scale-105 hover:scale-100 transition-transform duration-500">
+                            </div><div class="category-badge bg-deep-teal/80 text-paper">Muzika</div><div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate/90 to-transparent p-4 text-paper"><h3 class="font-display font-bold"><h3 class="font-display font-bold"><?=$dynamicText[14]?></h3></h3><p class="text-sm"><p class="text-sm"><?=$dynamicText[15]?></p></p></div></div></div></div></div></div><!-- Floating info card --><div class="absolute bottom-20 right-20 z-20 hidden xl:block animate-bounce-slow"><div class="relative"><div class="w-66 h-auto bg-white/90 backdrop-blur-sm p-5 rounded-xl shadow-2xl border-2 border-ochre transform rotate-3"><div class="flex items-center mb-4"><div class="w-14 h-14 bg-sage rounded-full mr-3 flex items-center justify-center text-paper"><i class="fas fa-calendar-alt text-xl"></i></div><div><h4 class="font-display font-bold"><h4 class="font-display font-bold"><?=$dynamicText[16]?></h4></h4><p class="text-terracotta text-sm"><p class="text-terracotta text-sm"><?=$dynamicText[17]?></p></p></div></div><div class="space-y-2"><div class="flex justify-between text-sm"><span>Opšta:</span><span class="font-medium">1200 RSD</span></div><div class="flex justify-between text-sm"><span>Studenti/Penzioneri:</span><span class="font-medium">800 RSD</span></div><div class="flex justify-between text-sm"><span>Članovi:</span><span class="font-medium">Besplatno</span></div></div></div><div class="absolute -top-6 -right-6 w-12 h-12 bg-sage rounded-full flex items-center justify-center text-paper shadow-lg"><i class="fas fa-ticket-alt"></i></div></div></div><!-- Scrolling indicator --><div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"><div class="animate-bounce w-8 h-14 rounded-full border-2 border-terracotta flex justify-center p-1"><div class="w-2 h-2 bg-terracotta rounded-full animate-pulse"></div></div></div></section>
 <script>
 
         tailwind.config = {
@@ -314,6 +287,3 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
             observer.observe(el);
         });
     </script>
-
-</body>
-</html>

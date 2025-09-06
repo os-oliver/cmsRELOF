@@ -1,4 +1,5 @@
 <?php
+session_start();
 use App\Controllers\AuthController;
 use App\Controllers\VisitCounterController;
 use App\Models\Document;
@@ -7,6 +8,10 @@ use App\Models\Event;
 
 $documentModal = new Document;
 $eventModel = new Event;
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
@@ -15,13 +20,10 @@ error_log($name);
 $views = (new VisitCounterController())->getVisitCount();
 [$_, $totalUsers] = (new User())->list();
 $categories = $eventModel->getCategories();
-[$events, $totalEvents] = $eventModel->all();
-[$documents, $totalDocuments] = $documentModal->list(3);
+[$events, $totalEvents] = $eventModel->all($locale);
+[$documents, $totalDocuments] = $documentModal->list($locale, 3);
 $DocumentCategories = $documentModal->getCategories();
-if (isset($_GET['locale'])) {
-    $_SESSION['locale'] = $_GET['locale'];
-}
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -30,10 +32,19 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php switch ($locale) {
-            case 'sr': echo "Kontrolni panel - Administracija"; break;
-            case 'en': echo "Control panel - Administration"; break;
-            default: echo "Контролни панел - Администрација"; break;
+        <?php
+        echo $locale;
+
+        switch ($locale) {
+            case 'sr':
+                echo "Kontrolni panel - Administracija";
+                break;
+            case 'en':
+                echo "Control panel - Administration";
+                break;
+            default:
+                echo "Контролни панел - Администрација";
+                break;
         } ?>
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -66,9 +77,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                                 <p class="text-sm text-primary-600">
                                     <?php
                                     switch ($locale) {
-                                        case 'sr': echo 'Ukupno pregleda'; break;
-                                        case 'en': echo 'Total views'; break;
-                                        default: echo 'Укупно прегледа'; break;
+                                        case 'sr':
+                                            echo 'Ukupno pregleda';
+                                            break;
+                                        case 'en':
+                                            echo 'Total views:' . $locale;
+                                            break;
+                                        default:
+                                            echo 'Укупно прегледа';
+                                            break;
                                     }
                                     ?>
                                 </p>
@@ -85,9 +102,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             <div>
                                 <p class="text-sm text-primary-600">
                                     <?php switch ($locale) {
-                                        case 'sr': echo 'Dokumenti'; break;
-                                        case 'en': echo 'Documents'; break;
-                                        default: echo 'Документи'; break;
+                                        case 'sr':
+                                            echo 'Dokumenti';
+                                            break;
+                                        case 'en':
+                                            echo 'Documents';
+                                            break;
+                                        default:
+                                            echo 'Документи';
+                                            break;
                                     } ?>
                                 </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalDocuments ?></p>
@@ -103,9 +126,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             <div>
                                 <p class="text-sm text-primary-600">
                                     <?php switch ($locale) {
-                                        case 'sr': echo 'Događaji'; break;
-                                        case 'en': echo 'Events'; break;
-                                        default: echo 'Догађаји'; break;
+                                        case 'sr':
+                                            echo 'Događaji';
+                                            break;
+                                        case 'en':
+                                            echo 'Events';
+                                            break;
+                                        default:
+                                            echo 'Догађаји';
+                                            break;
                                     } ?>
                                 </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalEvents ?></p>
@@ -121,9 +150,15 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
                             <div>
                                 <p class="text-sm text-primary-600">
                                     <?php switch ($locale) {
-                                        case 'sr': echo 'Korisnici'; break;
-                                        case 'en': echo 'Users'; break;
-                                        default: echo 'Корисници'; break;
+                                        case 'sr':
+                                            echo 'Korisnici';
+                                            break;
+                                        case 'en':
+                                            echo 'Users';
+                                            break;
+                                        default:
+                                            echo 'Корисници';
+                                            break;
                                     } ?>
                                 </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalUsers ?></p>

@@ -1,8 +1,8 @@
 <?php
-    if (isset($_GET['locale'])) {
-        $_SESSION['locale'] = $_GET['locale'];
-    }
-    $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 ?>
 
 <!-- Events Section -->
@@ -10,20 +10,33 @@
     <div class="flex justify-between items-center mb-6">
         <h3 class="text-lg font-semibold text-gray-800">
             <?php
-                switch ($locale) {
-                    case 'sr': echo 'Predstojeći događaji u biblioteci'; break;
-                    case 'en': echo 'Upcoming events in the library'; break;
-                    default: echo 'Предстојећи догађаји у библиотеци'; break;
-                }
-            ?></h3>
+            switch ($locale) {
+                case 'sr':
+                    echo 'Predstojeći događaji u biblioteci';
+                    break;
+                case 'en':
+                    echo 'Upcoming events in the library';
+                    break;
+                default:
+                    echo 'Предстојећи догађаји у библиотеци';
+                    break;
+            }
+            ?>
+        </h3>
         <a href="/dashboard/dogadjaji" class="text-primary-600 hover:text-primary-800 flex items-center">
             <span>
                 <?php
-                    switch ($locale) {
-                        case 'sr': echo 'Pogledaj sve'; break;
-                        case 'en': echo 'View all'; break;
-                        default: echo 'Погледај све'; break;
-                    }
+                switch ($locale) {
+                    case 'sr':
+                        echo 'Pogledaj sve';
+                        break;
+                    case 'en':
+                        echo 'View all';
+                        break;
+                    default:
+                        echo 'Погледај све';
+                        break;
+                }
                 ?>
             </span>
             <i class="fas fa-chevron-right ml-1 text-sm"></i>
@@ -32,7 +45,7 @@
 
     <div class="space-y-4 max-h-80 overflow-y-auto">
         <?php foreach ($events as $event):
-            $eventType = strtolower($event['naziv']);
+            $eventType = strtolower($event['category_name']);
             $borderColor = $event['color_code'] ?? 'primary-500';
             ?>
             <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-<?php echo $borderColor; ?>">
@@ -78,11 +91,17 @@
         <i class="fas fa-plus mr-2"></i>
         <span>
             <?php
-                switch ($locale) {
-                    case 'sr': echo 'Dodaj događaj'; break;
-                    case 'en': echo 'Add event'; break;
-                    default: echo 'Додај догађај'; break;
-                }
+            switch ($locale) {
+                case 'sr':
+                    echo 'Dodaj događaj';
+                    break;
+                case 'en':
+                    echo 'Add event';
+                    break;
+                default:
+                    echo 'Додај догађај';
+                    break;
+            }
             ?>
         </span>
     </button>

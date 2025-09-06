@@ -1,138 +1,217 @@
 <?php
 namespace App\Models;
 use App\Database;
+
 class Event
 {
-
     private $pdo;
+
     public function __construct()
     {
         $db = new Database();
         $this->pdo = $db->GetPDO();
     }
-    public function getCategories()
+
+    /**
+     * Dohvata sve kategorije sa imenom i bojom
+     */
+    public function getCategories(): array
     {
-        $sql = "select id,naziv,color_code from kategorije_dogadjaja;";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        return $result;
-    }
-    public function search(string $term): array
-    {
-        $search = '%' . $term . '%';
-
-        // 1) Get all column names
-        $colsStmt = $this->pdo->query("SHOW COLUMNS FROM events");
-        $columns = $colsStmt->fetchAll(\PDO::FETCH_COLUMN);
-
-        // 2) Build dynamic WHERE clauses
-        $conds = array_map(
-            fn($col) => "CAST(`{$col}` AS CHAR) LIKE :search",
-            $columns
-        );
-        $where = implode(' OR ', $conds);
-
-        // 3) Prepare & execute
         $sql = "
-        SELECT e.*, k.naziv AS category_name, k.color_code
-          FROM events e
-     LEFT JOIN kategorije_dogadjaja k ON e.category_id = k.id
-         WHERE ($where)
-      ORDER BY e.date DESC, e.time DESC
-    ";
+            SELECT k.id,
+                   t.content AS naziv,
+                   k.color_code
+              FROM kategorije_dogadjaja k
+         LEFT JOIN text t 
+                ON t.source_id = k.id
+               AND t.source_table = 'kategorije_dogadjaja'
+               AND t.field_name = 'naziv'
+               AND t.lang = 'en'
+        ";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':search', $search, \PDO::PARAM_STR);
         $stmt->execute();
-
-        // 4) Fetch and return all matches
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Dohvata sve evente sa long-format tekstovima i nazivom kategorije
+     */
+    /**
+     * Dohvata sve evente sa long-format tekstovima i nazivom kategorije
+     */
     public function all(
+        string $lang = 'sr-Cyrl',
         int $limit = 10,
         int $offset = 0,
         string $search = '',
-        string $category = '',
-        string $status = '',
         string $sort = 'date_desc'
     ): array {
-        $sql = "SELECT SQL_CALC_FOUND_ROWS events.id ,events.location, events.category_id, events.title, events.description, events.date, events.time, events.created_at, events.image, kategorije_dogadjaja.naziv , kategorije_dogadjaja.color_code FROM events join kategorije_dogadjaja on events.category_id=kategorije_dogadjaja.id WHERE 1=1";
-        $params = [':limit' => $limit, ':offset' => $offset];
+        $where = [];
+        $params = [];
 
         if ($search !== '') {
-            $sql .= " AND (title LIKE :s1 OR description LIKE :s2)";
-            $params[':s1'] = "%{$search}%";
-            $params[':s2'] = "%{$search}%";
-        }
-        if ($category !== '') {
-            $sql .= " AND category_id = :category";
-            $params[':category'] = $category;
-        }
-        if ($status !== '') {
-            $sql .= " AND status = :status";
-            $params[':status'] = $status;
+            $where[] = "(e.location LIKE :search OR te.content LIKE :search)";
+            $params[':search'] = "%{$search}%";
         }
 
-        $sql .= match ($sort) {
-            'date_asc' => " ORDER BY date ASC, time ASC",
-            'title' => " ORDER BY title COLLATE utf8_general_ci ASC",
-            default => " ORDER BY date DESC, time DESC",
+        $order = match ($sort) {
+            'date_asc' => "ORDER BY e.date ASC, e.time ASC",
+            'title' => "ORDER BY COALESCE(MAX(CASE WHEN te.field_name = 'naziv' THEN te.content END), e.location) ASC",
+            default => "ORDER BY e.date DESC, e.time DESC",
         };
 
-        $sql .= " LIMIT :limit OFFSET :offset";
+        $whereSql = $where ? ' WHERE ' . implode(' AND ', $where) : '';
+
+        // COUNT ukupno događaja
+        $countSql = "SELECT COUNT(DISTINCT e.id)
+                 FROM events e
+                 LEFT JOIN text te
+                   ON te.source_table = 'events'
+                  AND te.source_id = e.id
+                  AND te.lang = :lang_count
+                 {$whereSql}";
+        $countStmt = $this->pdo->prepare($countSql);
+        foreach ($params as $k => $v) {
+            $countStmt->bindValue($k, $v, \PDO::PARAM_STR);
+        }
+        $countStmt->bindValue(':lang_count', $lang, \PDO::PARAM_STR);
+        $countStmt->execute();
+        $total = (int) $countStmt->fetchColumn();
+
+        // Glavni upit – pivot teksta i kategorija
+        $sql = "
+        SELECT
+            e.id AS event_id,
+            e.date,
+            e.time,
+            e.created_at,
+            e.image,
+            e.location,
+            k.id AS category_id,
+            k.color_code,
+            MAX(CASE WHEN te.field_name = 'title' THEN te.content END) AS title,
+            MAX(CASE WHEN te.field_name = 'description' THEN te.content END) AS description,
+            MAX(CASE WHEN tc.field_name = 'naziv' THEN tc.content END) AS category_name
+        FROM events e
+        LEFT JOIN text te
+          ON te.source_table = 'events'
+         AND te.source_id = e.id
+         AND te.lang = :lang_event
+        LEFT JOIN kategorije_dogadjaja k
+          ON e.category_id = k.id
+        LEFT JOIN text tc
+          ON tc.source_table = 'kategorije_dogadjaja'
+         AND tc.source_id = k.id
+         AND tc.field_name = 'naziv'
+         AND tc.lang = :lang_cat
+        {$whereSql}
+        GROUP BY e.id
+        {$order}
+        LIMIT :limit OFFSET :offset
+    ";
 
         $stmt = $this->pdo->prepare($sql);
-        foreach ($params as $key => $value) {
-            $stmt->bindValue($key, $value, in_array($key, [':limit', ':offset']) ? \PDO::PARAM_INT : \PDO::PARAM_STR);
+
+        // bind search parametara
+        foreach ($params as $k => $v) {
+            $stmt->bindValue($k, $v, \PDO::PARAM_STR);
         }
 
+        // bind jezika
+        $stmt->bindValue(':lang_event', $lang, \PDO::PARAM_STR);
+        $stmt->bindValue(':lang_cat', $lang, \PDO::PARAM_STR);
+
+        // bind limita i offseta
+        $stmt->bindValue(':limit', (int) $limit, \PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int) $offset, \PDO::PARAM_INT);
+
         $stmt->execute();
-        $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        $total = (int) $this->pdo->query("SELECT FOUND_ROWS()")->fetchColumn();
+        $events = $stmt->fetchAll(\PDO::FETCH_ASSOC) ?: [];
 
-        return [$data, $total];
+        return [$events, $total];
     }
 
 
-    public function find(int $id): ?array
+
+
+
+
+
+    /**
+     * Dohvata jedan event po ID-u
+     */
+    public function find(int $id, string $lang = 'lat'): ?array
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM events WHERE id = ?");
-        $stmt->execute([$id]);
-        return $stmt->fetch(\PDO::FETCH_ASSOC) ?: null;
+        $stmt = $this->pdo->prepare("
+            SELECT e.id AS event_id,
+                   e.category_id,
+                   e.date,
+                   e.time,
+                   e.created_at,
+                   e.image,
+                   e.location,
+                   tc.content AS category_name,
+                   k.color_code,
+                   t.field_name,
+                   t.content AS field_value
+              FROM events e
+         JOIN kategorije_dogadjaja k 
+               ON e.category_id = k.id
+         LEFT JOIN text t 
+               ON t.source_id = e.id
+              AND t.source_table = 'events'
+              AND t.lang = :lang
+         LEFT JOIN text tc 
+               ON tc.source_id = k.id
+              AND tc.source_table = 'kategorije_dogadjaja'
+              AND tc.field_name = 'naziv'
+              AND tc.lang = :lang
+             WHERE e.id = :id
+        ");
+        $stmt->execute([':id' => $id, ':lang' => $lang]);
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result ?: null;
     }
 
+    /**
+     * Kreiranje novog eventa
+     */
     public function create(array $data): int
     {
         $stmt = $this->pdo->prepare("
             INSERT INTO events (image,category_id, title, description,location, date, time, created_at)
-            VALUES (:image, :category, :title, :description,:location, :date, :time, NOW())
+            VALUES (:image, :category, :title, :description, :location, :date, :time, NOW())
         ");
         $stmt->execute([
-            ':image' => '/uploads/images/' . $data['filepath'],
+            ':image' => '/uploads/images/' . ($data['filepath'] ?? ''),
             ':category' => $data['category'],
             ':title' => $data['title'],
             ':description' => $data['description'],
+            ':location' => $data['location'],
             ':date' => $data['date'],
             ':time' => $data['time'],
-            ':location' => $data['location'],
         ]);
+
         return (int) $this->pdo->lastInsertId();
     }
 
+    /**
+     * Update eventa
+     */
     public function update(int $id, array $data): bool
     {
         $stmt = $this->pdo->prepare("
-        UPDATE events
-           SET category_id = :category,
-               title       = :title,
-               description = :description,
-               date        = :date,
-               time        = :time,
-               location = :location
-         WHERE id = :id
-    ");
-
-        $success = $stmt->execute([
+            UPDATE events
+               SET category_id = :category,
+                   title       = :title,
+                   description = :description,
+                   date        = :date,
+                   time        = :time,
+                   location    = :location
+             WHERE id = :id
+        ");
+        return $stmt->execute([
             ':id' => $id,
             ':category' => $data['category'],
             ':title' => $data['title'],
@@ -141,32 +220,14 @@ class Event
             ':time' => $data['time'],
             ':location' => $data['location'],
         ]);
-        error_log("id:" . $id);
-        // Debugging output—remove or comment out in production:
-
-
-        return $success;
     }
 
-
+    /**
+     * Brisanje eventa
+     */
     public function delete(int $id): bool
     {
-        $stmt = $this->pdo->prepare("SELECT image FROM events WHERE id = ?");
-        $stmt->execute([$id]);
-        $imagePath = $stmt->fetchColumn();
-
-        if ($imagePath) {
-            $fullPath = __DIR__ . '/../../public' . $imagePath;
-
-            if (file_exists($fullPath)) {
-                unlink($fullPath);
-            }
-        } else {
-            return false;
-        }
-
         $stmt = $this->pdo->prepare("DELETE FROM events WHERE id = ?");
         return $stmt->execute([$id]);
     }
-
 }
