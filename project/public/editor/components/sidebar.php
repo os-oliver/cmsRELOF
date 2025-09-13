@@ -84,6 +84,16 @@
                 </a>
             </li>
             <li class="mb-1">
+                <a href="/kontrolna-tabla/zalbe" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'complaints')
+                    ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
+                    : 'text-gray-600 hover:text-gray-900' ?>">
+                    <i class="fas fa-triangle-exclamation text-primary-500 mr-3 text-lg w-6 text-center"></i>
+                    <span class="font-medium">
+                        <?= __('sidebar.complaints') ?>
+                    </span>
+                </a>
+            </li>
+            <li class="mb-1">
                 <a href="/kontrolna-tabla/o-nama" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'aboutus')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                     : 'text-gray-600 hover:text-gray-900' ?>">
