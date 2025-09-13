@@ -1,13 +1,13 @@
-<?php
-
-?>
-
 <!-- Events Section -->
 <div class=" content-card p-5 rounded-xl border border-gray-200">
     <div class="flex justify-between items-center mb-6">
-        <h3 class="text-lg font-semibold text-gray-800">Predstojeći događaji u biblioteci</h3>
-        <a href="/dashboard/dogadjaji" class="text-primary-600 hover:text-primary-800 flex items-center">
-            <span>Pogledaj sve</span>
+        <h3 class="text-lg font-semibold text-gray-800">
+            <?= __('events.upcoming_in_library') ?>
+        </h3>
+         <a href="/kontrolna-tabla/dogadjaji" class="text-primary-600 hover:text-primary-800 flex items-center">
+            <span>
+                <?= __('events.view_all') ?>
+            </span>
             <i class="fas fa-chevron-right ml-1 text-sm"></i>
         </a>
     </div>
@@ -47,7 +47,9 @@
 
                 <div class="mt-3 flex justify-end">
                     <button class="text-xs text-primary-600 hover:text-primary-800 flex items-center">
-                        <span>Više informacija</span>
+                        <span>
+                            <?= __('events.info') ?>
+                        </span>
                         <i class="fas fa-chevron-right ml-1 text-xs"></i>
                     </button>
                 </div>
@@ -58,6 +60,8 @@
     <button id="newEventButton"
         class="mt-6 w-full py-3 bg-white border border-primary-600 text-primary-600 hover:bg-primary-50 hover:text-primary-800 rounded-lg flex items-center justify-center font-medium transition-all">
         <i class="fas fa-plus mr-2"></i>
-        <span>Dodaj događaj</span>
+        <span>
+            <?= __('events.add_event') ?>
+        </span>
     </button>
 </div>

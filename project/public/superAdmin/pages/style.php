@@ -8,7 +8,9 @@ AuthController::requireAdmin();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Uređivač Stranica</title>
+    <title>
+        <?= __('style.admin_panel') ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -267,7 +269,9 @@ AuthController::requireAdmin();
         <div class="modal-content">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-xl font-bold text-gray-800" id="modalTitle">Nova Stranica</h3>
+                    <h3 class="text-xl font-bold text-gray-800" id="modalTitle">
+                        <?= __('style.new_page') ?>
+                    </h3>
                     <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">
                         <i class="fas fa-times"></i>
                     </button>
@@ -277,43 +281,57 @@ AuthController::requireAdmin();
                     <input type="hidden" id="pageId">
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Naziv stranice</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            <?= __('style.page_title') ?>
+                        </label>
                         <input type="text" id="pageName" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Putanja (path)</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            <?= __('style.path') ?>
+                        </label>
                         <input type="text" id="pagePath" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">URL (href)</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            <?= __('style.url') ?>
+                        </label>
                         <input type="text" id="pageHref" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            <?= __('style.status_text') ?>
+                        </label>
                         <div class="grid grid-cols-3 gap-2">
                             <button type="button" data-status="active"
-                                class="status-option bg-green-100 text-green-700 py-2 rounded-lg">Aktivan</button>
+                                class="status-option bg-green-100 text-green-700 py-2 rounded-lg">
+                                    <?= __('style.active') ?>
+                            </button>
                             <button type="button" data-status="draft"
-                                class="status-option bg-yellow-100 text-yellow-700 py-2 rounded-lg">U izradi</button>
+                                class="status-option bg-yellow-100 text-yellow-700 py-2 rounded-lg">
+                                <?= __('style.in_progress') ?>
+                            </button>
                             <button type="button" data-status="inactive"
-                                class="status-option bg-red-100 text-red-700 py-2 rounded-lg">Neaktivan</button>
+                                class="status-option bg-red-100 text-red-700 py-2 rounded-lg">
+                                    <?= __('style.inactive') ?>
+                            </button>
                         </div>
                         <input type="hidden" id="pageStatus" value="active">
                     </div>
 
                     <div class="pt-4 flex space-x-3">
                         <button type="submit" class="btn-primary text-white px-6 py-2 rounded-lg font-medium flex-1">
-                            Sačuvaj
+                            <?= __('style.save') ?>
                         </button>
                         <button type="button" id="cancelBtn"
                             class="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium flex-1">
-                            Otkaži
+                            <?= __('style.cancel') ?>
                         </button>
                     </div>
                 </form>
@@ -343,7 +361,9 @@ AuthController::requireAdmin();
                 <button class="text-gray-600 text-xl" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1 class="text-lg font-bold text-gray-800">Admin Panel</h1>
+                <h1 class="text-lg font-bold text-gray-800">
+                    <?= __('style.admin_panel_short') ?>
+                </h1>
                 <div class="w-8"></div>
             </div>
 
@@ -355,21 +375,25 @@ AuthController::requireAdmin();
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                             <h3
                                 class="text-lg lg:text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                                Lista Stranica</h3>
+                                <?= __('style.pages_list') ?>                               
+                            </h3>
                             <button id="newPageBtn"
                                 class="btn-primary text-white px-4 py-2 rounded-lg font-medium flex items-center w-full sm:w-auto justify-center">
-                                <i class="fas fa-plus mr-2"></i>Nova
+                                <i class="fas fa-plus mr-2"></i>
+                                    <?= __('style.new') ?>
                             </button>
                             <button id="saveState"
                                 class="btn-primary text-white px-4 py-2 rounded-lg font-medium flex items-center w-full sm:w-auto justify-center">
-                                <i class="fas fa-floppy-disk mr-2"></i>Sačuvaj
+                                <i class="fas fa-floppy-disk mr-2"></i>
+                                    <?= __('style.save_button') ?>
                             </button>
                         </div>
 
                         <!-- Search and Filters -->
                         <div class="mb-6">
                             <div class="relative">
-                                <input type="text" placeholder="Pretraži stranice..."
+                                <input type="text" placeholder=
+                                    "<?= __('style.search_placeholder') ?>" 
                                     class="search-input w-full py-3 px-4 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary">
                                 <i class="fas fa-search absolute right-4 top-3.5 text-gray-400"></i>
                             </div>
@@ -377,23 +401,33 @@ AuthController::requireAdmin();
                             <div class="flex mt-4 space-x-2 overflow-x-auto pb-2">
                                 <button
                                     class="filter-btn active text-xs bg-primary text-white px-3 py-1.5 rounded-lg hover:bg-primary/80 transition whitespace-nowrap"
-                                    data-filter="all">Sve</button>
+                                    data-filter="all">                                    
+                                    <?= __('style.all') ?>
+                                </button>
                                 <button
                                     class="filter-btn text-xs bg-green-100 text-green-700 px-3 py-1.5 rounded-lg hover:bg-green-200 transition whitespace-nowrap"
-                                    data-filter="active">Aktivne</button>
+                                    data-filter="active">                                    
+                                    <?= __('style.active_plural') ?>
+                                </button>
                                 <button
                                     class="filter-btn text-xs bg-yellow-100 text-yellow-700 px-3 py-1.5 rounded-lg hover:bg-yellow-200 transition whitespace-nowrap"
-                                    data-filter="draft">U izradi</button>
+                                    data-filter="draft">
+                                    <?= __('style.in_progress_search') ?>
+                                </button>
                                 <button
                                     class="filter-btn text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition whitespace-nowrap"
-                                    data-filter="inactive">Neaktivne</button>
+                                    data-filter="inactive">
+                                    <?= __('style.inactive_plural') ?>
+                                </button>
                             </div>
                         </div>
 
                         <!-- Loading Indicator -->
                         <div id="loading-indicator" class="text-center py-8">
                             <i class="fas fa-spinner fa-spin text-2xl text-primary"></i>
-                            <p class="text-gray-500 mt-2">Učitavanje stranica...</p>
+                            <p class="text-gray-500 mt-2">
+                                <?= __('style.loading_pages') ?>
+                            </p>
                         </div>
 
                         <!-- Pages List Container -->
@@ -405,7 +439,9 @@ AuthController::requireAdmin();
                         <!-- Error Message -->
                         <div id="error-message" class="text-center py-8 hidden">
                             <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
-                            <p class="text-red-500 mt-2">Greška pri učitavanju stranica</p>
+                            <p class="text-red-500 mt-2">
+                                <?= __('style.error_loading_pages') ?>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -415,9 +451,12 @@ AuthController::requireAdmin();
                     <div class="glass-effect rounded-2xl shadow-2xl p-4 lg:p-6 animate-slide-up">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                             <div>
-                                <h1 class="text-xl lg:text-2xl font-bold text-gray-800">Upravljanje Stranicama</h1>
-                                <p class="text-gray-600 text-sm lg:text-base">Pregledajte i upravljajte svim stranicama
-                                    na vašoj web stranici</p>
+                                <h1 class="text-xl lg:text-2xl font-bold text-gray-800">
+                                    <?= __('style.page_management') ?>
+                                </h1>
+                                <p class="text-gray-600 text-sm lg:text-base">
+                                    <?= __('style.page_description') ?>
+                                </p>
                             </div>
                             <div class="flex space-x-3">
                                 <button
@@ -435,13 +474,18 @@ AuthController::requireAdmin();
                         <div class="bg-white rounded-xl border border-gray-200 p-4 mb-8">
                             <div
                                 class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
-                                <h2 class="text-lg font-semibold text-gray-800" id="preview-title">Odaberite stranicu
+                                <h2 class="text-lg font-semibold text-gray-800" id="preview-title">
+                                    <?= __('style.select_page') ?>
                                 </h2>
                                 <div class="flex space-x-2 w-full sm:w-auto">
                                     <button id="editPageBtn"
-                                        class="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition flex-1 sm:flex-none">Uredi</button>
+                                        class="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition flex-1 sm:flex-none">
+                                        <?= __('style.edit') ?>
+                                    </button>
                                     <button id="deletePageBtn"
-                                        class="text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition flex-1 sm:flex-none">Obriši</button>
+                                        class="text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition flex-1 sm:flex-none">
+                                        <?= __('style.delete') ?>
+                                    </button>
                                 </div>
                             </div>
 
@@ -449,22 +493,29 @@ AuthController::requireAdmin();
                                 class="h-32 lg:h-48 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg flex items-center justify-center mb-4">
                                 <div class="text-center">
                                     <i class="fas fa-globe text-2xl lg:text-4xl text-blue-400 mb-2"></i>
-                                    <p class="text-gray-600 text-sm lg:text-base" id="preview-url">Odaberite stranicu za
-                                        pregled</p>
+                                    <p class="text-gray-600 text-sm lg:text-base" id="preview-url">
+                                        <?= __('style.select_page_view') ?>
+                                    </p>
                                 </div>
                             </div>
 
                             <div class="stats-grid grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div class="bg-gray-50 rounded-lg p-3">
-                                    <p class="text-xs text-gray-500">Status</p>
+                                    <p class="text-xs text-gray-500">
+                                        <?= __('style.status') ?>
+                                    </p>
                                     <p class="font-medium" id="preview-status">-</p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-3">
-                                    <p class="text-xs text-gray-500">Putanja</p>
+                                    <p class="text-xs text-gray-500">
+                                        <?= __('style.path_label') ?>
+                                    </p>
                                     <p class="font-medium text-xs lg:text-sm truncate" id="preview-path">-</p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-3">
-                                    <p class="text-xs text-gray-500">Datum</p>
+                                    <p class="text-xs text-gray-500">
+                                        <?= __('style.date') ?>
+                                    </p>
                                     <p class="font-medium" id="preview-date">-</p>
                                 </div>
                             </div>
@@ -472,20 +523,22 @@ AuthController::requireAdmin();
 
                         <!-- Recent Activity -->
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Odredi trenutno stanje</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                                <?= __('style.determine_status') ?>
+                            </h3>
                             <div class="space-y-4">
                                 <div id="status-buttons" class="flex space-x-4">
                                     <button data-status="active"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-green-500 text-green-700 bg-green-100">
-                                        Aktivan
+                                            <?= __('style.active_activity') ?>
                                     </button>
                                     <button data-status="draft"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-gray-300 text-gray-600 bg-gray-100">
-                                        U izradi
+                                        <?= __('style.in_progress_activity') ?>
                                     </button>
                                     <button data-status="inactive"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-gray-300 text-gray-600 bg-gray-100">
-                                        Neaktivan
+                                            <?= __('style.inactive_activity') ?>
                                     </button>
                                 </div>
                             </div>
@@ -582,13 +635,15 @@ AuthController::requireAdmin();
         // Modal functionality
         function openModal(mode = 'create', pageData = null) {
             if (mode === 'create') {
-                modalTitle.textContent = 'Nova Stranica';
+                const modalTitleText = "<?= __('style.new_page') ?>";
+                modalTitle.textContent = modalTitleText;
                 pageForm.reset();
                 document.getElementById('pageId').value = '';
                 pageStatusInput.value = 'active';
                 resetStatusOptions('active');
             } else if (mode === 'edit' && pageData) {
-                modalTitle.textContent = 'Uredi Stranicu';
+                const modalTitleText = "<?= __('style.edit_page') ?>";
+                modalTitle.textContent = modalTitleText;
                 document.getElementById('pageId').value = pageData.id;
                 document.getElementById('pageName').value = pageData.name;
                 document.getElementById('pagePath').value = pageData.path;
@@ -720,7 +775,10 @@ AuthController::requireAdmin();
         }
 
         function deletePage(id) {
-            if (confirm('Da li ste sigurni da želite da obrišete ovu stranicu?')) {
+            const messagePhp = "<?= __('style.delete_page_confirm') ?>";
+            let message = messagePhp;
+
+            if (confirm(message)) {
                 pagesData = pagesData.filter(page => page.id != id);
                 renderPages(pagesData);
 
@@ -754,7 +812,9 @@ AuthController::requireAdmin();
         statusButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 if (!selectedPageId) {
-                    alert('Izaberite stranicu pre nego što promenite status');
+                    const messagePhp = "<?= __('style.select_page_before_status') ?>";
+                    let alertMessage = messagePhp;
+                    alert(alertMessage);
                     return;
                 }
 
@@ -768,17 +828,22 @@ AuthController::requireAdmin();
                 if (pageIndex !== -1) {
                     pagesData[pageIndex].status = status;
 
+                    // Funkcija za dobijanje prevedenog statusa
+                    function getStatusText(status) {
+                        const key = "style.status_" + status; 
+                        const messagePhp = "<?= __('" + key + "') ?>";
+                        return messagePhp;
+                    }
+
+                    const statusText = getStatusText(status);
+
                     // Update preview
-                    document.getElementById('preview-status').textContent =
-                        status === 'active' ? 'Aktivan' :
-                            status === 'draft' ? 'U izradi' : 'Neaktivan';
+                    document.getElementById('preview-status').textContent = statusText;
 
                     // Update the page card status badge
                     const statusBadge = document.querySelector(`.page-card[data-id="${selectedPageId}"] .status-badge`);
                     if (statusBadge) {
-                        statusBadge.textContent =
-                            status === 'active' ? 'Aktivan' :
-                                status === 'draft' ? 'U izradi' : 'Neaktivan';
+                        statusBadge.textContent = statusText;
 
                         // Update badge color
                         statusBadge.classList.remove(
@@ -796,6 +861,7 @@ AuthController::requireAdmin();
                         }
                     }
                 }
+
             });
         });
 
@@ -806,7 +872,9 @@ AuthController::requireAdmin();
 
         editPageBtn.addEventListener('click', () => {
             if (!selectedPageId) {
-                alert('Izaberite stranicu koju želite da uredite');
+                const messagePhp = "<?= __('style.select_page_to_edit') ?>";
+                let alertMessage = messagePhp;
+                alert(alertMessage);
                 return;
             }
 
@@ -818,10 +886,11 @@ AuthController::requireAdmin();
 
         deletePageBtn.addEventListener('click', () => {
             if (!selectedPageId) {
-                alert('Izaberite stranicu koju želite da obrišete');
+                const messagePhp = "<?= __('style.select_page_to_delete') ?>";
+                let alertMessage = messagePhp;
+                alert(alertMessage);
                 return;
             }
-
             deletePage(selectedPageId);
         });
 
@@ -844,15 +913,18 @@ AuthController::requireAdmin();
                 let statusClass = '';
                 let statusText = '';
 
-                if (page.status === 'active') {
-                    statusClass = 'from-green-400 to-green-600';
-                    statusText = 'Aktivan';
-                } else if (page.status === 'draft') {
-                    statusClass = 'from-yellow-400 to-orange-500';
-                    statusText = 'U izradi';
-                } else {
-                    statusClass = 'from-red-400 to-red-600';
-                    statusText = 'Neaktivan';
+                switch (page.status) {
+                    case 'active':
+                        statusClass = 'from-green-400 to-green-600';
+                        statusText = "<?= __('style.status_active') ?>";
+                        break;
+                    case 'draft':
+                        statusClass = 'from-yellow-400 to-orange-500';
+                        statusText = "<?= __('style.status_draft') ?>";
+                        break;
+                    default:
+                        statusClass = 'from-red-400 to-red-600';
+                        statusText = "<?= __('style.status_inactive') ?>";
                 }
 
                 const card = document.createElement('div');
@@ -897,9 +969,19 @@ AuthController::requireAdmin();
                 // Update preview section
                 document.getElementById('preview-title').textContent = page.name;
                 document.getElementById('preview-url').textContent = page.href;
-                document.getElementById('preview-status').textContent =
-                    page.status === 'active' ? 'Aktivan' :
-                        page.status === 'draft' ? 'U izradi' : 'Neaktivan';
+                let statusText;
+                switch (page.status) {
+                    case 'active':
+                        statusText = "<?= __('style.status_text_active') ?>";
+                        break;
+                    case 'draft':
+                        statusText = "<?= __('style.status_text_draft') ?>";
+                        break;
+                    default:
+                        statusText = "<?= __('style.status_text_inactive') ?>";
+                }
+
+                document.getElementById('preview-status').textContent = statusText;
                 document.getElementById('preview-path').textContent = page.path;
                 document.getElementById('preview-date').textContent = page.date;
 

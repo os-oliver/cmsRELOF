@@ -1,5 +1,10 @@
 <?php
 use App\Controllers\AuthController;
+
+
+AuthController::requireEditor();
+[$name, $surname, $role] = AuthController::getUserInfo();
+
 AuthController::requireEditor();
 [$name, $surname] = AuthController::getUserInfo();
 
@@ -10,7 +15,7 @@ AuthController::requireEditor();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontrolni Panel - Administracija</title>
+    <title><?= __("complaints.dashboard") ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -155,19 +160,23 @@ AuthController::requireEditor();
                 <div class="mb-8">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                         <div>
-                            <h1 class="text-3xl font-bold text-light-900 mb-2">Žalbe i Pritužbe</h1>
-                            <p class="text-light-600">Upravljanje i praćenje korisničkih žalbi</p>
+                            <h1 class="text-3xl font-bold text-light-900 mb-2">
+                                <?= __("complaints.complaints") ?>
+                            </h1>
+                            <p class="text-light-600">
+                               <?= __("complaints.managing") ?>
+                            </p>
                         </div>
                         <div class="mt-4 md:mt-0 flex flex-wrap gap-3">
                             <button
                                 class="px-4 py-2 bg-white text-light-700 rounded-lg border border-light-200 hover:bg-light-50 transition-all duration-200 flex items-center gap-2">
                                 <i class="fas fa-filter"></i>
-                                Filter
+                                <?= __("complaints.filter") ?>
                             </button>
                             <button
                                 class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all duration-200 flex items-center gap-2">
                                 <i class="fas fa-plus"></i>
-                                Nova žalba
+                                <?= __("complaints.new_complaint") ?>
                             </button>
                         </div>
                     </div>
@@ -179,11 +188,13 @@ AuthController::requireEditor();
                     <div class="stat-card bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-light-600 text-sm font-medium">Ukupno žalbi</p>
+                                <p class="text-light-600 text-sm font-medium">
+                                    <?= __("complaints.total_complaints") ?>
+                                </p>
                                 <p class="text-2xl font-bold text-light-900 mt-1">247</p>
                                 <p class="text-green-600 text-sm mt-1">
                                     <i class="fas fa-arrow-up text-xs"></i>
-                                    +12% od prošlog meseca
+                                    <?= __("complaints.last_month") ?>
                                 </p>
                             </div>
                             <div
@@ -197,11 +208,13 @@ AuthController::requireEditor();
                     <div class="stat-card bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-light-600 text-sm font-medium">Na čekanju</p>
+                                <p class="text-light-600 text-sm font-medium">
+                                    <?= __("complaints.pending") ?>
+                                </p>
                                 <p class="text-2xl font-bold text-amber-600 mt-1">18</p>
                                 <p class="text-amber-600 text-sm mt-1">
                                     <i class="fas fa-clock text-xs"></i>
-                                    Zahteva pažnju
+                                    <?= __("complaints.requires_attention") ?>
                                 </p>
                             </div>
                             <div
@@ -215,11 +228,13 @@ AuthController::requireEditor();
                     <div class="stat-card bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-light-600 text-sm font-medium">Rešeno</p>
+                                <p class="text-light-600 text-sm font-medium">
+                                    <?= __("complaints.resolved") ?>
+                                </p>
                                 <p class="text-2xl font-bold text-green-600 mt-1">201</p>
                                 <p class="text-green-600 text-sm mt-1">
                                     <i class="fas fa-check text-xs"></i>
-                                    81.4% uspešnost
+                                    <?= __("complaints.success_rate") ?>
                                 </p>
                             </div>
                             <div
@@ -233,11 +248,13 @@ AuthController::requireEditor();
                     <div class="stat-card bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-light-600 text-sm font-medium">Prosečno vreme</p>
+                                <p class="text-light-600 text-sm font-medium">
+                                    <?= __("complaints.average_time") ?>
+                                </p>
                                 <p class="text-2xl font-bold text-primary-600 mt-1">2.4h</p>
                                 <p class="text-primary-600 text-sm mt-1">
                                     <i class="fas fa-tachometer-alt text-xs"></i>
-                                    Vreme odgovora
+                                    <?= __("complaints.response_time") ?>
                                 </p>
                             </div>
                             <div
@@ -258,8 +275,12 @@ AuthController::requireEditor();
                                 <i class="fas fa-exclamation text-red-600 text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-light-900">Hitne žalbe</h3>
-                                <p class="text-light-600 text-sm">3 žalbe zahtevaju hitnu pažnju</p>
+                                <h3 class="font-semibold text-light-900">
+                                    <?= __("complaints.urgent_complaints") ?>
+                                </h3>
+                                <p class="text-light-600 text-sm">
+                                    <?= __("complaints.urgent_attention") ?>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -272,8 +293,12 @@ AuthController::requireEditor();
                                 <i class="fas fa-chart-line text-blue-600 text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-light-900">Mesečni izveštaj</h3>
-                                <p class="text-light-600 text-sm">Generiši izveštaj za ovaj mesec</p>
+                                <h3 class="font-semibold text-light-900">
+                                    <?= __("complaints.monthly_report") ?>
+                                </h3>
+                                <p class="text-light-600 text-sm">
+                                    <?= __("complaints.generate_report") ?>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -286,8 +311,12 @@ AuthController::requireEditor();
                                 <i class="fas fa-users text-green-600 text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-light-900">Korisnička podrška</h3>
-                                <p class="text-light-600 text-sm">Kontaktiraj tim za podršku</p>
+                                <h3 class="font-semibold text-light-900">
+                                    <?= __("complaints.customer_support") ?>
+                                </h3>
+                                <p class="text-light-600 text-sm">
+                                    <?= __("complaints.contact_support") ?>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -298,20 +327,31 @@ AuthController::requireEditor();
                     <!-- Table Header -->
                     <div class="p-6 border-b border-light-200">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                            <h2 class="text-xl font-semibold text-light-900">Najnovije žalbe</h2>
+                            <h2 class="text-xl font-semibold text-light-900">
+                                <?= __("complaints.latest_complaints") ?>
+                            </h2>
                             <div class="mt-4 md:mt-0 flex items-center gap-3">
                                 <div class="relative">
-                                    <input type="text" placeholder="Pretraži žalbe..."
+                                    <input type="text" 
+                                        placeholder="<?= __("complaints.search_complaints") ?>"
                                         class="pl-10 pr-4 py-2 border border-light-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
                                     <i
                                         class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-light-400"></i>
                                 </div>
                                 <select
                                     class="px-3 py-2 border border-light-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-                                    <option>Sve kategorije</option>
-                                    <option>Tehnički problemi</option>
-                                    <option>Billing</option>
-                                    <option>Usluga</option>
+                                    <option>
+                                        <?= __("complaints.categories") ?>
+                                    </option>
+                                    <option>
+                                        <?= __("complaints.technical_issues") ?>
+                                    </option>
+                                    <option>
+                                        <?= __("complaints.billing") ?>
+                                    </option>
+                                    <option>
+                                        <?= __("complaints.service") ?>
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -322,27 +362,30 @@ AuthController::requireEditor();
                         <table class="w-full">
                             <thead class="bg-light-50">
                                 <tr>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        ID / Korisnik</th>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        Naslov</th>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        Kategorija</th>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        Status</th>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        Prioritet</th>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        Datum</th>
-                                    <th
-                                        class="px-6 py-4 text-right text-xs font-medium text-light-600 uppercase tracking-wider">
-                                        Akcije</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                        <?= __("complaints.user") ?>
+                                    </th>
+
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                        <?= __("complaints.title") ?>
+                                    </th>
+
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                        <?= __("complaints.category") ?>>
+                                    </th>
+
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                        <?= __("complaints.status") ?>
+                                    </th>
+
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                        <?= __("complaints.date") ?>
+                                    </th>
+
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                        <?= __("complaints.actions") ?>
+                                    </th>
+
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-light-200">
@@ -361,27 +404,30 @@ AuthController::requireEditor();
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <div class="text-sm text-light-900 font-medium">Problem sa prijavom na sistem
+                                        <div class="text-sm text-light-900 font-medium">
+                                            <?= __("complaints.login_issue") ?>
                                         </div>
-                                        <div class="text-sm text-light-600">Ne mogu da se prijavim već 2 dana...</div>
+                                        <div class="text-sm text-light-600">
+                                            <?= __("complaints.not_been_able") ?>
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                            Tehnički
+                                            <?= __("complaints.technical") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
                                             <i class="fas fa-clock text-amber-600 mr-1"></i>
-                                            Na čekanju
+                                            <?= __("complaints.pending2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                            Visok
+                                            <?= __("complaints.high") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-light-600">
@@ -420,26 +466,30 @@ AuthController::requireEditor();
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <div class="text-sm text-light-900 font-medium">Neispravna naplata</div>
-                                        <div class="text-sm text-light-600">Naplaćen je dupli iznos na računu...</div>
+                                        <div class="text-sm text-light-900 font-medium">
+                                            <?= __("complaints.incorrect_billing") ?>
+                                        </div>
+                                        <div class="text-sm text-light-600">
+                                            <?= __("complaints.double_amount") ?>
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                            Billing
+                                            <?= __("complaints.billing2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                             <i class="fas fa-cog text-blue-600 mr-1"></i>
-                                            U obradi
+                                            <?= __("complaints.in_progress") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                                            Srednji
+                                            <?= __("complaints.medium") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-light-600">
@@ -463,6 +513,7 @@ AuthController::requireEditor();
                                     </td>
                                 </tr>
 
+                                
                                 <!-- Row 3 -->
                                 <tr class="hover:bg-light-50 transition-colors duration-200">
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -478,26 +529,30 @@ AuthController::requireEditor();
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <div class="text-sm text-light-900 font-medium">Nezadovoljstvo uslugom</div>
-                                        <div class="text-sm text-light-600">Osoblje je bilo neprofesionalno...</div>
+                                        <div class="text-sm text-light-900 font-medium">
+                                            <?= __("complaints.dissatisfaction") ?>
+                                        </div>
+                                        <div class="text-sm text-light-600">
+                                            <?= __("complaints.unprofessional") ?>
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                            Usluga
+                                            <?= __("complaints.service2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                             <i class="fas fa-check text-green-600 mr-1"></i>
-                                            Rešeno
+                                            <?= __("complaints.resolved2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                            Nizak
+                                            <?= __("complaints.low") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-light-600">
@@ -536,26 +591,30 @@ AuthController::requireEditor();
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <div class="text-sm text-light-900 font-medium">Spor rad aplikacije</div>
-                                        <div class="text-sm text-light-600">Aplikacija se često prekida...</div>
+                                        <div class="text-sm text-light-900 font-medium">
+                                            <?= __("complaints.slow_performance") ?>
+                                        </div>
+                                        <div class="text-sm text-light-600">
+                                            <?= __("complaints.frequently_crashes") ?>
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                            Tehnički
+                                            <?= __("complaints.technical2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
                                             <i class="fas fa-clock text-amber-600 mr-1"></i>
-                                            Na čekanju
+                                            <?= __("complaints.pending3") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                                            Srednji
+                                            <?= __("complaints.medium2") ?>
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-light-600">
@@ -586,7 +645,7 @@ AuthController::requireEditor();
                     <div class="px-6 py-4 border-t border-light-200">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                             <div class="text-sm text-light-600">
-                                Prikazuje se 1-4 od 247 žalbi
+                                <?= __("complaints.showing") ?>
                             </div>
                             <div class="mt-3 md:mt-0">
                                 <nav class="flex items-center gap-1">

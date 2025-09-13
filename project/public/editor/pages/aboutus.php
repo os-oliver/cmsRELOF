@@ -4,6 +4,7 @@ use App\Models\AboutUs;
 use App\Models\Employee;
 use App\Models\TeamMember; // New model for team members
 
+
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
@@ -37,7 +38,9 @@ $totalPages = (int) ceil($totalCount / $limit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Administracija</title>
+    <title>
+        <?= __("aboutus.about_us") ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -170,36 +173,45 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Goal -->
                         <div class="glass-panel rounded-2xl p-6">
-                            <label for="cilj" class="block text-sm font-medium text-gray-700 mb-2">Cilj</label>
+                            <label for="cilj" class="block text-sm font-medium text-gray-700 mb-2">
+                                <?= __("aboutus.goal") ?>
+                            </label>
                             <textarea id="cilj" rows="4"
                                 class="block w-full rounded-lg border border-gray-300 bg-white p-3 shadow-sm placeholder-gray-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
-                                placeholder="Unesite cilj..."><?= htmlspecialchars($aboutUsData['goal'] ?? '') ?></textarea>
+                                placeholder="<?= __("aboutus.enter_goal") ?>"
+                            ><?= htmlspecialchars($aboutUsData['goal'] ?? '') ?></textarea>
                             <button id="goal"
                                 class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all shadow">
-                                Sačuvaj cilj
+                                <?= __("aboutus.save_goal") ?>
                             </button>
                         </div>
 
                         <!-- Mission -->
                         <div class="glass-panel rounded-2xl p-6">
-                            <label for="misija" class="block text-sm font-medium text-gray-700 mb-2">Misija</label>
+                            <label for="misija" class="block text-sm font-medium text-gray-700 mb-2">
+                                <?= __("aboutus.mission") ?>
+                            </label>
                             <textarea id="misija" rows="4"
                                 class="block w-full rounded-lg border border-gray-300 bg-white p-3 shadow-sm placeholder-gray-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
-                                placeholder="Unesite misiju..."><?= htmlspecialchars($aboutUsData['mission'] ?? '') ?></textarea>
+                                placeholder="<?= __("aboutus.enter_mission") ?>"
+                            ><?= htmlspecialchars($aboutUsData['mission'] ?? '') ?></textarea>
                             <button id="mission"
                                 class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all shadow">
-                                Sačuvaj misiju
+                                <?= __("aboutus.save_mission") ?>
                             </button>
                         </div>
                     </div>
 
+                    
                     <!-- Team Members Column -->
                     <div class="glass-panel rounded-2xl p-6">
                         <div class="flex justify-between items-center mb-6">
-                            <h2 class="text-xl font-semibold text-gray-800">Zaposleni</h2>
+                            <h2 class="text-xl font-semibold text-gray-800">
+                                <?= __("aboutus.employees") ?></h2>
                             <button id="addTeamMemberBtn"
                                 class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow">
-                                <i class="fas fa-plus mr-2"></i>Dodaj člana
+                                <i class="fas fa-plus mr-2"></i>
+                                <?= __("aboutus.add_member") ?>
                             </button>
                         </div>
 
@@ -208,15 +220,20 @@ $totalPages = (int) ceil($totalCount / $limit);
                                 <thead class="bg-gray-100">
                                     <tr>
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
-                                            Ime</th>
+                                            <?= __("aboutus.first_name") ?>
+                                        </th>
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
-                                            Prezime</th>
+                                            <?= __("aboutus.last_name") ?>
+                                        </th>
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
-                                            Pozicija</th>
+                                            <?= __("aboutus.position") ?>
+                                        </th>
                                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
-                                            Akcije</th>
+                                            <?= __("aboutus.actions") ?>
+                                        </th>
                                     </tr>
                                 </thead>
+
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <?php foreach ($teamMembers as $member): ?>
                                         <tr class="hover:bg-gray-50" data-id="<?= $member['id'] ?>">
@@ -257,8 +274,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div
                         class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-4 border border-gray-100">
                         <div class="hidden md:block text-sm text-gray-700">
-                            Prikazano <span class="font-medium"><?= count($teamMembers) ?></span> od <span
-                                class="font-medium"><?= $totalCount ?></span> kontakata
+                            <?= __("aboutus.showing") ?>
+                            <span class="font-medium"><?= count($teamMembers) ?></span>
+                            <?= __("aboutus.of") ?>
+                            <span class="font-medium"><?= $totalCount ?></span>
+                            <?= __("aboutus.contacts") ?>
                         </div>
                         <nav class="flex items-center gap-2">
                             <a href="?page=<?= $page - 1 ?>&search=<?= urlencode($search) ?>&sort=<?= $sort ?>"
@@ -287,31 +307,41 @@ $totalPages = (int) ceil($totalCount / $limit);
     <div id="teamMemberModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-2xl shadow-xl w-full max-w-md mx-4">
             <div class="border-b border-gray-200 px-6 py-4">
-                <h3 class="text-xl font-semibold text-gray-800" id="modalTitle">Dodaj novog člana tima</h3>
+                <h3 class="text-xl font-semibold text-gray-800" id="modalTitle">
+                    <?= __("aboutus.add_new_member") ?>
+                </h3>
             </div>
             <form id="teamMemberForm" class="p-6">
                 <input type="hidden" id="memberId" name="id" value="">
 
                 <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Ime</label>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("aboutus.member_first_name") ?>
+                    </label>
                     <input type="text" id="name" name="name" required
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all">
                 </div>
 
                 <div class="mb-4">
-                    <label for="surname" class="block text-sm font-medium text-gray-700 mb-1">Prezime</label>
+                    <label for="surname" class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("aboutus.member_last_name") ?>
+                    </label>
                     <input type="text" id="surname" name="surname" required
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all">
                 </div>
 
                 <div class="mb-4">
-                    <label for="position" class="block text-sm font-medium text-gray-700 mb-1">Pozicija</label>
+                    <label for="position" class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("aboutus.member_position") ?>
+                    </label>
                     <input type="text" id="position" name="position" required
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all">
                 </div>
 
                 <div class="mb-6">
-                    <label for="biography" class="block text-sm font-medium text-gray-700 mb-1">Biografija</label>
+                    <label for="biography" class="block text-sm font-medium text-gray-700 mb-1">
+                        <?= __("aboutus.biography") ?>
+                    </label>
                     <textarea id="biography" name="biography" rows="4"
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"></textarea>
                 </div>
@@ -319,11 +349,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="flex justify-end space-x-3 pt-4">
                     <button type="button" id="cancelMemberBtn"
                         class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-all">
-                        Otkaži
+                        <?= __("aboutus.cancel") ?>
                     </button>
                     <button type="submit"
                         class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow">
-                        Sačuvaj
+                        <?= __("aboutus.save") ?>
                     </button>
                 </div>
             </form>
@@ -335,7 +365,7 @@ $totalPages = (int) ceil($totalCount / $limit);
             // Goal and mission saving
             document.getElementById('goal').addEventListener('click', async () => {
                 const goal = document.getElementById('cilj').value.trim();
-                if (!goal) return alert('Polje Cilj ne može biti prazno.');
+                if (!goal) return alert("<?= __("aboutus.empty_goal") ?>");
 
                 try {
                     const response = await fetch('/aboutus/1', {
@@ -344,17 +374,17 @@ $totalPages = (int) ceil($totalCount / $limit);
                         body: JSON.stringify({ goal })
                     });
 
-                    if (!response.ok) throw new Error('Greška pri čuvanju');
-                    alert('Cilj uspešno sačuvan!');
+                    if (!response.ok) throw new Error("<?= __("aboutus.save_error") ?>" + response.statusText);
+                    alert("<?= __("aboutus.saved_goal") ?>");
                 } catch (e) {
-                    console.error('Greška:', e);
-                    alert('Greška pri čuvanju: ' + e.message);
+                    console.error("<?= __("aboutus.console_error") ?>", e);
+                    alert("<?= __("aboutus.save_error") ?>" + e.message);
                 }
             });
 
             document.getElementById('mission').addEventListener('click', async () => {
                 const mission = document.getElementById('misija').value.trim();
-                if (!mission) return alert('Polje Misija ne može biti prazno.');
+                if (!mission) return alert('<?= __("aboutus.empty_mission") ?>');
 
                 try {
                     const response = await fetch('/aboutus/1', {
@@ -363,11 +393,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                         body: JSON.stringify({ mission })
                     });
 
-                    if (!response.ok) throw new Error('Greška pri čuvanju');
-                    alert('Misija uspešno sačuvana!');
+                    if (!response.ok) throw new Error('<?= __("aboutus.save_error") ?>');
+                    alert('<?= __("aboutus.save_success") ?>');
                 } catch (e) {
-                    console.error('Greška:', e);
-                    alert('Greška pri čuvanju: ' + e.message);
+                    console.error('<?= __("aboutus.console_error") ?>', e);
+                    alert('<?= __("aboutus.save_error") ?>: ' + e.message);
                 }
             });
 
@@ -380,7 +410,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
             // Open modal for adding new member
             addBtn.addEventListener('click', () => {
-                modalTitle.textContent = 'Dodaj novog člana tima';
+                modalTitle.textContent = '<?= __("aboutus.add_member_title") ?>';
                 memberForm.reset();
                 document.getElementById('memberId').value = '';
                 modal.classList.remove('hidden');
@@ -389,7 +419,7 @@ $totalPages = (int) ceil($totalCount / $limit);
             // Open modal for editing existing member
             document.querySelectorAll('.edit-member').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    modalTitle.textContent = 'Uredi člana tima';
+                    modalTitle.textContent = '<?= __("aboutus.edit_member_title") ?>';
                     document.getElementById('memberId').value = btn.dataset.id;
                     document.getElementById('name').value = btn.dataset.name;
                     document.getElementById('surname').value = btn.dataset.surname;
@@ -403,19 +433,19 @@ $totalPages = (int) ceil($totalCount / $limit);
             document.querySelectorAll('.delete-member').forEach(btn => {
                 btn.addEventListener('click', async () => {
                     const id = btn.dataset.id;
-                    if (!confirm('Da li ste sigurni da želite da obrišete ovog člana tima?')) return;
+                    if (!confirm('<?= __("aboutus.confirm_delete") ?>')) return;
 
                     try {
                         const response = await fetch(`/employees/${id}`, {
                             method: 'DELETE'
                         });
 
-                        if (!response.ok) throw new Error('Greška pri brisanju');
-                        alert('Član tima uspešno obrisan!');
+                        if (!response.ok) throw new Error('<?= __("aboutus.error_delete") ?>');
+                        alert('<?= __("aboutus.success_delete") ?>');
                         location.reload();
                     } catch (e) {
-                        console.error('Greška:', e);
-                        alert('Greška pri brisanju: ' + e.message);
+                        console.error('<?= __("aboutus.console_error") ?>', e);
+                        alert('<?= __("aboutus.error_delete") ?>: ' + e.message);
                     }
                 });
             });
@@ -439,7 +469,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                 // Validation
                 if (!formData.name || !formData.surname || !formData.position) {
-                    return alert('Ime, prezime i pozicija su obavezna polja');
+                    return alert('<?= __("aboutus.required_fields_msg") ?>');
                 }
 
                 try {
@@ -452,13 +482,13 @@ $totalPages = (int) ceil($totalCount / $limit);
                         body: JSON.stringify(formData)
                     });
 
-                    if (!response.ok) throw new Error('Greška pri čuvanju');
-                    alert('Član tima uspešno sačuvan!');
+                    if (!response.ok) throw new Error('<?= __("aboutus.save_error") ?>');
+                    alert('<?= __("aboutus.save_success_msg") ?>');
                     modal.classList.add('hidden');
                     location.reload();
                 } catch (e) {
-                    console.error('Greška:', e);
-                    alert('Greška pri čuvanju: ' + e.message);
+                    console.error('<?= __("aboutus.console_error") ?>', e);
+                    alert('<?= __("aboutus.save_error") ?> ' + e.message);
                 }
             });
         });

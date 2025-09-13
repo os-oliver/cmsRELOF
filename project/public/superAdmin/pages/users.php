@@ -3,9 +3,8 @@ use App\Controllers\AuthController;
 use App\Models\User;
 AuthController::requireAdmin();
 
+
 // Simulated database functions
-
-
 
 $search = $_GET['search'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
@@ -32,7 +31,9 @@ $totalPages = (int) ceil($totalCount / $limit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Upravljanje Korisnicima</title>
+    <title>
+        <h1><?= __('users.admin_panel_title') ?></h1>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -274,13 +275,17 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="mb-8">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
-                            <h1 class="text-3xl font-bold text-gray-900 mb-2">Upravljanje korisnicima</h1>
-                            <p class="text-gray-600">Dodajte, uredite ili uklonite korisnike sistema</p>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                                <?= __('users.user_management') ?>
+                            </h1>
+                            <p class="text-gray-600">
+                                <?= __('users.user_management_description') ?>
+                            </p>
                         </div>
                         <button onclick="openUserModal('create')"
                             class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2">
                             <i class="fas fa-plus"></i>
-                            Novi korisnik
+                                <?= __('users.new_user') ?>
                         </button>
                     </div>
                 </div>
@@ -291,10 +296,18 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <table class="w-full">
                             <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
                                 <tr>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Korisnik</th>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Uloga</th>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Kreiran</th>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Akcije</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?= __('users.user') ?>
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?= __('users.role') ?>
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?= __('users.created') ?>
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?= __('users.actions') ?>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100">
@@ -403,7 +416,9 @@ $totalPages = (int) ceil($totalCount / $limit);
                     class="bg-white rounded-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
                     <div class="p-6 border-b border-gray-200">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-2xl font-bold text-gray-900" id="modalTitle">Novi korisnik</h3>
+                            <h3 class="text-2xl font-bold text-gray-900" id="modalTitle">
+                                <?= __('users.new_user_button') ?>
+                            </h3>
                             <button onclick="closeUserModal()"
                                 class="text-gray-400 hover:text-gray-600 transition-colors">
                                 <i class="fas fa-times text-xl"></i>
@@ -417,12 +432,16 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <!-- Personal Information -->
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Ime</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?= __('users.name') ?>
+                                </label>
                                 <input type="text" id="name" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Prezime</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?= __('users.lastname') ?>
+                                </label>
                                 <input type="text" id="surname" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                             </div>
@@ -432,17 +451,25 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Korisničko ime</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?= __('users.username') ?>
+                                </label>
                                 <input type="text" id="username" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                             </div>
                             <!-- User Role -->
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Uloga korisnika</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?= __('users.user_role') ?>
+                                </label>
                                 <select id="userRole" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
-                                    <option value="admin">Administrator</option>
-                                    <option value="editor">Editor</option>
+                                    <option value="admin">
+                                        <?= __('users.role_admin') ?>
+                                    </option>
+                                    <option value="editor">
+                                        <?= __('users.role_editor') ?>
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -451,7 +478,9 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <!-- Password -->
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Lozinka</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?= __('users.password') ?>
+                                </label>
                                 <div class="relative">
                                     <input type="password" id="userPassword" required
                                         class="w-full px-4 py-3 pr-12 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
@@ -462,7 +491,9 @@ $totalPages = (int) ceil($totalCount / $limit);
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Potvrdite lozinku</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?= __('users.confirm_password') ?>
+                                </label>
                                 <div class="relative">
                                     <input type="password" id="confirmPassword" required
                                         class="w-full px-4 py-3 pr-12 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
@@ -481,11 +512,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <button type="submit"
                                 class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                                 <i class="fas fa-save mr-2"></i>
-                                Sačuvaj korisnika
+                                    <?= __('users.save_user') ?>
                             </button>
                             <button type="button" onclick="closeUserModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                Otkaži
+                                    <?= __('users.cancel') ?>
                             </button>
                         </div>
                     </form>
@@ -503,20 +534,26 @@ $totalPages = (int) ceil($totalCount / $limit);
                                 <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-bold text-gray-900">Obriši korisnika</h3>
-                                <p class="text-gray-600">Ova akcija se ne može poništiti</p>
+                                <h3 class="text-lg font-bold text-gray-900">
+                                    <?= __('users.delete_user') ?>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <?= __('users.action_cannot_be_undone') ?>
+                                </p>
                             </div>
                         </div>
-                        <p class="text-gray-700 mb-6">Da li ste sigurni da želite da obrišete korisnika <strong
+                        <p class="text-gray-700 mb-6">
+                            <?= __('users.confirm_delete_user') ?>
+                            <strong
                                 id="deleteUserName"></strong>?</p>
                         <div class="flex gap-3">
                             <button onclick="confirmDelete()"
                                 class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">
-                                Da, obriši
+                                    <?= __('users.yes_delete') ?>
                             </button>
                             <button onclick="closeDeleteModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-4 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                Otkaži
+                                    <?= __('users.cancel_del_modal') ?>
                             </button>
                         </div>
                     </div>
@@ -564,15 +601,23 @@ $totalPages = (int) ceil($totalCount / $limit);
             const modalTitle = document.getElementById('modalTitle');
             const form = document.getElementById('userForm');
 
+            let titleText = '';
+
             if (mode === 'create') {
-                modalTitle.textContent = 'Novi korisnik';
+                titleText = "<?= __('users.modal_title_create') ?>";
+            } else if (mode === 'edit') {
+                titleText = "<?= __('users.modal_title_edit') ?>";
+            }
+
+            modalTitle.textContent = titleText;
+
+            if (mode === 'create') {
                 form.reset();
                 document.getElementById('userId').value = '';
                 editingUserId = null;
             } else if (mode === 'edit' && userId) {
                 const user = users.find(u => u.id === userId);
                 if (user) {
-                    modalTitle.textContent = 'Uredi korisnika';
                     populateForm(user);
                     editingUserId = userId;
                 }
@@ -636,12 +681,14 @@ $totalPages = (int) ceil($totalCount / $limit);
 
             // Provera lozinki
             if (!editingUserId && password !== confirmPassword) {
-                alert('Lozinke se ne poklapaju!');
+                const message = "<?= __('users.passwords_do_not_match') ?>";
+                alert(message);
                 return;
             }
 
             if (!editingUserId && password.length < 6) {
-                alert('Lozinka mora imati najmanje 6 karaktera!');
+                const message = "<?= __('users.password_min_length') ?>";
+                alert(message);
                 return;
             }
 
@@ -661,18 +708,23 @@ $totalPages = (int) ceil($totalCount / $limit);
             })
                 .then(response => response.json())
                 .then(data => {
+                    let message;
                     if (data.success) {
-                        showNotification(editingUserId ?
-                            'Korisnik je uspešno ažuriran!' :
-                            'Korisnik je uspešno kreiran!', 'success');
+                        const message = editingUserId
+                            ? "<?= __('users.user_updated') ?>"
+                            : "<?= __('users.user_created') ?>";
+
+                        showNotification(message, 'success');
                         closeUserModal();
                     } else {
-                        alert(data.message || 'Greška prilikom čuvanja korisnika.');
+                        const message = data.message || "<?= __('users.error_saving_user') ?>";
+                        alert(message);
                     }
                 })
                 .catch(error => {
+                    const message = "<?= __('users.server_communication_error') ?>";
                     console.error('Greška:', error);
-                    alert('Greška prilikom komunikacije sa serverom.');
+                    alert(message);
                 });
         });
 
@@ -709,21 +761,22 @@ $totalPages = (int) ceil($totalCount / $limit);
                         'Content-Type': 'application/json',
                     }
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Greška pri brisanju korisnika.');
-                        }
-                        return response.json(); // ako šalješ JSON response
-                    })
-                    .then(data => {
-                        showNotification('Korisnik je uspešno obrisan!', 'success');
-                        closeDeleteModal();
-                        location.reload();
-                        // Eventualno osveži tabelu korisnika
-                    })
-                    .catch(error => {
-                        showNotification('Greška: ' + error.message, 'error');
-                    });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("<?= __('users.error_deleting_user') ?>");
+                    }
+                    return response.json(); // ako šalješ JSON response
+                })
+                .then(data => {
+                    const message = "<?= __('users.user_deleted_success') ?>";
+                    showNotification(message, 'success');
+                    closeDeleteModal();
+                    location.reload();
+                })
+                .catch(error => {
+                    const message = "<?= __('users.error_prefix') ?> " + error.message;
+                    showNotification(message, 'error');
+                });
             }
         }
 

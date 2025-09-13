@@ -29,7 +29,9 @@ $totalPages = (int) ceil($totalCount / $limit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Upravljanje Kategorijama</title>
+    <title>
+        <?= __('categories.admin_panel_title') ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -302,13 +304,17 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="mb-8">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
-                            <h1 class="text-3xl font-bold text-gray-900 mb-2">Upravljanje kategorijama</h1>
-                            <p class="text-gray-600">Dodajte, uredite ili uklonite kategorije sistema</p>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                                <?= __('categories.admin_panel') ?>
+                            </h1>
+                            <p class="text-gray-600">
+                                <?= __('categories.admin_panel_description') ?>
+                            </p>
                         </div>
                         <button onclick="openCategoryModal('create')"
                             class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2">
                             <i class="fas fa-plus"></i>
-                            Nova kategorija
+                                <?= __('categories.new_category') ?>
                         </button>
                     </div>
                 </div>
@@ -317,11 +323,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="flex gap-2 mb-6">
                     <button class="tab-button <?= $tabActive === 'events' ? 'active' : '' ?>"
                         onclick="switchTab('events')">
-                        Kategorije događaja
+                            <?= __('categories.event_categories') ?>
                     </button>
                     <button class="tab-button <?= $tabActive === 'documents' ? 'active' : '' ?>"
                         onclick="switchTab('documents')">
-                        Kategorije dokumenata
+                            <?= __('categories.document_categories') ?>
                     </button>
                 </div>
 
@@ -331,9 +337,15 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <table class="w-full">
                             <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
                                 <tr>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Naziv</th>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Boja</th>
-                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Akcije</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?= __('categories.name') ?>
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?= __('categories.color') ?>
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                        <?= __('categories.actions') ?>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100">
@@ -410,7 +422,9 @@ $totalPages = (int) ceil($totalCount / $limit);
                     class="bg-white rounded-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
                     <div class="p-6 border-b border-gray-200">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-2xl font-bold text-gray-900" id="modalTitle">Nova kategorija</h3>
+                            <h3 class="text-2xl font-bold text-gray-900" id="modalTitle">
+                                <?= __('categories.new_category_cat_modal') ?>
+                            </h3>
                             <button onclick="closeCategoryModal()"
                                 class="text-gray-400 hover:text-gray-600 transition-colors">
                                 <i class="fas fa-times text-xl"></i>
@@ -424,19 +438,24 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                         <div class="grid grid-cols-1 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Naziv kategorije</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?= __('categories.category_name') ?>
+                            </label>
                                 <input type="text" id="categoryName" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Boja</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <?= __('categories.color_cat_modal') ?>
+                                </label>
                                 <div class="flex items-center gap-4">
                                     <input type="color" id="colorPicker" value="#6366F1"
                                         class="w-16 h-16 rounded-lg border-0 cursor-pointer">
                                     <input type="text" id="colorCode" value="#6366F1" required
                                         class="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                                 </div>
-                                <p class="text-sm text-gray-500 mt-2">Unesite HEX kod boje ili koristite izbornik boja
+                                <p class="text-sm text-gray-500 mt-2">
+                                    <?= __('categories.color_help') ?>
                                 </p>
                             </div>
                         </div>
@@ -446,11 +465,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <button type="submit"
                                 class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                                 <i class="fas fa-save mr-2"></i>
-                                Sačuvaj kategoriju
+                                    <?= __('categories.save_category') ?>
                             </button>
                             <button type="button" onclick="closeCategoryModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                Otkaži
+                                    <?= __('categories.cancel') ?>
                             </button>
                         </div>
                     </form>
@@ -468,20 +487,26 @@ $totalPages = (int) ceil($totalCount / $limit);
                                 <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-bold text-gray-900">Obriši kategoriju</h3>
-                                <p class="text-gray-600">Ova akcija se ne može poništiti</p>
+                                <h3 class="text-lg font-bold text-gray-900">
+                                    <?= __('categories.delete_category') ?>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <?= __('categories.cannot_undo') ?>
+                                </p>
                             </div>
                         </div>
-                        <p class="text-gray-700 mb-6">Da li ste sigurni da želite da obrišete kategoriju <strong
+                        <p class="text-gray-700 mb-6">
+                            <?= __('categories.confirm_delete_message') ?>
+                             <strong
                                 id="deleteCategoryName"></strong>?</p>
                         <div class="flex gap-3">
                             <button onclick="confirmDelete()"
-                                class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">
-                                Da, obriši
+                                class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">    
+                                    <?= __('categories.confirm_delete_button') ?>
                             </button>
                             <button onclick="closeDeleteModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-4 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                Otkaži
+                                    <?= __('categories.cancel_button') ?>
                             </button>
                         </div>
                     </div>
@@ -557,20 +582,25 @@ $totalPages = (int) ceil($totalCount / $limit);
             }
 
             if (mode === 'create') {
-                modalTitle.textContent = 'Nova kategorija';
+                let titleText = "<?= __('categories.new_category_cat_modal') ?>";
+
+                modalTitle.textContent = titleText;
                 form.reset();
                 document.getElementById('categoryId').value = '';
                 document.getElementById('colorPicker').value = '#6366F1';
                 document.getElementById('colorCode').value = '#6366F1';
                 editingCategoryId = null;
+
             } else if (mode === 'edit' && categoryId) {
                 const category = categories.find(c => c.id === categoryId);
                 if (category) {
-                    modalTitle.textContent = 'Uredi kategoriju';
+                    let titleText = "<?= __('categories.edit_category_title') ?>";
+                    modalTitle.textContent = titleText;
                     populateForm(category);
                     editingCategoryId = categoryId;
                 }
             }
+
 
             modal.classList.remove('opacity-0', 'invisible');
             modal.classList.add('opacity-100', 'visible');
@@ -616,20 +646,24 @@ $totalPages = (int) ceil($totalCount / $limit);
             })
                 .then(response => response.json())
                 .then(data => {
+                    let message;
+
                     if (data.success) {
-                        showNotification(formData.id ?
-                            'Kategorija je uspešno ažurirana!' :
-                            'Kategorija je uspešno kreirana!', 'success');
+                        let message = formData.id ?
+                            "<?= __('categories.save_success_update') ?>" :
+                            "<?= __('categories.save_success_create') ?>";
+
+                        showNotification(message, 'success');
                         closeCategoryModal();
-                        // Refresh the page to see changes
                         setTimeout(() => location.reload(), 1000);
                     } else {
-                        alert(data.message || 'Greška prilikom čuvanja kategorije.');
+                       message = data.message || "<?= __('categories.save_error') ?>";
+                       alert(message);
                     }
                 })
                 .catch(error => {
                     console.error('Greška:', error);
-                    alert('Greška prilikom komunikacije sa serverom.');
+                    alert("<?= __('categories.server_error') ?>");
                 });
         });
 
@@ -667,21 +701,22 @@ $totalPages = (int) ceil($totalCount / $limit);
                         'Content-Type': 'application/json',
                     }
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Greška pri brisanju kategorije.');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        showNotification('Kategorija je uspešno obrisana!', 'success');
-                        closeDeleteModal();
-                        // Refresh the page to see changes
-                        setTimeout(() => location.reload(), 1000);
-                    })
-                    .catch(error => {
-                        showNotification('Greška: ' + error.message, 'error');
-                    });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("<?= __('categories.error_delete') ?>");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    let successMessage = "<?= __('categories.deleted_success') ?>";
+                    showNotification(successMessage, 'success');
+                    closeDeleteModal();
+                    setTimeout(() => location.reload(), 1000);
+                })
+                .catch(error => {
+                    let errorMsg = "<?= __('categories.error_prefix') ?>" + error.message;
+                    showNotification(errorMsg, 'error');
+                });
             }
         }
 

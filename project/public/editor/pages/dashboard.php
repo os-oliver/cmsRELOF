@@ -25,7 +25,9 @@ $DocumentCategories = $documentModal->getCategories();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontrolni Panel - Administracija</title>
+    <title>
+        <?= __("dashboard.admin_panel") ?>
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/assets/css/dashboard/structure.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,7 +55,9 @@ $DocumentCategories = $documentModal->getCategories();
                     <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-sm text-primary-600">Ukupno Pregleda</p>
+                                <p class="text-sm text-primary-600">
+                                    <?= __("dashboard.total_views") ?>
+                                </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $views ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">
@@ -65,7 +69,9 @@ $DocumentCategories = $documentModal->getCategories();
                     <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-sm text-primary-600">Dokumenti</p>
+                                <p class="text-sm text-primary-600">
+                                    <?= __("dashboard.documents") ?>
+                                </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalDocuments ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">
@@ -77,7 +83,9 @@ $DocumentCategories = $documentModal->getCategories();
                     <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-sm text-primary-600">Događaji</p>
+                                <p class="text-sm text-primary-600">
+                                    <?= __("dashboard.events") ?>
+                                </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalEvents ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">
@@ -89,7 +97,9 @@ $DocumentCategories = $documentModal->getCategories();
                     <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-sm text-primary-600">Korisnici</p>
+                                <p class="text-sm text-primary-600">
+                                    <?= __("dashboard.users") ?>
+                                </p>
                                 <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalUsers ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">
