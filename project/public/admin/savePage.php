@@ -1921,63 +1921,66 @@ function processTree(array $data, array $node, string $pagesDir, array &$created
         ? rtrim($parentPath, '/') . "/$href"
         : '/' . $href;
 
-    // record metadata
-    $pageData = [
-        'id' => ++$GLOBALS['ID_auto'],
-        'name' => $name,
-        'path' => $relativePath,
-        'href' => $fullPath,
-        'status' => 'active',
-        'date' => date("m.d.Y.")
-    ];
-    $pagesData[] = $pageData;
-
-    // only create the file once
-    if (!in_array($filename, $createdFiles, true)) {
-        // build the HEAD, injecting CSS if present
-
-        // assemble full page content
-        switch ($name) {
-
-            case 'dogadjaji':
-                $content = eventsBody($name, $data);
-
-                break;
-            case 'kontakt':
-                $content = contactBody($name, $data);
-
-                break;
-            case 'dokumenti':
-                $content = documentsBody($name, $data);
-
-                break;
-            case 'galerija':
-                $content = galleryBody($name, $data);
-
-                break;
-            case 'Misija':
-                $content = bodyMission($name, $data);
-                break;
-            case 'Cilj':
-                $content = goalBody($name, $data);
-                break;
-            case 'Zaposleni':
-                $content = employeesBody($name, $data);
-
-                break;
-            default:
-                error_log('' . $name . '');
-                $content = basicBody($name, $data);
-
-                break;
+    $isLeaf = empty($node['elements']) || !is_array($node['elements']);
+    if ($isLeaf) {
+        // record metadata
+        $pageData = [
+            'id' => ++$GLOBALS['ID_auto'],
+            'name' => $name,
+            'path' => $relativePath,
+            'href' => $fullPath,
+            'status' => 'active',
+            'date' => date("m.d.Y.")
+        ];
+        $pagesData[] = $pageData;
+    
+        // only create the file once
+        if (!in_array($filename, $createdFiles, true)) {
+            // build the HEAD, injecting CSS if present
+    
+            // assemble full page content
+            switch ($name) {
+    
+                case 'dogadjaji':
+                    $content = eventsBody($name, $data);
+    
+                    break;
+                case 'kontakt':
+                    $content = contactBody($name, $data);
+    
+                    break;
+                case 'dokumenti':
+                    $content = documentsBody($name, $data);
+    
+                    break;
+                case 'galerija':
+                    $content = galleryBody($name, $data);
+    
+                    break;
+                case 'Misija':
+                    $content = bodyMission($name, $data);
+                    break;
+                case 'Cilj':
+                    $content = goalBody($name, $data);
+                    break;
+                case 'Zaposleni':
+                    $content = employeesBody($name, $data);
+    
+                    break;
+                default:
+                    error_log('' . $name . '');
+                    $content = basicBody($name, $data);
+    
+                    break;
+            }
+    
+            // write out the file
+            if (!is_dir($pagesDir)) {
+                mkdir($pagesDir, 0755, true);
+            }
+            file_put_contents($filePath, $content);
+            $createdFiles[] = $filename;
         }
-
-        // write out the file
-        if (!is_dir($pagesDir)) {
-            mkdir($pagesDir, 0755, true);
-        }
-        file_put_contents($filePath, $content);
-        $createdFiles[] = $filename;
     }
 
     // recurse into child nodes, passing down the URL path
