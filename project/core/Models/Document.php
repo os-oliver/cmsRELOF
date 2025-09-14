@@ -17,6 +17,14 @@ class Document
         $result = $this->pdo->query($sql);
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function getSubcategories()
+    {
+        $sql = "select * from subcategory_document;";
+        $result = $this->pdo->query($sql);
+        return $result->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function list(
         int $limit = 10,
         int $offset = 0,
@@ -25,7 +33,16 @@ class Document
         string $status = '',
         string $sort = 'date_desc'
     ): array {
-        $sql = "SELECT SQL_CALC_FOUND_ROWS document.id,filepath,extension,datetime, fileSize,title,description,category_id,name,color_code FROM document join category_document on document.category_id=category_document.id WHERE 1=1";
+        $sql = "SELECT SQL_CALC_FOUND_ROWS
+                d.id, d.filepath, d.extension, d.`datetime`, d.fileSize,
+                d.title, d.description, d.subcategory_id,
+                s.name AS subcategory_name,
+                c.color_code
+                FROM document AS d
+                JOIN subcategory_document AS s
+                ON d.subcategory_id = s.id
+                JOIN category_document AS c
+                ON s.category_id = c.id";
         $params = [':limit' => $limit, ':offset' => $offset];
 
         if ($search !== '') {
@@ -34,7 +51,7 @@ class Document
             $params[':s2'] = "%{$search}%";
         }
         if ($category !== '') {
-            $sql .= " AND category_id = :category";
+            $sql .= " AND subcategory_id = :category";
             $params[':category'] = $category;
         }
         if ($status !== '') {
@@ -70,7 +87,7 @@ class Document
         error_log('INSERTING DATA: ' . json_encode($data));
 
         $stmt = $this->pdo->prepare("
-            INSERT INTO document ( filepath, extension, title, description,fileSize,category_id,datetime)
+            INSERT INTO document ( filepath, extension, title, description,fileSize,subcategory_id,datetime)
             VALUES ( :filepath, :extension, :title, :description,:fileSize,:category,NOW())
         ");
         return $stmt->execute([
@@ -89,7 +106,7 @@ class Document
             UPDATE document SET 
                 title = :name,
                 description = :description,
-                category_id = :idc
+                subcategory_id = :idc
                
             WHERE id = :id
         ");

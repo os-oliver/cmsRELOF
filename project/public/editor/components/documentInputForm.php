@@ -82,7 +82,7 @@
                         <option value="">
                             <?= __("documentInputForm.select_category") ?>
                         </option>
-                        <?php foreach ($DocumentCategories as $category): ?>
+                        <?php foreach ($DocumentSubcategories as $category): ?>
                             <option value="<?= htmlspecialchars($category['id']) ?>">
                                 <?= htmlspecialchars($category['name']) ?></option>
                         <?php endforeach; ?>
