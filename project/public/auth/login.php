@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindDevelopement | Prijava</title>
+    <title>RELOF3 | Prijava</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -222,7 +222,7 @@
             </div>
             <h1
                 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600 mb-2 sm:mb-3">
-                MindDevelopement
+                Kontrolni Panel
             </h1>
             <p
                 class="text-sm sm:text-base lg:text-lg text-gray-700 max-w-xs sm:max-w-md lg:max-w-lg mx-auto leading-relaxed">

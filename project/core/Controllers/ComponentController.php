@@ -24,56 +24,34 @@ class ComponentController
     }
     public function saveComponent(): void
     {
-        // 1) Gather and validate input
-        $name = $_POST['cmp'] ?? '';
-        $html = $_POST['html'] ?? '';
-        if (!preg_match('/^[a-zA-Z0-9_]+$/', $name)) {
+        $componentName = $_POST['name'] ?? '';
+        $componentContent = $_POST['content'] ?? '';
+
+        if (empty($componentName) || empty($componentContent)) {
             http_response_code(400);
-            exit('Invalid component name');
+            exit('go fuck yourself');
         }
 
-        // 2) Build the path and check file exists
-        $path = PUBLIC_ROOT . '/exportedPages/pages/' . $name . '.php';
-        if (!file_exists($path)) {
-            http_response_code(404);
-            exit('Component not found');
+        $sanitizedName = preg_replace('/[^a-zA-Z0-9_]/', '', $componentName);
+        $filePath = PUBLIC_ROOT . "/exportedPages/components/{$sanitizedName}.php";
+
+        if (!is_dir(dirname($filePath))) {
+            mkdir(dirname($filePath), 0755, true);
         }
 
-        // 3) Load the template file
-        $template = file_get_contents($path);
-        if ($template === false) {
+        $bytesWritten = file_put_contents($filePath, $componentContent);
+
+        if ($bytesWritten === false) {
             http_response_code(500);
-            exit('Failed to read component file');
+            exit('Failed to save component');
         }
 
-        // 4) Replace the contents inside <main>…</main>
-        $pattern = '/(<main\b[^>]*>)(.*?)(<\/main>)/si';
-        if (preg_match($pattern, $template)) {
-            $newTemplate = preg_replace(
-                $pattern,
-                '$1' . $html . '$3',
-                $template
-            );
-        } else {
-            // If there's no <main> tag, you could choose to append it, or error
-            http_response_code(500);
-            exit('No <main> tag found in component');
-        }
-
-        // 5) Write the updated content back
-        $bytes = file_put_contents($path, $newTemplate);
-        if ($bytes === false) {
-            http_response_code(500);
-            exit('Failed to write component file');
-        }
-
-        // 6) Success
         header('Content-Type: application/json');
         echo json_encode([
-            'status' => 'ok',
-            'bytes_written' => $bytes,
+            'status' => 'success',
+            'message' => 'Component saved successfully',
+            'bytes_written' => $bytesWritten,
         ]);
-        exit;
     }
 
     public function loadComponent(): void
