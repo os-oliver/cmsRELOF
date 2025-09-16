@@ -1,6 +1,11 @@
 <?php
+session_start();
 use App\Models\Document;
 use App\Controllers\AuthController;
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
 // ✅ Autentikacija i osnovne informacije o korisniku
 AuthController::requireEditor();
@@ -26,6 +31,7 @@ $documentModal = new Document();
     category: $category,
     status: $status,
     sort: $sort,
+    lang: $locale
 );
 
 $totalPages = (int) ceil($totalCount / $limit);
@@ -112,7 +118,8 @@ function getFileConfig(string $ext): array
                         </p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <button id="btnNewDocument" class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
+                        <button id="btnNewDocument"
+                            class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
                             <i class="fas fa-plus text-sm"></i>
                             <?= __("documents.add_new") ?>
                         </button>
@@ -252,10 +259,10 @@ function getFileConfig(string $ext): array
                 <div
                     class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                     <div class="hidden md:block text-sm text-gray-700">
-                        <?= __("documents.shown") ?> 
-                        <span class="font-medium"><?= count($documents) ?></span> 
-                        <?= __("documents.of") ?> 
-                        <span class="font-medium"><?= $totalCount ?></span> 
+                        <?= __("documents.shown") ?>
+                        <span class="font-medium"><?= count($documents) ?></span>
+                        <?= __("documents.of") ?>
+                        <span class="font-medium"><?= $totalCount ?></span>
                         <?= __("documents.items") ?>
                     </div>
                     <nav class="flex items-center gap-2">

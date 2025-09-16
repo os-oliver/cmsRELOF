@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Database;
+use App\Utils\Pivoter;
 use PDO;
 use RuntimeException;
 
@@ -23,30 +24,54 @@ class Employee
     {
         $searchWildcard = '%' . $search . '%';
 
-        $limit = (int) $limit;
-        $offset = (int) $offset;
-
-        $whereClause = '';
+        // Parametri za WHERE
         $params = [];
+        $whereClause = '';
 
         if (!empty($search)) {
-            // Use two different placeholders
-            $whereClause = 'WHERE name LIKE :search1 OR surname LIKE :search2';
-            $params[':search1'] = $searchWildcard;
-            $params[':search2'] = $searchWildcard;
+            $whereClause = 'WHERE e.name LIKE :search OR e.surname LIKE :search';
+            $params[':search'] = $searchWildcard;
         }
 
-        $sql = "SELECT * FROM employee $whereClause ORDER BY id LIMIT $limit OFFSET $offset";
+        // Glavni SELECT - prvo selektujemo zaposlenе pa onda join
+        $sql = "
+        SELECT 
+            e.id,
+            e.position,
+            t.lang,
+            t.field_name,
+            t.content
+        FROM (
+            SELECT id, position
+            FROM employee e
+            $whereClause
+            ORDER BY e.id
+            LIMIT :limit OFFSET :offset
+        ) e
+        LEFT JOIN text t 
+            ON t.source_id = e.id 
+           AND t.source_table = 'employee'
+        ORDER BY e.id
+    ";
+
         $stmt = $this->pdo->prepare($sql);
 
+        // Bind parametri
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, PDO::PARAM_STR);
         }
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 
         $stmt->execute();
-        $employees = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $countSql = "SELECT COUNT(*) as total FROM employee $whereClause";
+        // Pivotovanje za jezike
+        $pivoter = new Pivoter('field_name', 'content', 'id');
+        $employees = $pivoter->pivot($rows);
+
+        // Ukupan broj rezultata (bez limit/offset)
+        $countSql = "SELECT COUNT(*) as total FROM employee e $whereClause";
         $countStmt = $this->pdo->prepare($countSql);
 
         foreach ($params as $key => $value) {
@@ -56,11 +81,9 @@ class Employee
         $countStmt->execute();
         $totalCount = (int) $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
 
-        return [
-            $employees,
-            $totalCount
-        ];
+        return [$employees, $totalCount];
     }
+
 
 
 

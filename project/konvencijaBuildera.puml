@@ -1,0 +1,98 @@
+@startuml
+!define RECTANGLE class
+!define GREEN_COLOR #90EE90
+
+' Generalizovani footer i header (obojeni zeleno)
+RECTANGLE footer #GREEN_COLOR {
+- ContactInfo
+- SocialLinks
+}
+
+RECTANGLE header #GREEN_COLOR {
+- Logo
+- NavLinks (Početna, Dokumenti, Dogadjaji, Knjige)
+}
+
+' WebPage kao centralni wrapper
+RECTANGLE WebPage {
+footer
+Main
+header
+}
+
+' Stranice sa zahtevom za header i footer
+RECTANGLE Index {
+*<color:blue>require header</color>
+<b>Main</b>
+- iz buildera komponeta landingPega ID1
+- lpID2
+- lpID3
+- lpID4
+*<color:orange>require footer</color>
+}
+
+RECTANGLE Dokumenti {
+*<color:blue>require header</color>
+<b>Main</b>
+- TITL
+- Dinamicka konvencija za dokumente
+*<color:orange>require footer</color>
+}
+
+RECTANGLE Dogadjaji {
+*<color:blue>require header</color>
+<b>Main</b>
+- TITL
+- konvencija za dogadjaje
+*<color:orange>require footer</color>
+}
+
+RECTANGLE Knjige {
+*<color:blue>require header</color>
+<b>Main</b>
+- KnjigeID1
+- KnjigeID2
+*<color:orange>require footer</color>
+}
+
+RECTANGLE StatickaStranica {
+*<color:blue>require header</color>
+<b>Main</b>
+-Pise sAdmin staticke
+-moze se koristiti builder
+*<color:orange>require footer</color>
+}
+
+
+' LandingPageComponents vezan samo za Index
+RECTANGLE LandingPageComponents {
+- omponentID1
+- ComponentID2
+- ComponentID3
+}
+
+' Strelice: footer ide gore, header ide dole
+footer -up-> Index
+header -down-> Index
+
+footer -up-> Dokumenti
+header -down-> Dokumenti
+
+footer -up-> Dogadjaji
+header -down-> Dogadjaji
+
+footer -up-> Knjige
+header -down-> Knjige
+
+footer -up-> StatickaStranica
+header -down-> StatickaStranica
+
+
+
+' LandingPageComponents povezan sa Index kroz Main
+LandingPageComponents --> Index : Main
+WebPage --> LandingPageComponents
+' WebPage povezan sa footer i header radi hijerarhije
+WebPage --> footer
+WebPage --> header
+@enduml

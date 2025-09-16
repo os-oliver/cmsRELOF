@@ -1,6 +1,7 @@
 <?php
 
-function __($key) {
+function __($key)
+{
     if (isset($_GET['locale'])) {
         $_SESSION['locale'] = $_GET['locale'];
     }
