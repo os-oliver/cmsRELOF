@@ -1,7 +1,9 @@
 <?php
+
+use App\Controllers\TransparencyScoreController;
 // You can calculate the score based on your data
 // For now, I'll use a placeholder score - you can replace this with actual calculation
-$transparencyScore = 75; // Example score from 0-100
+$transparencyScore = (new TransparencyScoreController())->getTransparencyScore();
 
 // Calculate color and status based on score
 function getTransparencyColor($score) {

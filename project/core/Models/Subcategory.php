@@ -78,4 +78,17 @@ class Subcategory
 
         return [$subcategories, $totalCount];
     }
+
+    /**
+     * Fetch the number of distinct subcategories by name.
+     *
+     * @return int
+     */
+    public function countDistinctSubcategories(): int
+    {
+        $sql = "SELECT COUNT(DISTINCT name) AS distinct_count FROM subcategory_document";
+        $stmt = $this->pdo->query($sql);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (int) $result['distinct_count'];
+    }
 }

@@ -184,4 +184,11 @@ class Document
         $stmt->execute([':query' => $like]);
         return (int) $stmt->fetchColumn();
     }
+
+    
+    public function countDistinctSubcategories(): int
+    {
+        $stmt = $this->pdo->query("SELECT COUNT(DISTINCT subcategory_id) FROM document");
+        return (int) $stmt->fetchColumn();
+    }
 }
