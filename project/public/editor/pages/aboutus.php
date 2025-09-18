@@ -202,7 +202,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                         </div>
                     </div>
 
-                    
+
                     <!-- Team Members Column -->
                     <div class="glass-panel rounded-2xl p-6">
                         <div class="flex justify-between items-center mb-6">
@@ -365,7 +365,7 @@ $totalPages = (int) ceil($totalCount / $limit);
             // Goal and mission saving
             document.getElementById('goal').addEventListener('click', async () => {
                 const goal = document.getElementById('cilj').value.trim();
-                if (!goal) return alert("<?= __("aboutus.empty_goal") ?>");
+                if (!goal) return alert('<?= __("aboutus.empty_goal") ?>');
 
                 try {
                     const response = await fetch('/aboutus/1', {
