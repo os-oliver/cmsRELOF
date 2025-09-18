@@ -307,7 +307,7 @@
     "chats.delete_confirm_msg": "Да ли сте сигурни да желите да обришете овај контакт?",
     "chats.delete_error_msg": "Грешка при брисању: ",
     "chats.network_error_msg": "Дошло је до грешке при мрежном захтеву.",
-    
+
     "complaints.dashboard": "Контролни панел - Администрација",
     "complaints.complaints": "Жалбе и притужбе",
     "complaints.managing": "Управљање и праћење корисничких жалби",
@@ -360,5 +360,5 @@
     "complaints.pending3": "На чекању",
     "complaints.medium2": "Средњи",
     "complaints.showing": "Приказано 1-4 од 247 жалби"
-    
+
 }
