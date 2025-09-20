@@ -455,6 +455,13 @@ $totalPages = (int) ceil($totalCount / $limit);
                 modal.classList.add('hidden');
             });
 
+            // Close modal on ESC (same as Cancel)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                }
+            });
+
             // Form submission
             memberForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
