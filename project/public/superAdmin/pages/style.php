@@ -667,6 +667,13 @@ AuthController::requireAdmin();
             }
         });
 
+        // Close modal on ESC key (same as Cancel)
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
         // Status options in modal
         function resetStatusOptions(activeStatus) {
             statusOptions.forEach(option => {

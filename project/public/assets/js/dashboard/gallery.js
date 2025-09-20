@@ -143,4 +143,17 @@ document.addEventListener("DOMContentLoaded", () => {
       (e) => e.target === modal && closeModal(modal)
     )
   );
+
+  // Close on ESC: reset form for galleryModal (same as Cancel), close fullImageModal
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (!galleryModal.classList.contains("invisible")) {
+        form.reset();
+        closeModal(galleryModal);
+      }
+      if (!fullImageModal.classList.contains("invisible")) {
+        closeModal(fullImageModal);
+      }
+    }
+  });
 });

@@ -75,6 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === modal) closeModal();
   });
 
+  // Zatvori na ESC (isto kao Cancel)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("invisible")) {
+      form.reset();
+      closeModal();
+    }
+  });
+
   function closeModal() {
     modal.classList.add("invisible");
     document.body.classList.remove("overflow-hidden");
