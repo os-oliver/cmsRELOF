@@ -29,7 +29,7 @@ $documentModal = new Document();
 );
 
 $totalPages = (int) ceil($totalCount / $limit);
-$DocumentSubcategories = $documentModal->getSubcategories();
+$DocumentCategories = $documentModal->getCategories();
 
 // ✅ Konfiguracija fajlova po ekstenziji
 function getFileConfig(string $ext): array
@@ -135,7 +135,7 @@ function getFileConfig(string $ext): array
                             <option value="">
                                 <?= __("documents.all_categories") ?>
                             </option>
-                            <?php foreach ($DocumentSubcategories as $doc): ?>
+                            <?php foreach ($DocumentCategories as $doc): ?>
                                 <option value="<?= $doc['id'] ?>"><?= $doc['name'] ?></option>
                             <?php endforeach; ?>
                         </select>

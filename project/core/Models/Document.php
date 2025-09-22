@@ -51,7 +51,7 @@ class Document
             $params[':s2'] = "%{$search}%";
         }
         if ($category !== '') {
-            $sql .= " AND subcategory_id = :category";
+            $sql .= " AND c.id = :category";
             $params[':category'] = $category;
         }
         if ($status !== '') {
