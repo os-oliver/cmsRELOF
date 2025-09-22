@@ -19,6 +19,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET', '/kontrolna-tabla', 'PageController@dashboard');
     $r->addRoute('GET', '/kontrolna-tabla/dokumenti', 'PageController@documents');
     $r->addRoute('GET', '/kontrolna-tabla/dogadjaji', 'PageController@events');
+    $r->addRoute('GET', '/kontrolna-tabla/stranice', 'PageController@StaticPageEditor');
     $r->addRoute('GET', '/kontrolna-tabla/poruke', 'PageController@chats');
     $r->addRoute('GET', '/kontrolna-tabla/o-nama', 'PageController@aboutUS');
 
@@ -33,6 +34,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET', '/buildingWizard', 'PageController@buildWizard');
     $r->addRoute('GET', '/style', 'PageController@style');
     $r->addRoute('POST', '/savePage', 'PageController@savePage');
+    $r->addRoute('POST', '/deletePage', 'PageController@deletePage');
     $r->addRoute('GET', '/loadComponent', 'ComponentController@loadComponent');
     $r->addRoute('POST', '/saveComponent', 'ComponentController@saveComponent');
     $r->addRoute('POST', '/saveLandigPageComponent', 'ComponentController@saveLandigPageComponent');
@@ -49,7 +51,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
 
     #change this one for URL to be in serbian if needed
     $r->addRoute('GET', '/login', 'PageController@login');
-    
+
     $r->addRoute('POST', '/login', 'AuthController@auth');
     $r->addRoute('GET', '/logout', 'AuthController@logout');
 

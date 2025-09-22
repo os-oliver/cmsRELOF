@@ -6,8 +6,7 @@ use App\Models\Gallery;
 
 class GalleryPageBuilder extends BasePageBuilder
 {
-
-    static string $style = <<<CSS
+    protected string $css = <<<CSS
     gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -164,28 +163,8 @@ class GalleryPageBuilder extends BasePageBuilder
             background: linear-gradient(135deg, #6b46c1 0%, #3b82f6 100%);
         }
     CSS;
-    public function buildPage(): string
-    {
-        $content = <<<'PHP'
-<?php
-use App\Models\Gallery;
 
-$limit = 6;
-$page = max(1, (int) ($_GET['page'] ?? 1));
-$offset = ($page - 1) * $limit;
-$documentModal = new Gallery();
-[$images, $totalCount] = $documentModal->list(
-    limit: $limit,
-    offset: $offset
-);
-$totalPages = (int) ceil($totalCount / $limit);
-?>
-PHP;
-
-        $content .= $this->getHeader($this::$style);
-        $content .= $this->getCommonIncludes();
-
-        $content .= <<<'HTML'
+    protected string $html = <<<'HTML'
 <main>
     <div>
         <button id="increaseFontBtn"
@@ -272,6 +251,25 @@ PHP;
 </div>
 HTML;
 
+    public function buildPage(): string
+    {
+        $additionalPHP = <<<PHP
+        use App\Models\Gallery;
+
+        \$limit = 6;
+        \$page = max(1, (int) (\$_GET["page"] ?? 1));
+        \$offset = (\$page - 1) * \$limit;
+        \$documentModal = new Gallery();
+        [\$images, \$totalCount] = \$documentModal->list(
+            limit: \$limit,
+            offset: \$offset
+        );
+        \$totalPages = (int) ceil(\$totalCount / \$limit);
+        PHP;
+
+        $content = $this->getHeader($this->css, $additionalPHP);
+        $content .= $this->getCommonIncludes();
+        $content .= $this->html;
         $content .= $this->getFooter();
         return $content;
     }

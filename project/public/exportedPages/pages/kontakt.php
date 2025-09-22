@@ -1,7 +1,9 @@
 <?php
 session_start();
+use App\Models\PageLoader;
 use \App\Utils\LocaleManager;
 $locale = LocaleManager::get();
+$groupedPages = PageLoader::getGroupedStaticPages();
 
 
 use App\Models\Text;
@@ -18,10 +20,50 @@ $dynamicText = $textModel->getDynamicText($locale);
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($dynamicText['t_kontakt_0aef9a_fa84f0']['text'] ?? 'kontakt', ENT_QUOTES, 'UTF-8'); ?></title>
+    <title><?= htmlspecialchars($dynamicText['t_kontakt_c4def6_fa84f0']['text'] ?? 'kontakt', ENT_QUOTES, 'UTF-8'); ?></title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script><style>
-            
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'clay': '#c97c5d',
+                        'ochre': '#d4a373',
+                        'sage': '#a3b18a',
+                        'slate': '#344e41',
+                        'paper': '#f5ebe0',
+                        'terracotta': '#bc6c25',
+                        'coral': '#e76f51',
+                        'deep-teal': '#2a9d8f',
+                        'crimson': '#8d1b3d',
+                        'royal-blue': '#1a4480',
+                        'velvet': '#4a154b',
+                        ochre: '#CC7722',
+                        terracotta: '#E2725B',
+                        paper: '#F5F5DC',
+                        slate: '#2F4F4F',
+                        'royal-blue': '#4169E1',
+                        'deep-teal': '#008B8B',
+                        velvet: '#872657',
+                        crimson: '#DC143C',
+                        coral: '#FF7F50',
+                        sage: '#9CAF88'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'crimson': ['Crimson Pro', 'serif'],
+                        'body': ['Raleway', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'art-pattern': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmNWViZTAiPjxwYXRoIGQ9Ik0wIDBoNDB2NDBIMHoiLz48L2c+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0idXJsKCNhKSIvPjxwYXRoIGQ9Ik0wIDBoMjB2MjBIMHoiIGZpbGw9IiNkNGExYjEiIG9wYWNpdHk9Ii4xIi8+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6IiBmaWxsPSIjYTNiMThhIiBvcGFjaXR5PSIuMSIvPjxwYXRoIGQ9Ik0wIDIwaDIwdjIwSDB6IiBmaWxsPSIjYjk3YzVkIiBvcGFjaXR5PSIuMSIvPjxwYXRoIGQ9Ik0yMCAyMGgyMHYyMEgyMHoiIGZpbGw9IiMzNDRlNDEiIG9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')",
+                        'brush-stroke': "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 40\" width=\"400\" height=\"40\"><path d=\"M20,20 C50,5 100,35 150,20 C200,5 250,35 300,20 C350,5 380,35 380,20\" fill=\"none\" stroke=\"%23d4a373\" stroke-width=\"10\" stroke-linecap=\"round\"/>')",
+                    }
+                }
+            }
+        }
+    </script><style>
+
         .form-toggle input:checked + label {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
@@ -97,8 +139,83 @@ $dynamicText = $textModel->getDynamicText($locale);
             background: linear-gradient(135deg, #10b981, #059669);
         }
     
-            
-* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#ixta7h{animation-delay:1s;}#i92p29{animation-delay:2s;}#ilo0sf{animation-delay:3s;}#i2jd8u{background-image:radial-gradient(#344e41 1px, transparent 1px);background-size:20px 20px;}#izdc2k{clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);}#ivknqq{clip-path:polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);}#iw9z4w{border:0;}@layer utilities{.artistic-underline{background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 20\"><path fill=\"none\" stroke=\"%23d4a373\" stroke-width=\"3\" stroke-linecap=\"round\" d=\"M2,17 C15,17 25,5 40,10 C55,15 65,3 80,8 C95,13 105,5 118,12\"/></svg>");background-position-x:center;background-position-y:bottom;background-repeat:no-repeat;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 12px;padding-bottom:12px;}.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-card{clip-path:polygon(0px 0px, 100% 0px, 100% 85%, 95% 100%, 0px 100%);transition-behavior:normal;transition-duration:0.4s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.artistic-card:hover{transform:translateY(-10px);box-shadow:rgba(0, 0, 0, 0.2) 0px 20px 30px -10px;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.category-badge{position:absolute;top:15px;right:15px;padding-top:5px;padding-right:12px;padding-bottom:5px;padding-left:12px;border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-right-radius:20px;border-bottom-left-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;backdrop-filter:blur(4px);z-index:20;}.hero-gradient{background-image:linear-gradient(135deg, rgb(245, 235, 224) 0%, rgb(212, 163, 115) 100%);background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}.section-divider{height:100px;background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 120\" preserveAspectRatio=\"none\"><path d=\"M1200 120L0 16.48 0 0 1200 0 1200 120z\" fill=\"%23f5ebe0\"></path></svg>");background-position-x:initial;background-position-y:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 100px;}.floating{animation-duration:6s;animation-timing-function:ease-in-out;animation-delay:0s;animation-iteration-count:infinite;animation-direction:normal;animation-fill-mode:none;animation-play-state:running;animation-name:floating;animation-timeline:auto;animation-range-start:normal;animation-range-end:normal;}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
+
+        .form-toggle input:checked + label {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .complaint-toggle input:checked + label {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+
+        .input-focus:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+        }
+
+        .complaint-submit {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .complaint-submit:hover {
+            box-shadow: 0 15px 35px rgba(239, 68, 68, 0.4);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-message {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon-bg {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+        }
+
+        .icon-bg-blue {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        .icon-bg-green {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+    
+* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#i8iywb{animation-delay:1s;}#i8042i{animation-delay:2s;}#ilqozy{animation-delay:3s;}#ievinl{background-image:radial-gradient(#344e41 1px, transparent 1px);background-size:20px 20px;}#izw48v{clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);}#iuq0zu{clip-path:polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);}#i4pluj{border:0;}@layer utilities{.artistic-underline{background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 20\"><path fill=\"none\" stroke=\"%23d4a373\" stroke-width=\"3\" stroke-linecap=\"round\" d=\"M2,17 C15,17 25,5 40,10 C55,15 65,3 80,8 C95,13 105,5 118,12\"/></svg>");background-position-x:center;background-position-y:bottom;background-repeat:no-repeat;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 12px;padding-bottom:12px;}.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-card{clip-path:polygon(0px 0px, 100% 0px, 100% 85%, 95% 100%, 0px 100%);transition-behavior:normal;transition-duration:0.4s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.artistic-card:hover{transform:translateY(-10px);box-shadow:rgba(0, 0, 0, 0.2) 0px 20px 30px -10px;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.category-badge{position:absolute;top:15px;right:15px;padding-top:5px;padding-right:12px;padding-bottom:5px;padding-left:12px;border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-right-radius:20px;border-bottom-left-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;backdrop-filter:blur(4px);z-index:20;}.hero-gradient{background-image:linear-gradient(135deg, rgb(245, 235, 224) 0%, rgb(212, 163, 115) 100%);background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}.section-divider{height:100px;background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 120\" preserveAspectRatio=\"none\"><path d=\"M1200 120L0 16.48 0 0 1200 0 1200 120z\" fill=\"%23f5ebe0\"></path></svg>");background-position-x:initial;background-position-y:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 100px;}.floating{animation-duration:6s;animation-timing-function:ease-in-out;animation-delay:0s;animation-iteration-count:infinite;animation-direction:normal;animation-fill-mode:none;animation-play-state:running;animation-name:floating;animation-timeline:auto;animation-range-start:normal;animation-range-end:normal;}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
 </style>
 
 
@@ -107,8 +224,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/divmobileMenu.php'
 require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
 ?>
 
-        <main class="pt-2 flex-grow">
-
+<main class="pt-2 flex-grow">
 <div class="py-12 mt-20 px-4 flex-1">
         <div>
             <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
@@ -118,8 +234,8 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
         <div class="max-w-6xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent"><?php echo htmlspecialchars($dynamicText['t_kontakt_c9b20e_e42ffd']['text'] ?? 'Kontaktirajte nas', ENT_QUOTES, 'UTF-8'); ?></h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"><?php echo htmlspecialchars($dynamicText['t_kontakt_2aaec3_091dff']['text'] ?? 'Vaše mišljenje nam je važno. Kontaktirajte nas za sve informacije ili pošaljite žalbu kako bismo
+                <h1 class="text-5xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent"><?= htmlspecialchars($dynamicText['t_kontakt_44ed39_e42ffd']['text'] ?? 'Kontaktirajte nas', ENT_QUOTES, 'UTF-8'); ?></h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"><?= htmlspecialchars($dynamicText['t_kontakt_fe8762_091dff']['text'] ?? 'Vaše mišljenje nam je važno. Kontaktirajte nas za sve informacije ili pošaljite žalbu kako bismo
                     mogli da poboljšamo naše usluge.', ENT_QUOTES, 'UTF-8'); ?></p>
             </div>
 
@@ -127,7 +243,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                 <!-- Contact Info -->
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-3xl shadow-2xl p-8 card-hover h-fit">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-8"><?php echo htmlspecialchars($dynamicText['t_kontakt_52b948_d6f9f0']['text'] ?? 'Kontakt informacije', ENT_QUOTES, 'UTF-8'); ?></h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8"><?= htmlspecialchars($dynamicText['t_kontakt_fbe79f_d6f9f0']['text'] ?? 'Kontakt informacije', ENT_QUOTES, 'UTF-8'); ?></h2>
 
                         <div class="space-y-8">
                             <div class="flex items-start space-x-6">
@@ -139,9 +255,9 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?php echo htmlspecialchars($dynamicText['t_kontakt_374c7c_f6999f']['text'] ?? 'Adresa', ENT_QUOTES, 'UTF-8'); ?></h3>
-                                    <p class="text-gray-600 leading-relaxed"><?php echo htmlspecialchars($dynamicText['t_kontakt_b95ab8_b4afdb']['text'] ?? 'Centar za umetnost i baštinu', ENT_QUOTES, 'UTF-8'); ?><br>Trg
-                                        slobode 1<br>21000 Novi Sad, Srbija</p>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?= htmlspecialchars($dynamicText['t_kontakt_3d6c7a_f6999f']['text'] ?? 'Adresa', ENT_QUOTES, 'UTF-8'); ?></h3>
+                                    <p class="text-gray-600 leading-relaxed"><?= htmlspecialchars($dynamicText['t_kontakt_f0c7b0_b4afdb']['text'] ?? 'Centar za umetnost i baštinu', ENT_QUOTES, 'UTF-8'); ?><br><?= htmlspecialchars($dynamicText['t_kontakt_0e7542_34702e']['text'] ?? 'Trg
+                                        slobode 1', ENT_QUOTES, 'UTF-8'); ?><br><?= htmlspecialchars($dynamicText['t_kontakt_053223_f6fc64']['text'] ?? '21000 Novi Sad, Srbija', ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
                             </div>
 
@@ -153,9 +269,9 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?php echo htmlspecialchars($dynamicText['t_kontakt_fd6751_0975cf']['text'] ?? 'Telefon', ENT_QUOTES, 'UTF-8'); ?></h3>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?= htmlspecialchars($dynamicText['t_kontakt_981bb1_0975cf']['text'] ?? 'Telefon', ENT_QUOTES, 'UTF-8'); ?></h3>
                                     <p class="text-gray-600 text-lg">+381 21 123 456</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <p class="text-gray-500 text-sm"><?= htmlspecialchars($dynamicText['t_kontakt_bfd547_ac7bef']['text'] ?? 'Ponedeljak - Petak: 09:00 - 17:00', ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
                             </div>
 
@@ -167,27 +283,27 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?php echo htmlspecialchars($dynamicText['t_kontakt_974906_ce8ae9']['text'] ?? 'Email', ENT_QUOTES, 'UTF-8'); ?></h3>
-                                    <p class="text-gray-600 text-lg"><?php echo htmlspecialchars($dynamicText['t_kontakt_d78abc_fe971b']['text'] ?? 'info@kulturnynexus.rs', ENT_QUOTES, 'UTF-8'); ?></p>
-                                    <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?= htmlspecialchars($dynamicText['t_kontakt_031ed3_ce8ae9']['text'] ?? 'Email', ENT_QUOTES, 'UTF-8'); ?></h3>
+                                    <p class="text-gray-600 text-lg"><?= htmlspecialchars($dynamicText['t_kontakt_dd7f08_fe971b']['text'] ?? 'info@kulturnynexus.rs', ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="text-gray-500 text-sm"><?= htmlspecialchars($dynamicText['t_kontakt_c6f667_c0d269']['text'] ?? 'Odgovaramo u roku od 24h', ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="mt-10 p-6 bg-gradient-to-br from-orange-50 to-blue-50 rounded-2xl border border-orange-100">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4"><?php echo htmlspecialchars($dynamicText['t_kontakt_47952f_16f2a3']['text'] ?? 'Radno vreme', ENT_QUOTES, 'UTF-8'); ?></h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4"><?= htmlspecialchars($dynamicText['t_kontakt_4deda2_16f2a3']['text'] ?? 'Radno vreme', ENT_QUOTES, 'UTF-8'); ?></h3>
                             <div class="text-gray-700 space-y-2">
                                 <div class="flex justify-between">
-                                    <span class="font-medium"><?php echo htmlspecialchars($dynamicText['t_kontakt_2af54d_0286e5']['text'] ?? 'Ponedeljak - Petak:', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span class="font-medium"><?= htmlspecialchars($dynamicText['t_kontakt_e6432d_0286e5']['text'] ?? 'Ponedeljak - Petak:', ENT_QUOTES, 'UTF-8'); ?></span>
                                     <span>09:00 - 17:00</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="font-medium"><?php echo htmlspecialchars($dynamicText['t_kontakt_5a17fd_d9c89f']['text'] ?? 'Subota:', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span class="font-medium"><?= htmlspecialchars($dynamicText['t_kontakt_a60f11_d9c89f']['text'] ?? 'Subota:', ENT_QUOTES, 'UTF-8'); ?></span>
                                     <span>10:00 - 14:00</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="font-medium"><?php echo htmlspecialchars($dynamicText['t_kontakt_88f6ca_454f27']['text'] ?? 'Nedelja:', ENT_QUOTES, 'UTF-8'); ?></span>
-                                    <span class="text-red-500"><?php echo htmlspecialchars($dynamicText['t_kontakt_e5c3fe_f50368']['text'] ?? 'Zatvoreno', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span class="font-medium"><?= htmlspecialchars($dynamicText['t_kontakt_3f94b9_454f27']['text'] ?? 'Nedelja:', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span class="text-red-500"><?= htmlspecialchars($dynamicText['t_kontakt_5c076f_f50368']['text'] ?? 'Zatvoreno', ENT_QUOTES, 'UTF-8'); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -208,9 +324,9 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-green-800 font-bold text-lg" id="success-title"><?php echo htmlspecialchars($dynamicText['t_kontakt_3894dc_63e66c']['text'] ?? 'Vaša poruka je
+                                    <p class="text-green-800 font-bold text-lg" id="success-title"><?= htmlspecialchars($dynamicText['t_kontakt_a8eca6_63e66c']['text'] ?? 'Vaša poruka je
                                         uspešno poslata!', ENT_QUOTES, 'UTF-8'); ?></p>
-                                    <p class="text-green-700"><?php echo htmlspecialchars($dynamicText['t_kontakt_c10a6f_d0ce73']['text'] ?? 'Odgovoriće vam u najkraćem mogućem roku.', ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="text-green-700"><?= htmlspecialchars($dynamicText['t_kontakt_1cc416_d0ce73']['text'] ?? 'Odgovoriće vam u najkraćem mogućem roku.', ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -219,23 +335,23 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                         <form id="contact-form" class="space-y-6">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?php echo htmlspecialchars($dynamicText['t_kontakt_c0c5dd_3539f9']['text'] ?? 'Ime i prezime *', ENT_QUOTES, 'UTF-8'); ?></label>
+                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?= htmlspecialchars($dynamicText['t_kontakt_53bfef_3539f9']['text'] ?? 'Ime i prezime *', ENT_QUOTES, 'UTF-8'); ?></label>
                                     <input type="text" name="ime" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="Unesite vaše ime i prezime">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?php echo htmlspecialchars($dynamicText['t_kontakt_90b8b2_ad4848']['text'] ?? 'Email adresa *', ENT_QUOTES, 'UTF-8'); ?></label>
+                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?= htmlspecialchars($dynamicText['t_kontakt_5b8854_ad4848']['text'] ?? 'Email adresa *', ENT_QUOTES, 'UTF-8'); ?></label>
                                     <input type="email" name="email" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="vasa.email@primer.com">
                                 </div>
                             </div>
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?php echo htmlspecialchars($dynamicText['t_kontakt_422ac9_693039']['text'] ?? 'Broj telefona', ENT_QUOTES, 'UTF-8'); ?></label>
+                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?= htmlspecialchars($dynamicText['t_kontakt_0d502e_693039']['text'] ?? 'Broj telefona', ENT_QUOTES, 'UTF-8'); ?></label>
                                     <input type="tel" name="telefon" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="+381 xx xxx xxxx">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-3">
-                                        <span id="subject-label"><?php echo htmlspecialchars($dynamicText['t_kontakt_b0a5a1_55e18c']['text'] ?? 'Naslov poruke *', ENT_QUOTES, 'UTF-8'); ?></span>
+                                        <span id="subject-label"><?= htmlspecialchars($dynamicText['t_kontakt_274698_55e18c']['text'] ?? 'Naslov poruke *', ENT_QUOTES, 'UTF-8'); ?></span>
                                     </label>
                                     <input type="text" name="naslov" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="Kratko opišite razlog kontakta" id="subject-input">
                                 </div>
@@ -243,7 +359,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
 
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-3">
-                                    <span id="message-label"><?php echo htmlspecialchars($dynamicText['t_kontakt_09f579_9a1399']['text'] ?? 'Vaša poruka *', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span id="message-label"><?= htmlspecialchars($dynamicText['t_kontakt_fe7113_9a1399']['text'] ?? 'Vaša poruka *', ENT_QUOTES, 'UTF-8'); ?></span>
                                 </label>
                                 <textarea name="poruka" required="" rows="6" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg resize-none" placeholder="Detaljno opišite vaš upit ili problem..." id="message-input"></textarea>
                             </div>
@@ -254,7 +370,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                                         </svg>
-                                        <span id="submit-text"><?php echo htmlspecialchars($dynamicText['t_kontakt_49f371_701225']['text'] ?? 'Pošaljite poruku', ENT_QUOTES, 'UTF-8'); ?></span>
+                                        <span id="submit-text"><?= htmlspecialchars($dynamicText['t_kontakt_e82662_701225']['text'] ?? 'Pošaljite poruku', ENT_QUOTES, 'UTF-8'); ?></span>
                                     </span>
                                 </button>
                             </div>
@@ -267,52 +383,6 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
     </div>
 
 </main>
-<script>
-document.getElementById('contact-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-  const fullName = document.querySelector('input[name="ime"]').value.trim();
-    const [ime, prezime] = fullName.split(' ');
-
-    const formData = {
-        ime: ime || '',
-        prezime: prezime || '',
-        email: document.querySelector('input[name="email"]').value,
-        phone: document.querySelector('input[name="telefon"]').value,
-        naslov: document.querySelector('input[name="naslov"]').value,
-        poruka: document.querySelector('textarea[name="poruka"]').value
-    };
-
-
-    try {
-        const response = await fetch('/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        });
-
-        if (response.ok) {
-            // Show success message
-            const successMessage = document.getElementById('success-message');
-            successMessage.classList.remove('hidden');
-            
-            // Reset form
-            this.reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.classList.add('hidden');
-            }, 5000);
-        } else {
-            throw new Error('Failed to send message');
-        }
-    } catch (error) {
-        alert('Error sending message: ' + error.message);
-    }
-});
-</script>
 <?php
 require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
 ?>
@@ -585,3 +655,48 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
 </script>
 
 
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+  const fullName = document.querySelector('input[name="ime"]').value.trim();
+    const [ime, prezime] = fullName.split(' ');
+
+    const formData = {
+        ime: ime || '',
+        prezime: prezime || '',
+        email: document.querySelector('input[name="email"]').value,
+        phone: document.querySelector('input[name="telefon"]').value,
+        naslov: document.querySelector('input[name="naslov"]').value,
+        poruka: document.querySelector('textarea[name="poruka"]').value
+    };
+
+    try {
+        const response = await fetch('/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+            // Show success message
+            const successMessage = document.getElementById('success-message');
+            successMessage.classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+            }, 5000);
+        } else {
+            throw new Error('Failed to send message');
+        }
+    } catch (error) {
+        alert('Error sending message: ' + error.message);
+    }
+});
+</script>
