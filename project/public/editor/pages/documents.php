@@ -29,7 +29,7 @@ $documentModal = new Document();
 );
 
 $totalPages = (int) ceil($totalCount / $limit);
-$DocumentCategories = $documentModal->getCategories();
+$DocumentSubcategories = $documentModal->getSubcategories();
 
 // ✅ Konfiguracija fajlova po ekstenziji
 function getFileConfig(string $ext): array
@@ -135,7 +135,7 @@ function getFileConfig(string $ext): array
                             <option value="">
                                 <?= __("documents.all_categories") ?>
                             </option>
-                            <?php foreach ($DocumentCategories as $doc): ?>
+                            <?php foreach ($DocumentSubcategories as $doc): ?>
                                 <option value="<?= $doc['id'] ?>"><?= $doc['name'] ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -169,11 +169,11 @@ function getFileConfig(string $ext): array
                         <div class="document-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group relative"
                             data-title="<?= htmlspecialchars($doc['title']) ?>"
                             data-description="<?= htmlspecialchars($doc['description']) ?>"
-                            data-category="<?= htmlspecialchars($doc['category_id']) ?>"
+                            data-category="<?= htmlspecialchars($doc['subcategory_id']) ?>"
                             data-file-url="<?= htmlspecialchars($doc['filepath']) ?>"
                             data-file-type="<?= htmlspecialchars($doc['extension']) ?>"
                             data-date="<?= htmlspecialchars($doc['datetime']) ?>"
-                            data-name="<?= htmlspecialchars($doc['name']) ?>"
+                            data-name="<?= htmlspecialchars($doc['subcategory_name']) ?>"
                             data-file-size="<?= htmlspecialchars($doc['fileSize']) ?> MB"
                             data-id="<?= htmlspecialchars($doc['id']) ?>">
 
@@ -209,7 +209,7 @@ function getFileConfig(string $ext): array
                                         </div>
                                         <div>
                                             <span
-                                                class="text-sm font-medium <?= $cfg['text_color'] ?> bg-<?= $cfg['color'] ?>-50 px-2 py-1 rounded-lg"><?= htmlspecialchars($doc['name']) ?></span>
+                                                class="text-sm font-medium <?= $cfg['text_color'] ?> bg-<?= $cfg['color'] ?>-50 px-2 py-1 rounded-lg"><?= htmlspecialchars($doc['subcategory_name']) ?></span>
                                         </div>
                                     </div>
                                     <button

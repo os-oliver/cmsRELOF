@@ -74,6 +74,8 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('PUT', '/users/{id:\d+}', 'UserController@update');
     $r->addRoute('DELETE', route: '/users/{id:\d+}', handler: 'UserController@delete');
 
+    $r->addRoute('GET', '/transparency-score', 'TransparencyScoreController@getTransparencyScore');
+
     $pages = json_decode(
         file_get_contents(__DIR__ . '/assets/data/pages.json'),
         true
