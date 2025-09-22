@@ -822,6 +822,18 @@ $totalPages = (int) ceil($totalCount / $limit);
                 closeDeleteModal();
             }
         });
+
+        // Close modals on outside click (same as Cancel)
+        document.getElementById('userModal').addEventListener('click', (e) => {
+            if (e.target.id === 'userModal') {
+                closeUserModal();
+            }
+        });
+        document.getElementById('deleteModal').addEventListener('click', (e) => {
+            if (e.target.id === 'deleteModal') {
+                closeDeleteModal();
+            }
+        });
     </script>
 </body>
 
