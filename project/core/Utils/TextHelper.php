@@ -51,7 +51,7 @@ class TextHelper
     /**
      * Upsert (insert ili update) tekstualnih zapisa - koristi ON DUPLICATE KEY UPDATE.
      */
-    public static function upsertTextEntries(PDO $pdo, int $sourceId, string $fieldName, array $variants, string $sourceTable = 'document'): void
+    public static function updateTextEntries(PDO $pdo, int $sourceId, string $fieldName, array $variants, string $sourceTable = 'document'): void
     {
         $sql = "
             INSERT INTO text (source_id, source_table, field_name, lang, content)

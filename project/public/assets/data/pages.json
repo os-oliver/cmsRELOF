@@ -1,74 +1,160 @@
 [
     {
-        "id": "68c96f7f92023",
+        "id": "68d1310f29769",
+        "static": false,
+        "movable": false,
         "name": "",
         "href": "\/",
         "path": "pages\/.php",
         "file": ".php",
         "status": 1,
-        "created_at": "2025-09-16 14:09:03"
+        "created_at": "2025-09-22 11:20:47"
     },
     {
-        "id": "68c96f7f93c67",
+        "id": "68d1310f2c2b7",
+        "static": false,
+        "movable": false,
         "name": "Cilj",
         "href": "\/o-nama\/cilj",
         "path": "pages\/cilj.php",
         "file": "cilj.php",
         "status": 1,
-        "created_at": "2025-09-16 14:09:03"
+        "created_at": "2025-09-22 11:20:47"
     },
     {
-        "id": "68c96f7f95daa",
+        "id": "68d1310f2f065",
+        "static": false,
+        "movable": false,
         "name": "Zaposleni",
         "href": "\/o-nama\/zaposleni",
         "path": "pages\/zaposleni.php",
         "file": "zaposleni.php",
         "status": 1,
-        "created_at": "2025-09-16 14:09:03"
+        "created_at": "2025-09-22 11:20:47"
     },
     {
-        "id": "68c96f7f97764",
+        "id": "68d1310f32180",
+        "static": false,
+        "movable": false,
         "name": "Misija",
         "href": "\/o-nama\/misija",
         "path": "pages\/misija.php",
         "file": "misija.php",
         "status": 1,
-        "created_at": "2025-09-16 14:09:03"
+        "created_at": "2025-09-22 11:20:47"
     },
     {
-        "id": "68c96f7f9a7fa",
+        "id": "68d1310f34feb",
+        "static": false,
+        "movable": false,
+        "name": "Istorija",
+        "href": "\/o-nama\/istorija",
+        "path": "pages\/istorija.php",
+        "file": "istorija.php",
+        "status": 1,
+        "created_at": "2025-09-22 11:20:47"
+    },
+    {
+        "id": "68d1310f37b79",
+        "static": false,
+        "movable": false,
+        "name": "Tim",
+        "href": "\/o-nama\/tim",
+        "path": "pages\/tim.php",
+        "file": "tim.php",
+        "status": 1,
+        "created_at": "2025-09-22 11:20:47"
+    },
+    {
+        "id": "68d1310f3e1f0",
+        "static": false,
+        "movable": false,
         "name": "dogadjaji",
         "href": "\/dogadjaji",
         "path": "pages\/dogadjaji.php",
         "file": "dogadjaji.php",
         "status": 1,
-        "created_at": "2025-09-16 14:09:03"
+        "created_at": "2025-09-22 11:20:47"
     },
     {
-        "id": "68c96f7f9d867",
+        "id": "68d1310f437fb",
+        "static": false,
+        "movable": false,
         "name": "galerija",
         "href": "\/galerija",
         "path": "pages\/galerija.php",
         "file": "galerija.php",
         "status": 1,
-        "created_at": "2025-09-16 14:09:03"
+        "created_at": "2025-09-22 11:20:47"
     },
     {
-        "id": "68c96f7fa3b2e",
+        "id": "68d1310f5173e",
+        "static": false,
+        "movable": false,
         "name": "dokumenti",
         "href": "\/dokumenti",
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-09-16 14:09:03"
+        "created_at": "2025-09-22 11:20:47"
     },
     {
-        "id": "68c96f7fac08d",
+        "id": "68d1310f62d9f",
+        "static": false,
+        "movable": false,
         "name": "kontakt",
         "href": "\/kontakt",
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-09-16 14:09:03"
+        "created_at": "2025-09-22 11:20:47"
+    },
+    {
+        "id": "68d1310f465b5",
+        "static": true,
+        "movable": false,
+        "name": "nagrade",
+        "href": "\/nagrade",
+        "path": "pages\/nagrade.php",
+        "file": "nagrade.php",
+        "status": 1,
+        "created_at": "2025-09-22 11:20:47",
+        "column": null
+    },
+    {
+        "id": "1997128a2901111ce0fa65768",
+        "static": true,
+        "movable": true,
+        "name": "raije",
+        "href": "\/Artikli\/raije",
+        "path": "pages\/raije.php",
+        "file": "raije.php",
+        "status": 1,
+        "created_at": "2025-09-22 11:21:52",
+        "column": "Artikli"
+    },
+    {
+        "id": "1997128bde06493d6156517b8",
+        "static": true,
+        "movable": true,
+        "name": "manastiri",
+        "href": "\/Lokacije\/manastiri",
+        "path": "pages\/manastiri.php",
+        "file": "manastiri.php",
+        "status": 1,
+        "created_at": "2025-09-22 11:21:59",
+        "column": "Lokacije"
+    },
+    {
+        "id": "1997129f147d7ff2994077d08",
+        "static": true,
+        "movable": true,
+        "name": "kkk",
+        "href": "\/Lokacije\/kkk",
+        "path": "pages\/kkk.php",
+        "file": "kkk.php",
+        "status": 1,
+        "created_at": "2025-09-22 11:23:18",
+        "column": "Lokacije"
     }
 ]

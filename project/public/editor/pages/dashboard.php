@@ -1,22 +1,31 @@
 <?php
+session_start();
 use App\Controllers\AuthController;
 use App\Controllers\VisitCounterController;
 use App\Models\Document;
 use App\Models\User;
 use App\Models\Event;
 
-$documentModal = new Document;
 $eventModel = new Event;
 
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 error_log($name);
-
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 $views = (new VisitCounterController())->getVisitCount();
 [$_, $totalUsers] = (new User())->list();
 $categories = $eventModel->getCategories();
 [$events, $totalEvents] = $eventModel->all();
-[$documents, $totalDocuments] = $documentModal->list(3);
+$documentModal = new Document();
+[$documents, $totalDocuments] = $documentModal->list(
+    limit: 3,
+    offset: 0,
+    search: '',
+    lang: $locale
+);
 $DocumentCategories = $documentModal->getCategories();
 ?>
 <!DOCTYPE html>
@@ -52,19 +61,7 @@ $DocumentCategories = $documentModal->getCategories();
 
             <main class="flex-1 overflow-y-auto p-4 md:p-6">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6">
-                    <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <p class="text-sm text-primary-600">
-                                    <?= __("dashboard.total_views") ?>
-                                </p>
-                                <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $views ?></p>
-                            </div>
-                            <div class="bg-primary-100 p-3 rounded-lg">
-                                <i class="fas fa-eye text-primary-600 text-xl"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <?php require_once __DIR__ . "/../components/transparencyScore.php" ?>
 
                     <div class="stat-card p-4 md:p-5 rounded-xl border border-gray-200 transition-all duration-300">
                         <div class="flex justify-between items-center">
@@ -110,8 +107,10 @@ $DocumentCategories = $documentModal->getCategories();
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+
                     <?php require_once __DIR__ . "/../components/documents.php" ?>
                     <?php require_once __DIR__ . "/../components/events.php" ?>
+
                 </div>
             </main>
         </div>

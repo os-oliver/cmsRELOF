@@ -9,10 +9,15 @@ use PDO;
 class Event
 {
     private PDO $pdo;
+    private Pivoter $pivoter;
 
     public function __construct()
     {
         $this->pdo = (new Database())->GetPDO();
+        $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
+
+        $this->pivoter = new Pivoter('field_name', 'content', 'id');
+
     }
 
     // Mapiranje locale → lang kod (default sr-Cyrl)
@@ -79,62 +84,158 @@ class Event
         string $sort = 'date_desc',
         string $lang = 'sr-Cyrl'
     ): array {
-        // params
+        // parametri koji će se bind-ovati (jezik se koristi u podupitima za text)
         $params = [
             ':lang' => $lang,
             ':lang1' => $lang,
-            ':offset' => $offset,
-            ':limit' => $limit,
         ];
 
-        $where = [];
+        // --- WHERE delovi ---
+        $whereParts = [];
         if ($search !== '') {
-            $where[] = "te.content LIKE :search";
+            // Use subquery searching text table for events (matches Document::list behavior)
+            $whereParts[] = "id IN (
+            SELECT DISTINCT t.source_id
+            FROM text t
+            WHERE t.source_table = 'events'
+              AND t.content LIKE :search
+        )";
             $params[':search'] = "%{$search}%";
         }
         if ($category !== '') {
-            $where[] = "e.category_id = :category";
+            $whereParts[] = "e.category_id = :category";
             $params[':category'] = (int) $category;
         }
         if ($status !== '') {
-            $where[] = "e.status = :status";
+            $whereParts[] = "e.status = :status";
             $params[':status'] = $status;
         }
-        $whereClause = $where ? ' AND ' . implode(' AND ', $where) : '';
+        // Složimo WHERE klauzulu (ako ima uslova)
+        $whereSql = $whereParts ? 'WHERE ' . implode(' AND ', $whereParts) : '';
 
-        $sql = "
-            SELECT e.id, e.category_id, e.image, e.location, e.date, e.time,
-                   te.field_name, te.content, tc.content AS naziv, k.color_code
-            FROM (
-                SELECT id FROM events
-                ORDER BY date desc, time DESC
-                LIMIT :offset, :limit
-            ) AS page_events
-            JOIN events e ON e.id = page_events.id
-            JOIN text te ON te.source_id = e.id
-                AND te.source_table = 'events'
-                AND te.lang = :lang
-            JOIN kategorije_dogadjaja k ON k.id = e.category_id
-            JOIN text tc ON tc.source_id = k.id
-                AND tc.source_table = 'kategorije_dogadjaja'
-                AND tc.lang = :lang1
-            {$whereClause};
-        ";
+        // --- VALIDACIJA offset/limit i Overflow detekcija ---
+        try {
+            if (!is_numeric($offset) || !is_numeric($limit)) {
+                throw new \InvalidArgumentException('Offset i limit moraju biti numerički.');
+            }
 
-        $stmt = $this->pdo->prepare($sql);
+            $offsetFloat = (float) $offset;
+            $limitFloat = (float) $limit;
 
-        // bind values
-        foreach ($params as $key => $value) {
-            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+            if ($offsetFloat > PHP_INT_MAX || $limitFloat > PHP_INT_MAX) {
+                throw new \OverflowException('Offset ili limit prelazi opseg integera.');
+            }
+
+            $offsetInt = (int) $offsetFloat;
+            $limitInt = (int) $limitFloat;
+
+            // sigurnosne granice
+            $maxLimit = 10000;
+            if ($limitInt < 0)
+                $limitInt = 0;
+            if ($offsetInt < 0)
+                $offsetInt = 0;
+            if ($limitInt > $maxLimit)
+                $limitInt = $maxLimit;
+
+        } catch (\OverflowException $oe) {
+            // fallback vrednosti pri overflow-u
+            // error_log($oe->getMessage());
+            $offsetInt = 0;
+            $limitInt = 100;
+        } catch (\Exception $e) {
+            // drugi problemi sa validacijom -> safe defaults
+            // error_log($e->getMessage());
+            $offsetInt = 0;
+            $limitInt = 100;
         }
 
-        $stmt->execute();
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // --- GLAVNI UPIT: prvo limitiramo događaje po id-u, pa join-ujemo ostalo ---
+        $sql = "
+SELECT
+    e.id,
+    e.category_id,
+    e.image,
+    e.location,
+    e.date,
+    e.time,
+    te.field_name,
+    te.content,
+    ct.content AS naziv,
+    k.color_code
+FROM
+    (SELECT id FROM events
+        {$whereSql}
+        LIMIT {$offsetInt}, {$limitInt}
+    ) pe
+JOIN events e ON e.id = pe.id
+LEFT JOIN (
+        SELECT t.source_id, t.field_name,
+            COALESCE(
+                MAX(CASE WHEN t.lang = :lang THEN t.content END),
+                MAX(CASE WHEN t.lang = 'sr-Cyrl' THEN t.content END)
+            ) AS content
+        FROM text t
+        WHERE t.source_table = 'events' AND t.lang IN (:lang, 'sr-Cyrl')
+        GROUP BY t.source_id, t.field_name
+) te ON te.source_id = e.id
+JOIN kategorije_dogadjaja k ON k.id = e.category_id
+LEFT JOIN (
+        SELECT t.source_id,
+            COALESCE(
+                MAX(CASE WHEN t.lang = :lang1 THEN t.content END),
+                MAX(CASE WHEN t.lang = 'sr-Cyrl' THEN t.content END)
+            ) AS content
+        FROM text t
+        WHERE t.source_table = 'kategorije_dogadjaja' AND t.lang IN (:lang1, 'sr-Cyrl')
+        GROUP BY t.source_id
+) ct ON ct.source_id = k.id
+ORDER BY e.date DESC, e.time DESC, te.field_name;
+";
+        error_log("SQLSSSSS:" . $sql);
+        try {
+            $stmt = $this->pdo->prepare($sql);
 
-        $total = (int) $this->pdo->query("SELECT COUNT(*) FROM events;")->fetchColumn();
+            // bind-ujemo jezike i eventualne where parametre
+            foreach ($params as $k => $v) {
+                $stmt->bindValue($k, $v, is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR);
+            }
+            if (isset($params[':search'])) {
+                $stmt->bindValue(':search', $params[':search'], PDO::PARAM_STR);
+            }
+            if (isset($params[':category'])) {
+                $stmt->bindValue(':category', $params[':category'], PDO::PARAM_INT);
+            }
+            if (isset($params[':status'])) {
+                $stmt->bindValue(':status', $params[':status'], PDO::PARAM_STR);
+            }
 
-        $data = (new Pivoter('field_name', 'content', 'id'))->pivot($rows);
-        return [$data, $total];
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (\PDOException $e) {
+            error_log('Event query failed: ' . $e->getMessage());
+            $rows = [];
+        }
+
+        // ukupno (broj događaja posle filtera, bez limit-a)
+        try {
+            $countSql = "SELECT COUNT(*) FROM events e {$whereSql}";
+            $countStmt = $this->pdo->prepare($countSql);
+            foreach ($params as $k => $v) {
+                if (strpos($countSql, $k) === false)
+                    continue;
+                $countStmt->bindValue($k, $v, is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR);
+            }
+            $countStmt->execute();
+            $total = (int) $countStmt->fetchColumn();
+        } catch (\PDOException $e) {
+            error_log('Event count failed: ' . $e->getMessage());
+            $total = 0;
+        }
+
+        // pivotujemo rezultate
+        return [$this->pivoter->pivot($rows), $total];
     }
 
     public function find(int $id): ?array

@@ -41,6 +41,11 @@ class PageController
         require PUBLIC_ROOT . '/editor/pages/gallery.php';
         return;
     }
+    public function StaticPageEditor()
+    {
+        require PUBLIC_ROOT . '/editor/pages/StaticPageEditor.php';
+        return;
+    }
     public function chats()
     {
         require PUBLIC_ROOT . '/editor/pages/chats.php';
@@ -117,19 +122,55 @@ class PageController
             $rmDir($full);
         }
 
-        foreach ($toCreate as $path) {
-            $full = $exportBase . $path;
+        foreach ($newData as $page) {
+            $isStatic = isset($page['static']) && $page['static'] === true;
+            $path = $page['path'];
 
-            $dir = dirname($full);
-            if (!is_dir($dir)) {
-                error_log("Creating parent directory: $dir");
-                mkdir($dir, 0755, true);
-            }
+            if ($isStatic) {
+                // Handle static pages
+                $staticBase = dirname(__DIR__) . '/../public/pages/';
+                $full = $staticBase . $page['file'];
 
-            // Create the PHP file if it doesn't exist
-            if (!file_exists($full)) {
-                error_log("Creating new PHP file: $full");
-                file_put_contents($full, "<?php\n// New page: $path\n");
+                $dir = dirname($full);
+                if (!is_dir($dir)) {
+                    error_log("Creating static page directory: $dir");
+                    mkdir($dir, 0755, true);
+                }
+
+                if (!file_exists($full)) {
+                    error_log("Creating new static PHP file: $full");
+                    $template = "<?php\n";
+                    $template .= "// Static page: {$page['name']}\n";
+                    $template .= "// Created: " . date('Y-m-d H:i:s') . "\n\n";
+                    $template .= "?>\n\n";
+                    $template .= "<!DOCTYPE html>\n";
+                    $template .= "<html lang=\"sr\">\n";
+                    $template .= "<head>\n";
+                    $template .= "    <meta charset=\"UTF-8\">\n";
+                    $template .= "    <title>{$page['name']}</title>\n";
+                    $template .= "</head>\n";
+                    $template .= "<body>\n";
+                    $template .= "    <h1>{$page['name']}</h1>\n";
+                    $template .= "    <!-- Add your static content here -->\n";
+                    $template .= "</body>\n";
+                    $template .= "</html>";
+
+                    file_put_contents($full, $template);
+                }
+            } else {
+                // Handle dynamic/exported pages
+                $full = $exportBase . $path;
+
+                $dir = dirname($full);
+                if (!is_dir($dir)) {
+                    error_log("Creating exported page directory: $dir");
+                    mkdir($dir, 0755, true);
+                }
+
+                if (!file_exists($full)) {
+                    error_log("Creating new exported PHP file: $full");
+                    file_put_contents($full, "<?php\n// Dynamic page: $path\n");
+                }
             }
         }
 
@@ -161,8 +202,21 @@ class PageController
 
         foreach ($pages as $page) {
             if ($page['href'] === $uri) {
-                include PUBLIC_ROOT . '/exportedPages/' . $page['path'];
-                return;
+                // Check if this is a static page
+                if (isset($page['static']) && $page['static'] === true) {
+                    $staticPath = PUBLIC_ROOT . '/pages/' . $page['file'];
+                    if (file_exists($staticPath)) {
+                        include $staticPath;
+                        return;
+                    }
+                }
+
+                // If not static or static file doesn't exist, try exported pages
+                $exportPath = PUBLIC_ROOT . '/exportedPages/' . $page['path'];
+                if (file_exists($exportPath)) {
+                    include $exportPath;
+                    return;
+                }
             }
         }
 
@@ -208,6 +262,11 @@ class PageController
     public function savePage()
     {
         require PUBLIC_ROOT . '/admin/savePage.php';
+        return;
+    }
+    public function deletePage()
+    {
+        require PUBLIC_ROOT . '/admin/deletePage.php';
         return;
     }
     public function login()

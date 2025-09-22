@@ -75,12 +75,128 @@ AuthController::requireEditor();
       </div>
 
       <!-- Blocks Container -->
-      <div id="navBlock" style="display:none;">
-        <button class="m-8 action-btn primary">
-          <i class="fas fa-eye"></i> Pregled
-        </button>
+      <!-- Blocks Container -->
+      <div id="navBlock" class="hidden  
+         w-full max-w-lg  backdrop-blur-md border
+          shadow-2xl p-6 text-gray-100 z-50">
 
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold">Podešavanje linka</h3>
+          <button id="navClose" class="text-gray-400 hover:text-gray-200 transition" aria-label="Zatvori">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Content -->
+        <div class="space-y-6">
+
+          <!-- Link input -->
+          <div>
+            <label for="linkHref" class="block text-sm font-medium text-gray-300 mb-2">
+              Putanja (Href)
+            </label>
+            <input id="linkHref" type="text" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg 
+               focus:outline-none focus:ring-2 focus:ring-blue-500 
+               placeholder-gray-500" placeholder="/putanja-do-stranice" />
+          </div>
+
+          <!-- Static checkbox -->
+          <div class="flex items-center justify-between">
+            <label class="flex items-center space-x-3">
+              <input id="linkStatic" type="checkbox"
+                class="h-5 w-5 text-blue-500 border-gray-600 rounded focus:ring-blue-400" />
+              <span class="text-sm">Označi kao statičan link</span>
+            </label>
+            <p id="navBlockNotice" class="text-xs text-gray-400">
+              Kliknite na link unutar editor platna da biste ga izmenili.
+            </p>
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex items-center gap-4">
+            <button id="applyLink" class="flex-1 px-4 py-3 bg-blue-600 text-white font-semibold rounded-xl 
+               shadow-lg hover:bg-blue-700 transition">
+              Primeni
+            </button>
+            <button id="resetLink" class="hidden px-4 py-3 border border-gray-600 rounded-xl text-gray-200 
+               hover:bg-gray-700 transition">
+              Poništi
+            </button>
+            <button id="delete" class="px-4 py-3 border border-gray-600 rounded-xl text-gray-200 
+               hover:bg-red-700 transition">
+              Obriši
+            </button>
+          </div>
+        </div>
       </div>
+
+
+      <!-- Icon chooser modal -->
+      <div id="iconChooser" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-40">
+        <div class="bg-white rounded-lg shadow-xl w-11/12 max-w-4xl p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-semibold">Izaberite ikonu i boju</h3>
+            <button id="closeIconChooser" class="text-gray-500 hover:text-gray-700">Zatvori</button>
+          </div>
+          <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-8">
+              <div class="grid grid-cols-8 gap-3 max-h-72 overflow-auto p-2 border rounded" id="iconGrid">
+                <!-- sample icons -->
+                <button class="icon-item p-2 text-center text-lg hover:bg-gray-100 rounded" data-icon="fas fa-home"><i
+                    class="fas fa-home"></i></button>
+                <button class="icon-item p-2 text-center text-lg hover:bg-gray-100 rounded" data-icon="fas fa-search"><i
+                    class="fas fa-search"></i></button>
+                <button class="icon-item p-2 text-center text-lg hover:bg-gray-100 rounded" data-icon="fas fa-user"><i
+                    class="fas fa-user"></i></button>
+                <button class="icon-item p-2 text-center text-lg hover:bg-gray-100 rounded"
+                  data-icon="fas fa-calendar-alt"><i class="fas fa-calendar-alt"></i></button>
+                <button class="icon-item p-2 text-center text-lg hover:bg-gray-100 rounded" data-icon="fas fa-images"><i
+                    class="fas fa-images"></i></button>
+                <button class="icon-item p-2 text-center text-lg hover:bg-gray-100 rounded"
+                  data-icon="fas fa-folder-open"><i class="fas fa-folder-open"></i></button>
+                <button class="icon-item p-2 text-center text-lg hover:bg-gray-100 rounded"
+                  data-icon="fas fa-address-book"><i class="fas fa-address-book"></i></button>
+                <button class="icon-item p-2 text-center text-lg hover:bg-gray-100 rounded"
+                  data-icon="fas fa-info-circle"><i class="fas fa-info-circle"></i></button>
+                <!-- more icons can be added -->
+              </div>
+            </div>
+
+            <div class="col-span-4 p-3 border rounded">
+              <div class="mb-3">
+                <label class="text-xs text-gray-600 block mb-1">Boja ikone</label>
+                <input id="iconColor" type="color" value="#000000" class="w-full h-10 p-1 rounded" />
+              </div>
+              <div class="mb-3">
+                <label class="text-xs text-gray-600 block mb-1">Veličina</label>
+                <select id="iconSize" class="w-full p-2 border rounded">
+                  <option value="text-sm">Mala</option>
+                  <option value="text-lg" selected>Srednja</option>
+                  <option value="text-2xl">Velika</option>
+                  <option value="text-3xl">Veća</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label class="text-xs text-gray-600 block mb-1">Preview</label>
+                <div id="iconPreview" class="w-full h-20 flex items-center justify-center border rounded bg-gray-50">
+                  <i id="iconPreviewI" class="fas fa-home text-2xl" style="color:#000"></i>
+                </div>
+              </div>
+              <div class="mt-4 flex space-x-2">
+                <button id="applyIconAndColor"
+                  class="flex-1 px-3 py-2 bg-blue-600 text-white rounded-lg shadow-sm hover:bg-blue-700 transition">Primeni</button>
+                <button id="resetIconAndColor"
+                  class="px-3 py-2 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50 transition">Poništi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <div id="settingsBlock" class="hidden"></div>
       <div id="blocks" class="space-y-6">
@@ -105,50 +221,8 @@ AuthController::requireEditor();
     </div>
 
     <script src="assets/js/WebDesigner/grapesjs/grapes.min.js"></script>
-    <script>
-      // Wait for DOM to be fully loaded
-      document.addEventListener('DOMContentLoaded', function () {
-        // Function to safely apply classes with null checks
-        const applyClasses = (element) => {
-          if (!element) return; // Guard against null elements
-          // Your class manipulation code here
-        };
-
-        // Initialize device buttons
-        const initDeviceButtons = () => {
-          const deviceBtns = document.querySelectorAll('.device-btn');
-          if (!deviceBtns) return;
-
-          deviceBtns.forEach(btn => {
-            btn.addEventListener('click', function (e) {
-              if (!this || !this.classList) return;
-              deviceBtns.forEach(b => b.classList?.remove('active'));
-              this.classList.add('active');
-            });
-          });
-        };
-
-        // Initialize all buttons and handlers
-        initDeviceButtons();
-
-        // Handle toolbar responsiveness
-        const toolbar = document.getElementById('toolbar');
-        const toggleToolbar = () => {
-          if (window.innerWidth < 768) {
-            toolbar?.classList.add('collapsed');
-          } else {
-            toolbar?.classList.remove('collapsed');
-          }
-        };
-
-        // Listen for window resize
-        window.addEventListener('resize', toggleToolbar);
-        // Initial check
-        toggleToolbar();
-      });
-    </script>
     <script type="module" src="/assets/js/WebDesigner/pageBuilder.js"></script>
-
+  </div>
 </body>
 
 </html>

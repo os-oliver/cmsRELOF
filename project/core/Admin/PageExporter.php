@@ -58,11 +58,15 @@ class PageExporter
 
     private function shouldMakeDynamic(string $text, \DOMNode $node): bool
     {
+
         // Trim the text for checking
         $text = trim($text);
-
-        // Skip if empty or too short
+        if (stripos($text, "slov") !== false) {
+            error_log("gfgdfgfgfgdg");
+            error_log($text);
+        }        // Skip if empty or too short
         if (empty($text) || strlen($text) < 3) {
+
             return false;
         }
 
@@ -73,12 +77,24 @@ class PageExporter
 
         // Skip if parent node contains php tags
         $parentContent = $node->parentNode->nodeValue;
-        if (strpos($parentContent, '<?php') !== false || strpos($parentContent, '?>') !== false) {
-            return false;
+
+        // Ako uopšte postoji PHP kod
+        if (strpos($parentContent, '<?php') !== false || strpos($parentContent, '?>') !== false || strpos($parentContent, '<?=') !== false) {
+
+            // Dozvoli samo ako sadrži dynamicText
+            if (strpos($parentContent, 'dynamicText') !== false) {
+                // Safe exception → nastavi dalje
+
+            } else {
+                // Log i blokiraj sve ostalo
+                return false;
+            }
         }
 
+
         // Skip if it's just numbers or special characters
-        if (!preg_match('/[a-zA-Z\p{Cyrillic}]{3,}/u', $text)) {
+        // Require at least 3 Unicode letters in sequence (supports Latin with diacritics, Cyrillic, etc.)
+        if (!preg_match('/[\p{L}]{3,}/u', $text)) {
             return false;
         }
 
@@ -105,9 +121,16 @@ class PageExporter
             }
             $parent = $parent->parentNode;
         }
+        if (stripos($text, "##PHP_BLOCK_") !== false) {
 
+            return false;
+        }
+        if (stripos($text, "##COMMENT_") !== false) {
+
+            return false;
+        }
         // Only convert text that appears to be natural language content
-        return preg_match('/^[\p{L}\s\p{P}]+$/u', $text);
+        return preg_match('/^[\p{L}\p{N}\s\p{P}]+$/u', $text);
     }
 
 
@@ -129,7 +152,51 @@ class PageExporter
         }
         return implode('/', $path);
     }
+    /**
+     * Generate a path for any DOM node. For text nodes we include an index
+     * to distinguish multiple text nodes inside the same parent element
+     * (for example when <br> splits text into multiple text nodes).
+     */
+    private function getNodePath(DOMNode $node): string
+    {
+        if ($node->nodeType === XML_TEXT_NODE) {
+            $parent = $node->parentNode;
+            $elementPath = $this->getElementPath($parent);
 
+            // Count previous text-node siblings to get an index
+            $index = 0;
+            $sibling = $node->previousSibling;
+            while ($sibling) {
+                if ($sibling->nodeType === XML_TEXT_NODE) {
+                    $index++;
+                }
+                $sibling = $sibling->previousSibling;
+            }
+
+            return $elementPath . '/text_' . $index;
+        }
+
+        // Fallback: for elements, reuse getElementPath
+        return $this->getElementPath($node);
+    }
+    private function generatePathHash(string $elementPath): string
+    {
+        // You can use sha256 or md5; sha256 is stronger
+
+        return hash('sha256', $elementPath);
+    }
+
+    /**
+     * Generate a hash for the text content
+     * @param string $text
+     * @return string
+     */
+    private function generateTextHash(string $text): string
+    {
+        // Normalize text: trim, collapse spaces, remove newlines
+        $normalized = preg_replace('/\s+/', ' ', trim($text));
+        return hash('sha256', $normalized);
+    }
     private function processContent(string $content, string $pageSlug): string
     {
         // Save PHP code blocks first for proper nesting
@@ -139,6 +206,10 @@ class PageExporter
             $phpBlocks[$placeholder] = $matches[0];
             return $placeholder;
         }, $content);
+
+        // Collector for PHP snippets generated during processing (placeholders -> php code)
+        $generatedPhp = [];
+        $generatedPhpCount = 0;
 
         // Then save HTML comments, excluding PHP block placeholders
         $comments = [];
@@ -174,27 +245,40 @@ class PageExporter
                 continue;
             }
 
-            $elementPath = $this->getElementPath($node->parentNode);
+            // Use node-specific path that includes text-node index so
+            // multiple text nodes inside the same <p> get unique paths.
+            $elementPath = $this->getNodePath($node);
             $textId = $this->generateTextId($text, $elementPath, $pageSlug);
-
+            $pathHash = $this->generatePathHash($elementPath);
+            $textHash = $this->generateTextHash($text);
             // Add to dynamic texts collection
-            $dynamicTexts[] = [
-                'id' => $textId,
-                'content' => $text,
-                'path' => $elementPath,
-                'tag' => $node->parentNode->nodeName,
-                'locale' => 'sr-Cyrl' // Default locale
-            ];
+            $dynamicTexts[] = ['id' => $textId, 'page_slug' => $pageSlug, 'content' => $text, 'text_hash' => $textHash, 'path' => $elementPath, 'path_hash' => $pathHash, 'tag' => $node->parentNode->nodeName, 'locale' => 'sr-Cyrl'];
+
+
+            // Safely escape single quotes for inclusion inside single-quoted PHP fallback
+            $escapedText = str_replace("'", "\\'", $text);
 
             // Create PHP echo statement with fallback
-            $phpCode = "<?php echo htmlspecialchars(\$dynamicText['$textId']['text'] ?? '$text', ENT_QUOTES, 'UTF-8'); ?>";
-            $newNode = $dom->createTextNode($phpCode);
+            $phpCode = "<?= htmlspecialchars(\$dynamicText['$textId']['text'] ?? '$escapedText', ENT_QUOTES, 'UTF-8'); ?>";
+
+            // Use a placeholder in the DOM so DOMDocument doesn't mangle PHP tags.
+            $placeholder = '##DYNPHP_' . $generatedPhpCount . '##';
+            $generatedPhp[$placeholder] = $phpCode;
+            $generatedPhpCount++;
+
+            $newNode = $dom->createTextNode($placeholder);
+            $logFile = __DIR__ . "/../../public/exportedPages/log.txt";
+            $logMessage = "Replacing text node: '$text' with PHP code: $phpCode" . PHP_EOL;
+
+            // Append poruku u log fajl
+            file_put_contents($logFile, $logMessage, FILE_APPEND | LOCK_EX);
             $node->parentNode->replaceChild($newNode, $node);
         }
 
         // Save dynamic texts to database
         try {
             if (!empty($dynamicTexts)) {
+
                 $textModel->batchUpdateDynamicTexts($dynamicTexts);
             }
         } catch (Exception $e) {
@@ -215,6 +299,12 @@ class PageExporter
                 $processedContent = str_replace($placeholder, $comment, $processedContent);
             }
 
+            // Restore any PHP code that we generated while processing text nodes
+            foreach ($generatedPhp as $placeholder => $phpCode) {
+                $processedContent = str_replace($placeholder, $phpCode, $processedContent);
+            }
+
+            // Restore original PHP blocks that were present in the input
             foreach ($phpBlocks as $placeholder => $phpCode) {
                 $processedContent = str_replace($placeholder, $phpCode, $processedContent);
             }
@@ -287,6 +377,9 @@ class PageExporter
     {
         $header = '<?php
 session_start();
+use App\Models\Gallery;
+use App\Models\PageLoader;
+
 if (isset($_GET[\'locale\'])) {
     $_SESSION[\'locale\'] = $_GET[\'locale\'];
 }
@@ -303,7 +396,8 @@ $dynamicText = $textModel->getDynamicText($locale);
     offset: 0,
     lang: $locale
 );
-use App\Models\Gallery;
+$groupedPages = PageLoader::getGroupedStaticPages();
+
 [$images, $totalEvents] = (new Gallery)->list();
 ?>
 <!DOCTYPE html>
@@ -416,6 +510,8 @@ use App\Models\Gallery;
 
             $pagesData[] = [
                 'id' => uniqid(), // Generate a unique ID for each page
+                'static' => $node['static'] ?? false,
+                'movable' => $node['movable'],
                 'name' => $name,
                 'href' => '/' . $fullPath,
                 'path' => 'pages/' . $href . '.php',
@@ -433,8 +529,82 @@ use App\Models\Gallery;
     }
     public function exportSinglePage(): void
     {
-        #TODO STATIC PAGE EXPORT
+        if (!isset($this->data['html'])) {
+            throw new \InvalidArgumentException("HTML content is required");
+        }
+
+        $html = $this->data['html'];
+
+        // Load DOM to isolate <main>
+        $dom = new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        libxml_clear_errors();
+
+        $xpath = new \DOMXPath($dom);
+        $mainNode = $xpath->query('//main')->item(0);
+
+        if (!$mainNode) {
+            throw new \RuntimeException("No <main> element found in HTML");
+        }
+        $page = $this->determinePageType($this->data['cmp']);
+        $builder = $this->getPageBuilder($page, $page);
+        // Extract <main> inner HTML
+        $innerHTML = '';
+        foreach ($mainNode->childNodes as $child) {
+            $innerHTML .= $dom->saveHTML($child);
+        }
+
+        // Process content into dynamic text placeholders
+        // pageSlug can be something like "single-page" or from $this->data['cmp']
+        $pageSlug = $this->data['cmp'] ?? 'single-page';
+        error_log("Processing single page with slug: $pageSlug");
+        $processedContent = $this->processContent($innerHTML, $pageSlug);
+        $wrappedContent = <<<HTML
+        <main class="min-h-screen pt-24 flex-grow">
+        $processedContent
+        </main>
+        HTML;
+        // Ensure export directory exists
+        $directory = __DIR__ . '/../../public/exportedPages/pages/';
+        if (!is_dir($directory)) {
+            mkdir($directory, 0777, true);
+        }
+        $builder->setHtml($wrappedContent);
+        $baseCss = <<<CSS
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                background-color: white;
+                min-width: 200px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+                z-index: 1;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            CSS;
+
+        $datacss = $this->data['css'] ?? '';
+        error_log("Base CSS: $baseCss");
+        $builder->setCss($baseCss . "\n" . $datacss);
+
+        $filePath = $directory . $pageSlug . '.php';
+
+        // Save processed content
+        $success = file_put_contents($filePath, $builder->buildPage());
+
+        if ($success === false) {
+            throw new \RuntimeException("Failed to write file: $filePath");
+        }
+
+        error_log("Export successful: " . $filePath);
     }
+
+
 
     public function export(): void
     {
@@ -442,6 +612,7 @@ use App\Models\Gallery;
             http_response_code(400);
             exit("Error: Missing components or tree\n");
         }
+
         $this->processDynamicTexts();
         $this->saveComponents();
         $this->createIndexPage();
@@ -466,11 +637,3 @@ use App\Models\Gallery;
     }
 }
 
-// Set content type for response
-header('Content-Type: text/plain');
-
-// Execute the export
-$raw = file_get_contents('php://input');
-$data = json_decode($raw, true);
-$exporter = new PageExporter($data);
-$exporter->export();

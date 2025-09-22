@@ -22,6 +22,9 @@ export function toHTMLWithPHP(comp) {
 }
 
 export function handleExport(editor, tipUstanove, komponenta) {
+  console.log("Starting export process...");
+  console.log("tipUstanove:", tipUstanove);
+  console.log("komponenta:", komponenta);
   if (komponenta) {
     return exportComponent(editor, komponenta);
   } else if (tipUstanove) {
@@ -34,6 +37,7 @@ async function exportComponent(editor, komponenta) {
   const combinedHTML = wrapper.toHTML();
 
   const payload = {
+    singlePage: true,
     saveComponents: true,
     components: [komponenta], // ako PageExporter očekuje niz
     cmp: komponenta,
@@ -61,6 +65,8 @@ async function exportComponent(editor, komponenta) {
 }
 
 function exportFullPage(editor, tipUstanove) {
+  editor.refresh(); // Ensure the editor state is up-to-date
+  console.log("Exporting full page for type:", tipUstanove);
   const bodyComponent = editor.DomComponents.getWrapper();
   const landingPageFiles = [];
   const tree = [];
@@ -81,6 +87,10 @@ function exportFullPage(editor, tipUstanove) {
         setupElement(child, landingPageFiles);
         break;
       case "footer":
+        // Diagnostic: log footer HTML to help trace missing changes
+        try {
+          console.log("Exporting footer HTML:", child.toHTML());
+        } catch (e) {}
         landingPageFiles.push({
           [`landingPage/${tag}.php`]: toHTMLWithPHP(child),
         });
@@ -97,10 +107,48 @@ function exportFullPage(editor, tipUstanove) {
     }
   });
 
+  console.log("dynamic tree texts collected:", tree);
   const css = editor.getCss();
+  console.log("Collected CSS length:", css);
   const fullHtml = editor.getHtml();
+  // Diagnostic: log editor-level HTML and wrapper HTML to debug missing changes
+  try {
+    console.log("[EXPORT DIAG] editor.getHtml():", fullHtml.substring(0, 2000));
+  } catch (e) {}
   const scripts = fullHtml.match(/<script[\s\S]*?<\/script>/gi) || [];
   const js = scripts.join("\n").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+
+  try {
+    const wrapper = editor.DomComponents.getWrapper();
+    console.log(
+      "[EXPORT DIAG] wrapper.toHTML():",
+      wrapper.toHTML().substring(0, 2000)
+    );
+    // list all anchor components and their attributes
+    try {
+      const anchors =
+        wrapper.find && wrapper.find((m) => m.get && m.get("tagName") === "a");
+      if (anchors && anchors.length) {
+        console.log("[EXPORT DIAG] Found anchor components:");
+        anchors.forEach((a, i) => {
+          try {
+            const attrs = a.getAttributes ? a.getAttributes() : {};
+            const txt =
+              (a.view && a.view.el && a.view.el.textContent) ||
+              a.get("content") ||
+              "";
+            console.log(i, attrs, txt);
+          } catch (e) {}
+        });
+      } else {
+        console.log(
+          "[EXPORT DIAG] No anchor components found in wrapper.find search."
+        );
+      }
+    } catch (e) {
+      console.error("[EXPORT DIAG] error listing anchors", e);
+    }
+  } catch (e) {}
 
   const exportData = {
     css: css,

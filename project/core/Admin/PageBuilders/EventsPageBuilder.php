@@ -5,8 +5,8 @@ namespace App\Admin\PageBuilders;
 
 class EventsPageBuilder extends BasePageBuilder
 {
-    private string $style = "
-  .pagination {
+    protected string $css = <<<CSS
+        .pagination {
             display: flex;
             justify-content: center;
             margin-top: 2rem;
@@ -40,30 +40,9 @@ class EventsPageBuilder extends BasePageBuilder
             opacity: 0.5;
             pointer-events: none;
         }
-    ";
-    public function buildPage(): string
-    {
-        $content = <<<'PHP'
-        <?php
-        use App\Models\Event;
+    CSS;
 
-        $limit = 6;
-        $page = max(1, (int) ($_GET['page'] ?? 1));
-        $offset = ($page - 1) * $limit;
-
-        [$events, $totalCount] = (new Event())->all(
-            limit: $limit,
-            offset: $offset
-        );
-        $totalPages = (int) ceil($totalCount / $limit);
-
-        ?>
-        PHP;
-
-        $content .= $this->getHeader($this->style);
-        $content .= $this->getCommonIncludes();
-
-        $content .= <<<'HTML'
+    protected string $html = <<<'HTML'
  <main class="flex-1">
     <div>
         <button id="increaseFontBtn"
@@ -172,10 +151,28 @@ class EventsPageBuilder extends BasePageBuilder
             </section>
         </section>
     </main>
-
-
 HTML;
 
+    public function buildPage(): string
+    {
+        $additionalPHP = <<<'PHP'
+        use App\Models\Event;
+
+        $limit = 6;
+        $page = max(1, (int) ($_GET['page'] ?? 1));
+        $offset = ($page - 1) * $limit;
+
+        [$events, $totalCount] = (new Event())->all(
+            limit: $limit,
+            offset: $offset,
+            lang: $locale
+        );
+        $totalPages = (int) ceil($totalCount / $limit);
+
+        PHP;
+        $content = $this->getHeader($this->css, $additionalPHP);
+        $content .= $this->getCommonIncludes();
+        $content .= $this->html;
         $content .= $this->getFooter();
         return $content;
     }

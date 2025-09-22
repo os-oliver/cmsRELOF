@@ -4,7 +4,7 @@ namespace App\Admin\PageBuilders;
 
 class ContactPageBuilder extends BasePageBuilder
 {
-    private string $style = "
+    protected string $css = "
         .form-toggle input:checked + label {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
@@ -80,14 +80,57 @@ class ContactPageBuilder extends BasePageBuilder
             background: linear-gradient(135deg, #10b981, #059669);
         }
     ";
-    public function buildPage(): string
-    {
-        $content = $this->getHeader($this->style);
-        $content .= $this->getCommonIncludes();
 
-        $content .= <<<'HTML'
-        <main class="pt-2 flex-grow">
+    protected string $script = <<<'HTML'
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+  const fullName = document.querySelector('input[name="ime"]').value.trim();
+    const [ime, prezime] = fullName.split(' ');
 
+    const formData = {
+        ime: ime || '',
+        prezime: prezime || '',
+        email: document.querySelector('input[name="email"]').value,
+        phone: document.querySelector('input[name="telefon"]').value,
+        naslov: document.querySelector('input[name="naslov"]').value,
+        poruka: document.querySelector('textarea[name="poruka"]').value
+    };
+
+    try {
+        const response = await fetch('/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+            // Show success message
+            const successMessage = document.getElementById('success-message');
+            successMessage.classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+            }, 5000);
+        } else {
+            throw new Error('Failed to send message');
+        }
+    } catch (error) {
+        alert('Error sending message: ' + error.message);
+    }
+});
+</script>
+HTML;
+
+    protected string $html = <<<'HTML'
+<main class="pt-2 flex-grow">
 <div class="py-12 mt-20 px-4 flex-1">
         <div>
             <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
@@ -256,55 +299,15 @@ class ContactPageBuilder extends BasePageBuilder
     </div>
 </div>
 </main>
-<script>
-document.getElementById('contact-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-  const fullName = document.querySelector('input[name="ime"]').value.trim();
-    const [ime, prezime] = fullName.split(' ');
-
-    const formData = {
-        ime: ime || '',
-        prezime: prezime || '',
-        email: document.querySelector('input[name="email"]').value,
-        phone: document.querySelector('input[name="telefon"]').value,
-        naslov: document.querySelector('input[name="naslov"]').value,
-        poruka: document.querySelector('textarea[name="poruka"]').value
-    };
-
-
-    try {
-        const response = await fetch('/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        });
-
-        if (response.ok) {
-            // Show success message
-            const successMessage = document.getElementById('success-message');
-            successMessage.classList.remove('hidden');
-            
-            // Reset form
-            this.reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.classList.add('hidden');
-            }, 5000);
-        } else {
-            throw new Error('Failed to send message');
-        }
-    } catch (error) {
-        alert('Error sending message: ' + error.message);
-    }
-});
-</script>
 HTML;
 
+    public function buildPage(): string
+    {
+        $content = $this->getHeader($this->css);
+        $content .= $this->getCommonIncludes();
+        $content .= $this->html;
         $content .= $this->getFooter();
+        $content .= $this->script;
         return $content;
     }
 }

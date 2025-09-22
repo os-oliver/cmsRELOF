@@ -9,7 +9,7 @@
         <h3 class="text-lg font-semibold text-gray-800">
             <?= __("documents.recent_documents") ?>
         </h3>
-        <a href="/kontrolna-tabla/dokumenti" class="text-primary-600 hover:text-primary-800 flex items-center">
+        <a href="/dashboard/dokumenti" class="text-primary-600 hover:text-primary-800 flex items-center">
             <span>
                 <?= __("documents.view_all") ?>
             </span>
@@ -20,7 +20,6 @@
     <div class="space-y-4">
 
         <?php foreach ($documents as $doc): ?>
-
             <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 flex items-start">
                 <div class="bg-primary-100 p-2 rounded-lg mr-4">
                     <i class="fas fa-file-pdf text-primary-600 text-xl"></i>
@@ -29,7 +28,7 @@
                     <h4 class="font-medium text-gray-800"><?= htmlspecialchars($doc['title']) ?></h4>
                     <div class="flex items-center text-sm text-gray-600 mt-2">
                         <span class="mr-4"><i class="far fa-folder mr-1"></i>
-                            <?= htmlspecialchars($doc['name']) ?></span>
+                            <?= htmlspecialchars(string: $doc['name']) ?></span>
                         <span><i class="far fa-clock mr-1"></i>
                             <?= date('j. F Y. \u\  H:i\h', strtotime($doc['datetime'])); ?></span>
                     </div>
@@ -46,8 +45,8 @@
         class="mt-6 w-full py-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-lg flex items-center justify-center font-medium transition-all">
         <i class="fas fa-plus mr-2"></i>
         <span>
-        <?= __("documents.add_new_document") ?>
+            <?= __("documents.add_new_document") ?>
         </span>
-        
+
     </button>
 </div>

@@ -169,6 +169,7 @@ function getFileConfig(string $ext): array
                 <!-- ✅ Lista dokumenata -->
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                     <?php foreach ($documents as $doc): ?>
+
                         <?php
                         $cfg = getFileConfig($doc['extension']);
                         $date = date('j. F Y. \u\  H:i\h', strtotime($doc['datetime']));
@@ -176,7 +177,7 @@ function getFileConfig(string $ext): array
                         <div class="document-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group relative"
                             data-title="<?= htmlspecialchars($doc['title']) ?>"
                             data-description="<?= htmlspecialchars($doc['description']) ?>"
-                            data-category="<?= htmlspecialchars($doc['category_id']) ?>"
+                            data-category="<?= htmlspecialchars($doc['subcategory_id']) ?>"
                             data-file-url="<?= htmlspecialchars($doc['filepath']) ?>"
                             data-file-type="<?= htmlspecialchars($doc['extension']) ?>"
                             data-date="<?= htmlspecialchars($doc['datetime']) ?>"

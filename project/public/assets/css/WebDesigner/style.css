@@ -423,3 +423,48 @@ html {
 .blocks-section:last-child {
   margin-bottom: 0;
 }
+
+#navBlock {
+  background: transparent;
+  border: 0;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* Icon chooser sidebar styles */
+#iconChooser {
+  display: none; /* toggled via class 'hidden' on server-rendered markup */
+}
+#iconChooser .icon-list {
+  padding-right: 6px;
+}
+.icon-item i {
+  width: 28px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+}
+.icon-item span {
+  color: #333;
+  font-size: 13px;
+}
+#iconChooser .icon-item:hover i,
+#iconChooser .icon-item:hover span {
+  color: var(--primary);
+}
+
+/* Make sure the sidebar shows correctly when visible */
+#iconChooser.flex {
+  display: flex !important;
+}
+
+/* Responsive: collapse sidebar on small screens */
+@media (max-width: 640px) {
+  #iconChooser {
+    width: 100% !important;
+  }
+  #toolbar.collapsed {
+    display: none;
+  }
+}

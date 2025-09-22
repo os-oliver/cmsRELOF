@@ -36,7 +36,12 @@ export function initializePanels() {
   // Setup device buttons
   document.querySelectorAll(".device-btn").forEach((btn) =>
     btn.addEventListener("click", () => {
-      editor.setDevice(btn.dataset.device);
+      // emit custom event with desired device — the caller who has editor access should listen
+      window.dispatchEvent(
+        new CustomEvent("webdesigner:setDevice", {
+          detail: { device: btn.dataset.device, button: btn },
+        })
+      );
       document
         .querySelectorAll(".device-btn")
         .forEach((b) => b.classList.toggle("active", b === btn));

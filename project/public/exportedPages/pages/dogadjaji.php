@@ -1,4 +1,16 @@
 <?php
+session_start();
+use App\Models\PageLoader;
+use \App\Utils\LocaleManager;
+$locale = LocaleManager::get();
+$groupedPages = PageLoader::getGroupedStaticPages();
+
+
+use App\Models\Text;
+// Load dynamic texts
+$textModel = new Text();
+$dynamicText = $textModel->getDynamicText($locale);
+
 use App\Models\Event;
 
 $limit = 6;
@@ -7,21 +19,10 @@ $offset = ($page - 1) * $limit;
 
 [$events, $totalCount] = (new Event())->all(
     limit: $limit,
-    offset: $offset
+    offset: $offset,
+    lang: $locale
 );
 $totalPages = (int) ceil($totalCount / $limit);
-
-?><?php
-session_start();
-use \App\Utils\LocaleManager;
-$locale = LocaleManager::get();
-
-
-use App\Models\Text;
-// Load dynamic texts
-$textModel = new Text();
-$dynamicText = $textModel->getDynamicText($locale);
-
 
 
 
@@ -31,47 +32,118 @@ $dynamicText = $textModel->getDynamicText($locale);
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($dynamicText['t_dogadjaji_0aef9a_cb0d20']['text'] ?? 'dogadjaji', ENT_QUOTES, 'UTF-8'); ?></title>
+    <title><?= htmlspecialchars($dynamicText['t_dogadjaji_c4def6_cb0d20']['text'] ?? 'dogadjaji', ENT_QUOTES, 'UTF-8'); ?></title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script><style>
-            
-  .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'clay': '#c97c5d',
+                        'ochre': '#d4a373',
+                        'sage': '#a3b18a',
+                        'slate': '#344e41',
+                        'paper': '#f5ebe0',
+                        'terracotta': '#bc6c25',
+                        'coral': '#e76f51',
+                        'deep-teal': '#2a9d8f',
+                        'crimson': '#8d1b3d',
+                        'royal-blue': '#1a4480',
+                        'velvet': '#4a154b',
+                        ochre: '#CC7722',
+                        terracotta: '#E2725B',
+                        paper: '#F5F5DC',
+                        slate: '#2F4F4F',
+                        'royal-blue': '#4169E1',
+                        'deep-teal': '#008B8B',
+                        velvet: '#872657',
+                        crimson: '#DC143C',
+                        coral: '#FF7F50',
+                        sage: '#9CAF88'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'crimson': ['Crimson Pro', 'serif'],
+                        'body': ['Raleway', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'art-pattern': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmNWViZTAiPjxwYXRoIGQ9Ik0wIDBoNDB2NDBIMHoiLz48L2c+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0idXJsKCNhKSIvPjxwYXRoIGQ9Ik0wIDBoMjB2MjBIMHoiIGZpbGw9IiNkNGExYjEiIG9wYWNpdHk9Ii4xIi8+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6IiBmaWxsPSIjYTNiMThhIiBvcGFjaXR5PSIuMSIvPjxwYXRoIGQ9Ik0wIDIwaDIwdjIwSDB6IiBmaWxsPSIjYjk3YzVkIiBvcGFjaXR5PSIuMSIvPjxwYXRoIGQ9Ik0yMCAyMGgyMHYyMEgyMHoiIGZpbGw9IiMzNDRlNDEiIG9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')",
+                        'brush-stroke': "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 40\" width=\"400\" height=\"40\"><path d=\"M20,20 C50,5 100,35 150,20 C200,5 250,35 300,20 C350,5 380,35 380,20\" fill=\"none\" stroke=\"%23d4a373\" stroke-width=\"10\" stroke-linecap=\"round\"/>')",
+                    }
+                }
+            }
         }
+    </script><style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
 
-        .page-item {
-            margin: 0 0.25rem;
-        }
+    .page-item {
+        margin: 0 0.25rem;
+    }
 
-        .page-link {
-            display: block;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            border: 1px solid #d4a373;
-            color: #344e41;
-            transition: all 0.3s ease;
-        }
+    .page-link {
+        display: block;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        border: 1px solid #d4a373;
+        color: #344e41;
+        transition: all 0.3s ease;
+    }
 
-        .page-link:hover {
-            background-color: #d4a373;
-            color: white;
-        }
+    .page-link:hover {
+        background-color: #d4a373;
+        color: white;
+    }
 
-        .page-link.active {
-            background-color: #d4a373;
-            color: white;
-            border-color: #d4a373;
-        }
+    .page-link.active {
+        background-color: #d4a373;
+        color: white;
+        border-color: #d4a373;
+    }
 
-        .page-link.disabled {
-            opacity: 0.5;
-            pointer-events: none;
-        }
-    
-            
-* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#ixta7h{animation-delay:1s;}#i92p29{animation-delay:2s;}#ilo0sf{animation-delay:3s;}#i2jd8u{background-image:radial-gradient(#344e41 1px, transparent 1px);background-size:20px 20px;}#izdc2k{clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);}#ivknqq{clip-path:polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);}#iw9z4w{border:0;}@layer utilities{.artistic-underline{background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 20\"><path fill=\"none\" stroke=\"%23d4a373\" stroke-width=\"3\" stroke-linecap=\"round\" d=\"M2,17 C15,17 25,5 40,10 C55,15 65,3 80,8 C95,13 105,5 118,12\"/></svg>");background-position-x:center;background-position-y:bottom;background-repeat:no-repeat;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 12px;padding-bottom:12px;}.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-card{clip-path:polygon(0px 0px, 100% 0px, 100% 85%, 95% 100%, 0px 100%);transition-behavior:normal;transition-duration:0.4s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.artistic-card:hover{transform:translateY(-10px);box-shadow:rgba(0, 0, 0, 0.2) 0px 20px 30px -10px;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.category-badge{position:absolute;top:15px;right:15px;padding-top:5px;padding-right:12px;padding-bottom:5px;padding-left:12px;border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-right-radius:20px;border-bottom-left-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;backdrop-filter:blur(4px);z-index:20;}.hero-gradient{background-image:linear-gradient(135deg, rgb(245, 235, 224) 0%, rgb(212, 163, 115) 100%);background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}.section-divider{height:100px;background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 120\" preserveAspectRatio=\"none\"><path d=\"M1200 120L0 16.48 0 0 1200 0 1200 120z\" fill=\"%23f5ebe0\"></path></svg>");background-position-x:initial;background-position-y:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 100px;}.floating{animation-duration:6s;animation-timing-function:ease-in-out;animation-delay:0s;animation-iteration-count:infinite;animation-direction:normal;animation-fill-mode:none;animation-play-state:running;animation-name:floating;animation-timeline:auto;animation-range-start:normal;animation-range-end:normal;}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
+    .page-link.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .page-item {
+        margin: 0 0.25rem;
+    }
+
+    .page-link {
+        display: block;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        border: 1px solid #d4a373;
+        color: #344e41;
+        transition: all 0.3s ease;
+    }
+
+    .page-link:hover {
+        background-color: #d4a373;
+        color: white;
+    }
+
+    .page-link.active {
+        background-color: #d4a373;
+        color: white;
+        border-color: #d4a373;
+    }
+
+    .page-link.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#i8iywb{animation-delay:1s;}#i8042i{animation-delay:2s;}#ilqozy{animation-delay:3s;}#ievinl{background-image:radial-gradient(#344e41 1px, transparent 1px);background-size:20px 20px;}#izw48v{clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);}#iuq0zu{clip-path:polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);}#i4pluj{border:0;}@layer utilities{.artistic-underline{background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 20\"><path fill=\"none\" stroke=\"%23d4a373\" stroke-width=\"3\" stroke-linecap=\"round\" d=\"M2,17 C15,17 25,5 40,10 C55,15 65,3 80,8 C95,13 105,5 118,12\"/></svg>");background-position-x:center;background-position-y:bottom;background-repeat:no-repeat;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 12px;padding-bottom:12px;}.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-card{clip-path:polygon(0px 0px, 100% 0px, 100% 85%, 95% 100%, 0px 100%);transition-behavior:normal;transition-duration:0.4s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.artistic-card:hover{transform:translateY(-10px);box-shadow:rgba(0, 0, 0, 0.2) 0px 20px 30px -10px;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.category-badge{position:absolute;top:15px;right:15px;padding-top:5px;padding-right:12px;padding-bottom:5px;padding-left:12px;border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-right-radius:20px;border-bottom-left-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;backdrop-filter:blur(4px);z-index:20;}.hero-gradient{background-image:linear-gradient(135deg, rgb(245, 235, 224) 0%, rgb(212, 163, 115) 100%);background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}.section-divider{height:100px;background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 120\" preserveAspectRatio=\"none\"><path d=\"M1200 120L0 16.48 0 0 1200 0 1200 120z\" fill=\"%23f5ebe0\"></path></svg>");background-position-x:initial;background-position-y:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 100px;}.floating{animation-duration:6s;animation-timing-function:ease-in-out;animation-delay:0s;animation-iteration-count:infinite;animation-direction:normal;animation-fill-mode:none;animation-play-state:running;animation-name:floating;animation-timeline:auto;animation-range-start:normal;animation-range-end:normal;}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
 </style>
 
 
@@ -90,9 +162,9 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
             <section id="events" class="w-full py-20">
                 <div class="container mx-auto px-4">
                     <div class="text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold text-[#344e41] mb-6 relative inline-block"><?php echo htmlspecialchars($dynamicText['t_dogadjaji_3784ea_f84aee']['text'] ?? 'Događaji', ENT_QUOTES, 'UTF-8'); ?><span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#d4a373] to-[#bc6c25]"></span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-[#344e41] mb-6 relative inline-block"><?= htmlspecialchars($dynamicText['t_dogadjaji_bf365e_f84aee']['text'] ?? 'Događaji', ENT_QUOTES, 'UTF-8'); ?><span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#d4a373] to-[#bc6c25]"></span>
                         </h2>
-                        <p class="text-lg text-[#344e41]/80 max-w-2xl mx-auto mt-4"><?php echo htmlspecialchars($dynamicText['t_dogadjaji_bb1773_7c9b57']['text'] ?? 'Istražite našu bogatu ponudu kulturnih događaja', ENT_QUOTES, 'UTF-8'); ?></p>
+                        <p class="text-lg text-[#344e41]/80 max-w-2xl mx-auto mt-4"><?= htmlspecialchars($dynamicText['t_dogadjaji_b29a26_7c9b57']['text'] ?? 'Istražite našu bogatu ponudu kulturnih događaja', ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
     
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -109,7 +181,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                         <div class="w-10 h-10 rounded-full bg-[#d4a373] flex items-center justify-center text-white mr-3">
                                             <i class="fas fa-calendar"></i>
                                         </div>
-                                        <span class="text-[#d4a373] font-bold"><?php echo htmlspecialchars($dynamicText['t_dogadjaji_9516aa_b843d2']['text'] ?? 'Koncert', ENT_QUOTES, 'UTF-8'); ?></span>
+                                        <span class="text-[#d4a373] font-bold"><?= htmlspecialchars($dynamicText['t_dogadjaji_ea7dd8_b843d2']['text'] ?? 'Koncert', ENT_QUOTES, 'UTF-8'); ?></span>
                                     </div>
                                     <h3 class="text-xl font-bold text-[#344e41] mb-2">
                                         <?= htmlspecialchars($event['title']) ?>
@@ -125,7 +197,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                             </div>
                                             <div class="flex items-center text-sm text-[#344e41]/70">
                                                 <i class="fas fa-map-marker-alt mr-2"></i>
-                                                <span><?php echo htmlspecialchars($dynamicText['t_dogadjaji_95bb71_2f64b9']['text'] ?? 'Stari Grad, Trg Sv. Marka', ENT_QUOTES, 'UTF-8'); ?></span>
+                                                <span><?= htmlspecialchars($dynamicText['t_dogadjaji_2cd031_2f64b9']['text'] ?? 'Stari Grad, Trg Sv. Marka', ENT_QUOTES, 'UTF-8'); ?></span>
                                             </div>
                                         </div>
                                         <a href="#" class="text-[#d4a373] hover:text-[#bc6c25] transition-colors">
@@ -180,8 +252,6 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
             </section>
         </section>
     </main>
-
-
 <?php
 require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
 ?>

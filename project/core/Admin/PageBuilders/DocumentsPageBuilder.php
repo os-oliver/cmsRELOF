@@ -7,7 +7,7 @@ use App\Controllers\AuthController;
 
 class DocumentsPageBuilder extends BasePageBuilder
 {
-    static string $style = <<<CSS
+    protected string $css = <<<CSS
     /* Enhanced styles for documents page */
     .category-toggle input:checked+label {
         background: linear-gradient(135deg, #3b82f6, #1d4ed8);
@@ -84,66 +84,29 @@ class DocumentsPageBuilder extends BasePageBuilder
     .doc-category { font-size: .85rem; padding: .25rem .5rem; border-radius: .5rem; }
     CSS;
 
-    public function buildPage(): string
-    {
-        $phpAdditional = <<<'PHP'
-use App\Models\Document;
-use App\Controllers\AuthController;
-
-AuthController::requireEditor();
-
-// defaults (safe)
-$search = $_GET['search'] ?? '';
-$category = $_GET['category'] ?? '';
-$status = $_GET['status'] ?? '';
-$sort = $_GET['sort'] ?? 'date_desc';
-
-// pagination
-$limit = 3; // nicer grid by default
-$page = max(1, (int) ($_GET['page'] ?? 1));
-$offset = ($page - 1) * $limit;
-
-$documentModel = new Document();
-
-// fetch documents with filters (Document::list should accept named params or fallback)
-[$documents, $totalCount] = $documentModel->list(
-    search: $search,
-    category: $category,
-    status: $status,
-    sort: $sort,
-    limit: $limit,
-    offset: $offset,
-    lang:$locale
-);
-
-$totalPages = (int) ceil(max(1, $totalCount) / $limit);
-$DocumentCategories = $documentModel->getCategories();
-
-function getFileConfig(string $ext): array {
-    $ext = strtolower($ext);
-    $configs = [
-        'pdf'  => ['icon' => 'fa-solid fa-file-pdf', 'bg_color' => 'bg-red-50',    'text_color' => 'text-red-600',    'color' => 'red-500'],
-        'doc'  => ['icon' => 'fa-solid fa-file-word','bg_color' => 'bg-blue-50',   'text_color' => 'text-blue-600',   'color' => 'blue-500'],
-        'docx' => ['icon' => 'fa-solid fa-file-word','bg_color' => 'bg-blue-50',   'text_color' => 'text-blue-600',   'color' => 'blue-500'],
-        'xls'  => ['icon' => 'fa-solid fa-file-excel','bg_color' => 'bg-green-50',  'text_color' => 'text-green-600',  'color' => 'green-500'],
-        'xlsx' => ['icon' => 'fa-solid fa-file-excel','bg_color' => 'bg-green-50',  'text_color' => 'text-green-600',  'color' => 'green-500'],
-        'ppt'  => ['icon' => 'fa-solid fa-file-powerpoint','bg_color' => 'bg-orange-50','text_color' => 'text-orange-600','color' => 'orange-500'],
-        'pptx' => ['icon' => 'fa-solid fa-file-powerpoint','bg_color' => 'bg-orange-50','text_color' => 'text-orange-600','color' => 'orange-500'],
-        'txt'  => ['icon' => 'fa-solid fa-file-lines','bg_color' => 'bg-gray-50',   'text_color' => 'text-gray-700',   'color' => 'gray-500'],
-        'zip'  => ['icon' => 'fa-solid fa-file-zipper','bg_color' => 'bg-yellow-50',  'text_color' => 'text-yellow-700',  'color' => 'yellow-500'],
-        'rar'  => ['icon' => 'fa-solid fa-file-zipper','bg_color' => 'bg-yellow-50',  'text_color' => 'text-yellow-700',  'color' => 'yellow-500'],
-        'default' => ['icon' => 'fa-solid fa-file',  'bg_color' => 'bg-gray-50',   'text_color' => 'text-gray-700',   'color' => 'gray-500']
-    ];
-
-    return $configs[$ext] ?? $configs['default'];
+    protected string $script = <<<'HTML'
+<script>
+function showDownloadNotification(e, name) {
+    // allow regular link behavior but show notification briefly
+    const note = document.getElementById('download-notification');
+    const text = document.getElementById('download-notification-text');
+    if (!note || !text) return;
+    text.textContent = name + ' se preuzima...';
+    note.classList.remove('hidden');
+    setTimeout(() => note.classList.add('hidden'), 2200);
 }
 
-PHP;
+// ensure filter form submits to page 1 when changed (server handles page param)
+const filterForm = document.getElementById('filter-form');
+if (filterForm) {
+    filterForm.addEventListener('submit', function(e) {
+        // keep default submit behavior
+    });
+}
+</script>
+HTML;
 
-        $content = $this->getHeader(self::$style, $phpAdditional);
-        $content .= $this->getCommonIncludes();
-
-        $content .= <<<'HTML'
+    protected string $html = <<<'HTML'
 <main>
     <div class="text-center px-2 pt-32">
         <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
@@ -280,29 +243,68 @@ PHP;
         </div>
     </div>
 </main>
-
-<script>
-function showDownloadNotification(e, name) {
-    // allow regular link behavior but show notification briefly
-    const note = document.getElementById('download-notification');
-    const text = document.getElementById('download-notification-text');
-    if (!note || !text) return;
-    text.textContent = name + ' se preuzima...';
-    note.classList.remove('hidden');
-    setTimeout(() => note.classList.add('hidden'), 2200);
-}
-
-// ensure filter form submits to page 1 when changed (server handles page param)
-const filterForm = document.getElementById('filter-form');
-if (filterForm) {
-    filterForm.addEventListener('submit', function(e) {
-        // keep default submit behavior
-    });
-}
-</script>
 HTML;
 
+    public function buildPage(): string
+    {
+        $phpAdditional = <<<'PHP'
+use App\Models\Document;
+use App\Controllers\AuthController;
+
+
+// defaults (safe)
+$search = $_GET['search'] ?? '';
+$category = $_GET['category'] ?? '';
+$status = $_GET['status'] ?? '';
+$sort = $_GET['sort'] ?? 'date_desc';
+
+// pagination
+$limit = 3; // nicer grid by default
+$page = max(1, (int) ($_GET['page'] ?? 1));
+$offset = ($page - 1) * $limit;
+
+$documentModel = new Document();
+
+// fetch documents with filters (Document::list should accept named params or fallback)
+[$documents, $totalCount] = $documentModel->list(
+    search: $search,
+    category: $category,
+    status: $status,
+    sort: $sort,
+    limit: $limit,
+    offset: $offset,
+    lang:$locale
+);
+
+$totalPages = (int) ceil(max(1, $totalCount) / $limit);
+$DocumentCategories = $documentModel->getCategories();
+
+function getFileConfig(string $ext): array {
+    $ext = strtolower($ext);
+    $configs = [
+        'pdf'  => ['icon' => 'fa-solid fa-file-pdf', 'bg_color' => 'bg-red-50',    'text_color' => 'text-red-600',    'color' => 'red-500'],
+        'doc'  => ['icon' => 'fa-solid fa-file-word','bg_color' => 'bg-blue-50',   'text_color' => 'text-blue-600',   'color' => 'blue-500'],
+        'docx' => ['icon' => 'fa-solid fa-file-word','bg_color' => 'bg-blue-50',   'text_color' => 'text-blue-600',   'color' => 'blue-500'],
+        'xls'  => ['icon' => 'fa-solid fa-file-excel','bg_color' => 'bg-green-50',  'text_color' => 'text-green-600',  'color' => 'green-500'],
+        'xlsx' => ['icon' => 'fa-solid fa-file-excel','bg_color' => 'bg-green-50',  'text_color' => 'text-green-600',  'color' => 'green-500'],
+        'ppt'  => ['icon' => 'fa-solid fa-file-powerpoint','bg_color' => 'bg-orange-50','text_color' => 'text-orange-600','color' => 'orange-500'],
+        'pptx' => ['icon' => 'fa-solid fa-file-powerpoint','bg_color' => 'bg-orange-50','text_color' => 'text-orange-600','color' => 'orange-500'],
+        'txt'  => ['icon' => 'fa-solid fa-file-lines','bg_color' => 'bg-gray-50',   'text_color' => 'text-gray-700',   'color' => 'gray-500'],
+        'zip'  => ['icon' => 'fa-solid fa-file-zipper','bg_color' => 'bg-yellow-50',  'text_color' => 'text-yellow-700',  'color' => 'yellow-500'],
+        'rar'  => ['icon' => 'fa-solid fa-file-zipper','bg_color' => 'bg-yellow-50',  'text_color' => 'text-yellow-700',  'color' => 'yellow-500'],
+        'default' => ['icon' => 'fa-solid fa-file',  'bg_color' => 'bg-gray-50',   'text_color' => 'text-gray-700',   'color' => 'gray-500']
+    ];
+
+    return $configs[$ext] ?? $configs['default'];
+}
+
+PHP;
+
+        $content = $this->getHeader($this->css, $phpAdditional);
+        $content .= $this->getCommonIncludes();
+        $content .= $this->html;
         $content .= $this->getFooter();
+        $content .= $this->script;
         return $content;
     }
 }

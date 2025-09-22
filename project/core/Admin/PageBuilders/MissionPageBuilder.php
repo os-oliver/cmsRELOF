@@ -6,22 +6,7 @@ use App\Models\Gallery;
 
 class MissionPageBuilder extends BasePageBuilder
 {
-
-
-    public function buildPage(): string
-    {
-        $additionalPHP = <<<'PHP'
-
-    use App\Models\AboutUs;
-    $dataAboutUS = new AboutUs();
-    $aboutUsData = $dataAboutUS->list(lang:$locale)['mission'];
-
-PHP;
-
-        $content = $this->getHeader(additionalPhp: $additionalPHP);
-        $content .= $this->getCommonIncludes();
-
-        $content .= <<<'HTML'
+    protected string $html = <<<'HTML'
 <main >
 <div>
         <button id="increaseFontBtn"
@@ -40,10 +25,21 @@ PHP;
     </div>
   </section>
 </main>
-
-
 HTML;
 
+    public function buildPage(): string
+    {
+        $additionalPHP = <<<'PHP'
+
+    use App\Models\AboutUs;
+    $dataAboutUS = new AboutUs();
+    $aboutUsData = $dataAboutUS->list(lang:$locale)['mission'];
+
+PHP;
+
+        $content = $this->getHeader(additionalPhp: $additionalPHP);
+        $content .= $this->getCommonIncludes();
+        $content .= $this->html;
         $content .= $this->getFooter();
         return $content;
     }
