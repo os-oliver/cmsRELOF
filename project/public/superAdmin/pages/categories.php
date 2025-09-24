@@ -693,6 +693,18 @@ $totalPages = (int) ceil($totalCount / $limit);
             deleteCategoryType = null;
         }
 
+        // Close modals on outside click (same as Cancel)
+        document.getElementById('categoryModal').addEventListener('click', (e) => {
+            if (e.target.id === 'categoryModal') {
+                closeCategoryModal();
+            }
+        });
+        document.getElementById('deleteModal').addEventListener('click', (e) => {
+            if (e.target.id === 'deleteModal') {
+                closeDeleteModal();
+            }
+        });
+
         function confirmDelete() {
             if (deleteCategoryId && deleteCategoryType) {
                 fetch(`/categories/${deleteCategoryId}?type=${deleteCategoryType}`, {
