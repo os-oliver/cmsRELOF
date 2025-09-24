@@ -173,6 +173,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Close on ESC (same as Cancel)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !elements.modal?.classList.contains("invisible")) {
+      elements.form?.reset();
+      resetImagePreview();
+      closeModal();
+    }
+  });
+
   // Optional: validation helper
   const validateForm = () =>
     requiredFields.every((field) => {
