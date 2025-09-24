@@ -366,7 +366,7 @@ $totalPages = (int) ceil($totalCount / $limit);
             // Goal and mission saving
             document.getElementById('goal').addEventListener('click', async () => {
                 const goal = document.getElementById('cilj').value.trim();
-                if (!goal) return alert("<?= __("aboutus.empty_goal") ?>");
+                if (!goal) return alert('<?= __("aboutus.empty_goal") ?>');
 
                 try {
                     const response = await fetch('/aboutus/1', {

@@ -145,7 +145,7 @@ AuthController::requireEditor();
     <div class="flex h-screen overflow-hidden">
         <!-- Light Glass Sidebar -->
         <?php
-        $activeTab = "dashboard";
+        $activeTab = "complaints";
         require_once __DIR__ . "/../components/sidebar.php" ?>
 
 
