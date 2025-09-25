@@ -27,7 +27,6 @@ class Pivoter
     public function pivot(array $rows, bool $clean = true): array
     {
         error_log('Pivoter radi');
-        error_log(json_encode($rows, JSON_PRETTY_PRINT));
         $result = [];
         foreach ($rows as $row) {
             $id = $row[$this->idColumn];
