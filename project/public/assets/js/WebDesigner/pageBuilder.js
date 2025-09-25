@@ -14,582 +14,351 @@ import { faqSection } from "./components/faqSection.js";
 import { link } from "./components/link.js";
 import { multiLink } from "./components/multinav.js";
 
-let isUndoing = false;
+import { initializeEditor } from "./modules/editorSetup.js";
+import { initializePanels } from "./modules/panelManager.js";
+import { handleExport } from "./modules/exportHandler.js";
+import { generateNavTree } from "./modules/navigationHandler.js";
+import { setupElement } from "./modules/dynamicCodeHandler.js";
+import { megaMenu } from "./components/megaMenu.js";
 
-// Dugmici i paneli za glavni interfejs
-const btns = {
-  component: document.getElementById("component"),
-  settings: document.getElementById("settingsbtn"),
-  nav: document.getElementById("navbtn"),
-};
-const panels = {
-  component: document.getElementById("blocks"),
-  settings: document.getElementById("settingsBlock"),
-  nav: document.getElementById("navBlock"),
-};
+// Wait for DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    // Initialize editor
+    const editor = initializeEditor();
+    // expose editor globally for simple integrations
+    window._grapesEditor = editor;
 
-// Resetuje sve panele i dugmice
-function resetAll() {
-  Object.values(btns).forEach((b) => b.classList.remove("primary"));
-  Object.values(panels).forEach((p) => {
-    p.style.display = "none";
-    p.classList.add("hidden");
-  });
-}
-
-// Kreira handler za prikaz panela
-function makeHandler(key) {
-  return () => {
-    resetAll();
-    btns[key].classList.add("primary");
-    panels[key].classList.remove("hidden");
-    panels[key].style.display = "block";
-  };
-}
-
-// Dodaje event listenere za dugmice
-btns.component.addEventListener("click", makeHandler("component"));
-btns.settings.addEventListener("click", makeHandler("settings"));
-btns.nav.addEventListener("click", makeHandler("nav"));
-
-// Opcije za linkove
-const dynamicOptions = [
-  { value: "#home", name: "Home" },
-  { value: "#services", name: "Services" },
-  { value: "#contact", name: "Contact" },
-  { value: "https://example.com", name: "External Link" },
-];
-const pages = [
-  { slug: "/", title: "Početna" },
-  { slug: "/about", title: "O Nama" },
-];
-
-// Dugmici za promenu uredjaja (desktop/tablet/mobile)
-document.querySelectorAll(".device-btn").forEach((btn) =>
-  btn.addEventListener("click", () => {
-    editor.setDevice(btn.dataset.device);
-    document
-      .querySelectorAll(".device-btn")
-      .forEach((b) => b.classList.toggle("active", b === btn));
-  })
-);
-
-// Inicijalizacija GrapeJS editora
-const editor = grapesjs.init({
-  container: "#gjs",
-  fromElement: false,
-  height: "100%",
-  width: "auto",
-  parser: {
-    optionsHtml: {
-      allowScripts: true,
-    },
-  },
-  fromElement: true,
-  storageManager: false,
-  blockManager: { appendTo: "#blocks" },
-  styleManager: { appendTo: "#settingsBlock" },
-  panels: { defaults: [] },
-  deviceManager: {
-    devices: [
-      { id: "desktop", name: "Desktop", width: "" },
-      { id: "tablet", name: "Tablet", width: "768px" },
-      { id: "mobile", name: "Mobile", width: "375px" },
-    ],
-  },
-  canvas: { scripts: ["https://cdn.tailwindcss.com"] },
-});
-
-// Azuriranje tipova linkova
-function updateLinkType(options) {
-  editor.DomComponents.removeType("link");
-  editor.DomComponents.addType("link", {
-    isComponent: (el) => el.tagName === "A",
-    model: {
-      defaults: {
-        tagName: "a",
-        traits: [
-          { type: "select", name: "href", options },
-          { type: "text", name: "title" },
-          { type: "text", name: "data-role" },
-          {
-            type: "select",
-            name: "target",
-            options: [
-              { value: "_self", name: "Same window" },
-              { value: "_blank", name: "New window" },
-            ],
-          },
-        ],
-      },
-      init() {
-        this.listenTo(
-          this,
-          "change:href change:title change:data-role change:target",
-          this.updateAttrs
-        ).updateAttrs();
-      },
-      updateAttrs() {
-        const {
-          href = "#",
-          title = "",
-          "data-role": dr,
-          target = "_self",
-        } = this.attributes;
-        this.setAttributes({
-          href,
-          title,
-          target,
-          ...(dr && { "data-role": dr }),
-        });
-      },
-    },
-    view: { events: { click: (e) => e.preventDefault() } },
-  });
-}
-updateLinkType(pages.map((p) => ({ value: p.slug, name: p.title })));
-
-// Obrada selektovanih komponenti
-editor.on("component:selected", (comp) => {
-  if (!comp) return;
-
-  // Provera za dugme u mega meniju
-  if (comp.getEl()?.tagName?.toLowerCase() === "button") {
-    let parent = comp.parent();
-    while (parent && !parent.getClasses().includes("megaMenu")) {
-      parent = parent.parent();
-    }
-
-    if (parent) {
-      const processComponent = (component) => {
-        const classes = component.getClasses();
-
-        // Zamena 'invisible' klase sa 'visible'
-        if (classes.includes("invisible")) {
-          component.removeClass("invisible");
-          component.addClass("visible");
-        }
-
-        // Rekurzivna obrada dece
-        const children = component.components();
-        children.forEach((child) => processComponent(child));
-      };
-
-      processComponent(parent);
-    }
-  }
-});
-
-// Ucitavanje HTML-a i skripti
-function injectHTMLAndScripts(container, html) {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
-
-  // Dodavanje HTML elemenata (bez skripti)
-  Array.from(doc.body.childNodes).forEach((node) => {
-    if (node.tagName !== "SCRIPT") {
-      container.appendChild(node.cloneNode(true));
-    }
-  });
-
-  // Dodavanje skripti
-  const scripts = doc.querySelectorAll("script");
-  scripts.forEach((oldScript) => {
-    const newScript = document.createElement("script");
-    if (oldScript.src) {
-      newScript.src = oldScript.src;
-      if (oldScript.async) newScript.async = true;
-      if (oldScript.defer) newScript.defer = true;
-    } else {
-      newScript.textContent = oldScript.textContent;
-    }
-    document.body.appendChild(newScript);
-  });
-}
-
-// Ucitavanje template-a ili komponente iz URL parametara
-const params = new URLSearchParams(location.search);
-const tipUstanove = params.get("tipUstanove");
-const komponenta = params.get("komponenta");
-
-if (tipUstanove) {
-  fetch(`/template?tipUstanove=${encodeURIComponent(tipUstanove)}`)
-    .then((r) => (r.ok ? r.text() : Promise.reject("Not found")))
-    .then((html) => editor.setComponents(html))
-    .catch(console.error);
-} else if (komponenta) {
-  fetch(`/component?cmp=${encodeURIComponent(komponenta)}`)
-    .then((r) =>
-      r.ok ? r.text() : Promise.reject("Nije pronađena komponenta")
-    )
-    .then((html) => editor.setComponents(html))
-    .catch(console.error);
-}
-
-// Konfiguracija editora nakon ucitavanja
-editor.on("load", () => {
-  const sm = editor.StyleManager;
-  sm.getSectors().reset([]);
-
-  // Dodavanje CSS fajlova u iframe
-  const head = editor.Canvas.getFrameEl().contentDocument.head;
-  [
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
-  ].forEach((href) =>
-    head.appendChild(
-      Object.assign(document.createElement("link"), { rel: "stylesheet", href })
-    )
-  );
-
-  // Brisanje nepotrebnih sektora
-  ["osnovno", "razmaci", "granice"].forEach((id) => sm.removeSector(id));
-
-  // Dodavanje Tailwind sektora
-  [
-    { id: "spacing", name: "Razmaci", buildProps: ["margin", "padding"] },
-    {
-      id: "typography",
-      name: "Tipografija",
-      buildProps: [
-        "font-family",
-        "font-size",
-        "font-weight",
-        "line-height",
-        "text-align",
-        "color",
-      ],
-    },
-    {
-      id: "background",
-      name: "Pozadina",
-      buildProps: [
-        "background-color",
-        "background-image",
-        "background-size",
-        "background-position",
-      ],
-    },
-    {
-      id: "layout",
-      name: "Layout",
-      buildProps: [
-        "display",
-        "flex-direction",
-        "justify-content",
-        "align-items",
-        "width",
-        "height",
-      ],
-    },
-  ].forEach((cfg) => sm.addSector(cfg.id, cfg));
-
-  // Podesavanje undo/redo dugmica
-  const undo = document.getElementById("undo-btn"),
-    redo = document.getElementById("redo-btn");
-  editor.on("undo redo", () => {
-    undo.disabled = !editor.UndoManager.hasUndo();
-    redo.disabled = !editor.UndoManager.hasRedo();
-  });
-  undo.addEventListener("click", () => {
-    editor.UndoManager.undo();
-    isUndoing = true;
-  });
-  redo.addEventListener("click", () => {
-    editor.UndoManager.redo();
-    isUndoing = false;
-  });
-
-  // Brisanje elemenata
-  function clearElements(element) {
-    const newChildren = element
-      .components()
-      .filter((child) => child.get("tagName") === "i");
-
-    element.components([]);
-    newChildren.forEach((child) => element.append(child));
-    element.components([newChildren]);
-  }
-
-  // Konverzija HTML-a u PHP kod
-  function htmlToDynamicCode(target, type) {
-    const components = target
-      .components()
-      .filter((child) => child.get("tagName") === "div");
-    const nStartingCards = components.length;
-
-    if (!nStartingCards) return;
-
-    const modelDiv = components[0];
-    const inputElements = modelDiv.find("[id^='g-']");
-
-    inputElements.forEach((element) => {
-      const key = element.getId().slice(2);
-      const tag = element.get("tagName").toLowerCase();
-
-      if (tag === "img") {
-        clearElements(element);
-        element.addAttributes({
-          imageSourceGen: `<?php echo $${type}_item['${key}'] ; ?>`,
-        });
-      } else {
-        clearElements(element);
-        element.append([
-          {
-            type: "textnode",
-            content: `<?php echo htmlspecialchars($${type}_item['${key}'] ?? '', ENT_QUOTES); ?>`,
-          },
-        ]);
-      }
+    // Wait for editor to be ready
+    await new Promise((resolve) => {
+      editor.on("load", () => {
+        console.log("Editor loaded successfully");
+        resolve();
+      });
     });
 
-    // Generisanje PHP loopa
-    let templateHTML = modelDiv
-      .toHTML()
-      .replace(/\ssrc="[^"]*"/g, "")
-      .replace(/imageSourceGen=/g, "src=");
+    // Initialize panels and user interface
+    initializePanels();
 
-    const phpLoop = `<?php $__i = 0; foreach ($${type} as $${type}_item): if ($__i++ >= ${nStartingCards}) break; ?>\n${templateHTML}\n<?php endforeach; ?>`;
+    // Keep track of last selected link component and its DOM element to toggle highlight
+    let lastSelectedLink = null;
+    let lastSelectedLinkEl = null;
 
-    target.components([]);
-    target.append([{ type: "textnode", content: phpLoop }]);
-  }
-
-  // Priprema elemenata za eksport
-  function setupElement(child, landingPageFiles) {
-    const id = child.getId();
-    switch (id) {
-      case "gallery": {
-        const target = child
-          .find("*")
-          .find((model) => model.getId() === "galleryCards");
-        htmlToDynamicCode(target, "images");
-        const onceDecoded = child.toHTML().replace(/&amp;/g, "&");
-        const fullyDecoded = onceDecoded
-          .replace(/&lt;/g, "<")
-          .replace(/&gt;/g, ">");
-        landingPageFiles.push({
-          [`landingPage/${id}.php`]: fullyDecoded,
-        });
-        break;
-      }
-      case "events": {
-        const target = child
-          .find("*")
-          .find((model) => model.getId() === "eventsCards");
-        htmlToDynamicCode(target, "events");
-        const onceDecoded = child.toHTML().replace(/&amp;/g, "&");
-        const fullyDecoded = onceDecoded
-          .replace(/&lt;/g, "<")
-          .replace(/&gt;/g, ">");
-        landingPageFiles.push({
-          [`landingPage/${id}.php`]: fullyDecoded,
-        });
-        break;
-      }
-      default:
-        landingPageFiles.push({
-          [`landingPage/${id}.php`]: child.toHTML(),
-        });
-    }
-  }
-
-  // Generisanje navigacionog stabla
-  function navTree(target, tree, navID, dropDownclass) {
-    const nav = target.find("*").find((child) => child.getId() === navID);
-    if (!nav) return;
-
-    nav.components().forEach((comp) => {
-      if (comp.get("tagName") == "a") {
-        const el = comp.view.el;
-        let text = el.textContent
-          .trim()
-          .replace(" ", "-")
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/[^\x00-\x7F]/g, "")
-          .toLowerCase();
-
-        if (text == "pocetna") text = "";
-        comp.addAttributes({ href: "/" + text });
-        comp.view.render();
-        tree.push({ root: text });
-      } else if (comp.getClasses().includes(dropDownclass)) {
-        let current;
-        comp.components().forEach((ch) => {
-          const tag = ch.get("tagName");
-
-          if (tag === "button") {
-            const text = ch.view.el.innerText.trim();
-            current = { root: text, elements: [] };
-            tree.push(current);
-          }
-
-          if (tag === "div" && current) {
-            ch.components().forEach((link) => {
-              if (link.get("tagName") == "a") {
-                const el = link.view.el;
-                const text = el.textContent
-                  .trim()
-                  .replace(" ", "-")
-                  .replace(/[^\x00-\x7F]/g, "");
-                link.addAttributes({
-                  href: ("/" + current.root + "/" + text)
-                    .toLowerCase()
-                    .replace(" ", "-"),
-                });
-                link.view.render();
-                current.elements.push({ root: text });
-              }
-            });
-          }
-        });
-      }
-    });
-    return tree;
-  }
-
-  // Eksport cele stranice
-  function fullPageExport() {
-    const bodyComponent = editor.DomComponents.getWrapper();
-    const landingPageFiles = [];
-    const tree = [];
-
-    bodyComponent.components().each((child) => {
-      const tag = child.get("tagName") || child.get("type");
-      const classList = child.get("classes");
-      const classes = classList
-        ? Array.from(classList)
-            .map((c) => c.getName())
-            .join(".")
-        : "";
-      switch (tag) {
-        case "header":
-          navTree(child, tree, "navBarID", "dropdown");
-          landingPageFiles.push({
-            [`landingPage/${tag}.php`]: child.toHTML(),
-          });
-          break;
-        case "section":
-          setupElement(child, landingPageFiles);
-          break;
-        case "footer":
-          landingPageFiles.push({
-            [`landingPage/${tag}.php`]: child.toHTML(),
-          });
-          break;
-        case "div":
-          if (child.getId() == "mobileMenu") {
-            const _ = [];
-            navTree(child, _, "navBarIDm", "mobile-dropdown");
-          }
-          landingPageFiles.push({
-            [`landingPage/${tag}${child.getId()}.php`]: child.toHTML(),
-          });
-      }
-    });
-
-    const css = editor.getCss();
-    const fullHtml = editor.getHtml();
-    const scripts = fullHtml.match(/<script[\s\S]*?<\/script>/gi) || [];
-    const js = scripts.join("\n").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-    console.log(
-      JSON.stringify({
-        css: css,
-        typeOfInstitution: tipUstanove,
-        components: landingPageFiles,
-        tree: tree,
-        js: js,
-      })
-    );
-    // Slanje podataka na server
-    fetch("/savePage", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        css: css,
-        typeOfInstitution: tipUstanove,
-        components: landingPageFiles,
-        tree: tree,
-        js: js,
-      }),
-    })
-      .then((r) => r.text())
-      .then((msg) => alert(msg))
-      .catch((err) => alert("Error: " + err));
-  }
-
-  // Dugme za eksport
-  document.getElementById("export").addEventListener("click", async () => {
-    if (komponenta) {
-      const wrapper = editor.DomComponents.getWrapper();
-      const sections = [];
-
-      // Prikupljanje sekcija
-      const traverse = (components) => {
-        components.each((comp) => {
-          if (comp.get("tagName") === "section") {
-            sections.push(comp);
-          }
-          if (comp.components().length) {
-            traverse(comp.components());
-          }
-        });
-      };
-      traverse(wrapper.components());
-      const combinedHTML = sections.map((s) => s.toHTML()).join("");
-
-      // Slanje komponente na server
-      const formData = new FormData();
-      formData.append("cmp", komponenta);
-      formData.append("html", combinedHTML);
-
+    // Inject CSS into editor canvas to highlight selected link (only inside canvas)
+    const injectSelectedLinkStyle = () => {
       try {
-        const res = await fetch("/saveComponent", {
-          method: "POST",
-          body: formData,
-        });
+        const head = editor.Canvas.getFrameEl().contentDocument.head;
+        if (!head.querySelector("#gjs-selected-link-style")) {
+          const style = document.createElement("style");
+          style.id = "gjs-selected-link-style";
+          // inject rule into the canvas iframe so it only affects canvas elements
+          // target only anchors and their children so other elements are unaffected
+          style.textContent = `a.selected-link-editor, a.selected-link-editor * { color: #ffffff !important; outline: 2px dashed rgba(255,255,255,0.2); }`;
+          head.appendChild(style);
+        }
+      } catch (e) {
+        // ignore if cross-origin or not available yet
+      }
+    };
+    injectSelectedLinkStyle();
 
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(`Server error (${res.status}): ${text}`);
+    // Handle component selected event
+    editor.on("component:selected", (comp) => {
+      if (!comp) return;
+
+      // Robust detection: prefer tagName, fallback to type
+      const tagFromModel =
+        (comp.get && comp.get("tagName")) ||
+        (comp.get && comp.get("type")) ||
+        "";
+      const elTag = (comp.getEl && comp.getEl()?.tagName) || tagFromModel || "";
+      const normTag = String(elTag).toLowerCase();
+
+      // Remove highlight from previous selection if it's not the same
+      if (lastSelectedLink && lastSelectedLink !== comp) {
+        try {
+          if (lastSelectedLinkEl) {
+            try {
+              lastSelectedLinkEl.style.color = "";
+              lastSelectedLinkEl.style.outline = "";
+            } catch (e) {}
+            lastSelectedLinkEl = null;
+          }
+        } catch (e) {}
+        lastSelectedLink = null;
+      }
+
+      // If an anchor (<a>) is selected, open nav panel and populate fields
+      if (normTag === "a") {
+        // ensure nav panel is visible
+        document.getElementById("navbtn").click();
+
+        // style the actual DOM element inside the editor canvas so styling is local and removable
+        try {
+          const el = comp.view && comp.view.el;
+          if (el) {
+            if (lastSelectedLinkEl && lastSelectedLinkEl !== el) {
+              try {
+                lastSelectedLinkEl.style.color = "";
+                lastSelectedLinkEl.style.outline = "";
+              } catch (e) {}
+            }
+            try {
+              el.style.color = "#ffffff";
+              el.style.outline = "2px dashed rgba(255,255,255,0.2)";
+            } catch (e) {}
+            lastSelectedLinkEl = el;
+          }
+          lastSelectedLink = comp;
+        } catch (e) {
+          console.error("Could not style selected link element", e);
         }
 
-        const json = await res.json();
-        alert("Component saved! Bytes written: " + json.bytes_written);
-      } catch (err) {
-        alert("Error saving component: " + err.message);
+        // compute visible text and attributes (detailed extraction will follow below)
+
+        const hrefInput = document.getElementById("linkHref");
+        const textInput = document.getElementById("linkText");
+        const applyBtn = document.getElementById("applyLink");
+        const resetBtn = document.getElementById("resetLink");
+
+        if (!hrefInput || !textInput || !applyBtn || !resetBtn) return;
+
+        // Safely get attributes/text
+        const attrs = comp.getAttributes ? comp.getAttributes() : {};
+        hrefInput.value = attrs.href || "";
+        // get inner text if available
+        const inner = comp.getEl() ? comp.getEl().textContent.trim() : "";
+        textInput.value = inner || comp.get("content") || "";
+
+        // Keep shared current link target in sync so parent-side handlers (apply/delete)
+        // which are attached once can operate on the currently selected link.
+        try {
+          const anchorEl = comp.getEl ? comp.getEl() : null;
+          const originalStatic = attrs["data-static"] || attrs["static"] || "";
+          window._gjs_current_link = window._gjs_current_link || {};
+          window._gjs_current_link.anchor = anchorEl;
+          window._gjs_current_link.comp = comp;
+          window._gjs_current_link.originalHref = attrs.href || "";
+          window._gjs_current_link.originalStatic = originalStatic;
+        } catch (e) {
+          // ignore
+        }
+
+        // Apply handler
+        const applyHandler = () => {
+          const newHref = hrefInput.value;
+          const newText = textInput.value;
+          try {
+            comp.addAttributes && comp.addAttributes({ href: newHref });
+            // update view text / content — preserve other child elements if they exist by replacing only text nodes
+            try {
+              const childs = comp.components && comp.components();
+              if (
+                childs &&
+                childs.length &&
+                childs.some((c) => c.get && c.get("type") !== "textnode")
+              ) {
+                // remove existing textnode children and append new textnode, preserving non-text children
+                const preserved = [];
+                childs.forEach((c) => {
+                  if (c.get && c.get("type") !== "textnode") preserved.push(c);
+                });
+                comp.components([]);
+                preserved.forEach((p) => comp.append(p));
+                if (newText)
+                  comp.append([{ type: "textnode", content: newText }]);
+              } else {
+                // simple replace
+                comp.components([]);
+                if (newText)
+                  comp.append([{ type: "textnode", content: newText }]);
+              }
+            } catch (innerErr) {
+              // fallback
+              comp.components && comp.components([]);
+              if (newText)
+                comp.append &&
+                  comp.append([{ type: "textnode", content: newText }]);
+            }
+
+            // re-render component view if possible
+            if (comp.view && comp.view.render) comp.view.render();
+          } catch (e) {
+            console.error("Failed to apply link changes", e);
+          }
+        };
+
+        const resetHandler = () => {
+          hrefInput.value = attrs.href || "";
+          textInput.value = inner || comp.get("content") || "";
+        };
+
+        // Use direct assignment to avoid accumulating handlers on repeated selections
+        applyBtn.onclick = applyHandler;
+        resetBtn.onclick = resetHandler;
+
+        return;
       }
-    } else if (tipUstanove) {
-      fullPageExport();
-    }
-  });
 
-  // Prevencija default kombinacija tastatura
-  editor.on("keydown", (e) => {
-    if ((e.ctrlKey || e.metaKey) && ["z", "y"].includes(e.key)) {
-      e.preventDefault();
-      alert("Koristite dugmad Poništi/Ponovi na alatnoj traci!");
-    }
-  });
-});
+      if (normTag === "button") {
+        let parent = comp.parent();
+        while (parent && !parent.getClasses().includes("megaMenu")) {
+          parent = parent.parent();
+        }
 
-// Registracija blokova
-Object.entries({
-  heroGradient,
-  heroVideo,
-  topNavbarComponent,
-  featuresGrid,
-  testimonial,
-  contactForm,
-  footer,
-  pricing,
-  stats,
-  teamSection,
-  buttonComponent,
-  gallery,
-  faqSection,
-  link,
-  multiLink,
-}).forEach(([name, block]) =>
-  editor.BlockManager.add(name.replace(/([A-Z])/g, "-$1").toLowerCase(), block)
-);
+        if (parent) {
+          const processComponent = (component) => {
+            if (component.getClasses().includes("invisible")) {
+              component.removeClass("invisible");
+              component.addClass("visible");
+            }
+            component.components().forEach((child) => processComponent(child));
+          };
+          processComponent(parent);
+        }
+      }
+    });
+
+    // Prevent anchor navigation inside the grapesjs canvas and map clicks to selection
+    try {
+      const frameEl = editor.Canvas.getFrameEl();
+      const frameDoc = frameEl && frameEl.contentDocument;
+      if (frameDoc) {
+        frameDoc.addEventListener(
+          "click",
+          (e) => {
+            try {
+              const a = e.target.closest && e.target.closest("a");
+              if (!a) return;
+              // prevent navigation
+              e.preventDefault();
+              e.stopPropagation();
+
+              // find component whose view.el is this anchor (or contains it)
+              const wrapper = editor.DomComponents.getWrapper();
+              const found =
+                wrapper.find &&
+                wrapper.find((m) => {
+                  try {
+                    return (
+                      (m.view && m.view.el === a) ||
+                      (m.view &&
+                        m.view.el &&
+                        m.view.el.contains &&
+                        m.view.el.contains(a))
+                    );
+                  } catch (e) {
+                    return false;
+                  }
+                });
+              if (found && found.length) {
+                editor.select(found[0]);
+              }
+            } catch (err) {
+              // ignore errors inside iframe click handling
+            }
+          },
+          true
+        );
+      }
+    } catch (e) {
+      // ignore if iframe not accessible yet
+    }
+
+    // Ensure highlight removed when deselected or removed
+    try {
+      editor.on("component:deselected", (comp) => {
+        if (lastSelectedLink) {
+          try {
+            if (lastSelectedLinkEl) {
+              lastSelectedLinkEl.style.color = "";
+              lastSelectedLinkEl.style.outline = "";
+              lastSelectedLinkEl = null;
+            }
+          } catch (e) {}
+          lastSelectedLink = null;
+        }
+      });
+    } catch (e) {}
+
+    try {
+      editor.on("component:remove", (comp) => {
+        if (lastSelectedLink && lastSelectedLink === comp) {
+          try {
+            if (lastSelectedLinkEl) {
+              lastSelectedLinkEl.style.color = "";
+              lastSelectedLinkEl.style.outline = "";
+              lastSelectedLinkEl = null;
+            }
+          } catch (e) {}
+          lastSelectedLink = null;
+        }
+      });
+    } catch (e) {}
+
+    // Load template or component from URL parameters
+    const params = new URLSearchParams(location.search);
+    const tipUstanove = params.get("tipUstanove");
+    const komponenta = params.get("komponenta");
+
+    if (tipUstanove) {
+      fetch(`/template?tipUstanove=${encodeURIComponent(tipUstanove)}`)
+        .then((r) => (r.ok ? r.text() : Promise.reject("Not found")))
+        .then((html) => editor.setComponents(html))
+        .catch(console.error);
+    } else if (komponenta) {
+      fetch(`/component?cmp=${encodeURIComponent(komponenta)}`)
+        .then((r) =>
+          r.ok ? r.text() : Promise.reject("Nije pronađena komponenta")
+        )
+        .then((html) => editor.setComponents(html))
+        .catch(console.error);
+    }
+
+    // Export button handler
+    document.getElementById("export").addEventListener("click", () => {
+      handleExport(editor, tipUstanove, komponenta);
+    });
+
+    // Register blocks
+    const blocks = {
+      heroGradient,
+      heroVideo,
+      topNavbarComponent,
+      featuresGrid,
+      testimonial,
+      contactForm,
+      footer,
+      pricing,
+      stats,
+      teamSection,
+      buttonComponent,
+      gallery,
+      faqSection,
+      link,
+      megaMenu,
+      multiLink,
+    };
+
+    Object.entries(blocks).forEach(([name, block]) =>
+      editor.BlockManager.add(
+        name.replace(/([A-Z])/g, "-$1").toLowerCase(),
+        block
+      )
+    );
+
+    // Listen for device change events from panelManager
+    window.addEventListener("webdesigner:setDevice", (e) => {
+      try {
+        const device = e.detail.device;
+        if (device && editor && typeof editor.setDevice === "function") {
+          editor.setDevice(device);
+        }
+      } catch (err) {
+        console.error("Failed to set device", err);
+      }
+    });
+  } catch (error) {
+    console.error("Error initializing editor:", error);
+  }
+}); // End of DOMContentLoaded event listener

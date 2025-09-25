@@ -1,7 +1,15 @@
 <?php
+session_start();
+if (isset($_GET['locale'])) {
+    $_SESSION['locale'] = $_GET['locale'];
+}
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 use App\Models\Event;
 use App\Controllers\AuthController;
 AuthController::requireEditor();
+
+
 [$name, $surname, $role] = AuthController::getUserInfo();
 
 $search = $_GET['search'] ?? '';
@@ -20,9 +28,10 @@ $offset = ($page - 1) * $limit;
     category: $category,
     status: $status,
     sort: $sort,
+    lang: $locale
 );
 $totalPages = (int) ceil($totalCount / $limit);
-$categories = (new Event())->getCategories();
+$categories = (new Event())->getCategories($locale);
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -241,19 +250,24 @@ $categories = (new Event())->getCategories();
                             <table class="w-full">
                                 <thead class="bg-light-100">
                                     <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?= __('events.event') ?>
                                         </th>
-                                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?= __('events.title') ?>
                                         </th>
-                                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?= __('events.date_time') ?>
                                         </th>
-                                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?= __('events.location') ?>
                                         </th>
-                                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             <?= __('events.actions') ?>
                                         </th>
                                     </tr>
@@ -272,7 +286,8 @@ $categories = (new Event())->getCategories();
 
                                             <td class="px-6 py-4">
                                                 <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-12 w-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center shadow-inner">
+                                                    <div
+                                                        class="flex-shrink-0 h-12 w-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex items-center justify-center shadow-inner">
                                                         <i class="fas fa-calendar text-primary-600 text-lg"></i>
                                                     </div>
                                                     <div class="ml-4">
@@ -294,14 +309,16 @@ $categories = (new Event())->getCategories();
                                             </td>
 
                                             <td class="px-6 py-4 text-sm text-gray-700 whitespace-nowrap">
-                                                <span class="inline-block bg-light-100 text-light-700 px-3 py-1 rounded-full text-xs font-medium">
+                                                <span
+                                                    class="inline-block bg-light-100 text-light-700 px-3 py-1 rounded-full text-xs font-medium">
                                                     <?= htmlspecialchars($event['location']) ?>
                                                 </span>
                                             </td>
 
                                             <td class="px-6 py-4 text-sm">
                                                 <div class="flex items-center space-x-2">
-                                                    <button class="edit p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition duration-200"
+                                                    <button
+                                                        class="edit p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition duration-200"
                                                         title="<?= __('events.edit') ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
@@ -317,7 +334,8 @@ $categories = (new Event())->getCategories();
                                 </tbody>
                             </table>
                         </div>
-                        <div class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                        <div
+                            class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                             <div class="hidden md:block text-sm text-gray-700">
                                 <?= __('events.pagination_summary', ['shown' => count($events), 'of' => $totalCount]) ?>
                             </div>
@@ -402,4 +420,5 @@ $categories = (new Event())->getCategories();
     <script src="/assets/js/dashboard/events.js" defer></script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
 </body>
+
 </html>

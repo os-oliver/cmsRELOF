@@ -309,20 +309,20 @@ AuthController::requireAdmin();
                             <?= __('style.status_text') ?>
                         </label>
                         <div class="grid grid-cols-3 gap-2">
-                            <button type="button" data-status="active"
+                            <button type="button" data-status="1"
                                 class="status-option bg-green-100 text-green-700 py-2 rounded-lg">
-                                    <?= __('style.active') ?>
+                                <?= __('style.active') ?>
                             </button>
-                            <button type="button" data-status="draft"
+                            <button type="button" data-status="0"
                                 class="status-option bg-yellow-100 text-yellow-700 py-2 rounded-lg">
                                 <?= __('style.in_progress') ?>
                             </button>
-                            <button type="button" data-status="inactive"
+                            <button type="button" data-status="-1"
                                 class="status-option bg-red-100 text-red-700 py-2 rounded-lg">
-                                    <?= __('style.inactive') ?>
+                                <?= __('style.inactive') ?>
                             </button>
                         </div>
-                        <input type="hidden" id="pageStatus" value="active">
+                        <input type="hidden" id="pageStatus" value="1">
                     </div>
 
                     <div class="pt-4 flex space-x-3">
@@ -375,25 +375,24 @@ AuthController::requireAdmin();
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                             <h3
                                 class="text-lg lg:text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                                <?= __('style.pages_list') ?>                               
+                                <?= __('style.pages_list') ?>
                             </h3>
                             <button id="newPageBtn"
                                 class="btn-primary text-white px-4 py-2 rounded-lg font-medium flex items-center w-full sm:w-auto justify-center">
                                 <i class="fas fa-plus mr-2"></i>
-                                    <?= __('style.new') ?>
+                                <?= __('style.new') ?>
                             </button>
                             <button id="saveState"
                                 class="btn-primary text-white px-4 py-2 rounded-lg font-medium flex items-center w-full sm:w-auto justify-center">
                                 <i class="fas fa-floppy-disk mr-2"></i>
-                                    <?= __('style.save_button') ?>
+                                <?= __('style.save_button') ?>
                             </button>
                         </div>
 
                         <!-- Search and Filters -->
                         <div class="mb-6">
                             <div class="relative">
-                                <input type="text" placeholder=
-                                    "<?= __('style.search_placeholder') ?>" 
+                                <input type="text" placeholder="<?= __('style.search_placeholder') ?>"
                                     class="search-input w-full py-3 px-4 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary">
                                 <i class="fas fa-search absolute right-4 top-3.5 text-gray-400"></i>
                             </div>
@@ -401,12 +400,12 @@ AuthController::requireAdmin();
                             <div class="flex mt-4 space-x-2 overflow-x-auto pb-2">
                                 <button
                                     class="filter-btn active text-xs bg-primary text-white px-3 py-1.5 rounded-lg hover:bg-primary/80 transition whitespace-nowrap"
-                                    data-filter="all">                                    
+                                    data-filter="all">
                                     <?= __('style.all') ?>
                                 </button>
                                 <button
                                     class="filter-btn text-xs bg-green-100 text-green-700 px-3 py-1.5 rounded-lg hover:bg-green-200 transition whitespace-nowrap"
-                                    data-filter="active">                                    
+                                    data-filter="active">
                                     <?= __('style.active_plural') ?>
                                 </button>
                                 <button
@@ -530,7 +529,7 @@ AuthController::requireAdmin();
                                 <div id="status-buttons" class="flex space-x-4">
                                     <button data-status="active"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-green-500 text-green-700 bg-green-100">
-                                            <?= __('style.active_activity') ?>
+                                        <?= __('style.active_activity') ?>
                                     </button>
                                     <button data-status="draft"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-gray-300 text-gray-600 bg-gray-100">
@@ -538,7 +537,7 @@ AuthController::requireAdmin();
                                     </button>
                                     <button data-status="inactive"
                                         class="status-btn flex-1 py-2 rounded-xl border-2 border-gray-300 text-gray-600 bg-gray-100">
-                                            <?= __('style.inactive_activity') ?>
+                                        <?= __('style.inactive_activity') ?>
                                     </button>
                                 </div>
                             </div>
@@ -663,13 +662,6 @@ AuthController::requireAdmin();
         cancelBtn.addEventListener('click', closeModal);
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) {
-                closeModal();
-            }
-        });
-
-        // Close modal on ESC key (same as Cancel)
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
                 closeModal();
             }
         });
@@ -837,7 +829,7 @@ AuthController::requireAdmin();
 
                     // Funkcija za dobijanje prevedenog statusa
                     function getStatusText(status) {
-                        const key = "style.status_" + status; 
+                        const key = "style.status_" + status;
                         const messagePhp = "<?= __('" + key + "') ?>";
                         return messagePhp;
                     }
