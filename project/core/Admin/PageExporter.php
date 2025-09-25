@@ -138,18 +138,48 @@ class PageExporter
     {
         $path = [];
         $current = $node;
+
         while ($current && $current->nodeType === XML_ELEMENT_NODE) {
-            $index = 0;
-            $sibling = $current->previousSibling;
-            while ($sibling) {
-                if ($sibling->nodeName === $current->nodeName) {
-                    $index++;
-                }
-                $sibling = $sibling->previousSibling;
+            // Initialize counters for each level
+            static $levelCounters = [];
+            $level = count($path);
+
+            if (!isset($levelCounters[$level])) {
+                $levelCounters[$level] = [];
             }
-            array_unshift($path, $current->nodeName . '_' . $index);
+
+            if (!isset($levelCounters[$level][$current->nodeName])) {
+                $levelCounters[$level][$current->nodeName] = 0;
+            } else {
+                $levelCounters[$level][$current->nodeName]++;
+            }
+
+            // Get absolute position among siblings
+            $siblingPosition = 0;
+            $sibling = $current;
+            while ($sibling = $sibling->previousSibling) {
+                if ($sibling->nodeType === XML_ELEMENT_NODE) {
+                    $siblingPosition++;
+                }
+            }
+
+            // Combine nodeName with both counters
+            $pathSegment = sprintf(
+                '%s_%d_%d',
+                $current->nodeName,
+                $levelCounters[$level][$current->nodeName],
+                $siblingPosition
+            );
+
+            array_unshift($path, $pathSegment);
             $current = $current->parentNode;
         }
+
+        // Reset static counter for next call
+        if (count($path) === 0) {
+            $levelCounters = [];
+        }
+
         return implode('/', $path);
     }
     /**
@@ -226,8 +256,8 @@ class PageExporter
         libxml_use_internal_errors(true);
 
         // Properly handle UTF-8 content and entities
-        $content = mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8');
-        $content = preg_replace('/&(?!#?[a-zA-Z0-9]+;)/', '&amp;', $content);
+        $convmap = [0x80, 0x10FFFF, 0, 0xFFFF];
+        $content = mb_encode_numericentity($content, $convmap, 'UTF-8');
 
         // Add proper HTML structure
         $wrapped = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>' . $content . '</body></html>';
@@ -632,8 +662,6 @@ $groupedPages = PageLoader::getGroupedStaticPages();
         $pagesJsonPath = "$dataDir/pages.json";
         file_put_contents($pagesJsonPath, json_encode($pagesData, JSON_PRETTY_PRINT));
 
-        echo "Export successful! All files saved to {$this->baseDir}\n";
-        echo "Navigation data saved to $pagesJsonPath\n";
     }
 }
 

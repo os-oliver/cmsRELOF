@@ -64,8 +64,7 @@ abstract class BasePageBuilder
 
         $head .= "</head>\n<body class=\"min-h-screen flex flex-col\">\n\n";
 
-        error_log("this css:");
-        error_log($head);
+
 
         return $head;
     }
