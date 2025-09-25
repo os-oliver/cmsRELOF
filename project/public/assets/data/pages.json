@@ -1,74 +1,124 @@
 [
     {
-        "id": 1,
+        "id": "68d4131b87857",
+        "static": false,
+        "movable": false,
         "name": "",
-        "path": "pages\/.php",
         "href": "\/",
-        "status": "active",
-        "date": "08.11.2025."
+        "path": "pages\/.php",
+        "file": ".php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
     },
     {
-        "id": 2,
-        "name": "O nama",
-        "path": "pages\/o_nama.php",
-        "href": "\/o-nama",
-        "status": "active",
-        "date": "08.11.2025."
-    },
-    {
-        "id": 3,
+        "id": "68d4131b8a899",
+        "static": false,
+        "movable": false,
         "name": "Cilj",
-        "path": "pages\/cilj.php",
         "href": "\/o-nama\/cilj",
-        "status": "active",
-        "date": "08.11.2025."
+        "path": "pages\/cilj.php",
+        "file": "cilj.php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
     },
     {
-        "id": 4,
+        "id": "68d4131b8d699",
+        "static": false,
+        "movable": false,
         "name": "Zaposleni",
-        "path": "pages\/zaposleni.php",
         "href": "\/o-nama\/zaposleni",
-        "status": "active",
-        "date": "08.11.2025."
+        "path": "pages\/zaposleni.php",
+        "file": "zaposleni.php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
     },
     {
-        "id": 5,
+        "id": "68d4131b90c4c",
+        "static": false,
+        "movable": false,
         "name": "Misija",
-        "path": "pages\/misija.php",
         "href": "\/o-nama\/misija",
-        "status": "active",
-        "date": "08.11.2025."
+        "path": "pages\/misija.php",
+        "file": "misija.php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
     },
     {
-        "id": 6,
+        "id": "68d4131b93941",
+        "static": false,
+        "movable": false,
+        "name": "Istorija",
+        "href": "\/o-nama\/istorija",
+        "path": "pages\/istorija.php",
+        "file": "istorija.php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
+    },
+    {
+        "id": "68d4131b9690a",
+        "static": false,
+        "movable": false,
+        "name": "Tim",
+        "href": "\/o-nama\/tim",
+        "path": "pages\/tim.php",
+        "file": "tim.php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
+    },
+    {
+        "id": "68d4131b9bc2f",
+        "static": false,
+        "movable": false,
         "name": "dogadjaji",
-        "path": "pages\/dogadjaji.php",
         "href": "\/dogadjaji",
-        "status": "active",
-        "date": "08.11.2025."
+        "path": "pages\/dogadjaji.php",
+        "file": "dogadjaji.php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
     },
     {
-        "id": 7,
+        "id": "68d4131ba1873",
+        "static": false,
+        "movable": false,
         "name": "galerija",
-        "path": "pages\/galerija.php",
         "href": "\/galerija",
-        "status": "active",
-        "date": "08.11.2025."
+        "path": "pages\/galerija.php",
+        "file": "galerija.php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
     },
     {
-        "id": 8,
+        "id": "68d4131baba20",
+        "static": false,
+        "movable": false,
         "name": "dokumenti",
-        "path": "pages\/dokumenti.php",
         "href": "\/dokumenti",
-        "status": "active",
-        "date": "08.11.2025."
+        "path": "pages\/dokumenti.php",
+        "file": "dokumenti.php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
     },
     {
-        "id": 9,
+        "id": "68d4131bbcdde",
+        "static": false,
+        "movable": false,
         "name": "kontakt",
-        "path": "pages\/kontakt.php",
         "href": "\/kontakt",
-        "status": "active",
-        "date": "08.11.2025."
+        "path": "pages\/kontakt.php",
+        "file": "kontakt.php",
+        "status": 1,
+        "created_at": "2025-09-24 15:49:47"
+    },
+    {
+        "id": "1997c75d4ceb10c6e1d6d96c",
+        "static": true,
+        "movable": true,
+        "name": "dsa",
+        "href": "\/dsa",
+        "path": "pages\/dsa.php",
+        "file": "dsa.php",
+        "status": 1,
+        "created_at": "2025-09-24 16:02:01",
+        "column": null
     }
 ]

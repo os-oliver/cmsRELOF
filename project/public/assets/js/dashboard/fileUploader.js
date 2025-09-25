@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
         body: dataTosend,
       });
       if (!res.ok) throw new Error(`Status: ${res.status}`);
+      console.log(res.text());
       alert("Dokument uspešno sačuvan!");
-      window.location.reload();
       form.reset();
       closeModal();
     } catch (err) {

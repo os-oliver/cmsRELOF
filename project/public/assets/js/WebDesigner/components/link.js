@@ -1,15 +1,20 @@
 export const link = {
-  label: `    <div class="block">
-    <div class="block-icon">
-      <i class="fas  fa-url mr-2"></i>
-    </div>
-    <div class="block-label">
-      Link
-    </div>
-  </div>`,
-  category: "Link navigacije",
+  label: `
+    <div class="block">
+      <div class="block-icon">
+        <i class="fas fa-link mr-2 text-terracotta"></i>
+      </div>
+      <div class="block-label">
+        Link
+      </div>
+    </div>`,
+  category: "Navigacija",
   content: `
-    <a href="#" data-gjs-type="text" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Link</a>
-    `,
+    <a href="#"
+      class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap group">
+      <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors"></i>
+      <span class="hidden xl:inline">Početna</span>
+    </a>
+  `,
   attributes: { class: "gjs-block-section" },
 };

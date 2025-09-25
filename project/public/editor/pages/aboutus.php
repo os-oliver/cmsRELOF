@@ -5,12 +5,14 @@ use App\Models\Employee;
 use App\Models\TeamMember; // New model for team members
 
 
+$locale = \App\Utils\LocaleManager::get();
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
 // Get about us data
 $dataAboutUS = new AboutUs();
-$aboutUsData = $dataAboutUS->list();
+$aboutUsData = $dataAboutUS->list($locale);
+
 
 // Get team members
 // Get parameters from _GET
@@ -178,8 +180,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                             </label>
                             <textarea id="cilj" rows="4"
                                 class="block w-full rounded-lg border border-gray-300 bg-white p-3 shadow-sm placeholder-gray-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
-                                placeholder="<?= __("aboutus.enter_goal") ?>"
-                            ><?= htmlspecialchars($aboutUsData['goal'] ?? '') ?></textarea>
+                                placeholder="<?= __("aboutus.enter_goal") ?>"><?= htmlspecialchars($aboutUsData['goal'] ?? '') ?></textarea>
                             <button id="goal"
                                 class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all shadow">
                                 <?= __("aboutus.save_goal") ?>
@@ -193,8 +194,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                             </label>
                             <textarea id="misija" rows="4"
                                 class="block w-full rounded-lg border border-gray-300 bg-white p-3 shadow-sm placeholder-gray-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
-                                placeholder="<?= __("aboutus.enter_mission") ?>"
-                            ><?= htmlspecialchars($aboutUsData['mission'] ?? '') ?></textarea>
+                                placeholder="<?= __("aboutus.enter_mission") ?>"><?= htmlspecialchars($aboutUsData['mission'] ?? '') ?></textarea>
                             <button id="mission"
                                 class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all shadow">
                                 <?= __("aboutus.save_mission") ?>
@@ -207,7 +207,8 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div class="glass-panel rounded-2xl p-6">
                         <div class="flex justify-between items-center mb-6">
                             <h2 class="text-xl font-semibold text-gray-800">
-                                <?= __("aboutus.employees") ?></h2>
+                                <?= __("aboutus.employees") ?>
+                            </h2>
                             <button id="addTeamMemberBtn"
                                 class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow">
                                 <i class="fas fa-plus mr-2"></i>

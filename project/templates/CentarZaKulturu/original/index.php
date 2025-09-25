@@ -343,7 +343,7 @@
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
-                    <a href="#"
+                    <a data-page="Pocetna" href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-terracotta"></i>Početna
                     </a>
@@ -358,33 +358,34 @@
                                 id="mobileAboutIcon"></i>
                         </button>
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
-                            <a href="#"
+                            <a data-page="Cilj" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
                                 <i class="fas fa-bullseye mr-2 text-royal-blue"></i>Cilj
                             </a>
-                            <a href="#"
+                            <a data-page="Zaposleni" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-terracotta"></i>Zaposleni
                             </a>
-                            <a href="#"
+                            <a data-page="Misija" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
                                 <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
                             </a>
                         </div>
                     </div>
-                    <a href="#"
+                    <a data-page="Dogadjaji" href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-royal-blue"></i>Dogadjaji
                     </a>
-                    <a href="#"
+
+                    <a data-page="Galerija" href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-velvet"></i>Galerija
                     </a>
-                    <a href="#"
+                    <a data-page="Dokumenti" href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-coral"></i>Dokumenti
                     </a>
-                    <a href="#"
+                    <a data-page="Kontakt" href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-deep-teal"></i>Kontakt
                     </a>
@@ -399,13 +400,15 @@
             A+
         </button>
     </div>
-    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm bg-paper/95">
-        <div class="container mx-auto px-4 flex justify-between items-center">
+    <header
+        class="fixed w-full z-50 transition-all duration-300 py-2 sm:py-3 backdrop-blur-md shadow-lg bg-paper/95 border-b border-gray-100">
+        <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
             <!-- Logo Section -->
-            <div class="flex items-center space-x-3 flex-shrink-0">
+            <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
                 <div
-                    class="artistic-frame w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-ochre to-terracotta rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 text-paper" viewBox="0 0 20 20"
+                    class="artistic-frame w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-ochre via-terracotta to-coral rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-paper drop-shadow-sm" viewBox="0 0 20 20"
                         fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
@@ -413,94 +416,121 @@
                     </svg>
                 </div>
                 <div class="hidden sm:block">
-                    <h1 class="text-xl lg:text-2xl font-display text-slate font-bold tracking-wider">KULTURNI NEXUS</h1>
-                    <p class="text-xs text-terracotta tracking-widest hidden md:block">CENTAR ZA UMETNOST I BAŠTINU</p>
+                    <h1
+                        class="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-display text-slate font-bold tracking-wider leading-tight">
+                        KULTURNI NEXUS</h1>
+                    <p
+                        class="text-xs sm:text-xs lg:text-sm text-terracotta tracking-widest hidden md:block opacity-80 font-medium">
+                        CENTAR ZA UMETNOST I BAŠTINU</p>
                 </div>
                 <div class="block sm:hidden">
-                    <h1 class="text-lg font-display text-slate font-bold">NEXUS</h1>
+                    <h1 class="text-base font-display text-slate font-bold tracking-wide">NEXUS</h1>
                 </div>
             </div>
 
             <!-- Desktop Navigation -->
-            <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-8">
+            <nav id="navBarID" class="hidden lg:flex items-center space-x-1 xl:space-x-3">
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors"></i>
-                    <span class="hidden xl:inline">Pocetna</span>
+                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
+                    <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Početna</span>
                 </a>
 
                 <div class="dropdown relative group">
                     <button
-                        class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                        <i class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors"></i>
-                        <span class="hidden xl:inline">O nama</span>
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
+                        <i
+                            class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors text-sm"></i>
+                        <span class="hidden xl:inline text-sm">O nama</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute top-full left-0  w-48 bg-paper rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        class="dropdown-menu  absolute top-full left-1/2 transform -translate-x-1/2  min-w-max max-w-xs w-auto bg-paper rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                            <i class="fas fa-bullseye mr-2 text-royal-blue"></i>Cilj
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-bullseye mr-3 text-royal-blue flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Cilj</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                            <i class="fas fa-sitemap mr-2 text-terracotta"></i>Zaposleni
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Zaposleni</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-flag mr-3 text-deep-teal flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Misija</span>
+                        </a>
+                        <div class="border-t border-gray-200 my-2 mx-3"></div>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-history mr-3 text-ochre flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Istorija</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Tim</span>
                         </a>
                     </div>
                 </div>
 
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
+                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
                     <i
-                        class="fas fa-calendar-alt mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
-                    <span class="hidden xl:inline">Dogadjaji</span>
+                        class="fas fa-calendar-alt mr-2 text-royal-blue group-hover:text-deep-teal transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Dogadjaji</span>
                 </a>
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-images mr-2 text-velvet group-hover:text-crimson transition-colors"></i>
-                    <span class="hidden xl:inline">Galerija</span>
+                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
+                    <i class="fas fa-images mr-2 text-velvet group-hover:text-crimson transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Galerija</span>
                 </a>
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors group flex items-center whitespace-nowrap">
-                    <i class="fas fa-folder-open mr-2 text-coral group-hover:text-terracotta transition-colors"></i>
-                    <span class="hidden xl:inline">Dokumenti</span>
+                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-slate-50">
+                    <i
+                        class="fas fa-folder-open mr-2 text-coral group-hover:text-terracotta transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Dokumenti</span>
                 </a>
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-address-book mr-2 text-deep-teal group-hover:text-sage transition-colors"></i>
-                    <span class="hidden xl:inline">Kontakt</span>
+                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
+                    <i
+                        class="fas fa-address-book mr-2 text-deep-teal group-hover:text-sage transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Kontakt</span>
                 </a>
+
                 <?php
-                    if (isset($_GET['locale'])) {
-                        $_SESSION['locale'] = $_GET['locale'];
-                    }
-                    $locale = $_SESSION['locale'] ?? 'sr';
+                if (isset($_GET['locale'])) {
+                    $_SESSION['locale'] = $_GET['locale'];
+                }
+                $locale = $_SESSION['locale'] ?? 'sr';
 
-                    $languages = [
-                        'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                        'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                        'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
-                    ];
+                $languages = [
+                    'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                ];
 
-                    if (!isset($languages[$locale])) {
-                        $locale = 'sr';
-                    }
+                if (!isset($languages[$locale])) {
+                    $locale = 'sr';
+                }
                 ?>
-                <div class="dropdown relative group">
-                    <button class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                        <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
-                        <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                <div class="dropdown nonPage relative group ">
+                    <button
+                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
+                        <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
+                        <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-paper rounded-md shadow-lg z-50">
+                    <div
+                        class="dropdown-menu absolute top-full right-0  min-w-max bg-paper rounded-xl shadow-2xl border border-gray-100 z-50 py-2 backdrop-blur-sm">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>" class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                                <span class="mr-2"><?= $lang['flag'] ?></span>
-                                <?= $lang['label'] ?>
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                                <span class="font-medium"><?= $lang['label'] ?></span>
                             </a>
                         <?php endforeach; ?>
                     </div>
@@ -508,31 +538,30 @@
             </nav>
 
             <!-- Search & Mobile Toggle -->
-            <div class="flex items-center space-x-2 sm:space-x-4">
+            <div class="flex items-center space-x-1 sm:space-x-3">
                 <!-- Search Container -->
                 <div class="relative">
                     <button id="searchButton"
-                        class="text-slate-500 hover:text-terracotta transition-colors focus:outline-none p-2"
+                        class="text-slate-500 hover:text-terracotta transition-all duration-200 focus:outline-none p-2 sm:p-2.5 rounded-full hover:bg-slate-50"
                         aria-label="Search">
-                        <i class="fas fa-search"></i>
+                        <i class="fas fa-search text-sm sm:text-base"></i>
                     </button>
-                    <!-- Search Input - positioned to avoid nav overlap -->
+                    <!-- Enhanced Search Input -->
                     <div id="searchInputContainer"
-                        class="absolute right-0 top-full mt-2 hidden opacity-0 transition-all duration-300 ease-in-out z-50 min-w-[280px] bg-white rounded-md shadow-lg border border-gray-200 overflow-hidden">
-                        <form id="searchForm" class="flex items-center w-full p-1.5" action="/pretraga" method="GET">
-                            <input type="text" name="q" placeholder="Search..."
-                                class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-3 py-1.5 text-gray-700 placeholder-gray-400"
+                        class="absolute right-0 top-full mt-3 hidden opacity-0 transition-all duration-300 ease-in-out z-50 min-w-[280px] sm:min-w-[320px] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden backdrop-blur-sm">
+                        <form id="searchForm" class="flex items-center w-full p-2" action="/search" method="GET">
+                            <input type="text" name="q" placeholder="Pretražite sadržaj..."
+                                class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-4 py-2.5 text-gray-700 placeholder-gray-400 bg-gray-50 rounded-lg"
                                 id="searchInput" required />
                             <div class="flex items-center space-x-1 ml-2">
                                 <button type="submit"
-                                    class="text-slate-500 hover:text-terracotta transition-colors focus:outline-none p-1.5 rounded-full hover:bg-gray-100 w-8 h-8 flex items-center justify-center"
+                                    class="text-slate-500 hover:text-terracotta transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-gray-100 w-9 h-9 flex items-center justify-center"
                                     aria-label="Submit search">
                                     <i class="fas fa-search text-sm"></i>
                                 </button>
                                 <button type="button"
-                                    class="text-slate-500 hover:text-terracotta transition-colors focus:outline-none p-1.5 rounded-full hover:bg-gray-100 w-8 h-8 flex items-center justify-center"
-                                    id="closeSearch" aria-label="Clear search"
-                                    onclick="document.getElementById('searchInput').value=''; document.getElementById('searchInput').focus();">
+                                    class="text-slate-500 hover:text-red-500 transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-gray-100 w-9 h-9 flex items-center justify-center"
+                                    id="closeSearch" aria-label="Close search">
                                     <i class="fas fa-times text-sm"></i>
                                 </button>
                             </div>
@@ -540,12 +569,12 @@
                     </div>
                 </div>
 
-                <!-- Mobile Menu Button -->
+                <!-- Enhanced Mobile Menu Button -->
                 <button id="hamburger"
-                    class="hamburger lg:hidden text-slate w-8 h-8 flex flex-col justify-center space-y-1 p-1">
-                    <span class="block w-6 h-0.5 bg-slate rounded transition-all duration-300"></span>
-                    <span class="block w-6 h-0.5 bg-slate rounded transition-all duration-300"></span>
-                    <span class="block w-6 h-0.5 bg-slate rounded transition-all duration-300"></span>
+                    class="hamburger lg:hidden text-slate w-9 h-9 sm:w-10 sm:h-10 flex flex-col justify-center items-center space-y-1 p-2 rounded-lg hover:bg-slate-50 transition-all duration-200">
+                    <span class="block w-5 h-0.5 bg-slate rounded transition-all duration-300"></span>
+                    <span class="block w-5 h-0.5 bg-slate rounded transition-all duration-300"></span>
+                    <span class="block w-5 h-0.5 bg-slate rounded transition-all duration-300"></span>
                 </button>
             </div>
         </div>
@@ -1051,7 +1080,7 @@
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-paper/80 hover:text-ochre transition-colors">Izložbe</a></li>
+                        <li><a href="asde" class="text-paper/80 hover:text-ochre transition-colors">Izložbe</a></li>
                         <li><a href="#" class="text-paper/80 hover:text-ochre transition-colors">Bioskop</a></li>
                         <li><a href="#" class="text-paper/80 hover:text-ochre transition-colors">Pozorište</a></li>
                         <li><a href="#" class="text-paper/80 hover:text-ochre transition-colors">Koncerti</a></li>

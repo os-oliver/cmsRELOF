@@ -1,7 +1,9 @@
 <?php
 namespace App\Models;
 
+use App\Controllers\LanguageMapperController;
 use App\Database;
+use App\Utils\Pivoter;
 use PDO;
 use RuntimeException;
 
@@ -11,130 +13,236 @@ class AboutUs
 
     public function __construct()
     {
-        $db = new Database();
-        $this->pdo = $db->GetPDO();
+        $this->pdo = (new Database())->GetPDO();
+    }
+
+    // Mapiranje locale → lang kod (default sr-Cyrl)
+    private function resolveLang(string $locale): string
+    {
+        return match ($locale) {
+            'sr-Cyrl' => 'sr-Cyrl',
+            'sr', 'sr-Latn' => 'sr',
+            'en' => 'en',
+            default => 'sr-Cyrl',
+        };
+    }
+
+    // Generiše varijante (ćirilica/latinica) samo za srpski; za ostale jezike vraća original
+    private function transliterateVariants(string $text, string $locale): array
+    {
+        $mapper = new LanguageMapperController();
+        $locale = (string) $locale;
+
+        if ($locale === 'sr-Cyrl') {
+            return [
+                'sr-Cyrl' => $text,
+                'sr' => $mapper->cyrillic_to_latin($text),
+            ];
+        }
+
+        if ($locale === 'sr' || $locale === 'sr-Latn') {
+            return [
+                'sr' => $text,
+                'sr-Cyrl' => $mapper->latin_to_cyrillic($text),
+            ];
+        }
+
+        $lang = $this->resolveLang($locale);
+        return [$lang => $text];
     }
 
     /**
-     * Fetch a paginated list of about-us records.
+     * Vrati prvi (ili jedini) about-us zapis - pivotira polja iz text tabele.
      */
-    public function list(): ?array
+    public function list($lang): ?array
     {
-        // Only fetch the first record
-        $stmt = $this->pdo->prepare("
-            SELECT goal,mission
-              FROM aboutus
-             ORDER BY id
-             LIMIT 1
-        ");
-        $stmt->execute();
+        // Uzmi id prvog zapisa (ako postoji)
+        $id = (int) $this->pdo->query("SELECT id FROM aboutus ORDER BY id LIMIT 1")->fetchColumn();
+        if (!$id)
+            return null;
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row !== false ? $row : null;
+        return $this->get($id, $lang);
     }
 
-    public function search(string $term): array
+
+
+    /**
+     * Vrati sve aboutus zapise pivot-ovane (text polja).
+     */
+    public function listAll(string $lang = 'sr-Cyrl'): array
     {
-        // Prepare search term
-        $search = '%' . $term . '%';
-
-        // Retrieve all column names
-        $colsStmt = $this->pdo->query("SHOW COLUMNS FROM aboutus");
-        $columns = $colsStmt->fetchAll(PDO::FETCH_COLUMN);
-
-        // Build WHERE clauses with unique placeholders
-        $conditions = [];
-        $params = [];
-        foreach ($columns as $i => $col) {
-            $placeholder = ":search{$i}";
-            $conditions[] = "CAST(`{$col}` AS CHAR) LIKE {$placeholder}";
-            $params[$placeholder] = $search;
-        }
-        $where = implode(' OR ', $conditions);
-
-        $sql = "SELECT * FROM aboutus WHERE {$where} ORDER BY id";
+        $sql = "
+            SELECT a.id, a.created_at, t.field_name, t.content
+            FROM aboutus a
+            LEFT JOIN text t ON t.source_id = a.id
+              AND t.source_table = 'aboutus'
+              AND t.lang = :lang COLLATE utf8mb4_unicode_ci
+            ORDER BY a.id
+        ";
         $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':lang' => $lang]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return (new Pivoter('field_name', 'content', 'id'))->pivot($rows);
+    }
 
-        // Bind each placeholder
-        foreach ($params as $ph => $val) {
-            $stmt->bindValue($ph, $val, PDO::PARAM_STR);
+    /**
+     * Dobi jedan zapis (pivot-ovan). Vraća null ako ne postoji.
+     */
+    public function get(int $id, $lang): ?array
+    {
+        $sql = "
+            SELECT a.*, t.field_name, t.content
+            FROM aboutus a
+            LEFT JOIN text t ON t.source_id = a.id
+                AND t.source_table = 'aboutus'
+                and t.lang = :lang COLLATE utf8mb4_unicode_ci
+            WHERE a.id = :id
+        ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id, ':lang' => $lang]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!$rows)
+            return null;
+
+        // Pivotiraj text polja
+        $pivoted = (new Pivoter('field_name', 'content', 'id'))->pivot($rows);
+        $firstPivot = reset($pivoted) ?: [];
+
+        // Extract non-text columns from the first row
+        $meta = [];
+        foreach ($rows as $r) {
+            foreach ($r as $k => $v) {
+                if ($k !== 'field_name' && $k !== 'content') {
+                    $meta[$k] = $v;
+                }
+            }
+            break;
         }
-        $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return array_merge($meta, $firstPivot);
     }
 
     /**
-     * Fetch all about-us records.
-     */
-    public function listAll(): array
-    {
-        $stmt = $this->pdo->query("SELECT * FROM aboutus ORDER BY id");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    /**
-     * Fetch a single record by ID.
-     */
-    public function get(int $id): ?array
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM aboutus WHERE id = :id");
-        $stmt->execute([':id' => $id]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row === false ? null : $row;
-    }
-
-    /**
-     * Insert a new record.
+     * Kreira novi aboutus zapis — sprema samo minimalne kolone u aboutus tablu
+     * dok se text polja (mission/goal) ubacuju u text tabelu sa varijantama.
      */
     public function insert(array $data): int
     {
-        if (empty($data['mission']) || empty($data['goal'])) {
-            throw new RuntimeException('Mission and goal are required');
+        $missionRaw = trim((string) ($data['mission'] ?? ''));
+        $goalRaw = trim((string) ($data['goal'] ?? ''));
+
+        if ($missionRaw === '' && $goalRaw === '') {
+            throw new RuntimeException('Mission ili goal mora biti postavljen.');
         }
-        $stmt = $this->pdo->prepare("
-            INSERT INTO aboutus (mission, goal)
-            VALUES (:mission, :goal)
-        ");
-        $stmt->execute([
-            ':mission' => $data['mission'],
-            ':goal' => $data['goal'],
-        ]);
-        return (int) $this->pdo->lastInsertId();
+
+        try {
+            $this->pdo->beginTransaction();
+
+            // Ubaci osnovni aboutus zapis (može se prilagoditi da sadrži više kolona ako treba)
+            $stmt = $this->pdo->prepare("INSERT INTO aboutus (created_at) VALUES (NOW())");
+            $stmt->execute();
+            $aboutId = (int) $this->pdo->lastInsertId();
+
+            // Ubaci varijante u text tabelu
+            $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+            $missionVariants = $this->transliterateVariants($missionRaw, $locale);
+            $goalVariants = $this->transliterateVariants($goalRaw, $locale);
+
+            $stmtText = $this->pdo->prepare("
+                INSERT INTO text (source_id, source_table, field_name, lang, content)
+                VALUES (:source_id, 'aboutus', :field_name, :lang, :content)
+            ");
+
+            $insertField = function (string $field, array $variants) use ($stmtText, $aboutId) {
+                foreach ($variants as $lg => $content) {
+                    $content = trim((string) $content);
+                    if ($content === '')
+                        continue;
+                    $stmtText->execute([
+                        ':source_id' => $aboutId,
+                        ':field_name' => $field,
+                        ':lang' => $lg,
+                        ':content' => $content,
+                    ]);
+                }
+            };
+
+            $insertField('mission', $missionVariants);
+            $insertField('goal', $goalVariants);
+
+            $this->pdo->commit();
+            return $aboutId;
+        } catch (\PDOException $e) {
+            $this->pdo->rollBack();
+            error_log('AboutUs insert failed: ' . $e->getMessage());
+            throw $e;
+        }
     }
 
     /**
-     * Update an existing record.
+     * Update: zamenimo text zapise za dati aboutus id (mission/goal).
      */
     public function update(int $id, array $data): bool
     {
-        $fields = [];
-        $params = [':id' => $id];
+        try {
+            $this->pdo->beginTransaction();
 
-        if (isset($data['mission'])) {
-            $fields[] = 'mission = :mission';
-            $params[':mission'] = $data['mission'];
-        }
-        if (isset($data['goal'])) {
-            $fields[] = 'goal = :goal';
-            $params[':goal'] = $data['goal'];
-        }
+            // Obriši postojeće text zapise za ovaj source
+            $stmtDel = $this->pdo->prepare("DELETE FROM text WHERE source_id = :id AND source_table = 'aboutus'");
+            $stmtDel->execute([':id' => $id]);
 
-        if (empty($fields)) {
-            throw new RuntimeException('Nothing to update');
-        }
+            $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+            $missionVariants = $this->transliterateVariants((string) ($data['mission'] ?? ''), $locale);
+            $goalVariants = $this->transliterateVariants((string) ($data['goal'] ?? ''), $locale);
 
-        $sql = 'UPDATE aboutus SET ' . implode(', ', $fields) . ' WHERE id = :id';
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute($params);
+            $stmtText = $this->pdo->prepare("
+                INSERT INTO text (source_id, source_table, field_name, lang, content)
+                VALUES (:source_id, 'aboutus', :field_name, :lang, :content)
+            ");
+
+            foreach (['mission' => $missionVariants, 'goal' => $goalVariants] as $field => $variants) {
+                foreach ($variants as $lg => $c) {
+                    $c = trim((string) $c);
+                    if ($c === '')
+                        continue;
+                    $stmtText->execute([
+                        ':source_id' => $id,
+                        ':field_name' => $field,
+                        ':lang' => $lg,
+                        ':content' => $c,
+                    ]);
+                }
+            }
+
+            $this->pdo->commit();
+            return true;
+        } catch (\Exception $e) {
+            $this->pdo->rollBack();
+            error_log('AboutUs update failed: ' . $e->getMessage());
+            return false;
+        }
     }
 
     /**
-     * Delete a record.
+     * Briše aboutus zapis i pripadajuće text redove.
      */
     public function delete(int $id): bool
     {
-        $stmt = $this->pdo->prepare("DELETE FROM aboutus WHERE id = :id");
-        return $stmt->execute([':id' => $id]);
+        try {
+            $this->pdo->beginTransaction();
+
+            $stmtText = $this->pdo->prepare("DELETE FROM text WHERE source_id = :id AND source_table = 'aboutus'");
+            $stmtText->execute([':id' => $id]);
+
+            $stmt = $this->pdo->prepare("DELETE FROM aboutus WHERE id = :id");
+            $stmt->execute([':id' => $id]);
+
+            $this->pdo->commit();
+            return true;
+        } catch (\Exception $e) {
+            $this->pdo->rollBack();
+            error_log('AboutUs delete failed: ' . $e->getMessage());
+            return false;
+        }
     }
 }

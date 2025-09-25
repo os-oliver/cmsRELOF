@@ -47,7 +47,7 @@ class GalleryController
             return;
         }
 
-        $id = (new Gallery())->insert($data);
+        $id = (new Gallery())->create($data);
         http_response_code(201);
         echo json_encode(['id' => $id]);
     }
