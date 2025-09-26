@@ -62,8 +62,7 @@ class PageExporter
         // Trim the text for checking
         $text = trim($text);
         if (stripos($text, "slov") !== false) {
-            error_log("gfgdfgfgfgdg");
-            error_log($text);
+
         }        // Skip if empty or too short
         if (empty($text) || strlen($text) < 3) {
 
@@ -380,7 +379,6 @@ class PageExporter
                 $content = str_replace(['&lt;', '&gt;', '\$'], ['<', '>', '$'], $content);
 
                 if (strpos($filePath, 'promocija.php') !== false) {
-                    $content .= "\n" . $this->data['js'];
                 }
 
                 file_put_contents($fullPath, $content);
@@ -472,10 +470,11 @@ $groupedPages = PageLoader::getGroupedStaticPages();
         }
 
         if (!empty($this->data['js'])) {
-            $content .= "\n<script>\n" . $this->data['js'] . "\n</script>";
+            $content .= $this->data['js'];
         }
 
         $content .= "\n</div>\n</body>\n</html>";
+        error_log("Base CSS: " . $content);
 
         return $content;
     }
