@@ -120,7 +120,9 @@ function getFileConfig(string $ext): array
                 </div>
 
                 <!-- ✅ Pretraga i filteri -->
-                <form method="GET" action="" class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
+                <form id="docFilterForm" method="GET" action="" class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
+                    <input type="hidden" name="offset" value="0">
+
                     <div class="flex flex-col lg:flex-row gap-4 items-center">
                         <div class="relative flex-1 w-full lg:w-auto">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -157,6 +159,7 @@ function getFileConfig(string $ext): array
                                         name="categories[]" 
                                         value="<?= $doc['id'] ?>" 
                                         class="form-checkbox h-5 w-5 text-green-600"
+                                        onchange="(this.form.requestSubmit ? this.form.requestSubmit() : this.form.submit())"
                                         <?= isset($_GET['categories']) && in_array($doc['id'], (array)$_GET['categories']) ? 'checked' : '' ?>
                                     >
                                     <span><?= htmlspecialchars($doc['name']) ?></span>
