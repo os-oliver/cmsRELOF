@@ -8,7 +8,7 @@ AuthController::requireEditor();
 
 // ✅ Filter parametri iz GET-a
 $search = $_GET['search'] ?? '';
-$category = $_GET['category'] ?? '';
+$categories = $_GET['categories'] ?? [];
 $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
@@ -23,7 +23,7 @@ $documentModal = new Document();
     limit: $limit,
     offset: $offset,
     search: $search,
-    category: $category,
+    categories: $categories,
     status: $status,
     sort: $sort,
 );
@@ -131,15 +131,6 @@ function getFileConfig(string $ext): array
                                 class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl">
                         </div>
 
-                        <select name="category" class="px-4 py-3 border rounded-xl">
-                            <option value="">
-                                <?= __("documents.all_categories") ?>
-                            </option>
-                            <?php foreach ($DocumentCategories as $doc): ?>
-                                <option value="<?= $doc['id'] ?>"><?= $doc['name'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-
                         <select name="sort" class="px-4 py-3 border rounded-xl">
                             <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>
                                 <?= __("documents.latest_first") ?>
@@ -156,6 +147,22 @@ function getFileConfig(string $ext): array
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl">
                             <?= __("documents.apply") ?>
                         </button>
+                    </div>
+                    <div class="flex flex-col lg:flex-row gap-4 items-center mt-5">
+                        <div class="flex flex-wrap gap-6">
+                            <?php foreach ($DocumentCategories as $doc): ?>
+                                <label class="inline-flex items-center space-x-2">
+                                    <input 
+                                        type="checkbox" 
+                                        name="categories[]" 
+                                        value="<?= $doc['id'] ?>" 
+                                        class="form-checkbox h-5 w-5 text-green-600"
+                                        <?= isset($_GET['categories']) && in_array($doc['id'], (array)$_GET['categories']) ? 'checked' : '' ?>
+                                    >
+                                    <span><?= htmlspecialchars($doc['name']) ?></span>
+                                </label>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </form>
 

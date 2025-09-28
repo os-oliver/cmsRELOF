@@ -29,7 +29,7 @@ class Document
         int $limit = 10,
         int $offset = 0,
         string $search = '',
-        string $category = '',
+        array $categories = [],
         string $status = '',
         string $sort = 'date_desc'
     ): array {
@@ -42,7 +42,8 @@ class Document
                 JOIN subcategory_document AS s
                 ON d.subcategory_id = s.id
                 JOIN category_document AS c
-                ON s.category_id = c.id";
+                ON s.category_id = c.id
+                WHERE 1=1";
         $params = [':limit' => $limit, ':offset' => $offset];
 
         if ($search !== '') {
@@ -50,10 +51,19 @@ class Document
             $params[':s1'] = "%{$search}%";
             $params[':s2'] = "%{$search}%";
         }
-        if ($category !== '') {
-            $sql .= " AND c.id = :category";
-            $params[':category'] = $category;
+        
+        if (!empty($categories)) { 
+            // Make named placeholders :cat0, :cat1, ...
+            $catPlaceholders = [];
+            foreach ($categories as $i => $catId) {
+                $ph = ":cat{$i}";
+                $catPlaceholders[] = $ph;
+                $params[$ph] = $catId;
+            }
+            // Filter by category_document IDs
+            $sql .= " AND c.id IN (" . implode(',', $catPlaceholders) . ")";
         }
+        
         if ($status !== '') {
             $sql .= " AND status = :status";
             $params[':status'] = $status;
