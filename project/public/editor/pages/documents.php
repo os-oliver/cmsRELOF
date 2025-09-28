@@ -128,7 +128,7 @@ function getFileConfig(string $ext): array
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-search h-5 w-5 text-gray-400"></i>
                             </div>
-                            <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
+                            <input type="text" name="search" id="searchInput" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
                                 placeholder="<?= __("documents.search_placeholder") ?>"
                                 class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl">
                         </div>
@@ -144,11 +144,6 @@ function getFileConfig(string $ext): array
                                 <?= __("documents.by_name") ?>
                             </option>
                         </select>
-
-                        <button type="submit"
-                            class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl">
-                            <?= __("documents.apply") ?>
-                        </button>
                     </div>
                     <div class="flex flex-col lg:flex-row gap-4 items-center mt-5">
                         <div class="flex flex-wrap gap-6">
@@ -159,7 +154,6 @@ function getFileConfig(string $ext): array
                                         name="categories[]" 
                                         value="<?= $doc['id'] ?>" 
                                         class="form-checkbox h-5 w-5 text-green-600"
-                                        onchange="(this.form.requestSubmit ? this.form.requestSubmit() : this.form.submit())"
                                         <?= isset($_GET['categories']) && in_array($doc['id'], (array)$_GET['categories']) ? 'checked' : '' ?>
                                     >
                                     <span><?= htmlspecialchars($doc['name']) ?></span>
@@ -289,7 +283,7 @@ function getFileConfig(string $ext): array
         </div>
     </div>
 
-    <script src="/assets/js/dashboard/documents.js" defer></script>
+    <script src="../../assets/js/dashboard/documents.js?v=<?= time() ?>" defer onerror="console.error('Failed to load documents.js')"></script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
 </body>
 

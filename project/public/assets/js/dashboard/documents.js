@@ -1,4 +1,7 @@
+console.log('documents.js loaded');
+
 document.addEventListener("DOMContentLoaded", () => {
+  console.error("Documents JS loaded");
   const els = (id) => document.getElementById(id);
 
   const formEls = {
@@ -98,4 +101,34 @@ document.addEventListener("DOMContentLoaded", () => {
   modalEls.modal.addEventListener("click", (e) => {
     if (e.target === modalEls.modal) hideModal();
   });
+
+  const filterForm = document.getElementById('docFilterForm');
+  
+  if (filterForm) {
+    const resetAndSubmit = () => {
+      const off = filterForm.querySelector('input[name="offset"]');
+      if (off) off.value = 0;            // reset pagination
+      if (filterForm.requestSubmit) filterForm.requestSubmit();
+      else filterForm.submit();
+    };
+
+    const search = filterForm.querySelector('input[name="search"]');
+    if (search) {
+      let timer = null;
+      search.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(resetAndSubmit, 500); // adjust delay if needed
+      });
+    }
+
+    const sort = filterForm.querySelector('select[name="sort"]');
+    if (sort) {
+      sort.addEventListener('change', resetAndSubmit);
+    }
+
+    filterForm.querySelectorAll('input[name="categories[]"]').forEach(cb => {
+      cb.addEventListener('change', resetAndSubmit);
+    });
+
+  }
 });
