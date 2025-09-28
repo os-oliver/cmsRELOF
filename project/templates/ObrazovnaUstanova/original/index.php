@@ -374,7 +374,7 @@
                     </div>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-royal-blue"></i>Dogadjaji
+                        <i class="fas fa-calendar-alt mr-3 text-royal-blue"></i>Događaji
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
@@ -425,7 +425,7 @@
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors"></i>
-                    <span class="hidden xl:inline">Pocetna</span>
+                    <span class="hidden xl:inline">Početna</span>
                 </a>
 
                 <div class="dropdown relative group">
@@ -456,7 +456,7 @@
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
                     <i
                         class="fas fa-calendar-alt mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
-                    <span class="hidden xl:inline">Dogadjaji</span>
+                    <span class="hidden xl:inline">Događaji</span>
                 </a>
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
@@ -584,35 +584,32 @@
                 <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-image"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            src="https://picsum.photos/600/300"
                             alt="Art Exhibition" class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-terracotta flex items-center justify-center text-paper mr-3">
-                                <i class="fas fa-palette"></i>
-                            </div>
-                            <span id="g-naziv" class="text-terracotta font-bold">IZLOŽBA</span>
+                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 id="g-title" class="text-xl font-display font-bold text-slate mb-2">Savremene Perspektive
+                        <h3 id="g-title" class="text-xl font-display font-bold text-dark mb-2">
+                            Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-description" class="text-slate-600 mb-4">Radovi mladih umetnika koji istražuju
-                            identitet u digitalnom dobu.</p>
+                        <p id="g-description" class="text-slate-600 mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                        </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span id="g-time">18:00 - 21:00</span>
-                                </div>
-                                <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    <span id="g-location">Galerija Savremene Umetnosti</span>
+                                    <i class="fas fa-calendar-days mr-2"></i>
+                                    <span id="g-date">28.9.2025.</span>
                                 </div>
                             </div>
-
+                            <button
+                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                                Pročitaj više
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -620,37 +617,29 @@
                 <!-- Event 2 -->
                 <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                        <img src="https://picsum.photos/600/300"
                             alt="Film Festival" class="w-full h-full object-cover">
-                        <div
-                            class="absolute top-4 left-4 bg-royal-blue text-paper px-3 py-1 rounded-full text-sm font-bold">
-                            20 JUN
-                        </div>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-royal-blue flex items-center justify-center text-paper mr-3">
-                                <i class="fas fa-film"></i>
-                            </div>
-                            <span class="text-royal-blue font-bold">FILM</span>
+                            <span class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-slate mb-2">Međunarodni Filmski Festival</h3>
-                        <p class="text-slate-600 mb-4">Premijera nagrađivanog dokumentarca "Svet u pokretu".</p>
+                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                            Lorem ipsum dolor sit amet
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                        </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span>19:30 - 22:00</span>
-                                </div>
-                                <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    <span>Nexus Bioskop</span>
+                                    <i class="fas fa-calendar-days mr-2"></i>
+                                    <span>28.9.2025.</span>
                                 </div>
                             </div>
                             <button
-                                class="bg-royal-blue text-paper px-4 py-2 rounded-full text-sm font-medium hover:bg-deep-teal transition-colors">
-                                Karte
+                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-deep-teal transition-colors">
+                                Pročitaj više
                             </button>
                         </div>
                     </div>
@@ -659,38 +648,29 @@
                 <!-- Event 3 -->
                 <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://images.unsplash.com/photo-1543429776-2782fc586c9a?auto=format&fit=crop&w=600&q=80"
+                        <img src="https://picsum.photos/600/300"
                             alt="Jazz Night" class="w-full h-full object-cover">
-                        <div
-                            class="absolute top-4 left-4 bg-deep-teal text-paper px-3 py-1 rounded-full text-sm font-bold">
-                            SVAKOG PETKA
-                        </div>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-deep-teal flex items-center justify-center text-paper mr-3">
-                                <i class="fas fa-music"></i>
-                            </div>
-                            <span class="text-deep-teal font-bold">KONCERT</span>
+                            <span class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-slate mb-2">Jazz & Blues Večeri</h3>
-                        <p class="text-slate-600 mb-4">Uživajte u improvizacijama renomiranog kvarteta "Midnight Blue".
+                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                            Lorem ipsum dolor sit amet
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span>20:00 - 23:00</span>
-                                </div>
-                                <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    <span>Nexus Koncertna Sala</span>
+                                    <i class="fas fa-calendar-days mr-2"></i>
+                                    <span>28.9.2025.</span>
                                 </div>
                             </div>
                             <button
-                                class="bg-deep-teal text-paper px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
-                                Karte
+                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                                Pročitaj više
                             </button>
                         </div>
                     </div>
@@ -723,116 +703,96 @@
 
             <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Event 1 -->
-                <div class="event-card bg-light rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-image"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            src="https://picsum.photos/600/300"
                             alt="Art Exhibition" class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-terracotta flex items-center justify-center text-paper mr-3">
-                                <i class="fas fa-palette"></i>
-                            </div>
-                            <span id="g-naziv" class="text-terracotta font-bold">IZLOŽBA</span>
+                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 id="g-title" class="text-xl font-display font-bold text-slate mb-2">Savremene Perspektive
+                        <h3 id="g-title" class="text-xl font-display font-bold text-dark mb-2">
+                            Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-description" class="text-slate-600 mb-4">Radovi mladih umetnika koji istražuju
-                            identitet u digitalnom dobu.</p>
+                        <p id="g-description" class="text-slate-600 mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                        </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span id="g-time">18:00 - 21:00</span>
-                                </div>
-                                <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    <span id="g-location">Galerija Savremene Umetnosti</span>
+                                    <i class="fas fa-calendar-days mr-2"></i>
+                                    <span id="g-date">28.9.2025.</span>
                                 </div>
                             </div>
-
+                            <button
+                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                                Pročitaj više
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Event 2 -->
-                <div class="event-card bg-light rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                        <img src="https://picsum.photos/600/300"
                             alt="Film Festival" class="w-full h-full object-cover">
-                        <div
-                            class="absolute top-4 left-4 bg-royal-blue text-paper px-3 py-1 rounded-full text-sm font-bold">
-                            20 JUN
-                        </div>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-royal-blue flex items-center justify-center text-paper mr-3">
-                                <i class="fas fa-film"></i>
-                            </div>
-                            <span class="text-royal-blue font-bold">FILM</span>
+                            <span class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-slate mb-2">Međunarodni Filmski Festival</h3>
-                        <p class="text-slate-600 mb-4">Premijera nagrađivanog dokumentarca "Svet u pokretu".</p>
+                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                            Lorem ipsum dolor sit amet
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                        </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span>19:30 - 22:00</span>
-                                </div>
-                                <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    <span>Nexus Bioskop</span>
+                                    <i class="fas fa-calendar-days mr-2"></i>
+                                    <span>28.9.2025.</span>
                                 </div>
                             </div>
                             <button
-                                class="bg-royal-blue text-paper px-4 py-2 rounded-full text-sm font-medium hover:bg-deep-teal transition-colors">
-                                Karte
+                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-deep-teal transition-colors">
+                                Pročitaj više
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Event 3 -->
-                <div class="event-card bg-light rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://images.unsplash.com/photo-1543429776-2782fc586c9a?auto=format&fit=crop&w=600&q=80"
+                        <img src="https://picsum.photos/600/300"
                             alt="Jazz Night" class="w-full h-full object-cover">
-                        <div
-                            class="absolute top-4 left-4 bg-deep-teal text-paper px-3 py-1 rounded-full text-sm font-bold">
-                            SVAKOG PETKA
-                        </div>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-deep-teal flex items-center justify-center text-paper mr-3">
-                                <i class="fas fa-music"></i>
-                            </div>
-                            <span class="text-deep-teal font-bold">KONCERT</span>
+                            <span class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-slate mb-2">Jazz & Blues Večeri</h3>
-                        <p class="text-slate-600 mb-4">Uživajte u improvizacijama renomiranog kvarteta "Midnight Blue".
+                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                            Lorem ipsum dolor sit amet
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span>20:00 - 23:00</span>
-                                </div>
-                                <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    <span>Nexus Koncertna Sala</span>
+                                    <i class="fas fa-calendar-days mr-2"></i>
+                                    <span>28.9.2025.</span>
                                 </div>
                             </div>
                             <button
-                                class="bg-deep-teal text-paper px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
-                                Karte
+                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                                Pročitaj više
                             </button>
                         </div>
                     </div>
