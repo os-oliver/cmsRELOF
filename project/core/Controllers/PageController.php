@@ -3,6 +3,8 @@
 
 namespace App\Controllers;
 
+use App\Controllers\PersonalContentController;
+
 class PageController
 {
     public function home()
@@ -266,17 +268,23 @@ class PageController
     }
     public function renderElement()
     {
-        // uzmi parametar iz GET query-a
-        $element = $_GET['id'] ?? null;
+        // Get parameters from GET query
+        $id = $_GET['id'] ?? null;
+        $type = $_GET['tip'] ?? null;
 
-        if ($element === null) {
+        if ($id === null || $type === null) {
             http_response_code(404);
             include PUBLIC_ROOT . '/pages/404.php';
             return;
         }
 
-        // ovde možeš da odradiš šta hoćeš sa tim parametrom
-        echo "<h1>Traženi element: " . htmlspecialchars($element, ENT_QUOTES, 'UTF-8') . "</h1>";
+        // Initialize the PersonalContentController
+        $contentController = new PersonalContentController();
+
+        // Render the content with header and footer
+        echo $contentController->renderContent($id, $type);
+        echo require_once __DIR__ . '/../../public/exportedPages/landingPageComponents/landingPage/header.php';
+
     }
 
     public function deletePage()

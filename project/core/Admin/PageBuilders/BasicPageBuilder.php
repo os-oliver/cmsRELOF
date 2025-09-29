@@ -6,15 +6,16 @@ class BasicPageBuilder extends BasePageBuilder
 {
     protected string $css = '';
     protected string $script = '';
-    protected string $html = <<<'HTML'
-<main class="min-h-screen pt-24 flex-grow">
+    protected string $html = '';
 
-</main>
-HTML;
+    public function setHtml(string $html): void
+    {
+        $this->html = $html;
+    }
 
     public function buildPage(): string
     {
-        $content = $this->getHeader($this->css);
+        $content = (string) $this->getHeader($this->css);
         $content .= $this->getCommonIncludes();
         $content .= $this->html;
         $content .= $this->getFooter();
