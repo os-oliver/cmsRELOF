@@ -12,10 +12,6 @@ $textModel = new Text();
 $dynamicText = $textModel->getDynamicText($locale);
 
 
-    use App\Models\AboutUs;
-    $dataAboutUS = new AboutUs();
-    $aboutUsData = $dataAboutUS->list(lang:$locale)['mission'];
-
 
 
 ?>
@@ -24,7 +20,7 @@ $dynamicText = $textModel->getDynamicText($locale);
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($dynamicText['t_misija_9efcb9_5a54a2']['text'] ?? 'Misija', ENT_QUOTES, 'UTF-8'); ?></title>
+    <title><?= htmlspecialchars($dynamicText['t_dogaaji_0034c3_4c0f5c']['text'] ?? 'dogaaji', ENT_QUOTES, 'UTF-8'); ?></title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -67,7 +63,7 @@ $dynamicText = $textModel->getDynamicText($locale);
             }
         }
     </script><style>
-* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#iyd0og{border:0;}@layer utilities{.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
+* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#ifj0ss{animation-delay:0s;}#isz0w1{animation-delay:0.2s;}#ic6qhy{animation-delay:0.4s;}#imyqah{animation-delay:0.6s;}#il7ytl{border:0;}.mx-4.md\:mx-20.mb-10{color:white;}.block.font-primaryfont.text-primarytext{color:#c83939;}.block.mt-2.text-secondarytext.font-secondaryfont{color:#ffdcdc;}.bg-primarybutton.text-primarybtntxt.px-6.py-4.rounded-full.text-lg.hover\:bg-primarybuttonhover.transition-colors{color:#fffcfc;}@layer utilities{.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
 </style>
 
 
@@ -76,21 +72,8 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/divmobileMenu.php'
 require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
 ?>
 
-<main>
-<div>
-        <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
-            A+
-        </button>
-    </div>
-  <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient">
+<main class="min-h-screen pt-24 flex-grow">
 
-    <!-- Decorative background elements -->
-    <div class="absolute inset-0 z-0"></div>
-    <div class="relative z-10 w-full max-w-3xl mx-auto text-center">
-    <h1 class="text-5xl font-bold mb-4"><?= htmlspecialchars($dynamicText['t_misija_112ef3_afd2f0']['text'] ?? 'Misija naše institucije', ENT_QUOTES, 'UTF-8'); ?></h1>
-    <h2 class="text-3xl mx-5 italic mb-4 text-justify"><?= $aboutUsData ?>
-    </h2></div>
-  </section>
 </main>
 <?php
 require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
@@ -98,42 +81,27 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
 
 <script>
 
-
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'clay': '#c97c5d',
-                        'ochre': '#d4a373',
-                        'sage': '#a3b18a',
-                        'slate': '#344e41',
-                        'paper': '#f5ebe0',
-                        'terracotta': '#bc6c25',
-                        'coral': '#e76f51',
-                        'deep-teal': '#2a9d8f',
-                        'crimson': '#8d1b3d',
-                        'royal-blue': '#1a4480',
-                        'velvet': '#4a154b',
-                        ochre: '#CC7722',
-                        terracotta: '#E2725B',
-                        paper: '#F5F5DC',
-                        slate: '#2F4F4F',
-                        'royal-blue': '#4169E1',
-                        'deep-teal': '#008B8B',
-                        velvet: '#872657',
-                        crimson: '#DC143C',
-                        coral: '#FF7F50',
-                        sage: '#9CAF88'
+                        background: '#F1F7ED',
+                        primarybutton: "#e9a803ff",
+                        primarybuttonhover: "#d39802ff",
+                        footerbg: "#E6F9EC",
+                        secondarybutton: "#32604dff",
+                        secondarybuttonhover: "#255943ff",
+                        primarytext: '#1B4332',
+                        secondarytext: '#2a644aff',
+                        logocolor1: '#e9a803ff',
+                        logocolor2: '#2D6A4F',
+                        primarybtntxt: '#F1F7ED',
+                        cardcolor: '#e5cc8c6b'
                     },
                     fontFamily: {
-                        'display': ['Playfair Display', 'serif'],
-                        'crimson': ['Crimson Pro', 'serif'],
-                        'body': ['Raleway', 'sans-serif'],
+                        primaryfont: ['Fredoka', 'sans-serif'],
+                        secondaryfont: ['Nunito', 'sans-serif']
                     },
-                    backgroundImage: {
-                        'art-pattern': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmNWViZTAiPjxwYXRoIGQ9Ik0wIDBoNDB2NDBIMHoiLz48L2c+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0idXJsKCNhKSIvPjxwYXRoIGQ9Ik0wIDBoMjB2MjBIMHoiIGZpbGw9IiNkNGExYjEiIG9wYWNpdHk9Ii4xIi8+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6IiBmaWxsPSIjYTNiMThhIiBvcGFjaXR5PSIuMSIvPjxwYXRoIGQ9Ik0wIDIwaDIwdjIwSDB6IiBmaWxsPSIjYjk3YzVkIiBvcGFjaXR5PSIuMSIvPjxwYXRoIGQ9Ik0yMCAyMGgyMHYyMEgyMHoiIGZpbGw9IiMzNDRlNDEiIG9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')",
-                        'brush-stroke': "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 40\" width=\"400\" height=\"40\"><path d=\"M20,20 C50,5 100,35 150,20 C200,5 250,35 300,20 C350,5 380,35 380,20\" fill=\"none\" stroke=\"%23d4a373\" stroke-width=\"10\" stroke-linecap=\"round\"/>')",
-                    }
                 }
             }
         }
@@ -361,7 +329,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
             observer.observe(el);
         });
     
-var items = document.querySelectorAll('#i50q9l');
+var items = document.querySelectorAll('#il67vy');
           for (var i = 0, len = items.length; i < len; i++) {
             (function(){
 const el = this;

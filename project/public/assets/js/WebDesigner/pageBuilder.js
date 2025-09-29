@@ -20,6 +20,7 @@ import { handleExport } from "./modules/exportHandler.js";
 import { generateNavTree } from "./modules/navigationHandler.js";
 import { setupElement } from "./modules/dynamicCodeHandler.js";
 import { megaMenu } from "./components/megaMenu.js";
+import { slider } from "./components/slider.js";
 
 // Wait for DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", async () => {
@@ -337,6 +338,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       faqSection,
       link,
       megaMenu,
+      slider,
       multiLink,
     };
 

@@ -63,7 +63,7 @@ $dynamicText = $textModel->getDynamicText($locale);
             }
         }
     </script><style>
-* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#ik2c8k{border:0;}@layer utilities{.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;position:relative;overflow-x:hidden;overflow-y:hidden;}.event-card::before{content:"";position:absolute;top:0px;left:0px;right:0px;height:5px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transform:translateY(-100%);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.event-card:hover::before{transform:translateY(0px);}.event-card:hover{transform:translateY(-5px);box-shadow:rgba(0, 0, 0, 0.1) 0px 10px 25px -5px;}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
+* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#iyd0og{border:0;}@layer utilities{.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
 </style>
 
 
@@ -81,15 +81,11 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
 
 <script>
 
+
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0d3b66',
-                        secondary: '#f4d35e',
-                        accent: '#faf0ca',
-                        dark: '#333',
-                        light: '#E8F3FC',
                         'clay': '#c97c5d',
                         'ochre': '#d4a373',
                         'sage': '#a3b18a',
@@ -110,8 +106,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
                         velvet: '#872657',
                         crimson: '#DC143C',
                         coral: '#FF7F50',
-                        sage: '#9CAF88',
-                        barn_red: '#770D0D'
+                        sage: '#9CAF88'
                     },
                     fontFamily: {
                         'display': ['Playfair Display', 'serif'],
@@ -127,11 +122,11 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
         }
         const btn = document.getElementById('increaseFontBtn');
 
-        let currentSize = 16; // initial font size in px
-        let step = 2; // px to increase or decrease per click
-        let maxSteps = 3; // max increments before toggling direction
-        let count = 0; // how many increments or decrements done
-        let increasing = true; // track if currently increasing font size
+        let currentSize = 16;       // initial font size in px
+        let step = 2;               // px to increase or decrease per click
+        let maxSteps = 3;           // max increments before toggling direction
+        let count = 0;              // how many increments or decrements done
+        let increasing = true;      // track if currently increasing font size
 
         btn.addEventListener('click', () => {
             if (increasing) {
@@ -343,14 +338,76 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
                     entry.target.classList.add('fade-in');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
             observer.observe(el);
         });
     
+var items = document.querySelectorAll('#i50q9l');
+          for (var i = 0, len = items.length; i < len; i++) {
+            (function(){
+const el = this;
+          const track = el.querySelector(".slider-track");
+          const items = el.querySelectorAll(".slider-item");
+          const prev = el.querySelector(".slider-prev");
+          const next = el.querySelector(".slider-next");
+          const dotsWrap = el.querySelector(".slider-dots");
+
+          if (!track || items.length === 0) return;
+
+          let idx = 0;
+          const total = items.length;
+
+          // resize items responsively
+          function resize() {
+            const w = el.clientWidth;
+            items.forEach((it) => (it.style.width = w + "px"));
+            track.style.width = w * total + "px";
+            track.style.transform = `translateX(${-idx * w}px)`;
+          }
+          resize();
+          window.addEventListener("resize", resize);
+
+          // dots
+          function buildDots() {
+            if (!dotsWrap) return;
+            dotsWrap.innerHTML = "";
+            for (let i = 0; i < total; i++) {
+              const d = document.createElement("button");
+              d.type = "button";
+              d.className = "w-2 h-2 rounded-full bg-white/60";
+              d.setAttribute("data-i", i);
+              d.style.opacity = i === idx ? "1" : "0.6";
+              d.addEventListener("click", () => goTo(i));
+              dotsWrap.appendChild(d);
+            }
+          }
+          buildDots();
+
+          function updateDots() {
+            if (!dotsWrap) return;
+            Array.from(dotsWrap.children).forEach((d, i) => {
+              d.style.opacity = i === idx ? "1" : "0.6";
+            });
+          }
+
+          function goTo(i) {
+            const w = el.clientWidth;
+            idx = (i + total) % total;
+            track.style.transform = `translateX(${-idx * w}px)`;
+            updateDots();
+          }
+
+          prev && prev.addEventListener("click", () => goTo(idx - 1));
+          next && next.addEventListener("click", () => goTo(idx + 1));
+
+          // cleanup
+          el._sliderCleanup = function () {
+            window.removeEventListener("resize", resize);
+          };
+}.bind(items[i]))();
+          }
 </script>
 
 

@@ -1,6 +1,6 @@
 [
     {
-        "id": "68d667a212bfa",
+        "id": "68da87a184ef6",
         "static": false,
         "movable": false,
         "name": "",
@@ -8,10 +8,10 @@
         "path": "pages\/.php",
         "file": ".php",
         "status": 1,
-        "created_at": "2025-09-26 10:14:58"
+        "created_at": "2025-09-29 13:20:33"
     },
     {
-        "id": "68d667a215734",
+        "id": "68da87a1877e2",
         "static": false,
         "movable": false,
         "name": "Cilj",
@@ -19,10 +19,10 @@
         "path": "pages\/cilj.php",
         "file": "cilj.php",
         "status": 1,
-        "created_at": "2025-09-26 10:14:58"
+        "created_at": "2025-09-29 13:20:33"
     },
     {
-        "id": "68d667a2187ac",
+        "id": "68da87a189f42",
         "static": false,
         "movable": false,
         "name": "Zaposleni",
@@ -30,10 +30,10 @@
         "path": "pages\/zaposleni.php",
         "file": "zaposleni.php",
         "status": 1,
-        "created_at": "2025-09-26 10:14:58"
+        "created_at": "2025-09-29 13:20:33"
     },
     {
-        "id": "68d667a21e3e4",
+        "id": "68da87a18d622",
         "static": false,
         "movable": false,
         "name": "Misija",
@@ -41,10 +41,32 @@
         "path": "pages\/misija.php",
         "file": "misija.php",
         "status": 1,
-        "created_at": "2025-09-26 10:14:58"
+        "created_at": "2025-09-29 13:20:33"
     },
     {
-        "id": "68d667a223fb1",
+        "id": "68da87a190125",
+        "static": false,
+        "movable": false,
+        "name": "Istorija",
+        "href": "\/o-nama\/istorija",
+        "path": "pages\/istorija.php",
+        "file": "istorija.php",
+        "status": 1,
+        "created_at": "2025-09-29 13:20:33"
+    },
+    {
+        "id": "68da87a192626",
+        "static": false,
+        "movable": false,
+        "name": "Tim",
+        "href": "\/o-nama\/tim",
+        "path": "pages\/tim.php",
+        "file": "tim.php",
+        "status": 1,
+        "created_at": "2025-09-29 13:20:33"
+    },
+    {
+        "id": "68da87a1970ea",
         "static": false,
         "movable": false,
         "name": "dogadjaji",
@@ -52,10 +74,10 @@
         "path": "pages\/dogadjaji.php",
         "file": "dogadjaji.php",
         "status": 1,
-        "created_at": "2025-09-26 10:14:58"
+        "created_at": "2025-09-29 13:20:33"
     },
     {
-        "id": "68d667a2297be",
+        "id": "68da87a19c5b1",
         "static": false,
         "movable": false,
         "name": "galerija",
@@ -63,10 +85,10 @@
         "path": "pages\/galerija.php",
         "file": "galerija.php",
         "status": 1,
-        "created_at": "2025-09-26 10:14:58"
+        "created_at": "2025-09-29 13:20:33"
     },
     {
-        "id": "68d667a233801",
+        "id": "68da87a1a7985",
         "static": false,
         "movable": false,
         "name": "dokumenti",
@@ -74,21 +96,10 @@
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-09-26 10:14:58"
+        "created_at": "2025-09-29 13:20:33"
     },
     {
-        "id": "68d667a236407",
-        "static": false,
-        "movable": false,
-        "name": "naucni-klub",
-        "href": "\/naucni-klub",
-        "path": "pages\/naucni-klub.php",
-        "file": "naucni-klub.php",
-        "status": 1,
-        "created_at": "2025-09-26 10:14:58"
-    },
-    {
-        "id": "68d667a246c65",
+        "id": "68da87a1bb153",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -96,39 +107,18 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-09-26 10:14:58"
+        "created_at": "2025-09-29 13:20:33"
     },
     {
-        "id": "68d667a249754",
-        "static": false,
-        "movable": false,
-        "name": "Srpski",
-        "href": "\/srpski\/srpski",
-        "path": "pages\/srpski.php",
-        "file": "srpski.php",
+        "id": "19995a22239ab38e4c9d461d8",
+        "static": true,
+        "movable": true,
+        "name": "ostrva",
+        "href": "\/ostrva",
+        "path": "pages\/ostrva.php",
+        "file": "ostrva.php",
         "status": 1,
-        "created_at": "2025-09-26 10:14:58"
-    },
-    {
-        "id": "68d667a24a2f3",
-        "static": false,
-        "movable": false,
-        "name": "",
-        "href": "\/srpski\/",
-        "path": "pages\/.php",
-        "file": ".php",
-        "status": 1,
-        "created_at": "2025-09-26 10:14:58"
-    },
-    {
-        "id": "68d667a24d28a",
-        "static": false,
-        "movable": false,
-        "name": "English",
-        "href": "\/srpski\/english",
-        "path": "pages\/english.php",
-        "file": "english.php",
-        "status": 1,
-        "created_at": "2025-09-26 10:14:58"
+        "created_at": "2025-09-29 13:20:54",
+        "column": null
     }
 ]
