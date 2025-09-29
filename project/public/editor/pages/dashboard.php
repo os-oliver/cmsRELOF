@@ -17,7 +17,7 @@ if (isset($_GET['locale'])) {
 $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 $views = (new VisitCounterController())->getVisitCount();
 [$_, $totalUsers] = (new User())->list();
-$categories = $eventModel->getCategories();
+$categories = $eventModel->getCategories($locale);
 [$events, $totalEvents] = $eventModel->all();
 $documentModal = new Document();
 [$documents, $totalDocuments] = $documentModal->list(
@@ -26,7 +26,7 @@ $documentModal = new Document();
     search: '',
     lang: $locale
 );
-$DocumentCategories = $documentModal->getCategories();
+$DocumentCategories = $documentModal->getCategories($locale);
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">

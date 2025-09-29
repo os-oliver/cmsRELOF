@@ -74,7 +74,9 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
 
     $r->addRoute('POST', '/users', 'UserController@create');
     $r->addRoute('PUT', '/users/{id:\d+}', 'UserController@update');
-    $r->addRoute('DELETE', route: '/users/{id:\d+}', handler: 'UserController@delete');
+    $r->addRoute(httpMethod: 'DELETE', route: '/users/{id:\d+}', handler: 'UserController@delete');
+    $r->addRoute('GET', '/sadrzaj', 'PageController@renderElement');
+
 
     $pages = json_decode(
         file_get_contents(__DIR__ . '/assets/data/pages.json'),
