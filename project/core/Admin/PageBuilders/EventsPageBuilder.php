@@ -99,7 +99,7 @@ class EventsPageBuilder extends BasePageBuilder
                                                 <span>Stari Grad, Trg Sv. Marka</span>
                                             </div>
                                         </div>
-                                        <a href="#" class="text-[#d4a373] hover:text-[#bc6c25] transition-colors">
+                                        <a href="sadrzaj?id=<?= $event['id'] ?>&tip=events" class="text-[#d4a373] hover:text-[#bc6c25] transition-colors">
                                             <i class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>

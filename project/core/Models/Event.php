@@ -17,7 +17,55 @@ class Event
         $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
 
         $this->pivoter = new Pivoter('field_name', 'content', 'id');
+    }
 
+    public function findById($id, $lang = 'sr-Cyrl')
+    {
+        $sql = "
+            SELECT e.*, te.field_name, te.content,
+                   ct.content AS category_name,
+                   k.color_code
+            FROM events e
+            LEFT JOIN (
+                    SELECT t.source_id, t.field_name,
+                        COALESCE(
+                            MAX(CASE WHEN t.lang = :lang THEN t.content END),
+                            MAX(CASE WHEN t.lang = 'sr-Cyrl' THEN t.content END)
+                        ) AS content
+                    FROM text t
+                    WHERE t.source_table = 'events' AND t.lang IN (:lang, 'sr-Cyrl')
+                    GROUP BY t.source_id, t.field_name
+            ) te ON te.source_id = e.id
+            LEFT JOIN kategorije_dogadjaja k ON k.id = e.category_id
+            LEFT JOIN (
+                    SELECT t.source_id,
+                        COALESCE(
+                            MAX(CASE WHEN t.lang = :lang THEN t.content END),
+                            MAX(CASE WHEN t.lang = 'sr-Cyrl' THEN t.content END)
+                        ) AS content
+                    FROM text t
+                    WHERE t.source_table = 'kategorije_dogadjaja' AND t.lang IN (:lang, 'sr-Cyrl')
+                    GROUP BY t.source_id
+            ) ct ON ct.source_id = k.id
+            WHERE e.id = :id
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+            ':lang' => $lang
+        ]);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (empty($rows)) {
+            return null;
+        }
+
+        $pivotedData = $this->pivoter->pivot($rows);
+        error_log("Pivoted Data: " . json_encode($pivotedData));
+        // Structure the event data
+        return $pivotedData;
     }
 
     // Mapiranje locale → lang kod (default sr-Cyrl)
