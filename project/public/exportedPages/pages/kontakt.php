@@ -215,7 +215,7 @@ $dynamicText = $textModel->getDynamicText($locale);
             background: linear-gradient(135deg, #10b981, #059669);
         }
     
-* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#iyd0og{border:0;}@layer utilities{.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
+* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#ivb79q{border:0;}@layer utilities{.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
 </style>
 
 
@@ -234,8 +234,8 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
         <div class="max-w-6xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent"><?= htmlspecialchars($dynamicText['t_kontakt_7682e1_e42ffd']['text'] ?? 'Kontaktirajte nas', ENT_QUOTES, 'UTF-8'); ?></h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"><?= htmlspecialchars($dynamicText['t_kontakt_afa0c7_091dff']['text'] ?? 'Vaše mišljenje nam je važno. Kontaktirajte nas za sve informacije ili pošaljite žalbu kako bismo
+                <h1 class="text-5xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent"><?= htmlspecialchars($dynamicText['t_kontakt_cc132c_e42ffd']['text'] ?? 'Kontaktirajte nas', ENT_QUOTES, 'UTF-8'); ?></h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"><?= htmlspecialchars($dynamicText['t_kontakt_302bf0_091dff']['text'] ?? 'Vaše mišljenje nam je važno. Kontaktirajte nas za sve informacije ili pošaljite žalbu kako bismo
                     mogli da poboljšamo naše usluge.', ENT_QUOTES, 'UTF-8'); ?></p>
             </div>
 
@@ -243,7 +243,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                 <!-- Contact Info -->
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-3xl shadow-2xl p-8 card-hover h-fit">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-8"><?= htmlspecialchars($dynamicText['t_kontakt_5777cb_d6f9f0']['text'] ?? 'Kontakt informacije', ENT_QUOTES, 'UTF-8'); ?></h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8"><?= htmlspecialchars($dynamicText['t_kontakt_734b0e_d6f9f0']['text'] ?? 'Kontakt informacije', ENT_QUOTES, 'UTF-8'); ?></h2>
 
                         <div class="space-y-8">
                             <div class="flex items-start space-x-6">
@@ -255,9 +255,9 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?= htmlspecialchars($dynamicText['t_kontakt_38e5e5_f6999f']['text'] ?? 'Adresa', ENT_QUOTES, 'UTF-8'); ?></h3>
-                                    <p class="text-gray-600 leading-relaxed"><?= htmlspecialchars($dynamicText['t_kontakt_dd460a_b4afdb']['text'] ?? 'Centar za umetnost i baštinu', ENT_QUOTES, 'UTF-8'); ?><br><?= htmlspecialchars($dynamicText['t_kontakt_b9c804_34702e']['text'] ?? 'Trg
-                                        slobode 1', ENT_QUOTES, 'UTF-8'); ?><br><?= htmlspecialchars($dynamicText['t_kontakt_a0364a_f6fc64']['text'] ?? '21000 Novi Sad, Srbija', ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?= htmlspecialchars($dynamicText['t_kontakt_98a2a6_f6999f']['text'] ?? 'Adresa', ENT_QUOTES, 'UTF-8'); ?></h3>
+                                    <p class="text-gray-600 leading-relaxed"><?= htmlspecialchars($dynamicText['t_kontakt_80a599_b4afdb']['text'] ?? 'Centar za umetnost i baštinu', ENT_QUOTES, 'UTF-8'); ?><br><?= htmlspecialchars($dynamicText['t_kontakt_93c1ec_34702e']['text'] ?? 'Trg
+                                        slobode 1', ENT_QUOTES, 'UTF-8'); ?><br><?= htmlspecialchars($dynamicText['t_kontakt_79be82_f6fc64']['text'] ?? '21000 Novi Sad, Srbija', ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
                             </div>
 
@@ -269,9 +269,9 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?= htmlspecialchars($dynamicText['t_kontakt_fe8106_0975cf']['text'] ?? 'Telefon', ENT_QUOTES, 'UTF-8'); ?></h3>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?= htmlspecialchars($dynamicText['t_kontakt_9009e4_0975cf']['text'] ?? 'Telefon', ENT_QUOTES, 'UTF-8'); ?></h3>
                                     <p class="text-gray-600 text-lg">+381 21 123 456</p>
-                                    <p class="text-gray-500 text-sm"><?= htmlspecialchars($dynamicText['t_kontakt_3868c4_ac7bef']['text'] ?? 'Ponedeljak - Petak: 09:00 - 17:00', ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="text-gray-500 text-sm"><?= htmlspecialchars($dynamicText['t_kontakt_9f1bdd_ac7bef']['text'] ?? 'Ponedeljak - Petak: 09:00 - 17:00', ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
                             </div>
 
@@ -283,27 +283,27 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?= htmlspecialchars($dynamicText['t_kontakt_2694b6_ce8ae9']['text'] ?? 'Email', ENT_QUOTES, 'UTF-8'); ?></h3>
-                                    <p class="text-gray-600 text-lg"><?= htmlspecialchars($dynamicText['t_kontakt_324d03_fe971b']['text'] ?? 'info@kulturnynexus.rs', ENT_QUOTES, 'UTF-8'); ?></p>
-                                    <p class="text-gray-500 text-sm"><?= htmlspecialchars($dynamicText['t_kontakt_26e335_c0d269']['text'] ?? 'Odgovaramo u roku od 24h', ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2"><?= htmlspecialchars($dynamicText['t_kontakt_080c18_ce8ae9']['text'] ?? 'Email', ENT_QUOTES, 'UTF-8'); ?></h3>
+                                    <p class="text-gray-600 text-lg"><?= htmlspecialchars($dynamicText['t_kontakt_f0202b_fe971b']['text'] ?? 'info@kulturnynexus.rs', ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="text-gray-500 text-sm"><?= htmlspecialchars($dynamicText['t_kontakt_05cab3_c0d269']['text'] ?? 'Odgovaramo u roku od 24h', ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="mt-10 p-6 bg-gradient-to-br from-orange-50 to-blue-50 rounded-2xl border border-orange-100">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4"><?= htmlspecialchars($dynamicText['t_kontakt_e74ebe_16f2a3']['text'] ?? 'Radno vreme', ENT_QUOTES, 'UTF-8'); ?></h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4"><?= htmlspecialchars($dynamicText['t_kontakt_e88ed1_16f2a3']['text'] ?? 'Radno vreme', ENT_QUOTES, 'UTF-8'); ?></h3>
                             <div class="text-gray-700 space-y-2">
                                 <div class="flex justify-between">
-                                    <span class="font-medium"><?= htmlspecialchars($dynamicText['t_kontakt_e5d362_0286e5']['text'] ?? 'Ponedeljak - Petak:', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span class="font-medium"><?= htmlspecialchars($dynamicText['t_kontakt_129939_0286e5']['text'] ?? 'Ponedeljak - Petak:', ENT_QUOTES, 'UTF-8'); ?></span>
                                     <span>09:00 - 17:00</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="font-medium"><?= htmlspecialchars($dynamicText['t_kontakt_778443_d9c89f']['text'] ?? 'Subota:', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span class="font-medium"><?= htmlspecialchars($dynamicText['t_kontakt_21f48b_d9c89f']['text'] ?? 'Subota:', ENT_QUOTES, 'UTF-8'); ?></span>
                                     <span>10:00 - 14:00</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="font-medium"><?= htmlspecialchars($dynamicText['t_kontakt_d7b150_454f27']['text'] ?? 'Nedelja:', ENT_QUOTES, 'UTF-8'); ?></span>
-                                    <span class="text-red-500"><?= htmlspecialchars($dynamicText['t_kontakt_24f92e_f50368']['text'] ?? 'Zatvoreno', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span class="font-medium"><?= htmlspecialchars($dynamicText['t_kontakt_e30845_454f27']['text'] ?? 'Nedelja:', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span class="text-red-500"><?= htmlspecialchars($dynamicText['t_kontakt_3954f6_f50368']['text'] ?? 'Zatvoreno', ENT_QUOTES, 'UTF-8'); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -324,9 +324,9 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-green-800 font-bold text-lg" id="success-title"><?= htmlspecialchars($dynamicText['t_kontakt_1d72f7_63e66c']['text'] ?? 'Vaša poruka je
+                                    <p class="text-green-800 font-bold text-lg" id="success-title"><?= htmlspecialchars($dynamicText['t_kontakt_f4376e_63e66c']['text'] ?? 'Vaša poruka je
                                         uspešno poslata!', ENT_QUOTES, 'UTF-8'); ?></p>
-                                    <p class="text-green-700"><?= htmlspecialchars($dynamicText['t_kontakt_271f8f_d0ce73']['text'] ?? 'Odgovoriće vam u najkraćem mogućem roku.', ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="text-green-700"><?= htmlspecialchars($dynamicText['t_kontakt_420858_d0ce73']['text'] ?? 'Odgovoriće vam u najkraćem mogućem roku.', ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -335,23 +335,23 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                         <form id="contact-form" class="space-y-6">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?= htmlspecialchars($dynamicText['t_kontakt_4ee248_3539f9']['text'] ?? 'Ime i prezime *', ENT_QUOTES, 'UTF-8'); ?></label>
+                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?= htmlspecialchars($dynamicText['t_kontakt_4afb01_3539f9']['text'] ?? 'Ime i prezime *', ENT_QUOTES, 'UTF-8'); ?></label>
                                     <input type="text" name="ime" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="Unesite vaše ime i prezime">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?= htmlspecialchars($dynamicText['t_kontakt_d3604d_ad4848']['text'] ?? 'Email adresa *', ENT_QUOTES, 'UTF-8'); ?></label>
+                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?= htmlspecialchars($dynamicText['t_kontakt_567ea1_ad4848']['text'] ?? 'Email adresa *', ENT_QUOTES, 'UTF-8'); ?></label>
                                     <input type="email" name="email" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="vasa.email@primer.com">
                                 </div>
                             </div>
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?= htmlspecialchars($dynamicText['t_kontakt_8d9104_693039']['text'] ?? 'Broj telefona', ENT_QUOTES, 'UTF-8'); ?></label>
+                                    <label class="block text-sm font-bold text-gray-700 mb-3"><?= htmlspecialchars($dynamicText['t_kontakt_1605a5_693039']['text'] ?? 'Broj telefona', ENT_QUOTES, 'UTF-8'); ?></label>
                                     <input type="tel" name="telefon" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="+381 xx xxx xxxx">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-3">
-                                        <span id="subject-label"><?= htmlspecialchars($dynamicText['t_kontakt_bb5536_55e18c']['text'] ?? 'Naslov poruke *', ENT_QUOTES, 'UTF-8'); ?></span>
+                                        <span id="subject-label"><?= htmlspecialchars($dynamicText['t_kontakt_f1f465_55e18c']['text'] ?? 'Naslov poruke *', ENT_QUOTES, 'UTF-8'); ?></span>
                                     </label>
                                     <input type="text" name="naslov" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="Kratko opišite razlog kontakta" id="subject-input">
                                 </div>
@@ -359,7 +359,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
 
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-3">
-                                    <span id="message-label"><?= htmlspecialchars($dynamicText['t_kontakt_500992_9a1399']['text'] ?? 'Vaša poruka *', ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <span id="message-label"><?= htmlspecialchars($dynamicText['t_kontakt_2582c3_9a1399']['text'] ?? 'Vaša poruka *', ENT_QUOTES, 'UTF-8'); ?></span>
                                 </label>
                                 <textarea name="poruka" required="" rows="6" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg resize-none" placeholder="Detaljno opišite vaš upit ili problem..." id="message-input"></textarea>
                             </div>
@@ -370,7 +370,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                                         </svg>
-                                        <span id="submit-text"><?= htmlspecialchars($dynamicText['t_kontakt_08df97_701225']['text'] ?? 'Pošaljite poruku', ENT_QUOTES, 'UTF-8'); ?></span>
+                                        <span id="submit-text"><?= htmlspecialchars($dynamicText['t_kontakt_a69021_701225']['text'] ?? 'Pošaljite poruku', ENT_QUOTES, 'UTF-8'); ?></span>
                                     </span>
                                 </button>
                             </div>
@@ -652,7 +652,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
             observer.observe(el);
         });
     
-var items = document.querySelectorAll('#i50q9l');
+var items = document.querySelectorAll('#ihjq7r');
           for (var i = 0, len = items.length; i < len; i++) {
             (function(){
 const el = this;
