@@ -277,7 +277,7 @@ $documentModel = new Document();
 );
 
 $totalPages = (int) ceil(max(1, $totalCount) / $limit);
-$DocumentCategories = $documentModel->getCategories();
+$DocumentCategories = $documentModel->getCategories($locale);
 
 function getFileConfig(string $ext): array {
     $ext = strtolower($ext);
