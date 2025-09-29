@@ -69,7 +69,7 @@ function getFileConfig(string $ext): array {
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($dynamicText['t_dokumenti_a78a05_74324e']['text'] ?? 'dokumenti', ENT_QUOTES, 'UTF-8'); ?></title>
+    <title><?= htmlspecialchars($dynamicText['t_dokumenti_61a206_74324e']['text'] ?? 'dokumenti', ENT_QUOTES, 'UTF-8'); ?></title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -260,7 +260,7 @@ function getFileConfig(string $ext): array {
 /* Small helpers */
 .doc-meta { color: #6b7280; }
 .doc-category { font-size: .85rem; padding: .25rem .5rem; border-radius: .5rem; }
-* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#ik2c8k{border:0;}@layer utilities{.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;position:relative;overflow-x:hidden;overflow-y:hidden;}.event-card::before{content:"";position:absolute;top:0px;left:0px;right:0px;height:5px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transform:translateY(-100%);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.event-card:hover::before{transform:translateY(0px);}.event-card:hover{transform:translateY(-5px);box-shadow:rgba(0, 0, 0, 0.1) 0px 10px 25px -5px;}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
+* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#iyd0og{border:0;}@layer utilities{.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
 </style>
 
 
@@ -271,8 +271,8 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
 
 <main>
     <div class="text-center px-2 pt-32">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4"><?= htmlspecialchars($dynamicText['t_dokumenti_0909c2_901c93']['text'] ?? 'Dokumenti za preuzimanje', ENT_QUOTES, 'UTF-8'); ?></h1>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10"><?= htmlspecialchars($dynamicText['t_dokumenti_835162_cf3b77']['text'] ?? 'Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.', ENT_QUOTES, 'UTF-8'); ?></p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4"><?= htmlspecialchars($dynamicText['t_dokumenti_137a87_901c93']['text'] ?? 'Dokumenti za preuzimanje', ENT_QUOTES, 'UTF-8'); ?></h1>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10"><?= htmlspecialchars($dynamicText['t_dokumenti_1a5e89_cf3b77']['text'] ?? 'Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.', ENT_QUOTES, 'UTF-8'); ?></p>
 
         <div class="mx-auto max-w-6xl">
             <form id="filter-form" method="GET" action="" class="bg-white rounded-2xl shadow p-6 mb-8 border border-gray-100">
@@ -285,7 +285,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                     </div>
 
                     <select name="category" class="px-4 py-3 border rounded-xl">
-                        <option value=""><?= htmlspecialchars($dynamicText['t_dokumenti_f5dd93_b8bbcb']['text'] ?? 'Sve kategorije', ENT_QUOTES, 'UTF-8'); ?></option>
+                        <option value=""><?= htmlspecialchars($dynamicText['t_dokumenti_0274e6_b8bbcb']['text'] ?? 'Sve kategorije', ENT_QUOTES, 'UTF-8'); ?></option>
                         <?php foreach ($DocumentCategories as $cat): ?>
                             <option value="<?= htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8') ?>">
                                 <?= htmlspecialchars($cat['name'] ?? '', ENT_QUOTES, 'UTF-8') ?>
@@ -294,18 +294,18 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                     </select>
 
                     <select name="sort" class="px-4 py-3 border rounded-xl">
-                        <option value="date_desc"><?= htmlspecialchars($dynamicText['t_dokumenti_b03670_765203']['text'] ?? 'Najnoviji prvo', ENT_QUOTES, 'UTF-8'); ?></option>
-                        <option value="date_asc"><?= htmlspecialchars($dynamicText['t_dokumenti_61d085_81eb59']['text'] ?? 'Najstariji prvo', ENT_QUOTES, 'UTF-8'); ?></option>
-                        <option value="title"><?= htmlspecialchars($dynamicText['t_dokumenti_aa859f_2794c1']['text'] ?? 'Po nazivu', ENT_QUOTES, 'UTF-8'); ?></option>
+                        <option value="date_desc"><?= htmlspecialchars($dynamicText['t_dokumenti_2a8aca_765203']['text'] ?? 'Najnoviji prvo', ENT_QUOTES, 'UTF-8'); ?></option>
+                        <option value="date_asc"><?= htmlspecialchars($dynamicText['t_dokumenti_e51e0b_81eb59']['text'] ?? 'Najstariji prvo', ENT_QUOTES, 'UTF-8'); ?></option>
+                        <option value="title"><?= htmlspecialchars($dynamicText['t_dokumenti_672ae7_2794c1']['text'] ?? 'Po nazivu', ENT_QUOTES, 'UTF-8'); ?></option>
                     </select>
 
-                    <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl"><?= htmlspecialchars($dynamicText['t_dokumenti_9c58b7_75c180']['text'] ?? 'Primeni', ENT_QUOTES, 'UTF-8'); ?></button>
+                    <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl"><?= htmlspecialchars($dynamicText['t_dokumenti_90f1e9_75c180']['text'] ?? 'Primeni', ENT_QUOTES, 'UTF-8'); ?></button>
                 </div>
             </form>
 
             <!-- Notification -->
             <div id="download-notification" class="hidden fixed top-6 right-6 bg-green-600 text-white px-5 py-3 rounded-2xl shadow-lg z-50">
-                <div class="flex items-center gap-3"><i class="fa-solid fa-check"></i><span id="download-notification-text"><?= htmlspecialchars($dynamicText['t_dokumenti_7c0f8e_8487f2']['text'] ?? 'Dokument se preuzima...', ENT_QUOTES, 'UTF-8'); ?></span></div>
+                <div class="flex items-center gap-3"><i class="fa-solid fa-check"></i><span id="download-notification-text"><?= htmlspecialchars($dynamicText['t_dokumenti_4bfd34_8487f2']['text'] ?? 'Dokument se preuzima...', ENT_QUOTES, 'UTF-8'); ?></span></div>
             </div>
 
             <?php if (count($documents) > 0): ?>
@@ -363,7 +363,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
 
                             <div class="card-footer">
                                 <a href="/uploads/documents/<?= $filepath ?>" class="w-full inline-flex items-center justify-center py-2 rounded-lg download-btn text-white font-semibold" download data-id="<?= $fileId ?>" onclick="showDownloadNotification(event, '<?= addslashes($title ?: basename($filepath)) ?>')">
-                                    <i class="fa-solid fa-download mr-2"></i><?= htmlspecialchars($dynamicText['t_dokumenti_c8baa7_6ea27e']['text'] ?? 'Preuzmi', ENT_QUOTES, 'UTF-8'); ?></a>
+                                    <i class="fa-solid fa-download mr-2"></i><?= htmlspecialchars($dynamicText['t_dokumenti_5d9895_6ea27e']['text'] ?? 'Preuzmi', ENT_QUOTES, 'UTF-8'); ?></a>
                             </div>
                         </article>
                     <?php endforeach; ?>
@@ -372,7 +372,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                 <!-- Pagination -->
                 <div class="mt-10 mb-16 flex justify-center items-center gap-4">
                     <?php if ($page > 1): ?>
-                        <a href="?<?= http_build_query(array_merge($_GET, ['page' => $page - 1])) ?>" class="px-4 py-2 bg-white rounded-xl shadow hover:bg-gray-100"><?= htmlspecialchars($dynamicText['t_dokumenti_5beaa7_fac577']['text'] ?? '« Prethodna', ENT_QUOTES, 'UTF-8'); ?></a>
+                        <a href="?<?= http_build_query(array_merge($_GET, ['page' => $page - 1])) ?>" class="px-4 py-2 bg-white rounded-xl shadow hover:bg-gray-100"><?= htmlspecialchars($dynamicText['t_dokumenti_265510_fac577']['text'] ?? '« Prethodna', ENT_QUOTES, 'UTF-8'); ?></a>
                     <?php endif; ?>
 
                     <div class="flex items-center gap-2">
@@ -386,7 +386,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                     </div>
 
                     <?php if ($page < $totalPages): ?>
-                        <a href="?<?= http_build_query(array_merge($_GET, ['page' => $page + 1])) ?>" class="px-4 py-2 bg-white rounded-xl shadow hover:bg-gray-100"><?= htmlspecialchars($dynamicText['t_dokumenti_fc6b91_b05dc7']['text'] ?? 'Sledeća »', ENT_QUOTES, 'UTF-8'); ?></a>
+                        <a href="?<?= http_build_query(array_merge($_GET, ['page' => $page + 1])) ?>" class="px-4 py-2 bg-white rounded-xl shadow hover:bg-gray-100"><?= htmlspecialchars($dynamicText['t_dokumenti_c9d6b7_b05dc7']['text'] ?? 'Sledeća »', ENT_QUOTES, 'UTF-8'); ?></a>
                     <?php endif; ?>
                 </div>
 
@@ -395,9 +395,9 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
                     <div class="mx-auto w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mb-6">
                         <i class="fa-solid fa-file-lines text-blue-500 text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4"><?= htmlspecialchars($dynamicText['t_dokumenti_1e22db_848317']['text'] ?? 'Nema pronađenih dokumenata', ENT_QUOTES, 'UTF-8'); ?></h3>
-                    <p class="text-gray-600 max-w-md mx-auto mb-6"><?= htmlspecialchars($dynamicText['t_dokumenti_27b4eb_c353b3']['text'] ?? 'Promenite filtere da biste videli druge dokumente ili proverite kasnije.', ENT_QUOTES, 'UTF-8'); ?></p>
-                    <a href="?" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl"><?= htmlspecialchars($dynamicText['t_dokumenti_f6b17b_1cc7f0']['text'] ?? 'Resetuj filtere', ENT_QUOTES, 'UTF-8'); ?></a>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4"><?= htmlspecialchars($dynamicText['t_dokumenti_81982f_848317']['text'] ?? 'Nema pronađenih dokumenata', ENT_QUOTES, 'UTF-8'); ?></h3>
+                    <p class="text-gray-600 max-w-md mx-auto mb-6"><?= htmlspecialchars($dynamicText['t_dokumenti_a9249b_c353b3']['text'] ?? 'Promenite filtere da biste videli druge dokumente ili proverite kasnije.', ENT_QUOTES, 'UTF-8'); ?></p>
+                    <a href="?" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl"><?= htmlspecialchars($dynamicText['t_dokumenti_5df5a0_1cc7f0']['text'] ?? 'Resetuj filtere', ENT_QUOTES, 'UTF-8'); ?></a>
                 </div>
             <?php endif; ?>
         </div>
@@ -409,15 +409,11 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
 
 <script>
 
+
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0d3b66',
-                        secondary: '#f4d35e',
-                        accent: '#faf0ca',
-                        dark: '#333',
-                        light: '#E8F3FC',
                         'clay': '#c97c5d',
                         'ochre': '#d4a373',
                         'sage': '#a3b18a',
@@ -438,8 +434,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
                         velvet: '#872657',
                         crimson: '#DC143C',
                         coral: '#FF7F50',
-                        sage: '#9CAF88',
-                        barn_red: '#770D0D'
+                        sage: '#9CAF88'
                     },
                     fontFamily: {
                         'display': ['Playfair Display', 'serif'],
@@ -455,11 +450,11 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
         }
         const btn = document.getElementById('increaseFontBtn');
 
-        let currentSize = 16; // initial font size in px
-        let step = 2; // px to increase or decrease per click
-        let maxSteps = 3; // max increments before toggling direction
-        let count = 0; // how many increments or decrements done
-        let increasing = true; // track if currently increasing font size
+        let currentSize = 16;       // initial font size in px
+        let step = 2;               // px to increase or decrease per click
+        let maxSteps = 3;           // max increments before toggling direction
+        let count = 0;              // how many increments or decrements done
+        let increasing = true;      // track if currently increasing font size
 
         btn.addEventListener('click', () => {
             if (increasing) {
@@ -671,14 +666,76 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
                     entry.target.classList.add('fade-in');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
             observer.observe(el);
         });
     
+var items = document.querySelectorAll('#i50q9l');
+          for (var i = 0, len = items.length; i < len; i++) {
+            (function(){
+const el = this;
+          const track = el.querySelector(".slider-track");
+          const items = el.querySelectorAll(".slider-item");
+          const prev = el.querySelector(".slider-prev");
+          const next = el.querySelector(".slider-next");
+          const dotsWrap = el.querySelector(".slider-dots");
+
+          if (!track || items.length === 0) return;
+
+          let idx = 0;
+          const total = items.length;
+
+          // resize items responsively
+          function resize() {
+            const w = el.clientWidth;
+            items.forEach((it) => (it.style.width = w + "px"));
+            track.style.width = w * total + "px";
+            track.style.transform = `translateX(${-idx * w}px)`;
+          }
+          resize();
+          window.addEventListener("resize", resize);
+
+          // dots
+          function buildDots() {
+            if (!dotsWrap) return;
+            dotsWrap.innerHTML = "";
+            for (let i = 0; i < total; i++) {
+              const d = document.createElement("button");
+              d.type = "button";
+              d.className = "w-2 h-2 rounded-full bg-white/60";
+              d.setAttribute("data-i", i);
+              d.style.opacity = i === idx ? "1" : "0.6";
+              d.addEventListener("click", () => goTo(i));
+              dotsWrap.appendChild(d);
+            }
+          }
+          buildDots();
+
+          function updateDots() {
+            if (!dotsWrap) return;
+            Array.from(dotsWrap.children).forEach((d, i) => {
+              d.style.opacity = i === idx ? "1" : "0.6";
+            });
+          }
+
+          function goTo(i) {
+            const w = el.clientWidth;
+            idx = (i + total) % total;
+            track.style.transform = `translateX(${-idx * w}px)`;
+            updateDots();
+          }
+
+          prev && prev.addEventListener("click", () => goTo(idx - 1));
+          next && next.addEventListener("click", () => goTo(idx + 1));
+
+          // cleanup
+          el._sliderCleanup = function () {
+            window.removeEventListener("resize", resize);
+          };
+}.bind(items[i]))();
+          }
 </script>
 
 

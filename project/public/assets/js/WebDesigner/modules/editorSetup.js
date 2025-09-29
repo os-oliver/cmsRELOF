@@ -56,6 +56,100 @@ export function initializeEditor() {
     },
     canvas: { scripts: ["https://cdn.tailwindcss.com"] },
   });
+
+  editor.DomComponents.addType("slider", {
+    model: {
+      defaults: {
+        tagName: "div",
+        draggable: true,
+        droppable: true,
+        selectable: true,
+        traits: [
+          {
+            type: "number",
+            name: "slides",
+            label: "Slides",
+            changeProp: 1,
+            min: 1,
+            placeholder: 3,
+          },
+        ],
+        script: function () {
+          const el = this;
+          const track = el.querySelector(".slider-track");
+          const items = el.querySelectorAll(".slider-item");
+          const prev = el.querySelector(".slider-prev");
+          const next = el.querySelector(".slider-next");
+          const dotsWrap = el.querySelector(".slider-dots");
+
+          if (!track || items.length === 0) return;
+
+          let idx = 0;
+          const total = items.length;
+
+          // resize items responsively
+          function resize() {
+            const w = el.clientWidth;
+            items.forEach((it) => (it.style.width = w + "px"));
+            track.style.width = w * total + "px";
+            track.style.transform = `translateX(${-idx * w}px)`;
+          }
+          resize();
+          window.addEventListener("resize", resize);
+
+          // dots
+          function buildDots() {
+            if (!dotsWrap) return;
+            dotsWrap.innerHTML = "";
+            for (let i = 0; i < total; i++) {
+              const d = document.createElement("button");
+              d.type = "button";
+              d.className = "w-2 h-2 rounded-full bg-white/60";
+              d.setAttribute("data-i", i);
+              d.style.opacity = i === idx ? "1" : "0.6";
+              d.addEventListener("click", () => goTo(i));
+              dotsWrap.appendChild(d);
+            }
+          }
+          buildDots();
+
+          function updateDots() {
+            if (!dotsWrap) return;
+            Array.from(dotsWrap.children).forEach((d, i) => {
+              d.style.opacity = i === idx ? "1" : "0.6";
+            });
+          }
+
+          function goTo(i) {
+            const w = el.clientWidth;
+            idx = (i + total) % total;
+            track.style.transform = `translateX(${-idx * w}px)`;
+            updateDots();
+          }
+
+          prev && prev.addEventListener("click", () => goTo(idx - 1));
+          next && next.addEventListener("click", () => goTo(idx + 1));
+
+          // cleanup
+          el._sliderCleanup = function () {
+            window.removeEventListener("resize", resize);
+          };
+        },
+      },
+    },
+
+    view: {
+      onRender({ el }) {
+        // simple preview effect (optional)
+      },
+
+      onRemove(el) {
+        if (el._previewSliderTimer) clearInterval(el._previewSliderTimer);
+        if (el._sliderCleanup) el._sliderCleanup();
+      },
+    },
+  });
+
   // Zabrani drop na body, header, footer
   editor.DomComponents.addType("body", {
     isComponent: (el) => el.tagName === "BODY",
@@ -180,7 +274,8 @@ function setupLinkLogging(editor) {
       const staticCheckbox = document.getElementById("linkStatic");
       const applyBtn = document.getElementById("applyLink");
       const resetBtn = document.getElementById("resetLink");
-      if (!hrefInput || !applyBtn || !resetBtn) return;
+      const deleteBtn = document.getElementById("delete");
+      if (!hrefInput || !applyBtn || !resetBtn || !deleteBtn) return;
 
       // store originals for reset
       const originalHref = (anchorEl && anchorEl.getAttribute("href")) || "";
@@ -261,6 +356,39 @@ function setupLinkLogging(editor) {
       };
 
       // RESET: restore inputs and visual DOM (user must still click Apply to persist)
+      // Delete link handler
+      deleteBtn.onclick = () => {
+        if (comp) {
+          try {
+            console.log("Removing component", comp);
+            // Remove component from editor
+            comp.remove();
+          } catch (err) {
+            console.warn("Failed to remove component:", err);
+          }
+        }
+
+        // Remove the anchor from DOM
+        if (anchorEl && anchorEl.parentNode) {
+          // Keep the content inside the anchor
+          while (anchorEl.firstChild) {
+            anchorEl.parentNode.insertBefore(anchorEl.firstChild, anchorEl);
+          }
+          anchorEl.parentNode.removeChild(anchorEl);
+        }
+
+        // Close nav editor if open
+        const navBtn = document.getElementById("navbtn");
+        if (navBtn) navBtn.click();
+
+        // Store editor state
+        try {
+          if (window.editor && typeof window.editor.store === "function") {
+            window.editor.store();
+          }
+        } catch (e) {}
+      };
+
       resetBtn.onclick = () => {
         hrefInput.value = originalHref;
         if (staticCheckbox)
@@ -312,6 +440,34 @@ function setupLinkLogging(editor) {
 
         const el = e.target;
         if (!el) return;
+        console.log("Clicked element:", el);
+        console.log("ClassList:", el.classList.value);
+        console.log(
+          "Has slide-overlay?",
+          el.classList.contains("slide-overlay")
+        );
+        console.log("Inside slider-item?", !!el.closest(".slider-item"));
+        console.log("Clickedfds asd:", el);
+        console.log(el.classList.contains("slider-overlay"));
+        console.log(el.classList);
+        if (
+          el.closest(".slider-item") &&
+          el.classList.contains("slide-overlay")
+        ) {
+          console.log("Clicked inside slider-item");
+          const sliderItem = el.closest(".slider-item");
+          const imgEl = sliderItem.querySelector("img");
+          console.log("Found img element:", imgEl);
+          if (imgEl) {
+            const imgCmp = editor
+              .getWrapper()
+              .find(`[src="${imgEl.getAttribute("src") || ""}"]`)[0];
+            if (imgCmp) {
+              editor.select(imgCmp);
+              editor.runCommand("open-assets", { target: imgCmp });
+            }
+          }
+        }
 
         // If click is on an <i> (icon) element, open the icon chooser in parent doc
         if (el.tagName && el.tagName.toLowerCase() === "i") {

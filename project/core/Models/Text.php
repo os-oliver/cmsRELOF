@@ -386,7 +386,7 @@ class Text
         }
     }
 
-    public function getAllTexts(string $pageSlug = null): array
+    public function getAllTexts(?string $pageSlug = null): array
     {
         $query = "
             SELECT te.id, te.page_slug, te.original_text, te.text_hash, 
