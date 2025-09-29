@@ -24,10 +24,10 @@ class Document
         $this->pivoter = new Pivoter('field_name', 'content', 'id');
     }
 
-    public function getCategories(): array
+    public function getCategories(string $lang): array
     {
         $sql = "
-           SELECT 
+        SELECT 
             sc.*, 
             t.field_name,
             t.content,
@@ -35,12 +35,17 @@ class Document
         FROM subcategory_document sc
         LEFT JOIN text t
             ON t.source_id = sc.id
+            AND t.lang = :lang
             AND t.source_table = 'subcategory_document';
+    ";
 
-        ";
-        $rows = $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':lang' => $lang]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         return $this->pivoter->pivot($rows);
     }
+
 
     public function list(
         int $limit = 10,

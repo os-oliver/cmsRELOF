@@ -264,6 +264,21 @@ class PageController
         require PUBLIC_ROOT . '/admin/savePage.php';
         return;
     }
+    public function renderElement()
+    {
+        // uzmi parametar iz GET query-a
+        $element = $_GET['id'] ?? null;
+
+        if ($element === null) {
+            http_response_code(404);
+            include PUBLIC_ROOT . '/pages/404.php';
+            return;
+        }
+
+        // ovde možeš da odradiš šta hoćeš sa tim parametrom
+        echo "<h1>Traženi element: " . htmlspecialchars($element, ENT_QUOTES, 'UTF-8') . "</h1>";
+    }
+
     public function deletePage()
     {
         require PUBLIC_ROOT . '/admin/deletePage.php';

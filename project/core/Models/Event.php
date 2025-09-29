@@ -57,17 +57,31 @@ class Event
         return [$lang => $text];
     }
 
-    public function getCategories(): array
+    public function getCategories(string $lang): array
     {
         $sql = "
-            SELECT k.*, t.field_name, t.content, t.id AS text_id
-            FROM kategorije_dogadjaja k
-            LEFT JOIN text t 
-                ON t.source_id = k.id 
-                AND t.source_table = 'kategorije_dogadjaja'
-        ";
+        SELECT k.*, t.field_name, t.content, t.id AS text_id
+        FROM kategorije_dogadjaja k
+        LEFT JOIN text t 
+            ON t.source_id = k.id 
+            AND t.source_table = 'kategorije_dogadjaja'
+    ";
 
-        $rows = $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        // Add language filter if $lang is provided
+        if ($lang !== null) {
+            $sql .= " AND t.lang = :lang";
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+
+        if ($lang !== null) {
+            $stmt->execute([':lang' => $lang]);
+        } else {
+            $stmt->execute();
+        }
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         return (new Pivoter('field_name', 'content', 'id'))->pivot($rows);
     }
 

@@ -423,6 +423,9 @@ html {
 .blocks-section:last-child {
   margin-bottom: 0;
 }
+.slider-image {
+  height: 100% !important;
+}
 
 #navBlock {
   background: transparent;
