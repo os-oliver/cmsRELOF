@@ -35,7 +35,7 @@ $documentModal = new Document();
 );
 
 $totalPages = (int) ceil($totalCount / $limit);
-$DocumentCategories = $documentModal->getCategories();
+$DocumentCategories = $documentModal->getCategories($locale);
 
 // ✅ Konfiguracija fajlova po ekstenziji
 function getFileConfig(string $ext): array
