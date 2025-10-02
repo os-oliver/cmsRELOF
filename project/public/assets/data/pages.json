@@ -1,6 +1,6 @@
 [
     {
-        "id": "68daa659d1d46",
+        "id": "68de95371c3b9",
         "static": false,
         "movable": false,
         "name": "",
@@ -8,10 +8,10 @@
         "path": "pages\/.php",
         "file": ".php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:37"
+        "created_at": "2025-10-02 15:07:35"
     },
     {
-        "id": "68daa659d47bc",
+        "id": "68de95371f522",
         "static": false,
         "movable": false,
         "name": "Cilj",
@@ -19,10 +19,10 @@
         "path": "pages\/cilj.php",
         "file": "cilj.php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:37"
+        "created_at": "2025-10-02 15:07:35"
     },
     {
-        "id": "68daa659d731f",
+        "id": "68de953721b72",
         "static": false,
         "movable": false,
         "name": "Zaposleni",
@@ -30,10 +30,10 @@
         "path": "pages\/zaposleni.php",
         "file": "zaposleni.php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:37"
+        "created_at": "2025-10-02 15:07:35"
     },
     {
-        "id": "68daa659da2ce",
+        "id": "68de953724245",
         "static": false,
         "movable": false,
         "name": "Misija",
@@ -41,10 +41,10 @@
         "path": "pages\/misija.php",
         "file": "misija.php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:37"
+        "created_at": "2025-10-02 15:07:35"
     },
     {
-        "id": "68daa659dd119",
+        "id": "68de953725ffd",
         "static": false,
         "movable": false,
         "name": "Istorija",
@@ -52,10 +52,10 @@
         "path": "pages\/istorija.php",
         "file": "istorija.php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:37"
+        "created_at": "2025-10-02 15:07:35"
     },
     {
-        "id": "68daa659e0640",
+        "id": "68de953727c25",
         "static": false,
         "movable": false,
         "name": "Tim",
@@ -63,10 +63,10 @@
         "path": "pages\/tim.php",
         "file": "tim.php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:37"
+        "created_at": "2025-10-02 15:07:35"
     },
     {
-        "id": "68daa659e5b1e",
+        "id": "68de95372a28a",
         "static": false,
         "movable": false,
         "name": "dogadjaji",
@@ -74,10 +74,10 @@
         "path": "pages\/dogadjaji.php",
         "file": "dogadjaji.php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:37"
+        "created_at": "2025-10-02 15:07:35"
     },
     {
-        "id": "68daa659eaf84",
+        "id": "68de95372ca5e",
         "static": false,
         "movable": false,
         "name": "galerija",
@@ -85,10 +85,10 @@
         "path": "pages\/galerija.php",
         "file": "galerija.php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:37"
+        "created_at": "2025-10-02 15:07:35"
     },
     {
-        "id": "68daa65a02a3c",
+        "id": "68de953732422",
         "static": false,
         "movable": false,
         "name": "dokumenti",
@@ -96,10 +96,10 @@
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:38"
+        "created_at": "2025-10-02 15:07:35"
     },
     {
-        "id": "68daa65a171dc",
+        "id": "68de95373b49e",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -107,6 +107,6 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-09-29 15:31:38"
+        "created_at": "2025-10-02 15:07:35"
     }
 ]
