@@ -13,7 +13,7 @@ AuthController::requireEditor();
 
 // ✅ Filter parametri iz GET-a
 $search = $_GET['search'] ?? '';
-$category = $_GET['category'] ?? '';
+$categories = isset($_GET['categories']) ? (array) $_GET['categories'] : [];
 $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
@@ -28,7 +28,7 @@ $documentModal = new Document();
     limit: $limit,
     offset: $offset,
     search: $search,
-    category: $category,
+    categories: $categories,
     status: $status,
     sort: $sort,
     lang: $locale
@@ -36,6 +36,7 @@ $documentModal = new Document();
 
 $totalPages = (int) ceil($totalCount / $limit);
 $DocumentCategories = $documentModal->getCategories($locale);
+$DocumentSubCategories = $documentModal->getSubCategories($locale);
 
 // ✅ Konfiguracija fajlova po ekstenziji
 function getFileConfig(string $ext): array
@@ -128,41 +129,65 @@ function getFileConfig(string $ext): array
 
                 <!-- ✅ Pretraga i filteri -->
                 <form method="GET" action="" class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
-                    <div class="flex flex-col lg:flex-row gap-4 items-center">
-                        <div class="relative flex-1 w-full lg:w-auto">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fas fa-search h-5 w-5 text-gray-400"></i>
+                    <div class="space-y-4">
+                        <!-- Search and Sort Row -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="relative flex-1">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-search h-5 w-5 text-gray-400"></i>
+                                </div>
+                                <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
+                                    placeholder="<?= __("documents.search_placeholder") ?>"
+                                    class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl">
                             </div>
-                            <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
-                                placeholder="<?= __("documents.search_placeholder") ?>"
-                                class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl">
+
+                            <div class="flex gap-4 sm:w-auto w-full">
+                                <select name="sort" class="px-4 py-3 border rounded-xl min-w-[200px]">
+                                    <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>
+                                        <?= __("documents.latest_first") ?>
+                                    </option>
+                                    <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>
+                                        <?= __("documents.oldest_first") ?>
+                                    </option>
+                                    <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>
+                                        <?= __("documents.by_name") ?>
+                                    </option>
+                                </select>
+
+                                <button type="submit"
+                                    class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl whitespace-nowrap">
+                                    <?= __("documents.apply") ?>
+                                </button>
+                            </div>
                         </div>
 
-                        <select name="category" class="px-4 py-3 border rounded-xl">
-                            <option value="">
-                                <?= __("documents.all_categories") ?>
-                            </option>
-                            <?php foreach ($DocumentCategories as $doc): ?>
-                                <option value="<?= $doc['id'] ?>"><?= $doc['name'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-
-                        <select name="sort" class="px-4 py-3 border rounded-xl">
-                            <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>
-                                <?= __("documents.latest_first") ?>
-                            </option>
-                            <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>
-                                <?= __("documents.oldest_first") ?>
-                            </option>
-                            <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>
-                                <?= __("documents.by_name") ?>
-                            </option>
-                        </select>
-
-                        <button type="submit"
-                            class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl">
-                            <?= __("documents.apply") ?>
-                        </button>
+                        <!-- Categories Section -->
+                        <div class="w-full pt-2">
+                            <h3 class="text-sm font-semibold text-gray-700 mb-3"><?= __("documents.categories") ?></h3>
+                            <div class="flex flex-wrap gap-2">
+                                <?php
+                                $selectedCategories = isset($_GET['categories']) ? (array) $_GET['categories'] : [];
+                                foreach ($DocumentCategories as $doc):
+                                    $isChecked = in_array($doc['id'], $selectedCategories);
+                                    ?>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" 
+                                               name="categories[]" 
+                                               value="<?= $doc['id'] ?>"
+                                               <?= $isChecked ? 'checked' : '' ?>
+                                               class="sr-only peer"
+                                               id="category_<?= $doc['id'] ?>">
+                                        <label for="category_<?= $doc['id'] ?>" 
+                                               class="px-4 py-2 rounded-full border cursor-pointer <?= $isChecked 
+                                                   ? 'bg-blue-50 border-blue-200 text-blue-700' 
+                                                   : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50' ?> 
+                                                   transition-all duration-200 text-sm font-medium select-none">
+                                            <?= $doc['name'] ?>
+                                        </label>
+                                    </label>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
                     </div>
                 </form>
 
@@ -268,17 +293,17 @@ function getFileConfig(string $ext): array
                     </div>
                     <nav class="flex items-center gap-2">
                         <button class="p-2 rounded-lg border text-gray-500 hover:bg-gray-50 disabled:opacity-50"
-                            <?= $page <= 1 ? 'disabled' : '' ?> onclick="location.href='?page=<?= $page - 1 ?>'">
+                            <?= $page <= 1 ? 'disabled' : '' ?>>
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <?php for ($p = 1; $p <= $totalPages; $p++): ?>
                             <button
-                                class="px-4 py-2 rounded-lg <?= $p === $page ? 'bg-blue-600 text-white' : 'border text-gray-700 hover:bg-gray-50' ?>"
-                                onclick="location.href='?page=<?= $p ?>'"><?= $p ?></button>
+                                class="px-4 py-2 rounded-lg <?= $p === $page ? 'bg-blue-600 text-white' : 'border text-gray-700 hover:bg-gray-50' ?>">
+                                <?= $p ?>
+                            </button>
                         <?php endfor; ?>
                         <button class="p-2 rounded-lg border text-gray-500 hover:bg-gray-50 disabled:opacity-50"
-                            <?= $page >= $totalPages ? 'disabled' : '' ?>
-                            onclick="location.href='?page=<?= $page + 1 ?>'">
+                            <?= $page >= $totalPages ? 'disabled' : '' ?>>
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </nav>

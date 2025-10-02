@@ -7,6 +7,13 @@ use App\Controllers\PersonalContentController;
 
 class PageController
 {
+
+
+    public function createPage()
+    {
+        require PUBLIC_ROOT . '/admin/createPage.php';
+        return;
+    }
     public function home()
     {
         $exportedIndex = PUBLIC_ROOT . '/exportedPages/index.php';

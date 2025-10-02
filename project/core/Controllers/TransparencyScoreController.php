@@ -28,7 +28,7 @@ class TransparencyScoreController
         $percentage = ((float) $numberOfDistinctSubcategoriesInDocuments / $numberOfSubcategories) * 100;
         error_log($percentage);
 
-        return $percentage;
+        return round($percentage, 1);
     }
 
 }

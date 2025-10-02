@@ -1,6 +1,93 @@
 document.addEventListener("DOMContentLoaded", () => {
   const els = (id) => document.getElementById(id);
+  const form = document.querySelector("form");
 
+  // Handle category selection with visual feedback
+  document
+    .querySelectorAll('input[name="categories[]"]')
+    .forEach((checkbox) => {
+      const label = checkbox.nextElementSibling;
+
+      checkbox.addEventListener("change", (e) => {
+        e.preventDefault();
+        if (checkbox.checked) {
+          label.classList.remove(
+            "bg-white",
+            "border-gray-200",
+            "text-gray-700"
+          );
+          label.classList.add("bg-blue-50", "border-blue-200", "text-blue-700");
+        } else {
+          label.classList.remove(
+            "bg-blue-50",
+            "border-blue-200",
+            "text-blue-700"
+          );
+          label.classList.add("bg-white", "border-gray-200", "text-gray-700");
+        }
+      });
+    });
+
+  // Handle pagination with filters
+  const updateQueryString = (page) => {
+    const url = new URL(window.location.href);
+    const formData = new FormData(form);
+    for (const [key, value] of formData.entries()) {
+      url.searchParams.set(key, value);
+    }
+    if (page) {
+      url.searchParams.set("page", page);
+    } else {
+      url.searchParams.delete("page");
+    }
+    return url.toString();
+  };
+
+  // Update pagination links
+
+  document.querySelectorAll("nav button").forEach((button) => {
+    const page = button.textContent.trim();
+    if (page && !isNaN(page)) {
+      button.onclick = (e) => {
+        e.preventDefault();
+        window.location.href = updateQueryString(page);
+      };
+    }
+  });
+
+  // Handle previous/next buttons
+  const prevButton = document
+    .querySelector("button[disabled] .fa-chevron-left")
+    ?.closest("button");
+  const nextButton = document
+    .querySelector("button[disabled] .fa-chevron-right")
+    ?.closest("button");
+
+  if (prevButton) {
+    prevButton.onclick = (e) => {
+      e.preventDefault();
+      if (!prevButton.disabled) {
+        const currentPage =
+          new URLSearchParams(window.location.search).get("page") || 1;
+        window.location.href =
+          "?" + updateQueryString(parseInt(currentPage) - 1);
+      }
+    };
+  }
+
+  if (nextButton) {
+    nextButton.onclick = (e) => {
+      e.preventDefault();
+      if (!nextButton.disabled) {
+        const currentPage =
+          new URLSearchParams(window.location.search).get("page") || 1;
+        window.location.href =
+          "?" + updateQueryString(parseInt(currentPage) + 1);
+      }
+    };
+  }
+
+  // Form elements
   const formEls = {
     eventForm: els("newDocument"),
     form: els("documentForm"),
@@ -17,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     titleOfForm: els("typeForm"),
   };
 
+  // Modal elements
   const modalEls = {
     modal: els("documentModal"),
     close: els("closeModal"),
@@ -46,8 +134,22 @@ document.addEventListener("DOMContentLoaded", () => {
     modalEls.fileFrame.src = "";
   };
 
-  els("btnNewDocument").addEventListener("click", showForm);
+  els("btnNewDocument")?.addEventListener("click", () => {
+    showForm();
+    // Reset form to initial state for new document
+    formEls.method.value = "POST";
+    formEls.endpoint.value = "/document";
+    formEls.nameInput.value = "";
+    formEls.extInput.value = "";
+    formEls.sizeInput.value = "";
+    formEls.titleForm.value = "";
+    formEls.desc.value = "";
+    formEls.ctg.value = "";
+    formEls.titleOfForm.innerHTML = "Novi dokument";
+    formEls.fileInput.classList.remove("hidden");
+  });
 
+  // Handle document cards
   document.querySelectorAll(".document-card").forEach((card) => {
     const data = card.dataset;
 

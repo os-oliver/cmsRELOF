@@ -10,6 +10,9 @@
   "sidebar.promotion": "Promotion",
   "sidebar.messages": "Messages",
   "sidebar.about_us": "About us",
+  "sidebar.complaints": "Complaints",
+  "documents.categories": "Categories",
+
   "dashboard.admin_panel": "Control panel - Administration",
   "dashboard.total_views": "Total views",
   "dashboard.documents": "Documents",

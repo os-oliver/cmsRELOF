@@ -89,6 +89,22 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
         $r->addRoute('GET', $page['href'], 'PageController@renderJsonPage');
     }
 
+    // Also register routes from DB (userdefinedpages) so pages created via UI are routable
+    try {
+        $db = new \App\Database();
+        $pdo = $db->GetPDO();
+        $stmt = $pdo->query("SELECT href FROM userdefinedpages WHERE href IS NOT NULL AND href != ''");
+        $dbPages = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+        foreach ($dbPages as $dbHref) {
+            if ($dbHref === '/')
+                continue;
+            // avoid duplicating routes already added
+            $r->addRoute('GET', $dbHref, 'PageController@renderJsonPage');
+        }
+    } catch (Throwable $e) {
+        // ignore DB errors here — fallback to JSON-only routing
+    }
+
 
 });
 
