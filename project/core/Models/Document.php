@@ -8,6 +8,7 @@ use GuzzleHttp\Psr7\Query;
 use InvalidArgumentException;
 use OverflowException;
 use PDO;
+use Exception;
 
 class Document
 {
@@ -23,8 +24,27 @@ class Document
 
         $this->pivoter = new Pivoter('field_name', 'content', 'id');
     }
-
     public function getCategories(string $lang): array
+    {
+        $sql = "
+        SELECT 
+            c.*, 
+            t.field_name,
+            t.content,
+            t.id AS text_id
+        FROM category_document c
+        LEFT JOIN text t
+            ON t.source_id = c.id
+            AND t.lang = :lang
+            AND t.source_table = 'category_document';
+    ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':lang' => $lang]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->pivoter->pivot($rows);
+    }
+    public function getSubCategories(string $lang): array
     {
         $sql = "
         SELECT 
@@ -51,7 +71,7 @@ class Document
         int $limit = 10,
         int $offset = 0,
         string $search = '',
-        string $category = '',
+        array $categories = [],
         string $status = '',
         string $sort = 'date_desc',
         string $lang = 'sr-Cyrl'
@@ -76,9 +96,14 @@ class Document
             $params[':search'] = '%' . $search . '%';
         }
 
-        if ($category !== '') {
-            $whereParts[] = "d.subcategory_id = :category";
-            $params[':category'] = (int) $category;
+        if (!empty($categories)) {
+            $categoryPlaceholders = [];
+            foreach ($categories as $i => $cat) {
+                $placeholder = ":category{$i}";
+                $categoryPlaceholders[] = $placeholder;
+                $params[$placeholder] = (int) $cat;
+            }
+            $whereParts[] = "s.category_id IN (" . implode(", ", $categoryPlaceholders) . ")";
         }
         if ($status !== '') {
             $whereParts[] = "d.status = :status";
@@ -145,7 +170,9 @@ SELECT
   sc_text.content AS name,
   c.color_code
 FROM
-  (SELECT id FROM document d
+  (SELECT d.id FROM document d
+    JOIN subcategory_document s ON s.id = d.subcategory_id
+
     {$whereSql}
     ORDER BY {$orderByInner}
     LIMIT {$offsetInt}, {$limitInt}
@@ -196,7 +223,8 @@ ORDER BY {$orderByOuter};
 
         // ukupno (broj dokumenata posle filtera, bez limit-a) — boljе za paginaciju
         try {
-            $countSql = "SELECT COUNT(*) FROM document d {$whereSql}";
+            $countSql = "SELECT COUNT(*) FROM document d JOIN subcategory_document s ON s.id = d.subcategory_id
+ {$whereSql}";
             $countStmt = $this->pdo->prepare($countSql);
             // Bind only parameters that are actually present in the COUNT SQL
             foreach ($params as $k => $v) {

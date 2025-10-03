@@ -5,6 +5,8 @@ require_once __DIR__ . "/../../vendor/autoload.php";
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Controllers\AuthController;
 use App\Admin\PageExporter;
+use App\Models\Page;
+use App\Controllers\UserDefinedPagesController;
 
 // Require admin authentication
 AuthController::requireAdmin();
@@ -69,15 +71,37 @@ function handleStaticPages(array $data): void
                 "pages" => array_values($dynamicPages)
             ]);
         }
-
         throw new Exception("Failed to update pages.json");
     }
 
     $processedPages = [];
 
+    // build a helper map from page id -> column name using provided pageAssignments & columns
+    $columnsMap = [];
+    if (!empty($data['columns']) && is_array($data['columns'])) {
+        foreach ($data['columns'] as $col) {
+            if (isset($col['id'])) {
+                $columnsMap[$col['id']] = $col['name'] ?? null;
+            }
+        }
+    }
+
+    $pageToColumn = [];
+    if (!empty($data['pageAssignments']) && is_array($data['pageAssignments'])) {
+        foreach ($data['pageAssignments'] as $colId => $pageIds) {
+            $colName = $columnsMap[$colId] ?? null;
+            if (!is_array($pageIds))
+                continue;
+            foreach ($pageIds as $pid) {
+                $pageToColumn[$pid] = $colName;
+            }
+        }
+    }
+
     foreach ($data['pages'] as $page) {
         error_log(json_encode($page));
-        $columnName = $page['column'] ?? null; // Default to 'static' if no column specified
+        // Determine target column from assignments (page id is used by frontend)
+        $columnName = $pageToColumn[$page['id']] ?? null; // null means top-level (no column)
         $fileName = $page['name'];
         $cleanFileName = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $fileName));
 
@@ -119,12 +143,11 @@ function handleStaticPages(array $data): void
 
         // Update page data
         $page['path'] = "pages/" . $cleanFileName . ".php";
-        if (!$columnName) {
-            $page['href'] = "/" . $cleanFileName;
-
+        // Build href: include column segment if assigned
+        if ($columnName && trim((string) $columnName) !== '') {
+            $page['href'] = "/" . trim($columnName, '/') . "/" . $cleanFileName;
         } else {
-            $page['href'] = "/" . $columnName . "/" . $cleanFileName;
-
+            $page['href'] = "/" . $cleanFileName;
         }
         $page['file'] = $cleanFileName . ".php";
 
@@ -140,11 +163,22 @@ function handleStaticPages(array $data): void
             "Nova stranica uspešno dodata" :
             "Promene uspešno sačuvane";
 
+        // Sync to database: insert/update userdefinedpages + text
+        try {
+            $syncer = new UserDefinedPagesController();
+            $result = $syncer->syncPagesFromJson($allPages);
+        } catch (\Throwable $e) {
+            error_log('Sync pages to DB failed: ' . $e->getMessage());
+            // proceed — don't fail export just because DB sync failed
+            $result = ['error' => $e->getMessage()];
+        }
+
         sendJson([
             "success" => true,
             "message" => $message,
             "pages" => $allPages,
-            "action" => $action
+            "action" => $action,
+            "db_sync" => $result
         ]);
     }
 
