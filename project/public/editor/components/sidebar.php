@@ -113,6 +113,27 @@
                     </span>
                 </a>
             </li>
+            <?php
+            $jsonData = file_get_contents(__DIR__ . '/../../structure.json');
+            $dataArray = json_decode($jsonData, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                die("Error decoding JSON: " . json_last_error_msg());
+            }
+            foreach ($dataArray as $key => $value) {
+                foreach ($value as $sectionName => $sectionContent) {
+                    ?>
+                    <li class="mb-1">
+                        <a href="/kontrolna-tabla/<?= $sectionName ?>" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'stranice')
+                            ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
+                            : 'text-gray-600 hover:text-gray-900' ?>">
+                            <i class="fas fa-folder text-primary-500 mr-3 text-lg w-6 text-center"></i>
+                            <span class="font-medium">
+                                <?= $sectionName ?>
+                            </span>
+                        </a>
+                    </li>
+                <? }
+            } ?>
         </ul>
 
     </div>

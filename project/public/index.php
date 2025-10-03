@@ -13,6 +13,7 @@ $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     # UI/page routes + ones in assetes/data/pages.json
+    $r->addRoute('GET', '/test', 'PageController@test');
     $r->addRoute('GET', '/kontrolna-tabla/galerija', 'PageController@gallery');
     $r->addRoute('GET', '/kontrolna-tabla/promocija', 'PageController@promotion');
     $r->addRoute('GET', '/kontrolna-tabla/zalbe', 'PageController@complaints');
@@ -22,6 +23,10 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET', '/kontrolna-tabla/stranice', 'PageController@StaticPageEditor');
     $r->addRoute('GET', '/kontrolna-tabla/poruke', 'PageController@chats');
     $r->addRoute('GET', '/kontrolna-tabla/o-nama', 'PageController@aboutUS');
+    $r->addRoute('GET', '/kontrolna-tabla/{slug:.+}', 'PageController@editorDynamic');
+
+    // Editor utility routes
+    $r->addRoute('GET', '/editor/getModal', 'ModalController@get');
 
     $r->addRoute('GET', '/sadmin/stil-stranica', 'PageController@adminStyle');
     $r->addRoute('GET', '/sadmin/korisnici', 'PageController@userStyle');
@@ -130,6 +135,6 @@ switch ($routeInfo[0]) {
 
         $fqcn = "\\App\\Controllers\\{$controllerName}";
         $controller = new $fqcn();
-        call_user_func_array([$controller, $action], $vars);
+        call_user_func_array([$controller, $action], array_values($vars));
         break;
 }
