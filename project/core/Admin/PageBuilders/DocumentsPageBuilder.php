@@ -20,7 +20,8 @@ class DocumentsPageBuilder extends BasePageBuilder
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        min-height: 300px; /* adjust if you want taller/shorter cards */
+        min-height: 220px;
+        max-height: 280px;
         will-change: transform;
     }
 
@@ -87,7 +88,6 @@ class DocumentsPageBuilder extends BasePageBuilder
     protected string $script = <<<'HTML'
 <script>
 function showDownloadNotification(e, name) {
-    // allow regular link behavior but show notification briefly
     const note = document.getElementById('download-notification');
     const text = document.getElementById('download-notification-text');
     if (!note || !text) return;
@@ -96,13 +96,56 @@ function showDownloadNotification(e, name) {
     setTimeout(() => note.classList.add('hidden'), 2200);
 }
 
-// ensure filter form submits to page 1 when changed (server handles page param)
-const filterForm = document.getElementById('filter-form');
-if (filterForm) {
-    filterForm.addEventListener('submit', function(e) {
-        // keep default submit behavior
-    });
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const filterForm = document.getElementById('filter-form');
+    const categoriesContainer = document.getElementById('categories-container');
+    
+    // Handle URL parameters for categories
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedCategories = urlParams.getAll('categories[]');
+    
+    // Check categories from URL
+    if (selectedCategories.length > 0) {
+        selectedCategories.forEach(catId => {
+            const checkbox = document.querySelector(`input[name="categories[]"][value="${catId}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+                const label = document.querySelector(`label[for="${checkbox.id}"]`);
+                if (label) {
+                    label.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white');
+                    label.classList.remove('bg-white', 'hover:bg-gray-50');
+                }
+            }
+        });
+    }
+    
+    if (categoriesContainer) {
+        categoriesContainer.addEventListener('change', function(e) {
+            if (e.target.type === 'checkbox') {
+                const label = document.querySelector(`label[for="${e.target.id}"]`);
+                if (label) {
+                    if (e.target.checked) {
+                        label.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white');
+                        label.classList.remove('bg-white', 'hover:bg-gray-50');
+                    } else {
+                        label.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white');
+                        label.classList.add('bg-white', 'hover:bg-gray-50');
+                    }
+                }
+            }
+        });
+    }
+
+    if (filterForm) {
+        filterForm.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            const label = document.querySelector(`label[for="${checkbox.id}"]`);
+            if (label && checkbox.checked) {
+                label.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white');
+                label.classList.remove('bg-white', 'hover:bg-gray-50');
+            }
+        });
+    }
+});
 </script>
 HTML;
 
@@ -114,31 +157,50 @@ HTML;
 
         <div class="mx-auto max-w-6xl">
             <form id="filter-form" method="GET" action="" class="bg-white rounded-2xl shadow p-6 mb-8 border border-gray-100">
-                <div class="flex flex-col lg:flex-row gap-4 items-center">
-                    <div class="relative flex-1 w-full">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i class="fa-solid fa-search text-gray-400"></i>
+                <div class="space-y-6">
+                    <div class="flex gap-4 items-center">
+                        <div class="relative flex-1">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fa-solid fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                   placeholder="Pretraži dokumenta..." class="w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl">
                         </div>
-                        <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                               placeholder="Pretraži dokumenta..." class="w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl">
+                        <select name="sort" class="px-4 py-3 border rounded-xl w-48">
+                            <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>Najnoviji prvo</option>
+                            <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>Najstariji prvo</option>
+                            <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>Po nazivu</option>
+                        </select>
+                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl whitespace-nowrap">Primeni</button>
                     </div>
 
-                    <select name="category" class="px-4 py-3 border rounded-xl">
-                        <option value="">Sve kategorije</option>
-                        <?php foreach ($DocumentCategories as $cat): ?>
-                            <option value="<?= htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8') ?>" <?= (string)($_GET['category'] ?? '') === (string)$cat['id'] ? 'selected' : '' ?>>
-                                <?= htmlspecialchars($cat['name'] ?? '', ENT_QUOTES, 'UTF-8') ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+                    <div class="w-full">
+                        <h3 class="text-sm font-semibold text-gray-700 mb-3">Kategorije</h3>
+                        <div class="flex flex-wrap gap-2" id="categories-container">
+                            <?php
+                            $selectedCategories = isset($_GET['categories']) ? (array) $_GET['categories'] : [];
+                            foreach ($DocumentCategories as $doc):
+                                $isChecked = in_array($doc['id'], $selectedCategories);
+                            ?>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" 
+                                           name="categories[]" 
+                                           value="<?= htmlspecialchars($doc['id'], ENT_QUOTES, 'UTF-8') ?>"
+                                           <?= $isChecked ? 'checked' : '' ?>
+                                           class="sr-only peer"
+                                           id="category_<?= htmlspecialchars($doc['id'], ENT_QUOTES, 'UTF-8') ?>">
+                                    <label for="category_<?= htmlspecialchars($doc['id'], ENT_QUOTES, 'UTF-8') ?>" 
+                                           class="px-4 py-2 rounded-full border cursor-pointer <?= $isChecked ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white' : 'bg-white hover:bg-gray-50' ?> 
+                                           transition-all duration-200 text-sm font-medium select-none">
+                                        <?= htmlspecialchars($doc['name'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                                    </label>
+                                </label>
+                            <?php endforeach; ?>
+                        </div>
+                        </div>
+                    </div>
 
-                    <select name="sort" class="px-4 py-3 border rounded-xl">
-                        <option value="date_desc" <?= ($_GET['sort'] ?? '') === 'date_desc' ? 'selected' : '' ?>>Najnoviji prvo</option>
-                        <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>Najstariji prvo</option>
-                        <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>Po nazivu</option>
-                    </select>
-
-                    <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl">Primeni</button>
+                    </div>
                 </div>
             </form>
 
@@ -148,7 +210,7 @@ HTML;
             </div>
 
             <?php if (count($documents) > 0): ?>
-                <div id="documents-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div id="documents-grid" class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <?php foreach ($documents as $document):
                         $cfg = getFileConfig($document['extension'] ?? '');
 
@@ -254,7 +316,7 @@ use App\Controllers\AuthController;
 
 // defaults (safe)
 $search = $_GET['search'] ?? '';
-$category = $_GET['category'] ?? '';
+$categories = isset($_GET['categories']) ? (array) $_GET['categories'] : [];
 $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
@@ -265,15 +327,15 @@ $offset = ($page - 1) * $limit;
 
 $documentModel = new Document();
 
-// fetch documents with filters (Document::list should accept named params or fallback)
+// fetch documents with filters using array of categories
 [$documents, $totalCount] = $documentModel->list(
     search: $search,
-    category: $category,
+    categories: $categories,
     status: $status,
     sort: $sort,
     limit: $limit,
     offset: $offset,
-    lang:$locale
+    lang: $locale
 );
 
 $totalPages = (int) ceil(max(1, $totalCount) / $limit);

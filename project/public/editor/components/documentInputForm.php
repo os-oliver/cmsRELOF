@@ -27,7 +27,7 @@
                         <span class="text-gray-600 group-hover:text-blue-600 text-sm">
                             <?= __("documentInputForm.click_or_drag") ?>
                         </span>
-                        
+
                         <span class="text-xs text-gray-400 mt-1">
                             <?= __("documentInputForm.allowed") ?>
                         </span>
@@ -82,9 +82,10 @@
                         <option value="">
                             <?= __("documentInputForm.select_category") ?>
                         </option>
-                        <?php foreach ($DocumentCategories as $category): ?>
+                        <?php foreach ($DocumentSubCategories as $category): ?>
                             <option value="<?= htmlspecialchars($category['id']) ?>">
-                                <?= htmlspecialchars($category['name']) ?></option>
+                                <?= htmlspecialchars($category['name']) ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
