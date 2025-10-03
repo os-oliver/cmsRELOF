@@ -1,0 +1,73 @@
+[
+  {
+    "semanarski": {
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": "Article Title",
+          "required": false
+        },
+
+        {
+          "name": "body",
+          "type": "textarea",
+          "label": "Article Body",
+          "required": true
+        },
+        {
+          "name": "author",
+          "type": "text",
+          "label": "Author Name",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "select",
+          "label": "Category",
+          "required": true,
+          "options": [
+            { "value": "1", "label": "Technology" },
+            { "value": "2", "label": "Business" },
+            { "value": "3", "label": "Sports" }
+          ]
+        },
+        {
+          "name": "image",
+          "type": "file",
+          "label": "Featured Image"
+        }
+      ]
+    },
+    "predstave": {
+      "title": "predstave",
+      "fields": [
+        {
+          "name": "slikaObjekta",
+          "type": "file",
+          "label": "izaberi sliku predstave",
+          "required": true
+        },
+        {
+          "name": "nazivObjekta",
+          "type": "text",
+          "label": "Naziv predstave",
+          "required": true,
+          "readonly": true
+        },
+        {
+          "name": "glumaci",
+          "type": "text",
+          "label": "Unesite glumce",
+          "required": true,
+          "readonly": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": "Unesite kratak opis predstave"
+        }
+      ]
+    }
+  }
+]
