@@ -27,6 +27,14 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
 
     // Editor utility routes
     $r->addRoute('GET', '/editor/getModal', 'ModalController@get');
+    // Endpoint for dynamic editor submissions (AJAX form post)
+    $r->addRoute('POST', '/editor/insert', 'ContentController@createFromRequest');
+    // Endpoint to list generic elements for the editor (search + pagination)
+    $r->addRoute('GET', '/editor/list', 'ContentController@listFromRequest');
+    // Get a single generic element (for editing)
+    $r->addRoute('GET', '/editor/item', 'ContentController@getItemFromRequest');
+    // Delete a generic element
+    $r->addRoute('POST', '/editor/delete', 'ContentController@deleteFromRequest');
 
     $r->addRoute('GET', '/sadmin/stil-stranica', 'PageController@adminStyle');
     $r->addRoute('GET', '/sadmin/korisnici', 'PageController@userStyle');

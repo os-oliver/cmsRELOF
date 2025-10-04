@@ -57,6 +57,9 @@ class ModalGenerator
                         <!-- Hidden Fields -->
                         <input type="hidden" name="method" value="<?= htmlspecialchars($method) ?>" />
                         <input type="hidden" name="endpoint" value="<?= htmlspecialchars($endpoint) ?>" />
+                        <?php if (!empty($this->config['item_id'])): ?>
+                            <input type="hidden" name="id" value="<?= (int) $this->config['item_id'] ?>" />
+                        <?php endif; ?>
 
                         <?= $this->renderFieldsWithSmartLayout($fields) ?>
                     </form>
@@ -265,7 +268,6 @@ class ModalGenerator
         $label = $field['label'] ?? ucfirst(str_replace('_', ' ', $name));
         $required = $field['required'] ?? false;
         $options = $field['options'] ?? [];
-        $readonly = $field['readonly'] ?? false;
         $value = $field['value'] ?? '';
 
         $rows = $this->getRows($name);
@@ -275,8 +277,7 @@ class ModalGenerator
 
         $requiredAttr = $required ? 'required' : '';
         $requiredMark = $required ? '<span class="text-red-500 ml-1">*</span>' : '';
-        $readonlyAttr = $readonly ? 'readonly' : '';
-        $readonlyClass = $readonly ? 'bg-gray-50 cursor-not-allowed' : '';
+
 
         ob_start();
 
@@ -298,8 +299,22 @@ class ModalGenerator
                             <?= htmlspecialchars($this->translations['click_or_drag']) ?>
                         </span>
                         <span class="text-xs text-gray-500">Maximum file size: 10MB</span>
+                        <?php $fileDataReq = ($required && empty($value)) ? 'data-required="1"' : ''; ?>
                         <input type="file" id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>"
-                            accept="<?= htmlspecialchars($accept) ?>" class="hidden" <?= $requiredAttr ?> />
+                            accept="<?= htmlspecialchars($accept) ?>" class="hidden" <?= $fileDataReq ?> />
+                        <?php if (!empty($value) && is_string($value)): ?>
+                            <div class="mt-3 flex items-center gap-4">
+                                <?php if (preg_match('#^/uploads/.+\.(png|jpe?g|gif|webp)$#i', $value)): ?>
+                                    <img src="<?= htmlspecialchars($value) ?>" alt=""
+                                        style="max-width:120px;max-height:80px;border-radius:6px;" />
+                                <?php else: ?>
+                                    <a href="<?= htmlspecialchars($value) ?>" target="_blank" class="text-blue-600 hover:underline">Existing
+                                        file</a>
+                                <?php endif; ?>
+                                <label class="text-sm text-gray-600"><input type="checkbox" name="remove_<?= htmlspecialchars($name) ?>"
+                                        value="1" /> Remove</label>
+                            </div>
+                        <?php endif; ?>
                     </label>
                 </div>
                 <?php
@@ -315,8 +330,8 @@ class ModalGenerator
                     </label>
                     <div class="relative">
                         <textarea id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>" rows="<?= $rows ?>"
-                            <?= $requiredAttr ?>                 <?= $readonlyAttr ?>
-                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 <?= $readonlyClass ?>"
+                            <?= $requiredAttr ?>
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 "
                             placeholder="<?= htmlspecialchars($placeholder) ?>"><?= htmlspecialchars($value) ?></textarea>
                     </div>
                 </div>
@@ -359,8 +374,7 @@ class ModalGenerator
                     <div class="relative">
                         <input type="<?= htmlspecialchars($type) ?>" id="<?= htmlspecialchars($name) ?>"
                             name="<?= htmlspecialchars($name) ?>" value="<?= htmlspecialchars($value) ?>" <?= $requiredAttr ?>
-                            <?= $readonlyAttr ?>
-                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 <?= $readonlyClass ?>"
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                             placeholder="<?= htmlspecialchars($placeholder) ?>" />
                     </div>
                 </div>

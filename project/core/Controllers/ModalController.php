@@ -45,6 +45,35 @@ class ModalController
         }
 
         try {
+            // If id provided, fetch item data and prefill fields values
+            $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+            if ($id > 0) {
+                // lazy-load ContentController to avoid circular includes
+                $cc = new \App\Controllers\ContentController();
+                $itemResp = $cc->fetchItem($id);
+                if (!empty($itemResp['success']) && !empty($itemResp['item'])) {
+                    $item = $itemResp['item'];
+                    $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+                    // map values back into config fields
+                    foreach ($config['fields'] as &$f) {
+                        $name = $f['name'] ?? null;
+                        $val = '';
+                        if ($name && isset($item['fields'][$name])) {
+                            if (isset($item['fields'][$name][$locale]) && $item['fields'][$name][$locale] !== '') {
+                                $val = $item['fields'][$name][$locale];
+                            } else {
+                                // pick first available
+                                $first = array_values($item['fields'][$name]);
+                                $val = $first[0] ?? '';
+                            }
+                        }
+                        $f['value'] = $val;
+                    }
+                    // also pass id so the modal form can include it
+                    $config['item_id'] = $id;
+                }
+            }
+
             $modal = new ModalGenerator($config, 'dynamicModal_' . preg_replace('/[^a-z0-9_]/i', '_', $slug));
             header('Content-Type: text/html; charset=utf-8');
             echo $modal->render();

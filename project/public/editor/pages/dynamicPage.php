@@ -12,6 +12,19 @@ AuthController::requireEditor();
 
 [$name, $surname, $role] = AuthController::getUserInfo();
 
+// Handle POST submission
+$submitResult = null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $controller = new \App\Controllers\ContentController();
+        $ok = $controller->insert($_POST, $_FILES);
+        $submitResult = $ok ? ['success' => true, 'message' => 'Saved successfully'] : ['success' => false, 'message' => 'Save failed'];
+    } catch (\Throwable $t) {
+        error_log('Submit error: ' . $t->getMessage());
+        $submitResult = ['success' => false, 'message' => 'Save failed: ' . $t->getMessage()];
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -161,13 +174,11 @@ AuthController::requireEditor();
                     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                         <div>
                             <h1>
-                                <?
+                                <?php
                                 $uri = $_SERVER['REQUEST_URI']; // e.g. "/kontrolna-tabla/vesti"
-                                $parts = explode('/', trim($uri, '/')); // ["kontrolna-tabla", "vesti"]
-                                
+                                $parts = explode('/', trim($uri, '/'));
                                 $slug = $parts[1] ?? null; // "vesti"
-                                echo $slug;
-
+                                echo htmlspecialchars($slug ?? '', ENT_QUOTES, 'UTF-8');
                                 ?>
                             </h1>
                         </div>
@@ -181,13 +192,131 @@ AuthController::requireEditor();
                     </div>
 
 
+                    <div class="mx-auto max-w-4xl p-6">
+                        <?php
+                        // Render dynamic form based on structure.json for this slug
+                        $structurePath = __DIR__ . '/../../structure.json';
+                        $config = null;
+                        if (is_file($structurePath)) {
+                            $json = file_get_contents($structurePath);
+                            $parsed = json_decode($json, true);
+                            if (is_array($parsed) && count($parsed) > 0) {
+                                $root = $parsed[0];
+                                if ($slug && isset($root[$slug])) {
+                                    $config = $root[$slug];
+                                }
+                            }
+                        }
+
+                        if ($submitResult) {
+                            echo '<div class="p-4 rounded ' . ($submitResult['success'] ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800') . '">';
+                            echo htmlspecialchars($submitResult['message'], ENT_QUOTES, 'UTF-8');
+                            echo '</div>';
+                        }
+
+                        ?>
+
+                        <?php
+                        // If we have a slug, fetch existing items and render a table
+                        try {
+                            $itemsList = ['success' => false, 'items' => []];
+                            if (!empty($slug)) {
+                                $controller = new \App\Controllers\ContentController();
+                                // fetch first page, 50 items
+                                $itemsList = $controller->fetchListData($slug, '', 1, 50);
+                            }
+
+                            if (!empty($itemsList['success']) && !empty($itemsList['items'])) {
+                                $items = $itemsList['items'];
+
+                                // Determine column order: prefer structure.json field order if available
+                                $columns = [];
+                                if (!empty($config) && !empty($config['fields']) && is_array($config['fields'])) {
+                                    foreach ($config['fields'] as $f) {
+                                        if (!empty($f['name']))
+                                            $columns[] = $f['name'];
+                                    }
+                                }
+                                // fallback: infer from first item
+                                if (empty($columns)) {
+                                    $first = $items[0] ?? null;
+                                    if ($first && !empty($first['fields'])) {
+                                        $columns = array_keys($first['fields']);
+                                    }
+                                }
+
+                                // render table
+                                echo '<div class="mt-6 overflow-auto">';
+                                echo '<table class="min-w-full divide-y divide-gray-200">';
+                                echo '<thead class="bg-gray-50"><tr>';
+                                echo '<th class="px-4 py-2 text-left text-sm font-medium text-gray-700">ID</th>';
+                                foreach ($columns as $col) {
+                                    echo '<th class="px-4 py-2 text-left text-sm font-medium text-gray-700">' . htmlspecialchars($col, ENT_QUOTES, 'UTF-8') . '</th>';
+                                }
+                                echo '<th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Actions</th>';
+                                echo '</tr></thead>';
+                                echo '<tbody class="bg-white divide-y divide-gray-100">';
+
+                                // current locale from session earlier in the file
+                                $currentLocale = $locale ?? ($_SESSION['locale'] ?? 'sr-Cyrl');
+
+                                foreach ($items as $it) {
+                                    $id = (int) ($it['id'] ?? 0);
+                                    $fields = $it['fields'] ?? [];
+                                    echo '<tr class="hover:bg-gray-50">';
+                                    echo '<td class="px-4 py-2 text-sm text-gray-700">' . $id . '</td>';
+                                    foreach ($columns as $col) {
+                                        $val = '';
+                                        if (isset($fields[$col])) {
+                                            // prefer exact locale
+                                            if (isset($fields[$col][$currentLocale]) && $fields[$col][$currentLocale] !== '') {
+                                                $val = $fields[$col][$currentLocale];
+                                            } else {
+                                                // fallback to any available language (first)
+                                                $firstLang = array_values($fields[$col]);
+                                                $val = $firstLang[0] ?? '';
+                                            }
+                                        }
+                                        // if content looks like an image path, render thumbnail; otherwise escape and show placeholder when empty
+                                        $display = htmlspecialchars((string) $val, ENT_QUOTES, 'UTF-8');
+                                        if (is_string($val) && preg_match('#^/uploads/.+\.(png|jpe?g|gif|webp)$#i', $val)) {
+                                            $imgUrl = htmlspecialchars($val, ENT_QUOTES, 'UTF-8');
+                                            $display = '<img src="' . $imgUrl . '" style="max-width:120px;max-height:80px;border-radius:6px;" alt=""/>';
+                                        } elseif ($display === '') {
+                                            $display = '<span class="text-gray-400 italic">(empty)</span>';
+                                        }
+                                        echo '<td class="px-4 py-2 text-sm text-gray-700">' . $display . '</td>';
+                                    }
+                                    // actions (simple view/edit links — endpoints may be implemented elsewhere)
+                                    $viewUrl = '/editor/view?type=' . urlencode($slug) . '&id=' . $id;
+                                    $editUrl = '/editor/edit?type=' . urlencode($slug) . '&id=' . $id;
+                                    echo '<td class="px-4 py-2 text-sm text-gray-700">';
+                                    // Edit — open modal from /editor/getModal?slug=...&id=...
+                                    echo '<a href="#" data-id="' . $id . '" class="edit-item text-blue-600 hover:underline mr-3">Edit</a>';
+                                    // Delete — call API to remove
+                                    echo '<a href="#" data-id="' . $id . '" class="delete-item text-red-600 hover:underline">Delete</a>';
+                                    echo '</td>';
+                                    echo '</tr>';
+                                }
+
+                                echo '</tbody></table></div>';
+                            } else {
+                                // no items
+                                echo '<div class="mt-6 text-sm text-gray-600">No items found for this type.</div>';
+                            }
+                        } catch (\Throwable $e) {
+                            error_log('List render error: ' . $e->getMessage());
+                            echo '<div class="mt-4 p-3 rounded bg-red-100 text-red-800">Could not load items.</div>';
+                        }
+                        ?>
 
 
 
-                </div>
+                    </div>
             </main>
         </div>
     </div>
+
 
     <script src="/assets/js/dashboard/dashboard.js"></script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
@@ -215,22 +344,135 @@ AuthController::requireEditor();
                         if (e.target === container) container.remove();
                     });
 
-                    // intercept form submit for now (you can implement AJAX save)
+                    // intercept form submit and send via fetch to our endpoint
                     const form = container.querySelector('form');
                     if (form) {
-                        form.addEventListener('submit', (e) => {
+                        // add image preview support for file inputs
+                        form.querySelectorAll('input[type=file]').forEach(inp => {
+                            // make the visible label toggle the hidden input
+                            const label = inp.closest('label');
+                            if (label) {
+                                label.addEventListener('click', (ev) => {
+                                    // prevent the label from removing modal if clicked
+                                    ev.stopPropagation();
+                                    inp.click();
+                                });
+                            }
+
+                            inp.addEventListener('change', (ev) => {
+                                const file = ev.target.files && ev.target.files[0];
+                                // create or update preview
+                                let preview = container.querySelector(`#preview-${inp.name}`);
+                                if (!preview) {
+                                    preview = document.createElement('div');
+                                    preview.id = `preview-${inp.name}`;
+                                    preview.className = 'mt-2';
+                                    inp.parentNode.appendChild(preview);
+                                }
+                                preview.innerHTML = '';
+                                if (file && file.type.startsWith('image/')) {
+                                    const img = document.createElement('img');
+                                    img.style.maxWidth = '200px';
+                                    img.style.maxHeight = '200px';
+                                    img.src = URL.createObjectURL(file);
+                                    preview.appendChild(img);
+                                } else if (file) {
+                                    const p = document.createElement('div');
+                                    p.textContent = `${file.name} (${Math.round(file.size / 1024)} KB)`;
+                                    preview.appendChild(p);
+                                }
+                            });
+                        });
+
+                        form.addEventListener('submit', async (e) => {
                             e.preventDefault();
-                            // simple feedback then close
                             const submitBtn = form.querySelector('button[type=submit]');
                             if (submitBtn) {
+                                if (submitBtn.disabled) return; // avoid double submit
                                 submitBtn.disabled = true;
                                 submitBtn.classList.add('opacity-70');
                             }
-                            // TODO: implement actual AJAX post to endpoint defined in hidden input 'endpoint'
-                            setTimeout(() => container.remove(), 600);
+                            // determine and normalize type/slug to send
+                            const computeSlug = () => {
+                                // prefer server-rendered slug if available
+                                let s = typeof slug !== 'undefined' ? String(slug) : '';
+                                if (!s) {
+                                    const parts = window.location.pathname.split('/').filter(Boolean);
+                                    // try second segment (/kontrolna-tabla/slug)
+                                    s = parts[1] || parts[0] || '';
+                                }
+                                // normalize: remove trailing hyphens and whitespace
+                                s = s.replace(/[-_\s]+$/g, '');
+                                s = s.trim();
+                                return s;
+                            };
+
+                            const fd = new FormData(form);
+                            const slugToSend = computeSlug();
+                            if (slugToSend) {
+                                // ensure FormData has the type field required by backend
+                                if (!fd.has('type')) fd.append('type', slugToSend);
+                            }
+                            // Client-side validation for hidden required file inputs
+                            const fileReqs = Array.from(form.querySelectorAll('input[type=file][data-required]'));
+                            let fileMissing = null;
+                            for (const f of fileReqs) {
+                                const name = f.name;
+                                const removeCheckbox = form.querySelector(`[name=remove_${name}]`);
+                                const isRemoved = removeCheckbox && removeCheckbox.checked;
+                                const hasFile = f.files && f.files.length > 0;
+                                if (!hasFile && !isRemoved) {
+                                    fileMissing = name;
+                                    break;
+                                }
+                            }
+                            if (fileMissing) {
+                                const msg = document.createElement('div');
+                                msg.className = 'p-3 rounded bg-red-100 text-red-800';
+                                msg.textContent = 'Please provide required file: ' + fileMissing + ' or check Remove.';
+                                form.prepend(msg);
+                                if (submitBtn) submitBtn.disabled = false;
+                                return;
+                            }
+                            try {
+                                const res = await fetch('/editor/insert', {
+                                    method: 'POST',
+                                    body: fd,
+                                    credentials: 'same-origin',
+                                });
+                                const json = await res.json();
+                                if (res.ok && json.success) {
+                                    // show success feedback
+                                    const msg = document.createElement('div');
+                                    msg.className = 'p-3 rounded bg-green-100 text-green-800';
+                                    msg.textContent = 'Saved successfully';
+                                    form.prepend(msg);
+                                    setTimeout(() => {
+                                        // close modal
+                                        container.remove();
+                                    }, 800);
+                                } else {
+
+                                    const err = (json && json.error) ? json.error : 'Save failed';
+                                    const msg = document.createElement('div');
+                                    msg.className = 'p-3 rounded bg-red-100 text-red-800';
+                                    msg.textContent = err;
+                                    form.prepend(msg);
+                                    if (submitBtn) submitBtn.disabled = false;
+                                }
+                            } catch (err) {
+                                console.error(err);
+                                const msg = document.createElement('div');
+                                msg.className = 'p-3 rounded bg-red-100 text-red-800';
+                                msg.textContent = 'Network error while saving';
+                                form.prepend(msg);
+                                if (submitBtn) submitBtn.disabled = false;
+                            }
                         });
                     }
                 }
+                // expose for dynamically opened modals (edit flow)
+                window.attachModalListeners = attachModalListeners;
 
                 btn.addEventListener('click', async (e) => {
                     try {
@@ -250,6 +492,65 @@ AuthController::requireEditor();
                     }
                 });
             })();
+    </script>
+    <script>
+        // Edit/delete handlers for table rows
+        (function () {
+            document.addEventListener('click', async function (e) {
+                const el = e.target;
+                // Edit
+                if (el.matches('.edit-item')) {
+                    e.preventDefault();
+                    const id = el.getAttribute('data-id');
+                    const slug = '<?= htmlspecialchars($slug, ENT_QUOTES, 'UTF-8') ?>';
+                    const slugEsc = encodeURIComponent(slug || '');
+                    try {
+                        const res = await fetch(`/editor/getModal?slug=${slugEsc}&id=${encodeURIComponent(id)}`, { credentials: 'same-origin' });
+                        if (!res.ok) throw new Error('Failed to load modal');
+                        const html = await res.text();
+                        const wrapper = document.createElement('div');
+                        wrapper.innerHTML = html;
+                        const modalEl = wrapper.firstElementChild;
+                        if (!modalEl) return;
+                        document.body.appendChild(modalEl);
+                        // attach the same modal listeners used earlier
+                        // reuse attachModalListeners from above by searching for it
+                        if (typeof attachModalListeners === 'function') {
+                            attachModalListeners(modalEl);
+                        } else {
+                            // fallback: close button support
+                            modalEl.querySelectorAll('.cancel-modal').forEach(el => el.addEventListener('click', () => modalEl.remove()));
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert('Could not load edit modal');
+                    }
+                }
+
+                // Delete
+                if (el.matches('.delete-item')) {
+                    e.preventDefault();
+                    const id = el.getAttribute('data-id');
+                    if (!confirm('Delete this item?')) return;
+                    try {
+                        const form = new FormData();
+                        form.append('id', id);
+                        const res = await fetch('/editor/delete', { method: 'POST', body: form, credentials: 'same-origin' });
+                        const json = await res.json();
+                        if (res.ok && json.success) {
+                            // remove row from DOM
+                            const row = el.closest('tr');
+                            if (row) row.remove();
+                        } else {
+                            alert(json.message || 'Delete failed');
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert('Network error while deleting');
+                    }
+                }
+            });
+        })();
     </script>
 </body>
 

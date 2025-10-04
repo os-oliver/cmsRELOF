@@ -39,7 +39,14 @@ class FileUploader
      */
     public function upload(array $file): ?string
     {
-        error_log("file:" . $file);
+        // Safely log basic file info (avoid concatenating the array which triggers a notice)
+        $info = [
+            'name' => $file['name'] ?? null,
+            'type' => $file['type'] ?? null,
+            'size' => $file['size'] ?? null,
+            'error' => $file['error'] ?? null,
+        ];
+        error_log('file: ' . json_encode($info));
         // no file uploaded
         if ($file['error'] === UPLOAD_ERR_NO_FILE) {
             return null;
