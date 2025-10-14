@@ -5,6 +5,9 @@ use App\Controllers\AuthController;
 // Require editor authentication
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
+use App\Utils\LocaleManager;
+$locale = LocaleManager::get();
+
 ?>
 
 <!DOCTYPE html>

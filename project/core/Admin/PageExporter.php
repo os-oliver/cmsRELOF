@@ -2,7 +2,10 @@
 
 namespace App\Admin;
 
+use App\Admin\PageBuilders\DynamicPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
+use App\Admin\PageBuilders\NaucniKlubPageBuilder;
+use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Controllers\AuthController;
 use App\Models\Text;
 use App\Models\Event;
@@ -46,6 +49,63 @@ class PageExporter
                 mkdir($dir, 0755, true);
             }
         }
+    }
+
+    /**
+     * Recursively delete all files and directories inside the given directory
+     * but do not remove the top-level directory itself. Safe to call even if
+     * the directory does not exist.
+     */
+    private function clearDirectory(string $dir): void
+    {
+        if (!is_dir($dir)) {
+            return;
+        }
+
+        $items = new \FilesystemIterator($dir);
+        foreach ($items as $item) {
+            try {
+                if ($item->isDir() && !$item->isLink()) {
+                    // Recursively remove directory
+                    $this->rrmdir($item->getPathname());
+                } else {
+                    @unlink($item->getPathname());
+                }
+            } catch (\Throwable $e) {
+                // Log and continue
+                error_log('Failed to remove: ' . $item->getPathname() . ' - ' . $e->getMessage());
+            }
+        }
+    }
+
+    /**
+     * Recursively remove a directory and its contents.
+     */
+    private function rrmdir(string $dir): void
+    {
+        if (!is_dir($dir)) {
+            return;
+        }
+        $files = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::CHILD_FIRST
+        );
+
+        foreach ($files as $fileinfo) {
+            $path = $fileinfo->getPathname();
+            try {
+                if ($fileinfo->isDir()) {
+                    @rmdir($path);
+                } else {
+                    @unlink($path);
+                }
+            } catch (\Throwable $e) {
+                error_log('rrmdir failed for ' . $path . ': ' . $e->getMessage());
+            }
+        }
+
+        // Finally remove the now-empty directory
+        @rmdir($dir);
     }
 
 
@@ -403,48 +463,47 @@ class PageExporter
 
     private function generateIndexHeader(): string
     {
-        $header = '<?php
-session_start();
-use App\Models\Gallery;
-use App\Models\PageLoader;
+        $header = <<<'PHP'
+    <?php
+    session_start();
+    use App\Models\Gallery;
+    use App\Models\PageLoader;
+    use App\Utils\HashMapTransformer;
+    if (isset($_GET['locale'])) {
+        $_SESSION['locale'] = $_GET['locale'];
+    }
+    $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+    use App\Models\Event;
+    use App\Models\Text;
+    use App\Models\Content;
 
-if (isset($_GET[\'locale\'])) {
-    $_SESSION[\'locale\'] = $_GET[\'locale\'];
-}
-$locale = $_SESSION[\'locale\'] ?? \'sr-Cyrl\';
-use App\Models\Event;
-use App\Models\Text;
+    // Load dynamic texts
+    $textModel = new Text();
+    $dynamicText = $textModel->getDynamicText($locale);
+    $events_raw = (new Content())->fetchListData('dogadjaji', '', 0, 3, null, $locale)['items'];
+    $events = HashMapTransformer::transform($events_raw,$locale);
+    $groupedPages = PageLoader::getGroupedStaticPages();
 
-// Load dynamic texts
-$textModel = new Text();
-$dynamicText = $textModel->getDynamicText($locale);
-
-[$events, $totalCount] = (new Event())->all(
-    limit: 3,
-    offset: 0,
-    lang: $locale
-);
-$groupedPages = PageLoader::getGroupedStaticPages();
-
-[$images, $totalEvents] = (new Gallery)->list();
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
+    [$images, $totalEvents] = (new Gallery)->list();
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exported Page</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>';
+    <style>
+    PHP;
 
         if (!empty($this->data['css'])) {
             $header .= "\n" . htmlspecialchars($this->data['css'], ENT_QUOTES) . "\n";
         }
 
         $header .= '</style>
-</head>
-<div class="min-h-screen flex flex-col">';
+        </head>
+        <div class="min-h-screen flex flex-col">';
 
         return $header;
     }
@@ -474,7 +533,6 @@ $groupedPages = PageLoader::getGroupedStaticPages();
         }
 
         $content .= "\n</div>\n</body>\n</html>";
-        error_log("Base CSS: " . $content);
 
         return $content;
     }
@@ -490,9 +548,15 @@ $groupedPages = PageLoader::getGroupedStaticPages();
             case 'dokumenti':
                 return new DocumentsPageBuilder($name, $this->data);
             case 'dogadjaji':
-                return new EventsPageBuilder($name, $this->data);
+                return new EventsPageBuilder($name);
             case 'misija':
                 return new MissionPageBuilder($name, $this->data);
+            case 'predstave':
+                return new DynamicPageBuilder('predstave');
+            case 'vesti':
+                return new DynamicPageBuilder('Vesti');
+            case 'naucni-klub':
+                return new NaucniKlubPageBuilder('NaucniKlub');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -509,9 +573,15 @@ $groupedPages = PageLoader::getGroupedStaticPages();
             return 'dokumenti';
         } elseif (strpos($name, 'dogadjaji') !== false) {
             return 'dogadjaji';
+        } elseif (strpos($name, 'predstave') !== false) {
+            return 'predstave';
+        } elseif (strpos($name, 'vesti') !== false) {
+            return 'vesti';
 
         } elseif (strpos($name, 'misija') !== false) {
             return 'misija';
+        } elseif (strpos($name, 'naucni-klub') !== false) {
+            return 'naucni-klub';
         }
 
         return 'basic';
@@ -599,7 +669,6 @@ $groupedPages = PageLoader::getGroupedStaticPages();
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
-        $builder->setHtml($wrappedContent);
         $baseCss = <<<CSS
             .dropdown:hover .dropdown-menu {
                 display: block;
@@ -618,11 +687,11 @@ $groupedPages = PageLoader::getGroupedStaticPages();
             CSS;
 
         $datacss = $this->data['css'] ?? '';
-        error_log("Base CSS: $baseCss");
         $builder->setCss($baseCss . "\n" . $datacss);
 
         $filePath = $directory . $pageSlug . '.php';
-
+        $builder->setHtml($wrappedContent);
+        error_log("Final HTML content: " . $builder->buildPage());
         // Save processed content
         $success = file_put_contents($filePath, $builder->buildPage());
 
@@ -641,6 +710,13 @@ $groupedPages = PageLoader::getGroupedStaticPages();
             http_response_code(400);
             exit("Error: Missing components or tree\n");
         }
+
+        // Clear previously exported pages and components to ensure a clean export
+        $this->clearDirectory($this->compDir);
+        $this->clearDirectory($this->pagesDir);
+
+        // Ensure directories exist after clearing
+        $this->ensureDirectories();
 
         $this->processDynamicTexts();
         $this->saveComponents();

@@ -515,6 +515,7 @@
                 if (!isset($languages[$locale])) {
                     $locale = 'sr';
                 }
+
                 ?>
                 <div class="dropdown nonPage relative group ">
                     <button
@@ -770,7 +771,6 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
                     Predstojeći Događaji
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-ochre to-terracotta"></span>
                 </h2>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto mt-4">
                     Istražite našu bogatu ponudu kulturnih događaja koji će vas inspirisati i zabaviti

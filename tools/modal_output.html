@@ -1,0 +1,278 @@
+        <div id="dynamicModal_Vesti"
+            class="z-50 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm p-4"
+            role="dialog" aria-modal="true" aria-labelledby="modalTitle_dynamicModal_Vesti">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl mx-auto max-h-[95vh] overflow-hidden flex flex-col">
+                <!-- Header -->
+                <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-file-alt text-white text-lg"></i>
+                        </div>
+                        <h2 id="modalTitle_dynamicModal_Vesti" class="text-xl sm:text-2xl font-bold text-white">
+                            Form                        </h2>
+                    </div>
+                    <button type="button"
+                        class="cancel-modal text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-2 transition-all duration-200">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Form Content -->
+                <div class="p-6 overflow-y-auto flex-1">
+                    <form id="dynamicModal_VestiForm" enctype="multipart/form-data" class="space-y-5">
+                        <!-- Hidden Fields -->
+                        <input type="hidden" name="method" value="POST" />
+                        <input type="hidden" name="endpoint" value="" />
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">                <div class="w-full">
+                    <label for="naslov"
+                        class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                        <i class="fas fa-edit text-blue-600"></i>
+                        Наслов                 <span class="text-red-500 ml-1">*</span>                    </label>
+                    <div class="relative">
+                        <input type="text" id="naslov"
+                            name="naslov" value="" required                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter Наслов" />
+                    </div>
+                </div>
+                                <div class="w-full">
+                    <label for="autor"
+                        class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                        <i class="fas fa-edit text-blue-600"></i>
+                        Аутор                                     </label>
+                    <div class="relative">
+                        <input type="text" id="autor"
+                            name="autor" value=""                             class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter Аутор" />
+                    </div>
+                </div>
+                </div><div class="grid grid-cols-1 md:grid-cols-2 gap-4">                <div class="w-full">
+                    <label for="fdfds"
+                        class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                        <i class="fas fa-hashtag text-blue-600"></i>
+                        fdfds                                     </label>
+                    <div class="relative">
+                        <input type="number" id="fdfds"
+                            name="fdfds" value=""                             class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="0" />
+                    </div>
+                </div>
+                                <div class="w-full">
+                    <label for="brojPregleda"
+                        class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                        <i class="fas fa-edit text-blue-600"></i>
+                        Број прегледа                 <span class="text-red-500 ml-1">*</span>                    </label>
+                    <div class="relative">
+                        <input type="text" id="brojPregleda"
+                            name="brojPregleda" value="" required                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter Број прегледа" />
+                    </div>
+                </div>
+                </div><div class="grid grid-cols-1 md:grid-cols-2 gap-4">                <div class="w-full">
+                    <label for="datum"
+                        class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                        <i class="fas fa-calendar text-blue-600"></i>
+                        Датум                                     </label>
+                    <div class="relative">
+                        <input type="date" id="datum"
+                            name="datum" value=""                             class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="YYYY-MM-DD" />
+                    </div>
+                </div>
+                </div><div class="w-full">                <div class="w-full">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                        <i class="fas fa-cloud-upload-alt text-blue-600"></i>
+                        Насловна слика                                     </label>
+
+                    <label for="slika"
+                        class="group flex flex-col items-center justify-center w-full min-h-[140px] px-6 py-6 transition-all duration-200 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-blue-500 hover:bg-blue-50 text-center">
+                        <div
+                            class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3 group-hover:bg-blue-200 transition-colors">
+                            <i
+                                class="fas fa-images text-3xl text-blue-600 group-hover:text-blue-700 transition-colors"></i>
+                        </div>
+                        <span class="text-gray-700 font-medium group-hover:text-blue-700 text-sm mb-1">
+                            Кликните или превуците фајл овде                        </span>
+                        <span class="text-xs text-gray-500 mb-1">
+                            Multiple files allowed • Maximum: 10MB per file
+                        </span>
+                                                <input type="file" id="slika" name="slika[]"
+                            accept="*/*" class="hidden file-input"                  multiple />
+                    </label>
+
+                    <!-- PREVIEW CONTAINER FOR NEWLY SELECTED FILES -->
+                    <div id="dynamicModal_Vesti_preview_slika" class="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    </div>
+
+                                    </div>
+                </div>                    </form>
+                </div>
+
+                <!-- Footer -->
+                <div class="bg-gray-50 px-6 py-4 flex flex-col sm:flex-row sm:justify-end gap-3 border-t border-gray-200">
+                    <button type="button"
+                        class="cancel-modal w-full sm:w-auto px-6 py-2.5 border-2 border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-100 hover:border-gray-400 transition-all duration-200 flex items-center justify-center gap-2">
+                        <i class="fas fa-times"></i>
+                        <span>Откажи</span>
+                    </button>
+                    <button type="submit" form="dynamicModal_VestiForm"
+                        class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                        <i class="fas fa-save"></i>
+                        <span>Сачувај</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            (function () {
+                const modalId = "dynamicModal_Vesti";
+                const modal = document.getElementById(modalId);
+                if (!modal) return;
+
+                function humanFileSize(size) {
+                    if (size === 0) return '0 B';
+                    const i = Math.floor(Math.log(size) / Math.log(1024));
+                    const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+                    return (size / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+                }
+
+                function renderFilesForInput(input) {
+                    const containerId = modalId + '_preview_' + input.name.replace('[]', '');
+                    let container = document.getElementById(containerId);
+
+                    if (!container) {
+                        console.warn('Preview container not found:', containerId);
+                        return;
+                    }
+
+                    // Clear current previews
+                    container.innerHTML = '';
+
+                    const files = Array.from(input.files || []);
+
+                    if (files.length === 0) {
+                        container.innerHTML = '';
+                        return;
+                    }
+
+                    files.forEach((file, idx) => {
+                        const isImage = /\.(jpe?g|png|gif|webp|bmp|svg)$/i.test(file.name);
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'relative group rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition';
+
+                        if (isImage) {
+                            const img = document.createElement('img');
+                            img.className = 'w-full h-32 object-cover';
+                            wrapper.appendChild(img);
+
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                img.src = e.target.result;
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            const nonImg = document.createElement('div');
+                            nonImg.className = 'w-full h-32 p-3 bg-gray-50 flex flex-col items-center justify-center gap-2';
+                            nonImg.innerHTML = `
+                                <i class="fas fa-file text-blue-600 text-3xl"></i>
+                                <div class="text-sm font-medium text-gray-700 truncate w-full text-center px-2">${file.name}</div>
+                                <div class="text-xs text-gray-500">${humanFileSize(file.size)}</div>
+                            `;
+                            wrapper.appendChild(nonImg);
+                        }
+
+                        // overlay with remove button
+                        const overlay = document.createElement('div');
+                        overlay.className = 'absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2';
+                        const removeBtn = document.createElement('button');
+                        removeBtn.type = 'button';
+                        removeBtn.className = 'inline-flex items-center justify-center gap-2 text-white text-xs bg-red-600 px-3 py-1.5 rounded hover:bg-red-700 transition';
+                        removeBtn.innerHTML = '<i class="fas fa-trash"></i> Remove';
+                        removeBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            removeFileFromInput(input, idx);
+                        });
+
+                        overlay.appendChild(removeBtn);
+                        wrapper.appendChild(overlay);
+
+                        container.appendChild(wrapper);
+                    });
+                }
+
+                function removeFileFromInput(input, removeIndex) {
+                    const dt = new DataTransfer();
+                    const files = Array.from(input.files || []);
+                    files.forEach((f, i) => {
+                        if (i !== removeIndex) dt.items.add(f);
+                    });
+                    input.files = dt.files;
+                    renderFilesForInput(input);
+                }
+
+                function attachToFileInputs() {
+                    const fileInputs = modal.querySelectorAll('input[type="file"]');
+                    fileInputs.forEach(input => {
+                        // Remove existing event listeners by cloning
+                        const newInput = input.cloneNode(true);
+                        input.parentNode.replaceChild(newInput, input);
+
+                        // Add change event listener
+                        newInput.addEventListener('change', function () {
+                            renderFilesForInput(newInput);
+                        });
+
+                        // Initial render if files already present
+                        if (newInput.files && newInput.files.length > 0) {
+                            renderFilesForInput(newInput);
+                        }
+                    });
+                }
+
+                function attachRemoveForExisting() {
+                    modal.querySelectorAll('.existing-remove-btn').forEach(btn => {
+                        // Remove old listeners by cloning
+                        const newBtn = btn.cloneNode(true);
+                        btn.parentNode.replaceChild(newBtn, btn);
+
+                        newBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const filePath = newBtn.dataset.value;
+                            const fieldName = newBtn.dataset.field;
+                            const checkbox = modal.querySelector(`input[type="checkbox"][name="remove_${fieldName}[]"][value="${CSS.escape(filePath)}"]`);
+                            if (checkbox) {
+                                checkbox.checked = true;
+                            }
+                            // visually mark as removed
+                            const wrapper = newBtn.closest('.existing-file-wrapper');
+                            if (wrapper) {
+                                wrapper.style.opacity = '0.4';
+                                wrapper.style.filter = 'grayscale(100%)';
+                                const badge = document.createElement('div');
+                                badge.className = 'absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded';
+                                badge.textContent = 'Marked for removal';
+                                wrapper.style.position = 'relative';
+                                wrapper.appendChild(badge);
+                                newBtn.disabled = true;
+                            }
+                        });
+                    });
+                }
+
+                // Initialize on load
+                attachToFileInputs();
+                attachRemoveForExisting();
+
+                // Re-attach on DOM changes
+                const observer = new MutationObserver(() => {
+                    attachToFileInputs();
+                    attachRemoveForExisting();
+                });
+                observer.observe(modal, { childList: true, subtree: true });
+
+            })();
+        </script>
+        

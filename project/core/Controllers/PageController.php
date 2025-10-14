@@ -14,6 +14,11 @@ class PageController
         require PUBLIC_ROOT . '/admin/createPage.php';
         return;
     }
+    public function test()
+    {
+        require PUBLIC_ROOT . '/test.php';
+        return;
+    }
     public function home()
     {
         $exportedIndex = PUBLIC_ROOT . '/exportedPages/index.php';
@@ -73,6 +78,16 @@ class PageController
     public function userStyle()
     {
         require PUBLIC_ROOT . '/superAdmin/pages/users.php';
+        return;
+    }
+    public function editorDynamic($params)
+    {
+        require PUBLIC_ROOT . '/editor/pages/dynamicPage.php';
+        return;
+    }
+    public function colors()
+    {
+        require PUBLIC_ROOT . '/pages/color-scheme.php';
         return;
     }
     public function categoryStyle()

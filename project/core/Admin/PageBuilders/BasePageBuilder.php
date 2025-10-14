@@ -11,7 +11,8 @@ abstract class BasePageBuilder
     protected $name;
     protected $data;
 
-    protected string $html = '';
+    protected string $html = '  <main class="min-h-screen pt-24 flex-grow">
+        </main>';
     protected string $css = '';
     protected string $script = '';
 

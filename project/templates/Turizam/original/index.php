@@ -1,445 +1,489 @@
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turizam [Regija] | Priroda. Kultura. Avantura</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script> 
-    
-    <!-- Alpine.js za interaktivnost -->
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"  defer></script>
-    
-    <!-- Google Fonts -->
-    <link href="tailwindCSS.css" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turizam Regija | Otkrijte Našu Prirodnu Baštinu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+    }
+
+    .clip-diagonal {
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
+    .clip-shape-1 {
+      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 85%);
+    }
+
+    .clip-shape-2 {
+      clip-path: polygon(30% 0%,
+          70% 0%,
+          100% 30%,
+          100% 70%,
+          70% 100%,
+          30% 100%,
+          0% 70%,
+          0% 30%);
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .search-glow:focus-within {
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+    }
+  </style>
 </head>
-<body class="bg-white">
-    <!-- Header sa paralaks efektom -->
-    <header x-data="{ open: false, scrolled: false }" 
-            @scroll.window="scrolled = (window.pageYOffset > 20)"
-            class="fixed w-full z-50 transition-all duration-300" 
-            :class="scrolled ? 'bg-white/95 shadow-md backdrop-blur-sm' : 'bg-transparent'">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <!-- Logo -->
-                <a href="#" class="text-2xl hero-title font-bold text-green-700 flex items-center gap-2"> 
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                    </svg>
-                    Turizam [Regija]
-                </a>
-                
-                <!-- Mobile menu button -->
-                <button @click="open = !open" class="md:hidden text-gray-700">
-                    <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                    <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
 
-                <!-- Desktop nav -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#destinations" class="text-gray-700 hover:text-green-600 font-medium">Destinacije</a>
-                    <a href="#events" class="text-gray-700 hover:text-green-600 font-medium">Manifestacije</a>
-                    <a href="#accommodation" class="text-gray-700 hover:text-green-600 font-medium">Smeštaj</a>
-                    <a href="#map" class="text-gray-700 hover:text-green-600 font-medium">Mapa</a>
-                    <a href="#gallery" class="text-gray-700 hover:text-green-600 font-medium">Galerija</a>
-                    <a href="#contact" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg transition">
-                        Kontakt
-                    </a>
-                </nav>
+<body class="bg-gray-50">
+  <!-- Enhanced Navigation Bar -->
+  <header>
+    <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-md transition-all duration-300">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <a href="#" class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center">
+              <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
             </div>
+            <div>
+              <div class="text-xl font-bold text-gray-900">Turizam Regija</div>
+              <div class="text-xs text-gray-600">Turistička Organizacija</div>
+            </div>
+          </a>
 
-                <!-- Mobile menu -->
-                <div x-show="open" x-transition class="md:hidden py-2 absolute left-0 right-0 bg-white/95 backdrop-blur-sm mt-1 rounded-b-lg shadow-lg">
-                    <div class="flex flex-col p-4 space-y-3">
-                        <a href="#destinations" class="text-gray-700 py-2">Destinacije</a>
-                        <a href="#events" class="text-gray-700 py-2">Manifestacije</a>
-                        <a href="#accommodation" class="text-gray-700 py-2">Smeštaj</a>
-                        <a href="#map" class="text-gray-700 py-2">Mapa</a>
-                        <a href="#gallery" class="text-gray-700 py-2">Galerija</a>
-                        <a href="#contact" class="bg-green-600 hover:bg-green-700 text-white text-center py-2 rounded-lg">
-                            Kontakt
-                        </a>
-                    </div>
-                </div>
-            </div>
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <a href="#destinations"
+              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Destinacije</a>
+            <a href="#events"
+              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Manifestacije</a>
+            <a href="#accommodation"
+              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Smeštaj</a>
+            <a href="#activities"
+              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Aktivnosti</a>
+            <a href="#gastronomy"
+              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Gastronomija</a>
+            <a href="#info"
+              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Info
+              Centar</a>
+          </div>
+
+          <!-- Right Side Actions -->
+          <div class="hidden lg:flex items-center gap-3">
+
+            <select
+              class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <option>SR</option>
+              <option>EN</option>
+              <option>DE</option>
+            </select>
+            <a href="#contact"
+              class="px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-lg transition font-medium shadow-md">
+              Kontakt
+            </a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <button id="mobileBtn" class="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+            <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
-    </header>
 
-    <!-- Hero section sa video pozadinom -->
-    <section class="relative h-screen flex items-center overflow-hidden">
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
-            <source src="videos/hero.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-gradient-to-r from-green-900/80 via-blue-900/60 to-transparent"></div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-3xl">
-                <h1 class="hero-title text-5xl md:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-down">
-                    Otkrivanje prirodne lepote [Regije]
-                </h1>
-                <p class="text-xl text-white/90 mb-8 max-w-2xl animate-fade-in-up">
-                    Planine, reke, kulturna baština i avanture čekaju vas u srcu prirode [Regije]. 
-                    Pronađite savršen put za inspiraciju i opuštanje.
-                </p>
-                <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay: 0.5s">
-                    <a href="#destinations" class="bg-white text-green-700 hover:bg-green-50 px-8 py-4 rounded-lg font-medium shadow-lg transition transform hover:scale-105">
-                        Pogledaj destinacije
-                    </a>
-                    <a href="#search" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-medium shadow-lg transition transform hover:scale-105">
-                        Pretraži smeštaj
-                    </a>
-                </div>
+        <!-- Search Dropdown -->
+        <div id="searchDropdown" class="hidden py-4 border-t border-gray-200">
+          <div class="max-w-2xl mx-auto">
+            <div class="relative rounded-xl bg-gray-50">
+              <input type="text" placeholder="Pretražite destinacije, smeštaj, manifestacije..."
+                class="w-full px-6 py-4 pr-12 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:outline-none text-gray-900">
+              <button
+                class="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </button>
             </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="text-sm text-gray-600">Popularne pretrage:</span>
+              <a href="#"
+                class="text-sm px-3 py-1 bg-white rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition">Nacionalni
+                parkovi</a>
+              <a href="#"
+                class="text-sm px-3 py-1 bg-white rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition">Rafting</a>
+              <a href="#"
+                class="text-sm px-3 py-1 bg-white rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition">Spa
+                & Wellness</a>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Statistike sa animacijama -->
-    <section class="py-16 bg-gradient-to-br from-green-50 to-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <?php 
-                $stats = [
-                    ['number' => '120+', 'label' => 'Destinacija'],
-                    ['number' => '50+', 'label' => 'Manifestacija godišnje'],
-                    ['number' => '2000+', 'label' => 'Hotela i apartmana'],
-                    ['number' => '15', 'label' => 'Prirodnih rezervata']
-                ];
-                
-                foreach($stats as $index => $stat): ?>
-                <div class="bg-white p-6 rounded-xl shadow-lg transform transition hover:scale-105" 
-                     style="animation-delay: <?= $index * 0.2 ?>s">
-                    <div class="text-4xl font-bold text-green-600 mb-2"><?= $stat['number'] ?></div>
-                    <div class="text-gray-600"><?= $stat['label'] ?></div>
-                </div>
-                <?php endforeach; ?>
-            </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden py-4 border-t border-gray-200">
+          <div class="flex flex-col space-y-2">
+            <a href="#destinations" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Destinacije</a>
+            <a href="#events" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Manifestacije</a>
+            <a href="#accommodation" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Smeštaj</a>
+            <a href="#activities" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Aktivnosti</a>
+            <a href="#gastronomy" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Gastronomija</a>
+            <a href="#info" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Info Centar</a>
+            <a href="#contact" class="px-4 py-3 bg-emerald-600 text-white text-center rounded-lg">Kontakt</a>
+          </div>
         </div>
-    </section>
+      </div>
+    </nav>
+  </header>
+  <!-- Hero Section with Geometric Shapes and Search -->
+  <section class="relative pt-20 overflow-hidden">
+    <!-- Full-screen Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://bookaweb.s3.eu-central-1.amazonaws.com/assets/62e7d75ccd410.jpg" alt="Mountain landscape"
+        class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-900/30 via-gray-900/20 to-gray-900/25"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/30 to-teal-900/30"></div>
 
-    <!-- Najbolje destinacije -->
-    <section id="destinations" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 hero-title">Istražite najlepše destinacije</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Pronađite inspiraciju za svoju sledeću avanturu kroz naše spektakularne planine, istorijske lokacije i prirodne čuda.
-                </p>
-            </div>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <?php 
-                $destinations = [
-                    [
-                        'name' => 'Nacionalni park [Ime]',
-                        'image' => 'destination1.jpg',
-                        'desc' => 'Prepoznati za svoju divlju lepotu i planinarske staze...',
-                        'type' => 'nature'
-                    ],
-                    [
-                        'name' => '[Planina] planina',
-                        'image' => 'destination2.jpg',
-                        'desc' => 'Spektakularan vrh sa panoramskim pogledom...',
-                        'type' => 'mountain'
-                    ],
-                    [
-                        'name' => '[Reka] reka',
-                        'image' => 'destination3.jpg',
-                        'desc' => 'Idealno mesto za rafting i prirodne ljubitelje...',
-                        'type' => 'river'
-                    ]
-                ];
-                
-                $icons = [
-                    'nature' => '<svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0-8h2v6h-2z"/></svg>',
-                    'mountain' => '<svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12l8.5-6L16 6z"/></svg>',
-                    'river' => '<svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 20c-4.42 0-8-1.79-8-4s3.58-4 8-4 8 1.79 8 4-3.58 4-8 4zm0-6c-2.21 0-4 .9-4 2s1.79 2 4 2 4-.9 4-2-1.79-2-4-2zM2 4l10 6 10-6v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V4z"/></svg>'
-                ];
-                
-                foreach($destinations as $dest): ?>
-                <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform transition hover:-translate-y-2 hover:shadow-2xl">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="images/<?= $dest['image'] ?>" alt="<?= $dest['name'] ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
-                            <?= $dest['type'] == 'nature' ? 'Priroda' : ($dest['type'] == 'mountain' ? 'Planina' : 'Reka') ?>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center gap-2 mb-3">
-                            <?= $icons[$dest['type']] ?>
-                            <h3 class="text-xl font-semibold"><?= $dest['name'] ?></h3>
-                        </div>
-                        <p class="text-gray-600 mb-4"><?= $dest['desc'] ?></p>
-                        <a href="#" class="inline-flex items-center text-green-600 font-medium hover:text-green-800">
-                            Saznaj više
-                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            </div>
+    <!-- Content -->
+    <div class="container mx-auto px-4 relative z-10 py-32 lg:py-40">
+      <div class="max-w-5xl mx-auto text-center">
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium mb-8 animate-fade-in">
+          <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+            </path>
+          </svg>
+          <span>Najbolja turistička destinacija 2025</span>
         </div>
-    </section>
 
-    <!-- Weather Widget sa Glassmorphism efektom -->
-    <section class="py-12 bg-gradient-to-br from-blue-50 to-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-md mx-auto backdrop-blur-lg bg-white/60 rounded-2xl shadow-xl overflow-hidden">
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-xl font-bold">Vremenska prognoza</h3>
-                        <div class="flex items-center text-gray-600">
-                            <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>3. avgust 2024</span>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-4xl font-bold">22°C</p>
-                            <p class="text-gray-600">Sunčano</p>
-                        </div>
-                        <div class="text-5xl">
-                            ☀️
-                        </div>
-                    </div>
-                    
-                    <div class="mt-6 pt-6 border-t border-gray-200">
-                        <div class="flex justify-between text-sm">
-                            <div class="text-center">
-                                <div>Max</div>
-                                <div class="font-medium">26°C</div>
-                            </div>
-                            <div class="text-center">
-                                <div>Min</div>
-                                <div class="font-medium">18°C</div>
-                            </div>
-                            <div class="text-center">
-                                <div>Vlažnost</div>
-                                <div class="font-medium">65%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Heading -->
+        <h1
+          class="hero-title text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up">
+          Otkrijte Prirodnu Lepotu<br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Naše Regije</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto animate-fade-in-up">
+          Doživite nezaboravnu avanturu kroz spektakularne planine, kristalne reke i bogatu tradiciju
+        </p>
+
+        <!-- Simplified Glass Search -->
+        <div class="max-w-3xl mx-auto mb-12">
+          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 search-glow">
+            <div class="relative">
+              <input type="text" placeholder="Pretražite destinacije, atrakcije i doživljaje..."
+                class="w-full px-6 py-4 bg-white/10 rounded-xl border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+              <button
+                class="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-emerald-500/80 hover:bg-emerald-500 rounded-lg transition-all duration-300 group">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </button>
             </div>
+          </div>
+          <!-- Popular Searches -->
+          <div class="flex flex-wrap justify-center items-center gap-3 mt-4">
+            <a href="#"
+              class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
+              Nacionalni parkovi
+            </a>
+            <a href="#"
+              class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
+              Rafting
+            </a>
+            <a href="#"
+              class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
+              Spa & Wellness
+            </a>
+          </div>
         </div>
-    </section>
 
-    <!-- Interaktivna mapa -->
-    <section id="map" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row gap-12 items-center">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl font-bold mb-4 hero-title">Istražite našu regiju</h2>
-                    <p class="text-gray-600 mb-6">
-                        Naša interaktivna mapa vam omogućava da otkrijete sve destinacije, smeštaje i aktivnosti u realnom vremenu.
-                    </p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Destinacije</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Hoteli i restorani</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Manifestacije</span>
-                        </li>
-                    </ul>
-                    <a href="map.php" class="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
-                        Otvori mapu
-                        <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div class="md:w-1/2 w-full">
-                    <div id="interactive-map" class="h-96 w-full rounded-xl overflow-hidden shadow-lg">
-                        <!-- Mapa će biti prikazana ovde -->
-                    </div>
-                </div>
-            </div>
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <div class="text-center">
+            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">120+</div>
+            <div class="text-sm lg:text-base text-gray-300">Destinacija</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">2000+</div>
+            <div class="text-sm lg:text-base text-gray-300">Smeštaja</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">50+</div>
+            <div class="text-sm lg:text-base text-gray-300">Manifestacija</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4 hero-title">Turizam [Regija]</h3>
-                    <p class="text-gray-400 mb-4">Promovišemo prirodne lepote i kulturnu baštinu [regije] putem savremenih turističkih usluga.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465.668.254 1.213.598 1.782 1.167.57.57.913 1.115 1.167 1.783.246.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.88 4.88 0 01-1.167 1.782 4.88 4.88 0 01-1.783 1.167c-.637.246-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.88 4.88 0 01-1.782-1.167 4.88 4.88 0 01-1.167-1.783c-.246-.637-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.88 4.88 0 011.167-1.782 4.88 4.88 0 011.783-1.167c.636-.246 1.363-.416 2.427-.465 1.067-.048 1.407-.06 4.123-.06h.08zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Brzi linkovi</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#destinations" class="text-gray-400 hover:text-white">Destinacije</a></li>
-                        <li><a href="#events" class="text-gray-400 hover:text-white">Manifestacije</a></li>
-                        <li><a href="#accommodation" class="text-gray-400 hover:text-white">Smeštaj</a></li>
-                        <li><a href="#map" class="text-gray-400 hover:text-white">Mapa</a></li>
-                        <li><a href="#gallery" class="text-gray-400 hover:text-white">Galerija</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Kontakt</h4>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 mt-0.5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>[Adresa], [Grad], [Poštanski broj]</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 mt-0.5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
-                            </svg>
-                            <span>+381 [XX] XXX-XXX</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 mt-0.5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                            </svg>
-                            <span>info@turizam-regija.rs</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
-                    <p class="text-gray-400 mb-4">Prijavite se za najnovije informacije o manifestacijama i ponudama.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Vaša email adresa" class="px-4 py-2 rounded-l-lg w-full focus:outline-none">
-                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 rounded-r-lg">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Featured Destinations with Geometric Cutouts -->
+  <!-- Featured Destinations with Geometric Cutouts -->
+  <section id="destinations" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-4 hero-title text-gray-900">
+          Istaknute Destinacije
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Istražite najlepše prirodne i kulturne destinacije naše regije
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Destination Card 1 -->
+        <div
+          class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="relative h-80 overflow-hidden clip-diagonal">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
+              alt="Mountain peak"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <div class="inline-block px-3 py-1 bg-emerald-500 rounded-full text-sm font-medium mb-3">
+              Planina
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Turizam [Regija]. Sva prava zadržana.</p>
-            </div>
+            <h3 class="text-2xl font-bold mb-2">Vrhovi Regije</h3>
+            <p class="text-gray-200 mb-4">
+              Spektakularni pogledi i planinarske staze
+            </p>
+            <a href="#" class="inline-flex items-center text-white font-medium hover:text-emerald-300 transition">
+              Saznajte više
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
         </div>
-    </footer>
 
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-    
-    <!-- JavaScript za interaktivne elemente -->
-    <script>
-        function initMap() {
-            const map = new google.maps.Map(document.getElementById('interactive-map'), {
-                center: {lat: 43.8555, lng: 20.3947},
-                zoom: 8,
-                styles: [
-                    {
-                        elementType: 'geometry',
-                        stylers: [{color: '#ebebeb'}] 
-                    },
-                    {
-                        elementType: 'labels.text.stroke',
-                        stylers: [{color: '#ffffff'}]
-                    }
-                ]
-            });
-            
-            // Dodaj marker za nacionalni park
-            new google.maps.Marker({
-                position: {lat: 43.8555, lng: 20.3947},
-                map: map,
-                title: "Nacionalni park",
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 8,
-                    fillColor: "#10B981",
-                    fillOpacity: 1,
-                    strokeWeight: 2,
-                    strokeColor: "#fff"
-                }
-            });
-        }
+        <!-- Destination Card 2 -->
+        <div
+          class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="relative h-80 overflow-hidden clip-diagonal">
+            <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600&h=400&fit=crop" alt="Forest"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <div class="inline-block px-3 py-1 bg-teal-500 rounded-full text-sm font-medium mb-3">
+              Priroda
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Nacionalni Parkovi</h3>
+            <p class="text-gray-200 mb-4">Očuvana divljina i biodiverzitet</p>
+            <a href="#" class="inline-flex items-center text-white font-medium hover:text-emerald-300 transition">
+              Saznajte više
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
 
-        // FAQ accordion
-        document.querySelectorAll('[data-faq]').forEach(item => {
-            item.addEventListener('click', () => {
-                const content = item.nextElementSibling;
-                content.classList.toggle('hidden');
-                item.querySelector('svg').classList.toggle('rotate-180');
-            });
-        });
-    </script>
+        <!-- Destination Card 3 -->
+        <div
+          class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="relative h-80 overflow-hidden clip-diagonal">
+            <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=600&h=400&fit=crop" alt="River"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <div class="inline-block px-3 py-1 bg-blue-500 rounded-full text-sm font-medium mb-3">
+              Reka
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Reke i Kanjoni</h3>
+            <p class="text-gray-200 mb-4">
+              Rafting i avanturistički sportovi
+            </p>
+            <a href="#" class="inline-flex items-center text-white font-medium hover:text-emerald-300 transition">
+              Saznajte više
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- CSS animacije -->
-    <style>
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-fade-in-down {
-            animation: fadeInDown 1s ease-out forwards;
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 1s ease-out forwards;
-        }
-    </style>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <div class="text-xl font-bold hero-title">Turizam Regija</div>
+          </div>
+          <p class="text-gray-400 mb-4">
+            Promovišemo prirodne lepote i kulturnu baštinu kroz profesionalne
+            turističke usluge.
+          </p>
+          <div class="flex gap-3">
+            <a href="#"
+              class="w-10 h-10 bg-gray-800 hover:bg-emerald-600 rounded-lg flex items-center justify-center transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+              </svg>
+            </a>
+            <a href="#"
+              class="w-10 h-10 bg-gray-800 hover:bg-emerald-600 rounded-lg flex items-center justify-center transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465.668.254 1.213.598 1.782 1.167.57.57.913 1.115 1.167 1.783.246.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.88 4.88 0 01-1.167 1.782 4.88 4.88 0 01-1.783 1.167c-.637.246-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.88 4.88 0 01-1.782-1.167 4.88 4.88 0 01-1.167-1.783c-.246-.637-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.88 4.88 0 011.167-1.782 4.88 4.88 0 011.783-1.167c.636-.246 1.363-.416 2.427-.465 1.067-.048 1.407-.06 4.123-.06h.08zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Brzi Linkovi</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="#destinations" class="text-gray-400 hover:text-emerald-400 transition">Destinacije</a>
+            </li>
+            <li>
+              <a href="#events" class="text-gray-400 hover:text-emerald-400 transition">Manifestacije</a>
+            </li>
+            <li>
+              <a href="#accommodation" class="text-gray-400 hover:text-emerald-400 transition">Smeštaj</a>
+            </li>
+            <li>
+              <a href="#gastronomy" class="text-gray-400 hover:text-emerald-400 transition">Gastronomija</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Informacije</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">O Nama</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Info Centar</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Turistički Vodič</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Često Postavljana Pitanja</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Kontakt</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <span>Trg Republike 1, Grad 11000</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z">
+                </path>
+              </svg>
+              <span>+381 11 123 4567</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+              </svg>
+              <span>info@turizam-regija.rs</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+        <p>
+          &copy; 2025 Turizam Regija - Turistička Organizacija. Sva prava
+          zadržana.
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Scroll efekat
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 20) {
+        navbar.classList.add('shadow-lg', 'bg-white');
+        navbar.classList.remove('bg-white/95', 'backdrop-blur-md');
+      } else {
+        navbar.classList.remove('shadow-lg', 'bg-white');
+        navbar.classList.add('bg-white/95', 'backdrop-blur-md');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Search dropdown toggle
+    const searchBtn = document.getElementById('searchBtn');
+    const searchDropdown = document.getElementById('searchDropdown');
+    searchBtn.addEventListener('click', () => {
+      searchDropdown.classList.toggle('hidden');
+    });
+  </script>
 </body>
+
 </html>
