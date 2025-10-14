@@ -15,7 +15,7 @@ if (!$slug) {
     exit;
 }
 
-$structureFile = __DIR__ . '/../../public/structure.json';
+$structureFile = __DIR__ . '/../../public/assets/data/structure.json';
 if (!file_exists($structureFile)) {
     http_response_code(500);
     echo 'Structure file not found';
@@ -47,7 +47,8 @@ if ($config === null) {
 
 // Build modal using ModalGenerator
 try {
-    $modal = new ModalGenerator($config, 'dynamicModal_' . preg_replace('/[^a-z0-9_]/i', '_', $slug));
+    $modal = new ModalGenerator($config, 'dynamicModal_' . preg_replace('/[^a-z0-9_]/i', replacement: '_', ));
+    echo $config;
     echo $modal->render();
 } catch (Throwable $e) {
     http_response_code(500);

@@ -1,29 +1,71 @@
 <?php
 namespace App\Utils;
 
+use App\Models\GenericCategory;
+
 class ModalGenerator
 {
     private $config;
     private $modalId;
     private $translations;
+    private $lang;
 
-    public function __construct($config, $modalId = 'dynamicModal', $translations = [])
+    public function __construct($config, $modalId, $lang)
     {
         $this->config = $config;
-        $this->modalId = $modalId;
-        $this->translations = array_merge([
-            'cancel' => 'Cancel',
-            'save' => 'Save',
-            'required' => '*',
-            'choose_file' => 'Choose File',
-            'click_or_drag' => 'Click to upload or drag and drop',
-            'select_option' => 'Select an option'
-        ], $translations);
+        $this->modalId = $modalId ?? 'dynamicModal';
+        $this->lang = $lang;
+        // If the project translation helper __() exists, prefer it. Otherwise
+        // fall back to reading the lang JSON file directly.
+        $translations = [];
+        if (function_exists('__')) {
+            // Temporarily set session locale if possible
+            if (session_status() === PHP_SESSION_NONE) {
+                @session_start();
+            }
+            $prevLocale = $_SESSION['locale'] ?? null;
+            $_SESSION['locale'] = $this->lang ?: ($_SESSION['locale'] ?? 'en');
+
+            $this->translations = [
+                'cancel' => __('documentInputForm.cancel') ?: __('style.cancel') ?: 'Cancel',
+                'save' => __('style.save') ?: 'Save',
+                'required' => '*',
+                'choose_file' => __('documentInputForm.choose_file') ?: 'Choose File',
+                'click_or_drag' => __('documentInputForm.click_or_drag') ?: 'Click to upload or drag and drop',
+                'select_option' => __('documentInputForm.select_option') ?: 'Select an option',
+                'remove' => __('documentInputForm.remove') ?: 'remove',
+            ];
+
+            // restore previous locale
+            if ($prevLocale !== null) {
+                $_SESSION['locale'] = $prevLocale;
+            }
+        } else {
+            $langFile = __DIR__ . '/../../lang/' . ($this->lang ?: 'en') . '.json';
+            if (is_readable($langFile)) {
+                $json = file_get_contents($langFile);
+                $decoded = json_decode($json, true);
+                if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                    $translations = $decoded;
+                }
+            }
+
+            // Provide defaults for modal-specific keys, using loaded translations where possible
+            $this->translations = array_merge([
+                'cancel' => $translations['documentInputForm.cancel'] ?? ($translations['style.cancel'] ?? 'Cancel'),
+                'save' => $translations['style.save'] ?? 'Save',
+                'required' => '*',
+                'choose_file' => $translations['documentInputForm.choose_file'] ?? 'Choose File',
+                'click_or_drag' => $translations['documentInputForm.click_or_drag'] ?? 'Click to upload or drag and drop',
+                'select_option' => $translations['documentInputForm.select_option'] ?? 'Select an option'
+            ], $translations);
+        }
     }
 
     public function render()
     {
-        $title = $this->config['title'] ?? 'Form';
+        $type = $this->lang;
+        $title = $this->config[$type] ?? 'Form';
         $fields = $this->config['fields'] ?? [];
         $method = $this->config['method'] ?? 'POST';
         $endpoint = $this->config['endpoint'] ?? '';
@@ -57,6 +99,9 @@ class ModalGenerator
                         <!-- Hidden Fields -->
                         <input type="hidden" name="method" value="<?= htmlspecialchars($method) ?>" />
                         <input type="hidden" name="endpoint" value="<?= htmlspecialchars($endpoint) ?>" />
+                        <?php if (!empty($this->config['item_id'])): ?>
+                            <input type="hidden" name="id" value="<?= (int) $this->config['item_id'] ?>" />
+                        <?php endif; ?>
 
                         <?= $this->renderFieldsWithSmartLayout($fields) ?>
                     </form>
@@ -77,6 +122,158 @@ class ModalGenerator
                 </div>
             </div>
         </div>
+
+        <script>
+            (function () {
+                const modalId = <?= json_encode($this->modalId) ?>;
+                const modal = document.getElementById(modalId);
+                if (!modal) return;
+
+                function humanFileSize(size) {
+                    if (size === 0) return '0 B';
+                    const i = Math.floor(Math.log(size) / Math.log(1024));
+                    const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+                    return (size / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+                }
+
+                function renderFilesForInput(input) {
+                    const containerId = modalId + '_preview_' + input.name.replace('[]', '');
+                    let container = document.getElementById(containerId);
+
+                    if (!container) {
+                        console.warn('Preview container not found:', containerId);
+                        return;
+                    }
+
+                    // Clear current previews
+                    container.innerHTML = '';
+
+                    const files = Array.from(input.files || []);
+
+                    if (files.length === 0) {
+                        container.innerHTML = '';
+                        return;
+                    }
+
+                    files.forEach((file, idx) => {
+                        const isImage = /\.(jpe?g|png|gif|webp|bmp|svg)$/i.test(file.name);
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'relative group rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition';
+
+                        if (isImage) {
+                            const img = document.createElement('img');
+                            img.className = 'w-full h-32 object-cover';
+                            wrapper.appendChild(img);
+
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                img.src = e.target.result;
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            const nonImg = document.createElement('div');
+                            nonImg.className = 'w-full h-32 p-3 bg-gray-50 flex flex-col items-center justify-center gap-2';
+                            nonImg.innerHTML = `
+                                <i class="fas fa-file text-blue-600 text-3xl"></i>
+                                <div class="text-sm font-medium text-gray-700 truncate w-full text-center px-2">${file.name}</div>
+                                <div class="text-xs text-gray-500">${humanFileSize(file.size)}</div>
+                            `;
+                            wrapper.appendChild(nonImg);
+                        }
+
+                        // overlay with remove button
+                        const overlay = document.createElement('div');
+                        overlay.className = 'absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2';
+                        const removeBtn = document.createElement('button');
+                        removeBtn.type = 'button';
+                        removeBtn.className = 'inline-flex items-center justify-center gap-2 text-white text-xs bg-red-600 px-3 py-1.5 rounded hover:bg-red-700 transition';
+                        removeBtn.innerHTML = '<i class="fas fa-trash"></i> Remove';
+                        removeBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            removeFileFromInput(input, idx);
+                        });
+
+                        overlay.appendChild(removeBtn);
+                        wrapper.appendChild(overlay);
+
+                        container.appendChild(wrapper);
+                    });
+                }
+
+                function removeFileFromInput(input, removeIndex) {
+                    const dt = new DataTransfer();
+                    const files = Array.from(input.files || []);
+                    files.forEach((f, i) => {
+                        if (i !== removeIndex) dt.items.add(f);
+                    });
+                    input.files = dt.files;
+                    renderFilesForInput(input);
+                }
+
+                function attachToFileInputs() {
+                    const fileInputs = modal.querySelectorAll('input[type="file"]');
+                    fileInputs.forEach(input => {
+                        // Remove existing event listeners by cloning
+                        const newInput = input.cloneNode(true);
+                        input.parentNode.replaceChild(newInput, input);
+
+                        // Add change event listener
+                        newInput.addEventListener('change', function () {
+                            renderFilesForInput(newInput);
+                        });
+
+                        // Initial render if files already present
+                        if (newInput.files && newInput.files.length > 0) {
+                            renderFilesForInput(newInput);
+                        }
+                    });
+                }
+
+                function attachRemoveForExisting() {
+                    modal.querySelectorAll('.existing-remove-btn').forEach(btn => {
+                        // Remove old listeners by cloning
+                        const newBtn = btn.cloneNode(true);
+                        btn.parentNode.replaceChild(newBtn, btn);
+
+                        newBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const filePath = newBtn.dataset.value;
+                            const fieldName = newBtn.dataset.field;
+                            const checkbox = modal.querySelector(`input[type="checkbox"][name="remove_${fieldName}[]"][value="${CSS.escape(filePath)}"]`);
+                            if (checkbox) {
+                                checkbox.checked = true;
+                            }
+                            // visually mark as removed
+                            const wrapper = newBtn.closest('.existing-file-wrapper');
+                            if (wrapper) {
+                                wrapper.style.opacity = '0.4';
+                                wrapper.style.filter = 'grayscale(100%)';
+                                const badge = document.createElement('div');
+                                badge.className = 'absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded';
+                                badge.textContent = 'Marked for removal';
+                                wrapper.style.position = 'relative';
+                                wrapper.appendChild(badge);
+                                newBtn.disabled = true;
+                            }
+                        });
+                    });
+                }
+
+                // Initialize on load
+                attachToFileInputs();
+                attachRemoveForExisting();
+
+                // Re-attach on DOM changes
+                const observer = new MutationObserver(() => {
+                    attachToFileInputs();
+                    attachRemoveForExisting();
+                });
+                observer.observe(modal, { childList: true, subtree: true });
+
+            })();
+        </script>
         <?php
         return ob_get_clean();
     }
@@ -84,7 +281,8 @@ class ModalGenerator
     private function hasFileField($fields)
     {
         foreach ($fields as $field) {
-            if (($field['type'] ?? '') === 'file') {
+            $type = $field['type'] ?? '';
+            if ($type === 'file' || $type === 'multifile') {
                 return true;
             }
         }
@@ -103,23 +301,19 @@ class ModalGenerator
             $colspan = $this->calculateColspan($field);
 
             if ($colspan === 'full') {
-                // Full width field
                 $output .= '<div class="w-full">' . $this->renderField($field) . '</div>';
                 $i++;
             } else {
-                // Check if we can group with next field
                 $nextField = $fields[$i + 1] ?? null;
                 $nextColspan = $nextField ? $this->calculateColspan($nextField) : null;
 
                 if ($nextField && $nextColspan === 'half') {
-                    // Two half-width fields side by side
                     $output .= '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">';
                     $output .= $this->renderField($field);
                     $output .= $this->renderField($nextField);
                     $output .= '</div>';
                     $i += 2;
                 } else {
-                    // Single half-width field (will be full on mobile)
                     $output .= '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">';
                     $output .= $this->renderField($field);
                     $output .= '</div>';
@@ -136,13 +330,11 @@ class ModalGenerator
         $type = $field['type'] ?? 'text';
         $name = $field['name'] ?? '';
 
-        // Full width types
-        $fullWidthTypes = ['textarea', 'file'];
+        $fullWidthTypes = ['textarea', 'file', 'multifile'];
         if (in_array($type, $fullWidthTypes)) {
             return 'full';
         }
 
-        // Full width based on name patterns
         $fullWidthNames = ['description', 'content', 'body', 'message', 'address', 'notes'];
         foreach ($fullWidthNames as $pattern) {
             if (stripos($name, $pattern) !== false) {
@@ -150,7 +342,6 @@ class ModalGenerator
             }
         }
 
-        // Half width for everything else
         return 'half';
     }
 
@@ -158,7 +349,6 @@ class ModalGenerator
     {
         $largeFields = ['body', 'content', 'message'];
         $mediumFields = ['description', 'notes', 'address'];
-
         $lowerName = strtolower($name);
 
         foreach ($largeFields as $field) {
@@ -184,7 +374,12 @@ class ModalGenerator
             return 'YYYY-MM-DD';
         if ($type === 'tel')
             return '+1 (555) 000-0000';
-        return 'Enter ' . strtolower($label);
+        // Use project translation helper if available for the word 'Enter'
+        $enter = 'Enter';
+        if (function_exists('__')) {
+            $enter = __("placeholder.enter") ?: $enter;
+        }
+        return $enter . ' ' . strtolower($label);
     }
 
     private function getAccept($name)
@@ -213,7 +408,6 @@ class ModalGenerator
         $type = $field['type'] ?? 'text';
         $name = strtolower($field['name'] ?? '');
 
-        // Type-based icons
         $iconMap = [
             'email' => 'fa-envelope',
             'password' => 'fa-lock',
@@ -223,6 +417,7 @@ class ModalGenerator
             'time' => 'fa-clock',
             'number' => 'fa-hashtag',
             'file' => 'fa-cloud-upload-alt',
+            'multifile' => 'fa-images',
             'select' => 'fa-list',
             'textarea' => 'fa-align-left'
         ];
@@ -231,7 +426,6 @@ class ModalGenerator
             return $iconMap[$type];
         }
 
-        // Name-based icons
         $namePatterns = [
             'name' => 'fa-user',
             'user' => 'fa-user',
@@ -262,10 +456,10 @@ class ModalGenerator
     {
         $name = $field['name'] ?? '';
         $type = $field['type'] ?? 'text';
-        $label = $field['label'] ?? ucfirst(str_replace('_', ' ', $name));
+        $isMultiple = ($type === 'multifile') || ($type === 'file');
+        $label = $field['label'][$this->lang] ?? ucfirst(str_replace('_', ' ', $name));
         $required = $field['required'] ?? false;
         $options = $field['options'] ?? [];
-        $readonly = $field['readonly'] ?? false;
         $value = $field['value'] ?? '';
 
         $rows = $this->getRows($name);
@@ -275,32 +469,140 @@ class ModalGenerator
 
         $requiredAttr = $required ? 'required' : '';
         $requiredMark = $required ? '<span class="text-red-500 ml-1">*</span>' : '';
-        $readonlyAttr = $readonly ? 'readonly' : '';
-        $readonlyClass = $readonly ? 'bg-gray-50 cursor-not-allowed' : '';
 
         ob_start();
 
         switch ($type) {
+            case 'multifile':
             case 'file':
+                $inputName = $isMultiple ? $name . '[]' : $name;
+                $previewId = $this->modalId . '_preview_' . $name;
                 ?>
                 <div class="w-full">
                     <label class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <i class="fas <?= $icon ?> text-blue-600"></i>
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
+
                     <label for="<?= htmlspecialchars($name) ?>"
                         class="group flex flex-col items-center justify-center w-full min-h-[140px] px-6 py-6 transition-all duration-200 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-blue-500 hover:bg-blue-50 text-center">
                         <div
                             class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3 group-hover:bg-blue-200 transition-colors">
-                            <i class="fas fa-cloud-upload-alt text-3xl text-blue-600 group-hover:text-blue-700 transition-colors"></i>
+                            <i
+                                class="fas <?= $isMultiple ? 'fa-images' : 'fa-cloud-upload-alt' ?> text-3xl text-blue-600 group-hover:text-blue-700 transition-colors"></i>
                         </div>
                         <span class="text-gray-700 font-medium group-hover:text-blue-700 text-sm mb-1">
                             <?= htmlspecialchars($this->translations['click_or_drag']) ?>
                         </span>
-                        <span class="text-xs text-gray-500">Maximum file size: 10MB</span>
-                        <input type="file" id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>"
-                            accept="<?= htmlspecialchars($accept) ?>" class="hidden" <?= $requiredAttr ?> />
+                        <span class="text-xs text-gray-500 mb-1">
+                            <?= $isMultiple ? 'Multiple files allowed' : 'Single file' ?> • Maximum: 10MB per file
+                        </span>
+                        <?php $fileDataReq = ($required && empty($value)) ? 'data-required="1"' : ''; ?>
+                        <input type="file" id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($inputName) ?>"
+                            accept="<?= htmlspecialchars($accept) ?>" class="hidden file-input" <?= $fileDataReq ?>                 <?= $isMultiple ? 'multiple' : '' ?> />
                     </label>
+
+                    <!-- PREVIEW CONTAINER FOR NEWLY SELECTED FILES -->
+                    <div id="<?= htmlspecialchars($previewId) ?>" class="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    </div>
+
+                    <?php if (!empty($value)): ?>
+                        <?php
+                        // Normalize $value into an array of file paths
+                        $files = [];
+                        if ($isMultiple) {
+                            if (is_string($value)) {
+                                $decoded = json_decode($value, true);
+                                if (is_array($decoded)) {
+                                    foreach ($decoded as $it) {
+                                        if (is_array($it) && isset($it['file_path']))
+                                            $files[] = $it['file_path'];
+                                        elseif (is_string($it))
+                                            $files[] = $it;
+                                    }
+                                } else {
+                                    $files[] = $value;
+                                }
+                            } elseif (is_array($value)) {
+                                foreach ($value as $it) {
+                                    if (is_array($it) && isset($it['file_path']))
+                                        $files[] = $it['file_path'];
+                                    elseif (is_string($it))
+                                        $files[] = $it;
+                                }
+                            }
+                        } else {
+                            // For single-file config fields, support the controller supplying
+                            // either a single string, an associative array with ['file_path'=>..],
+                            // OR a JSON/array of paths (because DB may store multiple images for the element).
+                            if (is_string($value)) {
+                                $decoded = json_decode($value, true);
+                                if (is_array($decoded)) {
+                                    foreach ($decoded as $it) {
+                                        if (is_array($it) && isset($it['file_path']))
+                                            $files[] = $it['file_path'];
+                                        elseif (is_string($it))
+                                            $files[] = $it;
+                                    }
+                                } else {
+                                    $files[] = $value;
+                                }
+                            } elseif (is_array($value)) {
+                                // associative with file_path
+                                if (isset($value['file_path'])) {
+                                    $files[] = $value['file_path'];
+                                } else {
+                                    foreach ($value as $it) {
+                                        if (is_array($it) && isset($it['file_path']))
+                                            $files[] = $it['file_path'];
+                                        elseif (is_string($it))
+                                            $files[] = $it;
+                                    }
+                                }
+                            } else {
+                                $files[] = (string) $value;
+                            }
+                        }
+                        ?>
+
+                        <!-- EXISTING FILES -->
+                        <?php if (!empty($files)): ?>
+                            <div class="existing-files mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                                <?php foreach ($files as $filePath):
+                                    $filePath = trim((string) $filePath);
+                                    if ($filePath === '')
+                                        continue;
+                                    $isImage = preg_match('#\.(jpe?g|png|gif|webp|bmp|svg)$#i', $filePath);
+                                    ?>
+                                    <div
+                                        class="relative group existing-file-wrapper rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition">
+                                        <?php if ($isImage): ?>
+                                            <img src="<?= htmlspecialchars($filePath) ?>" alt="Existing file" class="w-full h-32 object-cover" />
+                                        <?php else: ?>
+                                            <div class="w-full h-32 p-3 bg-gray-50 flex flex-col items-center justify-center gap-2">
+                                                <i class="fas fa-file text-blue-600 text-3xl"></i>
+                                                <a href="<?= htmlspecialchars($filePath) ?>" target="_blank"
+                                                    class="text-sm font-medium text-blue-600 hover:underline truncate max-w-full px-2">
+                                                    <?= htmlspecialchars(basename($filePath)) ?>
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <div
+                                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+                                            <button type="button" data-value="<?= htmlspecialchars($filePath) ?>"
+                                                data-field="<?= htmlspecialchars($name) ?>"
+                                                class="existing-remove-btn inline-flex items-center justify-center gap-2 text-white text-xs bg-red-600 px-3 py-1.5 rounded hover:bg-red-700 transition">
+                                                <i class="fas fa-trash"></i> <?= htmlspecialchars($this->translations['remove']) ?>
+                                            </button>
+                                            <input type="checkbox" name="remove_<?= htmlspecialchars($name) ?>[]"
+                                                value="<?= htmlspecialchars($filePath) ?>" class="hidden" />
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
                 <?php
                 break;
@@ -315,29 +617,36 @@ class ModalGenerator
                     </label>
                     <div class="relative">
                         <textarea id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>" rows="<?= $rows ?>"
-                            <?= $requiredAttr ?>                 <?= $readonlyAttr ?>
-                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 <?= $readonlyClass ?>"
+                            <?= $requiredAttr ?>
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                             placeholder="<?= htmlspecialchars($placeholder) ?>"><?= htmlspecialchars($value) ?></textarea>
                     </div>
                 </div>
                 <?php
                 break;
 
-            case 'select':
+            case 'categories':
+                // Fetch all categories for this modal
+                $categories = GenericCategory::fetchAll($this->modalId, $this->lang);
+
                 ?>
                 <div class="w-full">
                     <label for="<?= htmlspecialchars($name) ?>"
                         class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                        <i class="fas <?= $icon ?> text-blue-600"></i>
+                        <i class="fas <?= htmlspecialchars($icon) ?> text-blue-600"></i>
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
                     <div class="relative">
                         <select id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>" <?= $requiredAttr ?>
                             class="w-full px-4 py-3 pr-10 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none bg-white cursor-pointer">
                             <option value=""><?= htmlspecialchars($this->translations['select_option']) ?></option>
-                            <?php foreach ($options as $option): ?>
-                                <option value="<?= htmlspecialchars($option['value'] ?? $option) ?>">
-                                    <?= htmlspecialchars($option['label'] ?? $option) ?>
+                            <?php foreach ($categories as $option):
+                                // Use 'id' for value and 'name' for label
+                                $optionValue = $option['id'] ?? '';
+                                $optionLabel = $option['name'][$this->lang] ?? $option['name'] ?? '';
+                                ?>
+                                <option value="<?= htmlspecialchars($optionValue) ?>" <?= ($value == $optionValue) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($optionLabel) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -348,7 +657,8 @@ class ModalGenerator
                 <?php
                 break;
 
-            default: // text, email, number, etc.
+
+            default:
                 ?>
                 <div class="w-full">
                     <label for="<?= htmlspecialchars($name) ?>"
@@ -359,8 +669,7 @@ class ModalGenerator
                     <div class="relative">
                         <input type="<?= htmlspecialchars($type) ?>" id="<?= htmlspecialchars($name) ?>"
                             name="<?= htmlspecialchars($name) ?>" value="<?= htmlspecialchars($value) ?>" <?= $requiredAttr ?>
-                            <?= $readonlyAttr ?>
-                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 <?= $readonlyClass ?>"
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                             placeholder="<?= htmlspecialchars($placeholder) ?>" />
                     </div>
                 </div>

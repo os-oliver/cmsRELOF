@@ -9,7 +9,7 @@
         <h3 class="text-lg font-semibold text-gray-800">
             <?= __("documents.recent_documents") ?>
         </h3>
-        <a href="/dashboard/dokumenti" class="text-primary-600 hover:text-primary-800 flex items-center">
+        <a href="/kontrolna-tabla/dokumenti" class="text-primary-600 hover:text-primary-800 flex items-center">
             <span>
                 <?= __("documents.view_all") ?>
             </span>
