@@ -26,14 +26,14 @@ export function htmlToDynamicCode(target, type) {
     if (tag === "img") {
       clearElements(element);
       element.addAttributes({
-        imageSourceGen: `<?php echo $${type}_item['${key}'] ; ?>`,
+        imageSourceGen: `<?php echo $${type}_item->${key} ; ?>`,
       });
     } else {
       clearElements(element);
       element.append([
         {
           type: "textnode",
-          content: `<?php echo htmlspecialchars($${type}_item['${key}'] ?? '', ENT_QUOTES); ?>`,
+          content: `<?php echo htmlspecialchars($${type}_item->${key} ?? '', ENT_QUOTES); ?>`,
         },
       ]);
     }

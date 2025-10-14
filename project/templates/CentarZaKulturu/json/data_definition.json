@@ -96,7 +96,7 @@
       ],
       "fields": [
         {
-          "name": "naslov",
+          "name": "title",
           "type": "text",
           "label": {
             "sr": "Naslov događaja",
@@ -106,7 +106,7 @@
           "required": true
         },
         {
-          "name": "kategorija",
+          "name": "naziv",
           "type": "categories",
           "label": {
             "sr": "Kategorija događaja",
@@ -133,7 +133,7 @@
           "required": true
         },
         {
-          "name": "vreme",
+          "name": "time",
           "type": "time",
           "label": {
             "sr": "Vreme početka",
@@ -143,7 +143,7 @@
           "required": true
         },
         {
-          "name": "lokacija",
+          "name": "location",
           "type": "text",
           "label": {
             "sr": "Lokacija događaja",
@@ -153,7 +153,7 @@
           "required": true
         },
         {
-          "name": "opis",
+          "name": "description",
           "type": "textarea",
           "label": {
             "sr": "Opis događaja",
@@ -217,7 +217,7 @@
         },
 
         {
-          "name": "opis",
+          "name": "description",
           "type": "textarea",
           "label": {
             "sr": "Opis događaja",
