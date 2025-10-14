@@ -227,11 +227,11 @@ HTML;
     protected string $cardRender = <<<'HTML'
  function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120,$cardTemplate=''): string
 {
-    $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
-    $lokacija = htmlspecialchars($item['fields']['lokacija'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $naslov = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $opis = htmlspecialchars(mb_substr($item['fields']['description'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
+    $lokacija = htmlspecialchars($item['fields']['location'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $vreme = htmlspecialchars($item['fields']['vreme'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $vreme = htmlspecialchars($item['fields']['time'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
     $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -379,7 +379,7 @@ HTML;
     public function buildPage(): string
     {
         $additionalPHP = <<<'PHP'
-use App\Controllers\ContentController;
+use App\Models\Content;
 use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
 
@@ -403,7 +403,7 @@ $search = $_GET['search'] ?? '';
 
 $categories = GenericCategory::fetchAll($slug, $locale);
 $itemsList = $slug 
-    ? (new ContentController())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId) 
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId) 
     : ['success' => false, 'items' => []];
 
 $config = $fieldLabels = [];

@@ -468,20 +468,20 @@ class PageExporter
     session_start();
     use App\Models\Gallery;
     use App\Models\PageLoader;
-
+    use App\Utils\HashMapTransformer;
     if (isset($_GET['locale'])) {
-        $_SESSION['locale'] = $_GET[\'locale\'];
+        $_SESSION['locale'] = $_GET['locale'];
     }
-    $locale = $_SESSION[\'locale\'] ?? \'sr-Cyrl\';
+    $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
     use App\Models\Event;
     use App\Models\Text;
+    use App\Models\Content;
 
     // Load dynamic texts
     $textModel = new Text();
     $dynamicText = $textModel->getDynamicText($locale);
-
-    $events = (new Content())->fetchListData('dogadjaji', $search, $currentPage, $itemsPerPage, $categoryId) 
-        : ['success' => false, 'items' => []];
+    $events_raw = (new Content())->fetchListData('dogadjaji', '', 0, 3, null, $locale)['items'];
+    $events = HashMapTransformer::transform($events_raw,$locale);
     $groupedPages = PageLoader::getGroupedStaticPages();
 
     [$images, $totalEvents] = (new Gallery)->list();
