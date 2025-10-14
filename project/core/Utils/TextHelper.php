@@ -91,4 +91,23 @@ class TextHelper
             ':source_table' => $sourceTable,
         ]);
     }
+
+    /**
+     * Delete text entries for a specific field name for a given source
+     */
+    public static function deleteFieldEntries(PDO $pdo, int $sourceId, string $fieldName, string $sourceTable = 'document'): void
+    {
+        $sql = "
+            DELETE FROM text
+            WHERE source_id = :source_id
+              AND source_table = :source_table
+              AND field_name = :field_name
+        ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':source_id' => $sourceId,
+            ':source_table' => $sourceTable,
+            ':field_name' => $fieldName,
+        ]);
+    }
 }

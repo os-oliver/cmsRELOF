@@ -4,6 +4,8 @@ use App\Models\Document;
 use App\Controllers\AuthController;
 use App\Models\Gallery;
 AuthController::requireEditor();
+use \App\Utils\LocaleManager;
+$locale = LocaleManager::get();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
 $sort = $_GET['sort'] ?? 'date_desc';
@@ -170,7 +172,8 @@ $totalPages = (int) ceil($totalCount / $limit);
                             </div>
 
                             <!-- Glassmorphism Overlay with Action Icons -->
-                            <div class="absolute inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                            <div
+                                class="absolute inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
                                 <div class="flex gap-6">
 
                                     <button id="editGallery"
@@ -188,7 +191,8 @@ $totalPages = (int) ceil($totalCount / $limit);
 
                             <div class="p-6">
                                 <!-- Title -->
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
+                                <h3
+                                    class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
                                     <?= htmlspecialchars($image['title']) ?>
                                 </h3>
 
@@ -205,7 +209,8 @@ $totalPages = (int) ceil($totalCount / $limit);
                             </div>
 
                             <div class="px-5 z-40 relative py-4 bg-gray-50 border-t border-gray-100">
-                                <button class="view-image w-full  flex items-center justify-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-blue-50">
+                                <button
+                                    class="view-image w-full  flex items-center justify-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-blue-50">
                                     <i class="fas fa-expand fa-sm"></i>
                                     <?= __('gallery.view_full_image') ?>
                                 </button>
@@ -224,7 +229,8 @@ $totalPages = (int) ceil($totalCount / $limit);
                 </div>
 
                 <!-- Pagination -->
-                <div class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                <div
+                    class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                     <div class="hidden md:block text-sm text-gray-700">
                         <?= __('gallery.pagination_summary', ['shown' => count($images), 'of' => $totalCount]) ?>
                     </div>
@@ -263,4 +269,5 @@ $totalPages = (int) ceil($totalCount / $limit);
     </script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
 </body>
+
 </html>

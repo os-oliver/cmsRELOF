@@ -114,25 +114,30 @@
                 </a>
             </li>
             <?php
-            $jsonData = file_get_contents(__DIR__ . '/../../structure.json');
+            $jsonData = file_get_contents(__DIR__ . '/../../assets/data/structure.json');
             $dataArray = json_decode($jsonData, true);
             if (json_last_error() !== JSON_ERROR_NONE) {
                 die("Error decoding JSON: " . json_last_error_msg());
             }
             foreach ($dataArray as $key => $value) {
                 foreach ($value as $sectionName => $sectionContent) {
+                    // determine icon class; fallback to folder icon
+                    $iconClass = isset($sectionContent['icon']) && is_string($sectionContent['icon']) && trim($sectionContent['icon']) !== ''
+                        ? $sectionContent['icon']
+                        : 'fas fa-folder';
                     ?>
                     <li class="mb-1">
-                        <a href="/kontrolna-tabla/<?= $sectionName ?>" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'stranice')
-                            ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
-                            : 'text-gray-600 hover:text-gray-900' ?>">
-                            <i class="fas fa-folder text-primary-500 mr-3 text-lg w-6 text-center"></i>
+                        <a href="/kontrolna-tabla/<?= $sectionName ?>" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === $sectionName)
+                              ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
+                              : 'text-gray-600 hover:text-gray-900' ?>">
+                            <i
+                                class="<?= $iconClass ?> <?= ($activeTab === $sectionName) ? 'text-primary-200' : 'text-primary-500' ?> mr-3 text-lg w-6 text-center"></i>
                             <span class="font-medium">
-                                <?= $sectionName ?>
+                                <?= $sectionContent[$locale] ?>
                             </span>
                         </a>
                     </li>
-                <? }
+                <?php }
             } ?>
         </ul>
 

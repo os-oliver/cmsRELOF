@@ -13,6 +13,8 @@
   "sidebar.about_us": "О нама",
   "sidebar.complaints": "Жалбе",
   "documents.categories": "Категорије",
+  "documentInputForm.remove": "Уклони",
+  "documentInputForm.select_option": "-- Одаберите опцију --",
 
   "dashboard.admin_panel": "Контролни панел - Администрација",
   "dashboard.total_views": "Укупно прегледа",
@@ -247,6 +249,7 @@
   "documentInputForm.document_title": "Наслов документа",
   "documentInputForm.optional_title": "Опциони наслов",
   "documentInputForm.document_description": "Опис документа",
+  "placeholder.enter": "Унесите",
   "documentInputForm.detailed_description": "Детаљан опис (опционо)",
   "documentInputForm.cancel": "Откажи",
   "documentInputForm.save_document": "Сачувај документ",

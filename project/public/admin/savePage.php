@@ -5,6 +5,7 @@ require_once __DIR__ . "/../../vendor/autoload.php";
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Controllers\AuthController;
 use App\Admin\PageExporter;
+use App\Models\GenericCategory;
 use App\Models\Page;
 use App\Controllers\UserDefinedPagesController;
 
@@ -133,7 +134,8 @@ function handleStaticPages(array $data): void
 ',
             'js' => ''
         ]);
-
+        $builder->setHtml('<main class="min-h-screen pt-24 flex-grow">
+        </main>');
         $basicPageContent = $builder->buildPage();
 
         // Save the file
@@ -215,7 +217,40 @@ try {
     if (isset($data['type']) && $data['type'] === 'static') {
         handleStaticPages($data);
     }
+    error_log("Handling dynamic page export...");
+    // 1. Load the JSON file
+    $jsonPath = __DIR__ . "/../../templates/" . $data['typeOfInstitution'] . "/json/data_definition.json";
+    $jsonContent = file_get_contents($jsonPath);
+    file_put_contents(__DIR__ . "/../../public/assets/data/structure.json", $jsonContent);
+    // 2. Decode JSON into associative array
+    $dataArray = json_decode($jsonContent, true);
 
+    // 3. Iterate over each type and collect categories
+    // Prvo pripremamo niz svih kategorija koje želimo da unesemo
+    $allCategoriesToInsert = [];
+    error_log("Priprema kategorija za unos...");
+    foreach ($dataArray as $type) {
+        foreach ($type as $typeKey => $typeData) {
+            if (isset($typeData['categories'])) {
+                foreach ($typeData['categories'] as $category) {
+                    // Dodajemo kategoriju u naš niz za grupni unos
+                    $allCategoriesToInsert[] = [
+                        'name' => $category,
+                        'type' => $typeKey
+                    ];
+                    // Logovanje možete zadržati da pratite šta se dešava
+                    error_log("- Priprema kategorije: " . $category);
+                }
+            }
+        }
+    }
+
+    // Sada pozivamo novu funkciju SAMO JEDNOM sa celim nizom
+    if (GenericCategory::replaceAllCategories($allCategoriesToInsert)) {
+        echo "Sve kategorije su uspešno ubačene!";
+    } else {
+        echo "Došlo je do greške prilikom unosa kategorija.";
+    }
     handleExport($data);
 
 } catch (Exception $e) {

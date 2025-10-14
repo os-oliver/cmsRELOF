@@ -85,6 +85,11 @@ class PageController
         require PUBLIC_ROOT . '/editor/pages/dynamicPage.php';
         return;
     }
+    public function colors()
+    {
+        require PUBLIC_ROOT . '/pages/color-scheme.php';
+        return;
+    }
     public function categoryStyle()
     {
         require PUBLIC_ROOT . '/superAdmin/pages/categories.php';
