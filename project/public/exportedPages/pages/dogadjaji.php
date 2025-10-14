@@ -11,19 +11,236 @@ use App\Models\Text;
 $textModel = new Text();
 $dynamicText = $textModel->getDynamicText($locale);
 
-use App\Models\Event;
+use App\Models\Content;
+use App\Controllers\LanguageMapperController;
+use App\Models\GenericCategory;
 
-$limit = 6;
-$page = max(1, (int) ($_GET['page'] ?? 1));
-$offset = ($page - 1) * $limit;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-[$events, $totalCount] = (new Event())->all(
-    limit: $limit,
-    offset: $offset,
-    lang: $locale
-);
-$totalPages = (int) ceil($totalCount / $limit);
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+$slug = 'dogadjaji';
+$pageTitle = ucfirst($slug);
+$pageDescription = 'Pregled svih stavki';
 
+// Configuration variables
+$itemsPerPage = 3;
+$descriptionMaxLength = 120;
+$paginationRange = 2;
+
+$currentPage = max(1, (int) ($_GET['page'] ?? 1));
+$categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
+$search = $_GET['search'] ?? '';
+
+$categories = GenericCategory::fetchAll($slug, $locale);
+$itemsList = $slug 
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId) 
+    : ['success' => false, 'items' => []];
+
+$config = $fieldLabels = [];
+if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
+    $parsed = json_decode(file_get_contents($structurePath), true);
+    $config = $parsed[0][$slug] ?? [];
+    $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
+}
+
+// Initialize translator and texts
+$translator = new LanguageMapperController();
+$latinTexts = [
+    'search_placeholder' => 'Pretraži...',
+    'apply_button' => 'Primeni',
+    'all_categories' => 'Sve kategorije',
+    'date_and_time' => 'Datum i vreme',
+    'location' => 'Lokacija',
+    'event_details' => 'Detalji događaja',
+    'no_items_found' => 'Nema pronađenih stavki',
+    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+];
+
+$texts = ($locale === 'sr-Cyrl') 
+    ? $translator->latin_to_cyrillic_array($latinTexts) 
+    : $latinTexts;
+    $cardTemplate = <<<'PHP'
+        <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
+            <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100">
+                {{imageSection}}
+                {{kategoria}}
+            </div>
+
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+                    {{naslov}}
+                </h3>
+
+                <div class="space-y-3 mb-4">
+                    {{dateTimeRow}}
+                    {{locationRow}}
+                </div>
+
+                <div class="mb-5 p-4 bg-gray-50 rounded-xl border border-gray-100">
+                    <p class="text-sm text-gray-700 leading-relaxed">{{opis}}</p>
+                </div>
+
+                <a href="sadrzaj?id={{itemId}}&tip=generic_element"
+                class="block w-full text-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl backdrop-blur-sm">
+                    <span class="flex items-center justify-center gap-2">
+                        <i class="fas fa-ticket-alt"></i>
+                        <span>{{eventDetails}}</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+        PHP;
+ function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120,$cardTemplate=''): string
+{
+    $naslov = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $opis = htmlspecialchars(mb_substr($item['fields']['description'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
+    $lokacija = htmlspecialchars($item['fields']['location'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $vreme = htmlspecialchars($item['fields']['time'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
+    $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
+    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
+
+    // Preformatted sections
+    $imageSection = $imageUrl
+        ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Event image'>"
+        : "<div class='absolute inset-0 flex items-center justify-center'>
+            
+                <i class='fas fa-calendar-star text-6xl text-indigo-300'></i>
+           </div>";
+
+    $dateTimeRow = ($datum || $vreme)
+        ? "<div class='flex items-start gap-3'>
+               <div class='flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center'>
+                   <i class='fas fa-calendar-alt text-indigo-600'></i>
+               </div>
+               <div class='flex-1'>
+                   <div class='text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5'>{$texts['date_and_time']}</div>
+                   <div class='text-sm font-semibold text-gray-900'>{$datum}" . ($datum && $vreme ? " • " : "") . "{$vreme}</div>
+               </div>
+           </div>"
+        : '';
+
+    $locationRow = $lokacija
+        ? "<div class='flex items-start gap-3'>
+               <div class='flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center'>
+                   <i class='fas fa-map-marker-alt text-purple-600'></i>
+               </div>
+               <div class='flex-1 min-w-0'>
+                   <div class='text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5'>{$texts['location']}</div>
+                   <div class='text-sm font-semibold text-gray-900 truncate'>{$lokacija}</div>
+               </div>
+           </div>"
+        : '';
+
+    // Replace placeholders
+    $replacements = [
+        '{{naslov}}' => $naslov,
+        '{{opis}}' => $opis,
+        '{{imageSection}}' => $imageSection,
+        '{{dateTimeRow}}' => $dateTimeRow,
+        '{{locationRow}}' => $locationRow,
+        '{{itemId}}' => $itemId,
+        '{{category}}' => $kategorija,
+        '{{eventDetails}}' => $texts['event_details'] ?? 'Details'
+    ];
+
+    return str_replace(array_keys($replacements), array_values($replacements), $cardTemplate);
+}
+
+function renderPagination(int $currentPage, int $totalPages, int $range = 2): string
+{
+    if ($totalPages <= 1) return '';
+    
+    $html = "<div class='flex justify-center items-center gap-2 mt-10'>";
+    
+    // Previous button
+    if ($currentPage > 1) {
+        $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
+        $html .= "<a href='{$prevUrl}' 
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
+            <i class='fas fa-chevron-left text-gray-600'></i>
+        </a>";
+    }
+    
+    $start = max(1, $currentPage - $range);
+    $end = min($totalPages, $currentPage + $range);
+    
+    // First page + ellipsis
+    if ($start > 1) {
+        $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
+        $html .= "<a href='{$url}' 
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
+        if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
+    }
+    
+    // Page numbers
+    for ($i = $start; $i <= $end; $i++) {
+        $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
+        $class = $i === $currentPage 
+            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md' 
+            : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
+        $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
+    }
+    
+    // Last page + ellipsis
+    if ($end < $totalPages) {
+        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
+        $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
+        $html .= "<a href='{$url}' 
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
+    }
+    
+    // Next button
+    if ($currentPage < $totalPages) {
+        $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
+        $html .= "<a href='{$nextUrl}' 
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
+            <i class='fas fa-chevron-right text-gray-600'></i>
+        </a>";
+    }
+    
+    $html .= "</div>";
+    
+    return $html;
+}
+function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
+{
+    $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
+    
+    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
+    
+    $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
+        <input type='text' name='search' value='{$safeSearchValue}' 
+               placeholder='{$texts['search_placeholder']}' 
+               class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
+        <button type='submit' 
+                class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+            {$texts['apply_button']}
+        </button>
+    </div>";
+    
+    $html .= "<div class='flex items-center w-full sm:w-auto'>
+        <select name='category' 
+                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+            <option value=''>{$texts['all_categories']}</option>";
+    
+    foreach ($categories as $cat) {
+        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
+        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
+        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
+        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
+    }
+    
+    $html .= "</select></div></form>";
+    
+    return $html;
+}
 
 
 ?>
@@ -32,7 +249,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($dynamicText['t_dogadjaji_a78a05_cb0d20']['text'] ?? 'dogadjaji', ENT_QUOTES, 'UTF-8'); ?></title>
+    <title></title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -75,75 +292,200 @@ $totalPages = (int) ceil($totalCount / $limit);
             }
         }
     </script><style>
-    .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 2rem;
+    main{
+        padding-top: 50px;
     }
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
 
-    .page-item {
-        margin: 0 0.25rem;
-    }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-    .page-link {
-        display: block;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-        border: 1px solid #d4a373;
-        color: #344e41;
-        transition: all 0.3s ease;
-    }
+/* Enhanced Glassmorphism effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
 
-    .page-link:hover {
-        background-color: #d4a373;
-        color: white;
-    }
+.glass-search {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-    .page-link.active {
-        background-color: #d4a373;
-        color: white;
-        border-color: #d4a373;
-    }
+.category-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.875rem;
+    background: rgba(107, 114, 128, 0.9);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
 
-    .page-link.disabled {
-        opacity: 0.5;
-        pointer-events: none;
-    }
-    .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 2rem;
-    }
+/* Improved field layout */
+.fields-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
 
-    .page-item {
-        margin: 0 0.25rem;
-    }
+.card-field {
+    position: relative;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-    .page-link {
-        display: block;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-        border: 1px solid #d4a373;
-        color: #344e41;
-        transition: all 0.3s ease;
-    }
+.card-field:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-    .page-link:hover {
-        background-color: #d4a373;
-        color: white;
-    }
+.card-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%);
+}
 
-    .page-link.active {
-        background-color: #d4a373;
-        color: white;
-        border-color: #d4a373;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .fields-container {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
     }
+    
+    .glass-card {
+        margin-bottom: 1rem;
+    }
+}
+    main{
+        padding-top: 50px;
+    }
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
 
-    .page-link.disabled {
-        opacity: 0.5;
-        pointer-events: none;
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Enhanced Glassmorphism effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-search {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.category-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.875rem;
+    background: rgba(107, 114, 128, 0.9);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Improved field layout */
+.fields-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.card-field {
+    position: relative;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-field:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .fields-container {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
     }
-* { box-sizing: border-box; } body {margin: 0;}.mobile-dropdown.active .mobile-dropdown-content{max-height:500px;}.mobile-dropdown.active .mobile-dropdown-chevron{transform:rotate(180deg);}#izhr0j{animation-delay:1s;}#i90xw1{animation-delay:2s;}#iqkhkw{animation-delay:3s;}#iloavy{background-image:radial-gradient(#344e41 1px, transparent 1px);background-size:20px 20px;}#imnmgg{clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);}#i9bea3{clip-path:polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);}#i1gona{border:0;}@layer utilities{.artistic-underline{background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 20\"><path fill=\"none\" stroke=\"%23d4a373\" stroke-width=\"3\" stroke-linecap=\"round\" d=\"M2,17 C15,17 25,5 40,10 C55,15 65,3 80,8 C95,13 105,5 118,12\"/></svg>");background-position-x:center;background-position-y:bottom;background-repeat:no-repeat;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 12px;padding-bottom:12px;}.nav-link::after{content:"";display:block;width:0px;height:3px;background-image:linear-gradient(to right, rgb(212, 163, 115), rgb(188, 108, 37));background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:width;}.nav-link:hover::after{width:100%;}.artistic-card{clip-path:polygon(0px 0px, 100% 0px, 100% 85%, 95% 100%, 0px 100%);transition-behavior:normal;transition-duration:0.4s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.artistic-card:hover{transform:translateY(-10px);box-shadow:rgba(0, 0, 0, 0.2) 0px 20px 30px -10px;}.artistic-frame{position:relative;}.artistic-frame::before{content:"";position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(212, 163, 115);border-right-color:rgb(212, 163, 115);border-bottom-color:rgb(212, 163, 115);border-left-color:rgb(212, 163, 115);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(2deg);}.artistic-frame::after{content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(163, 177, 138);border-right-color:rgb(163, 177, 138);border-bottom-color:rgb(163, 177, 138);border-left-color:rgb(163, 177, 138);border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;z-index:-1;transform:rotate(-1deg);}.category-badge{position:absolute;top:15px;right:15px;padding-top:5px;padding-right:12px;padding-bottom:5px;padding-left:12px;border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-right-radius:20px;border-bottom-left-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;backdrop-filter:blur(4px);z-index:20;}.hero-gradient{background-image:linear-gradient(135deg, rgb(245, 235, 224) 0%, rgb(212, 163, 115) 100%);background-position-x:initial;background-position-y:initial;background-size:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;}.hamburger span{transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px, 6px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px);}.section-divider{height:100px;background-image:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 120\" preserveAspectRatio=\"none\"><path d=\"M1200 120L0 16.48 0 0 1200 0 1200 120z\" fill=\"%23f5ebe0\"></path></svg>");background-position-x:initial;background-position-y:initial;background-repeat:initial;background-attachment:initial;background-origin:initial;background-clip:initial;background-color:initial;background-size:100% 100px;}.floating{animation-duration:6s;animation-timing-function:ease-in-out;animation-delay:0s;animation-iteration-count:infinite;animation-direction:normal;animation-fill-mode:none;animation-play-state:running;animation-name:floating;animation-timeline:auto;animation-range-start:normal;animation-range-end:normal;}0%{transform:scale(1);opacity:0;}50%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}.dropdown:hover .dropdown-menu{display:block;}.dropdown-menu{display:none;position:absolute;background-color:white;min-width:200px;box-shadow:rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;z-index:1;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;overflow-x:hidden;overflow-y:hidden;}.dropdown-item{padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;text-decoration-line:none;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:block;color:rgb(52, 78, 65);transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:all;border-left-width:3px;border-left-style:solid;border-left-color:transparent;}.dropdown-item:hover{background-color:rgb(249, 245, 240);border-left-width:3px;border-left-style:solid;border-left-color:rgb(212, 163, 115);}.event-card:hover::before{transform:translateY(0px);}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));row-gap:15px;column-gap:15px;}.gallery-item img{transition-behavior:normal;transition-duration:0.5s;transition-timing-function:ease;transition-delay:0s;transition-property:transform;}.gallery-item:hover img{transform:scale(1.1);}.gallery-item:hover::after{opacity:1;}.gallery-item .overlay-content{position:absolute;bottom:-30px;left:0px;right:0px;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;z-index:10;transition-behavior:normal;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-property:bottom;color:white;}.gallery-item:hover .overlay-content{bottom:0px;}}
+    
+    .glass-card {
+        margin-bottom: 1rem;
+    }
+}
 </style>
 
 
@@ -152,375 +494,39 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/divmobileMenu.php'
 require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
 ?>
 
- <main class="flex-1">
-    <div>
-        <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
-            A+
-        </button>
-    </div>
-        <section class="relative min-h-screen flex items-center w-full overflow-hidden pt-16 hero-gradient">
-            <section id="events" class="w-full py-20">
-                <div class="container mx-auto px-4">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold text-[#344e41] mb-6 relative inline-block"><?= htmlspecialchars($dynamicText['t_dogadjaji_e0bb26_f84aee']['text'] ?? 'Događaji', ENT_QUOTES, 'UTF-8'); ?><span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#d4a373] to-[#bc6c25]"></span>
-                        </h2>
-                        <p class="text-lg text-[#344e41]/80 max-w-2xl mx-auto mt-4"><?= htmlspecialchars($dynamicText['t_dogadjaji_a351cb_7c9b57']['text'] ?? 'Istražite našu bogatu ponudu kulturnih događaja', ENT_QUOTES, 'UTF-8'); ?></p>
-                    </div>
-    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <?php foreach ($events as $event): ?>
-                            <div class="event-card bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 h-full flex flex-col">
-                                <div class="h-48 relative">
-                                    <img alt="Event image" src="<?= htmlspecialchars($event['image'] ?? 'default.jpg') ?>" class="w-full h-full object-cover">
-                                    <div class="category-badge bg-[#d4a373]/80 text-white">
-                                        <?= htmlspecialchars($event['naziv'] ?? 'Događaj') ?>
-                                    </div>
-                                </div>
-                                <div class="p-6 flex-1 flex flex-col">
-                                    <div class="flex items-center mb-3">
-                                        <div class="w-10 h-10 rounded-full bg-[#d4a373] flex items-center justify-center text-white mr-3">
-                                            <i class="fas fa-calendar"></i>
-                                        </div>
-                                        <span class="text-[#d4a373] font-bold"><?= htmlspecialchars($dynamicText['t_dogadjaji_c9e943_b843d2']['text'] ?? 'Koncert', ENT_QUOTES, 'UTF-8'); ?></span>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-[#344e41] mb-2">
-                                        <?= htmlspecialchars($event['title']) ?>
-                                    </h3>
-                                    <p class="text-[#344e41]/80 mb-4 flex-1">
-                                        <?= htmlspecialchars($event['description']) ?>
-                                    </p>
-                                    <div class="flex justify-between items-center mt-auto">
-                                        <div>
-                                            <div class="flex items-center text-sm text-[#344e41]/70 mb-2">
-                                                <i class="fas fa-clock mr-2"></i>
-                                                <span>15.07.2023. | 20:00</span>
-                                            </div>
-                                            <div class="flex items-center text-sm text-[#344e41]/70">
-                                                <i class="fas fa-map-marker-alt mr-2"></i>
-                                                <span><?= htmlspecialchars($dynamicText['t_dogadjaji_5b7a3a_2f64b9']['text'] ?? 'Stari Grad, Trg Sv. Marka', ENT_QUOTES, 'UTF-8'); ?></span>
-                                            </div>
-                                        </div>
-                                        <a href="sadrzaj?id=<?= $event['id'] ?>&tip=events" class="text-[#d4a373] hover:text-[#bc6c25] transition-colors">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-    
-                    <?php if ($totalPages > 1): ?>
-                        <div class="pagination-container">
-                            <ul class="pagination">
-                                <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
-                                    <a class="page-link <?= $page <= 1 ? 'disabled' : '' ?>" href="?page=<?= $page - 1 ?>">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </a>
-                                </li>
-                                <?php
-                                $start = max(1, $page - 2);
-                                $end = min($totalPages, $page + 2);
-                                if ($start > 1) {
-                                    echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
-                                    if ($start > 2) {
-                                        echo '<li class="page-item disabled"><a class="page-link disabled" href="#">...</a></li>';
-                                    }
-                                }
-                                for ($i = $start; $i <= $end; $i++): ?>
-                                    <li class="page-item">
-                                        <a class="page-link <?= $i == $page ? 'active' : '' ?>" href="?page=<?= $i ?>">
-                                            <?= $i ?>
-                                        </a>
-                                    </li>
-                                <?php endfor;
-                                if ($end < $totalPages) {
-                                    if ($end < $totalPages - 1) {
-                                        echo '<li class="page-item disabled"><a class="page-link disabled" href="#">...</a></li>';
-                                    }
-                                    echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
-                                }
-                                ?>
-                                <li class="page-item <?= $page >= $totalPages ? 'disabled' : '' ?>">
-                                    <a class="page-link <?= $page >= $totalPages ? 'disabled' : '' ?>" href="?page=<?= $page + 1 ?>">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            </section>
-        </section>
-    </main>
+<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <section class="container mx-auto px-4 py-12">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2"><?= htmlspecialchars($dynamicText['t_dogadjaji_710323_f84aee']['text'] ?? 'Događaji', ENT_QUOTES, 'UTF-8'); ?></h1>
+            <p class="text-gray-600"><?= htmlspecialchars($dynamicText['t_dogadjaji_8c9823_7c9b57']['text'] ?? 'Istražite našu bogatu ponudu kulturnih događaja', ENT_QUOTES, 'UTF-8'); ?></p>
+        </div>
+        
+        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        
+        <div class="performances-grid">
+            <?php
+            if ($itemsList['success'] && !empty($itemsList['items'])) {
+                echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
+                foreach ($itemsList['items'] as $item) {
+                    echo cardRender($item, $fieldLabels, $locale, $texts, $descriptionMaxLength,$cardTemplate);
+                }
+                echo '</div>';
+                
+                $totalPages = ceil($itemsList['total'] / $itemsPerPage);
+                echo renderPagination($currentPage, $totalPages, $paginationRange);
+            } else {
+                echo "<div class='glass-card rounded-lg p-12 text-center border border-white/40'>
+                    <i class='fas fa-inbox text-5xl text-gray-400 mb-4'></i>
+                    <p class='text-gray-500'>{$texts['no_items_found']}</p>
+                </div>";
+            }
+            ?>
+        </div>
+    </section>
+</main>
 <?php
 require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
 ?>
 
-<script>
-
-
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'clay': '#c97c5d',
-                        'ochre': '#d4a373',
-                        'sage': '#a3b18a',
-                        'slate': '#344e41',
-                        'paper': '#f5ebe0',
-                        'terracotta': '#bc6c25',
-                        'coral': '#e76f51',
-                        'deep-teal': '#2a9d8f',
-                        'crimson': '#8d1b3d',
-                        'royal-blue': '#1a4480',
-                        'velvet': '#4a154b',
-                        ochre: '#CC7722',
-                        terracotta: '#E2725B',
-                        paper: '#F5F5DC',
-                        slate: '#2F4F4F',
-                        'royal-blue': '#4169E1',
-                        'deep-teal': '#008B8B',
-                        velvet: '#872657',
-                        crimson: '#DC143C',
-                        coral: '#FF7F50',
-                        sage: '#9CAF88'
-                    },
-                    fontFamily: {
-                        'display': ['Playfair Display', 'serif'],
-                        'crimson': ['Crimson Pro', 'serif'],
-                        'body': ['Raleway', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'art-pattern': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmNWViZTAiPjxwYXRoIGQ9Ik0wIDBoNDB2NDBIMHoiLz48L2c+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0idXJsKCNhKSIvPjxwYXRoIGQ9Ik0wIDBoMjB2MjBIMHoiIGZpbGw9IiNkNGExYjEiIG9wYWNpdHk9Ii4xIi8+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6IiBmaWxsPSIjYTNiMThhIiBvcGFjaXR5PSIuMSIvPjxwYXRoIGQ9Ik0wIDIwaDIwdjIwSDB6IiBmaWxsPSIjYjk3YzVkIiBvcGFjaXR5PSIuMSIvPjxwYXRoIGQ9Ik0yMCAyMGgyMHYyMEgyMHoiIGZpbGw9IiMzNDRlNDEiIG9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')",
-                        'brush-stroke': "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 40\" width=\"400\" height=\"40\"><path d=\"M20,20 C50,5 100,35 150,20 C200,5 250,35 300,20 C350,5 380,35 380,20\" fill=\"none\" stroke=\"%23d4a373\" stroke-width=\"10\" stroke-linecap=\"round\"/>')",
-                    }
-                }
-            }
-        }
-        const btn = document.getElementById('increaseFontBtn');
-
-        let currentSize = 16;       // initial font size in px
-        let step = 2;               // px to increase or decrease per click
-        let maxSteps = 3;           // max increments before toggling direction
-        let count = 0;              // how many increments or decrements done
-        let increasing = true;      // track if currently increasing font size
-
-        btn.addEventListener('click', () => {
-            if (increasing) {
-                currentSize += step;
-                count++;
-                if (count === maxSteps) {
-                    increasing = false;
-                    btn.textContent = 'A-'; // change button to decrease
-                }
-            } else {
-                currentSize -= step;
-                count--;
-                if (count === 0) {
-                    increasing = true;
-                    btn.textContent = 'A+'; // change button back to increase
-                }
-            }
-            // Apply font size to body (all page)
-            document.body.style.fontSize = currentSize + 'px';
-        });
-
-        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
-
-        mobileDropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                const dropdown = toggle.closest('.mobile-dropdown');
-                dropdown.classList.toggle('active');
-            });
-        });
-        document.getElementById('searchButton').addEventListener('click', function () {
-            const container = document.getElementById('searchInputContainer');
-            const input = document.getElementById('searchInput');
-
-            if (container.classList.contains('hidden')) {
-                container.classList.remove('hidden');
-                setTimeout(() => {
-                    container.classList.remove('opacity-0');
-                    input.focus();
-                }, 10);
-            }
-        });
-
-        document.getElementById('closeSearch').addEventListener('click', function () {
-            const container = document.getElementById('searchInputContainer');
-            container.classList.add('opacity-0');
-            setTimeout(() => {
-                container.classList.add('hidden');
-            }, 300);
-        });
-
-        document.addEventListener('click', function (e) {
-            const searchContainer = document.getElementById('searchInputContainer');
-            const searchButton = document.getElementById('searchButton');
-
-            if (!searchContainer.contains(e.target) && !searchButton.contains(e.target)) {
-                searchContainer.classList.add('opacity-0');
-                setTimeout(() => {
-                    searchContainer.classList.add('hidden');
-                }, 300);
-            }
-        });
-        // Close search input
-        closeSearch.addEventListener('click', () => {
-            searchInputContainer.classList.add('opacity-0');
-            searchInputContainer.classList.add('translate-x-2');
-            searchInput.classList.add('w-0');
-            searchInput.classList.add('opacity-0');
-            searchButton.classList.remove("invisible");
-
-            setTimeout(() => {
-                searchInputContainer.classList.add('hidden');
-                searchInput.value = '';
-            }, 300);
-        });
-        // Header scroll effect
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-            } else {
-                header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-            }
-        });
-
-        // Animation for cards on hover
-        document.querySelectorAll('.artistic-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Mobile menu toggle
-        // Mobile Menu JavaScript
-        // Get elements
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuPanel = document.getElementById('mobileMenuPanel');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const closeMobileMenu = document.getElementById('closeMobileMenu');
-        const mobileAboutToggle = document.getElementById('mobileAboutToggle');
-        const mobileAboutMenu = document.getElementById('mobileAboutMenu');
-        const mobileAboutIcon = document.getElementById('mobileAboutIcon');
-
-        // Function to open mobile menu
-        function openMobileMenu() {
-            mobileMenu.classList.remove('hidden');
-            // Use setTimeout to ensure the display change takes effect before animation
-            setTimeout(() => {
-                mobileMenuPanel.classList.remove('translate-x-full');
-            }, 10);
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = 'hidden';
-            // Add active class to hamburger
-            hamburger.classList.add('active');
-        }
-
-        // Function to close mobile menu
-        function closeMobileMenuFunc() {
-            mobileMenuPanel.classList.add('translate-x-full');
-            // Wait for animation to complete before hiding
-            setTimeout(() => {
-                mobileMenu.classList.add('hidden');
-            }, 300);
-            // Restore body scroll
-            document.body.style.overflow = '';
-            // Remove active class from hamburger
-            hamburger.classList.remove('active');
-        }
-
-        // Function to toggle mobile about submenu
-        function toggleMobileAbout() {
-            const isHidden = mobileAboutMenu.classList.contains('hidden');
-
-            if (isHidden) {
-                // Show submenu
-                mobileAboutMenu.classList.remove('hidden');
-                mobileAboutIcon.style.transform = 'rotate(180deg)';
-            } else {
-                // Hide submenu
-                mobileAboutMenu.classList.add('hidden');
-                mobileAboutIcon.style.transform = 'rotate(0deg)';
-            }
-        }
-
-        // Event listeners
-        if (hamburger) {
-            hamburger.addEventListener('click', function (e) {
-                e.stopPropagation();
-                if (mobileMenu.classList.contains('hidden')) {
-                    openMobileMenu();
-                } else {
-                    closeMobileMenuFunc();
-                }
-            });
-        }
-
-        if (closeMobileMenu) {
-            closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
-        }
-
-        if (mobileMenuOverlay) {
-            mobileMenuOverlay.addEventListener('click', closeMobileMenuFunc);
-        }
-
-        if (mobileAboutToggle) {
-            mobileAboutToggle.addEventListener('click', function (e) {
-                e.preventDefault();
-                toggleMobileAbout();
-            });
-        }
-
-        // Close menu when clicking on menu links (except dropdown toggle)
-        const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function () {
-                // Close menu after a short delay to allow for navigation
-                setTimeout(closeMobileMenuFunc, 150);
-            });
-        });
-
-        // Close menu on window resize if screen becomes large
-        window.addEventListener('resize', function () {
-            if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
-                closeMobileMenuFunc();
-            }
-        });
-
-        // Handle escape key to close menu
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-                closeMobileMenuFunc();
-            }
-        });
-
-        // Prevent menu panel clicks from closing the menu
-        if (mobileMenuPanel) {
-            mobileMenuPanel.addEventListener('click', function (e) {
-                e.stopPropagation();
-            });
-        }
-
-        // Initialize animations when elements come into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
-            observer.observe(el);
-        });
-    
-</script>
 
 
