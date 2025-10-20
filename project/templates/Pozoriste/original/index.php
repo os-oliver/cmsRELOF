@@ -332,49 +332,39 @@
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
-                    <a href="#"
-                        class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-primarybutton"></i>Početna
                     </a>
                     <div class="mobile-dropdown">
-                        <button
-                            class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
+                        <button class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
                             id="mobileAboutToggle">
                             <div class="flex items-center">
                                 <i class="fas fa-info-circle mr-3 text-primarybutton"></i>O nama
                             </div>
-                            <i class="fas fa-chevron-down  transition-transform duration-200"
-                                id="mobileAboutIcon"></i>
+                            <i class="fas fa-chevron-down  transition-transform duration-200" id="mobileAboutIcon"></i>
                         </button>
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-bullseye mr-2 text-primarybutton"></i>Cilj
                             </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primarybutton"></i>Zaposleni
                             </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-flag mr-2 text-primarybutton"></i>Misija
                             </a>
                         </div>
                     </div>
-                    <a href="#"
-                        class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primarybutton"></i>Događaji
                     </a>
-                    <a href="#"
-                        class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-primarybutton"></i>Galerija
                     </a>
-                    <a href="#"
-                        class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-primarybutton"></i>Dokumenti
                     </a>
-                    <a href="#"
-                        class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primarybutton"></i>Kontakt
                     </a>
                 </nav>
@@ -414,15 +404,14 @@
 
 
             <!-- Desktop Navigation -->
-            <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-8 font-secondaryfont text-secondarytext hover:text-primarytext">
-                <a href="#"
-                    class="nav-link transition-colors flex items-center whitespace-nowrap">
+            <nav id="navBarID"
+                class="hidden lg:flex space-x-4 xl:space-x-8 font-secondaryfont text-secondarytext hover:text-primarytext">
+                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-home mr-2 text-primarybutton transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
                 <div class="dropdown relative group transition-colors">
-                    <button
-                        class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <button class="nav-link transition-colors flex items-center whitespace-nowrap">
                         <i class="fas fa-info-circle mr-2 text-primarybutton"></i>
                         <span class="hidden xl:inline">O nama</span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
@@ -443,29 +432,24 @@
                         </a>
                     </div>
                 </div>
-                <a href="#"
-                    class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i
-                        class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
+                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Događaji</span>
                 </a>
-                <a href="#"
-                    class="nav-link transition-colors flex items-center whitespace-nowrap">
+                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-images mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Galerija</span>
                 </a>
-                <a href="#"
-                    class="nav-link transition-colors group flex items-center whitespace-nowrap">
+                <a href="#" class="nav-link transition-colors group flex items-center whitespace-nowrap">
                     <i class="fas fa-folder-open mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Dokumenti</span>
                 </a>
-                <a href="#"
-                    class="nav-link transition-colors flex items-center whitespace-nowrap">
+                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-address-book mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Kontakt</span>
                 </a>
 
-                
+
                 <?php
                 if (isset($_GET['locale'])) {
                     $_SESSION['locale'] = $_GET['locale'];
@@ -555,11 +539,11 @@
                             <span class="block mt-2 text-secondarytext font-secondaryfont">Lorem ipsum dolor sit</span>
                         </h1>
                         <p class="mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit. 
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat. 
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
+                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
                             In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit. 
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat. 
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
+                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
                             In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
                         </p>
                         <button
@@ -569,7 +553,9 @@
                     </div>
                 </div>
                 <div class="hidden md:flex justify-center">
-                    <img class="dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/girl-shopping-list.svg" alt="shopping illustration" />
+                    <img class="dark:hidden"
+                        src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/girl-shopping-list.svg"
+                        alt="shopping illustration" />
                 </div>
             </div>
         </div>
@@ -598,7 +584,7 @@
                             <span class="text-primarytext text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
-                         <button
+                        <button
                             class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
                             Vidi više
                         </button>
@@ -614,7 +600,7 @@
                             <span class="text-primarytext text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
-                         <button
+                        <button
                             class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
                             Vidi više
                         </button>
@@ -630,7 +616,7 @@
                             <span class="text-primarytext text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
-                         <button
+                        <button
                             class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
                             Vidi više
                         </button>
@@ -646,7 +632,7 @@
                             <span class="text-primarytext text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
-                         <button
+                        <button
                             class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
                             Vidi više
                         </button>
@@ -662,7 +648,7 @@
                             <span class="text-primarytext text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
-                         <button
+                        <button
                             class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
                             Vidi više
                         </button>
@@ -691,75 +677,71 @@
                 </h2>
                 <p class="lg:mb-16 sm:text-xl">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
                 </p>
-            </div> 
+            </div>
             <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                 <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
-                        <img 
-                        class="w-full h-full object-cover rounded-l-lg" 
-                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
-                        >
+                        <img class="w-full h-full object-cover rounded-l-lg"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
                     <div class="p-5 w-3/4">
                         <h3 class="text-primarytext tracking-tight text-2xl">
-                        <p>Lorem ipsum</p>
+                            <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
                         </p>
                     </div>
                 </div>
                 <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
-                        <img 
-                        class="w-full h-full object-cover rounded-l-lg" 
-                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
-                        >
+                        <img class="w-full h-full object-cover rounded-l-lg"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
                     <div class="p-5 w-3/4">
                         <h3 class="text-primarytext tracking-tight text-2xl">
-                        <p>Lorem ipsum</p>
+                            <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                    </div>
-                </div> 
-                <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
-                    <a href="#" class="w-1/4 h-full">
-                        <img 
-                        class="w-full h-full object-cover rounded-l-lg" 
-                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
-                        >
-                    </a>
-                    <div class="p-5 w-3/4">
-                        <h3 class="text-primarytext tracking-tight text-2xl">
-                        <p>Lorem ipsum</p>
-                        </h3>
-                        <p class="mt-3 mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
                         </p>
                     </div>
                 </div>
                 <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
-                        <img 
-                        class="w-full h-full object-cover rounded-l-lg" 
-                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
-                        >
+                        <img class="w-full h-full object-cover rounded-l-lg"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
                     <div class="p-5 w-3/4">
                         <h3 class="text-primarytext tracking-tight text-2xl">
-                        <p>Lorem ipsum</p>
+                            <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
                         </p>
                     </div>
-                </div>  
-            </div>  
+                </div>
+                <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
+                    <a href="#" class="w-1/4 h-full">
+                        <img class="w-full h-full object-cover rounded-l-lg"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
+                    </a>
+                    <div class="p-5 w-3/4">
+                        <h3 class="text-primarytext tracking-tight text-2xl">
+                            <p>Lorem ipsum</p>
+                        </h3>
+                        <p class="mt-3 mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+            </div>
             <div class="text-center mt-12">
                 <button id="eventsView"
                     class="bg-primarybutton text-background text-lg px-8 py-4 rounded-full hover:bg-primarybuttonhover transition-colors flex items-center shadow-lg mx-auto">
@@ -779,27 +761,24 @@
         </div>
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <?php 
+                <?php
                 $stats = [
                     ['label' => 'Knjaz Milos'],
                     ['label' => 'Vlada Republike Srbije'],
                     ['label' => 'AikBanka'],
                     ['label' => 'Firma4'],
-                ];   
-                foreach($stats as $index => $stat): ?>
-                <div class="bg-cardcolor p-6 rounded-xl shadow-lg transform transition hover:scale-105" 
-                    style="animation-delay: <?= $index * 0.2 ?>s">
-                    
-                    <!-- Added image -->
-                    <img 
-                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
-                        alt="<?= htmlspecialchars($stat['label'], ENT_QUOTES) ?>" 
-                        class="w-full h-24 object-cover rounded-md mb-4" 
-                        loading="lazy"
-                    />
+                ];
+                foreach ($stats as $index => $stat): ?>
+                    <div class="bg-cardcolor p-6 rounded-xl shadow-lg transform transition hover:scale-105"
+                        style="animation-delay: <?= $index * 0.2 ?>s">
 
-                    <div><?= $stat['label'] ?></div>
-                </div>
+                        <!-- Added image -->
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            alt="<?= htmlspecialchars($stat['label'], ENT_QUOTES) ?>"
+                            class="w-full h-24 object-cover rounded-md mb-4" loading="lazy" />
+
+                        <div><?= $stat['label'] ?></div>
+                    </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -813,9 +792,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
+                        <div
+                            class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
@@ -1145,4 +1125,5 @@
         });
     </script>
 </body>
+
 </html>
