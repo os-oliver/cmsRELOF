@@ -43,16 +43,7 @@
                     </span>
                 </a>
             </li>
-            <li class="mb-1">
-                <a href="/kontrolna-tabla/dogadjaji" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'events')
-                    ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
-                    : 'text-gray-600 hover:text-gray-900' ?>">
-                    <i class="fas fa-calendar-alt text-primary-500 mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">
-                        <?= __('sidebar.events') ?>
-                    </span>
-                </a>
-            </li>
+
             <li class="mb-1">
                 <a href="/kontrolna-tabla/galerija" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'gallery')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'

@@ -74,7 +74,6 @@ class Gallery
 
         $whereClause = $where ? ' AND ' . implode(' AND ', $where) : '';
 
-        // Order mapping
         $order = match ($sort) {
             'date_asc' => 'g.uploaded_at ASC',
             'title' => 't.content ASC',
@@ -101,11 +100,18 @@ class Gallery
         }
         $stmt->execute();
 
+        // PDO_FETCH_ASSOC, jer Pivoter očekuje array
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         $total = (int) $this->pdo->query("SELECT COUNT(*) FROM gallery;")->fetchColumn();
 
+        // Pivot ostaje array
         $data = (new Pivoter('field_name', 'content', 'id'))->pivot($rows);
-        return [$data, $total];
+
+        // Sada mapiraj u objekte za -> pristup
+        $objectData = array_map(fn($item) => (object) $item, $data);
+
+        return [$objectData, $total];
     }
 
 
