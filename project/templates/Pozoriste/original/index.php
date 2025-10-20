@@ -7,9 +7,7 @@
     <title>Lorem ipsum dolor</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style type="text/css">
         .search-container {
@@ -110,10 +108,12 @@
             }
 
             .hero-gradient {
-                background: linear-gradient(to bottom,
-                        rgb(247, 241, 237) 0%,
-                        rgb(239, 178, 178) 50%,
-                        rgba(255, 255, 255, 0.96) 100%);
+                background: linear-gradient(
+                    to bottom,       
+                    rgb(247, 241, 237) 0%,      
+                    rgb(239, 178, 178) 50%,     
+                    rgba(255, 255, 255, 0.96) 100%     
+                );
                 text-align: left;
                 padding-top: 8rem;
                 padding-bottom: 6rem;
@@ -386,8 +386,8 @@
             <div class="flex items-center space-x-3 flex-shrink-0">
                 <div
                     class="artistic-frame w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-logocolor1 to-logocolor2 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 text-background"
-                        viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 text-background" viewBox="0 0 20 20"
+                        fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
                             clip-rule="evenodd" />
@@ -573,15 +573,11 @@
                     Pogledajte trenutni repertoar naseg pozorista
                 </p>
             </div>
-            <div id="eventsCards"
-                class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+            <div id="eventsCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
                 <!-- Event 1 -->
-                <div
-                    class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
-                            alt="shopping illustration" />
+                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -595,12 +591,9 @@
                     </div>
                 </div>
                 <!-- Event 2 -->
-                <div
-                    class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
-                            alt="shopping illustration" />
+                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -614,12 +607,9 @@
                     </div>
                 </div>
                 <!-- Event 3 -->
-                <div
-                    class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
-                            alt="shopping illustration" />
+                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -633,12 +623,9 @@
                     </div>
                 </div>
                 <!-- Event 4 -->
-                <div
-                    class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
-                            alt="shopping illustration" />
+                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -652,12 +639,9 @@
                     </div>
                 </div>
                 <!-- Event 5 -->
-                <div
-                    class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
-                            alt="shopping illustration" />
+                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -843,16 +827,11 @@
                 <div>
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a>
-                        </li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a>
-                        </li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a>
-                        </li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a>
-                        </li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a>
-                        </li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
                         <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a>
                         </li>
                     </ul>
