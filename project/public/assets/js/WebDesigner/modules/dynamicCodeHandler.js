@@ -20,8 +20,12 @@ export function htmlToDynamicCode(target, type) {
   const inputElements = modelDiv.find('[id^="g-"]');
 
   inputElements.forEach((element) => {
-    const key = element.getId().slice(2);
+    let key = element.getId().slice(2);
     const tag = element.get("tagName").toLowerCase();
+    console.log("key:", key);
+    console.log("element:", element.toHTML());
+    key = key.replace(/-?\d+/g, "").replace(/-$/g, "");
+    console.log("key:", key);
 
     if (tag === "img") {
       clearElements(element);
