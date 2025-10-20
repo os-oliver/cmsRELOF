@@ -1,12 +1,13 @@
 <?php
+
+use App\Models\Content;
+use App\Utils\HashMapTransformer;
 session_start();
 use App\Controllers\AuthController;
 use App\Controllers\VisitCounterController;
 use App\Models\Document;
 use App\Models\User;
-use App\Models\Event;
 
-$eventModel = new Event;
 
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
@@ -17,8 +18,8 @@ if (isset($_GET['locale'])) {
 $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 $views = (new VisitCounterController())->getVisitCount();
 [$_, $totalUsers] = (new User())->list();
-$categories = $eventModel->getCategories($locale);
-[$events, $totalEvents] = $eventModel->all();
+$events_raw = (new Content())->fetchListData('dogadjaji', '', 0, 3, null, $locale)['items'];
+$events = HashMapTransformer::transform($events_raw, $locale);
 $documentModal = new Document();
 [$documents, $totalDocuments] = $documentModal->list(
     limit: 3,
@@ -47,7 +48,6 @@ $DocumentCategories = $documentModal->getCategories($locale);
 <body class="bg-gradient-to-br from-light-100 to-light-200 text-gray-700 font-sans">
     <div class="overlay" id="overlay"></div>
 
-    <?php require_once __DIR__ . '/../components/eventsInputForm.php' ?>
     <?php require_once __DIR__ . '/../components/documentInputForm.php' ?>
 
     <div class="flex h-screen overflow-hidden">
@@ -83,7 +83,7 @@ $DocumentCategories = $documentModal->getCategories($locale);
                                 <p class="text-sm text-primary-600">
                                     <?= __("dashboard.events") ?>
                                 </p>
-                                <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= $totalEvents ?></p>
+                                <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= count($events) ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">
                                 <i class="fas fa-calendar-alt text-primary-600 text-xl"></i>
@@ -118,7 +118,51 @@ $DocumentCategories = $documentModal->getCategories($locale);
 
     <script src="/assets/js/dashboard/dashboard.js" defer></script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
+    <script type="module" defer>
+        import ModalManager from "/assets/js/dashboard/modalManager.js";
 
+        // Kreiramo default instancu koja se može koristiti i eksterno
+        const defaultManager = new ModalManager({
+            slug: "Dogadjaji",
+        });
+        if (typeof window !== "undefined") {
+            // Delay init until DOMContentLoaded da bi elementi bili prisutni
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", () => init());
+            } else {
+                init();
+            }
+        }
+
+        export function init({
+            slug = null,
+            newBtnSelector = "#newEventButton",
+            baseUrl = "/editor",
+        } = {}) {
+            if (slug) defaultManager.slug = slug;
+            defaultManager.baseUrl = baseUrl;
+
+            const newBtn = document.querySelector(newBtnSelector);
+            newBtn?.addEventListener("click", async (e) => {
+                e.preventDefault();
+                const btn = e.currentTarget;
+                btn.disabled = true;
+
+                try {
+                    const html = await defaultManager.fetchModal();
+                    defaultManager.show(html);
+                } catch (err) {
+                    console.error("Modal error:", err);
+                    alert("Greška pri učitavanju modalnog prozora: " + (err.message || err));
+                } finally {
+                    btn.disabled = false;
+                }
+            });
+
+
+        }
+
+    </script>
 </body>
 
 </html>
