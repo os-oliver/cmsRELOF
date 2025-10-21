@@ -48,6 +48,35 @@
             transform: rotate(180deg);
         }
 
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: #344e41;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f9f5f0;
+            border-left: 3px solid #d4a373;
+        }
+
         @layer utilities {
             .text-shadow {
                 text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
@@ -540,7 +569,8 @@
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-                    <div class="absolute top-full left-0 mt-2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 hidden group-hover:block transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                    <div
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-bullseye mr-3 text-green-600 flex-shrink-0 w-4 text-sm"></i>
@@ -583,7 +613,8 @@
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-                    <div class="absolute top-full left-0 mt-2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 hidden group-hover:block transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                    <div
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="/prava-i-usluge/prava"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-clipboard-list mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
@@ -625,7 +656,8 @@
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-                    <div class="absolute top-full left-0 mt-2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 hidden group-hover:block transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                    <div
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-users mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
@@ -676,7 +708,7 @@
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute top-full right-0 min-w-max bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-2 backdrop-blur-sm">
+                        class="dropdown-menu absolute top-full right-0 min-w-max bg-white rounded-xl shadow-2xl border border-gray-100 z-50 py-2 backdrop-blur-sm">
                         <?php foreach ($languages as $key => $lang): ?>
                             <a href="?locale=<?= $key ?>"
                                 class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
