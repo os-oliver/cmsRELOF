@@ -22,7 +22,7 @@ function getTransparencyStatus($score)
         return 'Excellent';
     if ($score >= 60)
         return 'Good';
-    return 'Needs work';
+    return __('transparency.score.need_more');
 }
 
 // Extra classes for Tailwind utility colors (if you want closer integration)
@@ -52,7 +52,7 @@ $tw = getTailwindClasses($transparencyScore);
             </div>
         </div>
         <div class="ml-4 flex-1">
-            <h3 class="text-sm font-medium text-gray-700">Skor Transparentnosti</h3>
+            <h3 class="text-sm font-medium text-gray-700"><?php echo __('transparency.score.title'); ?></h3>
             <div class="mt-2 flex items-center">
                 <div class="relative h-12 w-12">
                     <canvas id="transparency-chart" width="48" height="48"></canvas>
@@ -62,7 +62,7 @@ $tw = getTailwindClasses($transparencyScore);
                 </div>
                 <div class="ml-3">
                     <div class="text-xs uppercase font-medium" style="color: <?= $color ?>"><?= $status ?></div>
-                    <div class="text-xs text-gray-500 mt-0.5">Updated today</div>
+                    <div class="text-xs text-gray-500 mt-0.5"><?php echo __('transparency.score.update_age'); ?></div>
                 </div>
             </div>
         </div>
