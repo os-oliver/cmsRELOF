@@ -171,6 +171,169 @@
           }
         }
       ]
+    },
+    "ProgramiObuke": {
+        "sr": "Programi obuke",
+        "en": "Training Programs",
+        "sr-Cyrl": "Програми обуке",
+        "icon": "fas fa-graduation-cap",
+        "categories": [
+            "Roditeljstvo",
+            "Komunikacija",
+            "Stariji",
+            "Mladi",
+            "Porodica",
+            "Veštine"
+        ],
+        "fields": [
+            {
+            "name": "slika",
+            "type": "file",
+            "label": {
+                "sr": "Naslovna slika programa",
+                "en": "Program image",
+                "sr-Cyrl": "Насловна слика програма"
+            },
+            "required": true
+            },
+            {
+            "name": "naslov",
+            "type": "text",
+            "label": {
+                "sr": "Naziv programa obuke",
+                "en": "Training program title",
+                "sr-Cyrl": "Назив програма обуке"
+            },
+            "required": true
+            },
+            {
+            "name": "kategorija",
+            "type": "select",
+            "label": {
+                "sr": "Kategorija programa",
+                "en": "Program category",
+                "sr-Cyrl": "Категорија програма"
+            },
+            "options": [
+                "Roditeljstvo",
+                "Komunikacija",
+                "Stariji",
+                "Mladi",
+                "Porodica",
+                "Veštine"
+            ],
+            "required": true
+            },
+            {
+            "name": "ikonica",
+            "type": "select",
+            "label": {
+                "sr": "Ikonica kategorije",
+                "en": "Category icon",
+                "sr-Cyrl": "Иконица категорије"
+            },
+            "options": [
+                "fas fa-baby",
+                "fas fa-comments",
+                "fas fa-heart",
+                "fas fa-users",
+                "fas fa-hands-helping",
+                "fas fa-brain"
+            ],
+            "required": true
+            },
+            {
+            "name": "bojaKategorije",
+            "type": "select",
+            "label": {
+                "sr": "Boja kategorije",
+                "en": "Category color",
+                "sr-Cyrl": "Боја категорије"
+            },
+            "options": [
+                "green",
+                "blue",
+                "orange",
+                "purple",
+                "red",
+                "yellow"
+            ],
+            "default": "green",
+            "required": true
+            },
+            {
+            "name": "kratakOpis",
+            "type": "textarea",
+            "label": {
+                "sr": "Kratak opis programa",
+                "en": "Short program description",
+                "sr-Cyrl": "Кратак опис програма"
+            },
+            "maxLength": 250,
+            "required": true
+            },
+            {
+            "name": "vremeZavrsetka",
+            "type": "time",
+            "label": {
+                "sr": "Vreme završetka",
+                "en": "End time",
+                "sr-Cyrl": "Време завршетка"
+            },
+            "required": true
+            },
+            {
+            "name": "vremePocetka",
+            "type": "time",
+            "label": {
+                "sr": "Vreme početka",
+                "en": "Start time",
+                "sr-Cyrl": "Време почетка"
+            },
+            "required": true
+            },
+            {
+            "name": "ucestalost",
+            "type": "select",
+            "label": {
+                "sr": "Učestalost održavanja",
+                "en": "Frequency",
+                "sr-Cyrl": "Учесталост одржавања"
+            },
+            "options": [
+                "Svake nedelje",
+                "Mesečno",
+                "Kvartalno",
+                "Po dogovoru"
+            ],
+            "required": true
+            },
+            {
+            "name": "oznaka",
+            "type": "select",
+            "label": {
+                "sr": "Posebna oznaka",
+                "en": "Special badge",
+                "sr-Cyrl": "Посебна ознака"
+            },
+            "options": [
+                "",
+                "Novo",
+                "Popularno",
+                "Poslednja mesta"
+            ],
+            "default": ""
+            },
+            {
+            "name": "linkPrijave",
+            "type": "url",
+            "label": {
+                "sr": "Link za online prijavu",
+                "en": "Registration link",
+                "sr-Cyrl": "Линк за онлајн пријаву"
+            }
+            }
+        ]
     }
   }
 ]
