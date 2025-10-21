@@ -540,7 +540,7 @@
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-                    <div class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                    <div class="absolute top-full left-0 mt-2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 hidden group-hover:block transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-bullseye mr-3 text-green-600 flex-shrink-0 w-4 text-sm"></i>
@@ -583,7 +583,7 @@
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-                    <div class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                    <div class="absolute top-full left-0 mt-2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 hidden group-hover:block transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-clipboard-list mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
@@ -625,7 +625,7 @@
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-                    <div class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                    <div class="absolute top-full left-0 mt-2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 hidden group-hover:block transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-users mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
