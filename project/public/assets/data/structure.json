@@ -171,61 +171,6 @@
           }
         }
       ]
-    },
-    "NaucniKlub": {
-      "sr": "Naucni klub",
-      "en": "Events",
-      "sr-Cyrl": "Научни клуб",
-      "icon": "fas fa-atom",
-      "categories": ["hemija", "fizika", "matematika"],
-      "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika događaja",
-            "en": "Event image",
-            "sr-Cyrl": "Насловна слика догађаја"
-          }
-        },
-        {
-          "name": "nazivKluba",
-          "type": "text",
-          "label": {
-            "sr": "Naziv kluba",
-            "en": "Event title",
-            "sr-Cyrl": "Назив клуба"
-          },
-          "required": true
-        },
-        {
-          "name": "kategorija",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
-          },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
-          "required": true
-        },
-
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis događaja",
-            "en": "Event description",
-            "sr-Cyrl": "Опис догађаја"
-          }
-        }
-      ]
     }
   }
 ]
