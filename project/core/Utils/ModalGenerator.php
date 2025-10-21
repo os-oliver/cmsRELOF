@@ -657,31 +657,6 @@ class ModalGenerator
                 <?php
                 break;
 
-            case 'select':
-                // Use options from field configuration
-                ?>
-                <div class="w-full">
-                    <label for="<?= htmlspecialchars($name) ?>"
-                        class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                        <i class="fas <?= htmlspecialchars($icon) ?> text-blue-600"></i>
-                        <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
-                    </label>
-                    <div class="relative">
-                        <select id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>" <?= $requiredAttr ?>
-                            class="w-full px-4 py-3 pr-10 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none bg-white cursor-pointer">
-                            <option value=""><?= htmlspecialchars($this->translations['select_option']) ?></option>
-                            <?php foreach ($options as $option): ?>
-                                <option value="<?= htmlspecialchars($option) ?>" <?= ($value == $option) ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($option) ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <i
-                            class="fas fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-                    </div>
-                </div>
-                <?php
-                break;
 
             default:
                 ?>
