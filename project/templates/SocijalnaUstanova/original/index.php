@@ -429,15 +429,15 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
                         </button>
                         <div>
-                            <a data-page="Prava" href="#"
+                            <a data-page="Prava" href="/prava-i-usluge/prava"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-clipboard-list mr-2 text-blue-600"></i>Prava
                             </a>
-                            <a data-page="Usluge" href="#"
+                            <a data-page="Usluge" href="/prava-i-usluge/usluge"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-concierge-bell mr-2 text-green-600"></i>Usluge
                             </a>
-                            <a data-page="ProgramiObuke" href="#"
+                            <a data-page="ProgramiObuke" href="/prava-i-usluge/programi-obuke"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-graduation-cap mr-2 text-orange-600"></i>Programi obuke
                             </a>
@@ -584,17 +584,17 @@
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div class="absolute top-full left-0 mt-2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 hidden group-hover:block transition-all duration-300 z-50 py-3 backdrop-blur-sm">
-                        <a href="#"
+                        <a href="/prava-i-usluge/prava"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-clipboard-list mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Prava</span>
                         </a>
-                        <a href="#"
+                        <a href="/prava-i-usluge/usluge"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-concierge-bell mr-3 text-green-600 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Usluge</span>
                         </a>
-                        <a href="#"
+                        <a href="/prava-i-usluge/programi-obuke"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-graduation-cap mr-3 text-orange-600 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Programi obuke</span>
@@ -977,11 +977,11 @@
             </div>
 
             <div class="text-center mt-12">
-                <button id="eventsView"
-                    class="bg-gradient-to-r from-blue-600 to-red-600 text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
+                <a href="/dogadjaji" id="eventsView"
+                    class="bg-gradient-to-r from-blue-600 to-red-600 text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Pogledaj sve događaje
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -1102,10 +1102,10 @@
             </div>
 
             <div class="text-center">
-                <button class="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
+                <a href="/prava-i-usluge/programi-obuke" class="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-graduation-cap mr-3"></i>
                     Pogledaj sve programe obuke
-                </button>
+                </a>
             </div>
         </div>
     </section>

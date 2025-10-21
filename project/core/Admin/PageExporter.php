@@ -6,6 +6,7 @@ use App\Admin\PageBuilders\DynamicPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
+use App\Admin\PageBuilders\ProgramiObukePageBuilder;
 use App\Controllers\AuthController;
 use App\Models\Text;
 use App\Models\Event;
@@ -557,6 +558,8 @@ class PageExporter
                 return new DynamicPageBuilder('Vesti');
             case 'naucni-klub':
                 return new NaucniKlubPageBuilder('NaucniKlub');
+            case 'programi-obuke':
+                return new ProgramiObukePageBuilder('ProgramiObuke');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -582,6 +585,8 @@ class PageExporter
             return 'misija';
         } elseif (strpos($name, 'naucni-klub') !== false) {
             return 'naucni-klub';
+        } elseif (strpos($name, 'programi-obuke') !== false || strpos($name, 'programi obuke') !== false) {
+            return 'programi-obuke';
         }
 
         return 'basic';
