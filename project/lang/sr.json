@@ -366,5 +366,9 @@
   "complaints.technical2": "Tehnički",
   "complaints.pending3": "Na čekanju",
   "complaints.medium2": "Srednji",
-  "complaints.showing": "Prikazano 1-4 od 247 žalbi"
+  "complaints.showing": "Prikazano 1-4 od 247 žalbi",
+
+  "transparency.score.need_more": "Zahteva još rada",
+  "transparency.score.title": "Skor Transparentnosti",
+  "transparency.score.update_age": "Osveženo danas"
 }

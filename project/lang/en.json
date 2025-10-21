@@ -364,5 +364,9 @@
   "complaints.technical2": "Technical",
   "complaints.pending3": "Pending",
   "complaints.medium2": "Medium",
-  "complaints.showing": "Showing 1-4 of 247 complaints"
+  "complaints.showing": "Showing 1-4 of 247 complaints",
+
+  "transparency.score.need_more": "Needs work",
+  "transparency.score.title": "Transparency Score",
+  "transparency.score.update_age": "Updated today"
 }
