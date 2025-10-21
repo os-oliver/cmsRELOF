@@ -392,121 +392,89 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
                         </button>
                         <div>
-                            <a data-page="Uvod" href="#"
+                            <a data-page="Cilj" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-info mr-2 text-blue-600"></i>Uvod
+                                <i class="fas fa-bullseye mr-2 text-green-600"></i>Cilj
                             </a>
-                            <a data-page="MisijaVizija" href="#"
+                            <a data-page="Misija" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-green-600"></i>Misija i vizija
-                            </a>
-                            <a data-page="Istorijat" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-history mr-2 text-orange-600"></i>Istorijat
-                            </a>
-                            <a data-page="Rukovodstvo" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-users mr-2 text-purple-600"></i>Rukovodstvo
+                                <i class="fas fa-compass mr-2 text-blue-600"></i>Misija
                             </a>
                             <a data-page="Objekat" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-building mr-2 text-teal-600"></i>Objekat
                             </a>
-                            <a data-page="Donacije" href="#"
+                            <a data-page="Zaposleni" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-hand-holding-heart mr-2 text-pink-600"></i>Donacije i podrška
+                                <i class="fas fa-user-tie mr-2 text-purple-600"></i>Zaposleni
                             </a>
-                            <a data-page="Partneri" href="#"
+                            <a data-page="Sluzbe" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-handshake mr-2 text-indigo-600"></i>Partneri
+                                <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
+                            </a>
+                            <a data-page="Podrska" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-hand-holding-heart mr-2 text-pink-600"></i>Podrška
                             </a>
                         </div>
                     </div>
-
-                    <a data-page="Vesti" href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-newspaper mr-3 text-red-600"></i>Vesti
-                    </a>
 
                     <!-- Prava i usluge dropdown -->
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
                             <div class="flex items-center">
-                                <i class="fas fa-hands-helping mr-3 text-green-600"></i>Prava/Usluge
+                                <i class="fas fa-hands-helping mr-3 text-green-600"></i>Prava i usluge
                             </div>
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
                         </button>
                         <div>
-                            <a data-page="PravaUsluge" href="#"
+                            <a data-page="Prava" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-clipboard-list mr-2 text-blue-600"></i>Prava i usluge
+                                <i class="fas fa-clipboard-list mr-2 text-blue-600"></i>Prava
                             </a>
-                            <a data-page="Sluzbe" href="#"
+                            <a data-page="Usluge" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-user-md mr-2 text-green-600"></i>Službe
+                                <i class="fas fa-concierge-bell mr-2 text-green-600"></i>Usluge
                             </a>
-                            <a data-page="Obuke" href="#"
+                            <a data-page="ProgramiObuke" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-graduation-cap mr-2 text-orange-600"></i>Programi obuke
                             </a>
                         </div>
                     </div>
 
-                    <!-- Dokumenti dropdown -->
-                    <div class="mobile-dropdown">
-                        <button
-                            class="flex items-center justify-between w-full py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
-                            <div class="flex items-center">
-                                <i class="fas fa-folder-open mr-3 text-yellow-600"></i>Dokumenti
-                            </div>
-                            <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
-                        </button>
-                        <div>
-                            <a data-page="ProgramiIzvestaji" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-file-alt mr-2 text-blue-600"></i>Programi rada i izveštaji
-                            </a>
-                            <a data-page="UnutrasnjiAkti" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-gavel mr-2 text-green-600"></i>Unutrašnji akti
-                            </a>
-                            <a data-page="Konkursi" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-briefcase mr-2 text-orange-600"></i>Konkursi
-                            </a>
-                            <a data-page="Publikacije" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-book mr-2 text-purple-600"></i>Publikacije
-                            </a>
-                            <a data-page="InformacijeJavnogZnacaja" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-info-circle mr-2 text-teal-600"></i>Informacije od javnog značaja
-                            </a>
-                            <a data-page="Licenca" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-certificate mr-2 text-pink-600"></i>Licenca
-                            </a>
-                        </div>
-                    </div>
+                    <a data-page="Dokumenti" href="#"
+                        class="flex items-center py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
+                        <i class="fas fa-folder-open mr-3 text-yellow-600"></i>Dokumenti
+                    </a>
+
+                    <a data-page="Dogadjaji" href="#"
+                        class="flex items-center py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
+                        <i class="fas fa-calendar-alt mr-3 text-blue-600"></i>Dogadjaji
+                    </a>
 
                     <!-- Za korisnike dropdown -->
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
                             <div class="flex items-center">
-                                <i class="fas fa-user-friends mr-3 text-blue-600"></i>Korisnici
+                                <i class="fas fa-user-friends mr-3 text-purple-600"></i>Za korisnike
                             </div>
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
                         </button>
                         <div>
+                            <a data-page="NasiKorisnici" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-users mr-2 text-blue-600"></i>Naši korisnici
+                            </a>
                             <a data-page="Obrasci" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-file-signature mr-2 text-blue-600"></i>Obrasci za podnošenje zahteva
+                                <i class="fas fa-file-signature mr-2 text-green-600"></i>Obrasci za podnošenje zahteva
                             </a>
                             <a data-page="FAQ" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-question-circle mr-2 text-green-600"></i>Često postavljana pitanja/FAQ
+                                <i class="fas fa-question-circle mr-2 text-orange-600"></i>FAQ
                             </a>
                         </div>
                     </div>
@@ -575,23 +543,13 @@
                     <div class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-info mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Uvod</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-bullseye mr-3 text-green-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Misija i vizija</span>
+                            <span class="font-medium">Cilj</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-history mr-3 text-orange-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Istorijat</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-users mr-3 text-purple-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Rukovodstvo</span>
+                            <i class="fas fa-compass mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Misija</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -600,23 +558,21 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-hand-holding-heart mr-3 text-pink-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Donacije i podrška</span>
+                            <i class="fas fa-user-tie mr-3 text-purple-600 flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Zaposleni</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-handshake mr-3 text-indigo-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Partneri</span>
+                            <i class="fas fa-user-md mr-3 text-orange-600 flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Službe</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-hand-holding-heart mr-3 text-pink-600 flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Podrška</span>
                         </a>
                     </div>
                 </div>
-
-                <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-red-600 transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
-                    <i
-                        class="fas fa-newspaper mr-2 text-red-600 group-hover:text-red-700 transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Vesti</span>
-                </a>
 
                 <div class="dropdown relative group">
                     <button
@@ -631,12 +587,12 @@
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-clipboard-list mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Prava i usluge</span>
+                            <span class="font-medium">Prava</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-user-md mr-3 text-green-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Službe</span>
+                            <i class="fas fa-concierge-bell mr-3 text-green-600 flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Usluge</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -646,54 +602,25 @@
                     </div>
                 </div>
 
-                <div class="dropdown relative group">
-                    <button
-                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
-                        <i
-                            class="fas fa-folder-open mr-2 text-yellow-600 group-hover:text-yellow-700 transition-colors text-sm"></i>
-                        <span class="hidden xl:inline text-sm">Dokumenti</span>
-                        <i
-                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
-                    </button>
-                    <div class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-file-alt mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Programi rada i izveštaji</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-gavel mr-3 text-green-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Unutrašnji akti</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-briefcase mr-3 text-orange-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Konkursi</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-book mr-3 text-purple-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Publikacije</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-info-circle mr-3 text-teal-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Informacije od javnog značaja</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-certificate mr-3 text-pink-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Licenca</span>
-                        </a>
-                    </div>
-                </div>
+                <a href="#"
+                    class="nav-link text-slate font-semibold hover:text-red-600 transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
+                    <i
+                        class="fas fa-folder-open mr-2 text-yellow-600 group-hover:text-yellow-700 transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Dokumenti</span>
+                </a>
+
+                <a href="#"
+                    class="nav-link text-slate font-semibold hover:text-red-600 transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
+                    <i
+                        class="fas fa-calendar-alt mr-2 text-blue-600 group-hover:text-blue-700 transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Dogadjaji</span>
+                </a>
 
                 <div class="dropdown relative group">
                     <button
                         class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
                         <i
-                            class="fas fa-user-friends mr-2 text-blue-600 group-hover:text-blue-700 transition-colors text-sm"></i>
+                            class="fas fa-user-friends mr-2 text-purple-600 group-hover:text-purple-700 transition-colors text-sm"></i>
                         <span class="hidden xl:inline text-sm">Za korisnike</span>
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
@@ -701,13 +628,18 @@
                     <div class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-file-signature mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
+                            <i class="fas fa-users mr-3 text-blue-600 flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Naši korisnici</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-file-signature mr-3 text-green-600 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Obrasci za podnošenje zahteva</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-question-circle mr-3 text-green-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Često postavljana pitanja/FAQ</span>
+                            <i class="fas fa-question-circle mr-3 text-orange-600 flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">FAQ</span>
                         </a>
                     </div>
                 </div>
@@ -1350,7 +1282,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-white pt-20 pb-10" style="background-color: #006d77;">
+    <footer class="bg-slate text-white pt-20 pb-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
