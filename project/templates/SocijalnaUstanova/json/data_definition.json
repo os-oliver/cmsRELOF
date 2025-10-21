@@ -342,87 +342,32 @@
       "sr-Cyrl": "Услуге",
       "icon": "fas fa-hand-holding-heart",
       "categories": [
-        "Smeštaj",
-        "Dnevne usluge",
-        "Podrška u kući",
-        "Savetovanje",
-        "Personalna asistencija",
-        "Finansijska podrška"
+        "Privremeni smeštaj",
+        "Socijalno stanovanje",
+        "Dnevni boravak",
+        "Pomoć u kući",
+        "Savetovanje i podrška",
+        "Ostale usluge"
       ],
       "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika usluge",
-            "en": "Service image",
-            "sr-Cyrl": "Насловна слика услуге"
-          },
-          "required": true
-        },
         {
           "name": "naziv",
           "type": "text",
           "label": {
-            "sr": "Naziv usluge",
-            "en": "Service name",
-            "sr-Cyrl": "Назив услуге"
+            "sr": "Naziv usluge/prava",
+            "en": "Service/Right name",
+            "sr-Cyrl": "Назив услуге/права"
           },
           "required": true
         },
         {
           "name": "kategorija",
-          "type": "select",
+          "type": "categories",
           "label": {
-            "sr": "Kategorija usluge",
-            "en": "Service category",
-            "sr-Cyrl": "Категорија услуге"
+            "sr": "Kategorija",
+            "en": "Category",
+            "sr-Cyrl": "Категорија"
           },
-          "options": [
-            "Smeštaj",
-            "Dnevne usluge",
-            "Podrška u kući",
-            "Savetovanje",
-            "Personalna asistencija",
-            "Finansijska podrška"
-          ],
-          "required": true
-        },
-        {
-          "name": "ikonica",
-          "type": "select",
-          "label": {
-            "sr": "Ikonica kategorije",
-            "en": "Category icon",
-            "sr-Cyrl": "Иконица категорије"
-          },
-          "options": [
-            "fas fa-home",
-            "fas fa-users",
-            "fas fa-hand-holding-heart",
-            "fas fa-comments",
-            "fas fa-user-nurse",
-            "fas fa-coins"
-          ],
-          "required": true
-        },
-        {
-          "name": "bojaKategorije",
-          "type": "select",
-          "label": {
-            "sr": "Boja kategorije",
-            "en": "Category color",
-            "sr-Cyrl": "Боја категорије"
-          },
-          "options": [
-            "green",
-            "blue",
-            "orange",
-            "purple",
-            "red",
-            "yellow"
-          ],
-          "default": "blue",
           "required": true
         },
         {
@@ -430,136 +375,58 @@
           "type": "textarea",
           "label": {
             "sr": "Kratak opis usluge",
-            "en": "Short service description",
+            "en": "Short description",
             "sr-Cyrl": "Кратак опис услуге"
           },
-          "maxLength": 250,
+          "maxLength": 350,
           "required": true
         },
         {
           "name": "detaljniOpis",
           "type": "textarea",
           "label": {
-            "sr": "Detaljni opis usluge",
-            "en": "Detailed service description",
-            "sr-Cyrl": "Детаљни опис услуге"
+            "sr": "Detaljni opis (ko može da koristi, uslovi, dokumentacija)",
+            "en": "Detailed description (eligibility, requirements, documents)",
+            "sr-Cyrl": "Детаљни опис (ко може да користи, услови, документација)"
           },
           "required": true
-        },
-        {
-          "name": "korisnici",
-          "type": "textarea",
-          "label": {
-            "sr": "Ko može da koristi uslugu (ciljne grupe)",
-            "en": "Who can use the service (target groups)",
-            "sr-Cyrl": "Ко може да користи услугу (циљне групе)"
-          },
-          "required": true
-        },
-        {
-          "name": "uslovi",
-          "type": "textarea",
-          "label": {
-            "sr": "Uslovi za korišćenje usluge",
-            "en": "Service requirements",
-            "sr-Cyrl": "Услови за коришћење услуге"
-          }
-        },
-        {
-          "name": "potrebnaDokumentacija",
-          "type": "textarea",
-          "label": {
-            "sr": "Potrebna dokumentacija",
-            "en": "Required documentation",
-            "sr-Cyrl": "Потребна документација"
-          }
         },
         {
           "name": "tipFinansiranja",
           "type": "select",
           "label": {
-            "sr": "Tip finansiranja",
+            "sr": "Način finansiranja",
             "en": "Funding type",
-            "sr-Cyrl": "Тип финансирања"
+            "sr-Cyrl": "Начин финансирања"
           },
           "options": [
             "Besplatno",
+            "Budžet opštine",
+            "Budžet RS",
             "Sufinansiranje",
-            "Plaćeno",
-            "Zavisi od procene"
+            "Plaćeno"
           ],
-          "required": true
+          "required": false
         },
         {
-          "name": "kontaktOsoba",
+          "name": "kontakt",
           "type": "text",
           "label": {
-            "sr": "Kontakt osoba / referent",
-            "en": "Contact person / officer",
-            "sr-Cyrl": "Контакт особа / референт"
-          }
-        },
-        {
-          "name": "kontaktTelefon",
-          "type": "text",
-          "label": {
-            "sr": "Kontakt telefon",
-            "en": "Contact phone",
-            "sr-Cyrl": "Контакт телефон"
-          }
-        },
-        {
-          "name": "kontaktEmail",
-          "type": "email",
-          "label": {
-            "sr": "Kontakt email",
-            "en": "Contact email",
-            "sr-Cyrl": "Контакт емаил"
-          }
-        },
-        {
-          "name": "radnoVreme",
-          "type": "text",
-          "label": {
-            "sr": "Radno vreme / Vreme pružanja usluge",
-            "en": "Working hours / Service hours",
-            "sr-Cyrl": "Радно време / Време пружања услуге"
-          }
-        },
-        {
-          "name": "linkPrijave",
-          "type": "url",
-          "label": {
-            "sr": "Link za online prijavu / informacije",
-            "en": "Registration / information link",
-            "sr-Cyrl": "Линк за онлајн пријаву / информације"
-          }
+            "sr": "Kontakt informacije (telefon, email...)",
+            "en": "Contact information (phone, email...)",
+            "sr-Cyrl": "Контакт информације (телефон, емаил...)"
+          },
+          "required": false
         },
         {
           "name": "dokumentZaPreuzimanje",
           "type": "file",
           "label": {
-            "sr": "Dokument za preuzimanje (obrazac prijave, uputstvo...)",
-            "en": "Downloadable document (application form, instructions...)",
-            "sr-Cyrl": "Документ за преузимање (образац пријаве, упутство...)"
-          }
-        },
-        {
-          "name": "statusUsluge",
-          "type": "select",
-          "label": {
-            "sr": "Status usluge",
-            "en": "Service status",
-            "sr-Cyrl": "Статус услуге"
+            "sr": "Dokument za preuzimanje (zahtev, obrazac...)",
+            "en": "Download document (form, application...)",
+            "sr-Cyrl": "Документ за преузимање (захтев, образац...)"
           },
-          "options": [
-            "Aktivna",
-            "Privremeno nedostupna",
-            "Nova usluga",
-            "Uskoro dostupna"
-          ],
-          "default": "Aktivna",
-          "required": true
+          "required": false
         }
       ]
     }
