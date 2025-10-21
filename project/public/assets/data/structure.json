@@ -208,7 +208,7 @@
             },
             {
             "name": "kategorija",
-            "type": "select",
+            "type": "categories",
             "label": {
                 "sr": "Kategorija programa",
                 "en": "Program category",
