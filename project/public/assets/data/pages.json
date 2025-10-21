@@ -1,6 +1,6 @@
 [
     {
-        "id": "68f7f16f78cd6",
+        "id": "68f7f811b5de7",
         "static": false,
         "movable": false,
         "name": "",
@@ -8,10 +8,10 @@
         "path": "pages\/.php",
         "file": ".php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:43"
+        "created_at": "2025-10-21 21:16:01"
     },
     {
-        "id": "68f7f16f848d0",
+        "id": "68f7f811c404a",
         "static": false,
         "movable": false,
         "name": "Cilj",
@@ -19,10 +19,10 @@
         "path": "pages\/cilj.php",
         "file": "cilj.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:43"
+        "created_at": "2025-10-21 21:16:01"
     },
     {
-        "id": "68f7f16f99b51",
+        "id": "68f7f811dc1a7",
         "static": false,
         "movable": false,
         "name": "Misija",
@@ -30,10 +30,10 @@
         "path": "pages\/misija.php",
         "file": "misija.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:43"
+        "created_at": "2025-10-21 21:16:01"
     },
     {
-        "id": "68f7f16fa5795",
+        "id": "68f7f811e7fb6",
         "static": false,
         "movable": false,
         "name": "Objekat",
@@ -41,10 +41,10 @@
         "path": "pages\/objekat.php",
         "file": "objekat.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:43"
+        "created_at": "2025-10-21 21:16:01"
     },
     {
-        "id": "68f7f16fb0a2e",
+        "id": "68f7f811f3288",
         "static": false,
         "movable": false,
         "name": "Zaposleni",
@@ -52,10 +52,10 @@
         "path": "pages\/zaposleni.php",
         "file": "zaposleni.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:43"
+        "created_at": "2025-10-21 21:16:01"
     },
     {
-        "id": "68f7f16fbd714",
+        "id": "68f7f8120aff5",
         "static": false,
         "movable": false,
         "name": "Slube",
@@ -63,10 +63,10 @@
         "path": "pages\/slube.php",
         "file": "slube.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:43"
+        "created_at": "2025-10-21 21:16:02"
     },
     {
-        "id": "68f7f16fc926f",
+        "id": "68f7f812177a2",
         "static": false,
         "movable": false,
         "name": "Podrka",
@@ -74,10 +74,10 @@
         "path": "pages\/podrka.php",
         "file": "podrka.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:43"
+        "created_at": "2025-10-21 21:16:02"
     },
     {
-        "id": "68f7f16fd5181",
+        "id": "68f7f81223762",
         "static": false,
         "movable": false,
         "name": "Prava",
@@ -85,10 +85,10 @@
         "path": "pages\/prava.php",
         "file": "prava.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:43"
+        "created_at": "2025-10-21 21:16:02"
     },
     {
-        "id": "68f7f16fe1b3e",
+        "id": "68f7f8122eed7",
         "static": false,
         "movable": false,
         "name": "Usluge",
@@ -96,10 +96,10 @@
         "path": "pages\/usluge.php",
         "file": "usluge.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:43"
+        "created_at": "2025-10-21 21:16:02"
     },
     {
-        "id": "68f7f17003d7e",
+        "id": "68f7f8124307d",
         "static": false,
         "movable": false,
         "name": "Programi-obuke",
@@ -107,10 +107,10 @@
         "path": "pages\/programi-obuke.php",
         "file": "programi-obuke.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:44"
+        "created_at": "2025-10-21 21:16:02"
     },
     {
-        "id": "68f7f170823e4",
+        "id": "68f7f812c6077",
         "static": false,
         "movable": false,
         "name": "dokumenti",
@@ -118,10 +118,10 @@
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:44"
+        "created_at": "2025-10-21 21:16:02"
     },
     {
-        "id": "68f7f1709a7ae",
+        "id": "68f7f812dc31a",
         "static": false,
         "movable": false,
         "name": "dogadjaji",
@@ -129,10 +129,10 @@
         "path": "pages\/dogadjaji.php",
         "file": "dogadjaji.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:44"
+        "created_at": "2025-10-21 21:16:02"
     },
     {
-        "id": "68f7f170a8aa1",
+        "id": "68f7f812e93f6",
         "static": false,
         "movable": false,
         "name": "Nai-korisnici",
@@ -140,21 +140,21 @@
         "path": "pages\/nai-korisnici.php",
         "file": "nai-korisnici.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:44"
+        "created_at": "2025-10-21 21:16:02"
     },
     {
-        "id": "68f7f170b5fb3",
+        "id": "68f7f812f34b2",
         "static": false,
         "movable": false,
-        "name": "Obrasci-za podnoenje zahteva",
+        "name": "Obrasci-za-podnoenje-zahteva",
         "href": "\/za-korisnike\/obrasci-za-podnoenje-zahteva",
         "path": "pages\/obrasci-za-podnoenje-zahteva.php",
-        "file": "obrasci-za_podnoenje_zahteva.php",
+        "file": "obrasci-za-podnoenje-zahteva.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:44"
+        "created_at": "2025-10-21 21:16:02"
     },
     {
-        "id": "68f7f170c1e86",
+        "id": "68f7f81309c00",
         "static": false,
         "movable": false,
         "name": "FAQ",
@@ -162,10 +162,10 @@
         "path": "pages\/faq.php",
         "file": "faq.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:44"
+        "created_at": "2025-10-21 21:16:03"
     },
     {
-        "id": "68f7f171927a6",
+        "id": "68f7f813ca475",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -173,6 +173,6 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-10-21 20:47:45"
+        "created_at": "2025-10-21 21:16:03"
     }
 ]
