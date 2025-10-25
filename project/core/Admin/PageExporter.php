@@ -10,6 +10,7 @@ use App\Admin\PageBuilders\ProgramiObukePageBuilder;
 use App\Admin\PageBuilders\UslugePageBuilder;
 use App\Admin\PageBuilders\PravaPageBuilder;
 use App\Admin\PageBuilders\SluzbePageBuilder;
+use App\Admin\PageBuilders\ObrasciPageBuilder;
 use App\Controllers\AuthController;
 use App\Models\Text;
 use App\Models\Event;
@@ -569,6 +570,8 @@ class PageExporter
                 return new PravaPageBuilder('Prava');
             case 'sluzbe':
                 return new SluzbePageBuilder('Sluzbe');
+            case 'obrasci':
+                return new ObrasciPageBuilder('Obrasci');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -602,6 +605,8 @@ class PageExporter
             return 'prava';
         } elseif (strpos($name, 'sluzbe') !== false || strpos($name, 'službe') !== false || strpos($name, 'slube') !== false) {
             return 'sluzbe';
+        } elseif (strpos($name, 'obrasci') !== false) {
+            return 'obrasci';
         }
 
         return 'basic';

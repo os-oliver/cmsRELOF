@@ -565,6 +565,64 @@
           "required": true
         }
       ]
+    },
+    "Obrasci": {
+      "sr": "Obrasci",
+      "en": "Forms",
+      "sr-Cyrl": "Обрасци",
+      "icon": "fas fa-file-alt",
+      "categories": [
+        "Socijalna zaštita",
+        "Porodica i deca",
+        "Stariji građani",
+        "Osobe sa invaliditetom",
+        "Novčana pomoć",
+        "Ostali obrasci"
+      ],
+      "fields": [
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": {
+            "sr": "Naziv obrasca",
+            "en": "Form name",
+            "sr-Cyrl": "Назив обрасца"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija obrasca",
+            "en": "Form category",
+            "sr-Cyrl": "Категорија обрасца"
+          },
+          "required": true
+        },
+        {
+          "name": "kratakOpis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis obrasca",
+            "en": "Short form description",
+            "sr-Cyrl": "Кратак опис обрасца"
+          },
+          "maxLength": 300,
+          "required": false
+        },
+        {
+          "name": "dokument",
+          "type": "file",
+          "label": {
+            "sr": "Dokument obrasca za preuzimanje",
+            "en": "Form document for download",
+            "sr-Cyrl": "Документ обрасца за преузимање"
+          },
+          "accept": ".pdf,.doc,.docx",
+          "required": false
+        }
+      ]
     }
   }
 ]
