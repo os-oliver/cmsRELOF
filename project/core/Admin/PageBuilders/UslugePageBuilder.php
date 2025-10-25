@@ -178,7 +178,7 @@ PHP;
                     {{documentDownload}}
                 </div>
 
-                <a href="sadrzaj?id={{itemId}}&tip=generic_element"
+                <a href="/sadrzaj?id={{itemId}}&tip=generic_element"
                    class="block text-center bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
                     <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-info-circle"></i>
