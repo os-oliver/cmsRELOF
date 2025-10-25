@@ -1228,10 +1228,10 @@
             </div>
 
             <div class="text-center">
-                <button class="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
+                <a data-page="Sluzbe" href="/o-nama/slube" class="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-hands-helping mr-3"></i>
                     Saznaj više o našim službama
-                </button>
+                </a>
             </div>
         </div>
     </section>
