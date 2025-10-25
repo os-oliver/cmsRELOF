@@ -173,7 +173,7 @@ HTML;
 {
     $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $uvod = htmlspecialchars(mb_substr($item['fields']['uvod'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['fields']['kategorija'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
     $ciljnaGrupa = htmlspecialchars($item['fields']['ciljnaGrupa'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
 
@@ -322,7 +322,7 @@ $search = $_GET['search'] ?? '';
 
 $categories = GenericCategory::fetchAll($slug, $locale);
 $itemsList = $slug
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale)
     : ['success' => false, 'items' => []];
 
 $config = $fieldLabels = [];
