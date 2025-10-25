@@ -460,6 +460,17 @@ class PageExporter
         $indexContent .= $this->generateIndexBody();
         file_put_contents("{$this->baseDir}/index.php", $indexContent);
         file_put_contents("{$this->baseDir}/commonStyle.css", $this->data['css'] ?? '');
+        if (!empty($this->data['js'])) {
+            $jsCode = preg_replace('/<\/?script\b[^>]*>/i', '', $this->data['js']);
+            $jsCode = preg_replace('/,(\s*[\]}])/m', '$1', $jsCode);
+            $jsCode = trim($jsCode);
+
+            $jsFilePath = "{$this->baseDir}/commonScript.js";
+            if (!empty($jsCode)) {
+                file_put_contents($jsFilePath, $jsCode);
+            }
+        }
+
     }
 
     private function generateIndexHeader(): string
@@ -529,9 +540,8 @@ class PageExporter
             $content .= "\n<?php require_once __DIR__ . '/landingPageComponents/{$this->footerPath}'; ?>";
         }
 
-        if (!empty($this->data['js'])) {
-            $content .= $this->data['js'];
-        }
+        $content .= '<script src="/exportedPages/commonScript.js"></script>' . "\n";
+
 
         $content .= "\n</div>\n</body>\n</html>";
 

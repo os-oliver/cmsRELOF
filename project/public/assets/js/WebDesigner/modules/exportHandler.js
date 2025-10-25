@@ -39,7 +39,7 @@ async function exportComponent(editor, komponenta) {
   const payload = {
     singlePage: true,
     saveComponents: true,
-    components: [komponenta], // ako PageExporter očekuje niz
+    components: [komponenta],
     cmp: komponenta,
     html: combinedHTML,
   };
@@ -72,6 +72,7 @@ function exportFullPage(editor, tipUstanove) {
   const tree = [];
   const dynamicTexts = [];
 
+  // Process components
   bodyComponent.components().each((child) => {
     const tag = child.get("tagName") || child.get("type");
     const pageSlug = tipUstanove.toLowerCase().replace(/[^a-z0-9]+/g, "-");
@@ -87,10 +88,6 @@ function exportFullPage(editor, tipUstanove) {
         setupElement(child, landingPageFiles);
         break;
       case "footer":
-        // Diagnostic: log footer HTML to help trace missing changes
-        try {
-          console.log("Exporting footer HTML:", child.toHTML());
-        } catch (e) {}
         landingPageFiles.push({
           [`landingPage/${tag}.php`]: toHTMLWithPHP(child),
         });
@@ -107,56 +104,44 @@ function exportFullPage(editor, tipUstanove) {
     }
   });
 
-  console.log("dynamic tree texts collected:", tree);
+  // Collect CSS and JS
   const css = editor.getCss();
-  console.log("Collected CSS length:", css);
   const fullHtml = editor.getHtml();
-  // Diagnostic: log editor-level HTML and wrapper HTML to debug missing changes
-  try {
-    console.log("[EXPORT DIAG] editor.getHtml():", fullHtml.substring(0, 2000));
-  } catch (e) {}
   const scripts = fullHtml.match(/<script[\s\S]*?<\/script>/gi) || [];
   const js = scripts.join("\n").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 
-  try {
-    const wrapper = editor.DomComponents.getWrapper();
-    console.log(
-      "[EXPORT DIAG] wrapper.toHTML():",
-      wrapper.toHTML().substring(0, 2000)
-    );
-    // list all anchor components and their attributes
-    try {
-      const anchors =
-        wrapper.find && wrapper.find((m) => m.get && m.get("tagName") === "a");
-      if (anchors && anchors.length) {
-        console.log("[EXPORT DIAG] Found anchor components:");
-        anchors.forEach((a, i) => {
-          try {
-            const attrs = a.getAttributes ? a.getAttributes() : {};
-            const txt =
-              (a.view && a.view.el && a.view.el.textContent) ||
-              a.get("content") ||
-              "";
-            console.log(i, attrs, txt);
-          } catch (e) {}
-        });
-      } else {
-        console.log(
-          "[EXPORT DIAG] No anchor components found in wrapper.find search."
-        );
-      }
-    } catch (e) {
-      console.error("[EXPORT DIAG] error listing anchors", e);
-    }
-  } catch (e) {}
+  // === PULL OUT TAILWIND CONFIG ===
 
+  let tailwindConfig = {};
+
+  try {
+    // Join scripts into one string
+    const js = scripts.join("\n");
+
+    // Match tailwind.config object (non-greedy, multiline)
+    const regex = /tailwind\.config\s*=\s*({[\s\S]*?});/m;
+    const match = js.match(regex);
+
+    if (match) {
+      // Use Function constructor instead of eval for slightly safer parsing
+      tailwindConfig = new Function("return " + match[1])();
+      console.log("Tailwind config:", tailwindConfig);
+    } else {
+      console.warn("Tailwind config not found");
+    }
+  } catch (e) {
+    console.warn("Error parsing Tailwind config:", e);
+  }
+  console.log("tailwind:", tailwindConfig);
   const exportData = {
     css: css,
     typeOfInstitution: tipUstanove,
     components: landingPageFiles,
     tree: tree,
     js: js,
+    tailwind: tailwindConfig,
   };
+
   fetch("/admin/savePage.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
