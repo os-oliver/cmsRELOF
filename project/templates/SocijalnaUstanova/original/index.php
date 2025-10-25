@@ -437,7 +437,7 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-tie mr-2 text-purple-600"></i>Zaposleni
                             </a>
-                            <a data-page="Sluzbe" href="#"
+                            <a data-page="Sluzbe" href="/o-nama/slube"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
                             </a>
@@ -591,7 +591,7 @@
                             <i class="fas fa-user-tie mr-3 text-purple-600 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Zaposleni</span>
                         </a>
-                        <a href="#"
+                        <a href="/o-nama/slube"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-user-md mr-3 text-orange-600 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Službe</span>
@@ -817,7 +817,7 @@
 
                     <!-- Quick links -->
                     <div class="mt-10 flex flex-wrap gap-3">
-                        <a href="#" class="flex items-center text-slate-600 hover:text-red-600 transition-colors">
+                        <a href="/o-nama/slube" class="flex items-center text-slate-600 hover:text-red-600 transition-colors">
                             <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
                             Službe
                         </a>

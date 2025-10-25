@@ -9,6 +9,7 @@ use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProgramiObukePageBuilder;
 use App\Admin\PageBuilders\UslugePageBuilder;
 use App\Admin\PageBuilders\PravaPageBuilder;
+use App\Admin\PageBuilders\SluzbePageBuilder;
 use App\Controllers\AuthController;
 use App\Models\Text;
 use App\Models\Event;
@@ -566,6 +567,8 @@ class PageExporter
                 return new UslugePageBuilder('Usluge');
             case 'prava':
                 return new PravaPageBuilder('Prava');
+            case 'sluzbe':
+                return new SluzbePageBuilder('Sluzbe');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -597,6 +600,8 @@ class PageExporter
             return 'usluge';
         } elseif (strpos($name, 'prava') !== false) {
             return 'prava';
+        } elseif (strpos($name, 'sluzbe') !== false || strpos($name, 'službe') !== false || strpos($name, 'slube') !== false) {
+            return 'sluzbe';
         }
 
         return 'basic';
@@ -612,7 +617,7 @@ class PageExporter
         $fullPath = $parentPath !== '' ? $parentPath . '/' . $href : $href;
 
         if (empty($node['elements']) || !is_array($node['elements'])) {
-            $pageType = $this->determinePageType($name);
+            $pageType = $this->determinePageType($slug);  // Use slug instead of name
             $pageBuilder = $this->getPageBuilder($pageType, $name);
             $content = $pageBuilder->buildPage();
 

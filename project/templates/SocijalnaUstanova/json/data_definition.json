@@ -496,6 +496,75 @@
           "required": true
         }
       ]
+    },
+    "Sluzbe": {
+      "sr": "Službe",
+      "en": "Services Departments",
+      "sr-Cyrl": "Службе",
+      "icon": "fas fa-building",
+      "categories": [
+        "Sigurna dečja kuća",
+        "Zaštita dece i omladine",
+        "Dnevni boravak za decu",
+        "Zaštita odraslih i starih",
+        "Novčana socijalna pomoć",
+        "Zaštićeno stanovanje za žene",
+        "Stručno savetovanje i podrška",
+        "Specijalizovana odeljenja"
+      ],
+      "fields": [
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": {
+            "sr": "Naziv službe",
+            "en": "Department name",
+            "sr-Cyrl": "Назив службе"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Vrsta službe",
+            "en": "Department type",
+            "sr-Cyrl": "Врста службе"
+          },
+          "required": true
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Fotografija službe",
+            "en": "Department image",
+            "sr-Cyrl": "Фотографија службе"
+          },
+          "required": false
+        },
+        {
+          "name": "kratakOpis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis (1-2 rečenice)",
+            "en": "Short description (1-2 sentences)",
+            "sr-Cyrl": "Кратак опис (1-2 реченице)"
+          },
+          "maxLength": 250,
+          "required": true
+        },
+        {
+          "name": "detaljniOpis",
+          "type": "textarea",
+          "label": {
+            "sr": "Detaljan opis / sadržaj (organizacija, aktivnosti, nadležnosti)",
+            "en": "Detailed description (organization, activities, responsibilities)",
+            "sr-Cyrl": "Детаљан опис / садржај (организација, активности, надлежности)"
+          },
+          "required": true
+        }
+      ]
     }
   }
 ]
