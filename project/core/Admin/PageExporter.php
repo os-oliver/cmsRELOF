@@ -459,6 +459,7 @@ class PageExporter
         $indexContent = $this->generateIndexHeader();
         $indexContent .= $this->generateIndexBody();
         file_put_contents("{$this->baseDir}/index.php", $indexContent);
+        file_put_contents("{$this->baseDir}/commonStyle.css", $this->data['css'] ?? '');
     }
 
     private function generateIndexHeader(): string

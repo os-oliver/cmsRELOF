@@ -7,22 +7,22 @@ if (isset($_GET['locale'])) {
 }
 $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
-// ✅ Autentikacija i osnovne informacije o korisniku
+//  Autentikacija i osnovne informacije o korisniku
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
-// ✅ Filter parametri iz GET-a
+//  Filter parametri iz GET-a
 $search = $_GET['search'] ?? '';
 $categories = isset($_GET['categories']) ? (array) $_GET['categories'] : [];
 $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
-// ✅ Paginacija
+//  Paginacija
 $limit = 3;
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
-// ✅ Dobavljanje dokumenata iz modela
+//  Dobavljanje dokumenata iz modela
 $documentModal = new Document();
 [$documents, $totalCount] = $documentModal->list(
     limit: $limit,
@@ -38,7 +38,7 @@ $totalPages = (int) ceil($totalCount / $limit);
 $DocumentCategories = $documentModal->getCategories($locale);
 $DocumentSubCategories = $documentModal->getSubCategories($locale);
 
-// ✅ Konfiguracija fajlova po ekstenziji
+//  Konfiguracija fajlova po ekstenziji
 function getFileConfig(string $ext): array
 {
     switch (strtolower($ext)) {
@@ -108,7 +108,7 @@ function getFileConfig(string $ext): array
             <?php require_once __DIR__ . "/../components/topBar.php"; ?>
 
             <div class="overflow-y-auto 2xl:overflow-y-hidden overflow-x-hidden container mx-auto px-4 py-8">
-                <!-- ✅ Naslov i dugme za dodavanje dokumenta -->
+                <!--  Naslov i dugme za dodavanje dokumenta -->
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">
@@ -127,7 +127,7 @@ function getFileConfig(string $ext): array
                     </div>
                 </div>
 
-                <!-- ✅ Pretraga i filteri -->
+                <!--  Pretraga i filteri -->
                 <form method="GET" action="" class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
                     <div class="space-y-4">
                         <!-- Search and Sort Row -->
@@ -191,7 +191,7 @@ function getFileConfig(string $ext): array
                     </div>
                 </form>
 
-                <!-- ✅ Lista dokumenata -->
+                <!--  Lista dokumenata -->
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                     <?php foreach ($documents as $doc): ?>
 
@@ -281,7 +281,7 @@ function getFileConfig(string $ext): array
                     <?php endforeach; ?>
                 </div>
 
-                <!-- ✅ Paginacija -->
+                <!--  Paginacija -->
                 <div
                     class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                     <div class="hidden md:block text-sm text-gray-700">
