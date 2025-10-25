@@ -211,7 +211,7 @@ PHP;
                 </div>
 
                 <div class="flex gap-2">
-                    <a href="sadrzaj?id={{itemId}}&tip=generic_element"
+                    <a href="/sadrzaj?id={{itemId}}&tip=generic_element"
                     class="flex-1 text-center bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl backdrop-blur-sm">
                         <span class="flex items-center justify-center gap-2">
                             <i class="fas fa-info-circle"></i>
