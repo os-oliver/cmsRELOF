@@ -230,7 +230,7 @@ HTML;
 {
     $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['kratakOpis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['fields']['kategorija'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
     $ikonica = htmlspecialchars($item['fields']['ikonica'][$locale] ?? 'fas fa-graduation-cap', ENT_QUOTES, 'UTF-8');
     $bojaKategorije = htmlspecialchars($item['fields']['bojaKategorije'][$locale] ?? 'green', ENT_QUOTES, 'UTF-8');
     $vremePocetka = htmlspecialchars($item['fields']['vremePocetka'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
@@ -268,7 +268,7 @@ HTML;
 
     // Category badge
     $categoryBadge = $kategorija
-        ? "<span class='category-badge badge-{$bojaKategorije}'>
+        ? "<span class='category-badge badge-green'>
                <i class='{$ikonica}'></i>
                <span>{$kategorija}</span>
            </span>"
@@ -449,7 +449,7 @@ $search = $_GET['search'] ?? '';
 
 $categories = GenericCategory::fetchAll($slug, $locale);
 $itemsList = $slug 
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId) 
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale) 
     : ['success' => false, 'items' => []];
 
 $config = $fieldLabels = [];
