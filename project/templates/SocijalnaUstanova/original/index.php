@@ -429,10 +429,6 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-compass mr-2 text-blue-600"></i>Misija
                             </a>
-                            <a data-page="Objekat" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-building mr-2 text-teal-600"></i>Objekat
-                            </a>
                             <a data-page="Zaposleni" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-tie mr-2 text-purple-600"></i>Zaposleni
@@ -440,10 +436,6 @@
                             <a data-page="Sluzbe" href="/o-nama/slube"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
-                            </a>
-                            <a data-page="Podrska" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-hand-holding-heart mr-2 text-pink-600"></i>Podrška
                             </a>
                         </div>
                     </div>
@@ -583,11 +575,6 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-building mr-3 text-teal-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Objekat</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-user-tie mr-3 text-purple-600 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Zaposleni</span>
                         </a>
@@ -595,11 +582,6 @@
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-user-md mr-3 text-orange-600 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Službe</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-hand-holding-heart mr-3 text-pink-600 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Podrška</span>
                         </a>
                     </div>
                 </div>
