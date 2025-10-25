@@ -196,7 +196,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     }
     
     // Action button
-    $html .= "<a href='sadrzaj?id={$itemId}&tip=generic_element' 
+    $html .= "<a href='sadrzaj?id={$itemId}&tip={{SLUG}}' 
                 class='block w-full text-center bg-gray-800 hover:bg-gray-900 text-white text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg backdrop-blur-sm'>
                 <span class='flex items-center justify-center gap-2'>
                     <span>Saznaj više</span>
@@ -325,6 +325,7 @@ HTML;
         PHP;
 
         $additionalPHP .= "\n" . $this->functions;
+        $additionalPHP = str_replace('{{SLUG}}', $this->slug, $additionalPHP);
         $additionalPHP = str_replace('__SLUG__', addslashes($this->slug), $additionalPHP);
 
         $content = $this->getHeader($this->css, $additionalPHP);

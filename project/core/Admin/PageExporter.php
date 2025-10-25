@@ -459,7 +459,11 @@ class PageExporter
         $indexContent = $this->generateIndexHeader();
         $indexContent .= $this->generateIndexBody();
         file_put_contents("{$this->baseDir}/index.php", $indexContent);
-        file_put_contents("{$this->baseDir}/commonStyle.css", $this->data['css'] ?? '');
+        if (!empty($this->data['css'])) {
+            $css = "\n" . htmlspecialchars($this->data['css'], ENT_QUOTES) . "\n";
+        }
+
+        file_put_contents("{$this->baseDir}/commonStyle.css", $css ?? '');
         if (!empty($this->data['js'])) {
             $jsCode = preg_replace('/<\/?script\b[^>]*>/i', '', $this->data['js']);
             $jsCode = preg_replace('/,(\s*[\]}])/m', '$1', $jsCode);
@@ -505,13 +509,12 @@ class PageExporter
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exported Page</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+        <link href="/exportedPages/commonStyle.css" rel="stylesheet" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
     PHP;
 
-        if (!empty($this->data['css'])) {
-            $header .= "\n" . htmlspecialchars($this->data['css'], ENT_QUOTES) . "\n";
-        }
 
         $header .= '</style>
         </head>
@@ -558,6 +561,7 @@ class PageExporter
                 return new ContactPageBuilder($name, $this->data);
             case 'dokumenti':
                 return new DocumentsPageBuilder($name, $this->data);
+            case 'događaji':
             case 'dogadjaji':
                 return new EventsPageBuilder($name);
             case 'misija':
@@ -568,6 +572,8 @@ class PageExporter
                 return new DynamicPageBuilder('Vesti');
             case 'naucni-klub':
                 return new NaucniKlubPageBuilder('NaucniKlub');
+            case 'primer':
+                return new ContactPageBuilder($name, $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -593,6 +599,8 @@ class PageExporter
             return 'misija';
         } elseif (strpos($name, 'naucni-klub') !== false) {
             return 'naucni-klub';
+        } elseif (strpos($name, 'primer') !== false) {
+            return 'primer';
         }
 
         return 'basic';
@@ -639,6 +647,7 @@ class PageExporter
     }
     public function exportSinglePage(): void
     {
+        error_log("Starting single page export");
         if (!isset($this->data['html'])) {
             throw new \InvalidArgumentException("HTML content is required");
         }
