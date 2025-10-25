@@ -429,6 +429,73 @@
           "required": false
         }
       ]
+    },
+    "Prava": {
+      "sr": "Prava",
+      "en": "Rights",
+      "sr-Cyrl": "Права",
+      "icon": "fas fa-balance-scale",
+      "categories": [
+        "Socijalna zaštita",
+        "Zdravstvena zaštita",
+        "Penzijsko osiguranje",
+        "Invaliditet",
+        "Deca i porodica",
+        "Ostala prava"
+      ],
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov prava",
+            "en": "Right title",
+            "sr-Cyrl": "Наслов права"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija",
+            "en": "Category",
+            "sr-Cyrl": "Категорија"
+          },
+          "required": true
+        },
+        {
+          "name": "uvod",
+          "type": "textarea",
+          "label": {
+            "sr": "Uvod (kraći tekst)",
+            "en": "Introduction (short text)",
+            "sr-Cyrl": "Увод (краћи текст)"
+          },
+          "maxLength": 300,
+          "required": true
+        },
+        {
+          "name": "glavniTekst",
+          "type": "textarea",
+          "label": {
+            "sr": "Glavni tekst (detaljno)",
+            "en": "Main text (detailed)",
+            "sr-Cyrl": "Главни текст (детаљно)"
+          },
+          "required": true
+        },
+        {
+          "name": "ciljnaGrupa",
+          "type": "text",
+          "label": {
+            "sr": "Ciljna grupa (ko može ostvariti pravo)",
+            "en": "Target group (who can exercise the right)",
+            "sr-Cyrl": "Циљна група (ко може остварити право)"
+          },
+          "required": true
+        }
+      ]
     }
   }
 ]

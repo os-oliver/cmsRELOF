@@ -8,6 +8,7 @@ use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProgramiObukePageBuilder;
 use App\Admin\PageBuilders\UslugePageBuilder;
+use App\Admin\PageBuilders\PravaPageBuilder;
 use App\Controllers\AuthController;
 use App\Models\Text;
 use App\Models\Event;
@@ -563,6 +564,8 @@ class PageExporter
                 return new ProgramiObukePageBuilder('ProgramiObuke');
             case 'usluge':
                 return new UslugePageBuilder('Usluge');
+            case 'prava':
+                return new PravaPageBuilder('Prava');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -592,6 +595,8 @@ class PageExporter
             return 'programi-obuke';
         } elseif (strpos($name, 'usluge') !== false) {
             return 'usluge';
+        } elseif (strpos($name, 'prava') !== false) {
+            return 'prava';
         }
 
         return 'basic';
