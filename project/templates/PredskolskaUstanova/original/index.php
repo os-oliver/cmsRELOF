@@ -355,6 +355,9 @@
                         <i class="fas fa-calendar-alt mr-3 text-primarybutton"></i>Događaji
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
+                        <i class="fas fa-calendar-alt mr-3 text-primarybutton"></i>Vesti
+                    </a>
+                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-primarybutton"></i>Galerija
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
@@ -429,6 +432,14 @@
                     <span class="hidden xl:inline">Događaji</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
+                    <span class="hidden xl:inline">Vesti</span>
+                </a>
+                <a href="#" static="true" class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
+                    <span class="hidden xl:inline">Primer</span>
+                </a>
+                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-images mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Galerija</span>
                 </a>
@@ -456,7 +467,7 @@
                     $locale = 'sr';
                 }
                 ?>
-                <div class="dropdown relative group">
+                <div class="nonPage locale dropdown relative group">
                     <button class="nav-link transition-colors flex items-center whitespace-nowrap">
                         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>

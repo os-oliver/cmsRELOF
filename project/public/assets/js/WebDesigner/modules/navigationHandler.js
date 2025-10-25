@@ -70,6 +70,11 @@ $languages = [
 if (!isset($languages[$locale])) {
     $locale = 'sr';
 }
+    function updateLocaleUrl($key) {
+    $params = $_GET;           // Get current GET params
+    $params['locale'] = $key;  // Update locale
+    return '?' . http_build_query($params);
+}
 ?>
 
 <div class="dropdown nav-item relative">
@@ -82,7 +87,7 @@ if (!isset($languages[$locale])) {
 
     <div class="dropdown-menu absolute top-full right-0 bg-white shadow-xl rounded-xl border border-gray-100 py-2 mt-1 w-40">
         <?php foreach ($languages as $key => $lang): ?>
-            <a href="?locale=<?= $key ?>" 
+            <a href="<?= updateLocaleUrl($key) ?>" 
                 class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-[#2C3E50] hover:bg-gray-50 transition-all duration-150">
                 <span><?= $lang['flag'] ?></span>
                 <span><?= $lang['label'] ?></span>
