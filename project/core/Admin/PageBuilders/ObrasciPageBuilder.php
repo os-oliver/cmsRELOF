@@ -37,7 +37,7 @@ class ObrasciPageBuilder extends BasePageBuilder
             'all_categories' => 'Sve kategorije',
             'form_details' => 'Detalji obrasca',
             'no_items_found' => 'Nema pronađenih obrazaca',
-            'download_form' => 'Preuzmi obrazac'
+            'download_form' => 'Preuzmi dokument'
         ];
 
         if ($locale === 'sr-Cyrl') {
@@ -172,13 +172,6 @@ PHP;
                 </div>
 
                 <div class="flex gap-2">
-                    <a href="/sadrzaj?id={{itemId}}&tip=generic_element"
-                       class="flex-1 text-center bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
-                        <span class="flex items-center justify-center gap-2">
-                            <i class="fas fa-info-circle"></i>
-                            <span>{{formDetails}}</span>
-                        </span>
-                    </a>
                     {{downloadButton}}
                 </div>
             </div>
@@ -192,7 +185,7 @@ HTML;
     $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['kratakOpis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $kategorija = htmlspecialchars($item['fields']['kategorija'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $dokument = htmlspecialchars($item['fields']['dokument'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $dokument = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
 
     // Category pill
@@ -205,10 +198,10 @@ HTML;
 
     // Download button
     $downloadButton = $dokument
-        ? "<a href='{$dokument}' target='_blank' download
+        ? "<a href='{$dokument}' target='_blank'
               class='flex-1 text-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl'>
                 <span class='flex items-center justify-center gap-2'>
-                    <i class='fas fa-download'></i>
+                    <i class='fas fa-file-pdf'></i>
                     <span>{$texts['download_form']}</span>
                 </span>
            </a>"
@@ -359,7 +352,7 @@ $latinTexts = [
     'all_categories' => 'Sve kategorije',
     'form_details' => 'Detalji obrasca',
     'no_items_found' => 'Nema pronađenih obrazaca',
-    'download_form' => 'Preuzmi obrazac'
+    'download_form' => 'Preuzmi dokument'
 ];
 
 $texts = ($locale === 'sr-Cyrl') 
