@@ -202,13 +202,23 @@ class Content
                 continue;
             }
 
-            $this->processTextField($contentID, $fieldName, $post[$fieldName] ?? '', $locale, $isUpdate);
+            $this->processTextField($contentID, $fieldName, $post[$fieldName] ?? '', $locale, $isUpdate, $fieldType);
         }
     }
 
-    private function processTextField(int $contentID, string $fieldName, string $value, string $locale, bool $isUpdate): void
+    private function processTextField(int $contentID, string $fieldName, string $value, string $locale, bool $isUpdate, string $type = ''): void
     {
-        $variants = TextHelper::transliterateVariants($value, $locale);
+        error_log("Processing text field: $fieldName with value: $value for locale: $locale");
+        if ($fieldName === 'link') {
+            $variants = [
+                'sr' => $value,
+                'sr-Cyrl' => $value,
+                'en' => $value
+            ];
+        } else {
+            $variants = TextHelper::transliterateVariants($value, $locale);
+
+        }
 
         if ($isUpdate) {
             TextHelper::updateTextEntries($this->pdo, $contentID, $fieldName, $variants, 'generic_element');
