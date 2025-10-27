@@ -156,18 +156,22 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                     <?php foreach ($images as $image): ?>
                         <?php
-                        $date = date('M d, Y', strtotime($image['uploaded_at']));
+                        // $image is stdClass — use -> access. Add safe fallbacks.
+                        $uploadedAt = $image->uploaded_at ?? null;
+                        $date = $uploadedAt ? date('M d, Y', strtotime($uploadedAt)) : '';
+                        $id = isset($image->id) ? (int) $image->id : 0;
+                        $title = htmlspecialchars((string) ($image->title ?? ''));
+                        $description = htmlspecialchars((string) ($image->description ?? ''));
+                        $imagePath = htmlspecialchars((string) ($image->image_file_path ?? ''));
                         ?>
                         <div class="gallery-item bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group relative"
-                            data-id="<?= htmlspecialchars($image['id']) ?>"
-                            data-title="<?= htmlspecialchars($image['title']) ?>"
-                            data-description="<?= htmlspecialchars($image['description']) ?>"
-                            data-image-url="<?= htmlspecialchars($image['image_file_path']) ?>"
-                            data-date="<?= htmlspecialchars($image['uploaded_at']) ?>">
+                            data-id="<?= $id ?>" data-title="<?= $title ?>" data-description="<?= $description ?>"
+                            data-image-url="<?= $imagePath ?>"
+                            data-date="<?= htmlspecialchars((string) ($image->uploaded_at ?? '')) ?>">
 
                             <!-- Image container -->
                             <div class="h-60 overflow-hidden">
-                                <img src="<?= ($image['image_file_path']) ?>" alt="<?= htmlspecialchars($image['title']) ?>"
+                                <img src="<?= $imagePath ?>" alt="<?= $title ?>"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             </div>
 
@@ -181,7 +185,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                                         title="<?= __('gallery.edit') ?>">
                                         <i class="hover:text-yellow-500 fas fa-pencil-alt text-3xl"></i>
                                     </button>
-                                    <button id="deleteGallery" onclick="deletePicture(<?= $image['id'] ?>)"
+                                    <button id="deleteGallery" onclick="deletePicture(<?= $id ?>)"
                                         class="delete w-20 h-20 hover:bg-white/30 text-black rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
                                         title="<?= __('gallery.delete') ?>">
                                         <i class="hover:text-red-500 fas fa-trash text-3xl"></i>
@@ -193,12 +197,12 @@ $totalPages = (int) ceil($totalCount / $limit);
                                 <!-- Title -->
                                 <h3
                                     class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
-                                    <?= htmlspecialchars($image['title']) ?>
+                                    <?= $title ?>
                                 </h3>
 
                                 <!-- Description -->
                                 <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-                                    <?= htmlspecialchars($image['description']) ?>
+                                    <?= $description ?>
                                 </p>
 
                                 <!-- Date -->
