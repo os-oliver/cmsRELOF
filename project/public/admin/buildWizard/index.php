@@ -157,7 +157,7 @@ AuthController::requireAdmin();
                                         <i class="fas fa-graduation-cap"></i>
                                     </div>
                                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Obrazovna ustanova</h3>
-                                    <p class="text-sm text-gray-500">Škola ili fakultet</p>
+                                    <p class="text-sm text-gray-500">Obrazovni centar</p>
                                 </div>
                             </div>
                             <!-- Omladinski centar -->

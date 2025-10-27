@@ -7,7 +7,6 @@
     <title>Lorem ipsum dolor</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style type="text/css">
         .search-container {
@@ -110,9 +109,9 @@
             .hero-gradient {
                 background: linear-gradient(
                     to bottom,       
-                    rgb(247, 241, 237) 0%,      
-                    rgb(239, 178, 178) 50%,     
-                    rgba(255, 255, 255, 0.96) 100%     
+                    #F1F7ED 0%,      
+                    #a4d1aaff 50%,     
+                    #F1F7ED 100%     
                 );
                 text-align: left;
                 padding-top: 8rem;
@@ -317,9 +316,7 @@
         }
     </style>
 </head>
-
-
-<body class="font-secondaryfont text-secondarytext min-h-screen overflow-x-hidden">
+<body class="bg-background font-secondaryfont text-secondarytext min-h-screen overflow-x-hidden">
     <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden hidden">
         <div class="fixed inset-0 bg-black bg-opacity-50" id="mobileMenuOverlay"></div>
         <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-background shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
@@ -332,39 +329,49 @@
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#"
+                        class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-primarybutton"></i>Početna
                     </a>
                     <div class="mobile-dropdown">
-                        <button class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
                             id="mobileAboutToggle">
                             <div class="flex items-center">
                                 <i class="fas fa-info-circle mr-3 text-primarybutton"></i>O nama
                             </div>
-                            <i class="fas fa-chevron-down  transition-transform duration-200" id="mobileAboutIcon"></i>
+                            <i class="fas fa-chevron-down  transition-transform duration-200"
+                                id="mobileAboutIcon"></i>
                         </button>
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-bullseye mr-2 text-primarybutton"></i>Cilj
                             </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primarybutton"></i>Zaposleni
                             </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-flag mr-2 text-primarybutton"></i>Misija
                             </a>
                         </div>
                     </div>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#"
+                        class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primarybutton"></i>Događaji
                     </a>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#"
+                        class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-primarybutton"></i>Galerija
                     </a>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#"
+                        class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-primarybutton"></i>Dokumenti
                     </a>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#"
+                        class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primarybutton"></i>Kontakt
                     </a>
                 </nav>
@@ -378,10 +385,8 @@
             A+
         </button>
     </div>
-    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm ">
+    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm bg-background/95">
         <div class="container mx-auto px-4 flex justify-between items-center">
-
-
             <!-- Logo Section -->
             <div class="flex items-center space-x-3 flex-shrink-0">
                 <div
@@ -401,17 +406,16 @@
                     <h1 class="text-lg text-primarytext">Lorem ipsum</h1>
                 </div>
             </div>
-
-
             <!-- Desktop Navigation -->
-            <nav id="navBarID"
-                class="hidden lg:flex space-x-4 xl:space-x-8 font-secondaryfont text-secondarytext hover:text-primarytext">
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
+            <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-8 font-secondaryfont text-secondarytext hover:text-primarytext">
+                <a href="#"
+                    class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-home mr-2 text-primarybutton transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
                 <div class="dropdown relative group transition-colors">
-                    <button class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <button
+                        class="nav-link transition-colors flex items-center whitespace-nowrap">
                         <i class="fas fa-info-circle mr-2 text-primarybutton"></i>
                         <span class="hidden xl:inline">O nama</span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
@@ -432,55 +436,54 @@
                         </a>
                     </div>
                 </div>
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
+                <a href="#"
+                    class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <i
+                        class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Događaji</span>
                 </a>
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
+                <a href="#"
+                    class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-images mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Galerija</span>
                 </a>
-                <a href="#" class="nav-link transition-colors group flex items-center whitespace-nowrap">
+                <a href="#"
+                    class="nav-link transition-colors group flex items-center whitespace-nowrap">
                     <i class="fas fa-folder-open mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Dokumenti</span>
                 </a>
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
+                <a href="#"
+                    class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-address-book mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Kontakt</span>
                 </a>
-
-
                 <?php
-                if (isset($_GET['locale'])) {
-                    $_SESSION['locale'] = $_GET['locale'];
-                }
-                $locale = $_SESSION['locale'] ?? 'sr';
+                    if (isset($_GET['locale'])) {
+                        $_SESSION['locale'] = $_GET['locale'];
+                    }
+                    $locale = $_SESSION['locale'] ?? 'sr';
 
-                $languages = [
-                    'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
-                ];
+                    $languages = [
+                        'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                        'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                        'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    ];
 
-                if (!isset($languages[$locale])) {
-                    $locale = 'sr';
-                }
+                    if (!isset($languages[$locale])) {
+                        $locale = 'sr';
+                    }
                 ?>
-                <div class="dropdown nonPage relative group ">
-                    <button
-                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
-                        <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
-                        <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
-                        <i
-                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                <div class="dropdown relative group">
+                    <button class="nav-link transition-colors flex items-center whitespace-nowrap">
+                        <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
+                        <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
-                    <div
-                        class="dropdown-menu absolute top-full right-0  min-w-max bg-paper rounded-xl shadow-2xl border border-gray-100 z-50 py-2 backdrop-blur-sm">
+                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg z-50">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>"
-                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
-                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
-                                <span class="font-medium"><?= $lang['label'] ?></span>
+                            <a href="?locale=<?= $key ?>" class="dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                                <span class="mr-2"><?= $lang['flag'] ?></span>
+                                <?= $lang['label'] ?>
                             </a>
                         <?php endforeach; ?>
                     </div>
@@ -526,131 +529,100 @@
             </div>
         </div>
     </header>
-
-
     <!-- Enhanced Hero Section -->
     <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondarytext">
         <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+            <div class="grid items-center">
                 <div>
-                    <div class="mb-8 text-left">
+                    <div class="mb-8 text-center">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
                             <span class="block font-primaryfont text-primarytext">Lorem ipsum dolor</span>
                             <span class="block mt-2 text-secondarytext font-secondaryfont">Lorem ipsum dolor sit</span>
                         </h1>
-                        <p class="mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
+                        <p class="mx-4 md:mx-20 mb-10">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. 
+                            Quisque faucibus ex sapien vitae pellentesque sem placerat. 
                             In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. 
+                            Quisque faucibus ex sapien vitae pellentesque sem placerat. 
                             In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
                         </p>
                         <button
                             class="bg-primarybutton text-primarybtntxt px-6 py-4 rounded-full text-lg hover:bg-primarybuttonhover transition-colors">
-                            Pogledajte repertoar
+                            Saznajte o nama
                         </button>
                     </div>
-                </div>
-                <div class="hidden md:flex justify-center">
-                    <img class="dark:hidden"
-                        src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/girl-shopping-list.svg"
-                        alt="shopping illustration" />
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Repertoar -->
-    <section id="events" class="py-20 text-secondarytext">
+    <!-- aktuelno/dogadjaji -->
+    <section id="events" class="py-20 bg-background text-secondarytext">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-secondaryfont">
                 <h2 class="text-4xl font-primaryfont mb-4 relative inline-block text-primarytext">
-                    Nas Repertoar
+                    Lorem ipsum
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primarybutton"></span>
                 </h2>
                 <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4">
-                    Pogledajte trenutni repertoar naseg pozorista
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit
                 </p>
             </div>
-            <div id="eventsCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Event 1 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                        <img id="g-image"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            alt="Art Exhibition" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
+                            <span id="g-naziv" class="text-primarytext">Otvoren novi vrtić</span>
                         </div>
-                        <h3 class="text-xl mb-4">Naslov predstave</h3>
-                        <button
+                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
+                        </h3>
+                         <button
                             class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
-                            Vidi više
+                            Pročitaj
                         </button>
                     </div>
                 </div>
                 <!-- Event 2 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                        <img id="g-image"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            alt="Art Exhibition" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
+                            <span id="g-naziv" class="text-primarytext">Otvoren novi vrtić</span>
                         </div>
-                        <h3 class="text-xl mb-4">Naslov predstave</h3>
-                        <button
+                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
+                        </h3>
+                         <button
                             class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
-                            Vidi više
+                            Pročitaj
                         </button>
                     </div>
                 </div>
                 <!-- Event 3 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                        <img id="g-image"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            alt="Art Exhibition" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
+                            <span id="g-naziv" class="text-primarytext">Otvoren novi vrtić</span>
                         </div>
-                        <h3 class="text-xl mb-4">Naslov predstave</h3>
-                        <button
+                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
+                        </h3>
+                         <button
                             class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
-                            Vidi više
-                        </button>
-                    </div>
-                </div>
-                <!-- Event 4 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
-                        </div>
-                        <h3 class="text-xl mb-4">Naslov predstave</h3>
-                        <button
-                            class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
-                            Vidi više
-                        </button>
-                    </div>
-                </div>
-                <!-- Event 5 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
-                        </div>
-                        <h3 class="text-xl mb-4">Naslov predstave</h3>
-                        <button
-                            class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
-                            Vidi više
+                            Pročitaj
                         </button>
                     </div>
                 </div>
@@ -664,84 +636,84 @@
             </div>
         </div>
     </section>
-
-
-
-    <!-- Vesti -->
-    <section class=" text-secondarytext font-secondaryfont">
+    <!-- objekti -->
+    <section class="bg-background text-secondarytext font-secondaryfont">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl tracking-tight font-primaryfont text-primarytext relative inline-block">
-                    Vesti
+                <h2 class="mb-4 text-4xl tracking-tight font-primaryfont text-primarytext relative inline-block">Objekti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primarybutton"></span>
                 </h2>
                 <p class="lg:mb-16 sm:text-xl">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
                 </p>
-            </div>
+            </div> 
             <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                 <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
-                        <img class="w-full h-full object-cover rounded-l-lg"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
+                        <img 
+                        class="w-full h-full object-cover rounded-l-lg" 
+                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
+                        >
                     </a>
                     <div class="p-5 w-3/4">
                         <h3 class="text-primarytext tracking-tight text-2xl">
-                            <p>Lorem ipsum</p>
+                        <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
                 </div>
                 <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
-                        <img class="w-full h-full object-cover rounded-l-lg"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
+                        <img 
+                        class="w-full h-full object-cover rounded-l-lg" 
+                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
+                        >
                     </a>
                     <div class="p-5 w-3/4">
                         <h3 class="text-primarytext tracking-tight text-2xl">
-                            <p>Lorem ipsum</p>
+                        <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div> 
+                <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
+                    <a href="#" class="w-1/4 h-full">
+                        <img 
+                        class="w-full h-full object-cover rounded-l-lg" 
+                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
+                        >
+                    </a>
+                    <div class="p-5 w-3/4">
+                        <h3 class="text-primarytext tracking-tight text-2xl">
+                        <p>Lorem ipsum</p>
+                        </h3>
+                        <p class="mt-3 mb-4">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
                 </div>
                 <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
-                        <img class="w-full h-full object-cover rounded-l-lg"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
+                        <img 
+                        class="w-full h-full object-cover rounded-l-lg" 
+                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
+                        >
                     </a>
                     <div class="p-5 w-3/4">
                         <h3 class="text-primarytext tracking-tight text-2xl">
-                            <p>Lorem ipsum</p>
+                        <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
-                </div>
-                <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
-                    <a href="#" class="w-1/4 h-full">
-                        <img class="w-full h-full object-cover rounded-l-lg"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
-                    </a>
-                    <div class="p-5 w-3/4">
-                        <h3 class="text-primarytext tracking-tight text-2xl">
-                            <p>Lorem ipsum</p>
-                        </h3>
-                        <p class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
-                        </p>
-                    </div>
-                </div>
-            </div>
+                </div>  
+            </div>  
             <div class="text-center mt-12">
                 <button id="eventsView"
                     class="bg-primarybutton text-background text-lg px-8 py-4 rounded-full hover:bg-primarybuttonhover transition-colors flex items-center shadow-lg mx-auto">
@@ -750,52 +722,83 @@
             </div>
         </div>
     </section>
-
-    <!-- Prijatelji -->
-    <section class="py-16 text-secondarytext">
-        <div class="text-center mb-16 font-secondaryfont">
-            <h2 class="text-4xl font-primaryfont mb-4 relative inline-block text-primarytext">
-                Prijatelji pozorista
-                <span class="absolute bottom-0 left-0 right-0 h-1 bg-primarybutton"></span>
-            </h2>
-        </div>
+    <section class="py-16 bg-background text-secondarytext">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <?php
+                <?php 
                 $stats = [
-                    ['label' => 'Knjaz Milos'],
-                    ['label' => 'Vlada Republike Srbije'],
-                    ['label' => 'AikBanka'],
-                    ['label' => 'Firma4'],
-                ];
-                foreach ($stats as $index => $stat): ?>
-                    <div class="bg-cardcolor p-6 rounded-xl shadow-lg transform transition hover:scale-105"
-                        style="animation-delay: <?= $index * 0.2 ?>s">
-
-                        <!-- Added image -->
-                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="<?= htmlspecialchars($stat['label'], ENT_QUOTES) ?>"
-                            class="w-full h-24 object-cover rounded-md mb-4" loading="lazy" />
-
-                        <div><?= $stat['label'] ?></div>
-                    </div>
+                    ['number' => '20', 'label' => 'Generacija'],
+                    ['number' => '15', 'label' => 'Objekata'],
+                    ['number' => '1000+', 'label' => 'Osmeha'],
+                    ['number' => '50+', 'label' => 'Zaposlenih'],
+                ];   
+                foreach($stats as $index => $stat): ?>
+                <div class="bg-cardcolor p-6 rounded-xl shadow-lg transform transition hover:scale-105" 
+                     style="animation-delay: <?= $index * 0.2 ?>s">
+                    <div class="text-4xl text-primarytext mb-2"><?= $stat['number'] ?></div>
+                    <div><?= $stat['label'] ?></div>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </section>
-
-
-
-
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-background text-secondarytext font-secondaryfont">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-primaryfont text-primarytext mb-4 relative inline-block">
+                    Galerija
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primarybutton"></span>
+                </h2>
+                <p class="text-2xl max-w-2xl mx-auto">
+                    Lorem ipsum dolor amet consectetur adipiscing
+                </p>
+            </div>
+            <div id="galleryCards" class="gallery-grid gap-6">
+                <div class="gallery-item rounded-xl overflow-hidden relative">
+                    <img id="g-image_file_path"
+                        src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=600&q=80"
+                        alt="Gallery Space" class="w-full h-full object-cover">
+                    <div class="overlay-content text-background">
+                        <h3 id="g-description">Lorem ipsum</h3>
+                        <p id="g-title">Lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=600&q=80"
+                        alt="Cinema" class="w-full h-full object-cover">
+                    <div class="overlay-content text-background">
+                        <h3>Lorem ipsum</h3>
+                        <p>Lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1562788865-5638f7446611?auto=format&fit=crop&w=600&q=80"
+                        alt="Theater" class="w-full h-full object-cover">
+                    <div class="overlay-content text-background">
+                        <h3>Lorem ipsum</h3>
+                        <p>Lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80"
+                        alt="Workshop" class="w-full h-full object-cover">
+                    <div class="overlay-content text-background">
+                        <h3>Lorem ipsum</h3>
+                        <p>Lorem ipsum</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="bg-cardcolor text-secondarytext font-secondaryfont pt-20 pb-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div
-                            class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
@@ -879,27 +882,26 @@
             theme: {
                 extend: {
                     colors: {
-                        background: '#F7F2EA',       // warm parchment
-                        primarybutton: '#8B1E3F',    // velvet red
-                        primarybuttonhover: '#701932',
-                        footerbg: '#EFE3D6',         // creamy footer
-                        secondarybutton: '#2D3047',  // deep navy
-                        secondarybuttonhover: '#24273B',
-                        primarytext: '#1F1A1A',      // charcoal
-                        secondarytext: '#5D4E4E',    // warm gray
-                        logocolor1: '#8B1E3F',       // gold
-                        logocolor2: '#2D3047',       // pairs with gold
-                        primarybtntxt: '#FFF7E6',    // soft ivory on red/navy
-                        cardcolor: '#8B1E3F1A'       // translucent velvet for cards
+                        background: '#F1F7ED',
+                        primarybutton: "#e9a803ff",
+                        primarybuttonhover: "#d39802ff",
+                        footerbg: "#E6F9EC",
+                        secondarybutton: "#32604dff",
+                        secondarybuttonhover: "#255943ff",
+                        primarytext: '#1B4332',
+                        secondarytext: '#2a644aff',
+                        logocolor1: '#e9a803ff',
+                        logocolor2: '#2D6A4F',
+                        primarybtntxt: '#F1F7ED',
+                        cardcolor: '#e5cc8c6b'
                     },
                     fontFamily: {
-                        primaryfont: ['"Bodoni Moda"', 'serif'], // headings (classic & dramatic)
-                        secondaryfont: ['Inter', 'sans-serif']   // body (modern & readable)
-                    }
+                        primaryfont: ['Fredoka', 'sans-serif'],
+                        secondaryfont: ['Nunito', 'sans-serif']
+                    },       
                 }
             }
         }
-
         const btn = document.getElementById('increaseFontBtn');
 
         let currentSize = 16;       // initial font size in px
@@ -1125,5 +1127,4 @@
         });
     </script>
 </body>
-
 </html>
