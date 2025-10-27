@@ -90,19 +90,25 @@ class Text
     {
         try {
             $stmt = $this->pdo->prepare("
-                SELECT te.id, tt.translated_text, te.original_text, te.dom_path, te.tag
-                FROM text_entries te
-                LEFT JOIN text_translations tt 
-                  ON te.id = tt.entry_id AND tt.lang = :lang
-                ORDER BY te.id ASC
-            ");
+            SELECT 
+                te.id, 
+                COALESCE(tt.translated_text, ttc.translated_text, te.original_text) AS text,
+                te.dom_path, 
+                te.tag
+            FROM text_entries te
+            LEFT JOIN text_translations tt 
+                ON te.id = tt.entry_id AND tt.lang = :lang
+            LEFT JOIN text_translations ttc
+                ON te.id = ttc.entry_id AND ttc.lang = 'sr-Cyrl'
+            ORDER BY te.id ASC
+        ");
             $stmt->execute([':lang' => $lang]);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             $dynamicText = [];
             foreach ($rows as $row) {
                 $dynamicText[$row['id']] = [
-                    'text' => $row['translated_text'] ?? $row['original_text'],
+                    'text' => $row['text'],
                     'path' => $row['dom_path'],
                     'tag' => $row['tag']
                 ];
@@ -114,6 +120,7 @@ class Text
             return [];
         }
     }
+
 
     public function batchUpdateDynamicTexts(array $texts): void
     {

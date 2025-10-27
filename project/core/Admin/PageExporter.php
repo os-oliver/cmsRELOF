@@ -3,6 +3,8 @@
 namespace App\Admin;
 
 use App\Admin\PageBuilders\DynamicPageBuilder;
+use App\Admin\PageBuilders\EmployeesPageBuilder;
+use App\Admin\PageBuilders\GoalPageBulder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
@@ -594,6 +596,8 @@ class PageExporter
                 return new EventsPageBuilder($name);
             case 'misija':
                 return new MissionPageBuilder($name, $this->data);
+            case 'cilj':
+                return new GoalPageBulder($name, $this->data);
             case 'predstave':
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
@@ -602,6 +606,8 @@ class PageExporter
                 return new NaucniKlubPageBuilder('NaucniKlub');
             case 'primer':
                 return new ContactPageBuilder($name, $this->data);
+            case 'zaposleni':
+                return new EmployeesPageBuilder($name, $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -629,7 +635,12 @@ class PageExporter
             return 'naucni-klub';
         } elseif (strpos($name, 'primer') !== false) {
             return 'primer';
+        } elseif (strpos($name, 'cilj') !== false) {
+            return 'cilj';
+        } elseif (strpos($name, 'zaposleni') !== false) {
+            return 'zaposleni';
         }
+
 
         return 'basic';
     }

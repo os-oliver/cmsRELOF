@@ -521,23 +521,32 @@
                             <i class="fas fa-chevron-down text-xs ml-1.5"></i>
                         </button>
                         <div class="dropdown-menu">
-                            <a href="/o-nama/uvod" class="dropdown-item"><i
-                                    class="fas fa-bullseye text-[#4A6FA5]"></i>Uvod</a>
-                            <a href="/o-nama/misija" class="dropdown-item"><i
-                                    class="fas fa-flag text-[#E07856]"></i>Misija i vizija</a>
-                            <a href="/o-nama/istorijat" class="dropdown-item"><i
-                                    class="fas fa-history text-[#CC8B3C]"></i>Istorijat</a>
-                            <a href="/o-nama/rukovodstvo" class="dropdown-item"><i
-                                    class="fas fa-users text-[#2A6B6A]"></i>Rukovodstvo</a>
-                            <a href="/o-nama/objekat" class="dropdown-item"><i
-                                    class="fas fa-building text-[#C85A3E]"></i>Objekat</a>
+                            <a href="/o-nama/cilj" class="dropdown-item">
+                                <i class="fas fa-bullseye text-[#4A6FA5]"></i>Cilj
+                            </a>
+                            <a href="/o-nama/misija" class="dropdown-item">
+                                <i class="fas fa-flag text-[#E07856]"></i>Misija
+                            </a>
+                            <a href="/o-nama/zaposleni" class="dropdown-item">
+                                <i class="fas fa-users text-[#2A6B6A]"></i>Zaposleni
+                            </a>
+                            <a href="/o-nama/istorijat" class="dropdown-item">
+                                <i class="fas fa-history text-[#CC8B3C]"></i>Istorijat
+                            </a>
+                            <a href="/o-nama/objekat" class="dropdown-item">
+                                <i class="fas fa-building text-[#C85A3E]"></i>Objekat
+                            </a>
                             <div class="border-t border-gray-100 my-1 mx-3"></div>
-                            <a href="/o-nama/donacije" class="dropdown-item"><i
-                                    class="fas fa-hand-holding-heart text-[#4A6FA5]"></i>Donacije</a>
-                            <a href="/o-nama/partneri" class="dropdown-item"><i
-                                    class="fas fa-handshake text-[#7A9B76]"></i>Partneri</a>
-                            <a href="/o-nama/licenca" class="dropdown-item"><i
-                                    class="fas fa-certificate text-[#CC8B3C]"></i>Licenca</a>
+                            <a href="/o-nama/donacije" class="dropdown-item">
+                                <i class="fas fa-hand-holding-heart text-[#4A6FA5]"></i>Donacije
+                            </a>
+                            <a href="/o-nama/partneri" class="dropdown-item">
+                                <i class="fas fa-handshake text-[#7A9B76]"></i>Partneri
+                            </a>
+                            <a href="/o-nama/licenca" class="dropdown-item">
+                                <i class="fas fa-certificate text-[#CC8B3C]"></i>Licenca
+                            </a>
+
                         </div>
                     </div>
 
@@ -1110,7 +1119,7 @@
     </section>
 
     <!-- Featured Exhibition Section -->
-    <section id="promocija" class="py-20 bg-gradient-to-br from-paper to-ochre/10">
+    <section id="promocija" class="py-2index.ph0 bg-gradient-to-br from-paper to-ochre/10">
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2 relative">
