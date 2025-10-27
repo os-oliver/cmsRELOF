@@ -1,4 +1,7 @@
 <?php
+session_start();
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
 use App\Controllers\AuthController;
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
@@ -180,7 +183,6 @@ AuthController::requireEditor();
     <!-- Mobile Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <?php require_once __DIR__ . '/../components/eventsInputForm.php' ?>
     <div class="flex h-screen overflow-hidden">
         <!-- Light Glass Sidebar -->
         <?php
@@ -224,5 +226,7 @@ AuthController::requireEditor();
     <script src="/assets/js/WebDesigner/grapesjs/grapes.min.js"></script>
     <script src="/assets/js/dashboard/promotionLoader.js"></script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
+
 </body>
+
 </html>

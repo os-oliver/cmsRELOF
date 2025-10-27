@@ -1,4 +1,6 @@
 <?php
+session_start();
+$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 // 1. Use the Contact model and require authentication
 use App\Models\Contact;
 use App\Controllers\AuthController;
@@ -109,25 +111,25 @@ $totalPages = (int) ceil($totalCount / $limit);
             <!-- content -->
             <div class="p-6 space-y-4">
                 <p><span class="font-medium">
-                    <?= __("chats.name") ?>:
-                </span> <span id="modal-name"></span></p>
+                        <?= __("chats.name") ?>:
+                    </span> <span id="modal-name"></span></p>
 
                 <p><span class="font-medium">
-                    <?= __("chats.email") ?>:
-                </span> <span id="modal-email"></span></p>
+                        <?= __("chats.email") ?>:
+                    </span> <span id="modal-email"></span></p>
 
                 <p><span class="font-medium">
-                    <?= __("chats.phone") ?>:</span> <span id="modal-phone"></span></p>
+                        <?= __("chats.phone") ?>:</span> <span id="modal-phone"></span></p>
 
                 <p><span class="font-medium">
-                    <?= __("chats.message") ?>:
-                </span></p>
+                        <?= __("chats.message") ?>:
+                    </span></p>
 
                 <div id="modal-message" class="whitespace-pre-wrap bg-gray-50 p-3 rounded-lg"></div>
 
                 <p class="text-sm text-gray-500"><span class="font-medium">
-                    <?= __("chats.sent") ?>:
-                </span> <span id="modal-date"></span></p>
+                        <?= __("chats.sent") ?>:
+                    </span> <span id="modal-date"></span></p>
             </div>
         </div>
     </div>
@@ -162,7 +164,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <input type="text" name="search" value="<?= htmlspecialchars($search) ?>"
                                 placeholder="<?= __("chats.search") ?>"
                                 class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition">
-                            </div>
+                        </div>
 
                         <select name="sort"
                             class="px-4 py-3 border border-gray-300 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition">
@@ -174,7 +176,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                             </option>
                         </select>
 
-                        
+
                         <button type="submit"
                             class="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition shadow-lg">
                             <?= __("chats.apply") ?>
@@ -258,7 +260,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                     <div class="hidden md:block text-sm text-gray-700">
                         <div class="hidden md:block text-sm text-gray-700">
                             <?= __("chats.showing") ?>
-                            <span class="font-medium"><?= count($contacts) ?></span> 
+                            <span class="font-medium"><?= count($contacts) ?></span>
                             <?= __("chats.of") ?>
                             <span class="font-medium"><?= $totalCount ?></span>
                             <?= __("chats.contacts") ?>
