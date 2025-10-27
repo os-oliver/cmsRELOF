@@ -1,5 +1,6 @@
 import { generateNavTree } from "./navigationHandler.js";
 import { setupElement } from "./dynamicCodeHandler.js";
+let ids = [];
 
 // Custom toHTML that fixes < > and injects PHP placeholders
 export function toHTMLWithPHP(comp) {
@@ -76,7 +77,6 @@ function exportFullPage(editor, tipUstanove) {
   bodyComponent.components().each((child) => {
     const tag = child.get("tagName") || child.get("type");
     const pageSlug = tipUstanove.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-
     switch (tag) {
       case "header":
         generateNavTree(child, tree, "navBarID", "dropdown");
@@ -85,7 +85,7 @@ function exportFullPage(editor, tipUstanove) {
         });
         break;
       case "section":
-        setupElement(child, landingPageFiles);
+        ids.push(setupElement(child, landingPageFiles));
         break;
       case "footer":
         landingPageFiles.push({
@@ -103,7 +103,7 @@ function exportFullPage(editor, tipUstanove) {
         break;
     }
   });
-
+  console.log("ids collected from sections:", ids);
   // Collect CSS and JS
   const css = editor.getCss();
   const fullHtml = editor.getHtml();
@@ -139,6 +139,7 @@ function exportFullPage(editor, tipUstanove) {
     components: landingPageFiles,
     tree: tree,
     js: js,
+    ids: ids,
     tailwind: tailwindConfig,
   };
 

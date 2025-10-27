@@ -1100,11 +1100,11 @@
             </div>
 
             <div class="text-center mt-12">
-                <button id="eventsView"
+                <a href="/vesti" id="eventsView"
                     class="bg-gradient-to-r from-slate to-slate/90 text-paper px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Pogledaj sve događaje
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -1175,7 +1175,158 @@
             </div>
         </div>
     </section>
+    <section id="vesti" class="py-20 bg-gradient-to-br from-slate-50 to-paper">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
+                    Najnovije Vesti
+                    <div
+                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-terracotta via-royal-blue to-deep-teal rounded-full">
+                    </div>
+                </h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto mt-6">
+                    Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
+                </p>
+            </div>
 
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Vest 1 -->
+                <article
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="h-56 relative overflow-hidden">
+                        <img id="g-slika"
+                            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                            alt="Vest"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-terracotta to-terracotta/80 flex items-center justify-center text-paper shadow-md">
+                                <i class="fas fa-newspaper text-lg"></i>
+                            </div>
+                            <div class="flex items-center text-sm text-slate-500">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span id="g-datum">15. Oktobar 2025</span>
+                            </div>
+                        </div>
+
+                        <h3 id="g-naslov"
+                            class="text-xl font-display font-bold text-slate mb-3 group-hover:text-terracotta transition-colors line-clamp-2">
+                            Novi kulturni centar otvara vrata građanima
+                        </h3>
+
+                        <p id="g-opis" class="text-slate-600 mb-5 line-clamp-3 leading-relaxed">
+                            Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
+                            kreativnosti i umetnosti u našem gradu.
+                        </p>
+
+                        <a id="g-ovise" href="#"
+                            class="inline-flex items-center text-terracotta font-semibold hover:gap-3 gap-2 transition-all group/link">
+                            Pročitaj više
+                            <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Vest 2 -->
+                <article
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="h-56 relative overflow-hidden">
+                        <img id="g-slika"
+                            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80"
+                            alt="Vest"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-royal-blue to-royal-blue/80 flex items-center justify-center text-paper shadow-md">
+                                <i class="fas fa-newspaper text-lg"></i>
+                            </div>
+                            <div class="flex items-center text-sm text-slate-500">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span id="g-datum">12. Oktobar 2025</span>
+                            </div>
+                        </div>
+
+                        <h3 id="g-naslov"
+                            class="text-xl font-display font-bold text-slate mb-3 group-hover:text-royal-blue transition-colors line-clamp-2">
+                            Stipendije za mlade naučnike i istraživače
+                        </h3>
+
+                        <p id="g-opis" class="text-slate-600 mb-5 line-clamp-3 leading-relaxed">
+                            Univerzitet najavljuje novi program stipendija za talentovane studente u oblasti nauke i
+                            tehnologije.
+                        </p>
+
+                        <a id="g-link" href="#"
+                            class="inline-flex items-center text-royal-blue font-semibold hover:gap-3 gap-2 transition-all group/link">
+                            Pročitaj više
+                            <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Vest 3 -->
+                <article
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="h-56 relative overflow-hidden">
+                        <img id="g-slika"
+                            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80"
+                            alt="Vest"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-deep-teal to-deep-teal/80 flex items-center justify-center text-paper shadow-md">
+                                <i class="fas fa-newspaper text-lg"></i>
+                            </div>
+                            <div class="flex items-center text-sm text-slate-500">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span id="g-datum">10. Oktobar 2025</span>
+                            </div>
+                        </div>
+
+                        <h3 id="g-naslov"
+                            class="text-xl font-display font-bold text-slate mb-3 group-hover:text-deep-teal transition-colors line-clamp-2">
+                            Inovativna AI platforma za obrazovanje
+                        </h3>
+
+                        <p id="g-opis" class="text-slate-600 mb-5 line-clamp-3 leading-relaxed">
+                            Lokalni startup predstavlja revolucionarnu platformu koja koristi veštačku inteligenciju za
+                            personalizovano učenje.
+                        </p>
+
+                        <a id="g-link" href="#"
+                            class="inline-flex items-center text-deep-teal font-semibold hover:gap-3 gap-2 transition-all group/link">
+                            Pročitaj više
+                            <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="text-center mt-16">
+                <button id="vestiView"
+                    class="bg-gradient-to-r from-slate via-slate/95 to-slate/90 text-paper px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
+                    <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
+                    Pogledaj sve vesti
+                    <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </section>
 
     <!-- Gallery Section -->
     <section id="gallery" class="py-20 bg-white">

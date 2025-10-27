@@ -1,6 +1,6 @@
 [
     {
-        "id": "68fcf6876f7a2",
+        "id": "68ff208e7466f",
         "static": false,
         "movable": false,
         "name": "",
@@ -8,10 +8,10 @@
         "path": "pages\/.php",
         "file": ".php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf68772ec0",
+        "id": "68ff208e77909",
         "static": false,
         "movable": false,
         "name": "uvod",
@@ -19,10 +19,10 @@
         "path": "pages\/uvod.php",
         "file": "uvod.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf68776638",
+        "id": "68ff208e7c29c",
         "static": false,
         "movable": false,
         "name": "misija-i-vizija",
@@ -30,10 +30,10 @@
         "path": "pages\/misija-i-vizija.php",
         "file": "misija-i-vizija.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf6877990f",
+        "id": "68ff208e7f1aa",
         "static": false,
         "movable": false,
         "name": "istorijat",
@@ -41,10 +41,10 @@
         "path": "pages\/istorijat.php",
         "file": "istorijat.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf6877c4e0",
+        "id": "68ff208e82590",
         "static": false,
         "movable": false,
         "name": "rukovodstvo",
@@ -52,10 +52,10 @@
         "path": "pages\/rukovodstvo.php",
         "file": "rukovodstvo.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf6877f5b7",
+        "id": "68ff208e8575a",
         "static": false,
         "movable": false,
         "name": "objekat",
@@ -63,10 +63,10 @@
         "path": "pages\/objekat.php",
         "file": "objekat.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf687826c3",
+        "id": "68ff208e888e5",
         "static": false,
         "movable": false,
         "name": "donacije",
@@ -74,10 +74,10 @@
         "path": "pages\/donacije.php",
         "file": "donacije.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf6878505a",
+        "id": "68ff208e8b822",
         "static": false,
         "movable": false,
         "name": "partneri",
@@ -85,10 +85,10 @@
         "path": "pages\/partneri.php",
         "file": "partneri.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf68788ffc",
+        "id": "68ff208e8e6d1",
         "static": false,
         "movable": false,
         "name": "licenca",
@@ -96,10 +96,10 @@
         "path": "pages\/licenca.php",
         "file": "licenca.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf6878d84c",
+        "id": "68ff208e92115",
         "static": false,
         "movable": false,
         "name": "dogadjaji",
@@ -107,21 +107,10 @@
         "path": "pages\/dogadjaji.php",
         "file": "dogadjaji.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf687905ad",
-        "static": true,
-        "movable": false,
-        "name": "donatori",
-        "href": "\/donatori",
-        "path": "pages\/donatori.php",
-        "file": "donatori.php",
-        "status": 1,
-        "created_at": "2025-10-25 16:10:47"
-    },
-    {
-        "id": "68fcf68793603",
+        "id": "68ff208e94f8a",
         "static": false,
         "movable": false,
         "name": "sekcije",
@@ -129,10 +118,10 @@
         "path": "pages\/sekcije.php",
         "file": "sekcije.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf6879676e",
+        "id": "68ff208e991c4",
         "static": false,
         "movable": false,
         "name": "projekti",
@@ -140,10 +129,10 @@
         "path": "pages\/projekti.php",
         "file": "projekti.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf6879c386",
+        "id": "68ff208e9eb1a",
         "static": false,
         "movable": false,
         "name": "foto-galerija",
@@ -151,10 +140,10 @@
         "path": "pages\/foto-galerija.php",
         "file": "foto-galerija.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf687a1981",
+        "id": "68ff208ea4915",
         "static": false,
         "movable": false,
         "name": "video-galerija",
@@ -162,10 +151,10 @@
         "path": "pages\/video-galerija.php",
         "file": "video-galerija.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf687b1950",
+        "id": "68ff208eb5284",
         "static": false,
         "movable": false,
         "name": "dokumenti",
@@ -173,10 +162,10 @@
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf687b27c4",
+        "id": "68ff208eb5d9e",
         "static": false,
         "movable": false,
         "name": "vesti",
@@ -184,10 +173,10 @@
         "path": "pages\/vesti.php",
         "file": "vesti.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     },
     {
-        "id": "68fcf687da091",
+        "id": "68ff208edb6d8",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -195,6 +184,6 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-10-25 16:10:47"
+        "created_at": "2025-10-27 07:34:38"
     }
 ]
