@@ -44,7 +44,7 @@ Aplikacija je izgrađena po **Front Controller** i **MVC** obrascima: sav HTTP s
 - `exportedPages/*.php` (statistički „izvezeni“ fajlovi ako je sajt inicijalizovan)
 - `pages/*.php` (fallback stranice)
 
-![Komponentni dijagram](out/diagram2/diagram2.png)
+![Komponentni dijagram](/project/out/diagram2/diagram2.png)
 
 ## Primer jednog od tokova aplikacije
 
@@ -56,11 +56,11 @@ Tok aktivnosti kreiranja događaja ilustruje:
 4. Fajl se otprema preko `FileUploader`, a model upisuje novi događaj u bazu.
 5. Na uspeh, vraća se `201 Created` sa JSON objektom događaja.
 
-![Dijagram aktivnosti](out/diagram3/diagram3.png)
+![Dijagram aktivnosti](project/out/diagram3/diagram3.png)
 
 # Role korisnika i njihova prava u CMS sistemu
 
-![Dijagram aktivnosti](out/diagram/diagram.png)
+![Dijagram aktivnosti](project/out/diagram/diagram.png)
 
 | Uloga              | Opis prava                                                                                                                                      |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
