@@ -116,14 +116,14 @@ class Content
         return ['success' => true, 'total' => $total, 'page' => $page, 'per' => $per, 'items' => $items];
     }
 
-    public function fetchItem(int $id): array
+    public function fetchItem(int $id, $locale = null): array
     {
         $id = (int) $id;
         if ($id <= 0) {
             return ['success' => false, 'message' => 'Invalid id'];
         }
-
-        $fields = $this->fetchItemFields($id);
+        error_log("Fetching item with id: $locale");
+        $fields = $this->fetchItemFields($id, $locale);
         $meta = $this->fetchItemMeta($id);
 
         if (!$meta) {
@@ -202,13 +202,23 @@ class Content
                 continue;
             }
 
-            $this->processTextField($contentID, $fieldName, $post[$fieldName] ?? '', $locale, $isUpdate);
+            $this->processTextField($contentID, $fieldName, $post[$fieldName] ?? '', $locale, $isUpdate, $fieldType);
         }
     }
 
-    private function processTextField(int $contentID, string $fieldName, string $value, string $locale, bool $isUpdate): void
+    private function processTextField(int $contentID, string $fieldName, string $value, string $locale, bool $isUpdate, string $type = ''): void
     {
-        $variants = TextHelper::transliterateVariants($value, $locale);
+        error_log("Processing text field: $fieldName with value: $value for locale: $locale");
+        if ($fieldName === 'link') {
+            $variants = [
+                'sr' => $value,
+                'sr-Cyrl' => $value,
+                'en' => $value
+            ];
+        } else {
+            $variants = TextHelper::transliterateVariants($value, $locale);
+
+        }
 
         if ($isUpdate) {
             TextHelper::updateTextEntries($this->pdo, $contentID, $fieldName, $variants, 'generic_element');
@@ -456,6 +466,9 @@ class Content
         ";
 
         $stmt = $this->pdo->prepare($sql);
+        error_log(
+            "vesti:" . $lang
+        );
         $stmt->bindValue(1, $lang, PDO::PARAM_STR);
 
         $pos = 2;
@@ -592,20 +605,35 @@ class Content
         return $items;
     }
 
-    private function fetchItemFields(int $id): array
+    private function fetchItemFields(int $id, $lang = null): array
     {
-        $sql = "SELECT field_name, lang, content FROM text WHERE source_table = 'generic_element' AND source_id = ?";
+        $sql = "SELECT field_name, lang, content 
+            FROM text 
+            WHERE source_table = 'generic_element' AND source_id = ?";
+
+        // If a specific language is provided, add it to the WHERE clause
+        if ($lang !== null) {
+            $sql .= " AND lang = ?";
+        }
+
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $id, PDO::PARAM_INT);
+
+        if ($lang !== null) {
+            $stmt->bindValue(2, $lang, PDO::PARAM_STR);
+        }
+
         $stmt->execute();
 
         $fields = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            error_log("Fetched field: " . $row['field_name'] . " lang: " . $row['lang']);
             $fields[$row['field_name']][$row['lang']] = $row['content'];
         }
 
         return $fields;
     }
+
 
     private function fetchItemMeta(int $id): ?array
     {

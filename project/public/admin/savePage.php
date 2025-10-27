@@ -202,7 +202,7 @@ function handleExport(array $data): void
             "message" => "Single page exported successfully"
         ]);
     }
-
+    error_log("Starting full pages export...");
     $exporter->export();
     sendJson([
         "success" => true,

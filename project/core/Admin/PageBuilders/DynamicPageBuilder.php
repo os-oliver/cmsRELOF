@@ -96,6 +96,69 @@ class DynamicPageBuilder extends BasePageBuilder
     background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%);
 }
 
+/* Enhanced Action Link Styling */
+.card-action-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.875rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.card-action-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.card-action-link:hover {
+    background: linear-gradient(135deg, #111827 0%, #000000 100%);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.card-action-link:hover::before {
+    left: 100%;
+}
+
+.card-action-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.link-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.link-icon {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-action-link:hover .link-icon {
+    transform: translateX(4px);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .fields-container {
@@ -105,6 +168,11 @@ class DynamicPageBuilder extends BasePageBuilder
     
     .glass-card {
         margin-bottom: 1rem;
+    }
+    
+    .card-action-link {
+        font-size: 0.8125rem;
+        padding: 0.75rem 1rem;
     }
 }
 CSS;
@@ -137,7 +205,7 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
 function cardRender(array $item, array $fieldLabels, string $locale): string
 {
     $fields = [];
-    
+
     // Add category as a chip if exists
     $categoryHtml = '';
     if (!empty($item['category'])) {
@@ -148,67 +216,94 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
                             </div>";
         }
     }
-    
-    // Process fields - exclude file type fields
+
+    // Process fields - exclude file type fields and detect links
     foreach ($item['fields'] as $fieldName => $translations) {
-        if (($fieldLabels[$fieldName]['type'] ?? '') === 'file') continue;
-        
+        if (($fieldLabels[$fieldName]['type'] ?? '') === 'file')
+            continue;
+
         $label = $fieldLabels[$fieldName]['label'][$locale] ?? $fieldLabels[$fieldName]['label']['en'] ?? $fieldName;
         $value = (string) ($translations[$locale] ?? reset($translations) ?? '');
-        
+
         if (!empty(trim($value))) {
+            // Check if value is a URL
+            $isLink = filter_var($value, FILTER_VALIDATE_URL) !== false;
+            
             $displayValue = mb_strlen($value) > 100 ? mb_substr($value, 0, 100) . '...' : $value;
             $fields[] = [
                 'label' => htmlspecialchars($label, ENT_QUOTES, 'UTF-8'),
-                'value' => htmlspecialchars($displayValue, ENT_QUOTES, 'UTF-8')
+                'value' => htmlspecialchars($displayValue, ENT_QUOTES, 'UTF-8'),
+                'rawValue' => htmlspecialchars($value, ENT_QUOTES, 'UTF-8'),
+                'isLink' => $isLink
             ];
         }
     }
-    
+
     $imageUrl = !empty($item['image']) ? htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') : null;
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
-    
+    $fieldCount = count($fields);
+
     $html = "<div class='glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1'>";
-    
+
     // Image section with overlay
     if ($imageUrl) {
         $html .= "<div class='relative w-full h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200'>
-                    <img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Item image'>
+                    <img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Item image' loading='lazy'>
                     <div class='card-image-overlay'></div>
                     {$categoryHtml}
                 </div>";
     } else if ($categoryHtml) {
         $html .= "<div class='relative h-12 bg-gradient-to-r from-gray-100 to-gray-200'>{$categoryHtml}</div>";
     }
-    
+
     // Content section
     $html .= "<div class='p-5'>";
-    
+
     if (!empty($fields)) {
-        $html .= "<div class='fields-container'>";
-        foreach ($fields as $f) {
-            $html .= "<div class='card-field'>
-                        <div class='text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5'>{$f['label']}</div>
-                        <div class='text-sm text-gray-800 font-medium leading-relaxed'>{$f['value']}</div>
-                    </div>";
+        // Determine grid layout: 2 columns for even count, auto for odd (last takes full width)
+        $gridClass = $fieldCount % 2 === 0 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : 'grid grid-cols-1 md:grid-cols-2 gap-4';
+        
+        $html .= "<div class='{$gridClass}'>";
+        
+        foreach ($fields as $index => $f) {
+            // If odd count and this is the last field, make it span full width
+            $spanClass = ($fieldCount % 2 !== 0 && $index === $fieldCount - 1) ? 'md:col-span-2' : '';
+            
+            $html .= "<div class='card-field {$spanClass}'>
+                        <div class='text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5'>{$f['label']}</div>";
+            
+            if ($f['isLink']) {
+                // Render as a clickable link with icon
+                $html .= "<a href='{$f['rawValue']}' target='_blank' rel='noopener noreferrer' 
+                            class='inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium leading-relaxed transition-colors duration-200 hover:underline'>
+                            <span>{$f['value']}</span>
+                            <svg class='w-4 h-4 flex-shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'></path>
+                            </svg>
+                          </a>";
+            } else {
+                // Regular text field
+                $html .= "<div class='text-sm text-gray-800 font-medium leading-relaxed'>{$f['value']}</div>";
+            }
+            
+            $html .= "</div>";
         }
         $html .= "</div>";
     }
-    
-    // Action button
-    $html .= "<a href='sadrzaj?id={$itemId}&tip=generic_element' 
-                class='block w-full text-center bg-gray-800 hover:bg-gray-900 text-white text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg backdrop-blur-sm'>
-                <span class='flex items-center justify-center gap-2'>
+
+    // Enhanced action link
+    $html .= "<a href='sadrzaj?id={$itemId}&tip=Vesti' class='card-action-link mt-5'>
+                <span class='link-content'>
                     <span>Saznaj više</span>
-                    <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'/>
+                    <svg class='link-icon' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
                     </svg>
                 </span>
               </a>";
-    
+
     $html .= "</div>";
     $html .= "</div>";
-    
+
     return $html;
 }
 
@@ -325,6 +420,7 @@ HTML;
         PHP;
 
         $additionalPHP .= "\n" . $this->functions;
+        $additionalPHP = str_replace('{{SLUG}}', $this->slug, $additionalPHP);
         $additionalPHP = str_replace('__SLUG__', addslashes($this->slug), $additionalPHP);
 
         $content = $this->getHeader($this->css, $additionalPHP);

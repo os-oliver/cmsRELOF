@@ -106,6 +106,523 @@
             "sr-Cyrl": "ЗУОВ линк"
           },
           "required": true
+        },
+        {
+          "name": "naziv",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija događaja",
+            "en": "Event category",
+            "sr-Cyrl": "Категорија догађаја"
+          },
+          "options": [
+            "Konferencije",
+            "Seminari",
+            "Radionice",
+            "Takmičenja",
+            "Kultura"
+          ],
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum održavanja",
+            "en": "Event date",
+            "sr-Cyrl": "Датум одржавања"
+          },
+          "required": true
+        },
+        {
+          "name": "time",
+          "type": "time",
+          "label": {
+            "sr": "Vreme početka",
+            "en": "Start time",
+            "sr-Cyrl": "Време почетка"
+          },
+          "required": true
+        },
+        {
+          "name": "location",
+          "type": "text",
+          "label": {
+            "sr": "Lokacija događaja",
+            "en": "Event location",
+            "sr-Cyrl": "Локација догађаја"
+          },
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis događaja",
+            "en": "Event description",
+            "sr-Cyrl": "Опис догађаја"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika događaja",
+            "en": "Event image",
+            "sr-Cyrl": "Насловна слика догађаја"
+          }
+        }
+      ]
+    },
+    "ProgramiObuke": {
+        "sr": "Programi obuke",
+        "en": "Training Programs",
+        "sr-Cyrl": "Програми обуке",
+        "icon": "fas fa-graduation-cap",
+        "categories": [
+            "Roditeljstvo",
+            "Komunikacija",
+            "Stariji",
+            "Mladi",
+            "Porodica",
+            "Veštine"
+        ],
+        "fields": [
+            {
+            "name": "slika",
+            "type": "file",
+            "label": {
+                "sr": "Naslovna slika programa",
+                "en": "Program image",
+                "sr-Cyrl": "Насловна слика програма"
+            },
+            "required": true
+            },
+            {
+            "name": "naslov",
+            "type": "text",
+            "label": {
+                "sr": "Naziv programa obuke",
+                "en": "Training program title",
+                "sr-Cyrl": "Назив програма обуке"
+            },
+            "required": true
+            },
+            {
+            "name": "kategorija",
+            "type": "categories",
+            "label": {
+                "sr": "Kategorija programa",
+                "en": "Program category",
+                "sr-Cyrl": "Категорија програма"
+            },
+            "options": [
+                "Roditeljstvo",
+                "Komunikacija",
+                "Stariji",
+                "Mladi",
+                "Porodica",
+                "Veštine"
+            ],
+            "required": true
+            },
+            {
+            "name": "ikonica",
+            "type": "select",
+            "label": {
+                "sr": "Ikonica kategorije",
+                "en": "Category icon",
+                "sr-Cyrl": "Иконица категорије"
+            },
+            "options": [
+                "fas fa-baby",
+                "fas fa-comments",
+                "fas fa-heart",
+                "fas fa-users",
+                "fas fa-hands-helping",
+                "fas fa-brain"
+            ],
+            "required": true
+            },
+            {
+            "name": "bojaKategorije",
+            "type": "select",
+            "label": {
+                "sr": "Boja kategorije",
+                "en": "Category color",
+                "sr-Cyrl": "Боја категорије"
+            },
+            "options": [
+                "green",
+                "blue",
+                "orange",
+                "purple",
+                "red",
+                "yellow"
+            ],
+            "default": "green",
+            "required": true
+            },
+            {
+            "name": "kratakOpis",
+            "type": "textarea",
+            "label": {
+                "sr": "Kratak opis programa",
+                "en": "Short program description",
+                "sr-Cyrl": "Кратак опис програма"
+            },
+            "maxLength": 250,
+            "required": true
+            },
+            {
+            "name": "vremePocetka",
+            "type": "time",
+            "label": {
+                "sr": "Vreme početka",
+                "en": "Start time",
+                "sr-Cyrl": "Време почетка"
+            },
+            "required": true
+            },
+            {
+            "name": "vremeZavrsetka",
+            "type": "time",
+            "label": {
+                "sr": "Vreme završetka",
+                "en": "End time",
+                "sr-Cyrl": "Време завршетка"
+            },
+            "required": true,
+            "minField": "vremePocetka"
+            },
+            {
+            "name": "ucestalost",
+            "type": "select",
+            "label": {
+                "sr": "Učestalost održavanja",
+                "en": "Frequency",
+                "sr-Cyrl": "Учесталост одржавања"
+            },
+            "options": [
+                "Svake nedelje",
+                "Mesečno",
+                "Kvartalno",
+                "Po dogovoru"
+            ],
+            "required": true
+            },
+            {
+            "name": "oznaka",
+            "type": "select",
+            "label": {
+                "sr": "Posebna oznaka",
+                "en": "Special badge",
+                "sr-Cyrl": "Посебна ознака"
+            },
+            "options": [
+                "",
+                "Novo",
+                "Popularno",
+                "Poslednja mesta"
+            ],
+            "default": ""
+            },
+            {
+            "name": "linkPrijave",
+            "type": "url",
+            "label": {
+                "sr": "Link za online prijavu",
+                "en": "Registration link",
+                "sr-Cyrl": "Линк за онлајн пријаву"
+            }
+            }
+        ]
+    },
+    "Usluge": {
+      "sr": "Usluge",
+      "en": "Services",
+      "sr-Cyrl": "Услуге",
+      "icon": "fas fa-hand-holding-heart",
+      "categories": [
+        "Privremeni smeštaj",
+        "Socijalno stanovanje",
+        "Dnevni boravak",
+        "Pomoć u kući",
+        "Savetovanje i podrška",
+        "Ostale usluge"
+      ],
+      "fields": [
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": {
+            "sr": "Naziv usluge/prava",
+            "en": "Service/Right name",
+            "sr-Cyrl": "Назив услуге/права"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija",
+            "en": "Category",
+            "sr-Cyrl": "Категорија"
+          },
+          "required": true
+        },
+        {
+          "name": "kratakOpis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis usluge",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис услуге"
+          },
+          "maxLength": 350,
+          "required": true
+        },
+        {
+          "name": "detaljniOpis",
+          "type": "textarea",
+          "label": {
+            "sr": "Detaljni opis (ko može da koristi, uslovi, dokumentacija)",
+            "en": "Detailed description (eligibility, requirements, documents)",
+            "sr-Cyrl": "Детаљни опис (ко може да користи, услови, документација)"
+          },
+          "required": true
+        },
+        {
+          "name": "tipFinansiranja",
+          "type": "select",
+          "label": {
+            "sr": "Način finansiranja",
+            "en": "Funding type",
+            "sr-Cyrl": "Начин финансирања"
+          },
+          "options": [
+            "Besplatno",
+            "Budžet opštine",
+            "Budžet RS",
+            "Sufinansiranje",
+            "Plaćeno"
+          ],
+          "required": false
+        },
+        {
+          "name": "kontakt",
+          "type": "text",
+          "label": {
+            "sr": "Kontakt informacije (telefon, email...)",
+            "en": "Contact information (phone, email...)",
+            "sr-Cyrl": "Контакт информације (телефон, емаил...)"
+          },
+          "required": false
+        },
+        {
+          "name": "dokumentZaPreuzimanje",
+          "type": "file",
+          "label": {
+            "sr": "Dokument za preuzimanje (zahtev, obrazac...)",
+            "en": "Download document (form, application...)",
+            "sr-Cyrl": "Документ за преузимање (захтев, образац...)"
+          },
+          "required": false
+        }
+      ]
+    },
+    "Prava": {
+      "sr": "Prava",
+      "en": "Rights",
+      "sr-Cyrl": "Права",
+      "icon": "fas fa-balance-scale",
+      "categories": [
+        "Socijalna zaštita",
+        "Zdravstvena zaštita",
+        "Penzijsko osiguranje",
+        "Invaliditet",
+        "Deca i porodica",
+        "Ostala prava"
+      ],
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov prava",
+            "en": "Right title",
+            "sr-Cyrl": "Наслов права"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija",
+            "en": "Category",
+            "sr-Cyrl": "Категорија"
+          },
+          "required": true
+        },
+        {
+          "name": "uvod",
+          "type": "textarea",
+          "label": {
+            "sr": "Uvod (kraći tekst)",
+            "en": "Introduction (short text)",
+            "sr-Cyrl": "Увод (краћи текст)"
+          },
+          "maxLength": 300,
+          "required": true
+        },
+        {
+          "name": "glavniTekst",
+          "type": "textarea",
+          "label": {
+            "sr": "Glavni tekst (detaljno)",
+            "en": "Main text (detailed)",
+            "sr-Cyrl": "Главни текст (детаљно)"
+          },
+          "required": true
+        },
+        {
+          "name": "ciljnaGrupa",
+          "type": "text",
+          "label": {
+            "sr": "Ciljna grupa (ko može ostvariti pravo)",
+            "en": "Target group (who can exercise the right)",
+            "sr-Cyrl": "Циљна група (ко може остварити право)"
+          },
+          "required": true
+        }
+      ]
+    },
+    "Sluzbe": {
+      "sr": "Službe",
+      "en": "Services Departments",
+      "sr-Cyrl": "Службе",
+      "icon": "fas fa-building",
+      "categories": [
+        "Sigurna dečja kuća",
+        "Zaštita dece i omladine",
+        "Dnevni boravak za decu",
+        "Zaštita odraslih i starih",
+        "Novčana socijalna pomoć",
+        "Zaštićeno stanovanje za žene",
+        "Stručno savetovanje i podrška",
+        "Specijalizovana odeljenja"
+      ],
+      "fields": [
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": {
+            "sr": "Naziv službe",
+            "en": "Department name",
+            "sr-Cyrl": "Назив службе"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Vrsta službe",
+            "en": "Department type",
+            "sr-Cyrl": "Врста службе"
+          },
+          "required": true
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Fotografija službe",
+            "en": "Department image",
+            "sr-Cyrl": "Фотографија службе"
+          },
+          "required": false
+        },
+        {
+          "name": "kratakOpis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis (1-2 rečenice)",
+            "en": "Short description (1-2 sentences)",
+            "sr-Cyrl": "Кратак опис (1-2 реченице)"
+          },
+          "maxLength": 250,
+          "required": true
+        },
+        {
+          "name": "detaljniOpis",
+          "type": "textarea",
+          "label": {
+            "sr": "Detaljan opis / sadržaj (organizacija, aktivnosti, nadležnosti)",
+            "en": "Detailed description (organization, activities, responsibilities)",
+            "sr-Cyrl": "Детаљан опис / садржај (организација, активности, надлежности)"
+          },
+          "required": true
+        }
+      ]
+    },
+    "Obrasci": {
+      "sr": "Obrasci",
+      "en": "Forms",
+      "sr-Cyrl": "Обрасци",
+      "icon": "fas fa-file-alt",
+      "categories": [
+        "Socijalna zaštita",
+        "Porodica i deca",
+        "Stariji građani",
+        "Osobe sa invaliditetom",
+        "Novčana pomoć",
+        "Ostali obrasci"
+      ],
+      "fields": [
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": {
+            "sr": "Naziv obrasca",
+            "en": "Form name",
+            "sr-Cyrl": "Назив обрасца"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija obrasca",
+            "en": "Form category",
+            "sr-Cyrl": "Категорија обрасца"
+          },
+          "required": true
+        },
+        {
+          "name": "kratakOpis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis obrasca",
+            "en": "Short form description",
+            "sr-Cyrl": "Кратак опис обрасца"
+          },
+          "maxLength": 300,
+          "required": false
+        },
+        {
+          "name": "dokument",
+          "type": "file",
+          "label": {
+            "sr": "Dokument obrasca za preuzimanje",
+            "en": "Form document for download",
+            "sr-Cyrl": "Документ обрасца за преузимање"
+          },
+          "accept": ".pdf,.doc,.docx",
+          "required": false
         }
       ]
     }
