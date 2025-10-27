@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Database;
 use App\Utils\Pivoter;
+use App\Utils\TextHelper;
 use PDO;
 use RuntimeException;
 
@@ -15,25 +16,47 @@ class Employee
     {
         $db = new Database();
         $this->pdo = $db->GetPDO();
+        $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
+        $this->pdo->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES utf8mb4");
+
+
     }
 
     /**
      * Fetch a paginated list of employees.
      */
-    public function list(int $limit, int $offset, string $search = ''): array
+    public function list(int $limit, int $offset, string $search = '', ?string $locale = null): array
     {
-        $searchWildcard = '%' . $search . '%';
+        $selectParams = [
+            ':limit' => $limit,
+            ':offset' => $offset
+        ];
 
-        // Parametri za WHERE
-        $params = [];
         $whereClause = '';
+        $localeClause = '';
+        $joinText = '';
 
-        if (!empty($search)) {
-            $whereClause = 'WHERE e.name LIKE :search OR e.surname LIKE :search';
-            $params[':search'] = $searchWildcard;
+        // Ako je prosleđen locale, filtriramo tekstove
+        if ($locale !== null) {
+            $localeClause = 'AND t.lang = :locale';
+            $selectParams[':locale'] = $locale;
         }
 
-        // Glavni SELECT - prvo selektujemo zaposlenе pa onda join
+        if (!empty($search)) {
+            $searchWildcard = '%' . $search . '%';
+            $selectParams[':search'] = $searchWildcard;
+
+            // Pronađi ID-jeve zaposlenih čija polja u text tabeli odgovaraju search-u
+            $whereClause = "WHERE e.id IN (
+            SELECT source_id 
+            FROM text t 
+            WHERE t.source_table = 'employee' 
+              AND t.content LIKE :search
+              $localeClause
+        )";
+        }
+
+        // Glavni SELECT sa pivotovanjem
         $sql = "
         SELECT 
             e.id,
@@ -41,27 +64,23 @@ class Employee
             t.lang,
             t.field_name,
             t.content
-        FROM (
-            SELECT id, position
-            FROM employee e
-            $whereClause
-            ORDER BY e.id
-            LIMIT :limit OFFSET :offset
-        ) e
+        FROM employee e
         LEFT JOIN text t 
             ON t.source_id = e.id 
            AND t.source_table = 'employee'
+           " . ($locale !== null ? "AND t.lang = :locale" : "") . "
+        $whereClause
         ORDER BY e.id
+        LIMIT :limit OFFSET :offset
     ";
 
         $stmt = $this->pdo->prepare($sql);
 
         // Bind parametri
-        foreach ($params as $key => $value) {
-            $stmt->bindValue($key, $value, PDO::PARAM_STR);
+        foreach ($selectParams as $key => $value) {
+            $paramType = is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR;
+            $stmt->bindValue($key, $value, $paramType);
         }
-        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -70,19 +89,23 @@ class Employee
         $pivoter = new Pivoter('field_name', 'content', 'id');
         $employees = $pivoter->pivot($rows);
 
-        // Ukupan broj rezultata (bez limit/offset)
+        // Ukupan broj rezultata
         $countSql = "SELECT COUNT(*) as total FROM employee e $whereClause";
         $countStmt = $this->pdo->prepare($countSql);
-
-        foreach ($params as $key => $value) {
-            $countStmt->bindValue($key, $value, PDO::PARAM_STR);
+        foreach ($selectParams as $key => $value) {
+            if ($key !== ':limit' && $key !== ':offset') {
+                $paramType = is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR;
+                $countStmt->bindValue($key, $value, $paramType);
+            }
         }
-
         $countStmt->execute();
         $totalCount = (int) $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
 
         return [$employees, $totalCount];
     }
+
+
+
 
 
 
@@ -110,49 +133,52 @@ class Employee
     /**
      * Insert a new employee.
      */
-    public function insert(array $data): int
+    public function insert(array $data, string $locale = 'en'): int
     {
-        foreach (['name', 'surname'] as $field) {
-            if (empty($data[$field])) {
-                throw new RuntimeException("$field is required");
-            }
+        // Create a new employee row (empty or with minimal fields)
+        $stmt = $this->pdo->prepare("INSERT INTO employee (position) VALUES ('')");
+        $stmt->execute();
+
+        $id = (int) $this->pdo->lastInsertId();
+
+        // Process all text fields
+        foreach ($data as $field => $value) {
+            $this->processTextField($id, $field, $value, $locale, false);
         }
-        $stmt = $this->pdo->prepare("
-            INSERT INTO employee (name, surname, position, biography)
-            VALUES (:name, :surname, :position, :biography)
-        ");
-        $stmt->execute([
-            ':name' => $data['name'],
-            ':surname' => $data['surname'],
-            ':position' => $data['position'] ?? null,
-            ':biography' => $data['biography'] ?? null,
-        ]);
-        return (int) $this->pdo->lastInsertId();
+
+        return $id;
+    }
+    private function processTextField(int $contentID, string $fieldName, string $value, string $locale, bool $isUpdate, string $type = ''): void
+    {
+        $variants = TextHelper::transliterateVariants($value, $locale);
+
+        if ($isUpdate) {
+            TextHelper::updateTextEntries($this->pdo, $contentID, $fieldName, $variants, 'employee');
+        } else {
+            TextHelper::insertTextEntries($this->pdo, $contentID, $fieldName, $variants, 'employee');
+        }
     }
 
     /**
      * Update an existing employee.
      */
-    public function update(int $id, array $data): bool
+    /**
+     * Update an existing employee.
+     */
+    public function update(int $id, array $data, string $locale = 'en'): bool
     {
-        $fields = [];
-        $params = [':id' => $id];
-
-        foreach (['name', 'surname', 'position', 'biography'] as $field) {
-            if (isset($data[$field])) {
-                $fields[] = "$field = :$field";
-                $params[":$field"] = $data[$field];
-            }
-        }
-
-        if (empty($fields)) {
+        if (empty($data)) {
             throw new RuntimeException('Nothing to update');
         }
 
-        $sql = 'UPDATE employee SET ' . implode(', ', $fields) . ' WHERE id = :id';
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute($params);
+        // Process all text fields
+        foreach ($data as $field => $value) {
+            $this->processTextField($id, $field, $value, $locale, true);
+        }
+
+        return true;
     }
+
     public function search(string $term): array
     {
         $search = '%' . $term . '%';

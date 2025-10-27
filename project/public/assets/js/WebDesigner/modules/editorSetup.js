@@ -76,18 +76,25 @@ export function initializeEditor() {
         ],
         script: function () {
           const el = this;
-          const track = el.querySelector(".slider-track");
+          const track =
+            el.querySelector(".slider-track") ||
+            el.querySelector(".slider-wrapper");
           const items = el.querySelectorAll(".slider-item");
-          const prev = el.querySelector(".slider-prev");
-          const next = el.querySelector(".slider-next");
-          const dotsWrap = el.querySelector(".slider-dots");
+          const prev =
+            el.querySelector(".slider-prev") ||
+            el.querySelector(".slider-control.left");
+          const next =
+            el.querySelector(".slider-next") ||
+            el.querySelector(".slider-control.right");
+          const dotsWrap =
+            el.querySelector(".slider-dots") ||
+            el.querySelector(".slider-indicators");
 
           if (!track || items.length === 0) return;
 
           let idx = 0;
           const total = items.length;
 
-          // resize items responsively
           function resize() {
             const w = el.clientWidth;
             items.forEach((it) => (it.style.width = w + "px"));
@@ -97,14 +104,13 @@ export function initializeEditor() {
           resize();
           window.addEventListener("resize", resize);
 
-          // dots
           function buildDots() {
             if (!dotsWrap) return;
             dotsWrap.innerHTML = "";
             for (let i = 0; i < total; i++) {
               const d = document.createElement("button");
               d.type = "button";
-              d.className = "w-2 h-2 rounded-full bg-white/60";
+              d.className = "slider-indicator w-3 h-3 rounded-full bg-white/30";
               d.setAttribute("data-i", i);
               d.style.opacity = i === idx ? "1" : "0.6";
               d.addEventListener("click", () => goTo(i));
@@ -117,6 +123,7 @@ export function initializeEditor() {
             if (!dotsWrap) return;
             Array.from(dotsWrap.children).forEach((d, i) => {
               d.style.opacity = i === idx ? "1" : "0.6";
+              d.classList.toggle("active", i === idx);
             });
           }
 
@@ -130,21 +137,45 @@ export function initializeEditor() {
           prev && prev.addEventListener("click", () => goTo(idx - 1));
           next && next.addEventListener("click", () => goTo(idx + 1));
 
-          // cleanup
-          el._sliderCleanup = function () {
+          // expose functions to canvas window
+          if (window) {
+            window.prevSlide = () => goTo(idx - 1);
+            window.nextSlide = () => goTo(idx + 1);
+            window.goToSlide = goTo;
+          }
+
+          // handle clicking images inside slider
+          el.addEventListener("click", (e) => {
+            const overlay = e.target.closest(".slider-overlay, .slide-overlay");
+            const sliderItem = e.target.closest(".slider-item");
+            if (overlay && sliderItem) {
+              const imgEl = sliderItem.querySelector("img");
+              if (imgEl && window.editor) {
+                const imgSrc =
+                  imgEl.getAttribute("src") || imgEl.dataset?.src || "";
+                const escaped = imgSrc.replace(/"/g, '\\"');
+                const cmp =
+                  window.editor.getWrapper().find(`[src="${escaped}"]`)[0] ||
+                  window.editor
+                    .getWrapper()
+                    .find(`[attributes.data-src="${escaped}"]`)[0];
+                if (cmp) {
+                  window.editor.select(cmp);
+                  window.editor.runCommand("open-assets", { target: cmp });
+                }
+              }
+            }
+          });
+
+          el._sliderCleanup = () =>
             window.removeEventListener("resize", resize);
-          };
         },
       },
     },
 
     view: {
-      onRender({ el }) {
-        // simple preview effect (optional)
-      },
-
+      onRender({ el }) {},
       onRemove(el) {
-        if (el._previewSliderTimer) clearInterval(el._previewSliderTimer);
         if (el._sliderCleanup) el._sliderCleanup();
       },
     },
@@ -437,99 +468,146 @@ function setupLinkLogging(editor) {
     (e) => {
       try {
         const wrapper = editor.DomComponents.getWrapper();
-
-        const el = e.target;
+        let el = e.target;
         if (!el) return;
-        console.log("Clicked element:", el);
-        console.log("ClassList:", el.classList.value);
-        console.log(
-          "Has slide-overlay?",
-          el.classList.contains("slide-overlay")
-        );
-        console.log("Inside slider-item?", !!el.closest(".slider-item"));
-        console.log("Clickedfds asd:", el);
-        console.log(el.classList.contains("slider-overlay"));
-        console.log(el.classList);
-        if (
-          el.closest(".slider-item") &&
-          el.classList.contains("slide-overlay")
-        ) {
-          console.log("Clicked inside slider-item");
-          const sliderItem = el.closest(".slider-item");
+        if (el.nodeType === 3) el = el.parentElement;
+
+        const sliderControl = el.closest(".slider-control, .slider-indicator");
+        if (sliderControl) {
+          e.stopPropagation();
+          const win = editor.Canvas.getWindow
+            ? editor.Canvas.getWindow()
+            : window;
+          if (sliderControl.classList.contains("slider-control")) {
+            if (sliderControl.classList.contains("slider-prev"))
+              win.prevSlide?.();
+            else win.nextSlide?.();
+          } else if (sliderControl.classList.contains("slider-indicator")) {
+            const idx = Array.from(
+              sliderControl.parentElement.children
+            ).indexOf(sliderControl);
+            if (idx >= 0) win.goToSlide?.(idx);
+          }
+          return;
+        }
+
+        const interactiveSelector =
+          "a, button, input, textarea, select, label, [role='button'], [contenteditable='true']";
+        const isTextElement = (element) => {
+          if (!element || !element.tagName) return false;
+          const tag = element.tagName.toLowerCase();
+          const textualTags = [
+            "p",
+            "span",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "li",
+            "small",
+            "em",
+            "strong",
+            "label",
+          ];
+          if (!textualTags.includes(tag)) return false;
+          const txt = (element.textContent || "").trim();
+          if (!txt) return false;
+          try {
+            if (
+              element.querySelector &&
+              element.querySelector(interactiveSelector)
+            )
+              return false;
+          } catch {}
+          return true;
+        };
+        const interactiveAnchorOrControl =
+          el.closest && el.closest(interactiveSelector);
+        if (isTextElement(el) || interactiveAnchorOrControl) return;
+
+        let clickedEl = el;
+        if (!clickedEl.closest || !clickedEl.closest(".slider-item")) {
+          try {
+            const prev = clickedEl.style && clickedEl.style.pointerEvents;
+            if (clickedEl.style) clickedEl.style.pointerEvents = "none";
+            const under = document.elementFromPoint(e.clientX, e.clientY);
+            if (clickedEl.style) clickedEl.style.pointerEvents = prev || "";
+            if (under) clickedEl = under;
+          } catch {}
+        }
+
+        const sliderItem =
+          clickedEl && clickedEl.closest && clickedEl.closest(".slider-item");
+        if (sliderItem) {
           const imgEl = sliderItem.querySelector("img");
-          console.log("Found img element:", imgEl);
           if (imgEl) {
-            const imgCmp = editor
-              .getWrapper()
-              .find(`[src="${imgEl.getAttribute("src") || ""}"]`)[0];
+            const imgSrc =
+              imgEl.getAttribute("src") ||
+              (imgEl.dataset && imgEl.dataset.src) ||
+              "";
+            const escaped = (imgSrc || "").replace(/"/g, '\\"');
+            let imgCmp = null;
+            if (imgSrc) {
+              imgCmp =
+                wrapper.find(`[src="${escaped}"]`)[0] ||
+                wrapper.find(`[attributes.data-src="${escaped}"]`)[0] ||
+                wrapper.find(`[src*="${escaped}"]`)[0];
+            }
+            if (!imgCmp) {
+              const allImgs = wrapper.find("img");
+              for (let i = 0; i < allImgs.length; i++) {
+                const c = allImgs[i];
+                try {
+                  const elFromComp =
+                    typeof c.getEl === "function" ? c.getEl() : c.el;
+                  if (
+                    elFromComp &&
+                    elFromComp.tagName &&
+                    elFromComp.tagName.toLowerCase() === "img"
+                  ) {
+                    const compSrc =
+                      elFromComp.getAttribute("src") ||
+                      (elFromComp.dataset && elFromComp.dataset.src) ||
+                      "";
+                    if (compSrc === imgSrc) {
+                      imgCmp = c;
+                      break;
+                    }
+                  }
+                } catch {}
+              }
+            }
             if (imgCmp) {
               editor.select(imgCmp);
               editor.runCommand("open-assets", { target: imgCmp });
+              return;
             }
-          }
-        }
-
-        // If click is on an <i> (icon) element, open the icon chooser in parent doc
-        if (el.tagName && el.tagName.toLowerCase() === "i") {
-          try {
-            const anchorForIcon = el.closest && el.closest("a");
-            const parentDoc = window.parent && window.parent.document;
-            if (parentDoc) {
-              // find component: prefer ID, else match element node
-              let comp = null;
-              try {
-                const wrapper = editor.DomComponents.getWrapper();
-                const id = anchorForIcon && anchorForIcon.id;
-                if (id) comp = wrapper.find("#" + id)[0] || null;
-                if (!comp && anchorForIcon) {
-                  const all = wrapper.find();
-                  for (let i = 0; i < all.length; i++) {
-                    const c = all[i];
-                    try {
-                      const elFromComp =
-                        typeof c.getEl === "function" ? c.getEl() : c.el;
-                      if (elFromComp === anchorForIcon) {
-                        comp = c;
-                        break;
-                      }
-                    } catch (ee) {}
-                  }
-                }
-              } catch (err) {
-                comp = null;
-              }
-
-              // store the clicked icon DOM element, its nearest anchor, and the GrapesJS component (if found)
-              parentDoc._gjs_icon_click_target = {
-                anchor: anchorForIcon,
-                iconEl: el,
-                comp,
-                anchorId: anchorForIcon && anchorForIcon.id,
-              };
-              const chooser = parentDoc.getElementById("iconChooser");
-              if (chooser) {
-                chooser.classList.remove("hidden");
-                chooser.classList.add("flex");
-              }
-            }
-
-            return;
-          } catch (e) {
-            // ignore errors here
           }
         }
 
         const anchor = el.closest && el.closest("a");
         if (!anchor) return;
-
-        // Prevent actual navigation
         let comp = null;
         const id = anchor.id;
-        comp = wrapper.find("#" + id)[0];
+        if (id) comp = wrapper.find("#" + id)[0];
+        if (!comp) {
+          const all = wrapper.find();
+          for (let i = 0; i < all.length; i++) {
+            const c = all[i];
+            try {
+              const elFromComp =
+                typeof c.getEl === "function" ? c.getEl() : c.el;
+              if (elFromComp === anchor) {
+                comp = c;
+                break;
+              }
+            } catch {}
+          }
+        }
         openNavEditor(anchor, comp);
-      } catch (err) {
-        // swallow to avoid breaking editor
-      }
+      } catch {}
     },
     true
   );

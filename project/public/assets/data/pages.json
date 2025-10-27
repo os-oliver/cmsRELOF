@@ -22,7 +22,18 @@
         "created_at": "2025-10-27 18:46:06"
     },
     {
-        "id": "68ffbdeedd04c",
+        "id": "68fd4e823bc16",
+        "static": false,
+        "movable": false,
+        "name": "Misija",
+        "href": "\/o-nama\/misija",
+        "path": "pages\/misija.php",
+        "file": "misija.php",
+        "status": 1,
+        "created_at": "2025-10-25 22:26:10"
+    },
+    {
+        "id": "68fd4e8248914",
         "static": false,
         "movable": false,
         "name": "Zaposleni",
@@ -30,32 +41,65 @@
         "path": "pages\/zaposleni.php",
         "file": "zaposleni.php",
         "status": 1,
-        "created_at": "2025-10-27 18:46:06"
+        "created_at": "2025-10-25 22:26:10"
     },
     {
-        "id": "68ffbdeeea1cf",
+        "id": "68fd4e825fbdb",
         "static": false,
         "movable": false,
-        "name": "Misija",
-        "href": "\/misija",
-        "path": "pages\/misija.php",
-        "file": "misija.php",
+        "name": "Slube",
+        "href": "\/o-nama\/slube",
+        "path": "pages\/slube.php",
+        "file": "slube.php",
         "status": 1,
-        "created_at": "2025-10-27 18:46:06"
+        "created_at": "2025-10-25 22:26:10"
     },
     {
-        "id": "68ffbdeef1d90",
+        "id": "68fd4e8277b26",
         "static": false,
         "movable": false,
-        "name": "Tim",
-        "href": "\/tim",
-        "path": "pages\/tim.php",
-        "file": "tim.php",
+        "name": "Prava",
+        "href": "\/prava-i-usluge\/prava",
+        "path": "pages\/prava.php",
+        "file": "prava.php",
         "status": 1,
-        "created_at": "2025-10-27 18:46:06"
+        "created_at": "2025-10-25 22:26:10"
     },
     {
-        "id": "68ffbdef0bee6",
+        "id": "68fd4e8293b46",
+        "static": false,
+        "movable": false,
+        "name": "Usluge",
+        "href": "\/prava-i-usluge\/usluge",
+        "path": "pages\/usluge.php",
+        "file": "usluge.php",
+        "status": 1,
+        "created_at": "2025-10-25 22:26:10"
+    },
+    {
+        "id": "68fd4e82b1052",
+        "static": false,
+        "movable": false,
+        "name": "Programi-obuke",
+        "href": "\/prava-i-usluge\/programi-obuke",
+        "path": "pages\/programi-obuke.php",
+        "file": "programi-obuke.php",
+        "status": 1,
+        "created_at": "2025-10-25 22:26:10"
+    },
+    {
+        "id": "68fd4e8345e10",
+        "static": false,
+        "movable": false,
+        "name": "dokumenti",
+        "href": "\/dokumenti",
+        "path": "pages\/dokumenti.php",
+        "file": "dokumenti.php",
+        "status": 1,
+        "created_at": "2025-10-25 22:26:11"
+    },
+    {
+        "id": "68fd4e835dcec",
         "static": false,
         "movable": false,
         "name": "vesti",
@@ -63,27 +107,38 @@
         "path": "pages\/vesti.php",
         "file": "vesti.php",
         "status": 1,
-        "created_at": "2025-10-27 18:46:07"
+        "created_at": "2025-10-25 22:26:11"
     },
     {
-        "id": "68ffbdef2388e",
+        "id": "68fd4e83e30ef",
         "static": false,
         "movable": false,
-        "name": "galerija",
-        "href": "\/galerija",
-        "path": "pages\/galerija.php",
-        "file": "galerija.php",
+        "name": "Nai-korisnici",
+        "href": "\/za-korisnike\/nai-korisnici",
+        "path": "pages\/nai-korisnici.php",
+        "file": "nai-korisnici.php",
         "status": 1,
-        "created_at": "2025-10-27 18:46:07"
+        "created_at": "2025-10-25 22:26:11"
     },
     {
-        "id": "68ffbdef5bfe9",
+        "id": "68fd4e84019eb",
         "static": false,
         "movable": false,
-        "name": "dokumenti",
-        "href": "\/dokumenti",
-        "path": "pages\/dokumenti.php",
-        "file": "dokumenti.php",
+        "name": "Obrasci-za-podnoenje-zahteva",
+        "href": "\/za-korisnike\/obrasci-za-podnoenje-zahteva",
+        "path": "pages\/obrasci-za-podnoenje-zahteva.php",
+        "file": "obrasci-za-podnoenje-zahteva.php",
+        "status": 1,
+        "created_at": "2025-10-25 22:26:12"
+    },
+    {
+        "id": "68fd4e840cfdd",
+        "static": false,
+        "movable": false,
+        "name": "FAQ",
+        "href": "\/za-korisnike\/faq",
+        "path": "pages\/faq.php",
+        "file": "faq.php",
         "status": 1,
         "created_at": "2025-10-27 18:46:07"
     },
@@ -99,7 +154,7 @@
         "created_at": "2025-10-27 18:46:07"
     },
     {
-        "id": "68ffbdefd4675",
+        "id": "68fd4e84a7053",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -107,6 +162,6 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-10-27 18:46:07"
+        "created_at": "2025-10-25 22:26:12"
     }
 ]

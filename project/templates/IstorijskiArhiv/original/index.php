@@ -549,20 +549,25 @@
             </div>
         </div>
 
-        <button onclick="prevSlide()"
-            class="slider-control absolute left-6 top-1/2 transform -translate-y-1/2 w-14 h-14 rounded-full flex items-center justify-center z-10">
+        <button id="prevButton" onclick="prevSlide()"
+            class="slider-control slider-next absolute left-6 top-1/2 transform -translate-y-1/2 w-14 h-14 rounded-full flex items-center justify-center z-10">
             <i class="fas fa-chevron-left text-2xl text-white"></i>
         </button>
-        <button onclick="nextSlide()"
+
+        <button id="nextButton" onclick="nextSlide()"
             class="slider-control absolute right-6 top-1/2 transform -translate-y-1/2 w-14 h-14 rounded-full flex items-center justify-center z-10">
             <i class="fas fa-chevron-right text-2xl text-white"></i>
         </button>
 
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-            <button onclick="goToSlide(0)" class="slider-indicator w-3 h-3 rounded-full bg-white active"></button>
-            <button onclick="goToSlide(1)" class="slider-indicator w-3 h-3 rounded-full bg-white/30"></button>
-            <button onclick="goToSlide(2)" class="slider-indicator w-3 h-3 rounded-full bg-white/30"></button>
+            <button id="indicator0" onclick="goToSlide(0)"
+                class="slider-indicator w-3 h-3 rounded-full bg-white active"></button>
+            <button id="indicator1" onclick="goToSlide(1)"
+                class="slider-indicator w-3 h-3 rounded-full bg-white/30"></button>
+            <button id="indicator2" onclick="goToSlide(2)"
+                class="slider-indicator w-3 h-3 rounded-full bg-white/30"></button>
         </div>
+
     </section>
 
     <section class="py-20 bg-dark-900">
@@ -1136,21 +1141,22 @@
             showSlide(index);
         }
 
-        setInterval(() => {
-            nextSlide();
-        }, 5000);
+        // Get all buttons by their IDs
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const indicator0 = document.getElementById('indicator0');
+        const indicator1 = document.getElementById('indicator1');
+        const indicator2 = document.getElementById('indicator2');
 
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        // Attach click event listeners
+        prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
 
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.style.opacity = '1';
-                scrollTopBtn.style.pointerEvents = 'auto';
-            } else {
-                scrollTopBtn.style.opacity = '0';
-                scrollTopBtn.style.pointerEvents = 'none';
-            }
-        });
+        indicator0.addEventListener('click', () => goToSlide(0));
+        indicator1.addEventListener('click', () => goToSlide(1));
+        indicator2.addEventListener('click', () => goToSlide(2));
+
+
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });

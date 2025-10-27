@@ -3,10 +3,19 @@
 namespace App\Admin;
 
 use App\Admin\PageBuilders\DynamicPageBuilder;
+use App\Admin\PageBuilders\EmployeesPageBuilder;
+use App\Admin\PageBuilders\GoalPageBulder;
 use App\Admin\PageBuilders\MissionPageBuilder;
-use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
+use App\Admin\PageBuilders\VestiPageBuilder;
+use App\Admin\PageBuilders\ProgramiObukePageBuilder;
+use App\Admin\PageBuilders\UslugePageBuilder;
+use App\Admin\PageBuilders\PravaPageBuilder;
+use App\Admin\PageBuilders\SluzbePageBuilder;
+use App\Admin\PageBuilders\ObrasciPageBuilder;
+use App\Admin\PageBuilders\NasiKorisniciPageBuilder;
 use App\Controllers\AuthController;
+use App\Models\Content;
 use App\Models\Text;
 use App\Models\Event;
 use App\Models\Gallery;
@@ -460,10 +469,55 @@ class PageExporter
         $indexContent = $this->generateIndexHeader();
         $indexContent .= $this->generateIndexBody();
         file_put_contents("{$this->baseDir}/index.php", $indexContent);
+        if (!empty($this->data['css'])) {
+            $css = "\n" . htmlspecialchars($this->data['css'], ENT_QUOTES) . "\n";
+        }
+
+        file_put_contents("{$this->baseDir}/commonStyle.css", $css ?? '');
+        if (!empty($this->data['js'])) {
+            $jsCode = preg_replace('/<\/?script\b[^>]*>/i', '', $this->data['js']);
+            $jsCode = preg_replace('/,(\s*[\]}])/m', '$1', $jsCode);
+            $jsCode = trim($jsCode);
+
+            $jsFilePath = "{$this->baseDir}/commonScript.js";
+            if (!empty($jsCode)) {
+                file_put_contents($jsFilePath, $jsCode);
+            }
+        }
+
     }
 
     private function generateIndexHeader(): string
     {
+        $phpString = '';
+
+        $jsonDir = __DIR__ . '/../../public/assets/data/structure.json';
+        $jsonData = json_decode(file_get_contents($jsonDir), true);
+
+        $structure = $jsonData[0] ?? [];
+        $structureLower = [];
+        foreach ($structure as $k => $v) {
+            $structureLower[strtolower($k)] = $v;
+        }
+
+        foreach ($this->data['ids'] as $id) {
+            $idLower = strtolower($id);
+            $key = $idLower;
+
+            if ($idLower === 'events') {
+                $key = 'dogadjaji';
+            }
+
+            if (isset($structureLower[$key])) {
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$key', '', 0, 3, null, \$locale)['items'];\n";
+                $phpString .= "\$$id = HashMapTransformer::transform(\$$id" . "_raw, \$locale);\n\n";
+            }
+
+            error_log("Generated PHP for id '$id': " . $phpString);
+        }
+
+
+
         $header = <<<'PHP'
     <?php
     session_start();
@@ -481,9 +535,7 @@ class PageExporter
     // Load dynamic texts
     $textModel = new Text();
     $dynamicText = $textModel->getDynamicText($locale);
-    $events_raw = (new Content())->fetchListData('dogadjaji', '', 0, 3, null, $locale)['items'];
-    $events = HashMapTransformer::transform($events_raw,$locale);
-    $groupedPages = PageLoader::getGroupedStaticPages();
+    {{dynamicLandigPageElements}}
 
     [$images, $totalEvents] = (new Gallery)->list();
     ?>
@@ -494,14 +546,13 @@ class PageExporter
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exported Page</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+        <link href="/exportedPages/commonStyle.css" rel="stylesheet" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
     PHP;
 
-        if (!empty($this->data['css'])) {
-            $header .= "\n" . htmlspecialchars($this->data['css'], ENT_QUOTES) . "\n";
-        }
-
+        $header = str_replace('{{dynamicLandigPageElements}}', $phpString, $header);
         $header .= '</style>
         </head>
         <div class="min-h-screen flex flex-col">';
@@ -529,9 +580,8 @@ class PageExporter
             $content .= "\n<?php require_once __DIR__ . '/landingPageComponents/{$this->footerPath}'; ?>";
         }
 
-        if (!empty($this->data['js'])) {
-            $content .= $this->data['js'];
-        }
+        $content .= '<script src="/exportedPages/commonScript.js"></script>' . "\n";
+
 
         $content .= "\n</div>\n</body>\n</html>";
 
@@ -548,16 +598,35 @@ class PageExporter
                 return new ContactPageBuilder($name, $this->data);
             case 'dokumenti':
                 return new DocumentsPageBuilder($name, $this->data);
+            case 'događaji':
             case 'dogadjaji':
                 return new EventsPageBuilder($name);
             case 'misija':
                 return new MissionPageBuilder($name, $this->data);
+            case 'cilj':
+                return new GoalPageBulder($name, $this->data);
             case 'predstave':
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
-                return new DynamicPageBuilder('Vesti');
+                return new VestiPageBuilder('Vesti');
             case 'seminari':
                 return new SeminarPageBuiler('Seminari');
+            case 'primer':
+                return new ContactPageBuilder($name, $this->data);
+            case 'zaposleni':
+                return new EmployeesPageBuilder($name, $this->data);
+            case 'programi-obuke':
+                return new ProgramiObukePageBuilder('ProgramiObuke');
+            case 'usluge':
+                return new UslugePageBuilder('Usluge');
+            case 'prava':
+                return new PravaPageBuilder('Prava');
+            case 'sluzbe':
+                return new SluzbePageBuilder('Sluzbe');
+            case 'obrasci':
+                return new ObrasciPageBuilder('Obrasci');
+            case 'nasi-korisnici':
+                return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -565,6 +634,7 @@ class PageExporter
 
     private function determinePageType(string $name): string
     {
+        error_log("nameL:" . $name);
         $name = strtolower($name);
         if (strpos($name, 'galerija') !== false) {
             return 'galerija';
@@ -582,7 +652,26 @@ class PageExporter
             return 'misija';
         } elseif (strpos($name, 'seminari') !== false) {
             return 'seminari';
+        } elseif (strpos($name, 'primer') !== false) {
+            return 'primer';
+        } elseif (strpos($name, 'cilj') !== false) {
+            return 'cilj';
+        } elseif (strpos($name, 'dogadaji') !== false) {
+            return 'dogadjaji';
+        } elseif (strpos($name, 'programi-obuke') !== false || strpos($name, 'programi obuke') !== false) {
+            return 'programi-obuke';
+        } elseif (strpos($name, 'usluge') !== false) {
+            return 'usluge';
+        } elseif (strpos($name, 'prava') !== false) {
+            return 'prava';
+        } elseif (strpos($name, 'sluzbe') !== false || strpos($name, 'službe') !== false || strpos($name, 'slube') !== false) {
+            return 'sluzbe';
+        } elseif (strpos($name, 'obrasci') !== false) {
+            return 'obrasci';
+        } elseif (strpos($name, 'nasi-korisnici') !== false || strpos($name, 'naši korisnici') !== false || strpos($name, 'nai-korisnici') !== false) {
+            return 'nasi-korisnici';
         }
+
 
         return 'basic';
     }
@@ -597,7 +686,7 @@ class PageExporter
         $fullPath = $parentPath !== '' ? $parentPath . '/' . $href : $href;
 
         if (empty($node['elements']) || !is_array($node['elements'])) {
-            $pageType = $this->determinePageType($name);
+            $pageType = $this->determinePageType($slug);  // Use slug instead of name
             $pageBuilder = $this->getPageBuilder($pageType, $name);
             $content = $pageBuilder->buildPage();
 
@@ -628,6 +717,7 @@ class PageExporter
     }
     public function exportSinglePage(): void
     {
+        error_log("Starting single page export");
         if (!isset($this->data['html'])) {
             throw new \InvalidArgumentException("HTML content is required");
         }
