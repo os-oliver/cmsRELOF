@@ -16,6 +16,7 @@ use App\Admin\PageBuilders\ContactPageBuilder;
 use App\Admin\PageBuilders\DocumentsPageBuilder;
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Admin\PageBuilders\EventsPageBuilder;
+use App\Admin\PageBuilders\SeminarPageBuiler;
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -555,8 +556,8 @@ class PageExporter
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
                 return new DynamicPageBuilder('Vesti');
-            case 'naucni-klub':
-                return new NaucniKlubPageBuilder('NaucniKlub');
+            case 'seminari':
+                return new SeminarPageBuiler('Seminari');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -577,11 +578,10 @@ class PageExporter
             return 'predstave';
         } elseif (strpos($name, 'vesti') !== false) {
             return 'vesti';
-
         } elseif (strpos($name, 'misija') !== false) {
             return 'misija';
-        } elseif (strpos($name, 'naucni-klub') !== false) {
-            return 'naucni-klub';
+        } elseif (strpos($name, 'seminari') !== false) {
+            return 'seminari';
         }
 
         return 'basic';

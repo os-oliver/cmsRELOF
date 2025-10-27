@@ -1,6 +1,6 @@
 [
     {
-        "id": "68ee6b77edd08",
+        "id": "68ffbdeecd9b8",
         "static": false,
         "movable": false,
         "name": "",
@@ -8,76 +8,65 @@
         "path": "pages\/.php",
         "file": ".php",
         "status": 1,
-        "created_at": "2025-10-14 15:25:43"
+        "created_at": "2025-10-27 18:46:06"
     },
     {
-        "id": "68ee6b77f07d7",
+        "id": "68ffbdeed58df",
         "static": false,
         "movable": false,
         "name": "Cilj",
-        "href": "\/o-nama\/cilj",
+        "href": "\/cilj",
         "path": "pages\/cilj.php",
         "file": "cilj.php",
         "status": 1,
-        "created_at": "2025-10-14 15:25:43"
+        "created_at": "2025-10-27 18:46:06"
     },
     {
-        "id": "68ee6b77f325f",
+        "id": "68ffbdeedd04c",
         "static": false,
         "movable": false,
         "name": "Zaposleni",
-        "href": "\/o-nama\/zaposleni",
+        "href": "\/zaposleni",
         "path": "pages\/zaposleni.php",
         "file": "zaposleni.php",
         "status": 1,
-        "created_at": "2025-10-14 15:25:43"
+        "created_at": "2025-10-27 18:46:06"
     },
     {
-        "id": "68ee6b7802762",
+        "id": "68ffbdeeea1cf",
         "static": false,
         "movable": false,
         "name": "Misija",
-        "href": "\/o-nama\/misija",
+        "href": "\/misija",
         "path": "pages\/misija.php",
         "file": "misija.php",
         "status": 1,
-        "created_at": "2025-10-14 15:25:44"
+        "created_at": "2025-10-27 18:46:06"
     },
     {
-        "id": "68ee6b7805758",
-        "static": false,
-        "movable": false,
-        "name": "Istorija",
-        "href": "\/o-nama\/istorija",
-        "path": "pages\/istorija.php",
-        "file": "istorija.php",
-        "status": 1,
-        "created_at": "2025-10-14 15:25:44"
-    },
-    {
-        "id": "68ee6b78086f9",
+        "id": "68ffbdeef1d90",
         "static": false,
         "movable": false,
         "name": "Tim",
-        "href": "\/o-nama\/tim",
+        "href": "\/tim",
         "path": "pages\/tim.php",
         "file": "tim.php",
         "status": 1,
-        "created_at": "2025-10-14 15:25:44"
+        "created_at": "2025-10-27 18:46:06"
     },
     {
-        "id": "68ee6b780ccc6",
+        "id": "68ffbdef0bee6",
         "static": false,
         "movable": false,
-        "name": "dogadjaji",
-        "href": "\/dogadjaji",
-        "path": "pages\/dogadjaji.php",
-        "file": "dogadjaji.php",
+        "name": "vesti",
+        "href": "\/vesti",
+        "path": "pages\/vesti.php",
+        "file": "vesti.php",
         "status": 1,
-        "created_at": "2025-10-14 15:25:44"
+        "created_at": "2025-10-27 18:46:07"
     },
     {
-        "id": "68ee6b7812a6f",
+        "id": "68ffbdef2388e",
         "static": false,
         "movable": false,
         "name": "galerija",
@@ -85,10 +74,10 @@
         "path": "pages\/galerija.php",
         "file": "galerija.php",
         "status": 1,
-        "created_at": "2025-10-14 15:25:44"
+        "created_at": "2025-10-27 18:46:07"
     },
     {
-        "id": "68ee6b7821906",
+        "id": "68ffbdef5bfe9",
         "static": false,
         "movable": false,
         "name": "dokumenti",
@@ -96,10 +85,21 @@
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-10-14 15:25:44"
+        "created_at": "2025-10-27 18:46:07"
     },
     {
-        "id": "68ee6b783e5fa",
+        "id": "68ffbdef68732",
+        "static": false,
+        "movable": false,
+        "name": "seminari",
+        "href": "\/seminari",
+        "path": "pages\/seminari.php",
+        "file": "seminari.php",
+        "status": 1,
+        "created_at": "2025-10-27 18:46:07"
+    },
+    {
+        "id": "68ffbdefd4675",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -107,6 +107,6 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-10-14 15:25:44"
+        "created_at": "2025-10-27 18:46:07"
     }
 ]
