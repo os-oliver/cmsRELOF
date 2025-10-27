@@ -7,6 +7,7 @@ use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Controllers\AuthController;
+use App\Models\Content;
 use App\Models\Text;
 use App\Models\Event;
 use App\Models\Gallery;
@@ -479,6 +480,35 @@ class PageExporter
 
     private function generateIndexHeader(): string
     {
+        $phpString = '';
+
+        $jsonDir = __DIR__ . '/../../public/assets/data/structure.json';
+        $jsonData = json_decode(file_get_contents($jsonDir), true);
+
+        $structure = $jsonData[0] ?? [];
+        $structureLower = [];
+        foreach ($structure as $k => $v) {
+            $structureLower[strtolower($k)] = $v;
+        }
+
+        foreach ($this->data['ids'] as $id) {
+            $idLower = strtolower($id);
+            $key = $idLower;
+
+            if ($idLower === 'events') {
+                $key = 'dogadjaji';
+            }
+
+            if (isset($structureLower[$key])) {
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$key', '', 0, 3, null, \$locale)['items'];\n";
+                $phpString .= "\$$id = HashMapTransformer::transform(\$$id" . "_raw, \$locale);\n\n";
+            }
+
+            error_log("Generated PHP for id '$id': " . $phpString);
+        }
+
+
+
         $header = <<<'PHP'
     <?php
     session_start();
@@ -496,9 +526,7 @@ class PageExporter
     // Load dynamic texts
     $textModel = new Text();
     $dynamicText = $textModel->getDynamicText($locale);
-    $events_raw = (new Content())->fetchListData('dogadjaji', '', 0, 3, null, $locale)['items'];
-    $events = HashMapTransformer::transform($events_raw,$locale);
-    $groupedPages = PageLoader::getGroupedStaticPages();
+    {{dynamicLandigPageElements}}
 
     [$images, $totalEvents] = (new Gallery)->list();
     ?>
@@ -515,7 +543,7 @@ class PageExporter
     <style>
     PHP;
 
-
+        $header = str_replace('{{dynamicLandigPageElements}}', $phpString, $header);
         $header .= '</style>
         </head>
         <div class="min-h-screen flex flex-col">';
