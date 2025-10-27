@@ -32,7 +32,7 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
       const el = comp.view.el;
       let text = el.textContent
         .trim()
-        .replace(" ", "-")
+        .replace(/ /g, "-")
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
         .replace(/[^\x00-\x7F]/g, "")
@@ -67,12 +67,12 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
               const el = link.view.el;
               const text = el.textContent
                 .trim()
-                .replace(" ", "-")
+                .replace(/ /g, "-")
                 .replace(/[^\x00-\x7F]/g, "");
               link.addAttributes({
                 href: ("/" + current.root + "/" + text)
                   .toLowerCase()
-                  .replace(" ", "-"),
+                  .replace(/ /g, "-"),
               });
               link.view.render();
               current.elements.push({
