@@ -1,0 +1,172 @@
+project/templates/[NAZIV_TEMPLEJTA]/
+├── json
+│
+
+└── data_definition.json --- OVDE SE CUVA STRUKTURA JSON ZA DINAMICKE STRANICE
+
+└── original
+
+└── index.php --- TEMPLEJT
+
+Osnovna struktura JSON-a
+[
+{
+"TipEntiteta": {
+"sr": "Naziv na srpskom",
+"en": "Name in English",
+"sr-Cyrl": "Назив на српском ћирилицом",
+"icon": "fas fa-icon-name",
+"categories": ["Kategorija1", "Kategorija2", "..."],
+"fields": [
+{
+"name": "ime_polja",
+"type": "text|textarea|file|date|time|number|email|url|categories...",
+"label": {
+"sr": "Label na srpskom",
+"en": "Label in English",
+"sr-Cyrl": "Лејбл на ћирилици"
+},
+"required": true|false,
+"value": "default value (opciono)",
+"options": ["opcija1","opcija2"] (za select ili categories),
+"accept": "tip fajla (opciono, za file input)"
+}
+]
+}
+}
+]
+
+A) Top-level
+Polje
+
+Tip
+
+Šta znači
+
+sr
+
+string Naziv entiteta na srpskom (latinica)
+
+en
+
+string Naziv entiteta na engleskom
+
+sr-Cyrl
+
+string Naziv entiteta na srpskom ćirilično
+
+icon
+
+string FontAwesome ikona za tip entiteta
+
+categories array Lista kategorija koje mogu biti izabrane (opciono)
+fields
+
+array Polja koja će modal sadržati
+
+B) Polja unutar fields
+Polje
+
+Tip
+
+Opis
+
+name
+
+string
+
+Unikatno ime polja (koristi se u formi i inputu)
+
+type
+
+string
+
+Tip polja: text, textarea, file, date, time, number, email, url, categories, tel
+
+label
+
+object
+
+Labela polja po jezicima: {sr:"", en:"", sr-Cyrl:""}
+
+required boolean
+value
+
+Da li je polje obavezno
+
+string/array Default vrednost (opciono)
+
+options array
+
+Lista opcija (za select ili categories)
+
+accept
+
+Tip fajla koji input prihvata (image/*, .pdf,.doc)
+
+string
+
+Primer generalizovanog JSON-a
+[{
+"Projekti": {
+"sr": "Projekti",
+"en": "Projects",
+"sr-Cyrl": "Пројекти",
+"icon": "fas fa-diagram-project",
+"categories": [
+"Nauka",
+"Tehnologija",
+"Obrazovanje",
+"Kultura",
+"Zdravlje",
+"Inovacije"
+],
+"fields": [
+{
+"name": "naslovna_slike",
+"type": "file",
+"label": {
+"sr": "Naslovna slika",
+"en": "Project Image",
+"sr-Cyrl": "Насловна слика"
+},
+"required": true,
+"accept": "image/*"
+},
+{
+"name": "naziv",
+"type": "text",
+"label": {
+"sr": "Naziv projekta",
+"en": "Project Name",
+
+"sr-Cyrl": "Назив пројекта"
+},
+"required": true
+},
+{
+"name": "opis",
+"type": "textarea",
+"label": {
+"sr": "Kratak opis",
+"en": "Short description",
+"sr-Cyrl": "Кратак опис"
+},
+"required": false
+},
+{
+"name": "budzet",
+"type": "number",
+"label": {
+"sr": "Budžet (EUR)",
+"en": "Budget (EUR)",
+"sr-Cyrl": "Буџет (у евриима)"
+},
+"required": false
+}
+]
+}
+}
+]
+
+
