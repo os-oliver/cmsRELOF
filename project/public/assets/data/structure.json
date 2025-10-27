@@ -1,229 +1,111 @@
 [
   {
     "Vesti": {
-      "sr": "Projekti",
-      "en": "Projects",
-      "sr-Cyrl": "Пројекти",
-      "icon": "fas fa-diagram-project",
+      "sr": "Vesti",
+      "en": "News",
+      "sr-Cyrl": "Вести",
+      "icon": "fas fa-newspaper",
       "categories": [
-        "Nauka",
-        "Tehnologija",
-        "Obrazovanje",
-        "Kultura",
-        "Zdravlje",
-        "Inovacije"
+        "Vesti",
+        "Naučni klub",
+        "Seminari",
+        "Radionice"
       ],
       "fields": [
         {
           "name": "slika",
           "type": "file",
           "label": {
-            "sr": "Naslovna slika projekta",
-            "en": "Project image",
-            "sr-Cyrl": "Насловна слика пројекта"
+            "sr": "Naslovna slika",
+            "en": "Cover image",
+            "sr-Cyrl": "Насловна слика"
           },
           "required": true
         },
         {
-          "name": "naziv",
+          "name": "kategorije",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
+          },
+          "options": [
+            "Vesti",
+            "Naučni klub",
+            "Seminari",
+            "Radionice"
+          ],
+          "required": true
+        },
+        {
+          "name": "naslov",
           "type": "text",
           "label": {
-            "sr": "Naziv projekta",
-            "en": "Project name",
-            "sr-Cyrl": "Назив пројекта"
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
           },
           "required": true
         },
         {
-          "name": "vodja",
-          "type": "text",
-          "label": {
-            "sr": "Vođa projekta",
-            "en": "Project lead",
-            "sr-Cyrl": "Вођа пројекта"
-          }
-        },
-        {
-          "name": "opis",
+          "name": "tekst",
           "type": "textarea",
           "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
+            "sr": "Tekst vesti",
+            "en": "Article text",
+            "sr-Cyrl": "Текст вести"
           }
-        },
+        }
+      ]
+    }
+  },
+  {
+    "Seminari": {
+      "sr": "Akreditovani seminari",
+      "en": "Accredited seminars",
+      "sr-Cyrl": "Акредитовани семинари",
+      "icon": "fas fa-graduation-cap",
+      "fields": [
         {
-          "name": "datumPocetka",
-          "type": "date",
+          "name": "catalogNumber",
+          "type": "number",
           "label": {
-            "sr": "Datum početka",
-            "en": "Start date",
-            "sr-Cyrl": "Датум почетка"
+            "sr": "Kataloški broj",
+            "en": "Catalog number",
+            "sr-Cyrl": "Каталошки број"
           },
           "required": true
         },
         {
-          "name": "budzet",
-          "type": "number",
+          "name": "title",
+          "type": "text",
           "label": {
-            "sr": "Budžet (u evrima)",
-            "en": "Budget (EUR)",
-            "sr-Cyrl": "Буџет (у евриима)"
-          }
+            "sr": "Naziv seminara",
+            "en": "Seminar title",
+            "sr-Cyrl": "Назив семинара"
+          },
+          "required": true
+        },
+        {
+          "name": "area",
+          "type": "text",
+          "label": {
+            "sr": "Oblast",
+            "en": "Subject area",
+            "sr-Cyrl": "Област"
+          },
+          "required": true
         },
         {
           "name": "link",
           "type": "url",
           "label": {
-            "sr": "Zvanični link projekta",
-            "en": "Official project link",
-            "sr-Cyrl": "Званични линк пројекта"
-          }
-        }
-      ]
-    },
-    "Dogadjaji": {
-      "sr": "Događaji",
-      "en": "Events",
-      "sr-Cyrl": "Догађаји",
-      "icon": "fas fa-calendar-days",
-      "categories": [
-        "Konferencije",
-        "Seminari",
-        "Radionice",
-        "Takmičenja",
-        "Kultura"
-      ],
-      "fields": [
-        {
-          "name": "title",
-          "type": "text",
-          "label": {
-            "sr": "Naslov događaja",
-            "en": "Event title",
-            "sr-Cyrl": "Наслов догађаја"
+            "sr": "ZUOV link",
+            "en": "ZUOV link",
+            "sr-Cyrl": "ЗУОВ линк"
           },
           "required": true
-        },
-        {
-          "name": "naziv",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
-          },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
-          "required": true
-        },
-        {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum održavanja",
-            "en": "Event date",
-            "sr-Cyrl": "Датум одржавања"
-          },
-          "required": true
-        },
-        {
-          "name": "time",
-          "type": "time",
-          "label": {
-            "sr": "Vreme početka",
-            "en": "Start time",
-            "sr-Cyrl": "Време почетка"
-          },
-          "required": true
-        },
-        {
-          "name": "location",
-          "type": "text",
-          "label": {
-            "sr": "Lokacija događaja",
-            "en": "Event location",
-            "sr-Cyrl": "Локација догађаја"
-          },
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis događaja",
-            "en": "Event description",
-            "sr-Cyrl": "Опис догађаја"
-          }
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika događaja",
-            "en": "Event image",
-            "sr-Cyrl": "Насловна слика догађаја"
-          }
-        }
-      ]
-    },
-    "NaucniKlub": {
-      "sr": "Naucni klub",
-      "en": "Events",
-      "sr-Cyrl": "Научни клуб",
-      "icon": "fas fa-atom",
-      "categories": ["hemija", "fizika", "matematika"],
-      "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika događaja",
-            "en": "Event image",
-            "sr-Cyrl": "Насловна слика догађаја"
-          }
-        },
-        {
-          "name": "nazivKluba",
-          "type": "text",
-          "label": {
-            "sr": "Naziv kluba",
-            "en": "Event title",
-            "sr-Cyrl": "Назив клуба"
-          },
-          "required": true
-        },
-        {
-          "name": "kategorija",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
-          },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
-          "required": true
-        },
-
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis događaja",
-            "en": "Event description",
-            "sr-Cyrl": "Опис догађаја"
-          }
         }
       ]
     }

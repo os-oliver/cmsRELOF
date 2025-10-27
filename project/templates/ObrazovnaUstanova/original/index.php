@@ -204,7 +204,6 @@
             }
 
             .dropdown-item:hover {
-                background-color: #f9f5f0;
                 border-left: 3px solid #d4a373;
             }
 
@@ -370,11 +369,15 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
                                 <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
                             </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
+                                <i class="fas fa-users mr-2 text-coral"></i>Tim
+                            </a>
                         </div>
                     </div>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-royal-blue"></i>Događaji
+                        <i class="fas fa-newspaper mr-3 text-royal-blue"></i>Vesti
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
@@ -386,7 +389,7 @@
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fa-solid fa-graduation-cap mr-3 text-primary"></i>Naučni klub
+                        <i class="fa-solid fa-graduation-cap mr-3 text-primary"></i>Seminari
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
@@ -427,27 +430,36 @@
                     <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
-
                 <div class="dropdown relative group">
                     <button
-                        class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                        <i class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors"></i>
-                        <span class="hidden xl:inline">O nama</span>
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
+                        <i
+                            class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors text-sm"></i>
+                        <span class="hidden xl:inline text-sm">O nama</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute top-full left-0  w-48 bg-paper rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2  min-w-max max-w-xs w-auto bg-light rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                            <i class="fas fa-bullseye mr-2 text-royal-blue"></i>Cilj
+                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-bullseye mr-3 text-royal-blue flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Cilj</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                            <i class="fas fa-sitemap mr-2 text-terracotta"></i>Zaposleni
+                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Zaposleni</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
+                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-flag mr-3 text-deep-teal flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Misija</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Tim</span>
                         </a>
                     </div>
                 </div>
@@ -455,8 +467,8 @@
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
                     <i
-                        class="fas fa-calendar-alt mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
-                    <span class="hidden xl:inline">Događaji</span>
+                        class="fas fa-newspaper mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
+                    <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
@@ -471,7 +483,7 @@
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
                     <i class="fa-solid fa-graduation-cap mr-2 text-primary group-hover:text-sage transition-colors"></i>
-                    <span class="hidden xl:inline">Naučni klub</span>
+                    <span class="hidden xl:inline">Seminari</span>
                 </a>
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
@@ -494,15 +506,15 @@
                     $locale = 'sr';
                 }
                 ?>
-                <div class="dropdown relative group">
+                <div class="dropdown nonPage relative group">
                     <button class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
                         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
-                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-paper rounded-md shadow-lg z-50">
+                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-llight rounded-md shadow-lg z-50">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>" class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
+                            <a href="?locale=<?= $key ?>" class="dropdown-item flex items-center px-4 py-2 bg-light hover:bg-light-50 rounded-md text-sm">
                                 <span class="mr-2"><?= $lang['flag'] ?></span>
                                 <?= $lang['label'] ?>
                             </a>
