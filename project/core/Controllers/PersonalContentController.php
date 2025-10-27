@@ -469,14 +469,30 @@ class PersonalContentController
                 continue;
             }
 
-            $displayLabel = $labels[$field] ?? ucwords(str_replace('_', ' ', $field));
-            $escapedValue = nl2br(htmlspecialchars($value, ENT_QUOTES, 'UTF-8'));
 
-            $html .= '
-                    <div class="field-row">
-                        <div class="field-label">' . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '</div>
-                        <div class="field-value">' . $escapedValue . '</div>
-                    </div>';
+            $displayLabel = $labels[$field] ?? ucwords(str_replace('_', ' ', $field));
+
+            // Escape HTML i ukloni \n ili <br>
+            // Escape HTML i ukloni \n ili <br>
+            $cleanText = str_replace(["\n", "\r"], ' ', $value);
+            $cleanText = htmlspecialchars($cleanText, ENT_QUOTES, 'UTF-8');
+
+            // Podeli tekst na linije od max 50 karaktera (sigurno za UTF-8)
+            $lines = mb_str_split($cleanText, 50, 'UTF-8');
+
+            // Spoji linije u HTML paragraf sekciju
+            $escapedValue = '<p>' . implode('</p><p>', $lines) . '</p>';
+
+            $html .= '<div class="field-row" style="margin-bottom: 12px;">'
+                . '<div class="field-label" style="font-weight: 600; color: #3b3b3b; margin-bottom: 4px;">'
+                . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8')
+                . '</div>'
+                . '<div class="field-value" style="white-space: pre-wrap; line-height: 1.5;">'
+                . $escapedValue
+                . '</div></div>';
+
+
+
         }
 
         // Gallery

@@ -8,6 +8,7 @@ use App\Admin\PageBuilders\GoalPageBulder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
+use App\Admin\PageBuilders\VestiPageBuilder;
 use App\Controllers\AuthController;
 use App\Models\Content;
 use App\Models\Text;
@@ -601,7 +602,7 @@ class PageExporter
             case 'predstave':
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
-                return new DynamicPageBuilder('Vesti');
+                return new VestiPageBuilder('Vesti');
             case 'naucni-klub':
                 return new NaucniKlubPageBuilder('NaucniKlub');
             case 'primer':
@@ -615,6 +616,7 @@ class PageExporter
 
     private function determinePageType(string $name): string
     {
+        error_log("nameL:" . $name);
         $name = strtolower($name);
         if (strpos($name, 'galerija') !== false) {
             return 'galerija';
@@ -637,8 +639,8 @@ class PageExporter
             return 'primer';
         } elseif (strpos($name, 'cilj') !== false) {
             return 'cilj';
-        } elseif (strpos($name, 'zaposleni') !== false) {
-            return 'zaposleni';
+        } elseif (strpos($name, 'dogadaji') !== false) {
+            return 'dogadjaji';
         }
 
 

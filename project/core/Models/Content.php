@@ -466,6 +466,9 @@ class Content
         ";
 
         $stmt = $this->pdo->prepare($sql);
+        error_log(
+            "vesti:" . $lang
+        );
         $stmt->bindValue(1, $lang, PDO::PARAM_STR);
 
         $pos = 2;
