@@ -293,14 +293,11 @@ function setupLinkLogging(editor) {
   if (doc._gjs_click_logger_attached) return;
   doc._gjs_click_logger_attached = true;
 
-  // Helper to open the nav link editor and wire apply/reset handlers
   const openNavEditor = (anchorEl, comp) => {
     try {
-      // optionally open nav panel trigger
       const navBtn = document.getElementById("navbtn");
       if (navBtn) navBtn.click();
 
-      // elements
       const hrefInput = document.getElementById("linkHref");
       const staticCheckbox = document.getElementById("linkStatic");
       const applyBtn = document.getElementById("applyLink");
@@ -308,7 +305,6 @@ function setupLinkLogging(editor) {
       const deleteBtn = document.getElementById("delete");
       if (!hrefInput || !applyBtn || !resetBtn || !deleteBtn) return;
 
-      // store originals for reset
       const originalHref = (anchorEl && anchorEl.getAttribute("href")) || "";
       const originalStatic =
         (anchorEl &&
@@ -316,7 +312,6 @@ function setupLinkLogging(editor) {
             anchorEl.getAttribute("static"))) ||
         "";
 
-      // init inputs
       hrefInput.value = originalHref;
       if (staticCheckbox) {
         staticCheckbox.checked =
@@ -328,49 +323,22 @@ function setupLinkLogging(editor) {
       applyBtn.onclick = () => {
         const newHref = hrefInput.value || "";
         const isStatic = !!(staticCheckbox && staticCheckbox.checked);
-        // update GrapesJS component model if available
+
         if (comp) {
           try {
             if (typeof comp.addAttributes === "function") {
               comp.addAttributes({ href: newHref });
               if (isStatic) {
-                comp.addAttributes({ static: "true" });
-                comp.addAttributes({ movable: "false" });
+                comp.addAttributes({ static: "true", movable: "false" });
               } else if (typeof comp.removeAttributes === "function") {
                 comp.removeAttributes(["static"]);
-              } else {
-                // fallback: remove static from attributes object
-                try {
-                  const attrs =
-                    typeof comp.getAttributes === "function"
-                      ? { ...comp.getAttributes() }
-                      : { ...(comp.attributes || {}) };
-                  delete attrs.static;
-                  if (typeof comp.set === "function")
-                    comp.set("attributes", attrs);
-                } catch (e) {
-                  /* ignore fallback errors */
-                }
               }
-            } else if (typeof comp.set === "function") {
-              // fallback: replace attributes object
-              const attrs =
-                typeof comp.getAttributes === "function"
-                  ? { ...comp.getAttributes() }
-                  : { ...(comp.attributes || {}) };
-              attrs.href = newHref;
-              if (isStatic) {
-                attrs.static = "true";
-                attrs.movable = "false";
-              } else delete attrs.static;
-              comp.set("attributes", attrs);
             }
           } catch (err) {
             console.warn("Failed to update component attributes:", err);
           }
         }
 
-        // keep iframe/DOM anchor in sync (visual)
         try {
           if (anchorEl) {
             anchorEl.setAttribute("href", newHref);
@@ -379,40 +347,31 @@ function setupLinkLogging(editor) {
           }
         } catch (e) {}
 
-        // persist editor state if possible
         try {
           if (window.editor && typeof window.editor.store === "function")
             window.editor.store();
         } catch (e) {}
       };
 
-      // RESET: restore inputs and visual DOM (user must still click Apply to persist)
-      // Delete link handler
       deleteBtn.onclick = () => {
         if (comp) {
           try {
-            console.log("Removing component", comp);
-            // Remove component from editor
             comp.remove();
           } catch (err) {
             console.warn("Failed to remove component:", err);
           }
         }
 
-        // Remove the anchor from DOM
         if (anchorEl && anchorEl.parentNode) {
-          // Keep the content inside the anchor
           while (anchorEl.firstChild) {
             anchorEl.parentNode.insertBefore(anchorEl.firstChild, anchorEl);
           }
           anchorEl.parentNode.removeChild(anchorEl);
         }
 
-        // Close nav editor if open
         const navBtn = document.getElementById("navbtn");
         if (navBtn) navBtn.click();
 
-        // Store editor state
         try {
           if (window.editor && typeof window.editor.store === "function") {
             window.editor.store();
@@ -429,24 +388,11 @@ function setupLinkLogging(editor) {
             originalStatic === "yes";
 
         try {
-          if (comp) {
-            // restore model attr if possible
-            if (typeof comp.addAttributes === "function") {
-              comp.addAttributes({ href: originalHref });
-              if (originalStatic)
-                comp.addAttributes({ static: originalStatic });
-              else if (typeof comp.removeAttributes === "function")
-                comp.removeAttributes(["static"]);
-            } else if (typeof comp.set === "function") {
-              const attrs =
-                typeof comp.getAttributes === "function"
-                  ? { ...comp.getAttributes() }
-                  : { ...(comp.attributes || {}) };
-              attrs.href = originalHref;
-              if (originalStatic) attrs.static = originalStatic;
-              else delete attrs.static;
-              comp.set("attributes", attrs);
-            }
+          if (comp && typeof comp.addAttributes === "function") {
+            comp.addAttributes({ href: originalHref });
+            if (originalStatic) comp.addAttributes({ static: originalStatic });
+            else if (typeof comp.removeAttributes === "function")
+              comp.removeAttributes(["static"]);
           }
 
           if (anchorEl) {
@@ -462,7 +408,6 @@ function setupLinkLogging(editor) {
     }
   };
 
-  // Intercept clicks inside the canvas, find anchors and open the editor
   doc.addEventListener(
     "click",
     (e) => {
@@ -472,16 +417,20 @@ function setupLinkLogging(editor) {
         if (!el) return;
         if (el.nodeType === 3) el = el.parentElement;
 
-        const sliderControl = el.closest(".slider-control, .slider-indicator");
+        // 1. PRIORITET: Slider kontrole (prev/next/dots)
+        const sliderControl = el.closest(
+          ".slider-control, .slider-indicator, .slider-prev, .slider-next"
+        );
         if (sliderControl) {
           e.stopPropagation();
           const win = editor.Canvas.getWindow
             ? editor.Canvas.getWindow()
             : window;
-          if (sliderControl.classList.contains("slider-control")) {
-            if (sliderControl.classList.contains("slider-prev"))
-              win.prevSlide?.();
-            else win.nextSlide?.();
+
+          if (sliderControl.classList.contains("slider-prev")) {
+            win.prevSlide?.();
+          } else if (sliderControl.classList.contains("slider-next")) {
+            win.nextSlide?.();
           } else if (sliderControl.classList.contains("slider-indicator")) {
             const idx = Array.from(
               sliderControl.parentElement.children
@@ -491,104 +440,107 @@ function setupLinkLogging(editor) {
           return;
         }
 
-        const interactiveSelector =
-          "a, button, input, textarea, select, label, [role='button'], [contenteditable='true']";
-        const isTextElement = (element) => {
-          if (!element || !element.tagName) return false;
-          const tag = element.tagName.toLowerCase();
-          const textualTags = [
-            "p",
-            "span",
-            "h1",
-            "h2",
-            "h3",
-            "h4",
-            "h5",
-            "h6",
-            "li",
-            "small",
-            "em",
-            "strong",
-            "label",
-          ];
-          if (!textualTags.includes(tag)) return false;
-          const txt = (element.textContent || "").trim();
-          if (!txt) return false;
-          try {
-            if (
-              element.querySelector &&
-              element.querySelector(interactiveSelector)
-            )
-              return false;
-          } catch {}
-          return true;
-        };
-        const interactiveAnchorOrControl =
-          el.closest && el.closest(interactiveSelector);
-        if (isTextElement(el) || interactiveAnchorOrControl) return;
-
-        let clickedEl = el;
-        if (!clickedEl.closest || !clickedEl.closest(".slider-item")) {
-          try {
-            const prev = clickedEl.style && clickedEl.style.pointerEvents;
-            if (clickedEl.style) clickedEl.style.pointerEvents = "none";
-            const under = document.elementFromPoint(e.clientX, e.clientY);
-            if (clickedEl.style) clickedEl.style.pointerEvents = prev || "";
-            if (under) clickedEl = under;
-          } catch {}
-        }
-
-        const sliderItem =
-          clickedEl && clickedEl.closest && clickedEl.closest(".slider-item");
+        // 2. PRIORITET: Klik na slike u slider-u (overlay ili direktno na sliku)
+        const sliderItem = el.closest(".slider-item");
         if (sliderItem) {
-          const imgEl = sliderItem.querySelector("img");
-          if (imgEl) {
-            const imgSrc =
-              imgEl.getAttribute("src") ||
-              (imgEl.dataset && imgEl.dataset.src) ||
-              "";
-            const escaped = (imgSrc || "").replace(/"/g, '\\"');
-            let imgCmp = null;
-            if (imgSrc) {
-              imgCmp =
-                wrapper.find(`[src="${escaped}"]`)[0] ||
-                wrapper.find(`[attributes.data-src="${escaped}"]`)[0] ||
-                wrapper.find(`[src*="${escaped}"]`)[0];
-            }
-            if (!imgCmp) {
-              const allImgs = wrapper.find("img");
-              for (let i = 0; i < allImgs.length; i++) {
-                const c = allImgs[i];
-                try {
-                  const elFromComp =
-                    typeof c.getEl === "function" ? c.getEl() : c.el;
-                  if (
-                    elFromComp &&
-                    elFromComp.tagName &&
-                    elFromComp.tagName.toLowerCase() === "img"
-                  ) {
-                    const compSrc =
-                      elFromComp.getAttribute("src") ||
-                      (elFromComp.dataset && elFromComp.dataset.src) ||
-                      "";
-                    if (compSrc === imgSrc) {
-                      imgCmp = c;
-                      break;
-                    }
-                  }
-                } catch {}
+          // Proveri da li je kliknuto na overlay ili sliku
+          const isOverlay =
+            el.classList.contains("slider-overlay") ||
+            el.classList.contains("slide-overlay");
+          const isImage = el.tagName && el.tagName.toLowerCase() === "img";
+
+          if (isOverlay || isImage) {
+            const imgEl = sliderItem.querySelector("img");
+            if (imgEl) {
+              const imgSrc =
+                imgEl.getAttribute("src") || imgEl.dataset?.src || "";
+              const escaped = (imgSrc || "").replace(/"/g, '\\"');
+              let imgCmp = null;
+
+              if (imgSrc) {
+                imgCmp =
+                  wrapper.find(`[src="${escaped}"]`)[0] ||
+                  wrapper.find(`[attributes.data-src="${escaped}"]`)[0] ||
+                  wrapper.find(`[src*="${escaped}"]`)[0];
               }
-            }
-            if (imgCmp) {
-              editor.select(imgCmp);
-              editor.runCommand("open-assets", { target: imgCmp });
-              return;
+
+              if (!imgCmp) {
+                const allImgs = wrapper.find("img");
+                for (let i = 0; i < allImgs.length; i++) {
+                  const c = allImgs[i];
+                  try {
+                    const elFromComp =
+                      typeof c.getEl === "function" ? c.getEl() : c.el;
+                    if (elFromComp?.tagName?.toLowerCase() === "img") {
+                      const compSrc =
+                        elFromComp.getAttribute("src") ||
+                        elFromComp.dataset?.src ||
+                        "";
+                      if (compSrc === imgSrc) {
+                        imgCmp = c;
+                        break;
+                      }
+                    }
+                  } catch {}
+                }
+              }
+
+              if (imgCmp) {
+                editor.select(imgCmp);
+                editor.runCommand("open-assets", { target: imgCmp });
+                return;
+              }
             }
           }
         }
 
-        const anchor = el.closest && el.closest("a");
+        // 3. PRIORITET: Icon klikovi (ako imate icon chooser)
+        if (el.tagName && el.tagName.toLowerCase() === "i") {
+          try {
+            const anchorForIcon = el.closest("a");
+            const parentDoc = window.parent?.document;
+            if (parentDoc) {
+              let comp = null;
+              try {
+                const id = anchorForIcon?.id;
+                if (id) comp = wrapper.find("#" + id)[0] || null;
+                if (!comp && anchorForIcon) {
+                  const all = wrapper.find();
+                  for (let i = 0; i < all.length; i++) {
+                    const c = all[i];
+                    try {
+                      const elFromComp =
+                        typeof c.getEl === "function" ? c.getEl() : c.el;
+                      if (elFromComp === anchorForIcon) {
+                        comp = c;
+                        break;
+                      }
+                    } catch {}
+                  }
+                }
+              } catch {}
+
+              parentDoc._gjs_icon_click_target = {
+                anchor: anchorForIcon,
+                iconEl: el,
+                comp,
+                anchorId: anchorForIcon?.id,
+              };
+
+              const chooser = parentDoc.getElementById("iconChooser");
+              if (chooser) {
+                chooser.classList.remove("hidden");
+                chooser.classList.add("flex");
+              }
+            }
+            return;
+          } catch (e) {}
+        }
+
+        // 4. PRIORITET: Link editor za <a> tagove
+        const anchor = el.closest("a");
         if (!anchor) return;
+
         let comp = null;
         const id = anchor.id;
         if (id) comp = wrapper.find("#" + id)[0];
@@ -606,8 +558,11 @@ function setupLinkLogging(editor) {
             } catch {}
           }
         }
+
         openNavEditor(anchor, comp);
-      } catch {}
+      } catch (err) {
+        console.error("Click handler error:", err);
+      }
     },
     true
   );
