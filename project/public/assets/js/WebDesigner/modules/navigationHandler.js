@@ -99,8 +99,15 @@ if (!isset($languages[$locale])) {
       comp.replaceWith({ type: "textnode", content: phpLocaleCode });
     } else if (comp.get("tagName") === "a") {
       const el = comp.view.el;
-      let text = normalizeText(el.textContent);
-      if (text === "pocetna") text = "";
+      let text = el.textContent
+        .trim()
+        .replace(/ /g, "-")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^\x00-\x7F]/g, "")
+        .toLowerCase();
+
+      if (text == "pocetna") text = "";
       comp.addAttributes({ href: "/" + text });
       comp.view.render();
       tree.push({
@@ -124,9 +131,14 @@ if (!isset($languages[$locale])) {
           ch.components().forEach((link) => {
             if (link.get("tagName") === "a") {
               const el = link.view.el;
-              const text = normalizeText(el.textContent);
+              const text = el.textContent
+                .trim()
+                .replace(/ /g, "-")
+                .replace(/[^\x00-\x7F]/g, "");
               link.addAttributes({
-                href: ("/" + current.root + "/" + text).toLowerCase(),
+                href: ("/" + current.root + "/" + text)
+                  .toLowerCase()
+                  .replace(/ /g, "-"),
               });
               link.view.render();
               current.elements.push({
