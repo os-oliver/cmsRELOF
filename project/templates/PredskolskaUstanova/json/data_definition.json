@@ -1,0 +1,215 @@
+[
+  {
+    "Vesti": {
+      "sr": "Vesti",
+      "en": "News",
+      "sr-Cyrl": "Вести",
+      "icon": "fas fa-diagram-project",
+      "fields": [
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika vesti",
+            "en": "News image",
+            "sr-Cyrl": "Насловна слика вести"
+          },
+          "required": true
+        },
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
+          },
+          "required": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        }
+      ]
+    },
+    "Vrtici": {
+      "sr": "Vrtići",
+      "en": "Kindergarten",
+      "sr-Cyrl": "Вртићи",
+      "icon": "fas fa-school",
+      "fields": [
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika vrtića",
+            "en": "Kindergarten image",
+            "sr-Cyrl": "Насловна слика вртића"
+          }
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naziv vrtića",
+            "en": "Kindergarten name",
+            "sr-Cyrl": "Назив втрића"
+          },
+          "required": true
+        },
+        {
+          "name": "location",
+          "type": "text",
+          "label": {
+            "sr": "Lokacija vrtića",
+            "en": "Kindergarten location",
+            "sr-Cyrl": "Локација вртића"
+          },
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis",
+            "en": "Description",
+            "sr-Cyrl": "Опис"
+          }
+        }
+      ]
+    },
+    "Timovi": {
+      "sr": "Timovi",
+      "en": "Teams",
+      "sr-Cyrl": "Тимови",
+      "icon": "fas fa-users",
+      "fields": [
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika tima",
+            "en": "Team image",
+            "sr-Cyrl": "Насловна слика тима"
+          }
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naziv tima",
+            "en": "Team name",
+            "sr-Cyrl": "Назив тима"
+          },
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis",
+            "en": "Description",
+            "sr-Cyrl": "Опис"
+          }
+        }
+      ]
+    },
+    "Projekti": {
+      "sr": "Projekti",
+      "en": "Projects",
+      "sr-Cyrl": "Пројекти",
+      "icon": "fas fa-diagram-project",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Nаziv projekta",
+            "en": "Project name",
+            "sr-Cyrl": "Назив пројекта"
+          },
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum",
+            "en": "Date",
+            "sr-Cyrl": "Датум"
+          },
+          "required": true
+        },
+        {
+          "name": "location",
+          "type": "text",
+          "label": {
+            "sr": "Lokacija",
+            "en": "Location",
+            "sr-Cyrl": "Локација"
+          }
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis projekta",
+            "en": "Project description",
+            "sr-Cyrl": "Опис пројекта"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika projekta",
+            "en": "Project image",
+            "sr-Cyrl": "Насловна слика пројекта"
+          }
+        }
+      ]
+    },
+    "ObavestenjaZaRoditelje": {
+      "sr": "Obavestenja za roditelje",
+      "en": "Notifications for Parents",
+      "sr-Cyrl": "Обавештења за родитеље",
+      "icon": "fas fa-bell",
+      "fields": [
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika оbaveštenja",
+            "en": "Notification image",
+            "sr-Cyrl": "Насловна слика обавештења"
+          },
+          "required": true
+        },
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": {
+            "sr": "Naziv obaveštenja",
+            "en": "Notification name",
+            "sr-Cyrl": "Назив обавештења"
+          },
+          "required": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis",
+            "en": "Description",
+            "sr-Cyrl": "Опис"
+          }
+        }
+      ]
+    }
+  }
+]

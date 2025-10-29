@@ -16,6 +16,7 @@ use App\Admin\PageBuilders\ContactPageBuilder;
 use App\Admin\PageBuilders\DocumentsPageBuilder;
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Admin\PageBuilders\EventsPageBuilder;
+use App\Admin\PageBuilders\VrticiPageBuilder;
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -557,6 +558,14 @@ class PageExporter
                 return new DynamicPageBuilder('Vesti');
             case 'naucni-klub':
                 return new NaucniKlubPageBuilder('NaucniKlub');
+            case 'vrtici':
+                return new VrticiPageBuilder('Vrtici');
+            case 'timovi':
+                return new DynamicPageBuilder('Timovi');
+            case 'projekti':
+                return new DynamicPageBuilder('Projekti');
+            case 'obavestenja-roditelji':
+                return new DynamicPageBuilder('ObavestenjaRoditelji');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -582,7 +591,15 @@ class PageExporter
             return 'misija';
         } elseif (strpos($name, 'naucni-klub') !== false) {
             return 'naucni-klub';
-        }
+        } elseif (strpos($name, 'vrtici') !== false) {
+            return 'vrtici';
+        } elseif (strpos($name, 'timovi') !== false) {
+            return 'timovi';
+        } elseif (strpos($name, 'projekti') !== false) {
+            return 'projekti';
+        } elseif (strpos($name, 'obavestenja-roditelji') !== false) {
+            return 'obavestenja-roditelji';
+        } 
 
         return 'basic';
     }

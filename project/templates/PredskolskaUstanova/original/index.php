@@ -360,7 +360,19 @@
                     </div>
                     <a href="#"
                         class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primarybutton"></i>Događaji
+                        <i class="fas fa-school mr-2 text-primarybutton"></i> Vrtići
+                    </a>
+                    <a href="#"
+                        class="flex items-center py-3 px-4 rounded-lg transition-all">
+                        <i class="fas fa-users mr-2 text-primarybutton"></i> Timovi
+                    </a>
+                    <a href="#"
+                        class="flex items-center py-3 px-4 rounded-lg transition-all">
+                        <i class="fas fa-calendar-alt mr-3 text-primarybutton"></i>Vesti
+                    </a>
+                    <a href="#"
+                        class="flex items-center py-3 px-4 rounded-lg transition-all">
+                        <i class="fas fa-diagram-project mr-3 text-primarybutton"></i>Projekti
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 rounded-lg transition-all">
@@ -438,9 +450,26 @@
                 </div>
                 <a href="#"
                     class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <i class="fas fa-school mr-2 text-primarybutton"></i>
+                    <span class="hidden xl:inline">Vrtići</span>
+                </a>
+                <a href="#"
+                    class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i
                         class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
-                    <span class="hidden xl:inline">Događaji</span>
+                    <span class="hidden xl:inline">Vesti</span>
+                </a>
+                <a href="#"
+                    class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <i
+                        class="fas fa-diagram-project mr-2 text-primarybutton"></i>
+                    <span class="hidden xl:inline">Projekti</span>
+                </a>
+                <a href="#"
+                    class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <i
+                        class="fas fa-users mr-2 text-primarybutton"></i>
+                    <span class="hidden xl:inline">Timovi</span>
                 </a>
                 <a href="#"
                     class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -473,7 +502,7 @@
                         $locale = 'sr';
                     }
                 ?>
-                <div class="dropdown relative group">
+                <div class="dropdown nonPage relative group">
                     <button class="nav-link transition-colors flex items-center whitespace-nowrap">
                         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
@@ -556,7 +585,7 @@
             </div>
         </div>
     </section>
-    <!-- aktuelno/dogadjaji -->
+    <!-- VESTI -->
     <section id="events" class="py-20 bg-background text-secondarytext">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-secondaryfont">
@@ -890,7 +919,7 @@
                         secondarybuttonhover: "#255943ff",
                         primarytext: '#1B4332',
                         secondarytext: '#2a644aff',
-                        logocolor1: '#e9a803ff',
+                        logocolor1: 'rgba(233, 168, 3, 1)',
                         logocolor2: '#2D6A4F',
                         primarybtntxt: '#F1F7ED',
                         cardcolor: '#e5cc8c6b'
