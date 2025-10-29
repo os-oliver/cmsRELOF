@@ -57,7 +57,7 @@ class PageExporter
     {
         foreach ([$this->baseDir, $this->compDir, $this->pagesDir] as $dir) {
             if (!is_dir($dir)) {
-                mkdir($dir, 0755, true);
+                mkdir($dir, 0775, true);
             }
         }
     }
@@ -443,7 +443,7 @@ class PageExporter
                 $dirPath = dirname($fullPath);
 
                 if (!is_dir($dirPath)) {
-                    mkdir($dirPath, 0755, true);
+                    mkdir($dirPath, 0775, true);
                 }
 
                 // Decode HTML entities and fix PHP tags
@@ -838,7 +838,7 @@ CSS;
 
         $dataDir = dirname(__DIR__) . '/../public/assets/data';
         if (!is_dir($dataDir)) {
-            mkdir($dataDir, 0755, true);
+            mkdir($dataDir, 0775, true);
         }
 
         $pagesJsonPath = "$dataDir/pages.json";
