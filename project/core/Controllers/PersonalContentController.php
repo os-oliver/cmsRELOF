@@ -37,7 +37,7 @@ class PersonalContentController
             .page-header {
                 background: white;
                 border-bottom: 3px solid #667eea;
-                padding: 2rem 0;
+                padding: 1.5rem 0;
             }
 
             /* Content sections */
@@ -48,96 +48,112 @@ class PersonalContentController
             .section-divider {
                 height: 1px;
                 background: #e2e8f0;
-                margin: 2rem 0;
+                margin: 1.5rem 0;
             }
 
-            /* Field styling */
+            /* Compact field styling */
             .field-row {
-                margin-bottom: 1.5rem;
-                padding-bottom: 1.5rem;
-                border-bottom: 1px solid #f1f5f9;
-            }
-            
-            .field-row:last-child {
-                border-bottom: none;
+                margin-bottom: 1rem;
+                padding: 0.75rem;
+                background: #f8fafc;
+                border-radius: 0.375rem;
+                border-left: 3px solid #667eea;
             }
             
             .field-label {
                 font-weight: 600;
                 color: #4a5568;
-                font-size: 0.875rem;
-                margin-bottom: 0.5rem;
-                display: block;
+                font-size: 0.813rem;
+                display: inline-block;
+                min-width: 120px;
+                margin-right: 0.75rem;
+            }
+            
+            .field-label i {
+                margin-right: 0.375rem;
+                color: #667eea;
             }
             
             .field-value {
                 color: #1a202c;
-                font-size: 1rem;
-                line-height: 1.6;
+                font-size: 0.938rem;
+                line-height: 1.5;
+                display: inline;
             }
 
-            /* Info boxes for events */
+            /* Compact info boxes */
             .info-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1rem;
-                margin: 1.5rem 0;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 0.75rem;
+                margin: 1rem 0;
             }
             
             .info-box {
                 background: #f7fafc;
-                padding: 1rem;
-                border-radius: 0.5rem;
+                padding: 0.75rem;
+                border-radius: 0.375rem;
                 border-left: 3px solid #667eea;
             }
             
             .info-box-label {
-                font-size: 0.75rem;
+                font-size: 0.688rem;
                 color: #718096;
                 font-weight: 600;
                 text-transform: uppercase;
                 margin-bottom: 0.25rem;
+                letter-spacing: 0.025em;
+            }
+            
+            .info-box-label i {
+                margin-right: 0.375rem;
+                color: #667eea;
             }
             
             .info-box-value {
-                font-size: 1rem;
+                font-size: 0.938rem;
                 color: #1a202c;
                 font-weight: 500;
             }
 
             /* Gallery */
             .gallery-header {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
                 font-weight: 700;
                 color: #1a202c;
-                margin: 2rem 0 1rem 0;
-                padding-bottom: 0.5rem;
+                margin: 1.5rem 0 0.75rem 0;
+                padding-bottom: 0.375rem;
                 border-bottom: 2px solid #667eea;
+            }
+            
+            .gallery-header i {
+                margin-right: 0.5rem;
+                color: #667eea;
             }
             
             .gallery-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 1rem;
-                margin-top: 1rem;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 0.75rem;
+                margin-top: 0.75rem;
             }
             
             .gallery-item {
                 position: relative;
                 overflow: hidden;
-                border-radius: 0.5rem;
+                border-radius: 0.375rem;
                 transition: all 0.3s ease;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
             
             .gallery-item:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             }
             
             .gallery-item img {
                 width: 100%;
-                height: 200px;
+                height: 160px;
                 object-fit: cover;
                 transition: transform 0.3s ease;
             }
@@ -164,13 +180,13 @@ class PersonalContentController
             /* Category badge */
             .category-badge {
                 display: inline-block;
-                padding: 0.25rem 0.75rem;
+                padding: 0.25rem 0.625rem;
                 background: #667eea;
                 color: white;
                 border-radius: 9999px;
-                font-size: 0.875rem;
+                font-size: 0.813rem;
                 font-weight: 500;
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem;
             }
 
             /* Lightbox */
@@ -194,6 +210,11 @@ class PersonalContentController
 
             /* Responsive */
             @media (max-width: 768px) {
+                .field-label {
+                    display: block;
+                    min-width: auto;
+                    margin-bottom: 0.25rem;
+                }
                 .gallery-grid {
                     grid-template-columns: 1fr;
                 }
@@ -285,7 +306,6 @@ class PersonalContentController
         // Generate content
         try {
             switch ($type) {
-
                 default:
                     $mainContent = $this->getDefaultContent($type, $locale, $structure);
             }
@@ -348,7 +368,7 @@ class PersonalContentController
         }
 
         $html .= '
-                        <h1 class="text-4xl font-bold text-gray-900">' . $data['title'] . '</h1>
+                        <h1 class="text-3xl font-bold text-gray-900">' . $data['title'] . '</h1>
                     </div>
                 </div>
             </div>';
@@ -356,7 +376,7 @@ class PersonalContentController
         // Event image if exists
         if ($data['image']) {
             $html .= '
-            <div class="container mx-auto px-4 py-6">
+            <div class="container mx-auto px-4 py-4">
                 <div class="max-w-4xl mx-auto">
                     <img src="' . $data['image'] . '" 
                          alt="' . $data['title'] . '" 
@@ -367,23 +387,23 @@ class PersonalContentController
 
         $html .= '
             <!-- Content -->
-            <div class="container mx-auto px-4 py-6">
+            <div class="container mx-auto px-4 py-4">
                 <div class="max-w-4xl mx-auto">
                     
                     <!-- Event Info -->
                     <div class="info-grid">
                         <div class="info-box">
-                            <div class="info-box-label">' . ($labels['datum'] ?? 'Datum') . '</div>
+                            <div class="info-box-label"><i class="fas fa-calendar"></i> ' . ($labels['datum'] ?? 'Datum') . '</div>
                             <div class="info-box-value">' . $data['date'] . '</div>
                         </div>
                         
                         <div class="info-box">
-                            <div class="info-box-label">' . ($labels['time'] ?? 'Vreme') . '</div>
+                            <div class="info-box-label"><i class="fas fa-clock"></i> ' . ($labels['time'] ?? 'Vreme') . '</div>
                             <div class="info-box-value">' . ($data['time'] ?: '-') . '</div>
                         </div>
                         
                         <div class="info-box">
-                            <div class="info-box-label">' . ($labels['location'] ?? 'Lokacija') . '</div>
+                            <div class="info-box-label"><i class="fas fa-map-marker-alt"></i> ' . ($labels['location'] ?? 'Lokacija') . '</div>
                             <div class="info-box-value">' . $data['location'] . '</div>
                         </div>
                     </div>
@@ -391,11 +411,9 @@ class PersonalContentController
                     <div class="section-divider"></div>
 
                     <!-- Description -->
-                    <div>
-                        <div class="field-label">' . ($labels['description'] ?? 'Opis') . '</div>
-                        <div class="field-value">
-                            ' . nl2br($data['description']) . '
-                        </div>
+                    <div class="field-row">
+                        <span class="field-label"><i class="fas fa-align-left"></i> ' . ($labels['description'] ?? 'Opis') . '</span>
+                        <span class="field-value">' . nl2br($data['description']) . '</span>
                     </div>
                     
                 </div>
@@ -423,8 +441,9 @@ class PersonalContentController
         $item = $data['item'];
         $fields = $item['fields'];
 
-        // Get labels from structure
+        // Get labels and field icons from structure
         $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $fieldIcons = $this->getFieldIcons($type, $structure);
         $typeData = $this->getTypeData($type, $structure, $locale);
         $typeName = $typeData['name'] ?? $type;
 
@@ -449,13 +468,13 @@ class PersonalContentController
             <div class="page-header">
                 <div class="container mx-auto px-4">
                     <div class="max-w-4xl mx-auto">
-                        <h1 class="text-4xl font-bold text-gray-900">' . ($title ?: $typeName) . '</h1>
+                        <h1 class="text-3xl font-bold text-gray-900">' . ($title ?: $typeName) . '</h1>
                     </div>
                 </div>
             </div>
 
             <!-- Content -->
-            <div class="container mx-auto px-4 py-6">
+            <div class="container mx-auto px-4 py-4">
                 <div class="max-w-4xl mx-auto">';
 
         // Display fields
@@ -469,37 +488,31 @@ class PersonalContentController
                 continue;
             }
 
-
             $displayLabel = $labels[$field] ?? ucwords(str_replace('_', ' ', $field));
 
-            // Escape HTML i ukloni \n ili <br>
-            // Escape HTML i ukloni \n ili <br>
-            $cleanText = str_replace(["\n", "\r"], ' ', $value);
-            $cleanText = htmlspecialchars($cleanText, ENT_QUOTES, 'UTF-8');
+            // Get icon for field
+            $icon = $this->getFieldIcon($field, $fieldIcons);
 
-            // Podeli tekst na linije od max 50 karaktera (sigurno za UTF-8)
-            $lines = mb_str_split($cleanText, 50, 'UTF-8');
+            // Clean and escape value
+            $escapedValue = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 
-            // Spoji linije u HTML paragraf sekciju
-            $escapedValue = '<p>' . implode('</p><p>', $lines) . '</p>';
+            // For longer text, use nl2br
+            if (strlen($value) > 100) {
+                $escapedValue = nl2br($escapedValue);
+            }
 
-            $html .= '<div class="field-row" style="margin-bottom: 12px;">'
-                . '<div class="field-label" style="font-weight: 600; color: #3b3b3b; margin-bottom: 4px;">'
-                . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8')
-                . '</div>'
-                . '<div class="field-value" style="white-space: pre-wrap; line-height: 1.5;">'
-                . $escapedValue
-                . '</div></div>';
-
-
-
+            $html .= '
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $icon . '"></i> ' . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '</span>
+                        <span class="field-value">' . $escapedValue . '</span>
+                    </div>';
         }
 
         // Gallery
         if (!empty($images)) {
             $galleryLabel = $this->getGalleryLabel($locale);
             $html .= '
-                    <div class="gallery-header">' . $galleryLabel . '</div>
+                    <div class="gallery-header"><i class="fas fa-images"></i> ' . $galleryLabel . '</div>
                     <div class="gallery-grid">';
 
             foreach ($images as $img) {
@@ -525,6 +538,62 @@ class PersonalContentController
         </div>';
 
         return $html;
+    }
+
+    private function getFieldIcon(string $fieldName, array $fieldIcons): string
+    {
+        // Default icons based on common field names
+        $defaultIcons = [
+            'naziv' => 'fas fa-tag',
+            'vodja' => 'fas fa-user',
+            'opis' => 'fas fa-align-left',
+            'projekti' => 'fas fa-project-diagram',
+            'datum' => 'fas fa-calendar',
+            'datumpocetka' => 'fas fa-calendar-check',
+            'budzet' => 'fas fa-money-bill-wave',
+            'link' => 'fas fa-link',
+            'sekcija' => 'fas fa-folder',
+            'naslov' => 'fas fa-heading',
+            'autor' => 'fas fa-pen',
+            'location' => 'fas fa-map-marker-alt',
+            'time' => 'fas fa-clock',
+            'description' => 'fas fa-align-left'
+        ];
+
+        $key = strtolower($fieldName);
+
+        // Check if we have a specific icon from structure
+        if (isset($fieldIcons[$key])) {
+            return $fieldIcons[$key];
+        }
+
+        return $defaultIcons[$key] ?? 'fas fa-circle';
+    }
+
+    private function getFieldIcons(string $type, array $structure): array
+    {
+        $icons = [];
+
+        if (empty($structure) || !is_array($structure)) {
+            return $icons;
+        }
+
+        $structureData = $structure[0] ?? [];
+
+        if (!isset($structureData[$type]) || !isset($structureData[$type]['fields'])) {
+            return $icons;
+        }
+
+        foreach ($structureData[$type]['fields'] as $field) {
+            $name = $field['name'] ?? null;
+            $icon = $field['icon'] ?? null;
+
+            if ($name && $icon) {
+                $icons[strtolower($name)] = $icon;
+            }
+        }
+
+        return $icons;
     }
 
     private function getLabelsFromStructure(string $type, array $structure, string $locale): array
