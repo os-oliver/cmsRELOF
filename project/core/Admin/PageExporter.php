@@ -3,10 +3,21 @@
 namespace App\Admin;
 
 use App\Admin\PageBuilders\DynamicPageBuilder;
+use App\Admin\PageBuilders\EmployeesPageBuilder;
+use App\Admin\PageBuilders\GoalPageBulder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
+use App\Admin\PageBuilders\TestBuilder;
+use App\Admin\PageBuilders\VestiPageBuilder;
+use App\Admin\PageBuilders\ProgramiObukePageBuilder;
+use App\Admin\PageBuilders\UslugePageBuilder;
+use App\Admin\PageBuilders\PravaPageBuilder;
+use App\Admin\PageBuilders\SluzbePageBuilder;
+use App\Admin\PageBuilders\ObrasciPageBuilder;
+use App\Admin\PageBuilders\NasiKorisniciPageBuilder;
 use App\Controllers\AuthController;
+use App\Models\Content;
 use App\Models\Text;
 use App\Models\Event;
 use App\Models\Gallery;
@@ -47,7 +58,7 @@ class PageExporter
     {
         foreach ([$this->baseDir, $this->compDir, $this->pagesDir] as $dir) {
             if (!is_dir($dir)) {
-                mkdir($dir, 0755, true);
+                mkdir($dir, 0775, true);
             }
         }
     }
@@ -433,7 +444,7 @@ class PageExporter
                 $dirPath = dirname($fullPath);
 
                 if (!is_dir($dirPath)) {
-                    mkdir($dirPath, 0755, true);
+                    mkdir($dirPath, 0775, true);
                 }
 
                 // Decode HTML entities and fix PHP tags
@@ -460,10 +471,55 @@ class PageExporter
         $indexContent = $this->generateIndexHeader();
         $indexContent .= $this->generateIndexBody();
         file_put_contents("{$this->baseDir}/index.php", $indexContent);
+        if (!empty($this->data['css'])) {
+            $css = "\n" . htmlspecialchars($this->data['css'], ENT_QUOTES) . "\n";
+        }
+
+        file_put_contents("{$this->baseDir}/commonStyle.css", $css ?? '');
+        if (!empty($this->data['js'])) {
+            $jsCode = preg_replace('/<\/?script\b[^>]*>/i', '', $this->data['js']);
+            $jsCode = preg_replace('/,(\s*[\]}])/m', '$1', $jsCode);
+            $jsCode = trim($jsCode);
+
+            $jsFilePath = "{$this->baseDir}/commonScript.js";
+            if (!empty($jsCode)) {
+                file_put_contents($jsFilePath, $jsCode);
+            }
+        }
+
     }
 
     private function generateIndexHeader(): string
     {
+        $phpString = '';
+
+        $jsonDir = __DIR__ . '/../../public/assets/data/structure.json';
+        $jsonData = json_decode(file_get_contents($jsonDir), true);
+
+        $structure = $jsonData[0] ?? [];
+        $structureLower = [];
+        foreach ($structure as $k => $v) {
+            $structureLower[strtolower($k)] = $v;
+        }
+
+        foreach ($this->data['ids'] as $id) {
+            $idLower = strtolower($id);
+            $key = $idLower;
+
+            if ($idLower === 'events') {
+                $key = 'dogadjaji';
+            }
+
+            if (isset($structureLower[$key])) {
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$key', '', 0, 3, null, \$locale)['items'];\n";
+                $phpString .= "\$$id = HashMapTransformer::transform(\$$id" . "_raw, \$locale);\n\n";
+            }
+
+            error_log("Generated PHP for id '$id': " . $phpString);
+        }
+
+
+
         $header = <<<'PHP'
     <?php
     session_start();
@@ -481,9 +537,7 @@ class PageExporter
     // Load dynamic texts
     $textModel = new Text();
     $dynamicText = $textModel->getDynamicText($locale);
-    $events_raw = (new Content())->fetchListData('dogadjaji', '', 0, 3, null, $locale)['items'];
-    $events = HashMapTransformer::transform($events_raw,$locale);
-    $groupedPages = PageLoader::getGroupedStaticPages();
+    {{dynamicLandigPageElements}}
 
     [$images, $totalEvents] = (new Gallery)->list();
     ?>
@@ -494,14 +548,13 @@ class PageExporter
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exported Page</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+        <link href="/exportedPages/commonStyle.css" rel="stylesheet" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
     PHP;
 
-        if (!empty($this->data['css'])) {
-            $header .= "\n" . htmlspecialchars($this->data['css'], ENT_QUOTES) . "\n";
-        }
-
+        $header = str_replace('{{dynamicLandigPageElements}}', $phpString, $header);
         $header .= '</style>
         </head>
         <div class="min-h-screen flex flex-col">';
@@ -529,9 +582,8 @@ class PageExporter
             $content .= "\n<?php require_once __DIR__ . '/landingPageComponents/{$this->footerPath}'; ?>";
         }
 
-        if (!empty($this->data['js'])) {
-            $content .= $this->data['js'];
-        }
+        $content .= '<script src="/exportedPages/commonScript.js"></script>' . "\n";
+
 
         $content .= "\n</div>\n</body>\n</html>";
 
@@ -548,14 +600,17 @@ class PageExporter
                 return new ContactPageBuilder($name, $this->data);
             case 'dokumenti':
                 return new DocumentsPageBuilder($name, $this->data);
+            case 'događaji':
             case 'dogadjaji':
                 return new EventsPageBuilder($name);
             case 'misija':
                 return new MissionPageBuilder($name, $this->data);
+            case 'cilj':
+                return new GoalPageBulder($name, $this->data);
             case 'predstave':
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
-                return new DynamicPageBuilder('Vesti');
+                return new VestiPageBuilder('Vesti');
             case 'naucni-klub':
                 return new NaucniKlubPageBuilder('NaucniKlub');
             case 'vrtici':
@@ -566,6 +621,24 @@ class PageExporter
                 return new DynamicPageBuilder('Projekti');
             case 'obavestenja-roditelji':
                 return new DynamicPageBuilder('ObavestenjaRoditelji');
+            case 'primer':
+                return new ContactPageBuilder($name, $this->data);
+            case 'zaposleni':
+                return new EmployeesPageBuilder($name, $this->data);
+            case 'programi-obuke':
+                return new ProgramiObukePageBuilder('ProgramiObuke');
+            case 'usluge':
+                return new UslugePageBuilder('Usluge');
+            case 'prava':
+                return new PravaPageBuilder('Prava');
+            case 'sluzbe':
+                return new SluzbePageBuilder('Sluzbe');
+            case 'obrasci':
+                return new ObrasciPageBuilder('Obrasci');
+            case 'nasi-korisnici':
+                return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
+            case 'test123':
+                return new TestBuilder('Test', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -573,6 +646,7 @@ class PageExporter
 
     private function determinePageType(string $name): string
     {
+        error_log("nameL:" . $name);
         $name = strtolower($name);
         if (strpos($name, 'galerija') !== false) {
             return 'galerija';
@@ -599,7 +673,28 @@ class PageExporter
             return 'projekti';
         } elseif (strpos($name, 'obavestenja-roditelji') !== false) {
             return 'obavestenja-roditelji';
-        } 
+        } elseif (strpos($name, 'primer') !== false) {
+            return 'primer';
+        } elseif (strpos($name, 'cilj') !== false) {
+            return 'cilj';
+        } elseif (strpos($name, 'dogadaji') !== false) {
+            return 'dogadjaji';
+        } elseif (strpos($name, 'programi-obuke') !== false || strpos($name, 'programi obuke') !== false) {
+            return 'programi-obuke';
+        } elseif (strpos($name, 'usluge') !== false) {
+            return 'usluge';
+        } elseif (strpos($name, 'prava') !== false) {
+            return 'prava';
+        } elseif (strpos($name, 'sluzbe') !== false || strpos($name, 'službe') !== false || strpos($name, 'slube') !== false) {
+            return 'sluzbe';
+        } elseif (strpos($name, 'obrasci') !== false) {
+            return 'obrasci';
+        } elseif (strpos($name, 'nasi-korisnici') !== false || strpos($name, 'naši korisnici') !== false || strpos($name, 'nai-korisnici') !== false) {
+            return 'nasi-korisnici';
+        } elseif (strpos($name, 'test123') !== false) {
+            return 'test123';
+        }
+
 
         return 'basic';
     }
@@ -614,7 +709,7 @@ class PageExporter
         $fullPath = $parentPath !== '' ? $parentPath . '/' . $href : $href;
 
         if (empty($node['elements']) || !is_array($node['elements'])) {
-            $pageType = $this->determinePageType($name);
+            $pageType = $this->determinePageType($slug);  // Use slug instead of name
             $pageBuilder = $this->getPageBuilder($pageType, $name);
             $content = $pageBuilder->buildPage();
 
@@ -645,13 +740,13 @@ class PageExporter
     }
     public function exportSinglePage(): void
     {
+        error_log("Starting single page export");
         if (!isset($this->data['html'])) {
             throw new \InvalidArgumentException("HTML content is required");
         }
 
         $html = $this->data['html'];
 
-        // Load DOM to isolate <main>
         $dom = new \DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -663,54 +758,66 @@ class PageExporter
         if (!$mainNode) {
             throw new \RuntimeException("No <main> element found in HTML");
         }
-        $page = $this->determinePageType($this->data['cmp']);
-        $builder = $this->getPageBuilder($page, $page);
-        // Extract <main> inner HTML
+
+        $outsideSections = $xpath->query('//section[not(ancestor::main)]');
+        $toMove = [];
+        foreach ($outsideSections as $section) {
+            $toMove[] = $section;
+        }
+        foreach ($toMove as $section) {
+            $mainNode->appendChild($section);
+        }
+
         $innerHTML = '';
         foreach ($mainNode->childNodes as $child) {
             $innerHTML .= $dom->saveHTML($child);
         }
 
-        // Process content into dynamic text placeholders
-        // pageSlug can be something like "single-page" or from $this->data['cmp']
+        $page = $this->determinePageType($this->data['cmp']);
+        $builder = $this->getPageBuilder($page, $page);
+
         $pageSlug = $this->data['cmp'] ?? 'single-page';
         error_log("Processing single page with slug: $pageSlug");
         $processedContent = $this->processContent($innerHTML, $pageSlug);
+
         $wrappedContent = <<<HTML
-        <main class="min-h-screen pt-24 flex-grow">
-        $processedContent
-        </main>
-        HTML;
-        // Ensure export directory exists
+<main class="min-h-screen pt-24 flex-grow">
+$processedContent
+</main>
+HTML;
+
         $directory = __DIR__ . '/../../public/exportedPages/pages/';
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
-        $baseCss = <<<CSS
-            .dropdown:hover .dropdown-menu {
-                display: block;
-            }
 
-            .dropdown-menu {
-                display: none;
-                position: absolute;
-                background-color: white;
-                min-width: 200px;
-                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-                z-index: 1;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            CSS;
+        $baseCss = <<<CSS
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+CSS;
 
         $datacss = $this->data['css'] ?? '';
+        error_log("Data CSS: " . $datacss);
         $builder->setCss($baseCss . "\n" . $datacss);
 
         $filePath = $directory . $pageSlug . '.php';
         $builder->setHtml($wrappedContent);
-        error_log("Final HTML content: " . $builder->buildPage());
-        // Save processed content
-        $success = file_put_contents($filePath, $builder->buildPage());
+        $finalPage = $builder->buildPage();
+        error_log("Final HTML content: " . $finalPage);
+
+        $success = file_put_contents($filePath, $finalPage);
 
         if ($success === false) {
             throw new \RuntimeException("Failed to write file: $filePath");
@@ -748,7 +855,7 @@ class PageExporter
 
         $dataDir = dirname(__DIR__) . '/../public/assets/data';
         if (!is_dir($dataDir)) {
-            mkdir($dataDir, 0755, true);
+            mkdir($dataDir, 0775, true);
         }
 
         $pagesJsonPath = "$dataDir/pages.json";

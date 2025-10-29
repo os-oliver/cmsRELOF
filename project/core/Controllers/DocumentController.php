@@ -27,7 +27,7 @@ class DocumentController
         $uploadDir = dirname(__DIR__) . '/../public/uploads/documents/';
 
         if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
+            mkdir($uploadDir, 0775, true);
         }
         error_log(message: "fajl:" . $file);
 
