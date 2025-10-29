@@ -15,6 +15,7 @@ use App\Admin\PageBuilders\PravaPageBuilder;
 use App\Admin\PageBuilders\SluzbePageBuilder;
 use App\Admin\PageBuilders\ObrasciPageBuilder;
 use App\Admin\PageBuilders\NasiKorisniciPageBuilder;
+use App\Admin\PageBuilders\DestinacijePageBuilder;
 use App\Controllers\AuthController;
 use App\Models\Content;
 use App\Models\Text;
@@ -627,6 +628,16 @@ class PageExporter
                 return new ObrasciPageBuilder('Obrasci');
             case 'nasi-korisnici':
                 return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
+            case 'destinacije':
+                return new DestinacijePageBuilder('Destinacije');
+            case 'manifestacije':
+                return new DynamicPageBuilder('Manifestacije');
+            case 'smestaj':
+                return new DynamicPageBuilder('Smestaj');
+            case 'aktivnosti':
+                return new DynamicPageBuilder('Aktivnosti');
+            case 'gastronomija':
+                return new DynamicPageBuilder('Gastronomija');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -671,7 +682,18 @@ class PageExporter
             return 'obrasci';
         } elseif (strpos($name, 'nasi-korisnici') !== false || strpos($name, 'naši korisnici') !== false || strpos($name, 'nai-korisnici') !== false) {
             return 'nasi-korisnici';
+        } elseif (strpos($name, 'destinacije') !== false) {
+            return 'destinacije';
+        } elseif (strpos($name, 'manifestacije') !== false) {
+            return 'manifestacije';
+        } elseif (strpos($name, 'smestaj') !== false) {
+            return 'smestaj';
+        } elseif (strpos($name, 'aktivnosti') !== false) {
+            return 'aktivnosti';
+        } elseif (strpos($name, 'gastronomija') !== false) {
+            return 'gastronomija';
         }
+
 
 
         return 'basic';
