@@ -1,169 +1,284 @@
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
 
+<!-- ===== HEAD (Tourism identity preserved, behaviors from example) ===== -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Turizam Regija | Otkrijte Našu Prirodnu Baštinu</title>
+
+  <!-- Tailwind + Alpine (optional) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+
+  <!-- Fonts (tourism look) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for icons used in nav -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
   <style>
-    body {
-      font-family: "Inter", sans-serif;
+    body { font-family: "Inter", sans-serif; }
+    .hero-title { font-family: "Playfair Display", serif; }
+
+    /* ========== Behaviors & utilities from example, recolored for emerald/teal ========== */
+    .nav-link::after { content:''; display:block; width:0; height:3px; background:linear-gradient(to right,#10b981,#0ea5e9); transition:width .3s; }
+    .nav-link:hover::after { width:100%; }
+
+    .dropdown:hover .dropdown-menu { display:block; }
+    .dropdown-menu {
+      display:none; position:absolute; background:#fff; min-width:200px; box-shadow:0 8px 16px rgba(0,0,0,.1);
+      z-index:50; border-radius:8px; overflow:hidden;
     }
+    .dropdown-item { padding:12px 16px; display:block; color:#111827; transition:all .2s; border-left:3px solid transparent; }
+    .dropdown-item:hover { background:#f3f4f6; border-left:3px solid #10b981; }
 
-    .hero-title {
-      font-family: "Playfair Display", serif;
-    }
+    /* Off-canvas mobile menu */
+    #mobileMenuPanel { transform: translateX(100%); transition: transform .35s cubic-bezier(.77,0,.175,1); }
+    .hamburger span { transition: all .3s ease; }
+    .hamburger.active span:nth-child(1){ transform: rotate(45deg) translate(6px,6px); }
+    .hamburger.active span:nth-child(2){ opacity:0; }
+    .hamburger.active span:nth-child(3){ transform: rotate(-45deg) translate(5px,-5px); }
 
-    .clip-diagonal {
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    }
-
-    .clip-shape-1 {
-      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 85%);
-    }
-
-    .clip-shape-2 {
-      clip-path: polygon(30% 0%,
-          70% 0%,
-          100% 30%,
-          100% 70%,
-          70% 100%,
-          30% 100%,
-          0% 70%,
-          0% 30%);
-    }
-
-    .floating {
-      animation: floating 3s ease-in-out infinite;
-    }
-
-    @keyframes floating {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-20px);
-      }
-    }
-
-    .search-glow:focus-within {
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
-    }
+    /* Search popover animation */
+    #searchInputContainer { transition: opacity .2s ease, transform .2s ease; transform: translateY(-4px); }
+    #searchInputContainer.show { opacity:1 !important; transform: translateY(0); }
   </style>
 </head>
 
 <body class="bg-gray-50">
-  <!-- Enhanced Navigation Bar -->
-  <header>
-    <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-md transition-all duration-300">
-      <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
-          <!-- Logo -->
-          <a href="#" class="flex items-center gap-3">
-            <div
-              class="w-12 h-12 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center">
-              <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xl font-bold text-gray-900">Turizam Regija</div>
-              <div class="text-xs text-gray-600">Turistička Organizacija</div>
-            </div>
-          </a>
 
-          <!-- Desktop Navigation -->
-          <div class="hidden lg:flex items-center space-x-1">
-            <a href="#destinations"
-              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Destinacije</a>
-            <a href="#events"
-              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Manifestacije</a>
-            <a href="#accommodation"
-              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Smeštaj</a>
-            <a href="#activities"
-              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Aktivnosti</a>
-            <a href="#gastronomy"
-              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Gastronomija</a>
-            <a href="#info"
-              class="px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition font-medium">Info
-              Centar</a>
-          </div>
-
-          <!-- Right Side Actions -->
-          <div class="hidden lg:flex items-center gap-3">
-
-            <select
-              class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
-              <option>SR</option>
-              <option>EN</option>
-              <option>DE</option>
-            </select>
-            <a href="#contact"
-              class="px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-lg transition font-medium shadow-md">
-              Kontakt
-            </a>
-          </div>
-
-          <!-- Mobile menu button -->
-          <button id="mobileBtn" class="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg">
-            <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
+  <!-- ===== Mobile Offcanvas (single instance, like example) ===== -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden hidden">
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50"></div>
+    <div id="mobileMenuPanel" class="fixed top-0 right-0 h-full w-80 max-w-full bg-white shadow-xl">
+      <div class="p-6 text-gray-800">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-xl font-semibold">Meni</h2>
+          <button id="closeMobileMenu" class="text-gray-700 hover:text-gray-900">
+            <i class="fas fa-times text-xl"></i>
           </button>
         </div>
-
-        <!-- Search Dropdown -->
-        <div id="searchDropdown" class="hidden py-4 border-t border-gray-200">
-          <div class="max-w-2xl mx-auto">
-            <div class="relative rounded-xl bg-gray-50">
-              <input type="text" placeholder="Pretražite destinacije, smeštaj, manifestacije..."
-                class="w-full px-6 py-4 pr-12 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:outline-none text-gray-900">
-              <button
-                class="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-              </button>
-            </div>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="text-sm text-gray-600">Popularne pretrage:</span>
-              <a href="#"
-                class="text-sm px-3 py-1 bg-white rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition">Nacionalni
-                parkovi</a>
-              <a href="#"
-                class="text-sm px-3 py-1 bg-white rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition">Rafting</a>
-              <a href="#"
-                class="text-sm px-3 py-1 bg-white rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition">Spa
-                & Wellness</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden lg:hidden py-4 border-t border-gray-200">
-          <div class="flex flex-col space-y-2">
-            <a href="#destinations" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Destinacije</a>
-            <a href="#events" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Manifestacije</a>
-            <a href="#accommodation" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Smeštaj</a>
-            <a href="#activities" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Aktivnosti</a>
-            <a href="#gastronomy" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Gastronomija</a>
-            <a href="#info" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">Info Centar</a>
-            <a href="#contact" class="px-4 py-3 bg-emerald-600 text-white text-center rounded-lg">Kontakt</a>
-          </div>
-        </div>
+        <!-- Mobile nav (keeps tourism items) -->
+        <nav class="space-y-2">
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition hover:bg-gray-50">
+            <i class="fas fa-map-marker-alt mr-3 text-emerald-600"></i>Destinacije
+          </a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition hover:bg-gray-50">
+            <i class="fas fa-calendar-alt mr-3 text-emerald-600"></i>Manifestacije
+          </a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition hover:bg-gray-50">
+            <i class="fas fa-bed mr-3 text-emerald-600"></i>Smeštaj
+          </a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition hover:bg-gray-50">
+            <i class="fas fa-person-hiking mr-3 text-emerald-600"></i>Aktivnosti
+          </a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition hover:bg-gray-50">
+            <i class="fas fa-utensils mr-3 text-emerald-600"></i>Gastronomija
+          </a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition hover:bg-gray-50">
+            <i class="fas fa-info-circle mr-3 text-emerald-600"></i>Kontakt
+          </a>
+          <a href="#" class="block py-3 px-4 bg-emerald-600 text-white text-center rounded-lg hover:bg-emerald-700 transition">Kontakt</a>
+        </nav>
       </div>
-    </nav>
+    </div>
+  </div>
+
+  <!-- Font size button (A+) -->
+  <button id="increaseFontBtn"
+          class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-5 rounded-full shadow-lg transition"
+          aria-label="Povećaj font">A+</button>
+
+  <!-- ===== Sticky Header (tourism visuals, example behaviors) ===== -->
+  <header class="fixed w-full z-30 transition-all duration-300 py-3 bg-white/95 backdrop-blur-md">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center">
+          <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div class="hidden sm:block">
+          <div class="text-xl font-bold text-gray-900">Turizam Regija</div>
+          <div class="text-xs text-gray-600">Turistička Organizacija</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation (keeps your items) -->
+      <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-6 text-gray-700">
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Destinacije</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Manifestacije</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Smeštaj</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Aktivnosti</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Gastronomija</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Kontakt</a>
+
+        <!-- Language dropdown (PHP, like example) -->
+        <?php
+          if (isset($_GET['locale'])) {
+              $_SESSION['locale'] = $_GET['locale'];
+          }
+          $locale = $_SESSION['locale'] ?? 'sr';
+
+          $languages = [
+              'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+              'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+              'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+          ];
+
+          if (!isset($languages[$locale])) {
+              $locale = 'sr';
+          }
+          ?>
+          <div class="dropdown nonPage relative group ">
+              <button
+                  class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
+                  <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
+                  <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+                  <i
+                      class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+              </button>
+              <div
+                  class="dropdown-menu absolute top-full right-0  min-w-max bg-paper rounded-xl shadow-2xl border border-gray-100 z-50 py-2 backdrop-blur-sm">
+                  <?php foreach ($languages as $key => $lang): ?>
+                      <a href="?locale=<?= $key ?>"
+                          class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                          <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                          <span class="font-medium"><?= $lang['label'] ?></span>
+                      </a>
+                  <?php endforeach; ?>
+              </div>
+          </div>
+
+      <!-- Right: Search button & Hamburger -->
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <!-- Search icon that opens small popover like example -->
+        <div class="relative">
+          <button id="searchButton" class="text-gray-700 hover:text-gray-900 p-2" aria-label="Search">
+            <i class="fas fa-search"></i>
+          </button>
+          <div id="searchInputContainer"
+               class="absolute right-0 top-full mt-2 opacity-0 hidden z-50 min-w-[300px] bg-white rounded-md shadow-lg border border-gray-200 overflow-hidden">
+            <form id="searchForm" class="flex items-center w-full p-2" action="/pretraga" method="GET">
+              <input id="searchInput" type="text" name="q" placeholder="Pretražite destinacije, smeštaj, manifestacije…"
+                     class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-3 py-2 placeholder-gray-400" required />
+              <button type="submit" class="p-2 w-8 h-8 flex items-center justify-center" aria-label="Submit search">
+                <i class="fas fa-search text-sm"></i>
+              </button>
+              <button type="button" id="closeSearch" class="p-2 w-8 h-8 flex items-center justify-center" aria-label="Clear">
+                <i class="fas fa-times text-sm"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="hamburger" class="hamburger lg:hidden text-gray-800 w-8 h-8 flex flex-col justify-center space-y-1 p-1">
+          <span class="block w-6 h-0.5 bg-gray-900 rounded"></span>
+          <span class="block w-6 h-0.5 bg-gray-900 rounded"></span>
+          <span class="block w-6 h-0.5 bg-gray-900 rounded"></span>
+        </button>
+      </div>
+    </div>
   </header>
+
+  <!-- ===== Header Scripts (tiny, matches example behaviors) ===== -->
+  <script>
+    // sticky/shrink effect like example
+    (function(){
+      const header = document.querySelector('header');
+      const onScroll = () => {
+        if (window.scrollY > 50) {
+          header.classList.add('bg-white','shadow-sm');
+          header.classList.remove('bg-white/95');
+        } else {
+          header.classList.remove('bg-white','shadow-sm');
+          header.classList.add('bg-white/95');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // Search popover behavior (open/close + focus)
+    (function(){
+      const btn = document.getElementById('searchButton');
+      const box = document.getElementById('searchInputContainer');
+      const input = document.getElementById('searchInput');
+      const closeBtn = document.getElementById('closeSearch');
+
+      function openBox(){
+        if (!box) return;
+        box.classList.remove('hidden');
+        requestAnimationFrame(()=> {
+          box.classList.add('show');
+          box.classList.remove('opacity-0');
+          setTimeout(()=> input && input.focus(), 80);
+        });
+      }
+      function closeBox(){
+        if (!box) return;
+        box.classList.add('opacity-0');
+        box.classList.remove('show');
+        setTimeout(()=> box.classList.add('hidden'), 180);
+      }
+      if (btn) btn.addEventListener('click', (e)=>{ e.stopPropagation(); openBox(); });
+      if (closeBtn) closeBtn.addEventListener('click', closeBox);
+      document.addEventListener('click', (e)=>{
+        if (!box) return;
+        if (!box.contains(e.target) && !btn.contains(e.target)) closeBox();
+      });
+    })();
+
+    // Mobile off-canvas open/close
+    (function(){
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const panel = document.getElementById('mobileMenuPanel');
+      const overlay = document.getElementById('mobileMenuOverlay');
+      const closeBtn = document.getElementById('closeMobileMenu');
+
+      function openMenu(){
+        mobileMenu.classList.remove('hidden');
+        requestAnimationFrame(()=> {
+          panel.style.transform = 'translateX(0)';
+          hamburger.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+      function closeMenu(){
+        panel.style.transform = 'translateX(100%)';
+        hamburger.classList.remove('active');
+        setTimeout(()=> mobileMenu.classList.add('hidden'), 300);
+        document.body.style.overflow = '';
+      }
+      if (hamburger) hamburger.addEventListener('click', (e)=>{ e.stopPropagation(); openMenu(); });
+      if (overlay) overlay.addEventListener('click', closeMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+      // close on Esc
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) closeMenu(); });
+      // close on link click
+      document.querySelectorAll('#mobileMenu nav a').forEach(a=> a.addEventListener('click', ()=> setTimeout(closeMenu, 120)));
+      // close if resized to desktop
+      window.addEventListener('resize', ()=> { if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) closeMenu(); });
+    })();
+
+    // A+ button (increase/decrease cycle like example)
+    (function(){
+      const btn = document.getElementById('increaseFontBtn');
+      if (!btn) return;
+      let currentSize = 16, step = 2, maxSteps = 3, count = 0, increasing = true;
+      btn.addEventListener('click', () => {
+        if (increasing) { currentSize += step; count++; if (count === maxSteps) { increasing = false; btn.textContent = 'A-'; } }
+        else { currentSize -= step; count--; if (count === 0) { increasing = true; btn.textContent = 'A+'; } }
+        document.body.style.fontSize = currentSize + 'px';
+      });
+    })();
+  </script>
+
   <!-- Hero Section with Geometric Shapes and Search -->
   <section class="relative pt-20 overflow-hidden">
     <!-- Full-screen Background Image with Overlay -->
@@ -390,16 +505,16 @@
           <h4 class="text-lg font-semibold mb-4">Brzi Linkovi</h4>
           <ul class="space-y-2">
             <li>
-              <a href="#destinations" class="text-gray-400 hover:text-emerald-400 transition">Destinacije</a>
+              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Destinacije</a>
             </li>
             <li>
-              <a href="#events" class="text-gray-400 hover:text-emerald-400 transition">Manifestacije</a>
+              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Manifestacije</a>
             </li>
             <li>
-              <a href="#accommodation" class="text-gray-400 hover:text-emerald-400 transition">Smeštaj</a>
+              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Smeštaj</a>
             </li>
             <li>
-              <a href="#gastronomy" class="text-gray-400 hover:text-emerald-400 transition">Gastronomija</a>
+              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Gastronomija</a>
             </li>
           </ul>
         </div>
@@ -410,7 +525,7 @@
               <a href="#" class="text-gray-400 hover:text-emerald-400 transition">O Nama</a>
             </li>
             <li>
-              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Info Centar</a>
+              <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Kontakt</a>
             </li>
             <li>
               <a href="#" class="text-gray-400 hover:text-emerald-400 transition">Turistički Vodič</a>
