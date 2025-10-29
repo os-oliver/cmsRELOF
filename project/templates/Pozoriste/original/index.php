@@ -434,15 +434,19 @@
                 </div>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
+                    <span class="hidden xl:inline">Ansambl</span>
+                </a>
+                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
                     <span class="hidden xl:inline">Predstave</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
-                    <span class="hidden xl:inline">Vesti</span>
+                    <span class="hidden xl:inline">Repertoar</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
-                    <span class="hidden xl:inline">Repertoar</span>
+                    <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-images mr-2 text-primarybutton"></i>

@@ -219,6 +219,81 @@
           }
         }
       ]
-    }
+    },
+    "Ansambl": {
+    "sr": "Ansambl",
+    "en": "Ensemble",
+    "sr-Cyrl": "Ансамбл",
+    "icon": "fas fa-users",
+    "categories": [ 
+          "Glumac/Glumica",
+          "Reditelj",
+          "Dramaturg",
+          "Scenograf",
+          "Kostimograf",
+          "Koreograf",
+          "Kompozitor",
+          "Tehnička ekipa"
+        ],
+    "fields": [
+      {
+        "name": "imePrezime",
+        "type": "text",
+        "label": {
+          "sr": "Ime i prezime",
+          "en": "Full name",
+          "sr-Cyrl": "Име и презиме"
+        },
+        "required": true
+      },
+      {
+        "name": "uloga",
+        "type": "categories",
+        "label": {
+          "sr": "Uloga / Zvanje",
+          "en": "Role / Position",
+          "sr-Cyrl": "Улога / Звање"
+        },
+        "required": true
+      },
+      {
+        "name": "kratkaBio",
+        "type": "textarea",
+        "label": {
+          "sr": "Kratka biografija",
+          "en": "Short bio",
+          "sr-Cyrl": "Кратка биографија"
+        }
+      },
+      {
+        "name": "clanOd",
+        "type": "number",
+        "label": {
+          "sr": "Član od (godina)",
+          "en": "Member since (year)",
+          "sr-Cyrl": "Члан од (година)"
+        }
+      },
+      {
+        "name": "kontakt",
+        "type": "text",
+        "label": {
+          "sr": "Kontakt / Linkovi",
+          "en": "Contact / Links",
+          "sr-Cyrl": "Контакт / Линкови"
+        }
+      },
+      {
+        "name": "slika",
+        "type": "file",
+        "label": {
+          "sr": "Fotografija člana",
+          "en": "Member photo",
+          "sr-Cyrl": "Фотографија члана"
+        }
+      }
+    ]
+  }
+
   }
 ]

@@ -630,6 +630,8 @@ class PageExporter
                 return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
             case 'repertoar':
                 return new RepertoarPageBuilder('Repertoar');
+            case 'ansambl':
+                return new DynamicPageBuilder('Ansambl');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -676,6 +678,8 @@ class PageExporter
             return 'nasi-korisnici';
         } elseif (strpos($name, 'repertoar') !== false) {
             return 'repertoar';
+        } elseif (strpos($name, 'ansambl') !== false) {
+            return 'ansambl';
         }
 
         return 'basic';
