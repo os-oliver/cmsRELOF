@@ -18,12 +18,41 @@
         </a>
     </div>
 
+    <?php
+    function getFileMeta($fileOrExt)
+    {
+        $ext = strtolower(pathinfo($fileOrExt, PATHINFO_EXTENSION));
+        if (!$ext) {
+            $ext = strtolower(ltrim($fileOrExt, '.'));
+        }
+        return match ($ext) {
+            'pdf' => ['icon' => 'fas fa-file-pdf', 'icon_color' => 'text-red-600', 'bg' => 'bg-red-100', 'border' => 'border-red-500'],
+            'doc', 'docx' => ['icon' => 'fas fa-file-word', 'icon_color' => 'text-blue-600', 'bg' => 'bg-blue-100', 'border' => 'border-blue-500'],
+            'xls', 'xlsx', 'csv' => ['icon' => 'fas fa-file-excel', 'icon_color' => 'text-green-600', 'bg' => 'bg-green-100', 'border' => 'border-green-500'],
+            'ppt', 'pptx' => ['icon' => 'fas fa-file-powerpoint', 'icon_color' => 'text-orange-600', 'bg' => 'bg-orange-100', 'border' => 'border-orange-500'],
+            'txt' => ['icon' => 'fas fa-file-lines', 'icon_color' => 'text-gray-600', 'bg' => 'bg-gray-100', 'border' => 'border-gray-400'],
+            'jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp' => ['icon' => 'fas fa-file-image', 'icon_color' => 'text-pink-600', 'bg' => 'bg-pink-100', 'border' => 'border-pink-500'],
+            'zip', 'rar', '7z', 'tar', 'gz' => ['icon' => 'fas fa-file-archive', 'icon_color' => 'text-yellow-700', 'bg' => 'bg-yellow-100', 'border' => 'border-yellow-500'],
+            'mp3', 'wav', 'ogg', 'm4a' => ['icon' => 'fas fa-file-audio', 'icon_color' => 'text-indigo-600', 'bg' => 'bg-indigo-100', 'border' => 'border-indigo-500'],
+            'mp4', 'mov', 'avi', 'mkv', 'webm' => ['icon' => 'fas fa-file-video', 'icon_color' => 'text-teal-600', 'bg' => 'bg-teal-100', 'border' => 'border-teal-500'],
+            default => ['icon' => 'fas fa-file-alt', 'icon_color' => 'text-gray-600', 'bg' => 'bg-gray-100', 'border' => 'border-gray-300'],
+        };
+    }
+    ?>
+
     <div class="space-y-3">
         <?php foreach ($documents as $doc): ?>
+            <?php
+            $filename = $doc['name'] ?? $doc['title'] ?? '';
+            $extInput = $doc['extension'] ?? $filename;
+            $meta = getFileMeta($extInput);
+            $dt = strtotime($doc['datetime'] ?? '');
+            $dateStr = $dt ? date('j. F Y. \u\  H:i\h', $dt) : '';
+            ?>
             <div
-                class="bg-white p-3 rounded-lg border-l-4 border-primary-500 shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-3">
-                <div class="bg-primary-100 p-2.5 rounded-lg flex-shrink-0">
-                    <i class="fas fa-file-pdf text-primary-600 text-xl"></i>
+                class="bg-white p-3 rounded-lg border-l-4 <?= $meta['border'] ?> shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-3">
+                <div class="<?= $meta['bg'] ?> p-2.5 rounded-lg flex-shrink-0">
+                    <i class="<?= $meta['icon'] ?> <?= $meta['icon_color'] ?> text-xl"></i>
                 </div>
                 <div class="flex-1 min-w-0">
                     <h4 class="font-bold text-gray-800 text-sm mb-1 truncate">
@@ -31,12 +60,12 @@
                     </h4>
                     <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-600">
                         <div class="flex items-center">
-                            <i class="far fa-folder mr-1 text-primary-500"></i>
+                            <i class="far fa-folder mr-1 <?= $meta['icon_color'] ?>"></i>
                             <span><?= htmlspecialchars($doc['name']) ?></span>
                         </div>
                         <div class="flex items-center">
-                            <i class="far fa-clock mr-1 text-primary-500"></i>
-                            <span><?= date('j. F Y. \u\  H:i\h', strtotime($doc['datetime'])); ?></span>
+                            <i class="far fa-clock mr-1 <?= $meta['icon_color'] ?>"></i>
+                            <span><?= $dateStr ?></span>
                         </div>
                     </div>
                 </div>

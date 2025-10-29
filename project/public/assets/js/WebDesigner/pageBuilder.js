@@ -21,6 +21,20 @@ import { generateNavTree } from "./modules/navigationHandler.js";
 import { setupElement } from "./modules/dynamicCodeHandler.js";
 import { megaMenu } from "./components/megaMenu.js";
 import { slider } from "./components/slider.js";
+import { table } from "./components/table.js";
+import { TableRow } from "./components/TableRow.js";
+import { table_row } from "./components/TableRow_comp.js";
+import { layout_hero } from "./components/layout_hero.js";
+import { layout_article } from "./components/layout_article.js";
+import { layout_image_left } from "./components/layout_image_left.js";
+import { layout_image_right } from "./components/layout_image_right.js";
+import { layout_cards } from "./components/layout_cards.js";
+import { layout_two_column } from "./components/layout_two_column.js";
+import { layout_timeline } from "./components/layout_timeline.js";
+import { layout_features } from "./components/layout_features.js";
+import { layout_gallery } from "./components/layout_gallery.js";
+import { layout_centered } from "./components/layout_centered.js";
+import { layout_split } from "./components/layout_split.js";
 
 // Wait for DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", async () => {
@@ -340,6 +354,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       megaMenu,
       slider,
       multiLink,
+      table,
+      layout_hero,
+      layout_article,
+      layout_image_left,
+      layout_image_right,
+      layout_cards,
+      layout_two_column,
+      layout_timeline,
+      layout_features,
+      layout_gallery,
+      layout_centered,
+      layout_split,
     };
 
     Object.entries(blocks).forEach(([name, block]) =>
