@@ -29,7 +29,7 @@ class GalleryController
         $uploadDir = dirname(__DIR__) . '/../public/uploads/gallery/';
 
         if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
+            mkdir($uploadDir, 0775, true);
         }
 
         try {

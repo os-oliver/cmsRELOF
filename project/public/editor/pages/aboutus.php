@@ -1,4 +1,5 @@
 <?php
+session_start();
 use App\Controllers\AuthController;
 use App\Models\AboutUs;
 use App\Models\Employee;
@@ -30,6 +31,7 @@ $employeeModel = new Employee();
     limit: $limit,
     offset: $offset,
     search: $search,
+    locale: $locale
 );
 $totalPages = (int) ceil($totalCount / $limit);
 
@@ -366,13 +368,15 @@ $totalPages = (int) ceil($totalCount / $limit);
             // Goal and mission saving
             document.getElementById('goal').addEventListener('click', async () => {
                 const goal = document.getElementById('cilj').value.trim();
+                const mission = document.getElementById('misija').value.trim(); // include current mission
+
                 if (!goal) return alert('<?= __("aboutus.empty_goal") ?>');
 
                 try {
                     const response = await fetch('/aboutus/1', {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ goal })
+                        body: JSON.stringify({ goal, mission }) // send both
                     });
 
                     if (!response.ok) throw new Error("<?= __("aboutus.save_error") ?>" + response.statusText);
@@ -383,15 +387,18 @@ $totalPages = (int) ceil($totalCount / $limit);
                 }
             });
 
+
             document.getElementById('mission').addEventListener('click', async () => {
+                const goal = document.getElementById('cilj').value.trim();    // include current goal
                 const mission = document.getElementById('misija').value.trim();
+
                 if (!mission) return alert('<?= __("aboutus.empty_mission") ?>');
 
                 try {
                     const response = await fetch('/aboutus/1', {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ mission })
+                        body: JSON.stringify({ goal, mission }) // send both
                     });
 
                     if (!response.ok) throw new Error('<?= __("aboutus.save_error") ?>');
@@ -401,6 +408,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                     alert('<?= __("aboutus.save_error") ?>: ' + e.message);
                 }
             });
+
 
             // Team member modal handling
             const modal = document.getElementById('teamMemberModal');

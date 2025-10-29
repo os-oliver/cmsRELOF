@@ -76,18 +76,25 @@ export function initializeEditor() {
         ],
         script: function () {
           const el = this;
-          const track = el.querySelector(".slider-track");
+          const track =
+            el.querySelector(".slider-track") ||
+            el.querySelector(".slider-wrapper");
           const items = el.querySelectorAll(".slider-item");
-          const prev = el.querySelector(".slider-prev");
-          const next = el.querySelector(".slider-next");
-          const dotsWrap = el.querySelector(".slider-dots");
+          const prev =
+            el.querySelector(".slider-prev") ||
+            el.querySelector(".slider-control.left");
+          const next =
+            el.querySelector(".slider-next") ||
+            el.querySelector(".slider-control.right");
+          const dotsWrap =
+            el.querySelector(".slider-dots") ||
+            el.querySelector(".slider-indicators");
 
           if (!track || items.length === 0) return;
 
           let idx = 0;
           const total = items.length;
 
-          // resize items responsively
           function resize() {
             const w = el.clientWidth;
             items.forEach((it) => (it.style.width = w + "px"));
@@ -97,14 +104,13 @@ export function initializeEditor() {
           resize();
           window.addEventListener("resize", resize);
 
-          // dots
           function buildDots() {
             if (!dotsWrap) return;
             dotsWrap.innerHTML = "";
             for (let i = 0; i < total; i++) {
               const d = document.createElement("button");
               d.type = "button";
-              d.className = "w-2 h-2 rounded-full bg-white/60";
+              d.className = "slider-indicator w-3 h-3 rounded-full bg-white/30";
               d.setAttribute("data-i", i);
               d.style.opacity = i === idx ? "1" : "0.6";
               d.addEventListener("click", () => goTo(i));
@@ -117,6 +123,7 @@ export function initializeEditor() {
             if (!dotsWrap) return;
             Array.from(dotsWrap.children).forEach((d, i) => {
               d.style.opacity = i === idx ? "1" : "0.6";
+              d.classList.toggle("active", i === idx);
             });
           }
 
@@ -130,21 +137,45 @@ export function initializeEditor() {
           prev && prev.addEventListener("click", () => goTo(idx - 1));
           next && next.addEventListener("click", () => goTo(idx + 1));
 
-          // cleanup
-          el._sliderCleanup = function () {
+          // expose functions to canvas window
+          if (window) {
+            window.prevSlide = () => goTo(idx - 1);
+            window.nextSlide = () => goTo(idx + 1);
+            window.goToSlide = goTo;
+          }
+
+          // handle clicking images inside slider
+          el.addEventListener("click", (e) => {
+            const overlay = e.target.closest(".slider-overlay, .slide-overlay");
+            const sliderItem = e.target.closest(".slider-item");
+            if (overlay && sliderItem) {
+              const imgEl = sliderItem.querySelector("img");
+              if (imgEl && window.editor) {
+                const imgSrc =
+                  imgEl.getAttribute("src") || imgEl.dataset?.src || "";
+                const escaped = imgSrc.replace(/"/g, '\\"');
+                const cmp =
+                  window.editor.getWrapper().find(`[src="${escaped}"]`)[0] ||
+                  window.editor
+                    .getWrapper()
+                    .find(`[attributes.data-src="${escaped}"]`)[0];
+                if (cmp) {
+                  window.editor.select(cmp);
+                  window.editor.runCommand("open-assets", { target: cmp });
+                }
+              }
+            }
+          });
+
+          el._sliderCleanup = () =>
             window.removeEventListener("resize", resize);
-          };
         },
       },
     },
 
     view: {
-      onRender({ el }) {
-        // simple preview effect (optional)
-      },
-
+      onRender({ el }) {},
       onRemove(el) {
-        if (el._previewSliderTimer) clearInterval(el._previewSliderTimer);
         if (el._sliderCleanup) el._sliderCleanup();
       },
     },
@@ -262,14 +293,11 @@ function setupLinkLogging(editor) {
   if (doc._gjs_click_logger_attached) return;
   doc._gjs_click_logger_attached = true;
 
-  // Helper to open the nav link editor and wire apply/reset handlers
   const openNavEditor = (anchorEl, comp) => {
     try {
-      // optionally open nav panel trigger
       const navBtn = document.getElementById("navbtn");
       if (navBtn) navBtn.click();
 
-      // elements
       const hrefInput = document.getElementById("linkHref");
       const staticCheckbox = document.getElementById("linkStatic");
       const applyBtn = document.getElementById("applyLink");
@@ -277,7 +305,6 @@ function setupLinkLogging(editor) {
       const deleteBtn = document.getElementById("delete");
       if (!hrefInput || !applyBtn || !resetBtn || !deleteBtn) return;
 
-      // store originals for reset
       const originalHref = (anchorEl && anchorEl.getAttribute("href")) || "";
       const originalStatic =
         (anchorEl &&
@@ -285,7 +312,6 @@ function setupLinkLogging(editor) {
             anchorEl.getAttribute("static"))) ||
         "";
 
-      // init inputs
       hrefInput.value = originalHref;
       if (staticCheckbox) {
         staticCheckbox.checked =
@@ -297,49 +323,22 @@ function setupLinkLogging(editor) {
       applyBtn.onclick = () => {
         const newHref = hrefInput.value || "";
         const isStatic = !!(staticCheckbox && staticCheckbox.checked);
-        // update GrapesJS component model if available
+
         if (comp) {
           try {
             if (typeof comp.addAttributes === "function") {
               comp.addAttributes({ href: newHref });
               if (isStatic) {
-                comp.addAttributes({ static: "true" });
-                comp.addAttributes({ movable: "false" });
+                comp.addAttributes({ static: "true", movable: "false" });
               } else if (typeof comp.removeAttributes === "function") {
                 comp.removeAttributes(["static"]);
-              } else {
-                // fallback: remove static from attributes object
-                try {
-                  const attrs =
-                    typeof comp.getAttributes === "function"
-                      ? { ...comp.getAttributes() }
-                      : { ...(comp.attributes || {}) };
-                  delete attrs.static;
-                  if (typeof comp.set === "function")
-                    comp.set("attributes", attrs);
-                } catch (e) {
-                  /* ignore fallback errors */
-                }
               }
-            } else if (typeof comp.set === "function") {
-              // fallback: replace attributes object
-              const attrs =
-                typeof comp.getAttributes === "function"
-                  ? { ...comp.getAttributes() }
-                  : { ...(comp.attributes || {}) };
-              attrs.href = newHref;
-              if (isStatic) {
-                attrs.static = "true";
-                attrs.movable = "false";
-              } else delete attrs.static;
-              comp.set("attributes", attrs);
             }
           } catch (err) {
             console.warn("Failed to update component attributes:", err);
           }
         }
 
-        // keep iframe/DOM anchor in sync (visual)
         try {
           if (anchorEl) {
             anchorEl.setAttribute("href", newHref);
@@ -348,40 +347,31 @@ function setupLinkLogging(editor) {
           }
         } catch (e) {}
 
-        // persist editor state if possible
         try {
           if (window.editor && typeof window.editor.store === "function")
             window.editor.store();
         } catch (e) {}
       };
 
-      // RESET: restore inputs and visual DOM (user must still click Apply to persist)
-      // Delete link handler
       deleteBtn.onclick = () => {
         if (comp) {
           try {
-            console.log("Removing component", comp);
-            // Remove component from editor
             comp.remove();
           } catch (err) {
             console.warn("Failed to remove component:", err);
           }
         }
 
-        // Remove the anchor from DOM
         if (anchorEl && anchorEl.parentNode) {
-          // Keep the content inside the anchor
           while (anchorEl.firstChild) {
             anchorEl.parentNode.insertBefore(anchorEl.firstChild, anchorEl);
           }
           anchorEl.parentNode.removeChild(anchorEl);
         }
 
-        // Close nav editor if open
         const navBtn = document.getElementById("navbtn");
         if (navBtn) navBtn.click();
 
-        // Store editor state
         try {
           if (window.editor && typeof window.editor.store === "function") {
             window.editor.store();
@@ -398,24 +388,11 @@ function setupLinkLogging(editor) {
             originalStatic === "yes";
 
         try {
-          if (comp) {
-            // restore model attr if possible
-            if (typeof comp.addAttributes === "function") {
-              comp.addAttributes({ href: originalHref });
-              if (originalStatic)
-                comp.addAttributes({ static: originalStatic });
-              else if (typeof comp.removeAttributes === "function")
-                comp.removeAttributes(["static"]);
-            } else if (typeof comp.set === "function") {
-              const attrs =
-                typeof comp.getAttributes === "function"
-                  ? { ...comp.getAttributes() }
-                  : { ...(comp.attributes || {}) };
-              attrs.href = originalHref;
-              if (originalStatic) attrs.static = originalStatic;
-              else delete attrs.static;
-              comp.set("attributes", attrs);
-            }
+          if (comp && typeof comp.addAttributes === "function") {
+            comp.addAttributes({ href: originalHref });
+            if (originalStatic) comp.addAttributes({ static: originalStatic });
+            else if (typeof comp.removeAttributes === "function")
+              comp.removeAttributes(["static"]);
           }
 
           if (anchorEl) {
@@ -431,55 +408,101 @@ function setupLinkLogging(editor) {
     }
   };
 
-  // Intercept clicks inside the canvas, find anchors and open the editor
   doc.addEventListener(
     "click",
     (e) => {
       try {
         const wrapper = editor.DomComponents.getWrapper();
-
-        const el = e.target;
+        let el = e.target;
         if (!el) return;
-        console.log("Clicked element:", el);
-        console.log("ClassList:", el.classList.value);
-        console.log(
-          "Has slide-overlay?",
-          el.classList.contains("slide-overlay")
+        if (el.nodeType === 3) el = el.parentElement;
+
+        // 1. PRIORITET: Slider kontrole (prev/next/dots)
+        const sliderControl = el.closest(
+          ".slider-control, .slider-indicator, .slider-prev, .slider-next"
         );
-        console.log("Inside slider-item?", !!el.closest(".slider-item"));
-        console.log("Clickedfds asd:", el);
-        console.log(el.classList.contains("slider-overlay"));
-        console.log(el.classList);
-        if (
-          el.closest(".slider-item") &&
-          el.classList.contains("slide-overlay")
-        ) {
-          console.log("Clicked inside slider-item");
-          const sliderItem = el.closest(".slider-item");
-          const imgEl = sliderItem.querySelector("img");
-          console.log("Found img element:", imgEl);
-          if (imgEl) {
-            const imgCmp = editor
-              .getWrapper()
-              .find(`[src="${imgEl.getAttribute("src") || ""}"]`)[0];
-            if (imgCmp) {
-              editor.select(imgCmp);
-              editor.runCommand("open-assets", { target: imgCmp });
+        if (sliderControl) {
+          e.stopPropagation();
+          const win = editor.Canvas.getWindow
+            ? editor.Canvas.getWindow()
+            : window;
+
+          if (sliderControl.classList.contains("slider-prev")) {
+            win.prevSlide?.();
+          } else if (sliderControl.classList.contains("slider-next")) {
+            win.nextSlide?.();
+          } else if (sliderControl.classList.contains("slider-indicator")) {
+            const idx = Array.from(
+              sliderControl.parentElement.children
+            ).indexOf(sliderControl);
+            if (idx >= 0) win.goToSlide?.(idx);
+          }
+          return;
+        }
+
+        // 2. PRIORITET: Klik na slike u slider-u (overlay ili direktno na sliku)
+        const sliderItem = el.closest(".slider-item");
+        if (sliderItem) {
+          // Proveri da li je kliknuto na overlay ili sliku
+          const isOverlay =
+            el.classList.contains("slider-overlay") ||
+            el.classList.contains("slide-overlay");
+          const isImage = el.tagName && el.tagName.toLowerCase() === "img";
+
+          if (isOverlay || isImage) {
+            const imgEl = sliderItem.querySelector("img");
+            if (imgEl) {
+              const imgSrc =
+                imgEl.getAttribute("src") || imgEl.dataset?.src || "";
+              const escaped = (imgSrc || "").replace(/"/g, '\\"');
+              let imgCmp = null;
+
+              if (imgSrc) {
+                imgCmp =
+                  wrapper.find(`[src="${escaped}"]`)[0] ||
+                  wrapper.find(`[attributes.data-src="${escaped}"]`)[0] ||
+                  wrapper.find(`[src*="${escaped}"]`)[0];
+              }
+
+              if (!imgCmp) {
+                const allImgs = wrapper.find("img");
+                for (let i = 0; i < allImgs.length; i++) {
+                  const c = allImgs[i];
+                  try {
+                    const elFromComp =
+                      typeof c.getEl === "function" ? c.getEl() : c.el;
+                    if (elFromComp?.tagName?.toLowerCase() === "img") {
+                      const compSrc =
+                        elFromComp.getAttribute("src") ||
+                        elFromComp.dataset?.src ||
+                        "";
+                      if (compSrc === imgSrc) {
+                        imgCmp = c;
+                        break;
+                      }
+                    }
+                  } catch {}
+                }
+              }
+
+              if (imgCmp) {
+                editor.select(imgCmp);
+                editor.runCommand("open-assets", { target: imgCmp });
+                return;
+              }
             }
           }
         }
 
-        // If click is on an <i> (icon) element, open the icon chooser in parent doc
+        // 3. PRIORITET: Icon klikovi (ako imate icon chooser)
         if (el.tagName && el.tagName.toLowerCase() === "i") {
           try {
-            const anchorForIcon = el.closest && el.closest("a");
-            const parentDoc = window.parent && window.parent.document;
+            const anchorForIcon = el.closest("a");
+            const parentDoc = window.parent?.document;
             if (parentDoc) {
-              // find component: prefer ID, else match element node
               let comp = null;
               try {
-                const wrapper = editor.DomComponents.getWrapper();
-                const id = anchorForIcon && anchorForIcon.id;
+                const id = anchorForIcon?.id;
                 if (id) comp = wrapper.find("#" + id)[0] || null;
                 if (!comp && anchorForIcon) {
                   const all = wrapper.find();
@@ -492,43 +515,53 @@ function setupLinkLogging(editor) {
                         comp = c;
                         break;
                       }
-                    } catch (ee) {}
+                    } catch {}
                   }
                 }
-              } catch (err) {
-                comp = null;
-              }
+              } catch {}
 
-              // store the clicked icon DOM element, its nearest anchor, and the GrapesJS component (if found)
               parentDoc._gjs_icon_click_target = {
                 anchor: anchorForIcon,
                 iconEl: el,
                 comp,
-                anchorId: anchorForIcon && anchorForIcon.id,
+                anchorId: anchorForIcon?.id,
               };
+
               const chooser = parentDoc.getElementById("iconChooser");
               if (chooser) {
                 chooser.classList.remove("hidden");
                 chooser.classList.add("flex");
               }
             }
-
             return;
-          } catch (e) {
-            // ignore errors here
+          } catch (e) {}
+        }
+
+        // 4. PRIORITET: Link editor za <a> tagove
+        const anchor = el.closest("a");
+        if (!anchor) return;
+
+        let comp = null;
+        const id = anchor.id;
+        if (id) comp = wrapper.find("#" + id)[0];
+        if (!comp) {
+          const all = wrapper.find();
+          for (let i = 0; i < all.length; i++) {
+            const c = all[i];
+            try {
+              const elFromComp =
+                typeof c.getEl === "function" ? c.getEl() : c.el;
+              if (elFromComp === anchor) {
+                comp = c;
+                break;
+              }
+            } catch {}
           }
         }
 
-        const anchor = el.closest && el.closest("a");
-        if (!anchor) return;
-
-        // Prevent actual navigation
-        let comp = null;
-        const id = anchor.id;
-        comp = wrapper.find("#" + id)[0];
         openNavEditor(anchor, comp);
       } catch (err) {
-        // swallow to avoid breaking editor
+        console.error("Click handler error:", err);
       }
     },
     true
