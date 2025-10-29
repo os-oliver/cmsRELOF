@@ -685,7 +685,9 @@ class PageExporter
             return 'ansambl';
         } elseif (strpos($name, 'test123') !== false) {
             return 'test123';
-        }
+        } elseif (strpos($name, 'zaposleni') !== false) {
+            return 'zaposleni';
+        } 
 
         return 'basic';
     }
