@@ -186,7 +186,7 @@ class PageController
                 $dir = dirname($full);
                 if (!is_dir($dir)) {
                     error_log("Creating static page directory: $dir");
-                    mkdir($dir, 0755, true);
+                    mkdir($dir, 0775, true);
                 }
 
                 if (!file_exists($full)) {
@@ -216,7 +216,7 @@ class PageController
                 $dir = dirname($full);
                 if (!is_dir($dir)) {
                     error_log("Creating exported page directory: $dir");
-                    mkdir($dir, 0755, true);
+                    mkdir($dir, 0775, true);
                 }
 
                 if (!file_exists($full)) {

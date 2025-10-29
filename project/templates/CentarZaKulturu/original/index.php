@@ -11,388 +11,478 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style type="text/css">
-        .search-container {
+        :root {
+            --gallery-gap: 1.25rem;
+            --card-radius: 12px;
+            --overlay-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.0) 30%, rgba(0, 0, 0, 0.45) 100%);
+            --card-shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+            --ochre: #CC8B3C;
+            --terracotta: #C85A3E;
+            --coral: #E07856;
+            --slate: #2C3E50;
+            --royal-blue: #4A6FA5;
+            --deep-teal: #2A6B6A;
+            --velvet: #8B4789;
+            --sage: #7A9B76;
+            --crimson: #A83737;
+            --paper: #FEFAF6;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        header .flex-1 {
+            flex-grow: 1;
+        }
+
+        nav#navBarID {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 1024px) {
+            nav#navBarID {
+                justify-content: flex-start;
+            }
+        }
+
+        .nav-link {
             position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--terracotta);
+        }
+
+        .nav-item .dropdown-menu {
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .nav-item:hover .dropdown-menu {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e5e7eb;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            padding: 8px 0;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
             display: flex;
             align-items: center;
+            padding: 10px 16px;
+            color: var(--slate);
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 0.9rem;
         }
 
-        .search-input {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 0;
+        .dropdown-item:hover {
+            background: #f8f9fa;
+            color: var(--terracotta);
+            padding-left: 20px;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+            width: 16px;
+            text-align: center;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--slate);
+            margin: 4px 0;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
             opacity: 0;
-            padding: 0;
-            border: none;
         }
 
-        .search-input.open {
-            width: 200px;
-            opacity: 1;
-            padding: 0.5rem 1rem;
-            border: 1px solid #cbd5e1;
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
 
-        .mobile-dropdown-content {
+        #mobileMenu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        #mobileMenu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-submenu {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height 0.3s ease;
         }
 
-        .mobile-dropdown.active .mobile-dropdown-content {
-            max-height: 500px;
+        .mobile-submenu.active {
+            max-height: 600px;
         }
 
-        .mobile-dropdown.active .mobile-dropdown-chevron {
+        .chevron-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .chevron-icon.rotated {
             transform: rotate(180deg);
         }
 
-        @layer utilities {
-            .text-shadow {
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        #searchBox {
+            display: none;
+        }
+
+        #searchBox.active {
+            display: block;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 40;
+        }
+
+        #overlay.active {
+            display: block;
+        }
+
+        .text-shadow {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .artistic-underline {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 20"><path fill="none" stroke="%23d4a373" stroke-width="3" stroke-linecap="round" d="M2,17 C15,17 25,5 40,10 C55,15 65,3 80,8 C95,13 105,5 118,12"/></svg>') bottom center no-repeat;
+            background-size: 100% 12px;
+            padding-bottom: 12px;
+        }
+
+        .artistic-card {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+            transition: all 0.4s ease;
+        }
+
+        .artistic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        .artistic-frame {
+            position: relative;
+        }
+
+        .artistic-frame::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 2px solid #d4a373;
+            z-index: -1;
+            transform: rotate(2deg);
+        }
+
+        .artistic-frame::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid #a3b18a;
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+            z-index: 20;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #f5ebe0 0%, #d4a373 100%);
+        }
+
+        .mobile-menu .section-divider {
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%23f5ebe0"></path></svg>');
+            background-size: 100% 100px;
+        }
+
+        .mobile-menu .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
             }
 
-            .artistic-underline {
-                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 20"><path fill="none" stroke="%23d4a373" stroke-width="3" stroke-linecap="round" d="M2,17 C15,17 25,5 40,10 C55,15 65,3 80,8 C95,13 105,5 118,12"/></svg>') bottom center no-repeat;
-                background-size: 100% 12px;
-                padding-bottom: 12px;
+            50% {
+                transform: translateY(-15px);
             }
 
-            .nav-link::after {
-                content: '';
-                display: block;
-                width: 0;
-                height: 3px;
-                background: linear-gradient(to right, #d4a373, #bc6c25);
-                transition: width 0.3s;
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .mobile-menu .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
             }
 
-            .nav-link:hover::after {
-                width: 100%;
-            }
-
-            .artistic-card {
-                clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
-                transition: all 0.4s ease;
-            }
-
-            .artistic-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
-            }
-
-            .artistic-frame {
-                position: relative;
-            }
-
-            .artistic-frame::before {
-                content: '';
-                position: absolute;
-                top: -15px;
-                left: -15px;
-                right: -15px;
-                bottom: -15px;
-                border: 2px solid #d4a373;
-                z-index: -1;
-                transform: rotate(2deg);
-            }
-
-            .artistic-frame::after {
-                content: '';
-                position: absolute;
-                top: -10px;
-                left: -10px;
-                right: -10px;
-                bottom: -10px;
-                border: 2px solid #a3b18a;
-                z-index: -1;
-                transform: rotate(-1deg);
-            }
-
-            .category-badge {
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                padding: 5px 12px;
-                border-radius: 20px;
-                font-size: 0.75rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                backdrop-filter: blur(4px);
-                z-index: 20;
-            }
-
-            .hero-gradient {
-                background: linear-gradient(135deg, #f5ebe0 0%, #d4a373 100%);
-            }
-
-            .mobile-menu {
-                transform: translateX(100%);
-                transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            }
-
-            .mobile-menu.active {
-                transform: translateX(0);
-            }
-
-            .hamburger span {
-                transition: all 0.3s ease;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(6px, 6px);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
-            .section-divider {
-                height: 100px;
-                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%23f5ebe0"></path></svg>');
-                background-size: 100% 100px;
-            }
-
-            .floating {
-                animation: floating 6s ease-in-out infinite;
-            }
-
-            @keyframes floating {
-                0% {
-                    transform: translateY(0px);
-                }
-
-                50% {
-                    transform: translateY(-15px);
-                }
-
-                100% {
-                    transform: translateY(0px);
-                }
-            }
-
-            .pulse {
-                animation: pulse 2s infinite;
-            }
-
-            .dropdown:hover .dropdown-menu {
-                display: block;
-            }
-
-            .dropdown-menu {
-                display: none;
-                position: absolute;
-                background-color: white;
-                min-width: 200px;
-                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-                z-index: 1;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-
-            .dropdown-item {
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-                color: #344e41;
-                transition: all 0.3s;
-                border-left: 3px solid transparent;
-            }
-
-            .dropdown-item:hover {
-                background-color: #f9f5f0;
-                border-left: 3px solid #d4a373;
-            }
-
-            @keyframes pulse {
-                0% {
-                    transform: scale(1);
-                    opacity: 0.7;
-                }
-
-                50% {
-                    transform: scale(1.05);
-                    opacity: 1;
-                }
-
-                100% {
-                    transform: scale(1);
-                    opacity: 0.7;
-                }
-            }
-
-            .fade-in {
-                animation: fadeIn 1s ease-in;
-            }
-
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                }
-
-                to {
-                    opacity: 1;
-                }
-            }
-
-            .event-card {
-                transition: all 0.3s ease;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .event-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 5px;
-                background: linear-gradient(to right, #d4a373, #bc6c25);
-                transform: translateY(-100%);
-                transition: transform 0.3s ease;
-            }
-
-            .event-card:hover::before {
-                transform: translateY(0);
-            }
-
-            .event-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            }
-
-            .featured-card {
-                transform-style: preserve-3d;
-                transform: perspective(1000px);
-            }
-
-            .featured-card-content {
-                transform: translateZ(30px);
-            }
-
-            .gallery-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 15px;
-            }
-
-            .gallery-item {
-                aspect-ratio: 3/4;
-                overflow: hidden;
-                position: relative;
-            }
-
-            .gallery-item img {
-                transition: transform 0.5s ease;
-            }
-
-            .gallery-item:hover img {
-                transform: scale(1.1);
-            }
-
-            .gallery-item::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-
-            .gallery-item:hover::after {
+            50% {
+                transform: scale(1.05);
                 opacity: 1;
             }
 
-            .gallery-item .overlay-content {
-                position: absolute;
-                bottom: -30px;
-                left: 0;
-                right: 0;
-                padding: 15px;
-                z-index: 10;
-                transition: bottom 0.3s ease;
-                color: white;
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+
+        .mobile-menu .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
             }
 
-            .gallery-item:hover .overlay-content {
-                bottom: 0;
+            to {
+                opacity: 1;
             }
+        }
+
+        .event-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #d4a373, #bc6c25);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .featured-card-content {
+            transform: translateZ(30px);
+        }
+
+        /* Gallery styles */
+        #galleryCards.gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: var(--gallery-gap);
+            align-items: start;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--card-radius);
+            background: #f8fafc;
+            aspect-ratio: 4 / 3;
+            transition: transform .28s ease, box-shadow .28s ease;
+            will-change: transform;
+            display: block;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .6s cubic-bezier(.2, .8, .2, 1);
+            transform-origin: center center;
+        }
+
+        .gallery-item:hover,
+        .gallery-item:focus-within {
+            transform: translateY(-6px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06) rotate(0.2deg);
+        }
+
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--overlay-gradient);
+            pointer-events: none;
+            transition: opacity .35s ease;
+            opacity: 1;
+        }
+
+        .overlay-content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0.9rem 1rem;
+            transform: translateY(100%);
+            transition: transform .34s cubic-bezier(.22, .9, .3, 1), opacity .34s ease;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            z-index: 3;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.32) 60%, rgba(0, 0, 0, 0.45) 100%);
+        }
+
+        .gallery-item:hover .overlay-content,
+        .gallery-item:focus-within .overlay-content {
+            transform: translateY(0%);
+            opacity: 1;
+        }
+
+        .overlay-content h3 {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.05;
+            text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+        }
+
+        .overlay-content p {
+            margin: 0;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0.95;
+        }
+
+        .gallery-item .overlay-content * {
+            color: inherit;
+        }
+
+        @media (max-width: 639px) {
+            #galleryCards.gallery-grid {
+                gap: 0.75rem;
+            }
+
+            .gallery-item {
+                aspect-ratio: 5 / 4;
+            }
+
+            .overlay-content {
+                padding: 0.75rem;
+            }
+        }
+
+        @media (min-width: 640px) and (max-width: 1023px) {
+            #galleryCards.gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #galleryCards.gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            #galleryCards.gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .gallery-item:focus {
+            outline: 3px solid rgba(59, 130, 246, 0.18);
+            outline-offset: 4px;
+        }
+
+        /* keep dropdown display behavior for legacy .dropdown elements */
+        .dropdown:hover .dropdown-menu {
+            display: block;
         }
     </style>
 </head>
 
 <body class="bg-paper font-body text-slate min-h-screen overflow-x-hidden">
-    <!-- Enhanced Header -->
-    <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden hidden">
-        <div class="fixed inset-0 bg-black bg-opacity-50" id="mobileMenuOverlay"></div>
-        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-paper shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
-            id="mobileMenuPanel">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-xl text-white font-display font-bold text-slate">Menu</h2>
-                    <button id="closeMobileMenu" class="text-slate hover:text-terracotta transition-colors">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <nav id="navBarIDm" class="space-y-4">
-                    <a data-page="Pocetna" href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-home mr-3 text-terracotta"></i>Početna
-                    </a>
-                    <div class="mobile-dropdown">
-                        <button
-                            class="flex items-center justify-between w-full py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all"
-                            id="mobileAboutToggle">
-                            <div class="flex items-center">
-                                <i class="fas fa-info-circle mr-3 text-ochre"></i>O nama
-                            </div>
-                            <i class="fas fa-chevron-down text-sm transition-transform duration-200"
-                                id="mobileAboutIcon"></i>
-                        </button>
-                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
-                            <a data-page="Cilj" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-royal-blue"></i>Cilj
-                            </a>
-                            <a data-page="Zaposleni" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-terracotta"></i>Zaposleni
-                            </a>
-                            <a data-page="Misija" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
-                                <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
-                            </a>
-                        </div>
-                    </div>
-                    <a data-page="Dogadjaji" href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-royal-blue"></i>Dogadjaji
-                    </a>
 
-                    <a data-page="Galerija" href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-images mr-3 text-velvet"></i>Galerija
-                    </a>
-                    <a data-page="Dokumenti" href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-folder-open mr-3 text-coral"></i>Dokumenti
-                    </a>
-                    <a data-page="Kontakt" href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-address-book mr-3 text-deep-teal"></i>Kontakt
-                    </a>
-                </nav>
-            </div>
-        </div>
-    </div>
     <div>
         <button id="increaseFontBtn"
             class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"
@@ -400,186 +490,309 @@
             A+
         </button>
     </div>
-    <header
-        class="fixed w-full z-50 transition-all duration-300 py-2 sm:py-3 backdrop-blur-md shadow-lg bg-paper/95 border-b border-gray-100">
-        <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
-            <!-- Logo Section -->
-            <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="flex items-center w-full h-16 px-4 lg:px-6">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-3 flex-shrink-0">
                 <div
-                    class="artistic-frame w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-ochre via-terracotta to-coral rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-paper drop-shadow-sm" viewBox="0 0 20 20"
-                        fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
-                            clip-rule="evenodd" />
-                    </svg>
+                    class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block">
-                    <h1
-                        class="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-display text-slate font-bold tracking-wider leading-tight">
-                        KULTURNI NEXUS</h1>
-                    <p
-                        class="text-xs sm:text-xs lg:text-sm text-terracotta tracking-widest hidden md:block opacity-80 font-medium">
-                        CENTAR ZA UMETNOST I BAŠTINU</p>
+                    <div class="text-xl font-display font-bold text-[#2C3E50] leading-tight">KULTURNI NEXUS</div>
+                    <div class="text-xs text-[#C85A3E] tracking-wide hidden md:block">Centar za umetnost i baštinu</div>
                 </div>
-                <div class="block sm:hidden">
-                    <h1 class="text-base font-display text-slate font-bold tracking-wide">NEXUS</h1>
-                </div>
-            </div>
+                <div class="sm:hidden text-base font-display font-bold text-[#2C3E50]">NEXUS</div>
+            </a>
 
-            <!-- Desktop Navigation -->
-            <nav id="navBarID" class="hidden lg:flex items-center space-x-1 xl:space-x-3">
-                <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
-                    <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Početna</span>
-                </a>
+            <!-- Central Navigation -->
+            <div class="flex-1 flex justify-center">
+                <nav id="navBarID" class="hidden lg:flex items-center gap-1 flex-wrap">
+                    <a href="/"
+                        class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-home text-[#C85A3E] mr-1.5"></i>Početna
+                    </a>
 
-                <div class="dropdown relative group">
-                    <button
-                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
-                        <i
-                            class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors text-sm"></i>
-                        <span class="hidden xl:inline text-sm">O nama</span>
-                        <i
-                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
-                    </button>
-                    <div
-                        class="dropdown-menu  absolute top-full left-1/2 transform -translate-x-1/2  min-w-max max-w-xs w-auto bg-paper rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-bullseye mr-3 text-royal-blue flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Cilj</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Zaposleni</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-flag mr-3 text-deep-teal flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Misija</span>
-                        </a>
-                        <div class="border-t border-gray-200 my-2 mx-3"></div>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-history mr-3 text-ochre flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Istorija</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-users mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Tim</span>
-                        </a>
+                    <!-- Dropdown O nama -->
+                    <div class="dropdown nav-item relative">
+                        <button
+                            class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50 flex items-center">
+                            <i class="fas fa-info-circle text-[#CC8B3C] mr-1.5"></i>O nama
+                            <i class="fas fa-chevron-down text-xs ml-1.5"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/o-nama/cilj" class="dropdown-item">
+                                <i class="fas fa-bullseye text-[#4A6FA5]"></i>Cilj
+                            </a>
+                            <a href="/o-nama/misija" class="dropdown-item">
+                                <i class="fas fa-flag text-[#E07856]"></i>Misija
+                            </a>
+                            <a href="/o-nama/zaposleni" class="dropdown-item">
+                                <i class="fas fa-users text-[#2A6B6A]"></i>Zaposleni
+                            </a>
+                            <a href="/o-nama/istorijat" class="dropdown-item">
+                                <i class="fas fa-history text-[#CC8B3C]"></i>Istorijat
+                            </a>
+                            <a static="true" href="/o-nama/objekat" class="dropdown-item">
+                                <i class="fas fa-building text-[#C85A3E]"></i>Objekat
+                            </a>
+                            <div class="border-t border-gray-100 my-1 mx-3"></div>
+                            <a href="/o-nama/donacije" class="dropdown-item">
+                                <i class="fas fa-hand-holding-heart text-[#4A6FA5]"></i>Donacije
+                            </a>
+                            <a href="/o-nama/partneri" class="dropdown-item">
+                                <i class="fas fa-handshake text-[#7A9B76]"></i>Partneri
+                            </a>
+                            <a href="/o-nama/licenca" class="dropdown-item">
+                                <i class="fas fa-certificate text-[#CC8B3C]"></i>Licenca
+                            </a>
+
+                        </div>
                     </div>
-                </div>
 
-                <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
-                    <i
-                        class="fas fa-calendar-alt mr-2 text-royal-blue group-hover:text-deep-teal transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Dogadjaji</span>
-                </a>
-                <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
-                    <i class="fas fa-images mr-2 text-velvet group-hover:text-crimson transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Galerija</span>
-                </a>
-                <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-slate-50">
-                    <i
-                        class="fas fa-folder-open mr-2 text-coral group-hover:text-terracotta transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Dokumenti</span>
-                </a>
-                <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
-                    <i
-                        class="fas fa-address-book mr-2 text-deep-teal group-hover:text-sage transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Kontakt</span>
-                </a>
+                    <!-- Dropdown Događaji -->
+                    <a href="/dogadjaji"
+                        class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-calendar-alt text-[#4A6FA5] mr-3 w-5"></i>Dogadjaji
+                    </a>
 
-                <?php
-                if (isset($_GET['locale'])) {
-                    $_SESSION['locale'] = $_GET['locale'];
-                }
-                $locale = $_SESSION['locale'] ?? 'sr';
 
-                $languages = [
-                    'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
-                ];
+                    <a href="/sekcije"
+                        class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-theater-masks text-[#8B4789] mr-1.5"></i>Sekcije
+                    </a>
 
-                if (!isset($languages[$locale])) {
-                    $locale = 'sr';
-                }
+                    <a href="/projekti"
+                        class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-project-diagram text-[#CC8B3C] mr-1.5"></i>Projekti
+                    </a>
 
-                ?>
-                <div class="dropdown nonPage relative group ">
-                    <button
-                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
-                        <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
-                        <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
-                        <i
-                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
-                    </button>
-                    <div
-                        class="dropdown-menu absolute top-full right-0  min-w-max bg-paper rounded-xl shadow-2xl border border-gray-100 z-50 py-2 backdrop-blur-sm">
-                        <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>"
-                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                    <!-- Dropdown Galerija -->
+                    <div class="dropdown nav-item relative">
+                        <button
+                            class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50 flex items-center">
+                            <i class="fas fa-images text-[#8B4789] mr-1.5"></i>Galerija
+                            <i class="fas fa-chevron-down text-xs ml-1.5"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item"><i class="fas fa-camera"></i>Foto galerija</a>
+                            <a href="#" class="dropdown-item"><i class="fas fa-camera"></i>Video galerija</a>
+                        </div>
+                    </div>
+                    <a href="/dokumenti"
+                        class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-folder-open text-[#E07856] mr-1.5"></i>Dokumenti
+                    </a>
+
+
+                    <a href="/vesti"
+                        class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-newspaper text-[#4A6FA5] mr-1.5"></i>Vesti
+                    </a>
+                    <a href="/kontakt"
+                        class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-address-book text-[#2A6B6A] mr-1.5"></i>Kontakt
+                    </a>
+
+
+
+                    <?php
+                    if (isset($_GET['locale'])) {
+                        $_SESSION['locale'] = $_GET['locale'];
+                    }
+                    $locale = $_SESSION['locale'] ?? 'sr';
+
+                    $languages = [
+                        'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                        'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                        'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    ];
+
+                    if (!isset($languages[$locale])) {
+                        $locale = 'sr';
+                    }
+
+                    ?>
+                    <div class="locale dropdown nonPage relative group ">
+                        <button
+                            class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
+                            <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
+                            <span
+                                class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+                            <i
+                                class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                        </button>
+                        <div class="dropdown-menu>
+                            <?php foreach ($languages as $key => $lang): ?>
+                                <a href=" ?locale=<?= $key ?>"
+                            class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
                                 <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
                                 <span class="font-medium"><?= $lang['label'] ?></span>
-                            </a>
-                        <?php endforeach; ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
 
-            <!-- Search & Mobile Toggle -->
-            <div class="flex items-center space-x-1 sm:space-x-3">
-                <!-- Search Container -->
+            <!-- Right Actions -->
+            <div class="flex items-center gap-2">
+                <!-- Search -->
                 <div class="relative">
-                    <button id="searchButton"
-                        class="text-slate-500 hover:text-terracotta transition-all duration-200 focus:outline-none p-2 sm:p-2.5 rounded-full hover:bg-slate-50"
-                        aria-label="Search">
-                        <i class="fas fa-search text-sm sm:text-base"></i>
+                    <button id="searchToggle"
+                        class="p-2 text-[#2C3E50] hover:text-[#C85A3E] rounded-full hover:bg-gray-50 transition">
+                        <i class="fas fa-search"></i>
                     </button>
-                    <!-- Enhanced Search Input -->
-                    <div id="searchInputContainer"
-                        class="absolute right-0 top-full mt-3 hidden opacity-0 transition-all duration-300 ease-in-out z-50 min-w-[280px] sm:min-w-[320px] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden backdrop-blur-sm">
-                        <form id="searchForm" class="flex items-center w-full p-2" action="/search" method="GET">
-                            <input type="text" name="q" placeholder="Pretražite sadržaj..."
-                                class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-4 py-2.5 text-gray-700 placeholder-gray-400 bg-gray-50 rounded-lg"
-                                id="searchInput" required />
-                            <div class="flex items-center space-x-1 ml-2">
-                                <button type="submit"
-                                    class="text-slate-500 hover:text-terracotta transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-gray-100 w-9 h-9 flex items-center justify-center"
-                                    aria-label="Submit search">
-                                    <i class="fas fa-search text-sm"></i>
-                                </button>
-                                <button type="button"
-                                    class="text-slate-500 hover:text-red-500 transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-gray-100 w-9 h-9 flex items-center justify-center"
-                                    id="closeSearch" aria-label="Close search">
-                                    <i class="fas fa-times text-sm"></i>
-                                </button>
-                            </div>
+                    <div id="searchBox"
+                        class="absolute right-0 top-full mt-3 w-80 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden hidden">
+                        <form action="/search" method="GET" class="flex items-center p-3">
+                            <input name="q" type="text" placeholder="Pretražite..."
+                                class="flex-1 text-sm px-4 py-2 rounded-lg bg-gray-50 border-0 focus:ring-2 focus:ring-[#C85A3E] outline-none"
+                                required>
+                            <button type="submit" class="ml-2 p-2 text-[#C85A3E] hover:bg-gray-100 rounded-full">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button type="button" id="closeSearch" class="ml-1 p-2 hover:bg-gray-100 rounded-full">
+                                <i class="fas fa-times"></i>
+                            </button>
                         </form>
                     </div>
                 </div>
 
-                <!-- Enhanced Mobile Menu Button -->
-                <button id="hamburger"
-                    class="hamburger lg:hidden text-slate w-9 h-9 sm:w-10 sm:h-10 flex flex-col justify-center items-center space-y-1 p-2 rounded-lg hover:bg-slate-50 transition-all duration-200">
-                    <span class="block w-5 h-0.5 bg-slate rounded transition-all duration-300"></span>
-                    <span class="block w-5 h-0.5 bg-slate rounded transition-all duration-300"></span>
-                    <span class="block w-5 h-0.5 bg-slate rounded transition-all duration-300"></span>
+                <!-- Mobile Hamburger -->
+                <button id="mobileToggle" class="lg:hidden hamburger p-2 rounded-lg hover:bg-gray-50">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
     </header>
+
+    <!-- Overlay -->
+    <div id="overlay"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl z-50 overflow-y-auto">
+        <div class="p-5">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-[#CC8B3C] to-[#E07856] rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-bold text-[#2C3E50]">KULTURNI NEXUS</div>
+                        <div class="text-xs text-[#C85A3E]">Centar za umetnost</div>
+                    </div>
+                </div>
+                <button id="mobileClose" class="p-2 hover:bg-gray-100 rounded-lg">
+                    <img src="" alt="" />
+                </button>
+            </div>
+
+            <nav class="space-y-1">
+                <a href="/" class="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium">
+                    <i class="fas fa-home text-[#C85A3E] mr-3 w-5"></i>Početna
+                </a>
+
+                <div>
+                    <button
+                        class="mobile-accordion w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 font-medium flex items-center justify-between"
+                        data-target="mob-o-nama">
+                        <span><i class="fas fa-info-circle text-[#CC8B3C] mr-3 w-5"></i>O nama</span>
+                        <img src="" alt="" />
+                    </button>
+                    <div id="mob-o-nama" class="mobile-submenu pl-4 space-y-1">
+                        <a href="/o-nama/uvod" class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Uvod</a>
+                        <a href="/o-nama/misija" class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Misija i
+                            vizija</a>
+                        <a href="/o-nama/istorijat"
+                            class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Istorijat</a>
+                        <a href="/o-nama/rukovodstvo"
+                            class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Rukovodstvo</a>
+                        <a href="/o-nama/objekat"
+                            class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Objekat</a>
+                        <a href="/o-nama/donacije"
+                            class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Donacije</a>
+                        <a href="/o-nama/partneri"
+                            class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Partneri</a>
+                        <a href="/o-nama/licenca"
+                            class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Licenca</a>
+                    </div>
+                </div>
+                <a href="/dogadjaji" class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">
+                    <span><i class="fas fa-calendar-alt text-[#4A6FA5] mr-3 w-5"></i>Događaji</span>
+                </a>
+
+
+                <a href="/sekcije" class="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium">
+                    <i class="fas fa-theater-masks text-[#8B4789] mr-3 w-5"></i>Sekcije
+                </a>
+
+                <a href="/projekti" class="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium">
+                    <i class="fas fa-project-diagram text-[#CC8B3C] mr-3 w-5"></i>Projekti
+                </a>
+
+                <div>
+                    <button
+                        class="mobile-accordion w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 font-medium flex items-center justify-between"
+                        data-target="mob-galerija">
+                        <span><i class="fas fa-images text-[#8B4789] mr-3 w-5"></i>Galerija</span>
+                        <i class="fas fa-chevron-down chevron-icon text-sm"></i>
+                    </button>
+                    <div id="mob-galerija" class="mobile-submenu pl-4 space-y-1">
+                        <a href="/galerija/prostori" class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Foto
+                            prostora</a>
+                        <a href="/galerija/dokumentacija"
+                            class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Dokumentacija</a>
+                    </div>
+                </div>
+                <a href="/dokumenti" class="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium">
+                    <i class="fas fa-folder-open text-[#E07856] mr-3 w-5"></i>Dokumenti
+                </a>
+
+
+
+                <a href="/vesti" class="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium">
+                    <i class="fas fa-newspaper text-[#4A6FA5] mr-3 w-5"></i>Vesti
+                </a>
+
+                <div>
+                    <button
+                        class="mobile-accordion w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 font-medium flex items-center justify-between"
+                        data-target="mob-kontakt">
+                        <span><i class="fas fa-address-book text-[#2A6B6A] mr-3 w-5"></i>Kontakt</span>
+                        <i class="fas fa-chevron-down chevron-icon text-sm"></i>
+                    </button>
+                    <div id="mob-kontakt" class="mobile-submenu pl-4 space-y-1">
+                        <a href="/kontakt/lokacija"
+                            class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Lokacija</a>
+                        <a href="/kontakt/radno-vreme" class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Radno
+                            vreme</a>
+                        <a href="/kontakt/formular" class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Kontakt
+                            obrazac</a>
+                        <a href="/kontakt/anketa" class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Anketa</a>
+                        <a href="/kontakt/cenovnik"
+                            class="block px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Cenovnik</a>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-200 mt-4 pt-4">
+                    <div class="px-4 py-2 text-sm text-gray-500 font-medium">Jezik</div>
+                    <a href="?locale=sr" class="block px-4 py-2 rounded-lg hover:bg-gray-50"><span
+                            class="mr-2">🇷🇸</span>Srpski</a>
+                    <a href="?locale=sr-Cyrl" class="block px-4 py-2 rounded-lg hover:bg-gray-50"><span
+                            class="mr-2">🇷🇸</span>Српски</a>
+                    <a href="?locale=en" class="block px-4 py-2 rounded-lg hover:bg-gray-50"><span
+                            class="mr-2">🇬🇧</span>English</a>
+                </div>
+            </nav>
+        </div>
+    </div>
 
 
 
@@ -896,17 +1109,17 @@
             </div>
 
             <div class="text-center mt-12">
-                <button id="eventsView"
+                <a href="/vesti" id="eventsView"
                     class="bg-gradient-to-r from-slate to-slate/90 text-paper px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Pogledaj sve događaje
-                </button>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Featured Exhibition Section -->
-    <section id="promocija" class="py-20 bg-gradient-to-br from-paper to-ochre/10">
+    <section id="promocija" class="py-2index.ph0 bg-gradient-to-br from-paper to-ochre/10">
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2 relative">
@@ -971,7 +1184,158 @@
             </div>
         </div>
     </section>
+    <section id="vesti" class="py-20 bg-gradient-to-br from-slate-50 to-paper">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
+                    Najnovije Vesti
+                    <div
+                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-terracotta via-royal-blue to-deep-teal rounded-full">
+                    </div>
+                </h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto mt-6">
+                    Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
+                </p>
+            </div>
 
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Vest 1 -->
+                <article
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="h-56 relative overflow-hidden">
+                        <img id="g-slika"
+                            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                            alt="Vest"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-terracotta to-terracotta/80 flex items-center justify-center text-paper shadow-md">
+                                <i class="fas fa-newspaper text-lg"></i>
+                            </div>
+                            <div class="flex items-center text-sm text-slate-500">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span id="g-datum">15. Oktobar 2025</span>
+                            </div>
+                        </div>
+
+                        <h3 id="g-naslov"
+                            class="text-xl font-display font-bold text-slate mb-3 group-hover:text-terracotta transition-colors line-clamp-2">
+                            Novi kulturni centar otvara vrata građanima
+                        </h3>
+
+                        <p id="g-opis" class="text-slate-600 mb-5 line-clamp-3 leading-relaxed">
+                            Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
+                            kreativnosti i umetnosti u našem gradu.
+                        </p>
+
+                        <a id="g-ovise" href="#"
+                            class="inline-flex items-center text-terracotta font-semibold hover:gap-3 gap-2 transition-all group/link">
+                            Pročitaj više
+                            <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Vest 2 -->
+                <article
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="h-56 relative overflow-hidden">
+                        <img id="g-slika"
+                            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80"
+                            alt="Vest"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-royal-blue to-royal-blue/80 flex items-center justify-center text-paper shadow-md">
+                                <i class="fas fa-newspaper text-lg"></i>
+                            </div>
+                            <div class="flex items-center text-sm text-slate-500">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span id="g-datum">12. Oktobar 2025</span>
+                            </div>
+                        </div>
+
+                        <h3 id="g-naslov"
+                            class="text-xl font-display font-bold text-slate mb-3 group-hover:text-royal-blue transition-colors line-clamp-2">
+                            Stipendije za mlade naučnike i istraživače
+                        </h3>
+
+                        <p id="g-opis" class="text-slate-600 mb-5 line-clamp-3 leading-relaxed">
+                            Univerzitet najavljuje novi program stipendija za talentovane studente u oblasti nauke i
+                            tehnologije.
+                        </p>
+
+                        <a id="g-link" href="#"
+                            class="inline-flex items-center text-royal-blue font-semibold hover:gap-3 gap-2 transition-all group/link">
+                            Pročitaj više
+                            <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Vest 3 -->
+                <article
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="h-56 relative overflow-hidden">
+                        <img id="g-slika"
+                            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80"
+                            alt="Vest"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-deep-teal to-deep-teal/80 flex items-center justify-center text-paper shadow-md">
+                                <i class="fas fa-newspaper text-lg"></i>
+                            </div>
+                            <div class="flex items-center text-sm text-slate-500">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span id="g-datum">10. Oktobar 2025</span>
+                            </div>
+                        </div>
+
+                        <h3 id="g-naslov"
+                            class="text-xl font-display font-bold text-slate mb-3 group-hover:text-deep-teal transition-colors line-clamp-2">
+                            Inovativna AI platforma za obrazovanje
+                        </h3>
+
+                        <p id="g-opis" class="text-slate-600 mb-5 line-clamp-3 leading-relaxed">
+                            Lokalni startup predstavlja revolucionarnu platformu koja koristi veštačku inteligenciju za
+                            personalizovano učenje.
+                        </p>
+
+                        <a id="g-link" href="#"
+                            class="inline-flex items-center text-deep-teal font-semibold hover:gap-3 gap-2 transition-all group/link">
+                            Pročitaj više
+                            <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="text-center mt-16">
+                <button id="vestiView"
+                    class="bg-gradient-to-r from-slate via-slate/95 to-slate/90 text-paper px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
+                    <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
+                    Pogledaj sve vesti
+                    <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </section>
 
     <!-- Gallery Section -->
     <section id="gallery" class="py-20 bg-white">
@@ -1199,200 +1563,100 @@
             document.body.style.fontSize = currentSize + 'px';
         });
 
-        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+        // Search Toggle
+        const searchToggle = document.getElementById('searchToggle');
+        const searchBox = document.getElementById('searchBox');
+        const closeSearch = document.getElementById('closeSearch');
+        const overlay = document.getElementById('overlay');
 
-        mobileDropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                const dropdown = toggle.closest('.mobile-dropdown');
-                dropdown.classList.toggle('active');
-            });
-        });
-        document.getElementById('searchButton').addEventListener('click', function () {
-            const container = document.getElementById('searchInputContainer');
-            const input = document.getElementById('searchInput');
-
-            if (container.classList.contains('hidden')) {
-                container.classList.remove('hidden');
-                setTimeout(() => {
-                    container.classList.remove('opacity-0');
-                    input.focus();
-                }, 10);
-            }
+        searchToggle.addEventListener('click', () => {
+            searchBox.classList.toggle('active');
+            overlay.classList.toggle('active');
         });
 
-        document.getElementById('closeSearch').addEventListener('click', function () {
-            const container = document.getElementById('searchInputContainer');
-            container.classList.add('opacity-0');
-            setTimeout(() => {
-                container.classList.add('hidden');
-            }, 300);
-        });
-
-        document.addEventListener('click', function (e) {
-            const searchContainer = document.getElementById('searchInputContainer');
-            const searchButton = document.getElementById('searchButton');
-
-            if (!searchContainer.contains(e.target) && !searchButton.contains(e.target)) {
-                searchContainer.classList.add('opacity-0');
-                setTimeout(() => {
-                    searchContainer.classList.add('hidden');
-                }, 300);
-            }
-        });
-        // Close search input
         closeSearch.addEventListener('click', () => {
-            searchInputContainer.classList.add('opacity-0');
-            searchInputContainer.classList.add('translate-x-2');
-            searchInput.classList.add('w-0');
-            searchInput.classList.add('opacity-0');
-            searchButton.classList.remove("invisible");
-
-            setTimeout(() => {
-                searchInputContainer.classList.add('hidden');
-                searchInput.value = '';
-            }, 300);
-        });
-        // Header scroll effect
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-            } else {
-                header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-            }
+            searchBox.classList.remove('active');
+            overlay.classList.remove('active');
         });
 
-        // Animation for cards on hover
-        document.querySelectorAll('.artistic-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
+        overlay.addEventListener('click', () => {
+            searchBox.classList.remove('active');
+            overlay.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileToggle.classList.remove('active');
         });
 
-        // Mobile menu toggle
-        // Mobile Menu JavaScript
-        // Get elements
-        const hamburger = document.getElementById('hamburger');
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
         const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuPanel = document.getElementById('mobileMenuPanel');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const closeMobileMenu = document.getElementById('closeMobileMenu');
-        const mobileAboutToggle = document.getElementById('mobileAboutToggle');
-        const mobileAboutMenu = document.getElementById('mobileAboutMenu');
-        const mobileAboutIcon = document.getElementById('mobileAboutIcon');
+        const mobileClose = document.getElementById('mobileClose');
 
-        // Function to open mobile menu
-        function openMobileMenu() {
-            mobileMenu.classList.remove('hidden');
-            // Use setTimeout to ensure the display change takes effect before animation
-            setTimeout(() => {
-                mobileMenuPanel.classList.remove('translate-x-full');
-            }, 10);
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = 'hidden';
-            // Add active class to hamburger
-            hamburger.classList.add('active');
-        }
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
 
-        // Function to close mobile menu
-        function closeMobileMenuFunc() {
-            mobileMenuPanel.classList.add('translate-x-full');
-            // Wait for animation to complete before hiding
-            setTimeout(() => {
-                mobileMenu.classList.add('hidden');
-            }, 300);
-            // Restore body scroll
-            document.body.style.overflow = '';
-            // Remove active class from hamburger
-            hamburger.classList.remove('active');
-        }
+        mobileClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            overlay.classList.remove('active');
+        });
 
-        // Function to toggle mobile about submenu
-        function toggleMobileAbout() {
-            const isHidden = mobileAboutMenu.classList.contains('hidden');
+        // Mobile Accordion
+        const mobileAccordions = document.querySelectorAll('.mobile-accordion');
 
-            if (isHidden) {
-                // Show submenu
-                mobileAboutMenu.classList.remove('hidden');
-                mobileAboutIcon.style.transform = 'rotate(180deg)';
+        mobileAccordions.forEach(accordion => {
+            accordion.addEventListener('click', () => {
+                const targetId = accordion.getAttribute('data-target');
+                const submenu = document.getElementById(targetId);
+                const chevron = accordion.querySelector('.chevron-icon');
+
+                // Close other submenus
+                document.querySelectorAll('.mobile-submenu').forEach(menu => {
+                    if (menu.id !== targetId && menu.classList.contains('active')) {
+                        menu.classList.remove('active');
+                        const otherChevron = document.querySelector(`[data-target="${menu.id}"] .chevron-icon`);
+                        if (otherChevron) otherChevron.classList.remove('rotated');
+                    }
+                });
+
+                // Toggle current submenu
+                submenu.classList.toggle('active');
+                chevron.classList.toggle('rotated');
+            });
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+
+        // Sticky header effect
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll <= 0) {
+                header.style.transform = 'translateY(0)';
+                return;
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scrolling down
+                header.style.transform = 'translateY(-100%)';
             } else {
-                // Hide submenu
-                mobileAboutMenu.classList.add('hidden');
-                mobileAboutIcon.style.transform = 'rotate(0deg)';
+                // Scrolling up
+                header.style.transform = 'translateY(0)';
             }
-        }
 
-        // Event listeners
-        if (hamburger) {
-            hamburger.addEventListener('click', function (e) {
-                e.stopPropagation();
-                if (mobileMenu.classList.contains('hidden')) {
-                    openMobileMenu();
-                } else {
-                    closeMobileMenuFunc();
-                }
-            });
-        }
-
-        if (closeMobileMenu) {
-            closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
-        }
-
-        if (mobileMenuOverlay) {
-            mobileMenuOverlay.addEventListener('click', closeMobileMenuFunc);
-        }
-
-        if (mobileAboutToggle) {
-            mobileAboutToggle.addEventListener('click', function (e) {
-                e.preventDefault();
-                toggleMobileAbout();
-            });
-        }
-
-        // Close menu when clicking on menu links (except dropdown toggle)
-        const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function () {
-                // Close menu after a short delay to allow for navigation
-                setTimeout(closeMobileMenuFunc, 150);
-            });
-        });
-
-        // Close menu on window resize if screen becomes large
-        window.addEventListener('resize', function () {
-            if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
-                closeMobileMenuFunc();
-            }
-        });
-
-        // Handle escape key to close menu
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-                closeMobileMenuFunc();
-            }
-        });
-
-        // Prevent menu panel clicks from closing the menu
-        if (mobileMenuPanel) {
-            mobileMenuPanel.addEventListener('click', function (e) {
-                e.stopPropagation();
-            });
-        }
-
-        // Initialize animations when elements come into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
-            observer.observe(el);
+            lastScroll = currentScroll;
         });
     </script>
 </body>

@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use App\Utils\LocaleManager;
+
 session_start();
 
 use App\Controllers\AuthController;
@@ -109,13 +111,13 @@ class AboutUSController
                 echo json_encode(['error' => 'Name and surname required']);
                 return;
             }
-
+            $locale = LocaleManager::get();
             $id = $model->insert([
                 'name' => $data['name'],
                 'surname' => $data['surname'],
                 'position' => $data['position'],
                 'biography' => $data['biography'],
-            ]);
+            ], $locale);
             http_response_code(201);
             echo json_encode(['id' => $id]);
             return;
@@ -135,8 +137,9 @@ class AboutUSController
                 echo json_encode(['error' => 'No valid fields to update']);
                 return;
             }
+            $locale = LocaleManager::get();
 
-            $model->update((int) $id, $updateData);
+            $model->update((int) $id, $updateData, $locale);
             echo json_encode(['updated' => true]);
             return;
         }

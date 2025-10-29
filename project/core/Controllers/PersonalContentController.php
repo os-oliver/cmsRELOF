@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Controllers;
-
+session_start();
 use App\Models\Content;
 use App\Models\Event;
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Utils\CardRenderer;
+use App\Utils\LocaleManager;
 
 class PersonalContentController
 {
@@ -13,6 +14,11 @@ class PersonalContentController
     {
         return '
             /* Core styles */
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
             .dropdown:hover .dropdown-menu {
                 display: block;
             }
@@ -27,54 +33,234 @@ class PersonalContentController
                 overflow: hidden;
             }
 
-            /* Gallery image zoom effect */
-            .gallery-image {
-                transition: transform 0.3s ease-in-out;
-            }
-            .gallery-image:hover {
-                transform: scale(1.05);
+            /* Page header */
+            .page-header {
+                background: white;
+                border-bottom: 3px solid #667eea;
+                padding: 1.5rem 0;
             }
 
-            /* Content text styles */
-            .content-text {
-                line-height: 1.8;
-                font-size: 1.1rem;
-            }
-            .content-text p {
-                margin-bottom: 1.5rem;
+            /* Content sections */
+            .content-wrapper {
+                background: white;
             }
             
-            /* Responsive adjustments */
+            .section-divider {
+                height: 1px;
+                background: #e2e8f0;
+                margin: 1.5rem 0;
+            }
+
+            /* Compact field styling */
+            .field-row {
+                margin-bottom: 1rem;
+                padding: 0.75rem;
+                background: #f8fafc;
+                border-radius: 0.375rem;
+                border-left: 3px solid #667eea;
+            }
+            
+            .field-label {
+                font-weight: 600;
+                color: #4a5568;
+                font-size: 0.813rem;
+                display: inline-block;
+                min-width: 120px;
+                margin-right: 0.75rem;
+            }
+            
+            .field-label i {
+                margin-right: 0.375rem;
+                color: #667eea;
+            }
+            
+            .field-value {
+                color: #1a202c;
+                font-size: 0.938rem;
+                line-height: 1.5;
+                display: inline;
+            }
+
+            /* Compact info boxes */
+            .info-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 0.75rem;
+                margin: 1rem 0;
+            }
+            
+            .info-box {
+                background: #f7fafc;
+                padding: 0.75rem;
+                border-radius: 0.375rem;
+                border-left: 3px solid #667eea;
+            }
+            
+            .info-box-label {
+                font-size: 0.688rem;
+                color: #718096;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin-bottom: 0.25rem;
+                letter-spacing: 0.025em;
+            }
+            
+            .info-box-label i {
+                margin-right: 0.375rem;
+                color: #667eea;
+            }
+            
+            .info-box-value {
+                font-size: 0.938rem;
+                color: #1a202c;
+                font-weight: 500;
+            }
+
+            /* Gallery */
+            .gallery-header {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #1a202c;
+                margin: 1.5rem 0 0.75rem 0;
+                padding-bottom: 0.375rem;
+                border-bottom: 2px solid #667eea;
+            }
+            
+            .gallery-header i {
+                margin-right: 0.5rem;
+                color: #667eea;
+            }
+            
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 0.75rem;
+                margin-top: 0.75rem;
+            }
+            
+            .gallery-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: 0.375rem;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .gallery-item:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+            
+            .gallery-item img {
+                width: 100%;
+                height: 160px;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+            
+            .gallery-item:hover img {
+                transform: scale(1.05);
+            }
+            
+            .gallery-overlay {
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .gallery-item:hover .gallery-overlay {
+                opacity: 1;
+            }
+
+            /* Category badge */
+            .category-badge {
+                display: inline-block;
+                padding: 0.25rem 0.625rem;
+                background: #667eea;
+                color: white;
+                border-radius: 9999px;
+                font-size: 0.813rem;
+                font-weight: 500;
+                margin-bottom: 0.75rem;
+            }
+
+            /* Lightbox */
+            .lightbox {
+                animation: fadeIn 0.3s ease;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            .lightbox-image {
+                animation: scaleIn 0.3s ease;
+            }
+            
+            @keyframes scaleIn {
+                from { transform: scale(0.9); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
+            }
+
+            /* Responsive */
             @media (max-width: 768px) {
-                .content-wrapper {
-                    padding: 1rem;
+                .field-label {
+                    display: block;
+                    min-width: auto;
+                    margin-bottom: 0.25rem;
                 }
-            }';
+                .gallery-grid {
+                    grid-template-columns: 1fr;
+                }
+                .info-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        ';
     }
 
     private function getPageScripts(): string
     {
         return '
-            // Image gallery lightbox functionality
             document.addEventListener("DOMContentLoaded", function() {
+                // Image gallery lightbox
                 const galleryImages = document.querySelectorAll(".gallery-image-link");
+                
                 galleryImages.forEach(function(link) {
                     link.addEventListener("click", function(e) {
                         e.preventDefault();
                         const imgSrc = this.getAttribute("href");
                         const lightbox = document.createElement("div");
+                        lightbox.className = "lightbox";
                         lightbox.innerHTML = 
-                            "<div class=\'fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4\'>" +
+                            "<div class=\'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4\' style=\'backdrop-filter: blur(8px);\'>" +
                             "    <div class=\'relative max-w-7xl mx-auto\'>" +
-                            "        <img src=\'" + imgSrc + "\' class=\'max-h-[90vh] max-w-full object-contain\' alt=\'Enlarged image\'>" +
-                            "        <button class=\'absolute top-4 right-4 text-white text-xl hover:text-gray-300\'>&times;</button>" +
+                            "        <img src=\'" + imgSrc + "\' class=\'lightbox-image max-h-[90vh] max-w-full object-contain rounded-lg shadow-2xl\' alt=\'Enlarged image\'>" +
+                            "        <button class=\'absolute -top-12 right-0 text-white text-4xl hover:text-gray-300 transition-colors w-12 h-12 flex items-center justify-center font-light\'>&times;</button>" +
                             "    </div>" +
                             "</div>";
                         document.body.appendChild(lightbox);
+                        document.body.style.overflow = "hidden";
                         
-                        // Close on click
-                        lightbox.addEventListener("click", function() {
-                            lightbox.remove();
+                        lightbox.addEventListener("click", function(e) {
+                            if (e.target === lightbox || e.target.closest("button") || e.target === lightbox.firstElementChild) {
+                                document.body.style.overflow = "auto";
+                                lightbox.remove();
+                            }
+                        });
+                        
+                        document.addEventListener("keydown", function escHandler(e) {
+                            if (e.key === "Escape") {
+                                document.body.style.overflow = "auto";
+                                lightbox.remove();
+                                document.removeEventListener("keydown", escHandler);
+                            }
                         });
                     });
                 });
@@ -82,61 +268,76 @@ class PersonalContentController
         ';
     }
 
+    private function getGalleryLabel(string $locale): string
+    {
+        $labels = [
+            'sr' => 'Galerija',
+            'en' => 'Gallery',
+            'sr-Cyrl' => 'Галерија'
+        ];
+        return $labels[$locale] ?? $labels['sr'];
+    }
+
     public function renderContent($id, $type)
     {
-        // First load configuration data
+        // Load structure configuration
         $structurePath = __DIR__ . '/../../public/assets/data/structure.json';
         $structure = [];
         if (is_file($structurePath)) {
-            $structure = json_decode(file_get_contents($structurePath), true) ?? [];
+            $structureData = file_get_contents($structurePath);
+            $structure = json_decode($structureData, true);
+            if (!is_array($structure) || empty($structure)) {
+                $structure = [];
+            }
         }
 
-        // Initialize page builder with assets
+        // Get locale
+        $locale = LocaleManager::get();
+        if (!$locale) {
+            $locale = $_SESSION['locale'] ?? 'sr';
+        }
+
+        // Initialize page builder
         $pageBuilder = new BasicPageBuilder('naziv', [
             'css' => $this->getPageStyles(),
             'js' => $this->getPageScripts()
         ]);
 
-        // Generate main content
+        // Generate content
         try {
             switch ($type) {
-                case 'events':
-                    $event = new Event();
-                    $eventData = $event->findById($id);
-                    $mainContent = $this->getEventContent($eventData);
-                    break;
-                case 'generic_element':
                 default:
-                    // Only pass the type parameter as it's the only one accepted
-                    $mainContent = $this->getDefaultContent($type);
+                    $mainContent = $this->getDefaultContent($type, $locale, $structure);
             }
         } catch (\Exception $e) {
             $mainContent = $this->getErrorContent($e->getMessage());
         }
 
-        // Build the complete page HTML
-        $html = '<main class="min-h-screen pt-24 flex-grow bg-gray-50">' . $mainContent . '</main>';
-
+        $html = '<main class="min-h-screen pt-16 bg-gray-50">' . $mainContent . '</main>';
         $pageBuilder->setHtml($html);
         return $pageBuilder->buildPage();
     }
 
-    private function getEventContent(?array $eventData): string
+    private function getEventContent(?array $eventData, array $structure, string $locale): string
     {
         if (!$eventData) {
             return '
-            <main class="min-h-screen pt-24 pb-12 bg-gray-50">
-                <div class="container mx-auto px-4">
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h1 class="text-2xl font-bold text-red-600">Event not found</h1>
-                    </div>
+            <div class="min-h-screen flex items-center justify-center">
+                <div class="text-center">
+                    <h1 class="text-3xl font-bold text-red-600">Događaj nije pronađen</h1>
+                    <p class="text-gray-600 mt-2">Traženi događaj ne postoji.</p>
                 </div>
-            </main>';
+            </div>';
         }
-        if ($eventData && isset($eventData[0]) && is_array($eventData[0])) {
+
+        if (isset($eventData[0]) && is_array($eventData[0])) {
             $eventData = $eventData[0];
         }
-        // Extract and sanitize event data
+
+        // Get labels from structure
+        $labels = $this->getLabelsFromStructure('Dogadjaji', $structure, $locale);
+
+        // Extract data
         $data = [
             'title' => $eventData['title'] ?? '',
             'date' => $eventData['date'] ?? '',
@@ -144,11 +345,10 @@ class PersonalContentController
             'location' => $eventData['location'] ?? '',
             'description' => $eventData['description'] ?? '',
             'category' => $eventData['category_name'] ?? '',
-            'color_code' => $eventData['color_code'] ?? 'blue-600',
             'image' => !empty($eventData['image']) ? $eventData['image'] : null
         ];
 
-        // Sanitize all text fields
+        // Sanitize
         array_walk($data, function (&$value) {
             if (is_string($value)) {
                 $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
@@ -156,187 +356,327 @@ class PersonalContentController
         });
 
         $html = '
-        <main class="min-h-screen pt-24 pb-12 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <div class="max-w-7xl mx-auto">
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <div class="flex flex-col md:flex-row">';
+        <div class="content-wrapper">
+            <!-- Header -->
+            <div class="page-header">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-4xl mx-auto">';
 
-        // Add image section if image exists
-        if ($data['image']) {
+        if ($data['category']) {
             $html .= '
-                            <div class="md:w-1/2">
-                                <div class="relative h-full min-h-[300px]">
-                                    <img src="' . $data['image'] . '" 
-                                         alt="' . $data['title'] . '" 
-                                         class="w-full h-full object-cover">
-                                </div>
-                            </div>';
+                        <span class="category-badge">' . $data['category'] . '</span>';
         }
 
         $html .= '
-                            <div class="' . ($data['image'] ? 'md:w-1/2' : 'w-full') . ' p-8">
-                                <div class="flex flex-wrap items-center gap-2 mb-4">
-                                    <span class="px-3 py-1 rounded-full text-sm font-medium bg-' . $data['color_code'] . ' text-white">
-                                        ' . $data['category'] . '
-                                    </span>
-                                </div>
-
-                                <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">' . $data['title'] . '</h1>
-                                
-                                <div class="flex flex-wrap items-center gap-6 mb-6 text-gray-600">
-                                    <div class="flex items-center gap-2">
-                                        <i class="far fa-calendar-alt text-xl"></i>
-                                        <span>' . $data['date'] . ($data['time'] ? ' • ' . $data['time'] : '') . '</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-xl"></i>
-                                        <span>' . $data['location'] . '</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="prose max-w-none text-gray-700">
-                                    ' . nl2br($data['description']) . '
-                                </div>
-                                
-                         
-                            </div>
-                        </div>
+                        <h1 class="text-3xl font-bold text-gray-900">' . $data['title'] . '</h1>
                     </div>
                 </div>
+            </div>';
+
+        // Event image if exists
+        if ($data['image']) {
+            $html .= '
+            <div class="container mx-auto px-4 py-4">
+                <div class="max-w-4xl mx-auto">
+                    <img src="' . $data['image'] . '" 
+                         alt="' . $data['title'] . '" 
+                         class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+            </div>';
+        }
+
+        $html .= '
+            <!-- Content -->
+            <div class="container mx-auto px-4 py-4">
+                <div class="max-w-4xl mx-auto">
+                    
+                    <!-- Event Info -->
+                    <div class="info-grid">
+                        <div class="info-box">
+                            <div class="info-box-label"><i class="fas fa-calendar"></i> ' . ($labels['datum'] ?? 'Datum') . '</div>
+                            <div class="info-box-value">' . $data['date'] . '</div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-box-label"><i class="fas fa-clock"></i> ' . ($labels['time'] ?? 'Vreme') . '</div>
+                            <div class="info-box-value">' . ($data['time'] ?: '-') . '</div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-box-label"><i class="fas fa-map-marker-alt"></i> ' . ($labels['location'] ?? 'Lokacija') . '</div>
+                            <div class="info-box-value">' . $data['location'] . '</div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <!-- Description -->
+                    <div class="field-row">
+                        <span class="field-label"><i class="fas fa-align-left"></i> ' . ($labels['description'] ?? 'Opis') . '</span>
+                        <span class="field-value">' . nl2br($data['description']) . '</span>
+                    </div>
+                    
+                </div>
             </div>
-        </main>';
+        </div>';
 
         return $html;
     }
 
-
-
-    private function getDefaultContent(string $type): string
+    private function getDefaultContent(string $type, string $locale, array $structure): string
     {
-        // Fetch generic element data from ContentController
         $contentController = new Content();
         $id = $_GET['id'] ?? 0;
 
-        if ($id) {
-            $data = $contentController->fetchItem($id);
-            if ($data['success'] && isset($data['item'])) {
-                $item = $data['item'];
-                $fields = $item['fields'];
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
 
-                // Load structure labels to map field labels
-                $structurePath = __DIR__ . '/../../public/assets/data/structure.json';
-                $structure = [];
-                if (is_file($structurePath)) {
-                    $structure = json_decode(file_get_contents($structurePath), true) ?? [];
-                }
+        $data = $contentController->fetchItem($id, $locale);
 
-                // Try to find labels for this type in the structure
-                $labelsMap = [];
-                if (!empty($structure) && is_array($structure)) {
-                    // structure.json is an array with one object at top-level
-                    $top = $structure[0] ?? [];
-                    if (isset($top[$type]) && isset($top[$type]['fields'])) {
-                        foreach ($top[$type]['fields'] as $fld) {
-                            $name = $fld['name'] ?? null;
-                            $label = $fld['label'][$_SESSION['locale'] ?? 'sr-Cyrl'] ?? $fld['label']['sr-Cyrl'] ?? $fld['label']['sr'] ?? $fld['label']['en'] ?? $name;
-                            if ($name) {
-                                $labelsMap[$name] = $label;
-                            }
-                        }
-                    }
-                }
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
 
-                // Get associated images
-                $images = \App\Models\Image::fetchByElement($id);
+        $item = $data['item'];
+        $fields = $item['fields'];
 
-                // Start building the HTML with a responsive two-column grid
-                $html = '
-                <div class="container mx-auto px-4 py-8">
-                    <div class="max-w-5xl mx-auto">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                            <article class="p-8">'
-                ;
+        // Get labels and field icons from structure
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $fieldIcons = $this->getFieldIcons($type, $structure);
+        $typeData = $this->getTypeData($type, $structure, $locale);
+        $typeName = $typeData['name'] ?? $type;
 
-                // Header/title handling
-                $title = '';
+        // Get images
+        $images = \App\Models\Image::fetchByElement($id);
 
-                // Build fields into grid cells
-                $fieldHtmlParts = [];
-                foreach ($fields as $field => $values) {
-                    if (!isset($values[$_SESSION['locale'] ?? 'sr-Cyrl'])) {
-                        continue;
-                    }
-                    $value = $values[$_SESSION['locale'] ?? 'sr-Cyrl'];
-                    $displayLabel = $labelsMap[$field] ?? ucwords(str_replace('_', ' ', $field));
-
-                    // Special handling for title/name fields - display as main heading
-                    if (in_array(strtolower($field), ['title', 'name', 'heading', 'naziv'])) {
-                        $title = '<h1 class="text-3xl font-bold text-gray-900 mb-6">' . htmlspecialchars($value, ENT_QUOTES, 'UTF-8') . '</h1>';
-                        continue;
-                    }
-
-                    $escapedValue = nl2br(htmlspecialchars($value, ENT_QUOTES, 'UTF-8'));
-
-                    // If value length > 40 (excluding whitespace), make it span full row
-                    $plainLen = mb_strlen(trim(preg_replace('/\s+/', ' ', strip_tags($value))), 'UTF-8');
-                    $spanFull = $plainLen > 40;
-
-                    $cellClass = $spanFull ? 'col-span-1 sm:col-span-2' : 'col-span-1';
-
-                    $fieldHtmlParts[] = '<div class="' . $cellClass . ' mb-6">'
-                        . '<h3 class="text-sm font-semibold text-gray-700 mb-2">' . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '</h3>'
-                        . '<div class="prose prose-sm text-gray-600 break-words" style="white-space: pre-line;">' . $escapedValue . '</div>'
-                        . '</div>';
-                }
-
-                // Compose grid: use Tailwind-like classes; two columns on small+ screens
-                $html .= $title;
-                $html .= '<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">' . implode("\n", $fieldHtmlParts) . '</div>';
-
-                // Display images in a grid if available
-                if (!empty($images)) {
-                    $html .= '<div class="mt-12">';
-                    $html .= '<h2 class="text-2xl font-semibold text-gray-800 mb-6">Gallery</h2>';
-                    $html .= '<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">';
-
-                    foreach ($images as $img) {
-                        $imgPath = htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8');
-                        $html .= '<div class="group relative rounded-xl overflow-hidden bg-gray-100 shadow-md hover:shadow-xl transition-all duration-300">';
-                        $html .= '<a href="' . $imgPath . '" target="_blank" class="block">';
-                        $html .= '<img src="' . $imgPath . '" alt="Content image" class="w-full h-auto object-cover">';
-                        $html .= '</a>';
-                        $html .= '</div>';
-                    }
-
-                    $html .= '</div>';
-                    $html .= '</div>';
-                }
-
-                $html .= '</article></div></div></div>';
-
-                return $html;
+        // Find title field
+        $title = '';
+        $titleField = null;
+        foreach ($fields as $field => $values) {
+            if (in_array(strtolower($field), ['title', 'name', 'heading', 'naziv', 'naslov']) && isset($values[$locale])) {
+                $title = htmlspecialchars($values[$locale], ENT_QUOTES, 'UTF-8');
+                $titleField = $field;
+                break;
             }
         }
 
-        return '
-            <div class="container mx-auto px-4 py-8">
-                <h1 class="text-2xl font-bold">Content not found</h1>
-                <p>No content found for type: ' . htmlspecialchars($type, ENT_QUOTES, 'UTF-8') . '</p>
+        // Build HTML
+        $html = '
+        <div class="content-wrapper">
+            <!-- Header -->
+            <div class="page-header">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-3xl font-bold text-gray-900">' . ($title ?: $typeName) . '</h1>
+                    </div>
+                </div>
             </div>
-        ';
+
+            <!-- Content -->
+            <div class="container mx-auto px-4 py-4">
+                <div class="max-w-4xl mx-auto">';
+
+        // Display fields
+        foreach ($fields as $field => $values) {
+            if ($field === $titleField || !isset($values[$locale])) {
+                continue;
+            }
+
+            $value = $values[$locale];
+            if (empty(trim($value))) {
+                continue;
+            }
+
+            $displayLabel = $labels[$field] ?? ucwords(str_replace('_', ' ', $field));
+
+            // Get icon for field
+            $icon = $this->getFieldIcon($field, $fieldIcons);
+
+            // Clean and escape value
+            $escapedValue = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+
+            // For longer text, use nl2br
+            if (strlen($value) > 100) {
+                $escapedValue = nl2br($escapedValue);
+            }
+
+            $html .= '
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $icon . '"></i> ' . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '</span>
+                        <span class="field-value">' . $escapedValue . '</span>
+                    </div>';
+        }
+
+        // Gallery
+        if (!empty($images)) {
+            $galleryLabel = $this->getGalleryLabel($locale);
+            $html .= '
+                    <div class="gallery-header"><i class="fas fa-images"></i> ' . $galleryLabel . '</div>
+                    <div class="gallery-grid">';
+
+            foreach ($images as $img) {
+                $imgPath = htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8');
+                $html .= '
+                        <div class="gallery-item">
+                            <a href="' . $imgPath . '" class="gallery-image-link block">
+                                <img src="' . $imgPath . '" alt="Gallery image">
+                                <div class="gallery-overlay">
+                                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                                </div>
+                            </a>
+                        </div>';
+            }
+
+            $html .= '
+                    </div>';
+        }
+
+        $html .= '
+                </div>
+            </div>
+        </div>';
+
+        return $html;
     }
 
+    private function getFieldIcon(string $fieldName, array $fieldIcons): string
+    {
+        // Default icons based on common field names
+        $defaultIcons = [
+            'naziv' => 'fas fa-tag',
+            'vodja' => 'fas fa-user',
+            'opis' => 'fas fa-align-left',
+            'projekti' => 'fas fa-project-diagram',
+            'datum' => 'fas fa-calendar',
+            'datumpocetka' => 'fas fa-calendar-check',
+            'budzet' => 'fas fa-money-bill-wave',
+            'link' => 'fas fa-link',
+            'sekcija' => 'fas fa-folder',
+            'naslov' => 'fas fa-heading',
+            'autor' => 'fas fa-pen',
+            'location' => 'fas fa-map-marker-alt',
+            'time' => 'fas fa-clock',
+            'description' => 'fas fa-align-left'
+        ];
+
+        $key = strtolower($fieldName);
+
+        // Check if we have a specific icon from structure
+        if (isset($fieldIcons[$key])) {
+            return $fieldIcons[$key];
+        }
+
+        return $defaultIcons[$key] ?? 'fas fa-circle';
+    }
+
+    private function getFieldIcons(string $type, array $structure): array
+    {
+        $icons = [];
+
+        if (empty($structure) || !is_array($structure)) {
+            return $icons;
+        }
+
+        $structureData = $structure[0] ?? [];
+
+        if (!isset($structureData[$type]) || !isset($structureData[$type]['fields'])) {
+            return $icons;
+        }
+
+        foreach ($structureData[$type]['fields'] as $field) {
+            $name = $field['name'] ?? null;
+            $icon = $field['icon'] ?? null;
+
+            if ($name && $icon) {
+                $icons[strtolower($name)] = $icon;
+            }
+        }
+
+        return $icons;
+    }
+
+    private function getLabelsFromStructure(string $type, array $structure, string $locale): array
+    {
+        $labels = [];
+
+        if (empty($structure) || !is_array($structure)) {
+            return $labels;
+        }
+
+        // Structure is an array with one object
+        $structureData = $structure[0] ?? [];
+
+        if (!isset($structureData[$type]) || !isset($structureData[$type]['fields'])) {
+            return $labels;
+        }
+
+        foreach ($structureData[$type]['fields'] as $field) {
+            $name = $field['name'] ?? null;
+            if (!$name)
+                continue;
+
+            // Try current locale first, then fallback to 'sr', then 'en'
+            if (isset($field['label'][$locale])) {
+                $label = $field['label'][$locale];
+            } elseif (isset($field['label']['sr'])) {
+                $label = $field['label']['sr'];
+            } elseif (isset($field['label']['en'])) {
+                $label = $field['label']['en'];
+            } else {
+                $label = ucwords(str_replace('_', ' ', $name));
+            }
+
+            $labels[$name] = $label;
+        }
+
+        return $labels;
+    }
+
+    private function getTypeData(string $type, array $structure, string $locale): array
+    {
+        if (empty($structure) || !is_array($structure)) {
+            return ['name' => $type];
+        }
+
+        $structureData = $structure[0] ?? [];
+
+        if (!isset($structureData[$type])) {
+            return ['name' => $type];
+        }
+
+        $typeInfo = $structureData[$type];
+
+        // Get localized type name
+        $typeName = $typeInfo[$locale] ?? $typeInfo['sr'] ?? $typeInfo['en'] ?? $type;
+
+        return [
+            'name' => $typeName,
+            'icon' => $typeInfo['icon'] ?? 'fas fa-file-alt'
+        ];
+    }
+
+    private function getNotFoundContent(string $type): string
+    {
+        return '
+        <div class="min-h-screen flex items-center justify-center">
+            <div class="text-center px-4">
+                <i class="fas fa-exclamation-circle text-6xl text-gray-400 mb-6"></i>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Sadržaj nije pronađen</h1>
+                <p class="text-gray-600">Traženi sadržaj ne postoji ili je uklonjen.</p>
+            </div>
+        </div>';
+    }
 
     private function getErrorContent(string $message): string
     {
         return '
-            <div class="container mx-auto px-4 py-8">
-                <h1 class="text-2xl font-bold text-red-600">Error loading content</h1>
-                <p>' . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . '</p>
+        <div class="min-h-screen flex items-center justify-center">
+            <div class="text-center px-4">
+                <i class="fas fa-exclamation-triangle text-6xl text-red-500 mb-6"></i>
+                <h1 class="text-3xl font-bold text-red-600 mb-2">Greška</h1>
+                <p class="text-gray-700">' . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . '</p>
             </div>
-        ';
+        </div>';
     }
 }
-
-

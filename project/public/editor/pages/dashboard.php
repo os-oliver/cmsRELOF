@@ -28,6 +28,8 @@ $documentModal = new Document();
     lang: $locale
 );
 $DocumentCategories = $documentModal->getCategories($locale);
+$DocumentSubCategories = $documentModal->getSubCategories($locale);
+
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
