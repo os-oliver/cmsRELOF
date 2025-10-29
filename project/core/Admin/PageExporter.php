@@ -499,6 +499,7 @@ class PageExporter
         foreach ($structure as $k => $v) {
             $structureLower[strtolower($k)] = $v;
         }
+        print_r(array_keys($this->data));
 
         foreach ($this->data['ids'] as $id) {
             $idLower = strtolower($id);

@@ -506,7 +506,7 @@
                     $locale = 'sr';
                 }
                 ?>
-                <div class="dropdown nonPage relative group">
+                <div class="locale dropdown nonPage relative group">
                     <button class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
                         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
@@ -573,13 +573,13 @@
             <p class="mt-4 text-lg max-w-2xl mx-auto">Znanje, inovacije i budućnost u srcu obrazovanja.</p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#" class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:brightness-95 transition">Saznaj više</a>
-                <a href="#" class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava na seminar</a>
+                <a href="/seminari" class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava na seminar</a>
             </div>
         </div>
     </section>
 
     <!-- Najnnovije vesti -->
-    <section id="events" class="py-20 bg-light">
+    <section id="vesti" class="py-20 bg-light">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-primary mb-4 relative inline-block">
@@ -591,110 +591,119 @@
                 </p>
             </div>
 
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Event 1 -->
-                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- News 1 -->
+                <article class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-image"
+                        <img id="g-slika"
                             src="https://picsum.photos/600/300"
                             alt="Art Exhibition" class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 id="g-title" class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-dark mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-description" class="text-slate-600 mb-4">
+                        <p id="g-tekst" class="text-slate-600 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
                                     <i class="fas fa-calendar-days mr-2"></i>
-                                    <span id="g-date">28.9.2025.</span>
+                                    <span id="g-datum">28.9.2025.</span>
                                 </div>
                             </div>
-                            <button
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
                                 Pročitaj više
-                            </button>
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Event 2 -->
-                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <!-- News 2 -->
+                <article class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/300"
-                            alt="Film Festival" class="w-full h-full object-cover">
+                        <img id="g-slika"
+                            src="https://picsum.photos/600/300"
+                            alt="Art Exhibition" class="w-full h-full object-cover">
+
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-dark mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
-                        <p class="text-slate-600 mb-4">
+
+                        <p id="g-tekst" class="text-slate-600 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
                                     <i class="fas fa-calendar-days mr-2"></i>
-                                    <span>28.9.2025.</span>
+                                    <span id="g-datum">28.9.2025.</span>
                                 </div>
                             </div>
-                            <button
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-deep-teal transition-colors">
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
                                 Pročitaj više
-                            </button>
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Event 3 -->
-                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <!-- News 3 -->
+                <article class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/300"
-                            alt="Jazz Night" class="w-full h-full object-cover">
+                        <img id="g-slika"
+                            src="https://picsum.photos/600/300"
+                            alt="Art Exhibition" class="w-full h-full object-cover">
+
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-dark mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
-                        <p class="text-slate-600 mb-4">
+
+                        <p id="g-tekst" class="text-slate-600 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
                                     <i class="fas fa-calendar-days mr-2"></i>
-                                    <span>28.9.2025.</span>
+                                    <span id="g-datum">28.9.2025.</span>
                                 </div>
                             </div>
-                            <button
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
                                 Pročitaj više
-                            </button>
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
 
             <div class="text-center mt-12">
-                <button id="eventsView"
-                    class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
+                <a href="/vesti"
+                    class="bg-primary text-white px-8 py-4 w-fit rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Pogledaj sve vesti
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -713,7 +722,7 @@
                 </p>
             </div>
 
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Event 1 -->
                 <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
@@ -812,7 +821,7 @@
             </div>
 
             <div class="text-center mt-12">
-                <button id="eventsView"
+                <button
                     class="bg-accent text-black px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
                     Saznaj više
                     <i class="fa-solid fa-arrow-right ml-3"></i>
