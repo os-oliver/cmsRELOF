@@ -26,7 +26,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       parser: { optionsHtml: { allowScripts: true } },
       storageManager: false,
       panels: { defaults: [] },
-      canvas: { scripts: ["https://cdn.tailwindcss.com"] },
+      canvas: {
+        scripts: [
+          "https://cdn.tailwindcss.com",
+          "/exportedPages/commonScript.js",
+        ],
+      },
     });
 
     // Cekamo da se editor u potpunosti ucita
@@ -71,17 +76,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           // Citanje celog teksta odgovora, bez obzira na status
           const responseText = await res.text();
-          console.log("Ceo tekst odgovora servera:", responseText); // <-- Ovde se ispisuje ceo tekst
+          console.log("Ceo tekst odgovora servera:", responseText);
 
           if (!res.ok) {
-            // Ako status nije OK, baci gresku sa tekstom odgovora
             throw new Error(
               `Greska na serveru (${res.status}): ${responseText}`
             );
           }
 
           try {
-            // Pokusaj parsiranja odgovora kao JSON
             const json = JSON.parse(responseText);
             console.log("Uspesno sacuvano:", json);
             alert(
@@ -89,7 +92,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 (json.bytes_written ?? "nepoznato")
             );
           } catch (jsonError) {
-            // Ako parsiranje JSON-a ne uspe, znaci da server nije poslao JSON
             console.error(
               "Odgovor nije validan JSON. Greska u parsiranju:",
               jsonError

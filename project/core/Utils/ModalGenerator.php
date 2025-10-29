@@ -460,7 +460,15 @@ class ModalGenerator
         $label = $field['label'][$this->lang] ?? ucfirst(str_replace('_', ' ', $name));
         $required = $field['required'] ?? false;
         $options = $field['options'] ?? [];
+        error_log("gde siii");
         $value = $field['value'] ?? '';
+
+        if (($field['property'] ?? '') === 'auto') {
+            error_log("evo me:" . $type);
+            if ($type === 'date' && empty($value)) {
+                $value = date('Y-m-d'); // danasnji datum
+            }
+        }
 
         $rows = $this->getRows($name);
         $placeholder = $this->getPlaceholder($label, $name, $type);
