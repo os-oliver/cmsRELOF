@@ -20,7 +20,6 @@
         class="space-y-3 max-h-72 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
         <?php if (!empty($events) && is_iterable($events)): ?>
             <?php foreach ($events as $event):
-                echo json_encode($event);
                 $eventType = strtolower($event->naziv ?? '');
                 $borderColor = $event->color_code ?? 'primary-500';
                 $eventUrl = "/sadrzaj?id={$event->id}&tip={$event->type}";

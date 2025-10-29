@@ -70,6 +70,16 @@
           }
         },
         {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+
+        {
           "name": "slika",
           "type": "file",
           "label": {
