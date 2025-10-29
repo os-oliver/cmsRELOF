@@ -15,7 +15,7 @@ class PageGenerator {
      * Initialize the PageGenerator with the input data
      * @param array $data The input data containing components, tree, and other settings
      */
-    public function __construct(array $data) 
+    public function __construct(array $data)
     {
         $this->data = $data;
         $this->initializeDirectories();
@@ -24,7 +24,7 @@ class PageGenerator {
     /**
      * Initialize the required directories
      */
-    private function initializeDirectories(): void 
+    private function initializeDirectories(): void
     {
         $this->baseDir = dirname(__DIR__, 2) . '/public/exportedPages';
         $this->compDir = "{$this->baseDir}/landingPageComponents";
@@ -33,7 +33,7 @@ class PageGenerator {
         // Create directories if they don't exist
         foreach ([$this->baseDir, $this->compDir, $this->pagesDir] as $dir) {
             if (!is_dir($dir)) {
-                mkdir($dir, 0755, true);
+                mkdir($dir, 0775, true);
             }
         }
     }
@@ -42,21 +42,21 @@ class PageGenerator {
      * Save components to their respective directories
      * @return void
      */
-    public function saveComponents(): void 
+    public function saveComponents(): void
     {
         foreach ($this->data['components'] as $component) {
             foreach ($component as $filePath => $content) {
                 $fullPath = "{$this->compDir}/$filePath";
                 $dirPath = dirname($fullPath);
-                
+
                 if (!is_dir($dirPath)) {
-                    mkdir($dirPath, 0755, true);
+                    mkdir($dirPath, 0775, true);
                 }
 
                 if (strpos($filePath, 'promocija.php') !== false) {
                     $content = $content . '\n' . $this->data['js'];
                 }
-                
+
                 $content = str_replace(['&lt;', '&gt;', '\$'], ['<', '>', '$'], $content);
                 file_put_contents($fullPath, $content);
 
@@ -70,7 +70,7 @@ class PageGenerator {
      * @param string $filePath The file path to categorize
      * @return void
      */
-    private function categorizeComponent(string $filePath): void 
+    private function categorizeComponent(string $filePath): void
     {
         if (strpos($filePath, 'header.php') !== false) {
             $this->headerPath = $filePath;
@@ -85,7 +85,7 @@ class PageGenerator {
      * Generate the index.php file content
      * @return void
      */
-    public function generateIndexFile(): void 
+    public function generateIndexFile(): void
     {
         $indexContent = $this->generatePhpHeader();
         $indexContent .= $this->generateHtmlHeader();
@@ -99,7 +99,7 @@ class PageGenerator {
      * Generate the PHP header section
      * @return string
      */
-    private function generatePhpHeader(): string 
+    private function generatePhpHeader(): string
     {
         return <<<'PHP'
 <?php
@@ -127,7 +127,7 @@ PHP;
      * Generate the HTML header section
      * @return string
      */
-    private function generateHtmlHeader(): string 
+    private function generateHtmlHeader(): string
     {
         $header = <<<'HTML'
 <!DOCTYPE html>
@@ -158,14 +158,14 @@ HTML;
      * Generate the main content section
      * @return string
      */
-    private function generateMainContent(): string 
+    private function generateMainContent(): string
     {
         $content = "\n<main class=\"flex-grow\">";
-        
+
         foreach ($this->sectionPaths as $path) {
             $content .= "\n<?php require_once __DIR__ . '/landingPageComponents/$path'; ?>";
         }
-        
+
         $content .= "\n</main>";
         return $content;
     }
@@ -174,10 +174,10 @@ HTML;
      * Generate the HTML footer section
      * @return string
      */
-    private function generateHtmlFooter(): string 
+    private function generateHtmlFooter(): string
     {
         $footer = '';
-        
+
         if ($this->footerPath) {
             $footer .= "\n<?php require_once __DIR__ . '/landingPageComponents/{$this->footerPath}'; ?>";
         }

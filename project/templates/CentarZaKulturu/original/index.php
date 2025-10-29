@@ -533,7 +533,7 @@
                             <a href="/o-nama/istorijat" class="dropdown-item">
                                 <i class="fas fa-history text-[#CC8B3C]"></i>Istorijat
                             </a>
-                            <a href="/o-nama/objekat" class="dropdown-item">
+                            <a static="true" href="/o-nama/objekat" class="dropdown-item">
                                 <i class="fas fa-building text-[#C85A3E]"></i>Objekat
                             </a>
                             <div class="border-t border-gray-100 my-1 mx-3"></div>

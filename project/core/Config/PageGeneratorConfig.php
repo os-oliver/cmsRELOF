@@ -9,7 +9,7 @@ class PageGeneratorConfig {
     public const PAGES_DIR = '/pages';
 
     // File permissions
-    public const DIR_PERMISSIONS = 0755;
+    public const DIR_PERMISSIONS = 0775;
 
     // Default settings
     public const DEFAULT_LOCALE = 'sr-Cyrl';
