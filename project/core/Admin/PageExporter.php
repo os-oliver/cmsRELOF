@@ -27,7 +27,8 @@ use App\Admin\PageBuilders\DocumentsPageBuilder;
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Admin\PageBuilders\EventsPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
-use App\Admin\PageBuilders\SeminarPageBuiler;
+use App\Admin\PageBuilders\SeminarPageBuilder;
+
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -613,7 +614,7 @@ class PageExporter
             case 'vesti':
                 return new VestiPageBuilder('Vesti');
             case 'seminari':
-                return new SeminarPageBuiler('Seminari');
+                return new SeminarPageBuilder('Seminari');
             case 'primer':
                 return new ContactPageBuilder($name, $this->data);
             case 'zaposleni':
