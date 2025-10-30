@@ -7,6 +7,7 @@ use App\Admin\PageBuilders\EmployeesPageBuilder;
 use App\Admin\PageBuilders\GoalPageBulder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
+use App\Admin\PageBuilders\TestBuilder;
 use App\Admin\PageBuilders\VestiPageBuilder;
 use App\Admin\PageBuilders\ProgramiObukePageBuilder;
 use App\Admin\PageBuilders\UslugePageBuilder;
@@ -57,7 +58,7 @@ class PageExporter
     {
         foreach ([$this->baseDir, $this->compDir, $this->pagesDir] as $dir) {
             if (!is_dir($dir)) {
-                mkdir($dir, 0755, true);
+                mkdir($dir, 0775, true);
             }
         }
     }
@@ -443,7 +444,7 @@ class PageExporter
                 $dirPath = dirname($fullPath);
 
                 if (!is_dir($dirPath)) {
-                    mkdir($dirPath, 0755, true);
+                    mkdir($dirPath, 0775, true);
                 }
 
                 // Decode HTML entities and fix PHP tags
@@ -631,6 +632,8 @@ class PageExporter
                 return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
             case 'faq':
                 return new FAQPageBuilder('FAQ');
+            case 'test123':
+                return new TestBuilder('Test', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -676,6 +679,8 @@ class PageExporter
             return 'nasi-korisnici';
         } elseif (strpos($name, 'faq') !== false) {
             return 'faq';
+        } elseif (strpos($name, 'test123') !== false) {
+            return 'test123';
         }
 
 
@@ -730,7 +735,6 @@ class PageExporter
 
         $html = $this->data['html'];
 
-        // Load DOM to isolate <main>
         $dom = new \DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -742,54 +746,66 @@ class PageExporter
         if (!$mainNode) {
             throw new \RuntimeException("No <main> element found in HTML");
         }
-        $page = $this->determinePageType($this->data['cmp']);
-        $builder = $this->getPageBuilder($page, $page);
-        // Extract <main> inner HTML
+
+        $outsideSections = $xpath->query('//section[not(ancestor::main)]');
+        $toMove = [];
+        foreach ($outsideSections as $section) {
+            $toMove[] = $section;
+        }
+        foreach ($toMove as $section) {
+            $mainNode->appendChild($section);
+        }
+
         $innerHTML = '';
         foreach ($mainNode->childNodes as $child) {
             $innerHTML .= $dom->saveHTML($child);
         }
 
-        // Process content into dynamic text placeholders
-        // pageSlug can be something like "single-page" or from $this->data['cmp']
+        $page = $this->determinePageType($this->data['cmp']);
+        $builder = $this->getPageBuilder($page, $page);
+
         $pageSlug = $this->data['cmp'] ?? 'single-page';
         error_log("Processing single page with slug: $pageSlug");
         $processedContent = $this->processContent($innerHTML, $pageSlug);
+
         $wrappedContent = <<<HTML
-        <main class="min-h-screen pt-24 flex-grow">
-        $processedContent
-        </main>
-        HTML;
-        // Ensure export directory exists
+<main class="min-h-screen pt-24 flex-grow">
+$processedContent
+</main>
+HTML;
+
         $directory = __DIR__ . '/../../public/exportedPages/pages/';
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
-        $baseCss = <<<CSS
-            .dropdown:hover .dropdown-menu {
-                display: block;
-            }
 
-            .dropdown-menu {
-                display: none;
-                position: absolute;
-                background-color: white;
-                min-width: 200px;
-                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-                z-index: 1;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            CSS;
+        $baseCss = <<<CSS
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+CSS;
 
         $datacss = $this->data['css'] ?? '';
+        error_log("Data CSS: " . $datacss);
         $builder->setCss($baseCss . "\n" . $datacss);
 
         $filePath = $directory . $pageSlug . '.php';
         $builder->setHtml($wrappedContent);
-        error_log("Final HTML content: " . $builder->buildPage());
-        // Save processed content
-        $success = file_put_contents($filePath, $builder->buildPage());
+        $finalPage = $builder->buildPage();
+        error_log("Final HTML content: " . $finalPage);
+
+        $success = file_put_contents($filePath, $finalPage);
 
         if ($success === false) {
             throw new \RuntimeException("Failed to write file: $filePath");
@@ -827,7 +843,7 @@ class PageExporter
 
         $dataDir = dirname(__DIR__) . '/../public/assets/data';
         if (!is_dir($dataDir)) {
-            mkdir($dataDir, 0755, true);
+            mkdir($dataDir, 0775, true);
         }
 
         $pagesJsonPath = "$dataDir/pages.json";

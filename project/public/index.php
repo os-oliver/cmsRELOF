@@ -53,6 +53,12 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('POST', '/saveComponent', 'ComponentController@saveComponent');
     $r->addRoute('POST', '/saveLandigPageComponent', 'ComponentController@saveLandigPageComponent');
     $r->addRoute('GET', '/template', 'PageController@template');
+
+    $r->addRoute(
+        'GET',
+        '/{templateSlug:informacije-od-javnog-znacaja}',
+        'PageController@templateBySlug'
+    );
     $r->addRoute('GET', '/component', 'ComponentController@loadComponent');
 
     $r->addRoute('POST', '/contact', 'ContactController@create');
