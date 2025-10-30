@@ -25,6 +25,7 @@ use App\Admin\PageBuilders\ContactPageBuilder;
 use App\Admin\PageBuilders\DocumentsPageBuilder;
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Admin\PageBuilders\EventsPageBuilder;
+use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuiler;
 use DOMDocument;
 use DOMNode;
@@ -628,6 +629,8 @@ class PageExporter
                 return new ObrasciPageBuilder('Obrasci');
             case 'nasi-korisnici':
                 return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
+            case 'faq':
+                return new FAQPageBuilder('FAQ');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -671,6 +674,8 @@ class PageExporter
             return 'obrasci';
         } elseif (strpos($name, 'nasi-korisnici') !== false || strpos($name, 'naši korisnici') !== false || strpos($name, 'nai-korisnici') !== false) {
             return 'nasi-korisnici';
+        } elseif (strpos($name, 'faq') !== false) {
+            return 'faq';
         }
 
 
