@@ -5,7 +5,7 @@ namespace App\Admin\PageBuilders;
 use App\Controllers\ContentController;
 use App\Controllers\LanguageMapperController;
 
-class SeminarPageBuiler extends BasePageBuilder
+class SeminarPageBuilder extends BasePageBuilder
 {
     protected string $slug;
     private LanguageMapperController $translator;
