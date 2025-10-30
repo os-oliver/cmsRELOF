@@ -188,6 +188,13 @@ class PageExporter
                         return false;
                     }
                 }
+
+                if ($parent->hasAttribute('data-translate')) {
+                    $translateAttr = $parent->getAttribute('data-translate');
+                    if ('off' == $translateAttr) {
+                        return false;
+                    }
+                }
             }
             $parent = $parent->parentNode;
         }
