@@ -1,25 +1,109 @@
 [
   {
-    "Dogadjaji": {
-      "sr": "Događaji",
-      "en": "Events",
-      "sr-Cyrl": "Догађаји",
-      "icon": "fas fa-calendar-days",
+    "Vesti": {
+      "sr": "Vesti",
+      "en": "News",
+      "sr-Cyrl": "Вести",
+      "icon": "fas fa-newspaper",
       "categories": [
-        "Konferencije",
+        "Vesti",
+        "Naučni klub",
         "Seminari",
-        "Radionice",
-        "Takmičenja",
-        "Kultura"
+        "Radionice"
       ],
       "fields": [
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika",
+            "en": "Cover image",
+            "sr-Cyrl": "Насловна слика"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorije",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
+          },
+          "options": [
+            "Vesti",
+            "Naučni klub",
+            "Seminari",
+            "Radionice"
+          ],
+          "required": true
+        },
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
+          },
+          "required": true
+        },
+        {
+          "name": "tekst",
+          "type": "textarea",
+          "label": {
+            "sr": "Tekst vesti",
+            "en": "Article text",
+            "sr-Cyrl": "Текст вести"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Seminari": {
+      "sr": "Akreditovani seminari",
+      "en": "Accredited seminars",
+      "sr-Cyrl": "Акредитовани семинари",
+      "icon": "fas fa-graduation-cap",
+      "fields": [
+        {
+          "name": "catalogNumber",
+          "type": "number",
+          "label": {
+            "sr": "Kataloški broj",
+            "en": "Catalog number",
+            "sr-Cyrl": "Каталошки број"
+          },
+          "required": true
+        },
         {
           "name": "title",
           "type": "text",
           "label": {
-            "sr": "Naslov događaja",
-            "en": "Event title",
-            "sr-Cyrl": "Наслов догађаја"
+            "sr": "Naziv seminara",
+            "en": "Seminar title",
+            "sr-Cyrl": "Назив семинара"
+          },
+          "required": true
+        },
+        {
+          "name": "area",
+          "type": "text",
+          "label": {
+            "sr": "Oblast",
+            "en": "Subject area",
+            "sr-Cyrl": "Област"
+          },
+          "required": true
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "ZUOV link",
+            "en": "ZUOV link",
+            "sr-Cyrl": "ЗУОВ линк"
           },
           "required": true
         },

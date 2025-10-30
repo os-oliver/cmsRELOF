@@ -204,7 +204,6 @@
             }
 
             .dropdown-item:hover {
-                background-color: #f9f5f0;
                 border-left: 3px solid #d4a373;
             }
 
@@ -370,11 +369,15 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
                                 <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
                             </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
+                                <i class="fas fa-users mr-2 text-coral"></i>Tim
+                            </a>
                         </div>
                     </div>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-royal-blue"></i>Događaji
+                        <i class="fas fa-newspaper mr-3 text-royal-blue"></i>Vesti
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
@@ -386,7 +389,7 @@
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fa-solid fa-graduation-cap mr-3 text-primary"></i>Naučni klub
+                        <i class="fa-solid fa-graduation-cap mr-3 text-primary"></i>Seminari
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
@@ -427,27 +430,40 @@
                     <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
-
+                <a href="#"
+                    class="hidden nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
+                    <span class="hidden xl:inline">FAQ</span>
+                </a>
                 <div class="dropdown relative group">
                     <button
-                        class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                        <i class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors"></i>
-                        <span class="hidden xl:inline">O nama</span>
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
+                        <i
+                            class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors text-sm"></i>
+                        <span class="hidden xl:inline text-sm">O nama</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute top-full left-0  w-48 bg-paper rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2  min-w-max max-w-xs w-auto bg-light rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                            <i class="fas fa-bullseye mr-2 text-royal-blue"></i>Cilj
+                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-bullseye mr-3 text-royal-blue flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Cilj</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                            <i class="fas fa-sitemap mr-2 text-terracotta"></i>Zaposleni
+                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Zaposleni</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
+                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-flag mr-3 text-deep-teal flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Misija</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Tim</span>
                         </a>
                     </div>
                 </div>
@@ -455,8 +471,8 @@
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
                     <i
-                        class="fas fa-calendar-alt mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
-                    <span class="hidden xl:inline">Događaji</span>
+                        class="fas fa-newspaper mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
+                    <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
@@ -471,7 +487,7 @@
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
                     <i class="fa-solid fa-graduation-cap mr-2 text-primary group-hover:text-sage transition-colors"></i>
-                    <span class="hidden xl:inline">Naučni klub</span>
+                    <span class="hidden xl:inline">Seminari</span>
                 </a>
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
@@ -494,15 +510,15 @@
                     $locale = 'sr';
                 }
                 ?>
-                <div class="dropdown relative group">
+                <div class="locale dropdown nonPage relative group">
                     <button class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
                         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
-                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-paper rounded-md shadow-lg z-50">
+                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-llight rounded-md shadow-lg z-50">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>" class="dropdown-item flex items-center px-4 py-2 hover:bg-slate-50 rounded-md text-sm">
+                            <a href="?locale=<?= $key ?>" class="dropdown-item flex items-center px-4 py-2 bg-light hover:bg-light-50 rounded-md text-sm">
                                 <span class="mr-2"><?= $lang['flag'] ?></span>
                                 <?= $lang['label'] ?>
                             </a>
@@ -560,14 +576,14 @@
             <h2 class="text-3xl sm:text-4xl font-display font-bold leading-tight">Dobrodošli u našu ustanovu</h2>
             <p class="mt-4 text-lg max-w-2xl mx-auto">Znanje, inovacije i budućnost u srcu obrazovanja.</p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#" class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:brightness-95 transition">Saznaj više</a>
-                <a href="#" class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava na seminar</a>
+                <a href="/o-nama/cilj" class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:brightness-95 transition">Saznaj više</a>
+                <a href="/seminari" class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava na seminar</a>
             </div>
         </div>
     </section>
 
     <!-- Najnnovije vesti -->
-    <section id="events" class="py-20 bg-light">
+    <section id="vesti" class="py-20 bg-light">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-primary mb-4 relative inline-block">
@@ -579,110 +595,119 @@
                 </p>
             </div>
 
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Event 1 -->
-                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- News 1 -->
+                <article class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-image"
+                        <img id="g-slika"
                             src="https://picsum.photos/600/300"
                             alt="Art Exhibition" class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 id="g-title" class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-dark mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-description" class="text-slate-600 mb-4">
+                        <p id="g-tekst" class="text-slate-600 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
                                     <i class="fas fa-calendar-days mr-2"></i>
-                                    <span id="g-date">28.9.2025.</span>
+                                    <span id="g-datum">28.9.2025.</span>
                                 </div>
                             </div>
-                            <button
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
                                 Pročitaj više
-                            </button>
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Event 2 -->
-                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <!-- News 2 -->
+                <article class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/300"
-                            alt="Film Festival" class="w-full h-full object-cover">
+                        <img id="g-slika"
+                            src="https://picsum.photos/600/300"
+                            alt="Art Exhibition" class="w-full h-full object-cover">
+
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-dark mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
-                        <p class="text-slate-600 mb-4">
+
+                        <p id="g-tekst" class="text-slate-600 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
                                     <i class="fas fa-calendar-days mr-2"></i>
-                                    <span>28.9.2025.</span>
+                                    <span id="g-datum">28.9.2025.</span>
                                 </div>
                             </div>
-                            <button
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-deep-teal transition-colors">
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
                                 Pročitaj više
-                            </button>
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Event 3 -->
-                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <!-- News 3 -->
+                <article class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/300"
-                            alt="Jazz Night" class="w-full h-full object-cover">
+                        <img id="g-slika"
+                            src="https://picsum.photos/600/300"
+                            alt="Art Exhibition" class="w-full h-full object-cover">
+
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-dark mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
-                        <p class="text-slate-600 mb-4">
+
+                        <p id="g-tekst" class="text-slate-600 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
                                     <i class="fas fa-calendar-days mr-2"></i>
-                                    <span>28.9.2025.</span>
+                                    <span id="g-datum">28.9.2025.</span>
                                 </div>
                             </div>
-                            <button
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
                                 Pročitaj više
-                            </button>
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
 
             <div class="text-center mt-12">
-                <button id="eventsView"
-                    class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
+                <a href="/vesti"
+                    class="bg-primary text-white px-8 py-4 w-fit rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Pogledaj sve vesti
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -701,7 +726,7 @@
                 </p>
             </div>
 
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Event 1 -->
                 <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
@@ -800,7 +825,7 @@
             </div>
 
             <div class="text-center mt-12">
-                <button id="eventsView"
+                <button
                     class="bg-accent text-black px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
                     Saznaj više
                     <i class="fa-solid fa-arrow-right ml-3"></i>
@@ -938,7 +963,7 @@
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
+                        <li><a href="/faq" class="hover:text-secondary transition-colors">Često postavljena pitanja</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
