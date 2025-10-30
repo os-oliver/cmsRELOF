@@ -53,9 +53,10 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('POST', '/saveComponent', 'ComponentController@saveComponent');
     $r->addRoute('POST', '/saveLandigPageComponent', 'ComponentController@saveLandigPageComponent');
     $r->addRoute('GET', '/template', 'PageController@template');
+
     $r->addRoute(
         'GET',
-        '/{templateSlug:biblioteka|centar-za-kulturu|informacije-od-javnog-znacaja|istorijski-arhiv|muzej-galerija|obrazovna-ustanova|omladinski-centar|pozoriste|predskolska-ustanova|socijalna-ustanova|sport|turizam}',
+        '/{templateSlug:informacije-od-javnog-znacaja}',
         'PageController@templateBySlug'
     );
     $r->addRoute('GET', '/component', 'ComponentController@loadComponent');
