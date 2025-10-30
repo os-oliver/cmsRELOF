@@ -8,18 +8,18 @@ use App\Controllers\PersonalContentController;
 class PageController
 {
     private const TEMPLATE_SLUG_MAP = [
-        'biblioteka' => 'Biblioteka',
-        'centar-za-kulturu' => 'CentarZaKulturu',
+        // 'biblioteka' => 'Biblioteka',
+        // 'centar-za-kulturu' => 'CentarZaKulturu',
         'informacije-od-javnog-znacaja' => 'InformacijeOdJavnogZnacaja',
-        'istorijski-arhiv' => 'IstorijskiArhiv',
-        'muzej-galerija' => 'MuzejGalerija',
-        'obrazovna-ustanova' => 'ObrazovnaUstanova',
-        'omladinski-centar' => 'OmladinskiCentar',
-        'pozoriste' => 'Pozoriste',
-        'predskolska-ustanova' => 'PredskolskaUstanova',
-        'socijalna-ustanova' => 'SocijalnaUstanova',
-        'sport' => 'Sport',
-        'turizam' => 'Turizam',
+        // 'istorijski-arhiv' => 'IstorijskiArhiv',
+        // 'muzej-galerija' => 'MuzejGalerija',
+        // 'obrazovna-ustanova' => 'ObrazovnaUstanova',
+        // 'omladinski-centar' => 'OmladinskiCentar',
+        // 'pozoriste' => 'Pozoriste',
+        // 'predskolska-ustanova' => 'PredskolskaUstanova',
+        // 'socijalna-ustanova' => 'SocijalnaUstanova',
+        // 'sport' => 'Sport',
+        // 'turizam' => 'Turizam',
     ];
 
     private function loadTemplate(string $templateName): void
