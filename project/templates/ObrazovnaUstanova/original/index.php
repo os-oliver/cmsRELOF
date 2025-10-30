@@ -430,6 +430,10 @@
                     <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
+                <a href="#"
+                    class="hidden nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
+                    <span class="hidden xl:inline">FAQ</span>
+                </a>
                 <div class="dropdown relative group">
                     <button
                         class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
@@ -572,7 +576,7 @@
             <h2 class="text-3xl sm:text-4xl font-display font-bold leading-tight">Dobrodošli u našu ustanovu</h2>
             <p class="mt-4 text-lg max-w-2xl mx-auto">Znanje, inovacije i budućnost u srcu obrazovanja.</p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#" class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:brightness-95 transition">Saznaj više</a>
+                <a href="/o-nama/cilj" class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:brightness-95 transition">Saznaj više</a>
                 <a href="/seminari" class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava na seminar</a>
             </div>
         </div>
@@ -959,7 +963,7 @@
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
+                        <li><a href="/faq" class="hover:text-secondary transition-colors">Često postavljena pitanja</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
