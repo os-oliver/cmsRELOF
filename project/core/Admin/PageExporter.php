@@ -6,7 +6,6 @@ use App\Admin\PageBuilders\DynamicPageBuilder;
 use App\Admin\PageBuilders\EmployeesPageBuilder;
 use App\Admin\PageBuilders\GoalPageBulder;
 use App\Admin\PageBuilders\MissionPageBuilder;
-use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\TestBuilder;
 use App\Admin\PageBuilders\VestiPageBuilder;
@@ -27,6 +26,9 @@ use App\Admin\PageBuilders\ContactPageBuilder;
 use App\Admin\PageBuilders\DocumentsPageBuilder;
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Admin\PageBuilders\EventsPageBuilder;
+use App\Admin\PageBuilders\FAQPageBuilder;
+use App\Admin\PageBuilders\SeminarPageBuilder;
+
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -500,6 +502,7 @@ class PageExporter
         foreach ($structure as $k => $v) {
             $structureLower[strtolower($k)] = $v;
         }
+        print_r(array_keys($this->data));
 
         foreach ($this->data['ids'] as $id) {
             $idLower = strtolower($id);
@@ -610,8 +613,8 @@ class PageExporter
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
                 return new VestiPageBuilder('Vesti');
-            case 'naucni-klub':
-                return new NaucniKlubPageBuilder('NaucniKlub');
+            case 'seminari':
+                return new SeminarPageBuilder('Seminari');
             case 'primer':
                 return new ContactPageBuilder($name, $this->data);
             case 'zaposleni':
@@ -628,6 +631,8 @@ class PageExporter
                 return new ObrasciPageBuilder('Obrasci');
             case 'nasi-korisnici':
                 return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
+            case 'faq':
+                return new FAQPageBuilder('FAQ');
             case 'test123':
                 return new TestBuilder('Test', $this->data);
             default:
@@ -651,11 +656,10 @@ class PageExporter
             return 'predstave';
         } elseif (strpos($name, 'vesti') !== false) {
             return 'vesti';
-
         } elseif (strpos($name, 'misija') !== false) {
             return 'misija';
-        } elseif (strpos($name, 'naucni-klub') !== false) {
-            return 'naucni-klub';
+        } elseif (strpos($name, 'seminari') !== false) {
+            return 'seminari';
         } elseif (strpos($name, 'primer') !== false) {
             return 'primer';
         } elseif (strpos($name, 'cilj') !== false) {
@@ -674,6 +678,8 @@ class PageExporter
             return 'obrasci';
         } elseif (strpos($name, 'nasi-korisnici') !== false || strpos($name, 'naši korisnici') !== false || strpos($name, 'nai-korisnici') !== false) {
             return 'nasi-korisnici';
+        } elseif (strpos($name, 'faq') !== false) {
+            return 'faq';
         } elseif (strpos($name, 'test123') !== false) {
             return 'test123';
         }
