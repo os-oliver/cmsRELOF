@@ -1467,7 +1467,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-ochre mt-1 mr-3"></i>
-                            <span>info@kulturninexus.rs</span>
+                            <span data-translate="off">info@kulturninexus.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-ochre mt-1 mr-3"></i>
