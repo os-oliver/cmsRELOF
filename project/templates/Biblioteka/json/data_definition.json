@@ -90,143 +90,7 @@
         }
       ]
     },
-    "Ansambl": {
-      "sr": "Ansambl",
-      "en": "Ensemble",
-      "sr-Cyrl": "Ансамбл",
-      "icon": "fas fa-users",
-      "categories": [
-        "Muzicki ansambl",
-        "Pozoriste",
-        "Multimedija",
-        "Edukacija"
-      ],
-      "fields": [
-        {
-          "name": "naziv",
-          "type": "text",
-          "label": {
-            "sr": "Naziv ansambla",
-            "en": "Ensemble name",
-            "sr-Cyrl": "Назив ансамбла"
-          },
-          "required": true
-        },
 
-        {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Kratak opis ansambla",
-            "en": "Short description of the ensemble",
-            "sr-Cyrl": "Кратак опис ансамбла"
-          }
-        },
-
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Logo / slika ansambla",
-            "en": "Ensemble logo / image",
-            "sr-Cyrl": "Лого / слика ансамбла"
-          }
-        }
-      ]
-    },
-
-    "Projekti": {
-      "sr": "Projekti",
-      "en": "Projects",
-      "sr-Cyrl": "Пројекти",
-      "icon": "fas fa-diagram-project",
-      "categories": [
-        "Muzika",
-        "Pozoriste",
-        "Likovna umetnost",
-        "Kreativne radionice",
-        "Literatura",
-        "Film"
-      ],
-      "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika projekta",
-            "en": "Project image",
-            "sr-Cyrl": "Насловна слика пројекта"
-          },
-          "required": true
-        },
-        {
-          "name": "naziv",
-          "type": "text",
-          "label": {
-            "sr": "Naziv projekta",
-            "en": "Project name",
-            "sr-Cyrl": "Назив пројекта"
-          },
-          "required": true
-        },
-        {
-          "name": "vodja",
-          "type": "text",
-          "label": {
-            "sr": "Vođa projekta",
-            "en": "Project lead",
-            "sr-Cyrl": "Вођа пројекта"
-          }
-        },
-        {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
-          }
-        },
-        {
-          "name": "datumPocetka",
-          "type": "date",
-          "label": {
-            "sr": "Datum početka",
-            "en": "Start date",
-            "sr-Cyrl": "Датум почетка"
-          },
-          "required": true
-        },
-        {
-          "name": "budzet",
-          "type": "number",
-          "label": {
-            "sr": "Budžet (u evrima)",
-            "en": "Budget (EUR)",
-            "sr-Cyrl": "Буџет (у евриима)"
-          }
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Zvanični link projekta",
-            "en": "Official project link",
-            "sr-Cyrl": "Званични линк пројекта"
-          }
-        },
-        {
-          "name": "sekcija",
-          "type": "relation",
-          "label": {
-            "sr": "Sekcija projekta",
-            "en": "Project section",
-            "sr-Cyrl": "Секција пројекта"
-          },
-          "related_to": "Sekcije"
-        }
-      ]
-    },
     "Vesti": {
       "sr": "Vesti",
       "en": "News",
@@ -316,31 +180,84 @@
         }
       ]
     },
-    "Ankete": {
-      "sr": "Ankete",
-      "en": "Surveys",
-      "sr-Cyrl": "Анкете",
-      "icon": "fas fa-poll",
+    "Repertoar": {
+      "sr": "Repertoar",
+      "en": "Library Program",
+      "sr-Cyrl": "Репертоар",
+      "icon": "fas fa-book",
+      "categories": [
+        "Čitanja",
+        "Radionice",
+        "Predavanja",
+        "Izložbe",
+        "Kulturni događaji"
+      ],
       "fields": [
         {
           "name": "naslov",
           "type": "text",
           "label": {
-            "sr": "Naslov ankete",
-            "en": "Survey title",
-            "sr-Cyrl": "Наслов анкете"
+            "sr": "Naslov programa",
+            "en": "Program title",
+            "sr-Cyrl": "Наслов програма"
           },
           "required": true
         },
         {
-          "name": "link",
-          "type": "url",
+          "name": "kategorija",
+          "type": "categories",
           "label": {
-            "sr": "Link ka anketi",
-            "en": "Survey link",
-            "sr-Cyrl": "Линк ка анкети"
+            "sr": "Kategorija programa",
+            "en": "Program category",
+            "sr-Cyrl": "Категорија програма"
+          },
+          "options": [
+            "Čitanja",
+            "Radionice",
+            "Predavanja",
+            "Izložbe",
+            "Kulturni događaji"
+          ],
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum održavanja",
+            "en": "Program date",
+            "sr-Cyrl": "Датум одржавања"
           },
           "required": true
+        },
+        {
+          "name": "vreme",
+          "type": "time",
+          "label": {
+            "sr": "Vreme početka",
+            "en": "Start time",
+            "sr-Cyrl": "Време почетка"
+          },
+          "required": true
+        },
+
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis programa",
+            "en": "Program description",
+            "sr-Cyrl": "Опис програма"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika programa",
+            "en": "Program image",
+            "sr-Cyrl": "Насловна слика програма"
+          }
         }
       ]
     }

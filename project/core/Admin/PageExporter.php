@@ -2,13 +2,17 @@
 
 namespace App\Admin;
 
+use App\Admin\PageBuilders\AnketePageBuilder;
+use App\Admin\PageBuilders\AnsambalPageBuilder;
 use App\Admin\PageBuilders\DynamicPageBuilder;
 use App\Admin\PageBuilders\EmployeesPageBuilder;
 use App\Admin\PageBuilders\GoalPageBulder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
+use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\TestBuilder;
+use App\Admin\PageBuilders\UvodPageBuilder;
 use App\Admin\PageBuilders\VestiPageBuilder;
 use App\Admin\PageBuilders\ProgramiObukePageBuilder;
 use App\Admin\PageBuilders\UslugePageBuilder;
@@ -471,10 +475,14 @@ class PageExporter
         $indexContent .= $this->generateIndexBody();
         file_put_contents("{$this->baseDir}/index.php", $indexContent);
         if (!empty($this->data['css'])) {
-            $css = "\n" . htmlspecialchars($this->data['css'], ENT_QUOTES) . "\n";
+            $css = html_entity_decode($this->data['css'], ENT_QUOTES | ENT_HTML5);
+            $css = "\n" . trim($css) . "\n";
+        } else {
+            $css = '';
         }
 
-        file_put_contents("{$this->baseDir}/commonStyle.css", $css ?? '');
+        file_put_contents("{$this->baseDir}/commonStyle.css", $css);
+
         if (!empty($this->data['js'])) {
             $jsCode = preg_replace('/<\/?script\b[^>]*>/i', '', $this->data['js']);
             $jsCode = preg_replace('/,(\s*[\]}])/m', '$1', $jsCode);
@@ -510,7 +518,7 @@ class PageExporter
             }
 
             if (isset($structureLower[$key])) {
-                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$key', '', 0, 3, null, \$locale)['items'];\n";
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$key', '', 0, 9, null, \$locale)['items'];\n";
                 $phpString .= "\$$id = HashMapTransformer::transform(\$$id" . "_raw, \$locale);\n\n";
             }
 
@@ -520,45 +528,43 @@ class PageExporter
 
 
         $header = <<<'PHP'
-    <?php
-    session_start();
-    use App\Models\Gallery;
-    use App\Models\PageLoader;
-    use App\Utils\HashMapTransformer;
-    if (isset($_GET['locale'])) {
-        $_SESSION['locale'] = $_GET['locale'];
-    }
-    $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-    use App\Models\Event;
-    use App\Models\Text;
-    use App\Models\Content;
+        <?php
+        session_start();
+        use App\Models\Gallery;
+        use App\Models\PageLoader;
+        use App\Utils\HashMapTransformer;
+        if (isset($_GET['locale'])) {
+            $_SESSION['locale'] = $_GET['locale'];
+        }
+        $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+        use App\Models\Event;
+        use App\Models\Text;
+        use App\Models\Content;
 
-    // Load dynamic texts
-    $textModel = new Text();
-    $dynamicText = $textModel->getDynamicText($locale);
-    {{dynamicLandigPageElements}}
+        // Load dynamic texts
+        $textModel = new Text();
+        $dynamicText = $textModel->getDynamicText($locale);
+        {{dynamicLandigPageElements}}
 
-    [$images, $totalEvents] = (new Gallery)->list();
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exported Page</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+        [$images, $totalEvents] = (new Gallery)->list();
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exported Page</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
         <link href="/exportedPages/commonStyle.css" rel="stylesheet" />
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    PHP;
+        <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+        <div class="min-h-screen flex flex-col">
+        PHP;
 
         $header = str_replace('{{dynamicLandigPageElements}}', $phpString, $header);
-        $header .= '</style>
-        </head>
-        <div class="min-h-screen flex flex-col">';
 
         return $header;
+
     }
 
     private function generateIndexBody(): string
@@ -581,7 +587,7 @@ class PageExporter
             $content .= "\n<?php require_once __DIR__ . '/landingPageComponents/{$this->footerPath}'; ?>";
         }
 
-        $content .= '<script src="/exportedPages/commonScript.js"></script>' . "\n";
+        $content .= '<script src="/exportedPages/commonScript.js?v=<?php echo time(); ?>"></script>' . "\n";
 
 
         $content .= "\n</div>\n</body>\n</html>";
@@ -628,8 +634,20 @@ class PageExporter
                 return new ObrasciPageBuilder('Obrasci');
             case 'nasi-korisnici':
                 return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
-            case 'test123':
-                return new TestBuilder('Test', $this->data);
+            case 'ansambl':
+                return new AnsambalPageBuilder('Ansambl');
+            case 'projekti':
+                return new ProjektiPageBuilder('Projekti');
+
+            case strpos($name, 'uvod') !== false:
+                return new UvodPageBuilder('Uvod', $this->data);
+
+            case strpos($name, 'projekti') !== false:
+                return new ProjektiPageBuilder('Projekti');
+            case 'rukovodstvo':
+                return new EmployeesPageBuilder('Rukovodstvo', $this->data);
+            case 'ankete':
+                return new AnketePageBuilder('Ankete');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -674,9 +692,30 @@ class PageExporter
             return 'obrasci';
         } elseif (strpos($name, 'nasi-korisnici') !== false || strpos($name, 'naši korisnici') !== false || strpos($name, 'nai-korisnici') !== false) {
             return 'nasi-korisnici';
-        } elseif (strpos($name, 'test123') !== false) {
-            return 'test123';
+        } elseif (strpos($name, 'ansambl') !== false) {
+            return 'ansambl';
+        } elseif (strpos($name, 'projekti') !== false) {
+            return 'projekti';
+        } elseif (strpos($name, 'rukovodstvo') !== false) {
+            return 'rukovodstvo';
+        } elseif (strpos($name, 'rukovodstvo') !== false) {
+            return 'rukovodstvo';
+        } elseif (strpos($name, 'misija-i-vizija') !== false) {
+            return 'misija-i-vizija';
+        } elseif (strpos($name, 'uvod') !== false) {
+            return 'uvod';
+        } elseif (strpos($name, 'istorijat') !== false) {
+            return 'istorijat';
+        } elseif (strpos($name, 'objekat') !== false) {
+            return 'objekat';
+        } elseif (strpos($name, 'donacije-i-podrska') !== false) {
+            return 'donacije-i-podrska';
+        } elseif (strpos($name, 'partneri') !== false) {
+            return 'partneri';
+        } elseif (strpos($name, 'ankete') !== false) {
+            return 'ankete';
         }
+
 
 
         return 'basic';

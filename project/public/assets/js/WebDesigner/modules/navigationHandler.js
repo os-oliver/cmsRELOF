@@ -99,7 +99,8 @@ if (!isset($languages[$locale])) {
       comp.replaceWith({ type: "textnode", content: phpLocaleCode });
     } else if (comp.get("tagName") === "a") {
       const el = comp.view.el;
-      let text = el.textContent
+      let txt = normalizeText(el.textContent);
+      let text = txt
         .trim()
         .replace(/ /g, "-")
         .normalize("NFD")
@@ -131,7 +132,8 @@ if (!isset($languages[$locale])) {
           ch.components().forEach((link) => {
             if (link.get("tagName") === "a") {
               const el = link.view.el;
-              const text = el.textContent
+              let txt = normalizeText(el.textContent);
+              const text = txt
                 .trim()
                 .replace(/ /g, "-")
                 .replace(/[^\x00-\x7F]/g, "");

@@ -2,7 +2,8 @@
 
 namespace App\Config;
 
-class PageGeneratorConfig {
+class PageGeneratorConfig
+{
     // Base directory paths
     public const BASE_EXPORT_DIR = '/exportedPages';
     public const COMPONENTS_DIR = '/landingPageComponents';
@@ -37,7 +38,8 @@ class PageGeneratorConfig {
     ];
 }
 
-class PageTypes {
+class PageTypes
+{
     public const GALLERY = 'gallery';
     public const BASIC = 'basic';
     public const GOAL = 'goal';

@@ -7,162 +7,174 @@ use App\Models\Gallery;
 class GalleryPageBuilder extends BasePageBuilder
 {
     protected string $css = <<<CSS
-    gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
 
-        .gallery-item {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            height: 250px;
-            cursor: pointer;
-        }
+    .gallery-item {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        height: 250px;
+        cursor: pointer;
+        position: relative;
+    }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+    .gallery-item::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+        border-radius: 0.5rem;
+    }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+    .gallery-item:hover::after {
+        opacity: 1;
+    }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
+    .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
 
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        display: block;
+    }
 
-        .lightbox.active {
-            opacity: 1;
-            pointer-events: all;
-        }
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
 
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            text-align: center;
-        }
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
 
-        .lightbox img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 0.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-        }
+    .lightbox.active {
+        opacity: 1;
+        pointer-events: all;
+    }
 
-        .lightbox-info {
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        text-align: center;
+    }
 
-        .lightbox-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
+    .lightbox img {
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 0.5rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    }
 
-        .lightbox-description {
-            opacity: 0.8;
-        }
+    .lightbox-info {
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
 
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s ease;
-            z-index: 1001;
-        }
+    .lightbox-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
 
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
+    .lightbox-description {
+        opacity: 0.8;
+    }
 
-        .prev-btn {
-            left: 20px;
-        }
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+        z-index: 1001;
+    }
 
-        .next-btn {
-            right: 20px;
-        }
+    .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
+    .prev-btn {
+        left: 20px;
+    }
 
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            gap: 0.5rem;
-        }
+    .next-btn {
+        right: 20px;
+    }
 
-        .page-item {
-            display: flex;
-        }
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 1001;
+    }
 
-        .page-link {
-            padding: 0.5rem 1rem;
-            background: #f3f4f6;
-            border-radius: 0.25rem;
-            color: #4b5563;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        gap: 0.5rem;
+    }
 
-        .page-link:hover,
-        .page-link.active {
-            background: #3b82f6;
-            color: white;
-        }
+    .page-item {
+        display: flex;
+    }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, #6b46c1 0%, #3b82f6 100%);
-        }
-    CSS;
+    .page-link {
+        padding: 0.5rem 1rem;
+        background: #f3f4f6;
+        border-radius: 0.25rem;
+        color: #4b5563;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .page-link:hover,
+    .page-link.active {
+        background: #3b82f6;
+        color: white;
+    }
+CSS;
 
     protected string $html = <<<'HTML'
 <main>
@@ -174,15 +186,14 @@ class GalleryPageBuilder extends BasePageBuilder
         </button>
     </div>
 
-    <!-- Gallery Section -->
-    <section class="container mx-auto px-4  py-12 pt-32 ">
+    <section class="container mx-auto px-4 py-12 pt-32">
         <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4 text-gray-800">Kolekcija Slika</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">Istražite našu pažljivo odabranu kolekciju slika. Kliknite na bilo koju sliku da je pogledate u punoj veličini i da se krećete kroz galeriju.</p>
-
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">Kolekcija Slika</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Istražite našu pažljivo odabranu kolekciju slika. Kliknite na bilo koju sliku da je pogledate u punoj veličini i da se krećete kroz galeriju.
+            </p>
         </div>
 
-        <!-- Gallery Grid -->
         <div class="gallery-grid">
             <?php foreach ($images as $index => $image): ?>
                 <div class="gallery-item" 
@@ -197,16 +208,12 @@ class GalleryPageBuilder extends BasePageBuilder
             <?php endforeach; ?>
         </div>
 
-        <!-- Pagination -->
         <div class="pagination mt-12">
             <?php if ($page > 1): ?>
                 <div class="page-item">
-                    <a href="?page=<?= $page - 1 ?>" class="page-link">
-                        <i class="fas fa-chevron-left mr-1"></i> Prev
-                    </a>
+                    <a href="?page=<?= $page - 1 ?>" class="page-link">Prev</a>
                 </div>
             <?php endif; ?>
-
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                 <div class="page-item">
                     <a href="?page=<?= $i ?>" class="page-link <?= $i == $page ? 'active' : '' ?>">
@@ -214,27 +221,18 @@ class GalleryPageBuilder extends BasePageBuilder
                     </a>
                 </div>
             <?php endfor; ?>
-
             <?php if ($page < $totalPages): ?>
                 <div class="page-item">
-                    <a href="?page=<?= $page + 1 ?>" class="page-link">
-                        Next <i class="fas fa-chevron-right ml-1"></i>
-                    </a>
+                    <a href="?page=<?= $page + 1 ?>" class="page-link">Next</a>
                 </div>
             <?php endif; ?>
         </div>
     </section>
 </main>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
-    <button class="close-btn" id="closeLightbox">
-        <i class="fas fa-times"></i>
-    </button>
-
-    <button class="nav-btn prev-btn" id="prevBtn">
-        <i class="fas fa-chevron-left"></i>
-    </button>
+    <button class="close-btn" id="closeLightbox">&times;</button>
+    <button class="nav-btn prev-btn" id="prevBtn">&#10094;</button>
 
     <div class="lightbox-content">
         <img id="lightboxImage" src="" alt="">
@@ -245,10 +243,44 @@ class GalleryPageBuilder extends BasePageBuilder
         </div>
     </div>
 
-    <button class="nav-btn next-btn" id="nextBtn">
-        <i class="fas fa-chevron-right"></i>
-    </button>
+    <button class="nav-btn next-btn" id="nextBtn">&#10095;</button>
 </div>
+
+<script>
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDescription = document.getElementById('lightboxDescription');
+    const lightboxPosition = document.getElementById('lightboxPosition');
+    const closeBtn = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let currentIndex = 0;
+
+    function showLightbox(index) {
+        const item = galleryItems[index];
+        lightboxImage.src = item.querySelector('img').src;
+        lightboxTitle.textContent = item.dataset.title;
+        lightboxDescription.textContent = item.dataset.description;
+        lightboxPosition.textContent = `Slika ${index + 1} od ${galleryItems.length}`;
+        currentIndex = index;
+        lightbox.classList.add('active');
+    }
+
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => showLightbox(index));
+    });
+
+    closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+    prevBtn.addEventListener('click', () => showLightbox((currentIndex - 1 + galleryItems.length) % galleryItems.length));
+    nextBtn.addEventListener('click', () => showLightbox((currentIndex + 1) % galleryItems.length));
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+</script>
 HTML;
 
     public function buildPage(): string

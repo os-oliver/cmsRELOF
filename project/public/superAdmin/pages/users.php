@@ -285,7 +285,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <button onclick="openUserModal('create')"
                             class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2">
                             <i class="fas fa-plus"></i>
-                                <?= __('users.new_user') ?>
+                            <?= __('users.new_user') ?>
                         </button>
                     </div>
                 </div>
@@ -512,11 +512,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <button type="submit"
                                 class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                                 <i class="fas fa-save mr-2"></i>
-                                    <?= __('users.save_user') ?>
+                                <?= __('users.save_user') ?>
                             </button>
                             <button type="button" onclick="closeUserModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                    <?= __('users.cancel') ?>
+                                <?= __('users.cancel') ?>
                             </button>
                         </div>
                     </form>
@@ -544,16 +544,16 @@ $totalPages = (int) ceil($totalCount / $limit);
                         </div>
                         <p class="text-gray-700 mb-6">
                             <?= __('users.confirm_delete_user') ?>
-                            <strong
-                                id="deleteUserName"></strong>?</p>
+                            <strong id="deleteUserName"></strong>?
+                        </p>
                         <div class="flex gap-3">
                             <button onclick="confirmDelete()"
                                 class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">
-                                    <?= __('users.yes_delete') ?>
+                                <?= __('users.yes_delete') ?>
                             </button>
                             <button onclick="closeDeleteModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-4 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                    <?= __('users.cancel_del_modal') ?>
+                                <?= __('users.cancel_del_modal') ?>
                             </button>
                         </div>
                     </div>
@@ -761,22 +761,22 @@ $totalPages = (int) ceil($totalCount / $limit);
                         'Content-Type': 'application/json',
                     }
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("<?= __('users.error_deleting_user') ?>");
-                    }
-                    return response.json(); // ako šalješ JSON response
-                })
-                .then(data => {
-                    const message = "<?= __('users.user_deleted_success') ?>";
-                    showNotification(message, 'success');
-                    closeDeleteModal();
-                    location.reload();
-                })
-                .catch(error => {
-                    const message = "<?= __('users.error_prefix') ?> " + error.message;
-                    showNotification(message, 'error');
-                });
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("<?= __('users.error_deleting_user') ?>");
+                        }
+                        return response.json(); // ako šalješ JSON response
+                    })
+                    .then(data => {
+                        const message = "<?= __('users.user_deleted_success') ?>";
+                        showNotification(message, 'success');
+                        closeDeleteModal();
+                        location.reload();
+                    })
+                    .catch(error => {
+                        const message = "<?= __('users.error_prefix') ?> " + error.message;
+                        showNotification(message, 'error');
+                    });
             }
         }
 

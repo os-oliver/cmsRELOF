@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const formData = new FormData();
           formData.append(
             "cmp",
-            "/exportedPages/landingPageComponents/landingPage/promocija.php"
+            "/exportedPages/landingPageComponents/landingPage/vdii ovo daj da pokaze sve koje postoje i da ima kao slider"
           );
           formData.append("html", combinedHTML);
 

@@ -111,7 +111,7 @@ HTML;
         $content .= "require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';\n";
         $content .= "?>\n\n";
 
-        $content .= '<script src="/exportedPages/commonScript.js"></script>' . "\n";
+        $content .= '<script src="/exportedPages/commonScript.js?v=<?php echo time(); ?>"></script>' . "\n";
 
 
         $content .= "</body>\n</html>\n";
