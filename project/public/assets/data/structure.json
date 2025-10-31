@@ -90,59 +90,51 @@
         }
       ]
     },
-    "Sekcije": {
-      "sr": "Sekcije",
-      "en": "Sections",
-      "sr-Cyrl": "Секције",
-      "icon": "fas fa-layer-group",
+    "Ansambl": {
+      "sr": "Ansambl",
+      "en": "Ensemble",
+      "sr-Cyrl": "Ансамбл",
+      "icon": "fas fa-users",
       "categories": [
-        "Muzika",
+        "Muzicki ansambl",
         "Pozoriste",
-        "Likovna umetnost",
-        "Kreativne radionice",
-        "Literatura"
+        "Multimedija",
+        "Edukacija"
       ],
       "fields": [
         {
           "name": "naziv",
           "type": "text",
           "label": {
-            "sr": "Naziv sekcije",
-            "en": "Section name",
-            "sr-Cyrl": "Назив секције"
+            "sr": "Naziv ansambla",
+            "en": "Ensemble name",
+            "sr-Cyrl": "Назив ансамбла"
           },
           "required": true
         },
-        {
-          "name": "vodja",
-          "type": "text",
-          "label": {
-            "sr": "Vodja sekcije",
-            "en": "Section lead",
-            "sr-Cyrl": "Водја секције"
-          }
-        },
+
         {
           "name": "opis",
           "type": "textarea",
           "label": {
-            "sr": "Opis sekcije",
-            "en": "Section description",
-            "sr-Cyrl": "Опис секције"
+            "sr": "Kratak opis ansambla",
+            "en": "Short description of the ensemble",
+            "sr-Cyrl": "Кратак опис ансамбла"
           }
         },
+
         {
-          "name": "projekti",
-          "type": "relation",
+          "name": "slika",
+          "type": "file",
           "label": {
-            "sr": "Projekti sekcije",
-            "en": "Section projects",
-            "sr-Cyrl": "Пројекти секције"
-          },
-          "related_to": "Projekti"
+            "sr": "Logo / slika ansambla",
+            "en": "Ensemble logo / image",
+            "sr-Cyrl": "Лого / слика ансамбла"
+          }
         }
       ]
     },
+
     "Projekti": {
       "sr": "Projekti",
       "en": "Projects",
@@ -227,9 +219,9 @@
           "name": "sekcija",
           "type": "relation",
           "label": {
-            "sr": "Sekcija centra",
-            "en": "Center section",
-            "sr-Cyrl": "Секција центра"
+            "sr": "Sekcija projekta",
+            "en": "Project section",
+            "sr-Cyrl": "Секција пројекта"
           },
           "related_to": "Sekcije"
         }
@@ -273,16 +265,16 @@
           "name": "naziv",
           "type": "categories",
           "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
           },
           "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
+            "Kultura",
+            "Obrazovanje",
+            "Inovacije",
+            "Zdravlje",
+            "Tehnologija"
           ],
           "required": true
         },
@@ -304,7 +296,6 @@
             "sr-Cyrl": "Кратак опис"
           }
         },
-
         {
           "name": "slika",
           "type": "file",
@@ -318,10 +309,38 @@
           "name": "link",
           "type": "url",
           "label": {
-            "sr": "Externalni link",
+            "sr": "Eksterni link",
             "en": "External link",
             "sr-Cyrl": "Екстерни линк"
           }
+        }
+      ]
+    },
+    "Ankete": {
+      "sr": "Ankete",
+      "en": "Surveys",
+      "sr-Cyrl": "Анкете",
+      "icon": "fas fa-poll",
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov ankete",
+            "en": "Survey title",
+            "sr-Cyrl": "Наслов анкете"
+          },
+          "required": true
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Link ka anketi",
+            "en": "Survey link",
+            "sr-Cyrl": "Линк ка анкети"
+          },
+          "required": true
         }
       ]
     }

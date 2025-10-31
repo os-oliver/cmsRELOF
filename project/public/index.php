@@ -66,6 +66,10 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     #change this one for URL to be in serbian if needed
     $r->addRoute('GET', '/login', 'PageController@login');
 
+    // ColorsController rute
+    $r->addRoute('GET', '/colors', 'ColorsController@index');        // Dohvatanje trenutnih boja
+    $r->addRoute('POST', '/colors-change', 'ColorsController@index'); // Čuvanje izmena boja
+
     $r->addRoute('POST', '/login', 'AuthController@auth');
     $r->addRoute('GET', '/logout', 'AuthController@logout');
 

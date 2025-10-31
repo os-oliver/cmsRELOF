@@ -59,10 +59,7 @@ class ComponentController
         $name = $_GET['cmp'] ?? '';
         $path = PUBLIC_ROOT . '/exportedPages/pages/' . $name . '.php';
         error_log($path);
-        if (!preg_match('/^[a-zA-Z0-9_]+$/', $name)) {
-            http_response_code(400);
-            exit('Invalid component name');
-        }
+
 
         if (!isset($path)) {
             http_response_code(404);

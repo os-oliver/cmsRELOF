@@ -204,33 +204,45 @@ function handleExport(array $data): void
         sendJson(["success" => true, "message" => "All pages exported successfully"]);
     }
 }
-
 try {
+    $startTotal = microtime(true); // ⏱ Start celog procesa
     $data = getJsonInput();
 
+    $t0 = microtime(true);
     if (($data['type'] ?? '') === 'static') {
         handleStaticPages($data);
+        $elapsedStatic = microtime(true) - $t0;
+        error_log("⏱ Static export finished in " . round($elapsedStatic, 3) . "s");
         exit;
     }
 
     $saveComponents = $data['singlePage'] ?? false;
 
     if (!$saveComponents) {
+        $t1 = microtime(true);
         error_log("Handling dynamic page export...");
+
         $jsonPath = __DIR__ . "/../../templates/" . $data['typeOfInstitution'] . "/json/data_definition.json";
         if (!file_exists($jsonPath))
             throw new Exception("JSON file not found: $jsonPath");
 
+        $tFileRead = microtime(true);
         $jsonContent = file_get_contents($jsonPath);
         if ($jsonContent === false)
             throw new Exception("Failed to read JSON definition file.");
+        error_log("⏱ JSON file read in " . round(microtime(true) - $tFileRead, 3) . "s");
 
+        $tFileWrite = microtime(true);
         file_put_contents(__DIR__ . "/../../public/assets/data/structure.json", $jsonContent);
+        error_log("⏱ JSON file copied in " . round(microtime(true) - $tFileWrite, 3) . "s");
 
+        $tJsonDecode = microtime(true);
         $dataArray = json_decode($jsonContent, true);
         if (!is_array($dataArray))
             throw new Exception("Invalid JSON format.");
+        error_log("⏱ JSON decoded in " . round(microtime(true) - $tJsonDecode, 3) . "s");
 
+        $tCategories = microtime(true);
         $allCategoriesToInsert = [];
         foreach ($dataArray as $type) {
             foreach ($type as $typeKey => $typeData) {
@@ -240,17 +252,26 @@ try {
                 }
             }
         }
+        error_log("⏱ Categories prepared in " . round(microtime(true) - $tCategories, 3) . "s");
 
+        $tInsert = microtime(true);
         GenericCategory::replaceAllCategories($allCategoriesToInsert)
             ? error_log("Categories inserted successfully.")
             : error_log("Error inserting categories.");
+        error_log("⏱ Category insert took " . round(microtime(true) - $tInsert, 3) . "s");
+
+        error_log("⏱ Dynamic export section total: " . round(microtime(true) - $t1, 3) . "s");
     } else {
         error_log("Single page export mode — skipping structure and categories.");
     }
 
+    $tExport = microtime(true);
     handleExport($data);
+    error_log("⏱ handleExport() took " . round(microtime(true) - $tExport, 3) . "s");
+
+    error_log("✅ Total export process finished in " . round(microtime(true) - $startTotal, 3) . "s");
 
 } catch (Exception $e) {
-    error_log("Error during export: " . $e->getMessage());
+    error_log("❌ Error during export: " . $e->getMessage());
     sendJson(["success" => false, "error" => $e->getMessage()], 400);
 }

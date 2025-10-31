@@ -2,18 +2,19 @@
 
 namespace App\Utils;
 
-class PageBodyGenerators {
+class PageBodyGenerators
+{
     /**
      * Generate a gallery page body
      * @param string $name Page name
      * @param array $data Additional data including CSS and JS
      * @return string Generated HTML content
      */
-    public static function galleryBody(string $name, array $data): string 
+    public static function galleryBody(string $name, array $data): string
     {
         $head = self::generateHeader($name, $data);
         $head .= self::includePhpHeader();
-        
+
         // Gallery-specific PHP code
         $content = <<<'PHP'
 <?php
@@ -34,7 +35,7 @@ PHP;
         $content .= self::generateGalleryHtml($name);
         $content .= self::includePhpFooter();
         $content .= self::generateFooter($data);
-        
+
         return $content;
     }
 
@@ -44,14 +45,14 @@ PHP;
      * @param array $data Additional data including CSS and JS
      * @return string Generated HTML content
      */
-    public static function basicBody(string $name, array $data): string 
+    public static function basicBody(string $name, array $data): string
     {
         $head = self::generateHeader($name, $data);
         $content = self::includePhpHeader();
         $content .= self::generateBasicHtml($name);
         $content .= self::includePhpFooter();
         $content .= self::generateFooter($data);
-        
+
         return $content;
     }
 
@@ -61,7 +62,7 @@ PHP;
      * @param array $data Additional data including CSS and JS
      * @return string Generated HTML content
      */
-    public static function goalBody(string $name, array $data): string 
+    public static function goalBody(string $name, array $data): string
     {
         $head = self::generateHeader($name, $data);
         $content = <<<'PHP'
@@ -75,7 +76,7 @@ PHP;
         $content .= self::generateGoalHtml($name);
         $content .= self::includePhpFooter();
         $content .= self::generateFooter($data);
-        
+
         return $content;
     }
 
@@ -85,7 +86,7 @@ PHP;
      * @param array $data Additional data including CSS and JS
      * @return string Generated HTML content
      */
-    public static function bodyMission(string $name, array $data): string 
+    public static function bodyMission(string $name, array $data): string
     {
         $head = self::generateHeader($name, $data);
         $content = <<<'PHP'
@@ -99,7 +100,7 @@ PHP;
         $content .= self::generateMissionHtml($name);
         $content .= self::includePhpFooter();
         $content .= self::generateFooter($data);
-        
+
         return $content;
     }
 
@@ -109,7 +110,7 @@ PHP;
      * @param array $data Additional data including CSS and JS
      * @return string Generated HTML content
      */
-    public static function eventsBody(string $name, array $data): string 
+    public static function eventsBody(string $name, array $data): string
     {
         $head = self::generateHeader($name, $data);
         $content = <<<'PHP'
@@ -132,7 +133,7 @@ PHP;
         $content .= self::generateEventsHtml();
         $content .= self::includePhpFooter();
         $content .= self::generateFooter($data);
-        
+
         return $content;
     }
 
@@ -142,20 +143,20 @@ PHP;
      * @param array $data Additional data including CSS and JS
      * @return string Generated HTML content
      */
-    public static function contactBody(string $name, array $data): string 
+    public static function contactBody(string $name, array $data): string
     {
         $head = self::generateHeader($name, $data);
         $content = self::includePhpHeader();
         $content .= self::generateContactHtml();
         $content .= self::includePhpFooter();
         $content .= self::generateFooter($data);
-        
+
         return $content;
     }
 
     // Private helper methods
 
-    private static function generateHeader(string $name, array $data): string 
+    private static function generateHeader(string $name, array $data): string
     {
         $head = <<<HTML
 <!DOCTYPE html>
@@ -177,7 +178,7 @@ HTML;
         return $head;
     }
 
-    private static function generateFooter(array $data): string 
+    private static function generateFooter(array $data): string
     {
         $footer = '';
         if (!empty($data['js'])) {
@@ -187,7 +188,7 @@ HTML;
         return $footer;
     }
 
-    private static function includePhpHeader(): string 
+    private static function includePhpHeader(): string
     {
         return <<<'PHP'
 <?php
@@ -197,7 +198,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/header.php';
 PHP;
     }
 
-    private static function includePhpFooter(): string 
+    private static function includePhpFooter(): string
     {
         return <<<'PHP'
 <?php
@@ -206,7 +207,7 @@ require_once __DIR__ . '/../landingPageComponents/landingPage/footer.php';
 PHP;
     }
 
-    private static function generateBasicHtml(string $name): string 
+    private static function generateBasicHtml(string $name): string
     {
         return <<<HTML
 <main class=>
@@ -228,7 +229,7 @@ PHP;
 HTML;
     }
 
-    private static function generateGalleryHtml(string $name): string 
+    private static function generateGalleryHtml(string $name): string
     {
         // Gallery template implementation
         return <<<'HTML'
@@ -246,7 +247,7 @@ HTML;
 HTML;
     }
 
-    private static function generateGoalHtml(string $name): string 
+    private static function generateGoalHtml(string $name): string
     {
         return <<<'HTML'
 <main>
@@ -266,7 +267,7 @@ HTML;
 HTML;
     }
 
-    private static function generateMissionHtml(string $name): string 
+    private static function generateMissionHtml(string $name): string
     {
         return <<<'HTML'
 <main>
@@ -286,7 +287,7 @@ HTML;
 HTML;
     }
 
-    private static function generateEventsHtml(): string 
+    private static function generateEventsHtml(): string
     {
         return <<<'HTML'
 <main class="flex-1">
@@ -302,7 +303,7 @@ HTML;
 HTML;
     }
 
-    private static function generateContactHtml(): string 
+    private static function generateContactHtml(): string
     {
         return <<<'HTML'
 <div class="py-12 mt-20 px-4 flex-1">

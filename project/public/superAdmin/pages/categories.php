@@ -314,7 +314,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                         <button onclick="openCategoryModal('create')"
                             class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2">
                             <i class="fas fa-plus"></i>
-                                <?= __('categories.new_category') ?>
+                            <?= __('categories.new_category') ?>
                         </button>
                     </div>
                 </div>
@@ -323,11 +323,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div class="flex gap-2 mb-6">
                     <button class="tab-button <?= $tabActive === 'events' ? 'active' : '' ?>"
                         onclick="switchTab('events')">
-                            <?= __('categories.event_categories') ?>
+                        <?= __('categories.event_categories') ?>
                     </button>
                     <button class="tab-button <?= $tabActive === 'documents' ? 'active' : '' ?>"
                         onclick="switchTab('documents')">
-                            <?= __('categories.document_categories') ?>
+                        <?= __('categories.document_categories') ?>
                     </button>
                 </div>
 
@@ -440,7 +440,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
                                     <?= __('categories.category_name') ?>
-                            </label>
+                                </label>
                                 <input type="text" id="categoryName" required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                             </div>
@@ -465,11 +465,11 @@ $totalPages = (int) ceil($totalCount / $limit);
                             <button type="submit"
                                 class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                                 <i class="fas fa-save mr-2"></i>
-                                    <?= __('categories.save_category') ?>
+                                <?= __('categories.save_category') ?>
                             </button>
                             <button type="button" onclick="closeCategoryModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                    <?= __('categories.cancel') ?>
+                                <?= __('categories.cancel') ?>
                             </button>
                         </div>
                     </form>
@@ -497,16 +497,16 @@ $totalPages = (int) ceil($totalCount / $limit);
                         </div>
                         <p class="text-gray-700 mb-6">
                             <?= __('categories.confirm_delete_message') ?>
-                             <strong
-                                id="deleteCategoryName"></strong>?</p>
+                            <strong id="deleteCategoryName"></strong>?
+                        </p>
                         <div class="flex gap-3">
                             <button onclick="confirmDelete()"
-                                class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">    
-                                    <?= __('categories.confirm_delete_button') ?>
+                                class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl font-semibold transition-colors">
+                                <?= __('categories.confirm_delete_button') ?>
                             </button>
                             <button onclick="closeDeleteModal()"
                                 class="flex-1 border border-gray-300 text-gray-700 px-4 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
-                                    <?= __('categories.cancel_button') ?>
+                                <?= __('categories.cancel_button') ?>
                             </button>
                         </div>
                     </div>
@@ -657,8 +657,8 @@ $totalPages = (int) ceil($totalCount / $limit);
                         closeCategoryModal();
                         setTimeout(() => location.reload(), 1000);
                     } else {
-                       message = data.message || "<?= __('categories.save_error') ?>";
-                       alert(message);
+                        message = data.message || "<?= __('categories.save_error') ?>";
+                        alert(message);
                     }
                 })
                 .catch(error => {
@@ -713,22 +713,22 @@ $totalPages = (int) ceil($totalCount / $limit);
                         'Content-Type': 'application/json',
                     }
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("<?= __('categories.error_delete') ?>");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    let successMessage = "<?= __('categories.deleted_success') ?>";
-                    showNotification(successMessage, 'success');
-                    closeDeleteModal();
-                    setTimeout(() => location.reload(), 1000);
-                })
-                .catch(error => {
-                    let errorMsg = "<?= __('categories.error_prefix') ?>" + error.message;
-                    showNotification(errorMsg, 'error');
-                });
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("<?= __('categories.error_delete') ?>");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        let successMessage = "<?= __('categories.deleted_success') ?>";
+                        showNotification(successMessage, 'success');
+                        closeDeleteModal();
+                        setTimeout(() => location.reload(), 1000);
+                    })
+                    .catch(error => {
+                        let errorMsg = "<?= __('categories.error_prefix') ?>" + error.message;
+                        showNotification(errorMsg, 'error');
+                    });
             }
         }
 

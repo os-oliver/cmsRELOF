@@ -17,6 +17,7 @@ class PersonalContentController
             body {
                 margin: 0;
                 padding: 0;
+                font-size: 14px;
             }
             
             .dropdown:hover .dropdown-menu {
@@ -33,11 +34,16 @@ class PersonalContentController
                 overflow: hidden;
             }
 
-            /* Page header */
+            /* Page header - compact */
             .page-header {
                 background: white;
-                border-bottom: 3px solid #667eea;
-                padding: 1.5rem 0;
+                border-bottom: 2px solid #667eea;
+                padding: 1rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.5rem;
+                margin: 0;
             }
 
             /* Content sections */
@@ -48,56 +54,78 @@ class PersonalContentController
             .section-divider {
                 height: 1px;
                 background: #e2e8f0;
-                margin: 1.5rem 0;
+                margin: 1rem 0;
             }
 
-            /* Compact field styling */
+            /* Compact two-column field layout */
+            .fields-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 0.5rem;
+                margin: 0.75rem 0;
+            }
+            
             .field-row {
-                margin-bottom: 1rem;
-                padding: 0.75rem;
+                padding: 0.5rem 0.75rem;
                 background: #f8fafc;
-                border-radius: 0.375rem;
-                border-left: 3px solid #667eea;
+                border-radius: 0.25rem;
+                border-left: 2px solid #667eea;
+                display: flex;
+                align-items: baseline;
+                gap: 0.5rem;
+                min-height: 36px;
             }
             
             .field-label {
                 font-weight: 600;
                 color: #4a5568;
-                font-size: 0.813rem;
-                display: inline-block;
-                min-width: 120px;
-                margin-right: 0.75rem;
+                font-size: 0.75rem;
+                white-space: nowrap;
+                flex-shrink: 0;
             }
             
             .field-label i {
-                margin-right: 0.375rem;
+                margin-right: 0.25rem;
                 color: #667eea;
+                font-size: 0.7rem;
             }
             
             .field-value {
                 color: #1a202c;
-                font-size: 0.938rem;
-                line-height: 1.5;
-                display: inline;
+                font-size: 0.875rem;
+                line-height: 1.4;
+                flex: 1;
+                word-break: break-word;
+            }
+            
+            /* Long text fields - full width */
+            .field-row.full-width {
+                grid-column: 1 / -1;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .field-row.full-width .field-label {
+                margin-bottom: 0.25rem;
             }
 
             /* Compact info boxes */
             .info-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-                gap: 0.75rem;
-                margin: 1rem 0;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 0.5rem;
+                margin: 0.75rem 0;
             }
             
             .info-box {
                 background: #f7fafc;
-                padding: 0.75rem;
-                border-radius: 0.375rem;
-                border-left: 3px solid #667eea;
+                padding: 0.5rem;
+                border-radius: 0.25rem;
+                border-left: 2px solid #667eea;
             }
             
             .info-box-label {
-                font-size: 0.688rem;
+                font-size: 0.625rem;
                 color: #718096;
                 font-weight: 600;
                 text-transform: uppercase;
@@ -106,36 +134,148 @@ class PersonalContentController
             }
             
             .info-box-label i {
-                margin-right: 0.375rem;
+                margin-right: 0.25rem;
                 color: #667eea;
             }
             
             .info-box-value {
-                font-size: 0.938rem;
+                font-size: 0.875rem;
                 color: #1a202c;
                 font-weight: 500;
             }
 
-            /* Gallery */
-            .gallery-header {
-                font-size: 1.25rem;
+            /* Documents section - compact with icons */
+            .documents-section {
+                margin: 1rem 0;
+            }
+            
+            .documents-header {
+                font-size: 1rem;
                 font-weight: 700;
                 color: #1a202c;
-                margin: 1.5rem 0 0.75rem 0;
-                padding-bottom: 0.375rem;
+                margin-bottom: 0.5rem;
+                padding-bottom: 0.25rem;
                 border-bottom: 2px solid #667eea;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .documents-header i {
+                color: #667eea;
+            }
+            
+            .documents-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 0.5rem;
+                margin-top: 0.5rem;
+            }
+            
+            .document-card {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.625rem;
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 0.375rem;
+                transition: all 0.2s ease;
+                text-decoration: none;
+                color: inherit;
+            }
+            
+            .document-card:hover {
+                background: #edf2f7;
+                border-color: #667eea;
+                transform: translateY(-1px);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .document-icon {
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0.25rem;
+                flex-shrink: 0;
+                font-size: 1.125rem;
+            }
+            
+            .document-icon.pdf {
+                background: #fee;
+                color: #dc2626;
+            }
+            
+            .document-icon.excel {
+                background: #efe;
+                color: #16a34a;
+            }
+            
+            .document-icon.word {
+                background: #eef;
+                color: #2563eb;
+            }
+            
+            .document-icon.default {
+                background: #f5f5f5;
+                color: #64748b;
+            }
+            
+            .document-info {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .document-name {
+                font-size: 0.813rem;
+                font-weight: 500;
+                color: #1a202c;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                margin-bottom: 0.125rem;
+            }
+            
+            .document-size {
+                font-size: 0.688rem;
+                color: #64748b;
+            }
+            
+            .document-download {
+                color: #667eea;
+                font-size: 1rem;
+                opacity: 0.7;
+                transition: opacity 0.2s;
+            }
+            
+            .document-card:hover .document-download {
+                opacity: 1;
+            }
+
+            /* Gallery - compact */
+            .gallery-header {
+                font-size: 1rem;
+                font-weight: 700;
+                color: #1a202c;
+                margin: 1rem 0 0.5rem 0;
+                padding-bottom: 0.25rem;
+                border-bottom: 2px solid #667eea;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
             }
             
             .gallery-header i {
-                margin-right: 0.5rem;
                 color: #667eea;
             }
             
             .gallery-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 0.75rem;
-                margin-top: 0.75rem;
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 0.5rem;
+                margin-top: 0.5rem;
             }
             
             .gallery-item {
@@ -143,17 +283,18 @@ class PersonalContentController
                 overflow: hidden;
                 border-radius: 0.375rem;
                 transition: all 0.3s ease;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                aspect-ratio: 1;
             }
             
             .gallery-item:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             }
             
             .gallery-item img {
                 width: 100%;
-                height: 160px;
+                height: 100%;
                 object-fit: cover;
                 transition: transform 0.3s ease;
             }
@@ -184,9 +325,9 @@ class PersonalContentController
                 background: #667eea;
                 color: white;
                 border-radius: 9999px;
-                font-size: 0.813rem;
+                font-size: 0.75rem;
                 font-weight: 500;
-                margin-bottom: 0.75rem;
+                margin-bottom: 0.5rem;
             }
 
             /* Lightbox */
@@ -210,15 +351,16 @@ class PersonalContentController
 
             /* Responsive */
             @media (max-width: 768px) {
-                .field-label {
-                    display: block;
-                    min-width: auto;
-                    margin-bottom: 0.25rem;
-                }
-                .gallery-grid {
+                .fields-grid {
                     grid-template-columns: 1fr;
                 }
+                .gallery-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
                 .info-grid {
+                    grid-template-columns: 1fr;
+                }
+                .documents-grid {
                     grid-template-columns: 1fr;
                 }
             }
@@ -268,12 +410,49 @@ class PersonalContentController
         ';
     }
 
+    private function getDocumentIcon(string $extension): array
+    {
+        $icons = [
+            'pdf' => ['icon' => 'fas fa-file-pdf', 'class' => 'pdf'],
+            'doc' => ['icon' => 'fas fa-file-word', 'class' => 'word'],
+            'docx' => ['icon' => 'fas fa-file-word', 'class' => 'word'],
+            'xls' => ['icon' => 'fas fa-file-excel', 'class' => 'excel'],
+            'xlsx' => ['icon' => 'fas fa-file-excel', 'class' => 'excel'],
+        ];
+
+        return $icons[$extension] ?? ['icon' => 'fas fa-file', 'class' => 'default'];
+    }
+
+    private function formatFileSize(string $filePath): string
+    {
+        if (file_exists($filePath)) {
+            $bytes = filesize($filePath);
+            if ($bytes >= 1048576) {
+                return number_format($bytes / 1048576, 2) . ' MB';
+            } elseif ($bytes >= 1024) {
+                return number_format($bytes / 1024, 2) . ' KB';
+            }
+            return $bytes . ' B';
+        }
+        return '';
+    }
+
     private function getGalleryLabel(string $locale): string
     {
         $labels = [
             'sr' => 'Galerija',
             'en' => 'Gallery',
             'sr-Cyrl' => 'Галерија'
+        ];
+        return $labels[$locale] ?? $labels['sr'];
+    }
+
+    private function getDocumentsLabel(string $locale): string
+    {
+        $labels = [
+            'sr' => 'Dokumenta',
+            'en' => 'Documents',
+            'sr-Cyrl' => 'Документа'
         ];
         return $labels[$locale] ?? $labels['sr'];
     }
@@ -306,6 +485,9 @@ class PersonalContentController
         // Generate content
         try {
             switch ($type) {
+                case 'Anketa':
+                    $mainContent = $this->getAnketaContent($type, $locale, $structure);
+                    break;
                 default:
                     $mainContent = $this->getDefaultContent($type, $locale, $structure);
             }
@@ -318,107 +500,79 @@ class PersonalContentController
         return $pageBuilder->buildPage();
     }
 
-    private function getEventContent(?array $eventData, array $structure, string $locale): string
+    private function getAnketaContent(string $type, string $locale, array $structure): string
     {
-        if (!$eventData) {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        // Naslov
+        $title = 'Anketa';
+        if (isset($fields['naslov'][$locale]) && is_string($fields['naslov'][$locale])) {
+            $title = htmlspecialchars($fields['naslov'][$locale], ENT_QUOTES, 'UTF-8');
+        }
+
+        // Link ankete
+        $surveyLink = '';
+        if (isset($fields['link'][$locale]) && is_string($fields['link'][$locale])) {
+            $surveyLink = trim($fields['link'][$locale]);
+        }
+
+        // Ako nema linka, prikaži poruku
+        if (empty($surveyLink)) {
             return '
-            <div class="min-h-screen flex items-center justify-center">
-                <div class="text-center">
-                    <h1 class="text-3xl font-bold text-red-600">Događaj nije pronađen</h1>
-                    <p class="text-gray-600 mt-2">Traženi događaj ne postoji.</p>
-                </div>
-            </div>';
+        <div class="text-center text-gray-600 py-12">
+            Link za anketu nije pronađen.
+        </div>';
         }
 
-        if (isset($eventData[0]) && is_array($eventData[0])) {
-            $eventData = $eventData[0];
+        // Automatski prebacujemo link u embed oblik ako je Google Forms
+        if (str_contains($surveyLink, 'docs.google.com/forms') && !str_contains($surveyLink, 'embedded=true')) {
+            $surveyLink = preg_replace('/\/edit(\?.*)?$/', '/viewform?embedded=true', $surveyLink);
         }
 
-        // Get labels from structure
-        $labels = $this->getLabelsFromStructure('Dogadjaji', $structure, $locale);
+        $escapedLink = htmlspecialchars($surveyLink, ENT_QUOTES, 'UTF-8');
 
-        // Extract data
-        $data = [
-            'title' => $eventData['title'] ?? '',
-            'date' => $eventData['date'] ?? '',
-            'time' => $eventData['time'] ?? '',
-            'location' => $eventData['location'] ?? '',
-            'description' => $eventData['description'] ?? '',
-            'category' => $eventData['category_name'] ?? '',
-            'image' => !empty($eventData['image']) ? $eventData['image'] : null
-        ];
-
-        // Sanitize
-        array_walk($data, function (&$value) {
-            if (is_string($value)) {
-                $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-            }
-        });
-
+        // HTML
         $html = '
-        <div class="content-wrapper">
-            <!-- Header -->
-            <div class="page-header">
-                <div class="container mx-auto px-4">
-                    <div class="max-w-4xl mx-auto">';
-
-        if ($data['category']) {
-            $html .= '
-                        <span class="category-badge">' . $data['category'] . '</span>';
-        }
-
-        $html .= '
-                        <h1 class="text-3xl font-bold text-gray-900">' . $data['title'] . '</h1>
-                    </div>
-                </div>
-            </div>';
-
-        // Event image if exists
-        if ($data['image']) {
-            $html .= '
-            <div class="container mx-auto px-4 py-4">
-                <div class="max-w-4xl mx-auto">
-                    <img src="' . $data['image'] . '" 
-                         alt="' . $data['title'] . '" 
-                         class="w-full h-auto rounded-lg shadow-lg">
-                </div>
-            </div>';
-        }
-
-        $html .= '
-            <!-- Content -->
-            <div class="container mx-auto px-4 py-4">
-                <div class="max-w-4xl mx-auto">
-                    
-                    <!-- Event Info -->
-                    <div class="info-grid">
-                        <div class="info-box">
-                            <div class="info-box-label"><i class="fas fa-calendar"></i> ' . ($labels['datum'] ?? 'Datum') . '</div>
-                            <div class="info-box-value">' . $data['date'] . '</div>
-                        </div>
-                        
-                        <div class="info-box">
-                            <div class="info-box-label"><i class="fas fa-clock"></i> ' . ($labels['time'] ?? 'Vreme') . '</div>
-                            <div class="info-box-value">' . ($data['time'] ?: '-') . '</div>
-                        </div>
-                        
-                        <div class="info-box">
-                            <div class="info-box-label"><i class="fas fa-map-marker-alt"></i> ' . ($labels['location'] ?? 'Lokacija') . '</div>
-                            <div class="info-box-value">' . $data['location'] . '</div>
-                        </div>
-                    </div>
-
-                    <div class="section-divider"></div>
-
-                    <!-- Description -->
-                    <div class="field-row">
-                        <span class="field-label"><i class="fas fa-align-left"></i> ' . ($labels['description'] ?? 'Opis') . '</span>
-                        <span class="field-value">' . nl2br($data['description']) . '</span>
-                    </div>
-                    
+    <div class="content-wrapper">
+        <div class="page-header">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1>' . $title . '</h1>
+                    <p class="text-gray-600 text-sm mt-1">Molimo vas da popunite anketu u nastavku</p>
                 </div>
             </div>
-        </div>';
+        </div>
+
+        <div class="container mx-auto px-4 py-4">
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+                <iframe 
+                    src="' . $escapedLink . '" 
+                    width="100%" 
+                    height="900" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    class="rounded-2xl"
+                    style="border:none; background-color:#fafafa;">
+                    Učitavanje ankete...
+                </iframe>
+            </div>
+        </div>
+    </div>';
 
         return $html;
     }
@@ -441,14 +595,40 @@ class PersonalContentController
         $item = $data['item'];
         $fields = $item['fields'];
 
-        // Get labels and field icons from structure
+        // Allowed document extensions
+        $docExtensions = ['pdf', 'xls', 'xlsx', 'doc', 'docx'];
+
+        // Fetch all attached files/images
+        $allFiles = \App\Models\Image::fetchByElement($id);
+
+        // Separate images and documents
+        $images = array_filter($allFiles, function ($file) use ($docExtensions) {
+            $ext = strtolower(pathinfo($file['file_path'], PATHINFO_EXTENSION));
+            return !in_array($ext, $docExtensions);
+        });
+
+        $files = array_filter($allFiles, function ($file) use ($docExtensions) {
+            $ext = strtolower(pathinfo($file['file_path'], PATHINFO_EXTENSION));
+            return in_array($ext, $docExtensions);
+        });
+
+        // Also check for file URLs inside fields
+        foreach ($fields as $fieldValues) {
+            foreach ($fieldValues as $value) {
+                if (!is_string($value))
+                    continue;
+                $ext = strtolower(pathinfo($value, PATHINFO_EXTENSION));
+                if (in_array($ext, $docExtensions)) {
+                    $files[] = ['file_path' => $value];
+                }
+            }
+        }
+
+        // Get labels and icons
         $labels = $this->getLabelsFromStructure($type, $structure, $locale);
         $fieldIcons = $this->getFieldIcons($type, $structure);
         $typeData = $this->getTypeData($type, $structure, $locale);
         $typeName = $typeData['name'] ?? $type;
-
-        // Get images
-        $images = \App\Models\Image::fetchByElement($id);
 
         // Find title field
         $title = '';
@@ -463,86 +643,116 @@ class PersonalContentController
 
         // Build HTML
         $html = '
-        <div class="content-wrapper">
-            <!-- Header -->
-            <div class="page-header">
-                <div class="container mx-auto px-4">
-                    <div class="max-w-4xl mx-auto">
-                        <h1 class="text-3xl font-bold text-gray-900">' . ($title ?: $typeName) . '</h1>
-                    </div>
-                </div>
+<div class="content-wrapper">
+    <div class="page-header">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h1>' . ($title ?: $typeName) . '</h1>
             </div>
+        </div>
+    </div>
+    <div class="container mx-auto px-4 py-3">
+        <div class="max-w-4xl mx-auto">
+            <div class="fields-grid">';
 
-            <!-- Content -->
-            <div class="container mx-auto px-4 py-4">
-                <div class="max-w-4xl mx-auto">';
-
-        // Display fields
+        // Display fields in grid
         foreach ($fields as $field => $values) {
-            if ($field === $titleField || !isset($values[$locale])) {
+            if ($field === $titleField || !isset($values[$locale]))
                 continue;
-            }
 
             $value = $values[$locale];
-            if (empty(trim($value))) {
+            if (empty(trim($value)))
                 continue;
-            }
 
             $displayLabel = $labels[$field] ?? ucwords(str_replace('_', ' ', $field));
-
-            // Get icon for field
             $icon = $this->getFieldIcon($field, $fieldIcons);
-
-            // Clean and escape value
             $escapedValue = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 
-            // For longer text, use nl2br
-            if (strlen($value) > 100) {
+            // Determine if this is a long text field
+            $isLongText = strlen($value) > 100;
+            $fullWidthClass = $isLongText ? ' full-width' : '';
+
+            if ($isLongText) {
                 $escapedValue = nl2br($escapedValue);
             }
 
             $html .= '
-                    <div class="field-row">
-                        <span class="field-label"><i class="' . $icon . '"></i> ' . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '</span>
-                        <span class="field-value">' . $escapedValue . '</span>
-                    </div>';
+                <div class="field-row' . $fullWidthClass . '">
+                    <span class="field-label"><i class="' . $icon . '"></i>' . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '</span>
+                    <span class="field-value">' . $escapedValue . '</span>
+                </div>';
         }
 
-        // Gallery
+        $html .= '</div>'; // Close fields-grid
+
+        // Display downloadable documents with icons
+        if (!empty($files)) {
+            $documentsLabel = $this->getDocumentsLabel($locale);
+            $html .= '
+            <div class="section-divider"></div>
+            <div class="documents-section">
+                <h2 class="documents-header"><i class="fas fa-file-download"></i>' . $documentsLabel . '</h2>
+                <div class="documents-grid">';
+
+            foreach ($files as $file) {
+                $filePath = $file['file_path'];
+                $fileName = basename($filePath);
+                $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+                $iconData = $this->getDocumentIcon($extension);
+                $fileSize = $this->formatFileSize($filePath);
+
+                $escapedPath = htmlspecialchars($filePath, ENT_QUOTES, 'UTF-8');
+                $escapedName = htmlspecialchars($fileName, ENT_QUOTES, 'UTF-8');
+
+                $html .= '
+                    <a href="' . $escapedPath . '" target="_blank" class="document-card" download>
+                        <div class="document-icon ' . $iconData['class'] . '">
+                            <i class="' . $iconData['icon'] . '"></i>
+                        </div>
+                        <div class="document-info">
+                            <div class="document-name" title="' . $escapedName . '">' . $escapedName . '</div>
+                            ' . ($fileSize ? '<div class="document-size">' . $fileSize . '</div>' : '') . '
+                        </div>
+                        <i class="fas fa-download document-download"></i>
+                    </a>';
+            }
+
+            $html .= '</div></div>';
+        }
+
+        // Display image gallery
         if (!empty($images)) {
             $galleryLabel = $this->getGalleryLabel($locale);
             $html .= '
-                    <div class="gallery-header"><i class="fas fa-images"></i> ' . $galleryLabel . '</div>
-                    <div class="gallery-grid">';
+            <div class="section-divider"></div>
+            <div class="gallery-header"><i class="fas fa-images"></i>' . $galleryLabel . '</div>
+            <div class="gallery-grid">';
 
             foreach ($images as $img) {
                 $imgPath = htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8');
                 $html .= '
-                        <div class="gallery-item">
-                            <a href="' . $imgPath . '" class="gallery-image-link block">
-                                <img src="' . $imgPath . '" alt="Gallery image">
-                                <div class="gallery-overlay">
-                                    <i class="fas fa-search-plus text-white text-2xl"></i>
-                                </div>
-                            </a>
-                        </div>';
+                <div class="gallery-item">
+                    <a href="' . $imgPath . '" class="gallery-image-link block">
+                        <img src="' . $imgPath . '" alt="Gallery image">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white text-xl"></i>
+                        </div>
+                    </a>
+                </div>';
             }
-
-            $html .= '
-                    </div>';
+            $html .= '</div>';
         }
 
         $html .= '
-                </div>
-            </div>
-        </div>';
+        </div>
+    </div>
+</div>';
 
         return $html;
     }
 
     private function getFieldIcon(string $fieldName, array $fieldIcons): string
     {
-        // Default icons based on common field names
         $defaultIcons = [
             'naziv' => 'fas fa-tag',
             'vodja' => 'fas fa-user',
@@ -562,7 +772,6 @@ class PersonalContentController
 
         $key = strtolower($fieldName);
 
-        // Check if we have a specific icon from structure
         if (isset($fieldIcons[$key])) {
             return $fieldIcons[$key];
         }
@@ -604,7 +813,6 @@ class PersonalContentController
             return $labels;
         }
 
-        // Structure is an array with one object
         $structureData = $structure[0] ?? [];
 
         if (!isset($structureData[$type]) || !isset($structureData[$type]['fields'])) {
@@ -616,7 +824,6 @@ class PersonalContentController
             if (!$name)
                 continue;
 
-            // Try current locale first, then fallback to 'sr', then 'en'
             if (isset($field['label'][$locale])) {
                 $label = $field['label'][$locale];
             } elseif (isset($field['label']['sr'])) {
@@ -647,7 +854,6 @@ class PersonalContentController
 
         $typeInfo = $structureData[$type];
 
-        // Get localized type name
         $typeName = $typeInfo[$locale] ?? $typeInfo['sr'] ?? $typeInfo['en'] ?? $type;
 
         return [
