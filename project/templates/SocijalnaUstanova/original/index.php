@@ -470,9 +470,9 @@
                         <i class="fas fa-folder-open mr-3 text-yellow-600"></i>Dokumenti
                     </a>
 
-                    <a data-page="Dogadjaji" href="#"
+                    <a data-page="Vesti" href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-blue-600"></i>Dogadjaji
+                        <i class="fas fa-newspaper mr-3 text-indigo-700"></i>Vesti
                     </a>
 
                     <!-- Za korisnike dropdown -->
@@ -625,8 +625,8 @@
                 <a href="#"
                     class="nav-link text-slate font-semibold hover:text-red-600 transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-slate-50 group">
                     <i
-                        class="fas fa-calendar-alt mr-2 text-blue-600 group-hover:text-blue-700 transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Dogadjaji</span>
+                        class="fas fa-newspaper mr-2 text-indigo-700 group-hover:text-indigo-800 transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Vesti</span>
                 </a>
 
                 <div class="dropdown relative group">
@@ -809,7 +809,7 @@
                         </a>
                         <a href="#" class="flex items-center text-slate-600 hover:text-red-600 transition-colors">
                             <span class="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
-                            Događaji
+                            Vesti
                         </a>
                         <a href="#" class="flex items-center text-slate-600 hover:text-red-600 transition-colors">
                             <span class="w-3 h-3 bg-teal-500 rounded-full mr-2"></span>
@@ -857,40 +857,40 @@
 
     </section>
 
-    <!-- Featured Events Section -->
-    <section id="events" class="py-20 bg-gradient-to-br from-green-50 to-blue-50">
+    <!-- Featured News Section -->
+    <section id="vesti" class="py-20 bg-gradient-to-br from-green-50 to-blue-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
-                    Predstojeći događaji
+                    Najnovije vesti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-blue-500"></span>
                 </h2>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto mt-4">
-                    Pratite naše nadolazeće događaje i učestvujte u aktivnostima koje organizujemo za građane. Svi događaji su besplatni i otvoreni za javnost.
+                    Pratite najnovije vesti i obaveštenja iz našeg centra. Ostanite informisani o svim važnim dešavanjima.
                 </p>
             </div>
 
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Event 1 -->
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- News 1 -->
                 <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-image"
                             src="https://picsum.photos/600/300?random=10"
-                            alt="Dan otvorenih vrata" class="w-full h-full object-cover">
+                            alt="Važna obaveštenje" class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
                             <div
                                 class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white mr-3">
-                                <i class="fas fa-door-open"></i>
+                                <i class="fas fa-newspaper"></i>
                             </div>
-                            <span id="g-naziv" class="text-blue-600 font-bold">DAN OTVORENIH VRATA</span>
+                            <span id="g-naziv" class="text-blue-600 font-bold">OBAVEŠTENJE</span>
                         </div>
-                        <h3 id="g-title" class="text-xl font-display font-bold text-slate mb-2">Dan otvorenih vrata u Centru za socijalni rad
+                        <h3 id="g-title" class="text-xl font-display font-bold text-slate mb-2">Nova usluga Centra za socijalni rad
                         </h3>
 
-                        <p id="g-description" class="text-slate-600 mb-4">Centar za socijalni rad vas poziva na Dan otvorenih vrata, gde možete da se upoznate sa našim službama i programima.</p>
+                        <p id="g-description" class="text-slate-600 mb-4">Centar za socijalni rad proširuje ponudu usluga novim programom podrške porodicama.</p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
@@ -899,11 +899,7 @@
                                 </div>
                                 <div class="flex items-center text-sm text-slate-500">
                                     <i class="fas fa-clock mr-2"></i>
-                                    <span id="g-time">09:00 - 15:00</span>
-                                </div>
-                                <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    <span id="g-location">Velika sala Centra</span>
+                                    <span id="g-time">Objavljeno danas</span>
                                 </div>
                             </div>
 
@@ -911,79 +907,71 @@
                     </div>
                 </div>
 
-                <!-- Event 2 -->
+                <!-- News 2 -->
                 <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img src="https://picsum.photos/600/300?random=11"
-                            alt="Radionica roditeljskih veština" class="w-full h-full object-cover">
+                            alt="Uspešan projekat" class="w-full h-full object-cover">
                         <div
                             class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                            22 NOV
+                            12 NOV
                         </div>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
                             <div
                                 class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white mr-3">
-                                <i class="fas fa-graduation-cap"></i>
+                                <i class="fas fa-check-circle"></i>
                             </div>
-                            <span class="text-green-600 font-bold">OBUKA</span>
+                            <span class="text-green-600 font-bold">PROJEKAT</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-slate mb-2">Radionica roditeljskih veština</h3>
-                        <p class="text-slate-600 mb-4">Program obuke namenjen roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.</p>
+                        <h3 class="text-xl font-display font-bold text-slate mb-2">Uspešno završen projekat podrške mladima</h3>
+                        <p class="text-slate-600 mb-4">Program podrške mladima u riziku uspešno je završen uz učešće preko 50 korisnika naših usluga.</p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span>10:00 - 14:00</span>
-                                </div>
-                                <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    <span>Sala za obuke</span>
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>Autor: CSR Tim</span>
                                 </div>
                             </div>
                             <button
                                 class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-green-600 transition-colors">
-                                Prijava
+                                Pročitaj
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Event 3 -->
+                <!-- News 3 -->
                 <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img src="https://picsum.photos/600/300?random=12"
-                            alt="Tribina o digitalnom nasilju" class="w-full h-full object-cover">
+                            alt="Saradnja sa institucijama" class="w-full h-full object-cover">
                         <div
                             class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                            5 DEC
+                            8 NOV
                         </div>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
                             <div
                                 class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white mr-3">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-handshake"></i>
                             </div>
-                            <span class="text-orange-600 font-bold">TRIBINA</span>
+                            <span class="text-orange-600 font-bold">SARADNJA</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-slate mb-2">Sprečavanje digitalnog nasilja</h3>
-                        <p class="text-slate-600 mb-4">Stručna tribina o prepoznavanju i sprečavanju digitalnog nasilja nad decom i mladima. Predavanje za roditelje i nastavnike.</p>
+                        <h3 class="text-xl font-display font-bold text-slate mb-2">Nova saradnja sa lokalnim organizacijama</h3>
+                        <p class="text-slate-600 mb-4">Potpisani su sporazumi o saradnji sa pet lokalnih nevladinih organizacija za unapređenje socijalne zaštite.</p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span>18:00 - 20:00</span>
-                                </div>
-                                <div class="flex items-center text-sm text-slate-500">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    <span>Amfiteatar</span>
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>Autor: Direkcija</span>
                                 </div>
                             </div>
                             <button
                                 class="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-orange-600 transition-colors">
-                                Rezerviši
+                                Saznaj više
                             </button>
                         </div>
                     </div>
@@ -991,10 +979,10 @@
             </div>
 
             <div class="text-center mt-12">
-                <a href="#" id="eventsView"
+                <a href="#" id="vestiView"
                     class="bg-gradient-to-r from-blue-600 to-red-600 text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve događaje
+                    <i class="fas fa-newspaper mr-3"></i>
+                    Pogledaj sve vesti
                 </a>
             </div>
         </div>
