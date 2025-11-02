@@ -161,7 +161,7 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
                placeholder='{$texts['search_placeholder']}' 
                class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
         <button type='submit' 
-                class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+                class='bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
             {$texts['search_button']}
         </button>
     </div>";
@@ -175,7 +175,7 @@ PHP;
     $cardTemplate = <<<'PHP'
         <div class="faq-item border-b border-gray-200 py-4">
             <button 
-                class="faq-question flex items-center justify-between w-full text-left text-gray-900 font-medium text-base focus:outline-none transition-colors duration-200 hover:text-indigo-600"
+                class="faq-question flex items-center justify-between w-full text-left text-gray-900 font-medium text-base focus:outline-none transition-colors duration-200 hover:text-primary_hover"
                 onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('fa-chevron-up'); this.querySelector('i').classList.toggle('fa-chevron-down');"
             >
                 <span>{{question}}</span>
@@ -264,11 +264,11 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 }
 PHP;
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Često postavljena pitanja</h1>
-            <p class="text-gray-600">Pronađite odgovore na najčešće nedoumice i pitanja u vezi sa našim uslugama i procesima.</p>
+            <h1 class="text-3xl font-heading font-bold text-primary mb-2">Često postavljena pitanja</h1>
+            <p class="text-secondary_text">Pronađite odgovore na najčešće nedoumice i pitanja u vezi sa našim uslugama i procesima.</p>
         </div>
         
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
