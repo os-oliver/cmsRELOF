@@ -157,17 +157,17 @@ CSS;
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
         <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
-            <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100">
+            <div class="relative w-full h-56 overflow-hidden bg-surface">
                 {{imageSection}}
                 {{kategoria}}
             </div>
 
             <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+                <h3 class="text-xl font-bold text-primary_text mb-4 line-clamp-2 group-hover:text-primary_hover transition-colors">
                     {{naslov}}
                 </h3>
 
-                <div class="space-y-3 mb-4">
+                <div class="space-y-3 mb-4 text-secondary_text">
                     {{locationRow}}
                 </div>
 
@@ -175,8 +175,8 @@ CSS;
                     <p class="text-sm text-gray-700 leading-relaxed">{{opis}}</p>
                 </div>
 
-                <a href="sadrzaj?id={{itemId}}&tip=generic_element"
-                class="block w-full text-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl backdrop-blur-sm">
+                <a href="/sadrzaj?id={{itemId}}&tip=Vrtici"
+                class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl backdrop-blur-sm">
                 <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-ticket-alt"></i>
                         <span>{{eventDetails}}</span>
@@ -209,8 +209,8 @@ HTML;
 
     $locationRow = $lokacija
         ? "<div class='flex items-start gap-3'>
-               <div class='flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center'>
-                   <i class='fas fa-map-marker-alt text-purple-600'></i>
+               <div class='flex-shrink-0 w-10 h-10 bg-background rounded-lg flex items-center justify-center'>
+                   <i class='fas fa-map-marker-alt text-primary'></i>
                </div>
                <div class='flex-1 min-w-0'>
                    <div class='text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5'>{$texts['location']}</div>
@@ -265,7 +265,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
         $class = $i === $currentPage 
-            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md' 
+            ? 'px-4 py-2 bg-primarybutton text-white rounded-xl font-semibold shadow-md' 
             : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
