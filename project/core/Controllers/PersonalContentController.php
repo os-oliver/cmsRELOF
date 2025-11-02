@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controllers;
+
 session_start();
+
 use App\Models\Content;
 use App\Models\Event;
 use App\Admin\PageBuilders\BasicPageBuilder;
@@ -306,6 +308,9 @@ class PersonalContentController
         // Generate content
         try {
             switch ($type) {
+                case 'Vrtici':
+                    $mainContent = $this->getVrticiContent($type, $locale, $structure);
+                    break;
                 default:
                     $mainContent = $this->getDefaultContent($type, $locale, $structure);
             }
@@ -417,6 +422,83 @@ class PersonalContentController
                     </div>
                     
                 </div>
+            </div>
+        </div>';
+
+        return $html;
+    }
+    private function getVrticiContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $typeData = $this->getTypeData($type, $structure, $locale);
+        $typeName = $typeData['name'] ?? 'Vrtić';
+
+        $images = \App\Models\Image::fetchByElement($id);
+
+        $title = $fields['title'][$locale] ?? $typeName;
+
+        $location = $fields['location'][$locale] ?? '';
+        $description = $fields['description'][$locale] ?? '';
+
+        $coverImage = '';
+        if (isset($fields['slika'][$locale]) && !empty($fields['slika'][$locale])) {
+            $coverImage = htmlspecialchars($fields['slika'][$locale], ENT_QUOTES, 'UTF-8');
+        } elseif (!empty($images)) {
+            $coverImage = htmlspecialchars($images[0]['file_path'], ENT_QUOTES, 'UTF-8');
+        }
+
+        $html = '
+        <div class="content-wrapper vrtici-detail">
+            <div class="container mx-auto px-4 py-6 max-w-4xl">
+                <div class="bg-bacground rounded-2xl shadow p-6">
+                    ' . ($coverImage ? '
+                    <div class="mb-6">
+                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '" 
+                            class="w-full h-80 object-cover rounded-2xl shadow-sm">
+                    </div>' : '') . '
+                    <h1 class="text-3xl font-bold text-primary_text mb-2">
+                        ' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '
+                    </h1>
+                    ' . ($location ? '
+                    <p class="text-lg text-primary_text mb-4">
+                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>' . htmlspecialchars($location, ENT_QUOTES, 'UTF-8') . '
+                    </p>' : '') . '
+                    ' . ($description ? '
+                    <div class="text-primary_text leading-relaxed mb-6">
+                        ' . nl2br(htmlspecialchars($description, ENT_QUOTES, 'UTF-8')) . '
+                    </div>' : '') . '
+                </div>
+                ' . (!empty($images) ? '
+                <div class="mt-8">
+                    <h2 class="text-2xl font-semibold text-primary_text mb-4">
+                        <i class="fas fa-images mr-2 text-blue-500"></i>' . ($this->getGalleryLabel($locale)) . '
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        ' . implode('', array_map(fn($img) => '
+                            <div class="gallery-item overflow-hidden rounded-xl shadow-sm">
+                                <a href="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" target="_blank">
+                                    <img src="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                                </a>
+                            </div>
+                        ', $images)) . '
+                    </div>
+                </div>' : '') . '
             </div>
         </div>';
 
