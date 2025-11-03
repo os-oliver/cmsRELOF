@@ -1,19 +1,116 @@
 [
   {
-    "Repertoar": {
-      "sr": "Repertoar",
-      "en": "Library Program",
-      "sr-Cyrl": "Репертоар",
-      "icon": "fas fa-book",
-      "categories": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
+    "Dogadjaji": {
+      "sr": "Događaji",
+      "en": "Events",
+      "sr-Cyrl": "Догађаји",
+      "icon": "fas fa-calendar-days",
+      "categories": [
+        "Konferencije",
+        "Seminari",
+        "Radionice",
+        "Takmičenja",
+        "Kultura"
+      ],
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naslov događaja",
+            "en": "Event title",
+            "sr-Cyrl": "Наслов догађаја"
+          },
+          "required": true
+        },
+        {
+          "name": "naziv",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija događaja",
+            "en": "Event category",
+            "sr-Cyrl": "Категорија догађаја"
+          },
+          "options": [
+            "Konferencije",
+            "Seminari",
+            "Radionice",
+            "Takmičenja",
+            "Kultura"
+          ],
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum održavanja",
+            "en": "Event date",
+            "sr-Cyrl": "Датум одржавања"
+          },
+          "required": true
+        },
+        {
+          "name": "time",
+          "type": "time",
+          "label": {
+            "sr": "Vreme početka",
+            "en": "Start time",
+            "sr-Cyrl": "Време почетка"
+          },
+          "required": true
+        },
+        {
+          "name": "location",
+          "type": "text",
+          "label": {
+            "sr": "Lokacija događaja",
+            "en": "Event location",
+            "sr-Cyrl": "Локација догађаја"
+          },
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis događaja",
+            "en": "Event description",
+            "sr-Cyrl": "Опис догађаја"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika događaja",
+            "en": "Event image",
+            "sr-Cyrl": "Насловна слика догађаја"
+          }
+        }
+      ]
+    },
+
+    "Vesti": {
+      "sr": "Vesti",
+      "en": "News",
+      "sr-Cyrl": "Вести",
+      "icon": "fas fa-newspaper",
+      "categories": [
+        "Kultura",
+        "Obrazovanje",
+        "Inovacije",
+        "Zdravlje",
+        "Tehnologija"
+      ],
       "fields": [
         {
           "name": "naslov",
           "type": "text",
           "label": {
-            "sr": "Naslov stavke",
-            "en": "Item title",
-            "sr-Cyrl": "Наслов ставке"
+            "sr": "Naslov vesti",
+            "en": "News title",
+            "sr-Cyrl": "Наслов вести"
           },
           "required": true
         },
@@ -21,31 +118,37 @@
           "name": "datum",
           "type": "date",
           "label": {
-            "sr": "Datum dostupnosti",
-            "en": "Availability date",
-            "sr-Cyrl": "Датум доступности"
+            "sr": "Datum vesti",
+            "en": "News date",
+            "sr-Cyrl": "Датум вести"
           },
           "required": true,
           "property": "auto"
         },
         {
-          "name": "kategorija",
+          "name": "naziv",
           "type": "categories",
           "label": {
-            "sr": "Kategorija",
-            "en": "Category",
-            "sr-Cyrl": "Категорија"
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
           },
-          "options": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
+          "options": [
+            "Kultura",
+            "Obrazovanje",
+            "Inovacije",
+            "Zdravlje",
+            "Tehnologija"
+          ],
           "required": true
         },
         {
           "name": "autor",
           "type": "text",
           "label": {
-            "sr": "Autor / Izvođač",
-            "en": "Author / Performer",
-            "sr-Cyrl": "Аутор / Извођач"
+            "sr": "Autor",
+            "en": "Author",
+            "sr-Cyrl": "Аутор"
           }
         },
         {
@@ -61,9 +164,9 @@
           "name": "slika",
           "type": "file",
           "label": {
-            "sr": "Naslovna slika",
-            "en": "Cover image",
-            "sr-Cyrl": "Насловна слика"
+            "sr": "Naslovna slika vesti",
+            "en": "News image",
+            "sr-Cyrl": "Насловна слика вести"
           }
         },
         {
@@ -73,6 +176,87 @@
             "sr": "Eksterni link",
             "en": "External link",
             "sr-Cyrl": "Екстерни линк"
+          }
+        }
+      ]
+    },
+    "Repertoar": {
+      "sr": "Repertoar",
+      "en": "Library Program",
+      "sr-Cyrl": "Репертоар",
+      "icon": "fas fa-book",
+      "categories": [
+        "Čitanja",
+        "Radionice",
+        "Predavanja",
+        "Izložbe",
+        "Kulturni događaji"
+      ],
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov programa",
+            "en": "Program title",
+            "sr-Cyrl": "Наслов програма"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija programa",
+            "en": "Program category",
+            "sr-Cyrl": "Категорија програма"
+          },
+          "options": [
+            "Čitanja",
+            "Radionice",
+            "Predavanja",
+            "Izložbe",
+            "Kulturni događaji"
+          ],
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum održavanja",
+            "en": "Program date",
+            "sr-Cyrl": "Датум одржавања"
+          },
+          "required": true
+        },
+        {
+          "name": "vreme",
+          "type": "time",
+          "label": {
+            "sr": "Vreme početka",
+            "en": "Start time",
+            "sr-Cyrl": "Време почетка"
+          },
+          "required": true
+        },
+
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis programa",
+            "en": "Program description",
+            "sr-Cyrl": "Опис програма"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika programa",
+            "en": "Program image",
+            "sr-Cyrl": "Насловна слика програма"
           }
         }
       ]

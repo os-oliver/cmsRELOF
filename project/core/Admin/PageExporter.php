@@ -7,6 +7,7 @@ use App\Admin\PageBuilders\AnsambalPageBuilder;
 use App\Admin\PageBuilders\DynamicPageBuilder;
 use App\Admin\PageBuilders\EmployeesPageBuilder;
 use App\Admin\PageBuilders\GoalPageBulder;
+use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
@@ -509,21 +510,32 @@ class PageExporter
             $structureLower[strtolower($k)] = $v;
         }
 
-        foreach ($this->data['ids'] as $id) {
-            $idLower = strtolower($id);
-            $key = $idLower;
+        foreach ($this->data['ids'] as $entry) {
+            // Split by '-' if exists
+            $parts = explode('-', $entry, 2);
+            $id = $parts[0]; // first part is variable name
+            $key = isset($parts[1]) ? $parts[1] : $parts[0]; // if second part exists, use it; else use first part
 
-            if ($idLower === 'events') {
+            // Map 'events' to 'dogadjaji' always
+            if (strtolower($key) === 'events') {
                 $key = 'dogadjaji';
             }
 
-            if (isset($structureLower[$key])) {
-                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$key', '', 0, 9, null, \$locale)['items'];\n";
+            // Only generate PHP if key exists in structureLower
+            if ($key === null || isset($structureLower[$key])) {
+                $keyForFetch = $key ?? ''; // first parameter
+                $sixthParam = isset($parts[1]) ? "'{$parts[0]}'" : "null"; // use parts[1] if exists, else null
+
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale)['items'];\n";
                 $phpString .= "\$$id = HashMapTransformer::transform(\$$id" . "_raw, \$locale);\n\n";
             }
 
-            error_log("Generated PHP for id '$id': " . $phpString);
+            error_log("Entry: '$entry', ID: '$id', Key: '$key', Passed: " . (isset($structureLower[$key]) ? "YES" : "NO"));
         }
+
+
+
+
 
 
 
@@ -648,6 +660,8 @@ class PageExporter
                 return new EmployeesPageBuilder('Rukovodstvo', $this->data);
             case 'ankete':
                 return new AnketePageBuilder('Ankete');
+            case 'repertoar':
+                return new LibraryProgramPageBuilder('repertoar');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -714,6 +728,8 @@ class PageExporter
             return 'partneri';
         } elseif (strpos($name, 'ankete') !== false) {
             return 'ankete';
+        } elseif (strpos($name, 'repertoar') !== false) {
+            return 'repertoar';
         }
 
 

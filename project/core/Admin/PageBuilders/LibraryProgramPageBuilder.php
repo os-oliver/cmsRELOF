@@ -4,7 +4,7 @@ namespace App\Admin\PageBuilders;
 use App\Controllers\ContentController;
 use App\Controllers\LanguageMapperController;
 
-class EventsPageBuilder extends BasePageBuilder
+class LibraryProgramPageBuilder extends BasePageBuilder
 {
     protected string $slug;
     private LanguageMapperController $translator;
@@ -62,7 +62,7 @@ main{padding-top:50px}
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
@@ -75,116 +75,165 @@ function renderTopbar(array $categories, string $searchValue = '', int|string|nu
     $html .= "<div class='flex items-center w-full sm:w-auto'>
         <select name='category' class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
             <option value=''>{$texts['all_categories']}</option>";
-
     foreach ($categories as $cat) {
         $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
         $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-
-        $isSelected = false;
-
-        if ($selectedCategoryId !== null) {
-            if (is_numeric($selectedCategoryId) && (int)$selectedCategoryId === (int)$cat['id']) {
-                $isSelected = true;
-            } elseif (is_string($selectedCategoryId) && strtolower($selectedCategoryId) === strtolower($cat['name'])) {
-                $isSelected = true;
-            }
-        }
-
-        $selected = $isSelected ? 'selected' : '';
+        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
         $html .= "<option value='{$id}' {$selected}>{$name}</option>";
     }
-
     $html .= "</select></div></form>";
     return $html;
 }
-
 PHP;
-
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
-        <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
-            <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-white to-white/60">
-                {{imageSection}}
-                <div class="absolute top-4 left-4">
-                    <span class="category-chip bg-secondary text-white">{{kategorija}}</span>
+        <div class="book-card bg-white rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-slate-200">
+            <div class="flex flex-col md:flex-row">
+                <!-- Knjiga Cover Sekcija - Levo -->
+                <div class="relative md:w-48 w-full flex-shrink-0 bg-gradient-to-br from-slate-100 to-slate-50">
+                    <div class="aspect-[3/4] md:aspect-auto md:h-full relative overflow-hidden">
+                        {{imageSection}}
+                        
+                        <!-- Kategorija Badge -->
+                        <div class="absolute top-3 right-3 z-10">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-semibold rounded-full shadow-lg">
+                                <i class="{{categoryIcon}}"></i>
+                                <span>{{kategorija}}</span>
+                            </span>
+                        </div>
+                        
+                        <!-- Book Spine Effect -->
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-300 opacity-60"></div>
+                        
+                        {{authorBadge}}
+                    </div>
                 </div>
-            </div>
-            <div class="p-6">
-                <h3 class="text-xl font-bold text-primary-text mb-4 line-clamp-2 group-hover:text-primary transition-colors">
-                    {{naslov}}
-                </h3>
-                <div class="space-y-3 mb-4">
-                    {{dateTimeRow}}
-                    {{locationRow}}
+                
+                <!-- Sadržaj Knjige - Desno -->
+                <div class="flex-1 p-6 flex flex-col">
+                    <!-- Naslov i Ikona -->
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-md">
+                            <i class="{{categoryIcon}} text-white text-2xl"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors">
+                                {{naslov}}
+                            </h3>
+                            {{autorRow}}
+                        </div>
+                    </div>
+                    
+                    <!-- Datum Dostupnosti -->
+                    {{dateRow}}
+                    
+                    <!-- Opis Knjige -->
+                    <div class="mb-6 flex-1">
+                        <div class="p-4 bg-slate-50 rounded-lg border-l-4 border-teal-500">
+                            <p class="text-sm text-gray-700 leading-relaxed line-clamp-4">{{opis}}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex gap-3 mt-auto">
+                        <a href="/sadrzaj?id={{itemId}}&tip=generic_element" class="flex-1 text-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm font-bold py-3 px-5 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl">
+                            <span class="flex items-center justify-center gap-2">
+                                <i class="fas fa-book-open"></i>
+                                <span>{{viewDetails}}</span>
+                                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+                        {{externalLinkButton}}
+                    </div>
                 </div>
-                <div class="mb-5 p-4 bg-surface rounded-xl border border-white/30">
-                    <p class="text-sm text-secondary-text leading-relaxed">{{opis}}</p>
-                </div>
-                <a href="/sadrzaj?id={{itemId}}&tip=generic_element" class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
-                    <span class="flex items-center justify-center gap-2">
-                        <i class="fas fa-ticket-alt"></i>
-                        <span>{{eventDetails}}</span>
-                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </a>
             </div>
         </div>
-    PHP;
+        PHP;
 HTML;
 
     protected string $cardRender = <<<'HTML'
-function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, string $cardTemplate = ''): string
+function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 160, string $cardTemplate = ''): string
 {
-    $naslov = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $opis = htmlspecialchars(mb_substr($item['fields']['description'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
-    $lokacija = htmlspecialchars($item['fields']['location'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
+    $autor = htmlspecialchars($item['fields']['autor'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $vreme = htmlspecialchars($item['fields']['time'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $link = htmlspecialchars($item['fields']['link'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
     $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
-
-    $imageSection = $imageUrl
-        ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Event image'>"
-        : "<div class='absolute inset-0 flex items-center justify-center'><i class='fas fa-calendar-star text-6xl text-secondary'></i></div>";
-
-    $dateTimeRow = ($datum || $vreme)
-        ? "<div class='flex items-start gap-3'>
-               <div class='flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center'>
-                   <i class='fas fa-calendar-alt text-primary'></i>
-               </div>
-               <div class='flex-1'>
-                   <div class='text-xs font-semibold text-secondary-text uppercase tracking-wide mb-0.5'>{$texts['date_and_time']}</div>
-                   <div class='text-sm font-semibold text-primary-text'>{$datum}" . ($datum && $vreme ? " • " : "") . "{$vreme}</div>
-               </div>
-           </div>"
+    
+    // Ikone za kategorije
+    $categoryIcons = [
+        'Knjige' => 'fas fa-book',
+        'Časopisi' => 'fas fa-newspaper',
+        'Filmovi' => 'fas fa-film',
+        'Muzika' => 'fas fa-music',
+        'Događaji' => 'fas fa-calendar-star'
+    ];
+    $categoryIcon = $categoryIcons[$kategorija] ?? 'fas fa-book';
+    
+    // Slika ili placeholder
+    $imageSection = $imageUrl 
+        ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-700 group-hover:scale-105' alt='Cover image'>" 
+        : "<div class='absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-teal-50'>
+              <i class='{$categoryIcon} text-9xl text-blue-600 opacity-10'></i>
+           </div>";
+    
+    // Autor badge ako postoji (na slici)
+    $authorBadge = $autor 
+        ? "<div class='absolute bottom-3 left-3 right-3'>
+              <div class='bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg border border-slate-200'>
+                  <i class='fas fa-user-circle text-purple-600 text-lg'></i>
+                  <span class='text-sm font-semibold text-gray-900 truncate'>{$autor}</span>
+              </div>
+           </div>" 
         : '';
-
-    $locationRow = $lokacija
-        ? "<div class='flex items-start gap-3'>
-               <div class='flex-shrink-0 w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center'>
-                   <i class='fas fa-map-marker-alt text-secondary'></i>
-               </div>
-               <div class='flex-1 min-w-0'>
-                   <div class='text-xs font-semibold text-secondary-text uppercase tracking-wide mb-0.5'>{$texts['location']}</div>
-                   <div class='text-sm font-semibold text-primary-text truncate'>{$lokacija}</div>
-               </div>
-           </div>"
+    
+    // Autor red u sadržaju (ako nema badge na slici)
+    $autorRow = $autor && !$authorBadge 
+        ? "<div class='flex items-center gap-2 text-sm text-gray-600 mt-1'>
+              <i class='fas fa-user-circle text-purple-600'></i>
+              <span class='font-medium'>{$autor}</span>
+           </div>" 
         : '';
-
+    
+    // Datum dostupnosti
+    $dateRow = $datum 
+        ? "<div class='flex items-center gap-3 mb-4 p-3 bg-teal-50 rounded-lg border border-teal-200'>
+              <div class='flex-shrink-0 w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center'>
+                  <i class='fas fa-calendar-check text-white'></i>
+              </div>
+              <div class='flex-1'>
+                  <div class='text-xs font-semibold text-gray-600 uppercase tracking-wide mb-0.5'>Dostupno</div>
+                  <div class='text-sm font-bold text-teal-700'>{$datum}</div>
+              </div>
+           </div>" 
+        : '';
+    
+    // Eksterni link dugme
+    $externalLinkButton = $link 
+        ? "<a href='{$link}' target='_blank' rel='noopener noreferrer' class='flex-shrink-0 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white p-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl' title='Eksterni link'>
+              <i class='fas fa-external-link-alt'></i>
+           </a>" 
+        : '';
+    
     $replacements = [
         '{{naslov}}' => $naslov,
-        '{{opis}}' => $opis,
+        '{{opis}}' => $opis ?: $texts['no_description'] ?? 'Nema opisa',
         '{{imageSection}}' => $imageSection,
-        '{{dateTimeRow}}' => $dateTimeRow,
-        '{{locationRow}}' => $locationRow,
+        '{{authorBadge}}' => $authorBadge,
+        '{{autorRow}}' => $autorRow,
+        '{{dateRow}}' => $dateRow,
         '{{itemId}}' => $itemId,
         '{{kategorija}}' => $kategorija,
-        '{{eventDetails}}' => $texts['event_details'] ?? 'Details'
+        '{{categoryIcon}}' => $categoryIcon,
+        '{{externalLinkButton}}' => $externalLinkButton,
+        '{{viewDetails}}' => $texts['view_details'] ?? 'Pogledaj detalje'
     ];
-
+    
     return str_replace(array_keys($replacements), array_values($replacements), $cardTemplate);
 }
 HTML;
