@@ -209,58 +209,51 @@ try {
     $data = getJsonInput();
 
     $t0 = microtime(true);
-    if (($data['type'] ?? '') === 'static') {
-        handleStaticPages($data);
-        $elapsedStatic = microtime(true) - $t0;
-        error_log("⏱ Static export finished in " . round($elapsedStatic, 3) . "s");
-        exit;
-    }
-
-    $saveComponents = $data['singlePage'] ?? false;
-
     if (!$saveComponents) {
-        $t1 = microtime(true);
-        error_log("Handling dynamic page export...");
-
         $jsonPath = __DIR__ . "/../../templates/" . $data['typeOfInstitution'] . "/json/data_definition.json";
-        if (!file_exists($jsonPath))
+        $globalJsonPath = __DIR__ . "/../../templates/globalDefinitions.json";
+
+        if (!file_exists($jsonPath)) {
             throw new Exception("JSON file not found: $jsonPath");
+        }
 
-        $tFileRead = microtime(true);
-        $jsonContent = file_get_contents($jsonPath);
-        if ($jsonContent === false)
-            throw new Exception("Failed to read JSON definition file.");
-        error_log("⏱ JSON file read in " . round(microtime(true) - $tFileRead, 3) . "s");
+        $jsonData = json_decode(file_get_contents($jsonPath), true);
+        if (!is_array($jsonData)) {
+            throw new Exception("Failed to decode JSON: $jsonPath");
+        }
 
-        $tFileWrite = microtime(true);
-        file_put_contents(__DIR__ . "/../../public/assets/data/structure.json", $jsonContent);
-        error_log("⏱ JSON file copied in " . round(microtime(true) - $tFileWrite, 3) . "s");
+        if (isset($jsonData[0]) && is_array($jsonData[0])) {
+            $jsonData = $jsonData[0];
+        }
 
-        $tJsonDecode = microtime(true);
-        $dataArray = json_decode($jsonContent, true);
-        if (!is_array($dataArray))
-            throw new Exception("Invalid JSON format.");
-        error_log("⏱ JSON decoded in " . round(microtime(true) - $tJsonDecode, 3) . "s");
+        $globalData = [];
+        if (file_exists($globalJsonPath)) {
+            $globalData = json_decode(file_get_contents($globalJsonPath), true);
+            if (!is_array($globalData)) {
+                $globalData = [];
+            }
 
-        $tCategories = microtime(true);
-        $allCategoriesToInsert = [];
-        foreach ($dataArray as $type) {
-            foreach ($type as $typeKey => $typeData) {
-                foreach (($typeData['categories'] ?? []) as $category) {
-                    $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
-                    error_log("- Category: $category");
-                }
+            if (isset($globalData[0]) && is_array($globalData[0])) {
+                $globalData = $globalData[0];
             }
         }
-        error_log("⏱ Categories prepared in " . round(microtime(true) - $tCategories, 3) . "s");
 
-        $tInsert = microtime(true);
-        GenericCategory::replaceAllCategories($allCategoriesToInsert)
-            ? error_log("Categories inserted successfully.")
-            : error_log("Error inserting categories.");
-        error_log("⏱ Category insert took " . round(microtime(true) - $tInsert, 3) . "s");
+        $dataArray = array_merge($globalData, $jsonData);
 
-        error_log("⏱ Dynamic export section total: " . round(microtime(true) - $t1, 3) . "s");
+        // Wrap the merged data in an array to ensure JSON starts with []
+        file_put_contents(
+            __DIR__ . "/../../public/assets/data/structure.json",
+            json_encode([$dataArray], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+        );
+
+        $allCategoriesToInsert = [];
+        foreach ($dataArray as $typeKey => $typeData) {
+            foreach (($typeData['categories'] ?? []) as $category) {
+                $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
+            }
+        }
+
+        GenericCategory::replaceAllCategories($allCategoriesToInsert);
     } else {
         error_log("Single page export mode — skipping structure and categories.");
     }

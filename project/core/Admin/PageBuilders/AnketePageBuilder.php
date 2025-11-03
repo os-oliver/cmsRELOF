@@ -189,23 +189,26 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
 PHP;
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
-        <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1 bg-gradient-to-br from-cyan-50 to-indigo-100 backdrop-blur-md border border-white/40">
-            <div class="relative w-full h-44 flex items-center justify-center bg-gradient-to-tr from-cyan-200/60 to-indigo-200/60">
-                <i class="fas fa-poll text-6xl text-indigo-500 group-hover:text-indigo-700 transition-all duration-300"></i>
-            </div>
-
-            <div class="p-6 text-center">
-                <h3 class="text-2xl font-extrabold text-gray-900 mb-5 leading-tight group-hover:text-indigo-700 transition-colors">
-                    {{naslov}}
-                </h3>
-
-                <a href="/sadrzaj?id={{itemId}}&tip=Anketa"
-                   class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
-                    <i class="fas fa-external-link-alt text-sm"></i>
-                    <span>{{openSurvey}}</span>
-                </a>
-            </div>
+        <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1 bg-surface backdrop-blur-md border border-white/30">
+        <!-- Ikona -->
+        <div class="relative w-full h-32 flex items-center justify-center bg-gradient-to-tr from-accent/20 to-secondary/20">
+            <i class="fas fa-poll text-5xl text-primary group-hover:text-primary_hover transition-colors duration-300"></i>
         </div>
+
+        <!-- Sadržaj -->
+        <div class="p-5 text-center">
+            <h3 class="text-xl font-bold text-primary_text mb-4 leading-tight group-hover:text-secondary transition-colors duration-300">
+                {{naslov}}
+            </h3>
+
+            <a href="/sadrzaj?id={{itemId}}&tip=Anketa"
+            class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-accent hover:from-primary_hover hover:to-accent_hover text-surface font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+                <i class="fas fa-external-link-alt text-sm"></i>
+                <span>{{openSurvey}}</span>
+            </a>
+        </div>
+    </div>
+
     PHP;
 HTML;
 

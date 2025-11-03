@@ -35,14 +35,15 @@ class ProjektiPageBuilder extends BasePageBuilder
 
         // Define all static texts in Latin
         $latinTexts = [
-            'search_placeholder' => 'Pretraži...',
+            'search_placeholder' => 'Pretraži projekte...',
             'apply_button' => 'Primeni',
             'all_categories' => 'Sve kategorije',
-            'date_and_time' => 'Datum i vreme',
-            'location' => 'Lokacija',
-            'event_details' => 'Detalji događaja',
-            'no_items_found' => 'Nema pronađenih stavki',
-            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+            'project_leader' => 'Vođa projekta',
+            'budget' => 'Budžet',
+            'start_date' => 'Datum početka',
+            'project_details' => 'Detalji projekta',
+            'no_items_found' => 'Nema pronađenih projekata',
+            'view_more' => 'Saznaj više'
         ];
 
         // Convert to Cyrillic if needed
@@ -54,9 +55,16 @@ class ProjektiPageBuilder extends BasePageBuilder
     }
 
     protected string $css = <<<CSS
-    main{
-        padding-top: 50px;
-    }
+/* ============================================
+   GLAVNI LAYOUT
+   ============================================ */
+main {
+    padding-top: 50px;
+}
+
+/* ============================================
+   DROPDOWN KOMPONENTE
+   ============================================ */
 .dropdown:hover .dropdown-menu {
     display: block;
 }
@@ -64,15 +72,17 @@ class ProjektiPageBuilder extends BasePageBuilder
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: #ffffff;
     min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-    z-index: 1;
+    z-index: 1000;
     border-radius: 8px;
     overflow: hidden;
 }
 
-/* Enhanced Glassmorphism effect */
+/* ============================================
+   GLASSMORPHISM EFEKTI
+   ============================================ */
 .glass-card {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px) saturate(180%);
@@ -88,13 +98,16 @@ class ProjektiPageBuilder extends BasePageBuilder
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* ============================================
+   KATEGORIJA CHIP
+   ============================================ */
 .category-chip {
     display: inline-flex;
     align-items: center;
     padding: 0.375rem 0.875rem;
     background: rgba(107, 114, 128, 0.9);
     backdrop-filter: blur(10px);
-    color: white;
+    color: #ffffff;
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 600;
@@ -102,7 +115,9 @@ class ProjektiPageBuilder extends BasePageBuilder
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Improved field layout */
+/* ============================================
+   KARTICE I POLJA
+   ============================================ */
 .fields-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -137,10 +152,174 @@ class ProjektiPageBuilder extends BasePageBuilder
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
 }
 
-/* Responsive adjustments */
+/* ============================================
+   PROJEKT KARTICE
+   ============================================ */
+.project-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.project-image-container {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.project-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+}
+
+.project-content {
+    padding: 1.25rem;
+}
+
+.project-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.project-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-meta {
+    margin-top: 0.375rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.project-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.project-budget {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #14b8a6;
+    white-space: nowrap;
+}
+
+.project-description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-link {
+    font-size: 0.75rem;
+    color: #2563eb;
+    text-decoration: underline;
+    word-break: break-all;
+    margin-bottom: 1rem;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.project-link:hover {
+    color: #1e40af;
+}
+
+/* CTA Dugme - Primary boja */
+.project-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    overflow: hidden;
+}
+
+.project-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.project-cta:hover {
+    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+.project-cta:hover::before {
+    left: 100%;
+}
+
+.project-cta i {
+    transition: transform 0.3s ease;
+}
+
+.project-cta:hover i {
+    transform: translateX(4px);
+}
+
+/* ============================================
+   RESPONSIVE DIZAJN
+   ============================================ */
 @media (max-width: 768px) {
     .fields-container {
         grid-template-columns: 1fr;
@@ -149,6 +328,18 @@ class ProjektiPageBuilder extends BasePageBuilder
     
     .glass-card {
         margin-bottom: 1rem;
+    }
+    
+    .project-content {
+        padding: 1rem;
+    }
+    
+    .project-title {
+        font-size: 0.9rem;
+    }
+    
+    .project-meta {
+        font-size: 0.7rem;
     }
 }
 CSS;
@@ -160,19 +351,30 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
     
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
     
+    // Pretraga i dugme
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
-        <input type='text' name='search' value='{$safeSearchValue}' 
+        <input type='text' 
+               name='search' 
+               value='{$safeSearchValue}' 
                placeholder='{$texts['search_placeholder']}' 
-               class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
+               class='w-full border border-gray-300 rounded-xl px-5 py-3 
+                      focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent 
+                      transition-all shadow-sm bg-white/80 backdrop-blur-sm
+                      text-primary_text placeholder-secondary_text'>
         <button type='submit' 
-                class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+                class='bg-primary hover:bg-primary_hover text-white px-6 py-3 
+                       rounded-xl transition-all shadow-md hover:shadow-lg font-semibold'>
             {$texts['apply_button']}
         </button>
     </div>";
     
+    // Kategorija select
     $html .= "<div class='flex items-center w-full sm:w-auto'>
         <select name='category' 
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 
+                       focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent 
+                       transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer
+                       text-primary_text'>
             <option value=''>{$texts['all_categories']}</option>";
     
     foreach ($categories as $cat) {
@@ -187,61 +389,48 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
     return $html;
 }
 PHP;
+
     protected string $cardTemplate = <<<'HTML'
 $cardTemplate = <<<'PHP'
-<div class="group">
-    <div class="relative bg-paper rounded-2xl shadow-md overflow-hidden transition-shadow duration-200">
-        <div class="flex items-stretch">
-            <!-- Left: Image column (fixed width on desktop, full-width on mobile) -->
-            <div class="w-36 sm:w-48 md:w-56 lg:w-64 flex-shrink-0 h-36 sm:h-48 md:h-56 lg:h-64 bg-gray-100 overflow-hidden">
-                {{imageSection}}
-            </div>
+<div class="project-card">
+    <!-- Slika projekta -->
+    <div class="project-image-container" style="height: 200px;">
+        {{imageSection}}
+    </div>
 
-            <!-- Right: Dense content -->
-            <div class="p-3 sm:p-4 md:p-5 flex-1">
-                <!-- Header: title + small meta -->
-                <div class="flex items-start justify-between gap-3">
-                    <div class="min-w-0">
-                        <h3 class="text-sm sm:text-base md:text-lg font-semibold text-slate line-clamp-2">{{naziv}}</h3>
-                        <div class="mt-1 text-2xs sm:text-xs text-slate/70 flex items-center gap-3">
-                            <span class="truncate">{{vodja}}</span>
-                            <span aria-hidden="true">•</span>
-                            <span class="truncate">{{datumPocetka}}</span>
-                        </div>
-                    </div>
-
-                    <div class="ml-2 text-right">
-                        <div class="text-sm font-medium text-slate">{{budzet}}</div>
-                    </div>
-                </div>
-
-                <!-- Dense description -->
-                <div class="mt-2">
-                    <p class="text-xs sm:text-sm leading-tight text-slate/80 line-clamp-4">{{opis}}</p>
-
-                    <!-- Clickable official link (if present) -->
-                    <div class="mt-2">
-                        {{clickableLink}}
-                    </div>
-                </div>
-
-                <!-- Footer: CTA (always fixed href) -->
-                <div class="mt-3">
-                    <!-- Elegant CTA button (always points to sadrzaj?id={{itemId}}&tip=generic_element) -->
-                    <a href="sadrzaj?id={{itemId}}&tip=generic_element"
-                       class="group/btn relative inline-flex items-center justify-center gap-2 w-full rounded-lg py-2 text-sm font-semibold text-paper overflow-hidden transition-shadow duration-200">
-                        
-                        <div class="absolute inset-0 bg-gradient-to-r from-deep-teal to-royal-blue"></div>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-600"></div>
-                        
-                        <span class="relative flex items-center justify-center gap-2">
-                            <i class="fas fa-users text-sm"></i>
-                            <span>{{ensembleDetails}}</span>
-                        </span>
-                    </a>
+    <!-- Sadržaj kartice -->
+    <div class="project-content">
+        <!-- Zaglavlje: naziv + budžet -->
+        <div class="project-header">
+            <div class="flex-1 min-w-0">
+                <h3 class="project-title">{{naziv}}</h3>
+                <div class="project-meta">
+                    <span class="project-meta-item">
+                        <i class="fas fa-user-tie text-secondary"></i>
+                        <span>{{vodja}}</span>
+                    </span>
+                    <span aria-hidden="true">•</span>
+                    <span class="project-meta-item">
+                        <i class="fas fa-calendar-alt text-accent"></i>
+                        <span>{{datumPocetka}}</span>
+                    </span>
                 </div>
             </div>
+            <div class="project-budget">{{budzet}}</div>
         </div>
+
+        <!-- Opis -->
+        <p class="project-description">{{opis}}</p>
+
+        <!-- Link (ako postoji) -->
+        {{clickableLink}}
+
+        <!-- CTA dugme -->
+        <a href="sadrzaj?id={{itemId}}&tip=generic_element" class="bg-primary project-cta">
+            <i class="fas fa-info-circle"></i>
+            <span>{{projectDetails}}</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
     </div>
 </div>
 PHP;
@@ -250,23 +439,26 @@ HTML;
     protected string $cardRender = <<<'HTML'
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, $cardTemplate=''): string
 {
-    // Basic fields
+    // Osnovni podaci
     $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? $item['fields']['naziv'] ?? '', ENT_QUOTES, 'UTF-8');
     $vodja = htmlspecialchars($item['fields']['vodja'][$locale] ?? $item['fields']['vodja'] ?? '', ENT_QUOTES, 'UTF-8');
     $rawOpis = $item['fields']['opis'][$locale] ?? $item['fields']['opis'] ?? '';
     $opis = htmlspecialchars(mb_substr((string)$rawOpis, 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
+    if (mb_strlen($rawOpis) > $descMaxLength) {
+        $opis .= '...';
+    }
+    
     $datumPocetka = htmlspecialchars($item['fields']['datumPocetka'][$locale] ?? $item['fields']['datumPocetka'] ?? '', ENT_QUOTES, 'UTF-8');
     $budzet = htmlspecialchars((string)($item['fields']['budzet'][$locale] ?? $item['fields']['budzet'] ?? ''), ENT_QUOTES, 'UTF-8');
     $linkRaw = $item['fields']['link'][$locale] ?? $item['fields']['link'] ?? '';
     $linkEsc = htmlspecialchars((string)$linkRaw, ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
 
-    // Resolve image field robustly (supporting file object, array of files or direct url)
+    // Rezolucija slike
     $imageUrl = '';
     if (!empty($item['fields']['slika'])) {
         $slika = $item['fields']['slika'];
         if (is_array($slika)) {
-            // array of files or associative
             if (isset($slika[0]) && is_array($slika[0]) && !empty($slika[0]['url'])) {
                 $imageUrl = $slika[0]['url'];
             } elseif (!empty($slika['url'])) {
@@ -278,49 +470,43 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
             $imageUrl = $slika;
         }
     } elseif (!empty($item['image'])) {
-        // fallback to older key
         $imageUrl = $item['image'];
     }
 
     $imageUrl = htmlspecialchars((string)$imageUrl, ENT_QUOTES, 'UTF-8');
 
-    // Image section markup (left column). Use <img> when present, otherwise placeholder SVG/icon block.
+    // Sekcija slike
     $imageSection = $imageUrl
-        ? "<img src='{$imageUrl}' alt='Project image' loading='lazy' class='w-full h-full object-cover'>"
-        : "<div class='w-full h-full flex items-center justify-center bg-gradient-to-br from-sage/20 to-deep-teal/10'>
-                <div class='text-center'>
-                    <div class='bg-terracotta/20 rounded-full p-3 inline-block'>
-                        <i class='fas fa-image text-2xl text-slate/40'></i>
-                    </div>
+        ? "<img src='{$imageUrl}' alt='Slika projekta' loading='lazy' class='project-image'>"
+        : "<div class='project-placeholder'>
+                <div class='bg-secondary_background rounded-full p-4 inline-block'>
+                    <i class='fas fa-project-diagram text-4xl text-secondary_text'></i>
                 </div>
            </div>";
 
-    // Clickable link HTML (if provided). Shows the link text and is clickable.
+    // Klikabilan link (ako postoji)
     $clickableLink = $linkEsc !== ''
-        ? "<a href='{$linkEsc}' target='_blank' rel='noopener noreferrer' class='text-xs sm:text-sm underline break-words text-blue-600'>{$linkEsc}</a>"
+        ? "<a href='{$linkEsc}' target='_blank' rel='noopener noreferrer' class='project-link'>
+               <i class='fas fa-external-link-alt'></i> {$linkEsc}
+           </a>"
         : "";
 
-    // Replacements for placeholders
+    // Zamene za placeholdere
     $replacements = [
         '{{naziv}}' => $naziv,
         '{{vodja}}' => $vodja,
         '{{opis}}' => $opis,
         '{{datumPocetka}}' => $datumPocetka,
         '{{budzet}}' => $budzet,
-        '{{link}}' => $linkEsc, // legacy placeholder if used
         '{{clickableLink}}' => $clickableLink,
         '{{imageSection}}' => $imageSection,
         '{{itemId}}' => $itemId,
-        '{{ensembleDetails}}' => htmlspecialchars($texts['ensemble_details'] ?? 'Detalji', ENT_QUOTES, 'UTF-8'),
+        '{{projectDetails}}' => htmlspecialchars($texts['project_details'] ?? 'Detalji projekta', ENT_QUOTES, 'UTF-8'),
     ];
 
     return str_replace(array_keys($replacements), array_values($replacements), $cardTemplate);
 }
 HTML;
-
-
-
-
 
     protected string $pagination = <<<'PHP'
 function renderPagination(int $currentPage, int $totalPages, int $range = 2): string
@@ -329,49 +515,61 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     
     $html = "<div class='flex justify-center items-center gap-2 mt-10'>";
     
-    // Previous button
+    // Prethodna strana
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}' 
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
-            <i class='fas fa-chevron-left text-gray-600'></i>
+                   class='px-4 py-2 bg-surface border border-gray-300 rounded-xl
+                          hover:bg-secondary_background hover:border-primary
+                          transition-all shadow-sm hover:shadow text-secondary_text'>
+            <i class='fas fa-chevron-left'></i>
         </a>";
     }
     
     $start = max(1, $currentPage - $range);
     $end = min($totalPages, $currentPage + $range);
     
-    // First page + ellipsis
+    // Prva strana + trotačka
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
         $html .= "<a href='{$url}' 
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
-        if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
+                   class='px-4 py-2 bg-surface border border-gray-300 rounded-xl
+                          hover:bg-secondary_background hover:border-primary
+                          transition-all shadow-sm hover:shadow font-medium text-primary_text'>1</a>";
+        if ($start > 2) {
+            $html .= "<span class='px-2 text-secondary_text'>...</span>";
+        }
     }
     
-    // Page numbers
+    // Brojevi stranica
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
         $class = $i === $currentPage 
-            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md' 
-            : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
+            ? 'px-4 py-2 bg-primary text-white rounded-xl font-semibold shadow-md' 
+            : 'px-4 py-2 bg-surface border border-gray-300 rounded-xl hover:bg-secondary_background hover:border-primary transition-all shadow-sm hover:shadow font-medium text-primary_text';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
     
-    // Last page + ellipsis
+    // Poslednja strana + trotačka
     if ($end < $totalPages) {
-        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
+        if ($end < $totalPages - 1) {
+            $html .= "<span class='px-2 text-secondary_text'>...</span>";
+        }
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
         $html .= "<a href='{$url}' 
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
+                   class='px-4 py-2 bg-surface border border-gray-300 rounded-xl
+                          hover:bg-secondary_background hover:border-primary
+                          transition-all shadow-sm hover:shadow font-medium text-primary_text'>{$totalPages}</a>";
     }
     
-    // Next button
+    // Sledeća strana
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}' 
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
-            <i class='fas fa-chevron-right text-gray-600'></i>
+                   class='px-4 py-2 bg-surface border border-gray-300 rounded-xl
+                          hover:bg-secondary_background hover:border-primary
+                          transition-all shadow-sm hover:shadow text-secondary_text'>
+            <i class='fas fa-chevron-right'></i>
         </a>";
     }
     
@@ -380,31 +578,36 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     return $html;
 }
 PHP;
+
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
+        <!-- Zaglavlje -->
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Događaji</h1>
-            <p class="text-gray-600">Istražite našu bogatu ponudu kulturnih događaja</p>
+            <h1 class="text-4xl font-bold text-primary_text mb-2">Projekti</h1>
+            <p class="text-lg text-secondary_text">Istražite naše aktuelne i završene projekte</p>
         </div>
         
+        <!-- Pretraga i filteri -->
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
         
+        <!-- Grid sa projektima -->
         <div class="performances-grid">
             <?php
             if ($itemsList['success'] && !empty($itemsList['items'])) {
                 echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
                 foreach ($itemsList['items'] as $item) {
-                    echo cardRender($item, $fieldLabels, $locale, $texts, $descriptionMaxLength,$cardTemplate);
+                    echo cardRender($item, $fieldLabels, $locale, $texts, $descriptionMaxLength, $cardTemplate);
                 }
                 echo '</div>';
                 
+                // Paginacija
                 $totalPages = ceil($itemsList['total'] / $itemsPerPage);
                 echo renderPagination($currentPage, $totalPages, $paginationRange);
             } else {
                 echo "<div class='glass-card rounded-lg p-12 text-center border border-white/40'>
-                    <i class='fas fa-inbox text-5xl text-gray-400 mb-4'></i>
-                    <p class='text-gray-500'>{$texts['no_items_found']}</p>
+                    <i class='fas fa-folder-open text-5xl text-secondary_text mb-4'></i>
+                    <p class='text-secondary_text text-lg'>{$texts['no_items_found']}</p>
                 </div>";
             }
             ?>
@@ -427,7 +630,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 $slug = '__SLUG__';
 $pageTitle = ucfirst($slug);
-$pageDescription = 'Pregled svih stavki';
+$pageDescription = 'Pregled svih projekata';
 
 // Configuration variables
 $itemsPerPage = __ITEMS_PER_PAGE__;
@@ -453,14 +656,15 @@ if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structur
 // Initialize translator and texts
 $translator = new LanguageMapperController();
 $latinTexts = [
-    'search_placeholder' => 'Pretraži...',
+    'search_placeholder' => 'Pretraži projekte...',
     'apply_button' => 'Primeni',
     'all_categories' => 'Sve kategorije',
-    'date_and_time' => 'Datum i vreme',
-    'location' => 'Lokacija',
-    'event_details' => 'Detalji događaja',
-    'no_items_found' => 'Nema pronađenih stavki',
-    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+    'project_leader' => 'Vođa projekta',
+    'budget' => 'Budžet',
+    'start_date' => 'Datum početka',
+    'project_details' => 'Detalji projekta',
+    'no_items_found' => 'Nema pronađenih projekata',
+    'view_more' => 'Saznaj više'
 ];
 
 $texts = ($locale === 'sr-Cyrl') 

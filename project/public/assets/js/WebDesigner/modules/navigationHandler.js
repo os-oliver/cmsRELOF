@@ -26,8 +26,9 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
     text
       .trim()
       .replace(/\s+/g, "-")
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
+      // Handle special Serbian/Croatian characters FIRST
+      .replace(/đ/g, "dj")
+      .replace(/Đ/g, "Dj")
       .replace(/š/g, "s")
       .replace(/Š/g, "S")
       .replace(/ž/g, "z")
@@ -36,8 +37,10 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
       .replace(/Č/g, "C")
       .replace(/ć/g, "c")
       .replace(/Ć/g, "C")
-      .replace(/đ/g, "d")
-      .replace(/Đ/g, "D")
+      // Now normalize for other diacritics
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      // Remove any remaining non-ASCII characters
       .replace(/[^\x00-\x7F]/g, "")
       .toLowerCase();
 
