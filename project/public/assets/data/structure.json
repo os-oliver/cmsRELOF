@@ -6,22 +6,30 @@
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
       "categories": [
-        "Kultura",
-        "Obrazovanje",
-        "Inovacije",
-        "Zdravlje",
-        "Tehnologija"
+        "Vesti",
+        "Naučni klub",
+        "Seminari",
+        "Radionice"
       ],
       "fields": [
         {
-          "name": "naslov",
-          "type": "text",
+          "name": "slika",
+          "type": "file",
           "label": {
-            "sr": "Naslov vesti",
-            "en": "News title",
-            "sr-Cyrl": "Наслов вести"
+            "sr": "Naslovna slika",
+            "en": "Cover image",
+            "sr-Cyrl": "Насловна слика"
           },
           "required": true
+        },
+        {
+          "name": "autor",
+          "type": "text",
+          "label": {
+            "sr": "Autor",
+            "en": "Author",
+            "sr-Cyrl": "Аутор"
+          }
         },
         {
           "name": "datum",
@@ -35,57 +43,109 @@
           "property": "auto"
         },
         {
-          "name": "naziv",
+          "name": "kategorije",
           "type": "categories",
           "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
           },
           "options": [
-            "Konferencije",
+            "Vesti",
+            "Naučni klub",
             "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
+            "Radionice"
           ],
           "required": true
         },
         {
-          "name": "autor",
+          "name": "naslov",
           "type": "text",
           "label": {
-            "sr": "Autor",
-            "en": "Author",
-            "sr-Cyrl": "Аутор"
-          }
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
+          },
+          "required": true
         },
         {
-          "name": "opis",
+          "name": "tekst",
           "type": "textarea",
           "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
+            "sr": "Tekst vesti",
+            "en": "Article text",
+            "sr-Cyrl": "Текст вести"
           }
         },
         {
-          "name": "slika",
-          "type": "file",
+          "name": "catalogNumber",
+          "type": "number",
           "label": {
-            "sr": "Naslovna slika vesti",
-            "en": "News image",
-            "sr-Cyrl": "Насловна слика вести"
-          }
+            "sr": "Kataloški broj",
+            "en": "Catalog number",
+            "sr-Cyrl": "Каталошки број"
+          },
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naziv seminara",
+            "en": "Seminar title",
+            "sr-Cyrl": "Назив семинара"
+          },
+          "required": true
+        },
+        {
+          "name": "area",
+          "type": "text",
+          "label": {
+            "sr": "Oblast",
+            "en": "Subject area",
+            "sr-Cyrl": "Област"
+          },
+          "required": true
         },
         {
           "name": "link",
           "type": "url",
           "label": {
-            "sr": "Externalni link",
-            "en": "External link",
-            "sr-Cyrl": "Екстерни линк"
-          }
+            "sr": "ZUOV link",
+            "en": "ZUOV link",
+            "sr-Cyrl": "ЗУОВ линк"
+          },
+          "required": true
+        }
+      ]
+    }
+  },
+  {
+    "Pitanja": {
+      "sr": "Često postavljena pitanja",
+      "en": "Frequently asked questions",
+      "sr-Cyrl": "Често постављена питања",
+      "icon": "fa-solid fa-circle-question",
+      "fields": [
+        {
+          "name": "question",
+          "type": "text",
+          "label": {
+            "sr": "Pitanje",
+            "en": "Question",
+            "sr-Cyrl": "Питање"
+          },
+          "required": true
+        },
+        {
+          "name": "answer",
+          "type": "textarea",
+          "label": {
+            "sr": "Odgovor",
+            "en": "Answer",
+            "sr-Cyrl": "Одговор"
+          },
+          "required": true
         }
       ]
     },
