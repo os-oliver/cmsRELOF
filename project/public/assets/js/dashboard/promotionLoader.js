@@ -25,7 +25,6 @@ async function loadComponentIntoEditor(componentPath) {
   }
 
   try {
-    console.log("Učitavam komponentu:", componentPath);
     const res = await fetch(componentPath);
 
     if (!res.ok) {
@@ -33,16 +32,11 @@ async function loadComponentIntoEditor(componentPath) {
     }
 
     const html = await res.text();
-    console.log("HTML učitan, dužina:", html.length);
 
-    // Postavljamo komponentu u editor
     grapesjsEditor.setComponents(html);
 
-    // Dodatno - refresh canvas
     const wrapper = grapesjsEditor.DomComponents.getWrapper();
     wrapper.view.render();
-
-    console.log(`Komponenta uspešno učitana: ${componentPath}`);
   } catch (err) {
     console.error("Greška pri učitavanju komponente:", err);
     alert(`Greška pri učitavanju: ${err.message}`);
@@ -52,12 +46,9 @@ async function loadComponentIntoEditor(componentPath) {
 // Glavna logika koja se pokreće kada se učita cela stranica
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    console.log("Pokrećem inicijalizaciju GrapesJS...");
-
-    // Proveravamo da li postoji #gjs element
     const gjsContainer = document.getElementById("gjs");
     if (!gjsContainer) {
-      console.error("Element #gjs nije pronađen!");
+      console.error("Element #gjs nije pronađen! Inicijalizacija prekinuta.");
       return;
     }
 
@@ -174,67 +165,81 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     });
 
-    console.log("GrapesJS inicijalizovan, čekam 'load' event...");
-
     // Čekamo da se editor u potpunosti učita
     await new Promise((resolve) => {
       grapesjsEditor.on("load", () => {
-        console.log("GrapesJS editor učitan!");
         resolve();
       });
     });
 
     // Učitavanje trenutne aktivne komponente u editor
-    const currentComponentName = document.querySelector(
+    const currentComponentNameEl = document.querySelector(
       "[data-current-component]"
     );
-    if (currentComponentName) {
-      const componentFile = currentComponentName.dataset.currentComponent;
+    if (currentComponentNameEl) {
+      const componentFile = currentComponentNameEl.dataset.currentComponent;
       const componentPath = `/exportedPages/landingPageComponents/landingPage/${componentFile}`;
 
-      console.log("Učitavam aktivnu komponentu:", componentFile);
       await loadComponentIntoEditor(componentPath);
     } else {
-      console.warn("Nema aktivne komponente za učitavanje.");
-      // Postavi default sadržaj
       grapesjsEditor.setComponents(`
         <div style="padding: 40px; text-align: center; font-family: Arial, sans-serif;">
           <h1 style="color: #3B82F6; font-size: 2em; margin-bottom: 20px;">
             <i class="fas fa-cube"></i> Dobrodošli u Editor
           </h1>
           <p style="color: #64748B; font-size: 1.2em;">
-            Izaberite komponentu za uređivanje koristeći dugmiće ispod.
+            Izaberite komponentu za uređivanje.
           </p>
         </div>
       `);
     }
 
-    // Pronalazimo i postavljamo osluškivač događaja na dugme za izvoz
+    // --- LOGIKA ZA ČUVANJE KOMPONENTE ---
     let exportBtn = document.getElementById("export");
 
     if (!exportBtn) {
       console.warn(
-        "Dugme za izvoz (#export) nije pronađeno — izvoz je isključen."
+        "Dugme za izvoz (#export) nije pronađeno — čuvanje je isključeno."
       );
     } else {
       exportBtn.addEventListener("click", async () => {
+        const originalText = exportBtn.innerHTML;
+
         try {
+          // Proveravamo da li postoji trenutna komponenta
+          const currentComponentNameEl = document.querySelector(
+            "[data-current-component]"
+          );
+
+          if (!currentComponentNameEl) {
+            alert("Nema izabrane komponente za čuvanje!");
+            return;
+          }
+
+          const componentFileName =
+            currentComponentNameEl.dataset.currentComponent;
+
+          // Menjamo dugme da prikaže da se čuva
+          exportBtn.disabled = true;
+          exportBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin mr-2"></i>Čuvam...';
+
+          // Uzimamo HTML iz editora
           const wrapper = grapesjsEditor.DomComponents.getWrapper();
-          const combinedHTML = wrapper.toHTML();
+          const htmlContent = wrapper.toHTML();
 
-          console.log("Izvozim HTML, dužina:", combinedHTML.length);
-
+          // Kreiramo FormData za slanje
           const formData = new FormData();
-          formData.append("cmp", "true");
-          formData.append("html", combinedHTML);
+          formData.append("componentFileName", componentFileName);
+          formData.append("htmlContent", htmlContent);
 
-          const res = await fetch("/saveLandigPageComponent", {
+          // Šaljemo POST zahtev na server
+          const res = await fetch("/save-component", {
             method: "POST",
             body: formData,
           });
 
           const responseText = await res.text();
-          console.log("Odgovor servera:", responseText);
 
           if (!res.ok) {
             throw new Error(
@@ -242,31 +247,76 @@ document.addEventListener("DOMContentLoaded", async () => {
             );
           }
 
+          // Pokušavamo da parsiramo JSON odgovor
+          let json;
           try {
-            const json = JSON.parse(responseText);
-            console.log("Uspešno sačuvano:", json);
-            alert(
-              "Komponenta je sačuvana! Broj zapisanih bajtova: " +
-                (json.bytes_written ?? "nepoznato")
-            );
-          } catch (jsonError) {
-            console.error("Odgovor nije validan JSON:", jsonError);
-            // Možda je server vratio običan tekst umesto JSON
-            if (
-              responseText.includes("success") ||
-              responseText.includes("saved")
-            ) {
-              alert("Komponenta je sačuvana!");
-            } else {
-              throw new Error("Server je vratio nevalidan format.");
+            json = JSON.parse(responseText);
+          } catch (e) {
+            // Ako nije JSON, proveravamo da li je plain text success
+            if (responseText.toLowerCase().includes("success")) {
+              exportBtn.innerHTML =
+                '<i class="fas fa-check mr-2"></i>Sačuvano!';
+              setTimeout(() => {
+                exportBtn.innerHTML = originalText;
+                exportBtn.disabled = false;
+              }, 2000);
+              return;
             }
+            console.log(responseText);
+            throw new Error("Server je vratio nevalidan format odgovora");
+          }
+
+          if (json.success) {
+            exportBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Sačuvano!';
+
+            // Prikazujemo success poruku
+            const feedback = document.createElement("div");
+            feedback.className =
+              "fixed top-4 right-4 bg-green-50 border border-green-200 rounded-lg px-4 py-3 text-green-700 shadow-lg z-50";
+            feedback.innerHTML = `
+              <div class="flex items-center gap-2">
+                <i class="fas fa-check-circle"></i>
+                <span>Komponenta <strong>${componentFileName}</strong> uspešno sačuvana!</span>
+              </div>
+            `;
+            document.body.appendChild(feedback);
+
+            setTimeout(() => {
+              feedback.remove();
+              exportBtn.innerHTML = originalText;
+              exportBtn.disabled = false;
+            }, 3000);
+          } else {
+            throw new Error(
+              json.error || json.message || "Nepoznata greška servera"
+            );
           }
         } catch (err) {
-          console.error("Greška prilikom čuvanja:", err.message);
-          alert("Greška prilikom čuvanja komponente: " + err.message);
+          console.error("Greška prilikom čuvanja:", err);
+
+          exportBtn.innerHTML = '<i class="fas fa-times mr-2"></i>Greška';
+
+          // Prikazujemo error poruku
+          const errorFeedback = document.createElement("div");
+          errorFeedback.className =
+            "fixed top-4 right-4 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-red-700 shadow-lg z-50";
+          errorFeedback.innerHTML = `
+            <div class="flex items-center gap-2">
+              <i class="fas fa-exclamation-circle"></i>
+              <span>Greška: ${err.message}</span>
+            </div>
+          `;
+          document.body.appendChild(errorFeedback);
+
+          setTimeout(() => {
+            errorFeedback.remove();
+            exportBtn.innerHTML = originalText;
+            exportBtn.disabled = false;
+          }, 4000);
         }
       });
     }
+    // --- KRAJ LOGIKE ZA ČUVANJE ---
 
     // Opciono: Dodavanje event listener-a za direktno učitavanje komponenti
     document.querySelectorAll("[data-load-component]").forEach((btn) => {
@@ -276,11 +326,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         await loadComponentIntoEditor(componentPath);
       });
     });
-
-    console.log("Inicijalizacija završena!");
   } catch (err) {
-    console.error("Greška pri inicijalizaciji:", err);
-    alert("Greška pri inicijalizaciji editora: " + err.message);
+    console.error("Kritična greška pri inicijalizaciji:", err);
+    alert("Kritična greška pri inicijalizaciji editora: " + err.message);
   }
 });
 

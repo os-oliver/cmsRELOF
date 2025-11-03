@@ -804,7 +804,6 @@ class PersonalContentController
 
         return $icons;
     }
-
     private function getLabelsFromStructure(string $type, array $structure, string $locale): array
     {
         $labels = [];
@@ -815,14 +814,23 @@ class PersonalContentController
 
         $structureData = $structure[0] ?? [];
 
-        if (!isset($structureData[$type]) || !isset($structureData[$type]['fields'])) {
+        // Normalize keys to lowercase for case-insensitive comparison
+        $lowercaseStructureData = [];
+        foreach ($structureData as $key => $value) {
+            $lowercaseStructureData[strtolower($key)] = $value;
+        }
+
+        $typeLower = strtolower($type);
+
+        if (!isset($lowercaseStructureData[$typeLower]) || !isset($lowercaseStructureData[$typeLower]['fields'])) {
             return $labels;
         }
 
-        foreach ($structureData[$type]['fields'] as $field) {
+        foreach ($lowercaseStructureData[$typeLower]['fields'] as $field) {
             $name = $field['name'] ?? null;
-            if (!$name)
+            if (!$name) {
                 continue;
+            }
 
             if (isset($field['label'][$locale])) {
                 $label = $field['label'][$locale];
@@ -839,6 +847,7 @@ class PersonalContentController
 
         return $labels;
     }
+
 
     private function getTypeData(string $type, array $structure, string $locale): array
     {

@@ -52,43 +52,6 @@
                     "required": true
                 },
                 {
-                    "name": "datum",
-                    "type": "date",
-                    "label": {
-                        "sr": "Datum vesti",
-                        "en": "News date",
-                        "sr-Cyrl": "Датум вести"
-                    },
-                    "required": true,
-                    "property": "auto"
-                },
-                {
-                    "name": "naziv",
-                    "type": "categories",
-                    "label": {
-                        "sr": "Kategorija događaja",
-                        "en": "Event category",
-                        "sr-Cyrl": "Категорија догађаја"
-                    },
-                    "options": [
-                        "Konferencije",
-                        "Seminari",
-                        "Radionice",
-                        "Takmičenja",
-                        "Kultura"
-                    ],
-                    "required": true
-                },
-                {
-                    "name": "autor",
-                    "type": "text",
-                    "label": {
-                        "sr": "Autor",
-                        "en": "Author",
-                        "sr-Cyrl": "Аутор"
-                    }
-                },
-                {
                     "name": "opis",
                     "type": "textarea",
                     "label": {
@@ -96,6 +59,16 @@
                         "en": "Short description",
                         "sr-Cyrl": "Кратак опис"
                     }
+                },
+                {
+                    "name": "datum",
+                    "type": "date",
+                    "label": {
+                        "sr": "Datum vesti",
+                        "en": "News date",
+                        "sr-Cyrl": "Датум вести"
+                    },
+                    "required": true
                 },
                 {
                     "name": "slika",
@@ -110,9 +83,9 @@
                     "name": "link",
                     "type": "url",
                     "label": {
-                        "sr": "Externalni link",
-                        "en": "External link",
-                        "sr-Cyrl": "Екстерни линк"
+                        "sr": "Link vesti",
+                        "en": "News link",
+                        "sr-Cyrl": "Линк вести"
                     }
                 }
             ]

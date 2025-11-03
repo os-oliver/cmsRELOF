@@ -7,6 +7,7 @@ use App\Admin\PageBuilders\AnsambalPageBuilder;
 use App\Admin\PageBuilders\DynamicPageBuilder;
 use App\Admin\PageBuilders\EmployeesPageBuilder;
 use App\Admin\PageBuilders\GoalPageBulder;
+use App\Admin\PageBuilders\IzlozbePageBuilder;
 use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
@@ -21,6 +22,7 @@ use App\Admin\PageBuilders\PravaPageBuilder;
 use App\Admin\PageBuilders\SluzbePageBuilder;
 use App\Admin\PageBuilders\ObrasciPageBuilder;
 use App\Admin\PageBuilders\NasiKorisniciPageBuilder;
+use App\Admin\PageBuilders\ZnacajaStranica;
 use App\Controllers\AuthController;
 use App\Models\Content;
 use App\Models\Text;
@@ -662,6 +664,10 @@ class PageExporter
                 return new AnketePageBuilder('Ankete');
             case 'repertoar':
                 return new LibraryProgramPageBuilder('repertoar');
+            case 'izlozbe':
+                return new IzlozbePageBuilder('izlozbe');
+            case 'informacije':
+                return new ZnacajaStranica('ZnacajaStranica', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -730,6 +736,10 @@ class PageExporter
             return 'ankete';
         } elseif (strpos($name, 'repertoar') !== false) {
             return 'repertoar';
+        } elseif (strpos($name, 'izlozbe') !== false) {
+            return 'izlozbe';
+        } elseif (strpos($name, 'informacije') !== false) {
+            return 'informacije';
         }
 
 

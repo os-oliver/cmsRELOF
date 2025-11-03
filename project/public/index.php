@@ -42,6 +42,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET', '/sadmin/kategorije', 'PageController@categoryStyle');
 
     $r->addRoute('GET', '/pretraga', 'PageController@search');
+    $r->addRoute('POST', '/save-component', 'UserUpdateController@saveComponent');
 
     # API/action routes - should stay in english
     $r->addRoute('GET', '/', 'PageController@home');

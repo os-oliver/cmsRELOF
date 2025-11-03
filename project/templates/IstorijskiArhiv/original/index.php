@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Istorijski Arhiv - Digitalno Čuvanje Nasleđa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -398,8 +400,96 @@
 </head>
 
 <body class="bg-background text-primary_text font-body">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden hidden">
+        <div class="fixed inset-0 bg-black bg-opacity-50" id="mobileMenuOverlay"></div>
+        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-secondary_background/95 backdrop-blur-md transform translate-x-full transition-transform duration-300 ease-in-out"
+            id="mobileMenuPanel">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary_hover flex items-center justify-center mr-3">
+                            <i class="fas fa-landmark text-xl text-primary_text"></i>
+                        </div>
+                        <h2 class="text-xl text-primary_text font-heading font-bold">Istorijski Arhiv</h2>
+                    </div>
+                    <button id="closeMobileMenu" class="text-primary_text hover:text-primary transition-colors">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <nav id="navBarIDm" class="space-y-4">
+                    <a href="#pocetna"
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface/30 rounded-lg transition-all duration-300">
+                        <i class="fas fa-home mr-3 text-primary"></i>Početna
+                    </a>
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-primary hover:bg-surface/30 rounded-lg transition-all duration-300"
+                            id="mobileAboutToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-info-circle mr-3 text-primary"></i>O nama
+                            </div>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                                id="mobileAboutIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
+                            <a href="#uvod"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                                <i class="fas fa-book mr-2 text-primary"></i>Uvod
+                            </a>
+                            <a href="#istorijat"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                                <i class="fas fa-history mr-2 text-primary"></i>Istorijat
+                            </a>
+                            <a href="#fondovi"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                                <i class="fas fa-archive mr-2 text-primary"></i>Fondovi
+                            </a>
+                            <a href="#digitalizacija"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                                <i class="fas fa-digital-tachograph mr-2 text-primary"></i>Digitalizacija
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#fondovi"
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface/30 rounded-lg transition-all duration-300">
+                        <i class="fas fa-archive mr-3 text-primary"></i>Fondovi
+                    </a>
+                    <a href="#digitalizacija"
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface/30 rounded-lg transition-all duration-300">
+                        <i class="fas fa-digital-tachograph mr-3 text-primary"></i>Digitalizacija
+                    </a>
+                    <a href="#kontakt"
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface/30 rounded-lg transition-all duration-300">
+                        <i class="fas fa-envelope mr-3 text-primary"></i>Kontakt
+                    </a>
+                </nav>
+                <div class="mt-8 pt-6 border-t border-surface">
+                    <div class="flex flex-col space-y-4">
+                        <button
+                            class="w-full px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary_text rounded-lg transition-all duration-300">
+                            <i class="fas fa-search mr-2"></i>Pretraga
+                        </button>
+                        <div class="flex justify-center space-x-2">
+                            <button
+                                class="language-btn px-4 py-2 rounded-lg text-primary_text hover:bg-primary/10 transition-all duration-300"
+                                data-lang="sr-Latn">SR</button>
+                            <button
+                                class="language-btn px-4 py-2 rounded-lg text-primary_text hover:bg-primary/10 transition-all duration-300"
+                                data-lang="sr-Cyrl">СРБ</button>
+                            <button
+                                class="language-btn px-4 py-2 rounded-lg text-primary_text hover:bg-primary/10 transition-all duration-300"
+                                data-lang="en">EN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header
-        class="fixed w-full z-50 transition-all duration-300 py-2 sm:py-3 backdrop-blur-md shadow-lg bg-secondary_background/95 border-b border-surface">
+        class="fixed w-full z-40 transition-all duration-300 py-2 sm:py-3 bg-secondary_background/95 backdrop-blur-md border-b border-surface/10">
         <div class="px-3 sm:px-4 lg:px-6 flex justify-between items-center">
             <div class="flex items-center space-x-3 flex-shrink-0">
                 <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shadow-md">
@@ -755,242 +845,71 @@
 
     </section>
 
-    <section class="py-20 bg-secondary_background">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="stat-number">150K+</div>
-                    <p class="text-xl text-secondary_text mt-2">Digitalizovanih Dokumenata</p>
-                </div>
-                <div class="text-center">
-                    <div class="stat-number">8</div>
-                    <p class="text-xl text-secondary_text mt-2">Vekova Istorije</p>
-                </div>
-                <div class="text-center">
-                    <div class="stat-number">45</div>
-                    <p class="text-xl text-secondary_text mt-2">Fondova i Zbirki</p>
-                </div>
-                <div class="text-center">
-                    <div class="stat-number">5M+</div>
-                    <p class="text-xl text-secondary_text mt-2">Stranica Arhivske Građe</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <section id="fondovi" class="py-24 bg-background">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 glow decorative-line text-primary_text">Istaknuti Fondovi</h2>
-                <p class="text-xl text-secondary_text max-w-3xl mx-auto">Istražite našu jedinstvenu kolekciju
-                    istorijskih
-                    dokumenata</p>
+                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
+                    Istaknuti Fondovi
+                    <span
+                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
+                </h2>
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
+                    Istražite našu jedinstvenu kolekciju istorijskih dokumenata i kulturnog nasleđa
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card-hover card-3d glass-dark rounded-2xl overflow-hidden">
-                    <div class="img-overlay h-64">
-                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop"
-                            alt="Stari dokumenti" class="w-full h-full object-cover">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-4 py-2 bg-primary rounded-full text-sm font-semibold text-primary_text">XIX
-                                Vek</span>
+            <div id="fondoviCards" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <?php for ($i = 0; $i < 3; $i++): ?>
+                    <div class="fond-card card-hover card-3d glass-dark rounded-2xl overflow-hidden">
+                        <div class="img-overlay h-64">
+                            <img id="g-image"
+                                src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop"
+                                alt="Fond slika" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4">
+                                <span id="g-naziv"
+                                    class="px-4 py-2 bg-primary rounded-full text-sm font-semibold text-primary_text">Istraživački
+                                    fondovi</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 id="g-title" class="text-2xl font-bold mb-3 text-primary_text">Građanska Matična Knjiga</h3>
+                            <p id="g-opis" class="text-secondary_text mb-4">Kompletni matični zapisi rođenih,
+                                venčanih i umrlih građana
+                                iz perioda 1850-1920.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span id="g-organizacija" class="text-sm text-primary">
+                                    <i class="fas fa-building mr-2"></i>Istorijski arhiv
+                                </span>
+                                <span id="g-rok" class="text-sm text-secondary_text">
+                                    <i class="fas fa-calendar mr-2"></i>31.12.2025
+                                </span>
+                            </div>
+                            <div class="mt-2 mb-4">
+                                <span id="g-iznos" class="text-sm text-accent">
+                                    <i class="fas fa-coins mr-2"></i>Iznos finansiranja: 500.000 RSD
+                                </span>
+                            </div>
+                            <a href="#" id="g-ovise"
+                                class="w-full py-3 bg-gradient-to-r from-primary to-primary_hover rounded-xl hover:shadow-lg hover:shadow-primary/30 transition btn-shine text-primary_text font-medium inline-block text-center">
+                                Pregledaj Fond <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-primary_text">Građanska Matična Knjiga</h3>
-                        <p class="text-secondary_text mb-4">Kompletni matični zapisi rođenih, venčanih i umrlih građana
-                            iz
-                            perioda 1850-1920.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-sm text-primary"><i class="fas fa-file-alt mr-2"></i>2,847
-                                dokumenata</span>
-                            <span class="text-sm text-secondary_text"><i class="fas fa-eye mr-2"></i>45,231
-                                pregleda</span>
-                        </div>
-                        <button
-                            class="w-full py-3 bg-gradient-to-r from-primary to-primary_hover rounded-xl hover:shadow-lg hover:shadow-primary/30 transition btn-shine text-primary_text font-medium">
-                            Pregledaj Fond <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-hover card-3d glass-dark rounded-2xl overflow-hidden">
-                    <div class="img-overlay h-64">
-                        <img src="https://images.unsplash.com/photo-1568667256549-094345857637?w=600&h=400&fit=crop"
-                            alt="Stara mapa" class="w-full h-full object-cover">
-                        <div class="absolute top-4 right-4">
-                            <span
-                                class="px-4 py-2 bg-primary rounded-full text-sm font-semibold text-primary_text">XVIII
-                                Vek</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-primary_text">Zemljišni Katastri</h3>
-                        <p class="text-secondary_text mb-4">Originalni katastarski planovi i opisi zemljišnih poseda sa
-                            detaljnim kartografskim prikazima.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-sm text-primary"><i class="fas fa-file-alt mr-2"></i>1,523
-                                dokumenata</span>
-                            <span class="text-sm text-secondary_text"><i class="fas fa-eye mr-2"></i>32,108
-                                pregleda</span>
-                        </div>
-                        <button
-                            class="w-full py-3 bg-gradient-to-r from-primary to-primary_hover rounded-xl hover:shadow-lg hover:shadow-primary/30 transition btn-shine text-primary_text font-medium">
-                            Pregledaj Fond <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-hover card-3d glass-dark rounded-2xl overflow-hidden">
-                    <div class="img-overlay h-64">
-                        <img src="https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=600&h=400&fit=crop"
-                            alt="Ratni dokumenti" class="w-full h-full object-cover">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-4 py-2 bg-primary rounded-full text-sm font-semibold text-primary_text">XX
-                                Vek</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-primary_text">Ratni Arhivi</h3>
-                        <p class="text-secondary_text mb-4">Lični dnevnici, korespondencija i zvanični dokumenti iz
-                            perioda
-                            dva svetska rata.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-sm text-primary"><i class="fas fa-file-alt mr-2"></i>3,912
-                                dokumenata</span>
-                            <span class="text-sm text-secondary_text"><i class="fas fa-eye mr-2"></i>67,445
-                                pregleda</span>
-                        </div>
-                        <button
-                            class="w-full py-3 bg-gradient-to-r from-primary to-primary_hover rounded-xl hover:shadow-lg hover:shadow-primary/30 transition btn-shine text-primary_text font-medium">
-                            Pregledaj Fond <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
+                <?php endfor; ?>
             </div>
 
             <div class="text-center mt-12">
-                <button class="px-10 py-4 glass rounded-full text-lg hover:bg-white/20 transition text-primary_text">
-                    Pogledaj Svih 45 Fondova <i class="fas fa-arrow-right ml-2"></i>
-                </button>
+                <a href="/fondovi" id="fondsView"
+                    class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
+                    <i class="fas fa-archive mr-3"></i>
+                    Pogledaj sve fondove
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="digitalna" class="py-24 bg-gradient-to-b from-secondary_background to-surface">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-5xl font-bold mb-6 text-primary_text">Digitalna Arhiva</h2>
-                <p class="text-2xl text-secondary_text mb-12">Pristupite našoj digitalnoj kolekciji bilo gde, bilo kada
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border border-surface">
-                        <i class="fas fa-search text-5xl text-primary mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3 text-primary_text">Napredna Pretraga</h3>
-                        <p class="text-secondary_text">Pretraživanje po datumu, lokaciji, tipu dokumenta i ključnim
-                            rečima</p>
-                    </div>
-
-                    <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border border-surface">
-                        <i class="fas fa-download text-5xl text-primary mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3 text-primary_text">Preuzimanje</h3>
-                        <p class="text-secondary_text">Preuzmite dokumente u visokoj rezoluciji za vašu upotrebu</p>
-                    </div>
-
-                    <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border border-surface">
-                        <i class="fas fa-bookmark text-5xl text-primary mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3 text-primary_text">Čuvanje</h3>
-                        <p class="text-secondary_text">Sačuvajte omiljene dokumente u vašoj ličnoj biblioteci</p>
-                    </div>
-                </div>
-
-                <button
-                    class="px-12 py-5 bg-gradient-to-r from-primary to-primary_hover rounded-full text-xl font-semibold hover:shadow-2xl hover:shadow-primary/30 transition btn-shine text-primary_text">
-                    <i class="fas fa-rocket mr-2"></i>Započni Istraživanje
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="usluge" class="py-24 bg-secondary_background">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 text-primary_text">Naše Usluge</h2>
-                <p class="text-xl text-secondary_text max-w-3xl mx-auto">Profesionalna podrška za vaša istraživanja</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-surface">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-primary to-primary_hover rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/30">
-                        <i class="fas fa-book-reader text-3xl text-primary_text"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-primary_text">Čitaonica</h3>
-                    <p class="text-secondary_text mb-4">Pristup originalnim dokumentima u kontrolisanim uslovima</p>
-                    <ul class="text-sm text-secondary_text space-y-2 mb-6">
-                        <li>Ponedeljak-Petak: 08-16h</li>
-                        <li>Kapacitet: 15 istraživača</li>
-                        <li>Rezervacija obavezna</li>
-                    </ul>
-                    <button
-                        class="px-6 py-2 border border-primary rounded-full hover:bg-primary transition text-primary_text">Zakažite
-                        Posetu</button>
-                </div>
-
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-surface">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-secondary to-secondary_hover rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-secondary/30">
-                        <i class="fas fa-laptop-code text-3xl text-primary_text"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-primary_text">Digitalizacija</h3>
-                    <p class="text-secondary_text mb-4">Profesionalno skeniranje arhivske građe</p>
-                    <ul class="text-sm text-secondary_text space-y-2 mb-6">
-                        <li>Visoka rezolucija: 600 DPI</li>
-                        <li>OCR obrada teksta</li>
-                        <li>Metapodaci uključeni</li>
-                    </ul>
-                    <button
-                        class="px-6 py-2 border border-secondary rounded-full hover:bg-secondary transition text-primary_text">Naručite
-                        Uslugu</button>
-                </div>
-
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-surface">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-accent to-accent_hover rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-accent/30">
-                        <i class="fas fa-graduation-cap text-3xl text-primary_text"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-primary_text">Stručna Pomoć</h3>
-                    <p class="text-secondary_text mb-4">Konsultacije sa arhivskim stručnjacima</p>
-                    <ul class="text-sm text-secondary_text space-y-2 mb-6">
-                        <li>Genealoška istraživanja</li>
-                        <li>Istorijske analize</li>
-                        <li>Online konsultacije</li>
-                    </ul>
-                    <button
-                        class="px-6 py-2 border border-accent rounded-full hover:bg-accent transition text-primary_text">Kontakt</button>
-                </div>
-
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-surface">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-primary to-primary_hover rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/30">
-                        <i class="fas fa-copy text-3xl text-primary_text"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-primary_text">Reprografija</h3>
-                    <p class="text-secondary_text mb-4">Izrada kopija arhivskih dokumenata</p>
-                    <ul class="text-sm text-secondary_text space-y-2 mb-6">
-                        <li>Digitalne kopije: 50 RSD</li>
-                        <li>Fotokopije: 20 RSD</li>
-                        <li>Brza isporuka</li>
-                    </ul>
-                    <button
-                        class="px-6 py-2 border border-primary rounded-full hover:bg-primary transition text-primary_text">Cenovnik</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="py-24 bg-background">
         <div class="container mx-auto px-6">
@@ -1070,96 +989,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-background">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 glow decorative-line text-primary_text">Galerija Dokumenata</h2>
-                <p class="text-xl text-secondary_text max-w-3xl mx-auto">Pregled najznačajnijih i najlepših dokumenata
-                    iz naše
-                    kolekcije</p>
-            </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=400&fit=crop"
-                        alt="Dokument 1" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
-                    </div>
-                </div>
-
-                <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1516414447565-b14be0adf13e?w=400&h=400&fit=crop"
-                        alt="Dokument 2" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
-                    </div>
-                </div>
-
-                <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop"
-                        alt="Dokument 3" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
-                    </div>
-                </div>
-
-                <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=400&fit=crop"
-                        alt="Dokument 4" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
-                    </div>
-                </div>
-
-                <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=400&h=400&fit=crop"
-                        alt="Dokument 5" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
-                    </div>
-                </div>
-
-                <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1526243741027-444d633d7365?w=400&h=400&fit=crop"
-                        alt="Dokument 6" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
-                    </div>
-                </div>
-
-                <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=400&fit=crop"
-                        alt="Dokument 7" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
-                    </div>
-                </div>
-
-                <div class="img-overlay rounded-xl overflow-hidden cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=400&fit=crop"
-                        alt="Dokument 8" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <button class="px-10 py-4 glass rounded-full text-lg hover:bg-white/20 transition text-primary_text">
-                    Pogledaj Celu Galeriju <i class="fas fa-images ml-2"></i>
-                </button>
-            </div>
-        </div>
-    </section>
 
     <footer class="bg-background text-secondary_text py-12">
         <div class="container mx-auto px-6">
@@ -1229,55 +1059,39 @@
 
     <script>
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slider-item');
-        const indicators = document.querySelectorAll('.slider-indicator');
-        const totalSlides = slides.length;
+        const slides = document.querySelectorAll('.slider-item') || [];
+        const indicators = document.querySelectorAll('.slider-indicator') || [];
+        const totalSlides = slides.length || 0;
 
         function showSlide(index) {
+            if (!totalSlides) return;
             currentSlide = index;
             if (currentSlide >= totalSlides) currentSlide = 0;
             if (currentSlide < 0) currentSlide = totalSlides - 1;
 
             const slider = document.getElementById('slider');
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            if (slider) slider.style.transform = `translateX(-${currentSlide * 100}%)`;
 
             indicators.forEach((indicator, i) => {
-                if (i === currentSlide) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
+                indicator.classList.toggle('active', i === currentSlide);
             });
         }
 
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+        function goToSlide(index) { showSlide(index); }
 
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
-
-        function goToSlide(index) {
-            showSlide(index);
-        }
-
-        // Get all buttons by their IDs
         const prevButton = document.getElementById('prevButton');
         const nextButton = document.getElementById('nextButton');
         const indicator0 = document.getElementById('indicator0');
         const indicator1 = document.getElementById('indicator1');
         const indicator2 = document.getElementById('indicator2');
 
-        // Attach click event listeners
-        prevButton.addEventListener('click', prevSlide);
-        nextButton.addEventListener('click', nextSlide);
-
-        indicator0.addEventListener('click', () => goToSlide(0));
-        indicator1.addEventListener('click', () => goToSlide(1));
-        indicator2.addEventListener('click', () => goToSlide(2));
-
-
+        prevButton?.addEventListener('click', prevSlide);
+        nextButton?.addEventListener('click', nextSlide);
+        indicator0?.addEventListener('click', () => goToSlide(0));
+        indicator1?.addEventListener('click', () => goToSlide(1));
+        indicator2?.addEventListener('click', () => goToSlide(2));
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1287,22 +1101,18 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        const observerOptions = { threshold: 0.5, rootMargin: '0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.card-hover').forEach(card => observer.observe(card));
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('animate-fade-in');
+                });
+            }, { threshold: 0.5, rootMargin: '0px' });
+            document.querySelectorAll('.card-hover').forEach(card => observer.observe(card));
+        }
 
         window.addEventListener('scroll', () => {
             const parallax = document.querySelector('.parallax');
@@ -1324,13 +1134,69 @@
                     }
                 });
             });
-
             document.querySelectorAll('img').forEach(img => imageObserver.observe(img));
         }
+
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const openMobileMenu = document.getElementById('openMobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileAboutToggle = document.getElementById('mobileAboutToggle');
+        const mobileAboutMenu = document.getElementById('mobileAboutMenu');
+        const mobileAboutIcon = document.getElementById('mobileAboutIcon');
+
+        function toggleMobileMenu(show) {
+            if (!mobileMenu || !mobileMenuPanel) return;
+            mobileMenu.classList.toggle('hidden', !show);
+            if (show) {
+                setTimeout(() => {
+                    mobileMenuPanel.style.transform = 'translateX(0)';
+                }, 100);
+            } else {
+                mobileMenuPanel.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function toggleMobileAboutMenu() {
+            if (!mobileAboutMenu || !mobileAboutIcon) return;
+            const isHidden = mobileAboutMenu.classList.contains('hidden');
+            mobileAboutMenu.classList.toggle('hidden');
+            mobileAboutIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0)';
+        }
+
+        openMobileMenu?.addEventListener('click', () => toggleMobileMenu(true));
+        closeMobileMenu?.addEventListener('click', () => toggleMobileMenu(false));
+        mobileMenuOverlay?.addEventListener('click', () => toggleMobileMenu(false));
+        mobileAboutToggle?.addEventListener('click', toggleMobileAboutMenu);
+
+        const languageButtons = document.querySelectorAll('.language-btn') || [];
+        let currentLang = 'sr-Latn';
+
+        languageButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const lang = this.dataset.lang;
+                if (lang === currentLang) return;
+
+                languageButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary/10', 'text-primary');
+                });
+
+                this.classList.add('bg-primary/10', 'text-primary');
+                currentLang = lang;
+            });
+        });
+
+        const defaultLangButton = document.querySelector(`[data-lang="${currentLang}"]`);
+        defaultLangButton?.classList.add('bg-primary/10', 'text-primary');
 
         console.log('%c🏛️ Istorijski Arhiv', 'font-size: 24px; font-weight: bold; color: #d4af37;');
         console.log('%cDobrodošli u konzolu našeg arhiva!', 'font-size: 16px; color: #666;');
     </script>
+
 </body>
 
 </html>
