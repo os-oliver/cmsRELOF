@@ -65,45 +65,48 @@ class RepertoarPageBuilder extends BasePageBuilder
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: color-mix(in srgb, var(--color-secondary_background) 95%, transparent);
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--color-secondary) 12%, transparent);
     z-index: 1;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-secondary) 18%, transparent);
 }
 
-/* Enhanced Glassmorphism effect */
+/* Card styling tuned to theme */
 .glass-card {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: color-mix(in srgb, var(--color-background) 92%, transparent);
+    backdrop-filter: blur(18px);
+    border: 1px solid color-mix(in srgb, var(--color-secondary) 14%, transparent);
+    box-shadow: 0 24px 48px -22px color-mix(in srgb, var(--color-secondary) 35%, transparent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 34px 60px -20px color-mix(in srgb, var(--color-primary) 35%, transparent);
 }
 
 .glass-search {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(15px) saturate(180%);
-    -webkit-backdrop-filter: blur(15px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: color-mix(in srgb, var(--color-secondary_background) 90%, transparent);
+    backdrop-filter: blur(14px);
+    border: 1px solid color-mix(in srgb, var(--color-secondary) 18%, transparent);
 }
 
 .category-chip {
     display: inline-flex;
     align-items: center;
     padding: 0.375rem 0.875rem;
-    background: rgba(107, 114, 128, 0.9);
-    backdrop-filter: blur(10px);
-    color: white;
+    background: color-mix(in srgb, var(--color-secondary) 92%, transparent);
+    color: var(--color-primarybtntxt);
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.025em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 16px color-mix(in srgb, var(--color-secondary) 22%, transparent);
 }
 
-/* Improved field layout */
 .fields-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -114,10 +117,9 @@ class RepertoarPageBuilder extends BasePageBuilder
 .card-field {
     position: relative;
     padding: 0.75rem;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 0.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: color-mix(in srgb, var(--color-background) 85%, transparent);
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
     transition: all 0.3s ease;
     min-height: 60px;
     display: flex;
@@ -126,10 +128,10 @@ class RepertoarPageBuilder extends BasePageBuilder
 }
 
 .card-field:hover {
-    background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: color-mix(in srgb, var(--color-primarybtntxt) 95%, transparent);
+    border-color: color-mix(in srgb, var(--color-primary) 28%, transparent);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 18px 30px color-mix(in srgb, var(--color-primary) 12%, transparent);
 }
 
 .card-image-overlay {
@@ -138,10 +140,9 @@ class RepertoarPageBuilder extends BasePageBuilder
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%);
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--color-primary_text) 0%, transparent) 0%, color-mix(in srgb, var(--color-primary_text) 55%, transparent) 100%);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .fields-container {
         grid-template-columns: 1fr;
@@ -159,21 +160,21 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     
-    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
+    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-3xl shadow-xl mb-10 gap-4 border border-secondary/20'>";
     
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
         <input type='text' name='search' value='{$safeSearchValue}' 
                placeholder='{$texts['search_placeholder']}' 
-               class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
+               class='w-full border border-secondary/30 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm bg-background text-primary_text placeholder-secondary_text font-body'>
         <button type='submit' 
-                class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+                class='bg-primary hover:bg-primary_hover text-primarybtntxt px-6 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl font-semibold font-body'>
             {$texts['apply_button']}
         </button>
     </div>";
     
     $html .= "<div class='flex items-center w-full sm:w-auto'>
         <select name='category' 
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+                class='w-full sm:w-64 border border-secondary/30 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all shadow-sm bg-background text-primary_text font-body appearance-none cursor-pointer'>
             <option value=''>{$texts['all_categories']}</option>";
     
     foreach ($categories as $cat) {
@@ -190,14 +191,14 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
 PHP;
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
-        <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
-            <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100">
+        <div class="glass-card rounded-3xl border border-secondary/20 transition-all duration-300 overflow-hidden group">
+            <div class="relative w-full h-56 overflow-hidden bg-secondary_background">
                 {{imageSection}}
                 {{kategoria}}
             </div>
 
-            <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+            <div class="p-6 bg-background font-body text-secondary_text">
+                <h3 class="text-xl font-bold text-primary_text font-heading mb-4 line-clamp-2 group-hover:text-primary transition-colors">
                     {{nazivPredstave}}
                 </h3>
 
@@ -208,7 +209,7 @@ PHP;
                 </div>
 
                 <a href="sadrzaj?id={{itemId}}&tip=generic_element"
-                class="block w-full text-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl backdrop-blur-sm">
+                class="block w-full text-center bg-primary hover:bg-primary_hover text-primarybtntxt text-sm font-semibold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-body">
                     <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-theater-masks"></i>
                         <span>{{playDetails}}</span>
@@ -236,43 +237,42 @@ HTML;
     // Preformatted sections
     $imageSection = $imageUrl
         ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Play image'>"
-        : "<div class='absolute inset-0 flex items-center justify-center'>
-            
-                <i class='fas fa-theater-masks text-6xl text-indigo-300'></i>
+        : "<div class='absolute inset-0 flex items-center justify-center bg-secondary_background'>
+                <i class='fas fa-theater-masks text-6xl text-secondary'></i>
            </div>";
 
     $dateTimeRow = $datumVreme
         ? "<div class='flex items-start gap-3'>
-               <div class='flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center'>
-                   <i class='fas fa-calendar-alt text-indigo-600'></i>
+               <div class='flex-shrink-0 w-11 h-11 bg-surface rounded-xl flex items-center justify-center text-primary'>
+                   <i class='fas fa-calendar-alt'></i>
                </div>
                <div class='flex-1'>
-                   <div class='text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5'>{$texts['date_and_time']}</div>
-                   <div class='text-sm font-semibold text-gray-900'>{$datumVreme}</div>
+                   <div class='text-xs font-semibold text-secondary_text uppercase tracking-[0.15em] mb-0.5'>{$texts['date_and_time']}</div>
+                   <div class='text-sm font-semibold text-primary_text'>{$datumVreme}</div>
                </div>
            </div>"
         : '';
 
     $durationRow = $trajanjeMin
         ? "<div class='flex items-start gap-3'>
-               <div class='flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center'>
-                   <i class='fas fa-clock text-purple-600'></i>
+               <div class='flex-shrink-0 w-11 h-11 bg-secondary_background rounded-xl flex items-center justify-center text-secondary'>
+                   <i class='fas fa-clock'></i>
                </div>
                <div class='flex-1'>
-                   <div class='text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5'>{$texts['duration']}</div>
-                   <div class='text-sm font-semibold text-gray-900'>{$trajanjeMin} {$texts['minutes']}</div>
+                   <div class='text-xs font-semibold text-secondary_text uppercase tracking-[0.15em] mb-0.5'>{$texts['duration']}</div>
+                   <div class='text-sm font-semibold text-primary_text'>{$trajanjeMin} {$texts['minutes']}</div>
                </div>
            </div>"
         : '';
 
     $genreRow = $kategorija
     ? "<div class='flex items-start gap-3'>
-            <div class='flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center'>
-                <i class='fas fa-theater-masks text-green-600'></i>
+            <div class='flex-shrink-0 w-11 h-11 bg-surface rounded-xl flex items-center justify-center text-primary'>
+                <i class='fas fa-theater-masks'></i>
             </div>
             <div class='flex-1 min-w-0'>
-                <div class='text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5'>{$texts['genre']}</div>
-                <div class='text-sm font-semibold text-gray-900 truncate'>{$kategorija}</div>
+                <div class='text-xs font-semibold text-secondary_text uppercase tracking-[0.15em] mb-0.5'>{$texts['genre']}</div>
+                <div class='text-sm font-semibold text-primary_text truncate'>{$kategorija}</div>
             </div>
         </div>"
     : '';    
@@ -305,8 +305,8 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}' 
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
-            <i class='fas fa-chevron-left text-gray-600'></i>
+                   class='px-4 py-2 bg-background rounded-xl border border-secondary/30 hover:bg-secondary_background hover:border-secondary transition-all shadow-sm hover:shadow font-body text-secondary'>
+            <i class='fas fa-chevron-left text-secondary'></i>
         </a>";
     }
     
@@ -317,33 +317,33 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
         $html .= "<a href='{$url}' 
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
-        if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
+                   class='px-4 py-2 bg-background rounded-xl border border-secondary/30 hover:bg-secondary_background hover:border-secondary transition-all shadow-sm hover:shadow font-medium text-secondary'>1</a>";
+        if ($start > 2) $html .= "<span class='px-2 text-secondary_text'>...</span>";
     }
     
     // Page numbers
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
         $class = $i === $currentPage 
-            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md' 
-            : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
+            ? 'px-4 py-2 bg-primary text-primarybtntxt rounded-xl font-semibold shadow-md'
+            : 'px-4 py-2 bg-background rounded-xl border border-secondary/30 hover:bg-secondary_background hover:border-secondary transition-all shadow-sm hover:shadow font-medium text-secondary';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
     
     // Last page + ellipsis
     if ($end < $totalPages) {
-        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
+        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-secondary_text'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
         $html .= "<a href='{$url}' 
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
+                   class='px-4 py-2 bg-background rounded-xl border border-secondary/30 hover:bg-secondary_background hover:border-secondary transition-all shadow-sm hover:shadow font-medium text-secondary'>{$totalPages}</a>";
     }
     
     // Next button
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}' 
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
-            <i class='fas fa-chevron-right text-gray-600'></i>
+                   class='px-4 py-2 bg-background rounded-xl border border-secondary/30 hover:bg-secondary_background hover:border-secondary transition-all shadow-sm hover:shadow font-body text-secondary'>
+            <i class='fas fa-chevron-right text-secondary'></i>
         </a>";
     }
     
@@ -353,11 +353,49 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 }
 PHP;
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#F7F2EA',
+                        secondary_background: '#FAF0CA',
+                        primary: '#8B1E3F',
+                        primary_hover: '#701932',
+                        secondary: '#2D3047',
+                        secondary_hover: '#24273B',
+                        primary_text: '#1F1A1A',
+                        secondary_text: '#5D4E4E',
+                        logocolor1: '#8B1E3F',
+                        logocolor2: '#2D3047',
+                        primarybtntxt: '#FFF7E6',
+                        surface: '#8B1E3F1A',
+                        footerbg: '#EFE3D6',
+                    },
+                    fontFamily: {
+                        heading: ['"Bodoni Moda"', 'serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+
+        (function applyThemeVariables() {
+            const colors = tailwind?.config?.theme?.extend?.colors ?? {};
+            const root = document.documentElement.style;
+
+            Object.entries(colors).forEach(([key, value]) => {
+                if (typeof value === 'string') {
+                    root.setProperty(`--color-${key}`, value);
+                }
+            });
+        })();
+    </script>
+<main class="bg-background min-h-screen font-body">
     <section class="container mx-auto px-4 py-12">
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Repertoar</h1>
-            <p class="text-gray-600">Pregled naših predstava i izvođenja</p>
+        <div class="mb-10 text-center md:text-left">
+            <h1 class="text-3xl md:text-4xl font-bold text-primary_text font-heading mb-2">Repertoar</h1>
+            <p class="text-secondary_text max-w-2xl">Pregled naših predstava i izvođenja</p>
         </div>
         
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
@@ -374,9 +412,9 @@ PHP;
                 $totalPages = ceil($itemsList['total'] / $itemsPerPage);
                 echo renderPagination($currentPage, $totalPages, $paginationRange);
             } else {
-                echo "<div class='glass-card rounded-lg p-12 text-center border border-white/40'>
-                    <i class='fas fa-inbox text-5xl text-gray-400 mb-4'></i>
-                    <p class='text-gray-500'>{$texts['no_items_found']}</p>
+                echo "<div class='glass-card rounded-3xl p-12 text-center border border-secondary/20'>
+                    <i class='fas fa-inbox text-5xl text-secondary mb-4'></i>
+                    <p class='text-secondary_text'>{$texts['no_items_found']}</p>
                 </div>";
             }
             ?>
