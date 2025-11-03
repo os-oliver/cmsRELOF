@@ -111,6 +111,8 @@ class GenericCategory
             $pdo->exec("DELETE FROM generic_category");
             $pdo->exec("ALTER TABLE generic_category AUTO_INCREMENT = 1");
 
+            $pdo->beginTransaction();
+
             // Pripremamo upite pre petlje radi boljih performansi
             $stmtCategory = $pdo->prepare("INSERT INTO generic_category (type) VALUES (:type)");
             $locale = 'sr';
@@ -193,8 +195,8 @@ class GenericCategory
         try {
             $pdo = self::pdo();
             $sql = "
-            
-                SELECT ge.id, ge.type 
+
+                SELECT ge.id, ge.type
                 FROM generic_element AS ge
                 WHERE ge.category_id = :categoryId
                 ORDER BY ge.id ASC
