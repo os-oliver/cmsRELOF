@@ -38,6 +38,35 @@
     </script>
 
     <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: #1f2937;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f5f9;
+            border-left: 3px solid #1e40af;
+        }
+
         body {
             font-family: 'Raleway', sans-serif;
             background: linear-gradient(to bottom, #f8f5f0, #e9e4d8);
@@ -187,6 +216,7 @@
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
                     </a>
+
                 </nav>
             </div>
         </div>
@@ -203,7 +233,7 @@
 
     <!-- Header with library theme -->
     <header class="fixed w-full z-50 py-3 bg-primary_text shadow-md">
-        <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class=" mx-2 px-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="w-14 h-14 bg-secondary rounded-lg flex items-center justify-center shadow-lg">
                     <i class="fas fa-book-open text-2xl text-background"></i>
@@ -215,9 +245,9 @@
             </div>
 
             <!-- Desktop Navigation -->
-            <nav id="navBarID" class="hidden lg:flex space-x-8">
+            <nav id="navBarID" class="hidden lg:flex space-x-8 items-center">
                 <a href="#" class="nav-link text-background font-semibold flex items-center">
-                    <i class="fas fa-home mr-2 text-accent"></i>Pocetna
+                    <i class="fas fa-home mr-2 text-accent"></i>Početna
                 </a>
 
                 <div class="dropdown relative group">
@@ -242,9 +272,25 @@
                     </div>
                 </div>
 
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
-                    <i class="fas fa-calendar-alt mr-2 text-accent"></i>Dogadjaji
-                </a>
+                <!-- Aktivnosti Dropdown -->
+                <div class="dropdown relative group">
+                    <button class="nav-link text-background font-semibold flex items-center">
+                        <i class="fas fa-calendar-alt mr-2 text-accent"></i>Aktivnosti
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute bg-background rounded-md shadow-lg py-2 min-w-[200px] mt-2 hidden group-hover:block">
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 hover:bg-secondary_background rounded-md text-primary_text">
+                            <i class="fas fa-calendar-day mr-2"></i>Dogadjaji
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 hover:bg-secondary_background rounded-md text-primary_text">
+                            <i class="fas fa-newspaper mr-2"></i>Vesti
+                        </a>
+                    </div>
+                </div>
+
                 <div class="dropdown relative group">
                     <button class="nav-link text-background font-semibold flex items-center">
                         <i class="fas fa-child mr-2 text-accent"></i>Usluge
@@ -265,11 +311,6 @@
                 <a href="#" class="nav-link text-background font-semibold flex items-center">
                     <i class="fas fa-theater-masks mr-2 text-accent"></i>Repertoar
                 </a>
-
-                <!-- Vesti -->
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
-                    <i class="fas fa-newspaper mr-2 text-accent"></i>Vesti
-                </a>
                 <a href="#" class="nav-link text-background font-semibold flex items-center">
                     <i class="fas fa-images mr-2 text-accent"></i>Galerija
                 </a>
@@ -280,7 +321,44 @@
                 <a href="#" class="nav-link text-background font-semibold flex items-center">
                     <i class="fas fa-address-book mr-2 text-accent"></i>Kontakt
                 </a>
+
+                <?php
+                if (isset($_GET['locale'])) {
+                    $_SESSION['locale'] = $_GET['locale'];
+                }
+                $locale = $_SESSION['locale'] ?? 'sr';
+
+                $languages = [
+                    'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                ];
+
+                if (!isset($languages[$locale])) {
+                    $locale = 'sr';
+                }
+                ?>
+                <div class="locale dropdown nonPage relative group ">
+                    <button
+                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
+                        <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute top-full right-0 min-w-max bg-secondary_background rounded-xl shadow-2xl border border-surface z-50 py-2 backdrop-blur-sm">
+                        <?php foreach ($languages as $key => $lang): ?>
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                                <span class="font-medium"><?= $lang['label'] ?></span>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </nav>
+
 
             <!-- Search & Mobile Toggle -->
             <div class="flex items-center space-x-4">
@@ -293,13 +371,16 @@
                     <div id="searchInputContainer"
                         class="absolute right-0 top-10 hidden w-64 bg-background rounded-md shadow-lg p-2 z-50">
                         <div class="flex">
-                            <input type="text" placeholder="Pretraži..."
-                                class="w-full border border-secondary rounded-l-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-secondary"
-                                id="searchInput" />
-                            <button class="bg-secondary text-background px-4 rounded-r-md" id="closeSearch"
-                                aria-label="Close search">
-                                <i class="fas fa-search"></i>
-                            </button>
+                            <form action="/pretraga" method="get" class="flex w-full max-w-xs">
+                                <input type="text" name="q" placeholder="Pretraži..."
+                                    class="w-full border border-secondary rounded-l-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-secondary"
+                                    id="searchInput" />
+                                <button type="submit" class="bg-secondary text-background px-4 rounded-r-md"
+                                    aria-label="Search">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -860,7 +941,7 @@
         const eventsViewBtn = document.querySelector("#eventsView");
         if (eventsViewBtn) {
             eventsViewBtn.addEventListener('click', () => {
-                window.location.href = "/dogadjaji";
+                window.location.href = "/aktivnosti/dogadjaji";
             });
         }
 

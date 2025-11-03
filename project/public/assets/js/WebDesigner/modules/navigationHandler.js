@@ -49,7 +49,7 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
     if (comp.getClasses().includes("locale")) {
       console.log("Replacing locale selector with PHP code...");
       console.log("locale");
-      const phpLocaleCode = `  <?php
+      const phpLocaleCode = `<?php
 if (isset($_GET['locale'])) {
     $_SESSION['locale'] = $_GET['locale'];
 }
@@ -73,16 +73,16 @@ $languages = [
 if (!isset($languages[$locale])) {
     $locale = 'sr';
 }
-    function updateLocaleUrl($key) {
-    $params = $_GET;           // Get current GET params
-    $params['locale'] = $key;  // Update locale
+
+function updateLocaleUrl($key) {
+    $params = $_GET;
+    $params['locale'] = $key;
     return '?' . http_build_query($params);
 }
 ?>
 
 <div class="dropdown nav-item relative">
-    <button
-        class="nav-link px-3 py-2 text-sm font-semibold text-[#2C3E50] rounded-lg hover:bg-gray-50 flex items-center">
+    <button class="nav-link px-3 py-2 text-sm font-semibold text-[#ffff] rounded-lg hover:bg-gray-50 flex items-center">
         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
         <?= $languages[$locale]['label'] ?>
         <i class="fas fa-chevron-down text-xs ml-1.5"></i>
@@ -90,14 +90,14 @@ if (!isset($languages[$locale])) {
 
     <div class="dropdown-menu absolute top-full right-0 bg-white shadow-xl rounded-xl border border-gray-100 py-2 mt-1 w-40">
         <?php foreach ($languages as $key => $lang): ?>
-            <a href="<?= updateLocaleUrl($key) ?>" 
-                class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-[#2C3E50] hover:bg-gray-50 transition-all duration-150">
+            <a href="<?= updateLocaleUrl($key) ?>" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-[#2C3E50] hover:bg-gray-50 transition-all duration-150">
                 <span><?= $lang['flag'] ?></span>
                 <span><?= $lang['label'] ?></span>
             </a>
         <?php endforeach; ?>
     </div>
 </div>
+
 `;
       comp.replaceWith({ type: "textnode", content: phpLocaleCode });
     } else if (comp.get("tagName") === "a") {
