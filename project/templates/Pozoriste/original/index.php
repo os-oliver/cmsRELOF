@@ -319,59 +319,59 @@
 </head>
 
 
-<body class="font-secondaryfont text-secondarytext min-h-screen overflow-x-hidden">
+<body class="font-body text-secondary_text min-h-screen overflow-x-hidden">
     <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden hidden">
         <div class="fixed inset-0 bg-black bg-opacity-50" id="mobileMenuOverlay"></div>
         <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-background shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
             id="mobileMenuPanel">
-            <div class="p-6 text-secondarytext hover:text-primarytext">
+            <div class="p-6 text-secondary_text hover:text-primary_text">
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-xl text-white text-primarytext">Menu</h2>
-                    <button id="closeMobileMenu" class="text-primarytext transition-colors">
+                    <h2 class="text-xl text-white text-primary_text">Menu</h2>
+                    <button id="closeMobileMenu" class="text-primary_text transition-colors">
                         <i class="fas fa-times text-xl"></i>
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-home mr-3 text-primarybutton"></i>Početna
+                        <i class="fas fa-home mr-3 text-primary"></i>Početna
                     </a>
                     <div class="mobile-dropdown">
                         <button class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
                             id="mobileAboutToggle">
                             <div class="flex items-center">
-                                <i class="fas fa-info-circle mr-3 text-primarybutton"></i>O nama
+                                <i class="fas fa-info-circle mr-3 text-primary"></i>O nama
                             </div>
                             <i class="fas fa-chevron-down  transition-transform duration-200" id="mobileAboutIcon"></i>
                         </button>
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-primarybutton"></i>Cilj
+                                <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-primarybutton"></i>Zaposleni
+                                <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primarybutton"></i>Misija
+                                <i class="fas fa-flag mr-2 text-primary"></i>Misija
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primarybutton"></i>Istorija
+                                <i class="fas fa-flag mr-2 text-primary"></i>Istorija
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primarybutton"></i>Partneri
+                                <i class="fas fa-flag mr-2 text-primary"></i>Partneri
                             </a>
                         </div>
                     </div>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primarybutton"></i>Događaji
+                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Događaji
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-images mr-3 text-primarybutton"></i>Galerija
+                        <i class="fas fa-images mr-3 text-primary"></i>Galerija
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-folder-open mr-3 text-primarybutton"></i>Dokumenti
+                        <i class="fas fa-folder-open mr-3 text-primary"></i>Dokumenti
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-address-book mr-3 text-primarybutton"></i>Kontakt
+                        <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
                     </a>
                 </nav>
             </div>
@@ -379,7 +379,7 @@
     </div>
     <div>
         <button id="increaseFontBtn"
-            class="fixed bottom-6 z-20 right-6 bg-secondarybutton hover:bg-secondarybuttonhover text-background py-3 px-5 rounded-full shadow-lg transition-colors"
+            class="fixed bottom-6 z-20 right-6 bg-secondary hover:bg-secondary_hover text-background py-3 px-5 rounded-full shadow-lg transition-colors"
             aria-label="Increase font size">
             A+
         </button>
@@ -399,26 +399,26 @@
                             clip-rule="evenodd" />
                     </svg>
                 </div>
-                <div class="hidden sm:block font-primarytext text-primarytext">
+                <div class="hidden sm:block font-body text-primary_text">
                     <h1 class="text-xl lg:text-2xl tracking-wider">Lorem ipsum dolor</h1>
                     <p class="text-xs tracking-widest hidden md:block">Lorem ipsum dolor sit amet consectetu</p>
                 </div>
                 <div class="block sm:hidden">
-                    <h1 class="text-lg text-primarytext">Lorem ipsum</h1>
+                    <h1 class="text-lg text-primary_text">Lorem ipsum</h1>
                 </div>
             </div>
 
 
             <!-- Desktop Navigation -->
             <nav id="navBarID"
-                class="hidden lg:flex space-x-4 xl:space-x-8 font-secondaryfont text-secondarytext hover:text-primarytext">
+                class="hidden lg:flex space-x-4 xl:space-x-8 font-body text-secondary_text hover:text-primary_text">
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-home mr-2 text-primarybutton transition-colors"></i>
+                    <i class="fas fa-home mr-2 text-primary transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
                 <div class="dropdown relative group transition-colors">
                     <button class="nav-link transition-colors flex items-center whitespace-nowrap">
-                        <i class="fas fa-info-circle mr-2 text-primarybutton"></i>
+                        <i class="fas fa-info-circle mr-2 text-primary"></i>
                         <span class="hidden xl:inline">O nama</span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
@@ -426,52 +426,52 @@
                         class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <a href="#"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-bullseye mr-2 text-primarybutton"></i>Cilj
+                            <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-sitemap mr-2 text-primarybutton"></i>Zaposleni
+                            <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primarybutton"></i>Misija
+                            <i class="fas fa-flag mr-2 text-primary"></i>Misija
                         </a>
                         <a static = "true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primarybutton"></i>Istorija
+                            <i class="fas fa-flag mr-2 text-primary"></i>Istorija
                         </a>
                         <a static = "true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primarybutton"></i>Partneri
+                            <i class="fas fa-flag mr-2 text-primary"></i>Partneri
                         </a>
                     </div>
                 </div>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
+                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Ansambl</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
+                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Predstave</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
+                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Repertoar</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primarybutton"></i>
+                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-images mr-2 text-primarybutton"></i>
+                    <i class="fas fa-images mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Galerija</span>
                 </a>
                 <a href="#" class="nav-link transition-colors group flex items-center whitespace-nowrap">
-                    <i class="fas fa-folder-open mr-2 text-primarybutton"></i>
+                    <i class="fas fa-folder-open mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Dokumenti</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-address-book mr-2 text-primarybutton"></i>
+                    <i class="fas fa-address-book mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Kontakt</span>
                 </a>
 
@@ -516,7 +516,7 @@
             <div class="flex items-center space-x-2 sm:space-x-4">
                 <div class="relative">
                     <button id="searchButton"
-                        class="text-secondarytext hover:text-primarytext transition-colors focus:outline-none p-2"
+                        class="text-secondary_text hover:text-primary_text transition-colors focus:outline-none p-2"
                         aria-label="Search">
                         <i class="fas fa-search"></i>
                     </button>
@@ -544,10 +544,10 @@
                 </div>
                 <!-- Mobile Menu Button -->
                 <button id="hamburger"
-                    class="hamburger lg:hidden text-primarytext w-8 h-8 flex flex-col justify-center space-y-1 p-1">
-                    <span class="block w-6 h-0.5 bg-primarytext rounded transition-all duration-300"></span>
-                    <span class="block w-6 h-0.5 bg-primarytext rounded transition-all duration-300"></span>
-                    <span class="block w-6 h-0.5 bg-primarytext rounded transition-all duration-300"></span>
+                    class="hamburger lg:hidden text-primary_text w-8 h-8 flex flex-col justify-center space-y-1 p-1">
+                    <span class="block w-6 h-0.5 bg-primary_text rounded transition-all duration-300"></span>
+                    <span class="block w-6 h-0.5 bg-primary_text rounded transition-all duration-300"></span>
+                    <span class="block w-6 h-0.5 bg-primary_text rounded transition-all duration-300"></span>
                 </button>
             </div>
         </div>
@@ -555,14 +555,14 @@
 
 
     <!-- Enhanced Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondarytext">
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondary_text">
         <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                 <div>
                     <div class="mb-8 text-left">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-primaryfont text-primarytext">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondarytext font-secondaryfont">Lorem ipsum dolor sit</span>
+                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
+                            <span class="block mt-2 text-secondary_text font-body">Lorem ipsum dolor sit</span>
                         </h1>
                         <p class="mb-10">
                             Lorem ipsum dolor sit amet consectetur adipiscing elit.
@@ -573,7 +573,7 @@
                             In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
                         </p>
                         <button
-                            class="bg-primarybutton text-primarybtntxt px-6 py-4 rounded-full text-lg hover:bg-primarybuttonhover transition-colors">
+                            class="bg-primary text-primarybtntxt px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors">
                             Pogledajte repertoar
                         </button>
                     </div>
@@ -588,12 +588,12 @@
     </section>
 
     <!-- Repertoar -->
-    <section id="events" class="py-20 text-secondarytext">
+    <section id="events" class="py-20 text-secondary_text">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16 font-secondaryfont">
-                <h2 class="text-4xl font-primaryfont mb-4 relative inline-block text-primarytext">
+            <div class="text-center mb-16 font-body">
+                <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
                     Nas Repertoar
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primarybutton"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4">
                     Pogledajte trenutni repertoar naseg pozorista
@@ -601,81 +601,81 @@
             </div>
             <div id="eventsCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
                 <!-- Event 1 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
                         <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
+                            <span class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
                         <button
-                            class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
+                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
                             Vidi više
                         </button>
                     </div>
                 </div>
                 <!-- Event 2 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
                         <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
+                            <span class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
                         <button
-                            class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
+                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
                             Vidi više
                         </button>
                     </div>
                 </div>
                 <!-- Event 3 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
                         <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
+                            <span class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
                         <button
-                            class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
+                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
                             Vidi više
                         </button>
                     </div>
                 </div>
                 <!-- Event 4 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
                         <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
+                            <span class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
                         <button
-                            class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
+                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
                             Vidi više
                         </button>
                     </div>
                 </div>
                 <!-- Event 5 -->
-                <div class="event-card bg-cardcolor rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
                         <img id="g-image" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span class="text-primarytext text-sm">15. Decembar 2024</span>
+                            <span class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
                         <h3 class="text-xl mb-4">Naslov predstave</h3>
                         <button
-                            class="bg-secondarybutton text-background px-4 py-2 rounded-full hover:bg-secondarybuttonhover transition-colors">
+                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
                             Vidi više
                         </button>
                     </div>
@@ -683,7 +683,7 @@
             </div>
             <div class="text-center mt-12">
                 <button id="eventsView"
-                    class="bg-primarybutton text-background px-8 py-4 text-lg rounded-full hover:bg-primarybuttonhover transition-colors flex items-center shadow-lg mx-auto">
+                    class="bg-primary text-background px-8 py-4 text-lg rounded-full hover:bg-primary_hover transition-colors flex items-center shadow-lg mx-auto">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Pogledaj sve
                 </button>
@@ -694,12 +694,12 @@
 
 
     <!-- Vesti -->
-    <section class=" text-secondarytext font-secondaryfont">
+    <section class=" text-secondary_text font-body">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl tracking-tight font-primaryfont text-primarytext relative inline-block">
+                <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">
                     Vesti
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primarybutton"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="lg:mb-16 sm:text-xl">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -707,13 +707,13 @@
                 </p>
             </div>
             <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-                <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
+                <div class="flex items-center bg-surface rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img class="w-full h-full object-cover rounded-l-lg"
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
                     <div class="p-5 w-3/4">
-                        <h3 class="text-primarytext tracking-tight text-2xl">
+                        <h3 class="text-primary_text tracking-tight text-2xl">
                             <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
@@ -722,13 +722,13 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
+                <div class="flex items-center bg-surface rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img class="w-full h-full object-cover rounded-l-lg"
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
                     <div class="p-5 w-3/4">
-                        <h3 class="text-primarytext tracking-tight text-2xl">
+                        <h3 class="text-primary_text tracking-tight text-2xl">
                             <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
@@ -737,13 +737,13 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
+                <div class="flex items-center bg-surface rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img class="w-full h-full object-cover rounded-l-lg"
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
                     <div class="p-5 w-3/4">
-                        <h3 class="text-primarytext tracking-tight text-2xl">
+                        <h3 class="text-primary_text tracking-tight text-2xl">
                             <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
@@ -752,13 +752,13 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex items-center bg-cardcolor rounded-lg shadow h-48">
+                <div class="flex items-center bg-surface rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img class="w-full h-full object-cover rounded-l-lg"
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
                     <div class="p-5 w-3/4">
-                        <h3 class="text-primarytext tracking-tight text-2xl">
+                        <h3 class="text-primary_text tracking-tight text-2xl">
                             <p>Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
@@ -770,7 +770,7 @@
             </div>
             <div class="text-center mt-12">
                 <button id="eventsView"
-                    class="bg-primarybutton text-background text-lg px-8 py-4 rounded-full hover:bg-primarybuttonhover transition-colors flex items-center shadow-lg mx-auto">
+                    class="bg-primary text-background text-lg px-8 py-4 rounded-full hover:bg-primary_hover transition-colors flex items-center shadow-lg mx-auto">
                     Pogledaj sve
                 </button>
             </div>
@@ -778,11 +778,11 @@
     </section>
 
     <!-- Prijatelji -->
-    <section class="py-16 text-secondarytext">
-        <div class="text-center mb-16 font-secondaryfont">
-            <h2 class="text-4xl font-primaryfont mb-4 relative inline-block text-primarytext">
+    <section class="py-16 text-secondary_text">
+        <div class="text-center mb-16 font-body">
+            <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
                 Prijatelji pozorista
-                <span class="absolute bottom-0 left-0 right-0 h-1 bg-primarybutton"></span>
+                <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
             </h2>
         </div>
         <div class="container mx-auto px-4">
@@ -795,7 +795,7 @@
                     ['label' => 'Firma4'],
                 ];
                 foreach ($stats as $index => $stat): ?>
-                    <div class="bg-cardcolor p-6 rounded-xl shadow-lg transform transition hover:scale-105"
+                    <div class="bg-surface p-6 rounded-xl shadow-lg transform transition hover:scale-105"
                         style="animation-delay: <?= $index * 0.2 ?>s">
 
                         <!-- Added image -->
@@ -813,7 +813,7 @@
 
 
 
-    <footer class="bg-cardcolor text-secondarytext font-secondaryfont pt-20 pb-10">
+    <footer class="bg-surface text-secondary_text font-body pt-20 pb-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
@@ -853,12 +853,12 @@
                 <div>
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primarytext transition-colors">Lorem</a>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a>
                         </li>
                     </ul>
                 </div>
@@ -906,21 +906,22 @@
                 extend: {
                     colors: {
                         background: '#F7F2EA',       // warm parchment
-                        primarybutton: '#8B1E3F',    // velvet red
-                        primarybuttonhover: '#701932',
-                        footerbg: '#EFE3D6',         // creamy footer
-                        secondarybutton: '#2D3047',  // deep navy
-                        secondarybuttonhover: '#24273B',
-                        primarytext: '#1F1A1A',      // charcoal
-                        secondarytext: '#5D4E4E',    // warm gray
+                        secondary_background: '#faf0ca',
+                        primary: '#8B1E3F',    // velvet red
+                        primary_hover: '#701932',
+                        secondary: '#2D3047',  // deep navy
+                        secondary_hover: '#24273B',
+                        primary_text: '#1F1A1A',      // charcoal
+                        secondary_text: '#5D4E4E',    // warm gray
                         logocolor1: '#8B1E3F',       // gold
                         logocolor2: '#2D3047',       // pairs with gold
                         primarybtntxt: '#FFF7E6',    // soft ivory on red/navy
-                        cardcolor: '#8B1E3F1A'       // translucent velvet for cards
+                        surface: '#8B1E3F1A',       // translucent velvet for cards
+                        footerbg: '#EFE3D6',         // creamy footer
                     },
                     fontFamily: {
-                        primaryfont: ['"Bodoni Moda"', 'serif'], // headings (classic & dramatic)
-                        secondaryfont: ['Inter', 'sans-serif']   // body (modern & readable)
+                        heading: ['"Bodoni Moda"', 'serif'], // headings (classic & dramatic)
+                        body: ['Inter', 'sans-serif']  
                     }
                 }
             }
