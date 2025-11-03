@@ -66,16 +66,16 @@
                     "name": "naziv",
                     "type": "categories",
                     "label": {
-                        "sr": "Kategorija vesti",
-                        "en": "News category",
-                        "sr-Cyrl": "Категорија вести"
+                        "sr": "Kategorija događaja",
+                        "en": "Event category",
+                        "sr-Cyrl": "Категорија догађаја"
                     },
                     "options": [
-                        "Kultura",
-                        "Obrazovanje",
-                        "Inovacije",
-                        "Zdravlje",
-                        "Tehnologija"
+                        "Konferencije",
+                        "Seminari",
+                        "Radionice",
+                        "Takmičenja",
+                        "Kultura"
                     ],
                     "required": true
                 },
@@ -110,7 +110,7 @@
                     "name": "link",
                     "type": "url",
                     "label": {
-                        "sr": "Eksterni link",
+                        "sr": "Externalni link",
                         "en": "External link",
                         "sr-Cyrl": "Екстерни линк"
                     }
@@ -207,64 +207,100 @@
                 }
             ]
         },
-        "Repertoar": {
-            "sr": "Repertoar",
-            "en": "Library Program",
-            "sr-Cyrl": "Репертоар",
-            "icon": "fas fa-book",
+        "Sekcije": {
+            "sr": "Sekcije",
+            "en": "Sections",
+            "sr-Cyrl": "Секције",
+            "icon": "fas fa-layer-group",
             "categories": [
-                "Knjige",
-                "Časopisi",
-                "Filmovi",
                 "Muzika",
-                "Događaji"
+                "Pozoriste",
+                "Likovna umetnost",
+                "Kreativne radionice",
+                "Literatura"
             ],
             "fields": [
                 {
-                    "name": "naslov",
+                    "name": "naziv",
                     "type": "text",
                     "label": {
-                        "sr": "Naslov stavke",
-                        "en": "Item title",
-                        "sr-Cyrl": "Наслов ставке"
+                        "sr": "Naziv sekcije",
+                        "en": "Section name",
+                        "sr-Cyrl": "Назив секције"
                     },
                     "required": true
                 },
                 {
-                    "name": "datum",
-                    "type": "date",
+                    "name": "vodja",
+                    "type": "text",
                     "label": {
-                        "sr": "Datum dostupnosti",
-                        "en": "Availability date",
-                        "sr-Cyrl": "Датум доступности"
-                    },
-                    "required": true,
-                    "property": "auto"
+                        "sr": "Vodja sekcije",
+                        "en": "Section lead",
+                        "sr-Cyrl": "Водја секције"
+                    }
                 },
                 {
-                    "name": "kategorija",
-                    "type": "categories",
+                    "name": "opis",
+                    "type": "textarea",
                     "label": {
-                        "sr": "Kategorija",
-                        "en": "Category",
-                        "sr-Cyrl": "Категорија"
+                        "sr": "Opis sekcije",
+                        "en": "Section description",
+                        "sr-Cyrl": "Опис секције"
+                    }
+                },
+                {
+                    "name": "projekti",
+                    "type": "relation",
+                    "label": {
+                        "sr": "Projekti sekcije",
+                        "en": "Section projects",
+                        "sr-Cyrl": "Пројекти секције"
                     },
-                    "options": [
-                        "Knjige",
-                        "Časopisi",
-                        "Filmovi",
-                        "Muzika",
-                        "Događaji"
-                    ],
+                    "related_to": "Projekti"
+                }
+            ]
+        },
+        "Projekti": {
+            "sr": "Projekti",
+            "en": "Projects",
+            "sr-Cyrl": "Пројекти",
+            "icon": "fas fa-diagram-project",
+            "categories": [
+                "Muzika",
+                "Pozoriste",
+                "Likovna umetnost",
+                "Kreativne radionice",
+                "Literatura",
+                "Film"
+            ],
+            "fields": [
+                {
+                    "name": "slika",
+                    "type": "file",
+                    "label": {
+                        "sr": "Naslovna slika projekta",
+                        "en": "Project image",
+                        "sr-Cyrl": "Насловна слика пројекта"
+                    },
                     "required": true
                 },
                 {
-                    "name": "autor",
+                    "name": "naziv",
                     "type": "text",
                     "label": {
-                        "sr": "Autor \/ Izvođač",
-                        "en": "Author \/ Performer",
-                        "sr-Cyrl": "Аутор \/ Извођач"
+                        "sr": "Naziv projekta",
+                        "en": "Project name",
+                        "sr-Cyrl": "Назив пројекта"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "vodja",
+                    "type": "text",
+                    "label": {
+                        "sr": "Vođa projekta",
+                        "en": "Project lead",
+                        "sr-Cyrl": "Вођа пројекта"
                     }
                 },
                 {
@@ -277,22 +313,42 @@
                     }
                 },
                 {
-                    "name": "slika",
-                    "type": "file",
+                    "name": "datumPocetka",
+                    "type": "date",
                     "label": {
-                        "sr": "Naslovna slika",
-                        "en": "Cover image",
-                        "sr-Cyrl": "Насловна слика"
+                        "sr": "Datum početka",
+                        "en": "Start date",
+                        "sr-Cyrl": "Датум почетка"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "budzet",
+                    "type": "number",
+                    "label": {
+                        "sr": "Budžet (u evrima)",
+                        "en": "Budget (EUR)",
+                        "sr-Cyrl": "Буџет (у евриима)"
                     }
                 },
                 {
                     "name": "link",
                     "type": "url",
                     "label": {
-                        "sr": "Eksterni link",
-                        "en": "External link",
-                        "sr-Cyrl": "Екстерни линк"
+                        "sr": "Zvanični link projekta",
+                        "en": "Official project link",
+                        "sr-Cyrl": "Званични линк пројекта"
                     }
+                },
+                {
+                    "name": "sekcija",
+                    "type": "relation",
+                    "label": {
+                        "sr": "Sekcija centra",
+                        "en": "Center section",
+                        "sr-Cyrl": "Секција центра"
+                    },
+                    "related_to": "Sekcije"
                 }
             ]
         }

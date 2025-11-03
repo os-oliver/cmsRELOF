@@ -62,7 +62,7 @@ main{padding-top:50px}
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(array $categories, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
@@ -75,15 +75,29 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
     $html .= "<div class='flex items-center w-full sm:w-auto'>
         <select name='category' class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
             <option value=''>{$texts['all_categories']}</option>";
+
     foreach ($categories as $cat) {
         $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
         $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
+
+        $isSelected = false;
+
+        if ($selectedCategoryId !== null) {
+            if (is_numeric($selectedCategoryId) && (int)$selectedCategoryId === (int)$cat['id']) {
+                $isSelected = true;
+            } elseif (is_string($selectedCategoryId) && strtolower($selectedCategoryId) === strtolower($cat['name'])) {
+                $isSelected = true;
+            }
+        }
+
+        $selected = $isSelected ? 'selected' : '';
         $html .= "<option value='{$id}' {$selected}>{$name}</option>";
     }
+
     $html .= "</select></div></form>";
     return $html;
 }
+
 PHP;
 
     protected string $cardTemplate = <<<'HTML'
@@ -269,7 +283,12 @@ $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
-$categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
+$categoryId = isset($_GET['category']) && $_GET['category'] !== ''
+    ? (is_numeric($_GET['category']) 
+        ? (int) $_GET['category'] 
+        : trim((string) $_GET['category'])
+      )
+    : null;
 $search = $_GET['search'] ?? '';
 
 $categories = GenericCategory::fetchAll($slug, $locale);

@@ -655,33 +655,38 @@ HTML;
     public function buildPage(): string
     {
         $additionalPHP = <<<'PHP'
-        use App\Models\Content;
-        use App\Models\GenericCategory;
+            use App\Models\Content;
+            use App\Models\GenericCategory;
 
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        
-        $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-        $slug = '__SLUG__';
-        $pageTitle = ucfirst($slug);
-        $pageDescription = 'Pregled svih vesti i aktuelnosti';
-        
-        $itemsPerPage = 6;
-        $currentPage = max(1, (int) ($_GET['page'] ?? 1));
-        $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
-        $search = $_GET['search'] ?? '';
-        
-        $categories = GenericCategory::fetchAll($slug, $locale);
-        $itemsList = $slug ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale)
-                           : ['success' => false, 'items' => []];
-        
-        $config = $fieldLabels = [];
-        if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
-            $parsed = json_decode(file_get_contents($structurePath), true);
-            $config = $parsed[0][$slug] ?? [];
-            $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
-        }
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            
+            $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+            $slug = '__SLUG__';
+            $pageTitle = ucfirst($slug);
+            $pageDescription = 'Pregled svih vesti i aktuelnosti';
+            
+            $itemsPerPage = 6;
+            $currentPage = max(1, (int) ($_GET['page'] ?? 1));
+            $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
+        ? (is_numeric($_GET['category']) 
+            ? (int) $_GET['category'] 
+            : trim((string) $_GET['category'])
+        )
+        : null;
+            $search = $_GET['search'] ?? '';
+            
+            $categories = GenericCategory::fetchAll($slug, $locale);
+            $itemsList = $slug ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale)
+                            : ['success' => false, 'items' => []];
+            
+            $config = $fieldLabels = [];
+            if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
+                $parsed = json_decode(file_get_contents($structurePath), true);
+                $config = $parsed[0][$slug] ?? [];
+                $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
+            }
         PHP;
 
         $additionalPHP .= "\n" . $this->functions;

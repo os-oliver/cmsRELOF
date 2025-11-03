@@ -12,31 +12,28 @@
             theme: {
                 extend: {
                     colors: {
-                        'gold': {
-                            50: '#fdfbf7',
-                            100: '#faf6ed',
-                            200: '#f4ebd2',
-                            300: '#eedeb7',
-                            400: '#e8d19c',
-                            500: '#d4af37',
-                            600: '#c9a961',
-                            700: '#b8963c',
-                            800: '#8b6f2d',
-                            900: '#5e4a1e',
+                        primary: {
+                            DEFAULT: '#d4af37',
+                            hover: '#c9a961',
                         },
-                        'dark': {
-                            50: '#f5f6f7',
-                            100: '#e4e7eb',
-                            200: '#cbd2dc',
-                            300: '#9aa5b6',
-                            400: '#7b8794',
-                            500: '#616e7c',
-                            600: '#52606d',
-                            700: '#3e4c59',
-                            800: '#323f4b',
-                            900: '#1f2933',
-                            950: '#0a0f14',
-                        }
+                        secondary: {
+                            DEFAULT: '#616e7c',
+                            hover: '#52606d',
+                        },
+                        accent: {
+                            DEFAULT: '#f4ebd2',
+                            hover: '#eedeb7',
+                        },
+                        primary_text: '#ffffff',
+                        secondary_text: '#9ca3af',
+                        background: '#0a0f14',
+                        secondary_background: '#1f2933',
+                        surface: '#1e293b',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        heading2: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif'],
                     }
                 }
             }
@@ -400,41 +397,229 @@
     </style>
 </head>
 
-<body class="bg-dark-950 text-white">
-    <header>
-        <nav class="fixed w-full z-50 glass-dark">
-            <div class="container mx-auto px-6 py-4">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <div
-                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-700 flex items-center justify-center shadow-lg shadow-gold-500/30">
-                            <i class="fas fa-landmark text-2xl text-white"></i>
-                        </div>
-                        <div>
-                            <h1 class="text-2xl font-bold text-white glow">Istorijski Arhiv</h1>
-                            <p class="text-xs text-gold-400">Digitalno nasleđe</p>
-                        </div>
-                    </div>
+<body class="bg-background text-primary_text font-body">
+    <header
+        class="fixed w-full z-50 transition-all duration-300 py-2 sm:py-3 backdrop-blur-md shadow-lg bg-secondary_background/95 border-b border-surface">
+        <div class="px-3 sm:px-4 lg:px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shadow-md">
+                    <i class="fas fa-landmark text-lg"></i>
+                </div>
 
-                    <ul class="hidden md:flex space-x-6 text-white">
-                        <li><a href="#" class="hover:text-gold-400 transition">Početna</a></li>
-                        <li><a href="#fondovi" class="hover:text-gold-400 transition">Fondovi</a></li>
-                        <li><a href="#digitalna" class="hover:text-gold-400 transition">Digitalna Arhiva</a></li>
-                        <li><a href="#usluge" class="hover:text-gold-400 transition">Usluge</a></li>
-                        <li><a href="#kontakt" class="hover:text-gold-400 transition">Kontakt</a></li>
-                    </ul>
+                <div class="hidden sm:block">
+                    <h1
+                        class="text-sm sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
+                        ISTORIJSKI ARHIV
+                    </h1>
+                    <p
+                        class="text-xs sm:text-xs lg:text-sm text-primary tracking-widest hidden md:block opacity-80 font-medium">
+                        DIGITALNO NASLEĐE
+                    </p>
+                </div>
 
-                    <div class="flex items-center space-x-4">
-                        <button
-                            class="px-5 py-2 bg-gradient-to-r from-gold-500 to-gold-600 rounded-full hover:shadow-lg hover:shadow-gold-500/50 transition btn-shine text-white font-medium">
-                            <i class="fas fa-search mr-2"></i>Pretraga
-                        </button>
-                        <button
-                            class="px-4 py-2 border border-gold-500 rounded-full hover:bg-gold-500 transition text-white">EN</button>
-                    </div>
+                <div class="block sm:hidden">
+                    <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">ARHIV</h1>
                 </div>
             </div>
-        </nav>
+
+            <nav id="navBarID" class="hidden lg:flex items-center space-x-1 xl:space-x-3">
+                <a href="#"
+                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    <i class="fas fa-home mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Početna</span>
+                </a>
+
+                <div class="dropdown relative group">
+                    <button
+                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        <i
+                            class="fas fa-info-circle mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
+                        <span class="hidden xl:inline text-sm">O Arhivu</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Uvod</span>
+                        </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Misija i vizija</span>
+                        </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Istorijat</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Rukovodstvo</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Objekat</span>
+                        </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Donacije i podrška</span>
+                        </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Partneri</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#"
+                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    <i
+                        class="fas fa-archive mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Fondovi</span>
+                </a>
+
+                <a href="#"
+                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    <i
+                        class="fas fa-project-diagram mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Digitalizacija</span>
+                </a>
+
+                <a href="#"
+                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    <i
+                        class="fas fa-images mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Virtuelna Izložba</span>
+                </a>
+
+                <a href="#"
+                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-surface">
+                    <i
+                        class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Pravila</span>
+                </a>
+
+                <div class="dropdown relative group">
+                    <button
+                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        <i
+                            class="fas fa-bullhorn mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                        <span class="hidden xl:inline text-sm">Aktivnosti</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+
+                    <div
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-newspaper mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Vesti</span>
+                        </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-calendar-alt mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Događaji</span>
+                        </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-poll mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Ankete</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#"
+                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    <i
+                        class="fas fa-address-book mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Kontakt</span>
+                </a>
+
+                <?php
+                if (isset($_GET['locale'])) {
+                    $_SESSION['locale'] = $_GET['locale'];
+                }
+                $locale = $_SESSION['locale'] ?? 'sr';
+
+                $languages = [
+                    'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                ];
+
+                if (!isset($languages[$locale])) {
+                    $locale = 'sr';
+                }
+                ?>
+                <div class="locale dropdown nonPage relative group ">
+                    <button
+                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
+                        <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute top-full right-0 min-w-max bg-secondary_background rounded-xl shadow-2xl border border-surface z-50 py-2 backdrop-blur-sm">
+                        <?php foreach ($languages as $key => $lang): ?>
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                                <span class="font-medium"><?= $lang['label'] ?></span>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-1 sm:space-x-3">
+                <div class="relative">
+                    <button id="searchButton"
+                        class="text-secondary_text hover:text-primary transition-all duration-200 focus:outline-none p-2 sm:p-2.5 rounded-full hover:bg-surface"
+                        aria-label="Search">
+                        <i class="fas fa-search text-sm sm:text-base"></i>
+                    </button>
+                    <div id="searchInputContainer"
+                        class="absolute right-0 top-full mt-3 hidden opacity-0 transition-all duration-300 ease-in-out z-50 min-w-[280px] sm:min-w-[320px] bg-white rounded-xl shadow-2xl border border-surface overflow-hidden backdrop-blur-sm">
+                        <form id="searchForm" class="flex items-center w-full p-2" action="/search" method="GET">
+                            <input type="text" name="q" placeholder="Pretražite arhiv..."
+                                class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-4 py-2.5 text-primary_text placeholder-secondary_text bg-surface rounded-lg"
+                                id="searchInput" required />
+                            <div class="flex items-center space-x-1 ml-2">
+                                <button type="submit"
+                                    class="text-secondary_text hover:text-primary transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-surface w-9 h-9 flex items-center justify-center"
+                                    aria-label="Submit search">
+                                    <i class="fas fa-search text-sm"></i>
+                                </button>
+                                <button type="button"
+                                    class="text-secondary_text hover:text-accent transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-surface w-9 h-9 flex items-center justify-center"
+                                    id="closeSearch" aria-label="Close search">
+                                    <i class="fas fa-times text-sm"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <button id="hamburger"
+                    class="hamburger lg:hidden text-primary_text w-9 h-9 sm:w-10 sm:h-10 flex flex-col justify-center items-center space-y-1 p-2 rounded-lg hover:bg-surface transition-all duration-200">
+                    <span class="block w-5 h-0.5 bg-primary_text rounded transition-all duration-300"></span>
+                    <span class="block w-5 h-0.5 bg-primary_text rounded transition-all duration-300"></span>
+                    <span class="block w-5 h-0.5 bg-primary_text rounded transition-all duration-300"></span>
+                </button>
+            </div>
+        </div>
     </header>
 
     <section class="relative slider-container">
@@ -456,24 +641,24 @@
                     <div class="container mx-auto px-6">
                         <div class="max-w-4xl hero-content">
                             <div
-                                class="inline-block px-4 py-2 bg-gold-500/20 border border-gold-500/50 rounded-full text-gold-300 text-sm font-medium mb-6 backdrop-blur-sm">
+                                class="inline-block px-4 py-2 bg-primary/20 border border-primary/50 rounded-full text-primary text-sm font-medium mb-6 backdrop-blur-sm">
                                 <i class="fas fa-star mr-2"></i>Preko 150.000 dokumenata
                             </div>
-                            <h1 class="text-7xl md:text-8xl font-bold mb-6 glow text-white leading-tight">
+                            <h1 class="text-7xl md:text-8xl font-bold mb-6 glow text-primary_text leading-tight">
                                 Čuvamo Prošlost<br />
-                                <span class="text-gold-400">Za Budućnost</span>
+                                <span class="text-primary">Za Budućnost</span>
                             </h1>
-                            <p class="text-2xl mb-10 text-gray-300 max-w-2xl leading-relaxed">
+                            <p class="text-2xl mb-10 text-secondary_text max-w-2xl leading-relaxed">
                                 Digitalizovani dokumenti iz 8 vekova istorije, dostupni svima koji žele da istraže naše
                                 bogato nasleđe
                             </p>
                             <div class="flex flex-wrap gap-4">
                                 <button
-                                    class="px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-gold-500/50 transition btn-shine text-white transform hover:scale-105">
+                                    class="px-8 py-4 bg-gradient-to-r from-primary to-primary_hover rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-primary/50 transition btn-shine text-primary_text transform hover:scale-105">
                                     <i class="fas fa-book-open mr-2"></i>Istraži Fondove
                                 </button>
                                 <button
-                                    class="px-8 py-4 glass rounded-full text-lg font-semibold hover:bg-white/20 transition text-white transform hover:scale-105">
+                                    class="px-8 py-4 glass rounded-full text-lg font-semibold hover:bg-white/20 transition text-primary_text transform hover:scale-105">
                                     <i class="fas fa-play mr-2"></i>Video Tour
                                 </button>
                             </div>
@@ -490,23 +675,23 @@
                     <div class="container mx-auto px-6">
                         <div class="max-w-4xl hero-content">
                             <div
-                                class="inline-block px-4 py-2 bg-gold-500/20 border border-gold-500/50 rounded-full text-gold-300 text-sm font-medium mb-6 backdrop-blur-sm">
+                                class="inline-block px-4 py-2 bg-primary/20 border border-primary/50 rounded-full text-primary text-sm font-medium mb-6 backdrop-blur-sm">
                                 <i class="fas fa-laptop mr-2"></i>Pristup 24/7
                             </div>
-                            <h1 class="text-7xl md:text-8xl font-bold mb-6 glow text-white leading-tight">
+                            <h1 class="text-7xl md:text-8xl font-bold mb-6 glow text-primary_text leading-tight">
                                 Digitalna<br />
-                                <span class="text-gold-400">Revolucija</span>
+                                <span class="text-primary">Revolucija</span>
                             </h1>
-                            <p class="text-2xl mb-10 text-gray-300 max-w-2xl leading-relaxed">
+                            <p class="text-2xl mb-10 text-secondary_text max-w-2xl leading-relaxed">
                                 Pristupite arhivskoj građi online, bilo gde, bilo kada. Vaša istorija na dohvat ruke
                             </p>
                             <div class="flex flex-wrap gap-4">
                                 <button
-                                    class="px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-gold-500/50 transition btn-shine text-white transform hover:scale-105">
+                                    class="px-8 py-4 bg-gradient-to-r from-primary to-primary_hover rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-primary/50 transition btn-shine text-primary_text transform hover:scale-105">
                                     <i class="fas fa-laptop mr-2"></i>Digitalna Čitaonica
                                 </button>
                                 <button
-                                    class="px-8 py-4 glass rounded-full text-lg font-semibold hover:bg-white/20 transition text-white transform hover:scale-105">
+                                    class="px-8 py-4 glass rounded-full text-lg font-semibold hover:bg-white/20 transition text-primary_text transform hover:scale-105">
                                     <i class="fas fa-info-circle mr-2"></i>Saznaj Više
                                 </button>
                             </div>
@@ -523,23 +708,23 @@
                     <div class="container mx-auto px-6">
                         <div class="max-w-4xl hero-content">
                             <div
-                                class="inline-block px-4 py-2 bg-gold-500/20 border border-gold-500/50 rounded-full text-gold-300 text-sm font-medium mb-6 backdrop-blur-sm">
+                                class="inline-block px-4 py-2 bg-primary/20 border border-primary/50 rounded-full text-primary text-sm font-medium mb-6 backdrop-blur-sm">
                                 <i class="fas fa-users mr-2"></i>Stručna podrška
                             </div>
-                            <h1 class="text-7xl md:text-8xl font-bold mb-6 glow text-white leading-tight">
+                            <h1 class="text-7xl md:text-8xl font-bold mb-6 glow text-primary_text leading-tight">
                                 Istraživačke<br />
-                                <span class="text-gold-400">Usluge</span>
+                                <span class="text-primary">Usluge</span>
                             </h1>
-                            <p class="text-2xl mb-10 text-gray-300 max-w-2xl leading-relaxed">
+                            <p class="text-2xl mb-10 text-secondary_text max-w-2xl leading-relaxed">
                                 Profesionalna podrška za vaša istorijska istraživanja od strane certificovanih arhivista
                             </p>
                             <div class="flex flex-wrap gap-4">
                                 <button
-                                    class="px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-gold-500/50 transition btn-shine text-white transform hover:scale-105">
+                                    class="px-8 py-4 bg-gradient-to-r from-primary to-primary_hover rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-primary/50 transition btn-shine text-primary_text transform hover:scale-105">
                                     <i class="fas fa-calendar-check mr-2"></i>Zakaži Posetu
                                 </button>
                                 <button
-                                    class="px-8 py-4 glass rounded-full text-lg font-semibold hover:bg-white/20 transition text-white transform hover:scale-105">
+                                    class="px-8 py-4 glass rounded-full text-lg font-semibold hover:bg-white/20 transition text-primary_text transform hover:scale-105">
                                     <i class="fas fa-phone mr-2"></i>Kontaktiraj Nas
                                 </button>
                             </div>
@@ -551,53 +736,54 @@
 
         <button id="prevButton" onclick="prevSlide()"
             class="slider-control slider-next absolute left-6 top-1/2 transform -translate-y-1/2 w-14 h-14 rounded-full flex items-center justify-center z-10">
-            <i class="fas fa-chevron-left text-2xl text-white"></i>
+            <i class="fas fa-chevron-left text-2xl text-primary_text"></i>
         </button>
 
         <button id="nextButton" onclick="nextSlide()"
             class="slider-control absolute right-6 top-1/2 transform -translate-y-1/2 w-14 h-14 rounded-full flex items-center justify-center z-10">
-            <i class="fas fa-chevron-right text-2xl text-white"></i>
+            <i class="fas fa-chevron-right text-2xl text-primary_text"></i>
         </button>
 
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
             <button id="indicator0" onclick="goToSlide(0)"
-                class="slider-indicator w-3 h-3 rounded-full bg-white active"></button>
+                class="slider-indicator w-3 h-3 rounded-full bg-primary_text active"></button>
             <button id="indicator1" onclick="goToSlide(1)"
-                class="slider-indicator w-3 h-3 rounded-full bg-white/30"></button>
+                class="slider-indicator w-3 h-3 rounded-full bg-primary_text/30"></button>
             <button id="indicator2" onclick="goToSlide(2)"
-                class="slider-indicator w-3 h-3 rounded-full bg-white/30"></button>
+                class="slider-indicator w-3 h-3 rounded-full bg-primary_text/30"></button>
         </div>
 
     </section>
 
-    <section class="py-20 bg-dark-900">
+    <section class="py-20 bg-secondary_background">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="text-center">
                     <div class="stat-number">150K+</div>
-                    <p class="text-xl text-gray-400 mt-2">Digitalizovanih Dokumenata</p>
+                    <p class="text-xl text-secondary_text mt-2">Digitalizovanih Dokumenata</p>
                 </div>
                 <div class="text-center">
                     <div class="stat-number">8</div>
-                    <p class="text-xl text-gray-400 mt-2">Vekova Istorije</p>
+                    <p class="text-xl text-secondary_text mt-2">Vekova Istorije</p>
                 </div>
                 <div class="text-center">
                     <div class="stat-number">45</div>
-                    <p class="text-xl text-gray-400 mt-2">Fondova i Zbirki</p>
+                    <p class="text-xl text-secondary_text mt-2">Fondova i Zbirki</p>
                 </div>
                 <div class="text-center">
                     <div class="stat-number">5M+</div>
-                    <p class="text-xl text-gray-400 mt-2">Stranica Arhivske Građe</p>
+                    <p class="text-xl text-secondary_text mt-2">Stranica Arhivske Građe</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="fondovi" class="py-24 bg-dark-950">
+    <section id="fondovi" class="py-24 bg-background">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 glow decorative-line text-white">Istaknuti Fondovi</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Istražite našu jedinstvenu kolekciju istorijskih
+                <h2 class="text-5xl font-bold mb-4 glow decorative-line text-primary_text">Istaknuti Fondovi</h2>
+                <p class="text-xl text-secondary_text max-w-3xl mx-auto">Istražite našu jedinstvenu kolekciju
+                    istorijskih
                     dokumenata</p>
             </div>
 
@@ -607,21 +793,23 @@
                         <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop"
                             alt="Stari dokumenti" class="w-full h-full object-cover">
                         <div class="absolute top-4 right-4">
-                            <span class="px-4 py-2 bg-gold-500 rounded-full text-sm font-semibold text-white">XIX
+                            <span class="px-4 py-2 bg-primary rounded-full text-sm font-semibold text-primary_text">XIX
                                 Vek</span>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-white">Građanska Matična Knjiga</h3>
-                        <p class="text-gray-400 mb-4">Kompletni matični zapisi rođenih, venčanih i umrlih građana iz
+                        <h3 class="text-2xl font-bold mb-3 text-primary_text">Građanska Matična Knjiga</h3>
+                        <p class="text-secondary_text mb-4">Kompletni matični zapisi rođenih, venčanih i umrlih građana
+                            iz
                             perioda 1850-1920.</p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-sm text-gold-400"><i class="fas fa-file-alt mr-2"></i>2,847
+                            <span class="text-sm text-primary"><i class="fas fa-file-alt mr-2"></i>2,847
                                 dokumenata</span>
-                            <span class="text-sm text-gray-500"><i class="fas fa-eye mr-2"></i>45,231 pregleda</span>
+                            <span class="text-sm text-secondary_text"><i class="fas fa-eye mr-2"></i>45,231
+                                pregleda</span>
                         </div>
                         <button
-                            class="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-600 rounded-xl hover:shadow-lg hover:shadow-gold-500/30 transition btn-shine text-white font-medium">
+                            class="w-full py-3 bg-gradient-to-r from-primary to-primary_hover rounded-xl hover:shadow-lg hover:shadow-primary/30 transition btn-shine text-primary_text font-medium">
                             Pregledaj Fond <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
@@ -632,21 +820,23 @@
                         <img src="https://images.unsplash.com/photo-1568667256549-094345857637?w=600&h=400&fit=crop"
                             alt="Stara mapa" class="w-full h-full object-cover">
                         <div class="absolute top-4 right-4">
-                            <span class="px-4 py-2 bg-gold-500 rounded-full text-sm font-semibold text-white">XVIII
+                            <span
+                                class="px-4 py-2 bg-primary rounded-full text-sm font-semibold text-primary_text">XVIII
                                 Vek</span>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-white">Zemljišni Katastri</h3>
-                        <p class="text-gray-400 mb-4">Originalni katastarski planovi i opisi zemljišnih poseda sa
+                        <h3 class="text-2xl font-bold mb-3 text-primary_text">Zemljišni Katastri</h3>
+                        <p class="text-secondary_text mb-4">Originalni katastarski planovi i opisi zemljišnih poseda sa
                             detaljnim kartografskim prikazima.</p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-sm text-gold-400"><i class="fas fa-file-alt mr-2"></i>1,523
+                            <span class="text-sm text-primary"><i class="fas fa-file-alt mr-2"></i>1,523
                                 dokumenata</span>
-                            <span class="text-sm text-gray-500"><i class="fas fa-eye mr-2"></i>32,108 pregleda</span>
+                            <span class="text-sm text-secondary_text"><i class="fas fa-eye mr-2"></i>32,108
+                                pregleda</span>
                         </div>
                         <button
-                            class="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-600 rounded-xl hover:shadow-lg hover:shadow-gold-500/30 transition btn-shine text-white font-medium">
+                            class="w-full py-3 bg-gradient-to-r from-primary to-primary_hover rounded-xl hover:shadow-lg hover:shadow-primary/30 transition btn-shine text-primary_text font-medium">
                             Pregledaj Fond <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
@@ -657,21 +847,23 @@
                         <img src="https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=600&h=400&fit=crop"
                             alt="Ratni dokumenti" class="w-full h-full object-cover">
                         <div class="absolute top-4 right-4">
-                            <span class="px-4 py-2 bg-gold-500 rounded-full text-sm font-semibold text-white">XX
+                            <span class="px-4 py-2 bg-primary rounded-full text-sm font-semibold text-primary_text">XX
                                 Vek</span>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-white">Ratni Arhivi</h3>
-                        <p class="text-gray-400 mb-4">Lični dnevnici, korespondencija i zvanični dokumenti iz perioda
+                        <h3 class="text-2xl font-bold mb-3 text-primary_text">Ratni Arhivi</h3>
+                        <p class="text-secondary_text mb-4">Lični dnevnici, korespondencija i zvanični dokumenti iz
+                            perioda
                             dva svetska rata.</p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-sm text-gold-400"><i class="fas fa-file-alt mr-2"></i>3,912
+                            <span class="text-sm text-primary"><i class="fas fa-file-alt mr-2"></i>3,912
                                 dokumenata</span>
-                            <span class="text-sm text-gray-500"><i class="fas fa-eye mr-2"></i>67,445 pregleda</span>
+                            <span class="text-sm text-secondary_text"><i class="fas fa-eye mr-2"></i>67,445
+                                pregleda</span>
                         </div>
                         <button
-                            class="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-600 rounded-xl hover:shadow-lg hover:shadow-gold-500/30 transition btn-shine text-white font-medium">
+                            class="w-full py-3 bg-gradient-to-r from-primary to-primary_hover rounded-xl hover:shadow-lg hover:shadow-primary/30 transition btn-shine text-primary_text font-medium">
                             Pregledaj Fond <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
@@ -679,41 +871,43 @@
             </div>
 
             <div class="text-center mt-12">
-                <button class="px-10 py-4 glass rounded-full text-lg hover:bg-white/20 transition text-white">
+                <button class="px-10 py-4 glass rounded-full text-lg hover:bg-white/20 transition text-primary_text">
                     Pogledaj Svih 45 Fondova <i class="fas fa-arrow-right ml-2"></i>
                 </button>
             </div>
         </div>
     </section>
 
-    <section id="digitalna" class="py-24 bg-gradient-to-b from-dark-900 to-dark-800">
+    <section id="digitalna" class="py-24 bg-gradient-to-b from-secondary_background to-surface">
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-5xl font-bold mb-6 text-white">Digitalna Arhiva</h2>
-                <p class="text-2xl text-gray-300 mb-12">Pristupite našoj digitalnoj kolekciji bilo gde, bilo kada</p>
+                <h2 class="text-5xl font-bold mb-6 text-primary_text">Digitalna Arhiva</h2>
+                <p class="text-2xl text-secondary_text mb-12">Pristupite našoj digitalnoj kolekciji bilo gde, bilo kada
+                </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border border-gray-800">
-                        <i class="fas fa-search text-5xl text-primary-400 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3 text-white">Napredna Pretraga</h3>
-                        <p class="text-gray-400">Pretraživanje po datumu, lokaciji, tipu dokumenta i ključnim rečima</p>
+                    <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border border-surface">
+                        <i class="fas fa-search text-5xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3 text-primary_text">Napredna Pretraga</h3>
+                        <p class="text-secondary_text">Pretraživanje po datumu, lokaciji, tipu dokumenta i ključnim
+                            rečima</p>
                     </div>
 
-                    <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border border-gray-800">
-                        <i class="fas fa-download text-5xl text-primary-400 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3 text-white">Preuzimanje</h3>
-                        <p class="text-gray-400">Preuzmite dokumente u visokoj rezoluciji za vašu upotrebu</p>
+                    <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border border-surface">
+                        <i class="fas fa-download text-5xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3 text-primary_text">Preuzimanje</h3>
+                        <p class="text-secondary_text">Preuzmite dokumente u visokoj rezoluciji za vašu upotrebu</p>
                     </div>
 
-                    <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border border-gray-800">
-                        <i class="fas fa-bookmark text-5xl text-primary-400 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3 text-white">Čuvanje</h3>
-                        <p class="text-gray-400">Sačuvajte omiljene dokumente u vašoj ličnoj biblioteci</p>
+                    <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border border-surface">
+                        <i class="fas fa-bookmark text-5xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3 text-primary_text">Čuvanje</h3>
+                        <p class="text-secondary_text">Sačuvajte omiljene dokumente u vašoj ličnoj biblioteci</p>
                     </div>
                 </div>
 
                 <button
-                    class="px-12 py-5 bg-gradient-to-r from-primary-600 to-primary-700 rounded-full text-xl font-semibold hover:shadow-2xl hover:shadow-primary-500/30 transition btn-shine text-white">
+                    class="px-12 py-5 bg-gradient-to-r from-primary to-primary_hover rounded-full text-xl font-semibold hover:shadow-2xl hover:shadow-primary/30 transition btn-shine text-primary_text">
                     <i class="fas fa-rocket mr-2"></i>Započni Istraživanje
                 </button>
             </div>
@@ -721,165 +915,89 @@
     </section>
 
     <!-- Services Section -->
-    <section id="usluge" class="py-24 bg-dark-900">
+    <section id="usluge" class="py-24 bg-secondary_background">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 text-white">Naše Usluge</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Profesionalna podrška za vaša istraživanja</p>
+                <h2 class="text-5xl font-bold mb-4 text-primary_text">Naše Usluge</h2>
+                <p class="text-xl text-secondary_text max-w-3xl mx-auto">Profesionalna podrška za vaša istraživanja</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-gray-800">
+                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-surface">
                     <div
-                        class="w-20 h-20 bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary-500/30">
-                        <i class="fas fa-book-reader text-3xl text-white"></i>
+                        class="w-20 h-20 bg-gradient-to-br from-primary to-primary_hover rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/30">
+                        <i class="fas fa-book-reader text-3xl text-primary_text"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Čitaonica</h3>
-                    <p class="text-gray-400 mb-4">Pristup originalnim dokumentima u kontrolisanim uslovima</p>
-                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                    <h3 class="text-2xl font-bold mb-4 text-primary_text">Čitaonica</h3>
+                    <p class="text-secondary_text mb-4">Pristup originalnim dokumentima u kontrolisanim uslovima</p>
+                    <ul class="text-sm text-secondary_text space-y-2 mb-6">
                         <li>Ponedeljak-Petak: 08-16h</li>
                         <li>Kapacitet: 15 istraživača</li>
                         <li>Rezervacija obavezna</li>
                     </ul>
                     <button
-                        class="px-6 py-2 border border-primary-600 rounded-full hover:bg-primary-600 transition text-white">Zakažite
+                        class="px-6 py-2 border border-primary rounded-full hover:bg-primary transition text-primary_text">Zakažite
                         Posetu</button>
                 </div>
 
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-gray-800">
+                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-surface">
                     <div
-                        class="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-500/30">
-                        <i class="fas fa-laptop-code text-3xl text-white"></i>
+                        class="w-20 h-20 bg-gradient-to-br from-secondary to-secondary_hover rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-secondary/30">
+                        <i class="fas fa-laptop-code text-3xl text-primary_text"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Digitalizacija</h3>
-                    <p class="text-gray-400 mb-4">Profesionalno skeniranje arhivske građe</p>
-                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                    <h3 class="text-2xl font-bold mb-4 text-primary_text">Digitalizacija</h3>
+                    <p class="text-secondary_text mb-4">Profesionalno skeniranje arhivske građe</p>
+                    <ul class="text-sm text-secondary_text space-y-2 mb-6">
                         <li>Visoka rezolucija: 600 DPI</li>
                         <li>OCR obrada teksta</li>
                         <li>Metapodaci uključeni</li>
                     </ul>
                     <button
-                        class="px-6 py-2 border border-blue-600 rounded-full hover:bg-blue-600 transition text-white">Naručite
+                        class="px-6 py-2 border border-secondary rounded-full hover:bg-secondary transition text-primary_text">Naručite
                         Uslugu</button>
                 </div>
 
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-gray-800">
+                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-surface">
                     <div
-                        class="w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-purple-500/30">
-                        <i class="fas fa-graduation-cap text-3xl text-white"></i>
+                        class="w-20 h-20 bg-gradient-to-br from-accent to-accent_hover rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-accent/30">
+                        <i class="fas fa-graduation-cap text-3xl text-primary_text"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Stručna Pomoć</h3>
-                    <p class="text-gray-400 mb-4">Konsultacije sa arhivskim stručnjacima</p>
-                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                    <h3 class="text-2xl font-bold mb-4 text-primary_text">Stručna Pomoć</h3>
+                    <p class="text-secondary_text mb-4">Konsultacije sa arhivskim stručnjacima</p>
+                    <ul class="text-sm text-secondary_text space-y-2 mb-6">
                         <li>Genealoška istraživanja</li>
                         <li>Istorijske analize</li>
                         <li>Online konsultacije</li>
                     </ul>
                     <button
-                        class="px-6 py-2 border border-purple-600 rounded-full hover:bg-purple-600 transition text-white">Kontakt</button>
+                        class="px-6 py-2 border border-accent rounded-full hover:bg-accent transition text-primary_text">Kontakt</button>
                 </div>
 
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-gray-800">
+                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition border border-surface">
                     <div
-                        class="w-20 h-20 bg-gradient-to-br from-green-600 to-green-800 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/30">
-                        <i class="fas fa-copy text-3xl text-white"></i>
+                        class="w-20 h-20 bg-gradient-to-br from-primary to-primary_hover rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/30">
+                        <i class="fas fa-copy text-3xl text-primary_text"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Reprografija</h3>
-                    <p class="text-gray-400 mb-4">Izrada kopija arhivskih dokumenata</p>
-                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                    <h3 class="text-2xl font-bold mb-4 text-primary_text">Reprografija</h3>
+                    <p class="text-secondary_text mb-4">Izrada kopija arhivskih dokumenata</p>
+                    <ul class="text-sm text-secondary_text space-y-2 mb-6">
                         <li>Digitalne kopije: 50 RSD</li>
                         <li>Fotokopije: 20 RSD</li>
                         <li>Brza isporuka</li>
                     </ul>
                     <button
-                        class="px-6 py-2 border border-green-600 rounded-full hover:bg-green-600 transition text-white">Cenovnik</button>
+                        class="px-6 py-2 border border-primary rounded-full hover:bg-primary transition text-primary_text">Cenovnik</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="usluge" class="py-24 bg-dark-950">
+    <section class="py-24 bg-background">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 glow decorative-line text-white">Naše Usluge</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Profesionalna podrška za vaša istraživanja</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-gold-500 to-gold-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-gold-500/30">
-                        <i class="fas fa-book-reader text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Čitaonica</h3>
-                    <p class="text-gray-400 mb-4">Pristup originalnim dokumentima u kontrolisanim uslovima</p>
-                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
-                        <li>Ponedeljak-Petak: 08-16h</li>
-                        <li>Kapacitet: 15 istraživača</li>
-                        <li>Rezervacija obavezna</li>
-                    </ul>
-                    <button
-                        class="px-6 py-2 border border-gold-500 rounded-full hover:bg-gold-500 transition text-white">Zakažite
-                        Posetu</button>
-                </div>
-
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-500/30">
-                        <i class="fas fa-laptop-code text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Digitalizacija</h3>
-                    <p class="text-gray-400 mb-4">Profesionalno skeniranje arhivske građe</p>
-                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
-                        <li>Visoka rezolucija: 600 DPI</li>
-                        <li>OCR obrada teksta</li>
-                        <li>Metapodaci uključeni</li>
-                    </ul>
-                    <button
-                        class="px-6 py-2 border border-blue-500 rounded-full hover:bg-blue-500 transition text-white">Naručite
-                        Uslugu</button>
-                </div>
-
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-purple-500/30">
-                        <i class="fas fa-graduation-cap text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Stručna Pomoć</h3>
-                    <p class="text-gray-400 mb-4">Konsultacije sa arhivskim stručnjacima</p>
-                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
-                        <li>Genealoška istraživanja</li>
-                        <li>Istorijske analize</li>
-                        <li>Online konsultacije</li>
-                    </ul>
-                    <button
-                        class="px-6 py-2 border border-purple-500 rounded-full hover:bg-purple-500 transition text-white">Kontakt</button>
-                </div>
-
-                <div class="glass-dark rounded-2xl p-8 text-center hover:bg-white/10 transition">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/30">
-                        <i class="fas fa-copy text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Reprografija</h3>
-                    <p class="text-gray-400 mb-4">Izrada kopija arhivskih dokumenata</p>
-                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
-                        <li>Digitalne kopije: 50 RSD</li>
-                        <li>Fotokopije: 20 RSD</li>
-                        <li>Brza isporuka</li>
-                    </ul>
-                    <button
-                        class="px-6 py-2 border border-green-500 rounded-full hover:bg-green-500 transition text-white">Cenovnik</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-dark-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 glow decorative-line text-white">Naša Istorija</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Više od jednog veka čuvanja kulturnog nasleđa</p>
+                <h2 class="text-5xl font-bold mb-4 glow decorative-line text-primary_text">Naša Istorija</h2>
+                <p class="text-xl text-secondary_text max-w-3xl mx-auto">Više od jednog veka čuvanja kulturnog nasleđa
+                </p>
             </div>
 
             <div class="relative max-w-5xl mx-auto">
@@ -888,60 +1006,62 @@
                 <div class="space-y-12">
                     <div class="relative pl-24 group">
                         <div
-                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 group-hover:scale-110 transition">
-                            <span class="text-xl font-bold text-white">1912</span>
+                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-primary to-primary_hover rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition">
+                            <span class="text-xl font-bold text-primary_text">1912</span>
                         </div>
                         <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition">
-                            <h3 class="text-3xl font-bold mb-3 text-white">Osnivanje Arhiva</h3>
-                            <p class="text-gray-400 text-lg">Istorijski arhiv osnovan kao deo gradskog muzeja. Početna
+                            <h3 class="text-3xl font-bold mb-3 text-primary_text">Osnivanje Arhiva</h3>
+                            <p class="text-secondary_text text-lg">Istorijski arhiv osnovan kao deo gradskog muzeja.
+                                Početna
                                 kolekcija obuhvata 800 dokumenata iz lokalne istorije i administrative.</p>
                         </div>
                     </div>
 
                     <div class="relative pl-24 group">
                         <div
-                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 group-hover:scale-110 transition">
-                            <span class="text-xl font-bold text-white">1945</span>
+                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-primary to-primary_hover rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition">
+                            <span class="text-xl font-bold text-primary_text">1945</span>
                         </div>
                         <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition">
-                            <h3 class="text-3xl font-bold mb-3 text-white">Posleratna Obnova</h3>
-                            <p class="text-gray-400 text-lg">Premeštanje u novi prostor i započinjanje sistematske
+                            <h3 class="text-3xl font-bold mb-3 text-primary_text">Posleratna Obnova</h3>
+                            <p class="text-secondary_text text-lg">Premeštanje u novi prostor i započinjanje sistematske
                                 organizacije ratom oštećene građe. Inkorporacija arhiva likvidiranih institucija.</p>
                         </div>
                     </div>
 
                     <div class="relative pl-24 group">
                         <div
-                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 group-hover:scale-110 transition">
-                            <span class="text-xl font-bold text-white">1987</span>
+                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-primary to-primary_hover rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition">
+                            <span class="text-xl font-bold text-primary_text">1987</span>
                         </div>
                         <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition">
-                            <h3 class="text-3xl font-bold mb-3 text-white">Nova Zgrada</h3>
-                            <p class="text-gray-400 text-lg">Preseljenje u posebno projektovanu zgradu sa modernim
+                            <h3 class="text-3xl font-bold mb-3 text-primary_text">Nova Zgrada</h3>
+                            <p class="text-secondary_text text-lg">Preseljenje u posebno projektovanu zgradu sa modernim
                                 depovima, klimatizacijom i prostorima za čuvanje arhivske građe.</p>
                         </div>
                     </div>
 
                     <div class="relative pl-24 group">
                         <div
-                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 group-hover:scale-110 transition">
-                            <span class="text-xl font-bold text-white">2015</span>
+                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-primary to-primary_hover rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition">
+                            <span class="text-xl font-bold text-primary_text">2015</span>
                         </div>
                         <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition">
-                            <h3 class="text-3xl font-bold mb-3 text-white">Digitalna Transformacija</h3>
-                            <p class="text-gray-400 text-lg">Započinjanje masovnog projekta digitalizacije. Lansiranje
+                            <h3 class="text-3xl font-bold mb-3 text-primary_text">Digitalna Transformacija</h3>
+                            <p class="text-secondary_text text-lg">Započinjanje masovnog projekta digitalizacije.
+                                Lansiranje
                                 online platforme sa pretražljivom bazom podataka i digitalnom čitaonicom.</p>
                         </div>
                     </div>
 
                     <div class="relative pl-24 group">
                         <div
-                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 group-hover:scale-110 transition pulse">
-                            <span class="text-xl font-bold text-white">2023</span>
+                            class="absolute left-0 w-16 h-16 bg-gradient-to-br from-primary to-primary_hover rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition pulse">
+                            <span class="text-xl font-bold text-primary_text">2023</span>
                         </div>
-                        <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border-2 border-gold-500">
-                            <h3 class="text-3xl font-bold mb-3 text-white">AI i Inovacije</h3>
-                            <p class="text-gray-400 text-lg">Implementacija veštačke inteligencije za automatsku
+                        <div class="glass-dark rounded-2xl p-8 hover:bg-white/10 transition border-2 border-primary">
+                            <h3 class="text-3xl font-bold mb-3 text-primary_text">AI i Inovacije</h3>
+                            <p class="text-secondary_text text-lg">Implementacija veštačke inteligencije za automatsku
                                 kategorizaciju, OCR prepoznavanje rukopisa i naprednu semantičku pretragu.</p>
                         </div>
                     </div>
@@ -950,11 +1070,12 @@
         </div>
     </section>
 
-    <section class="py-24 bg-dark-950">
+    <section class="py-24 bg-background">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 glow decorative-line text-white">Galerija Dokumenata</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Pregled najznačajnijih i najlepših dokumenata iz naše
+                <h2 class="text-5xl font-bold mb-4 glow decorative-line text-primary_text">Galerija Dokumenata</h2>
+                <p class="text-xl text-secondary_text max-w-3xl mx-auto">Pregled najznačajnijih i najlepših dokumenata
+                    iz naše
                     kolekcije</p>
             </div>
 
@@ -964,7 +1085,7 @@
                         alt="Dokument 1" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-white"></i>
+                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
                     </div>
                 </div>
 
@@ -973,7 +1094,7 @@
                         alt="Dokument 2" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-white"></i>
+                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
                     </div>
                 </div>
 
@@ -982,7 +1103,7 @@
                         alt="Dokument 3" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-white"></i>
+                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
                     </div>
                 </div>
 
@@ -991,7 +1112,7 @@
                         alt="Dokument 4" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-white"></i>
+                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
                     </div>
                 </div>
 
@@ -1000,7 +1121,7 @@
                         alt="Dokument 5" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-white"></i>
+                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
                     </div>
                 </div>
 
@@ -1009,7 +1130,7 @@
                         alt="Dokument 6" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-white"></i>
+                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
                     </div>
                 </div>
 
@@ -1018,7 +1139,7 @@
                         alt="Dokument 7" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-white"></i>
+                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
                     </div>
                 </div>
 
@@ -1027,83 +1148,83 @@
                         alt="Dokument 8" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fas fa-search-plus text-4xl text-white"></i>
+                        <i class="fas fa-search-plus text-4xl text-primary_text"></i>
                     </div>
                 </div>
             </div>
 
             <div class="text-center mt-12">
-                <button class="px-10 py-4 glass rounded-full text-lg hover:bg-white/20 transition text-white">
+                <button class="px-10 py-4 glass rounded-full text-lg hover:bg-white/20 transition text-primary_text">
                     Pogledaj Celu Galeriju <i class="fas fa-images ml-2"></i>
                 </button>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black text-gray-400 py-12">
+    <footer class="bg-background text-secondary_text py-12">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <div class="flex items-center mb-4">
                         <div
-                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-500 to-gold-700 flex items-center justify-center mr-3">
-                            <i class="fas fa-landmark text-xl text-white"></i>
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary_hover flex items-center justify-center mr-3">
+                            <i class="fas fa-landmark text-xl text-primary_text"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Istorijski Arhiv</h3>
+                        <h3 class="text-xl font-bold text-primary_text">Istorijski Arhiv</h3>
                     </div>
                     <p class="mb-4">Čuvamo i činimo dostupnim istorijsko nasleđe za sadašnje i buduće generacije.</p>
                     <p class="text-sm">&copy; 2023 Sva prava zadržana.</p>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold text-white mb-4">Brzi Linkovi</h4>
+                    <h4 class="text-lg font-bold text-primary_text mb-4">Brzi Linkovi</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-gold-400 transition">O Nama</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Fondovi i Zbirke</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Digitalna Arhiva</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Priručnici</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Vesti</a></li>
+                        <li><a href="#" class="hover:text-primary transition">O Nama</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Fondovi i Zbirke</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Digitalna Arhiva</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Priručnici</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Vesti</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold text-white mb-4">Usluge</h4>
+                    <h4 class="text-lg font-bold text-primary_text mb-4">Usluge</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-gold-400 transition">Čitaonica</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Reprografija</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Digitalizacija</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Stručna Pomoć</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Online Pretraga</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Čitaonica</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Reprografija</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Digitalizacija</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Stručna Pomoć</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Online Pretraga</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold text-white mb-4">Resursi</h4>
+                    <h4 class="text-lg font-bold text-primary_text mb-4">Resursi</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-gold-400 transition">FAQ</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Vodiči za Istraživače</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Propisi i Pravila</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Publikacije</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition">Karijera</a></li>
+                        <li><a href="#" class="hover:text-primary transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Vodiči za Istraživače</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Propisi i Pravila</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Publikacije</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Karijera</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="border-t border-surface pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-sm mb-4 md:mb-0">Dizajnirano sa <i class="fas fa-heart text-red-500"></i> za očuvanje
                     istorije</p>
                 <div class="flex space-x-6 text-sm">
-                    <a href="#" class="hover:text-gold-400 transition">Politika Privatnosti</a>
-                    <a href="#" class="hover:text-gold-400 transition">Uslovi Korišćenja</a>
-                    <a href="#" class="hover:text-gold-400 transition">Mapa Sajta</a>
+                    <a href="#" class="hover:text-primary transition">Politika Privatnosti</a>
+                    <a href="#" class="hover:text-primary transition">Uslovi Korišćenja</a>
+                    <a href="#" class="hover:text-primary transition">Mapa Sajta</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <button onclick="scrollToTop()" id="scrollTopBtn"
-        class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-gold-500 to-gold-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-gold-500/50 transition opacity-0 pointer-events-none z-50">
-        <i class="fas fa-arrow-up text-xl text-white"></i>
+        class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-primary to-primary_hover rounded-full flex items-center justify-center shadow-lg hover:shadow-primary/50 transition opacity-0 pointer-events-none z-50">
+        <i class="fas fa-arrow-up text-xl text-primary_text"></i>
     </button>
 
     <script>

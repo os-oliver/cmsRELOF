@@ -186,21 +186,98 @@ if ($total > 0) {
         }
 
         .palette-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
         }
 
         .palette-card.active {
-            border: 3px solid #3B82F6;
-            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+            border: 2px solid #3B82F6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
         .color-dot {
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        #gjs {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 700px;
+            height: calc(100vh - 400px);
+        }
+
+        .panel__top {
+            padding: 0;
+            width: 100%;
+            display: flex;
+            position: initial;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .panel__basic-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .panel__devices {
+            display: flex;
+            gap: 5px;
+        }
+
+        .panel__top button {
+            padding: 8px 12px;
+            background: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .panel__top button:hover {
+            background: #2563EB;
+        }
+
+        .panel__top button.active {
+            background: #1E40AF;
+        }
+
+        .gjs-cv-canvas {
+            background-color: #ffffff;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gjs-frame {
+            height: 100%;
+        }
+
+        .color-section {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .color-section.expanded {
+            max-height: 500px;
+        }
+
+        .toggle-colors-btn {
+            transition: all 0.3s ease;
+        }
+
+        .toggle-colors-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-colors-btn.expanded i {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -217,149 +294,97 @@ if ($total > 0) {
             <?php require_once __DIR__ . "/../components/topBar.php" ?>
 
             <main class="flex-1 overflow-y-auto p-4 md:p-6">
-                <!-- RED 1: Color Palettes -->
-                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-palette text-2xl text-purple-500 mr-3"></i>
-                        <h2 class="text-xl font-semibold text-gray-800">Izaberite Color Paletu</h2>
-                    </div>
-
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                        <?php foreach ($colorPalettes as $paletteKey => $palette): ?>
-                            <div class="palette-card bg-white rounded-lg border-2 border-gray-200 p-4 hover:border-blue-300"
-                                data-palette="<?= $paletteKey ?>">
-                                <h4 class="font-semibold text-sm text-gray-800 mb-3 text-center">
-                                    <?= htmlspecialchars($palette['name']) ?>
-                                </h4>
-                                <div class="flex flex-wrap gap-2 justify-center mb-2">
-                                    <div class="color-dot" style="background-color: <?= $palette['colors']['primary'] ?>"
-                                        title="Primarna"></div>
-                                    <div class="color-dot" style="background-color: <?= $palette['colors']['accent'] ?>"
-                                        title="Akcent"></div>
-                                    <div class="color-dot" style="background-color: <?= $palette['colors']['secondary'] ?>"
-                                        title="Sekundarna"></div>
-                                </div>
-                                <button
-                                    class="apply-palette-btn w-full mt-2 bg-blue-50 hover:bg-blue-100 text-blue-600 px-3 py-2 rounded text-xs font-medium transition">
-                                    <i class="fas fa-check mr-1"></i>Primeni
-                                </button>
+                <!-- Full Width Editor Section -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <?php if ($activeFile): ?>
+                        <!-- Header with Toggle -->
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-4">
+                                <h2 class="text-xl font-semibold text-gray-800">
+                                    <i class="fas fa-edit mr-2 text-blue-500"></i>
+                                    Editor: <?= htmlspecialchars($activeFile) ?>
+                                </h2>
+                                <span class="text-sm text-gray-500"><?= $current + 1 ?> / <?= $total ?></span>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
 
-                    <div class="flex justify-end gap-3 mt-6 pt-4 border-t">
-                        <button type="button" id="saveColors"
-                            class="px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
-                            <i class="fas fa-save mr-2"></i>Sačuvaj Promene
-                        </button>
-                    </div>
-                    <div id="colorsFeedback" class="mt-3 text-sm"></div>
-                </div>
-
-                <!-- RED 2: Component Preview & Live Preview -->
-                <div class="flex flex-col lg:flex-row gap-6">
-                    <!-- Component Preview -->
-                    <div class="flex-1">
-                        <div class="bg-white rounded-xl shadow-lg p-6">
-                            <?php if ($activeFile): ?>
-                                <div class="flex items-center justify-between mb-4">
-                                    <h2 class="text-xl font-semibold text-gray-800">
-                                        <i class="fas fa-cube mr-2 text-blue-500"></i>
-                                        <?= htmlspecialchars($activeFile) ?>
-                                    </h2>
-                                    <span class="text-sm text-gray-500"><?= $current + 1 ?> / <?= $total ?></span>
-                                </div>
-
-                                <!-- Component Preview -->
-                                <div class="border-2 border-gray-200 rounded-lg p-6 mb-4 bg-white min-h-[400px]">
-                                    <?php include $componentsDir . '/' . $activeFile; ?>
-                                </div>
-
-                                <!-- Navigation -->
-                                <div class="flex gap-3">
-                                    <form method="get" class="flex-1">
-                                        <input type="hidden" name="current" value="<?= max(0, $current - 1) ?>">
-                                        <button <?= $current == 0 ? 'disabled' : '' ?>
-                                            class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium disabled:opacity-40 disabled:cursor-not-allowed transition">
-                                            <i class="fas fa-arrow-left mr-2"></i>Prethodna
-                                        </button>
-                                    </form>
-
-                                    <form method="get" class="flex-1">
-                                        <input type="hidden" name="current" value="<?= min($total - 1, $current + 1) ?>">
-                                        <button <?= $current == $total - 1 ? 'disabled' : '' ?>
-                                            class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium disabled:opacity-40 disabled:cursor-not-allowed transition">
-                                            Sledeća<i class="fas fa-arrow-right ml-2"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            <?php else: ?>
-                                <div class="text-center py-12">
-                                    <i class="fas fa-folder-open text-6xl text-gray-300 mb-4"></i>
-                                    <p class="text-gray-500">Nema dostupnih komponenti</p>
-                                </div>
-                            <?php endif; ?>
+                            <button id="toggleColors"
+                                class="toggle-colors-btn px-4 py-2 bg-purple-50 hover:bg-purple-100 text-purple-600 rounded-lg font-medium transition">
+                                <i class="fas fa-palette mr-2"></i>
+                                <span>Prikaži Color Palete</span>
+                                <i class="fas fa-chevron-down ml-2"></i>
+                            </button>
                         </div>
-                    </div>
 
-                    <!-- Live Preview -->
-                    <aside class="w-full lg:w-96">
-                        <div class="bg-white rounded-xl shadow-lg p-6 sticky top-6">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                                <i class="fas fa-eye mr-2 text-purple-500"></i>
-                                Trenutni Pregled
-                            </h3>
-
-                            <div class="space-y-4">
-                                <div class="p-4 rounded-lg" style="background-color: var(--color-background)">
-                                    <h4 class="text-xl font-bold mb-2" style="color: var(--color-primary)">
-                                        Primarna Boja
-                                    </h4>
-                                    <p class="text-sm mb-3" style="color: var(--color-primary_text)">
-                                        Ovo je primer primarnog teksta koji se prikazuje sa trenutno izabranom paletom
-                                        boja.
-                                    </p>
-                                    <p class="text-sm" style="color: var(--color-secondary_text)">
-                                        Sekundarni tekst je obično tamniji i koristi se za manje važne informacije.
-                                    </p>
-                                </div>
-
-                                <div class="flex flex-wrap gap-2">
-                                    <button class="px-4 py-2 rounded-lg text-white font-medium transition"
-                                        style="background-color: var(--color-primary)">
-                                        <i class="fas fa-star mr-1"></i>Primarno
-                                    </button>
-                                    <button class="px-4 py-2 rounded-lg text-white font-medium transition"
-                                        style="background-color: var(--color-secondary)">
-                                        <i class="fas fa-info-circle mr-1"></i>Sekundarno
-                                    </button>
-                                    <button class="px-4 py-2 rounded-lg text-white font-medium transition"
-                                        style="background-color: var(--color-accent)">
-                                        <i class="fas fa-bolt mr-1"></i>Akcent
-                                    </button>
-                                </div>
-
-                                <div class="p-4 rounded-lg" style="background-color: var(--color-surface)">
-                                    <h5 class="font-semibold mb-2" style="color: var(--color-primary_text)">
-                                        <i class="fas fa-layer-group mr-2"></i>Površina (Kartica)
-                                    </h5>
-                                    <p class="text-sm" style="color: var(--color-secondary_text)">
-                                        Ova boja se koristi za kartice i istaknute sekcije.
-                                    </p>
-                                </div>
-
-                                <div class="grid grid-cols-3 gap-2 mt-4">
-                                    <?php foreach (array_slice($colorKeys, 0, 6) as $key => $label): ?>
-                                        <div class="text-center">
-                                            <div class="w-full h-16 rounded-lg mb-2 border-2 border-gray-200"
-                                                style="background-color: var(--color-<?= $key ?>)"></div>
-                                            <span class="text-xs text-gray-600"><?= $label ?></span>
+                        <!-- Collapsible Color Palettes Section -->
+                        <div id="colorSection" class="color-section mb-6">
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4">
+                                <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-4">
+                                    <?php foreach ($colorPalettes as $paletteKey => $palette): ?>
+                                        <div class="palette-card bg-white rounded-lg border border-gray-200 p-3"
+                                            data-palette="<?= $paletteKey ?>">
+                                            <h4 class="font-semibold text-xs text-gray-800 mb-2 text-center">
+                                                <?= htmlspecialchars($palette['name']) ?>
+                                            </h4>
+                                            <div class="flex gap-1 justify-center mb-2">
+                                                <div class="color-dot"
+                                                    style="background-color: <?= $palette['colors']['primary'] ?>"></div>
+                                                <div class="color-dot"
+                                                    style="background-color: <?= $palette['colors']['accent'] ?>"></div>
+                                                <div class="color-dot"
+                                                    style="background-color: <?= $palette['colors']['secondary'] ?>"></div>
+                                            </div>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
+
+                                <div class="flex items-center justify-between">
+                                    <div id="colorsFeedback" class="flex-1 text-sm"></div>
+                                    <button type="button" id="saveColors"
+                                        class="px-5 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
+                                        <i class="fas fa-save mr-2"></i>Sačuvaj Boje
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </aside>
+
+                        <!-- Hidden data attribute -->
+                        <div data-current-component="<?= htmlspecialchars($activeFile) ?>" style="display:none;"></div>
+
+                        <!-- GrapesJS Container - Full Width -->
+                        <div id="gjs"></div>
+
+                        <!-- Action Buttons -->
+                        <div class="mt-4 flex gap-3">
+                            <button id="export"
+                                class="px-6 py-3 rounded-lg bg-green-600 text-white font-medium hover:bg-green-700 transition">
+                                <i class="fas fa-download mr-2"></i>Izvezi HTML
+                            </button>
+
+                            <div class="flex-1"></div>
+
+                            <!-- Navigation -->
+                            <form method="get" class="inline-block">
+                                <input type="hidden" name="current" value="<?= max(0, $current - 1) ?>">
+                                <button <?= $current == 0 ? 'disabled' : '' ?>
+                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium disabled:opacity-40 disabled:cursor-not-allowed transition">
+                                    <i class="fas fa-arrow-left mr-2"></i>Prethodna
+                                </button>
+                            </form>
+
+                            <form method="get" class="inline-block">
+                                <input type="hidden" name="current" value="<?= min($total - 1, $current + 1) ?>">
+                                <button <?= $current == $total - 1 ? 'disabled' : '' ?>
+                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium disabled:opacity-40 disabled:cursor-not-allowed transition">
+                                    Sledeća<i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </form>
+                        </div>
+                    <?php else: ?>
+                        <div class="text-center py-12">
+                            <i class="fas fa-folder-open text-6xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500">Nema dostupnih komponenti</p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </main>
         </div>
@@ -368,6 +393,22 @@ if ($total > 0) {
     <script>
         const COLOR_PALETTES = <?= json_encode($colorPalettes) ?>;
         let currentColors = {};
+
+        // Toggle color section
+        const toggleBtn = document.getElementById('toggleColors');
+        const colorSection = document.getElementById('colorSection');
+
+        toggleBtn.addEventListener('click', () => {
+            colorSection.classList.toggle('expanded');
+            toggleBtn.classList.toggle('expanded');
+
+            const span = toggleBtn.querySelector('span');
+            if (colorSection.classList.contains('expanded')) {
+                span.textContent = 'Sakrij Color Palete';
+            } else {
+                span.textContent = 'Prikaži Color Palete';
+            }
+        });
 
         // Update CSS variable
         function setCssVar(key, value) {
@@ -393,9 +434,9 @@ if ($total > 0) {
                 // Feedback
                 const feedback = document.getElementById('colorsFeedback');
                 feedback.innerHTML = `
-                    <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-700">
+                    <div class="inline-flex items-center px-3 py-2 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 text-sm">
                         <i class="fas fa-palette mr-2"></i>
-                        Paleta "${palette.name}" je primenjena. Kliknite "Sačuvaj Promene" da sačuvate.
+                        Paleta "${palette.name}" primenjena
                     </div>
                 `;
             });
@@ -408,9 +449,9 @@ if ($total > 0) {
 
             if (Object.keys(currentColors).length === 0) {
                 feedback.innerHTML = `
-                    <div class="p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-yellow-700">
+                    <div class="inline-flex items-center px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg text-yellow-700 text-sm">
                         <i class="fas fa-exclamation-triangle mr-2"></i>
-                        Prvo izaberite neku paletu!
+                        Prvo izaberite paletu!
                     </div>
                 `;
                 return;
@@ -431,9 +472,9 @@ if ($total > 0) {
 
                 if (data.success) {
                     feedback.innerHTML = `
-                        <div class="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700">
+                        <div class="inline-flex items-center px-3 py-2 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
                             <i class="fas fa-check-circle mr-2"></i>
-                            Uspešno sačuvano! Backup: ${data.backup || 'N/A'}
+                            Uspešno sačuvano!
                         </div>
                     `;
                     btn.innerHTML = '<i class="fas fa-check mr-2"></i>Sačuvano!';
@@ -442,7 +483,7 @@ if ($total > 0) {
                 }
             } catch (err) {
                 feedback.innerHTML = `
-                    <div class="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700">
+                    <div class="inline-flex items-center px-3 py-2 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
                         <i class="fas fa-exclamation-circle mr-2"></i>
                         Greška: ${err.message}
                     </div>
@@ -451,12 +492,13 @@ if ($total > 0) {
             } finally {
                 btn.disabled = false;
                 setTimeout(() => {
-                    btn.innerHTML = '<i class="fas fa-save mr-2"></i>Sačuvaj Promene';
+                    btn.innerHTML = '<i class="fas fa-save mr-2"></i>Sačuvaj Boje';
                 }, 3000);
             }
         });
     </script>
 
+    <!-- Load GrapesJS and promotionLoader -->
     <script src="/assets/js/WebDesigner/grapesjs/grapes.min.js"></script>
     <script src="/assets/js/dashboard/promotionLoader.js"></script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>

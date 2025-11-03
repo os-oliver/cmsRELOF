@@ -58,78 +58,81 @@ class ColorsController
 
     private function handleUpdate(): void
     {
-        if (!$this->commonScriptPath || !is_writable($this->commonScriptPath)) {
-            http_response_code(500);
-            echo json_encode(['error' => 'commonScript.js missing or not writable']);
-            return;
-        }
-
-        $input = file_get_contents('php://input');
-        $data = json_decode($input, true);
-
-        $incoming = $data['colors'] ?? $data ?? [];
-
-        if (empty($incoming) || !is_array($incoming)) {
-            http_response_code(400);
-            echo json_encode(['error' => 'No colors provided']);
-            return;
-        }
-
-        // Validacija - prihvatamo samo definisane boje
-        $normalized = [];
-        foreach ($incoming as $k => $v) {
-            if (!in_array($k, self::COLOR_KEYS)) {
-                continue; // Preskaćemo nepoznate ključeve
+        try {
+            if (!$this->commonScriptPath || !is_writable($this->commonScriptPath)) {
+                throw new \RuntimeException('commonScript.js missing or not writable');
             }
 
-            $val = trim((string) $v);
-            if ($val === '')
-                continue;
+            $input = file_get_contents('php://input');
+            $data = json_decode($input, true);
 
-            // Validacija hex boje
-            if (preg_match('/^#?[a-fA-F0-9]{3,8}$/', $val)) {
-                if (substr($val, 0, 1) !== '#') {
-                    $val = '#' . $val;
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \RuntimeException('JSON decode error: ' . json_last_error_msg());
+            }
+
+            $incoming = $data['colors'] ?? $data ?? [];
+
+            if (empty($incoming) || !is_array($incoming)) {
+                throw new \InvalidArgumentException('No colors provided or invalid format');
+            }
+
+            $normalized = [];
+            foreach ($incoming as $k => $v) {
+                if (!in_array($k, self::COLOR_KEYS)) {
+                    continue; // Ignorišemo nepoznate ključeve
                 }
-                $normalized[$k] = $val;
+
+                $val = trim((string) $v);
+                if ($val === '')
+                    continue;
+
+                if (preg_match('/^#?[a-fA-F0-9]{3,8}$/', $val)) {
+                    if (substr($val, 0, 1) !== '#') {
+                        $val = '#' . $val;
+                    }
+                    $normalized[$k] = $val;
+                }
             }
-        }
 
-        if (empty($normalized)) {
-            http_response_code(400);
-            echo json_encode(['error' => 'No valid color values detected']);
-            return;
-        }
+            if (empty($normalized)) {
+                throw new \InvalidArgumentException('No valid color values detected');
+            }
 
-        // Čitamo trenutni fajl
-        $js = file_get_contents($this->commonScriptPath);
+            $js = @file_get_contents($this->commonScriptPath);
+            if ($js === false) {
+                throw new \RuntimeException('Failed to read ' . $this->commonScriptPath);
+            }
 
-        // Backup
-        $backup = $this->commonScriptPath . '.bak.' . date('Ymd_His');
-        @copy($this->commonScriptPath, $backup);
+            $backup = $this->commonScriptPath . '.bak.' . date('Ymd_His');
+            @copy($this->commonScriptPath, $backup);
 
-        // Menjamo samo boje, red po red
-        $jsNew = $this->replaceColors($js, $normalized);
+            $jsNew = $this->replaceColors($js, $normalized);
+            if ($jsNew === null) {
+                throw new \RuntimeException('Failed to update colors');
+            }
 
-        if ($jsNew === null) {
+            $wrote = @file_put_contents($this->commonScriptPath, $jsNew);
+            if ($wrote === false) {
+                throw new \RuntimeException('Failed to write file ' . $this->commonScriptPath);
+            }
+
+            echo json_encode([
+                'success' => true,
+                'updated' => $normalized,
+                'backup' => basename($backup)
+            ]);
+        } catch (\Throwable $e) {
+            // Upisujemo grešku u PHP error log
+            error_log('[handleUpdate] ' . $e->getMessage() . "\n" . $e->getTraceAsString());
+
+            // Vraćamo JSON klijentu
             http_response_code(500);
-            echo json_encode(['error' => 'Failed to update colors']);
-            return;
+            echo json_encode([
+                'error' => $e->getMessage()
+            ]);
         }
-
-        $wrote = file_put_contents($this->commonScriptPath, $jsNew);
-        if ($wrote === false) {
-            http_response_code(500);
-            echo json_encode(['error' => 'Failed to write file']);
-            return;
-        }
-
-        echo json_encode([
-            'success' => true,
-            'updated' => $normalized,
-            'backup' => basename($backup)
-        ]);
     }
+
 
     /**
      * Parsira samo boje iz colors objekta
