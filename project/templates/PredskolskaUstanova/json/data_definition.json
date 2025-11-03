@@ -90,72 +90,11 @@
         }
       ]
     },
-    "Sekcije": {
-      "sr": "Sekcije",
-      "en": "Sections",
-      "sr-Cyrl": "Секције",
-      "icon": "fas fa-layer-group",
-      "categories": [
-        "Muzika",
-        "Pozoriste",
-        "Likovna umetnost",
-        "Kreativne radionice",
-        "Literatura"
-      ],
-      "fields": [
-        {
-          "name": "naziv",
-          "type": "text",
-          "label": {
-            "sr": "Naziv sekcije",
-            "en": "Section name",
-            "sr-Cyrl": "Назив секције"
-          },
-          "required": true
-        },
-        {
-          "name": "vodja",
-          "type": "text",
-          "label": {
-            "sr": "Vodja sekcije",
-            "en": "Section lead",
-            "sr-Cyrl": "Водја секције"
-          }
-        },
-        {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis sekcije",
-            "en": "Section description",
-            "sr-Cyrl": "Опис секције"
-          }
-        },
-        {
-          "name": "projekti",
-          "type": "relation",
-          "label": {
-            "sr": "Projekti sekcije",
-            "en": "Section projects",
-            "sr-Cyrl": "Пројекти секције"
-          },
-          "related_to": "Projekti"
-        }
-      ]
-    },
     "Projekti": {
       "sr": "Projekti",
       "en": "Projects",
       "sr-Cyrl": "Пројекти",
       "icon": "fas fa-diagram-project",
-      "categories": [
-        "Muzika",
-        "Pozoriste",
-        "Likovna umetnost",
-        "Kreativne radionice",
-        "Literatura",
-        "Film"
-      ],
       "fields": [
         {
           "name": "slika",
@@ -222,16 +161,6 @@
             "en": "Official project link",
             "sr-Cyrl": "Званични линк пројекта"
           }
-        },
-        {
-          "name": "sekcija",
-          "type": "relation",
-          "label": {
-            "sr": "Sekcija centra",
-            "en": "Center section",
-            "sr-Cyrl": "Секција центра"
-          },
-          "related_to": "Sekcije"
         }
       ]
     },
@@ -379,8 +308,8 @@
         }
       ]
     },
-    "ObavestenjaZaRoditelje": {
-      "sr": "Obavestenja za roditelje",
+    "Obavestenja": {
+      "sr": "Obaveštenja za roditelje",
       "en": "Notifications for Parents",
       "sr-Cyrl": "Обавештења за родитеље",
       "icon": "fas fa-bell",
@@ -413,6 +342,17 @@
             "en": "Description",
             "sr-Cyrl": "Опис"
           }
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum vesti",
+            "en": "News date",
+            "sr-Cyrl": "Датум вести"
+          },
+          "required": true,
+          "property": "auto"
         }
       ]
     }

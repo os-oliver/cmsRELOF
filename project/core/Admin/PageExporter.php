@@ -33,6 +33,7 @@ use App\Admin\PageBuilders\IstorijatPageBuilder;
 use App\Admin\PageBuilders\VrticiPageBuilder;
 use App\Admin\PageBuilders\JelovnikPageBuilder;
 use App\Admin\PageBuilders\ObavestenjaZaRoditeljePageBuilder;
+use App\Admin\PageBuilders\PosebneUslugePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\RasporedAktivnostiPageBuilder;
 use App\Admin\PageBuilders\TimoviPageBuilder;
@@ -660,6 +661,8 @@ class PageExporter
                 return new UpisPageBuilder('Upis', $this->data);
             case 'savetovaliste':
                 return new SavetovalistePageBuilder('Savetovaliste', $this->data);
+            case 'posebne':
+                return new PosebneUslugePageBuilder('PosebneUsluge', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -702,6 +705,8 @@ class PageExporter
             return 'dogadjaji';
         } elseif (strpos($name, 'programi-obuke') !== false || strpos($name, 'programi obuke') !== false) {
             return 'programi-obuke';
+        } elseif (strpos($name, 'posebne') !== false) {
+            return 'posebne';
         } elseif (strpos($name, 'usluge') !== false) {
             return 'usluge';
         } elseif (strpos($name, 'prava') !== false) {
@@ -726,7 +731,8 @@ class PageExporter
             return 'upis';
         } elseif (strpos($name, 'savetovaliste') !== false) {
             return 'savetovaliste';
-        }
+        } 
+
 
         return 'basic';
     }
