@@ -410,7 +410,7 @@
                         class="flex items-center py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-red-600"></i>Početna
                     </a>
-                    
+
                     <!-- O nama dropdown -->
                     <div class="mobile-dropdown">
                         <button
@@ -835,7 +835,7 @@
                             <div class="hero-slide">
                                 <img src="https://picsum.photos/800/600?random=3" alt="Pomoć starima" />
                             </div>
-                            
+
                             <!-- Dots Indicator -->
                             <div class="slider-dots">
                                 <span class="dot active" data-slide="0"></span>
@@ -843,7 +843,7 @@
                                 <span class="dot" data-slide="2"></span>
                             </div>
                         </div>
-                        
+
                         <div class="absolute top-4 right-4 bg-blue-500/80 text-white px-3 py-1.5 rounded-lg text-sm font-medium z-10">
                             Socijalna zaštita
                         </div>
@@ -852,7 +852,7 @@
             </div>
         </div>
 
-       
+
 
 
     </section>
@@ -1422,7 +1422,7 @@
             // Hide all slides
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
-            
+
             // Show current slide
             slides[index].classList.add('active');
             dots[index].classList.add('active');
