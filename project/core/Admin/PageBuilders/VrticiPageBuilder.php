@@ -156,23 +156,23 @@ CSS;
 
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
-        <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
+        <div class="glass-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
             <div class="relative w-full h-56 overflow-hidden bg-surface">
                 {{imageSection}}
                 {{kategoria}}
             </div>
 
             <div class="p-6">
-                <h3 class="text-xl font-bold text-primary_text mb-4 line-clamp-2 group-hover:text-primary_hover transition-colors">
+                <h3 class="text-xl font-heading text-primary_text mb-4 line-clamp-2 group-hover:text-primary_hover transition-colors">
                     {{naslov}}
                 </h3>
 
-                <div class="space-y-3 mb-4 text-secondary_text">
+                <div class="space-y-3 mb-4 text-secondary_text font-body">
                     {{locationRow}}
                 </div>
 
                 <div class="mb-5 p-4 bg-gray-50 rounded-xl border border-gray-100">
-                    <p class="text-sm text-gray-700 leading-relaxed">{{opis}}</p>
+                    <p class="text-sm text-gray-700 leading-relaxed font-body">{{opis}}</p>
                 </div>
 
                 <a href="/sadrzaj?id={{itemId}}&tip=Vrtici"
@@ -296,8 +296,8 @@ PHP;
 <main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Vrtići</h1>
-            <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <h1 class="text-3xl font-heading text-primary_text mb-2 text-center">Vrtići</h1>
+            <p class="font-heading2 text-secondary_text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         </div>
         
         
@@ -328,57 +328,57 @@ HTML;
     public function buildPage(): string
     {
         $additionalPHP = <<<'PHP'
-use App\Models\Content;
-use App\Controllers\LanguageMapperController;
-use App\Models\GenericCategory;
+        use App\Models\Content;
+        use App\Controllers\LanguageMapperController;
+        use App\Models\GenericCategory;
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-$slug = '__SLUG__';
-$pageTitle = ucfirst($slug);
-$pageDescription = 'Pregled svih stavki';
+        $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+        $slug = '__SLUG__';
+        $pageTitle = ucfirst($slug);
+        $pageDescription = 'Pregled svih stavki';
 
-// Configuration variables
-$itemsPerPage = __ITEMS_PER_PAGE__;
-$descriptionMaxLength = __DESC_MAX_LENGTH__;
-$paginationRange = __PAGINATION_RANGE__;
+        // Configuration variables
+        $itemsPerPage = __ITEMS_PER_PAGE__;
+        $descriptionMaxLength = __DESC_MAX_LENGTH__;
+        $paginationRange = __PAGINATION_RANGE__;
 
-$currentPage = max(1, (int) ($_GET['page'] ?? 1));
-$categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
-$search = $_GET['search'] ?? '';
+        $currentPage = max(1, (int) ($_GET['page'] ?? 1));
+        $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
+        $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
-$itemsList = $slug 
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId) 
-    : ['success' => false, 'items' => []];
+        $categories = GenericCategory::fetchAll($slug, $locale);
+        $itemsList = $slug 
+            ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId) 
+            : ['success' => false, 'items' => []];
 
-$config = $fieldLabels = [];
-if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
-    $parsed = json_decode(file_get_contents($structurePath), true);
-    $config = $parsed[0][$slug] ?? [];
-    $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
-}
+        $config = $fieldLabels = [];
+        if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
+            $parsed = json_decode(file_get_contents($structurePath), true);
+            $config = $parsed[0][$slug] ?? [];
+            $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
+        }
 
-// Initialize translator and texts
-$translator = new LanguageMapperController();
-$latinTexts = [
-    'search_placeholder' => 'Pretraži...',
-    'apply_button' => 'Primeni',
-    'all_categories' => 'Sve kategorije',
-    'date_and_time' => 'Datum i vreme',
-    'location' => 'Lokacija',
-    'event_details' => 'Detaljnije',
-    'no_items_found' => 'Nema pronađenih stavki',
-    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
-];
+        // Initialize translator and texts
+        $translator = new LanguageMapperController();
+        $latinTexts = [
+            'search_placeholder' => 'Pretraži...',
+            'apply_button' => 'Primeni',
+            'all_categories' => 'Sve kategorije',
+            'date_and_time' => 'Datum i vreme',
+            'location' => 'Lokacija',
+            'event_details' => 'Detaljnije',
+            'no_items_found' => 'Nema pronađenih stavki',
+            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+        ];
 
-$texts = ($locale === 'sr-Cyrl') 
-    ? $translator->latin_to_cyrillic_array($latinTexts) 
-    : $latinTexts;
-PHP;
+        $texts = ($locale === 'sr-Cyrl') 
+            ? $translator->latin_to_cyrillic_array($latinTexts) 
+            : $latinTexts;
+    PHP;
 
         $additionalPHP .= "\n" . $this->cardTemplate;
         $additionalPHP .= "\n" . $this->cardRender;
