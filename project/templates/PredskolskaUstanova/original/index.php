@@ -9,12 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style type="text/css">
-         .dropdown.locale{
-            margin-top:0px !important;
-            }
-            .dropdown{
-            margin-top:6px;
-            }
+        .dropdown.locale {
+            margin-top: 0px !important;
+        }
+
+        .dropdown {
+            margin-top: 6px;
+        }
+
         .search-container {
             position: relative;
             display: flex;
@@ -363,11 +365,56 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-history mr-2 text-primary"></i>Istorijat
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-school mr-2 text-primary"></i>Vrtići
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-users mr-2 text-primary"></i>Timovi
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
+                            id="mobileParentsToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-info-circle mr-3 text-primary"></i>Za roditelje
+                            </div>
+                            <i class="fas fa-chevron-down transition-transform duration-200"
+                                id="mobileParentsIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileParentsMenu">
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-utensils mr-2 text-primary"></i>Jelovnik
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-info-circle mr-2 text-primary"></i>Obaveštenja
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-receipt mr-2 text-primary"></i>Cenovnik
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-file-alt mr-2 text-primary"></i>Upis
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-clock mr-2 text-primary"></i>Raspored aktivnosti
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
                             </a>
                         </div>
                     </div>
@@ -489,6 +536,10 @@
                         <a href="#"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
+                        </a>
+                        <a href="#"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
                         </a>
                     </div>
                 </div>
@@ -644,10 +695,10 @@
                         </div>
                         <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
                         </h3>
-                        <button
+                        <a id="g-ovise" href="#"
                             class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
                             Pročitaj
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!-- Event 2 -->
@@ -719,8 +770,8 @@
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
                     <div class="p-5 w-3/4">
-                        <h3 class="text-primary_text tracking-tight text-2xl">
-                            <p id="g-title">Lorem ipsum</p>
+                        <h3 class="text-primary_text font-heading text-2xl">
+                            <p id="g-title" class="text-3xl">Lorem ipsum</p>
                         </h3>
                         <p id="g-description" class="mt-3 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -943,37 +994,19 @@
                     colors: {
                         logocolor1: 'rgba(233, 168, 3, 1)',
                         logocolor2: '#2D6A4F',
-                        primary : '#e9a803ff',
-                        primary_hover : '#d39802ff',
-                        secondary : '#32604dff',
-                        secondary_hover : '#255943ff',
-                        accent : "#e9a803ff",
-                        accent_hover : "#d39802ff",
-                        primary_text : '#1B4332',
-                        secondary_text : '#2a644aff',
-                        background : '#F1F7ED',
-                        secondary_background : '#e5cc8c6b',
-                        surface : "#e5cc8c6b",
-
-
+                        primary: '#e9a803ff',
+                        primary_hover: '#d39802ff',
+                        secondary: '#32604dff',
+                        secondary_hover: '#255943ff',
+                        accent: "#e9a803ff",
+                        accent_hover: "#d39802ff",
+                        primary_text: '#1B4332',
+                        secondary_text: '#2a644aff',
                         background: '#F1F7ED',
-                        primarybutton: "#e9a803ff",
-                        primarybuttonhover: "#d39802ff",
-                        footerbg: "#E6F9EC",
-                        secondarybutton: "#32604dff",
-                        secondarybuttonhover: "#255943ff",
-                        primarytext: '#1B4332',
-                        secondarytext: '#2a644aff',
-                        logocolor1: 'rgba(233, 168, 3, 1)',
-                        logocolor2: '#2D6A4F',
-                        primarybtntxt: '#F1F7ED',
-                        cardcolor: '#e5cc8c6b'
+                        secondary_background: '#e5cc8c6b',
+                        surface: "#e5cc8c6b",
                     },
                     fontFamily: {
-                        primaryfont: ['Fredoka', 'sans-serif'],
-                        secondaryfont: ['Nunito', 'sans-serif'],
-
-
                         heading: ['Fredoka', 'sans-serif'],
                         heading2: ['Nunito', 'sans-serif'],
                         body: ['Nunito', 'sans-serif']
@@ -1091,8 +1124,11 @@
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const closeMobileMenu = document.getElementById('closeMobileMenu');
         const mobileAboutToggle = document.getElementById('mobileAboutToggle');
+        const mobileParentsToggle = document.getElementById('mobileParentsToggle');
         const mobileAboutMenu = document.getElementById('mobileAboutMenu');
+        const mobileParentsMenu = document.getElementById('mobileParentsMenu');
         const mobileAboutIcon = document.getElementById('mobileAboutIcon');
+        const mobileParentsIcon = document.getElementById('mobileParentsIcon');
 
         // Function to open mobile menu
         function openMobileMenu() {
@@ -1135,6 +1171,18 @@
             }
         }
 
+        function toggleMobileParents() {
+            const isHidden = mobileParentsMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                mobileParentsMenu.classList.remove('hidden');
+                mobileParentsIcon.style.transform = 'rotate(180deg)';
+            } else {
+                mobileAboutMenu.classList.add('hidden');
+                mobileParentsIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+
         // Event listeners
         if (hamburger) {
             hamburger.addEventListener('click', function(e) {
@@ -1159,6 +1207,13 @@
             mobileAboutToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 toggleMobileAbout();
+            });
+        }
+
+        if (mobileParentsToggle) {
+            mobileParentsToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileParents();
             });
         }
 

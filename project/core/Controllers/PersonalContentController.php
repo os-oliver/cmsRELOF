@@ -327,7 +327,7 @@ class PersonalContentController
             $mainContent = $this->getErrorContent($e->getMessage());
         }
 
-        $html = '<main class="min-h-screen pt-16 bg-gray-50">' . $mainContent . '</main>';
+        $html = '<main class="min-h-screen pt-16 bg-white">' . $mainContent . '</main>';
         $pageBuilder->setHtml($html);
         return $pageBuilder->buildPage();
     }
@@ -637,7 +637,7 @@ class PersonalContentController
         }
 
         $html = '
-        <div class="content-wrapper">
+        <div class="content-wrapper min-h-screen">
             <div>
                 <div class="container mx-auto px-4">
                     <div class="max-w-3xl mx-auto text-center">
@@ -748,7 +748,7 @@ class PersonalContentController
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         ' . ($vodja ? '
-                        <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="bg-white rounded-lg p-4">
                             <div class="flex items-center text-primary_text">
                                 <i class="fas fa-user-tie text-primary mr-3 text-lg"></i>
                                 <div>
@@ -759,7 +759,7 @@ class PersonalContentController
                         </div>' : '') . '
 
                         ' . ($formattedDatum ? '
-                        <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="bg-white rounded-lg p-4">
                             <div class="flex items-center text-primary_text">
                                 <i class="fas fa-calendar-alt text-primary mr-3 text-lg"></i>
                                 <div>
@@ -770,7 +770,7 @@ class PersonalContentController
                         </div>' : '') . '
 
                         ' . ($formattedBudzet ? '
-                        <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="bg-white rounded-lg p-4">
                             <div class="flex items-center text-primary_text">
                                 <i class="fas fa-euro-sign text-primary mr-3 text-lg"></i>
                                 <div>
@@ -781,7 +781,7 @@ class PersonalContentController
                         </div>' : '') . '
 
                         ' . ($sekcija ? '
-                        <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="bg-white rounded-lg p-4">
                             <div class="flex items-center text-primary_text">
                                 <i class="fas fa-sitemap text-primary mr-3 text-lg"></i>
                                 <div>
