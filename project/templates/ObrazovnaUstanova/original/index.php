@@ -58,7 +58,7 @@
             }
 
             .nav-link::after {
-                content: '';
+                content: none;
                 display: block;
                 width: 0;
                 height: 3px;
@@ -186,7 +186,6 @@
             .dropdown-menu {
                 display: none;
                 position: absolute;
-                background-color: white;
                 min-width: 200px;
                 box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
                 z-index: 1;
@@ -198,7 +197,6 @@
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
-                color: #344e41;
                 transition: all 0.3s;
                 border-left: 3px solid transparent;
             }
@@ -328,27 +326,27 @@
     </style>
 </head>
 
-<body class="bg-light font-body text-slate min-h-screen overflow-x-hidden">
+<body class="bg-background font-body text-secondary_text min-h-screen overflow-x-hidden">
     <!-- Enhanced Header -->
     <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden hidden">
         <div class="fixed inset-0 bg-black bg-opacity-50" id="mobileMenuOverlay"></div>
-        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-light shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
+        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-background shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
             id="mobileMenuPanel">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-xl text-white font-display font-bold text-slate">Menu</h2>
-                    <button id="closeMobileMenu" class="text-slate hover:text-terracotta transition-colors">
+                    <h2 class="text-xl text-white font-heading font-bold text-secondary_text">Menu</h2>
+                    <button id="closeMobileMenu" class="text-secondary_text hover:text-terracotta transition-colors">
                         <i class="fas fa-times text-xl"></i>
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
                     <a href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
+                        class="flex items-center py-3 px-4 text-primary hover:text-primary_hover rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-terracotta"></i>Početna
                     </a>
                     <div class="mobile-dropdown">
                         <button
-                            class="flex items-center justify-between w-full py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all"
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary hover:text-primary_hover rounded-lg transition-all"
                             id="mobileAboutToggle">
                             <div class="flex items-center">
                                 <i class="fas fa-info-circle mr-3 text-ochre"></i>O nama
@@ -358,41 +356,41 @@
                         </button>
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
                                 <i class="fas fa-bullseye mr-2 text-royal-blue"></i>Cilj
                             </a>
                             <a href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-terracotta"></i>Zaposleni
                             </a>
                             <a href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
                                 <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
                             </a>
                             <a href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-terracotta transition-colors">
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
                                 <i class="fas fa-users mr-2 text-coral"></i>Tim
                             </a>
                         </div>
                     </div>
                     <a href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
+                        class="flex items-center py-3 px-4 text-primary hover:text-primary_hover hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-newspaper mr-3 text-royal-blue"></i>Vesti
                     </a>
                     <a href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
+                        class="flex items-center py-3 px-4 text-primary hover:text-primary_hover hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-velvet"></i>Galerija
                     </a>
                     <a href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
+                        class="flex items-center py-3 px-4 text-primary hover:text-primary_hover hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-coral"></i>Dokumenti
                     </a>
                     <a href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
+                        class="flex items-center py-3 px-4 text-primary hover:text-primary_hover hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fa-solid fa-graduation-cap mr-3 text-primary"></i>Seminari
                     </a>
                     <a href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-terracotta hover:bg-slate-50 rounded-lg transition-all">
+                        class="flex items-center py-3 px-4 text-primary hover:text-primary_hover hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-deep-teal"></i>Kontakt
                     </a>
                 </nav>
@@ -401,97 +399,90 @@
     </div>
     <div>
         <button id="increaseFontBtn"
-            class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"
+            class="fixed bottom-6 z-20 right-6 bg-primary hover:bg-primary_hover text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"
             aria-label="Increase font size">
             A+
         </button>
     </div>
-    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm bg-light">
+    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm bg-background">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo Section -->
-            <div class="flex items-center space-x-3 flex-shrink-0">
-                <div
-                    class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                    <i class="fas fa-graduation-cap"></i>
+            <a href="/" class="flex items-center space-x-3 flex-shrink-0">
+                <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block">
-                    <h1 class="text-xl lg:text-2xl font-display text-slate font-bold tracking-wider">Centar za obrazovanje</h1>
+                    <h1 class="text-xl lg:text-2xl font-heading text-primary font-bold tracking-wider">Centar za obrazovanje</h1>
                     <p class="text-xs text-barn_red tracking-widest hidden md:block">CENTAR ZA OBRAZOVANJE</p>
                 </div>
                 <div class="block sm:hidden">
-                    <h1 class="text-lg font-display text-slate font-bold">CZO</h1>
+                    <h1 class="text-lg font-heading text-primary font-bold">CZO</h1>
                 </div>
-            </div>
+            </a>
 
             <!-- Desktop Navigation -->
             <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-8">
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
+                    class="nav-link text-primary font-semibold hover:text-primary_hover transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
-                <a href="#"
-                    class="hidden nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                    <span class="hidden xl:inline">FAQ</span>
-                </a>
                 <div class="dropdown relative group">
                     <button
-                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
-                        <i
-                            class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors text-sm"></i>
-                        <span class="hidden xl:inline text-sm">O nama</span>
-                        <i
-                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                        class="nav-link text-primary font-semibold hover:text-primary_hover transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
+                        <i class="fas fa-info-circle mr-2 text-ochre transition-colors text-sm"></i>
+                        <span class="hidden xl:inline font-semibold">O nama</span>
+                        <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2  min-w-max max-w-xs w-auto bg-light rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2  min-w-max max-w-xs w-auto bg-background rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-bullseye mr-3 text-royal-blue flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Cilj</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Zaposleni</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-flag mr-3 text-deep-teal flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-users mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Tim</span>
+                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-circle-question mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Pitanja</span>
                         </a>
                     </div>
                 </div>
 
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
+                    class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
                     <i
                         class="fas fa-newspaper mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
                     <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
+                    class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-images mr-2 text-velvet group-hover:text-crimson transition-colors"></i>
                     <span class="hidden xl:inline">Galerija</span>
                 </a>
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors group flex items-center whitespace-nowrap">
-                    <i class="fas fa-folder-open mr-2 text-coral group-hover:text-terracotta transition-colors"></i>
+                    class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors group flex items-center whitespace-nowrap">
+                    <i class="fas fa-folder-open mr-2 text-coral transition-colors"></i>
                     <span class="hidden xl:inline">Dokumenti</span>
                 </a>
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                    <i class="fa-solid fa-graduation-cap mr-2 text-primary group-hover:text-sage transition-colors"></i>
+                    class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
+                    <i class="fa-solid fa-graduation-cap mr-2 text-primary transition-colors"></i>
                     <span class="hidden xl:inline">Seminari</span>
                 </a>
                 <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-address-book mr-2 text-deep-teal group-hover:text-sage transition-colors"></i>
+                    class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
+                    <i class="fas fa-address-book mr-2 text-deep-teal transition-colors"></i>
                     <span class="hidden xl:inline">Kontakt</span>
                 </a>
                 <?php
@@ -510,15 +501,15 @@
                     $locale = 'sr';
                 }
                 ?>
-                <div class="locale dropdown nonPage relative group">
-                    <button class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
+                <div class="locale dropdown nonPage relative group flex items-center">
+                    <button class="nav-link text-primary font-semibold hover:text-primary_hover transition-colors flex items-center whitespace-nowrap">
                         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
-                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-llight rounded-md shadow-lg z-50">
+                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg z-50">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>" class="dropdown-item flex items-center px-4 py-2 bg-light hover:bg-light-50 rounded-md text-sm">
+                            <a href="?locale=<?= $key ?>" class="dropdown-item text-primary hover:text-primary_hover flex items-center px-4 py-2 bg-background hover:bg-background-50 rounded-md text-sm font-medium">
                                 <span class="mr-2"><?= $lang['flag'] ?></span>
                                 <?= $lang['label'] ?>
                             </a>
@@ -532,7 +523,7 @@
                 <!-- Search Container -->
                 <div class="relative">
                     <button id="searchButton"
-                        class="text-slate-500 hover:text-terracotta transition-colors focus:outline-none p-2"
+                        class="text-primary hover:text-primary_hover transition-colors focus:outline-none p-2"
                         aria-label="Search">
                         <i class="fas fa-search"></i>
                     </button>
@@ -545,12 +536,12 @@
                                 id="searchInput" required />
                             <div class="flex items-center space-x-1 ml-2">
                                 <button type="submit"
-                                    class="text-slate-500 hover:text-terracotta transition-colors focus:outline-none p-1.5 rounded-full hover:bg-gray-100 w-8 h-8 flex items-center justify-center"
+                                    class="text-primary hover:text-primary_hover transition-colors focus:outline-none p-1.5 rounded-full hover:bg-gray-100 w-8 h-8 flex items-center justify-center"
                                     aria-label="Submit search">
                                     <i class="fas fa-search text-sm"></i>
                                 </button>
                                 <button type="button"
-                                    class="text-slate-500 hover:text-terracotta transition-colors focus:outline-none p-1.5 rounded-full hover:bg-gray-100 w-8 h-8 flex items-center justify-center"
+                                    class="text-primary hover:text-primary_hover transition-colors focus:outline-none p-1.5 rounded-full hover:bg-gray-100 w-8 h-8 flex items-center justify-center"
                                     id="closeSearch" aria-label="Clear search"
                                     onclick="document.getElementById('searchInput').value=''; document.getElementById('searchInput').focus();">
                                     <i class="fas fa-times text-sm"></i>
@@ -562,7 +553,7 @@
 
                 <!-- Mobile Menu Button -->
                 <button id="hamburger"
-                    class="hamburger lg:hidden text-slate w-8 h-8 flex flex-col justify-center space-y-1 p-1">
+                    class="hamburger lg:hidden text-primary w-8 h-8 flex flex-col justify-center space-y-1 p-1">
                     <span class="block w-6 h-0.5 bg-slate rounded transition-all duration-300"></span>
                     <span class="block w-6 h-0.5 bg-slate rounded transition-all duration-300"></span>
                     <span class="block w-6 h-0.5 bg-slate rounded transition-all duration-300"></span>
@@ -573,31 +564,31 @@
 
     <section class="hero relative flex items-center z-10 bg-[linear-gradient(rgba(11,53,88,0.7),rgba(11,53,88,0.7)),url('https://picsum.photos/1600/600?blur')] bg-cover bg-center text-white w-full h-[600px]">
         <div class="max-w-6xl mx-auto px-4 py-20 text-center">
-            <h2 class="text-3xl sm:text-4xl font-display font-bold leading-tight">Dobrodošli u našu ustanovu</h2>
+            <h2 class="text-3xl sm:text-4xl font-heading font-bold leading-tight">Dobrodošli u našu ustanovu</h2>
             <p class="mt-4 text-lg max-w-2xl mx-auto">Znanje, inovacije i budućnost u srcu obrazovanja.</p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/o-nama/cilj" class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:brightness-95 transition">Saznaj više</a>
+                <a href="/o-nama/cilj" class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:bg-accent_hover transition">Saznaj više</a>
                 <a href="/seminari" class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava na seminar</a>
             </div>
         </div>
     </section>
 
     <!-- Najnnovije vesti -->
-    <section id="vesti" class="py-20 bg-light">
+    <section id="vesti" class="py-20 bg-background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-display font-bold text-primary mb-4 relative inline-block">
+                <h2 class="text-4xl font-heading font-bold text-primary mb-4 relative inline-block">
                     Najnovije vesti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto mt-4">
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam semper lobortis neque non eleifend.
                 </p>
             </div>
 
             <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- News 1 -->
-                <article class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-slika"
                             src="https://picsum.photos/600/300"
@@ -608,16 +599,16 @@
                         <div class="flex items-center mb-3">
                             <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 id="g-naslov" class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-naslov" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-tekst" class="text-slate-600 mb-4">
+                        <p id="g-tekst" class="text-secondary_text mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
-                                <div class="flex items-center text-sm text-slate-500">
+                                <div class="flex items-center text-sm text-secondary_text">
                                     <i class="fas fa-calendar-days mr-2"></i>
                                     <span id="g-datum">28.9.2025.</span>
                                 </div>
@@ -632,7 +623,7 @@
                 </article>
 
                 <!-- News 2 -->
-                <article class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-slika"
                             src="https://picsum.photos/600/300"
@@ -643,16 +634,16 @@
                         <div class="flex items-center mb-3">
                             <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 id="g-naslov" class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-naslov" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-tekst" class="text-slate-600 mb-4">
+                        <p id="g-tekst" class="text-secondary_text mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
-                                <div class="flex items-center text-sm text-slate-500">
+                                <div class="flex items-center text-sm text-secondary_text">
                                     <i class="fas fa-calendar-days mr-2"></i>
                                     <span id="g-datum">28.9.2025.</span>
                                 </div>
@@ -667,7 +658,7 @@
                 </article>
 
                 <!-- News 3 -->
-                <article class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-slika"
                             src="https://picsum.photos/600/300"
@@ -678,16 +669,16 @@
                         <div class="flex items-center mb-3">
                             <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 id="g-naslov" class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-naslov" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-tekst" class="text-slate-600 mb-4">
+                        <p id="g-tekst" class="text-secondary_text mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
-                                <div class="flex items-center text-sm text-slate-500">
+                                <div class="flex items-center text-sm text-secondary_text">
                                     <i class="fas fa-calendar-days mr-2"></i>
                                     <span id="g-datum">28.9.2025.</span>
                                 </div>
@@ -704,7 +695,7 @@
 
             <div class="text-center mt-12">
                 <a href="/vesti"
-                    class="bg-primary text-white px-8 py-4 w-fit rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
+                    class="bg-primary text-white px-8 py-4 w-fit rounded-full font-medium hover:bg-primary_hover transition-all flex items-center shadow-lg mx-auto">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Pogledaj sve vesti
                 </a>
@@ -717,18 +708,18 @@
     <section class="py-20 bg-primary/90">
         <div class="container mx-auto px-4">
             <div class="text-center text-white mb-16">
-                <h2 class="text-4xl font-display font-bold mb-4 relative inline-block">
+                <h2 class="text-4xl font-heading font-bold mb-4 relative inline-block">
                     Naučni klub
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto mt-4">
+                <p class="text-lg text-white max-w-2xl mx-auto mt-4">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam semper lobortis neque non eleifend.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Event 1 -->
-                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-image"
                             src="https://picsum.photos/600/300"
@@ -739,22 +730,22 @@
                         <div class="flex items-center mb-3">
                             <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 id="g-title" class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 id="g-title" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-description" class="text-slate-600 mb-4">
+                        <p id="g-description" class="text-secondary_text mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
-                                <div class="flex items-center text-sm text-slate-500">
+                                <div class="flex items-center text-sm text-secondary_text">
                                     <i class="fas fa-calendar-days mr-2"></i>
                                     <span id="g-date">28.9.2025.</span>
                                 </div>
                             </div>
                             <button
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary_hover transition-colors">
                                 Pročitaj više
                             </button>
                         </div>
@@ -762,7 +753,7 @@
                 </div>
 
                 <!-- Event 2 -->
-                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img src="https://picsum.photos/600/300"
                             alt="Film Festival" class="w-full h-full object-cover">
@@ -771,21 +762,21 @@
                         <div class="flex items-center mb-3">
                             <span class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
-                        <p class="text-slate-600 mb-4">
+                        <p class="text-secondary_text mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
-                                <div class="flex items-center text-sm text-slate-500">
+                                <div class="flex items-center text-sm text-secondary_text">
                                     <i class="fas fa-calendar-days mr-2"></i>
                                     <span>28.9.2025.</span>
                                 </div>
                             </div>
                             <button
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-deep-teal transition-colors">
+                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary_hover transition-colors">
                                 Pročitaj više
                             </button>
                         </div>
@@ -793,7 +784,7 @@
                 </div>
 
                 <!-- Event 3 -->
-                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img src="https://picsum.photos/600/300"
                             alt="Jazz Night" class="w-full h-full object-cover">
@@ -802,21 +793,21 @@
                         <div class="flex items-center mb-3">
                             <span class="text-primary font-bold">Lorem ipsum</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-dark mb-2">
+                        <h3 class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
-                        <p class="text-slate-600 mb-4">
+                        <p class="text-secondary_text mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
-                                <div class="flex items-center text-sm text-slate-500">
+                                <div class="flex items-center text-sm text-secondary_text">
                                     <i class="fas fa-calendar-days mr-2"></i>
                                     <span>28.9.2025.</span>
                                 </div>
                             </div>
                             <button
-                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate transition-colors">
+                                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary_hover transition-colors">
                                 Pročitaj više
                             </button>
                         </div>
@@ -826,7 +817,7 @@
 
             <div class="text-center mt-12">
                 <button
-                    class="bg-accent text-black px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
+                    class="bg-accent text-black px-8 py-4 rounded-full font-medium hover:bg-accent_hover transition-all flex items-center shadow-lg mx-auto">
                     Saznaj više
                     <i class="fa-solid fa-arrow-right ml-3"></i>
                 </button>
@@ -838,8 +829,8 @@
     <section class="relative bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=60')] bg-cover bg-center bg-fixed">
         <div class="bg-black/60 py-20 px-4">
             <div class="max-w-6xl mx-auto text-center text-white">
-                <h2 class="text-4xl font-display font-bold">Naša dostignuća</h2>
-                <p class="mt-2 text-lg text-slate-600">Ovde možete pogledati neke statistike Centra za obrazovanje</p>
+                <h2 class="text-4xl font-heading font-bold">Naša dostignuća</h2>
+                <p class="mt-2 text-lg text-white">Ovde možete pogledati neke statistike Centra za obrazovanje</p>
                 <div class="mt-10 grid grid-cols-2 md:grid-cols-5 gap-6">
                     <div>
                         <div class="text-accent text-4xl font-extrabold">995</div>
@@ -867,14 +858,14 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-light">
+    <section id="gallery" class="py-20 bg-background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl text-primary font-display font-bold mb-4 relative inline-block">
+                <h2 class="text-4xl text-primary font-heading font-bold mb-4 relative inline-block">
                     Galerija
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto mt-4">
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam semper lobortis neque non eleifend.
                 </p>
             </div>
@@ -931,39 +922,38 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div
-                            class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                            <i class="fas fa-graduation-cap"></i>
+                        <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                             <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
-                        <h3 class="text-xl font-display font-bold">CENTAR ZA OBRAZOVANJE</h3>
+                        <h3 class="text-xl font-heading font-bold">CENTAR ZA OBRAZOVANJE</h3>
                     </div>
                     <p class="mb-4">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
                     <div class="flex space-x-3">
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-dark hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-primary_text/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-dark/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-primary_text/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-dark/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-primary_text/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
                             <i class="fab fa-youtube"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-dark/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-primary_text/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
                             <i class="fab fa-spotify"></i>
                         </a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-display font-bold mb-6">Brzi linkovi</h4>
+                    <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="/faq" class="hover:text-secondary transition-colors">Često postavljena pitanja</a></li>
+                        <li><a href="" class="hover:text-secondary transition-colors"></a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
@@ -974,7 +964,7 @@
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-display font-bold mb-6">Informacije</h4>
+                    <h4 class="text-lg font-heading font-bold mb-6">Informacije</h4>
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-secondary mt-1 mr-3"></i>
@@ -999,8 +989,8 @@
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-display font-bold mb-6">Mapa lokacije</h4>
-                    <div class="bg-paper/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+                    <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
+                    <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -1008,7 +998,7 @@
                 </div>
             </div>
 
-            <div class="border-t border-slate-700 pt-8 text-center text-paper/60 text-sm">
+            <div class="border-t border-white pt-8 text-center text-white text-sm">
                 <p>&copy; 2023 Centar za obrazovanje. Sva prava zadržana.</p>
             </div>
         </div>
@@ -1020,36 +1010,36 @@
                 extend: {
                     colors: {
                         primary: '#0d3b66',
+                        primary_hover: '#145da0',
                         secondary: '#f4d35e',
-                        accent: '#faf0ca',
-                        dark: '#333',
-                        light: '#E8F3FC',
-                        'clay': '#c97c5d',
+                        secondary_hover: '#ffe372',
+                        accent: '#f2e3a9',
+                        accent_hover: '#faf0ca',
+                        primary_text: '#333',
+                        secondary_text: '#252c29ff',
+                        background: '#E8F3FC',
+                        secondary_background: '#faf0ca',
+                        surface: '#ffffff',
                         'ochre': '#d4a373',
-                        'sage': '#a3b18a',
                         'slate': '#344e41',
-                        'paper': '#f5ebe0',
                         'terracotta': '#bc6c25',
                         'coral': '#e76f51',
                         'deep-teal': '#2a9d8f',
                         'crimson': '#8d1b3d',
-                        'royal-blue': '#1a4480',
                         'velvet': '#4a154b',
                         ochre: '#CC7722',
                         terracotta: '#E2725B',
-                        paper: '#F5F5DC',
                         slate: '#2F4F4F',
                         'royal-blue': '#4169E1',
                         'deep-teal': '#008B8B',
                         velvet: '#872657',
                         crimson: '#DC143C',
                         coral: '#FF7F50',
-                        sage: '#9CAF88',
                         barn_red: '#770D0D'
                     },
                     fontFamily: {
-                        'display': ['Playfair Display', 'serif'],
-                        'crimson': ['Crimson Pro', 'serif'],
+                        'heading': ['Playfair Display', 'serif'],
+                        'heading2': ['Crimson Pro', 'serif'],
                         'body': ['Raleway', 'sans-serif'],
                     },
                     backgroundImage: {

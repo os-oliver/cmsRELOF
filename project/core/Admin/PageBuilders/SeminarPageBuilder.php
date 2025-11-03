@@ -169,7 +169,7 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
                placeholder='{$texts['search_placeholder']}' 
                class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
         <button type='submit' 
-                class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+                class='bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
             {$texts['search_button']}
         </button>
     </div>";
@@ -184,29 +184,29 @@ PHP;
         <div class="glass-card rounded-lg p-6">
             <div class="flex items-start justify-between gap-4">
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center">
-                        <i class="fas fa-graduation-cap text-indigo-600"></i>
+                    <div class="w-12 h-12 rounded-full bg-background flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-primary"></i>
                     </div>
                     <div>
                         <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">{{catalogNumberLabel}}</div>
-                        <div class="text-lg font-semibold text-gray-900">{{catalogNumber}}</div>
+                        <div class="text-lg font-semibold text-primary_text">{{catalogNumber}}</div>
                     </div>
                 </div>
 
                 <div class="text-right">
                     <div class="text-xs text-gray-500 mb-1">{{subjectArea}}</div>
-                    <div class="text-sm text-gray-800">{{area}}</div>
+                    <div class="text-sm text-primary_text">{{area}}</div>
                 </div>
             </div>
 
-            <h3 class="mt-4 text-xl font-bold text-gray-900">{{title}}</h3>
+            <h3 class="mt-4 text-xl font-bold text-primary_text">{{title}}</h3>
 
             <div class="mt-6 flex gap-3">
                 <a href="{{link}}" target="_blank"
                 class="inline-flex items-center px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg 
-                        text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:border-indigo-200 
-                        hover:text-indigo-700 transition-colors duration-200">
-                    <i class="fas fa-info-circle mr-2 text-indigo-500"></i>{{learnMore}}
+                        text-sm font-medium text-gray-700 hover:bg-primary/5 hover:border-primary 
+                        hover:text-primary transition-colors duration-200">
+                    <i class="fas fa-info-circle mr-2 text-primary"></i>{{learnMore}}
                 </a>
             </div>
         </div>
@@ -298,11 +298,11 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 }
 PHP;
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Seminari</h1>
-            <p class="text-gray-600">Seminari čiju je akreditaciju institucionalno podržao centar za obrazovanje</p>
+            <h1 class="text-3xl font-heading font-bold text-primary mb-2">Seminari</h1>
+            <p class="text-secondary_text">Seminari čiju je akreditaciju institucionalno podržao centar za obrazovanje</p>
         </div>
         
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
