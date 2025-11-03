@@ -577,11 +577,11 @@
                     <div
                         class="dropdown-menu absolute top-full right-0 min-w-max bg-secondary_background rounded-xl shadow-2xl border border-surface z-50 py-2 backdrop-blur-sm">
                         <?php foreach ($languages as $key => $lang): ?>
-                                <a href="?locale=<?= $key ?>"
-                                    class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
-                                    <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
-                                    <span class="font-medium"><?= $lang['label'] ?></span>
-                                </a>
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                                <span class="font-medium"><?= $lang['label'] ?></span>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -828,63 +828,6 @@
 
             <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
-<<<<<<< HEAD
-                        <div
-                            class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
-                            <!-- Slika sa leve strane -->
-                            <div class="w-1/3 relative flex-shrink-0">
-                                <img id="g-image"
-                                    src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                    alt="Event image"
-                                    class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div id="g-naziv"
-                                    class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                    Kultura
-                                </div>
-                            </div>
-
-                            <!-- Tekstualni deo -->
-                            <div class="w-2/3 p-6 flex flex-col">
-                                <!-- Naslov i opis -->
-                                <div class="flex-grow mb-4">
-                                    <h3 id="g-title"
-                                        class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                        Savremene Perspektive
-                                    </h3>
-                                    <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
-                                        Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                        savremenih trendova u umetnosti i tehnologiji.
-                                    </p>
-                                </div>
-
-                                <!-- Datum, vreme, lokacija -->
-                                <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-calendar-alt text-primary"></i>
-                                        <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-clock text-secondary"></i>
-                                        <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-accent"></i>
-                                        <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                            Umetnosti</span>
-                                    </div>
-                                </div>
-
-                                <!-- CTA dugme -->
-                                <div>
-                                    <a id="g-ovise"
-                                        class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
-                                        Više informacija
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-=======
                     <div
                         class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
                         <!-- Slika sa leve strane -->
@@ -940,7 +883,6 @@
                         </div>
                     </div>
 
->>>>>>> e7b6148 (globaljson/forms)
                 <?php endfor; ?>
             </div>
 
@@ -1038,60 +980,60 @@
 
             <div id="SeminariCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
-                        <div
-                            class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
-                            <!-- Slika sa leve strane -->
-                            <div class="w-1/3 relative flex-shrink-0">
-                                <img id="g-image"
-                                    src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                    alt="Event image"
-                                    class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div id="g-naziv"
-                                    class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                    Kultura
-                                </div>
-                            </div>
-
-                            <!-- Tekstualni deo -->
-                            <div class="w-2/3 p-6 flex flex-col">
-                                <!-- Naslov i opis -->
-                                <div class="flex-grow mb-4">
-                                    <h3 id="g-title"
-                                        class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                        Savremene Perspektive
-                                    </h3>
-                                    <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
-                                        Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                        savremenih trendova u umetnosti i tehnologiji.
-                                    </p>
-                                </div>
-
-                                <!-- Datum, vreme, lokacija -->
-                                <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-calendar-alt text-primary"></i>
-                                        <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-clock text-secondary"></i>
-                                        <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-accent"></i>
-                                        <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                            Umetnosti</span>
-                                    </div>
-                                </div>
-
-                                <!-- CTA dugme -->
-                                <div>
-                                    <a id="g-ovise"
-                                        class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
-                                        Više informacija
-                                    </a>
-                                </div>
+                    <div
+                        class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
+                        <!-- Slika sa leve strane -->
+                        <div class="w-1/3 relative flex-shrink-0">
+                            <img id="g-image"
+                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                                alt="Event image"
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <div id="g-naziv"
+                                class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
+                                Kultura
                             </div>
                         </div>
+
+                        <!-- Tekstualni deo -->
+                        <div class="w-2/3 p-6 flex flex-col">
+                            <!-- Naslov i opis -->
+                            <div class="flex-grow mb-4">
+                                <h3 id="g-title"
+                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
+                                    Savremene Perspektive
+                                </h3>
+                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
+                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
+                                    savremenih trendova u umetnosti i tehnologiji.
+                                </p>
+                            </div>
+
+                            <!-- Datum, vreme, lokacija -->
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-calendar-alt text-primary"></i>
+                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-clock text-secondary"></i>
+                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-map-marker-alt text-accent"></i>
+                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
+                                        Umetnosti</span>
+                                </div>
+                            </div>
+
+                            <!-- CTA dugme -->
+                            <div>
+                                <a id="g-ovise"
+                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
+                                    Više informacija
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                 <?php endfor; ?>
             </div>
@@ -1123,46 +1065,46 @@
 
             <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
-                        <article
-                            class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
-                            <div class="h-56 relative overflow-hidden">
-                                <img id="g-slika"
-                                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
-                                    alt="Vest"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <article
+                        class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                        <div class="h-56 relative overflow-hidden">
+                            <img id="g-slika"
+                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                                alt="Vest"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-4">
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
+                                    <i class="fas fa-newspaper text-lg"></i>
+                                </div>
+                                <div class="flex items-center text-sm text-secondary_text">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span id="g-datum">15. Oktobar 2025</span>
                                 </div>
                             </div>
-                            <div class="p-6">
-                                <div class="flex items-center gap-3 mb-4">
-                                    <div
-                                        class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
-                                        <i class="fas fa-newspaper text-lg"></i>
-                                    </div>
-                                    <div class="flex items-center text-sm text-secondary_text">
-                                        <i class="fas fa-calendar-alt mr-2"></i>
-                                        <span id="g-datum">15. Oktobar 2025</span>
-                                    </div>
-                                </div>
 
-                                <h3 id="g-naslov"
-                                    class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
-                                    Novi kulturni centar otvara vrata građanima
-                                </h3>
+                            <h3 id="g-naslov"
+                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                                Novi kulturni centar otvara vrata građanima
+                            </h3>
 
-                                <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
-                                    Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
-                                    kreativnosti i umetnosti u našem gradu.
-                                </p>
+                            <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
+                                Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
+                                kreativnosti i umetnosti u našem gradu.
+                            </p>
 
-                                <a id="g-ovise" href="#"
-                                    class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
-                                    Pročitaj više
-                                    <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
-                                </a>
-                            </div>
-                        </article>
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>
                 <?php endfor; ?>
             </div>
 
