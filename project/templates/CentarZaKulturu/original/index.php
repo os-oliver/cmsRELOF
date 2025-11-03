@@ -828,6 +828,7 @@
 
             <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
+<<<<<<< HEAD
                         <div
                             class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
                             <!-- Slika sa leve strane -->
@@ -883,6 +884,63 @@
                             </div>
                         </div>
 
+=======
+                    <div
+                        class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
+                        <!-- Slika sa leve strane -->
+                        <div class="w-1/3 relative flex-shrink-0">
+                            <img id="g-image"
+                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                                alt="Event image"
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <div id="g-naziv"
+                                class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
+                                Kultura
+                            </div>
+                        </div>
+
+                        <!-- Tekstualni deo -->
+                        <div class="w-2/3 p-6 flex flex-col">
+                            <!-- Naslov i opis -->
+                            <div class="flex-grow mb-4">
+                                <h3 id="g-title"
+                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
+                                    Savremene Perspektive
+                                </h3>
+                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
+                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
+                                    savremenih trendova u umetnosti i tehnologiji.
+                                </p>
+                            </div>
+
+                            <!-- Datum, vreme, lokacija -->
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-calendar-alt text-primary"></i>
+                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-clock text-secondary"></i>
+                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-map-marker-alt text-accent"></i>
+                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
+                                        Umetnosti</span>
+                                </div>
+                            </div>
+
+                            <!-- CTA dugme -->
+                            <div>
+                                <a id="g-ovise"
+                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
+                                    Više informacija
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+>>>>>>> e7b6148 (globaljson/forms)
                 <?php endfor; ?>
             </div>
 
