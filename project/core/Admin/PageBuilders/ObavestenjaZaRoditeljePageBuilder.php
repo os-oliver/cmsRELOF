@@ -4,7 +4,7 @@ namespace App\Admin\PageBuilders;
 
 use App\Controllers\ContentController;
 
-class DynamicPageBuilder extends BasePageBuilder
+class ObavestenjaZaRoditeljePageBuilder extends BasePageBuilder
 {
     protected string $slug;
 
@@ -14,6 +14,7 @@ class DynamicPageBuilder extends BasePageBuilder
     }
 
     protected string $css = <<<CSS
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
 .dropdown:hover .dropdown-menu {
     display: block;
 }
@@ -178,132 +179,219 @@ class DynamicPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $functions = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null): string
-{
-    $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
-    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
-    $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
-            <input type='text' name='search' value='{$safeSearchValue}' placeholder='Pretraži...' 
-                class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
-            <button type='submit' class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
-                Primeni
-            </button>
-          </div>";
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-            <select name='category' class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-                <option value=''>Sve kategorije</option>";
-    foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
-    }
-    $html .= "</select></div></form>";
-    return $html;
-}
-
 function cardRender(array $item, array $fieldLabels, string $locale): string
 {
-    $fields = [];
-
-    // Add category as a chip if exists
-    $categoryHtml = '';
-    if (!empty($item['category'])) {
-        $catValue = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
-        if ($catValue) {
-            $categoryHtml = "<div class='absolute top-3 right-3 z-10'>
-                                <span class='category-chip'>{$catValue}</span>
-                            </div>";
-        }
-    }
-
-    // Process fields - exclude file type fields and detect links
-    foreach ($item['fields'] as $fieldName => $translations) {
-        if (($fieldLabels[$fieldName]['type'] ?? '') === 'file')
-            continue;
-
-        $label = $fieldLabels[$fieldName]['label'][$locale] ?? $fieldLabels[$fieldName]['label']['en'] ?? $fieldName;
-        $value = (string) ($translations[$locale] ?? reset($translations) ?? '');
-
-        if (!empty(trim($value))) {
-            // Check if value is a URL
-            $isLink = filter_var($value, FILTER_VALIDATE_URL) !== false;
-            
-            $displayValue = mb_strlen($value) > 100 ? mb_substr($value, 0, 100) . '...' : $value;
-            $fields[] = [
-                'label' => htmlspecialchars($label, ENT_QUOTES, 'UTF-8'),
-                'value' => htmlspecialchars($displayValue, ENT_QUOTES, 'UTF-8'),
-                'rawValue' => htmlspecialchars($value, ENT_QUOTES, 'UTF-8'),
-                'isLink' => $isLink
-            ];
-        }
-    }
-
+    $naslov = htmlspecialchars(trim($item['fields']['naziv'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
+    $opis = htmlspecialchars(trim($item['fields']['opis'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
+    $opis = preg_replace('/\s+/', ' ', $opis); // uklanja višestruke whitespace-ove
+    $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = !empty($item['image']) ? htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') : null;
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
-    $fieldCount = count($fields);
 
-    $html = "<div class='glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1'>";
-
-    // Image section with overlay
-    if ($imageUrl) {
-        $html .= "<div class='relative w-full h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200'>
-                    <img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Item image' loading='lazy'>
-                    <div class='card-image-overlay'></div>
-                    {$categoryHtml}
-                </div>";
-    } else if ($categoryHtml) {
-        $html .= "<div class='relative h-12 bg-gradient-to-r from-gray-100 to-gray-200'>{$categoryHtml}</div>";
+    $shortDescription = $opis;
+   if (mb_strlen($opis) > 20) {
+    $short = mb_substr($opis, 0, 20);
+        $short .= '...';
+    } else {
+        $short = $opis;
     }
 
-    // Content section
-    $html .= "<div class='p-5'>";
+    $shortDescription = wordwrap($short, 20, "\n");
 
-    if (!empty($fields)) {
-        // Determine grid layout: 2 columns for even count, auto for odd (last takes full width)
-        $gridClass = $fieldCount % 2 === 0 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : 'grid grid-cols-1 md:grid-cols-2 gap-4';
+    $html = "
+    <style>
+    .news-card-modern {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.4s ease-out;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Fredoka', sans-serif;
+    }
+
+    .news-card-modern * {
+        font-family: 'Fredoka', sans-serif;
+    }
+    .news-card-modern:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+    .news-hero-image {
+        position: relative;
+        width: 100%;
+        height: 360px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        flex-shrink: 0;
+    }
+    .news-hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease-out;
+        filter: brightness(0.92);
+    }
+    .news-card-modern:hover .news-hero-image img {
+        transform: scale(1.08);
+        filter: brightness(1);
+    }
+    .news-gradient-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 70%;
+        background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+    .news-category-ribbon {
+        position: absolute;
+        top: 24px;
+        left: -8px;
+        padding: 12px 24px 12px 16px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: white;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        z-index: 10;
+        clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .news-content-area {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 32px;
+        z-index: 2;
+        color: white;
+    }
+    .news-title-hero {
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1.2;
+        margin-bottom: 12px;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .news-description-hero {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        opacity: 0.95;
+        max-height: 4.8em; /* Ograničenje visine da kartica ne puca */
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+    .news-cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 28px;
+        background: linear-gradient(135deg, #e9a803ff 0%, #e0a204ff 100%);
+        color: white;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        text-decoration: none;
+        box-shadow: 0 8px 24px #d39802ff;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    .news-cta-button:hover {
+        background: #d39802ff;
+        transform: translateX(8px);
+        box-shadow: 0 12px 32px #2a644aff;
+    }
+    .news-cta-button i {
+        transition: transform 0.3s ease;
+    }
+    .news-cta-button:hover i {
+        transform: translateX(4px);
+    }
+    .news-meta-footer {
+        padding: 16px 24px;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: auto;
+    }
+    .news-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #64748b;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    .news-meta-item i {
+        color: #94a3b8;
+        font-size: 0.95rem;
+    }
+    </style>
+    
+    <div class='news-card-modern text-primary_text'>";
+
+    if ($imageUrl) {
+        $html .= "
+        <div class='news-hero-image'>
+            <img src='{$imageUrl}' alt='{$naslov}'>
+            <div class='news-gradient-overlay'></div>";
         
-        $html .= "<div class='{$gridClass}'>";
+        $html .= "
+            <div class='news-content-area'>
+                <h3 class='news-title-hero'>{$naslov}</h3>";
         
-        foreach ($fields as $index => $f) {
-            // If odd count and this is the last field, make it span full width
-            $spanClass = ($fieldCount % 2 !== 0 && $index === $fieldCount - 1) ? 'md:col-span-2' : '';
-            
-            $html .= "<div class='card-field {$spanClass}'>
-                        <div class='text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5'>{$f['label']}</div>";
-            
-            if ($f['isLink']) {
-                // Render as a clickable link with icon
-                $html .= "<a href='{$f['rawValue']}' target='_blank' rel='noopener noreferrer' 
-                            class='inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium leading-relaxed transition-colors duration-200 hover:underline'>
-                            <span>{$f['value']}</span>
-                            <svg class='w-4 h-4 flex-shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'></path>
-                            </svg>
-                          </a>";
-            } else {
-                // Regular text field
-                $html .= "<div class='text-sm text-gray-800 font-medium leading-relaxed'>{$f['value']}</div>";
-            }
-            
-            $html .= "</div>";
+        if ($shortDescription) {
+            $html .= "<p class='news-description-hero'>{$shortDescription}</p>";
         }
+        
+        $targetLink = "/sadrzaj?id={$itemId}&tip=Obavestenja";
+        $html .= "
+                <a href='{$targetLink}' class='news-cta-button'>
+                    <span>Pročitaj više</span>
+                </a>
+            </div>
+        </div>";
+    }
+
+    // Meta footer sa datumom i autorom
+    if ($datum) {
+        $html .= "<div class='news-meta-footer'>";
+        
+        if ($datum) {
+            $html .= "
+            <div class='news-meta-item'>
+                <i class='fas fa-calendar-alt'></i>
+                <span>{$datum}</span>
+            </div>";
+        }
+        
         $html .= "</div>";
     }
 
-    // Enhanced action link
-    $html .= "<a href='sadrzaj?id={$itemId}&tip=Vesti' class='card-action-link mt-5'>
-                <span class='link-content'>
-                    <span>Saznaj više</span>
-                    <svg class='link-icon' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-                    </svg>
-                </span>
-              </a>";
-
     $html .= "</div>";
-    $html .= "</div>";
-
+    
     return $html;
 }
 
@@ -359,11 +447,9 @@ PHP;
 <main class="bg-gradient-to-br pt-20 from-gray-50 to-gray-100 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2"><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></h1>
-            <p class="text-gray-600"><?php echo htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8'); ?></p>
+            <h1 class="text-3xl font-heading text-primary_text mb-2 text-center"><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></h1>
+            <p class="font-heading2 text-secondary_text text-center"><?php echo htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
-        
-        <?php echo renderTopbar($categories, $search, $categoryId); ?>
 
         <div class="performances-grid">
             <?php
@@ -399,16 +485,16 @@ HTML;
         }
         $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
         $slug = '__SLUG__';
-        $pageTitle = ucfirst($slug);
+        $pageTitle = 'Obaveštenja';
         $pageDescription = 'Pregled svih stavki';
         
-        $itemsPerPage = 3;
+        $itemsPerPage = 6;
         $currentPage = max(1, (int) ($_GET['page'] ?? 1));
         $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
         $search = $_GET['search'] ?? '';
         
         $categories = GenericCategory::fetchAll($slug, $locale);
-        $itemsList = $slug ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
+        $itemsList = $slug ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale)
                            : ['success' => false, 'items' => []];
         
         $config = $fieldLabels = [];
