@@ -157,8 +157,6 @@
 
         .section-divider {
             height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%23f8fafc"></path></svg>');
-            background-size: 100% 100px;
         }
 
         .dropdown:hover .dropdown-menu {
@@ -313,7 +311,7 @@
 
 <body class="bg-background font-body text-primary_text min-h-screen overflow-x-hidden">
     <!-- Enhanced Header -->
-    <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden hidden">
+    <div id="mobileMenu" class="fixed inset-0 z-40 md:hidden hidden">
         <div class="fixed inset-0 bg-black bg-opacity-50" id="mobileMenuOverlay"></div>
         <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-secondary_background shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
             id="mobileMenuPanel">
@@ -484,24 +482,15 @@
                     </div>
                 </div>
 
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-                    <i
-                        class="fas fa-calendar-alt mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Dogadjaji</span>
-                </a>
+
+
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
                         class="fas fa-users mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Ansambl</span>
                 </a>
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-                    <i
-                        class="fas fa-newspaper mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Vesti</span>
-                </a>
+
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
@@ -520,11 +509,40 @@
                         class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Dokumenti</span>
                 </a>
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-surface">
-                    <i class="fas fa-poll mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Ankete</span>
-                </a>
+                <div class="dropdown relative group">
+                    <button
+                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        <i
+                            class="fas fa-bullhorn mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                        <span class="hidden xl:inline text-sm">Aktivnosti</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+
+                    <div
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-newspaper mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Vesti</span>
+                        </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-calendar-alt mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Događaji</span>
+                        </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-poll mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="fofnt-medium">Ankete</span>
+                        </a>
+                    </div>
+
+                </div>
+
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
@@ -792,8 +810,7 @@
         </div>
     </section>
 
-    <!-- Section divider -->
-    <div class="section-divider w-full bg-secondary_background"></div>
+
 
     <!-- Featured Events Section -->
     <section id="events" class="py-20 bg-secondary_background">
@@ -814,7 +831,7 @@
                     <div
                         class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
                         <!-- Slika sa leve strane -->
-                        <div class="w-1/3 relative">
+                        <div class="w-1/3 relative flex-shrink-0">
                             <img id="g-image"
                                 src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
                                 alt="Event image"
@@ -826,31 +843,30 @@
                         </div>
 
                         <!-- Tekstualni deo -->
-                        <div class="w-2/3 p-6 flex flex-col justify-between">
+                        <div class="w-2/3 p-6 flex flex-col">
                             <!-- Naslov i opis -->
-                            <div class="mb-3">
+                            <div class="flex-grow mb-4">
                                 <h3 id="g-title"
-                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300">
+                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
                                     Savremene Perspektive
                                 </h3>
-                                <p id="g-description" class="text-primary_text mb-4 line-clamp-3">
+                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
                                     Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
                                     savremenih trendova u umetnosti i tehnologiji.
                                 </p>
                             </div>
 
                             <!-- Datum, vreme, lokacija -->
-                            <div
-                                class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm text-secondary_text mb-4">
-                                <div class="flex items-center space-x-2 mb-2 sm:mb-0">
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
+                                <div class="flex items-center gap-2">
                                     <i class="fas fa-calendar-alt text-primary"></i>
                                     <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
                                 </div>
-                                <div class="flex items-center space-x-2 mb-2 sm:mb-0">
+                                <div class="flex items-center gap-2">
                                     <i class="fas fa-clock text-secondary"></i>
                                     <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
                                 </div>
-                                <div class="flex items-center space-x-2">
+                                <div class="flex items-center gap-2">
                                     <i class="fas fa-map-marker-alt text-accent"></i>
                                     <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
                                         Umetnosti</span>
@@ -858,22 +874,26 @@
                             </div>
 
                             <!-- CTA dugme -->
-                            <button
-                                class="self-start bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300">
-                                Više informacija
-                            </button>
+                            <div>
+                                <a id="g-ovise"
+                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
+                                    Više informacija
+                                </a>
+                            </div>
                         </div>
                     </div>
+
                 <?php endfor; ?>
             </div>
 
             <div class="text-center mt-12">
-                <button id="eventsView"
-                    class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg mx-auto">
+                <a href="/aktivnosti/dogadjaji" id="eventsView"
+                    class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Pogledaj sve događaje
-                </button>
+                </a>
             </div>
+
         </div>
     </section>
 
