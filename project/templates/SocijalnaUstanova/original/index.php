@@ -979,7 +979,7 @@
             </div>
 
             <div class="text-center mt-12">
-                <a href="#" id="vestiView"
+                <a href="/vesti" id="vestiView"
                     class="bg-gradient-to-r from-info to-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-newspaper mr-3"></i>
                     Pogledaj sve vesti
@@ -1104,7 +1104,7 @@
             </div>
 
             <div class="text-center">
-                <a href="#" class="bg-gradient-to-r from-success to-info text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
+                <a href="/prava-i-usluge/programi-obuke" class="bg-gradient-to-r from-success to-info text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-graduation-cap mr-3"></i>
                     Pogledaj sve programe obuke
                 </a>
@@ -1216,7 +1216,7 @@
             </div>
 
             <div class="text-center">
-                <a data-page="Sluzbe" href="#" class="bg-gradient-to-r from-info to-success text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
+                <a data-page="Sluzbe" href="/o-nama/sluzbe" class="bg-gradient-to-r from-info to-success text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-hands-helping mr-3"></i>
                     Saznaj više o našim službama
                 </a>
