@@ -82,21 +82,23 @@ function updateLocaleUrl($key) {
 ?>
 
 <div class="dropdown nav-item relative">
-    <button class="nav-link px-3 py-2 text-sm font-semibold text-[#ffff] rounded-lg hover:bg-gray-50 flex items-center">
+    <button class="nav-link px-3 py-2 text-sm font-semibold text-secondary_text rounded-lg hover:bg-primary_hover/10 flex items-center transition-colors duration-200">
         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
         <?= $languages[$locale]['label'] ?>
         <i class="fas fa-chevron-down text-xs ml-1.5"></i>
     </button>
 
-    <div class="dropdown-menu absolute top-full right-0 bg-white shadow-xl rounded-xl border border-gray-100 py-2 mt-1 w-40">
+    <div class="dropdown-menu absolute top-full right-0 bg-surface shadow-lg rounded-xl border border-secondary_background py-2 mt-1 w-40 z-50">
         <?php foreach ($languages as $key => $lang): ?>
-            <a href="<?= updateLocaleUrl($key) ?>" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-[#2C3E50] hover:bg-gray-50 transition-all duration-150">
+            <a href="<?= updateLocaleUrl($key) ?>"
+               class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-primary_text hover:bg-primary_hover/10 rounded-lg transition-colors duration-150">
                 <span><?= $lang['flag'] ?></span>
                 <span><?= $lang['label'] ?></span>
             </a>
         <?php endforeach; ?>
     </div>
 </div>
+
 
 `;
       comp.replaceWith({ type: "textnode", content: phpLocaleCode });

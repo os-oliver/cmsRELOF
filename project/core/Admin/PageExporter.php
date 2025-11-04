@@ -13,6 +13,7 @@ use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
+use App\Admin\PageBuilders\SportsPageBuilder;
 use App\Admin\PageBuilders\TestBuilder;
 use App\Admin\PageBuilders\UvodPageBuilder;
 use App\Admin\PageBuilders\VestiPageBuilder;
@@ -511,12 +512,11 @@ class PageExporter
         foreach ($structure as $k => $v) {
             $structureLower[strtolower($k)] = $v;
         }
-
         foreach ($this->data['ids'] as $entry) {
             // Split by '-' if exists
             $parts = explode('-', $entry, 2);
             $id = $parts[0]; // first part is variable name
-            $key = isset($parts[1]) ? $parts[1] : $parts[0]; // if second part exists, use it; else use first part
+            $key = isset($parts[1]) ? strtolower($parts[1]) : strtolower($parts[0]);
 
             // Map 'events' to 'dogadjaji' always
             if (strtolower($key) === 'events') {
@@ -668,6 +668,8 @@ class PageExporter
                 return new IzlozbePageBuilder('izlozbe');
             case 'informacije':
                 return new ZnacajaStranica('ZnacajaStranica', $this->data);
+            case 'sportovi':
+                return new SportsPageBuilder('Sportovi');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -740,6 +742,8 @@ class PageExporter
             return 'izlozbe';
         } elseif (strpos($name, 'informacije') !== false) {
             return 'informacije';
+        } elseif (strpos($name, 'sportovi') !== false) {
+            return 'sportovi';
         }
 
 

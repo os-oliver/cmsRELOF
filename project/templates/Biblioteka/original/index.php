@@ -23,7 +23,7 @@
                         accent: '#D4AF37',
                         accent_hover: '#B8941F',
                         primary_text: '#2C3E50',
-                        secondary_text: '#5D4037',
+                        secondary_text: '#ffffff',
                         background: '#F8F5F0',
                         secondary_background: '#E9E4D8',
                     },
@@ -150,13 +150,13 @@
             <div class="p-6">
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-xl font-heading font-bold text-primary_text">Menu</h2>
-                    <button id="closeMobileMenu" class="text-primary_text hover:text-secondary transition-colors">
+                    <button id="closeMobileMenu" class="text-primary_text hover:text-secondary_text transition-colors">
                         <i class="fas fa-times text-xl"></i>
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
                     <a data-page="Pocetna" href="#"
-                        class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-secondary_text hover:bg-secondary_text_background rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-secondary"></i>Početna
                     </a>
                     <div class="mobile-dropdown">
@@ -246,12 +246,12 @@
 
             <!-- Desktop Navigation -->
             <nav id="navBarID" class="hidden lg:flex space-x-8 items-center">
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
+                <a href="#" class="nav-link text-secondary_text font-semibold flex items-center">
                     <i class="fas fa-home mr-2 text-accent"></i>Početna
                 </a>
 
                 <div class="dropdown relative group">
-                    <button class="nav-link text-background font-semibold flex items-center">
+                    <button class="nav-link text-secondary_text  font-semibold flex items-center">
                         <i class="fas fa-info-circle mr-2 text-accent"></i>O nama
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
@@ -274,7 +274,7 @@
 
                 <!-- Aktivnosti Dropdown -->
                 <div class="dropdown relative group">
-                    <button class="nav-link text-background font-semibold flex items-center">
+                    <button class="nav-link text-secondary_text  font-semibold flex items-center">
                         <i class="fas fa-calendar-alt mr-2 text-accent"></i>Aktivnosti
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
@@ -292,7 +292,7 @@
                 </div>
 
                 <div class="dropdown relative group">
-                    <button class="nav-link text-background font-semibold flex items-center">
+                    <button class="nav-link text-secondary_text  font-semibold flex items-center">
                         <i class="fas fa-child mr-2 text-accent"></i>Usluge
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
@@ -308,17 +308,17 @@
                         </a>
                     </div>
                 </div>
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
+                <a href="#" class="nav-link text-secondary_text  font-semibold flex items-center">
                     <i class="fas fa-theater-masks mr-2 text-accent"></i>Repertoar
                 </a>
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
+                <a href="#" class="nav-link text-secondary_text  font-semibold flex items-center">
                     <i class="fas fa-images mr-2 text-accent"></i>Galerija
                 </a>
-                <a href="#" class="nav-link text-background font-semibold group flex items-center">
+                <a href="#" class="nav-link text-secondary_text  font-semibold group flex items-center">
                     <i class="fas fa-folder-open mr-2 text-accent"></i>
                     Dokumenti
                 </a>
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
+                <a href="#" class="nav-link text-secondary_text  font-semibold flex items-center">
                     <i class="fas fa-address-book mr-2 text-accent"></i>Kontakt
                 </a>
 

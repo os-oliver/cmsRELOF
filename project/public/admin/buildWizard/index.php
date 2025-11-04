@@ -213,8 +213,9 @@ AuthController::requireAdmin();
                                 </div>
                             </div>
                             <!-- Sport -->
-                            <div class="card-hover-effect card-glow bg-white rounded-2xl p-6 cursor-pointer border border-gray-200"
-                                data-type="sport">
+                            <div id="Sport"
+                                class="card-hover-effect card-glow bg-white rounded-2xl p-6 cursor-pointer border border-gray-200"
+                                data-type="Sport">
                                 <div class="text-center">
                                     <div
                                         class="w-16 h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center text-white text-2xl mb-4 mx-auto">
