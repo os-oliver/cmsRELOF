@@ -1,0 +1,127 @@
+[
+  {
+    "Vesti": {
+      "sr": "Vesti",
+      "en": "News",
+      "sr-Cyrl": "Вести",
+      "icon": "fas fa-newspaper",
+      "categories": [
+        "Najave",
+        "Festivali",
+        "Bioskop",
+        "Pozorište",
+        "Izložbe",
+        "Koncerti"
+      ],
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov vesti",
+            "en": "News title",
+            "sr-Cyrl": "Наслов вести"
+          },
+          "required": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum vesti",
+            "en": "News date",
+            "sr-Cyrl": "Датум вести"
+          },
+          "required": true
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika vesti",
+            "en": "News image",
+            "sr-Cyrl": "Насловна слика вести"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Link vesti",
+            "en": "News link",
+            "sr-Cyrl": "Линк вести"
+          }
+        }
+      ]
+    },
+    "Programi": {
+      "sr": "Programi",
+      "en": "Programs",
+      "sr-Cyrl": "Програми",
+      "icon": "fas fa-newspaper",
+      "categories": [
+        "Kultura",
+        "Obrazovanje",
+        "Sport"
+      ],
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov vesti",
+            "en": "News title",
+            "sr-Cyrl": "Наслов вести"
+          },
+          "required": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum vesti",
+            "en": "News date",
+            "sr-Cyrl": "Датум вести"
+          },
+          "required": true
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika vesti",
+            "en": "News image",
+            "sr-Cyrl": "Насловна слика вести"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Link vesti",
+            "en": "News link",
+            "sr-Cyrl": "Линк вести"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,53 +1,38 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omladinski Centar | Aktivnosti za mlade</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#FF6B6B',
-                        secondary: '#4ECDC4',
-                        accent: '#FFD166',
-                        dark: '#1A535C',
-                        light: '#F7FFF7'
-                    }
-                }
-            }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omladinski Centar | Aktivnosti za mlade</title>
+
+  <!-- 1) put config first -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF6B6B',
+            secondary: '#4ECDC4',
+            accent: '#FFD166',
+            dark: '#1A535C',
+            light: '#F7FFF7'
+          }
         }
-    </script>
-    <style>
-        *{
-            color:black;
-        }
-        .instagram-feed {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 8px;
-        }
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        .testimonial-card {
-            transition: all 0.3s ease;
-        }
-        .testimonial-card:hover {
-            background-color: rgba(255, 214, 102, 0.1);
-        }
-        .program-card:hover .program-icon {
-            transform: scale(1.1);
-        }
-        .stat-card:hover {
-            background-color: rgba(122, 197, 205, 0.1);
-        }
-    </style>
+      }
+    }
+  </script>
+  <!-- 2) then load the CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Remove this: * { color:black; }  */
+    /* If you want mostly dark text, scope it: */
+    body { color: #111827; } /* Tailwind's gray-900-ish */
+  </style>
 </head>
+
 <body class="bg-light font-sans text-dark">
     <!-- Header/Navigation -->
     <header class="bg-white shadow-md sticky top-0 z-50">
@@ -67,7 +52,7 @@
                     <a href="#" class="font-medium hover:text-primary">Vesti</a>
                     <a href="#" class="font-medium hover:text-primary">Partneri</a>
                     <a href="#" class="font-medium hover:text-primary">Dokumenti</a>
-                    <a href="#" class="font-medium hover:text-primary">Kontakt</a>
+                    <a static="true" href="#" class="font-medium hover:text-primary">mare</a>
                 </nav>
                 
                 <div class="flex items-center space-x-4">
