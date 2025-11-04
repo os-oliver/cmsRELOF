@@ -1,167 +1,68 @@
 [
-    {
-        "id": "6909cbaa3fb70",
-        "static": false,
-        "movable": false,
-        "name": "",
-        "href": "\/",
-        "path": "pages\/.php",
-        "file": ".php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa4c37e",
-        "static": false,
-        "movable": false,
-        "name": "uvod",
-        "href": "\/o-nama\/uvod",
-        "path": "pages\/uvod.php",
-        "file": "uvod.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa4fcea",
-        "static": false,
-        "movable": false,
-        "name": "misija-i-vizija",
-        "href": "\/o-nama\/misija-i-vizija",
-        "path": "pages\/misija-i-vizija.php",
-        "file": "misija-i-vizija.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa52a14",
-        "static": false,
-        "movable": false,
-        "name": "istorijat",
-        "href": "\/o-nama\/istorijat",
-        "path": "pages\/istorijat.php",
-        "file": "istorijat.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa5aeff",
-        "static": false,
-        "movable": false,
-        "name": "rukovodstvo",
-        "href": "\/o-nama\/rukovodstvo",
-        "path": "pages\/rukovodstvo.php",
-        "file": "rukovodstvo.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa5da32",
-        "static": false,
-        "movable": false,
-        "name": "objekat",
-        "href": "\/o-nama\/objekat",
-        "path": "pages\/objekat.php",
-        "file": "objekat.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa606ec",
-        "static": false,
-        "movable": false,
-        "name": "donacije-i-podrska",
-        "href": "\/o-nama\/donacije-i-podrska",
-        "path": "pages\/donacije-i-podrska.php",
-        "file": "donacije-i-podrska.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa62db8",
-        "static": false,
-        "movable": false,
-        "name": "partneri",
-        "href": "\/o-nama\/partneri",
-        "path": "pages\/partneri.php",
-        "file": "partneri.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa63bfe",
-        "static": false,
-        "movable": false,
-        "name": "sportovi",
-        "href": "\/sportovi",
-        "path": "pages\/sportovi.php",
-        "file": "sportovi.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa6676d",
-        "static": false,
-        "movable": false,
-        "name": "uslovi-upisa",
-        "href": "\/clanstvo\/uslovi-upisa",
-        "path": "pages\/uslovi-upisa.php",
-        "file": "uslovi-upisa.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa69515",
-        "static": false,
-        "movable": false,
-        "name": "cenovnik",
-        "href": "\/clanstvo\/cenovnik",
-        "path": "pages\/cenovnik.php",
-        "file": "cenovnik.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa6c107",
-        "static": false,
-        "movable": false,
-        "name": "pravilnici",
-        "href": "\/clanstvo\/pravilnici",
-        "path": "pages\/pravilnici.php",
-        "file": "pravilnici.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa7226b",
-        "static": false,
-        "movable": false,
-        "name": "galerija",
-        "href": "\/galerija",
-        "path": "pages\/galerija.php",
-        "file": "galerija.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaa83b70",
-        "static": false,
-        "movable": false,
-        "name": "dokumenti",
-        "href": "\/dokumenti",
-        "path": "pages\/dokumenti.php",
-        "file": "dokumenti.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    },
-    {
-        "id": "6909cbaaad241",
-        "static": false,
-        "movable": false,
-        "name": "kontakt",
-        "href": "\/kontakt",
-        "path": "pages\/kontakt.php",
-        "file": "kontakt.php",
-        "status": 1,
-        "created_at": "2025-11-04 09:47:22"
-    }
+  {
+    "id": "6908d481b1ac7",
+    "static": false,
+    "movable": false,
+    "name": "",
+    "href": "/",
+    "path": "pages/.php",
+    "file": ".php",
+    "status": 1,
+    "created_at": "2025-11-03 16:12:49"
+  },
+  {
+    "id": "6908d481b45f9",
+    "static": false,
+    "movable": false,
+    "name": "treninzi",
+    "href": "/treninzi",
+    "path": "pages/treninzi.php",
+    "file": "treninzi.php",
+    "status": 1,
+    "created_at": "2025-11-03 16:12:49"
+  },
+  {
+    "id": "6908d481b74c3",
+    "static": false,
+    "movable": false,
+    "name": "raspored",
+    "href": "/raspored",
+    "path": "pages/raspored.php",
+    "file": "raspored.php",
+    "status": 1,
+    "created_at": "2025-11-03 16:12:49"
+  },
+  {
+    "id": "6908d481ba1c7",
+    "static": false,
+    "movable": false,
+    "name": "clanarine",
+    "href": "/clanarine",
+    "path": "pages/clanarine.php",
+    "file": "clanarine.php",
+    "status": 1,
+    "created_at": "2025-11-03 16:12:49"
+  },
+  {
+    "id": "6908d481bff7f",
+    "static": false,
+    "movable": false,
+    "name": "galerija",
+    "href": "/galerija",
+    "path": "pages/galerija.php",
+    "file": "galerija.php",
+    "status": 1,
+    "created_at": "2025-11-03 16:12:49"
+  },
+  {
+    "id": "6908d4820a3c6",
+    "static": false,
+    "movable": false,
+    "name": "kontakt",
+    "href": "/kontakt",
+    "path": "pages/kontakt.php",
+    "file": "kontakt.php",
+    "status": 1,
+    "created_at": "2025-11-03 16:12:50"
+  }
 ]

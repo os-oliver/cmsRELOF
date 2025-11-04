@@ -366,7 +366,8 @@
                             <div class="flex items-center">
                                 <i class="fas fa-tasks mr-3 text-secondary"></i>Aktivnosti
                             </div>
-                            <i class="fas fa-chevron-down text-sm transition-transform duration-200" id="mobileActivitiesIcon"></i>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-200"
+                                id="mobileActivitiesIcon"></i>
                         </button>
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileActivitiesMenu">
                             <a data-page="Ankete" href="#"
@@ -589,11 +590,11 @@
                     <div
                         class="dropdown-menu absolute top-full right-0 min-w-max bg-secondary_background rounded-xl shadow-2xl border border-surface z-50 py-2 backdrop-blur-sm">
                         <?php foreach ($languages as $key => $lang): ?>
-                                <a href="?locale=<?= $key ?>"
-                                    class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
-                                    <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
-                                    <span class="font-medium"><?= $lang['label'] ?></span>
-                                </a>
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                                <span class="font-medium"><?= $lang['label'] ?></span>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -786,66 +787,10 @@
 
             <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
-<<<<<<< HEAD
-                        <div
-                            class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
-                            <!-- Slika sa leve strane -->
-                            <div class="w-1/3 relative flex-shrink-0">
-                                <img id="g-image"
-                                    src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                    alt="Event image"
-                                    class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div id="g-naziv"
-                                    class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                    Kultura
-                                </div>
-                            </div>
-
-                            <!-- Tekstualni deo -->
-                            <div class="w-2/3 p-6 flex flex-col">
-                                <!-- Naslov i opis -->
-                                <div class="flex-grow mb-4">
-                                    <h3 id="g-title"
-                                        class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                        Savremene Perspektive
-                                    </h3>
-                                    <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
-                                        Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                        savremenih trendova u umetnosti i tehnologiji.
-                                    </p>
-                                </div>
-
-                                <!-- Datum, vreme, lokacija -->
-                                <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-calendar-alt text-primary"></i>
-                                        <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-clock text-secondary"></i>
-                                        <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-accent"></i>
-                                        <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                            Umetnosti</span>
-                                    </div>
-                                </div>
-
-                                <!-- CTA dugme -->
-                                <div>
-                                    <a id="g-ovise"
-                                        class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
-                                        Više informacija
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-=======
-                    <div
-                        class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex flex-col md:flex-row overflow-hidden">
-                        <div class="w-full md:w-1/3 relative flex-shrink-0 h-64 md:h-auto">
+                    <<<<<<< HEAD <div
+                        class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
+                        <!-- Slika sa leve strane -->
+                        <div class="w-1/3 relative flex-shrink-0">
                             <img id="g-image"
                                 src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
                                 alt="Event image"
@@ -856,19 +801,21 @@
                             </div>
                         </div>
 
-                        <div class="w-full md:w-2/3 p-6 flex flex-col justify-between">
-                            <div class="mb-4">
+                        <!-- Tekstualni deo -->
+                        <div class="w-2/3 p-6 flex flex-col">
+                            <!-- Naslov i opis -->
+                            <div class="flex-grow mb-4">
                                 <h3 id="g-title"
-                                    class="text-xl md:text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
+                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
                                     Savremene Perspektive
                                 </h3>
-                                <p id="g-description"
-                                    class="text-primary_text text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-2">
+                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
                                     Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
                                     savremenih trendova u umetnosti i tehnologiji.
                                 </p>
                             </div>
 
+                            <!-- Datum, vreme, lokacija -->
                             <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
                                 <div class="flex items-center gap-2">
                                     <i class="fas fa-calendar-alt text-primary"></i>
@@ -885,30 +832,80 @@
                                 </div>
                             </div>
 
+                            <!-- CTA dugme -->
                             <div>
                                 <a id="g-ovise"
-                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm inline-block text-center w-full md:w-auto">
+                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
                                     Više informacija
                                 </a>
                             </div>
                         </div>
+                </div>
+
+                =======
+                <div
+                    class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex flex-col md:flex-row overflow-hidden">
+                    <div class="w-full md:w-1/3 relative flex-shrink-0 h-64 md:h-auto">
+                        <img id="g-image"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            alt="Event image"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <div id="g-naziv"
+                            class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
+                            Kultura
+                        </div>
                     </div>
 
-<<<<<<< HEAD
+                    <div class="w-full md:w-2/3 p-6 flex flex-col justify-between">
+                        <div class="mb-4">
+                            <h3 id="g-title"
+                                class="text-xl md:text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
+                                Savremene Perspektive
+                            </h3>
+                            <p id="g-description"
+                                class="text-primary_text text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-2">
+                                Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
+                                savremenih trendova u umetnosti i tehnologiji.
+                            </p>
+                        </div>
 
-=======
->>>>>>> e7b6148 (globaljson/forms)
->>>>>>> parent of d319d8a (prvi/fix)
+                        <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-calendar-alt text-primary"></i>
+                                <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock text-secondary"></i>
+                                <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt text-accent"></i>
+                                <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
+                                    Umetnosti</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a id="g-ovise"
+                                class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm inline-block text-center w-full md:w-auto">
+                                Više informacija
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <<<<<<< HEAD=======>>>>>>> e7b6148 (globaljson/forms)
+                    >>>>>>> parent of d319d8a (prvi/fix)
                 <?php endfor; ?>
-            </div>
+        </div>
 
-            <div class="text-center mt-12">
-                <a href="/aktivnosti/dogadjaji" id="eventsView"
-                    class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve događaje
-                </a>
-            </div>
+        <div class="text-center mt-12">
+            <a href="/aktivnosti/dogadjaji" id="eventsView"
+                class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
+                <i class="fas fa-calendar-alt mr-3"></i>
+                Pogledaj sve događaje
+            </a>
+        </div>
 
         </div>
     </section>
@@ -996,60 +993,60 @@
 
             <div id="SeminariCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
-                        <div
-                            class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
-                            <!-- Slika sa leve strane -->
-                            <div class="w-1/3 relative flex-shrink-0">
-                                <img id="g-image"
-                                    src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                    alt="Event image"
-                                    class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div id="g-naziv"
-                                    class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                    Kultura
-                                </div>
-                            </div>
-
-                            <!-- Tekstualni deo -->
-                            <div class="w-2/3 p-6 flex flex-col">
-                                <!-- Naslov i opis -->
-                                <div class="flex-grow mb-4">
-                                    <h3 id="g-title"
-                                        class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                        Savremene Perspektive
-                                    </h3>
-                                    <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
-                                        Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                        savremenih trendova u umetnosti i tehnologiji.
-                                    </p>
-                                </div>
-
-                                <!-- Datum, vreme, lokacija -->
-                                <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-calendar-alt text-primary"></i>
-                                        <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-clock text-secondary"></i>
-                                        <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-accent"></i>
-                                        <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                            Umetnosti</span>
-                                    </div>
-                                </div>
-
-                                <!-- CTA dugme -->
-                                <div>
-                                    <a id="g-ovise"
-                                        class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
-                                        Više informacija
-                                    </a>
-                                </div>
+                    <div
+                        class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
+                        <!-- Slika sa leve strane -->
+                        <div class="w-1/3 relative flex-shrink-0">
+                            <img id="g-image"
+                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                                alt="Event image"
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <div id="g-naziv"
+                                class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
+                                Kultura
                             </div>
                         </div>
+
+                        <!-- Tekstualni deo -->
+                        <div class="w-2/3 p-6 flex flex-col">
+                            <!-- Naslov i opis -->
+                            <div class="flex-grow mb-4">
+                                <h3 id="g-title"
+                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
+                                    Savremene Perspektive
+                                </h3>
+                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
+                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
+                                    savremenih trendova u umetnosti i tehnologiji.
+                                </p>
+                            </div>
+
+                            <!-- Datum, vreme, lokacija -->
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-calendar-alt text-primary"></i>
+                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-clock text-secondary"></i>
+                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-map-marker-alt text-accent"></i>
+                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
+                                        Umetnosti</span>
+                                </div>
+                            </div>
+
+                            <!-- CTA dugme -->
+                            <div>
+                                <a id="g-ovise"
+                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
+                                    Više informacija
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                 <?php endfor; ?>
             </div>
@@ -1081,46 +1078,46 @@
 
             <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
-                        <article
-                            class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
-                            <div class="h-56 relative overflow-hidden">
-                                <img id="g-slika"
-                                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
-                                    alt="Vest"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <article
+                        class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                        <div class="h-56 relative overflow-hidden">
+                            <img id="g-slika"
+                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                                alt="Vest"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-4">
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
+                                    <i class="fas fa-newspaper text-lg"></i>
+                                </div>
+                                <div class="flex items-center text-sm text-secondary_text">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span id="g-datum">15. Oktobar 2025</span>
                                 </div>
                             </div>
-                            <div class="p-6">
-                                <div class="flex items-center gap-3 mb-4">
-                                    <div
-                                        class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
-                                        <i class="fas fa-newspaper text-lg"></i>
-                                    </div>
-                                    <div class="flex items-center text-sm text-secondary_text">
-                                        <i class="fas fa-calendar-alt mr-2"></i>
-                                        <span id="g-datum">15. Oktobar 2025</span>
-                                    </div>
-                                </div>
 
-                                <h3 id="g-naslov"
-                                    class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
-                                    Novi kulturni centar otvara vrata građanima
-                                </h3>
+                            <h3 id="g-naslov"
+                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                                Novi kulturni centar otvara vrata građanima
+                            </h3>
 
-                                <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
-                                    Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
-                                    kreativnosti i umetnosti u našem gradu.
-                                </p>
+                            <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
+                                Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
+                                kreativnosti i umetnosti u našem gradu.
+                            </p>
 
-                                <a id="g-ovise" href="#"
-                                    class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
-                                    Pročitaj više
-                                    <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
-                                </a>
-                            </div>
-                        </article>
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>
                 <?php endfor; ?>
             </div>
 
@@ -1293,140 +1290,140 @@
         </div>
     </footer>
 
-<script>
-    // Tailwind konfiguracija
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    primary: '#f97316',
-                    primary_hover: '#ea580c',
-                    secondary: '#fb923c',
-                    secondary_hover: '#fdba74',
-                    accent: '#d6aa7f',
-                    accent_hover: '#fbbf24',
-                    primary_text: '#332a21',
-                    secondary_text: '#7c5e3d',
-                    background: '#fff7ed',
-                    secondary_background: '#ffedd5',
-                    surface: '#fff'
-                },
-                fontFamily: {
-                    heading: ['Playfair Display', 'serif'],
-                    heading2: ['Crimson Pro', 'serif'],
-                    body: ['Raleway', 'sans-serif'],
-                },
-                animation: {
-                    'float': 'float 6s ease-in-out infinite',
-                    'fade-in': 'fadeIn 1s ease-in',
-                    'bounce-slow': 'bounce 3s infinite',
-                },
-                keyframes: {
-                    float: {
-                        '0%, 100%': { transform: 'translateY(0px)' },
-                        '50%': { transform: 'translateY(-15px)' },
+    <script>
+        // Tailwind konfiguracija
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f97316',
+                        primary_hover: '#ea580c',
+                        secondary: '#fb923c',
+                        secondary_hover: '#fdba74',
+                        accent: '#d6aa7f',
+                        accent_hover: '#fbbf24',
+                        primary_text: '#332a21',
+                        secondary_text: '#7c5e3d',
+                        background: '#fff7ed',
+                        secondary_background: '#ffedd5',
+                        surface: '#fff'
                     },
-                    fadeIn: {
-                        from: { opacity: '0' },
-                        to: { opacity: '1' },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        heading2: ['Crimson Pro', 'serif'],
+                        body: ['Raleway', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-in',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        fadeIn: {
+                            from: { opacity: '0' },
+                            to: { opacity: '1' },
+                        }
                     }
                 }
             }
-        }
-    };
+        };
 
-    // Funkcionalnost nakon učitavanja stranice
-    document.addEventListener('DOMContentLoaded', function () {
-        // Helper funkcija za proveru postojanja elemenata
-        function getEl(id) {
-            return document.getElementById(id) || null;
-        }
-
-        const hamburger = getEl('hamburger');
-        const mobileMenu = getEl('mobileMenu');
-        const closeMobileMenu = getEl('closeMobileMenu');
-        const mobileMenuOverlay = getEl('mobileMenuOverlay');
-        const mobileAboutToggle = getEl('mobileAboutToggle');
-        const mobileAboutMenu = getEl('mobileAboutMenu');
-        const mobileAboutIcon = getEl('mobileAboutIcon');
-    const mobileActivitiesToggle = document.getElementById('mobileActivitiesToggle');
-    const mobileActivitiesMenu = document.getElementById('mobileActivitiesMenu');
-    const mobileActivitiesIcon = document.getElementById('mobileActivitiesIcon');
-        mobileActivitiesToggle.addEventListener('click', function () {
-        mobileActivitiesMenu.classList.toggle('hidden');
-        mobileActivitiesToggle.classList.toggle('active');
-        mobileActivitiesIcon.classList.toggle('rotate-180'); // rotacija strelice
-    });
-        const searchButton = getEl('searchButton');
-        const searchInputContainer = getEl('searchInputContainer');
-        const closeSearch = getEl('closeSearch');
-        const increaseFontBtn = getEl('increaseFontBtn');
-
-        // MOBILE MENU TOGGLE
-        if (hamburger && mobileMenu && closeMobileMenu && mobileMenuOverlay) {
-            const mobileMenuPanel = getEl('mobileMenuPanel');
-            function openMenu() {
-                if (!mobileMenu || !mobileMenuPanel) return;
-                mobileMenu.classList.remove('hidden');
-                setTimeout(() => mobileMenuPanel.classList.remove('translate-x-full'), 10);
-                hamburger.classList.add('active');
+        // Funkcionalnost nakon učitavanja stranice
+        document.addEventListener('DOMContentLoaded', function () {
+            // Helper funkcija za proveru postojanja elemenata
+            function getEl(id) {
+                return document.getElementById(id) || null;
             }
-            function closeMenu() {
-                if (!mobileMenu || !mobileMenuPanel) return;
-                mobileMenuPanel.classList.add('translate-x-full');
-                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-                hamburger.classList.remove('active');
+
+            const hamburger = getEl('hamburger');
+            const mobileMenu = getEl('mobileMenu');
+            const closeMobileMenu = getEl('closeMobileMenu');
+            const mobileMenuOverlay = getEl('mobileMenuOverlay');
+            const mobileAboutToggle = getEl('mobileAboutToggle');
+            const mobileAboutMenu = getEl('mobileAboutMenu');
+            const mobileAboutIcon = getEl('mobileAboutIcon');
+            const mobileActivitiesToggle = document.getElementById('mobileActivitiesToggle');
+            const mobileActivitiesMenu = document.getElementById('mobileActivitiesMenu');
+            const mobileActivitiesIcon = document.getElementById('mobileActivitiesIcon');
+            mobileActivitiesToggle.addEventListener('click', function () {
+                mobileActivitiesMenu.classList.toggle('hidden');
+                mobileActivitiesToggle.classList.toggle('active');
+                mobileActivitiesIcon.classList.toggle('rotate-180'); // rotacija strelice
+            });
+            const searchButton = getEl('searchButton');
+            const searchInputContainer = getEl('searchInputContainer');
+            const closeSearch = getEl('closeSearch');
+            const increaseFontBtn = getEl('increaseFontBtn');
+
+            // MOBILE MENU TOGGLE
+            if (hamburger && mobileMenu && closeMobileMenu && mobileMenuOverlay) {
+                const mobileMenuPanel = getEl('mobileMenuPanel');
+                function openMenu() {
+                    if (!mobileMenu || !mobileMenuPanel) return;
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => mobileMenuPanel.classList.remove('translate-x-full'), 10);
+                    hamburger.classList.add('active');
+                }
+                function closeMenu() {
+                    if (!mobileMenu || !mobileMenuPanel) return;
+                    mobileMenuPanel.classList.add('translate-x-full');
+                    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                    hamburger.classList.remove('active');
+                }
+                hamburger.addEventListener('click', function () {
+                    if (mobileMenuPanel && mobileMenuPanel.classList.contains('translate-x-full')) {
+                        openMenu();
+                    } else {
+                        closeMenu();
+                    }
+                });
+                closeMobileMenu.addEventListener('click', closeMenu);
+                mobileMenuOverlay.addEventListener('click', closeMenu);
             }
-            hamburger.addEventListener('click', function () {
-                if (mobileMenuPanel && mobileMenuPanel.classList.contains('translate-x-full')) {
-                    openMenu();
-                } else {
-                    closeMenu();
-                }
-            });
-            closeMobileMenu.addEventListener('click', closeMenu);
-            mobileMenuOverlay.addEventListener('click', closeMenu);
-        }
 
-        // MOBILE DROPDOWN
-        if (mobileAboutToggle && mobileAboutMenu) {
-            mobileAboutToggle.addEventListener('click', function () {
-                mobileAboutMenu.classList.toggle('hidden');
-                mobileAboutToggle.parentElement.classList.toggle('active');
-                if (mobileAboutIcon) mobileAboutIcon.classList.toggle('rotate-180');
-            });
-        }
+            // MOBILE DROPDOWN
+            if (mobileAboutToggle && mobileAboutMenu) {
+                mobileAboutToggle.addEventListener('click', function () {
+                    mobileAboutMenu.classList.toggle('hidden');
+                    mobileAboutToggle.parentElement.classList.toggle('active');
+                    if (mobileAboutIcon) mobileAboutIcon.classList.toggle('rotate-180');
+                });
+            }
 
-        // SEARCH TOGGLE
-        if (searchButton && searchInputContainer && closeSearch) {
-            searchButton.addEventListener('click', function () {
-                searchInputContainer.classList.toggle('hidden');
-                setTimeout(() => searchInputContainer.classList.toggle('opacity-0'), 10);
-            });
-            closeSearch.addEventListener('click', function () {
-                searchInputContainer.classList.add('opacity-0');
-                setTimeout(() => searchInputContainer.classList.add('hidden'), 300);
-            });
-        }
+            // SEARCH TOGGLE
+            if (searchButton && searchInputContainer && closeSearch) {
+                searchButton.addEventListener('click', function () {
+                    searchInputContainer.classList.toggle('hidden');
+                    setTimeout(() => searchInputContainer.classList.toggle('opacity-0'), 10);
+                });
+                closeSearch.addEventListener('click', function () {
+                    searchInputContainer.classList.add('opacity-0');
+                    setTimeout(() => searchInputContainer.classList.add('hidden'), 300);
+                });
+            }
 
-        // FONT SIZE TOGGLE
-        if (increaseFontBtn) {
-            let fontSizeIncreased = false;
-            increaseFontBtn.addEventListener('click', function () {
-                const body = document.body;
-                if (!fontSizeIncreased) {
-                    body.style.fontSize = '1.1rem';
-                    fontSizeIncreased = true;
-                    increaseFontBtn.textContent = 'A-';
-                } else {
-                    body.style.fontSize = '';
-                    fontSizeIncreased = false;
-                    increaseFontBtn.textContent = 'A+';
-                }
-            });
-        }
-    });
-</script>
+            // FONT SIZE TOGGLE
+            if (increaseFontBtn) {
+                let fontSizeIncreased = false;
+                increaseFontBtn.addEventListener('click', function () {
+                    const body = document.body;
+                    if (!fontSizeIncreased) {
+                        body.style.fontSize = '1.1rem';
+                        fontSizeIncreased = true;
+                        increaseFontBtn.textContent = 'A-';
+                    } else {
+                        body.style.fontSize = '';
+                        fontSizeIncreased = false;
+                        increaseFontBtn.textContent = 'A+';
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 
