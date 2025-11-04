@@ -26,6 +26,7 @@ use App\Admin\PageBuilders\ContactPageBuilder;
 use App\Admin\PageBuilders\DocumentsPageBuilder;
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Admin\PageBuilders\EventsPageBuilder;
+use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
 
@@ -638,6 +639,10 @@ class PageExporter
                 return new ObrasciPageBuilder('Obrasci');
             case 'nasi-korisnici':
                 return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
+            case 'repertoar':
+                return new RepertoarPageBuilder('Repertoar');
+            case 'ansambl':
+                return new DynamicPageBuilder('Ansambl');
             case 'pitanja':
                 return new FAQPageBuilder('Pitanja');
             case 'test123':
@@ -685,12 +690,17 @@ class PageExporter
             return 'obrasci';
         } elseif (strpos($name, 'nasi-korisnici') !== false || strpos($name, 'naši korisnici') !== false || strpos($name, 'nai-korisnici') !== false) {
             return 'nasi-korisnici';
+        } elseif (strpos($name, 'repertoar') !== false) {
+            return 'repertoar';
+        } elseif (strpos($name, 'ansambl') !== false) {
+            return 'ansambl';
         } elseif (strpos($name, 'pitanja') !== false) {
             return 'pitanja';
         } elseif (strpos($name, 'test123') !== false) {
             return 'test123';
-        }
-
+        } elseif (strpos($name, 'zaposleni') !== false) {
+            return 'zaposleni';
+        } 
 
         return 'basic';
     }
