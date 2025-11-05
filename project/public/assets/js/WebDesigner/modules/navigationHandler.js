@@ -82,7 +82,7 @@ function updateLocaleUrl($key) {
 ?>
 
 <div class="dropdown nav-item relative">
-    <button class="nav-link px-3 py-2 text-sm font-semibold text-[#ffff] rounded-lg hover:bg-gray-50 flex items-center">
+    <button class="nav-link px-3 py-2 text-sm font-semibold text-text_primary rounded-lg hover:bg-gray-50 flex items-center">
         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
         <?= $languages[$locale]['label'] ?>
         <i class="fas fa-chevron-down text-xs ml-1.5"></i>
@@ -110,7 +110,6 @@ function updateLocaleUrl($key) {
         .replace(/[\u0300-\u036f]/g, "")
         .replace(/[^\x00-\x7F]/g, "")
         .toLowerCase();
-
       if (text == "pocetna") text = "";
       comp.addAttributes({ href: "/" + text });
       comp.view.render();
@@ -127,7 +126,7 @@ function updateLocaleUrl($key) {
       comp.components().forEach((ch) => {
         const tag = ch.get("tagName");
         if (tag === "button") {
-          const text = normalizeText(ch.view.el.innerText);
+          let text = normalizeText(ch.view.el.innerText);
           current = { root: text, elements: [] };
           tree.push(current);
         }
@@ -136,10 +135,12 @@ function updateLocaleUrl($key) {
             if (link.get("tagName") === "a") {
               const el = link.view.el;
               let txt = normalizeText(el.textContent);
-              const text = txt
+              let text = txt
                 .trim()
                 .replace(/ /g, "-")
                 .replace(/[^\x00-\x7F]/g, "");
+              text = normalizeText(text);
+              console.log("text:" + text);
               link.addAttributes({
                 href: ("/" + current.root + "/" + text)
                   .toLowerCase()
