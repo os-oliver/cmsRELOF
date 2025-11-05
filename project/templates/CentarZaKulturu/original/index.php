@@ -340,7 +340,7 @@
 
 <body class="bg-background font-body text-primary_text min-h-screen overflow-x-hidden">
     <!-- Enhanced Header -->
-    <div id="mobileMenu" class="fixed inset-0 z-40 md:hidden hidden">
+    <div id="mobileMenu" class="fixed inset-0 z-40  hidden">
         <div class="fixed inset-0 bg-black bg-opacity-50" id="mobileMenuOverlay"></div>
         <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-secondary_background shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
             id="mobileMenuPanel">
@@ -740,7 +740,7 @@
                     <div class="relative w-full h-[500px] lg:h-[600px]">
                         <!-- Large Featured Image -->
                         <div
-                            class="absolute top-0 right-0 w-[70%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface">
+                            class="slider-item absolute top-0 right-0 w-[70%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface">
                             <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800"
                                 alt="Kulturna aktivnost" class="w-full h-full object-cover" />
                             <div class="absolute inset-0 bg-gradient-to-t from-primary_text/40 to-transparent"></div>
@@ -1253,80 +1253,100 @@
 
 
 
-    <script>
+ <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileAboutToggle = document.getElementById('mobileAboutToggle');
+    const mobileAboutMenu = document.getElementById('mobileAboutMenu');
+    const searchButton = document.getElementById('searchButton');
+    const searchInputContainer = document.getElementById('searchInputContainer');
+    const closeSearch = document.getElementById('closeSearch');
+    const increaseFontBtn = document.getElementById('increaseFontBtn');
+    let fontSizeIncreased = false;
 
+    function openMenu() {
+        if (mobileMenu && mobileMenuPanel && hamburger) {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => mobileMenuPanel.classList.remove('translate-x-full'), 10);
+            hamburger.classList.add('active');
+        }
+    }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const mobileMenuPanel = document.getElementById('mobileMenuPanel');
-            const closeMobileMenu = document.getElementById('closeMobileMenu');
-            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-            const mobileAboutToggle = document.getElementById('mobileAboutToggle');
-            const mobileAboutMenu = document.getElementById('mobileAboutMenu');
-            const searchButton = document.getElementById('searchButton');
-            const searchInputContainer = document.getElementById('searchInputContainer');
-            const closeSearch = document.getElementById('closeSearch');
-            const increaseFontBtn = document.getElementById('increaseFontBtn');
-            let fontSizeIncreased = false;
+    function closeMenu() {
+        if (mobileMenu && mobileMenuPanel && hamburger) {
+            mobileMenuPanel.classList.add('translate-x-full');
+            hamburger.classList.remove('active');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        }
+    }
 
-            function openMenu() {
+    if (hamburger && mobileMenu && mobileMenuPanel) {
+        hamburger.addEventListener('click', function () {
+            if (mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.remove('hidden');
-                setTimeout(() => mobileMenuPanel.classList.remove('translate-x-full'), 10);
+                requestAnimationFrame(() => mobileMenuPanel.classList.remove('translate-x-full'));
                 hamburger.classList.add('active');
-            }
-
-            function closeMenu() {
+            } else {
                 mobileMenuPanel.classList.add('translate-x-full');
+                mobileMenuPanel.addEventListener('transitionend', () => {
+                    mobileMenu.classList.add('hidden');
+                }, { once: true });
                 hamburger.classList.remove('active');
-                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
             }
-
-            hamburger.addEventListener('click', function () {
-                if (mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.remove('hidden');
-                    requestAnimationFrame(() => mobileMenuPanel.classList.remove('translate-x-full'));
-                    hamburger.classList.add('active');
-                } else {
-                    mobileMenuPanel.classList.add('translate-x-full');
-                    mobileMenuPanel.addEventListener('transitionend', () => {
-                        mobileMenu.classList.add('hidden');
-                    }, { once: true });
-                    hamburger.classList.remove('active');
-                }
-            });
-            closeMobileMenu.addEventListener('click', closeMenu);
-            mobileMenuOverlay.addEventListener('click', closeMenu);
-
-            mobileAboutToggle.addEventListener('click', function () {
-                mobileAboutMenu.classList.toggle('hidden');
-                mobileAboutToggle.parentElement.classList.toggle('active');
-            });
-
-            searchButton.addEventListener('click', function () {
-                searchInputContainer.classList.remove('hidden');
-                setTimeout(() => searchInputContainer.classList.remove('opacity-0'), 10);
-            });
-
-            closeSearch.addEventListener('click', function () {
-                searchInputContainer.classList.add('opacity-0');
-                setTimeout(() => searchInputContainer.classList.add('hidden'), 300);
-            });
-
-            increaseFontBtn.addEventListener('click', function () {
-                const body = document.body;
-                if (!fontSizeIncreased) {
-                    body.style.fontSize = '1.1rem';
-                    fontSizeIncreased = true;
-                    increaseFontBtn.textContent = 'A-';
-                } else {
-                    body.style.fontSize = '';
-                    fontSizeIncreased = false;
-                    increaseFontBtn.textContent = 'A+';
-                }
-            });
         });
-    </script>
+    }
+
+    if (closeMobileMenu) {
+        closeMobileMenu.addEventListener('click', closeMenu);
+    }
+
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', closeMenu);
+    }
+
+    if (mobileAboutToggle && mobileAboutMenu) {
+        mobileAboutToggle.addEventListener('click', function () {
+            mobileAboutMenu.classList.toggle('hidden');
+            if (mobileAboutToggle.parentElement) {
+                mobileAboutToggle.parentElement.classList.toggle('active');
+            }
+        });
+    }
+
+    if (searchButton && searchInputContainer) {
+        searchButton.addEventListener('click', function () {
+            searchInputContainer.classList.remove('hidden');
+            setTimeout(() => searchInputContainer.classList.remove('opacity-0'), 10);
+        });
+    }
+
+    if (closeSearch && searchInputContainer) {
+        closeSearch.addEventListener('click', function () {
+            searchInputContainer.classList.add('opacity-0');
+            setTimeout(() => searchInputContainer.classList.add('hidden'), 300);
+        });
+    }
+
+    if (increaseFontBtn) {
+        increaseFontBtn.addEventListener('click', function () {
+            const body = document.body;
+            if (!fontSizeIncreased) {
+                body.style.fontSize = '1.1rem';
+                fontSizeIncreased = true;
+                increaseFontBtn.textContent = 'A-';
+            } else {
+                body.style.fontSize = '';
+                fontSizeIncreased = false;
+                increaseFontBtn.textContent = 'A+';
+            }
+        });
+    }
+});
+</script>
 
 
 </body>

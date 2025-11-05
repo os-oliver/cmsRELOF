@@ -37,11 +37,384 @@ async function loadComponentIntoEditor(componentPath) {
 
     const wrapper = grapesjsEditor.DomComponents.getWrapper();
     wrapper.view.render();
+    // After rendering components, initialize sliders inside the canvas so next/prev/indicators work
+    try {
+      initializeCanvasSliders(grapesjsEditor);
+    } catch (err) {
+      console.warn("initializeCanvasSliders failed:", err);
+    }
   } catch (err) {
     console.error("Greška pri učitavanju komponente:", err);
     alert(`Greška pri učitavanju: ${err.message}`);
   }
 }
+
+// Initialize sliders inside the editor canvas (per-slider, resilient)
+function initializeCanvasSliders(editor) {
+  try {
+    const frame = editor.Canvas.getFrameEl();
+    const win = frame.contentWindow;
+    const doc = frame.contentDocument;
+    if (!doc) return;
+
+    const sliders = Array.from(
+      doc.querySelectorAll(".slider, #slider, .carousel")
+    );
+    if (!sliders.length) return;
+
+    sliders.forEach((slider) => {
+      if (slider.dataset.gjsSliderInit === "1") return; // already initialized
+      slider.dataset.gjsSliderInit = "1";
+
+      const track =
+        slider.querySelector(".slider-track") ||
+        slider.querySelector("#slider") ||
+        slider.querySelector(".slider-wrapper");
+      const items = Array.from(slider.querySelectorAll(".slider-item"));
+      const prevBtn =
+        slider.querySelector(".slider-prev") ||
+        slider.querySelector(".prevButton") ||
+        slider.querySelector("#prevButton");
+      const nextBtn =
+        slider.querySelector(".slider-next") ||
+        slider.querySelector(".nextButton") ||
+        slider.querySelector("#nextButton");
+      const dotsWrap =
+        slider.querySelector(".slider-dots") ||
+        slider.querySelector(".slider-indicators") ||
+        slider.querySelector(".indicators");
+      const indicators = dotsWrap
+        ? Array.from(dotsWrap.children)
+        : Array.from(slider.querySelectorAll(".slider-indicator"));
+
+      let current = 0;
+      const total = items.length;
+      let intervalId = null;
+
+      function apply() {
+        if (!track) return;
+        const w =
+          slider.clientWidth ||
+          (items[0] && items[0].clientWidth) ||
+          slider.offsetWidth;
+        items.forEach((it) => (it.style.width = w + "px"));
+        track.style.width = w * total + "px";
+        track.style.transform = `translateX(${-current * w}px)`;
+        if (indicators && indicators.length) {
+          indicators.forEach((ind, i) =>
+            ind.classList.toggle("active", i === current)
+          );
+        }
+      }
+
+      function showIndex(i) {
+        if (!total) return;
+        current = (i + total) % total;
+        apply();
+      }
+
+      function next() {
+        showIndex(current + 1);
+      }
+
+      function prev() {
+        showIndex(current - 1);
+      }
+
+      function startAuto() {
+        if (intervalId) clearInterval(intervalId);
+        if (total > 1) intervalId = setInterval(next, 5000);
+        slider.dataset.gjsSlideInterval = intervalId || "";
+      }
+
+      function stopAuto() {
+        if (intervalId) clearInterval(intervalId);
+        intervalId = null;
+        slider.dataset.gjsSlideInterval = "";
+      }
+
+      // Wire controls
+      if (nextBtn)
+        nextBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          next();
+          stopAuto();
+          startAuto();
+        });
+      if (prevBtn)
+        prevBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          prev();
+          stopAuto();
+          startAuto();
+        });
+
+      if (indicators && indicators.length) {
+        indicators.forEach((ind, idx) => {
+          ind.addEventListener("click", (e) => {
+            e.preventDefault();
+            showIndex(idx);
+            stopAuto();
+            startAuto();
+          });
+        });
+      }
+
+      // Expose simple controls on the canvas window for compatibility with other scripts
+      if (!win.prevSlide) win.prevSlide = prev;
+      if (!win.nextSlide) win.nextSlide = next;
+      if (!win.goToSlide) win.goToSlide = showIndex;
+
+      // Initial layout
+      apply();
+      startAuto();
+
+      // Resize handling
+      const onResize = () => apply();
+      win.addEventListener("resize", onResize);
+      // store cleanup
+      slider._gjsCleanup = () => win.removeEventListener("resize", onResize);
+    });
+  } catch (err) {
+    console.warn("initializeCanvasSliders error:", err);
+  }
+}
+
+// --- Editor helper functions (adapted from editorSetup.js) ---
+function setupEditorCSS(editor) {
+  try {
+    const head = editor.Canvas.getFrameEl().contentDocument.head;
+    const cssLinks = [
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+    ];
+
+    cssLinks.forEach((href) => {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = href;
+      head.appendChild(link);
+    });
+  } catch (err) {
+    console.warn("setupEditorCSS failed:", err);
+  }
+}
+
+function setupUndoRedo(editor) {
+  try {
+    const undo = document.getElementById("undo-btn");
+    const redo = document.getElementById("redo-btn");
+
+    // If controls are not present, silently return
+    if (!undo || !redo) return;
+
+    editor.on("undo redo", () => {
+      undo.disabled = !editor.UndoManager.hasUndo();
+      redo.disabled = !editor.UndoManager.hasRedo();
+    });
+
+    undo.addEventListener("click", () => editor.UndoManager.undo());
+    redo.addEventListener("click", () => editor.UndoManager.redo());
+
+    // Prevent default keyboard shortcuts in the editor canvas
+    editor.on("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && ["z", "y"].includes(e.key)) {
+        e.preventDefault();
+        // Lightweight UX: notify user to use toolbar buttons
+        alert("Koristite dugmad Poništi/Ponovi na alatnoj traci!");
+      }
+    });
+  } catch (err) {
+    console.warn("setupUndoRedo failed:", err);
+  }
+}
+
+function setupLinkLogging(editor) {
+  try {
+    const frame = editor.Canvas.getFrameEl();
+    const doc = frame.contentDocument || frame.contentWindow.document;
+    if (!doc || doc._gjs_click_logger_attached) return;
+    doc._gjs_click_logger_attached = true;
+
+    const openNavEditor = (anchorEl, comp) => {
+      try {
+        // Try to open a simple link editor UI in the parent document
+        const hrefInput = parent.document.getElementById("linkHref");
+        const applyBtn = parent.document.getElementById("applyLink");
+        if (!hrefInput || !applyBtn) return;
+
+        const originalHref = (anchorEl && anchorEl.getAttribute("href")) || "";
+        hrefInput.value = originalHref;
+
+        applyBtn.onclick = () => {
+          const newHref = hrefInput.value || "";
+          if (comp && typeof comp.addAttributes === "function") {
+            try {
+              comp.addAttributes({ href: newHref });
+            } catch (e) {
+              console.warn("Failed to set comp attributes", e);
+            }
+          }
+          try {
+            if (anchorEl) anchorEl.setAttribute("href", newHref);
+          } catch (e) {}
+        };
+      } catch (err) {
+        console.warn("openNavEditor error", err);
+      }
+    };
+
+    doc.addEventListener(
+      "click",
+      (e) => {
+        try {
+          const wrapper = editor.DomComponents.getWrapper();
+          let el = e.target;
+          if (!el) return;
+          if (el.nodeType === 3) el = el.parentElement;
+
+          // Slider controls handling
+          const sliderControl = el.closest(
+            ".slider-control, .slider-indicator, .nextButton, .slider-next"
+          );
+
+          // Slider item or image clicked
+          const sliderItem = el.closest(".slider-item");
+          if (sliderItem) {
+            // Ignore clicks on typical text/content
+            if (
+              el.matches &&
+              el.matches(
+                "h1, h2, h3, h4, h5, h6, p, span, button, div.hero-content > *, a, i"
+              )
+            )
+              return;
+
+            const targetImg = sliderItem.querySelector("img");
+            if (!targetImg) return;
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            const imgSrc =
+              targetImg.getAttribute("src") || targetImg.dataset?.src || "";
+            const escaped = imgSrc.replace(/"/g, '\\"');
+            let imgCmp = null;
+
+            if (imgSrc) {
+              imgCmp =
+                wrapper.find(`[src="${escaped}"]`)[0] ||
+                wrapper.find(`[attributes.data-src="${escaped}"]`)[0] ||
+                wrapper.find(`[src*="${escaped}"]`)[0];
+            }
+
+            if (!imgCmp) {
+              const allImgs = wrapper.find("img");
+              for (let i = 0; i < allImgs.length; i++) {
+                const c = allImgs[i];
+                try {
+                  const elFromComp =
+                    typeof c.getEl === "function" ? c.getEl() : c.el;
+                  if (elFromComp?.tagName?.toLowerCase() === "img") {
+                    const compSrc =
+                      elFromComp.getAttribute("src") ||
+                      elFromComp.dataset?.src ||
+                      "";
+                    if (compSrc === imgSrc) {
+                      imgCmp = c;
+                      break;
+                    }
+                  }
+                } catch (err) {
+                  console.warn("Error checking image component:", err);
+                }
+              }
+            }
+
+            if (imgCmp) {
+              editor.select(imgCmp);
+              editor.runCommand("open-assets", { target: imgCmp });
+              return;
+            }
+          }
+
+          // Icon (i) clicks: expose to parent chooser if present
+          if (el.tagName && el.tagName.toLowerCase() === "i") {
+            const anchorForIcon = el.closest("a");
+            const parentDoc = parent.document;
+            if (parentDoc) {
+              try {
+                let comp = null;
+                const id = anchorForIcon?.id;
+                if (id) comp = wrapper.find("#" + id)[0] || null;
+                if (!comp && anchorForIcon) {
+                  const all = wrapper.find();
+                  for (let i = 0; i < all.length; i++) {
+                    const c = all[i];
+                    const elFromComp =
+                      typeof c.getEl === "function" ? c.getEl() : c.el;
+                    if (elFromComp === anchorForIcon) {
+                      comp = c;
+                      break;
+                    }
+                  }
+                }
+
+                parentDoc._gjs_icon_click_target = {
+                  anchor: anchorForIcon,
+                  iconEl: el,
+                  comp,
+                  anchorId: anchorForIcon?.id,
+                };
+
+                const chooser = parentDoc.getElementById("iconChooser");
+                if (chooser) {
+                  chooser.classList.remove("hidden");
+                  chooser.classList.add("flex");
+                }
+              } catch (err) {
+                console.warn("Error handling icon click:", err);
+              }
+              return;
+            }
+          }
+
+          // Link clicks
+          const anchor = el.closest("a");
+          if (!anchor) return;
+
+          let comp = null;
+          const id = anchor.id;
+          try {
+            if (id) comp = wrapper.find("#" + id)[0];
+            if (!comp) {
+              const all = wrapper.find();
+              for (let i = 0; i < all.length; i++) {
+                const c = all[i];
+                const elFromComp =
+                  typeof c.getEl === "function" ? c.getEl() : c.el;
+                if (elFromComp === anchor) {
+                  comp = c;
+                  break;
+                }
+              }
+            }
+          } catch (err) {
+            console.warn("Error finding link component:", err);
+          }
+
+          openNavEditor(anchor, comp);
+        } catch (err) {
+          console.error("Click handler error:", err);
+        }
+      },
+      true
+    );
+  } catch (err) {
+    console.warn("setupLinkLogging failed:", err);
+  }
+}
+
+// --------------------------------------------------------------
 
 // Glavna logika koja se pokreće kada se učita cela stranica
 document.addEventListener("DOMContentLoaded", async () => {
@@ -66,7 +439,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           "https://cdn.tailwindcss.com",
           "/exportedPages/commonScript.js",
         ],
-        styles: [],
+        styles: ["/exportedPages/commonStyle.css"],
       },
 
       // Device Manager
@@ -165,12 +538,207 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     });
 
-    // Čekamo da se editor u potpunosti učita
-    await new Promise((resolve) => {
-      grapesjsEditor.on("load", () => {
-        resolve();
+    // Register slider and container component types (adapted from editorSetup.js)
+    try {
+      const editor = grapesjsEditor;
+
+      editor.DomComponents.addType("slider", {
+        model: {
+          defaults: {
+            tagName: "div",
+            draggable: true,
+            droppable: true,
+            selectable: true,
+            traits: [
+              {
+                type: "number",
+                name: "slides",
+                label: "Slides",
+                changeProp: 1,
+                min: 1,
+                placeholder: 3,
+              },
+            ],
+            script: function () {
+              const el = this;
+              const track =
+                el.querySelector(".slider-track") ||
+                el.querySelector(".slider-wrapper");
+              const items = el.querySelectorAll(".slider-item");
+              const prev =
+                el.querySelector(".slider-prev") ||
+                el.querySelector(".slider-control.left");
+              const next =
+                el.querySelector(".slider-next") ||
+                el.querySelector(".slider-control.right");
+              const dotsWrap =
+                el.querySelector(".slider-dots") ||
+                el.querySelector(".slider-indicators");
+
+              if (!track || items.length === 0) return;
+
+              let idx = 0;
+              const total = items.length;
+
+              function resize() {
+                const w = el.clientWidth;
+                items.forEach((it) => (it.style.width = w + "px"));
+                track.style.width = w * total + "px";
+                track.style.transform = `translateX(${-idx * w}px)`;
+              }
+              resize();
+              window.addEventListener("resize", resize);
+
+              function buildDots() {
+                if (!dotsWrap) return;
+                dotsWrap.innerHTML = "";
+                for (let i = 0; i < total; i++) {
+                  const d = document.createElement("button");
+                  d.type = "button";
+                  d.className =
+                    "slider-indicator w-3 h-3 rounded-full bg-white/30";
+                  d.setAttribute("data-i", i);
+                  d.style.opacity = i === idx ? "1" : "0.6";
+                  d.addEventListener("click", () => goTo(i));
+                  dotsWrap.appendChild(d);
+                }
+              }
+              buildDots();
+
+              function updateDots() {
+                if (!dotsWrap) return;
+                Array.from(dotsWrap.children).forEach((d, i) => {
+                  d.style.opacity = i === idx ? "1" : "0.6";
+                  d.classList.toggle("active", i === idx);
+                });
+              }
+
+              function goTo(i) {
+                const w = el.clientWidth;
+                idx = (i + total) % total;
+                track.style.transform = `translateX(${-idx * w}px)`;
+                updateDots();
+              }
+
+              prev && prev.addEventListener("click", () => goTo(idx - 1));
+              next && next.addEventListener("click", () => goTo(idx + 1));
+
+              // expose functions to canvas window
+              if (window) {
+                window.prevSlide = () => goTo(idx - 1);
+                window.nextSlide = () => goTo(idx + 1);
+                window.goToSlide = goTo;
+              }
+
+              // handle clicking images inside slider
+              el.addEventListener("click", (e) => {
+                const overlay = e.target.closest(
+                  ".slider-overlay, .slide-overlay"
+                );
+                const sliderItem = e.target.closest(".slider-item");
+                if (overlay && sliderItem) {
+                  const imgEl = sliderItem.querySelector("img");
+                  if (imgEl && window.editor) {
+                    const imgSrc =
+                      imgEl.getAttribute("src") || imgEl.dataset?.src || "";
+                    const escaped = imgSrc.replace(/"/g, '\\"');
+                    const cmp =
+                      window.editor
+                        .getWrapper()
+                        .find(`[src="${escaped}"]`)[0] ||
+                      window.editor
+                        .getWrapper()
+                        .find(`[attributes.data-src="${escaped}"]`)[0];
+                    if (cmp) {
+                      window.editor.select(cmp);
+                      window.editor.runCommand("open-assets", { target: cmp });
+                    }
+                  }
+                }
+              });
+
+              el._sliderCleanup = () =>
+                window.removeEventListener("resize", resize);
+            },
+          },
+        },
+
+        view: {
+          onRender({ el }) {},
+          onRemove(el) {
+            if (el._sliderCleanup) el._sliderCleanup();
+          },
+        },
       });
+
+      // Prevent drop on body/header/footer and allow only <main>
+      editor.DomComponents.addType("body", {
+        isComponent: (el) => el.tagName === "BODY",
+        model: {
+          defaults: {
+            droppable: false,
+            draggable: false,
+          },
+        },
+      });
+
+      editor.DomComponents.addType("header", {
+        isComponent: (el) => el.tagName === "HEADER",
+        model: {
+          defaults: {
+            droppable: false,
+            draggable: false,
+          },
+        },
+      });
+
+      editor.DomComponents.addType("footer", {
+        isComponent: (el) => el.tagName === "FOOTER",
+        model: {
+          defaults: {
+            droppable: false,
+            draggable: false,
+          },
+        },
+      });
+
+      editor.DomComponents.addType("main", {
+        isComponent: (el) => el.tagName === "MAIN",
+        model: {
+          defaults: {
+            droppable: true,
+            draggable: false,
+            highlightable: true,
+          },
+        },
+      });
+    } catch (err) {
+      console.warn("Registering slider/component types failed:", err);
+    }
+
+    // Wait for the editor to load and wire helper functions when it does (like editorSetup.js)
+    grapesjsEditor.on("load", () => {
+      try {
+        // make available globally (parent) like in editorSetup
+        window.editor = grapesjsEditor;
+
+        setupEditorCSS(grapesjsEditor);
+        setupUndoRedo(grapesjsEditor);
+        setupLinkLogging(grapesjsEditor);
+
+        // initialize sliders inside canvas for default content
+        try {
+          initializeCanvasSliders(grapesjsEditor);
+        } catch (err) {
+          console.warn("initializeCanvasSliders failed on load:", err);
+        }
+      } catch (err) {
+        console.warn("Failed to initialize editor helpers:", err);
+      }
     });
+
+    // Also await load so subsequent code runs after editor is ready
+    await new Promise((resolve) => grapesjsEditor.on("load", resolve));
 
     // Učitavanje trenutne aktivne komponente u editor
     const currentComponentNameEl = document.querySelector(
