@@ -110,7 +110,6 @@ function updateLocaleUrl($key) {
         .replace(/[\u0300-\u036f]/g, "")
         .replace(/[^\x00-\x7F]/g, "")
         .toLowerCase();
-
       if (text == "pocetna") text = "";
       comp.addAttributes({ href: "/" + text });
       comp.view.render();
@@ -140,6 +139,8 @@ function updateLocaleUrl($key) {
                 .trim()
                 .replace(/ /g, "-")
                 .replace(/[^\x00-\x7F]/g, "");
+              text = normalizeText(text);
+              console.log("text:" + text);
               link.addAttributes({
                 href: ("/" + current.root + "/" + text)
                   .toLowerCase()

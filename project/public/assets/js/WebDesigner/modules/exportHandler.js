@@ -362,7 +362,7 @@ function exportFullPage(editor, tipUstanove) {
         break;
     }
   });
-
+  console.log("tree:",tree);
   console.log("ids collected from sections:", ids);
 
   const css = editor.getCss();

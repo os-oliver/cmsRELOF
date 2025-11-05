@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controllers;
+
 session_start();
+
 use App\Models\Content;
 use App\Models\Event;
 use App\Admin\PageBuilders\BasicPageBuilder;
@@ -487,6 +489,17 @@ class PersonalContentController
             switch ($type) {
                 case 'Anketa':
                     $mainContent = $this->getAnketaContent($type, $locale, $structure);
+                case 'Vrtici':
+                    $mainContent = $this->getVrticiContent($type, $locale, $structure);
+                    break;
+                case 'Timovi':
+                    $mainContent = $this->getTimoviContent($type, $locale, $structure);
+                    break;
+                case 'Obavestenja':
+                    $mainContent = $this->getObavestenjaContent($type, $locale, $structure);
+                    break;
+                case 'Projekti':
+                    $mainContent = $this->getProjektiContent($type, $locale, $structure);
                     break;
                 default:
                     $mainContent = $this->getDefaultContent($type, $locale, $structure);
@@ -495,7 +508,7 @@ class PersonalContentController
             $mainContent = $this->getErrorContent($e->getMessage());
         }
 
-        $html = '<main class="min-h-screen pt-16 bg-gray-50">' . $mainContent . '</main>';
+        $html = '<main class="min-h-screen pt-16 bg-white">' . $mainContent . '</main>';
         $pageBuilder->setHtml($html);
         return $pageBuilder->buildPage();
     }
@@ -573,6 +586,416 @@ class PersonalContentController
             </div>
         </div>
     </div>';
+
+        return $html;
+    }
+
+    private function getObavestenjaContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $typeData = $this->getTypeData($type, $structure, $locale);
+        $typeName = $typeData['name'] ?? 'Vrtić';
+
+        $images = \App\Models\Image::fetchByElement($id);
+
+        $title = $fields['title'][$locale] ?? $typeName;
+        $naziv = $fields['naziv'][$locale] ?? '';
+
+        $description = $fields['opis'][$locale] ?? '';
+
+        $coverImage = '';
+        if (isset($fields['slika'][$locale]) && !empty($fields['slika'][$locale])) {
+            $coverImage = htmlspecialchars($fields['slika'][$locale], ENT_QUOTES, 'UTF-8');
+        } elseif (!empty($images)) {
+            $coverImage = htmlspecialchars($images[0]['file_path'], ENT_QUOTES, 'UTF-8');
+        }
+
+        $html = '
+        <div class="content-wrapper vrtici-detail">
+            <div class="container mx-auto px-4 py-6 max-w-4xl">
+                <div class="bg-surface rounded-2xl shadow p-6 font-body">
+                    <h1 class="text-3xl font-heading text-primary_text mb-4">
+                        ' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '
+                    </h1>
+                    ' . ($coverImage ? '
+                    <div class="mb-6">
+                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '" 
+                            class="w-full h-80 object-cover rounded-2xl shadow-sm">
+                    </div>' : '') . '
+                    ' . ($naziv ? '
+                    <h2 class="text-2xl font-heading2 text-primary_text mb-4">
+                        ' . htmlspecialchars($naziv, ENT_QUOTES, 'UTF-8') . '
+                    </h2>' : '') . '
+                    ' . ($description ? '
+                    <div class="text-secondary_text leading-relaxed mb-6">
+                        ' . nl2br(htmlspecialchars($description, ENT_QUOTES, 'UTF-8')) . '
+                    </div>' : '') . '
+                </div>
+                ' . (!empty($images) ? '
+                <div class="mt-8">
+                    <h2 class="text-2xl font-heading text-primary_text mb-4">
+                        <i class="fas fa-images mr-2 text-blue-500"></i>' . ($this->getGalleryLabel($locale)) . '
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        ' . implode('', array_map(fn($img) => '
+                            <div class="gallery-item overflow-hidden rounded-xl shadow-sm">
+                                <a href="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" target="_blank">
+                                    <img src="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                                </a>
+                            </div>
+                        ', $images)) . '
+                    </div>
+                </div>' : '') . '
+            </div>
+        </div>';
+
+        return $html;
+    }
+    private function getVrticiContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $typeData = $this->getTypeData($type, $structure, $locale);
+        $typeName = $typeData['name'] ?? 'Vrtić';
+
+        $images = \App\Models\Image::fetchByElement($id);
+
+        $title = $fields['title'][$locale] ?? $typeName;
+
+        $location = $fields['location'][$locale] ?? '';
+        $description = $fields['description'][$locale] ?? '';
+
+        $coverImage = '';
+        if (isset($fields['slika'][$locale]) && !empty($fields['slika'][$locale])) {
+            $coverImage = htmlspecialchars($fields['slika'][$locale], ENT_QUOTES, 'UTF-8');
+        } elseif (!empty($images)) {
+            $coverImage = htmlspecialchars($images[0]['file_path'], ENT_QUOTES, 'UTF-8');
+        }
+
+        $html = '
+        <div class="content-wrapper vrtici-detail font-body text-secondary_text">
+            <div class="container mx-auto px-4 py-6 max-w-4xl">
+                <div class="bg-bacground rounded-2xl shadow p-6">
+                    ' . ($coverImage ? '
+                    <div class="mb-6">
+                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '" 
+                            class="w-full h-80 object-cover rounded-2xl shadow-sm">
+                    </div>' : '') . '
+                    <h1 class="text-3xl mb-2">
+                        ' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '
+                    </h1>
+                    ' . ($location ? '
+                    <p class="text-lg mb-4">
+                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>' . htmlspecialchars($location, ENT_QUOTES, 'UTF-8') . '
+                    </p>' : '') . '
+                    ' . ($description ? '
+                    <div class="leading-relaxed mb-6">
+                        ' . nl2br(htmlspecialchars($description, ENT_QUOTES, 'UTF-8')) . '
+                    </div>' : '') . '
+                </div>
+                ' . (!empty($images) ? '
+                <div class="mt-8">
+                    <h2 class="text-2xl text-primary_text mb-4">
+                        <i class="fas fa-images mr-2 text-blue-500"></i>' . ($this->getGalleryLabel($locale)) . '
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        ' . implode('', array_map(fn($img) => '
+                            <div class="gallery-item overflow-hidden rounded-xl shadow-sm">
+                                <a href="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" target="_blank">
+                                    <img src="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                                </a>
+                            </div>
+                        ', $images)) . '
+                    </div>
+                </div>' : '') . '
+            </div>
+        </div>';
+
+        return $html;
+    }
+
+    private function getTimoviContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $typeData = $this->getTypeData($type, $structure, $locale);
+        $typeName = $typeData['name'] ?? $type;
+
+        $images = \App\Models\Image::fetchByElement($id);
+
+        $title = '';
+        foreach ($fields as $field => $values) {
+            if (in_array(strtolower($field), ['title', 'naziv']) && isset($values[$locale])) {
+                $title = htmlspecialchars($values[$locale], ENT_QUOTES, 'UTF-8');
+                break;
+            }
+        }
+
+        $naziv = '';
+        $opis = '';
+        foreach ($fields as $field => $values) {
+            if (!isset($values[$locale]))
+                continue;
+            $value = trim($values[$locale]);
+            if ($value === '')
+                continue;
+
+            if (in_array(strtolower($field), ['opis', 'description'])) {
+                $opis = nl2br(htmlspecialchars($value, ENT_QUOTES, 'UTF-8'));
+            }
+        }
+
+        $html = '
+        <div class="content-wrapper min-h-screen">
+            <div>
+                <div class="container mx-auto px-4">
+                    <div class="max-w-3xl mx-auto text-center">
+                        <h1 class="text-3xl font-heading text-primary_text mb-4">' . ($title ?: $typeName) . '</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 py-6">
+                <div class="max-w-3xl mx-auto bg-surface rounded-2xl shadow-lg p-8">
+        ';
+
+        if ($opis !== '') {
+            $html .= '
+                    <div class="text-center mb-8">
+                        ' . ($opis ? '<p class="text-secondary_text font-body leading-relaxed">' . $opis . '</p>' : '') . '
+                    </div>';
+        }
+
+        if (!empty($images)) {
+            $html .= '<div class="mt-8">
+                        <h3 class="text-xl font-heading text-primary_text mb-4"><i class="fas fa-images"></i> Galerija</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">';
+            foreach ($images as $img) {
+                $path = htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8');
+                $html .= '<a href="' . $path . '" class="block overflow-hidden rounded-xl shadow hover:shadow-lg transition-all">
+                            <img src="' . $path . '" class="w-full h-48 object-cover" alt="Team image">
+                        </a>';
+            }
+            $html .= '</div></div>';
+        }
+
+        $html .= '
+                </div>
+            </div>
+        </div>';
+
+        return $html;
+    }
+
+    private function getProjektiContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $typeData = $this->getTypeData($type, $structure, $locale);
+        $typeName = $typeData['name'] ?? 'Projekat';
+
+        $images = \App\Models\Image::fetchByElement($id);
+
+        $title = $fields['naziv'][$locale] ?? $typeName;
+        $vodja = $fields['vodja'][$locale] ?? '';
+        $opis = $fields['opis'][$locale] ?? '';
+        $datumPocetka = $fields['datumPocetka'][$locale] ?? '';
+        $budzet = $fields['budzet'][$locale] ?? '';
+        $link = $fields['link'][$locale] ?? '';
+        $sekcija = $fields['sekcija'][$locale] ?? '';
+
+        $coverImage = '';
+        if (isset($fields['slika'][$locale]) && !empty($fields['slika'][$locale])) {
+            $coverImage = htmlspecialchars($fields['slika'][$locale], ENT_QUOTES, 'UTF-8');
+        } elseif (!empty($images)) {
+            $coverImage = htmlspecialchars($images[0]['file_path'], ENT_QUOTES, 'UTF-8');
+        }
+
+        $formattedDatum = '';
+        if ($datumPocetka) {
+            $parts = explode('-', $datumPocetka);
+            if (count($parts) === 3) {
+                $formattedDatum = $parts[2] . '.' . $parts[1] . '.' . $parts[0];
+            } else {
+                $formattedDatum = $datumPocetka;
+            }
+        }
+
+        $formattedBudzet = '';
+        if ($budzet && is_numeric($budzet)) {
+            $formattedBudzet = number_format((float) $budzet, 2, ',', '.') . ' €';
+        }
+
+        $html = '
+        <div class="content-wrapper projekti-detail font-body">
+            <div class="container mx-auto px-4 py-6 max-w-4xl">
+                <div class="bg-bacground rounded-2xl shadow p-6 bg-surface">
+                    ' . ($coverImage ? '
+                    <div class="mb-6">
+                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '" 
+                            class="w-full h-80 object-cover rounded-2xl shadow-sm">
+                    </div>' : '') . '
+                    
+                    <h1 class="text-3xl font-heading text-primary_text mb-4">
+                        ' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '
+                    </h1>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        ' . ($vodja ? '
+                        <div class="bg-white rounded-lg p-4">
+                            <div class="flex items-center text-primary_text">
+                                <i class="fas fa-user-tie text-primary mr-3 text-lg"></i>
+                                <div>
+                                    <p class="text-sm text-gray-500">Vođa projekta</p>
+                                    <p class="text-lg text-sedondary_text">' . htmlspecialchars($vodja, ENT_QUOTES, 'UTF-8') . '</p>
+                                </div>
+                            </div>
+                        </div>' : '') . '
+
+                        ' . ($formattedDatum ? '
+                        <div class="bg-white rounded-lg p-4">
+                            <div class="flex items-center text-primary_text">
+                                <i class="fas fa-calendar-alt text-primary mr-3 text-lg"></i>
+                                <div>
+                                    <p class="text-sm text-gray-500">Datum početka</p>
+                                    <p class="text-lg">' . htmlspecialchars($formattedDatum, ENT_QUOTES, 'UTF-8') . '</p>
+                                </div>
+                            </div>
+                        </div>' : '') . '
+
+                        ' . ($formattedBudzet ? '
+                        <div class="bg-white rounded-lg p-4">
+                            <div class="flex items-center text-primary_text">
+                                <i class="fas fa-euro-sign text-primary mr-3 text-lg"></i>
+                                <div>
+                                    <p class="text-sm text-gray-500">Budžet</p>
+                                    <p class="text-lg">' . htmlspecialchars($formattedBudzet, ENT_QUOTES, 'UTF-8') . '</p>
+                                </div>
+                            </div>
+                        </div>' : '') . '
+
+                        ' . ($sekcija ? '
+                        <div class="bg-white rounded-lg p-4">
+                            <div class="flex items-center text-primary_text">
+                                <i class="fas fa-sitemap text-primary mr-3 text-lg"></i>
+                                <div>
+                                    <p class="text-sm text-gray-500">Sekcija centra</p>
+                                    <p class="text-lg">' . htmlspecialchars($sekcija, ENT_QUOTES, 'UTF-8') . '</p>
+                                </div>
+                            </div>
+                        </div>' : '') . '
+                    </div>
+
+                    ' . ($opis ? '
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
+                        <h2 class="text-xl text-primary_text mb-4 flex items-center">
+                            <i class="fas fa-file-alt text-primary mr-2"></i>
+                            Opis projekta
+                        </h2>
+                        <div class="text-primary_text leading-relaxed text-lg">
+                            ' . nl2br(htmlspecialchars($opis, ENT_QUOTES, 'UTF-8')) . '
+                        </div>
+                    </div>' : '') . '
+
+                    ' . ($link ? '
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 mb-6 border border-blue-200">
+                        <h2 class="text-xl text-primary_text mb-4 flex items-center">
+                            <i class="fas fa-external-link-alt text-primary mr-2"></i>
+                            Zvanični link
+                        </h2>
+                        <a href="' . htmlspecialchars($link, ENT_QUOTES, 'UTF-8') . '" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors duration-300 font-medium">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            Posjetite zvaničnu stranicu projekta
+                        </a>
+                    </div>' : '') . '
+                </div>
+
+                ' . (!empty($images) ? '
+                <div class="mt-8">
+                    <h2 class="text-2xl text-primary_text mb-6 flex items-center">
+                        <i class="fas fa-images text-primary mr-2"></i>
+                        ' . ($this->getGalleryLabel($locale)) . '
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        ' . implode('', array_map(fn($img) => '
+                            <div class="gallery-item overflow-hidden rounded-xl shadow-sm border border-gray-200">
+                                <a href="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" 
+                                target="_blank" 
+                                class="block overflow-hidden">
+                                    <img src="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" 
+                                        alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '" 
+                                        class="w-full h-48 object-cover hover:scale-110 transition-transform duration-300">
+                                </a>
+                            </div>
+                        ', $images)) . '
+                    </div>
+                </div>' : '') . '
+            </div>
+        </div>';
 
         return $html;
     }
