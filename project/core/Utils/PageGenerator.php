@@ -34,7 +34,7 @@ class PageGenerator
         // Create directories if they don't exist
         foreach ([$this->baseDir, $this->compDir, $this->pagesDir] as $dir) {
             if (!is_dir($dir)) {
-                mkdir($dir, 0755, true);
+                mkdir($dir, 0775, true);
             }
         }
     }
@@ -51,7 +51,7 @@ class PageGenerator
                 $dirPath = dirname($fullPath);
 
                 if (!is_dir($dirPath)) {
-                    mkdir($dirPath, 0755, true);
+                    mkdir($dirPath, 0775, true);
                 }
 
                 if (strpos($filePath, 'promocija.php') !== false) {

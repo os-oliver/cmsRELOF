@@ -36,7 +36,7 @@ class ComponentController
         $filePath = PUBLIC_ROOT . "/exportedPages/components/{$sanitizedName}.php";
 
         if (!is_dir(dirname($filePath))) {
-            mkdir(dirname($filePath), 0755, true);
+            mkdir(dirname($filePath), 0775, true);
         }
 
         $bytesWritten = file_put_contents($filePath, $componentContent);
