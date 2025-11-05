@@ -155,7 +155,7 @@
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
-                    <a data-page="Pocetna" href="#"
+                    <a data-page="Pocetna" href="/"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-secondary"></i>Početna
                     </a>
@@ -170,49 +170,49 @@
                                 id="mobileAboutIcon"></i>
                         </button>
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
-                            <a data-page="Uvod" href="#"
+                            <a data-page="Uvod" href="/o-nama/uvod"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-book mr-2 text-primary"></i>Uvod
                             </a>
-                            <a data-page="Misija i vizija" href="#"
+                            <a data-page="Misija i vizija" href="/o-nama/misija-i-vizija"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-flag mr-2 text-primary"></i>Misija i vizija
                             </a>
-                            <a data-page="Istorijat" href="#"
+                            <a data-page="Istorijat" href="/o-nama/istorijat"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-history mr-2 text-secondary"></i>Istorijat
                             </a>
-                            <a data-page="Rukovodstvo" href="#"
+                            <a data-page="Rukovodstvo" href="/o-nama/rukovodstvo"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-users-cog mr-2 text-primary"></i>Rukovodstvo
                             </a>
-                            <a data-page="Objekat" href="#"
+                            <a data-page="Objekat" href="/o-nama/objekat"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
                             </a>
-                            <a data-page="Donacije i podrška" href="#"
+                            <a data-page="Donacije i podrška" href="/o-nama/donacije-i-podrska"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-hand-holding-heart mr-2 text-primary"></i>Donacije i podrška
                             </a>
-                            <a data-page="Partneri" href="#"
+                            <a data-page="Partneri" href="/o-nama/partneri"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-handshake mr-2 text-primary"></i>Partneri
                             </a>
                         </div>
                     </div>
-                    <a data-page="Dogadjaji" href="#"
+                    <a data-page="Dogadjaji" href="/dogadjaji"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primary"></i>Dogadjaji
                     </a>
-                    <a data-page="Galerija" href="#"
+                    <a data-page="Galerija" href="/galerija"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-primary"></i>Galerija
                     </a>
-                    <a data-page="Dokumenti" href="#"
+                    <a data-page="Dokumenti" href="/dokumenti"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-secondary"></i>Dokumenti
                     </a>
-                    <a data-page="Kontakt" href="#"
+                    <a data-page="Kontakt" href="/kontakt"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
                     </a>
@@ -246,15 +246,15 @@
 
             <!-- Desktop Navigation -->
             <nav id="navBarID" class="hidden lg:flex space-x-8 items-center">
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
+                <a href="/" class="nav-link text-background font-semibold flex items-center">
                     <i class="fas fa-home mr-2 text-accent"></i>Početna
                 </a>
 
                 <div class="dropdown relative group">
                     <button
-                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        class="nav-link text-background font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background/20 group">
                         <i
-                            class="fas fa-info-circle mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
+                            class="fas fa-info-circle mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
                         <span class="hidden xl:inline text-sm">O nama</span>
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
@@ -263,49 +263,49 @@
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
 
-                        <a href="#" static="true"
+                        <a href="/o-nama/uvod"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Uvod</span>
                         </a>
 
-                        <a href="#" static="true"
+                        <a href="/o-nama/misija-i-vizija"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija i vizija</span>
                         </a>
 
-                        <a href="#" static="true"
+                        <a href="/o-nama/istorijat"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
                         </a>
 
-                        <a href="#"
+                        <a href="/o-nama/rukovodstvo"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Rukovodstvo</span>
                         </a>
 
-                        <a href="#"
+                        <a href="/o-nama/organizaciona-struktura"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-sitemap mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Organizaciona struktura</span>
                         </a>
 
-                        <a href="#" static="true"
+                        <a href="/o-nama/objekat"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Objekat</span>
                         </a>
 
-                        <a href="#" static="true"
+                        <a href="/o-nama/donacije-i-podrska"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Donacije i podrška</span>
                         </a>
 
-                        <a href="#" static="true"
+                        <a href="/o-nama/partneri"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Partneri</span>
@@ -314,54 +314,65 @@
                     </div>
                 </div>
 
-
                 <!-- Aktivnosti Dropdown -->
                 <div class="dropdown relative group">
-                    <button class="nav-link text-background font-semibold flex items-center">
-                        <i class="fas fa-calendar-alt mr-2 text-accent"></i>Aktivnosti
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    <button
+                        class="nav-link text-background font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background/20 group">
+                        <i class="fas fa-calendar-alt mr-2 text-accent"></i>
+                        <span class="hidden xl:inline text-sm">Aktivnosti</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute bg-background rounded-md shadow-lg py-2 min-w-[200px] mt-2 hidden group-hover:block">
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-secondary_background rounded-md text-primary_text">
-                            <i class="fas fa-calendar-day mr-2"></i>Dogadjaji
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                        <a href="/aktivnosti/dogadjaji"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-calendar-day mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Dogadjaji</span>
                         </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-secondary_background rounded-md text-primary_text">
-                            <i class="fas fa-newspaper mr-2"></i>Vesti
+                        <a href="/aktivnosti/vesti"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-newspaper mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Vesti</span>
                         </a>
                     </div>
                 </div>
 
+                <!-- Usluge Dropdown -->
                 <div class="dropdown relative group">
-                    <button class="nav-link text-background font-semibold flex items-center">
-                        <i class="fas fa-child mr-2 text-accent"></i>Usluge
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    <button
+                        class="nav-link text-background font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background/20 group">
+                        <i class="fas fa-child mr-2 text-accent"></i>
+                        <span class="hidden xl:inline text-sm">Usluge</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute bg-background rounded-md shadow-lg py-2 min-w-[200px] mt-2 hidden group-hover:block">
-                        <a static="true" href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-secondary_background rounded-md text-primary_text">
-                            <i class="fas fa-book-open mr-2"></i>Za decu
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                        <a href="/usluge/za-decu"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-book-open mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Za decu</span>
                         </a>
-                        <a static="true" href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-secondary_background rounded-md text-primary_text">
-                            <i class="fas fa-paint-brush mr-2"></i>Radionica i igre
+                        <a href="/usluge/radionice-i-igre"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-paint-brush mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Radionice i igre</span>
                         </a>
                     </div>
                 </div>
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
+
+                <a href="/repertoar" class="nav-link text-background font-semibold flex items-center">
                     <i class="fas fa-theater-masks mr-2 text-accent"></i>Repertoar
                 </a>
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
+                <a href="/galerija" class="nav-link text-background font-semibold flex items-center">
                     <i class="fas fa-images mr-2 text-accent"></i>Galerija
                 </a>
-                <a href="#" class="nav-link text-background font-semibold group flex items-center">
+                <a href="/dokumenti" class="nav-link text-background font-semibold group flex items-center">
                     <i class="fas fa-folder-open mr-2 text-accent"></i>
                     Dokumenti
                 </a>
-                <a href="#" class="nav-link text-background font-semibold flex items-center">
+                <a href="/kontakt" class="nav-link text-background font-semibold flex items-center">
                     <i class="fas fa-address-book mr-2 text-accent"></i>Kontakt
                 </a>
 
@@ -383,7 +394,7 @@
                 ?>
                 <div class="locale dropdown nonPage relative group ">
                     <button
-                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        class="nav-link text-background font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background/20 group">
                         <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
                         <i

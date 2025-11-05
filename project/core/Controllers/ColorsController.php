@@ -103,8 +103,6 @@ class ColorsController
                 throw new \RuntimeException('Failed to read ' . $this->commonScriptPath);
             }
 
-            $backup = $this->commonScriptPath . '.bak.' . date('Ymd_His');
-            @copy($this->commonScriptPath, $backup);
 
             $jsNew = $this->replaceColors($js, $normalized);
             if ($jsNew === null) {
@@ -119,7 +117,6 @@ class ColorsController
             echo json_encode([
                 'success' => true,
                 'updated' => $normalized,
-                'backup' => basename($backup)
             ]);
         } catch (\Throwable $e) {
             // Upisujemo grešku u PHP error log

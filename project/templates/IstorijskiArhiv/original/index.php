@@ -40,6 +40,34 @@
         }
     </script>
     <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: #1f2937;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f5f9;
+        }
+
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
         * {
@@ -620,28 +648,21 @@
                         class="fas fa-archive mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Fondovi</span>
                 </a>
-
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
-                    <i
-                        class="fas fa-project-diagram mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Digitalizacija</span>
-                </a>
-
+                <!-- Galerija -->
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
                     <i
                         class="fas fa-images mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Virtuelna Izložba</span>
+                    <span class="hidden xl:inline text-sm">Galerija</span>
                 </a>
 
+                <!-- Dokumenta -->
                 <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background">
+                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
                     <i
                         class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Pravila</span>
+                    <span class="hidden xl:inline text-sm">Dokumenti</span>
                 </a>
-
                 <div class="dropdown relative group">
                     <button
                         class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
@@ -1039,6 +1060,75 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section id="vesti" class="py-20 bg-gradient-to-br from-surface to-background">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
+                    Najnovije Vesti
+                    <div
+                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
+                    </div>
+                </h2>
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
+                    Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
+                </p>
+            </div>
+
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php for ($i = 0; $i < 3; $i++): ?>
+                    <article
+                        class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                        <div class="h-56 relative overflow-hidden">
+                            <img id="g-slika"
+                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                                alt="Vest"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
+                                    <i class="fas fa-newspaper text-lg"></i>
+                                </div>
+                                <div class="flex items-center text-sm text-secondary_text">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span id="g-datum">15. Oktobar 2025</span>
+                                </div>
+                            </div>
+
+                            <h3 id="g-naslov"
+                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                                Novi kulturni centar otvara vrata građanima
+                            </h3>
+
+                            <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
+                                Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
+                                kreativnosti i umetnosti u našem gradu.
+                            </p>
+
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>
+                <?php endfor; ?>
+            </div>
+
+            <div class="text-center mt-16">
+                <button id="vestiView"
+                    class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
+                    <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
+                    Pogledaj sve vesti
+                    <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+                </button>
             </div>
         </div>
     </section>

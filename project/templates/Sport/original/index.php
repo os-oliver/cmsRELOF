@@ -294,6 +294,7 @@
                             </a>
                         </div>
                     </div>
+
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all"
@@ -368,6 +369,7 @@
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-secondary"></i>Kontakt
                     </a>
+
                 </nav>
             </div>
         </div>
@@ -382,7 +384,7 @@
 
     <!-- Header -->
     <header class="fixed w-full z-40 py-4 bg-white shadow-lg">
-        <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class=" px-4 flex  mx-5 justify-between items-center">
             <div class="flex items-center space-x-4">
                 <div
                     class="w-14 h-14 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-lg energy-pulse">
@@ -458,10 +460,71 @@
                     class="nav-link text-secondary font-semibold flex items-center hover:text-primary transition-colors">
                     <i class="fas fa-folder-open mr-2"></i>Dokumenti
                 </a>
+                <div class="dropdown">
+                    <button
+                        class="nav-link text-primary_text font-semibold flex items-center hover:text-primary transition-colors">
+                        <i class="fas fa-bullhorn mr-2 text-primary"></i>
+                        Aktivnosti
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item flex items-center">
+                            <i class="fas fa-newspaper mr-2 text-primary"></i>
+                            Vesti
+                        </a>
+
+                        <a href="#" class="dropdown-item flex items-center">
+                            <i class="fas fa-calendar-alt mr-2 text-secondary"></i>
+                            Događaji
+                        </a>
+
+                        <a href="#" class="dropdown-item flex items-center">
+                            <i class="fas fa-poll mr-2 text-accent"></i>
+                            Ankete
+                        </a>
+                    </div>
+                </div>
+
                 <a href="#"
                     class="nav-link text-secondary font-semibold flex items-center hover:text-primary transition-colors">
                     <i class="fas fa-phone mr-2"></i>Kontakt
                 </a>
+                <?php
+                if (isset($_GET['locale'])) {
+                    $_SESSION['locale'] = $_GET['locale'];
+                }
+                $locale = $_SESSION['locale'] ?? 'sr';
+
+                $languages = [
+                    'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
+                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                ];
+
+                if (!isset($languages[$locale])) {
+                    $locale = 'sr';
+                }
+                ?>
+                <div class="locale dropdown nonPage relative group ">
+                    <button
+                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
+                        <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute top-full right-0 min-w-max bg-secondary_background rounded-xl shadow-2xl border border-surface z-50 py-2 backdrop-blur-sm">
+                        <?php foreach ($languages as $key => $lang): ?>
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                                <span class="font-medium"><?= $lang['label'] ?></span>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </nav>
 
             <!-- Search & Mobile Toggle -->
@@ -470,6 +533,26 @@
                     aria-label="Search">
                     <i class="fas fa-search text-lg"></i>
                 </button>
+                <div id="searchInputContainer"
+                    class="absolute right-0 top-full mt-3 hidden opacity-0 transition-all duration-300 ease-in-out z-50 min-w-[280px] sm:min-w-[320px] bg-white rounded-xl shadow-2xl border border-surface overflow-hidden backdrop-blur-sm">
+                    <form id="searchForm" class="flex items-center w-full p-2" action="/pretraga" method="GET">
+                        <input type="text" name="q" placeholder="Pretražite sadržaj..."
+                            class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-4 py-2.5 text-primary_text placeholder-secondary_text bg-surface rounded-lg"
+                            id="searchInput" required />
+                        <div class="flex items-center space-x-1 ml-2">
+                            <button type="submit"
+                                class="text-secondary_text hover:text-primary transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-surface w-9 h-9 flex items-center justify-center"
+                                aria-label="Submit search">
+                                <i class="fas fa-search text-sm"></i>
+                            </button>
+                            <button type="button"
+                                class="text-secondary_text hover:text-accent transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-surface w-9 h-9 flex items-center justify-center"
+                                id="closeSearch" aria-label="Close search">
+                                <i class="fas fa-times text-sm"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
                 <button id="hamburger" class="hamburger lg:hidden text-secondary w-8 h-8 flex flex-col justify-between">
                     <span class="block w-8 h-1 bg-secondary rounded"></span>
                     <span class="block w-8 h-1 bg-secondary rounded my-1"></span>
@@ -733,104 +816,72 @@
             </div>
         </div>
     </section>
-
-    <!-- Membership Section -->
-    <section id="membership" class="py-20 professional-section">
+    <section id="vesti" class="py-20 bg-gradient-to-br from-surface to-background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <span class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
-                    ČLANSTVO
-                </span>
-                <h2 class="text-5xl font-heading font-bold text-primary_text mb-4">
-                    POSTANITE DEO NAŠE ZAJEDNICE
+                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
+                    Najnovije Vesti
+                    <div
+                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
+                    </div>
                 </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto font-medium">
-                    Odaberite članstvo koje najbolje odgovara vašim potrebama i ciljevima
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
+                    Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="professional-card p-8 text-center border-2 border-gray-200">
-                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Osnovno</h3>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-primary">4.990</span>
-                        <span class="text-secondary_text">RSD/mes.</span>
-                    </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Pristup teretanama
-                        </li>
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Grupni treninzi
-                        </li>
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-times text-gray-400 mr-2"></i> Lični trener
-                        </li>
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-times text-gray-400 mr-2"></i> Bazeni i saune
-                        </li>
-                    </ul>
-                    <button
-                        class="w-full bg-gray-200 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-300 transition-colors">
-                        Odaberi
-                    </button>
-                </div>
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php for ($i = 0; $i < 3; $i++): ?>
+                    <article
+                        class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                        <div class="h-56 relative overflow-hidden">
+                            <img id="g-slika"
+                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                                alt="Vest"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
+                                    <i class="fas fa-newspaper text-lg"></i>
+                                </div>
+                                <div class="flex items-center text-sm text-secondary_text">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span id="g-datum">15. Oktobar 2025</span>
+                                </div>
+                            </div>
 
-                <div class="professional-card p-8 text-center border-2 border-primary relative">
-                    <div
-                        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold">
-                        POPULARNO
-                    </div>
-                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Premium</h3>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-primary">7.990</span>
-                        <span class="text-secondary_text">RSD/mes.</span>
-                    </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Pristup teretanama
-                        </li>
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Grupni treninzi
-                        </li>
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Lični trener
-                        </li>
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Bazeni i saune
-                        </li>
-                    </ul>
-                    <button
-                        class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary_hover transition-colors">
-                        Odaberi
-                    </button>
-                </div>
+                            <h3 id="g-naslov"
+                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                                Novi kulturni centar otvara vrata građanima
+                            </h3>
 
-                <div class="professional-card p-8 text-center border-2 border-gray-200">
-                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Porodično</h3>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-primary">12.990</span>
-                        <span class="text-secondary_text">RSD/mes.</span>
-                    </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Pristup za 4 člana
-                        </li>
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Grupni treninzi
-                        </li>
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Lični trener
-                        </li>
-                        <li class="flex items-center text-secondary_text">
-                            <i class="fas fa-check text-primary mr-2"></i> Bazeni i saune
-                        </li>
-                    </ul>
-                    <button
-                        class="w-full bg-gray-200 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-300 transition-colors">
-                        Odaberi
-                    </button>
-                </div>
+                            <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
+                                Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
+                                kreativnosti i umetnosti u našem gradu.
+                            </p>
+
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>
+                <?php endfor; ?>
+            </div>
+
+            <div class="text-center mt-16">
+                <button id="vestiView"
+                    class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
+                    <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
+                    Pogledaj sve vesti
+                    <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -1031,8 +1082,9 @@
             // Search functionality
             const searchButton = document.getElementById('searchButton');
             if (searchButton) {
-                searchButton.addEventListener('click', () => {
-                    alert('Funkcija pretrage će biti implementirana u narednoj verziji.');
+                searchButton.addEventListener('click', function () {
+                    searchInputContainer.classList.remove('hidden');
+                    setTimeout(() => searchInputContainer.classList.remove('opacity-0'), 10);
                 });
             }
 

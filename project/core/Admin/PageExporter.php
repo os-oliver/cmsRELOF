@@ -14,6 +14,7 @@ use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\ObjekatPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
+use App\Admin\PageBuilders\SportoviPageBuilder;
 use App\Admin\PageBuilders\TestBuilder;
 use App\Admin\PageBuilders\UvodPageBuilder;
 use App\Admin\PageBuilders\VestiPageBuilder;
@@ -676,6 +677,10 @@ class PageExporter
                 return new ZnacajaStranica('ZnacajaStranica', $this->data);
             case 'objekat':
                 return new ObjekatPageBuilder('Objekat', $this->data);
+            case 'fondovi':
+                return new DynamicPageBuilder('fondovi');
+            case 'sportovi':
+                return new SportoviPageBuilder('sportovi');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -750,6 +755,11 @@ class PageExporter
             return 'informacije';
         } elseif (strpos($name, 'objekat') !== false) {
             return 'objekat';
+        } elseif (strpos($name, 'fondovi') !== false) {
+            return 'fondovi';
+
+        } elseif (strpos($name, 'sportovi') !== false) {
+            return 'sportovi';
         }
 
 
