@@ -1,6 +1,6 @@
 [
     {
-        "id": "690b0a8684e2e",
+        "id": "690b106ae7a87",
         "static": false,
         "movable": false,
         "name": "",
@@ -8,10 +8,10 @@
         "path": "pages\/.php",
         "file": ".php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:58"
     },
     {
-        "id": "690b0a8687963",
+        "id": "690b106aeaad9",
         "static": true,
         "movable": false,
         "name": "uvod",
@@ -19,10 +19,10 @@
         "path": "pages\/uvod.php",
         "file": "uvod.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:58"
     },
     {
-        "id": "690b0a868bc3d",
+        "id": "690b106aef10e",
         "static": true,
         "movable": false,
         "name": "misija-i-vizija",
@@ -30,10 +30,10 @@
         "path": "pages\/misija-i-vizija.php",
         "file": "misija-i-vizija.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:58"
     },
     {
-        "id": "690b0a868c413",
+        "id": "690b106aef886",
         "static": true,
         "movable": false,
         "name": "istorijat",
@@ -41,10 +41,10 @@
         "path": "pages\/istorijat.php",
         "file": "istorijat.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:58"
     },
     {
-        "id": "690b0a868ca8b",
+        "id": "690b106aefe8a",
         "static": false,
         "movable": false,
         "name": "rukovodstvo",
@@ -52,10 +52,10 @@
         "path": "pages\/rukovodstvo.php",
         "file": "rukovodstvo.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:58"
     },
     {
-        "id": "690b0a86917e0",
+        "id": "690b106b00c52",
         "static": false,
         "movable": false,
         "name": "organizaciona-struktura",
@@ -63,10 +63,10 @@
         "path": "pages\/organizaciona-struktura.php",
         "file": "organizaciona-struktura.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a869475b",
+        "id": "690b106b04129",
         "static": true,
         "movable": false,
         "name": "objekat",
@@ -74,10 +74,10 @@
         "path": "pages\/objekat.php",
         "file": "objekat.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a8694f0d",
+        "id": "690b106b048fc",
         "static": true,
         "movable": false,
         "name": "donacije-i-podrska",
@@ -85,10 +85,10 @@
         "path": "pages\/donacije-i-podrska.php",
         "file": "donacije-i-podrska.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a8695587",
+        "id": "690b106b04fba",
         "static": true,
         "movable": false,
         "name": "partneri",
@@ -96,10 +96,10 @@
         "path": "pages\/partneri.php",
         "file": "partneri.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a86988a5",
+        "id": "690b106b07db4",
         "static": false,
         "movable": false,
         "name": "ansambl",
@@ -107,10 +107,10 @@
         "path": "pages\/ansambl.php",
         "file": "ansambl.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a869b295",
+        "id": "690b106b0a5d0",
         "static": false,
         "movable": false,
         "name": "projekti",
@@ -118,10 +118,10 @@
         "path": "pages\/projekti.php",
         "file": "projekti.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a869f4f0",
+        "id": "690b106b0e54e",
         "static": false,
         "movable": false,
         "name": "galerija",
@@ -129,10 +129,10 @@
         "path": "pages\/galerija.php",
         "file": "galerija.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a86ade9e",
+        "id": "690b106b1c886",
         "static": false,
         "movable": false,
         "name": "dokumenti",
@@ -140,10 +140,10 @@
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a86ae81e",
+        "id": "690b106b1fd70",
         "static": false,
         "movable": false,
         "name": "vesti",
@@ -151,10 +151,10 @@
         "path": "pages\/vesti.php",
         "file": "vesti.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a86b0f19",
+        "id": "690b106b22f8d",
         "static": false,
         "movable": false,
         "name": "dogadjaji",
@@ -162,10 +162,10 @@
         "path": "pages\/dogadjaji.php",
         "file": "dogadjaji.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a86b3451",
+        "id": "690b106b25fe7",
         "static": false,
         "movable": false,
         "name": "ankete",
@@ -173,10 +173,10 @@
         "path": "pages\/ankete.php",
         "file": "ankete.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     },
     {
-        "id": "690b0a86d3983",
+        "id": "690b106b49447",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -184,6 +184,6 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-11-05 08:27:50"
+        "created_at": "2025-11-05 08:52:59"
     }
 ]

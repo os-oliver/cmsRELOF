@@ -35,15 +35,16 @@ class AnketePageBuilder extends BasePageBuilder
 
         // Define all static texts in Latin
         $latinTexts = [
-            'search_placeholder' => 'Pretraži...',
-            'apply_button' => 'Primeni',
-            'all_categories' => 'Sve kategorije',
-            'date_and_time' => 'Datum i vreme',
-            'location' => 'Lokacija',
-            'event_details' => 'Detalji događaja',
-            'no_items_found' => 'Nema pronađenih stavki',
+            'search_placeholder' => 'Pretraži ankete...',
+            'apply_button' => 'Primeni filter',
+            'all_categories' => 'Sve teme',
+            'date_and_time' => 'Datum kreiranja',
+            'location' => 'Lokacija ispitanika',
+            'survey_details' => 'Detalji ankete',
+            'no_items_found' => 'Nema pronađenih anketa',
             'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
         ];
+
 
         // Convert to Cyrillic if needed
         if ($locale === 'sr-Cyrl') {
