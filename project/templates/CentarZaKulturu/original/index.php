@@ -1308,7 +1308,6 @@
             const mobileMenuPanel = document.getElementById('mobileMenuPanel');
             const closeMobileMenu = document.getElementById('closeMobileMenu');
             const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-            // Generalized mobile dropdown toggles (any .mobile-dropdown > button will toggle its following menu)
             const mobileDropdownButtons = document.querySelectorAll('.mobile-dropdown > button');
             const searchButton = document.getElementById('searchButton');
             const searchInputContainer = document.getElementById('searchInputContainer');
