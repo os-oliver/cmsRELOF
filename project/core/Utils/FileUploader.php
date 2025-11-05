@@ -28,7 +28,7 @@ class FileUploader
         $this->maxFileSize = $maxFileSize;
 
         if (!is_dir($this->uploadDir)) {
-            mkdir($this->uploadDir, 0755, true);
+            mkdir($this->uploadDir, 0775, true);
         }
     }
 

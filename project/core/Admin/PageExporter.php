@@ -36,6 +36,10 @@ use App\Admin\PageBuilders\ContactPageBuilder;
 use App\Admin\PageBuilders\DocumentsPageBuilder;
 use App\Admin\PageBuilders\BasicPageBuilder;
 use App\Admin\PageBuilders\EventsPageBuilder;
+use App\Admin\PageBuilders\RepertoarPageBuilder;
+use App\Admin\PageBuilders\FAQPageBuilder;
+use App\Admin\PageBuilders\SeminarPageBuilder;
+
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -66,7 +70,7 @@ class PageExporter
     {
         foreach ([$this->baseDir, $this->compDir, $this->pagesDir] as $dir) {
             if (!is_dir($dir)) {
-                mkdir($dir, 0755, true);
+                mkdir($dir, 0775, true);
             }
         }
     }
@@ -194,6 +198,13 @@ class PageExporter
                 if ($parent->hasAttribute('class')) {
                     $classAttr = $parent->getAttribute('class');
                     if (preg_match('/\bnonPage\b/', $classAttr)) {
+                        return false;
+                    }
+                }
+
+                if ($parent->hasAttribute('data-translate')) {
+                    $translateAttr = $parent->getAttribute('data-translate');
+                    if ('off' == $translateAttr) {
                         return false;
                     }
                 }
@@ -452,7 +463,7 @@ class PageExporter
                 $dirPath = dirname($fullPath);
 
                 if (!is_dir($dirPath)) {
-                    mkdir($dirPath, 0755, true);
+                    mkdir($dirPath, 0775, true);
                 }
 
                 // Decode HTML entities and fix PHP tags
@@ -513,6 +524,7 @@ class PageExporter
         foreach ($structure as $k => $v) {
             $structureLower[strtolower($k)] = $v;
         }
+        print_r(array_keys($this->data));
 
         foreach ($this->data['ids'] as $entry) {
             // Split by '-' if exists
@@ -637,8 +649,8 @@ class PageExporter
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
                 return new VestiPageBuilder('Vesti');
-            case 'naucni-klub':
-                return new NaucniKlubPageBuilder('NaucniKlub');
+            case 'seminari':
+                return new SeminarPageBuilder('Seminari');
             case 'primer':
                 return new ContactPageBuilder($name, $this->data);
             case 'zaposleni':
@@ -681,6 +693,14 @@ class PageExporter
                 return new DynamicPageBuilder('fondovi');
             case 'sportovi':
                 return new SportoviPageBuilder('sportovi');
+            case 'repertoar':
+                return new RepertoarPageBuilder('Repertoar');
+            case 'ansambl':
+                return new DynamicPageBuilder('Ansambl');
+            case 'pitanja':
+                return new FAQPageBuilder('Pitanja');
+            case 'test123':
+                return new TestBuilder('Test', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -702,11 +722,10 @@ class PageExporter
             return 'predstave';
         } elseif (strpos($name, 'vesti') !== false) {
             return 'vesti';
-
         } elseif (strpos($name, 'misija') !== false) {
             return 'misija';
-        } elseif (strpos($name, 'naucni-klub') !== false) {
-            return 'naucni-klub';
+        } elseif (strpos($name, 'seminari') !== false) {
+            return 'seminari';
         } elseif (strpos($name, 'primer') !== false) {
             return 'primer';
         } elseif (strpos($name, 'cilj') !== false) {
@@ -760,8 +779,17 @@ class PageExporter
 
         } elseif (strpos($name, 'sportovi') !== false) {
             return 'sportovi';
+        } elseif (strpos($name, 'repertoar') !== false) {
+            return 'repertoar';
+        } elseif (strpos($name, 'ansambl') !== false) {
+            return 'ansambl';
+        } elseif (strpos($name, 'pitanja') !== false) {
+            return 'pitanja';
+        } elseif (strpos($name, 'test123') !== false) {
+            return 'test123';
+        } elseif (strpos($name, 'zaposleni') !== false) {
+            return 'zaposleni';
         }
-
 
 
         return 'basic';
@@ -923,7 +951,7 @@ CSS;
 
         $dataDir = dirname(__DIR__) . '/../public/assets/data';
         if (!is_dir($dataDir)) {
-            mkdir($dataDir, 0755, true);
+            mkdir($dataDir, 0775, true);
         }
 
         $pagesJsonPath = "$dataDir/pages.json";
