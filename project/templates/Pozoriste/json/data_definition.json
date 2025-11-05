@@ -73,18 +73,28 @@
           "name": "slika",
           "type": "file",
           "label": {
-            "sr": "Naslovna slika događaja",
-            "en": "Event image",
-            "sr-Cyrl": "Насловна слика догађаја"
+            "sr": "Naslovna slika vesti",
+            "en": "News image",
+            "sr-Cyrl": "Насловна слика вести"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Externalni link",
+            "en": "External link",
+            "sr-Cyrl": "Екстерни линк"
           }
         }
       ]
     },
-    "Projekti": {
-      "sr": "Projekti",
-      "en": "Projects",
-      "sr-Cyrl": "Пројекти",
-      "icon": "fas fa-diagram-project",
+    "Repertoar": {
+      "sr": "Repertoar",
+      "en": "Repertoire",
+      "sr-Cyrl": "Репертоар",
+      "icon": "fas fa-theater-masks",
+      "categories": ["Drama", "Komedija", "Tragedija", "Muzikal", "Opera", "Balet"],
       "fields": [
         {
           "name": "nazivPredstave",
@@ -154,171 +164,59 @@
           "required": true
         },
         {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
-          }
-        },
-        {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
-          },
-          "required": true
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika vesti",
-            "en": "News image",
-            "sr-Cyrl": "Насловна слика вести"
-          }
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Link vesti",
-            "en": "News link",
-            "sr-Cyrl": "Линк вести"
-          }
-        }
-      ]
-    },
-    "Vrtici": {
-      "sr": "Vrtići",
-      "en": "Kindergarten",
-      "sr-Cyrl": "Вртићи",
-      "icon": "fas fa-school",
-      "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika vrtića",
-            "en": "Kindergarten image",
-            "sr-Cyrl": "Насловна слика вртића"
-          }
-        },
-        {
-          "name": "title",
+          "name": "autor",
           "type": "text",
           "label": {
-            "sr": "Naziv vrtića",
-            "en": "Kindergarten name",
-            "sr-Cyrl": "Назив вртића"
-          },
-          "required": true
+            "sr": "Autor",
+            "en": "Author",
+            "sr-Cyrl": "Аутор"
+          }
         },
         {
-          "name": "location",
+          "name": "glumci",
           "type": "text",
           "label": {
-            "sr": "Lokacija vrtića",
-            "en": "Kindergarten location",
-            "sr-Cyrl": "Локација вртића"
+            "sr": "Glumci",
+            "en": "Actors",
+            "sr-Cyrl": "Глумци"
+          }
+        },
+        {
+          "name": "rezija",
+          "type": "text",
+          "label": {
+            "sr": "Režija",
+            "en": "Director",
+            "sr-Cyrl": "Режија"
+          }
+        },
+        {
+          "name": "zanr",
+          "type": "categories",
+          "label": {
+            "sr": "Žanr",
+            "en": "Genre",
+            "sr-Cyrl": "Жанр"
           },
           "required": true
         },
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis",
-            "en": "Description",
-            "sr-Cyrl": "Опис"
-          }
-        }
-      ]
-    },
-    "Timovi": {
-      "sr": "Timovi",
-      "en": "Teams",
-      "sr-Cyrl": "Тимови",
-      "icon": "fas fa-users",
-      "fields": [
         {
           "name": "trajanjeMin",
           "type": "number",
           "label": {
-            "sr": "Naslovna slika tima",
-            "en": "Team image",
-            "sr-Cyrl": "Насловна слика тима"
+            "sr": "Trajanje (min)",
+            "en": "Duration (min)",
+            "sr-Cyrl": "Трајање (мин)"
           }
         },
-        {
-          "name": "title",
-          "type": "text",
-          "label": {
-            "sr": "Naziv tima",
-            "en": "Team name",
-            "sr-Cyrl": "Назив тима"
-          },
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis",
-            "en": "Description",
-            "sr-Cyrl": "Опис"
-          }
-        }
-      ]
-    },
-    "Obavestenja": {
-      "sr": "Obaveštenja za roditelje",
-      "en": "Notifications for Parents",
-      "sr-Cyrl": "Обавештења за родитеље",
-      "icon": "fas fa-bell",
-      "fields": [
         {
           "name": "slika",
           "type": "file",
           "label": {
-            "sr": "Naslovna slika оbaveštenja",
-            "en": "Notification image",
-            "sr-Cyrl": "Насловна слика обавештења"
-          },
-          "required": true
-        },
-        {
-          "name": "naziv",
-          "type": "text",
-          "label": {
-            "sr": "Naziv obaveštenja",
-            "en": "Notification name",
-            "sr-Cyrl": "Назив обавештења"
-          },
-          "required": true
-        },
-        {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis",
-            "en": "Description",
-            "sr-Cyrl": "Опис"
+            "sr": "Naslovna slika predstave",
+            "en": "Play cover image",
+            "sr-Cyrl": "Насловна слика представе"
           }
-        },
-        {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
-          },
-          "required": true,
-          "property": "auto"
         }
       ]
     },

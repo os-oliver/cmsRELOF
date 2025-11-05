@@ -7,6 +7,34 @@ use App\Controllers\PersonalContentController;
 
 class PageController
 {
+    private const TEMPLATE_SLUG_MAP = [
+        // 'biblioteka' => 'Biblioteka',
+        // 'centar-za-kulturu' => 'CentarZaKulturu',
+        'informacije-od-javnog-znacaja' => 'InformacijeOdJavnogZnacaja',
+        // 'istorijski-arhiv' => 'IstorijskiArhiv',
+        // 'muzej-galerija' => 'MuzejGalerija',
+        // 'obrazovna-ustanova' => 'ObrazovnaUstanova',
+        // 'omladinski-centar' => 'OmladinskiCentar',
+        // 'pozoriste' => 'Pozoriste',
+        // 'predskolska-ustanova' => 'PredskolskaUstanova',
+        // 'socijalna-ustanova' => 'SocijalnaUstanova',
+        // 'sport' => 'Sport',
+        // 'turizam' => 'Turizam',
+    ];
+
+    private function loadTemplate(string $templateName): void
+    {
+        $templatePath = dirname(PUBLIC_ROOT) . "/templates/{$templateName}/original/index.php";
+
+        if (!is_file($templatePath)) {
+            error_log("Template not found: {$templatePath}");
+            http_response_code(404);
+            include PUBLIC_ROOT . '/pages/404.php';
+            return;
+        }
+
+        require $templatePath;
+    }
 
 
     public function createPage()
@@ -270,11 +298,27 @@ class PageController
         $tip = isset($_GET['tipUstanove'])
             ? preg_replace('/[^\w]/', '', $_GET['tipUstanove'])
             : '';
-        $template = dirname(PUBLIC_ROOT) . "/templates/{$tip}/original/index.php";
-        error_log("greska:" . $template);
-        if (is_file($template)) {
-            require $template;
+        if ($tip === '') {
+            http_response_code(404);
+            include PUBLIC_ROOT . '/pages/404.php';
+            return;
         }
+
+        $this->loadTemplate($tip);
+        return;
+    }
+
+    public function templateBySlug(string $templateSlug)
+    {
+        $templateSlug = strtolower($templateSlug);
+
+        if (!isset(self::TEMPLATE_SLUG_MAP[$templateSlug])) {
+            http_response_code(404);
+            include PUBLIC_ROOT . '/pages/404.php';
+            return;
+        }
+
+        $this->loadTemplate(self::TEMPLATE_SLUG_MAP[$templateSlug]);
         return;
     }
 
