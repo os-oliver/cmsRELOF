@@ -1,401 +1,318 @@
 [
-  {
-    "Vesti": {
-      "sr": "Vesti",
-      "en": "News",
-      "sr-Cyrl": "Вести",
-      "icon": "fas fa-newspaper",
-      "categories": [
-        "Kultura",
-        "Obrazovanje",
-        "Inovacije",
-        "Zdravlje",
-        "Tehnologija"
-      ],
-      "fields": [
-        {
-          "name": "naslov",
-          "type": "text",
-          "label": {
-            "sr": "Naslov vesti",
-            "en": "News title",
-            "sr-Cyrl": "Наслов вести"
-          },
-          "required": true
+    {
+        "Ankete": {
+            "sr": "Ankete",
+            "en": "Surveys",
+            "sr-Cyrl": "Анкете",
+            "icon": "fas fa-poll",
+            "fields": [
+                {
+                    "name": "naslov",
+                    "type": "text",
+                    "label": {
+                        "sr": "Naslov ankete",
+                        "en": "Survey title",
+                        "sr-Cyrl": "Наслов анкете"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "link",
+                    "type": "url",
+                    "label": {
+                        "sr": "Link ka anketi",
+                        "en": "Survey link",
+                        "sr-Cyrl": "Линк ка анкети"
+                    },
+                    "required": true
+                }
+            ]
         },
-        {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
-          },
-          "required": true,
-          "property": "auto"
+        "Vesti": {
+            "sr": "Vesti",
+            "en": "News",
+            "sr-Cyrl": "Вести",
+            "icon": "fas fa-newspaper",
+            "categories": [
+                "Kultura",
+                "Obrazovanje",
+                "Inovacije",
+                "Zdravlje",
+                "Tehnologija"
+            ],
+            "fields": [
+                {
+                    "name": "naslov",
+                    "type": "text",
+                    "label": {
+                        "sr": "Naslov vesti",
+                        "en": "News title",
+                        "sr-Cyrl": "Наслов вести"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "datum",
+                    "type": "date",
+                    "label": {
+                        "sr": "Datum vesti",
+                        "en": "News date",
+                        "sr-Cyrl": "Датум вести"
+                    },
+                    "required": true,
+                    "property": "auto"
+                },
+                {
+                    "name": "naziv",
+                    "type": "categories",
+                    "label": {
+                        "sr": "Kategorija vesti",
+                        "en": "News category",
+                        "sr-Cyrl": "Категорија вести"
+                    },
+                    "options": [
+                        "Kultura",
+                        "Obrazovanje",
+                        "Inovacije",
+                        "Zdravlje",
+                        "Tehnologija"
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "autor",
+                    "type": "text",
+                    "label": {
+                        "sr": "Autor",
+                        "en": "Author",
+                        "sr-Cyrl": "Аутор"
+                    }
+                },
+                {
+                    "name": "opis",
+                    "type": "textarea",
+                    "label": {
+                        "sr": "Kratak opis",
+                        "en": "Short description",
+                        "sr-Cyrl": "Кратак опис"
+                    }
+                },
+                {
+                    "name": "slika",
+                    "type": "file",
+                    "label": {
+                        "sr": "Naslovna slika vesti",
+                        "en": "News image",
+                        "sr-Cyrl": "Насловна слика вести"
+                    }
+                },
+                {
+                    "name": "link",
+                    "type": "url",
+                    "label": {
+                        "sr": "Eksterni link",
+                        "en": "External link",
+                        "sr-Cyrl": "Екстерни линк"
+                    }
+                }
+            ]
         },
-        {
-          "name": "naziv",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
-          },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
-          "required": true
+        "Dogadjaji": {
+            "sr": "Događaji",
+            "en": "Events",
+            "sr-Cyrl": "Догађаји",
+            "icon": "fas fa-calendar-days",
+            "categories": [
+                "Konferencije",
+                "Seminari",
+                "Radionice",
+                "Takmičenja",
+                "Kultura"
+            ],
+            "fields": [
+                {
+                    "name": "title",
+                    "type": "text",
+                    "label": {
+                        "sr": "Naslov događaja",
+                        "en": "Event title",
+                        "sr-Cyrl": "Наслов догађаја"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "naziv",
+                    "type": "categories",
+                    "label": {
+                        "sr": "Kategorija događaja",
+                        "en": "Event category",
+                        "sr-Cyrl": "Категорија догађаја"
+                    },
+                    "options": [
+                        "Konferencije",
+                        "Seminari",
+                        "Radionice",
+                        "Takmičenja",
+                        "Kultura"
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "datum",
+                    "type": "date",
+                    "label": {
+                        "sr": "Datum održavanja",
+                        "en": "Event date",
+                        "sr-Cyrl": "Датум одржавања"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "time",
+                    "type": "time",
+                    "label": {
+                        "sr": "Vreme početka",
+                        "en": "Start time",
+                        "sr-Cyrl": "Време почетка"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "location",
+                    "type": "text",
+                    "label": {
+                        "sr": "Lokacija događaja",
+                        "en": "Event location",
+                        "sr-Cyrl": "Локација догађаја"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "type": "textarea",
+                    "label": {
+                        "sr": "Opis događaja",
+                        "en": "Event description",
+                        "sr-Cyrl": "Опис догађаја"
+                    }
+                },
+                {
+                    "name": "slika",
+                    "type": "file",
+                    "label": {
+                        "sr": "Naslovna slika događaja",
+                        "en": "Event image",
+                        "sr-Cyrl": "Насловна слика догађаја"
+                    }
+                }
+            ]
         },
-        {
-          "name": "autor",
-          "type": "text",
-          "label": {
-            "sr": "Autor",
-            "en": "Author",
-            "sr-Cyrl": "Аутор"
-          }
-        },
-        {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
-          }
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika događaja",
-            "en": "Event image",
-            "sr-Cyrl": "Насловна слика догађаја"
-          }
+        "Fondovi": {
+            "sr": "Fondovi",
+            "en": "Funds",
+            "sr-Cyrl": "Фондови",
+            "icon": "fas fa-piggy-bank",
+            "categories": [
+                "Stipendije",
+                "Grantovi",
+                "Investicioni fondovi",
+                "Istraživački fondovi",
+                "Fondovi za startape"
+            ],
+            "fields": [
+                {
+                    "name": "title",
+                    "type": "text",
+                    "label": {
+                        "sr": "Naziv fonda",
+                        "en": "Fund name",
+                        "sr-Cyrl": "Назив фонда"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "kategorija",
+                    "type": "categories",
+                    "label": {
+                        "sr": "Vrsta fonda",
+                        "en": "Fund type",
+                        "sr-Cyrl": "Врста фонда"
+                    },
+                    "options": [
+                        "Stipendije",
+                        "Grantovi",
+                        "Investicioni fondovi",
+                        "Istraživački fondovi",
+                        "Fondovi za startape"
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "organizacija",
+                    "type": "text",
+                    "label": {
+                        "sr": "Organizacija \/ institucija",
+                        "en": "Organization \/ Institution",
+                        "sr-Cyrl": "Организација \/ институција"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "rok",
+                    "type": "date",
+                    "label": {
+                        "sr": "Rok za prijavu",
+                        "en": "Application deadline",
+                        "sr-Cyrl": "Рок за пријаву"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "iznos",
+                    "type": "text",
+                    "label": {
+                        "sr": "Iznos finansiranja",
+                        "en": "Funding amount",
+                        "sr-Cyrl": "Износ финансирања"
+                    }
+                },
+                {
+                    "name": "uslovi",
+                    "type": "textarea",
+                    "label": {
+                        "sr": "Uslovi i kriterijumi",
+                        "en": "Eligibility criteria",
+                        "sr-Cyrl": "Услови и критеријуми"
+                    }
+                },
+                {
+                    "name": "opis",
+                    "type": "textarea",
+                    "label": {
+                        "sr": "Opis fonda",
+                        "en": "Fund description",
+                        "sr-Cyrl": "Опис фонда"
+                    }
+                },
+                {
+                    "name": "link",
+                    "type": "url",
+                    "label": {
+                        "sr": "Link za prijavu",
+                        "en": "Application link",
+                        "sr-Cyrl": "Линк за пријаву"
+                    }
+                },
+                {
+                    "name": "slika",
+                    "type": "file",
+                    "label": {
+                        "sr": "Logo ili slika fonda",
+                        "en": "Fund image or logo",
+                        "sr-Cyrl": "Лого или слика фонда"
+                    }
+                }
+            ]
         }
-      ]
-    },
-    "Projekti": {
-      "sr": "Projekti",
-      "en": "Projects",
-      "sr-Cyrl": "Пројекти",
-      "icon": "fas fa-diagram-project",
-      "fields": [
-        {
-          "name": "nazivPredstave",
-          "type": "text",
-          "label": {
-            "sr": "Naziv predstave",
-            "en": "Play title",
-            "sr-Cyrl": "Назив представе"
-          },
-          "required": true
-        },
-        {
-          "name": "datumVreme",
-          "type": "text",
-          "label": {
-            "sr": "Datum i vreme",
-            "en": "Date & time",
-            "sr-Cyrl": "Датум и време"
-          },
-          "required": true
-        },
-        {
-          "name": "zanr",
-          "type": "categories",
-          "label": {
-            "sr": "Žanr",
-            "en": "Genre",
-            "sr-Cyrl": "Жанр"
-          },
-          "required": true
-        },
-        {
-          "name": "trajanjeMin",
-          "type": "number",
-          "label": {
-            "sr": "Trajanje (min)",
-            "en": "Duration (min)",
-            "sr-Cyrl": "Трајање (мин)"
-          }
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika predstave",
-            "en": "Play cover image",
-            "sr-Cyrl": "Насловна слика представе"
-          }
-        }
-      ]
-    },
-    "Predstave": {
-      "sr": "Predstave",
-      "en": "Plays",
-      "sr-Cyrl": "Представе",
-      "icon": "fas fa-theater-masks",
-      "categories": ["Drama", "Komedija", "Tragedija", "Muzikal", "Opera", "Balet"],
-      "fields": [
-        {
-          "name": "nazivPredstave",
-          "type": "text",
-          "label": {
-            "sr": "Naziv predstave",
-            "en": "Play title",
-            "sr-Cyrl": "Назив представе"
-          },
-          "required": true
-        },
-        {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
-          }
-        },
-        {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
-          },
-          "required": true
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika vesti",
-            "en": "News image",
-            "sr-Cyrl": "Насловна слика вести"
-          }
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Link vesti",
-            "en": "News link",
-            "sr-Cyrl": "Линк вести"
-          }
-        }
-      ]
-    },
-    "Vrtici": {
-      "sr": "Vrtići",
-      "en": "Kindergarten",
-      "sr-Cyrl": "Вртићи",
-      "icon": "fas fa-school",
-      "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika vrtića",
-            "en": "Kindergarten image",
-            "sr-Cyrl": "Насловна слика вртића"
-          }
-        },
-        {
-          "name": "title",
-          "type": "text",
-          "label": {
-            "sr": "Naziv vrtića",
-            "en": "Kindergarten name",
-            "sr-Cyrl": "Назив вртића"
-          },
-          "required": true
-        },
-        {
-          "name": "location",
-          "type": "text",
-          "label": {
-            "sr": "Lokacija vrtića",
-            "en": "Kindergarten location",
-            "sr-Cyrl": "Локација вртића"
-          },
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis",
-            "en": "Description",
-            "sr-Cyrl": "Опис"
-          }
-        }
-      ]
-    },
-    "Timovi": {
-      "sr": "Timovi",
-      "en": "Teams",
-      "sr-Cyrl": "Тимови",
-      "icon": "fas fa-users",
-      "fields": [
-        {
-          "name": "trajanjeMin",
-          "type": "number",
-          "label": {
-            "sr": "Naslovna slika tima",
-            "en": "Team image",
-            "sr-Cyrl": "Насловна слика тима"
-          }
-        },
-        {
-          "name": "title",
-          "type": "text",
-          "label": {
-            "sr": "Naziv tima",
-            "en": "Team name",
-            "sr-Cyrl": "Назив тима"
-          },
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis",
-            "en": "Description",
-            "sr-Cyrl": "Опис"
-          }
-        }
-      ]
-    },
-    "Obavestenja": {
-      "sr": "Obaveštenja za roditelje",
-      "en": "Notifications for Parents",
-      "sr-Cyrl": "Обавештења за родитеље",
-      "icon": "fas fa-bell",
-      "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika оbaveštenja",
-            "en": "Notification image",
-            "sr-Cyrl": "Насловна слика обавештења"
-          },
-          "required": true
-        },
-        {
-          "name": "naziv",
-          "type": "text",
-          "label": {
-            "sr": "Naziv obaveštenja",
-            "en": "Notification name",
-            "sr-Cyrl": "Назив обавештења"
-          },
-          "required": true
-        },
-        {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis",
-            "en": "Description",
-            "sr-Cyrl": "Опис"
-          }
-        },
-        {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
-          },
-          "required": true,
-          "property": "auto"
-        }
-      ]
-    },
-    "Ansambl": {
-    "sr": "Ansambl",
-    "en": "Ensemble",
-    "sr-Cyrl": "Ансамбл",
-    "icon": "fas fa-users",
-    "categories": [ 
-          "Glumac/Glumica",
-          "Reditelj",
-          "Dramaturg",
-          "Scenograf",
-          "Kostimograf",
-          "Koreograf",
-          "Kompozitor",
-          "Tehnička ekipa"
-        ],
-    "fields": [
-      {
-        "name": "imePrezime",
-        "type": "text",
-        "label": {
-          "sr": "Ime i prezime",
-          "en": "Full name",
-          "sr-Cyrl": "Име и презиме"
-        },
-        "required": true
-      },
-      {
-        "name": "uloga",
-        "type": "categories",
-        "label": {
-          "sr": "Uloga / Zvanje",
-          "en": "Role / Position",
-          "sr-Cyrl": "Улога / Звање"
-        },
-        "required": true
-      },
-      {
-        "name": "kratkaBio",
-        "type": "textarea",
-        "label": {
-          "sr": "Kratka biografija",
-          "en": "Short bio",
-          "sr-Cyrl": "Кратка биографија"
-        }
-      },
-      {
-        "name": "clanOd",
-        "type": "number",
-        "label": {
-          "sr": "Član od (godina)",
-          "en": "Member since (year)",
-          "sr-Cyrl": "Члан од (година)"
-        }
-      },
-      {
-        "name": "kontakt",
-        "type": "text",
-        "label": {
-          "sr": "Kontakt / Linkovi",
-          "en": "Contact / Links",
-          "sr-Cyrl": "Контакт / Линкови"
-        }
-      },
-      {
-        "name": "slika",
-        "type": "file",
-        "label": {
-          "sr": "Fotografija člana",
-          "en": "Member photo",
-          "sr-Cyrl": "Фотографија члана"
-        }
-      }
-    ]
-  }
-
-  }
+    }
 ]
