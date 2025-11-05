@@ -53,9 +53,9 @@ $colorPalettes = [
             'secondary_hover' => '#4B5563',
             'accent' => '#F59E0B',
             'accent_hover' => '#D97706',
-            'primary_text' => '#ffffff',
-            'secondary_text' => '#fefefe',
-            'background' => '#FFFFFF',
+            'primary_text' => '#000000',
+            'secondary_text' => '#000000',
+            'background' => '#75ff71',
             'secondary_background' => '#F9FAFB',
             'surface' => '#F3F4F6'
         ]
@@ -497,11 +497,11 @@ if ($total > 0) {
             }
         });
     </script>
-
-    <!-- Load GrapesJS and promotionLoader -->
+    <button id="undo-btn" />
+    <button id="redo-btn" />
+    <!-- Load GrapesJS and promotionLoader (module) -->
     <script src="/assets/js/WebDesigner/grapesjs/grapes.min.js"></script>
-    <script src="/assets/js/dashboard/promotionLoader.js"></script>
-    <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
+    <script type="module" src="/assets/js/dashboard/promotionLoader.js"></script>
 </body>
 
 </html>
