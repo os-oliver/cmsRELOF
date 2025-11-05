@@ -1,0 +1,81 @@
+[
+  {
+    "Repertoar": {
+      "sr": "Repertoar",
+      "en": "Library Program",
+      "sr-Cyrl": "Репертоар",
+      "icon": "fas fa-book",
+      "categories": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov stavke",
+            "en": "Item title",
+            "sr-Cyrl": "Наслов ставке"
+          },
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum dostupnosti",
+            "en": "Availability date",
+            "sr-Cyrl": "Датум доступности"
+          },
+          "required": true,
+          "property": "auto"
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija",
+            "en": "Category",
+            "sr-Cyrl": "Категорија"
+          },
+          "options": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
+          "required": true
+        },
+        {
+          "name": "autor",
+          "type": "text",
+          "label": {
+            "sr": "Autor / Izvođač",
+            "en": "Author / Performer",
+            "sr-Cyrl": "Аутор / Извођач"
+          }
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika",
+            "en": "Cover image",
+            "sr-Cyrl": "Насловна слика"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Eksterni link",
+            "en": "External link",
+            "sr-Cyrl": "Екстерни линк"
+          }
+        }
+      ]
+    }
+  }
+]

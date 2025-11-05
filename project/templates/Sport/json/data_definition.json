@@ -1,0 +1,49 @@
+[
+  {
+    "Sportovi": {
+      "sr": "Sportovi",
+      "en": "Sports",
+      "sr-Cyrl": "Спортови",
+      "icon": "fas fa-futbol",
+      "fields": [
+        {
+          "name": "nazivSporta",
+          "type": "text",
+          "label": {
+            "sr": "Naziv sporta",
+            "en": "Sport name",
+            "sr-Cyrl": "Назив спорта"
+          },
+          "required": true
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Slika sporta",
+            "en": "Sport image",
+            "sr-Cyrl": "Слика спорта"
+          }
+        },
+        {
+          "name": "termin",
+          "type": "datetime",
+          "label": {
+            "sr": "Termin (ako postoji)",
+            "en": "Date & time (if applicable)",
+            "sr-Cyrl": "Термин (ако постоји)"
+          }
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis sporta",
+            "en": "Sport description",
+            "sr-Cyrl": "Опис спорта"
+          }
+        }
+      ]
+    }
+  }
+]

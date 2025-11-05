@@ -164,7 +164,7 @@ AuthController::requireEditor();
                                 <?= __("complaints.complaints") ?>
                             </h1>
                             <p class="text-light-600">
-                               <?= __("complaints.managing") ?>
+                                <?= __("complaints.managing") ?>
                             </p>
                         </div>
                         <div class="mt-4 md:mt-0 flex flex-wrap gap-3">
@@ -332,8 +332,7 @@ AuthController::requireEditor();
                             </h2>
                             <div class="mt-4 md:mt-0 flex items-center gap-3">
                                 <div class="relative">
-                                    <input type="text" 
-                                        placeholder="<?= __("complaints.search_complaints") ?>"
+                                    <input type="text" placeholder="<?= __("complaints.search_complaints") ?>"
                                         class="pl-10 pr-4 py-2 border border-light-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
                                     <i
                                         class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-light-400"></i>
@@ -362,27 +361,33 @@ AuthController::requireEditor();
                         <table class="w-full">
                             <thead class="bg-light-50">
                                 <tr>
-                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
                                         <?= __("complaints.user") ?>
                                     </th>
 
-                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
                                         <?= __("complaints.title") ?>
                                     </th>
 
-                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
                                         <?= __("complaints.category") ?>>
                                     </th>
 
-                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
                                         <?= __("complaints.status") ?>
                                     </th>
 
-                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
                                         <?= __("complaints.date") ?>
                                     </th>
 
-                                    <th class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-medium text-light-600 uppercase tracking-wider">
                                         <?= __("complaints.actions") ?>
                                     </th>
 
@@ -513,7 +518,7 @@ AuthController::requireEditor();
                                     </td>
                                 </tr>
 
-                                
+
                                 <!-- Row 3 -->
                                 <tr class="hover:bg-light-50 transition-colors duration-200">
                                     <td class="px-6 py-4 whitespace-nowrap">

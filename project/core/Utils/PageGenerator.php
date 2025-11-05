@@ -2,7 +2,8 @@
 
 namespace App\Utils;
 
-class PageGenerator {
+class PageGenerator
+{
     private string $baseDir;
     private string $compDir;
     private string $pagesDir;

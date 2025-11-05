@@ -27,36 +27,43 @@ class Employee
      */
     public function list(int $limit, int $offset, string $search = '', ?string $locale = null): array
     {
-        $selectParams = [
-            ':limit' => $limit,
-            ':offset' => $offset
-        ];
-
+        $params = [];
         $whereClause = '';
-        $localeClause = '';
-        $joinText = '';
-
-        // Ako je prosleđen locale, filtriramo tekstove
-        if ($locale !== null) {
-            $localeClause = 'AND t.lang = :locale';
-            $selectParams[':locale'] = $locale;
-        }
 
         if (!empty($search)) {
-            $searchWildcard = '%' . $search . '%';
-            $selectParams[':search'] = $searchWildcard;
-
-            // Pronađi ID-jeve zaposlenih čija polja u text tabeli odgovaraju search-u
+            $params[':search'] = '%' . $search . '%';
             $whereClause = "WHERE e.id IN (
-            SELECT source_id 
-            FROM text t 
-            WHERE t.source_table = 'employee' 
-              AND t.content LIKE :search
-              $localeClause
+            SELECT source_id
+            FROM text t
+            WHERE t.source_table = 'employee'
+            AND t.content LIKE :search
+            " . ($locale !== null ? "AND t.lang = :locale_sub" : "") . "
         )";
+            if ($locale !== null) {
+                $params[':locale_sub'] = $locale;
+            }
         }
 
-        // Glavni SELECT sa pivotovanjem
+        // prvo biramo ID-jeve zaposlenih sa limit i offset
+        $idSql = "SELECT e.id FROM employee e $whereClause ORDER BY e.id LIMIT :limit OFFSET :offset";
+        $idStmt = $this->pdo->prepare($idSql);
+        $idStmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $idStmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        foreach ($params as $key => $value) {
+            $idStmt->bindValue($key, $value, PDO::PARAM_STR);
+        }
+        $idStmt->execute();
+        $ids = $idStmt->fetchAll(PDO::FETCH_COLUMN);
+
+        if (empty($ids)) {
+            return [[], 0];
+        }
+
+        // zatim dohvatamo sve polja i jezike samo za te ID-jeve
+        $textParams = [];
+        $textParams[':ids'] = implode(',', $ids);
+        $localeClause = $locale !== null ? "AND t.lang = :locale" : "";
+
         $sql = "
         SELECT 
             e.id,
@@ -65,44 +72,36 @@ class Employee
             t.field_name,
             t.content
         FROM employee e
-        LEFT JOIN text t 
-            ON t.source_id = e.id 
+        LEFT JOIN text t
+            ON t.source_id = e.id
            AND t.source_table = 'employee'
-           " . ($locale !== null ? "AND t.lang = :locale" : "") . "
-        $whereClause
+           $localeClause
+        WHERE e.id IN (" . implode(',', $ids) . ")
         ORDER BY e.id
-        LIMIT :limit OFFSET :offset
     ";
 
         $stmt = $this->pdo->prepare($sql);
-
-        // Bind parametri
-        foreach ($selectParams as $key => $value) {
-            $paramType = is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR;
-            $stmt->bindValue($key, $value, $paramType);
+        if ($locale !== null) {
+            $stmt->bindValue(':locale', $locale, PDO::PARAM_STR);
         }
-
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Pivotovanje za jezike
         $pivoter = new Pivoter('field_name', 'content', 'id');
         $employees = $pivoter->pivot($rows);
 
-        // Ukupan broj rezultata
-        $countSql = "SELECT COUNT(*) as total FROM employee e $whereClause";
+        // ukupan broj zaposlenih koji zadovoljavaju filter
+        $countSql = "SELECT COUNT(DISTINCT e.id) as total FROM employee e $whereClause";
         $countStmt = $this->pdo->prepare($countSql);
-        foreach ($selectParams as $key => $value) {
-            if ($key !== ':limit' && $key !== ':offset') {
-                $paramType = is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR;
-                $countStmt->bindValue($key, $value, $paramType);
-            }
+        foreach ($params as $key => $value) {
+            $countStmt->bindValue($key, $value, PDO::PARAM_STR);
         }
         $countStmt->execute();
         $totalCount = (int) $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
 
         return [$employees, $totalCount];
     }
+
 
 
 
