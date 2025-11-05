@@ -1,16 +1,21 @@
 <?php
+
 namespace App\Admin\PageBuilders;
 
 use App\Controllers\ContentController;
 use App\Controllers\LanguageMapperController;
 
+<<<<<<<< HEAD:project/core/Admin/PageBuilders/AnketePageBuilder.php
 class AnketePageBuilder extends BasePageBuilder
+========
+class SeminarPageBuilder extends BasePageBuilder
+>>>>>>>> origin/main:project/core/Admin/PageBuilders/SeminarPageBuilder.php
 {
     protected string $slug;
     private LanguageMapperController $translator;
 
     // Configurable variables
-    private int $itemsPerPage = 3;
+    private int $itemsPerPage = 6;
     private int $descriptionMaxLength = 120;
     private int $imageHeight = 56; // in rem units (h-56 = 14rem)
     private int $paginationRange = 2; // Number of pages to show on each side
@@ -35,6 +40,7 @@ class AnketePageBuilder extends BasePageBuilder
 
         // Define all static texts in Latin
         $latinTexts = [
+<<<<<<<< HEAD:project/core/Admin/PageBuilders/AnketePageBuilder.php
             'search_placeholder' => 'Pretraži ankete...',
             'apply_button' => 'Primeni filter',
             'all_categories' => 'Sve teme',
@@ -42,6 +48,18 @@ class AnketePageBuilder extends BasePageBuilder
             'location' => 'Lokacija ispitanika',
             'survey_details' => 'Detalji ankete',
             'no_items_found' => 'Nema pronađenih anketa',
+========
+            'search_placeholder' => 'Pretraži...',
+            'catalog_number' => 'Kataloški broj',
+            'subject_area' => 'Oblast',
+            'learn_more' => 'Saznaj više',
+            'search_button' => 'Pretraži',
+            'all_categories' => 'Sve kategorije',
+            'date_and_time' => 'Datum i vreme',
+            'location' => 'Lokacija',
+            'event_details' => 'Detalji događaja',
+            'no_items_found' => 'Nema pronađenih stavki',
+>>>>>>>> origin/main:project/core/Admin/PageBuilders/SeminarPageBuilder.php
             'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
         ];
 
@@ -166,34 +184,53 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
                placeholder='{$texts['search_placeholder']}' 
                class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
         <button type='submit' 
-                class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
-            {$texts['apply_button']}
+                class='bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+            {$texts['search_button']}
         </button>
     </div>";
     
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category' 
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-            <option value=''>{$texts['all_categories']}</option>";
-    
-    foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
-    }
-    
-    $html .= "</select></div></form>";
+    $html .= "</form>";
     
     return $html;
 }
 PHP;
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
+<<<<<<<< HEAD:project/core/Admin/PageBuilders/AnketePageBuilder.php
         <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1 bg-surface backdrop-blur-md border border-white/30">
         <!-- Ikona -->
         <div class="relative w-full h-32 flex items-center justify-center bg-gradient-to-tr from-accent/20 to-secondary/20">
             <i class="fas fa-poll text-5xl text-primary group-hover:text-primary_hover transition-colors duration-300"></i>
+========
+        <div class="glass-card rounded-lg p-6">
+            <div class="flex items-start justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-background flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-primary"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">{{catalogNumberLabel}}</div>
+                        <div class="text-lg font-semibold text-primary_text">{{catalogNumber}}</div>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <div class="text-xs text-gray-500 mb-1">{{subjectArea}}</div>
+                    <div class="text-sm text-primary_text">{{area}}</div>
+                </div>
+            </div>
+
+            <h3 class="mt-4 text-xl font-bold text-primary_text">{{title}}</h3>
+
+            <div class="mt-6 flex gap-3">
+                <a href="{{link}}" target="_blank"
+                class="inline-flex items-center px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg 
+                        text-sm font-medium text-gray-700 hover:bg-primary/5 hover:border-primary 
+                        hover:text-primary transition-colors duration-200">
+                    <i class="fas fa-info-circle mr-2 text-primary"></i>{{learnMore}}
+                </a>
+            </div>
+>>>>>>>> origin/main:project/core/Admin/PageBuilders/SeminarPageBuilder.php
         </div>
 
         <!-- Sadržaj -->
@@ -216,6 +253,7 @@ HTML;
     protected string $cardRender = <<<'HTML'
  function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, $cardTemplate = ''): string
 {
+<<<<<<<< HEAD:project/core/Admin/PageBuilders/AnketePageBuilder.php
     $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $link = htmlspecialchars($item['fields']['link'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -226,6 +264,24 @@ HTML;
         '{{link}}' => $link,
         '{{itemId}}' => $itemId,
         '{{openSurvey}}' => $texts['open_survey'] ?? 'Otvori anketu'
+========
+    $title = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $catalogNumber = htmlspecialchars((string) ($item['fields']['catalogNumber'][$locale] ?? $item['fields']['catalogNumber'] ?? ''), ENT_QUOTES, 'UTF-8');
+    $area = htmlspecialchars((string) ($item['fields']['area'][$locale] ?? $item['fields']['area'] ?? ''), ENT_QUOTES, 'UTF-8');
+    $link = (string) ($item['fields']['link'][$locale] ?? $item['fields']['link'] ?? '');
+ 
+
+    // Replace placeholders
+    $replacements = [
+        '{{title}}' => $title,
+        '{{catalogNumber}}' => $catalogNumber,
+        '{{link}}' => $link,
+        '{{area}}' => $area,
+        '{{learnMore}}' => $texts['learn_more'] ?? 'Learn more',
+        '{{subjectArea}}' => $texts['subject_area'] ?? 'Subject area',
+        '{{catalogNumberLabel}}' => $texts['catalog_number'] ?? 'Catalog number',
+        '{{eventDetails}}' => $texts['event_details'] ?? 'Details'
+>>>>>>>> origin/main:project/core/Admin/PageBuilders/SeminarPageBuilder.php
     ];
 
     return str_replace(array_keys($replacements), array_values($replacements), $cardTemplate);
@@ -292,11 +348,16 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 }
 PHP;
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
+<<<<<<<< HEAD:project/core/Admin/PageBuilders/AnketePageBuilder.php
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Anekte</h1>
             <p class="text-gray-600">Istražite ankete</p>
+========
+            <h1 class="text-3xl font-heading font-bold text-primary mb-2">Seminari</h1>
+            <p class="text-secondary_text">Seminari čiju je akreditaciju institucionalno podržao centar za obrazovanje</p>
+>>>>>>>> origin/main:project/core/Admin/PageBuilders/SeminarPageBuilder.php
         </div>
         
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
@@ -370,7 +431,10 @@ if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structur
 $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži...',
-    'apply_button' => 'Primeni',
+    'catalog_number' => 'Kataloški broj',
+    'subject_area' => 'Oblast',
+    'learn_more' => 'Saznaj više',
+    'search_button' => 'Pretraži',
     'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Datum i vreme',
     'location' => 'Lokacija',

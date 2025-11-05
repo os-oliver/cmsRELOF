@@ -352,12 +352,7 @@ $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
-$categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
-        : trim((string) $_GET['category'])
-      )
-    : null;
+$categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
 $search = $_GET['search'] ?? '';
 
 $categories = GenericCategory::fetchAll($slug, $locale);
