@@ -356,6 +356,7 @@
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-primary"></i>Početna
                     </a>
+
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all"
@@ -383,6 +384,11 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-users-cog mr-2 text-secondary"></i>Rukovodstvo
                             </a>
+                            <a data-page="OrganizacionaStruktura" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-sitemap mr-2 text-secondary"></i>Organizaciona struktura
+                            </a>
+
                             <a data-page="Objekat" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
@@ -397,18 +403,53 @@
                             </a>
                         </div>
                     </div>
-                    <a data-page="Dogadjaji" href="#"
+
+                    <a data-page="Ansambl" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Dogadjaji
+                        <i class="fas fa-users mr-3 text-primary"></i>Ansambl
                     </a>
+
+                    <a data-page="Projekti" href="#"
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
+                        <i class="fas fa-project-diagram mr-3 text-primary"></i>Projekti
+                    </a>
+
                     <a data-page="Galerija" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-secondary"></i>Galerija
                     </a>
+
                     <a data-page="Dokumenti" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-accent"></i>Dokumenti
                     </a>
+
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all"
+                            id="mobileAboutToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-bullhorn mr-3 text-primary"></i>Aktivnosti
+                            </div>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-200"
+                                id="mobileAboutMenu"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileActivityMenu">
+                            <a data-page="Vesti" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-newspaper mr-2 text-primary"></i>Vesti
+                            </a>
+                            <a data-page="Dogadjaji" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-calendar-alt mr-2 text-secondary"></i>Događaji
+                            </a>
+                            <a data-page="Ankete" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-poll mr-2 text-accent"></i>Ankete
+                            </a>
+                        </div>
+                    </div>
+
                     <a data-page="Kontakt" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-secondary"></i>Kontakt
@@ -494,6 +535,12 @@
                             <span class="font-medium">Rukovodstvo</span>
                         </a>
                         <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-sitemap mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Organizaciona struktura</span>
+                        </a>
+
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Objekat</span>
@@ -1253,100 +1300,109 @@
 
 
 
- <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileMenuPanel = document.getElementById('mobileMenuPanel');
-    const closeMobileMenu = document.getElementById('closeMobileMenu');
-    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    const mobileAboutToggle = document.getElementById('mobileAboutToggle');
-    const mobileAboutMenu = document.getElementById('mobileAboutMenu');
-    const searchButton = document.getElementById('searchButton');
-    const searchInputContainer = document.getElementById('searchInputContainer');
-    const closeSearch = document.getElementById('closeSearch');
-    const increaseFontBtn = document.getElementById('increaseFontBtn');
-    let fontSizeIncreased = false;
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            // Generalized mobile dropdown toggles (any .mobile-dropdown > button will toggle its following menu)
+            const mobileDropdownButtons = document.querySelectorAll('.mobile-dropdown > button');
+            const searchButton = document.getElementById('searchButton');
+            const searchInputContainer = document.getElementById('searchInputContainer');
+            const closeSearch = document.getElementById('closeSearch');
+            const increaseFontBtn = document.getElementById('increaseFontBtn');
+            let fontSizeIncreased = false;
 
-    function openMenu() {
-        if (mobileMenu && mobileMenuPanel && hamburger) {
-            mobileMenu.classList.remove('hidden');
-            setTimeout(() => mobileMenuPanel.classList.remove('translate-x-full'), 10);
-            hamburger.classList.add('active');
-        }
-    }
+            function openMenu() {
+                if (mobileMenu && mobileMenuPanel && hamburger) {
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => mobileMenuPanel.classList.remove('translate-x-full'), 10);
+                    hamburger.classList.add('active');
+                }
+            }
 
-    function closeMenu() {
-        if (mobileMenu && mobileMenuPanel && hamburger) {
-            mobileMenuPanel.classList.add('translate-x-full');
-            hamburger.classList.remove('active');
-            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-        }
-    }
+            function closeMenu() {
+                if (mobileMenu && mobileMenuPanel && hamburger) {
+                    mobileMenuPanel.classList.add('translate-x-full');
+                    hamburger.classList.remove('active');
+                    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                }
+            }
 
-    if (hamburger && mobileMenu && mobileMenuPanel) {
-        hamburger.addEventListener('click', function () {
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                requestAnimationFrame(() => mobileMenuPanel.classList.remove('translate-x-full'));
-                hamburger.classList.add('active');
-            } else {
-                mobileMenuPanel.classList.add('translate-x-full');
-                mobileMenuPanel.addEventListener('transitionend', () => {
-                    mobileMenu.classList.add('hidden');
-                }, { once: true });
-                hamburger.classList.remove('active');
+            if (hamburger && mobileMenu && mobileMenuPanel) {
+                hamburger.addEventListener('click', function () {
+                    if (mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.remove('hidden');
+                        requestAnimationFrame(() => mobileMenuPanel.classList.remove('translate-x-full'));
+                        hamburger.classList.add('active');
+                    } else {
+                        mobileMenuPanel.classList.add('translate-x-full');
+                        mobileMenuPanel.addEventListener('transitionend', () => {
+                            mobileMenu.classList.add('hidden');
+                        }, { once: true });
+                        hamburger.classList.remove('active');
+                    }
+                });
+            }
+
+            if (closeMobileMenu) {
+                closeMobileMenu.addEventListener('click', closeMenu);
+            }
+
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', closeMenu);
+            }
+
+            // Generalized handler: each .mobile-dropdown > button toggles its following submenu
+            if (mobileDropdownButtons && mobileDropdownButtons.length) {
+                mobileDropdownButtons.forEach(btn => {
+                    const menu = btn.nextElementSibling;
+                    const chevron = btn.querySelector('.fa-chevron-down');
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        if (!menu) return;
+                        menu.classList.toggle('hidden');
+                        btn.parentElement && btn.parentElement.classList.toggle('active');
+                        if (chevron) chevron.classList.toggle('rotate-180');
+                        const expanded = btn.getAttribute('aria-expanded') === 'true';
+                        btn.setAttribute('aria-expanded', (!expanded).toString());
+                    });
+                });
+            }
+
+            if (searchButton && searchInputContainer) {
+                searchButton.addEventListener('click', function () {
+                    searchInputContainer.classList.remove('hidden');
+                    setTimeout(() => searchInputContainer.classList.remove('opacity-0'), 10);
+                });
+            }
+
+            if (closeSearch && searchInputContainer) {
+                closeSearch.addEventListener('click', function () {
+                    searchInputContainer.classList.add('opacity-0');
+                    setTimeout(() => searchInputContainer.classList.add('hidden'), 300);
+                });
+            }
+
+            if (increaseFontBtn) {
+                increaseFontBtn.addEventListener('click', function () {
+                    const body = document.body;
+                    if (!fontSizeIncreased) {
+                        body.style.fontSize = '1.1rem';
+                        fontSizeIncreased = true;
+                        increaseFontBtn.textContent = 'A-';
+                    } else {
+                        body.style.fontSize = '';
+                        fontSizeIncreased = false;
+                        increaseFontBtn.textContent = 'A+';
+                    }
+                });
             }
         });
-    }
-
-    if (closeMobileMenu) {
-        closeMobileMenu.addEventListener('click', closeMenu);
-    }
-
-    if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', closeMenu);
-    }
-
-    if (mobileAboutToggle && mobileAboutMenu) {
-        mobileAboutToggle.addEventListener('click', function () {
-            mobileAboutMenu.classList.toggle('hidden');
-            if (mobileAboutToggle.parentElement) {
-                mobileAboutToggle.parentElement.classList.toggle('active');
-            }
-        });
-    }
-
-    if (searchButton && searchInputContainer) {
-        searchButton.addEventListener('click', function () {
-            searchInputContainer.classList.remove('hidden');
-            setTimeout(() => searchInputContainer.classList.remove('opacity-0'), 10);
-        });
-    }
-
-    if (closeSearch && searchInputContainer) {
-        closeSearch.addEventListener('click', function () {
-            searchInputContainer.classList.add('opacity-0');
-            setTimeout(() => searchInputContainer.classList.add('hidden'), 300);
-        });
-    }
-
-    if (increaseFontBtn) {
-        increaseFontBtn.addEventListener('click', function () {
-            const body = document.body;
-            if (!fontSizeIncreased) {
-                body.style.fontSize = '1.1rem';
-                fontSizeIncreased = true;
-                increaseFontBtn.textContent = 'A-';
-            } else {
-                body.style.fontSize = '';
-                fontSizeIncreased = false;
-                increaseFontBtn.textContent = 'A+';
-            }
-        });
-    }
-});
-</script>
+    </script>
 
 
 </body>

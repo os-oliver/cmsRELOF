@@ -207,8 +207,8 @@ function handleExport(array $data): void
 try {
     $startTotal = microtime(true); // ⏱ Start celog procesa
     $data = getJsonInput();
-
     $t0 = microtime(true);
+    $saveComponents = $data['saveComponents'] ?? false;
     if (!$saveComponents) {
         $jsonPath = __DIR__ . "/../../templates/" . $data['typeOfInstitution'] . "/json/data_definition.json";
         $globalJsonPath = __DIR__ . "/../../templates/globalDefinitions.json";
@@ -260,11 +260,11 @@ try {
 
     $tExport = microtime(true);
     handleExport($data);
-    error_log("⏱ handleExport() took " . round(microtime(true) - $tExport, 3) . "s");
+    error_log(" handleExport() took " . round(microtime(true) - $tExport, 3) . "s");
 
-    error_log("✅ Total export process finished in " . round(microtime(true) - $startTotal, 3) . "s");
+    error_log(" Total export process finished in " . round(microtime(true) - $startTotal, 3) . "s");
 
 } catch (Exception $e) {
-    error_log("❌ Error during export: " . $e->getMessage());
+    error_log(" Error during export: " . $e->getMessage());
     sendJson(["success" => false, "error" => $e->getMessage()], 400);
 }
