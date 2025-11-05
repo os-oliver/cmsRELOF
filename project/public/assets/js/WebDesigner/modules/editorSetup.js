@@ -417,7 +417,7 @@ function setupLinkLogging(editor) {
         if (!el) return;
         if (el.nodeType === 3) el = el.parentElement;
 
-        // 1. PRIORITET: Slider kontrole (prev/next/dots)
+        // Handle slider controls (prev/next/dots)
         const sliderControl = el.closest(
           ".slider-control, .slider-indicator, .slider-prev, .slider-next"
         );
@@ -440,85 +440,101 @@ function setupLinkLogging(editor) {
           return;
         }
 
-        // 2. PRIORITET: Klik na slike u slider-u (overlay ili direktno na sliku)
+        // Handle slider items and images
         const sliderItem = el.closest(".slider-item");
         if (sliderItem) {
-          // Proveri da li je kliknuto na overlay ili sliku
-          const isOverlay =
+          // Check if we clicked on text elements - ignore these
+          if (
+            el.matches(
+              "h1, h2, h3, h4, h5, h6, p, span, button, div.hero-content > *, a, i"
+            )
+          ) {
+            return;
+          }
+
+          // Allow clicks on the overlay, image, or the slider-item div itself
+          const isClickable =
             el.classList.contains("slider-overlay") ||
-            el.classList.contains("slide-overlay");
-          const isImage = el.tagName && el.tagName.toLowerCase() === "img";
+            el.classList.contains("slide-overlay") ||
+            el.tagName?.toLowerCase() === "img" ||
+            el === sliderItem;
 
-          if (isOverlay || isImage) {
-            const imgEl = sliderItem.querySelector("img");
-            if (imgEl) {
-              const imgSrc =
-                imgEl.getAttribute("src") || imgEl.dataset?.src || "";
-              const escaped = (imgSrc || "").replace(/"/g, '\\"');
-              let imgCmp = null;
+          const targetImg = sliderItem.querySelector("img");
+          if (!targetImg) return;
 
-              if (imgSrc) {
-                imgCmp =
-                  wrapper.find(`[src="${escaped}"]`)[0] ||
-                  wrapper.find(`[attributes.data-src="${escaped}"]`)[0] ||
-                  wrapper.find(`[src*="${escaped}"]`)[0];
-              }
+          e.preventDefault();
+          e.stopPropagation();
 
-              if (!imgCmp) {
-                const allImgs = wrapper.find("img");
-                for (let i = 0; i < allImgs.length; i++) {
-                  const c = allImgs[i];
-                  try {
-                    const elFromComp =
-                      typeof c.getEl === "function" ? c.getEl() : c.el;
-                    if (elFromComp?.tagName?.toLowerCase() === "img") {
-                      const compSrc =
-                        elFromComp.getAttribute("src") ||
-                        elFromComp.dataset?.src ||
-                        "";
-                      if (compSrc === imgSrc) {
-                        imgCmp = c;
-                        break;
-                      }
-                    }
-                  } catch {}
+          const imgSrc =
+            targetImg.getAttribute("src") || targetImg.dataset?.src || "";
+          const escaped = imgSrc.replace(/"/g, '\\"');
+          let imgCmp = null;
+
+          // Try to find the image component
+          if (imgSrc) {
+            imgCmp =
+              wrapper.find(`[src="${escaped}"]`)[0] ||
+              wrapper.find(`[attributes.data-src="${escaped}"]`)[0] ||
+              wrapper.find(`[src*="${escaped}"]`)[0];
+          }
+
+          // If not found, search through all images
+          if (!imgCmp) {
+            const allImgs = wrapper.find("img");
+            for (let i = 0; i < allImgs.length; i++) {
+              const c = allImgs[i];
+              try {
+                const elFromComp =
+                  typeof c.getEl === "function" ? c.getEl() : c.el;
+                if (elFromComp?.tagName?.toLowerCase() === "img") {
+                  const compSrc =
+                    elFromComp.getAttribute("src") ||
+                    elFromComp.dataset?.src ||
+                    "";
+                  if (compSrc === imgSrc) {
+                    imgCmp = c;
+                    break;
+                  }
                 }
-              }
-
-              if (imgCmp) {
-                editor.select(imgCmp);
-                editor.runCommand("open-assets", { target: imgCmp });
-                return;
+              } catch (err) {
+                console.warn("Error checking image component:", err);
               }
             }
           }
+
+          if (imgCmp) {
+            editor.select(imgCmp);
+            editor.runCommand("open-assets", { target: imgCmp });
+            return;
+          }
         }
 
-        // 3. PRIORITET: Icon klikovi (ako imate icon chooser)
+        // Handle icon clicks
         if (el.tagName && el.tagName.toLowerCase() === "i") {
-          try {
-            const anchorForIcon = el.closest("a");
-            const parentDoc = window.parent?.document;
-            if (parentDoc) {
-              let comp = null;
-              try {
-                const id = anchorForIcon?.id;
-                if (id) comp = wrapper.find("#" + id)[0] || null;
-                if (!comp && anchorForIcon) {
-                  const all = wrapper.find();
-                  for (let i = 0; i < all.length; i++) {
-                    const c = all[i];
-                    try {
-                      const elFromComp =
-                        typeof c.getEl === "function" ? c.getEl() : c.el;
-                      if (elFromComp === anchorForIcon) {
-                        comp = c;
-                        break;
-                      }
-                    } catch {}
+          const anchorForIcon = el.closest("a");
+          const parentDoc = window.parent?.document;
+
+          if (parentDoc) {
+            let comp = null;
+            const id = anchorForIcon?.id;
+
+            try {
+              if (id) {
+                comp = wrapper.find("#" + id)[0] || null;
+              }
+
+              if (!comp && anchorForIcon) {
+                const all = wrapper.find();
+                for (let i = 0; i < all.length; i++) {
+                  const c = all[i];
+                  const elFromComp =
+                    typeof c.getEl === "function" ? c.getEl() : c.el;
+                  if (elFromComp === anchorForIcon) {
+                    comp = c;
+                    break;
                   }
                 }
-              } catch {}
+              }
 
               parentDoc._gjs_icon_click_target = {
                 anchor: anchorForIcon,
@@ -532,31 +548,39 @@ function setupLinkLogging(editor) {
                 chooser.classList.remove("hidden");
                 chooser.classList.add("flex");
               }
+            } catch (err) {
+              console.warn("Error handling icon click:", err);
             }
             return;
-          } catch (e) {}
+          }
         }
 
-        // 4. PRIORITET: Link editor za <a> tagove
+        // Handle link clicks
         const anchor = el.closest("a");
         if (!anchor) return;
 
         let comp = null;
         const id = anchor.id;
-        if (id) comp = wrapper.find("#" + id)[0];
-        if (!comp) {
-          const all = wrapper.find();
-          for (let i = 0; i < all.length; i++) {
-            const c = all[i];
-            try {
+
+        try {
+          if (id) {
+            comp = wrapper.find("#" + id)[0];
+          }
+
+          if (!comp) {
+            const all = wrapper.find();
+            for (let i = 0; i < all.length; i++) {
+              const c = all[i];
               const elFromComp =
                 typeof c.getEl === "function" ? c.getEl() : c.el;
               if (elFromComp === anchor) {
                 comp = c;
                 break;
               }
-            } catch {}
+            }
           }
+        } catch (err) {
+          console.warn("Error finding link component:", err);
         }
 
         openNavEditor(anchor, comp);

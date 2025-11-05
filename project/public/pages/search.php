@@ -16,10 +16,10 @@ $searchResults = [];
 
 if ($term !== '') {
     $searchModel = new SearchModal();
-    
+
     // Pretrazi translations tabelu
     $translations = $searchModel->searchTranslations($term, $lang);
-    
+
     // Grupiši rezultate po tabelama
     $searchResults = $searchModel->groupTranslationResults($translations);
 }
@@ -53,20 +53,14 @@ if ($term !== '') {
 
     <!-- Main Search Container -->
     <div class="max-w-5xl pt-24 mx-auto px-4 py-8">
-        
+
         <!-- Search Form -->
         <div class="mb-10">
             <form method="GET" class="flex items-center gap-0 shadow-lg rounded-xl overflow-hidden">
-                <input 
-                    type="text" 
-                    name="q" 
-                    value="<?= htmlspecialchars($term) ?>" 
-                    placeholder="🔍 Pretražite sajt..."
+                <input type="text" name="q" value="<?= htmlspecialchars($term) ?>" placeholder="🔍 Pretražite sajt..."
                     class="flex-grow px-6 py-4 text-lg border-0 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    autofocus
-                />
-                <button 
-                    type="submit"
+                    autofocus />
+                <button type="submit"
                     class="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold hover:from-blue-600 hover:to-blue-700 transition-all">
                     Pretraži
                 </button>
@@ -93,14 +87,14 @@ if ($term !== '') {
         <?php else: ?>
             <!-- Results Count -->
             <div class="mb-6">
-                <?php 
+                <?php
                 $totalResults = 0;
                 foreach ($searchResults as $records) {
                     $totalResults += count($records);
                 }
                 ?>
                 <p class="text-gray-600">
-                    Pronađeno <strong class="text-blue-600"><?= $totalResults ?></strong> rezultata za: 
+                    Pronađeno <strong class="text-blue-600"><?= $totalResults ?></strong> rezultata za:
                     <strong>"<?= htmlspecialchars($term) ?>"</strong>
                 </p>
             </div>
@@ -122,16 +116,16 @@ if ($term !== '') {
                     <!-- Records Grid -->
                     <div class="grid gap-4">
                         <?php foreach ($records as $sourceId => $recordData): ?>
-                            <?php 
+                            <?php
                             // Dobij originalni red iz source tabele
                             $originalRecord = $searchModel->getSourceRecord($tableName, $sourceId);
-                            
+
                             // Merge sa prevodima
-                            $mergedRecord = $originalRecord 
+                            $mergedRecord = $originalRecord
                                 ? $searchModel->mergeTranslationsIntoRecord($originalRecord, $recordData['fields'])
                                 : [];
                             ?>
-                            
+
                             <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 border border-gray-100">
                                 <!-- Record Content -->
                                 <div class="space-y-3">
@@ -142,7 +136,7 @@ if ($term !== '') {
                                                     <?= htmlspecialchars($field['label']) ?>
                                                 </p>
                                             <?php endif; ?>
-                                            
+
                                             <p class="text-gray-800 leading-relaxed">
                                                 <?= nl2br(htmlspecialchars($field['content'])) ?>
                                             </p>
@@ -157,13 +151,13 @@ if ($term !== '') {
                                             <span class="bg-gray-100 px-2 py-1 rounded">
                                                 ID: <?= htmlspecialchars($sourceId) ?>
                                             </span>
-                                            
+
                                             <?php if (isset($mergedRecord['created_at'])): ?>
                                                 <span class="bg-gray-100 px-2 py-1 rounded">
                                                     📅 <?= date('d.m.Y', strtotime($mergedRecord['created_at'])) ?>
                                                 </span>
                                             <?php endif; ?>
-                                            
+
                                             <?php if (isset($mergedRecord['category_id'])): ?>
                                                 <span class="bg-gray-100 px-2 py-1 rounded">
                                                     🗂️ Kategorija: <?= htmlspecialchars($mergedRecord['category_id']) ?>
@@ -177,8 +171,8 @@ if ($term !== '') {
                                 <?php if ($tableName === 'document' && !empty($mergedRecord['filepath'])): ?>
                                     <div class="mt-4">
                                         <a href="/uploads/documents/<?= htmlspecialchars($mergedRecord['filepath']) ?>"
-                                           class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white text-sm font-semibold rounded-lg hover:bg-blue-600 transition"
-                                           download>
+                                            class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white text-sm font-semibold rounded-lg hover:bg-blue-600 transition"
+                                            download>
                                             <i class="fas fa-download"></i>
                                             Preuzmi dokument
                                         </a>
@@ -187,17 +181,15 @@ if ($term !== '') {
 
                                 <?php if ($tableName === 'events' && !empty($mergedRecord['image'])): ?>
                                     <div class="mt-4">
-                                        <img src="<?= htmlspecialchars($mergedRecord['image']) ?>" 
-                                             alt="Event image"
-                                             class="w-full h-48 object-cover rounded-lg">
+                                        <img src="<?= htmlspecialchars($mergedRecord['image']) ?>" alt="Event image"
+                                            class="w-full h-48 object-cover rounded-lg">
                                     </div>
                                 <?php endif; ?>
 
                                 <?php if ($tableName === 'gallery' && !empty($mergedRecord['image_file_path'])): ?>
                                     <div class="mt-4">
-                                        <img src="<?= htmlspecialchars($mergedRecord['image_file_path']) ?>" 
-                                             alt="Gallery image"
-                                             class="w-full h-64 object-cover rounded-lg">
+                                        <img src="<?= htmlspecialchars($mergedRecord['image_file_path']) ?>" alt="Gallery image"
+                                            class="w-full h-64 object-cover rounded-lg">
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -211,107 +203,8 @@ if ($term !== '') {
     <!-- Footer -->
     <?php require_once __DIR__ . '/../exportedPages/landingPageComponents/landingPage/footer.php'; ?>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'clay': '#c97c5d',
-                        'ochre': '#d4a373',
-                        'sage': '#a3b18a',
-                        'slate': '#344e41',
-                        'paper': '#f5ebe0',
-                        'terracotta': '#bc6c25',
-                        'coral': '#e76f51',
-                        'deep-teal': '#2a9d8f',
-                        'crimson': '#8d1b3d',
-                        'royal-blue': '#1a4480',
-                        'velvet': '#4a154b'
-                    }
-                }
-            }
-        }
 
-        // Font Size Toggle
-        const btn = document.getElementById('increaseFontBtn');
-        let currentSize = 16;
-        let step = 2;
-        let maxSteps = 3;
-        let count = 0;
-        let increasing = true;
-
-        btn.addEventListener('click', () => {
-            if (increasing) {
-                currentSize += step;
-                count++;
-                if (count === maxSteps) {
-                    increasing = false;
-                    btn.textContent = 'A-';
-                }
-            } else {
-                currentSize -= step;
-                count--;
-                if (count === 0) {
-                    increasing = true;
-                    btn.textContent = 'A+';
-                }
-            }
-            document.body.style.fontSize = currentSize + 'px';
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('header');
-            if (header && window.scrollY > 50) {
-                header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-            } else if (header) {
-                header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-            }
-        });
-
-        // Mobile menu
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuPanel = document.getElementById('mobileMenuPanel');
-        const closeMobileMenu = document.getElementById('closeMobileMenu');
-
-        function openMobileMenu() {
-            if (mobileMenu) {
-                mobileMenu.classList.remove('hidden');
-                setTimeout(() => mobileMenuPanel?.classList.remove('translate-x-full'), 10);
-                document.body.style.overflow = 'hidden';
-                hamburger?.classList.add('active');
-            }
-        }
-
-        function closeMobileMenuFunc() {
-            if (mobileMenuPanel) {
-                mobileMenuPanel.classList.add('translate-x-full');
-                setTimeout(() => mobileMenu?.classList.add('hidden'), 300);
-                document.body.style.overflow = '';
-                hamburger?.classList.remove('active');
-            }
-        }
-
-        hamburger?.addEventListener('click', function (e) {
-            e.stopPropagation();
-            mobileMenu?.classList.contains('hidden') ? openMobileMenu() : closeMobileMenuFunc();
-        });
-
-        closeMobileMenu?.addEventListener('click', closeMobileMenuFunc);
-        document.getElementById('mobileMenuOverlay')?.addEventListener('click', closeMobileMenuFunc);
-
-        // Animation observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.bg-white').forEach(el => observer.observe(el));
-    </script>
+    <script src="/exportedPages/commonScript.js?v=<?php echo time(); ?>"></script>
 </body>
 
 </html>

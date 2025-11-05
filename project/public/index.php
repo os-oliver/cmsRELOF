@@ -42,6 +42,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET', '/sadmin/kategorije', 'PageController@categoryStyle');
 
     $r->addRoute('GET', '/pretraga', 'PageController@search');
+    $r->addRoute('POST', '/save-component', 'UserUpdateController@saveComponent');
 
     # API/action routes - should stay in english
     $r->addRoute('GET', '/', 'PageController@home');
@@ -72,6 +73,10 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     #change this one for URL to be in serbian if needed
     $r->addRoute('GET', '/login', 'PageController@login');
 
+    // ColorsController rute
+    $r->addRoute('GET', '/colors', 'ColorsController@index');        // Dohvatanje trenutnih boja
+    $r->addRoute('POST', '/colors-change', 'ColorsController@index'); // Čuvanje izmena boja
+
     $r->addRoute('POST', '/login', 'AuthController@auth');
     $r->addRoute('GET', '/logout', 'AuthController@logout');
 
@@ -85,6 +90,9 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('POST', '/employees', 'AboutUSController@employees');
     $r->addRoute('PUT', '/employees/{id:\d+}', 'AboutUSController@employees');
     $r->addRoute('DELETE', '/employees/{id:\d+}', 'AboutUSController@employees');
+    $r->addRoute('PUT', '/settings', 'AboutUSController@settings');
+    $r->addRoute('GET', '/settings', 'AboutUSController@settings');
+    $r->addRoute('POST', '/settings', 'AboutUSController@settings');
 
     $r->addRoute('GET', '/gallery', 'GalleryController@list');
     $r->addRoute('GET', '/gallery/{id:\d+}', 'GalleryController@show');
