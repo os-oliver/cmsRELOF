@@ -126,7 +126,7 @@ function updateLocaleUrl($key) {
       comp.components().forEach((ch) => {
         const tag = ch.get("tagName");
         if (tag === "button") {
-          const text = normalizeText(ch.view.el.innerText);
+          let text = normalizeText(ch.view.el.innerText);
           current = { root: text, elements: [] };
           tree.push(current);
         }
@@ -135,7 +135,7 @@ function updateLocaleUrl($key) {
             if (link.get("tagName") === "a") {
               const el = link.view.el;
               let txt = normalizeText(el.textContent);
-              const text = txt
+              let text = txt
                 .trim()
                 .replace(/ /g, "-")
                 .replace(/[^\x00-\x7F]/g, "");
