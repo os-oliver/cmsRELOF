@@ -207,137 +207,48 @@
                 }
             ]
         },
-        "Ansambl": {
-            "sr": "Ansambl",
-            "en": "Ensemble",
-            "sr-Cyrl": "Ансамбл",
-            "icon": "fas fa-users",
-            "categories": [
-                "Muzicki ansambl",
-                "Pozoriste",
-                "Multimedija",
-                "Edukacija"
-            ],
+        "Sportovi": {
+            "sr": "Sportovi",
+            "en": "Sports",
+            "sr-Cyrl": "Спортови",
+            "icon": "fas fa-futbol",
             "fields": [
                 {
-                    "name": "naziv",
+                    "name": "nazivSporta",
                     "type": "text",
                     "label": {
-                        "sr": "Naziv ansambla",
-                        "en": "Ensemble name",
-                        "sr-Cyrl": "Назив ансамбла"
+                        "sr": "Naziv sporta",
+                        "en": "Sport name",
+                        "sr-Cyrl": "Назив спорта"
                     },
                     "required": true
-                },
-                {
-                    "name": "opis",
-                    "type": "textarea",
-                    "label": {
-                        "sr": "Kratak opis ansambla",
-                        "en": "Short description of the ensemble",
-                        "sr-Cyrl": "Кратак опис ансамбла"
-                    }
                 },
                 {
                     "name": "slika",
                     "type": "file",
                     "label": {
-                        "sr": "Logo \/ slika ansambla",
-                        "en": "Ensemble logo \/ image",
-                        "sr-Cyrl": "Лого \/ слика ансамбла"
+                        "sr": "Slika sporta",
+                        "en": "Sport image",
+                        "sr-Cyrl": "Слика спорта"
                     }
-                }
-            ]
-        },
-        "Projekti": {
-            "sr": "Projekti",
-            "en": "Projects",
-            "sr-Cyrl": "Пројекти",
-            "icon": "fas fa-diagram-project",
-            "categories": [
-                "Muzika",
-                "Pozoriste",
-                "Likovna umetnost",
-                "Kreativne radionice",
-                "Literatura",
-                "Film"
-            ],
-            "fields": [
-                {
-                    "name": "slika",
-                    "type": "file",
-                    "label": {
-                        "sr": "Naslovna slika projekta",
-                        "en": "Project image",
-                        "sr-Cyrl": "Насловна слика пројекта"
-                    },
-                    "required": true
                 },
                 {
-                    "name": "naziv",
-                    "type": "text",
+                    "name": "termin",
+                    "type": "datetime",
                     "label": {
-                        "sr": "Naziv projekta",
-                        "en": "Project name",
-                        "sr-Cyrl": "Назив пројекта"
-                    },
-                    "required": true
-                },
-                {
-                    "name": "vodja",
-                    "type": "text",
-                    "label": {
-                        "sr": "Vođa projekta",
-                        "en": "Project lead",
-                        "sr-Cyrl": "Вођа пројекта"
+                        "sr": "Termin (ako postoji)",
+                        "en": "Date & time (if applicable)",
+                        "sr-Cyrl": "Термин (ако постоји)"
                     }
                 },
                 {
                     "name": "opis",
                     "type": "textarea",
                     "label": {
-                        "sr": "Kratak opis",
-                        "en": "Short description",
-                        "sr-Cyrl": "Кратак опис"
+                        "sr": "Opis sporta",
+                        "en": "Sport description",
+                        "sr-Cyrl": "Опис спорта"
                     }
-                },
-                {
-                    "name": "datumPocetka",
-                    "type": "date",
-                    "label": {
-                        "sr": "Datum početka",
-                        "en": "Start date",
-                        "sr-Cyrl": "Датум почетка"
-                    },
-                    "required": true
-                },
-                {
-                    "name": "budzet",
-                    "type": "number",
-                    "label": {
-                        "sr": "Budžet (u evrima)",
-                        "en": "Budget (EUR)",
-                        "sr-Cyrl": "Буџет (у евриима)"
-                    }
-                },
-                {
-                    "name": "link",
-                    "type": "url",
-                    "label": {
-                        "sr": "Zvanični link projekta",
-                        "en": "Official project link",
-                        "sr-Cyrl": "Званични линк пројекта"
-                    }
-                },
-                {
-                    "name": "sekcija",
-                    "type": "relation",
-                    "label": {
-                        "sr": "Sekcija projekta",
-                        "en": "Project section",
-                        "sr-Cyrl": "Секција пројекта"
-                    },
-                    "related_to": "Sekcije"
                 }
             ]
         }

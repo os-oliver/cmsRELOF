@@ -675,7 +675,7 @@
                     <!-- Enhanced Search Input -->
                     <div id="searchInputContainer"
                         class="absolute right-0 top-full mt-3 hidden opacity-0 transition-all duration-300 ease-in-out z-50 min-w-[280px] sm:min-w-[320px] bg-white rounded-xl shadow-2xl border border-surface overflow-hidden backdrop-blur-sm">
-                        <form id="searchForm" class="flex items-center w-full p-2" action="/search" method="GET">
+                        <form id="searchForm" class="flex items-center w-full p-2" action="/pretraga" method="GET">
                             <input type="text" name="q" placeholder="Pretražite sadržaj..."
                                 class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-4 py-2.5 text-primary_text placeholder-secondary_text bg-surface rounded-lg"
                                 id="searchInput" required />

@@ -208,7 +208,7 @@ try {
     $startTotal = microtime(true); // ⏱ Start celog procesa
     $data = getJsonInput();
     $t0 = microtime(true);
-    $saveComponents = $data['saveComponents'] ?? false;
+    $saveComponents = $data['singlePage'] ?? false;
     if (!$saveComponents) {
         $jsonPath = __DIR__ . "/../../templates/" . $data['typeOfInstitution'] . "/json/data_definition.json";
         $globalJsonPath = __DIR__ . "/../../templates/globalDefinitions.json";

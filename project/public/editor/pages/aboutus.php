@@ -315,6 +315,14 @@ $activeTab = 'settings';
                                     value="<?= htmlspecialchars($aboutUsData['title'] ?? '') ?>"
                                     class="input-field block w-full rounded-lg bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 border-gray-200"
                                     placeholder="<?= __("settings.enter_site_title") ?>">
+                                <div class="mt-3">
+                                    <label for="siteIcon"
+                                        class="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+                                        <i class="fas fa-image text-indigo-500"></i><?= __("settings.site_icon") ?>
+                                    </label>
+                                    <input type="file" id="siteIcon" name="icon" accept="image/*"
+                                        class="input-field block w-full rounded-lg bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-400">
+                                </div>
                             </div>
                             <div class="flex justify-end pt-2">
                                 <button id="saveSiteTitle"
@@ -509,6 +517,12 @@ $activeTab = 'settings';
                     <textarea id="biography" name="biography" rows="4"
                         class="input-field w-full rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 resize-none"></textarea>
                 </div>
+                <div>
+                    <label for="icon"
+                        class="block text-sm font-semibold text-gray-700 mb-2"><?= __("settings.member_icon") ?></label>
+                    <input type="file" id="icon" name="icon" accept="image/*"
+                        class="input-field w-full rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400">
+                </div>
                 <div class="flex gap-3 pt-4">
                     <button type="button" id="cancelMemberBtn"
                         class="flex-1 px-6 py-3 border-2 border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-50 transition-all"><?= __("settings.cancel") ?></button>
@@ -566,9 +580,17 @@ $activeTab = 'settings';
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('saveSiteTitle').addEventListener('click', async () => {
                 const siteTitle = document.getElementById('siteTitle').value.trim();
+                const siteIconInput = document.getElementById('siteIcon');
                 if (!siteTitle) return showToast('<?= __("settings.empty_site_title") ?>', 'error');
                 try {
-                    const response = await fetch('/settings', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ site_title: siteTitle }) });
+                    const form = new FormData();
+                    form.append('site_title', siteTitle);
+                    // allow PHP to handle file uploads (must be POST)
+                    form.append('_method', 'PUT');
+                    if (siteIconInput && siteIconInput.files && siteIconInput.files[0]) {
+                        form.append('icon', siteIconInput.files[0]);
+                    }
+                    const response = await fetch('/settings', { method: 'POST', body: form });
                     if (!response.ok) throw new Error("<?= __("settings.save_error") ?>");
                     showToast("<?= __("settings.site_title_saved") ?>", 'success');
                 } catch (e) {
@@ -648,17 +670,24 @@ $activeTab = 'settings';
             memberForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const id = document.getElementById('memberId').value;
-                const formData = {
-                    name: document.getElementById('name').value.trim(),
-                    surname: document.getElementById('surname').value.trim(),
-                    position: document.getElementById('position').value.trim(),
-                    biography: document.getElementById('biography').value.trim()
-                };
-                if (!formData.name || !formData.surname || !formData.position) return showToast('<?= __("settings.required_fields_msg") ?>', 'error');
+                const fileInput = document.getElementById('icon');
+
+                const form = new FormData();
+                form.append('name', document.getElementById('name').value.trim());
+                form.append('surname', document.getElementById('surname').value.trim());
+                form.append('position', document.getElementById('position').value.trim());
+                form.append('biography', document.getElementById('biography').value.trim());
+                if (fileInput && fileInput.files && fileInput.files[0]) {
+                    form.append('icon', fileInput.files[0]);
+                }
+
+                if (!form.get('name') || !form.get('surname') || !form.get('position')) return showToast('<?= __("settings.required_fields_msg") ?>', 'error');
+
                 try {
                     const url = id ? `/employees/${id}` : '/employees';
-                    const method = id ? 'PUT' : 'POST';
-                    const response = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
+                    // Use POST for both create and update (for upload compatibility). For update, include _method=PUT
+                    if (id) form.append('_method', 'PUT');
+                    const response = await fetch(url, { method: 'POST', body: form });
                     if (!response.ok) throw new Error('<?= __("settings.save_error") ?>');
                     showToast('<?= __("settings.save_success_msg") ?>', 'success');
                     modal.classList.add('hidden');
