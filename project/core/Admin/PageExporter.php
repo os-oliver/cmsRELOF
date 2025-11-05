@@ -11,6 +11,7 @@ use App\Admin\PageBuilders\IzlozbePageBuilder;
 use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
+use App\Admin\PageBuilders\ObjekatPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\TestBuilder;
@@ -661,8 +662,8 @@ class PageExporter
 
             case strpos($name, 'projekti') !== false:
                 return new ProjektiPageBuilder('Projekti');
-            case 'rukovodstvo':
-                return new EmployeesPageBuilder('Rukovodstvo', $this->data);
+            case 'organizaciona-struktura':
+                return new EmployeesPageBuilder('Organizaciona Struktura', $this->data);
             case 'ankete':
                 return new AnketePageBuilder('Ankete');
             case 'repertoar':
@@ -671,6 +672,8 @@ class PageExporter
                 return new IzlozbePageBuilder('izlozbe');
             case 'informacije':
                 return new ZnacajaStranica('ZnacajaStranica', $this->data);
+            case 'objekat':
+                return new ObjekatPageBuilder('Objekat', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -719,8 +722,8 @@ class PageExporter
             return 'ansambl';
         } elseif (strpos($name, 'projekti') !== false) {
             return 'projekti';
-        } elseif (strpos($name, 'rukovodstvo') !== false) {
-            return 'rukovodstvo';
+        } elseif (strpos($name, 'organizaciona-struktura') !== false) {
+            return 'organizaciona-struktura';
         } elseif (strpos($name, 'rukovodstvo') !== false) {
             return 'rukovodstvo';
         } elseif (strpos($name, 'misija-i-vizija') !== false) {
@@ -743,6 +746,8 @@ class PageExporter
             return 'izlozbe';
         } elseif (strpos($name, 'informacije') !== false) {
             return 'informacije';
+        } elseif (strpos($name, 'objekat') !== false) {
+            return 'objekat';
         }
 
 
@@ -832,7 +837,7 @@ class PageExporter
         $processedContent = $this->processContent($innerHTML, $pageSlug);
 
         $wrappedContent = <<<HTML
-<main class="min-h-screen pt-24 flex-grow">
+<main class="min-h-screen pt-12 bg-background flex-grow">
 $processedContent
 </main>
 HTML;
