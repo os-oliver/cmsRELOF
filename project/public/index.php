@@ -84,6 +84,8 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('POST', '/employees', 'AboutUSController@employees');
     $r->addRoute('PUT', '/employees/{id:\d+}', 'AboutUSController@employees');
     $r->addRoute('DELETE', '/employees/{id:\d+}', 'AboutUSController@employees');
+    $r->addRoute('PUT', '/settings', 'AboutUSController@settings');
+    $r->addRoute('GET', '/settings', 'AboutUSController@settings');
 
     $r->addRoute('GET', '/gallery', 'GalleryController@list');
     $r->addRoute('GET', '/gallery/{id:\d+}', 'GalleryController@show');

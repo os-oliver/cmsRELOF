@@ -20,6 +20,36 @@ class AboutUSController
     //
     // ─── ABOUT US ────────────────────────────────────────────────────────────────
     //
+    public function settings(): void
+    {
+        $model = new AboutUs();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+            $payload = json_decode(file_get_contents('php://input'), true);
+            $siteTitle = trim($payload['site_title'] ?? '');
+
+            if ($siteTitle === '') {
+                http_response_code(400);
+                echo json_encode(['error' => 'Site title is required']);
+                return;
+            }
+
+            // Snimi u bazu
+            $id = $model->insert(['page_title' => $siteTitle]);
+
+            echo json_encode(['saved' => true, 'id' => $id]);
+            return;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $data = $model->list('sr-Cyrl');
+            echo json_encode($data);
+            return;
+        }
+
+        http_response_code(405);
+        echo json_encode(['error' => 'Method Not Allowed']);
+    }
 
     /**
      * GET  /aboutus/{id}
@@ -56,6 +86,9 @@ class AboutUSController
             }
             if (isset($payload['goal'])) {
                 $updateData['goal'] = $payload['goal'];
+            }
+            if (isset($payload['site_title'])) {
+                $updateData['site_title'] = $payload['site_title'];
             }
 
             if (empty($updateData)) {

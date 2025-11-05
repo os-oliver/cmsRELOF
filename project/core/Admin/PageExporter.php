@@ -554,6 +554,9 @@ class PageExporter
         use App\Models\Event;
         use App\Models\Text;
         use App\Models\Content;
+        use App\Models\AboutUs;
+        $dataAboutUS = new AboutUs();
+        $aboutUsData = $dataAboutUS->list($locale);
 
         // Load dynamic texts
         $textModel = new Text();
@@ -567,7 +570,7 @@ class PageExporter
         <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Exported Page</title>
+        <title><?=$aboutUsData['title']?></title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
         <link href="/exportedPages/commonStyle.css" rel="stylesheet" />
         <script src="https://cdn.tailwindcss.com"></script>
