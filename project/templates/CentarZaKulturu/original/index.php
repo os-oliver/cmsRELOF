@@ -11,7 +11,45 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f97316',
+                        primary_hover: '#ea580c',
+                        secondary: '#2f4f4f',
+                        secondary_hover: '#fdba74',
+                        accent: '#d6aa7f',
+                        accent_hover: '#fbbf24',
+                        primary_text: '#332a21',
+                        secondary_text: '#7c5e3d',
+                        background: '#fff7ed',
+                        secondary_background: '#ffedd5',
+                        surface: '#fff'
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        heading2: ['Crimson Pro', 'serif'],
+                        body: ['Raleway', 'sans-serif']
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-in',
+                        'bounce-slow': 'bounce 3s infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' }
+                        },
+                        fadeIn: {
+                            from: { opacity: '0' },
+                            to: { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        };
     </script>
     <style>
         .search-container {
@@ -61,6 +99,7 @@
             padding-bottom: 12px;
         }
 
+
         .nav-link::after {
             content: '';
             display: block;
@@ -70,9 +109,6 @@
             transition: width 0.3s;
         }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
 
         .artistic-card {
             clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
@@ -185,7 +221,6 @@
 
         .dropdown-item:hover {
             background-color: #f1f5f9;
-            border-left: 3px solid #1e40af;
         }
 
         .event-card {
@@ -194,17 +229,6 @@
             overflow: hidden;
         }
 
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(to right, #1e40af, #1e3a8a);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-        }
 
         .event-card:hover::before {
             transform: translateY(0);
@@ -306,6 +330,11 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+
+        .img-logo {
+            width: 45px;
+            height: auto;
+        }
     </style>
 </head>
 
@@ -404,14 +433,14 @@
             <div class="flex items-center space-x-3 flex-shrink-0">
                 <!-- Logo ikonica -->
                 <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
-                    <i class="fas fa-landmark text-lg"></i>
+                    <img class="img-logo" src="" />
                 </div>
 
                 <!-- Tekst za desktop -->
                 <div class="hidden sm:block">
                     <h1
                         class="text-sm sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
-                        KULTURNI NEXUS
+                        KULTURNI CENTAR
                     </h1>
                     <p
                         class="text-xs sm:text-xs lg:text-sm text-secondary tracking-widest hidden md:block opacity-80 font-medium">
@@ -631,9 +660,8 @@
     </header>
 
     <!-- Enhanced Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 bg-gradient-to-br from-surface to-accent
-
-">
+    <section
+        class="relative min-h-screen flex items-center overflow-hidden pt-16 bg-gradient-to-br from-surface to-accent">
         <!-- Decorative background elements -->
         <div class="absolute inset-0 z-0">
             <!-- Floating paint elements -->
@@ -706,101 +734,48 @@
                     </div>
                 </div>
 
-                <!-- Cultural Showcase Grid -->
-                <div class="relative">
-                    <div class="grid grid-cols-2 gap-6">
-                        <!-- Art Exhibition -->
-                        <div class="artistic-card h-80 rounded-xl overflow-hidden relative">
-                            <div
-                                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center transform scale-105 hover:scale-100 transition-transform duration-500">
-                            </div>
-                            <div class="category-badge bg-primary/80 text-white">Umetnost</div>
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary_text/90 to-transparent p-4 text-white">
-                                <h3 class="font-heading font-bold">Savremene Perspektive</h3>
-                                <p class="text-sm">Savremena umetnička izložba</p>
-                            </div>
-                        </div>
-
-                        <!-- Film -->
-                        <div class="artistic-card h-80 rounded-xl overflow-hidden relative mt-12">
-                            <div
-                                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center transform scale-105 hover:scale-100 transition-transform duration-500">
-                            </div>
-                            <div class="category-badge bg-secondary/80 text-white">Bioskop</div>
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary_text/90 to-transparent p-4 text-white">
-                                <h3 class="font-heading font-bold">Međunarodni Filmski Festival</h3>
-                                <p class="text-sm">15-30. jun</p>
-                            </div>
-                        </div>
-
-                        <!-- Theater -->
-                        <div class="artistic-card h-64 rounded-xl overflow-hidden relative">
-                            <div
-                                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center transform scale-105 hover:scale-100 transition-transform duration-500">
-                            </div>
-                            <div class="category-badge bg-accent/80 text-white">Pozorište</div>
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary_text/90 to-transparent p-4 text-white">
-                                <h3 class="font-heading font-bold">Šekspir u parku</h3>
-                                <p class="text-sm">Predstave na otvorenom</p>
-                            </div>
-                        </div>
-
-                        <!-- Music -->
-                        <div class="artistic-card h-64 rounded-xl overflow-hidden relative -mt-6">
-                            <div
-                                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center transform scale-105 hover:scale-100 transition-transform duration-500">
-                            </div>
-                            <div class="category-badge bg-primary/80 text-white">Muzika</div>
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary_text/90 to-transparent p-4 text-white">
-                                <h3 class="font-heading font-bold">Jazz & Blues Večeri</h3>
-                                <p class="text-sm">Svakog petka</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Floating info card -->
-        <div class="absolute bottom-20 right-20 z-20 hidden xl:block animate-bounce-slow">
-            <div class="relative">
-                <div
-                    class="w-66 h-auto bg-white/90 backdrop-blur-sm p-5 rounded-xl shadow-2xl border-2 border-primary transform rotate-3">
-                    <div class="flex items-center mb-4">
+                <!-- Image Gallery -->
+                <div class="relative order-1 lg:order-2">
+                    <!-- Main Image Container -->
+                    <div class="relative w-full h-[500px] lg:h-[600px]">
+                        <!-- Large Featured Image -->
                         <div
-                            class="w-14 h-14 bg-secondary rounded-full mr-3 flex items-center justify-center text-white">
-                            <i class="fas fa-calendar-alt text-xl"></i>
+                            class="absolute top-0 right-0 w-[70%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface">
+                            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800"
+                                alt="Kulturna aktivnost" class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary_text/40 to-transparent"></div>
                         </div>
-                        <div>
-                            <h4 class="font-heading font-bold">Radno vreme</h4>
-                            <p class="text-accent text-sm">Utorak-Nedelja: 10:00-21:00</p>
+
+                        <!-- Small Image Top Left -->
+                        <div
+                            class="absolute top-10 left-0 w-[45%] h-[35%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
+                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600"
+                                alt="Muzika i umetnost" class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent"></div>
+                        </div>
+
+                        <!-- Small Image Bottom Left -->
+                        <div
+                            class="absolute bottom-0 left-10 w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
+                            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600"
+                                alt="Ansambl nastup" class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-tl from-secondary/30 to-transparent"></div>
+                        </div>
+
+                        <!-- Decorative Elements -->
+                        <div
+                            class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full opacity-20 blur-2xl">
+                        </div>
+                        <div
+                            class="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-tr from-secondary to-accent rounded-full opacity-20 blur-2xl">
                         </div>
                     </div>
-                    <div class="space-y-2">
-                        <div class="flex justify-between text-sm">
-                            <span>Opšta:</span>
-                            <span class="font-medium">1200 RSD</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span>Studenti/Penzioneri:</span>
-                            <span class="font-medium">800 RSD</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span>Članovi:</span>
-                            <span class="font-medium">Besplatno</span>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="absolute -top-6 -right-6 w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white shadow-lg">
-                    <i class="fas fa-ticket-alt"></i>
+
                 </div>
             </div>
         </div>
+
+
 
         <!-- Scrolling indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
@@ -829,9 +804,8 @@
             <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
                     <div
-                        class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
-                        <!-- Slika sa leve strane -->
-                        <div class="w-1/3 relative flex-shrink-0">
+                        class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex flex-col md:flex-row overflow-hidden">
+                        <div class="w-full md:w-1/3 relative flex-shrink-0 h-64 md:h-auto">
                             <img id="g-image"
                                 src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
                                 alt="Event image"
@@ -842,21 +816,19 @@
                             </div>
                         </div>
 
-                        <!-- Tekstualni deo -->
-                        <div class="w-2/3 p-6 flex flex-col">
-                            <!-- Naslov i opis -->
-                            <div class="flex-grow mb-4">
+                        <div class="w-full md:w-2/3 p-6 flex flex-col justify-between">
+                            <div class="mb-4">
                                 <h3 id="g-title"
-                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
+                                    class="text-xl md:text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
                                     Savremene Perspektive
                                 </h3>
-                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
+                                <p id="g-description"
+                                    class="text-primary_text text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-2">
                                     Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
                                     savremenih trendova u umetnosti i tehnologiji.
                                 </p>
                             </div>
 
-                            <!-- Datum, vreme, lokacija -->
                             <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
                                 <div class="flex items-center gap-2">
                                     <i class="fas fa-calendar-alt text-primary"></i>
@@ -873,15 +845,15 @@
                                 </div>
                             </div>
 
-                            <!-- CTA dugme -->
                             <div>
                                 <a id="g-ovise"
-                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
+                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm inline-block text-center w-full md:w-auto">
                                     Više informacija
                                 </a>
                             </div>
                         </div>
                     </div>
+
 
                 <?php endfor; ?>
             </div>
@@ -1184,14 +1156,15 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
-    <footer class="bg-secondary_hover text-white pt-20 pb-10">
+    <!-- Footer -->
+    <footer class="bg-secondary text-surface pt-20 pb-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-white mr-3">
+                        <div
+                            class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-surface mr-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1200,24 +1173,24 @@
                         </div>
                         <h3 class="text-xl font-heading font-bold">KULTURNI NEXUS</h3>
                     </div>
-                    <p class="text-white/80 mb-4">
+                    <p class="text-surface/80 mb-4">
                         Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Beograda.
                     </p>
                     <div class="flex space-x-3">
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
                             <i class="fab fa-youtube"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
                             <i class="fab fa-spotify"></i>
                         </a>
                     </div>
@@ -1226,13 +1199,13 @@
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="asde" class="text-white/80 hover:text-accent transition-colors">Izložbe</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-accent transition-colors">Bioskop</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-accent transition-colors">Pozorište</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-accent transition-colors">Koncerti</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-accent transition-colors">Radionice</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-accent transition-colors">Kalendar događaja</a>
-                        </li>
+                        <li><a href="asde" class="text-surface/80 hover:text-accent transition-colors">Izložbe</a></li>
+                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Bioskop</a></li>
+                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Pozorište</a></li>
+                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Koncerti</a></li>
+                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Radionice</a></li>
+                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Kalendar
+                                događaja</a></li>
                     </ul>
                 </div>
 
@@ -1241,19 +1214,19 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                            <span>Knez Mihailova 56, 11000 Beograd</span>
+                            <span class="text-surface">Knez Mihailova 56, 11000 Beograd</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-                            <span>+381 11 123 4567</span>
+                            <span class="text-surface">+381 11 123 4567</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span>info@kulturninexus.rs</span>
+                            <span class="text-surface">info@kulturninexus.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-accent mt-1 mr-3"></i>
-                            <span>
+                            <span class="text-surface">
                                 Utorak - Nedelja: 10:00 - 21:00<br>
                                 Ponedeljak: zatvoreno
                             </span>
@@ -1271,113 +1244,74 @@
                 </div>
             </div>
 
-            <div class="border-t border-primary_text/70 pt-8 text-center text-white/60 text-sm">
+            <div class="border-t border-surface/70 pt-8 text-center text-surface/60 text-sm">
                 <p>&copy; 2023 Kulturni Centar Nexus. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
 
+
+
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#2563eb',           // intenzivna kraljevsko-plava
-                        primary_hover: '#1e40af',     // tamnija indigo plava
-                        secondary: '#9333ea',         // vibrantna ljubičasta
-                        secondary_hover: '#6b21a8',   // tamnija ljubičasta
-                        accent: '#14b8a6',            // tirkizno-zelenkasta, osvežavajuća
-                        accent_hover: '#0d9488',      // tamnija tirkiz
-                        primary_text: '#111827',      // tamno siva, skoro crna
-                        secondary_text: '#6b7280',    // neutralna hladna siva
-                        background: '#f1f5f9',        // svetlo plavo-siva, hladna
-                        secondary_background: '#e2e8f0', // svetla siva sa plavim tonom
-                        surface: '#ffffff',           // bela za kartice i sekcije
 
-                    },
-                    fontFamily: {
-                        heading: ['Playfair Display', 'serif'],
-                        heading2: ['Crimson Pro', 'serif'],
-                        body: ['Raleway', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'fade-in': 'fadeIn 1s ease-in',
-                        'bounce-slow': 'bounce 3s infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-15px)' },
-                        },
-                        fadeIn: {
-                            from: { opacity: '0' },
-                            to: { opacity: '1' },
-                        }
-                    }
-                }
-            }
-        }
 
-        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function () {
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuPanel = document.getElementById('mobileMenuPanel');
             const closeMobileMenu = document.getElementById('closeMobileMenu');
             const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
             const mobileAboutToggle = document.getElementById('mobileAboutToggle');
             const mobileAboutMenu = document.getElementById('mobileAboutMenu');
-            const mobileAboutIcon = document.getElementById('mobileAboutIcon');
+            const searchButton = document.getElementById('searchButton');
+            const searchInputContainer = document.getElementById('searchInputContainer');
+            const closeSearch = document.getElementById('closeSearch');
+            const increaseFontBtn = document.getElementById('increaseFontBtn');
+            let fontSizeIncreased = false;
 
-            // Toggle mobile menu
-            hamburger.addEventListener('click', function () {
+            function openMenu() {
                 mobileMenu.classList.remove('hidden');
-                setTimeout(() => {
-                    document.getElementById('mobileMenuPanel').classList.remove('translate-x-full');
-                }, 10);
+                setTimeout(() => mobileMenuPanel.classList.remove('translate-x-full'), 10);
                 hamburger.classList.add('active');
-            });
-
-            // Close mobile menu
-            function closeMenu() {
-                document.getElementById('mobileMenuPanel').classList.add('translate-x-full');
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                }, 300);
-                hamburger.classList.remove('active');
             }
 
+            function closeMenu() {
+                mobileMenuPanel.classList.add('translate-x-full');
+                hamburger.classList.remove('active');
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            }
+
+            hamburger.addEventListener('click', function () {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    requestAnimationFrame(() => mobileMenuPanel.classList.remove('translate-x-full'));
+                    hamburger.classList.add('active');
+                } else {
+                    mobileMenuPanel.classList.add('translate-x-full');
+                    mobileMenuPanel.addEventListener('transitionend', () => {
+                        mobileMenu.classList.add('hidden');
+                    }, { once: true });
+                    hamburger.classList.remove('active');
+                }
+            });
             closeMobileMenu.addEventListener('click', closeMenu);
             mobileMenuOverlay.addEventListener('click', closeMenu);
 
-            // Toggle mobile dropdown
             mobileAboutToggle.addEventListener('click', function () {
                 mobileAboutMenu.classList.toggle('hidden');
                 mobileAboutToggle.parentElement.classList.toggle('active');
             });
 
-            // Search functionality
-            const searchButton = document.getElementById('searchButton');
-            const searchInputContainer = document.getElementById('searchInputContainer');
-            const closeSearch = document.getElementById('closeSearch');
-
             searchButton.addEventListener('click', function () {
-                searchInputContainer.classList.toggle('hidden');
-                setTimeout(() => {
-                    searchInputContainer.classList.toggle('opacity-0');
-                }, 10);
+                searchInputContainer.classList.remove('hidden');
+                setTimeout(() => searchInputContainer.classList.remove('opacity-0'), 10);
             });
 
             closeSearch.addEventListener('click', function () {
                 searchInputContainer.classList.add('opacity-0');
-                setTimeout(() => {
-                    searchInputContainer.classList.add('hidden');
-                }, 300);
+                setTimeout(() => searchInputContainer.classList.add('hidden'), 300);
             });
-
-            // Font size increase functionality
-            const increaseFontBtn = document.getElementById('increaseFontBtn');
-            let fontSizeIncreased = false;
 
             increaseFontBtn.addEventListener('click', function () {
                 const body = document.body;
@@ -1393,6 +1327,8 @@
             });
         });
     </script>
+
+
 </body>
 
 </html>

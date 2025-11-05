@@ -91,12 +91,21 @@ class AboutUs
     public function get(int $id, $lang): ?array
     {
         $sql = "
-            SELECT a.*, t.field_name, t.content
-            FROM aboutus a
-            LEFT JOIN text t ON t.source_id = a.id
-                AND t.source_table = 'aboutus'
-                and t.lang = :lang COLLATE utf8mb4_unicode_ci
-            WHERE a.id = :id
+            SELECT 
+            a.*,
+            COALESCE(t1.field_name, t2.field_name) AS field_name,
+            COALESCE(t1.content, t2.content) AS content
+        FROM aboutus a
+        LEFT JOIN text t1 
+            ON t1.source_id = a.id
+            AND t1.source_table = 'aboutus'
+            AND t1.lang = :lang COLLATE utf8mb4_unicode_ci
+        LEFT JOIN text t2 
+            ON t2.source_id = a.id
+            AND t2.source_table = 'aboutus'
+            AND t2.lang = 'sr-Cyrl'
+        WHERE a.id = :id;
+
         ";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id, ':lang' => $lang]);
@@ -130,35 +139,47 @@ class AboutUs
     {
         $missionRaw = trim((string) ($data['mission'] ?? ''));
         $goalRaw = trim((string) ($data['goal'] ?? ''));
+        $title_site = trim((string) ($data['page_title'] ?? ''));
 
-        if ($missionRaw === '' && $goalRaw === '') {
+        if ($missionRaw === '' && $goalRaw === '' && $title_site === '') {
             throw new RuntimeException('Mission ili goal mora biti postavljen.');
         }
 
         try {
             $this->pdo->beginTransaction();
 
-            // Ubaci osnovni aboutus zapis (može se prilagoditi da sadrži više kolona ako treba)
-            $stmt = $this->pdo->prepare("INSERT INTO aboutus (created_at) VALUES (NOW())");
+            $stmt = $this->pdo->prepare("SELECT id FROM aboutus WHERE id = 1 LIMIT 1");
             $stmt->execute();
-            $aboutId = (int) $this->pdo->lastInsertId();
+            $about = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Ubaci varijante u text tabelu
+            if (!$about) {
+                // Ako ne postoji, ne radimo ništa
+                $this->pdo->rollBack();
+                return 0;
+            }
+
+            $aboutId = 1;
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
+            // Generiši varijante teksta
             $missionVariants = $this->transliterateVariants($missionRaw, $locale);
             $goalVariants = $this->transliterateVariants($goalRaw, $locale);
+            $titleVariants = $this->transliterateVariants($title_site, $locale);
 
-            $stmtText = $this->pdo->prepare("
-                INSERT INTO text (source_id, source_table, field_name, lang, content)
-                VALUES (:source_id, 'aboutus', :field_name, :lang, :content)
-            ");
+            // UPDATE ili INSERT u text tabelu
+            $stmtUpsert = $this->pdo->prepare("
+            INSERT INTO text (source_id, source_table, field_name, lang, content)
+            VALUES (:source_id, 'aboutus', :field_name, :lang, :content)
+            ON DUPLICATE KEY UPDATE content = VALUES(content)
+        ");
 
-            $insertField = function (string $field, array $variants) use ($stmtText, $aboutId) {
+            $updateField = function (string $field, array $variants) use ($stmtUpsert, $aboutId) {
                 foreach ($variants as $lg => $content) {
                     $content = trim((string) $content);
                     if ($content === '')
                         continue;
-                    $stmtText->execute([
+
+                    $stmtUpsert->execute([
                         ':source_id' => $aboutId,
                         ':field_name' => $field,
                         ':lang' => $lg,
@@ -167,17 +188,19 @@ class AboutUs
                 }
             };
 
-            $insertField('mission', $missionVariants);
-            $insertField('goal', $goalVariants);
+            $updateField('mission', $missionVariants);
+            $updateField('goal', $goalVariants);
+            $updateField('title', $titleVariants);
 
             $this->pdo->commit();
             return $aboutId;
         } catch (\PDOException $e) {
             $this->pdo->rollBack();
-            error_log('AboutUs insert failed: ' . $e->getMessage());
+            error_log('AboutUs update failed: ' . $e->getMessage());
             throw $e;
         }
     }
+
 
     /**
      * Update: zamenimo text zapise za dati aboutus id (mission/goal).

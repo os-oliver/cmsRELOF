@@ -73,12 +73,16 @@ abstract class BasePageBuilder
 
     protected function getBasicHeader($additionalPhp): string
     {
-        return <<<HTML
+        $html = <<<HTML
 <?php
 session_start();
 use App\Models\PageLoader;
 use \App\Utils\LocaleManager;
+        use App\Models\AboutUs;
+
+\$dataAboutUS = new AboutUs();
 \$locale = LocaleManager::get();
+\$aboutUsData = \$dataAboutUS->list(\$locale);
 \$groupedPages = PageLoader::getGroupedStaticPages();
 
 
@@ -96,13 +100,15 @@ $additionalPhp
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{$this->name}</title>
+    <title><?=\$aboutUsData['title']?> </title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="/exportedPages/commonStyle.css" rel="stylesheet" />
+    
     <script>
     </script>
 HTML;
+        return $html;
     }
 
     protected function getFooter(): string

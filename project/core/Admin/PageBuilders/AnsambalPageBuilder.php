@@ -38,10 +38,14 @@ class AnsambalPageBuilder extends BasePageBuilder
             'search_placeholder' => 'Pretraži...',
             'apply_button' => 'Primeni',
             'all_categories' => 'Sve kategorije',
-            'date_and_time' => 'Datum i vreme',
-            'location' => 'Lokacija',
-            'event_details' => 'Detalji događaja',
+            // Promenjeno: date_and_time -> member_since (Primer: 'Datum učlanjenja')
+            'member_since' => 'Datum učlanjenja',
+            // Promenjeno: location -> role (Primer: 'Uloga u ansamblu')
+            'role' => 'Uloga u ansamblu',
+            // Promenjeno: event_details -> ensemble_details
+            'ensemble_details' => 'Detalji člana',
             'no_items_found' => 'Nema pronađenih stavki',
+            // Zadržana lista meseci, iako sada manje relevantna, za slučaj da se koristi.
             'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
         ];
 
@@ -255,7 +259,8 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
         '{{opis}}' => $opis,
         '{{imageSection}}' => $imageSection,
         '{{itemId}}' => $itemId,
-        '{{ensembleDetails}}' => $texts['ensemble_details'] ?? 'Detalji'
+        // Promenjeno: ensemble_details iz $texts
+        '{{ensembleDetails}}' => $texts['ensemble_details'] ?? 'Detalji člana' 
     ];
 
     return str_replace(array_keys($replacements), array_values($replacements), $cardTemplate);
@@ -315,8 +320,8 @@ PHP;
 <main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Događaji</h1>
-            <p class="text-gray-600">Istražite našu bogatu ponudu kulturnih događaja</p>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Članovi ansambla</h1> 
+            <p class="text-gray-600">Pregled svih članova ansambla</p> 
         </div>
         
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
@@ -358,7 +363,8 @@ if (session_status() === PHP_SESSION_NONE) {
 $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 $slug = '__SLUG__';
 $pageTitle = ucfirst($slug);
-$pageDescription = 'Pregled svih stavki';
+// Promenjeno: 'Pregled svih stavki' - zadržano kao opšte
+$pageDescription = 'Pregled svih stavki'; 
 
 // Configuration variables
 $itemsPerPage = __ITEMS_PER_PAGE__;
@@ -392,9 +398,12 @@ $latinTexts = [
     'search_placeholder' => 'Pretraži...',
     'apply_button' => 'Primeni',
     'all_categories' => 'Sve kategorije',
-    'date_and_time' => 'Datum i vreme',
-    'location' => 'Lokacija',
-    'event_details' => 'Detalji događaja',
+    // Promenjeno: date_and_time -> member_since
+    'member_since' => 'Datum učlanjenja',
+    // Promenjeno: location -> role
+    'role' => 'Uloga u ansamblu',
+    // Promenjeno: event_details -> ensemble_details
+    'ensemble_details' => 'Detalji člana',
     'no_items_found' => 'Nema pronađenih stavki',
     'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
 ];

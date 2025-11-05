@@ -18,6 +18,7 @@ class EventsPageBuilder extends BasePageBuilder
     public function __construct(string $slug)
     {
         $this->slug = $slug;
+        $this->name = $slug;
         $this->translator = new LanguageMapperController();
         $this->initializeTexts();
     }
