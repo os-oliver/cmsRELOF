@@ -525,7 +525,7 @@ class PageExporter
             }
 
             // Only generate PHP if key exists in structureLower
-            if ($key === null || isset($structureLower[$key])) {
+            if ($key === null || isset($structureLower[strtolower($key)])) {
                 $keyForFetch = $key ?? ''; // first parameter
                 $sixthParam = isset($parts[1]) ? "'{$parts[0]}'" : "null"; // use parts[1] if exists, else null
 
@@ -571,6 +571,8 @@ class PageExporter
         <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="/assets/icons/icon.png?v=<?= time() ?>">
+
         <title><?=$aboutUsData['title']?></title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
         <link href="/exportedPages/commonStyle.css" rel="stylesheet" />

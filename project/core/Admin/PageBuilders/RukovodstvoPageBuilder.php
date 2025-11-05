@@ -2,9 +2,9 @@
 
 namespace App\Admin\PageBuilders;
 
-class UvodPageBuilder extends BasePageBuilder
+class RukovodstvoPageBuilder extends BasePageBuilder
 {
-    protected string $html = <<<'HTML'
+  protected string $html = <<<'HTML'
 <main class="bg-background min-h-screen font-sans antialiased pt-10">
 
   <section class="py-20 bg-background text-center">
@@ -27,12 +27,12 @@ class UvodPageBuilder extends BasePageBuilder
 </main>
 HTML;
 
-    public function buildPage(): string
-    {
-        $content = $this->getHeader();
-        $content .= $this->getCommonIncludes();
-        $content .= $this->html;
-        $content .= $this->getFooter();
-        return $content;
-    }
+  public function buildPage(): string
+  {
+    $content = $this->getHeader();
+    $content .= $this->getCommonIncludes();
+    $content .= $this->html;
+    $content .= $this->getFooter();
+    return $content;
+  }
 }

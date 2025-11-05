@@ -295,8 +295,8 @@ PHP;
 <main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Događaji</h1>
-            <p class="text-gray-600">Istražite našu bogatu ponudu kulturnih događaja</p>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Anekte</h1>
+            <p class="text-gray-600">Istražite ankete</p>
         </div>
         
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>

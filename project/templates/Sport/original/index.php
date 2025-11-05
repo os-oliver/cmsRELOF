@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sportski Centar Arena</title>
+    <title>Sportski Centar Arena - Profesionalni sportski objekat</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -16,16 +16,16 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#FF4500',
-                        primary_hover: '#E03E00',
-                        secondary: '#1A1A2E',
-                        secondary_hover: '#0F0F1E',
-                        accent: '#FFD700',
-                        accent_hover: '#FFC700',
-                        primary_text: '#1A1A2E',
-                        secondary_text: '#4A4A5E',
-                        background: '#F5F5F5',
-                        secondary_background: '#FFFFFF',
+                        primary: '#1E40AF',
+                        primary_hover: '#1E3A8A',
+                        secondary: '#0F4C75',
+                        secondary_hover: '#0B3B5B',
+                        accent: '#F59E0B',
+                        accent_hover: '#D97706',
+                        primary_text: '#1F2937',
+                        secondary_text: '#4B5563',
+                        background: '#F9FAFB',
+                        surface: '#F3F4F6',
                     },
                     fontFamily: {
                         'heading': ['Bebas Neue', 'sans-serif'],
@@ -40,8 +40,8 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: #F5F5F5;
-            color: #1A1A2E;
+            background: #F9FAFB;
+            color: #1F2937;
         }
 
         .font-display {
@@ -50,16 +50,6 @@
 
         .font-oswald {
             font-family: 'Oswald', sans-serif;
-        }
-
-        .sports-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF4500' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .diagonal-lines {
-            background: linear-gradient(45deg, transparent 40%, rgba(255, 69, 0, 0.1) 40%, rgba(255, 69, 0, 0.1) 60%, transparent 60%),
-                linear-gradient(-45deg, transparent 40%, rgba(255, 69, 0, 0.1) 40%, rgba(255, 69, 0, 0.1) 60%, transparent 60%);
-            background-size: 20px 20px;
         }
 
         .nav-link {
@@ -74,7 +64,7 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: #FF4500;
+            background: #1E40AF;
             transition: width 0.3s ease;
         }
 
@@ -88,7 +78,7 @@
 
         .card-hover:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px -10px rgba(255, 69, 0, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(30, 64, 175, 0.3);
         }
 
         .energy-pulse {
@@ -126,51 +116,257 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #FF4500, #FFD700);
+            background: linear-gradient(135deg, #1E40AF, #F59E0B);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        /* Gradient background with figures */
+        .gradient-figures {
+            background: linear-gradient(135deg, #0F4C75 0%, #1E293B 50%, #0F172A 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-figures::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(30, 64, 175, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(30, 64, 175, 0.08) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(-5%, -5%) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(5%, 5%) rotate(-5deg);
+            }
+
+            75% {
+                transform: translate(-5%, 5%) rotate(5deg);
+            }
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #1F2937;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #F3F4F6;
+            color: #1E40AF;
+        }
+
+        /* Professional section styling */
+        .professional-section {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%);
+        }
+
+        .professional-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .professional-card:hover {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Mobile dropdown animation */
+        .mobile-dropdown-menu {
+            transition: all 0.3s ease;
+        }
+
+        .mobile-dropdown-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown-open .mobile-dropdown-icon {
+            transform: rotate(180deg);
         }
     </style>
 </head>
 
 <body class="bg-background text-primary_text font-body">
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden hidden">
+    <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden hidden">
         <div class="fixed inset-0 bg-black bg-opacity-70" id="mobileMenuOverlay"></div>
-        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-secondary shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
+        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
             id="mobileMenuPanel">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-xl font-heading text-white">MENU</h2>
-                    <button id="closeMobileMenu" class="text-white hover:text-primary transition-colors">
+                    <h2 class="text-xl font-heading text-primary_text">MENU</h2>
+                    <button id="closeMobileMenu" class="text-primary_text hover:text-accent transition-colors">
                         <i class="fas fa-times text-2xl"></i>
                     </button>
                 </div>
-                <nav id="navBarIDm" class="space-y-3">
+                <nav id="navBarIDm" class="space-y-4">
                     <a data-page="Pocetna" href="#"
-                        class="flex items-center py-3 px-4 text-white hover:text-primary hover:bg-secondary_hover rounded-lg transition-all">
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-primary"></i>Početna
                     </a>
-                    <a data-page="Treninzi" href="#"
-                        class="flex items-center py-3 px-4 text-white hover:text-primary hover:bg-secondary_hover rounded-lg transition-all">
-                        <i class="fas fa-dumbbell mr-3 text-accent"></i>Treninzi
-                    </a>
-                    <a data-page="Raspored" href="#"
-                        class="flex items-center py-3 px-4 text-white hover:text-primary hover:bg-secondary_hover rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Raspored
-                    </a>
-                    <a data-page="Clanarine" href="#"
-                        class="flex items-center py-3 px-4 text-white hover:text-primary hover:bg-secondary_hover rounded-lg transition-all">
-                        <i class="fas fa-tag mr-3 text-accent"></i>Članarine
-                    </a>
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all"
+                            id="mobileAboutToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-info-circle mr-3 text-secondary"></i>O nama
+                            </div>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-icon"
+                                id="mobileAboutIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden mobile-dropdown-menu" id="mobileAboutMenu">
+                            <a data-page="Uvod" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-book mr-2 text-primary"></i>Uvod
+                            </a>
+                            <a data-page="Misija i vizija" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-flag mr-2 text-secondary"></i>Misija i vizija
+                            </a>
+                            <a data-page="Istorijat" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-history mr-2 text-accent"></i>Istorijat
+                            </a>
+                            <a data-page="Rukovodstvo" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-users-cog mr-2 text-secondary"></i>Rukovodstvo
+                            </a>
+                            <a data-page="Objekat" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
+                            </a>
+                            <a data-page="Donacije i podrška" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-hand-holding-heart mr-2 text-accent"></i>Donacije i podrška
+                            </a>
+                            <a data-page="Partneri" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-handshake mr-2 text-primary"></i>Partneri
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all"
+                            id="mobileSportsToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-basketball-ball mr-3 text-secondary"></i>Sportovi
+                            </div>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-icon"
+                                id="mobileSportsIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden mobile-dropdown-menu" id="mobileSportsMenu">
+                            <a data-page="Fudbal" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-futbol mr-2 text-primary"></i>Fudbal
+                            </a>
+                            <a data-page="Košarka" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-basketball-ball mr-2 text-secondary"></i>Košarka
+                            </a>
+                            <a data-page="Odbojka" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-volleyball-ball mr-2 text-accent"></i>Odbojka
+                            </a>
+                            <a data-page="Tenis" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-table-tennis mr-2 text-secondary_text"></i>Tenis
+                            </a>
+                            <a data-page="Plivanje" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-swimmer mr-2 text-accent"></i>Plivanje
+                            </a>
+                            <a data-page="Atletika" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-running mr-2 text-primary"></i>Atletika
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all"
+                            id="mobileMembershipToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-id-card mr-3 text-secondary"></i>Članstvo
+                            </div>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-icon"
+                                id="mobileMembershipIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden mobile-dropdown-menu" id="mobileMembershipMenu">
+                            <a data-page="Uslovi upisa" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-file-signature mr-2 text-primary"></i>Uslovi upisa
+                            </a>
+                            <a data-page="Cenovnik" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-tags mr-2 text-secondary"></i>Cenovnik
+                            </a>
+                            <a data-page="Pravilnici" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-book-open mr-2 text-accent"></i>Pravilnici
+                            </a>
+                        </div>
+                    </div>
                     <a data-page="Galerija" href="#"
-                        class="flex items-center py-3 px-4 text-white hover:text-primary hover:bg-secondary_hover rounded-lg transition-all">
-                        <i class="fas fa-images mr-3 text-primary"></i>Galerija
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
+                        <i class="fas fa-images mr-3 text-secondary"></i>Galerija
+                    </a>
+                    <a data-page="Dokumenti" href="#"
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
+                        <i class="fas fa-folder-open mr-3 text-accent"></i>Dokumenti
                     </a>
                     <a data-page="Kontakt" href="#"
-                        class="flex items-center py-3 px-4 text-white hover:text-primary hover:bg-secondary_hover rounded-lg transition-all">
-                        <i class="fas fa-phone mr-3 text-accent"></i>Kontakt
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
+                        <i class="fas fa-address-book mr-3 text-secondary"></i>Kontakt
                     </a>
                 </nav>
             </div>
@@ -185,112 +381,153 @@
     </button>
 
     <!-- Header -->
-    <header class="fixed w-full z-50 py-4 bg-secondary shadow-2xl">
+    <header class="fixed w-full z-40 py-4 bg-white shadow-lg">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <div
                     class="w-14 h-14 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-lg energy-pulse">
-                    <i class="fas fa-fire text-3xl text-white"></i>
+                    <i class="fas fa-dumbbell text-3xl text-white"></i>
                 </div>
                 <div>
-                    <h1 class="text-3xl font-heading font-bold text-white tracking-wider">SPORTSKI ARENA</h1>
-                    <p class="text-xs text-accent tracking-widest font-oswald">SNAGA • IZDRŽLJIVOST • POBEDA</p>
+                    <h1 class="text-3xl font-heading font-bold text-secondary tracking-wider">SPORTSKI ARENA</h1>
+                    <p class="text-xs text-primary tracking-widest font-oswald">PROFESIONALNI SPORTSKI OBJEKAT</p>
                 </div>
             </div>
 
             <!-- Desktop Navigation -->
             <nav id="navBarID" class="hidden lg:flex space-x-8 items-center">
                 <a href="#"
-                    class="nav-link text-white font-semibold flex items-center hover:text-primary transition-colors">
+                    class="nav-link text-secondary font-semibold flex items-center hover:text-primary transition-colors">
                     <i class="fas fa-home mr-2"></i>Početna
                 </a>
+                <div class="dropdown">
+                    <button href="#"
+                        class="nav-link text-secondary font-semibold flex items-center hover:text-primary transition-colors">
+                        <i class="fas fa-info-circle mr-2"></i>O nama <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-book mr-2 text-primary"></i>Uvod
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-flag mr-2 text-secondary"></i>Misija i vizija
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-history mr-2 text-accent"></i>Istorijat
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users-cog mr-2 text-secondary"></i>Rukovodstvo
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-hand-holding-heart mr-2 text-accent"></i>Donacije i podrška
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-handshake mr-2 text-primary"></i>Partneri
+                        </a>
+                    </div>
+                </div>
                 <a href="#"
-                    class="nav-link text-white font-semibold flex items-center hover:text-primary transition-colors">
-                    <i class="fas fa-dumbbell mr-2"></i>Treninzi
+                    class="nav-link text-secondary font-semibold flex items-center hover:text-primary transition-colors">
+                    <i class="fas fa-basketball-ball mr-2"></i>Sportovi
                 </a>
+                <div class="dropdown">
+                    <button href="#"
+                        class="nav-link text-secondary font-semibold flex items-center hover:text-primary transition-colors">
+                        <i class="fas fa-id-card mr-2"></i>Članstvo <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file-signature mr-2 text-primary"></i>Uslovi upisa
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-tags mr-2 text-secondary"></i>Cenovnik
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-book-open mr-2 text-accent"></i>Pravilnici
+                        </a>
+                    </div>
+                </div>
                 <a href="#"
-                    class="nav-link text-white font-semibold flex items-center hover:text-primary transition-colors">
-                    <i class="fas fa-calendar-alt mr-2"></i>Raspored
-                </a>
-                <a href="#"
-                    class="nav-link text-white font-semibold flex items-center hover:text-primary transition-colors">
-                    <i class="fas fa-tag mr-2"></i>Članarine
-                </a>
-                <a href="#"
-                    class="nav-link text-white font-semibold flex items-center hover:text-primary transition-colors">
+                    class="nav-link text-secondary font-semibold flex items-center hover:text-primary transition-colors">
                     <i class="fas fa-images mr-2"></i>Galerija
                 </a>
                 <a href="#"
-                    class="nav-link text-white font-semibold flex items-center hover:text-primary transition-colors">
+                    class="nav-link text-secondary font-semibold flex items-center hover:text-primary transition-colors">
+                    <i class="fas fa-folder-open mr-2"></i>Dokumenti
+                </a>
+                <a href="#"
+                    class="nav-link text-secondary font-semibold flex items-center hover:text-primary transition-colors">
                     <i class="fas fa-phone mr-2"></i>Kontakt
                 </a>
             </nav>
 
             <!-- Search & Mobile Toggle -->
             <div class="flex items-center space-x-4">
-                <button id="searchButton" class="text-white hover:text-primary transition-colors focus:outline-none"
+                <button id="searchButton" class="text-secondary hover:text-primary transition-colors focus:outline-none"
                     aria-label="Search">
                     <i class="fas fa-search text-lg"></i>
                 </button>
-                <button id="hamburger" class="hamburger lg:hidden text-white w-8 h-8 flex flex-col justify-between">
-                    <span class="block w-8 h-1 bg-white rounded"></span>
-                    <span class="block w-8 h-1 bg-white rounded my-1"></span>
-                    <span class="block w-8 h-1 bg-white rounded"></span>
+                <button id="hamburger" class="hamburger lg:hidden text-secondary w-8 h-8 flex flex-col justify-between">
+                    <span class="block w-8 h-1 bg-secondary rounded"></span>
+                    <span class="block w-8 h-1 bg-secondary rounded my-1"></span>
+                    <span class="block w-8 h-1 bg-secondary rounded"></span>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-20 sports-pattern">
-        <div class="absolute inset-0 z-0 diagonal-lines opacity-30"></div>
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-20 gradient-figures">
         <div class="absolute inset-0 z-0 bg-gradient-to-br from-secondary via-transparent to-primary opacity-20"></div>
 
         <div class="container mx-auto px-4 py-24 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="max-w-2xl">
                     <span
-                        class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold mb-6 shadow-lg">
-                        <i class="fas fa-bolt mr-2"></i>NAJMODERNIJI CENTAR U GRADU
+                        class="inline-block bg-accent text-secondary px-6 py-2 rounded-full text-sm font-bold mb-6 shadow-lg">
+                        <i class="fas fa-medal mr-2"></i>VODEĆI SPORTSKI CENTAR
                     </span>
-                    <h1 class="text-6xl md:text-7xl font-heading font-bold leading-tight text-primary_text mb-6">
-                        <span class="block">PREVAZIĐI</span>
-                        <span class="block text-primary mt-2">SVOJE GRANICE</span>
+                    <h1 class="text-6xl md:text-7xl font-heading font-bold leading-tight text-white mb-6">
+                        <span class="block">IZUZETAN</span>
+                        <span class="block text-accent mt-2">SPORTSKI DOŽIVLJAJ</span>
                     </h1>
 
                     <div class="mb-10">
-                        <p class="text-xl text-primary_text leading-relaxed mb-6 font-medium">
-                            Pridruži se zajednici koja teži izuzetnosti. Vrhunski trening, profesionalni treneri, i
-                            oprema svetske klase.
+                        <p class="text-xl text-white leading-relaxed mb-6 font-medium">
+                            Najsavremeniji sportski objekat sa olimpijskim standardima, profesionalnim trenerima i
+                            najnovijom opremom za sve sportske aktivnosti.
                         </p>
-                        <p class="text-primary_text italic text-lg border-l-4 border-primary pl-4">
-                            "Jedina loša trening sesija je ona koja nije održana."
+                        <p class="text-white italic text-lg border-l-4 border-accent pl-4">
+                            "Sport gradi karakter, podstiče timski rad i podučava vrednost napornog rada."
                         </p>
                     </div>
 
                     <div class="flex flex-wrap gap-4 mb-8">
                         <button
                             class="bg-primary hover:bg-primary_hover text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl transition-all transform hover:scale-105">
-                            <i class="fas fa-user-plus mr-2"></i>Postani Član
+                            <i class="fas fa-calendar-check mr-2"></i>Rezerviši termin
                         </button>
                         <button
-                            class="border-3 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-full font-bold text-lg transition-all">
-                            <i class="fas fa-play mr-2"></i>Video Tura
+                            class="border-3 border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full font-bold text-lg transition-all">
+                            <i class="fas fa-play mr-2"></i>Video prezentacija
                         </button>
                     </div>
 
                     <div class="grid grid-cols-3 gap-6 mt-12">
                         <div class="text-center">
-                            <div class="stat-number font-heading">500+</div>
-                            <p class="text-secondary_text font-semibold uppercase text-sm">Članova</p>
+                            <div class="stat-number font-heading">12+</div>
+                            <p class="text-white font-semibold uppercase text-sm">Sportova</p>
                         </div>
                         <div class="text-center">
-                            <div class="stat-number font-heading">15+</div>
-                            <p class="text-secondary_text font-semibold uppercase text-sm">Programa</p>
+                            <div class="stat-number font-heading">25+</div>
+                            <p class="text-white font-semibold uppercase text-sm">Trenera</p>
                         </div>
                         <div class="text-center">
-                            <div class="stat-number font-heading">24/7</div>
-                            <p class="text-secondary_text font-semibold uppercase text-sm">Pristup</p>
+                            <div class="stat-number font-heading">5</div>
+                            <p class="text-white font-semibold uppercase text-sm">Olimpijaca</p>
                         </div>
                     </div>
                 </div>
@@ -319,8 +556,8 @@
                         class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white rounded-full flex items-center justify-center shadow-2xl">
                         <div class="text-center p-8">
                             <i class="fas fa-trophy text-6xl text-primary mb-4"></i>
-                            <h3 class="font-heading text-2xl font-bold text-primary_text">BUDI ŠAMPION</h3>
-                            <p class="text-secondary_text mt-2 font-medium">Trenira u najboljem ambijentu</p>
+                            <h3 class="font-heading text-2xl font-bold text-primary_text">POSTIGNUĆA</h3>
+                            <p class="text-secondary_text mt-2 font-medium">Brojni trofeji i medalje</p>
                         </div>
                     </div>
                 </div>
@@ -329,103 +566,161 @@
 
         <!-- Scrolling indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-            <div class="animate-bounce w-10 h-16 rounded-full border-3 border-primary flex justify-center p-2">
-                <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+            <div class="animate-bounce w-10 h-16 rounded-full border-3 border-accent flex justify-center p-2">
+                <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Programs Section -->
-    <section id="programs" class="py-20 bg-white">
+    <!-- About Section -->
+    <section id="about" class="py-20 professional-section">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
-                    PROGRAMI
+                    O NAMA
                 </span>
                 <h2 class="text-5xl font-heading font-bold text-primary_text mb-4">
-                    NAŠI TRENINZI
+                    NAŠA MISIJA I VIZIJA
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto font-medium">
-                    Raznovrsni programi prilagođeni svim nivoima kondicije i fitnes ciljevima
+                    Posvećeni smo razvoju sporta i podsticanju zdravog načina života kroz vrhunske uslove i
+                    profesionalne programe
                 </p>
             </div>
 
-            <div id="programsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="professional-card p-8 text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bullseye text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Misija</h3>
+                    <p class="text-secondary_text">
+                        Naša misija je da kroz kvalitetne sportske programe i vrhunske uslove podstaknemo ljude svih
+                        uzrasta na fizičku aktivnost i zdrav način života.
+                    </p>
+                </div>
+
+                <div class="professional-card p-8 text-center">
+                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-eye text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Vizija</h3>
+                    <p class="text-secondary_text">
+                        Težimo ka tome da postanemo vodeći regionalni sportski centar prepoznat po izuzetnim uslovima,
+                        stručnom kadru i rezultatima naših sportista.
+                    </p>
+                </div>
+
+                <div class="professional-card p-8 text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-star text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Vrednosti</h3>
+                    <p class="text-secondary_text">
+                        Poštujemo timski rad, poštenje, posvećenost i kontinuirani napredak. Verujemo da sport gradi
+                        karakter i podstiče pozitivne životne navike.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Featured Sports Section -->
+    <section id="Sportovi" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                    SPORTOVI
+                </span>
+                <h2 class="text-5xl font-heading font-bold text-primary_text mb-4">
+                    NAŠI SPORTOVI
+                </h2>
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto font-medium">
+                    Raznovrsni sportovi prilagođeni svim nivoima i interesovanjima
+                </p>
+            </div>
+
+            <div id="SportoviCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php
                 // Primer podataka - u realnoj aplikaciji bi ovo došlo iz baze
-                $programs = [
+                $sports = [
                     [
                         'image' => 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80',
-                        'category' => 'KARDIO',
-                        'badge_color' => 'bg-primary',
-                        'icon' => 'fa-running',
-                        'icon_bg' => 'bg-primary',
-                        'title' => 'CrossFit Intenziv',
-                        'description' => 'Visoko-intenzivni funkcionalni trening za maksimalne rezultate.',
-                        'time' => 'Pon-Pet 18:00',
-                        'level' => 'Napredni'
+                        'naziv' => 'Fudbal',
+                        'termin' => 'Pon-Pet 18:00'
                     ],
                     [
                         'image' => 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80',
-                        'category' => 'SNAGA',
-                        'badge_color' => 'bg-secondary',
-                        'icon' => 'fa-dumbbell',
-                        'icon_bg' => 'bg-secondary',
-                        'title' => 'Bodybuilding Pro',
-                        'description' => 'Profesionalni program za izgradnju mišićne mase i definiciju.',
-                        'time' => 'Uto-Čet 17:00',
-                        'level' => 'Srednji'
+                        'naziv' => 'Košarka',
+                        'termin' => 'Uto-Čet 17:00'
                     ],
                     [
                         'image' => 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80',
-                        'category' => 'WELLNESS',
-                        'badge_color' => 'bg-accent',
-                        'icon' => 'fa-spa',
-                        'icon_bg' => 'bg-accent',
-                        'title' => 'Yoga & Pilates',
-                        'description' => 'Harmonija tela i uma kroz kontrolisane pokrete i disanje.',
-                        'time' => 'Svakog dana 09:00',
-                        'level' => 'Svi nivoi'
+                        'naziv' => 'Yoga',
+                        'termin' => 'Svakog dana 09:00'
                     ]
                 ];
 
-                foreach ($programs as $program) {
+                foreach ($sports as $sport) {
                     echo '
-                    <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100">
-                        <div class="h-56 relative overflow-hidden">
-                            <img src="' . $program['image'] . '" alt="' . $program['title'] . '" 
-                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                            <div class="category-badge ' . $program['badge_color'] . ' text-white font-oswald">
-                                ' . $program['category'] . '
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 rounded-full ' . $program['icon_bg'] . ' flex items-center justify-center text-white mr-3 shadow-lg">
-                                    <i class="fas ' . $program['icon'] . ' text-xl"></i>
-                                </div>
-                                <span class="text-primary_text font-bold font-oswald text-sm tracking-wider">' . $program['category'] . '</span>
-                            </div>
-                            <h3 class="text-2xl font-heading font-bold text-primary_text mb-2">' . $program['title'] . '</h3>
-                            <p class="text-secondary_text mb-4 leading-relaxed">' . $program['description'] . '</p>
-                            <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-                                <div>
-                                    <div class="flex items-center text-sm text-secondary_text mb-2">
-                                        <i class="fas fa-clock mr-2 text-primary"></i>
-                                        <span class="font-medium">' . $program['time'] . '</span>
-                                    </div>
-                                    <div class="flex items-center text-sm text-secondary_text">
-                                        <i class="fas fa-signal mr-2 text-primary"></i>
-                                        <span class="font-medium">' . $program['level'] . '</span>
-                                    </div>
-                                </div>
-                                <button class="bg-primary text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-primary_hover transition-all shadow-lg">
-                                    Prijavi se
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    ';
+
+        <!-- helper css (stavi u globalni stylesheet ili ovde) -->
+<style>
+  /* fallback za višelinijski clamp ako ne koristiš Tailwind plugin */
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
+<div class="card-hover bg-transparent rounded-2xl overflow-hidden shadow-2xl border border-gray-100 max-w-sm">
+  <div class="relative h-64 overflow-hidden rounded-2xl">
+    <!-- slika -->
+    <img id="g-image" src="' . $sport['image'] . '" alt="' . $sport['naziv'] . '"
+         class="w-full h-full object-cover transition-transform duration-700 transform hover:scale-110">
+
+    <!-- tamni gradient preko slike -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none"></div>
+
+    <!-- overlay kartica (frosted glass feel) -->
+    <div class="absolute left-4 right-4 bottom-4 p-4 rounded-xl backdrop-blur-md bg-white/10 border border-white/10 text-white">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex-1">
+          <h3 id="g-nazivSporta" class="text-lg md:text-2xl font-heading font-bold leading-tight">
+            ' . $sport['naziv'] . '
+          </h3>
+
+          <p id="g-opis" class="mt-2 text-sm md:text-base leading-relaxed clamp-3">
+            ' . ($sport['opis'] ?? '') . '
+          </p>
+
+          <div class="mt-3 flex items-center text-sm text-gray-100/90">
+            <i class="fas fa-clock mr-2 text-sm"></i>
+            <span class="font-medium text-sm">' . ($sport['termin'] ?? 'Nije određeno') . '</span>
+          </div>
+        </div>
+
+        <!-- href dugme -->
+        <div class="flex-shrink-0 ml-3 self-center">
+          <a href="#"
+          id="g-ovise"
+             class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold
+                    bg-gradient-to-r from-primary to-primary_hover shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Više</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                ';
                 }
                 ?>
             </div>
@@ -433,129 +728,332 @@
             <div class="text-center mt-12">
                 <button
                     class="bg-secondary text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-secondary_hover transition-all shadow-xl transform hover:scale-105">
-                    <i class="fas fa-th-large mr-3"></i>Svi Programi
+                    <i class="fas fa-th-large mr-3"></i>Svi Sportovi
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Promo Section -->
-    <section id="promocija" class="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+    <!-- Membership Section -->
+    <section id="membership" class="py-20 professional-section">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2">
-                    <div
-                        class="overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80"
-                            alt="Promo" class="rounded-2xl w-full">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                    ČLANSTVO
+                </span>
+                <h2 class="text-5xl font-heading font-bold text-primary_text mb-4">
+                    POSTANITE DEO NAŠE ZAJEDNICE
+                </h2>
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto font-medium">
+                    Odaberite članstvo koje najbolje odgovara vašim potrebama i ciljevima
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="professional-card p-8 text-center border-2 border-gray-200">
+                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Osnovno</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-primary">4.990</span>
+                        <span class="text-secondary_text">RSD/mes.</span>
                     </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Pristup teretanama
+                        </li>
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Grupni treninzi
+                        </li>
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-times text-gray-400 mr-2"></i> Lični trener
+                        </li>
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-times text-gray-400 mr-2"></i> Bazeni i saune
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full bg-gray-200 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-300 transition-colors">
+                        Odaberi
+                    </button>
                 </div>
-                <div class="lg:w-1/2">
-                    <span class="inline-block bg-accent text-secondary px-6 py-2 rounded-full text-sm font-bold mb-6">
-                        <i class="fas fa-fire mr-2"></i>LIMITIRANA PONUDA
-                    </span>
-                    <h2 class="text-5xl font-heading font-bold mb-6">
-                        <span class="block">50% POPUST</span>
-                        <span class="block text-accent">NA ČLANARINU</span>
-                    </h2>
-                    <p class="text-xl mb-8 leading-relaxed">
-                        Započni svoju fitnes transformaciju danas! Posebna ponuda za nove članove - uključuje pristup
-                        svim programima i opremi.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center bg-white/10 backdrop-blur-sm p-4 rounded-xl">
-                            <i class="fas fa-check-circle text-accent text-2xl mr-3"></i>
-                            <span class="font-medium">Neograničen pristup</span>
-                        </div>
-                        <div class="flex items-center bg-white/10 backdrop-blur-sm p-4 rounded-xl">
-                            <i class="fas fa-check-circle text-accent text-2xl mr-3"></i>
-                            <span class="font-medium">Besplatan trener</span>
-                        </div>
-                        <div class="flex items-center bg-white/10 backdrop-blur-sm p-4 rounded-xl">
-                            <i class="fas fa-check-circle text-accent text-2xl mr-3"></i>
-                            <span class="font-medium">Plan ishrane</span>
-                        </div>
-                        <div class="flex items-center bg-white/10 backdrop-blur-sm p-4 rounded-xl">
-                            <i class="fas fa-check-circle text-accent text-2xl mr-3"></i>
-                            <span class="font-medium">Sauna & spa</span>
-                        </div>
+
+                <div class="professional-card p-8 text-center border-2 border-primary relative">
+                    <div
+                        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold">
+                        POPULARNO
                     </div>
-                    <div class="flex flex-wrap gap-4">
-                        <button
-                            class="bg-accent text-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-accent_hover transition-all shadow-xl">
-                            <i class="fas fa-gift mr-2"></i>Iskoristi Ponudu
-                        </button>
-                        <button
-                            class="border-3 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary transition-all">
-                            <i class="fas fa-info-circle mr-2"></i>Detalji
-                        </button>
+                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Premium</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-primary">7.990</span>
+                        <span class="text-secondary_text">RSD/mes.</span>
                     </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Pristup teretanama
+                        </li>
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Grupni treninzi
+                        </li>
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Lični trener
+                        </li>
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Bazeni i saune
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary_hover transition-colors">
+                        Odaberi
+                    </button>
+                </div>
+
+                <div class="professional-card p-8 text-center border-2 border-gray-200">
+                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Porodično</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-primary">12.990</span>
+                        <span class="text-secondary_text">RSD/mes.</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Pristup za 4 člana
+                        </li>
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Grupni treninzi
+                        </li>
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Lični trener
+                        </li>
+                        <li class="flex items-center text-secondary_text">
+                            <i class="fas fa-check text-primary mr-2"></i> Bazeni i saune
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full bg-gray-200 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-300 transition-colors">
+                        Odaberi
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-background">
+    <!-- Footer -->
+    <footer class="bg-secondary text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
-                    GALERIJA
-                </span>
-                <h2 class="text-5xl font-heading font-bold text-primary_text mb-4">
-                    NAŠ PROSTOR
-                </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto">
-                    Moderno opremljen centar sa najnovijom opremom i profesionalnim ambijentom
-                </p>
-            </div>
-
-            <div id="galleryCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <?php
-                $gallery = [
-                    [
-                        'image' => 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80',
-                        'title' => 'Teretana',
-                        'description' => 'Oprema svetske klase'
-                    ],
-                    [
-                        'image' => 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80',
-                        'title' => 'Kardio Zona',
-                        'description' => 'Najnoviji trenažeri'
-                    ],
-                    [
-                        'image' => 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80',
-                        'title' => 'Yoga Studio',
-                        'description' => 'Mir i harmonija'
-                    ],
-                    [
-                        'image' => 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80',
-                        'title' => 'Funkcionalni Trening',
-                        'description' => 'Poseban prostor za CrossFit'
-                    ],
-                    [
-                        'image' => 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=80',
-                        'title' => 'Garderobniza',
-                        'description' => 'Luksuzne svlačionice'
-                    ],
-                    [
-                        'image' => 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80',
-                        'title' => 'Smoothie Bar',
-                        'description' => 'Zdrava ishrana'
-                    ]
-                ];
-
-                foreach ($gallery as $item) {
-                    echo '
-                    <div class="overflow-hidden rounded-2xl relative h-80 group shadow-xl">
-                        <img src="' . $item['image'] . '" alt="' . $item['title'] . '"
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                            <h3 class="font-heading text-2xl font-bold mb-1">' . $item['title'] . '</h3>
-                            <p class="text-sm text-accent font-medium">' . $item['description'] . '</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                            <i class="fas fa-dumbbell text-xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-heading font-bold">SPORTSKI ARENA</h3>
+                            <p class="text-xs text-accent tracking-widest font-oswald">PROFESIONALNI SPORTSKI OBJEKAT
+                            </p>
                         </div>
                     </div>
-                    ';
+                    <p class="text-gray-300 mb-4">
+                        Vodeći sportski centar sa najsavremenijom opremom, profesionalnim trenerima i raznovrsnim
+                        programima za sve uzraste i nivoe.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-heading font-bold mb-6 text-accent">BRZI LINKOVI</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Početna</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> O nama</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Sportovi</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Članstvo</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Dokumenti</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-heading font-bold mb-6 text-accent">SPORTOVI</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Fudbal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Košarka</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Odbojka</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Tenis</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Plivanje</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Atletika</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-heading font-bold mb-6 text-accent">KONTAKT</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mr-3 mt-1"></i>
+                            <span class="text-gray-300">Sportska 15, 11000 Beograd</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-300">+381 11 123 4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-300">info@sportskaarena.rs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-primary mr-3"></i>
+                            <span class="text-gray-300">Pon-Ned: 06:00 - 23:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Sportski Centar Arena. Sva prava zadržana.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Uslovi korišćenja</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Politika
+                        privatnosti</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Safe JavaScript with element existence checks
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+            if (hamburger && mobileMenu && closeMobileMenu && mobileMenuOverlay) {
+                hamburger.addEventListener('click', () => {
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+                        if (mobileMenuPanel) {
+                            mobileMenuPanel.classList.remove('translate-x-full');
+                        }
+                    }, 10);
+                });
+
+                closeMobileMenu.addEventListener('click', closeMenu);
+                mobileMenuOverlay.addEventListener('click', closeMenu);
+
+                function closeMenu() {
+                    const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+                    if (mobileMenuPanel) {
+                        mobileMenuPanel.classList.add('translate-x-full');
+                    }
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
                 }
-                ?>
+            }
+
+            // Mobile dropdown functionality
+            const setupMobileDropdown = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                const menu = document.getElementById(menuId);
+                const icon = document.getElementById(iconId);
+
+                if (toggle && menu && icon) {
+                    toggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        menu.classList.toggle('hidden');
+                        toggle.parentElement.classList.toggle('mobile-dropdown-open');
+                    });
+                }
+            };
+
+            // Setup all mobile dropdowns
+            setupMobileDropdown('mobileAboutToggle', 'mobileAboutMenu', 'mobileAboutIcon');
+            setupMobileDropdown('mobileSportsToggle', 'mobileSportsMenu', 'mobileSportsIcon');
+            setupMobileDropdown('mobileMembershipToggle', 'mobileMembershipMenu', 'mobileMembershipIcon');
+
+            // Font size increase functionality
+            const increaseFontBtn = document.getElementById('increaseFontBtn');
+            let fontSizeIncreased = false;
+
+            if (increaseFontBtn) {
+                increaseFontBtn.addEventListener('click', () => {
+                    const elements = document.querySelectorAll('body, p, span, a, button, li, h1, h2, h3, h4, h5, h6');
+
+                    if (!fontSizeIncreased) {
+                        elements.forEach(el => {
+                            const currentSize = window.getComputedStyle(el).fontSize;
+                            const newSize = parseFloat(currentSize) * 1.2;
+                            el.style.fontSize = `${newSize}px`;
+                        });
+                        fontSizeIncreased = true;
+                        increaseFontBtn.textContent = 'A-';
+                    } else {
+                        elements.forEach(el => {
+                            el.style.fontSize = '';
+                        });
+                        fontSizeIncreased = false;
+                        increaseFontBtn.textContent = 'A+';
+                    }
+                });
+            }
+
+            // Search functionality
+            const searchButton = document.getElementById('searchButton');
+            if (searchButton) {
+                searchButton.addEventListener('click', () => {
+                    alert('Funkcija pretrage će biti implementirana u narednoj verziji.');
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

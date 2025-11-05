@@ -251,26 +251,69 @@
                 </a>
 
                 <div class="dropdown relative group">
-                    <button class="nav-link text-background font-semibold flex items-center">
-                        <i class="fas fa-info-circle mr-2 text-accent"></i>O nama
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    <button
+                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        <i
+                            class="fas fa-info-circle mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
+                        <span class="hidden xl:inline text-sm">O nama</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
+
                     <div
-                        class="dropdown-menu absolute bg-background rounded-md shadow-lg py-2 min-w-[200px] mt-2 hidden group-hover:block">
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-secondary_background rounded-md text-primary_text">
-                            <i class="fas fa-bullseye mr-2"></i>Cilj
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Uvod</span>
                         </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-secondary_background rounded-md text-primary_text">
-                            <i class="fas fa-sitemap mr-2"></i>Upravljačka struktura
+
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Misija i vizija</span>
                         </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-secondary_background rounded-md text-primary_text">
-                            <i class="fas fa-flag mr-2"></i>Misija
+
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Istorijat</span>
                         </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Rukovodstvo</span>
+                        </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-sitemap mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Organizaciona struktura</span>
+                        </a>
+
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Objekat</span>
+                        </a>
+
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Donacije i podrška</span>
+                        </a>
+
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Partneri</span>
+                        </a>
+
                     </div>
                 </div>
+
 
                 <!-- Aktivnosti Dropdown -->
                 <div class="dropdown relative group">
