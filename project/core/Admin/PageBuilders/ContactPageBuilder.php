@@ -10,7 +10,7 @@ class ContactPageBuilder extends BasePageBuilder
             color: white;
             box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
         }
-        
+
         .complaint-toggle input:checked + label {
             background: linear-gradient(135deg, #ef4444, #dc2626);
             color: white;
@@ -85,7 +85,7 @@ class ContactPageBuilder extends BasePageBuilder
 <script>
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    
+
   const fullName = document.querySelector('input[name="ime"]').value.trim();
     const [ime, prezime] = fullName.split(' ');
 
@@ -111,10 +111,10 @@ document.getElementById('contact-form').addEventListener('submit', async functio
             // Show success message
             const successMessage = document.getElementById('success-message');
             successMessage.classList.remove('hidden');
-            
+
             // Reset form
             this.reset();
-            
+
             // Hide success message after 5 seconds
             setTimeout(() => {
                 successMessage.classList.add('hidden');
@@ -194,7 +194,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg">info@kulturnynexus.rs</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">info@kulturnynexus.rs</p>
                                     <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
                                 </div>
                             </div>

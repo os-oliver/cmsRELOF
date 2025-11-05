@@ -1270,6 +1270,7 @@
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
                             <span class="text-surface">info@kulturninexus.rs</span>
+
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-accent mt-1 mr-3"></i>
