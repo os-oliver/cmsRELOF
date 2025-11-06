@@ -67,69 +67,8 @@ class DestinacijePageBuilder extends BasePageBuilder
             : $latinTexts;
     }
 
-    protected string $css = <<<CSS
-    /* ====== Base spacing ====== */
-    main{ padding-top: 50px; }
-    .dropdown:hover .dropdown-menu { display: block; }
-    .dropdown-menu {
-        display: none; position: absolute; background: #fff; min-width: 200px;
-        box-shadow: 0 8px 16px rgba(0,0,0,.1); z-index: 50; border-radius: 8px; overflow: hidden;
-    }
-    .dropdown-item { padding: 12px 16px; display: block; color: #111827; transition: all .2s; border-left: 3px solid transparent; }
-    .dropdown-item:hover { background: #f3f4f6; border-left: 3px solid #10b981; }
-
-    /* ====== Palette & typography (emerald/teal) ====== */
-    body { font-family: "Inter", sans-serif; }
-    .hero-title { font-family: "Playfair Display", serif; }
-    .brand-gradient { background-image: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%); }
-    .text-gradient { background: linear-gradient(135deg,#10b981,#0ea5e9); -webkit-background-clip:text; background-clip:text; color: transparent; }
-
-    /* ====== Interactive bits ====== */
-    .nav-link::after { content:''; display:block; width:0; height:3px; background:linear-gradient(to right,#10b981,#0ea5e9); transition:width .3s; }
-    .nav-link:hover::after { width:100%; }
-    #mobileMenuPanel { transform: translateX(100%); transition: transform .35s cubic-bezier(.77,0,.175,1); }
-    .hamburger span { transition: all .3s ease; }
-    .hamburger.active span:nth-child(1){ transform: rotate(45deg) translate(6px,6px); }
-    .hamburger.active span:nth-child(2){ opacity:0; }
-    .hamburger.active span:nth-child(3){ transform: rotate(-45deg) translate(5px,-5px); }
-
-    /* Search popover animation */
-    #searchInputContainer { transition: opacity .2s ease, transform .2s ease; transform: translateY(-4px); }
-    #searchInputContainer.show { opacity:1 !important; transform: translateY(0); }
-
-    /* ====== Glassmorphism cards ====== */
-    .glass-card {
-        background: rgba(255, 255, 255, 0.82);
-        backdrop-filter: blur(18px) saturate(180%);
-        -webkit-backdrop-filter: blur(18px) saturate(180%);
-        border: 1px solid rgba(16, 185, 129, 0.20);
-        box-shadow: 0 8px 28px rgba(16, 24, 40, 0.08);
-    }
-    .glass-search {
-        background: rgba(255,255,255,0.9);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(14,165,233,0.25);
-    }
-
-    .chip {
-        display:inline-flex; align-items:center; gap:.4rem;
-        padding:.3rem .7rem; border-radius:9999px; font-size:.75rem; font-weight:600;
-        background: rgba(16,185,129,.1); color:#065f46; border:1px solid rgba(16,185,129,.25);
-    }
-    .chip-blue {
-        background: rgba(14,165,233,.1); color:#0c4a6e; border-color: rgba(14,165,233,.25);
-    }
-
-    /* Mini facts grid inside card */
-    .facts-grid {
-        display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:.5rem;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-        .facts-grid { grid-template-columns: 1fr; }
-    }
-CSS;
+    // ✅ Tailwind-only: no custom CSS
+    protected string $css = '';
 
     protected string $topBar = <<<'PHP'
 function renderTopbarDestinations(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = [], string $sort = ''): string
@@ -143,21 +82,22 @@ function renderTopbarDestinations(array $categories, string $searchValue = '', ?
         'date' => $texts['sort_last_updated'],
     ];
 
-    $html = "<form method='GET' action='' class='glass-search flex flex-col lg:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
+    // wrapper replaces "glass-search"
+    $html = "<form method='GET' action='' class='flex flex-col lg:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4 bg-surface/90 backdrop-blur-lg border border-accent/25'>";
 
     $html .= "<div class='flex w-full lg:w-auto flex-1 gap-3'>
         <input type='text' name='search' value='{$safeSearchValue}'
                placeholder='{$texts['search_placeholder']}'
-               class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all shadow-sm bg-white/80'>
+               class='w-full rounded-xl px-5 py-3 bg-surface/80 border border-secondary_background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-primary_text placeholder-secondary_text/70'>
         <button type='submit'
-                class='bg-gradient-to-r from-emerald-600 to-sky-600 hover:from-emerald-700 hover:to-sky-700 text-white px-6 py-3 rounded-xl transition-all shadow-md font-medium'>
+                class='bg-gradient-to-r from-primary to-accent hover:from-primary_hover hover:to-accent_hover text-white px-6 py-3 rounded-xl transition-all shadow-md font-medium'>
             {$texts['apply_button']}
         </button>
     </div>";
 
     $html .= "<div class='flex items-center w-full lg:w-auto gap-3'>
         <select name='category'
-                class='w-full lg:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all shadow-sm bg-white/80 appearance-none cursor-pointer'>
+                class='w-full lg:w-64 rounded-xl px-5 py-3 bg-surface/80 border border-secondary_background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm appearance-none cursor-pointer text-primary_text'>
             <option value=''>{$texts['all_categories']}</option>";
 
     foreach ($categories as $cat) {
@@ -171,7 +111,7 @@ function renderTopbarDestinations(array $categories, string $searchValue = '', ?
 
     // Sort dropdown
     $html .= "<select name='sort'
-                class='w-full lg:w-56 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all shadow-sm bg-white/80 appearance-none cursor-pointer'>";
+                class='w-full lg:w-56 rounded-xl px-5 py-3 bg-surface/80 border border-secondary_background focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all shadow-sm appearance-none cursor-pointer text-primary_text'>";
     foreach ($sortOptions as $value => $label) {
         $sel = ($sort === $value) ? 'selected' : '';
         $labelEsc = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
@@ -187,8 +127,8 @@ PHP;
 
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
-        <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-            <div class="relative w-full h-56 bg-gradient-to-br from-emerald-50 to-sky-50">
+        <div class="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group bg-surface/90 backdrop-blur-xl border border-primary/20">
+            <div class="relative w-full h-56 bg-gradient-to-br from-primary/5 to-accent/5">
                 {{imageSection}}
                 <div class="absolute top-3 left-3 flex gap-2">
                     {{categoryChip}}
@@ -200,18 +140,18 @@ PHP;
             </div>
 
             <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-emerald-700 transition-colors">
+                <h3 class="text-xl font-bold font-heading text-primary_text mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                     {{naziv}}
                 </h3>
 
-                <div class="text-sm text-gray-500 mb-3 flex items-center gap-2">
+                <div class="text-sm text-secondary_text mb-3 flex items-center gap-2">
                     <i class="fas fa-map-marker-alt"></i>
                     <span>{{locationLine}}</span>
                 </div>
 
-                <p class="text-sm text-gray-700 leading-relaxed mb-5">{{kratakOpis}}</p>
+                <p class="text-sm text-secondary_text leading-relaxed mb-5">{{kratakOpis}}</p>
 
-                <div class="facts-grid mb-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
                     {{stayCostRow}}
                     {{updatedRow}}
                 </div>
@@ -225,7 +165,7 @@ PHP;
                     {{mapButton}}
                     {{siteButton}}
                     <a href="sadrzaj?id={{itemId}}&tip=generic_element"
-                       class="ml-auto inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-sky-600 hover:from-emerald-700 hover:to-sky-700 text-white text-sm font-bold py-3 px-4 rounded-xl transition-all shadow-md">
+                       class="ml-auto inline-flex items-center gap-2 bg-gradient-to-r from-primary to-accent hover:from-primary_hover hover:to-accent_hover text-white text-sm font-bold py-3 px-4 rounded-xl transition-all shadow-md">
                         <i class="fas fa-compass"></i>
                         <span>{{destinationDetails}}</span>
                     </a>
@@ -265,7 +205,7 @@ function renderStars($rating): string {
     $full = floor($r);
     $half = ($r - $full) >= 0.5 ? 1 : 0;
     $empty = 5 - $full - $half;
-    $html = "<div class='inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/90 border border-emerald-200 text-emerald-700 text-sm font-semibold shadow-sm'>";
+    $html = "<div class='inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface/90 border border-primary/30 text-primary text-sm font-semibold shadow-sm'>";
     for ($i=0; $i<$full; $i++) { $html .= "<i class='fas fa-star'></i>"; }
     if ($half) { $html .= "<i class='fas fa-star-half-alt'></i>"; }
     for ($i=0; $i<$empty; $i++) { $html .= "<i class='far fa-star'></i>"; }
@@ -303,42 +243,49 @@ function cardRenderDestination(array $item, string $locale, array $texts = [], i
     $imageSection = $imageUrl
         ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Destination image'>"
         : "<div class='absolute inset-0 flex items-center justify-center'>
-               <i class='fas fa-map-marked-alt text-6xl text-emerald-300'></i>
+               <i class='fas fa-map-marked-alt text-6xl text-primary/60'></i>
            </div>";
 
-    $categoryChip = $kategorija ? "<span class='chip'><i class='fas fa-tags'></i>{$kategorija}</span>" : "";
-    $countryChip  = $drzava ? "<span class='chip chip-blue'><i class='fas fa-globe-europe'></i>{$drzava}</span>" : "";
+    // chips (Tailwind-only)
+    $categoryChip = $kategorija
+        ? "<span class='inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/25'><i class='fas fa-tags'></i>{$kategorija}</span>"
+        : "";
+
+    $countryChip  = $drzava
+        ? "<span class='inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-accent/10 text-accent border border-accent/25'><i class='fas fa-globe-europe'></i>{$drzava}</span>"
+        : "";
 
     $ratingBadge  = $ocena !== '' ? renderStars($ocena) : "";
 
     $stayCostRow = ($trajanje || $cena) ? "
-        <div class='flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100'>
-            <i class='fas fa-suitcase-rolling text-emerald-600'></i>
+        <div class='flex items-center gap-3 p-3 rounded-xl bg-surface border border-secondary_background/60'>
+            <i class='fas fa-suitcase-rolling text-primary'></i>
             <div class='text-sm'>
-                ".($trajanje ? "<div class='font-semibold text-gray-900'>{$texts['recommended_stay']}: {$trajanje}</div>" : "")."
-                ".($cena     ? "<div class='text-gray-600'>{$texts['avg_cost']}: {$cena}</div>" : "")."
+                ".($trajanje ? "<div class='font-semibold text-primary_text'>{$texts['recommended_stay']}: {$trajanje}</div>" : "")."
+                ".($cena     ? "<div class='text-secondary_text'>{$texts['avg_cost']}: {$cena}</div>" : "")."
             </div>
         </div>" : "";
 
+
     $updatedRow = $updated ? "
-        <div class='flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100'>
-            <i class='fas fa-calendar-check text-sky-600'></i>
+        <div class='flex items-center gap-3 p-3 rounded-xl bg-surface border border-secondary_background/60'>
+            <i class='fas fa-calendar-check text-accent'></i>
             <div class='text-sm'>
-                <div class='font-semibold text-gray-900'>{$texts['updated']}</div>
-                <div class='text-gray-600'>{$updated}</div>
+                <div class='font-semibold text-primary_text'>{$texts['updated']}</div>
+                <div class='text-secondary_text'>{$updated}</div>
             </div>
         </div>" : "";
 
     $activitiesChips = "";
     foreach ($activities as $a) {
         $aEsc = htmlspecialchars($a, ENT_QUOTES, 'UTF-8');
-        $activitiesChips .= "<span class='chip'><i class=\"fas fa-hiking\"></i>{$aEsc}</span>";
+        $activitiesChips .= "<span class='inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/25'><i class=\"fas fa-hiking\"></i>{$aEsc}</span>";
     }
 
     $seasonChips = "";
     foreach ($seasonList as $s) {
         $sEsc = htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
-        $seasonChips .= "<span class='chip chip-blue'><i class=\"fas fa-sun\"></i>{$sEsc}</span>";
+        $seasonChips .= "<span class='inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-accent/10 text-accent border border-accent/25'><i class=\"fas fa-sun\"></i>{$sEsc}</span>";
     }
     // Add months (truncate to 4 + "+N")
     if (!empty($months)) {
@@ -347,23 +294,23 @@ function cardRenderDestination(array $item, string $locale, array $texts = [], i
         $more = max(0, count($months) - $maxShow);
         foreach ($show as $m) {
             $mEsc = htmlspecialchars($m, ENT_QUOTES, 'UTF-8');
-            $seasonChips .= "<span class='chip'><i class=\"far fa-calendar-alt\"></i>{$mEsc}</span>";
+            $seasonChips .= "<span class='inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/25'><i class=\"far fa-calendar-alt\"></i>{$mEsc}</span>";
         }
         if ($more > 0) {
-            $seasonChips .= "<span class='chip'>+{$more}</span>";
+            $seasonChips .= "<span class='inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary_background text-secondary_text border border-secondary_background'>+{$more}</span>";
         }
     }
 
     $mapButton = $mapLink
         ? "<a href='{$mapLink}' target='_blank' rel='noopener'
-             class='inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-emerald-200 text-emerald-700 hover:bg-emerald-50 transition-all shadow-sm'>
+             class='inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-primary/30 text-primary hover:bg-primary/5 transition-all shadow-sm'>
                 <i class='fas fa-map'></i><span>{$texts['map']}</span>
            </a>"
         : "";
 
     $siteButton = $site
         ? "<a href='{$site}' target='_blank' rel='noopener'
-             class='inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-sky-200 text-sky-700 hover:bg-sky-50 transition-all shadow-sm'>
+             class='inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-accent/30 text-accent hover:bg-accent/5 transition-all shadow-sm'>
                 <i class='fas fa-external-link-alt'></i><span>{$texts['official_website']}</span>
            </a>"
         : "";
@@ -399,8 +346,8 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}' 
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm'>
-            <i class='fas fa-chevron-left text-gray-600'></i>
+                   class='px-4 py-2 bg-surface/80 backdrop-blur-sm rounded-xl border border-secondary_background hover:bg-surface hover:border-secondary_background/80 transition-all shadow-sm'>
+            <i class='fas fa-chevron-left text-secondary_text'></i>
         </a>";
     }
 
@@ -410,30 +357,30 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
         $html .= "<a href='{$url}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm font-medium'>1</a>";
-        if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
+                   class='px-4 py-2 bg-surface/80 backdrop-blur-sm rounded-xl border border-secondary_background hover:bg-surface hover:border-secondary_background/80 transition-all shadow-sm font-medium'>1</a>";
+        if ($start > 2) $html .= "<span class='px-2 text-secondary_text/60'>...</span>";
     }
 
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
         $class = $i === $currentPage
-            ? 'px-4 py-2 bg-emerald-600 text-white rounded-xl font-semibold shadow-md'
-            : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm font-medium';
+            ? 'px-4 py-2 bg-primary text-white rounded-xl font-semibold shadow-md'
+            : 'px-4 py-2 bg-surface/80 backdrop-blur-sm rounded-xl border border-secondary_background hover:bg-surface hover:border-secondary_background/80 transition-all shadow-sm font-medium';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
 
     if ($end < $totalPages) {
-        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
+        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-secondary_text/60'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
         $html .= "<a href='{$url}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm font-medium'>{$totalPages}</a>";
+                   class='px-4 py-2 bg-surface/80 backdrop-blur-sm rounded-xl border border-secondary_background hover:bg-surface hover:border-secondary_background/80 transition-all shadow-sm font-medium'>{$totalPages}</a>";
     }
 
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm'>
-            <i class='fas fa-chevron-right text-gray-600'></i>
+                   class='px-4 py-2 bg-surface/80 backdrop-blur-sm rounded-xl border border-secondary_background hover:bg-surface hover:border-secondary_background/80 transition-all shadow-sm'>
+            <i class='fas fa-chevron-right text-secondary_text'></i>
         </a>";
     }
 
@@ -443,14 +390,15 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<main class="bg-gradient-to-br from-background via-primary/20 to-primary/40 min-h-screen">
+
     <section class="container mx-auto px-4 py-12">
         <!-- Hero -->
         <div class="mb-8">
-            <h1 class="hero-title text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                <span class="text-gradient">Destinacije</span>
+            <h1 class="hero-title font-heading text-4xl md:text-5xl font-bold text-primary_text mb-2">
+                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Destinacije</span>
             </h1>
-            <p class="text-gray-600">Istražite inspirativna mesta za vaše sledeće putovanje</p>
+            <p class="text-secondary_text">Istražite inspirativna mesta za vaše sledeće putovanje</p>
         </div>
 
         <!-- Filters -->
@@ -495,9 +443,9 @@ PHP;
                 $totalPages = ceil($itemsList['total'] / $itemsPerPage);
                 echo renderPagination($currentPage, $totalPages, $paginationRange);
             } else {
-                echo "<div class='glass-card rounded-lg p-12 text-center border border-white/40'>
-                    <i class='fas fa-inbox text-5xl text-gray-400 mb-4'></i>
-                    <p class='text-gray-500'>{$texts['no_items_found']}</p>
+                echo "<div class='rounded-lg p-12 text-center border border-primary/10 bg-surface/90 backdrop-blur-lg shadow'>
+                    <i class='fas fa-inbox text-5xl text-secondary_text/60 mb-4'></i>
+                    <p class='text-secondary_text'>{$texts['no_items_found']}</p>
                 </div>";
             }
             ?>
