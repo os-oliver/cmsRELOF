@@ -10,7 +10,6 @@ use App\Admin\PageBuilders\GoalPageBulder;
 use App\Admin\PageBuilders\IzlozbePageBuilder;
 use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
-use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\ObjekatPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
@@ -659,8 +658,6 @@ class PageExporter
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
                 return new VestiPageBuilder('Vesti');
-            case 'naucni-klub':
-                return new NaucniKlubPageBuilder('NaucniKlub');
             case 'vrtici':
                 return new VrticiPageBuilder('Vrtici');
             case 'timovi':
