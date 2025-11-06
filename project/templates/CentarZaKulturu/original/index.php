@@ -984,7 +984,7 @@
             </div>
         </div>
     </section>
-    <section id="Seminari" data-elements="events" class="py-20 bg-secondary_background">
+    <section id="Naučni klub" data-elements="Vesti" class="py-20 bg-secondary_background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
@@ -997,7 +997,7 @@
                 </p>
             </div>
 
-            <div id="SeminariCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="Naučni klubCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
                     <div
                         class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">

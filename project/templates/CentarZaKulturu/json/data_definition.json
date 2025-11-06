@@ -9,12 +9,23 @@
         "Muzicki ansambl",
         "Pozoriste",
         "Multimedija",
-        "Edukacija"
+        "Edukacija",
+        "Glavni glumci"
       ],
       "fields": [
         {
           "name": "naziv",
           "type": "text",
+          "label": {
+            "sr": "Naziv ansambla",
+            "en": "Ensemble name",
+            "sr-Cyrl": "Назив ансамбла"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
           "label": {
             "sr": "Naziv ansambla",
             "en": "Ensemble name",
