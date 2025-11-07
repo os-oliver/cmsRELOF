@@ -6,7 +6,7 @@ use App\Admin\PageBuilders\AnketePageBuilder;
 use App\Admin\PageBuilders\AnsambalPageBuilder;
 use App\Admin\PageBuilders\DynamicPageBuilder;
 use App\Admin\PageBuilders\EmployeesPageBuilder;
-use App\Admin\PageBuilders\GoalPageBulder;
+use App\Admin\PageBuilders\GoalPageBuilder;
 use App\Admin\PageBuilders\IzlozbePageBuilder;
 use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
@@ -653,7 +653,7 @@ class PageExporter
             case 'misija':
                 return new MissionPageBuilder($name, $this->data);
             case 'cilj':
-                return new GoalPageBulder($name, $this->data);
+                return new GoalPageBuilder($name, $this->data);
             case 'predstave':
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
