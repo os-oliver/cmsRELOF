@@ -102,19 +102,22 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
 
     $r->addRoute('POST', '/users', 'UserController@create');
     $r->addRoute('PUT', '/users/{id:\d+}', 'UserController@update');
-    $r->addRoute(httpMethod: 'DELETE', route: '/users/{id:\d+}', handler: 'UserController@delete');
+    $r->addRoute('DELETE', '/users/{id:\d+}', 'UserController@delete');
     $r->addRoute('GET', '/sadrzaj', 'PageController@renderElement');
 
 
     $pages = json_decode(
-        file_get_contents(__DIR__ . '/assets/data/pages.json'),
+        @file_get_contents(__DIR__ . '/assets/data/pages.json'),
         true
     );
-    foreach ($pages as $page) {
-        if ($page['href'] === '/') {
-            continue;
+
+    if (!empty($pages)) {
+        foreach ($pages as $page) {
+            if ($page['href'] === '/') {
+                continue;
+            }
+            $r->addRoute('GET', $page['href'], 'PageController@renderJsonPage');
         }
-        $r->addRoute('GET', $page['href'], 'PageController@renderJsonPage');
     }
 
     // Also register routes from DB (userdefinedpages) so pages created via UI are routable
