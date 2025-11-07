@@ -31,22 +31,22 @@ class ApiException extends \Exception implements ExceptionInterface
 
     public function __toString()
     {
-        $base = 'Meilisearch ApiException: Http Status: '.$this->httpStatus;
+        $base = 'Meilisearch ApiException: Http Status: ' . $this->httpStatus;
 
         if (!\is_null($this->message)) {
-            $base .= ' - Message: '.$this->message;
+            $base .= ' - Message: ' . $this->message;
         }
 
         if (!\is_null($this->errorCode)) {
-            $base .= ' - Code: '.$this->errorCode;
+            $base .= ' - Code: ' . $this->errorCode;
         }
 
         if (!\is_null($this->errorType)) {
-            $base .= ' - Type: '.$this->errorType;
+            $base .= ' - Type: ' . $this->errorType;
         }
 
         if (!\is_null($this->errorLink)) {
-            $base .= ' - Link: '.$this->errorLink;
+            $base .= ' - Link: ' . $this->errorLink;
         }
 
         return $base;

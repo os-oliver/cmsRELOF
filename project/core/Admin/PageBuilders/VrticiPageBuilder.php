@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Admin\PageBuilders;
 
 use App\Controllers\ContentController;
 use App\Controllers\LanguageMapperController;
 
-class NaucniKlubPageBuilder extends BasePageBuilder
+class VrticiPageBuilder extends BasePageBuilder
 {
     protected string $slug;
     private LanguageMapperController $translator;
@@ -153,63 +154,30 @@ class NaucniKlubPageBuilder extends BasePageBuilder
 }
 CSS;
 
-    protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
-{
-    $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
-    
-    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
-    
-    $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
-        <input type='text' name='search' value='{$safeSearchValue}' 
-               placeholder='{$texts['search_placeholder']}' 
-               class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
-        <button type='submit' 
-                class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
-            {$texts['apply_button']}
-        </button>
-    </div>";
-    
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category' 
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-            <option value=''>{$texts['all_categories']}</option>";
-    
-    foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
-    }
-    
-    $html .= "</select></div></form>";
-    
-    return $html;
-}
-PHP;
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
-        <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
-            <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100">
+        <div class="glass-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
+            <div class="relative w-full h-56 overflow-hidden bg-surface">
                 {{imageSection}}
+                {{kategoria}}
             </div>
-            <div>
-            <h3>{{kategoria}}</h3>
-            </div>
+
             <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+                <h3 class="text-xl font-heading text-primary_text mb-4 line-clamp-2 group-hover:text-primary_hover transition-colors">
                     {{naslov}}
                 </h3>
 
-                
-
-                <div class="mb-5 p-4 bg-gray-50 rounded-xl border border-gray-100">
-                    <p class="text-sm text-gray-700 leading-relaxed">{{opis}}</p>
+                <div class="space-y-3 mb-4 text-secondary_text font-body">
+                    {{locationRow}}
                 </div>
 
-                <a href="sadrzaj?id={{itemId}}&tip=generic_element"
-                class="block w-full text-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl backdrop-blur-sm">
-                    <span class="flex items-center justify-center gap-2">
+                <div class="mb-5 p-4 bg-gray-50 rounded-xl border border-gray-100">
+                    <p class="text-sm text-gray-700 leading-relaxed font-body">{{opis}}</p>
+                </div>
+
+                <a href="/sadrzaj?id={{itemId}}&tip=Vrtici"
+                class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl backdrop-blur-sm">
+                <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-ticket-alt"></i>
                         <span>{{eventDetails}}</span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,11 +193,11 @@ HTML;
     protected string $cardRender = <<<'HTML'
  function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120,$cardTemplate=''): string
 {
-    $nazivKluba = htmlspecialchars($item['fields']['nazivKluba'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
+    $naslov = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $opis = htmlspecialchars(mb_substr($item['fields']['description'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
+    $lokacija = htmlspecialchars($item['fields']['location'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
 
     // Preformatted sections
     $imageSection = $imageUrl
@@ -239,16 +207,25 @@ HTML;
                 <i class='fas fa-calendar-star text-6xl text-indigo-300'></i>
            </div>";
 
+    $locationRow = $lokacija
+        ? "<div class='flex items-start gap-3'>
+               <div class='flex-shrink-0 w-10 h-10 bg-background rounded-lg flex items-center justify-center'>
+                   <i class='fas fa-map-marker-alt text-primary'></i>
+               </div>
+               <div class='flex-1 min-w-0'>
+                   <div class='text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5'>{$texts['location']}</div>
+                   <div class='text-sm font-semibold text-gray-900 truncate'>{$lokacija}</div>
+               </div>
+           </div>"
+        : '';
 
-
-    
     // Replace placeholders
     $replacements = [
-        '{{naslov}}' => $nazivKluba,
+        '{{naslov}}' => $naslov,
         '{{opis}}' => $opis,
         '{{imageSection}}' => $imageSection,
+        '{{locationRow}}' => $locationRow,
         '{{itemId}}' => $itemId,
-        '{{kategoria}}' => $kategorija,
         '{{eventDetails}}' => $texts['event_details'] ?? 'Details'
     ];
 
@@ -288,7 +265,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
         $class = $i === $currentPage 
-            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md' 
+            ? 'px-4 py-2 bg-primarybutton text-white rounded-xl font-semibold shadow-md' 
             : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
@@ -319,11 +296,11 @@ PHP;
 <main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Događaji</h1>
-            <p class="text-gray-600">Istražite našu bogatu ponudu kulturnih događaja</p>
+            <h1 class="text-3xl font-heading text-primary_text mb-2 text-center">Vrtići</h1>
+            <p class="font-heading2 text-secondary_text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         </div>
         
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        
         
         <div class="performances-grid">
             <?php
@@ -351,62 +328,62 @@ HTML;
     public function buildPage(): string
     {
         $additionalPHP = <<<'PHP'
-use App\Controllers\ContentController;
-use App\Controllers\LanguageMapperController;
-use App\Models\GenericCategory;
+        use App\Models\Content;
+        use App\Controllers\LanguageMapperController;
+        use App\Models\GenericCategory;
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
-$locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-$slug = '__SLUG__';
-$pageTitle = ucfirst($slug);
-$pageDescription = 'Pregled svih stavki';
+        $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+        $slug = '__SLUG__';
+        $pageTitle = ucfirst($slug);
+        $pageDescription = 'Pregled svih stavki';
 
-// Configuration variables
-$itemsPerPage = __ITEMS_PER_PAGE__;
-$descriptionMaxLength = __DESC_MAX_LENGTH__;
-$paginationRange = __PAGINATION_RANGE__;
+        // Configuration variables
+        $itemsPerPage = __ITEMS_PER_PAGE__;
+        $descriptionMaxLength = __DESC_MAX_LENGTH__;
+        $paginationRange = __PAGINATION_RANGE__;
 
-$currentPage = max(1, (int) ($_GET['page'] ?? 1));
-$categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
-$search = $_GET['search'] ?? '';
+        $currentPage = max(1, (int) ($_GET['page'] ?? 1));
+        $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
+        $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
-$itemsList = $slug 
-    ? (new ContentController())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale) 
-    : ['success' => false, 'items' => []];
+        $categories = GenericCategory::fetchAll($slug, $locale);
+        $itemsList = $slug 
+            ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId) 
+            : ['success' => false, 'items' => []];
 
-$config = $fieldLabels = [];
-if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
-    $parsed = json_decode(file_get_contents($structurePath), true);
-    $config = $parsed[0][$slug] ?? [];
-    $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
-}
+        $config = $fieldLabels = [];
+        if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
+            $parsed = json_decode(file_get_contents($structurePath), true);
+            $config = $parsed[0][$slug] ?? [];
+            $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
+        }
 
-// Initialize translator and texts
-$translator = new LanguageMapperController();
-$latinTexts = [
-    'search_placeholder' => 'Pretraži...',
-    'apply_button' => 'Primeni',
-    'all_categories' => 'Sve kategorije',
-    'date_and_time' => 'Datum i vreme',
-    'location' => 'Lokacija',
-    'event_details' => 'Detalji događaja',
-    'no_items_found' => 'Nema pronađenih stavki',
-    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
-];
+        // Initialize translator and texts
+        $translator = new LanguageMapperController();
+        $latinTexts = [
+            'search_placeholder' => 'Pretraži...',
+            'apply_button' => 'Primeni',
+            'all_categories' => 'Sve kategorije',
+            'date_and_time' => 'Datum i vreme',
+            'location' => 'Lokacija',
+            'event_details' => 'Detaljnije',
+            'no_items_found' => 'Nema pronađenih stavki',
+            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+        ];
 
-$texts = ($locale === 'sr-Cyrl') 
-    ? $translator->latin_to_cyrillic_array($latinTexts) 
-    : $latinTexts;
-PHP;
+        $texts = ($locale === 'sr-Cyrl') 
+            ? $translator->latin_to_cyrillic_array($latinTexts) 
+            : $latinTexts;
+    PHP;
 
         $additionalPHP .= "\n" . $this->cardTemplate;
         $additionalPHP .= "\n" . $this->cardRender;
         $additionalPHP .= "\n" . $this->pagination;
-        $additionalPHP .= "\n" . $this->topBar;
+        //$additionalPHP .= "\n" . $this->topBar;
         $additionalPHP = str_replace('__SLUG__', addslashes($this->slug), $additionalPHP);
         $additionalPHP = str_replace('__ITEMS_PER_PAGE__', $this->itemsPerPage, $additionalPHP);
         $additionalPHP = str_replace('__DESC_MAX_LENGTH__', $this->descriptionMaxLength, $additionalPHP);

@@ -204,53 +204,67 @@ function handleExport(array $data): void
         sendJson(["success" => true, "message" => "All pages exported successfully"]);
     }
 }
-
 try {
+    $startTotal = microtime(true); // ⏱ Start celog procesa
     $data = getJsonInput();
-
-    if (($data['type'] ?? '') === 'static') {
-        handleStaticPages($data);
-        exit;
-    }
-
+    $t0 = microtime(true);
     $saveComponents = $data['singlePage'] ?? false;
-
     if (!$saveComponents) {
-        error_log("Handling dynamic page export...");
         $jsonPath = __DIR__ . "/../../templates/" . $data['typeOfInstitution'] . "/json/data_definition.json";
-        if (!file_exists($jsonPath))
+        $globalJsonPath = __DIR__ . "/../../templates/globalDefinitions.json";
+
+        if (!file_exists($jsonPath)) {
             throw new Exception("JSON file not found: $jsonPath");
+        }
 
-        $jsonContent = file_get_contents($jsonPath);
-        if ($jsonContent === false)
-            throw new Exception("Failed to read JSON definition file.");
+        $jsonData = json_decode(file_get_contents($jsonPath), true);
+        if (!is_array($jsonData)) {
+            throw new Exception("Failed to decode JSON: $jsonPath");
+        }
 
-        file_put_contents(__DIR__ . "/../../public/assets/data/structure.json", $jsonContent);
+        if (isset($jsonData[0]) && is_array($jsonData[0])) {
+            $jsonData = $jsonData[0];
+        }
 
-        $dataArray = json_decode($jsonContent, true);
-        if (!is_array($dataArray))
-            throw new Exception("Invalid JSON format.");
+        $globalData = [];
+        if (file_exists($globalJsonPath)) {
+            $globalData = json_decode(file_get_contents($globalJsonPath), true);
+            if (!is_array($globalData)) {
+                $globalData = [];
+            }
 
-        $allCategoriesToInsert = [];
-        foreach ($dataArray as $type) {
-            foreach ($type as $typeKey => $typeData) {
-                foreach (($typeData['categories'] ?? []) as $category) {
-                    $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
-                    error_log("- Category: $category");
-                }
+            if (isset($globalData[0]) && is_array($globalData[0])) {
+                $globalData = $globalData[0];
             }
         }
 
-        GenericCategory::replaceAllCategories($allCategoriesToInsert)
-            ? error_log("Categories inserted successfully.")
-            : error_log("Error inserting categories.");
+        $dataArray = array_merge($globalData, $jsonData);
+
+        // Wrap the merged data in an array to ensure JSON starts with []
+        file_put_contents(
+            __DIR__ . "/../../public/assets/data/structure.json",
+            json_encode([$dataArray], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+        );
+
+        $allCategoriesToInsert = [];
+        foreach ($dataArray as $typeKey => $typeData) {
+            foreach (($typeData['categories'] ?? []) as $category) {
+                $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
+            }
+        }
+
+        GenericCategory::replaceAllCategories($allCategoriesToInsert);
     } else {
         error_log("Single page export mode — skipping structure and categories.");
     }
 
+    $tExport = microtime(true);
     handleExport($data);
+    error_log(" handleExport() took " . round(microtime(true) - $tExport, 3) . "s");
+
+    error_log(" Total export process finished in " . round(microtime(true) - $startTotal, 3) . "s");
 
 } catch (Exception $e) {
-    error_log("Error during export: " . $e->getMessage());
+    error_log(" Error during export: " . $e->getMessage());
     sendJson(["success" => false, "error" => $e->getMessage()], 400);
 }

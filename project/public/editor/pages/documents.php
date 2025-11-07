@@ -170,21 +170,21 @@ function getFileConfig(string $ext): array
                                 foreach ($DocumentCategories as $doc):
                                     $isChecked = in_array($doc['id'], $selectedCategories);
                                     ?>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" 
-                                               name="categories[]" 
-                                               value="<?= $doc['id'] ?>"
-                                               <?= $isChecked ? 'checked' : '' ?>
-                                               class="sr-only peer"
-                                               id="category_<?= $doc['id'] ?>">
-                                        <label for="category_<?= $doc['id'] ?>" 
-                                               class="px-4 py-2 rounded-full border cursor-pointer <?= $isChecked 
-                                                   ? 'bg-blue-50 border-blue-200 text-blue-700' 
-                                                   : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50' ?> 
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" 
+                                                       name="categories[]" 
+                                                       value="<?= $doc['id'] ?>"
+                                                       <?= $isChecked ? 'checked' : '' ?>
+                                                       class="sr-only peer"
+                                                       id="category_<?= $doc['id'] ?>">
+                                                <label for="category_<?= $doc['id'] ?>" 
+                                                       class="px-4 py-2 rounded-full border cursor-pointer <?= $isChecked
+                                                           ? 'bg-blue-50 border-blue-200 text-blue-700'
+                                                           : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50' ?> 
                                                    transition-all duration-200 text-sm font-medium select-none">
-                                            <?= $doc['name'] ?>
-                                        </label>
-                                    </label>
+                                                    <?= $doc['name'] ?>
+                                                </label>
+                                            </label>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -195,89 +195,89 @@ function getFileConfig(string $ext): array
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                     <?php foreach ($documents as $doc): ?>
 
-                        <?php
-                        $cfg = getFileConfig($doc['extension']);
-                        $date = date('j. F Y. \u\  H:i\h', strtotime($doc['datetime']));
-                        ?>
-                        <div class="document-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group relative"
-                            data-title="<?= htmlspecialchars($doc['title']) ?>"
-                            data-description="<?= htmlspecialchars($doc['description']) ?>"
-                            data-category="<?= htmlspecialchars($doc['subcategory_id']) ?>"
-                            data-file-url="<?= htmlspecialchars($doc['filepath']) ?>"
-                            data-file-type="<?= htmlspecialchars($doc['extension']) ?>"
-                            data-date="<?= htmlspecialchars($doc['datetime']) ?>"
-                            data-name="<?= htmlspecialchars($doc['name']) ?>"
-                            data-file-size="<?= htmlspecialchars($doc['fileSize']) ?> MB"
-                            data-id="<?= htmlspecialchars($doc['id']) ?>">
+                                <?php
+                                $cfg = getFileConfig($doc['extension']);
+                                $date = date('j. F Y. \u\  H:i\h', strtotime($doc['datetime']));
+                                ?>
+                                <div class="document-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group relative"
+                                    data-title="<?= htmlspecialchars($doc['title']) ?>"
+                                    data-description="<?= htmlspecialchars($doc['description']) ?>"
+                                    data-category="<?= htmlspecialchars($doc['subcategory_id']) ?>"
+                                    data-file-url="<?= htmlspecialchars($doc['filepath']) ?>"
+                                    data-file-type="<?= htmlspecialchars($doc['extension']) ?>"
+                                    data-date="<?= htmlspecialchars($doc['datetime']) ?>"
+                                    data-name="<?= htmlspecialchars($doc['name']) ?>"
+                                    data-file-size="<?= htmlspecialchars($doc['fileSize']) ?> MB"
+                                    data-id="<?= htmlspecialchars($doc['id']) ?>">
 
-                            <div
-                                class="absolute inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 rounded-2xl">
-                                <div class="rounded-2xl p-12">
-                                    <div class="flex gap-6">
-                                        <button
-                                            class="viewDocument <?= $doc['extension'] == 'pdf' ? '' : 'hidden' ?> w-20 h-20 hover:bg-white/30 text-gray-700 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                                            title="View">
-                                            <i class="hover:text-cyan-500 fas fa-eye text-3xl"></i>
-                                        </button>
-                                        <button
-                                            class="edit w-20 h-20 hover:bg-white/30 text-gray-700 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                                            title="Edit">
-                                            <i class="hover:text-yellow-500 fas fa-pencil-alt text-3xl"></i>
-                                        </button>
-                                        <button
-                                            class="delete w-20 h-20 hover:bg-white/30 text-gray-700 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                                            title="Delete">
-                                            <i class="hover:text-red-500 fas fa-trash text-3xl"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-6 document-card-content">
-                                <div class="flex items-start justify-between mb-4">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-12 h-12 <?= $cfg['bg_color'] ?> rounded-xl flex items-center justify-center">
-                                            <i class="<?= $cfg['icon'] ?> text-2xl <?= $cfg['text_color'] ?>"></i>
-                                        </div>
-                                        <div>
-                                            <span
-                                                class="text-sm font-medium <?= $cfg['text_color'] ?> bg-<?= $cfg['color'] ?>-50 px-2 py-1 rounded-lg"><?= htmlspecialchars($doc['name']) ?></span>
+                                    <div
+                                        class="absolute inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 rounded-2xl">
+                                        <div class="rounded-2xl p-12">
+                                            <div class="flex gap-6">
+                                                <button
+                                                    class="viewDocument <?= $doc['extension'] == 'pdf' ? '' : 'hidden' ?> w-20 h-20 hover:bg-white/30 text-gray-700 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                                                    title="View">
+                                                    <i class="hover:text-cyan-500 fas fa-eye text-3xl"></i>
+                                                </button>
+                                                <button
+                                                    class="edit w-20 h-20 hover:bg-white/30 text-gray-700 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                                                    title="Edit">
+                                                    <i class="hover:text-yellow-500 fas fa-pencil-alt text-3xl"></i>
+                                                </button>
+                                                <button
+                                                    class="delete w-20 h-20 hover:bg-white/30 text-gray-700 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                                                    title="Delete">
+                                                    <i class="hover:text-red-500 fas fa-trash text-3xl"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <button
-                                        class="text-gray-400 hover:text-gray-600 p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200 opacity-100 group-hover:opacity-0">
-                                        <i class="fas fa-ellipsis-h h-5 w-5"></i>
-                                    </button>
-                                </div>
 
-                                <h3 id="title"
-                                    class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600">
-                                    <?= htmlspecialchars($doc['title']) ?>
-                                </h3>
-                                <p id="description" class="text-gray-600 text-sm mb-4 line-clamp-2">
-                                    <?= htmlspecialchars($doc['description']) ?>
-                                </p>
-                                <div class="flex items-center gap-4">
-                                    <div class="flex items-center gap-2 text-sm text-gray-500">
-                                        <i class="fas fa-calendar h-4 w-4"></i> <?= $date ?>
+                                    <div class="p-6 document-card-content">
+                                        <div class="flex items-start justify-between mb-4">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="w-12 h-12 <?= $cfg['bg_color'] ?> rounded-xl flex items-center justify-center">
+                                                    <i class="<?= $cfg['icon'] ?> text-2xl <?= $cfg['text_color'] ?>"></i>
+                                                </div>
+                                                <div>
+                                                    <span
+                                                        class="text-sm font-medium <?= $cfg['text_color'] ?> bg-<?= $cfg['color'] ?>-50 px-2 py-1 rounded-lg"><?= htmlspecialchars($doc['name']) ?></span>
+                                                </div>
+                                            </div>
+                                            <button
+                                                class="text-gray-400 hover:text-gray-600 p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200 opacity-100 group-hover:opacity-0">
+                                                <i class="fas fa-ellipsis-h h-5 w-5"></i>
+                                            </button>
+                                        </div>
+
+                                        <h3 id="title"
+                                            class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600">
+                                            <?= htmlspecialchars($doc['title']) ?>
+                                        </h3>
+                                        <p id="description" class="text-gray-600 text-sm mb-4 line-clamp-2">
+                                            <?= htmlspecialchars($doc['description']) ?>
+                                        </p>
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex items-center gap-2 text-sm text-gray-500">
+                                                <i class="fas fa-calendar h-4 w-4"></i> <?= $date ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
+                                        <div class="flex items-center justify-between">
+                                            <a download href="<?= "/uploads/documents/" . $doc['filepath'] ?>"
+                                                class="z-50 download-btn flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-blue-50">
+                                                <i class="fas fa-download fa-sm"></i>
+                                                <?= __("documents.download") ?>
+                                            </a>
+                                            <div class="text-xs text-black bg-gray-100 px-2.5 py-1.5 rounded-full">
+                                                <?= htmlspecialchars($doc['fileSize']) ?> MB
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="px-5 py-4 bg-gray-50 border-t border-gray-100">
-                                <div class="flex items-center justify-between">
-                                    <a download href="<?= "/uploads/documents/" . $doc['filepath'] ?>"
-                                        class="z-50 download-btn flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-blue-50">
-                                        <i class="fas fa-download fa-sm"></i>
-                                        <?= __("documents.download") ?>
-                                    </a>
-                                    <div class="text-xs text-black bg-gray-100 px-2.5 py-1.5 rounded-full">
-                                        <?= htmlspecialchars($doc['fileSize']) ?> MB
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     <?php endforeach; ?>
                 </div>
 
@@ -297,10 +297,10 @@ function getFileConfig(string $ext): array
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <?php for ($p = 1; $p <= $totalPages; $p++): ?>
-                            <button
-                                class="px-4 py-2 rounded-lg <?= $p === $page ? 'bg-blue-600 text-white' : 'border text-gray-700 hover:bg-gray-50' ?>">
-                                <?= $p ?>
-                            </button>
+                                    <button
+                                        class="px-4 py-2 rounded-lg <?= $p === $page ? 'bg-blue-600 text-white' : 'border text-gray-700 hover:bg-gray-50' ?>">
+                                        <?= $p ?>
+                                    </button>
                         <?php endfor; ?>
                         <button class="p-2 rounded-lg border text-gray-500 hover:bg-gray-50 disabled:opacity-50"
                             <?= $page >= $totalPages ? 'disabled' : '' ?>>

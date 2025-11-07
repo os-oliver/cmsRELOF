@@ -2,12 +2,21 @@
 
 namespace App\Admin;
 
+use App\Admin\PageBuilders\AnketePageBuilder;
+use App\Admin\PageBuilders\AnsambalPageBuilder;
 use App\Admin\PageBuilders\DynamicPageBuilder;
 use App\Admin\PageBuilders\EmployeesPageBuilder;
 use App\Admin\PageBuilders\GoalPageBulder;
+use App\Admin\PageBuilders\IzlozbePageBuilder;
+use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
-use App\Admin\PageBuilders\NaucniKlubPageBuilder;
+use App\Admin\PageBuilders\ObjekatPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
+use App\Admin\PageBuilders\ProjektiPageBuilder;
+use App\Admin\PageBuilders\SportoviPageBuilder;
+use App\Admin\PageBuilders\SavetovalistePageBuilder;
+use App\Admin\PageBuilders\TestBuilder;
+use App\Admin\PageBuilders\UvodPageBuilder;
 use App\Admin\PageBuilders\VestiPageBuilder;
 use App\Admin\PageBuilders\ProgramiObukePageBuilder;
 use App\Admin\PageBuilders\UslugePageBuilder;
@@ -15,6 +24,7 @@ use App\Admin\PageBuilders\PravaPageBuilder;
 use App\Admin\PageBuilders\SluzbePageBuilder;
 use App\Admin\PageBuilders\ObrasciPageBuilder;
 use App\Admin\PageBuilders\NasiKorisniciPageBuilder;
+use App\Admin\PageBuilders\ZnacajaStranica;
 use App\Controllers\AuthController;
 use App\Models\Content;
 use App\Models\Text;
@@ -25,8 +35,20 @@ use App\Admin\PageBuilders\GalleryPageBuilder;
 use App\Admin\PageBuilders\ContactPageBuilder;
 use App\Admin\PageBuilders\DocumentsPageBuilder;
 use App\Admin\PageBuilders\BasicPageBuilder;
+use App\Admin\PageBuilders\CenovnikPageBuilder;
 use App\Admin\PageBuilders\EventsPageBuilder;
-use App\Admin\PageBuilders\TestBuilder;
+use App\Admin\PageBuilders\IstorijatPageBuilder;
+use App\Admin\PageBuilders\VrticiPageBuilder;
+use App\Admin\PageBuilders\JelovnikPageBuilder;
+use App\Admin\PageBuilders\ObavestenjaZaRoditeljePageBuilder;
+use App\Admin\PageBuilders\PosebneUslugePageBuilder;
+use App\Admin\PageBuilders\RasporedAktivnostiPageBuilder;
+use App\Admin\PageBuilders\TimoviPageBuilder;
+use App\Admin\PageBuilders\UpisPageBuilder;
+use App\Admin\PageBuilders\RepertoarPageBuilder;
+use App\Admin\PageBuilders\FAQPageBuilder;
+use App\Admin\PageBuilders\SeminarPageBuilder;
+
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -185,6 +207,13 @@ class PageExporter
                 if ($parent->hasAttribute('class')) {
                     $classAttr = $parent->getAttribute('class');
                     if (preg_match('/\bnonPage\b/', $classAttr)) {
+                        return false;
+                    }
+                }
+
+                if ($parent->hasAttribute('data-translate')) {
+                    $translateAttr = $parent->getAttribute('data-translate');
+                    if ('off' == $translateAttr) {
                         return false;
                     }
                 }
@@ -471,10 +500,14 @@ class PageExporter
         $indexContent .= $this->generateIndexBody();
         file_put_contents("{$this->baseDir}/index.php", $indexContent);
         if (!empty($this->data['css'])) {
-            $css = "\n" . htmlspecialchars($this->data['css'], ENT_QUOTES) . "\n";
+            $css = html_entity_decode($this->data['css'], ENT_QUOTES | ENT_HTML5);
+            $css = "\n" . trim($css) . "\n";
+        } else {
+            $css = '';
         }
 
-        file_put_contents("{$this->baseDir}/commonStyle.css", $css ?? '');
+        file_put_contents("{$this->baseDir}/commonStyle.css", $css);
+
         if (!empty($this->data['js'])) {
             $jsCode = preg_replace('/<\/?script\b[^>]*>/i', '', $this->data['js']);
             $jsCode = preg_replace('/,(\s*[\]}])/m', '$1', $jsCode);
@@ -500,65 +533,80 @@ class PageExporter
         foreach ($structure as $k => $v) {
             $structureLower[strtolower($k)] = $v;
         }
+        print_r(array_keys($this->data));
 
-        foreach ($this->data['ids'] as $id) {
-            $idLower = strtolower($id);
-            $key = $idLower;
+        foreach ($this->data['ids'] as $entry) {
+            // Split by '-' if exists
+            $parts = explode('-', $entry, 2);
+            $id = $parts[0]; // first part is variable name
+            $key = isset($parts[1]) ? $parts[1] : $parts[0]; // if second part exists, use it; else use first part
 
-            if ($idLower === 'events') {
+            // Map 'events' to 'dogadjaji' always
+            if (strtolower($key) === 'events') {
                 $key = 'dogadjaji';
             }
 
-            if (isset($structureLower[$key])) {
-                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$key', '', 0, 3, null, \$locale)['items'];\n";
+            // Only generate PHP if key exists in structureLower
+            if ($key === null || isset($structureLower[strtolower($key)])) {
+                $keyForFetch = $key ?? ''; // first parameter
+                $sixthParam = isset($parts[1]) ? "'{$parts[0]}'" : "null"; // use parts[1] if exists, else null
+                $id = str_replace(" ", '_', $id);
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale)['items'];\n";
                 $phpString .= "\$$id = HashMapTransformer::transform(\$$id" . "_raw, \$locale);\n\n";
             }
 
-            error_log("Generated PHP for id '$id': " . $phpString);
+            error_log("Entry: '$entry', ID: '$id', Key: '$key', Passed: " . (isset($structureLower[$key]) ? "YES" : "NO"));
         }
 
 
 
+
+
+
+
         $header = <<<'PHP'
-    <?php
-    session_start();
-    use App\Models\Gallery;
-    use App\Models\PageLoader;
-    use App\Utils\HashMapTransformer;
-    if (isset($_GET['locale'])) {
-        $_SESSION['locale'] = $_GET['locale'];
-    }
-    $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-    use App\Models\Event;
-    use App\Models\Text;
-    use App\Models\Content;
+        <?php
+        session_start();
+        use App\Models\Gallery;
+        use App\Models\PageLoader;
+        use App\Utils\HashMapTransformer;
+        if (isset($_GET['locale'])) {
+            $_SESSION['locale'] = $_GET['locale'];
+        }
+        $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+        use App\Models\Event;
+        use App\Models\Text;
+        use App\Models\Content;
+        use App\Models\AboutUs;
+        $dataAboutUS = new AboutUs();
+        $aboutUsData = $dataAboutUS->list($locale);
 
-    // Load dynamic texts
-    $textModel = new Text();
-    $dynamicText = $textModel->getDynamicText($locale);
-    {{dynamicLandigPageElements}}
+        // Load dynamic texts
+        $textModel = new Text();
+        $dynamicText = $textModel->getDynamicText($locale);
+        {{dynamicLandigPageElements}}
 
-    [$images, $totalEvents] = (new Gallery)->list();
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exported Page</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+        [$images, $totalEvents] = (new Gallery)->list();
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="/assets/icons/icon.png?v=<?= time() ?>">
+
+        <title><?=$aboutUsData['title']?></title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
         <link href="/exportedPages/commonStyle.css" rel="stylesheet" />
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    PHP;
+        <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+        <div class="min-h-screen flex flex-col">
+        PHP;
 
         $header = str_replace('{{dynamicLandigPageElements}}', $phpString, $header);
-        $header .= '</style>
-        </head>
-        <div class="min-h-screen flex flex-col">';
 
         return $header;
+
     }
 
     private function generateIndexBody(): string
@@ -581,7 +629,7 @@ class PageExporter
             $content .= "\n<?php require_once __DIR__ . '/landingPageComponents/{$this->footerPath}'; ?>";
         }
 
-        $content .= '<script src="/exportedPages/commonScript.js"></script>' . "\n";
+        $content .= '<script src="/exportedPages/commonScript.js?v=<?php echo time(); ?>"></script>' . "\n";
 
 
         $content .= "\n</div>\n</body>\n</html>";
@@ -610,8 +658,16 @@ class PageExporter
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
                 return new VestiPageBuilder('Vesti');
-            case 'naucni-klub':
-                return new DynamicPageBuilder('NaucniKlub');
+            case 'vrtici':
+                return new VrticiPageBuilder('Vrtici');
+            case 'timovi':
+                return new TimoviPageBuilder('Timovi');
+            case 'projekti':
+                return new ProjektiPageBuilder('Projekti');
+            case 'obavestenja':
+                return new ObavestenjaZaRoditeljePageBuilder('Obavestenja');
+            case 'seminari':
+                return new SeminarPageBuilder('Seminari');
             case 'primer':
                 return new ContactPageBuilder($name, $this->data);
             case 'zaposleni':
@@ -628,8 +684,54 @@ class PageExporter
                 return new ObrasciPageBuilder('Obrasci');
             case 'nasi-korisnici':
                 return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
-            case 'programi':
-                return new DynamicPageBuilder('programi');
+            case 'ansambl':
+                return new AnsambalPageBuilder('Ansambl');
+            case 'projekti':
+                return new ProjektiPageBuilder('Projekti');
+
+            case strpos($name, 'uvod') !== false:
+                return new UvodPageBuilder('Uvod', $this->data);
+
+            case strpos($name, 'projekti') !== false:
+                return new ProjektiPageBuilder('Projekti');
+            case 'organizaciona-struktura':
+                return new EmployeesPageBuilder('Organizaciona Struktura', $this->data);
+            case 'ankete':
+                return new AnketePageBuilder('Ankete');
+            case 'repertoar':
+                return new LibraryProgramPageBuilder('repertoar');
+            case 'izlozbe':
+                return new IzlozbePageBuilder('izlozbe');
+            case 'informacije':
+                return new ZnacajaStranica('ZnacajaStranica', $this->data);
+            case 'objekat':
+                return new ObjekatPageBuilder('Objekat', $this->data);
+            case 'fondovi':
+                return new DynamicPageBuilder('fondovi');
+            case 'sportovi':
+                return new SportoviPageBuilder('sportovi');
+            case 'repertoar':
+                return new RepertoarPageBuilder('Repertoar');
+            case 'ansambl':
+                return new DynamicPageBuilder('Ansambl');
+            case 'pitanja':
+                return new FAQPageBuilder('Pitanja');
+            case 'test123':
+                return new TestBuilder('Test', $this->data);
+            case 'jelovnik':
+                return new JelovnikPageBuilder('Jelovnik', $this->data);
+            case 'cenovnik':
+                return new CenovnikPageBuilder('Cenovnik', $this->data);
+            case 'raspored-aktivnosti':
+                return new RasporedAktivnostiPageBuilder('RasporedAktivnosti', $this->data);
+            case 'istorijat':
+                return new IstorijatPageBuilder('Istorijat', $this->data);
+            case 'upis':
+                return new UpisPageBuilder('Upis', $this->data);
+            case 'savetovaliste':
+                return new SavetovalistePageBuilder('Savetovaliste', $this->data);
+            case 'posebne':
+                return new PosebneUslugePageBuilder('PosebneUsluge', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -655,6 +757,16 @@ class PageExporter
             return 'misija';
         } elseif (strpos($name, 'naucni-klub') !== false) {
             return 'naucni-klub';
+        } elseif (strpos($name, 'vrtici') !== false) {
+            return 'vrtici';
+        } elseif (strpos($name, 'timovi') !== false) {
+            return 'timovi';
+        } elseif (strpos($name, 'projekti') !== false) {
+            return 'projekti';
+        } elseif (strpos($name, 'obavestenja') !== false) {
+            return 'obavestenja';
+        } elseif (strpos($name, 'seminari') !== false) {
+            return 'seminari';
         } elseif (strpos($name, 'primer') !== false) {
             return 'primer';
         } elseif (strpos($name, 'cilj') !== false) {
@@ -663,6 +775,8 @@ class PageExporter
             return 'dogadjaji';
         } elseif (strpos($name, 'programi-obuke') !== false || strpos($name, 'programi obuke') !== false) {
             return 'programi-obuke';
+        } elseif (strpos($name, 'posebne') !== false) {
+            return 'posebne';
         } elseif (strpos($name, 'usluge') !== false) {
             return 'usluge';
         } elseif (strpos($name, 'prava') !== false) {
@@ -673,8 +787,67 @@ class PageExporter
             return 'obrasci';
         } elseif (strpos($name, 'nasi-korisnici') !== false || strpos($name, 'naši korisnici') !== false || strpos($name, 'nai-korisnici') !== false) {
             return 'nasi-korisnici';
-        } elseif (strpos($name, 'programi') !== false) {
-            return 'programi';
+        } elseif (strpos($name, 'ansambl') !== false) {
+            return 'ansambl';
+        } elseif (strpos($name, 'projekti') !== false) {
+            return 'projekti';
+        } elseif (strpos($name, 'organizaciona-struktura') !== false) {
+            return 'organizaciona-struktura';
+        } elseif (strpos($name, 'rukovodstvo') !== false) {
+            return 'rukovodstvo';
+        } elseif (strpos($name, 'misija-i-vizija') !== false) {
+            return 'misija-i-vizija';
+        } elseif (strpos($name, 'uvod') !== false) {
+            return 'uvod';
+        } elseif (strpos($name, 'istorijat') !== false) {
+            return 'istorijat';
+        } elseif (strpos($name, 'objekat') !== false) {
+            return 'objekat';
+        } elseif (strpos($name, 'donacije-i-podrska') !== false) {
+            return 'donacije-i-podrska';
+        } elseif (strpos($name, 'partneri') !== false) {
+            return 'partneri';
+        } elseif (strpos($name, 'ankete') !== false) {
+            return 'ankete';
+        } elseif (strpos($name, 'repertoar') !== false) {
+            return 'repertoar';
+        } elseif (strpos($name, 'izlozbe') !== false) {
+            return 'izlozbe';
+        } elseif (strpos($name, 'informacije') !== false) {
+            return 'informacije';
+        } elseif (strpos($name, 'objekat') !== false) {
+            return 'objekat';
+        } elseif (strpos($name, 'fondovi') !== false) {
+            return 'fondovi';
+
+        } elseif (strpos($name, 'sportovi') !== false) {
+            return 'sportovi';
+
+
+        } elseif (strpos($name, 'repertoar') !== false) {
+            return 'repertoar';
+        } elseif (strpos($name, 'ansambl') !== false) {
+            return 'ansambl';
+        } elseif (strpos($name, 'pitanja') !== false) {
+            return 'pitanja';
+        } elseif (strpos($name, 'test123') !== false) {
+            return 'test123';
+        } elseif (strpos($name, 'jelovnik') !== false) {
+            return 'jelovnik';
+        } elseif (strpos($name, 'cenovnik') !== false) {
+            return 'cenovnik';
+        } elseif (strpos($name, 'raspored-aktivnosti') !== false) {
+            return 'raspored-aktivnosti';
+        } elseif (strpos($name, 'istorijat') !== false) {
+            return 'istorijat';
+        } elseif (strpos($name, 'upis') !== false) {
+            return 'upis';
+        } elseif (strpos($name, 'savetovaliste') !== false) {
+            return 'savetovaliste';
+
+
+        } elseif (strpos($name, 'zaposleni') !== false) {
+            return 'zaposleni';
         }
 
         return 'basic';
@@ -754,11 +927,11 @@ class PageExporter
         error_log("Processing single page with slug: $pageSlug");
         $processedContent = $this->processContent($innerHTML, $pageSlug);
         $wrappedContent = <<<HTML
-        <main class="min-h-screen pt-24 flex-grow">
-        $processedContent
-        </main>
-        HTML;
-        // Ensure export directory exists
+<main class="min-h-screen pt-12 bg-background flex-grow">
+$processedContent
+</main>
+HTML;
+
         $directory = __DIR__ . '/../../public/exportedPages/pages/';
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
