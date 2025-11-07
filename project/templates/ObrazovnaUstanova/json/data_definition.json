@@ -78,9 +78,7 @@
           }
         }
       ]
-    }
-  },
-  {
+    },
     "Seminari": {
       "sr": "Akreditovani seminari",
       "en": "Accredited seminars",
@@ -124,36 +122,6 @@
             "sr": "ZUOV link",
             "en": "ZUOV link",
             "sr-Cyrl": "ЗУОВ линк"
-          },
-          "required": true
-        }
-      ]
-    }
-  },
-  {
-    "Pitanja": {
-      "sr": "Često postavljena pitanja",
-      "en": "Frequently asked questions",
-      "sr-Cyrl": "Често постављена питања",
-      "icon": "fa-solid fa-circle-question",
-      "fields": [
-        {
-          "name": "question",
-          "type": "text",
-          "label": {
-            "sr": "Pitanje",
-            "en": "Question",
-            "sr-Cyrl": "Питање"
-          },
-          "required": true
-        },
-        {
-          "name": "answer",
-          "type": "textarea",
-          "label": {
-            "sr": "Odgovor",
-            "en": "Answer",
-            "sr-Cyrl": "Одговор"
           },
           "required": true
         }
