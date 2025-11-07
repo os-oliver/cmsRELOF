@@ -533,7 +533,7 @@ class PageExporter
         foreach ($structure as $k => $v) {
             $structureLower[strtolower($k)] = $v;
         }
-        print_r(array_keys($this->data));
+        // print_r(array_keys($this->data));
 
         foreach ($this->data['ids'] as $entry) {
             // Split by '-' if exists
