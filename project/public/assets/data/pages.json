@@ -1,6 +1,6 @@
 [
     {
-        "id": "690cfaf9d0e7e",
+        "id": "690e1da18efa7",
         "static": false,
         "movable": false,
         "name": "",
@@ -8,32 +8,43 @@
         "path": "pages\/.php",
         "file": ".php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:09"
     },
     {
-        "id": "690cfaf9d2ff5",
+        "id": "690e1da1a6237",
         "static": true,
         "movable": false,
-        "name": "uvod",
-        "href": "\/o-nama\/uvod",
-        "path": "pages\/uvod.php",
-        "file": "uvod.php",
+        "name": "cilj",
+        "href": "\/o-nama\/cilj",
+        "path": "pages\/cilj.php",
+        "file": "cilj.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:09"
     },
     {
-        "id": "690cfaf9d6783",
+        "id": "690e1da237f94",
+        "static": false,
+        "movable": false,
+        "name": "zaposleni",
+        "href": "\/o-nama\/zaposleni",
+        "path": "pages\/zaposleni.php",
+        "file": "zaposleni.php",
+        "status": 1,
+        "created_at": "2025-11-07 16:26:10"
+    },
+    {
+        "id": "690e1da2baa2f",
         "static": true,
         "movable": false,
-        "name": "misija-i-vizija",
-        "href": "\/o-nama\/misija-i-vizija",
-        "path": "pages\/misija-i-vizija.php",
-        "file": "misija-i-vizija.php",
+        "name": "misija",
+        "href": "\/o-nama\/misija",
+        "path": "pages\/misija.php",
+        "file": "misija.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:10"
     },
     {
-        "id": "690cfaf9d8b26",
+        "id": "690e1da2e1a2f",
         "static": true,
         "movable": false,
         "name": "istorijat",
@@ -41,76 +52,120 @@
         "path": "pages\/istorijat.php",
         "file": "istorijat.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:10"
     },
     {
-        "id": "690cfaf9d92f8",
+        "id": "690e1da31b9da",
         "static": false,
         "movable": false,
-        "name": "rukovodstvo",
-        "href": "\/o-nama\/rukovodstvo",
-        "path": "pages\/rukovodstvo.php",
-        "file": "rukovodstvo.php",
+        "name": "vrtici",
+        "href": "\/o-nama\/vrtici",
+        "path": "pages\/vrtici.php",
+        "file": "vrtici.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:11"
     },
     {
-        "id": "690cfaf9dca30",
+        "id": "690e1da349b48",
         "static": false,
         "movable": false,
-        "name": "organizaciona-struktura",
-        "href": "\/o-nama\/organizaciona-struktura",
-        "path": "pages\/organizaciona-struktura.php",
-        "file": "organizaciona-struktura.php",
+        "name": "timovi",
+        "href": "\/o-nama\/timovi",
+        "path": "pages\/timovi.php",
+        "file": "timovi.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:11"
     },
     {
-        "id": "690cfaf9df513",
-        "static": true,
-        "movable": false,
-        "name": "objekat",
-        "href": "\/o-nama\/objekat",
-        "path": "pages\/objekat.php",
-        "file": "objekat.php",
-        "status": 1,
-        "created_at": "2025-11-06 19:46:01"
-    },
-    {
-        "id": "690cfaf9e02a1",
-        "static": true,
-        "movable": false,
-        "name": "donacije-i-podrska",
-        "href": "\/o-nama\/donacije-i-podrska",
-        "path": "pages\/donacije-i-podrska.php",
-        "file": "donacije-i-podrska.php",
-        "status": 1,
-        "created_at": "2025-11-06 19:46:01"
-    },
-    {
-        "id": "690cfaf9e0797",
-        "static": true,
-        "movable": false,
-        "name": "partneri",
-        "href": "\/o-nama\/partneri",
-        "path": "pages\/partneri.php",
-        "file": "partneri.php",
-        "status": 1,
-        "created_at": "2025-11-06 19:46:01"
-    },
-    {
-        "id": "690cfaf9e2b70",
+        "id": "690e1da3a95b9",
         "static": false,
         "movable": false,
-        "name": "ansambl",
-        "href": "\/ansambl",
-        "path": "pages\/ansambl.php",
-        "file": "ansambl.php",
+        "name": "jelovnik",
+        "href": "\/za-roditelje\/jelovnik",
+        "path": "pages\/jelovnik.php",
+        "file": "jelovnik.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:11"
     },
     {
-        "id": "690cfaf9e5009",
+        "id": "690e1da3adad1",
+        "static": false,
+        "movable": false,
+        "name": "obavestenja",
+        "href": "\/za-roditelje\/obavestenja",
+        "path": "pages\/obavestenja.php",
+        "file": "obavestenja.php",
+        "status": 1,
+        "created_at": "2025-11-07 16:26:11"
+    },
+    {
+        "id": "690e1da4c795c",
+        "static": true,
+        "movable": false,
+        "name": "cenovnik",
+        "href": "\/za-roditelje\/cenovnik",
+        "path": "pages\/cenovnik.php",
+        "file": "cenovnik.php",
+        "status": 1,
+        "created_at": "2025-11-07 16:26:12"
+    },
+    {
+        "id": "690e1da51f0ad",
+        "static": true,
+        "movable": false,
+        "name": "upis",
+        "href": "\/za-roditelje\/upis",
+        "path": "pages\/upis.php",
+        "file": "upis.php",
+        "status": 1,
+        "created_at": "2025-11-07 16:26:13"
+    },
+    {
+        "id": "690e1da5d8300",
+        "static": true,
+        "movable": false,
+        "name": "raspored-aktivnosti",
+        "href": "\/za-roditelje\/raspored-aktivnosti",
+        "path": "pages\/raspored-aktivnosti.php",
+        "file": "raspored-aktivnosti.php",
+        "status": 1,
+        "created_at": "2025-11-07 16:26:13"
+    },
+    {
+        "id": "690e1da6697d3",
+        "static": true,
+        "movable": false,
+        "name": "savetovaliste",
+        "href": "\/za-roditelje\/savetovaliste",
+        "path": "pages\/savetovaliste.php",
+        "file": "savetovaliste.php",
+        "status": 1,
+        "created_at": "2025-11-07 16:26:14"
+    },
+    {
+        "id": "690e1da89737f",
+        "static": true,
+        "movable": false,
+        "name": "posebne-usluge",
+        "href": "\/za-roditelje\/posebne-usluge",
+        "path": "pages\/posebne-usluge.php",
+        "file": "posebne-usluge.php",
+        "status": 1,
+        "created_at": "2025-11-07 16:26:16"
+    },
+    {
+        "id": "690e1da8bf863",
+        "static": false,
+        "movable": false,
+        "name": "vesti",
+        "href": "\/vesti",
+        "path": "pages\/vesti.php",
+        "file": "vesti.php",
+        "status": 1,
+        "created_at": "2025-11-07 16:26:16"
+    },
+    {
+        "id": "690e1da8e5c0b",
         "static": false,
         "movable": false,
         "name": "projekti",
@@ -118,10 +173,10 @@
         "path": "pages\/projekti.php",
         "file": "projekti.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:16"
     },
     {
-        "id": "690cfaf9e79b1",
+        "id": "690e1da93c4cd",
         "static": false,
         "movable": false,
         "name": "galerija",
@@ -129,10 +184,10 @@
         "path": "pages\/galerija.php",
         "file": "galerija.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:17"
     },
     {
-        "id": "690cfaf9f0f52",
+        "id": "690e1daa662a6",
         "static": false,
         "movable": false,
         "name": "dokumenti",
@@ -140,43 +195,10 @@
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:01"
+        "created_at": "2025-11-07 16:26:18"
     },
     {
-        "id": "690cfaf9f2d1b",
-        "static": false,
-        "movable": false,
-        "name": "vesti",
-        "href": "\/aktivnosti\/vesti",
-        "path": "pages\/vesti.php",
-        "file": "vesti.php",
-        "status": 1,
-        "created_at": "2025-11-06 19:46:01"
-    },
-    {
-        "id": "690cfafa0104e",
-        "static": false,
-        "movable": false,
-        "name": "dogadjaji",
-        "href": "\/aktivnosti\/dogadjaji",
-        "path": "pages\/dogadjaji.php",
-        "file": "dogadjaji.php",
-        "status": 1,
-        "created_at": "2025-11-06 19:46:02"
-    },
-    {
-        "id": "690cfafa031d0",
-        "static": false,
-        "movable": false,
-        "name": "ankete",
-        "href": "\/aktivnosti\/ankete",
-        "path": "pages\/ankete.php",
-        "file": "ankete.php",
-        "status": 1,
-        "created_at": "2025-11-06 19:46:02"
-    },
-    {
-        "id": "690cfafa24763",
+        "id": "690e1dac16d4a",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -184,6 +206,6 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-11-06 19:46:02"
+        "created_at": "2025-11-07 16:26:20"
     }
 ]
