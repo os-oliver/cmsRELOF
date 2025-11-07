@@ -31,7 +31,6 @@ HTML;
     {
         $additionalPHP = <<<'PHP'
 
-    use App\Models\AboutUs;
     $dataAboutUS = new AboutUs();
     $aboutUsData = $dataAboutUS->list(lang:$locale)['goal'];
 
