@@ -478,7 +478,7 @@
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
                         </a>
@@ -486,11 +486,11 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-flag mr-2 text-primary"></i>Misija
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-history mr-2 text-primary"></i>Istorijat
                         </a>
@@ -521,23 +521,23 @@
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-info-circle mr-2 text-primary"></i>Obaveštenja
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-receipt mr-2 text-primary"></i>Cenovnik
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-file-alt mr-2 text-primary"></i>Upis
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-clock mr-2 text-primary"></i>Raspored aktivnosti
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
                         </a>
