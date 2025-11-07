@@ -982,8 +982,15 @@
                     </div>
                 </div>
             </div>
-            <div class="pt-8 text-center text-sm">
-                <p>&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+            <div class="text-center text-sm">
+                <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
+                    <img
+                        src="/assets/img/SECO-logo-640px.png"
+                        alt="SECO logo"
+                        class="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto mb-4">
+                    <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+                </div>
+                <p class="pt-6">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
             </div>
         </div>
     </footer>
