@@ -12,7 +12,7 @@ export function htmlToDynamicCode(target, type) {
     const tag = child.get("tagName");
     return tag === "div" || tag === "li" || tag === "article";
   });
-
+  type = type.replace(" ", "_");
   const nStartingCards = components.length;
   if (!nStartingCards) return;
 

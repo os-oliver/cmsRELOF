@@ -38,7 +38,8 @@
                 "Obrazovanje",
                 "Inovacije",
                 "Zdravlje",
-                "Tehnologija"
+                "Tehnologija",
+                "Naučni klub"
             ],
             "fields": [
                 {
@@ -52,15 +53,6 @@
                     "required": true
                 },
                 {
-                    "name": "opis",
-                    "type": "textarea",
-                    "label": {
-                        "sr": "Kratak opis",
-                        "en": "Short description",
-                        "sr-Cyrl": "Кратак опис"
-                    }
-                },
-                {
                     "name": "datum",
                     "type": "date",
                     "label": {
@@ -68,7 +60,43 @@
                         "en": "News date",
                         "sr-Cyrl": "Датум вести"
                     },
+                    "required": true,
+                    "property": "auto"
+                },
+                {
+                    "name": "naziv",
+                    "type": "categories",
+                    "label": {
+                        "sr": "Kategorija vesti",
+                        "en": "News category",
+                        "sr-Cyrl": "Категорија вести"
+                    },
+                    "options": [
+                        "Kultura",
+                        "Obrazovanje",
+                        "Inovacije",
+                        "Zdravlje",
+                        "Tehnologija"
+                    ],
                     "required": true
+                },
+                {
+                    "name": "autor",
+                    "type": "text",
+                    "label": {
+                        "sr": "Autor",
+                        "en": "Author",
+                        "sr-Cyrl": "Аутор"
+                    }
+                },
+                {
+                    "name": "opis",
+                    "type": "textarea",
+                    "label": {
+                        "sr": "Kratak opis",
+                        "en": "Short description",
+                        "sr-Cyrl": "Кратак опис"
+                    }
                 },
                 {
                     "name": "slika",
@@ -83,9 +111,9 @@
                     "name": "link",
                     "type": "url",
                     "label": {
-                        "sr": "Link vesti",
-                        "en": "News link",
-                        "sr-Cyrl": "Линк вести"
+                        "sr": "Eksterni link",
+                        "en": "External link",
+                        "sr-Cyrl": "Екстерни линк"
                     }
                 }
             ]
@@ -180,11 +208,72 @@
                 }
             ]
         },
+        "Ansambl": {
+            "sr": "Ansambl",
+            "en": "Ensemble",
+            "sr-Cyrl": "Ансамбл",
+            "icon": "fas fa-users",
+            "categories": [
+                "Muzicki ansambl",
+                "Pozoriste",
+                "Multimedija",
+                "Edukacija",
+                "Glavni glumci"
+            ],
+            "fields": [
+                {
+                    "name": "naziv",
+                    "type": "text",
+                    "label": {
+                        "sr": "Naziv ansambla",
+                        "en": "Ensemble name",
+                        "sr-Cyrl": "Назив ансамбла"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "kategorija",
+                    "type": "categories",
+                    "label": {
+                        "sr": "Naziv ansambla",
+                        "en": "Ensemble name",
+                        "sr-Cyrl": "Назив ансамбла"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "opis",
+                    "type": "textarea",
+                    "label": {
+                        "sr": "Kratak opis ansambla",
+                        "en": "Short description of the ensemble",
+                        "sr-Cyrl": "Кратак опис ансамбла"
+                    }
+                },
+                {
+                    "name": "slika",
+                    "type": "file",
+                    "label": {
+                        "sr": "Logo \/ slika ansambla",
+                        "en": "Ensemble logo \/ image",
+                        "sr-Cyrl": "Лого \/ слика ансамбла"
+                    }
+                }
+            ]
+        },
         "Projekti": {
             "sr": "Projekti",
             "en": "Projects",
             "sr-Cyrl": "Пројекти",
             "icon": "fas fa-diagram-project",
+            "categories": [
+                "Muzika",
+                "Pozoriste",
+                "Likovna umetnost",
+                "Kreativne radionice",
+                "Literatura",
+                "Film"
+            ],
             "fields": [
                 {
                     "name": "slika",
@@ -251,136 +340,16 @@
                         "en": "Official project link",
                         "sr-Cyrl": "Званични линк пројекта"
                     }
-                }
-            ]
-        },
-        "Vrtici": {
-            "sr": "Vrtići",
-            "en": "Kindergarten",
-            "sr-Cyrl": "Вртићи",
-            "icon": "fas fa-school",
-            "fields": [
-                {
-                    "name": "slika",
-                    "type": "file",
-                    "label": {
-                        "sr": "Naslovna slika vrtića",
-                        "en": "Kindergarten image",
-                        "sr-Cyrl": "Насловна слика вртића"
-                    }
                 },
                 {
-                    "name": "title",
-                    "type": "text",
+                    "name": "sekcija",
+                    "type": "relation",
                     "label": {
-                        "sr": "Naziv vrtića",
-                        "en": "Kindergarten name",
-                        "sr-Cyrl": "Назив вртића"
+                        "sr": "Sekcija projekta",
+                        "en": "Project section",
+                        "sr-Cyrl": "Секција пројекта"
                     },
-                    "required": true
-                },
-                {
-                    "name": "location",
-                    "type": "text",
-                    "label": {
-                        "sr": "Lokacija vrtića",
-                        "en": "Kindergarten location",
-                        "sr-Cyrl": "Локација вртића"
-                    },
-                    "required": true
-                },
-                {
-                    "name": "description",
-                    "type": "textarea",
-                    "label": {
-                        "sr": "Opis",
-                        "en": "Description",
-                        "sr-Cyrl": "Опис"
-                    }
-                }
-            ]
-        },
-        "Timovi": {
-            "sr": "Timovi",
-            "en": "Teams",
-            "sr-Cyrl": "Тимови",
-            "icon": "fas fa-users",
-            "fields": [
-                {
-                    "name": "slika",
-                    "type": "file",
-                    "label": {
-                        "sr": "Naslovna slika tima",
-                        "en": "Team image",
-                        "sr-Cyrl": "Насловна слика тима"
-                    }
-                },
-                {
-                    "name": "title",
-                    "type": "text",
-                    "label": {
-                        "sr": "Naziv tima",
-                        "en": "Team name",
-                        "sr-Cyrl": "Назив тима"
-                    },
-                    "required": true
-                },
-                {
-                    "name": "description",
-                    "type": "textarea",
-                    "label": {
-                        "sr": "Opis",
-                        "en": "Description",
-                        "sr-Cyrl": "Опис"
-                    }
-                }
-            ]
-        },
-        "Obavestenja": {
-            "sr": "Obaveštenja za roditelje",
-            "en": "Notifications for Parents",
-            "sr-Cyrl": "Обавештења за родитеље",
-            "icon": "fas fa-bell",
-            "fields": [
-                {
-                    "name": "slika",
-                    "type": "file",
-                    "label": {
-                        "sr": "Naslovna slika оbaveštenja",
-                        "en": "Notification image",
-                        "sr-Cyrl": "Насловна слика обавештења"
-                    },
-                    "required": true
-                },
-                {
-                    "name": "naziv",
-                    "type": "text",
-                    "label": {
-                        "sr": "Naziv obaveštenja",
-                        "en": "Notification name",
-                        "sr-Cyrl": "Назив обавештења"
-                    },
-                    "required": true
-                },
-                {
-                    "name": "opis",
-                    "type": "textarea",
-                    "label": {
-                        "sr": "Opis",
-                        "en": "Description",
-                        "sr-Cyrl": "Опис"
-                    }
-                },
-                {
-                    "name": "datum",
-                    "type": "date",
-                    "label": {
-                        "sr": "Datum vesti",
-                        "en": "News date",
-                        "sr-Cyrl": "Датум вести"
-                    },
-                    "required": true,
-                    "property": "auto"
+                    "related_to": "Sekcije"
                 }
             ]
         }
