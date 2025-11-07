@@ -550,7 +550,7 @@ class PageExporter
             if ($key === null || isset($structureLower[strtolower($key)])) {
                 $keyForFetch = $key ?? ''; // first parameter
                 $sixthParam = isset($parts[1]) ? "'{$parts[0]}'" : "null"; // use parts[1] if exists, else null
-
+                $id = str_replace(" ", '_', $id);
                 $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale)['items'];\n";
                 $phpString .= "\$$id = HashMapTransformer::transform(\$$id" . "_raw, \$locale);\n\n";
             }

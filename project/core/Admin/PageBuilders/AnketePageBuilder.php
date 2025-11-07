@@ -18,6 +18,8 @@ class AnketePageBuilder extends BasePageBuilder
     // Translatable text variables
     private array $texts = [];
 
+
+
     public function __construct(string $slug)
     {
         $this->slug = $slug;
