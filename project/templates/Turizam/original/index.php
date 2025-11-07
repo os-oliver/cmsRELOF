@@ -81,6 +81,20 @@
     /* Search popover animation */
     #searchInputContainer { transition: opacity .2s ease, transform .2s ease; transform: translateY(-4px); }
     #searchInputContainer.show { opacity:1 !important; transform: translateY(0); }
+
+    .mobile-dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+
+    .mobile-dropdown.active .mobile-dropdown-content {
+        max-height: 500px;
+    }
+
+    .mobile-dropdown.active .mobile-dropdown-chevron {
+        transform: rotate(180deg);
+    }
   </style>
 </head>
 
@@ -166,10 +180,14 @@
     <div class="container mx-auto px-4 flex justify-between items-center">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+        <!--<div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
           <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
           </svg>
+        </div>-->
+        <div
+            class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <img src="" alt="" style="width:75px;height:auto;" />
         </div>
         <div class="hidden sm:block">
           <div class="text-xl font-bold text-primary_text font-heading2">Turizam Regija</div>
@@ -292,6 +310,7 @@
       const panel = document.getElementById('mobileMenuPanel');
       const overlay = document.getElementById('mobileMenuOverlay');
       const closeBtn = document.getElementById('closeMobileMenu');
+      const mobileAboutToggle = document.getElementById('mobileAboutToggle');
 
       function openMenu(){
         mobileMenu.classList.remove('hidden');
@@ -307,9 +326,31 @@
         setTimeout(()=> mobileMenu.classList.add('hidden'), 300);
         document.body.style.overflow = '';
       }
+
+      // Function to toggle mobile about submenu
+      function toggleMobileAbout() {
+          const isHidden = mobileAboutMenu.classList.contains('hidden');
+
+          if (isHidden) {
+              // Show submenu
+              mobileAboutMenu.classList.remove('hidden');
+              mobileAboutIcon.style.transform = 'rotate(180deg)';
+          } else {
+              // Hide submenu
+              mobileAboutMenu.classList.add('hidden');
+              mobileAboutIcon.style.transform = 'rotate(0deg)';
+          }
+      }
+
       if (hamburger) hamburger.addEventListener('click', (e)=>{ e.stopPropagation(); openMenu(); });
       if (overlay) overlay.addEventListener('click', closeMenu);
       if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+      if (mobileAboutToggle) {
+            mobileAboutToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileAbout();
+            });
+        }
       document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) closeMenu(); });
       document.querySelectorAll('#mobileMenu nav a').forEach(a=> a.addEventListener('click', ()=> setTimeout(closeMenu, 120)));
       window.addEventListener('resize', ()=> { if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) closeMenu(); });
@@ -367,30 +408,31 @@
         <div class="max-w-3xl mx-auto mb-12">
           <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 search-glow">
             <div class="relative">
-              <input type="text" placeholder="Pretražite destinacije, atrakcije i doživljaje..."
-                class="w-full px-6 py-4 bg-white/10 rounded-xl border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary/50" />
-              <button
-                class="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-primary/80 hover:bg-primary rounded-lg transition-all duration-300 group">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-              </button>
+              <form id="searchForm" class="flex items-center w-full p-2" action="/pretraga" method="GET">
+                <input id="searchInput" type="text" name="q" placeholder="Pretražite destinacije, smeštaj, manifestacije…"
+                     class="w-full px-6 py-4 bg-white/10 rounded-xl border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary/50" required />
+                <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-primary/80 hover:bg-primary rounded-lg transition-all duration-300 group" aria-label="Submit search">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </button>
+              </form>
             </div>
           </div>
           <!-- Popular Searches -->
           <div class="flex flex-wrap justify-center items-center gap-3 mt-4">
-            <a href="#"
-              class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
-              Nacionalni parkovi
-            </a>
-            <a href="#"
+            <a href="/pretraga?q=Rafting"
               class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
               Rafting
             </a>
-            <a href="#"
+            <a href="/pretraga?q=Planinarenje"
               class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
-              Spa & Wellness
+              Planinarenje
+            </a>
+            <a href="/pretraga?q=Manifestacije"
+              class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
+              Manifestacije
             </a>
           </div>
         </div>
@@ -422,7 +464,7 @@
   </section>
 
   <!-- Featured Destinations -->
-  <section id="destinations" class="py-20 bg-background">
+  <section id="destinacije" class="py-20 bg-background">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
         <h2 class="text-4xl lg:text-5xl font-bold mb-4 font-heading text-primary_text">
@@ -433,25 +475,25 @@
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div id="destinacijeCards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Destination Card 1 -->
         <div
           class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
           <div class="relative h-80 overflow-hidden clip-diagonal">
-            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
+            <img id= "g-slika" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
               alt="Mountain peak"
               class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <div class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
+            <div id="g-kategorija" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
               Planina
             </div>
-            <h3 class="text-2xl font-bold mb-2">Vrhovi Regije</h3>
-            <p class="text-gray-200 mb-4">
+            <h3 id="g-naziv" class="text-2xl font-bold mb-2">Vrhovi Regije</h3>
+            <p id="g-kratak_opis" class="text-gray-200 mb-4">
               Spektakularni pogledi i planinarske staze
             </p>
-            <a href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">
+            <a id="g-ovise" href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">
               Saznajte više
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -606,7 +648,7 @@
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
               </svg>
-              <span>info@turizam-regija.rs</span>
+              <span  data-translate="off">info@turizam-regija.rs</span>
             </li>
           </ul>
         </div>
