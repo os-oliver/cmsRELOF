@@ -369,7 +369,15 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
-                                <i class="fas fa-users mr-2 text-coral"></i>Tim
+                                <i class="fas fa-history mr-2 text-brown"></i>Istorijat
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
+                                <i class="fas fa-circle-question mr-2 text-coral"></i>Pitanja
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
+                                <i class="fas fa-bullhorn mr-2 text-tomato_red"></i>Informacije
                             </a>
                         </div>
                     </div>
@@ -408,8 +416,8 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo Section -->
             <a href="/" class="flex items-center space-x-3 flex-shrink-0">
-                <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                     <img src="" alt="" style="width:75px;height:auto;" />
+                <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                    <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block">
                     <h1 class="text-xl lg:text-2xl font-heading text-primary font-bold tracking-wider">Centar za obrazovanje</h1>
@@ -453,8 +461,18 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Istorijat</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-circle-question mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Pitanja</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-bullhorn mr-3 text-tomato_red flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Informacije</span>
                         </a>
                     </div>
                 </div>
@@ -484,6 +502,10 @@
                     class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-address-book mr-2 text-deep-teal transition-colors"></i>
                     <span class="hidden xl:inline">Kontakt</span>
+                </a>
+                <a href="#"
+                    class="hidden">
+                    Ankete
                 </a>
                 <?php
                 if (isset($_GET['locale'])) {
@@ -562,13 +584,23 @@
         </div>
     </header>
 
-    <section class="hero relative flex items-center z-10 bg-[linear-gradient(rgba(11,53,88,0.7),rgba(11,53,88,0.7)),url('https://picsum.photos/1600/600?blur')] bg-cover bg-center text-white w-full h-[600px]">
-        <div class="max-w-6xl mx-auto px-4 py-20 text-center">
+    <section class="slider-item hero relative flex items-center z-10 w-full h-[600px] overflow-hidden">
+        <img src="https://picsum.photos/1600/600" alt="Pozadinska slika za slider"
+            class="absolute inset-0 w-full h-full object-cover z-10">
+
+        <div class="overlay-blur absolute inset-0 z-20 backdrop-blur-sm bg-[rgba(11,53,88,0.5)]">
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 py-20 text-center relative z-30 text-white w-full">
             <h2 class="text-3xl sm:text-4xl font-heading font-bold leading-tight">Dobrodošli u našu ustanovu</h2>
             <p class="mt-4 text-lg max-w-2xl mx-auto">Znanje, inovacije i budućnost u srcu obrazovanja.</p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/o-nama/cilj" class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:bg-accent_hover transition">Saznaj više</a>
-                <a href="/seminari" class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava na seminar</a>
+                <a href="/o-nama/cilj"
+                    class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:bg-accent_hover transition">Saznaj
+                    više</a>
+                <a href="/seminari"
+                    class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava
+                    na seminar</a>
             </div>
         </div>
     </section>
@@ -825,11 +857,11 @@
             </div>
 
             <div class="text-center mt-12">
-                <button
-                    class="bg-accent text-black px-8 py-4 rounded-full font-medium hover:bg-accent_hover transition-all flex items-center shadow-lg mx-auto">
+                <a href="/vesti?search=&category=2"
+                    class="bg-accent text-black px-8 py-4 w-fit rounded-full font-medium hover:bg-accent_hover transition-all flex items-center shadow-lg mx-auto">
+                    <i class="fas fa-calendar-alt mr-3"></i>
                     Saznaj više
-                    <i class="fa-solid fa-arrow-right ml-3"></i>
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -931,8 +963,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                             <img src="" alt="" style="width:75px;height:auto;" />
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                            <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
                         <h3 class="text-xl font-heading font-bold">CENTAR ZA OBRAZOVANJE</h3>
                     </div>
@@ -962,7 +994,7 @@
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="" class="hover:text-secondary transition-colors"></a></li>
+                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
@@ -985,7 +1017,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-secondary mt-1 mr-3"></i>
-                            <span>info@example.rs</span>
+                            <span data-translate="off">info@example.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-secondary mt-1 mr-3"></i>
@@ -1007,7 +1039,15 @@
                 </div>
             </div>
 
-            <div class="border-t border-white pt-8 text-center text-white text-sm">
+            <div class="flex flex-col items-center border-t border-white pt-8 text-center text-white text-sm">
+                <img
+                    src="/assets/img/SECO-logo-640px-white.png"
+                    alt="SECO logo"
+                    class="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto mb-4">
+                <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+            </div>
+
+            <div class="pt-8 text-center text-white text-sm">
                 <p>&copy; 2023 Centar za obrazovanje. Sva prava zadržana.</p>
             </div>
         </div>
@@ -1044,7 +1084,9 @@
                         velvet: '#872657',
                         crimson: '#DC143C',
                         coral: '#FF7F50',
-                        barn_red: '#770D0D'
+                        barn_red: '#770D0D',
+                        tomato_red: '#eb493d',
+                        brown: '#a37c39'
                     },
                     fontFamily: {
                         'heading': ['Playfair Display', 'serif'],
