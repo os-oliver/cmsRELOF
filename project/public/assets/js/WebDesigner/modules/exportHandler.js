@@ -362,7 +362,7 @@ function exportFullPage(editor, tipUstanove) {
         break;
     }
   });
-
+  console.log("tree:",tree);
   console.log("ids collected from sections:", ids);
 
   const css = editor.getCss();
@@ -381,9 +381,16 @@ function exportFullPage(editor, tipUstanove) {
   } catch (e) {
     console.warn("Error parsing Tailwind config:", e);
   }
+  const cssRules = editor.CssComposer && editor.CssComposer.getAll();
+  let cssText = "";
+
+  cssRules.forEach((rule) => {
+    cssText += rule.toCSS();
+  });
+  console.log("test123", cssText);
 
   const exportData = {
-    css: css,
+    css: cssText,
     typeOfInstitution: tipUstanove,
     components: landingPageFiles,
     tree: tree,

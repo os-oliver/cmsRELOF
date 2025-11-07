@@ -78,7 +78,7 @@ class Content
         string $q = '',
         int $page = 1,
         int $per = 10,
-        ?int $categoryId = null,
+        int|string|null $categoryId = null, // ✅ can be id or name
         string $lang = 'sr'
     ): array {
         $q = trim((string) $q);
@@ -88,10 +88,35 @@ class Content
 
         $where = "ge.type = :type";
         $params = [':type' => $type];
-
+        error_log("caoo");
+        error_log(json_encode($categoryId));
+        // ✅ Handle both int and string category
         if ($categoryId !== null) {
-            $where .= " AND ge.category_id = :category_id";
-            $params[':category_id'] = $categoryId;
+            error_log("zdravo");
+            if (is_numeric($categoryId)) {
+                error_log("usao");
+                // if it's an integer, use directly
+                $where .= " AND ge.category_id = :category_id";
+                $params[':category_id'] = (int) $categoryId;
+            } else {
+                error_log("nisam");
+                // if it's a string, resolve it to numeric id first
+                $resolvedId = $this->fetchCategoryIdByName((string) $categoryId);
+                error_log($resolvedId);
+                if ($resolvedId !== null) {
+                    $where .= " AND ge.category_id = :category_id";
+                    $params[':category_id'] = $resolvedId;
+                } else {
+                    // if no such category found, return empty result
+                    return [
+                        'success' => true,
+                        'total' => 0,
+                        'page' => $page,
+                        'per' => $per,
+                        'items' => []
+                    ];
+                }
+            }
         }
 
         $joinText = "";
@@ -104,7 +129,13 @@ class Content
         $ids = $this->fetchContentIds($where, $joinText, $params, $per, $offset);
 
         if (empty($ids)) {
-            return ['success' => true, 'total' => $total, 'page' => $page, 'per' => $per, 'items' => []];
+            return [
+                'success' => true,
+                'total' => $total,
+                'page' => $page,
+                'per' => $per,
+                'items' => []
+            ];
         }
 
         $texts = $this->fetchTextFields($ids);
@@ -113,8 +144,44 @@ class Content
 
         $items = $this->assembleItems($ids, $type, $texts, $categories, $imagesByElement);
 
-        return ['success' => true, 'total' => $total, 'page' => $page, 'per' => $per, 'items' => $items];
+        return [
+            'success' => true,
+            'total' => $total,
+            'page' => $page,
+            'per' => $per,
+            'items' => $items
+        ];
     }
+
+    private function fetchCategoryIdByName(string $categoryName): ?int
+    {
+        // Trim to avoid accidental spaces
+        $categoryName = trim($categoryName);
+
+        if ($categoryName === '') {
+            return null;
+        }
+
+        $sql = "
+        SELECT generic_category.id 
+        FROM generic_category
+        JOIN text 
+            ON text.source_id = generic_category.id 
+            AND text.source_table = 'generic_category'
+            AND text.lang = 'sr'
+        WHERE text.content = :categoryName
+        LIMIT 1
+    ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':categoryName', $categoryName, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $id = $stmt->fetchColumn();
+
+        return $id !== false ? (int) $id : null;
+    }
+
 
     public function fetchItem(int $id, $locale = null): array
     {

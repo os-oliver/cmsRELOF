@@ -3,10 +3,14 @@ namespace App\Utils;
 
 class HashMapTransformer
 {
+    // Define allowed file extensions
+    private static array $fileExtensions = ['pdf', 'xls', 'xlsx', 'doc', 'docx'];
+
     public static function transform(array $rawEvents, string $locale): array
     {
         return array_map(function ($item) use ($locale) {
             $fields = [];
+            $files = [];
 
             if (isset($item['fields']) && is_array($item['fields'])) {
                 foreach ($item['fields'] as $key => $value) {
@@ -14,6 +18,14 @@ class HashMapTransformer
                         $fields[$key] = $value[$locale] ?? $value['sr-Cyrl'] ?? '';
                     } else {
                         $fields[$key] = $value;
+                    }
+
+                    // Check if value is a file link
+                    if (is_string($value)) {
+                        $ext = strtolower(pathinfo($value, PATHINFO_EXTENSION));
+                        if (in_array($ext, self::$fileExtensions)) {
+                            $files[] = $value;
+                        }
                     }
                 }
             }
@@ -30,7 +42,8 @@ class HashMapTransformer
                 [
                     'image' => $item['image'] ?? null,
                     'images' => $item['images'] ?? [],
-                    'naziv' => $category
+                    'naziv' => $category,
+                    'files' => $files
                 ]
             );
         }, $rawEvents);

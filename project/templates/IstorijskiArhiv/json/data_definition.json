@@ -1,0 +1,111 @@
+[
+  {
+    "Fondovi": {
+      "sr": "Fondovi",
+      "en": "Funds",
+      "sr-Cyrl": "Фондови",
+      "icon": "fas fa-piggy-bank",
+      "categories": [
+        "Stipendije",
+        "Grantovi",
+        "Investicioni fondovi",
+        "Istraživački fondovi",
+        "Fondovi za startape"
+      ],
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naziv fonda",
+            "en": "Fund name",
+            "sr-Cyrl": "Назив фонда"
+          },
+          "required": true
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Vrsta fonda",
+            "en": "Fund type",
+            "sr-Cyrl": "Врста фонда"
+          },
+          "options": [
+            "Stipendije",
+            "Grantovi",
+            "Investicioni fondovi",
+            "Istraživački fondovi",
+            "Fondovi za startape"
+          ],
+          "required": true
+        },
+        {
+          "name": "organizacija",
+          "type": "text",
+          "label": {
+            "sr": "Organizacija / institucija",
+            "en": "Organization / Institution",
+            "sr-Cyrl": "Организација / институција"
+          },
+          "required": true
+        },
+        {
+          "name": "rok",
+          "type": "date",
+          "label": {
+            "sr": "Rok za prijavu",
+            "en": "Application deadline",
+            "sr-Cyrl": "Рок за пријаву"
+          },
+          "required": true
+        },
+        {
+          "name": "iznos",
+          "type": "text",
+          "label": {
+            "sr": "Iznos finansiranja",
+            "en": "Funding amount",
+            "sr-Cyrl": "Износ финансирања"
+          }
+        },
+        {
+          "name": "uslovi",
+          "type": "textarea",
+          "label": {
+            "sr": "Uslovi i kriterijumi",
+            "en": "Eligibility criteria",
+            "sr-Cyrl": "Услови и критеријуми"
+          }
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis fonda",
+            "en": "Fund description",
+            "sr-Cyrl": "Опис фонда"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Link za prijavu",
+            "en": "Application link",
+            "sr-Cyrl": "Линк за пријаву"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Logo ili slika fonda",
+            "en": "Fund image or logo",
+            "sr-Cyrl": "Лого или слика фонда"
+          }
+        }
+      ]
+    }
+  }
+]

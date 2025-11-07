@@ -82,14 +82,29 @@ class FileUploader
         }
 
         // generate unique name
+        $originalName = pathinfo($file['name'], PATHINFO_FILENAME);
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $basename = bin2hex(random_bytes(8)); // 16 chars
-        $filename = $basename . '.' . $ext;
-        error_log("uploaded filename: {$filename} ext: {$ext}");
+
+        // Sanitize the filename (optional but recommended)
+        $originalName = preg_replace('/[^a-zA-Z0-9-_]/', '_', $originalName);
+
+        // Start with original filename
+        $filename = $originalName . '.' . $ext;
         $target = $this->uploadDir . $filename;
+
+        // If file exists, add random suffix
+        while (file_exists($target)) {
+            $randomPart = bin2hex(random_bytes(4)); // 8 chars
+            $filename = $originalName . '_' . $randomPart . '.' . $ext;
+            $target = $this->uploadDir . $filename;
+        }
+
+        // Move uploaded file
         if (!move_uploaded_file($file['tmp_name'], $target)) {
             throw new \RuntimeException("Failed to move uploaded file.");
         }
+
+        error_log("uploaded filename: {$filename} ext: {$ext}");
 
         return $filename;
     }

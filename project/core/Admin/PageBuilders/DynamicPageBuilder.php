@@ -178,29 +178,42 @@ class DynamicPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $functions = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null): string
+function renderTopbar(array $categories, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
-    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
+    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
-            <input type='text' name='search' value='{$safeSearchValue}' placeholder='Pretraži...' 
-                class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
-            <button type='submit' class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
-                Primeni
-            </button>
-          </div>";
+        <input type='text' name='search' value='{$safeSearchValue}' placeholder='{$texts['search_placeholder']}' class='w-full rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
+        <button type='submit' class='px-6 py-3 rounded-xl transition-all shadow-md font-medium bg-primary hover:bg-primary_hover text-white'>
+            {$texts['apply_button']}
+        </button>
+    </div>";
     $html .= "<div class='flex items-center w-full sm:w-auto'>
-            <select name='category' class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-                <option value=''>Sve kategorije</option>";
+        <select name='category' class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+            <option value=''>{$texts['all_categories']}</option>";
+
     foreach ($categories as $cat) {
         $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
         $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
+
+        $isSelected = false;
+
+        if ($selectedCategoryId !== null) {
+            if (is_numeric($selectedCategoryId) && (int)$selectedCategoryId === (int)$cat['id']) {
+                $isSelected = true;
+            } elseif (is_string($selectedCategoryId) && strtolower($selectedCategoryId) === strtolower($cat['name'])) {
+                $isSelected = true;
+            }
+        }
+
+        $selected = $isSelected ? 'selected' : '';
         $html .= "<option value='{$id}' {$selected}>{$name}</option>";
     }
+
     $html .= "</select></div></form>";
     return $html;
 }
+
 
 function cardRender(array $item, array $fieldLabels, string $locale): string
 {
@@ -222,7 +235,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
         if (($fieldLabels[$fieldName]['type'] ?? '') === 'file')
             continue;
 
-        $label = $fieldLabels[$fieldName]['label'][$locale] ?? $fieldLabels[$fieldName]['label']['en'] ?? $fieldName;
+        $label = $fieldLabels[$fieldName]['label'][$locale] ?? $fieldLabels[$fieldName]['label']['sr-Cyrl'] ?? $fieldName;
         $value = (string) ($translations[$locale] ?? reset($translations) ?? '');
 
         if (!empty(trim($value))) {
@@ -356,14 +369,14 @@ function renderPagination(int $currentPage, int $totalPages): string
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<main class="bg-gradient-to-br pt-20 from-gray-50 to-gray-100 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 mb-2"><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></h1>
             <p class="text-gray-600"><?php echo htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
         
-        <?php echo renderTopbar($categories, $search, $categoryId); ?>
+        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
 
         <div class="performances-grid">
             <?php
@@ -391,32 +404,63 @@ HTML;
     public function buildPage(): string
     {
         $additionalPHP = <<<'PHP'
-        use App\Models\Content;
-        use App\Models\GenericCategory;
+        use App\Controllers\LanguageMapperController;
 
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-        $slug = '__SLUG__';
-        $pageTitle = ucfirst($slug);
-        $pageDescription = 'Pregled svih stavki';
-        
-        $itemsPerPage = 3;
-        $currentPage = max(1, (int) ($_GET['page'] ?? 1));
-        $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
-        $search = $_GET['search'] ?? '';
-        
-        $categories = GenericCategory::fetchAll($slug, $locale);
-        $itemsList = $slug ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
-                           : ['success' => false, 'items' => []];
-        
-        $config = $fieldLabels = [];
-        if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
-            $parsed = json_decode(file_get_contents($structurePath), true);
-            $config = $parsed[0][$slug] ?? [];
-            $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
-        }
+            use App\Models\Content;
+            use App\Models\GenericCategory;
+
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+                            $translator = new LanguageMapperController();
+
+            $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+            $slug = '__SLUG__';
+            $pageTitle = ($locale === 'sr-Cyrl') 
+                ? $translator->latin_to_cyrillic(ucfirst($slug)) 
+                : ucfirst($slug);
+
+            $pageDescription = ($locale === 'sr-Cyrl') 
+                ? $translator->latin_to_cyrillic('Pregled svih stavki') 
+                : 'Pregled svih stavki';
+
+         
+            $itemsPerPage = 3;
+            $currentPage = max(1, (int) ($_GET['page'] ?? 1));
+            $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
+        ? (is_numeric($_GET['category']) 
+            ? (int) $_GET['category'] 
+            : trim((string) $_GET['category'])
+        )
+        : null;
+            $search = $_GET['search'] ?? '';
+            
+            $categories = GenericCategory::fetchAll($slug, $locale);
+            $itemsList = $slug ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
+                            : ['success' => false, 'items' => []];
+            
+            $config = $fieldLabels = [];
+            if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
+                $parsed = json_decode(file_get_contents($structurePath), true);
+                $config = $parsed[0][$slug] ?? [];
+                $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
+            }
+
+
+            $latinTexts = [
+                'search_placeholder' => 'Pretraži...',
+                'apply_button' => 'Primeni',
+                'all_categories' => 'Sve kategorije',
+                'date_and_time' => 'Datum i vreme',
+                'location' => 'Lokacija',
+                'event_details' => 'Detalji događaja',
+                'no_items_found' => 'Nema pronađenih stavki',
+                'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+            ];
+
+            $texts = ($locale === 'sr-Cyrl')
+                ? $translator->latin_to_cyrillic_array($latinTexts)
+                : $latinTexts;
         PHP;
 
         $additionalPHP .= "\n" . $this->functions;

@@ -1,1 +1,145 @@
-[]
+[
+    {
+        "id": "690e0b188bb89",
+        "static": false,
+        "movable": false,
+        "name": "",
+        "href": "\/",
+        "path": "pages\/.php",
+        "file": ".php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:04"
+    },
+    {
+        "id": "690e0b1897865",
+        "static": false,
+        "movable": false,
+        "name": "cilj",
+        "href": "\/o-nama\/cilj",
+        "path": "pages\/cilj.php",
+        "file": "cilj.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:04"
+    },
+    {
+        "id": "690e0b18bed79",
+        "static": false,
+        "movable": false,
+        "name": "zaposleni",
+        "href": "\/o-nama\/zaposleni",
+        "path": "pages\/zaposleni.php",
+        "file": "zaposleni.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:04"
+    },
+    {
+        "id": "690e0b18de291",
+        "static": false,
+        "movable": false,
+        "name": "misija",
+        "href": "\/o-nama\/misija",
+        "path": "pages\/misija.php",
+        "file": "misija.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:04"
+    },
+    {
+        "id": "690e0b18ef1db",
+        "static": false,
+        "movable": false,
+        "name": "istorijat",
+        "href": "\/o-nama\/istorijat",
+        "path": "pages\/istorijat.php",
+        "file": "istorijat.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:04"
+    },
+    {
+        "id": "690e0b190d01b",
+        "static": false,
+        "movable": false,
+        "name": "pitanja",
+        "href": "\/o-nama\/pitanja",
+        "path": "pages\/pitanja.php",
+        "file": "pitanja.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:05"
+    },
+    {
+        "id": "690e0b19ad7af",
+        "static": false,
+        "movable": false,
+        "name": "informacije",
+        "href": "\/o-nama\/informacije",
+        "path": "pages\/informacije.php",
+        "file": "informacije.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:05"
+    },
+    {
+        "id": "690e0b19bcf11",
+        "static": false,
+        "movable": false,
+        "name": "vesti",
+        "href": "\/vesti",
+        "path": "pages\/vesti.php",
+        "file": "vesti.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:05"
+    },
+    {
+        "id": "690e0b19d49cd",
+        "static": false,
+        "movable": false,
+        "name": "galerija",
+        "href": "\/galerija",
+        "path": "pages\/galerija.php",
+        "file": "galerija.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:05"
+    },
+    {
+        "id": "690e0b1a24344",
+        "static": false,
+        "movable": false,
+        "name": "dokumenti",
+        "href": "\/dokumenti",
+        "path": "pages\/dokumenti.php",
+        "file": "dokumenti.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:06"
+    },
+    {
+        "id": "690e0b1a326be",
+        "static": false,
+        "movable": false,
+        "name": "seminari",
+        "href": "\/seminari",
+        "path": "pages\/seminari.php",
+        "file": "seminari.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:06"
+    },
+    {
+        "id": "690e0b1aaad49",
+        "static": false,
+        "movable": false,
+        "name": "kontakt",
+        "href": "\/kontakt",
+        "path": "pages\/kontakt.php",
+        "file": "kontakt.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:06"
+    },
+    {
+        "id": "690e0b1abd254",
+        "static": false,
+        "movable": false,
+        "name": "ankete",
+        "href": "\/ankete",
+        "path": "pages\/ankete.php",
+        "file": "ankete.php",
+        "status": 1,
+        "created_at": "2025-11-07 15:07:06"
+    }
+]
