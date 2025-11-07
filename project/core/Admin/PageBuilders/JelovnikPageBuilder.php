@@ -129,7 +129,7 @@ PHP;
             <h1 class="text-3xl font-heading text-primary_text mb-2">Jelovnik</h1>
             <p class="text-lg leading-relaxed mb-4 text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
             <p class="text-lg leading-relaxed mb-4 text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-            <p class="font-heading2">Pregled dostupnih jelovnika i PDF dokumenata.</p>
+            <p class="font-heading2">Pregled dostupnih jelovnika.</p>
         </div>
 
         <div class="menu-grid">
