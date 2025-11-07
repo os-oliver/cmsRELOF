@@ -213,7 +213,7 @@ class PageExporter
 
                 if ($parent->hasAttribute('data-translate')) {
                     $translateAttr = $parent->getAttribute('data-translate');
-                    if ('off' == $translateAttr) {
+                    if ('off' == strtolower($translateAttr)) {
                         return false;
                     }
                 }
@@ -688,11 +688,9 @@ class PageExporter
                 return new AnsambalPageBuilder('Ansambl');
             case 'projekti':
                 return new ProjektiPageBuilder('Projekti');
-
-            case strpos($name, 'uvod') !== false:
+            case stripos($name, 'uvod') !== false:
                 return new UvodPageBuilder('Uvod', $this->data);
-
-            case strpos($name, 'projekti') !== false:
+            case stripos($name, 'projekti') !== false:
                 return new ProjektiPageBuilder('Projekti');
             case 'organizaciona-struktura':
                 return new EmployeesPageBuilder('Organizaciona Struktura', $this->data);
