@@ -1,6 +1,6 @@
 [
     {
-        "id": "690d27605d80d",
+        "id": "690e8416460af",
         "static": true,
         "movable": false,
         "name": "Cilj",
@@ -8,10 +8,10 @@
         "path": "pages\/cilj.php",
         "file": "cilj.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     },
     {
-        "id": "690d2760646df",
+        "id": "690e84164d6cb",
         "static": true,
         "movable": false,
         "name": "Misija",
@@ -19,10 +19,10 @@
         "path": "pages\/misija.php",
         "file": "misija.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     },
     {
-        "id": "690d27606ab36",
+        "id": "690e8416543cc",
         "static": true,
         "movable": false,
         "name": "Zaposleni",
@@ -30,10 +30,10 @@
         "path": "pages\/zaposleni.php",
         "file": "zaposleni.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     },
     {
-        "id": "690d276072698",
+        "id": "690e84165f0d9",
         "static": false,
         "movable": false,
         "name": "destinacije",
@@ -41,10 +41,10 @@
         "path": "pages\/destinacije.php",
         "file": "destinacije.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     },
     {
-        "id": "690d276072fcf",
+        "id": "690e84165fd50",
         "static": false,
         "movable": false,
         "name": "manifestacije",
@@ -52,10 +52,10 @@
         "path": "pages\/manifestacije.php",
         "file": "manifestacije.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     },
     {
-        "id": "690d2760737f9",
+        "id": "690e84166085c",
         "static": false,
         "movable": false,
         "name": "smestaj",
@@ -63,10 +63,10 @@
         "path": "pages\/smestaj.php",
         "file": "smestaj.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     },
     {
-        "id": "690d2760740bd",
+        "id": "690e841661431",
         "static": false,
         "movable": false,
         "name": "aktivnosti",
@@ -74,10 +74,10 @@
         "path": "pages\/aktivnosti.php",
         "file": "aktivnosti.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     },
     {
-        "id": "690d276074be5",
+        "id": "690e8416621c7",
         "static": false,
         "movable": false,
         "name": "gastronomija",
@@ -85,10 +85,10 @@
         "path": "pages\/gastronomija.php",
         "file": "gastronomija.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     },
     {
-        "id": "690d27608641a",
+        "id": "690e84167b3c3",
         "static": false,
         "movable": false,
         "name": "dokumenti",
@@ -96,10 +96,10 @@
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     },
     {
-        "id": "690d2760a160a",
+        "id": "690e8416af2fe",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -107,6 +107,6 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-11-06 22:55:28"
+        "created_at": "2025-11-07 23:43:18"
     }
 ]
