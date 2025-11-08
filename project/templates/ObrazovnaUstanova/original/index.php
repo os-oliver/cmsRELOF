@@ -409,10 +409,11 @@
             <!-- Logo Section -->
             <a href="/" class="flex items-center space-x-3 flex-shrink-0">
                 <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                     <img src="" alt="" style="width:75px;height:auto;" />
+                    <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block">
-                    <h1 class="text-xl lg:text-2xl font-heading text-primary font-bold tracking-wider">Centar za obrazovanje</h1>
+                    <h1 class="text-xl lg:text-2xl font-heading text-primary font-bold tracking-wider">Centar za
+                        obrazovanje</h1>
                     <p class="text-xs text-barn_red tracking-widest hidden md:block">CENTAR ZA OBRAZOVANJE</p>
                 </div>
                 <div class="block sm:hidden">
@@ -432,7 +433,8 @@
                         class="nav-link text-primary font-semibold hover:text-primary_hover transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
                         <i class="fas fa-info-circle mr-2 text-ochre transition-colors text-sm"></i>
                         <span class="hidden xl:inline font-semibold">O nama</span>
-                        <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2  min-w-max max-w-xs w-auto bg-background rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
@@ -461,8 +463,7 @@
 
                 <a href="#"
                     class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
-                    <i
-                        class="fas fa-newspaper mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
+                    <i class="fas fa-newspaper mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
                     <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#"
@@ -502,14 +503,16 @@
                 }
                 ?>
                 <div class="locale dropdown nonPage relative group flex items-center">
-                    <button class="nav-link text-primary font-semibold hover:text-primary_hover transition-colors flex items-center whitespace-nowrap">
+                    <button
+                        class="nav-link text-primary font-semibold hover:text-primary_hover transition-colors flex items-center whitespace-nowrap">
                         <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <div class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg z-50">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>" class="dropdown-item text-primary hover:text-primary_hover flex items-center px-4 py-2 bg-background hover:bg-background-50 rounded-md text-sm font-medium">
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item text-primary hover:text-primary_hover flex items-center px-4 py-2 bg-background hover:bg-background-50 rounded-md text-sm font-medium">
                                 <span class="mr-2"><?= $lang['flag'] ?></span>
                                 <?= $lang['label'] ?>
                             </a>
@@ -562,17 +565,27 @@
         </div>
     </header>
 
-    <section class="hero relative flex items-center z-10 bg-[linear-gradient(rgba(11,53,88,0.7),rgba(11,53,88,0.7)),url('https://picsum.photos/1600/600?blur')] bg-cover bg-center text-white w-full h-[600px]">
-        <div class="max-w-6xl mx-auto px-4 py-20 text-center">
+    <section class="slider-item hero relative flex items-center z-10 w-full h-[600px] overflow-hidden">
+
+        <img src="https://picsum.photos/1600/600" alt="Pozadinska slika za slider"
+            class="absolute inset-0 w-full h-full object-cover z-10">
+
+        <div class="overlay-blur absolute inset-0 z-20 backdrop-blur-sm bg-[rgba(11,53,88,0.5)]">
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 py-20 text-center relative z-30 text-white w-full">
             <h2 class="text-3xl sm:text-4xl font-heading font-bold leading-tight">Dobrodošli u našu ustanovu</h2>
             <p class="mt-4 text-lg max-w-2xl mx-auto">Znanje, inovacije i budućnost u srcu obrazovanja.</p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/o-nama/cilj" class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:bg-accent_hover transition">Saznaj više</a>
-                <a href="/seminari" class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava na seminar</a>
+                <a href="/o-nama/cilj"
+                    class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:bg-accent_hover transition">Saznaj
+                    više</a>
+                <a href="/seminari"
+                    class="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-white hover:bg-white/10 transition">Prijava
+                    na seminar</a>
             </div>
         </div>
     </section>
-
     <!-- Najnnovije vesti -->
     <section id="vesti" class="py-20 bg-background">
         <div class="container mx-auto px-4">
@@ -582,7 +595,8 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam semper lobortis neque non eleifend.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
+                    semper lobortis neque non eleifend.
                 </p>
             </div>
 
@@ -590,9 +604,8 @@
                 <!-- News 1 -->
                 <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-slika"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -604,7 +617,8 @@
                         </h3>
 
                         <p id="g-tekst" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -625,9 +639,8 @@
                 <!-- News 2 -->
                 <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-slika"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -639,7 +652,8 @@
                         </h3>
 
                         <p id="g-tekst" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -660,9 +674,8 @@
                 <!-- News 3 -->
                 <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-slika"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -674,7 +687,8 @@
                         </h3>
 
                         <p id="g-tekst" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -713,7 +727,8 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-white max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam semper lobortis neque non eleifend.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
+                    semper lobortis neque non eleifend.
                 </p>
             </div>
 
@@ -721,9 +736,8 @@
                 <!-- Event 1 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-image" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -735,7 +749,8 @@
                         </h3>
 
                         <p id="g-description" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -755,8 +770,7 @@
                 <!-- Event 2 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/300"
-                            alt="Film Festival" class="w-full h-full object-cover">
+                        <img src="https://picsum.photos/600/300" alt="Film Festival" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -766,7 +780,8 @@
                             Lorem ipsum dolor sit amet
                         </h3>
                         <p class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -786,8 +801,7 @@
                 <!-- Event 3 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/300"
-                            alt="Jazz Night" class="w-full h-full object-cover">
+                        <img src="https://picsum.photos/600/300" alt="Jazz Night" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -797,7 +811,8 @@
                             Lorem ipsum dolor sit amet
                         </h3>
                         <p class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -826,7 +841,8 @@
     </section>
 
     <!-- Nasa dostignuca -->
-    <section class="relative bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=60')] bg-cover bg-center bg-fixed">
+    <section
+        class="relative bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=60')] bg-cover bg-center bg-fixed">
         <div class="bg-black/60 py-20 px-4">
             <div class="max-w-6xl mx-auto text-center text-white">
                 <h2 class="text-4xl font-heading font-bold">Naša dostignuća</h2>
@@ -866,7 +882,8 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam semper lobortis neque non eleifend.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
+                    semper lobortis neque non eleifend.
                 </p>
             </div>
 
@@ -922,8 +939,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                             <img src="" alt="" style="width:75px;height:auto;" />
+                        <div
+                            class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                            <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
                         <h3 class="text-xl font-heading font-bold">CENTAR ZA OBRAZOVANJE</h3>
                     </div>
@@ -1085,7 +1103,7 @@
                 dropdown.classList.toggle('active');
             });
         });
-        document.getElementById('searchButton').addEventListener('click', function() {
+        document.getElementById('searchButton').addEventListener('click', function () {
             const container = document.getElementById('searchInputContainer');
             const input = document.getElementById('searchInput');
 
@@ -1098,7 +1116,7 @@
             }
         });
 
-        document.getElementById('closeSearch').addEventListener('click', function() {
+        document.getElementById('closeSearch').addEventListener('click', function () {
             const container = document.getElementById('searchInputContainer');
             container.classList.add('opacity-0');
             setTimeout(() => {
@@ -1106,7 +1124,7 @@
             }, 300);
         });
 
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             const searchContainer = document.getElementById('searchInputContainer');
             const searchButton = document.getElementById('searchButton');
 
@@ -1131,7 +1149,7 @@
             }, 300);
         });
         // Header scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
@@ -1205,7 +1223,7 @@
 
         // Event listeners
         if (hamburger) {
-            hamburger.addEventListener('click', function(e) {
+            hamburger.addEventListener('click', function (e) {
                 e.stopPropagation();
                 if (mobileMenu.classList.contains('hidden')) {
                     openMobileMenu();
@@ -1224,7 +1242,7 @@
         }
 
         if (mobileAboutToggle) {
-            mobileAboutToggle.addEventListener('click', function(e) {
+            mobileAboutToggle.addEventListener('click', function (e) {
                 e.preventDefault();
                 toggleMobileAbout();
             });
@@ -1233,21 +1251,21 @@
         // Close menu when clicking on menu links (except dropdown toggle)
         const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
         menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 // Close menu after a short delay to allow for navigation
                 setTimeout(closeMobileMenuFunc, 150);
             });
         });
 
         // Close menu on window resize if screen becomes large
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
         });
 
         // Handle escape key to close menu
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
@@ -1255,7 +1273,7 @@
 
         // Prevent menu panel clicks from closing the menu
         if (mobileMenuPanel) {
-            mobileMenuPanel.addEventListener('click', function(e) {
+            mobileMenuPanel.addEventListener('click', function (e) {
                 e.stopPropagation();
             });
         }
