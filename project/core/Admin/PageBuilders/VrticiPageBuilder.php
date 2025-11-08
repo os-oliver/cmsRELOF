@@ -383,7 +383,6 @@ HTML;
         $additionalPHP .= "\n" . $this->cardTemplate;
         $additionalPHP .= "\n" . $this->cardRender;
         $additionalPHP .= "\n" . $this->pagination;
-        //$additionalPHP .= "\n" . $this->topBar;
         $additionalPHP = str_replace('__SLUG__', addslashes($this->slug), $additionalPHP);
         $additionalPHP = str_replace('__ITEMS_PER_PAGE__', $this->itemsPerPage, $additionalPHP);
         $additionalPHP = str_replace('__DESC_MAX_LENGTH__', $this->descriptionMaxLength, $additionalPHP);

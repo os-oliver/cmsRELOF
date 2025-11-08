@@ -372,8 +372,8 @@
                                 <i class="fas fa-school mr-2 text-primary"></i>Vrtići
                             </a>
                             <a href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
-                                <i class="fas fa-circle-question mr-2 text-coral"></i>Pitanja
+                                class="items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors hidden">
+                                <i class="hidden xl:inline"></i>Pitanja
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
@@ -507,9 +507,9 @@
                             <i class="fas fa-users mr-2 text-primary"></i>Timovi
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2 hidden">
                             <i class="fas fa-circle-question mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Pitanja</span>
+                            <span class="hidden xl:inline">Pitanja</span>
                         </a>
                     </div>
                 </div>
