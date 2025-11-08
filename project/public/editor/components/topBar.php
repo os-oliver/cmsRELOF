@@ -58,7 +58,12 @@ $numOfContacts = $contact->count();
             <a href="/logout" class="text-gray-500 hover:text-gray-700">
                 <i class="fas fa-power-off text-xl"></i>
             </a>
+
+            <a href="/help" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-question-circle text-xl"></i>
+            </a>
         </div>
+
     </div>
 </header>
 

@@ -12,7 +12,7 @@ export function htmlToDynamicCode(target, type) {
     const tag = child.get("tagName");
     return tag === "div" || tag === "li" || tag === "article";
   });
-
+  type = type.replace(" ", "_");
   const nStartingCards = components.length;
   if (!nStartingCards) return;
 
@@ -58,6 +58,9 @@ export function htmlToDynamicCode(target, type) {
 
 export function setupElement(child, landingPageFiles, sectionId) {
   const id = child.getId();
+  const element = child.getAttributes()?.["data-elements"]?.trim() || "";
+  let combinedId = id;
+
   const target = child
     .find("*")
     .find((model) => model.getId() === `${id}Cards`);
@@ -71,13 +74,14 @@ export function setupElement(child, landingPageFiles, sectionId) {
       .replace(/&lt;/g, "<")
       .replace(/&gt;/g, ">");
     landingPageFiles.push({
-      [`landingPage/${id}.php`]: fullyDecoded,
+      [`landingPage/${combinedId}.php`]: fullyDecoded,
     });
   } else {
     landingPageFiles.push({
-      [`landingPage/${id}.php`]: child.toHTML(),
+      [`landingPage/${combinedId}.php`]: child.toHTML(),
     });
   }
-
-  return id;
+  combinedId = element ? `${id}-${element}` : id;
+  console.log("combined:" + combinedId);
+  return combinedId;
 }

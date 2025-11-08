@@ -66,7 +66,7 @@
                 </div>
                 <h2 class="text-xl font-bold">Email</h2>
             </div>
-            <p class="text-gray-700 mb-4">info@primer.com</p>
+            <p class="text-gray-700 mb-4" data-translate="off">info@primer.com</p>
             <div class="mt-4">
                 <a href="mailto:info@primer.com" class="text-purple-500 hover:underline flex items-center">
                     <i class="fas fa-paper-plane mr-2"></i> Pošaljite email

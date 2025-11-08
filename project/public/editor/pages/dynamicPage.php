@@ -60,10 +60,19 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
                         <h1 class="text-3xl font-bold text-gray-800">
                             <?= htmlspecialchars($slug ?? '', ENT_QUOTES, 'UTF-8') ?>
                         </h1>
-                        <button id="newEventButton"
-                            class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
-                            <i class="fas fa-plus text-sm"></i><?= $slug ?>
-                        </button>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <?php if (strtolower($slug) === 'ankete'): ?>
+                                <a href="https://docs.google.com/forms" target="_blank" rel="noopener noreferrer"
+                                    class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
+                                    <i class="fab fa-google text-sm"></i>
+                                    <span>Google Forms</span>
+                                </a>
+                            <?php endif; ?>
+                            <button id="newEventButton"
+                                class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
+                                <i class="fas fa-plus text-sm"></i><?= $slug ?>
+                            </button>
+                        </div>
                     </div>
 
 
