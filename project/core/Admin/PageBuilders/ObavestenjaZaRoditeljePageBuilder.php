@@ -3,14 +3,46 @@
 namespace App\Admin\PageBuilders;
 
 use App\Controllers\ContentController;
+use App\Controllers\LanguageMapperController;
 
 class ObavestenjaZaRoditeljePageBuilder extends BasePageBuilder
 {
     protected string $slug;
+    private LanguageMapperController $translator;
+    private array $texts = [];
 
     public function __construct(string $slug)
     {
         $this->slug = $slug;
+        $this->translator = new LanguageMapperController();
+        $this->initializeTexts();
+    }
+
+    private function initializeTexts(): void
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
+        $latinTexts = [
+            'search_placeholder' => 'Pretraži...',
+            'apply_button' => 'Primeni',
+            'all_categories' => 'Sve kategorije',
+            'date_and_time' => 'Datum i vreme',
+            'location' => 'Lokacija',
+            'event_details' => 'Detalji događaja',
+            'no_items_found' => 'Nema pronađenih stavki',
+            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec'],
+            'read_more' => 'Pročitaj više'
+
+        ];
+
+        if ($locale === 'sr-Cyrl') {
+            $this->texts = $this->translator->latin_to_cyrillic_array($latinTexts);
+        } else {
+            $this->texts = $latinTexts;
+        }
     }
 
     protected string $css = <<<CSS
@@ -179,11 +211,11 @@ class ObavestenjaZaRoditeljePageBuilder extends BasePageBuilder
 CSS;
 
     protected string $functions = <<<'PHP'
-function cardRender(array $item, array $fieldLabels, string $locale): string
+function cardRender(array $item, array $fieldLabels, string $locale, string $readMoreText): string
 {
     $naslov = htmlspecialchars(trim($item['fields']['naziv'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(trim($item['fields']['opis'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
-    $opis = preg_replace('/\s+/', ' ', $opis); // uklanja višestruke whitespace-ove
+    $opis = preg_replace('/\s+/', ' ', $opis); 
     $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = !empty($item['image']) ? htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') : null;
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -369,7 +401,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
         $targetLink = "/sadrzaj?id={$itemId}&tip=Obavestenja";
         $html .= "
                 <a href='{$targetLink}' class='news-cta-button'>
-                    <span>Pročitaj više</span>
+                    <span>{$readMoreText}</span>
                 </a>
             </div>
         </div>";
@@ -447,8 +479,8 @@ PHP;
 <main class="bg-gradient-to-br pt-20 from-gray-50 to-gray-100 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-heading text-primary_text mb-2 text-center"><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></h1>
-            <p class="font-heading2 text-secondary_text text-center"><?php echo htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8'); ?></p>
+            <h1 class="text-3xl font-heading text-primary_text mb-2 text-center">Obaveštenja</h1>
+            <p class="font-heading2 text-secondary_text text-center">Pregled svih stavki</p>
         </div>
 
         <div class="performances-grid">
@@ -456,7 +488,7 @@ PHP;
             if ($itemsList['success'] && !empty($itemsList['items'])) {
                 echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
                 foreach ($itemsList['items'] as $item) {
-                    echo cardRender($item, $fieldLabels, $locale);
+                    echo cardRender($item, $fieldLabels, $locale, $readMoreText);
                 }
                 echo '</div>';
                 
@@ -484,6 +516,21 @@ HTML;
             session_start();
         }
         $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
+        $translator = new \App\Controllers\LanguageMapperController();
+
+        $latinTexts = [
+            'read_more' => 'Pročitaj više'
+        ];
+
+        if ($locale === 'sr-Cyrl') {
+            $texts = $translator->latin_to_cyrillic_array($latinTexts);
+        } else {
+            $texts = $latinTexts;
+        }
+
+        $readMoreText = $texts['read_more'];
+
         $slug = '__SLUG__';
         $pageTitle = 'Obaveštenja';
         $pageDescription = 'Pregled svih stavki';
