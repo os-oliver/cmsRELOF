@@ -4,9 +4,38 @@
 namespace App\Controllers;
 
 use App\Controllers\PersonalContentController;
+use Exception;
 
 class PageController
 {
+    private const TEMPLATE_SLUG_MAP = [
+        // 'biblioteka' => 'Biblioteka',
+        // 'centar-za-kulturu' => 'CentarZaKulturu',
+        'informacije-od-javnog-znacaja' => 'InformacijeOdJavnogZnacaja',
+        // 'istorijski-arhiv' => 'IstorijskiArhiv',
+        // 'muzej-galerija' => 'MuzejGalerija',
+        // 'obrazovna-ustanova' => 'ObrazovnaUstanova',
+        // 'omladinski-centar' => 'OmladinskiCentar',
+        // 'pozoriste' => 'Pozoriste',
+        // 'predskolska-ustanova' => 'PredskolskaUstanova',
+        // 'socijalna-ustanova' => 'SocijalnaUstanova',
+        // 'sport' => 'Sport',
+        // 'turizam' => 'Turizam',
+    ];
+
+    private function loadTemplate(string $templateName): void
+    {
+        $templatePath = dirname(PUBLIC_ROOT) . "/templates/{$templateName}/original/index.php";
+
+        if (!is_file($templatePath)) {
+            error_log("Template not found: {$templatePath}");
+            http_response_code(404);
+            include PUBLIC_ROOT . '/pages/404.php';
+            return;
+        }
+
+        require $templatePath;
+    }
 
 
     public function createPage()
@@ -158,7 +187,7 @@ class PageController
                 $dir = dirname($full);
                 if (!is_dir($dir)) {
                     error_log("Creating static page directory: $dir");
-                    mkdir($dir, 0755, true);
+                    mkdir($dir, 0775, true);
                 }
 
                 if (!file_exists($full)) {
@@ -188,7 +217,7 @@ class PageController
                 $dir = dirname($full);
                 if (!is_dir($dir)) {
                     error_log("Creating exported page directory: $dir");
-                    mkdir($dir, 0755, true);
+                    mkdir($dir, 0775, true);
                 }
 
                 if (!file_exists($full)) {
@@ -270,11 +299,27 @@ class PageController
         $tip = isset($_GET['tipUstanove'])
             ? preg_replace('/[^\w]/', '', $_GET['tipUstanove'])
             : '';
-        $template = dirname(PUBLIC_ROOT) . "/templates/{$tip}/original/index.php";
-        error_log("greska:" . $template);
-        if (is_file($template)) {
-            require $template;
+        if ($tip === '') {
+            http_response_code(404);
+            include PUBLIC_ROOT . '/pages/404.php';
+            return;
         }
+
+        $this->loadTemplate($tip);
+        return;
+    }
+
+    public function templateBySlug(string $templateSlug)
+    {
+        $templateSlug = strtolower($templateSlug);
+
+        if (!isset(self::TEMPLATE_SLUG_MAP[$templateSlug])) {
+            http_response_code(404);
+            include PUBLIC_ROOT . '/pages/404.php';
+            return;
+        }
+
+        $this->loadTemplate(self::TEMPLATE_SLUG_MAP[$templateSlug]);
         return;
     }
 
@@ -308,7 +353,115 @@ class PageController
         echo require_once __DIR__ . '/../../public/exportedPages/landingPageComponents/landingPage/header.php';
 
     }
+    public function componentSave()
+    {
+        try {
+            // Provera da li su poslati potrebni parametri
+            if (!isset($_POST['componentFileName']) || !isset($_POST['htmlContent'])) {
+                throw new Exception('Nedostaju obavezni parametri');
+            }
 
+            $componentFileName = $_POST['componentFileName'];
+            $htmlContent = $_POST['htmlContent'];
+
+            // Sanitizacija imena fajla (bezbednost)
+            $componentFileName = basename($componentFileName);
+
+            // Provera ekstenzije
+            if (!preg_match('/\.php$/i', $componentFileName)) {
+                throw new Exception('Nevažeće ime fajla. Dozvoljeni su samo .php fajlovi.');
+            }
+
+            // Putanja do direktorijuma sa komponentama
+            $componentsDir = realpath(__DIR__ . '/../../public/exportedPages/landingPageComponents/landingPage');
+
+            if (!$componentsDir || !is_dir($componentsDir)) {
+                throw new Exception('Direktorijum komponenti ne postoji');
+            }
+
+            // Puna putanja do fajla
+            $filePath = $componentsDir . DIRECTORY_SEPARATOR . $componentFileName;
+
+            // Dodatna bezbednosna provjera - da li je fajl zaista u očekivanom direktorijumu
+            $realFilePath = realpath(dirname($filePath));
+            if ($realFilePath !== $componentsDir) {
+                throw new Exception('Nevalidan put do fajla');
+            }
+
+            // Provjera da li fajl postoji (za dodatnu sigurnost)
+            if (!file_exists($filePath)) {
+                throw new Exception('Fajl ne postoji: ' . $componentFileName);
+            }
+
+            // Kreiranje backup-a prije prepisivanja (opcionalno ali preporučeno)
+            $backupDir = $componentsDir . DIRECTORY_SEPARATOR . 'backups';
+            if (!is_dir($backupDir)) {
+                mkdir($backupDir, 0755, true);
+            }
+
+            $backupFileName = pathinfo($componentFileName, PATHINFO_FILENAME) .
+                '_backup_' . date('Y-m-d_H-i-s') . '.php';
+            $backupPath = $backupDir . DIRECTORY_SEPARATOR . $backupFileName;
+
+            // Pravljenje backup-a
+            if (file_exists($filePath)) {
+                copy($filePath, $backupPath);
+            }
+
+            // Pisanje novog sadržaja u fajl
+            $bytesWritten = file_put_contents($filePath, $htmlContent);
+
+            if ($bytesWritten === false) {
+                // Ako pisanje ne uspe, vratimo backup
+                if (file_exists($backupPath)) {
+                    copy($backupPath, $filePath);
+                }
+                throw new Exception('Greška pri pisanju fajla');
+            }
+
+            // Čišćenje starih backup-ova (čuvamo samo poslednjih 10)
+            $backupFiles = glob($backupDir . DIRECTORY_SEPARATOR . pathinfo($componentFileName, PATHINFO_FILENAME) . '_backup_*.php');
+            if (count($backupFiles) > 10) {
+                // Sortiramo po vremenu (najstariji prvo)
+                usort($backupFiles, function ($a, $b) {
+                    return filemtime($a) - filemtime($b);
+                });
+
+                // Brišemo najstarije
+                $toDelete = array_slice($backupFiles, 0, count($backupFiles) - 10);
+                foreach ($toDelete as $oldBackup) {
+                    unlink($oldBackup);
+                }
+            }
+
+            // Logovanje promene (opcionalno)
+            $logFile = $componentsDir . DIRECTORY_SEPARATOR . 'changes.log';
+            $logEntry = sprintf(
+                "[%s] %s je izmenio/la %s (%d bytes)\n",
+                date('Y-m-d H:i:s'),
+                $_SESSION['email'] ?? 'Unknown',
+                $componentFileName,
+                $bytesWritten
+            );
+            file_put_contents($logFile, $logEntry, FILE_APPEND);
+
+            // Uspešan odgovor
+            echo json_encode([
+                'success' => true,
+                'message' => 'Komponenta je uspešno sačuvana',
+                'fileName' => $componentFileName,
+                'bytes' => $bytesWritten,
+                'backupCreated' => file_exists($backupPath)
+            ]);
+
+        } catch (Exception $e) {
+            http_response_code(400);
+            echo json_encode([
+                'success' => false,
+                'error' => $e->getMessage()
+            ]);
+        }
+    }
     public function deletePage()
     {
         require PUBLIC_ROOT . '/admin/deletePage.php';

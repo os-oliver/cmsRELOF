@@ -42,6 +42,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET', '/sadmin/kategorije', 'PageController@categoryStyle');
 
     $r->addRoute('GET', '/pretraga', 'PageController@search');
+    $r->addRoute('POST', '/save-component', 'UserUpdateController@saveComponent');
 
     # API/action routes - should stay in english
     $r->addRoute('GET', '/', 'PageController@home');
@@ -53,6 +54,12 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('POST', '/saveComponent', 'ComponentController@saveComponent');
     $r->addRoute('POST', '/saveLandigPageComponent', 'ComponentController@saveLandigPageComponent');
     $r->addRoute('GET', '/template', 'PageController@template');
+
+    $r->addRoute(
+        'GET',
+        '/{templateSlug:informacije-od-javnog-znacaja}',
+        'PageController@templateBySlug'
+    );
     $r->addRoute('GET', '/component', 'ComponentController@loadComponent');
 
     $r->addRoute('POST', '/contact', 'ContactController@create');
@@ -65,6 +72,10 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
 
     #change this one for URL to be in serbian if needed
     $r->addRoute('GET', '/login', 'PageController@login');
+
+    // ColorsController rute
+    $r->addRoute('GET', '/colors', 'ColorsController@index');        // Dohvatanje trenutnih boja
+    $r->addRoute('POST', '/colors-change', 'ColorsController@index'); // Čuvanje izmena boja
 
     $r->addRoute('POST', '/login', 'AuthController@auth');
     $r->addRoute('GET', '/logout', 'AuthController@logout');
@@ -79,6 +90,9 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('POST', '/employees', 'AboutUSController@employees');
     $r->addRoute('PUT', '/employees/{id:\d+}', 'AboutUSController@employees');
     $r->addRoute('DELETE', '/employees/{id:\d+}', 'AboutUSController@employees');
+    $r->addRoute('PUT', '/settings', 'AboutUSController@settings');
+    $r->addRoute('GET', '/settings', 'AboutUSController@settings');
+    $r->addRoute('POST', '/settings', 'AboutUSController@settings');
 
     $r->addRoute('GET', '/gallery', 'GalleryController@list');
     $r->addRoute('GET', '/gallery/{id:\d+}', 'GalleryController@show');
@@ -88,19 +102,22 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
 
     $r->addRoute('POST', '/users', 'UserController@create');
     $r->addRoute('PUT', '/users/{id:\d+}', 'UserController@update');
-    $r->addRoute(httpMethod: 'DELETE', route: '/users/{id:\d+}', handler: 'UserController@delete');
+    $r->addRoute('DELETE', '/users/{id:\d+}', 'UserController@delete');
     $r->addRoute('GET', '/sadrzaj', 'PageController@renderElement');
 
 
     $pages = json_decode(
-        file_get_contents(__DIR__ . '/assets/data/pages.json'),
+        @file_get_contents(__DIR__ . '/assets/data/pages.json'),
         true
     );
-    foreach ($pages as $page) {
-        if ($page['href'] === '/') {
-            continue;
+
+    if (!empty($pages)) {
+        foreach ($pages as $page) {
+            if ($page['href'] === '/') {
+                continue;
+            }
+            $r->addRoute('GET', $page['href'], 'PageController@renderJsonPage');
         }
-        $r->addRoute('GET', $page['href'], 'PageController@renderJsonPage');
     }
 
     // Also register routes from DB (userdefinedpages) so pages created via UI are routable

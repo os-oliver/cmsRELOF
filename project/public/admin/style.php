@@ -1,5 +1,6 @@
 <?php
 use App\Controllers\AuthController;
+use App\Models\Document;
 AuthController::requireEditor();
 ?>
 <!DOCTYPE html>
@@ -76,11 +77,11 @@ AuthController::requireEditor();
 
       <!-- Blocks Container -->
       <!-- Blocks Container -->
-      <div id="navBlock" class="hidden  
-         w-full max-w-lg  backdrop-blur-md border
-          shadow-2xl p-6 text-gray-100 z-50">
+      <?php
+      $documents = (new Document())->list();
+      ?>
 
-        <!-- Header -->
+      <div id="navBlock" class="hidden w-full max-w-lg backdrop-blur-md border shadow-2xl p-6 text-gray-100 z-50">
         <div class="flex items-center justify-between mb-6">
           <h3 class="text-xl font-bold">Podešavanje linka</h3>
           <button id="navClose" class="text-gray-400 hover:text-gray-200 transition" aria-label="Zatvori">
@@ -91,45 +92,48 @@ AuthController::requireEditor();
           </button>
         </div>
 
-        <!-- Content -->
         <div class="space-y-6">
-
-          <!-- Link input -->
           <div>
-            <label for="linkHref" class="block text-sm font-medium text-gray-300 mb-2">
-              Putanja (Href)
-            </label>
-            <input id="linkHref" type="text" class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg 
-               focus:outline-none focus:ring-2 focus:ring-blue-500 
-               placeholder-gray-500" placeholder="/putanja-do-stranice" />
+            <label for="documentSelect" class="block text-sm font-medium text-gray-300 mb-2">Izaberi dokument</label>
+            <select id="documentSelect"
+              class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="">-- Izaberi dokument --</option>
+              <?php foreach ($documents[0] as $doc):
+                error_log(json_encode($doc));
+                ?>
+                <option value="/uploads/documents/<?php echo htmlspecialchars($doc['filepath']); ?>">
+                  <?php echo htmlspecialchars($doc['title']); ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
           </div>
 
-          <!-- Static checkbox -->
+          <div>
+            <label for="linkHref" class="block text-sm font-medium text-gray-300 mb-2">Putanja (Href)</label>
+            <input id="linkHref" type="text"
+              class="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500"
+              placeholder="/putanja-do-stranice" />
+          </div>
+
           <div class="flex items-center justify-between">
             <label class="flex items-center space-x-3">
               <input id="linkStatic" type="checkbox"
                 class="h-5 w-5 text-blue-500 border-gray-600 rounded focus:ring-blue-400" />
               <span class="text-sm">Označi kao statičan link</span>
             </label>
-            <p id="navBlockNotice" class="text-xs text-gray-400">
-              Kliknite na link unutar editor platna da biste ga izmenili.
+            <p id="navBlockNotice" class="text-xs text-gray-400">Kliknite na link unutar editor platna da biste ga
+              izmenili.
             </p>
           </div>
 
-          <!-- Buttons -->
           <div class="flex items-center gap-4">
-            <button id="applyLink" class="flex-1 px-4 py-3 bg-blue-600 text-white font-semibold rounded-xl 
-               shadow-lg hover:bg-blue-700 transition">
-              Primeni
-            </button>
-            <button id="resetLink" class="hidden px-4 py-3 border border-gray-600 rounded-xl text-gray-200 
-               hover:bg-gray-700 transition">
-              Poništi
-            </button>
-            <button id="delete" class="px-4 py-3 border border-gray-600 rounded-xl text-gray-200 
-               hover:bg-red-700 transition">
-              Obriši
-            </button>
+            <button id="applyLink"
+              class="flex-1 px-4 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow-lg hover:bg-blue-700 transition">Primeni</button>
+            <button id="resetLink"
+              class="hidden px-4 py-3 border border-gray-600 rounded-xl text-gray-200 hover:bg-gray-700 transition">Poništi</button>
+            <button id="delete"
+              class="px-4 py-3 border border-gray-600 rounded-xl text-gray-200 hover:bg-red-700 transition">Obriši</button>
+
           </div>
         </div>
       </div>
@@ -222,6 +226,14 @@ AuthController::requireEditor();
 
     <script src="assets/js/WebDesigner/grapesjs/grapes.min.js"></script>
     <script type="module" src="/assets/js/WebDesigner/pageBuilder.js"></script>
+    <script>
+      const select = document.getElementById('documentSelect');
+      const hrefInput = document.getElementById('linkHref');
+
+      select.addEventListener('change', () => {
+        hrefInput.value = select.value;
+      });
+    </script>
   </div>
 </body>
 
