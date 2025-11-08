@@ -142,8 +142,20 @@ if ($commonScriptPath && file_exists($commonScriptPath)) {
 }
 
 // Components list
-$files = $componentsDir ? glob($componentsDir . '/*.php') : [];
-$files = array_map('basename', $files);
+$files = [];
+
+if ($componentsDir) {
+    foreach (glob($componentsDir . '/*.php') as $file) {
+        $content = file_get_contents($file);
+
+        // Proverava da li sadrži <section> i nema PHP tagove
+        if (strpos($content, '<section') !== false) {
+            $files[] = basename($file);
+        }
+
+    }
+}
+
 if (isset($_GET['current'])) {
     $_SESSION['current'] = (int) $_GET['current'];
 }
