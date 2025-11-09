@@ -555,111 +555,98 @@
 
 
   <!-- Footer -->
-  <footer class="bg-secondary_background text-white py-16">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div
-              class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
-            </div>
-            <div class="text-xl font-bold font-heading">Turizam Regija</div>
+  <footer class="bg-secondary_background text-secondary_text text-gray-200 font-heading2 pt-20 pb-10">
+      <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+              <div>
+                  <div class="flex items-center mb-6">
+                      <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24"
+                              stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                          </svg>
+                      </div>
+                      <h3 class="text-xl">Lorem ipsum dolor</h3>
+                  </div>
+                  <p class="mb-4">
+                      Lorem ipsum dolor sit amet consectetur adipiscing elit
+                  </p>
+                  <div class="flex space-x-3">
+                      <a href="#"
+                          class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                          <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="#"
+                          class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="#"
+                          class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                          <i class="fab fa-youtube"></i>
+                      </a>
+                      <a href="#"
+                          class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                          <i class="fab fa-spotify"></i>
+                      </a>
+                  </div>
+              </div>
+              <div>
+                  <h4 class="mb-6">Brzi linkovi</h4>
+                  <ul class="space-y-3">
+                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a>
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h4 class="mb-6">Informacije</h4>
+                  <ul class="space-y-3">
+                      <li class="flex items-start">
+                          <i class="fas fa-map-marker-alt text-logocolor2 mt-1 mr-3"></i>
+                          <span>Lorem ipsum dolor</span>
+                      </li>
+                      <li class="flex items-start">
+                          <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+                          <span>Lorem ipsum dolor</span>
+                      </li>
+                      <li class="flex items-start">
+                          <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
+                          <span data-translate="off">Lorem ipsum dolor</span>
+                      </li>
+                      <li class="flex items-start">
+                          <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
+                          <span>
+                              Lorem ipsum dolor<br>
+                              Lorem ipsum dolor
+                          </span>
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h4 class="mb-6">Mapa lokacije</h4>
+                  <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+                      <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                          class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  </div>
+              </div>
           </div>
-          <p class="text-gray-300 mb-4">
-            Promovišemo prirodne lepote i kulturnu baštinu kroz profesionalne
-            turističke usluge.
-          </p>
-          <div class="flex gap-3">
-            <a href="#"
-              class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-              </svg>
-            </a>
-            <a href="#"
-              class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd"
-                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465.668.254 1.213.598 1.782 1.167.57.57.913 1.115 1.167 1.783.246.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.88 4.88 0 01-1.167 1.782 4.88 4.88 0 01-1.783 1.167c-.637.246-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.88 4.88 0 01-1.782-1.167 4.88 4.88 0 01-1.167-1.783c-.246-.637-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.88 4.88 0 011.167-1.782 4.88 4.88 0 011.783-1.167c.636-.246 1.363-.416 2.427-.465 1.067-.048 1.407-.06 4.123-.06h.08zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                  clip-rule="evenodd" />
-              </svg>
-            </a>
+          <div class="text-center text-sm">
+              <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
+                  <img
+                      src="/assets/img/SECO-logo-640px-white.png"
+                      alt="SECO logo"
+                      class="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto mb-4">
+                  <p class="text-gray-400"> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+              </div>
+              <p class="pt-6 text-gray-400">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
           </div>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold mb-4 font-heading2">Brzi Linkovi</h4>
-          <ul class="space-y-2">
-            <li>
-              <a href="#" class="text-gray-300 hover:text-primary transition">Destinacije</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-300 hover:text-primary transition">Manifestacije</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-300 hover:text-primary transition">Smeštaj</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-300 hover:text-primary transition">Gastronomija</a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold mb-4 font-heading2">Informacije</h4>
-          <ul class="space-y-2">
-            <li>
-              <a href="#" class="text-gray-300 hover:text-primary transition">O Nama</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-300 hover:text-primary transition">Kontakt</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-300 hover:text-primary transition">Turistički Vodič</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-300 hover:text-primary transition">Često Postavljana Pitanja</a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold mb-4 font-heading2">Kontakt</h4>
-          <ul class="space-y-3 text-gray-300">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 mt-0.5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd"
-                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              <span>Trg Republike 1, Grad 11000</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 mt-0.5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z">
-                </path>
-              </svg>
-              <span>+381 11 123 4567</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 mt-0.5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-              </svg>
-              <span  data-translate="off">info@turizam-regija.rs</span>
-            </li>
-          </ul>
-        </div>
       </div>
-      <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-        <p>
-          &copy; 2025 Turizam Regija - Turistička Organizacija. Sva prava
-          zadržana.
-        </p>
-      </div>
-    </div>
   </footer>
 
   <!-- Bottom helper scripts -->
