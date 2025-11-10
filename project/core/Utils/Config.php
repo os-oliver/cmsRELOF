@@ -6,10 +6,11 @@ use RuntimeException;
 final class Config
 {
     private static ?array $structure = null;
-    private static string $defaultStructurePath = dirname(__DIR__, 2) . '/public/assets/data/structure.json';
+    private static string $defaultStructurePath;
 
     private function __construct()
     {
+        $this->defaultStructurePath = dirname(__DIR__, 2) . '/public/assets/data/structure.json';
     }
 
     private static function resolvePath(): string
