@@ -1,6 +1,6 @@
 [
     {
-        "id": "690e03940d8a5",
+        "id": "6911a7532ee93",
         "static": false,
         "movable": false,
         "name": "",
@@ -8,65 +8,153 @@
         "path": "pages\/.php",
         "file": ".php",
         "status": 1,
-        "created_at": "2025-11-07 14:35:00"
+        "created_at": "2025-11-10 08:50:27"
     },
     {
-        "id": "690e03940f2a3",
+        "id": "6911a753329bf",
         "static": false,
         "movable": false,
-        "name": "cilj",
-        "href": "\/o-nama\/cilj",
-        "path": "pages\/cilj.php",
-        "file": "cilj.php",
+        "name": "uvod",
+        "href": "\/o-nama\/uvod",
+        "path": "pages\/uvod.php",
+        "file": "uvod.php",
         "status": 1,
-        "created_at": "2025-11-07 14:35:00"
+        "created_at": "2025-11-10 08:50:27"
     },
     {
-        "id": "690e039413b32",
+        "id": "6911a75339c71",
         "static": false,
         "movable": false,
-        "name": "zaposleni",
-        "href": "\/o-nama\/zaposleni",
-        "path": "pages\/zaposleni.php",
-        "file": "zaposleni.php",
+        "name": "misija-i-vizija",
+        "href": "\/o-nama\/misija-i-vizija",
+        "path": "pages\/misija-i-vizija.php",
+        "file": "misija-i-vizija.php",
         "status": 1,
-        "created_at": "2025-11-07 14:35:00"
+        "created_at": "2025-11-10 08:50:27"
     },
     {
-        "id": "690e0394176d5",
+        "id": "6911a7533f3c8",
         "static": false,
         "movable": false,
-        "name": "misija",
-        "href": "\/o-nama\/misija",
-        "path": "pages\/misija.php",
-        "file": "misija.php",
+        "name": "istorijat",
+        "href": "\/o-nama\/istorijat",
+        "path": "pages\/istorijat.php",
+        "file": "istorijat.php",
         "status": 1,
-        "created_at": "2025-11-07 14:35:00"
+        "created_at": "2025-11-10 08:50:27"
     },
     {
-        "id": "690e039419427",
+        "id": "6911a753461f8",
         "static": false,
         "movable": false,
-        "name": "pitanja",
-        "href": "\/o-nama\/pitanja",
-        "path": "pages\/pitanja.php",
-        "file": "pitanja.php",
+        "name": "organizaciona-struktura",
+        "href": "\/o-nama\/organizaciona-struktura",
+        "path": "pages\/organizaciona-struktura.php",
+        "file": "organizaciona-struktura.php",
         "status": 1,
-        "created_at": "2025-11-07 14:35:00"
+        "created_at": "2025-11-10 08:50:27"
     },
     {
-        "id": "690e03941b6f0",
+        "id": "6911a7534b95c",
+        "static": false,
+        "movable": false,
+        "name": "organi-upravljanja",
+        "href": "\/o-nama\/organi-upravljanja",
+        "path": "pages\/organi-upravljanja.php",
+        "file": "organi-upravljanja.php",
+        "status": 1,
+        "created_at": "2025-11-10 08:50:27"
+    },
+    {
+        "id": "6911a7534fe26",
+        "static": false,
+        "movable": false,
+        "name": "objekat",
+        "href": "\/o-nama\/objekat",
+        "path": "pages\/objekat.php",
+        "file": "objekat.php",
+        "status": 1,
+        "created_at": "2025-11-10 08:50:27"
+    },
+    {
+        "id": "6911a753507b2",
+        "static": false,
+        "movable": false,
+        "name": "donacije-i-podrska",
+        "href": "\/o-nama\/donacije-i-podrska",
+        "path": "pages\/donacije-i-podrska.php",
+        "file": "donacije-i-podrska.php",
+        "status": 1,
+        "created_at": "2025-11-10 08:50:27"
+    },
+    {
+        "id": "6911a75350fed",
+        "static": false,
+        "movable": false,
+        "name": "partneri",
+        "href": "\/o-nama\/partneri",
+        "path": "pages\/partneri.php",
+        "file": "partneri.php",
+        "status": 1,
+        "created_at": "2025-11-10 08:50:27"
+    },
+    {
+        "id": "6911a75354b65",
+        "static": false,
+        "movable": false,
+        "name": "dogadjaji",
+        "href": "\/aktivnosti\/dogadjaji",
+        "path": "pages\/dogadjaji.php",
+        "file": "dogadjaji.php",
+        "status": 1,
+        "created_at": "2025-11-10 08:50:27"
+    },
+    {
+        "id": "6911a75358125",
         "static": false,
         "movable": false,
         "name": "vesti",
-        "href": "\/vesti",
+        "href": "\/aktivnosti\/vesti",
         "path": "pages\/vesti.php",
         "file": "vesti.php",
         "status": 1,
-        "created_at": "2025-11-07 14:35:00"
+        "created_at": "2025-11-10 08:50:27"
     },
     {
-        "id": "690e03941e850",
+        "id": "6911a75358962",
+        "static": false,
+        "movable": false,
+        "name": "za-decu",
+        "href": "\/usluge\/za-decu",
+        "path": "pages\/za-decu.php",
+        "file": "za-decu.php",
+        "status": 1,
+        "created_at": "2025-11-10 08:50:27"
+    },
+    {
+        "id": "6911a7535912e",
+        "static": false,
+        "movable": false,
+        "name": "radionice-i-igre",
+        "href": "\/usluge\/radionice-i-igre",
+        "path": "pages\/radionice-i-igre.php",
+        "file": "radionice-i-igre.php",
+        "status": 1,
+        "created_at": "2025-11-10 08:50:27"
+    },
+    {
+        "id": "6911a7535c891",
+        "static": false,
+        "movable": false,
+        "name": "repertoar",
+        "href": "\/repertoar",
+        "path": "pages\/repertoar.php",
+        "file": "repertoar.php",
+        "status": 1,
+        "created_at": "2025-11-10 08:50:27"
+    },
+    {
+        "id": "6911a75363829",
         "static": false,
         "movable": false,
         "name": "galerija",
@@ -74,10 +162,10 @@
         "path": "pages\/galerija.php",
         "file": "galerija.php",
         "status": 1,
-        "created_at": "2025-11-07 14:35:00"
+        "created_at": "2025-11-10 08:50:27"
     },
     {
-        "id": "690e039427f19",
+        "id": "6911a7537980d",
         "static": false,
         "movable": false,
         "name": "dokumenti",
@@ -85,21 +173,10 @@
         "path": "pages\/dokumenti.php",
         "file": "dokumenti.php",
         "status": 1,
-        "created_at": "2025-11-07 14:35:00"
+        "created_at": "2025-11-10 08:50:27"
     },
     {
-        "id": "690e039429a89",
-        "static": false,
-        "movable": false,
-        "name": "seminari",
-        "href": "\/seminari",
-        "path": "pages\/seminari.php",
-        "file": "seminari.php",
-        "status": 1,
-        "created_at": "2025-11-07 14:35:00"
-    },
-    {
-        "id": "690e039443a29",
+        "id": "6911a753b3dd0",
         "static": false,
         "movable": false,
         "name": "kontakt",
@@ -107,6 +184,6 @@
         "path": "pages\/kontakt.php",
         "file": "kontakt.php",
         "status": 1,
-        "created_at": "2025-11-07 14:35:00"
+        "created_at": "2025-11-10 08:50:27"
     }
 ]

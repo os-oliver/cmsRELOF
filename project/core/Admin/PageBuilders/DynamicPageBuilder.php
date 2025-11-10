@@ -305,7 +305,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     }
 
     // Enhanced action link
-    $html .= "<a href='sadrzaj?id={$itemId}&tip=Vesti' class='card-action-link mt-5'>
+    $html .= "<a href='/sadrzaj?id={$itemId}&tip={{SLUG}}' class='card-action-link mt-5'>
                 <span class='link-content'>
                     <span>Saznaj više</span>
                     <svg class='link-icon' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
