@@ -703,7 +703,7 @@
                     $locale = 'sr';
                 }
                 ?>
-                <div class="dropdown nonPage relative group ">
+                <div class="locale dropdown nonPage relative group ">
                     <button
                         class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
                         <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
@@ -714,8 +714,7 @@
                     <div
                         class="dropdown-menu absolute top-full right-0 min-w-max bg-surface rounded-xl shadow-2xl border border-border_light z-50 py-2 backdrop-blur-sm">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>"
-                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                            <a href="?locale=<?= $key ?>" class="locale-link dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
                                 <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
                                 <span class="font-medium"><?= $lang['label'] ?></span>
                             </a>
@@ -1724,6 +1723,15 @@
 
         document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
             observer.observe(el);
+        });
+
+        // Ensure language links always trigger full page reload
+        document.querySelectorAll('.locale-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Allow default behavior (full page reload)
+                // This ensures the PHP session gets the new locale value
+                return true;
+            });
         });
     </script>
 </body>
