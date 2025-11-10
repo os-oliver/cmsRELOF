@@ -433,6 +433,10 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-tie mr-2 text-purple-600"></i>Zaposleni
                             </a>
+                            <a data-page="Galerija" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-images mr-2 text-velvet"></i>Galerija
+                            </a>
                             <a data-page="Sluzbe" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
@@ -581,6 +585,11 @@
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-user-tie mr-3 text-accent_purple flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Zaposleni</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-images mr-3 text-velvet flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Galerija</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -838,17 +847,17 @@
                         <div class="hero-slider">
                             <!-- Slide 1 -->
                             <div class="hero-slide active">
-                                <img src="https://picsum.photos/800/600?random=1" alt="Socijalna zaštita" />
+                                <img id="g-slider-image-1" src="/uploads/socijalna ustanova 1.jpg" alt="Socijalna zaštita" />
                             </div>
                             <!-- Slide 2 -->
                             <div class="hero-slide">
-                                <img src="https://picsum.photos/800/600?random=2" alt="Porodična podrška" />
+                                <img id="g-slider-image-2" src="/uploads/socijalna ustanova 2.jpg" alt="Porodična podrška" />
                             </div>
                             <!-- Slide 3 -->
                             <div class="hero-slide">
-                                <img src="https://picsum.photos/800/600?random=3" alt="Pomoć starima" />
+                                <img id="g-slider-image-3" src="/uploads/socijalna ustanova 3.jpg" alt="Pomoć starima" />
                             </div>
-                            
+
                             <!-- Dots Indicator -->
                             <div class="slider-dots">
                                 <span class="dot active" data-slide="0"></span>
