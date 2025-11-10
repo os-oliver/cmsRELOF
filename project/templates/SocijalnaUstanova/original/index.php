@@ -683,6 +683,10 @@
                     <span class="hidden xl:inline text-sm">Kontakt</span>
                 </a>
 
+                <a href="#" class="hidden">
+                    Ankete
+                </a>
+
                 <?php
                 if (isset($_GET['locale'])) {
                     $_SESSION['locale'] = $_GET['locale'];
@@ -1339,6 +1343,7 @@
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Naše službe</h4>
                     <ul class="space-y-3">
+                        <li><a href="/ankete" class="text-white/80 hover:text-primary_lighter transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Zaštita dece</a></li>
                         <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Porodično savetovanje</a></li>
                         <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Pomoć starima</a></li>
