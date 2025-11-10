@@ -437,6 +437,14 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
                             </a>
+                            <a data-page="Pitanja" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-circle-question mr-2 text-pink-600"></i>Pitanja
+                            </a>
+                            <a data-page="Informacije" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-bullhorn mr-2 text-red-600"></i>Informacije
+                            </a>
                         </div>
                     </div>
 
@@ -582,6 +590,16 @@
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Službe</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-circle-question mr-3 text-accent_pink flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Pitanja</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-bullhorn mr-3 text-danger flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Informacije</span>
                         </a>
                     </div>
                 </div>
