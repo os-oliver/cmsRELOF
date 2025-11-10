@@ -877,7 +877,7 @@
     </section>
 
     <!-- Training Programs Section -->
-    <section id="obuke" class="py-20 bg-surface">
+    <section id="programiobuke" class="py-20 bg-surface">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
@@ -889,37 +889,37 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div id="programiobukeCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <!-- Training Program 1 -->
                 <div class="bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <div class="h-48 relative">
-                        <img id="g-obuka-image-1" src="https://picsum.photos/600/400?random=20"
+                        <img id="g-slika" src="https://picsum.photos/600/400?random=20"
                             alt="Roditeljske veštine" class="w-full h-full object-cover">
-                        <div class="absolute top-4 right-4 bg-success_bg/80 text-white px-2 py-1 rounded text-sm">Novo</div>
+                        <div class="absolute top-4 right-4 bg-success_bg/80 text-white px-2 py-1 rounded text-sm"><span id="g-oznaka">Novo</span></div>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
                             <div class="w-10 h-10 rounded-full bg-success_bg flex items-center justify-center text-white mr-3">
-                                <i class="fas fa-baby"></i>
+                                <i id="g-ikonica" class="fas fa-baby"></i>
                             </div>
-                            <span class="text-success font-bold">RODITELJSTVO</span>
+                            <span id="g-kategorija" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-slate mb-2">Program obuke „Roditeljske veštine"</h3>
-                        <p class="text-text_secondary mb-4">Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.</p>
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-slate mb-2">Program obuke „Roditeljske veštine"</h3>
+                        <p id="g-kratakOpis" class="text-text_secondary mb-4">Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.</p>
                         <div class="flex justify-between items-center">
                             <div class="text-sm text-text_secondary">
                                 <div class="flex items-center mb-1">
                                     <i class="fas fa-calendar mr-2"></i>
-                                    <span>Svake nedelje</span>
+                                    <span id="g-ucestalost">Svake nedelje</span>
                                 </div>
                                 <div class="flex items-center">
                                     <i class="fas fa-clock mr-2"></i>
-                                    <span>18:00 - 20:00</span>
+                                    <span id="g-vremePocetka">18:00</span> - <span id="g-vremeZavrsetka">20:00</span>
                                 </div>
                             </div>
-                            <button class="bg-success_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-success_hover transition-colors">
+                            <a id="g-linkPrijave" href="#" class="bg-success_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-success_hover transition-colors">
                                 Prijavi se
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
