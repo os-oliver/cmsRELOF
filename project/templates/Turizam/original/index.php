@@ -121,7 +121,7 @@
             <i class="fas fa-home mr-3 text-primary"></i>Početna
           </a>
 
-          <div class="mobile-dropdown">
+          <!--<div class="mobile-dropdown">
             <button
               class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
               id="mobileAboutToggle"
@@ -144,8 +144,46 @@
               <a href="/o-nama/misija" class="flex items-center py-2 px-4 transition-colors rounded-lg hover:bg-gray-50">
                 <i class="fas fa-flag mr-2 text-primary"></i>Misija
               </a>
+              <a href="#"
+                  class="items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors hidden">
+                  <i class="hidden xl:inline"></i>Pitanja
+              </a>
             </div>
           </div>
+  -->
+        <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
+                            id="mobileAboutToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-info-circle mr-3 text-primary"></i>O nama
+                            </div>
+                            <i class="fas fa-chevron-down  transition-transform duration-200"
+                                id="mobileAboutIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-flag mr-2 text-primary"></i>Misija
+                            </a>
+                            <a href="#"
+                                class="items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors hidden">
+                                <i class="hidden xl:inline"></i>Pitanja
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-users mr-2 text-primary"></i>Timovi
+                            </a>
+                        </div>
+                    </div>
 
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
             <i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinacije
@@ -197,7 +235,7 @@
 
       <!-- Desktop Navigation -->
       <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-6 text-secondary_text">
-        <div class="dropdown relative group">
+        <!--<div class="dropdown relative group">
           <button class="nav-link hover:text-primary transition-all duration-200 px-3 py-2 rounded-lg">
             <span class="transition-colors flex items-center whitespace-nowrap px-1">O nama 
               <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-200 group-hover:rotate-180"></i></span>
@@ -207,8 +245,43 @@
             <a static="true" href="/o-nama/cilj" class="dropdown-item block px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1 font-medium">Cilj</a>
             <a static="true" href="/o-nama/misija" class="dropdown-item block px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1 font-medium">Misija</a>
             <a static="true" href="/o-nama/zaposleni" class="dropdown-item block px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1 font-medium">Zaposleni</a>
+            <a href="#"
+                class="dropdown-item items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2 hidden">
+                <span class="hidden xl:inline">Pitanja</span>
+            </a>
           </div>
-        </div>
+        </div>-->
+        <div class="dropdown relative group transition-colors">
+                    <button
+                        class="nav-link transition-colors flex items-center whitespace-nowrap">
+                        <!--<i class="fas fa-info-circle mr-2 text-primary"></i>-->
+                        <span class="hidden xl:inline">O nama</span>
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="#" static="true"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            Cilj
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            Zaposleni
+                        </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            Misija
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            Timovi
+                        </a>
+                        <a href="#"
+                            class="dropdown-item items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2 hidden">
+                            <span class="hidden xl:inline">Pitanja</span>
+                        </a>
+                    </div>
+                </div>
 
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Destinacije</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Manifestacije</a>
