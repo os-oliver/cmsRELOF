@@ -708,6 +708,8 @@ class PageExporter
             case 'ankete':
                 return new AnketePageBuilder('Ankete');
             case 'repertoar':
+                return new RepertoarPageBuilder('Repertoar');
+            case 'repertoar':
                 return new LibraryProgramPageBuilder('repertoar');
             case 'izlozbe':
                 return new IzlozbePageBuilder('izlozbe');
@@ -719,8 +721,6 @@ class PageExporter
                 return new DynamicPageBuilder('fondovi');
             case 'sportovi':
                 return new SportoviPageBuilder('sportovi');
-            case 'repertoar':
-                return new RepertoarPageBuilder('Repertoar');
             case 'ansambl':
                 return new DynamicPageBuilder('Ansambl');
             case 'pitanja':
