@@ -108,7 +108,7 @@
   ],
   "fields": [
     {
-      "name": "naziv",
+      "name": "naziv_destinacije",
       "type": "text",
       "label": {
         "sr": "Naziv destinacije",
@@ -128,7 +128,7 @@
       "required": true,
       "property": "auto"
     },
-    { "name": "kategorija", "type": "categories", "label": { "sr": "Kategorija destinacije", "en": "Destination category", "sr-Cyrl": "Категорија дестинације" }, "options": [ "Priroda", "Gradovi", "More", "Planine", "Jezera", "Nacionalni parkovi", "Banjska lečilišta", "Seoski turizam", "Kulturna baština" ], "required": true },
+    { "name": "kategorija_destinacije", "type": "categories", "label": { "sr": "Kategorija destinacije", "en": "Destination category", "sr-Cyrl": "Категорија дестинације" }, "options": [ "Priroda", "Gradovi", "More", "Planine", "Jezera", "Nacionalni parkovi", "Banjska lečilišta", "Seoski turizam", "Kulturna baština" ], "required": true },
     {
       "name": "drzava",
       "type": "text",
