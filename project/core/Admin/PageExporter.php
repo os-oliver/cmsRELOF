@@ -6,11 +6,10 @@ use App\Admin\PageBuilders\AnketePageBuilder;
 use App\Admin\PageBuilders\AnsambalPageBuilder;
 use App\Admin\PageBuilders\DynamicPageBuilder;
 use App\Admin\PageBuilders\EmployeesPageBuilder;
-use App\Admin\PageBuilders\GoalPageBulder;
+use App\Admin\PageBuilders\GoalPageBuilder;
 use App\Admin\PageBuilders\IzlozbePageBuilder;
 use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
-use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\ObjekatPageBuilder;
 use App\Admin\PageBuilders\OrganizacijaPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
@@ -26,6 +25,7 @@ use App\Admin\PageBuilders\PravaPageBuilder;
 use App\Admin\PageBuilders\SluzbePageBuilder;
 use App\Admin\PageBuilders\ObrasciPageBuilder;
 use App\Admin\PageBuilders\NasiKorisniciPageBuilder;
+use App\Admin\PageBuilders\DestinacijePageBuilder;
 use App\Admin\PageBuilders\ZnacajaStranica;
 use App\Controllers\AuthController;
 use App\Models\Content;
@@ -215,7 +215,7 @@ class PageExporter
 
                 if ($parent->hasAttribute('data-translate')) {
                     $translateAttr = $parent->getAttribute('data-translate');
-                    if ('off' == $translateAttr) {
+                    if ('off' == strtolower($translateAttr)) {
                         return false;
                     }
                 }
@@ -535,7 +535,7 @@ class PageExporter
         foreach ($structure as $k => $v) {
             $structureLower[strtolower($k)] = $v;
         }
-        print_r(array_keys($this->data));
+        // print_r(array_keys($this->data));
 
         foreach ($this->data['ids'] as $entry) {
             // Split by '-' if exists
@@ -655,13 +655,11 @@ class PageExporter
             case 'misija':
                 return new MissionPageBuilder($name, $this->data);
             case 'cilj':
-                return new GoalPageBulder($name, $this->data);
+                return new GoalPageBuilder($name, $this->data);
             case 'predstave':
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
                 return new VestiPageBuilder('Vesti');
-            case 'naucni-klub':
-                return new NaucniKlubPageBuilder('NaucniKlub');
             case 'vrtici':
                 return new VrticiPageBuilder('Vrtici');
             case 'timovi':
@@ -688,15 +686,23 @@ class PageExporter
                 return new ObrasciPageBuilder('Obrasci');
             case 'nasi-korisnici':
                 return new NasiKorisniciPageBuilder('NasiKorisnici', $this->data);
+            case 'destinacije':
+                return new DestinacijePageBuilder('Destinacije');
+            case 'manifestacije':
+                return new DynamicPageBuilder('Manifestacije');
+            case 'smestaj':
+                return new DynamicPageBuilder('Smestaj');
+            case 'aktivnosti':
+                return new DynamicPageBuilder('Aktivnosti');
+            case 'gastronomija':
+                return new DynamicPageBuilder('Gastronomija');
             case 'ansambl':
                 return new AnsambalPageBuilder('Ansambl');
             case 'projekti':
                 return new ProjektiPageBuilder('Projekti');
-
-            case strpos($name, 'uvod') !== false:
+            case stripos($name, 'uvod') !== false:
                 return new UvodPageBuilder('Uvod', $this->data);
-
-            case strpos($name, 'projekti') !== false:
+            case stripos($name, 'projekti') !== false:
                 return new ProjektiPageBuilder('Projekti');
             case 'organizaciona-struktura':
                 return new EmployeesPageBuilder('Organizaciona Struktura', $this->data);
@@ -793,6 +799,16 @@ class PageExporter
             return 'obrasci';
         } elseif (strpos($name, 'nasi-korisnici') !== false || strpos($name, 'naši korisnici') !== false || strpos($name, 'nai-korisnici') !== false) {
             return 'nasi-korisnici';
+        } elseif (strpos($name, 'destinacije') !== false) {
+            return 'destinacije';
+        } elseif (strpos($name, 'manifestacije') !== false) {
+            return 'manifestacije';
+        } elseif (strpos($name, 'smestaj') !== false) {
+            return 'smestaj';
+        } elseif (strpos($name, 'aktivnosti') !== false) {
+            return 'aktivnosti';
+        } elseif (strpos($name, 'gastronomija') !== false) {
+            return 'gastronomija';
         } elseif (strpos($name, 'ansambl') !== false) {
             return 'ansambl';
         } elseif (strpos($name, 'projekti') !== false) {
@@ -857,6 +873,7 @@ class PageExporter
         } elseif (strpos($name, 'organi-upravljanja') !== false) {
             return 'organi-upravljanja';
         }
+
 
 
         return 'basic';
