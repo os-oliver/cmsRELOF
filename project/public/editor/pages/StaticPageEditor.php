@@ -1,5 +1,8 @@
 <?php
 session_start();
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
 use App\Controllers\AuthController;
 
 // Require editor authentication
@@ -449,7 +452,7 @@ $locale = LocaleManager::get();
             </div>
         </div>
     </div>
-    <script src="/assets/js/dashboard/staticPageBuilder.js?v=<?= time() ?>"></script>
+    <script defer src="/assets/js/dashboard/staticPageBuilder.js?v=<?= time() ?>"></script>
 
 </body>
 
