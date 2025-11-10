@@ -25,12 +25,11 @@ class TimoviPageBuilder extends BasePageBuilder
 
     private function initializeTexts(): void
     {
-        // Get current locale
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
         $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-        // Define all static texts in Latin
+
         $latinTexts = [
             'search_placeholder' => 'Pretraži...',
             'apply_button' => 'Primeni',
@@ -39,9 +38,9 @@ class TimoviPageBuilder extends BasePageBuilder
             'location' => 'Lokacija',
             'event_details' => 'Detalji događaja',
             'no_items_found' => 'Nema pronađenih stavki',
-            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec'],
         ];
-        // Convert to Cyrillic if needed
+
         if ($locale === 'sr-Cyrl') {
             $this->texts = $this->translator->latin_to_cyrillic_array($latinTexts);
         } else {

@@ -28,97 +28,35 @@
         }
       ]
     },
-    "Vesti": {
-      "sr": "Vesti",
-      "en": "News",
-      "sr-Cyrl": "Вести",
-      "icon": "fas fa-newspaper",
-      "categories": [
-        "Kultura",
-        "Obrazovanje",
-        "Inovacije",
-        "Zdravlje",
-        "Tehnologija",
-        "Naučni klub"
-      ],
+
+    "Pitanja": {
+      "sr": "Često postavljena pitanja",
+      "en": "Frequently asked questions",
+      "sr-Cyrl": "Често постављена питања",
+      "icon": "fa-solid fa-circle-question",
       "fields": [
         {
-          "name": "naslov",
+          "name": "question",
           "type": "text",
           "label": {
-            "sr": "Naslov vesti",
-            "en": "News title",
-            "sr-Cyrl": "Наслов вести"
+            "sr": "Pitanje",
+            "en": "Question",
+            "sr-Cyrl": "Питање"
           },
           "required": true
         },
         {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
-          },
-          "required": true,
-          "property": "auto"
-        },
-        {
-          "name": "naziv",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija vesti",
-            "en": "News category",
-            "sr-Cyrl": "Категорија вести"
-          },
-          "options": [
-            "Kultura",
-            "Obrazovanje",
-            "Inovacije",
-            "Zdravlje",
-            "Tehnologija"
-          ],
-          "required": true
-        },
-        {
-          "name": "autor",
-          "type": "text",
-          "label": {
-            "sr": "Autor",
-            "en": "Author",
-            "sr-Cyrl": "Аутор"
-          }
-        },
-        {
-          "name": "opis",
+          "name": "answer",
           "type": "textarea",
           "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
-          }
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika vesti",
-            "en": "News image",
-            "sr-Cyrl": "Насловна слика вести"
-          }
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Eksterni link",
-            "en": "External link",
-            "sr-Cyrl": "Екстерни линк"
-          }
+            "sr": "Odgovor",
+            "en": "Answer",
+            "sr-Cyrl": "Одговор"
+          },
+          "required": true
         }
       ]
     },
-
     "OrganiUpravljanja": {
       "sr": "Organi upravljanja",
       "en": "Management bodies",

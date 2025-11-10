@@ -18,7 +18,7 @@ class PosebneUslugePageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
 
     <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center font-body text-secondary_text">
-      <h1 class="text-primary_text text-5xl font-heading mb-4 mt-4">Posebne usluge naših predškolskih ustanova</h1>
+      <h1 class="text-primary_text text-3xl font-heading mb-4 mt-4">Posebne usluge naših predškolskih ustanova</h1>
 
         <div class="text-left mb-6 space-y-3">
             <p class="text-xl"><strong>Organizovani prevoz dece</strong> - Bezbedan i pouzdan dnevni transport do ustanove i nazad</p>

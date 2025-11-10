@@ -813,8 +813,9 @@ class PersonalContentController
         }
 
         if (!empty($images)) {
+            $galleryLabel = $this->getGalleryLabel($locale);
             $html .= '<div class="mt-8">
-                        <h3 class="text-xl font-heading text-primary_text mb-4"><i class="fas fa-images"></i> Galerija</h3>
+                        <h3 class="text-xl font-heading text-primary_text mb-4"><i class="fas fa-images mr-2"></i>' . $galleryLabel . '</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">';
             foreach ($images as $img) {
                 $path = htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8');

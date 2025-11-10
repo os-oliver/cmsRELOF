@@ -437,6 +437,14 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
                             </a>
+                            <a data-page="Pitanja" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-circle-question mr-2 text-pink-600"></i>Pitanja
+                            </a>
+                            <a data-page="Informacije" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-bullhorn mr-2 text-red-600"></i>Informacije
+                            </a>
                         </div>
                     </div>
 
@@ -492,10 +500,6 @@
                             <a data-page="Obrasci" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-primary transition-colors">
                                 <i class="fas fa-file-signature mr-2 text-success"></i>Obrasci za podnošenje zahteva
-                            </a>
-                            <a data-page="FAQ" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-primary transition-colors">
-                                <i class="fas fa-question-circle mr-2 text-accent_orange"></i>FAQ
                             </a>
                         </div>
                     </div>
@@ -583,6 +587,16 @@
                             <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Službe</span>
                         </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-circle-question mr-3 text-accent_pink flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Pitanja</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-bullhorn mr-3 text-danger flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Informacije</span>
+                        </a>
                     </div>
                 </div>
 
@@ -650,11 +664,6 @@
                             <i class="fas fa-file-signature mr-3 text-success flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Obrasci za podnošenje zahteva</span>
                         </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-question-circle mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">FAQ</span>
-                        </a>
                     </div>
                 </div>
 
@@ -663,6 +672,10 @@
                     <i
                         class="fas fa-address-book mr-2 text-accent_teal group-hover:text-accent_teal_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Kontakt</span>
+                </a>
+
+                <a href="#" class="hidden">
+                    Ankete
                 </a>
 
                 <?php
@@ -1321,6 +1334,7 @@
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Naše službe</h4>
                     <ul class="space-y-3">
+                        <li><a href="/ankete" class="text-white/80 hover:text-primary_lighter transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Zaštita dece</a></li>
                         <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Porodično savetovanje</a></li>
                         <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Pomoć starima</a></li>
