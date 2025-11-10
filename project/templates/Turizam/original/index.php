@@ -253,9 +253,9 @@
         </div>-->
         <div class="dropdown relative group transition-colors">
                     <button
-                        class="nav-link transition-colors flex items-center whitespace-nowrap">
+                        class="px-3 py-2 nav-link transition-colors flex items-center whitespace-nowrap px-1">
                         <!--<i class="fas fa-info-circle mr-2 text-primary"></i>-->
-                        <span class="hidden xl:inline">O nama</span>
+                        <span class="hidden xl:inline flex items-center">O nama</span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <div
@@ -559,10 +559,10 @@
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <div id="g-kategorija" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
+            <div id="g-kategorija_destinacije" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
               Planina
             </div>
-            <h3 id="g-naziv" class="text-2xl font-bold mb-2">Vrhovi Regije</h3>
+            <h3 id="g-naziv_destinacije" class="text-2xl font-bold mb-2">Vrhovi Regije</h3>
             <p id="g-kratak_opis" class="text-gray-200 mb-4">
               Spektakularni pogledi i planinarske staze
             </p>
