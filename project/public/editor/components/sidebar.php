@@ -74,16 +74,7 @@
                     </span>
                 </a>
             </li>
-            <li class="mb-1">
-                <a href="/kontrolna-tabla/zalbe" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'complaints')
-                    ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
-                    : 'text-gray-600 hover:text-gray-900' ?>">
-                    <i class="fas fa-triangle-exclamation text-primary-500 mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">
-                        <?= __('sidebar.complaints') ?>
-                    </span>
-                </a>
-            </li>
+
             <li class="mb-1">
                 <a href="/kontrolna-tabla/o-nama" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'aboutus')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
@@ -137,8 +128,15 @@
     <!-- User Profile -->
     <div class="p-4 border-t border-gray-200 flex items-center">
         <div class="relative">
-            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="User"
-                class="w-10 h-10 rounded-full border-2 border-primary-600">
+            <div
+                class="w-10 h-10 rounded-full border-2 border-primary-600 bg-gray-100 flex items-center justify-center text-gray-600">
+                <!-- User icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 0115 0" />
+                </svg>
+            </div>
             <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
         </div>
         <div class="ml-3">
@@ -146,4 +144,5 @@
             <p class="text-xs text-primary-600"><?= $role ?></p>
         </div>
     </div>
+
 </div>

@@ -12,6 +12,7 @@ use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\ObjekatPageBuilder;
+use App\Admin\PageBuilders\OrganizacijaPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\SportoviPageBuilder;
@@ -735,6 +736,8 @@ class PageExporter
                 return new SavetovalistePageBuilder('Savetovaliste', $this->data);
             case 'posebne':
                 return new PosebneUslugePageBuilder('PosebneUsluge', $this->data);
+            case 'organi-upravljanja':
+                return new OrganizacijaPageBuilder('OrganiUpravljanja');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -851,6 +854,8 @@ class PageExporter
 
         } elseif (strpos($name, 'zaposleni') !== false) {
             return 'zaposleni';
+        } elseif (strpos($name, 'organi-upravljanja') !== false) {
+            return 'organi-upravljanja';
         }
 
 
