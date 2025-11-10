@@ -501,10 +501,6 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-primary transition-colors">
                                 <i class="fas fa-file-signature mr-2 text-success"></i>Obrasci za podnošenje zahteva
                             </a>
-                            <a data-page="FAQ" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-primary transition-colors">
-                                <i class="fas fa-question-circle mr-2 text-accent_orange"></i>FAQ
-                            </a>
                         </div>
                     </div>
 
@@ -667,11 +663,6 @@
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-file-signature mr-3 text-success flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Obrasci za podnošenje zahteva</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-question-circle mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">FAQ</span>
                         </a>
                     </div>
                 </div>
