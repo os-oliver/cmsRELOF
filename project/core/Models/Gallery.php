@@ -200,33 +200,33 @@ class Gallery
         try {
             $this->pdo->beginTransaction();
 
-            // If new image provided, replace file and update path
-            if (!empty($data['image_file_path'])) {
+            // Only update image if a new image is provided
+            if (isset($data['image_file_path']) && $data['image_file_path'] !== null && $data['image_file_path'] !== '') {
                 $stmtOld = $this->pdo->prepare("SELECT image_file_path FROM gallery WHERE id = :id");
                 $stmtOld->execute([':id' => $id]);
                 $old = $stmtOld->fetchColumn();
-                if ($old) {
+                // Only delete old file if the new image is different and not empty
+                if ($old && $old !== ('/uploads/gallery/' . $data['image_file_path'])) {
                     $fullOld = __DIR__ . '/../../public' . $old;
-                    if (file_exists($fullOld))
+                    if (file_exists($fullOld)) {
                         unlink($fullOld);
+                    }
                 }
 
                 $stmtImg = $this->pdo->prepare("UPDATE gallery SET image_file_path = :path WHERE id = :id");
                 $stmtImg->execute([':path' => '/uploads/gallery/' . $data['image_file_path'], ':id' => $id]);
             }
 
-            // Update other meta if needed (here none besides image)
-
             // Replace text entries for title/description
-            $stmtDel = $this->pdo->prepare("\n                DELETE FROM text WHERE source_id = :id AND source_table = 'gallery'\n            ");
+            $stmtDel = $this->pdo->prepare("DELETE FROM text WHERE source_id = :id AND source_table = 'gallery'");
             $stmtDel->execute([':id' => $id]);
 
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
             $titleVariants = $this->transliterateVariants((string) ($data['title'] ?? ''), $locale);
             $descVariants = $this->transliterateVariants((string) ($data['description'] ?? ''), $locale);
 
-            $stmtText = $this->pdo->prepare("\n                INSERT INTO text (source_id, source_table, field_name, lang, content)
-                VALUES (:source_id, 'gallery', :field_name, :lang, :content)\n            ");
+            $stmtText = $this->pdo->prepare("INSERT INTO text (source_id, source_table, field_name, lang, content)
+                VALUES (:source_id, 'gallery', :field_name, :lang, :content)");
 
             foreach (['title' => $titleVariants, 'description' => $descVariants] as $field => $variants) {
                 foreach ($variants as $lg => $c) {

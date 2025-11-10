@@ -96,7 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
     item.querySelector(".gallery-edit")?.addEventListener("click", () => {
       $("#galleryTitle").value = title;
       $("#galleryDescription").value = description;
-      $("#galleryMethod").value = "PUT";
+      // Use POST for edit so multipart/form-data uploads are sent and handled by the server
+      $("#galleryMethod").value = "POST";
       $("#galleryEndpoint").value = `/gallery/${id}`;
       if (!form.querySelector('[name="id"]'))
         form.insertAdjacentHTML(
