@@ -583,7 +583,7 @@ PHP;
     <section class="container mx-auto px-4 py-12">
         <!-- Zaglavlje -->
         <div class="mb-8">
-            <h1 class="text-4xl font-bold text-primary_text mb-2">Projekti</h1>
+            <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Projekti</h1>
             <p class="text-lg text-secondary_text">Istražite naše aktuelne i završene projekte</p>
         </div>
         
