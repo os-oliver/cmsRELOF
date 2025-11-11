@@ -55,7 +55,7 @@
   "sidebar.documents": "Dokumenti",
   "sidebar.events": "Događaji",
   "sidebar.gallery": "Galerija",
-  "sidebar.promotion": "Promocija",
+  "sidebar.promotion": "Dizajn sajta",
   "sidebar.messages": "Poruke",
   "sidebar.about_us": "O nama",
   "sidebar.complaints": "Žalbe",
@@ -272,9 +272,9 @@
   "gallery.view_full_image": "Prikaži celu sliku",
   "gallery.pagination_summary": "Prikazano {{shown}} od {{of}} slika",
 
-  "promotion.page_title": "Promocija - Administracija",
+  "promotion.page_title": "Upravlajnje - Administracija",
   "promotion.management_title": "Upravljanje promocijom",
-  "promotion.management_subtitle": "Pregled i upravljanje detaljima najnovijih promocija",
+  "promotion.management_subtitle": "Pregled i upravljanje detaljima najnovijih ",
   "promotion.save": "Sačuvaj",
 
   "documents.recent_documents": "Nedavni dokumenti",

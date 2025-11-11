@@ -26,7 +26,8 @@ class Subcategory
             FROM subcategory_document
             JOIN text 
             ON source_id = subcategory_document.id 
-            AND source_table = 'subcategory_document'";
+            AND source_table = 'subcategory_document'
+            order by category_id asc";
 
         $stmt = $this->pdo->query($sql);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);

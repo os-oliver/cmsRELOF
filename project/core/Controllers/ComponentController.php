@@ -57,7 +57,10 @@ class ComponentController
     public function loadComponent(): void
     {
         $name = $_GET['cmp'] ?? '';
-        $path = PUBLIC_ROOT . '/exportedPages/pages/' . $name . '.php';
+        if ($name == 'index') {
+            $path = PUBLIC_ROOT . '/exportedPages/' . $name . '.php';
+        } else
+            $path = PUBLIC_ROOT . '/exportedPages/pages/' . $name . '.php';
         error_log($path);
 
 

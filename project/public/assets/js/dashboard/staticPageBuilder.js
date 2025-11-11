@@ -519,6 +519,7 @@ function savePageColumnsState(action = "update") {
         console.log("Save response:", data);
         if (data.success) {
           alert("Stranice su uspešno sačuvane!");
+          window.location.reload();
         } else {
           throw new Error(data.error || "Error saving pages");
         }

@@ -97,6 +97,8 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET', '/gallery', 'GalleryController@list');
     $r->addRoute('GET', '/gallery/{id:\d+}', 'GalleryController@show');
     $r->addRoute('POST', '/gallery', 'GalleryController@newImage');
+    // Allow POST for updating an existing gallery item (supports multipart/form-data uploads)
+    $r->addRoute('POST', '/gallery/{id:\d+}', 'GalleryController@update');
     $r->addRoute('PUT', '/gallery/{id:\d+}', 'GalleryController@update');
     $r->addRoute('DELETE', '/gallery/{id:\d+}', 'GalleryController@delete');
 
