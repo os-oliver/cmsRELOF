@@ -724,8 +724,6 @@ class PageExporter
                 return new DynamicPageBuilder('Ansambl');
             case 'pitanja':
                 return new FAQPageBuilder('Pitanja');
-            case 'test123':
-                return new TestBuilder('Test', $this->data);
             case 'jelovnik':
                 return new JelovnikPageBuilder('Jelovnik', $this->data);
             case 'cenovnik':
