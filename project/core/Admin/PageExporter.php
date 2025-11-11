@@ -697,6 +697,8 @@ class PageExporter
             case 'gastronomija':
                 return new DynamicPageBuilder('Gastronomija');
             case 'ansambl':
+                return new DynamicPageBuilder('Ansambl');
+            case 'ansambl':
                 return new AnsambalPageBuilder('Ansambl');
             case 'projekti':
                 return new ProjektiPageBuilder('Projekti');
@@ -722,8 +724,6 @@ class PageExporter
                 return new DynamicPageBuilder('fondovi');
             case 'sportovi':
                 return new SportoviPageBuilder('sportovi');
-            case 'ansambl':
-                return new DynamicPageBuilder('Ansambl');
             case 'pitanja':
                 return new FAQPageBuilder('Pitanja');
             case 'test123':
