@@ -559,7 +559,7 @@
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <div id="g-kategorija_destinacije" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
+            <div id="g-naziv" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
               Planina
             </div>
             <h3 id="g-naziv_destinacije" class="text-2xl font-bold mb-2">Vrhovi Regije</h3>
