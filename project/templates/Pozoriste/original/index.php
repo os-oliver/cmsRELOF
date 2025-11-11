@@ -962,8 +962,9 @@
                 </div>
             </div>
             <div class="mt-10 flex flex-col items-center space-y-4 text-center">
-                <img src="/assets/img/SECO-logo-640px.png" alt="SECO logo" class="max-h-20 w-auto object-contain">
-                <p class="text-xs md:text-sm text-secondary_text max-w-5xl">
+                <div class="w-full border-t-2 border-primary"></div>
+                <img src="/assets/img/SECO-logo-640px.png" alt="SECO logo" class="max-h-24 w-auto object-contain mt-4">
+                <p class="text-xs md:text-sm text-primary_text max-w-5xl">
                     Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.
                 </p>
             </div>
