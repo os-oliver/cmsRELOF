@@ -579,6 +579,9 @@
                     <i class="fas fa-address-book mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Kontakt</span>
                 </a>
+                <a href="#" class="hidden">
+                    Ankete
+                </a>
                 <?php
                 if (isset($_GET['locale'])) {
                     $_SESSION['locale'] = $_GET['locale'];
@@ -961,10 +964,7 @@
                 <div>
                     <h4 class="mb-6">Informacije</h4>
                     <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-logocolor2 mt-1 mr-3"></i>
-                            <span>Lorem ipsum dolor</span>
-                        </li>
+                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
                             <span>Lorem ipsum dolor</span>
