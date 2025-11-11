@@ -276,15 +276,15 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             Misija
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             Timovi
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2 hidden">
                             <span class="hidden xl:inline">Pitanja</span>
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2 hidden">
                             <span class="hidden xl:inline">Informacije</span>
                         </a>
