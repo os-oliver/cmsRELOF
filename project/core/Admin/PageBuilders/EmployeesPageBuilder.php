@@ -45,7 +45,7 @@ class EmployeesPageBuilder extends BasePageBuilder
         <?php if (count($employees) > 0): ?>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach ($employees as $employee): ?>
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in">
+                    <div class="bg-surface rounded-xl shadow-md overflow-hidden card-hover fade-in">
                         <div class="p-6">
                             <div class="flex items-center mb-6">
                                 <div class="initials-avatar bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold">
@@ -60,7 +60,7 @@ class EmployeesPageBuilder extends BasePageBuilder
                                     </p>
                                 </div>
                             </div>
-                            <div class="border-t border-gray-100 pt-4">
+                            <div class="border-t border-secondary pt-4">
                                 <p class="text-gray-600 line-clamp-3">
                                     <?= htmlspecialchars($employee['biography']) ?>
                                 </p>
