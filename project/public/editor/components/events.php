@@ -1,86 +1,88 @@
-<!-- Events Section -->
 <div class="content-card p-5 rounded-xl border-2 border-gray-100 shadow-sm bg-gradient-to-br from-white to-gray-50">
+
     <div class="flex justify-between items-center mb-5 pb-3 border-b-2 border-gray-100">
         <div class="flex items-center">
             <div class="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center mr-3">
-                <i class="fas fa-calendar-alt text-primary-600 text-lg"></i>
+                <i class="fas fa-newspaper text-primary-600 text-lg"></i>
             </div>
             <h3 class="text-lg font-bold text-gray-800">
-                <?= __('events.upcoming_in_library') ?>
+                <?= __('news.latest_from_library') ?>
             </h3>
         </div>
-        <a href="/kontrolna-tabla/dogadjaji"
+        <a href="/kontrolna-tabla/vesti"
             class="text-primary-600 hover:text-primary-800 flex items-center text-sm font-semibold hover:gap-2 transition-all group">
-            <span><?= __('events.view_all') ?></span>
+            <span><?= __('news.view_all') ?></span>
             <i class="fas fa-chevron-right ml-1 text-xs group-hover:translate-x-1 transition-transform"></i>
         </a>
     </div>
 
+    <!-- Scrollable container, now a vertical flex column (gap-3 for compactness) -->
     <div
-        class="space-y-3 max-h-72 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-        <?php if (!empty($events) && is_iterable($events)): ?>
-            <?php foreach ($events as $event):
-                $eventType = strtolower($event->naziv ?? '');
-                $borderColor = $event->color_code ?? 'primary-500';
-                $eventUrl = "/sadrzaj?id={$event->id}&tip={$event->type}";
+        class="flex flex-col gap-3 max-h-[18rem] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+        <?php if (!empty($news) && is_iterable($news)): ?>
+            <?php foreach ($news as $item):
+                $category = htmlspecialchars($item->naziv ?? '');
+                $date = !empty($item->datum) ? date('d.m.Y.', strtotime($item->datum)) : '';
+                $author = htmlspecialchars($item->autor ?? 'Nepoznat autor');
+                $desc = htmlspecialchars($item->opis ?? '');
+                $url = !empty($item->link) ? htmlspecialchars($item->link) : "/sadrzaj?id={$item->id}&tip=vesti";
                 ?>
                 <div
-                    class="bg-white p-3 rounded-lg border-l-4 border-<?php echo htmlspecialchars($borderColor); ?> shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5">
-                    <div class="flex justify-between items-start gap-2 mb-2">
-                        <h4 class="text-sm font-bold text-gray-800 leading-tight flex-1">
-                            <?php echo htmlspecialchars($event->title ?? ''); ?>
-                        </h4>
-                        <span
-                            class="text-[10px] px-2 py-0.5 rounded-full bg-<?php echo htmlspecialchars($borderColor); ?> bg-opacity-15 text-<?php echo htmlspecialchars($borderColor); ?> font-semibold border border-<?php echo htmlspecialchars($borderColor); ?> border-opacity-20 whitespace-nowrap">
-                            <?php echo ucfirst(htmlspecialchars($eventType)); ?>
-                        </span>
-                    </div>
+                    class="bg-white rounded-lg shadow-md hover:shadow-lg border-2 border-primary-200 transition-all duration-300 hover:-translate-y-0.5 flex flex-col p-3 cursor-pointer">
 
-                    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-600 mb-2">
-                        <div class="flex items-center">
-                            <i class="far fa-calendar-alt mr-1 text-primary-500"></i>
-                            <span><?php echo !empty($event->datum) ? date('d.m.Y.', strtotime($event->datum)) : ''; ?></span>
+                    <!-- Content (Title, Category, Description) -->
+                    <a href="<?= $url ?>" class="block text-gray-800 hover:text-primary-600 focus:outline-none">
+
+                        <div class="flex justify-between items-start mb-2">
+                            <!-- Title (Smaller text-sm) -->
+                            <h4 class="text-sm font-bold line-clamp-2 pr-4 leading-snug">
+                                <?= htmlspecialchars($item->naslov ?? '') ?>
+                            </h4>
+
+                            <!-- Category Badge (Smaller text-[9px] and compact) -->
+                            <span
+                                class="flex-shrink-0 bg-primary-600 text-white text-[9px] px-2 py-0.5 rounded-full font-semibold uppercase">
+                                <?= $category ?>
+                            </span>
                         </div>
-                        <div class="flex items-center">
-                            <i class="far fa-clock mr-1 text-primary-500"></i>
-                            <span><?php echo htmlspecialchars($event->time ?? ''); ?></span>
+
+                        <!-- Description (Smallest text-xs) -->
+                        <p class="text-xs text-gray-600 line-clamp-3 leading-snug mb-3"><?= $desc ?></p>
+                    </a>
+
+                    <!-- Metadata Footer (Very compact and subtle) -->
+                    <div class="flex justify-between items-center text-[10px] text-gray-500 border-t pt-2 mt-auto">
+                        <div class="flex items-center space-x-3">
+                            <span class="flex items-center gap-1">
+                                <i class="far fa-calendar text-primary-500"></i> <?= $date ?>
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="far fa-user text-primary-500"></i> <?= $author ?>
+                            </span>
                         </div>
-                        <?php if (!empty($event->location)): ?>
-                            <div class="flex items-center">
-                                <i class="fas fa-map-marker-alt mr-1 text-primary-500"></i>
-                                <span class="truncate"><?php echo htmlspecialchars($event->location); ?></span>
-                            </div>
-                        <?php endif; ?>
-                    </div>
 
-                    <?php if (!empty($event->description)): ?>
-                        <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed mb-2">
-                            <?php echo htmlspecialchars($event->description); ?>
-                        </p>
-                    <?php endif; ?>
-
-                    <div class="flex justify-end">
-                        <a href="<?php echo htmlspecialchars($eventUrl); ?>"
-                            class="text-xs font-bold text-primary-600 hover:text-primary-800 flex items-center transition-all group">
-                            <span><?= __('events.info') ?></span>
-                            <i class="fas fa-chevron-right ml-1 text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                        <!-- Read More Link (More subtle) -->
+                        <a href="<?= $url ?>"
+                            class="text-xs font-semibold text-primary-600 hover:text-primary-800 flex items-center transition-all group">
+                            <span><?= __('news.read_more') ?></span>
+                            <i class="fas fa-chevron-right ml-1 text-[9px] group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <div class="text-center py-8">
+            <div class="col-span-full text-center py-10">
                 <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-3">
-                    <i class="fas fa-calendar-times text-gray-400 text-2xl"></i>
+                    <i class="fas fa-newspaper text-gray-400 text-2xl"></i>
                 </div>
-                <p class="text-gray-500 text-sm font-medium">Nema zakazanih događaja.</p>
+                <p class="text-gray-500 text-sm font-medium">Trenutno nema objavljenih vesti.</p>
             </div>
         <?php endif; ?>
     </div>
 
-    <button id="newEventButton"
-        class="mt-4 w-full py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white rounded-lg flex items-center justify-center text-sm font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+    <button id="newNewsButton"
+        class="mt-6 w-full py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white rounded-lg flex items-center justify-center text-sm font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
         <i class="fas fa-plus mr-2 text-sm"></i>
-        <span><?= __('events.add_event') ?></span>
+        <span><?= __('news.add_news') ?></span>
     </button>
 </div>
