@@ -300,7 +300,6 @@ main {
 }
 
 .project-cta:hover {
-    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
 }
@@ -426,7 +425,7 @@ $cardTemplate = <<<'PHP'
         {{clickableLink}}
 
         <!-- CTA dugme -->
-        <a href="sadrzaj?id={{itemId}}&tip=generic_element" class="bg-primary project-cta">
+        <a href="sadrzaj?id={{itemId}}&tip=generic_element" class="bg-primary project-cta hover:bg-primary_hover">
             <i class="fas fa-info-circle"></i>
             <span>{{projectDetails}}</span>
             <i class="fas fa-arrow-right"></i>
