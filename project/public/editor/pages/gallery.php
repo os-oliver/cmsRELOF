@@ -236,7 +236,16 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div
                     class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                     <div class="hidden md:block text-sm text-gray-700">
-                        <?= __('gallery.pagination_summary', ['shown' => count($images), 'of' => $totalCount]) ?>
+                        <?php
+
+                        $paginacijaString = __('gallery.pagination_summary');
+                        $paginacijaString = str_replace(
+                            ['{{shown}}', '{{of}}'],
+                            [count($images), $totalCount],
+                            $paginacijaString
+                        );
+                        echo $paginacijaString;
+                        ?>
                     </div>
 
                     <nav class="flex items-center gap-2">

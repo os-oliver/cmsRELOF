@@ -12,22 +12,43 @@ AuthController::requireEditor();
 AuthController::requireEditor();
 [$name, $surname, $role] = AuthController::getUserInfo();
 
-// 2. Set defaults for search and pagination
 $search = $_GET['search'] ?? '';
-$sort = $_GET['sort'] ?? 'date_desc'; // Keep sort for newest/oldest contacts
+$sort = $_GET['sort'] ?? 'date_desc';
 
-// Pagination
-$limit = 9; // Adjusted for a 3-column layout
+$limit = 9;
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
-// 3. Instantiate the Contact model and fetch data
-$contactModal = new Contact();
-[$contacts, $totalCount] = $contactModal->list(
+switch ($sort) {
+    case 'date_asc':
+        $sortColumn = 'created_at';
+        $sortDirection = 'ASC';
+        break;
+    case 'name_asc':
+        $sortColumn = 'ime';
+        $sortDirection = 'ASC';
+        break;
+    case 'name_desc':
+        $sortColumn = 'ime';
+        $sortDirection = 'DESC';
+        break;
+    default:
+        $sortColumn = 'created_at';
+        $sortDirection = 'DESC';
+        break;
+}
+
+$contactModel = new Contact();
+[$contacts, $totalCount] = $contactModel->list(
     limit: $limit,
     offset: $offset,
-
+    sortColumn: $sortColumn,
+    sortDirection: $sortDirection,
+    filters: !empty($search) ? ['ime' => $search, 'prezime' => $search, 'email' => $search] : []
 );
+
+$totalPages = ceil($totalCount / $limit);
+
 
 // Calculate total pages for pagination
 $totalPages = (int) ceil($totalCount / $limit);
