@@ -18,8 +18,9 @@ if (isset($_GET['locale'])) {
 $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 $views = (new VisitCounterController())->getVisitCount();
 [$_, $totalUsers] = (new User())->list();
-$events_raw = (new Content())->fetchListData('dogadjaji', '', 0, 3, null, $locale)['items'];
-$events = HashMapTransformer::transform($events_raw, $locale);
+$news_raw = (new Content())->fetchListData('Vesti', '', 0, 3, null, $locale)['items'];
+$news = HashMapTransformer::transform($news_raw, $locale);
+
 $documentModal = new Document();
 [$documents, $totalDocuments] = $documentModal->list(
     limit: 3,
@@ -85,7 +86,7 @@ $DocumentSubCategories = $documentModal->getSubCategories($locale);
                                 <p class="text-sm text-primary-600">
                                     <?= __("dashboard.events") ?>
                                 </p>
-                                <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= count($events) ?></p>
+                                <p class="text-xl md:text-2xl font-bold text-gray-800 mt-1"><?= count($news) ?></p>
                             </div>
                             <div class="bg-primary-100 p-3 rounded-lg">
                                 <i class="fas fa-calendar-alt text-primary-600 text-xl"></i>
@@ -125,7 +126,7 @@ $DocumentSubCategories = $documentModal->getSubCategories($locale);
 
         // Kreiramo default instancu koja se može koristiti i eksterno
         const defaultManager = new ModalManager({
-            slug: "Dogadjaji",
+            slug: "Vesti",
         });
         if (typeof window !== "undefined") {
             // Delay init until DOMContentLoaded da bi elementi bili prisutni
@@ -138,7 +139,7 @@ $DocumentSubCategories = $documentModal->getSubCategories($locale);
 
         export function init({
             slug = null,
-            newBtnSelector = "#newEventButton",
+            newBtnSelector = "#newNewsButton",
             baseUrl = "/editor",
         } = {}) {
             if (slug) defaultManager.slug = slug;
