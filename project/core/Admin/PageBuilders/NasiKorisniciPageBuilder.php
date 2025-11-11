@@ -16,7 +16,7 @@ class NasiKorisniciPageBuilder extends BasePageBuilder
     }
 
     .hero-section {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         color: white;
         padding: 4rem 2rem;
         text-align: center;
@@ -40,7 +40,7 @@ class NasiKorisniciPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $html = <<<'HTML'
-<main class="min-h-screen pt-24 flex-grow bg-gradient-to-br from-purple-50 to-blue-50">
+<main class="min-h-screen pt-24 flex-grow bg-gradient-to-br from-green-50 to-teal-50">
     <div class="content-section">
         <div class="hero-section">
             <h1 class="text-4xl font-bold mb-4">Naši korisnici</h1>
