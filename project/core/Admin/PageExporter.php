@@ -670,8 +670,6 @@ class PageExporter
                 return new ObavestenjaZaRoditeljePageBuilder('Obavestenja');
             case 'seminari':
                 return new SeminarPageBuilder('Seminari');
-            case 'primer':
-                return new ContactPageBuilder($name, $this->data);
             case 'zaposleni':
                 return new EmployeesPageBuilder($name, $this->data);
             case 'programi-obuke':
