@@ -86,8 +86,16 @@ class ContactPageBuilder extends BasePageBuilder
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-  const fullName = document.querySelector('input[name="ime"]').value.trim();
-    const [ime, prezime] = fullName.split(' ');
+    const fullName = document.querySelector('input[name="ime"]').value.trim();
+    const parts = fullName.split(' ').filter(p => p.length > 0);
+
+    if (parts.length < 2) {
+        alert("Molimo unesite i ime i prezime.");
+        return;
+    }
+
+    const ime = parts[0];
+    const prezime = parts.slice(1).join(' ');
 
     const formData = {
         ime: ime || '',
