@@ -441,7 +441,7 @@ function deletePage(pageId) {
     },
     body: JSON.stringify({ id: pageId }),
   })
-    .then((response) => response.text())
+    .then((response) => response.json())
     .then((data) => {
       console.log("Delete response:", data);
       if (data.success) {
@@ -519,7 +519,7 @@ function savePageColumnsState(action = "update") {
         console.log("Save response:", data);
         if (data.success) {
           alert("Stranice su uspešno sačuvane!");
-          window.location.reload();
+          location.reload(true);
         } else {
           throw new Error(data.error || "Error saving pages");
         }

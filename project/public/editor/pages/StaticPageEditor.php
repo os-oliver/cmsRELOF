@@ -1,8 +1,13 @@
 <?php
 session_start();
-header("Cache-Control: no-cache, no-store, must-revalidate");
-header("Pragma: no-cache");
-header("Expires: 0");
+
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Cache-Control: post-check=0, pre-check=0', false);
+header('Pragma: no-cache');
+header('Expires: Sun, 01 Jan 2000 00:00:00 GMT');
+
+$js_file_path = __DIR__ . '/../../assets/js/dashboard/staticPageBuilder.js';
+$version = file_exists($js_file_path) ? filemtime($js_file_path) : time();
 use App\Controllers\AuthController;
 
 // Require editor authentication
@@ -21,6 +26,9 @@ $locale = LocaleManager::get();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upravljanje stranicama</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -452,7 +460,16 @@ $locale = LocaleManager::get();
             </div>
         </div>
     </div>
-    <script defer src="/assets/js/dashboard/staticPageBuilder.js?v=<?= time() ?>"></script>
+    <script>
+        const oldScript = document.querySelector('script[data-static-builder]');
+        if (oldScript) oldScript.remove();
+        const script = document.createElement('script');
+        script.src = `/assets/js/dashboard/staticPageBuilder.js?cb=${Date.now()}`;
+        script.defer = true;
+        script.dataset.staticBuilder = "true";
+        document.head.appendChild(script);
+    </script>
+
 
 </body>
 

@@ -121,6 +121,8 @@ $DocumentSubCategories = $documentModal->getSubCategories($locale);
 
     <script src="/assets/js/dashboard/dashboard.js" defer></script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
+    <script src="/assets/js/dashboard/documents.js" defer></script>
+
     <script type="module" defer>
         import ModalManager from "/assets/js/dashboard/modalManager.js";
 

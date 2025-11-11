@@ -9,7 +9,7 @@
                 <?= __('news.latest_from_library') ?>
             </h3>
         </div>
-        <a href="/kontrolna-tabla/vesti"
+        <a href="/kontrolna-tabla/Vesti"
             class="text-primary-600 hover:text-primary-800 flex items-center text-sm font-semibold hover:gap-2 transition-all group">
             <span><?= __('news.view_all') ?></span>
             <i class="fas fa-chevron-right ml-1 text-xs group-hover:translate-x-1 transition-transform"></i>
