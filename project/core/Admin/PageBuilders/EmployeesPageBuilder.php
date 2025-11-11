@@ -126,7 +126,6 @@ HTML;
         $additionalPHP = <<<'PHP'
     use App\Models\Employee;
     use App\Controllers\AuthController;
-AuthController::requireEditor();
 
 // Parametri iz GET
 $search = $_GET['search'] ?? '';
