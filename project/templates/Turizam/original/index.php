@@ -179,6 +179,10 @@
                                 <i class="hidden xl:inline"></i>Pitanja
                             </a>
                             <a href="#"
+                                class="items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors hidden">
+                                <i class="hidden xl:inline"></i>Informacije
+                            </a>
+                            <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-users mr-2 text-primary"></i>Timovi
                             </a>
@@ -279,6 +283,10 @@
                         <a href="#"
                             class="dropdown-item items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2 hidden">
                             <span class="hidden xl:inline">Pitanja</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2 hidden">
+                            <span class="hidden xl:inline">Informacije</span>
                         </a>
                     </div>
                 </div>
