@@ -479,8 +479,8 @@ PHP;
 <main class="bg-gradient-to-br pt-20 from-gray-50 to-gray-100 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-heading text-primary_text mb-2 text-center">Obaveštenja</h1>
-            <p class="font-heading2 text-secondary_text text-center">Pregled svih stavki</p>
+            <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Obaveštenja</h1>
+            <p class="text-lg font-heading2 text-secondary_text">Pregled svih stavki</p>
         </div>
 
         <div class="performances-grid">
