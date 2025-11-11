@@ -33,14 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Provera da su polja popunjena
 
     let dataTosend = null;
+    let headers = {};
 
     const formData = new FormData(form);
     for (let [k, v] of formData.entries()) console.log(k, v);
 
-    let headers = {};
-
     if (method.value == "POST") {
       dataTosend = formData;
+
+      headers = {};
     } else {
       headers = {
         "Content-Type": "application/json",
@@ -54,11 +55,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const res = await fetch(endpoint.value, {
+      const fetchOptions = {
         method: method.value,
-        headers: headers,
         body: dataTosend,
-      });
+      };
+
+      // Dodaj headers samo ako nisu prazni
+      if (Object.keys(headers).length > 0) {
+        fetchOptions.headers = headers;
+      }
+
+      const res = await fetch(endpoint.value, fetchOptions);
       if (!res.ok) throw new Error(`Status: ${res.status}`);
       console.log(res.text());
       alert("Dokument uspešno sačuvan!");

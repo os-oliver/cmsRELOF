@@ -68,6 +68,10 @@
   "dashboard.documents": "Документи",
   "dashboard.events": "Вести",
   "news.latest_from_library": " Вести",
+  "settings.site_icon": "Иконица сајта",
+  "dynamic.search": "Претражи...",
+  "dynamic.noitems": "Нема пронађених ставки.",
+
   "news.view_all": "Погледај све",
   "news.read_more": "Прочитај више",
   "news.add_news": "Додај вест",

@@ -798,10 +798,8 @@
     <!-- Footer -->
     <footer class="bg-primary_text text-background pt-16 pb-8">
         <div class="container mx-auto px-6">
-            <!-- === Top Section === -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
-                <!-- Logo & Social -->
                 <div>
                     <div class="flex items-center mb-5">
                         <div
@@ -833,7 +831,6 @@
                     </div>
                 </div>
 
-                <!-- Quick Links -->
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-5 border-b border-secondary/30 pb-2 inline-block">Brzi
                         linkovi</h4>
@@ -847,7 +844,6 @@
                     </ul>
                 </div>
 
-                <!-- Info -->
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-5 border-b border-secondary/30 pb-2 inline-block">
                         Informacije</h4>
@@ -874,7 +870,6 @@
                     </ul>
                 </div>
 
-                <!-- Location -->
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-5 border-b border-secondary/30 pb-2 inline-block">
                         Lokacija</h4>
@@ -889,18 +884,22 @@
 
             </div>
 
-            <!-- === Bottom Bar === -->
             <div
                 class="border-t border-primary/10 pt-6 mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex items-center gap-4">
-                    <div class="bg-white p-3 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-                        <img src="/assets/icons/SECO-logo-640px.png" alt="SECO Logo"
-                            class="h-12 md:h-14 object-contain hover:scale-105 transition-transform duration-300" />
+
+                <div class="text-xs opacity-80 md:w-3/5 order-2 md:order-1 text-center md:text-left">
+                    <p class="mb-2">© 2023 Biblioteka Nexus. Sva prava zadržana.</p>
+                    <div class="flex items-center justify-center md:justify-start gap-3 mt-3">
+                        <p>
+                            Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
+                            zvanični stav Vlade Švajcarske.
+                        </p>
                     </div>
-                    <span class="font-semibold text-sm tracking-wide opacity-90">Biblioteka Nexus</span>
                 </div>
-                <div class="text-center md:text-right text-xs opacity-80">
-                    <p>&copy; 2023 Biblioteka Nexus. Sva prava zadržana.</p>
+
+                <div class="flex items-center order-1 md:order-2">
+                    <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO Logo"
+                        class="h-15 md:h-15 object-contain hover:scale-105 transition-transform duration-300" />
                 </div>
             </div>
         </div>

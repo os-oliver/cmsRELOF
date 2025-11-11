@@ -228,7 +228,16 @@ ORDER BY {$orderByOuter};
             $total = 0;
         }
 
-        return [$this->pivoter->pivot($rows), $total];
+        $result = $this->pivoter->pivot($rows);
+
+        // Ako je sortiranje po imenu
+        if (isset($sort) && $sort === 'ime') {
+            usort($result, function ($a, $b) {
+                return strcmp($a['title'] ?? '', $b['title'] ?? '');
+            });
+        }
+
+        return [$result, $total];
     }
 
 
@@ -238,11 +247,13 @@ ORDER BY {$orderByOuter};
     {
         try {
             $this->pdo->beginTransaction();
+            error_log('Transaction started');
 
             $stmt = $this->pdo->prepare("
-                INSERT INTO document (filepath, extension, fileSize, subcategory_id, datetime)
-                VALUES (:filepath, :extension, :fileSize, :category, NOW())
-            ");
+            INSERT INTO document (filepath, extension, fileSize, subcategory_id, datetime)
+            VALUES (:filepath, :extension, :fileSize, :category, NOW())
+        ");
+
             $stmt->execute([
                 ':filepath' => $data['filepath'] ?? '',
                 ':extension' => $data['extension'] ?? '',
@@ -251,7 +262,14 @@ ORDER BY {$orderByOuter};
             ]);
 
             $documentId = (int) $this->pdo->lastInsertId();
+            error_log("Inserted document ID: $documentId");
+
+            if (!$documentId) {
+                throw new \Exception('Document ID not returned after insert');
+            }
+
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+            error_log("Locale: $locale");
 
             // koristi TextHelper koji uključuje transliteraciju
             TextHelper::insertTextEntries(
@@ -260,21 +278,31 @@ ORDER BY {$orderByOuter};
                 'title',
                 TextHelper::transliterateVariants((string) ($data['title'] ?? ''), $locale)
             );
+            error_log("Title inserted");
+
             TextHelper::insertTextEntries(
                 $this->pdo,
                 $documentId,
                 'description',
                 TextHelper::transliterateVariants((string) ($data['description'] ?? ''), $locale)
             );
+            error_log("Description inserted");
 
             $this->pdo->commit();
+            error_log("Transaction committed successfully");
             return true;
+
         } catch (\PDOException $e) {
             $this->pdo->rollBack();
-            error_log('Insert failed: ' . $e->getMessage());
+            error_log('PDOException: ' . $e->getMessage() . ' | Code: ' . $e->getCode());
+            return false;
+        } catch (\Exception $e) {
+            $this->pdo->rollBack();
+            error_log('General Exception: ' . $e->getMessage());
             return false;
         }
     }
+
     public function update(int $documentId, array $data): bool
     {
         try {
