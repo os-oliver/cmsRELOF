@@ -714,7 +714,7 @@
                   <img
                       src="/assets/img/SECO-logo-640px-white.png"
                       alt="SECO logo"
-                      class="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto mb-4">
+                      class="w-full max-w-md md:max-w-lg h-auto mb-4">
                   <p class="text-gray-400"> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
               </div>
               <p class="pt-6 text-gray-400">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
