@@ -21,7 +21,7 @@ class FileUploader
             'application/vnd.ms-excel',
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         ],
-        int $maxFileSize = 5 * 1024 * 1024 * 1024 // 1GB
+        int $maxFileSize = 200 * 1024 * 1024 // 200 MB
     ) {
         $this->uploadDir = rtrim($uploadDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         $this->allowedMime = $allowedMime;
