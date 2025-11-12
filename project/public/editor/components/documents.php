@@ -56,7 +56,7 @@
                 </div>
                 <div class="flex-1 min-w-0">
                     <h4 class="font-bold text-gray-800 text-sm mb-1 truncate">
-                        <?= htmlspecialchars($doc['title']) ?>
+                        <?= htmlspecialchars($doc['title'] ?? '') ?>
                     </h4>
                     <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-600">
                         <div class="flex items-center">
