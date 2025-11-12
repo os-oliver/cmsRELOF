@@ -281,7 +281,7 @@
   "promotion.management_title": "Promotion Management",
   "promotion.management_subtitle": "View and manage latest promotion details",
   "promotion.revert_confirm_title": "Are you sure?",
-  "promotion.revert_confirm_text": "This will restore the component from its last backup. Do you want to continue?",
+  "promotion.revert_confirm_text": "This will restore the component from its last initial stage. Do you want to continue?",
   "promotion.revert_success": "Component restored from backup successfully.",
   "promotion.revert_error": "Error restoring component: {{error}}",
   "promotion.save": "Save",

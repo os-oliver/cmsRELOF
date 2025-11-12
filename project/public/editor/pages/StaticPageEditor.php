@@ -436,7 +436,7 @@ $locale = LocaleManager::get();
 
     <!-- Add Track Modal -->
     <div id="add-column-modal"
-        class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 backdrop-blur-sm">
+        class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-[999] backdrop-blur-sm">
         <div class="bg-white rounded-2xl p-8 w-full max-w-md mx-4 shadow-2xl">
             <div class="text-center mb-6">
                 <div
@@ -475,7 +475,7 @@ $locale = LocaleManager::get();
 
 <!-- Add Page Modal -->
 <div id="add-page-modal"
-    class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 backdrop-blur-sm">
+    class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-[999] backdrop-blur-sm">
     <div class="bg-white rounded-2xl p-8 w-full max-w-md mx-4 shadow-2xl">
         <div class="text-center mb-6">
             <div

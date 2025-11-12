@@ -519,7 +519,12 @@ function savePageColumnsState(action = "update") {
         console.log("Save response:", data);
         if (data.success) {
           alert("Stranice su uspešno sačuvane!");
-          location.reload(true);
+          // Force hard reload with cache-busting to prevent serving stale content
+          window.location.href =
+            window.location.href +
+            (window.location.href.includes("?") ? "&" : "?") +
+            "t=" +
+            Date.now();
         } else {
           throw new Error(data.error || "Error saving pages");
         }
@@ -567,8 +572,8 @@ function getColumnFromHref(href) {
   return parts.length > 0 ? parts[0] : null;
 }
 
-// Load pages from JSON file
-fetch("/assets/data/pages.json")
+// Load pages from JSON file with cache-busting
+fetch(`/assets/data/pages.json?t=${Date.now()}`)
   .then((response) => {
     if (!response.ok) {
       throw new Error("JSON file not found");
