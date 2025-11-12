@@ -141,7 +141,7 @@ PHP;
 
             <div class="p-6">
                 <h3 class="text-xl font-bold font-heading text-primary_text mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-                    {{naziv}}
+                    {{naziv_destinacije}}
                 </h3>
 
                 <div class="text-sm text-secondary_text mb-3 flex items-center gap-2">
@@ -216,7 +216,7 @@ function renderStars($rating): string {
 function cardRenderDestination(array $item, string $locale, array $texts = [], int $descMaxLength = 140, $cardTemplate=''): string
 {
     // Basics
-    $naziv    = htmlspecialchars($item['fields']['naziv'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $naziv_destinacije    = htmlspecialchars($item['fields']['naziv_destinacije'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $kratak   = htmlspecialchars(mb_substr($item['fields']['kratak_opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $drzava   = htmlspecialchars($item['fields']['drzava'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $region   = htmlspecialchars($item['fields']['region'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
@@ -320,7 +320,7 @@ function cardRenderDestination(array $item, string $locale, array $texts = [], i
         '{{categoryChip}}'        => $categoryChip,
         '{{countryChip}}'         => $countryChip,
         '{{ratingBadge}}'         => $ratingBadge,
-        '{{naziv}}'               => $naziv,
+        '{{naziv_destinacije}}'   => $naziv_destinacije,
         '{{locationLine}}'        => htmlspecialchars($locLine, ENT_QUOTES, 'UTF-8'),
         '{{kratakOpis}}'          => $kratak,
         '{{stayCostRow}}'         => $stayCostRow,
