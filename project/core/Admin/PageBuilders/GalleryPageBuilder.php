@@ -125,10 +125,6 @@ class GalleryPageBuilder extends BasePageBuilder
         z-index: 1001;
     }
 
-    .nav-btn:hover {
-        background: rgba(255, 255, 255, 0.3);
-    }
-
     .prev-btn {
         left: 20px;
     }
@@ -177,19 +173,19 @@ class GalleryPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $html = <<<'HTML'
-<main>
+<main class="bg-background">
     <div>
         <button id="increaseFontBtn"
-            class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"
+            class="fixed bottom-6 z-20 right-6 bg-primary hover:bg-primary_hover text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"
             aria-label="Increase font size">
             A+
         </button>
     </div>
 
-    <section class="container mx-auto px-4 py-12 pt-32">
+    <section class="container mx-auto px-4 py-12 pt-32 text-secondary_text font-body">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4 text-gray-800">Kolekcija Slika</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
+            <h2 class="text-4xl font-bold font-heading text-primary_text mb-2">Kolekcija Slika</h2>
+            <p class="text-lg font-heading2 text-secondary_text">
                 Istražite našu pažljivo odabranu kolekciju slika. Kliknite na bilo koju sliku da je pogledate u punoj veličini i da se krećete kroz galeriju.
             </p>
         </div>
@@ -232,7 +228,7 @@ CSS;
 
 <div class="lightbox" id="lightbox">
     <button class="close-btn" id="closeLightbox">&times;</button>
-    <button class="nav-btn prev-btn" id="prevBtn">&#10094;</button>
+    <button class="nav-btn prev-btn bg-primary hover:primary_hover" id="prevBtn">&#10094;</button>
 
     <div class="lightbox-content">
         <img id="lightboxImage" src="" alt="">
@@ -243,7 +239,7 @@ CSS;
         </div>
     </div>
 
-    <button class="nav-btn next-btn" id="nextBtn">&#10095;</button>
+    <button class="nav-btn next-btn bg-primary hover:primary_hover" id="nextBtn">&#10095;</button>
 </div>
 
 <script>

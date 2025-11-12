@@ -445,34 +445,34 @@
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2  min-w-max max-w-xs w-auto bg-background rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-border_light transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-bullseye mr-3 text-royal-blue flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Cilj</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Zaposleni</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-flag mr-3 text-deep-teal flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-circle-question mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Pitanja</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-bullhorn mr-3 text-tomato_red flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Informacije</span>
                         </a>
@@ -524,18 +524,17 @@
                 }
                 ?>
                 <div class="locale dropdown nonPage relative group flex items-center">
-                    <button
-                        class="nav-link text-primary font-semibold hover:text-primary_hover transition-colors flex items-center whitespace-nowrap">
-                        <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
-                        <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    <button class="nav-link text-primary hover:text-primary_hover font-semibold transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
+                        <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
+                        <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+                        <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg z-50">
+                    <div class="dropdown-menu absolute top-full right-0 min-w-max bg-surface rounded-xl shadow-2xl z-50 py-2 backdrop-blur-sm">
                         <?php foreach ($languages as $key => $lang): ?>
                             <a href="?locale=<?= $key ?>"
-                                class="dropdown-item text-primary hover:text-primary_hover flex items-center px-4 py-2 bg-background hover:bg-background-50 rounded-md text-sm font-medium">
-                                <span class="mr-2"><?= $lang['flag'] ?></span>
-                                <?= $lang['label'] ?>
+                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                                <span class="font-medium"><?= $lang['label'] ?></span>
                             </a>
                         <?php endforeach; ?>
                     </div>

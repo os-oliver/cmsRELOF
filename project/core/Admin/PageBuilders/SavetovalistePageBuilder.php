@@ -18,7 +18,7 @@ class SavetovalistePageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
 
     <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center font-body text-secondary_text">
-      <h1 class="text-primary_text text-5xl font-heading mb-4">Savetovalište za roditelje</h1>
+      <h1 class="text-primary_text text-4xl font-bold font-heading mb-4">Savetovalište za roditelje</h1>
 
       <p class="text-lg leading-relaxed mb-6 text-justify">
         Savetovalište za roditelje, staratelje i zaposlene radi kao timsko savetovanje uz učešće psihologa, pedagoga i socijalnog radnika. 

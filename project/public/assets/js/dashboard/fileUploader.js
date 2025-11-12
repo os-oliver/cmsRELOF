@@ -9,15 +9,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const endpoint = document.getElementById("endpoint");
   const method = document.getElementById("method");
 
+  const maxSize = 200 * 1024 * 1024; // 200 MB
+
   // Kad se fajl izabere, popuni name, extension i fileSize
   fileInput.addEventListener("change", () => {
     const file = fileInput.files[0];
     if (!file) return;
+
+    const kb = file.size / 1024 / 1024;
+    sizeInput.value = kb.toFixed(2);
+    if (file.size > maxSize) {
+      alert("Fajl je prevelik! Maksimalna veličina je 200 MB.");
+      fileInput.value = "";
+      nameInput.value = "";
+      extInput.value = "";
+      sizeInput.value = "";
+      return;
+    }
+
     nameInput.value = file.name;
     const parts = file.name.split(".");
     extInput.value = parts.length > 1 ? parts.pop() : "";
-    const kb = file.size / 1024 / 1024;
-    sizeInput.value = kb.toFixed(2);
   });
 
   // Cancel
