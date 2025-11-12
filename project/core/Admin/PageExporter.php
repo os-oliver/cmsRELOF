@@ -468,23 +468,34 @@ class PageExporter
 
     private function saveComponents(): void
     {
+        $backupDir = "{$this->compDir}_backup";
+
         foreach ($this->data['components'] as $component) {
             foreach ($component as $filePath => $content) {
                 $fullPath = "{$this->compDir}/$filePath";
-                $dirPath = dirname($fullPath);
+                $backupPath = "{$backupDir}/$filePath";
 
+                $dirPath = dirname($fullPath);
+                $backupDirPath = dirname($backupPath);
+
+                // Kreiraj direktorijume ako ne postoje
                 if (!is_dir($dirPath)) {
                     mkdir($dirPath, 0775, true);
                 }
-
-                // Decode HTML entities and fix PHP tags
-                $content = str_replace(['&lt;', '&gt;', '\$'], ['<', '>', '$'], $content);
-
-                if (strpos($filePath, 'promocija.php') !== false) {
+                if (!is_dir($backupDirPath)) {
+                    mkdir($backupDirPath, 0775, true);
                 }
 
+                // Dekodiraj HTML entitete i popravi PHP tagove
+                $content = str_replace(['&lt;', '&gt;', '\$'], ['<', '>', '$'], $content);
+
+                // Sačuvaj fajl u originalni direktorijum
                 file_put_contents($fullPath, $content);
 
+                // Sačuvaj kopiju u backup direktorijum
+                file_put_contents($backupPath, $content);
+
+                // Zapamti putanje
                 if (strpos($filePath, 'header.php') !== false) {
                     $this->headerPath = $filePath;
                 } elseif (strpos($filePath, 'footer.php') !== false) {
@@ -495,6 +506,7 @@ class PageExporter
             }
         }
     }
+
 
     private function createIndexPage(): void
     {

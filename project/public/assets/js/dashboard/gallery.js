@@ -9,7 +9,7 @@ const deletePicture = (id) => {
   })
     .then((res) => {
       if (!res.ok) throw new Error("Greška prilikom brisanja slike.");
-      $(`.gallery-item[data-id="${id}"]`).remove();
+      window.location.reload();
     })
     .catch((err) => alert(err.message));
 };

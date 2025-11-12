@@ -87,6 +87,11 @@ class DocumentsPageBuilder extends BasePageBuilder
 
     protected string $script = <<<'HTML'
 <script>
+        document.querySelectorAll('input[name="categories[]"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                document.getElementById('filter-form').submit();
+            });
+        });
 function showDownloadNotification(e, name) {
     const note = document.getElementById('download-notification');
     const text = document.getElementById('download-notification-text');
@@ -321,7 +326,7 @@ $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
 // pagination
-$limit = 3; // nicer grid by default
+$limit = 15; // nicer grid by default
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 

@@ -45,7 +45,7 @@ class Employee
         }
 
         // prvo biramo ID-jeve zaposlenih sa limit i offset
-        $idSql = "SELECT e.id FROM employee e $whereClause ORDER BY e.id LIMIT :limit OFFSET :offset";
+        $idSql = "SELECT e.id FROM employee e $whereClause ORDER BY e.id desc LIMIT :limit OFFSET :offset";
         $idStmt = $this->pdo->prepare($idSql);
         $idStmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $idStmt->bindValue(':offset', $offset, PDO::PARAM_INT);
