@@ -42,7 +42,7 @@ function getPageIcon(file) {
 }
 
 function createPageCard(page) {
-  const editLink = `http://localhost:8000/style?komponenta=${encodeURIComponent(
+  const editLink = `/style?komponenta=${encodeURIComponent(
     page.file.replace(".php", "")
   )}`;
   const displayName = page.name || "Početna stranica";

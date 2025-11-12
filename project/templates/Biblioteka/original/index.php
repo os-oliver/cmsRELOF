@@ -224,17 +224,8 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                             </a>
-                            <a data-page="Objekat" href="/o-nama/objekat"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
-                                <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
-                            </a>
-                            <a data-page="Donacije i podrška" href="/o-nama/donacije-i-podrska"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
-                                <i class="fas fa-hand-holding-heart mr-2 text-primary"></i>Donacije i podrška
-                            </a>
-                            <a data-page="Partneri" href="/o-nama/partneri"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
-                                <i class="fas fa-handshake mr-2 text-primary"></i>Partneri
+
+
                             </a>
                         </div>
                     </div>
@@ -326,20 +317,21 @@
                             <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Organi upravljanja</span>
                         </a>
-                        <a href="/o-nama/objekat"
+                        <a static="true" href="/o-nama/objekat"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Objekat</span>
                         </a>
-                        <a href="/o-nama/donacije-i-podrska"
+
+                        <a static="true" href="/o-nama/informacije"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Donacije i podrška</span>
+                            <span class="font-medium">Informacije</span>
                         </a>
-                        <a href="/o-nama/partneri"
+                        <a href="/o-nama/pitanja"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Partneri</span>
+                            <span class="font-medium">Pitanja</span>
                         </a>
                     </div>
                 </div>
@@ -858,7 +850,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span>info@kulturninexus.rs</span>
+                            <span data-translate="off">info@kulturninexus.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-accent mt-1 mr-3"></i>
