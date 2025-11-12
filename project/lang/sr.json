@@ -280,6 +280,10 @@
   "promotion.page_title": "Upravlajnje - Administracija",
   "promotion.management_title": "Upravljanje promocijom",
   "promotion.management_subtitle": "Pregled i upravljanje detaljima najnovijih ",
+  "promotion.revert_confirm_title": "Da li ste sigurni?",
+  "promotion.revert_confirm_text": "Ovo će vratiti komponentu iz poslednje rezervne kopije. Da li želite da nastavite?",
+  "promotion.revert_success": "Komponenta je uspešno vraćena iz rezervne kopije.",
+  "promotion.revert_error": "Greška pri vraćanju komponente: {{error}}",
   "promotion.save": "Sačuvaj",
 
   "documents.recent_documents": "Nedavni dokumenti",
