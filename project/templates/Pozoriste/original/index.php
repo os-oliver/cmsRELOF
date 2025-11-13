@@ -391,12 +391,10 @@
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
                     </a>
-
-
-                    <a href="#" class="hidden flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primary"></i>Pitanja
                     </a>
-                    <a href="#" class="hidden flex items-center py-3 px-4 rounded-lg transition-all">
+                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primary"></i>Informacije
                     </a>
 
@@ -478,6 +476,17 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-secondary"></i>Organizaciona struktura
                         </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            <i class="fas fa-flag mr-2 text-primary"></i>Pitanja
+                        </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            <i class="fas fa-flag mr-2 text-primary"></i>Informacije
+                        </a>
+
                     </div>
                 </div>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -507,14 +516,6 @@
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-address-book mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Kontakt</span>
-                </a>
-                <a href="#" class="hidden nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-address-book mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Pitanja</span>
-                </a>
-                <a href="#" class="hidden nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-address-book mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Informacije</span>
                 </a>
 
                 <?php
@@ -921,9 +922,10 @@
                 <div>
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Pitanja</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">informacije</a></li>
                         <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+
                     </ul>
                 </div>
                 <div>
