@@ -164,7 +164,8 @@ class AboutUs
             // Generiši varijante teksta
             $missionVariants = $this->transliterateVariants($missionRaw, $locale);
             $goalVariants = $this->transliterateVariants($goalRaw, $locale);
-            $titleVariants = $this->transliterateVariants($title_site, $locale);
+            if ($title_site !== '')
+                $titleVariants = $this->transliterateVariants($title_site, $locale);
 
             // UPDATE ili INSERT u text tabelu
             $stmtUpsert = $this->pdo->prepare("
@@ -190,7 +191,8 @@ class AboutUs
 
             $updateField('mission', $missionVariants);
             $updateField('goal', $goalVariants);
-            $updateField('title', $titleVariants);
+            if ($title_site !== '')
+                $updateField('title', $titleVariants);
 
             $this->pdo->commit();
             return $aboutId;
@@ -210,20 +212,30 @@ class AboutUs
         try {
             $this->pdo->beginTransaction();
 
-            // Obriši postojeće text zapise za ovaj source
-            $stmtDel = $this->pdo->prepare("DELETE FROM text WHERE source_id = :id AND source_table = 'aboutus'");
+            // Obriši samo mission i goal, ne title
+            $stmtDel = $this->pdo->prepare("
+            DELETE FROM text 
+            WHERE source_id = :id 
+              AND source_table = 'aboutus'
+              AND field_name IN ('mission', 'goal')
+        ");
             $stmtDel->execute([':id' => $id]);
 
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
             $missionVariants = $this->transliterateVariants((string) ($data['mission'] ?? ''), $locale);
             $goalVariants = $this->transliterateVariants((string) ($data['goal'] ?? ''), $locale);
+            $titleVariants = isset($data['page_title'])
+                ? $this->transliterateVariants((string) $data['page_title'], $locale)
+                : [];
 
             $stmtText = $this->pdo->prepare("
-                INSERT INTO text (source_id, source_table, field_name, lang, content)
-                VALUES (:source_id, 'aboutus', :field_name, :lang, :content)
-            ");
+            INSERT INTO text (source_id, source_table, field_name, lang, content)
+            VALUES (:source_id, 'aboutus', :field_name, :lang, :content)
+            ON DUPLICATE KEY UPDATE content = VALUES(content)
+        ");
 
-            foreach (['mission' => $missionVariants, 'goal' => $goalVariants] as $field => $variants) {
+            // Pomoćna funkcija da se ne ponavlja kod
+            $updateField = function (string $field, array $variants) use ($stmtText, $id) {
                 foreach ($variants as $lg => $c) {
                     $c = trim((string) $c);
                     if ($c === '')
@@ -235,7 +247,12 @@ class AboutUs
                         ':content' => $c,
                     ]);
                 }
-            }
+            };
+
+            $updateField('mission', $missionVariants);
+            $updateField('goal', $goalVariants);
+            if (!empty($titleVariants))
+                $updateField('title', $titleVariants); // ažurira title samo ako je prosleđen
 
             $this->pdo->commit();
             return true;
@@ -245,6 +262,7 @@ class AboutUs
             return false;
         }
     }
+
 
     /**
      * Briše aboutus zapis i pripadajuće text redove.

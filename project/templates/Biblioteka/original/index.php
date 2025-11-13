@@ -224,17 +224,8 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                             </a>
-                            <a data-page="Objekat" href="/o-nama/objekat"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
-                                <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
-                            </a>
-                            <a data-page="Donacije i podrška" href="/o-nama/donacije-i-podrska"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
-                                <i class="fas fa-hand-holding-heart mr-2 text-primary"></i>Donacije i podrška
-                            </a>
-                            <a data-page="Partneri" href="/o-nama/partneri"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
-                                <i class="fas fa-handshake mr-2 text-primary"></i>Partneri
+
+
                             </a>
                         </div>
                     </div>
@@ -326,20 +317,21 @@
                             <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Organi upravljanja</span>
                         </a>
-                        <a href="/o-nama/objekat"
+                        <a static="true" href="/o-nama/objekat"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Objekat</span>
                         </a>
-                        <a href="/o-nama/donacije-i-podrska"
+
+                        <a static="true" href="/o-nama/informacije"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Donacije i podrška</span>
+                            <span class="font-medium">Informacije</span>
                         </a>
-                        <a href="/o-nama/partneri"
+                        <a href="/o-nama/pitanja"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Partneri</span>
+                            <span class="font-medium">Pitanja</span>
                         </a>
                     </div>
                 </div>
@@ -798,10 +790,8 @@
     <!-- Footer -->
     <footer class="bg-primary_text text-background pt-16 pb-8">
         <div class="container mx-auto px-6">
-            <!-- === Top Section === -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
-                <!-- Logo & Social -->
                 <div>
                     <div class="flex items-center mb-5">
                         <div
@@ -833,7 +823,6 @@
                     </div>
                 </div>
 
-                <!-- Quick Links -->
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-5 border-b border-secondary/30 pb-2 inline-block">Brzi
                         linkovi</h4>
@@ -847,7 +836,6 @@
                     </ul>
                 </div>
 
-                <!-- Info -->
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-5 border-b border-secondary/30 pb-2 inline-block">
                         Informacije</h4>
@@ -862,7 +850,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span>info@kulturninexus.rs</span>
+                            <span data-translate="off">info@kulturninexus.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-accent mt-1 mr-3"></i>
@@ -874,7 +862,6 @@
                     </ul>
                 </div>
 
-                <!-- Location -->
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-5 border-b border-secondary/30 pb-2 inline-block">
                         Lokacija</h4>
@@ -889,18 +876,22 @@
 
             </div>
 
-            <!-- === Bottom Bar === -->
             <div
                 class="border-t border-primary/10 pt-6 mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex items-center gap-4">
-                    <div class="bg-white p-3 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-                        <img src="/assets/icons/SECO-logo-640px.png" alt="SECO Logo"
-                            class="h-12 md:h-14 object-contain hover:scale-105 transition-transform duration-300" />
+
+                <div class="text-xs opacity-80 md:w-3/5 order-2 md:order-1 text-center md:text-left">
+                    <p class="mb-2">© 2023 Biblioteka Nexus. Sva prava zadržana.</p>
+                    <div class="flex items-center justify-center md:justify-start gap-3 mt-3">
+                        <p>
+                            Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
+                            zvanični stav Vlade Švajcarske.
+                        </p>
                     </div>
-                    <span class="font-semibold text-sm tracking-wide opacity-90">Biblioteka Nexus</span>
                 </div>
-                <div class="text-center md:text-right text-xs opacity-80">
-                    <p>&copy; 2023 Biblioteka Nexus. Sva prava zadržana.</p>
+
+                <div class="flex items-center order-1 md:order-2">
+                    <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO Logo"
+                        class="h-15 md:h-15 object-contain hover:scale-105 transition-transform duration-300" />
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ AuthController::requireEditor();
 $commonScriptPath = realpath(__DIR__ . '/../../exportedPages/commonScript.js');
 $componentsDir = realpath(__DIR__ . '/../../exportedPages/landingPageComponents/landingPage');
 $componentsBaseUrl = '/exportedPages/landingPageComponents/landingPage';
+$backupUrl = '/exportedPages/landingPageComponents_backup/landingPage';
 
 // Definišemo koje boje koristimo
 $colorKeys = [
@@ -524,6 +525,13 @@ if ($total > 0) {
                                 <i class="fas fa-download mr-2"></i>Izvezi HTML
                             </button>
 
+                            <button id="revertComponent"
+                                class="px-6 py-3 rounded-lg bg-red-600 text-white font-medium hover:bg-red-700 transition">
+                                <i class="fas fa-undo mr-2"></i>Poništi (Revert)
+                            </button>
+
+                            <div id="revertFeedback" class="text-sm self-center text-gray-600 ml-3"></div>
+
                             <div class="flex-1"></div>
 
                             <!-- Navigation -->
@@ -842,6 +850,82 @@ if ($total > 0) {
     <script src="/assets/js/WebDesigner/grapesjs/grapes.min.js"></script>
     <script src="/assets/js/dashboard/linkManager.js"></script>
     <script type="module" src="/assets/js/dashboard/promotionLoader.js"></script>
+    <script>
+        (function () {
+            const btn = document.getElementById('revertComponent');
+            const feedback = document.getElementById('revertFeedback');
+            const activeNode = document.querySelector('[data-current-component]');
+            const activeFile = activeNode ? activeNode.getAttribute('data-current-component') : null;
+            const componentsBaseUrl = <?= json_encode($backupUrl) ?>;
+
+            async function waitForEditor(timeout = 3000) {
+                const t0 = Date.now();
+                while (Date.now() - t0 < timeout) {
+                    if (window.loadComponentIntoEditor || window.editor || window.grapesjsEditor) return true;
+                    await new Promise(r => setTimeout(r, 100));
+                }
+                return false;
+            }
+
+            btn.addEventListener('click', async function () {
+                const title = <?= json_encode(__('promotion.revert_confirm_title')) ?>;
+                const text = <?= json_encode(__('promotion.revert_confirm_text')) ?>;
+                if (!activeFile) return;
+
+                if (!confirm(title + "\n\n" + text)) return;
+
+                btn.disabled = true;
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Učitavam backup...';
+                feedback.textContent = '';
+
+                try {
+                    const backupPath = componentsBaseUrl + '/' + activeFile;
+                    console.log('Reverting component from backup:', backupPath);
+                    // Ensure editor is ready
+                    const ok = await waitForEditor(5000);
+                    if (!ok) throw new Error('Editor nije spreman');
+
+                    // Prefer existing loader helper
+                    if (typeof loadComponentIntoEditor === 'function') {
+                        await loadComponentIntoEditor(backupPath);
+                    } else if (window.editor || window.grapesjsEditor) {
+                        // fallback: fetch and set directly
+                        const r = await fetch(backupPath);
+                        if (!r.ok) throw new Error('Backup nije pronađen (' + r.status + ')');
+                        const html = await r.text();
+                        const ed = window.editor || window.grapesjsEditor;
+                        if (ed && typeof ed.setComponents === 'function') {
+                            ed.setComponents(html);
+                            try { ed.DomComponents.getWrapper().view.render(); } catch (e) { }
+                        } else {
+                            throw new Error('Editor nije dostupan za postavljanje sadržaja');
+                        }
+                    } else {
+                        throw new Error('Editor nije inicijalizovan');
+                    }
+
+                    // After loading backup into editor, trigger existing save flow
+                    const exportBtn = document.getElementById('export');
+                    if (!exportBtn) throw new Error('Dugme za čuvanje nije pronađeno');
+
+                    // Give the editor a short moment to render scripts/styles
+                    await new Promise(r => setTimeout(r, 300));
+
+                    // Click export to trigger the save logic already present in promotionLoader.js
+                    exportBtn.click();
+
+                    feedback.innerHTML = '<span class="text-green-600">' + <?= json_encode(__('promotion.revert_success')) ?> + '</span>';
+                } catch (err) {
+                    const msg = err && err.message ? err.message : 'Unknown error';
+                    feedback.innerHTML = '<span class="text-red-600">' + <?= json_encode(__('promotion.revert_error')) ?>.replace('{{error}}', msg) + '</span>';
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = originalHtml;
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>
