@@ -102,7 +102,9 @@ AuthController::requireEditor();
                 error_log(json_encode($doc));
                 ?>
                 <option value="/uploads/documents/<?php echo htmlspecialchars($doc['filepath']); ?>">
-                  <?php echo htmlspecialchars($doc['title']); ?>
+                  <?php
+                  $naslov = !empty($doc['title']) ? $doc['title'] : $doc['filepath'];
+                  echo htmlspecialchars($naslov); ?>
                 </option>
               <?php endforeach; ?>
             </select>
