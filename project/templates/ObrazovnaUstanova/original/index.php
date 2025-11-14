@@ -361,7 +361,11 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-terracotta"></i>Zaposleni
+                                <i class="fas fa-users-cog mr-2 text-velvet"></i>Organi upravljanja
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
+                                <i class="fas fa-sitemap mr-2 text-terracotta"></i>Organizaciona struktura
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
@@ -453,8 +457,13 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users-cog mr-3 text-velvet flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Organi upravljanja</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Zaposleni</span>
+                            <span class="font-medium">Organizaciona struktura</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -524,7 +533,7 @@
                 }
                 ?>
                 <div class="locale dropdown nonPage relative group flex items-center">
-                    <button class="nav-link text-primary hover:text-primary_hover font-semibold transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
+                    <button class="nav-link text-primary hover:text-primary_hover font-semibold transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
                         <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
                         <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
@@ -1046,7 +1055,7 @@
 
             <div class="flex flex-col items-center border-t border-white pt-8 text-center text-white text-sm">
                 <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo"
-                    class="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto mb-4">
+                    class="w-full max-w-md md:max-w-lg h-auto mb-4">
                 <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
                     zvanični stav Vlade Švajcarske.</p>
             </div>
