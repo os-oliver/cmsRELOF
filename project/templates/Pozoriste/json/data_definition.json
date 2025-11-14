@@ -136,6 +136,16 @@
           }
         },
         {
+          "name": "opisPredstave",
+          "type": "text",
+          "label": {
+            "sr": "Opis predstave",
+            "en": "Play description",
+            "sr-Cyrl": "Опис представе"
+          },
+          "required": true
+        },
+        {
           "name": "slika",
           "type": "file",
           "label": {
@@ -293,7 +303,7 @@
         }
       }
     ]
-  }
+    }
 
   }
 ]
