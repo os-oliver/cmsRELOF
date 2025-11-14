@@ -200,18 +200,6 @@
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
             <i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinacije
           </a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-calendar-alt mr-3 text-primary"></i>Manifestacije
-          </a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-bed mr-3 text-primary"></i>Smeštaj
-          </a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-person-hiking mr-3 text-primary"></i>Aktivnosti
-          </a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-utensils mr-3 text-primary"></i>Gastronomija
-          </a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
               <i class="fas fa-images mr-3 text-primary"></i>Galerija
           </a>
@@ -267,6 +255,7 @@
           </div>
         </div>-->
         <div class="dropdown relative group transition-colors">
+
                     <button
                         class="px-3 py-2 nav-link transition-colors flex items-center whitespace-nowrap px-1">
                         <!--<i class="fas fa-info-circle mr-2 text-primary"></i>-->
@@ -311,28 +300,24 @@
                 </div>
 
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Destinacije</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Manifestacije</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Smeštaj</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Aktivnosti</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Gastronomija</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Dokumenti</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Kontakt</a>
 
         <a href="#"
             class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
             <i
-                class="fas fa-calendar-alt mr-2 text-primary"></i>
+                class=" mr-2 text-primary"></i>
             <span class="hidden xl:inline">Vesti</span>
         </a>
         <a href="#"
             class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
             <i
-                class="fas fa-diagram-project mr-2 text-primary"></i>
+                class=" mr-2 text-primary"></i>
             <span class="hidden xl:inline">Projekti</span>
         </a>
         <a href="#"
             class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
-            <i class="fas fa-images mr-2 text-primary"></i>
+            <i class=" mr-2 text-primary"></i>
             <span class="hidden xl:inline">Galerija</span>
         </a>
         <a href="#" class="hidden">
@@ -375,7 +360,7 @@
           <div id="searchInputContainer"
                class="absolute right-0 top-full mt-2 opacity-0 hidden z-50 min-w-[300px] bg-surface rounded-md shadow-lg border border-gray-200 overflow-hidden">
             <form id="searchForm" class="flex items-center w-full p-2" action="/pretraga" method="GET">
-              <input id="searchInput" type="text" name="q" placeholder="Pretražite destinacije, smeštaj, manifestacije…"
+              <input id="searchInput" type="text" name="q" placeholder="Pretražite sadržaj…"
                      class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-3 py-2 placeholder-gray-400" required />
               <button type="submit" class="p-2 w-8 h-8 flex items-center justify-center" aria-label="Submit search">
                 <i class="fas fa-search text-sm"></i>
@@ -502,26 +487,16 @@
     <!-- Content -->
     <div class="container mx-auto px-4 relative z-10 py-32 lg:py-40">
       <div class="max-w-5xl mx-auto text-center">
-        <!-- Badge -->
-        <div
-          class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium mb-8 animate-fade-in">
-          <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-            </path>
-          </svg>
-          <span>Najbolja turistička destinacija 2025</span>
-        </div>
 
         <!-- Heading -->
         <h1
           class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up">
-          Otkrijte Prirodnu Lepotu<br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Naše Regije</span>
+          Otkrijte Lepotu<br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Rezervata prirode Zrenjanin</span>
         </h1>
 
         <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto animate-fade-in-up font-heading2">
-          Doživite nezaboravnu avanturu kroz spektakularne planine, kristalne reke i bogatu tradiciju
+          Doživite nezaboravnu avanturu kroz spektakularnu prirodu, kristalne reke i bogatu tradiciju
         </p>
 
         <!-- Simplified Glass Search -->
@@ -529,7 +504,7 @@
           <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 search-glow">
             <div class="relative">
               <form id="searchForm" class="flex items-center w-full p-2" action="/pretraga" method="GET">
-                <input id="searchInput" type="text" name="q" placeholder="Pretražite destinacije, smeštaj, manifestacije…"
+                <input id="searchInput" type="text" name="q" placeholder="Pretražite sadržaj…"
                      class="w-full px-6 py-4 bg-white/10 rounded-xl border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary/50" required />
                 <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-primary/80 hover:bg-primary rounded-lg transition-all duration-300 group" aria-label="Submit search">
                   <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -540,25 +515,11 @@
               </form>
             </div>
           </div>
-          <!-- Popular Searches -->
-          <div class="flex flex-wrap justify-center items-center gap-3 mt-4">
-            <a href="/pretraga?q=Rafting"
-              class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
-              Rafting
-            </a>
-            <a href="/pretraga?q=Planinarenje"
-              class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
-              Planinarenje
-            </a>
-            <a href="/pretraga?q=Manifestacije"
-              class="px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full text-white text-sm transition-all duration-300">
-              Manifestacije
-            </a>
-          </div>
+          
         </div>
 
         <!-- Quick Stats -->
-        <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+        <!-- <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
           <div class="text-center">
             <div class="text-4xl lg:text-5xl font-bold text-white mb-2">120+</div>
             <div class="text-sm lg:text-base text-gray-300">Destinacija</div>
@@ -572,7 +533,9 @@
             <div class="text-sm lg:text-base text-gray-300">Manifestacija</div>
           </div>
         </div>
-      </div>
+      </div> -->
+
+
     </div>
 
     <!-- Scroll Indicator -->
@@ -672,6 +635,111 @@
       </div>
     </div>
   </section>
+
+    <!-- Vesti -->
+    <section id="vesti" class="py-20 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4 font-heading text-primary_text">
+                    Vesti
+                </h2>
+                <p class="text-xl text-secondary_text max-w-2xl mx-auto font-heading2">
+                    Pogledajte aktuelne vesti
+                </p>
+            </div>
+
+            <div id="vestiCards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- vest 1 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
+                    <div class="relative h-80 overflow-hidden clip-diagonal">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <div id="g-datum" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
+                            15. Decembar 2024
+                        </div>
+                        
+                        <h3 id="g-naslov" class="text-2xl font-bold mb-2">Naslov vesti</h3>
+
+                        <h2 id="g-naziv" class="text-gray-200 mb-4">Kategorija vesti</h2>
+
+                        <a id="g-ovise" href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">
+                            Saznajte više
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- vest 2 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
+                    <div class="relative h-80 overflow-hidden clip-diagonal">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <div id="g-datum" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
+                            15. Decembar 2024
+                        </div>
+                        
+                        <h3 id="g-naslov" class="text-2xl font-bold mb-2">Naslov vesti</h3>
+
+                        <h2 id="g-naziv" class="text-gray-200 mb-4">Kategorija vesti</h2>
+
+                        <a id="g-ovise" href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">
+                            Saznajte više
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- vest 3 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
+                    <div class="relative h-80 overflow-hidden clip-diagonal">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <div id="g-datum" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
+                            15. Decembar 2024
+                        </div>
+                        
+                        <h3 id="g-naslov" class="text-2xl font-bold mb-2">Naslov vesti</h3>
+
+                        <h2 id="g-naziv" class="text-gray-200 mb-4">Kategorija vesti</h2>
+
+                        <a id="g-ovise" href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">
+                            Saznajte više
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="/vesti" id="eventsView"
+                    class="bg-primary text-background px-8 py-4 text-lg rounded-full hover:bg-primary_hover transition-colors flex items-center shadow-lg mx-auto w-fit">
+                    <i class="fas fa-calendar-alt mr-3"></i>
+                    Pogledaj sve
+                </a>
+            </div>
+        </div>
+    </section>
 
 
   <!-- Footer -->
