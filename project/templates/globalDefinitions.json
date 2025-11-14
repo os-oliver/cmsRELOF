@@ -28,7 +28,6 @@
         }
       ]
     },
-
     "Pitanja": {
       "sr": "Često postavljena pitanja",
       "en": "Frequently asked questions",
@@ -62,7 +61,6 @@
       "en": "Management bodies",
       "sr-Cyrl": "Органи управљања",
       "icon": "fas fa-users-cog",
-
       "fields": [
         {
           "name": "ime",
@@ -75,12 +73,22 @@
           "required": true
         },
         {
-          "name": "opis",
+          "name": "pozicija",
+          "type": "text",
+          "label": {
+            "sr": "Pozicija",
+            "en": "Position",
+            "sr-Cyrl": "Позиција"
+          },
+          "required": true
+        },
+        {
+          "name": "biografija",
           "type": "textarea",
           "label": {
-            "sr": "Opis funkcije",
-            "en": "Function description",
-            "sr-Cyrl": "Опис функције"
+            "sr": "Biografija",
+            "en": "biography",
+            "sr-Cyrl": "Биографиј"
           }
         },
         {
