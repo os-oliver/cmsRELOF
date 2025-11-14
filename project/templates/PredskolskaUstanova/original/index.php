@@ -361,7 +361,7 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-users-cog mr-2 text-primary"></i>Rukovodstvo
+                                <i class="fas fa-users-cog mr-2 text-primary"></i>Organi upravljanja
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
@@ -500,7 +500,7 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-users-cog mr-2 text-primary"></i>Rukovodstvo
+                            <i class="fas fa-users-cog mr-2 text-primary"></i>Organi upravljanja
                         </a>
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
