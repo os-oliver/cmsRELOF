@@ -164,31 +164,31 @@
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class=" mr-2 text-primary"></i>Cilj
+                                <i class="mr-2 text-primary"></i>Cilj
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class=" mr-2 text-primary"></i>Organizaciona struktura
+                                <i class="mr-2 text-primary"></i>Organizaciona struktura
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="-cog mr-2 text-primary"></i>Organi Upravljanja
+                                <i class="mr-2 text-primary"></i>Organi Upravljanja
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class=" mr-2 text-primary"></i>Misija
+                                <i class="mr-2 text-primary"></i>Misija
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class=" mr-2 text-primary"></i>Istorijat
+                                <i class="mr-2 text-primary"></i>Istorijat
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class=" mr-2 text-primary"></i>Pitanja
+                                <i class="mr-2 text-primary"></i>Pitanja
                             </a>
                             <a static = "true" href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class=" mr-2 text-primary"></i>Informacije
+                                <i class="mr-2 text-primary"></i>Informacije
                             </a>
                         </div>
                     </div>
@@ -198,19 +198,16 @@
           </a>
 
           <!-- MEGA MENU -->
-          <div class="dropdown nonPage megaMenu relative group">
+          <!-- <div class="dropdown nonPage megaMenu relative group">
             <button
               class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 w-full text-left">
               <i class=" mr-3 text-primary"></i>
               <span>Prirodne vrednosti</span>
               <i class="fas fa-chevron-down ml-auto text-xs"></i>
             </button>
-
             
             <div
               class="dropdown-menu absolute top-full left-0 w-full bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-6 grid grid-cols-3 gap-6">
-
-              <!-- Sekcija (dinamički se dodaje) -->
               <div class="section-mega-menu">
                 <h3 class="font-bold text-primary_text mb-2">[Naslov sekcije]</h3>
                 <ul class="space-y-2">
@@ -232,9 +229,8 @@
                 </ul>
               </div>
 
-              <!-- Dupliraj ili izbriši sekciju po potrebi -->
             </div>
-          </div>
+          </div> -->
 
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
             <i class=" mr-3 text-primary"></i>Vesti
@@ -350,18 +346,15 @@
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Destinacije</a>
 
         <!-- MEGA MENU -->
-        <div class="dropdown nonPage megaMenu relative group">
+        <!-- <div class="dropdown nonPage megaMenu relative group">
             <button
               class="px-3 py-2 nav-link transition-colors flex items-center whitespace-nowrap px-1">
               <span class="hidden xl:inline">Prirodne vrednosti</span>
               <i class="fas fa-chevron-down ml-1 text-xs"></i>
             </button>
 
-            
             <div
               class="dropdown-menu absolute top-full left-0 w-[600px] bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-6 grid grid-cols-3 gap-6">
-
-              <!-- Sekcija (dinamički se dodaje) -->
               <div class="section-mega-menu">
                 <h3 class="font-bold text-primary_text mb-2">[Naslov sekcije]</h3>
                 <ul class="space-y-2">
@@ -382,8 +375,6 @@
                   </li>
                 </ul>
               </div>
-
-              <!-- Dupliraj ili izbriši sekciju po potrebi -->
             </div>
           </div>
 
@@ -393,7 +384,7 @@
             <i
                 class=" mr-2 text-primary"></i>
             <span class="hidden xl:inline">Vesti</span>
-        </a>
+        </a> -->
 
         <a href="#"
             class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
