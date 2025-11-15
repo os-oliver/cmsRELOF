@@ -172,7 +172,7 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-users-cog mr-2 text-primary"></i>Rukovodstvo
+                                <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
@@ -200,15 +200,19 @@
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
             <i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinacije
           </a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-address-book mr-3 text-primary"></i>Dokumenti
-          </a>
+
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
             <i class="fas fa-address-book mr-3 text-primary"></i>Vesti
           </a>
+
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
             <i class="fas fa-address-book mr-3 text-primary"></i>Projekti
           </a>
+
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
+            <i class="fas fa-address-book mr-3 text-primary"></i>Dokumenti
+          </a>
+          
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
               <i class="fas fa-images mr-3 text-primary"></i>Galerija
           </a>
@@ -283,7 +287,7 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            Rukovodstvo
+                            Organi Upravljanja
                         </a>
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
@@ -309,7 +313,6 @@
                 </div>
 
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Destinacije</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Dokumenti</a>
 
         <a href="#"
             class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
@@ -317,12 +320,16 @@
                 class=" mr-2 text-primary"></i>
             <span class="hidden xl:inline">Vesti</span>
         </a>
+
         <a href="#"
             class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
             <i
                 class=" mr-2 text-primary"></i>
             <span class="hidden xl:inline">Projekti</span>
         </a>
+
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Dokumenti</a>
+
         <a href="#"
             class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
             <i class=" mr-2 text-primary"></i>
@@ -490,7 +497,7 @@
   <section class="relative pt-20 overflow-hidden">
     <!-- Full-screen Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
-      <img src="https://bookaweb.s3.eu-central-1.amazonaws.com/assets/62e7d75ccd410.jpg" alt="Mountain landscape"
+      <img src="/assets/img/lokvanj-beli.jpg" alt="Mountain landscape"
         class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-b from-gray-900/30 via-gray-900/20 to-gray-900/25"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30"></div>
