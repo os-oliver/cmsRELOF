@@ -200,6 +200,15 @@
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
             <i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinacije
           </a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
+            <i class="fas fa-address-book mr-3 text-primary"></i>Dokumenti
+          </a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
+            <i class="fas fa-address-book mr-3 text-primary"></i>Vesti
+          </a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
+            <i class="fas fa-address-book mr-3 text-primary"></i>Projekti
+          </a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
               <i class="fas fa-images mr-3 text-primary"></i>Galerija
           </a>
@@ -301,7 +310,6 @@
 
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Destinacije</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Dokumenti</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Kontakt</a>
 
         <a href="#"
             class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
@@ -320,6 +328,10 @@
             <i class=" mr-2 text-primary"></i>
             <span class="hidden xl:inline">Galerija</span>
         </a>
+
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Kontakt</a>
+
+
         <a href="#" class="hidden">
             Ankete
         </a>
