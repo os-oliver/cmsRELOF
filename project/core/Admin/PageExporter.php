@@ -594,6 +594,7 @@ class PageExporter
         use App\Models\AboutUs;
         $dataAboutUS = new AboutUs();
         $aboutUsData = $dataAboutUS->list($locale);
+        $groupedPages = PageLoader::getGroupedStaticPages();
 
         // Load dynamic texts
         $textModel = new Text();
