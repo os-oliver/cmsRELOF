@@ -186,7 +186,7 @@
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fa-question mr-2 text-primary"></i>Pitanja
                             </a>
-                            <a href="#"
+                            <a static = "true" href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                             </a>
@@ -297,7 +297,7 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             Pitanja
                         </a>
-                        <a href="#"
+                        <a static= "true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             Informacije
                         </a>
