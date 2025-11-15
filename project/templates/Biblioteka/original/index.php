@@ -197,6 +197,45 @@
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-secondary"></i>Početna
                     </a>
+                    <div class="mobile-dropdown nonPage megaMenu relative group">
+                        <button
+                            class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
+                            <i class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors"></i>
+                            <span class="hidden xl:inline">
+                                <p>Naslov</p>
+                            </span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+
+                        <!-- MEGA MENU -->
+                        <div
+                            class="mobile-dropdown-menu absolute top-full left-0 w-[600px] bg-paper rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-6 grid grid-cols-3 gap-6">
+
+                            <!-- Sekcija (dinamički se dodaje) -->
+                            <div>
+                                <h3 class="font-bold text-slate mb-2">[Naslov sekcije]</h3>
+                                <ul class="space-y-2">
+                                    <li>
+                                        <a href="#" class="flex items-center text-sm hover:text-terracotta">
+                                            <i class="fas fa-circle mr-2 text-gray-400"></i>[Stavka 1]
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center text-sm hover:text-terracotta">
+                                            <i class="fas fa-circle mr-2 text-gray-400"></i>[Stavka 2]
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center text-sm hover:text-terracotta">
+                                            <i class="fas fa-circle mr-2 text-gray-400"></i>[Stavka 3]
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Dupliraj ili izbriši sekciju po potrebi -->
+                        </div>
+                    </div>
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all"

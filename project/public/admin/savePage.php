@@ -209,9 +209,15 @@ function handleStaticPages(array $data): void
         </main>');
         $basicPageContent = $builder->buildPage();
 
-        // Save the file
-        if (file_put_contents($filePath, $basicPageContent) === false) {
-            throw new Exception("Failed to create page file: " . $filePath);
+        // Save the file only if it doesn't already exist with content
+        if (file_exists($filePath) && filesize($filePath) > 0) {
+            // File already exists with content, skip overwriting
+            error_log("File already exists with content, skipping: " . $filePath);
+        } else {
+            // File doesn't exist or is empty, create/overwrite it
+            if (file_put_contents($filePath, $basicPageContent) === false) {
+                throw new Exception("Failed to create page file: " . $filePath);
+            }
         }
 
         // Update page data

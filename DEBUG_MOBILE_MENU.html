@@ -1,0 +1,56 @@
+<!-- MOBILE MENU DEBUG SCRIPT -->
+<script>
+  // Dodaj ovo na kraju dokumenta za debug
+  console.log("=== MOBILE MENU DEBUG ===");
+
+  const debugPanel = document.getElementById("mobileMenuPanel");
+  const debugMenu = document.getElementById("mobileMenu");
+
+  console.log("mobileMenuPanel:", debugPanel);
+  console.log("mobileMenu:", debugMenu);
+
+  if (debugPanel) {
+    console.log("mobileMenuPanel classes:", debugPanel.className);
+    console.log(
+      "mobileMenuPanel computed style transform:",
+      window.getComputedStyle(debugPanel).transform
+    );
+    console.log("mobileMenuPanel width:", debugPanel.offsetWidth);
+    console.log("mobileMenuPanel height:", debugPanel.offsetHeight);
+  }
+
+  // Test button
+  setTimeout(() => {
+    const testBtn = document.createElement("button");
+    testBtn.textContent = "TEST MENU";
+    testBtn.style.cssText =
+      "position: fixed; bottom: 20px; left: 20px; z-index: 999; padding: 10px 20px; background: red; color: white; font-weight: bold;";
+    document.body.appendChild(testBtn);
+
+    testBtn.addEventListener("click", () => {
+      console.log("TEST CLICK");
+      console.log("Before - mobileMenu classes:", debugMenu.className);
+      console.log(
+        "Before - mobileMenuPanel transform:",
+        window.getComputedStyle(debugPanel).transform
+      );
+
+      if (debugMenu.classList.contains("hidden")) {
+        debugMenu.classList.remove("hidden");
+        debugPanel.classList.remove("translate-x-full");
+        debugPanel.classList.add("translate-x-0");
+        console.log("OPENED");
+      } else {
+        debugPanel.classList.add("translate-x-full");
+        debugPanel.classList.remove("translate-x-0");
+        debugMenu.classList.add("hidden");
+        console.log("CLOSED");
+      }
+
+      console.log(
+        "After - mobileMenuPanel transform:",
+        window.getComputedStyle(debugPanel).transform
+      );
+    });
+  }, 1000);
+</script>

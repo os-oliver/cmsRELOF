@@ -151,167 +151,29 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
         }
       });
     } else if (comp.getClasses().includes("megaMenu")) {
-      const originalText = comp.view.el.textContent.trim() || "Menu";
-      const mainTitle = originalText.split("[")[0].trim();
-      const staticMenu = {
-        type: "div",
-        classes: ["dropdown", "relative", "group"],
-        components: [
-          {
-            type: "button",
-            classes: [
-              "nav-link",
-              "text-slate",
-              "font-semibold",
-              "hover:text-terracotta",
-              "transition-colors",
-              "flex",
-              "items-center",
-              "whitespace-nowrap",
-            ],
-            components: [
-              {
-                type: "i",
-                classes: [
-                  "fas",
-                  "fa-info-circle",
-                  "mr-2",
-                  "text-ochre",
-                  "group-hover:text-sage",
-                  "transition-colors",
-                ],
-              },
-              {
-                type: "span",
-                classes: ["hidden", "xl:inline"],
-                content: `<p>${mainTitle}</p>`,
-              },
-              {
-                type: "i",
-                classes: ["fas", "fa-chevron-down", "ml-1", "text-xs"],
-              },
-            ],
-          },
-          {
-            type: "div",
-            classes: [
-              "dropdown-menu",
-              "absolute",
-              "top-full",
-              "left-0",
-              "w-auto",
-              "min-w-96",
-              "max-w-5xl",
-              "bg-paper",
-              "rounded-md",
-              "shadow-lg",
-              "opacity-0",
-              "invisible",
-              "group-hover:opacity-100",
-              "group-hover:visible",
-              "transition-all",
-              "duration-200",
-              "z-50",
-              "p-4",
-              "grid",
-              "grid-cols-1",
-              "sm:grid-cols-2",
-              "lg:grid-cols-3",
-              "gap-6",
-            ],
-            components: [
-              {
-                type: "textnode",
-                content:
-                  "<?php foreach ($groupedPages as $column => $pages): ?>",
-              },
-              {
-                type: "div",
-                classes: ["w-full", "min-w-0"],
-                components: [
-                  {
-                    type: "h3",
-                    classes: [
-                      "font-bold",
-                      "text-slate",
-                      "mb-3",
-                      "text-sm",
-                      "uppercase",
-                      "tracking-wide",
-                      "border-b",
-                      "border-gray-200",
-                      "pb-1",
-                    ],
-                    components: [
-                      {
-                        type: "textnode",
-                        content: "<?= htmlspecialchars($column) ?>",
-                      },
-                    ],
-                  },
-                  {
-                    type: "ul",
-                    classes: ["space-y-1"],
-                    components: [
-                      {
-                        type: "textnode",
-                        content: "<?php foreach ($pages as $page): ?>",
-                      },
-                      {
-                        type: "li",
-                        components: [
-                          {
-                            type: "link",
-                            classes: [
-                              "flex",
-                              "items-center",
-                              "text-sm",
-                              "py-1",
-                              "px-2",
-                              "rounded",
-                              "hover:text-terracotta",
-                              "hover:bg-gray-50",
-                              "transition-all",
-                              "duration-150",
-                              "group/item",
-                            ],
-                            attributes: {
-                              href: '<?= htmlspecialchars($page["href"]) ?>',
-                            },
-                            components: [
-                              {
-                                type: "span",
-                                classes: [
-                                  "w-1.5",
-                                  "h-1.5",
-                                  "bg-ochre",
-                                  "rounded-full",
-                                  "mr-2",
-                                  "flex-shrink-0",
-                                  "group-hover/item:bg-terracotta",
-                                  "transition-colors",
-                                ],
-                              },
-                              {
-                                type: "textnode",
-                                content:
-                                  '<?= htmlspecialchars($page["name"]) ?>',
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                      { type: "textnode", content: "<?php endforeach; ?>" },
-                    ],
-                  },
-                ],
-              },
-              { type: "textnode", content: "<?php endforeach; ?>" },
-            ],
-          },
-        ],
-      };
-      comp.replaceWith(staticMenu);
+      // Find all section-mega-menu divs
+      comp.find(".section-mega-menu").forEach((section) => {
+        const phpMegaMenuCode = `<?php foreach ($groupedPages as $column => $pages): ?>
+    <div class="section-mega-menu">
+        <h3 class="font-semibold text-slate mb-2 text-xs uppercase tracking-wider border-b border-gray-200 pb-1.5">
+            <?= htmlspecialchars($column) ?>
+        </h3>
+        <ul class="space-y-1">
+            <?php foreach ($pages as $page): ?>
+                <li>
+                    <a href="<?= htmlspecialchars($page['href']) ?>" 
+                       class="flex items-center text-sm py-1.5 px-2 rounded hover:text-terracotta hover:bg-gray-50 transition-colors group/item">
+                        <span class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0 group-hover/item:bg-terracotta transition-colors"></span>
+                        <span class="whitespace-nowrap"><?= htmlspecialchars($page['name']) ?></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endforeach; ?>`;
+
+        section.replaceWith({ type: "textnode", content: phpMegaMenuCode });
+      });
     }
   });
 
