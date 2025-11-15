@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="sr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Mobilni Meni</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+
+      /* Mobile Menu Styles */
+      #mobileMenu {
+        display: none;
+      }
+
+      #mobileMenu.show {
+        display: block;
+      }
+
+      #mobileMenuPanel {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      #mobileMenu.show #mobileMenuPanel {
+        transform: translateX(0);
+      }
+
+      #mobileMenuOverlay {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: none;
+      }
+
+      #mobileMenu.show #mobileMenuOverlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Dropdown menu animation */
+      .dropdown-menu {
+        transition: max-height 0.3s ease-in-out;
+      }
+
+      .dropdown-menu.show {
+        max-height: 500px;
+        overflow: visible;
+      }
+
+      .mobile-dropdown .toggle-btn i:last-child {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .mobile-dropdown.open .toggle-btn i:last-child {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden">
+      <div
+        class="fixed inset-0 bg-black bg-opacity-70"
+        id="mobileMenuOverlay"
+      ></div>
+      <div
+        id="mobileMenuPanel"
+        class="fixed top-0 right-0 h-full w-80 max-w-full bg-white shadow-xl"
+      >
+        <div class="p-6 h-full overflow-y-auto flex flex-col">
+          <div class="flex justify-between items-center mb-8">
+            <h2 class="text-xl font-bold text-gray-900">MENU</h2>
+            <button
+              id="closeMobileMenu"
+              class="text-gray-900 hover:text-blue-600 transition-colors"
+              type="button"
+            >
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <nav id="navBarIDm" class="space-y-2 flex-1">
+            <a
+              href="#"
+              class="flex items-center py-3 px-4 text-gray-900 hover:text-blue-600 hover:bg-gray-100 rounded-lg transition-all"
+            >
+              <i class="fas fa-home mr-3 text-blue-600"></i>Početna
+            </a>
+
+            <!-- O nama dropdown -->
+            <div class="mobile-dropdown">
+              <button
+                type="button"
+                class="toggle-btn flex items-center justify-between w-full py-3 px-4 text-gray-900 hover:text-blue-600 hover:bg-gray-100 rounded-lg transition-all"
+              >
+                <div class="flex items-center">
+                  <i class="fas fa-info-circle mr-3 text-blue-700"></i>O nama
+                </div>
+                <i class="fas fa-chevron-down text-sm transition-transform"></i>
+              </button>
+              <div
+                class="dropdown-menu ml-6 mt-2 space-y-2 hidden max-h-0 overflow-hidden transition-all"
+              >
+                <a
+                  href="#"
+                  class="flex items-center py-2 px-4 text-sm text-gray-900 hover:text-blue-600 transition-colors"
+                >
+                  <i class="fas fa-book mr-2 text-blue-600"></i>Uvod
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center py-2 px-4 text-sm text-gray-900 hover:text-blue-600 transition-colors"
+                >
+                  <i class="fas fa-flag mr-2 text-blue-700"></i>Misija i vizija
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center py-2 px-4 text-sm text-gray-900 hover:text-blue-600 transition-colors"
+                >
+                  <i class="fas fa-history mr-2 text-blue-600"></i>Istorijat
+                </a>
+              </div>
+            </div>
+
+            <!-- Ponuda dropdown -->
+            <div class="mobile-dropdown">
+              <button
+                type="button"
+                class="toggle-btn flex items-center justify-between w-full py-3 px-4 text-gray-900 hover:text-blue-600 hover:bg-gray-100 rounded-lg transition-all"
+              >
+                <div class="flex items-center">
+                  <i class="fas fa-medal mr-3 text-blue-700"></i>Ponuda
+                </div>
+                <i class="fas fa-chevron-down text-sm transition-transform"></i>
+              </button>
+              <div
+                class="dropdown-menu ml-6 mt-2 space-y-2 hidden max-h-0 overflow-hidden transition-all"
+              >
+                <a
+                  href="#"
+                  class="flex items-center py-2 px-4 text-sm text-gray-900 hover:text-blue-600 transition-colors"
+                >
+                  <i class="fas fa-basketball-ball mr-2 text-blue-600"></i
+                  >Sportovi
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center py-2 px-4 text-sm text-gray-900 hover:text-blue-600 transition-colors"
+                >
+                  <i class="fas fa-building mr-2 text-blue-700"></i>Objekti
+                </a>
+              </div>
+            </div>
+
+            <a
+              href="#"
+              class="flex items-center py-3 px-4 text-gray-900 hover:text-blue-600 hover:bg-gray-100 rounded-lg transition-all"
+            >
+              <i class="fas fa-images mr-3 text-blue-700"></i>Galerija
+            </a>
+
+            <a
+              href="#"
+              class="flex items-center py-3 px-4 text-gray-900 hover:text-blue-600 hover:bg-gray-100 rounded-lg transition-all"
+            >
+              <i class="fas fa-folder-open mr-3 text-blue-600"></i>Dokumenti
+            </a>
+
+            <!-- Aktivnosti dropdown -->
+            <div class="mobile-dropdown">
+              <button
+                type="button"
+                class="toggle-btn flex items-center justify-between w-full py-3 px-4 text-gray-900 hover:text-blue-600 hover:bg-gray-100 rounded-lg transition-all"
+              >
+                <div class="flex items-center">
+                  <i class="fas fa-bullhorn mr-3 text-blue-600"></i>Aktivnosti
+                </div>
+                <i class="fas fa-chevron-down text-sm transition-transform"></i>
+              </button>
+              <div
+                class="dropdown-menu ml-6 mt-2 space-y-2 hidden max-h-0 overflow-hidden transition-all"
+              >
+                <a
+                  href="#"
+                  class="flex items-center py-2 px-4 text-sm text-gray-900 hover:text-blue-600 transition-colors"
+                >
+                  <i class="fas fa-newspaper mr-2 text-blue-600"></i>Vesti
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center py-2 px-4 text-sm text-gray-900 hover:text-blue-600 transition-colors"
+                >
+                  <i class="fas fa-poll mr-2 text-blue-600"></i>Ankete
+                </a>
+              </div>
+            </div>
+
+            <a
+              href="#"
+              class="flex items-center py-3 px-4 text-gray-900 hover:text-blue-600 hover:bg-gray-100 rounded-lg transition-all"
+            >
+              <i class="fas fa-phone mr-3 text-blue-700"></i>Kontakt
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div>
+          <h1 class="text-xl font-bold text-gray-900">SPORTSKI ARENA</h1>
+        </div>
+        <button id="hamburger" class="lg:hidden text-gray-900 text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-20">
+      <h2 class="text-4xl font-bold mb-8 text-gray-900">Mobilni Meni Test</h2>
+      <p class="text-lg text-gray-700 mb-4">
+        Kliknite na hamburger ikonicu da otvorite mobilni meni. Test mobilnu
+        verziju sa F12 DevTools (set na mobile view).
+      </p>
+      <div class="space-y-4">
+        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+          <h3 class="font-bold text-blue-900">Šta je opravljeno:</h3>
+          <ul class="list-disc list-inside text-blue-800 mt-2">
+            <li>Uprosćena CSS animacija za meni</li>
+            <li>Uklonjena kompleksna transform logika sa timeout-ima</li>
+            <li>Jednostavnije event handlere</li>
+            <li>Bezbednije HTML (type="button", htmlspecialchars)</li>
+            <li>Bolja pristupačnost</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // ============================================
+        // MOBILE MENU
+        // ============================================
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const closeMobileMenu = document.getElementById("closeMobileMenu");
+        const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+        // Otvaranje menija
+        hamburger?.addEventListener("click", () => {
+          mobileMenu.classList.add("show");
+        });
+
+        // Zatvaranje menija
+        const closeMenu = () => {
+          mobileMenu.classList.remove("show");
+        };
+
+        closeMobileMenu?.addEventListener("click", closeMenu);
+        mobileMenuOverlay?.addEventListener("click", closeMenu);
+
+        // Zatvaranje pri ESC
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeMenu();
+          }
+        });
+
+        // ============================================
+        // MOBILE DROPDOWNS
+        // ============================================
+        document
+          .querySelectorAll(".mobile-dropdown .toggle-btn")
+          .forEach((button) => {
+            button.addEventListener("click", (e) => {
+              e.preventDefault();
+              const dropdown = button.closest(".mobile-dropdown");
+              const menu = dropdown.querySelector(".dropdown-menu");
+              const isOpen = menu.classList.contains("show");
+
+              // Zatvori sve druge dropdowne
+              document
+                .querySelectorAll(".mobile-dropdown.open")
+                .forEach((d) => {
+                  d.classList.remove("open");
+                  d.querySelector(".dropdown-menu").classList.remove("show");
+                });
+
+              // Toggle trenutnog
+              if (!isOpen) {
+                dropdown.classList.add("open");
+                menu.classList.add("show");
+              }
+            });
+          });
+      });
+    </script>
+  </body>
+</html>
