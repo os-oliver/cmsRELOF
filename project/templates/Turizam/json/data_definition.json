@@ -60,16 +60,6 @@
           "required": true
         },
         {
-          "name": "drzava",
-          "type": "text",
-          "label": {
-            "sr": "Država",
-            "en": "Country",
-            "sr-Cyrl": "Држава"
-          },
-          "required": true
-        },
-        {
           "name": "region",
           "type": "text",
           "label": {
@@ -299,7 +289,7 @@
       "icon": "fas fa-newspaper",
       "categories": [
         "Kultura",
-        "Obrazovanje",
+        "Priroda",
         "Inovacije",
         "Zdravlje",
         "Tehnologija"
@@ -334,13 +324,6 @@
             "en": "Event category",
             "sr-Cyrl": "Категорија догађаја"
           },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
           "required": true
         },
         {
@@ -386,6 +369,10 @@
       "en": "Projects",
       "sr-Cyrl": "Пројекти",
       "icon": "fas fa-diagram-project",
+      "categories": [
+        "U toku",
+        "Okončani"
+      ],
       "fields": [
         {
           "name": "slika",
@@ -405,6 +392,20 @@
             "en": "Project name",
             "sr-Cyrl": "Назив пројекта"
           },
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "categories",
+          "label": {
+            "sr": "Status projekta",
+            "en": "Project status",
+            "sr-Cyrl": "Статус пројекта"
+          },
+          "options": [
+            "U toku",
+            "Okončani"
+          ],
           "required": true
         },
         {

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Turizam Regija | Otkrijte Našu Prirodnu Baštinu</title>
+  <title>REZERVATI PRIRODE ZRENJANIN | Otkrijte Našu Prirodnu Baštinu</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -190,10 +190,6 @@
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                             </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-users mr-2 text-primary"></i>Timovi
-                            </a>
                         </div>
                     </div>
 
@@ -240,12 +236,12 @@
           </svg>
         </div>-->
         <div
-            class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+            class="w-11 h-11 bg-gradient-to-br rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
             <img src="" alt="" style="width:75px;height:auto;" />
         </div>
         <div class="hidden sm:block">
-          <div class="text-xl font-bold text-primary_text font-heading2">Turizam Regija</div>
-          <div class="text-xs text-secondary_text">Turistička Organizacija</div>
+          <div class="text-xl font-bold text-primary_text font-heading2">REZERVATI PRIRODE </div>
+          <div class="text-xs text-secondary_text">ZRENJANIN</div>
         </div>
       </a>
 
@@ -296,10 +292,6 @@
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             Istorijat
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            Timovi
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
