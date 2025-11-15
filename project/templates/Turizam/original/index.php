@@ -118,7 +118,7 @@
 
         <nav id="navBarIDm" class="space-y-4">
           <a href="/" class="flex items-center py-3 px-4 rounded-lg transition-all">
-            <i class="fas fa-home mr-3 text-primary"></i>Početna
+            <i class=" mr-3 text-primary"></i>Početna
           </a>
 
           <!--<div class="mobile-dropdown">
@@ -156,7 +156,7 @@
                             class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
                             id="mobileAboutToggle">
                             <div class="flex items-center">
-                                <i class="fas fa-info-circle mr-3 text-primary"></i>O nama
+                                <i class=" mr-3 text-primary"></i>O nama
                             </div>
                             <i class="fas fa-chevron-down  transition-transform duration-200"
                                 id="mobileAboutIcon"></i>
@@ -164,45 +164,45 @@
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
+                                <i class=" mr-2 text-primary"></i>Cilj
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
+                                <i class=" mr-2 text-primary"></i>Organizaciona struktura
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
+                                <i class="-cog mr-2 text-primary"></i>Organi Upravljanja
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Misija
+                                <i class=" mr-2 text-primary"></i>Misija
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-history mr-2 text-primary"></i>Istorijat
+                                <i class=" mr-2 text-primary"></i>Istorijat
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fa-question mr-2 text-primary"></i>Pitanja
+                                <i class=" mr-2 text-primary"></i>Pitanja
                             </a>
                             <a static = "true" href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
+                                <i class=" mr-2 text-primary"></i>Informacije
                             </a>
                         </div>
                     </div>
 
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinacije
+            <i class=" mr-3 text-primary"></i>Destinacije
           </a>
 
           <!-- MEGA MENU -->
           <div class="dropdown nonPage megaMenu relative group">
             <button
               class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 w-full text-left">
-              <i class="fas fa-info-circle mr-3 text-primary"></i>
-              <span>MEGA meni</span>
+              <i class=" mr-3 text-primary"></i>
+              <span>Prirodne vrednosti</span>
               <i class="fas fa-chevron-down ml-auto text-xs"></i>
             </button>
 
@@ -237,26 +237,26 @@
           </div>
 
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-address-book mr-3 text-primary"></i>Vesti
+            <i class=" mr-3 text-primary"></i>Vesti
           </a>
 
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-address-book mr-3 text-primary"></i>Projekti
+            <i class=" mr-3 text-primary"></i>Projekti
           </a>
 
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-address-book mr-3 text-primary"></i>Dokumenti
+            <i class=" mr-3 text-primary"></i>Dokumenti
           </a>
           
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-              <i class="fas fa-images mr-3 text-primary"></i>Galerija
+              <i class=" mr-3 text-primary"></i>Galerija
           </a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
+            <i class=" mr-3 text-primary"></i>Kontakt
           </a>
 
           <a static = "true" href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50">
-            <i class="fas fa-address-book mr-3 text-primary"></i>Cenovnik
+            <i class=" mr-3 text-primary"></i>Cenovnik
           </a>
         </nav>
       </div>
@@ -353,7 +353,7 @@
         <div class="dropdown nonPage megaMenu relative group">
             <button
               class="px-3 py-2 nav-link transition-colors flex items-center whitespace-nowrap px-1">
-              <span class="hidden xl:inline">Mega meni</span>
+              <span class="hidden xl:inline">Prirodne vrednosti</span>
               <i class="fas fa-chevron-down ml-1 text-xs"></i>
             </button>
 
@@ -849,11 +849,8 @@
                                   d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                           </svg>
                       </div>
-                      <h3 class="text-xl">Lorem ipsum dolor</h3>
+                      <h3 class="text-xl">Rezervati prirode Zrenjanin</h3>
                   </div>
-                  <p class="mb-4">
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit
-                  </p>
                   <div class="flex space-x-3">
                       <a href="#"
                           class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
@@ -874,14 +871,11 @@
                   </div>
               </div>
               <div>
-                  <h4 class="mb-6">Brzi linkovi</h4>
+                  <h4 class="mb-6">Dodatne informacije</h4>
                   <ul class="space-y-3">
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a>
+                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">PIB: 109846467</a></li>
+                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Matični broj: 08965749</a></li>
+                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Broj računa: 840-1197664-16</a></li>
                       </li>
                   </ul>
               </div>
@@ -889,19 +883,36 @@
                   <h4 class="mb-6">Informacije</h4>
                   <ul class="space-y-3">
                       <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
+                      
                       <li class="flex items-start">
                           <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                          <span>Lorem ipsum dolor</span>
+                          <span>023/521-032: tehnički sekretar</span>
                       </li>
+
+                      <li class="flex items-start">
+                          <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+                          <span>023/521-033: čuvarska služba</span>
+                      </li>
+
+                      <li class="flex items-start">
+                          <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+                          <span>023/521-034: finansije</span>
+                      </li>
+
+
                       <li class="flex items-start">
                           <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                          <span data-translate="off">Lorem ipsum dolor</span>
+                          <span data-translate="off">rezervatiprirodezr@gmail.com</span>
                       </li>
+
                       <li class="flex items-start">
                           <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
                           <span>
-                              Lorem ipsum dolor<br>
-                              Lorem ipsum dolor
+                          Radno vreme:
+                          <br>
+                          Ustanove 7.00 - 15.00 časova
+                          <br>
+                          Čuvarske službe 0.00 - 24.00 časova
                           </span>
                       </li>
                   </ul>
@@ -910,8 +921,8 @@
                   <h4 class="mb-6">Mapa lokacije</h4>
                   <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                       <iframe
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
-                          class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4532.3479138067305!2d20.396110099999998!3d45.376838799999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475adb46a52059fb%3A0x21ac8feea9e8b142!2sVojvode%20Petra%20Bojovic%CC%81a%202%2C%20Zrenjanin%2023000!5e1!3m2!1sen!2srs!4v1763226632840!5m2!1sen!2srs" 
+                      class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                   </div>
               </div>
           </div>
