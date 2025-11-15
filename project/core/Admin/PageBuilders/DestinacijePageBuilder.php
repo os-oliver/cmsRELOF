@@ -394,6 +394,7 @@ PHP;
 
     <section class="container mx-auto px-4 py-12">
         <!-- Hero -->
+        <br><br>
         <div class="mb-8">
             <h1 class="hero-title font-heading text-4xl md:text-5xl font-bold text-primary_text mb-2">
                 <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Destinacije</span>
