@@ -52,7 +52,6 @@ class FileUploader
             'size' => isset($file['size']) ? (int) $file['size'] : null,
             'error' => $file['error'] ?? null,
         ];
-        error_log('file: ' . json_encode($info, JSON_UNESCAPED_UNICODE));
         // no file uploaded
         $error = $file['error'] ?? UPLOAD_ERR_NO_FILE;
         if ($error === UPLOAD_ERR_NO_FILE) {
@@ -80,17 +79,20 @@ class FileUploader
         if (!$tmp || !is_uploaded_file($tmp)) {
             throw new \RuntimeException("Possible file upload attack or missing tmp_name.");
         }
-
-        // generate unique name
+        // get original filename without extension
         $originalName = pathinfo($file['name'], PATHINFO_FILENAME);
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 
-        // Sanitize the filename (optional but recommended)
-        $originalName = preg_replace('/[^a-zA-Z0-9-_]/', '_', $originalName);
+        // replace spaces with underscores
+        $originalName = str_replace(' ', '_', $originalName);
 
-        // Start with original filename
+        // remove any character that is NOT a letter (any language), number, dash or underscore
+        $originalName = preg_replace('/[^\p{L}\p{N}_-]/u', '', $originalName);
+
+        // rebuild filename
         $filename = $originalName . '.' . $ext;
         $target = $this->uploadDir . $filename;
+
 
         // If file exists, add random suffix
         while (file_exists($target)) {

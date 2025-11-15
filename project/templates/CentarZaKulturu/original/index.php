@@ -503,6 +503,7 @@
                     <span class="hidden xl:inline text-sm">Početna</span>
                 </a>
 
+                <!-- O nama -->
                 <div class="dropdown relative group">
                     <button
                         class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
@@ -514,59 +515,68 @@
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Uvod</span>
+                            <span class="font-medium">O KCZR-U</span>
                         </a>
-                        <a href="#" static="true"
+                        <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija i vizija</span>
                         </a>
-                        <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Istorijat</span>
-                        </a>
+
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Rukovodstvo</span>
+                            <span class="font-medium">Organi upravljanja</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-sitemap mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Organizaciona struktura</span>
                         </a>
-
-                        <a href="#" static="true"
+                        <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Objekat</span>
+                            <i class="fas fa-question-circle mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Pitanja</span>
                         </a>
-                        <a href="#" static="true"
+                        <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Donacije i podrška</span>
-                        </a>
-                        <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Partneri</span>
+                            <i class="fas fa-info mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Informacije</span>
                         </a>
                     </div>
                 </div>
 
+                <!-- Sadržaji (Programi + Produkcija) -->
+                <div class="dropdown relative group">
+                    <button
+                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        <i
+                            class="fas fa-th-large mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                        <span class="hidden xl:inline text-sm">Sadržaji</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
 
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-theater-masks mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Programi</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-film mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Produkcija</span>
+                        </a>
+                    </div>
+                </div>
 
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-                    <i
-                        class="fas fa-users mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Ansambl</span>
-                </a>
-
+                <!-- Projketi, Galerija, Dokumenti ostaje isto -->
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
@@ -585,6 +595,8 @@
                         class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Dokumenti</span>
                 </a>
+
+                <!-- Aktivnosti bez Događaja -->
                 <div class="dropdown relative group">
                     <button
                         class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
@@ -594,29 +606,19 @@
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
-
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-newspaper mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Vesti</span>
                         </a>
-
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-calendar-alt mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Događaji</span>
-                        </a>
-
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-poll mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="fofnt-medium">Ankete</span>
+                            <span class="font-medium">Ankete</span>
                         </a>
                     </div>
-
                 </div>
 
                 <a href="#"
@@ -625,6 +627,7 @@
                         class="fas fa-address-book mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Kontakt</span>
                 </a>
+
 
                 <?php
                 if (isset($_GET['locale'])) {
@@ -712,6 +715,7 @@
         <!-- Decorative background elements -->
         <div class="absolute inset-0 z-0">
             <!-- Floating paint elements -->
+
             <div
                 class="absolute top-20 left-10 w-80 h-40 bg-primary opacity-15 transform rotate-12 rounded-full animate-float">
             </div>
@@ -795,7 +799,7 @@
 
                         <!-- Small Image Top Left -->
                         <div
-                            class="absolute top-10 left-0 w-[45%] h-[35%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
+                            class="slider-item absolute top-10 left-0 w-[45%] h-[35%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
                             <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600"
                                 alt="Muzika i umetnost" class="w-full h-full object-cover" />
                             <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent"></div>
@@ -803,7 +807,7 @@
 
                         <!-- Small Image Bottom Left -->
                         <div
-                            class="absolute bottom-0 left-10 w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
+                            class="slider-item absolute bottom-0 left-10 w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
                             <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600"
                                 alt="Ansambl nastup" class="w-full h-full object-cover" />
                             <div class="absolute inset-0 bg-gradient-to-tl from-secondary/30 to-transparent"></div>
@@ -834,82 +838,71 @@
 
 
 
-    <!-- Featured Events Section -->
-    <section id="events" class="py-20 bg-secondary_background">
+    <!-- Programs Section -->
+    <section id="program" class="py-20 bg-secondary_background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Predstojeći Događaji
+                    Naši Programi
                     <span
                         class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Istražite našu bogatu ponudu kulturnih događaja koji će vas inspirisati i zabaviti
+                    Otkrijte raznovrsne programe koje nudimo za sve generacije
                 </p>
             </div>
 
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="programCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
-                    <div
-                        class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex flex-col md:flex-row overflow-hidden">
-                        <div class="w-full md:w-1/3 relative flex-shrink-0 h-64 md:h-auto">
+                    <article
+                        class="bg-surface rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                        <div class="h-56 relative overflow-hidden">
                             <img id="g-image"
-                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                alt="Event image"
-                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                                alt="Program"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div id="g-naziv"
                                 class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                Kultura
+                                Program
                             </div>
                         </div>
-
-                        <div class="w-full md:w-2/3 p-6 flex flex-col justify-between">
-                            <div class="mb-4">
-                                <h3 id="g-title"
-                                    class="text-xl md:text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                    Savremene Perspektive
-                                </h3>
-                                <p id="g-description"
-                                    class="text-primary_text text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-2">
-                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                    savremenih trendova u umetnosti i tehnologiji.
-                                </p>
-                            </div>
-
-                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-calendar-alt text-primary"></i>
-                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
+                                    <i class="fas fa-graduation-cap text-lg"></i>
                                 </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-clock text-secondary"></i>
-                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-map-marker-alt text-accent"></i>
-                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                        Umetnosti</span>
+                                <div class="flex items-center text-sm text-secondary_text">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span id="g-datum">15. Oktobar 2025</span>
                                 </div>
                             </div>
 
-                            <div>
-                                <a id="g-ovise"
-                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm inline-block text-center w-full md:w-auto">
-                                    Više informacija
-                                </a>
-                            </div>
+                            <h3 id="g-title"
+                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                                Edukativni program
+                            </h3>
+
+                            <p id="g-description" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
+                                Program namenjen edukaciji i razvoju veština sa fokusom na kreativne discipline i
+                                savremenoje tehnologije.
+                            </p>
+
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Saznaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
-                    </div>
-
-
+                    </article>
                 <?php endfor; ?>
             </div>
 
             <div class="text-center mt-12">
-                <a href="/aktivnosti/dogadjaji" id="eventsView"
+                <a href="/programi" id="programiView"
                     class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve događaje
+                    <i class="fas fa-book mr-3"></i>
+                    Pogledaj sve programe
                 </a>
             </div>
 
@@ -984,84 +977,72 @@
             </div>
         </div>
     </section>
-    <section id="Naučni klub" data-elements="Vesti" class="py-20 bg-secondary_background">
+    <!-- Projects Section -->
+    <section id="projekti" class="py-20 bg-secondary_background overflow-hidden">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Predstojeći Seminari
+                <h2 class="text-5xl font-heading font-extrabold text-primary_text mb-4 relative inline-block group">
                     <span
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent transition-colors duration-500">Naši
+                        Inovativni Projekti</span>
+                    <span
+                        class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-16 h-1 bg-accent rounded-full transition-all duration-500 group-hover:w-24"></span>
                 </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Ovde se nalaze najnoviji seminari nase institucije
+                <p class="text-xl text-secondary_text max-w-3xl mx-auto mt-6 italic">
+                    Saznajte više o inovativnim projektima koje realizujemo sa strašću i posvećenošću.
                 </p>
             </div>
 
-            <div id="Naučni klubCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="projektiCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 <?php for ($i = 0; $i < 3; $i++): ?>
                     <div
-                        class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
-                        <!-- Slika sa leve strane -->
-                        <div class="w-1/3 relative flex-shrink-0">
+                        class="projekt-card bg-surface rounded-3xl overflow-hidden shadow-xl transform hover:scale-[1.03] hover:shadow-2xl transition-all duration-500 group border border-surface_light relative">
+
+                        <div class="relative h-60">
                             <img id="g-image"
-                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                alt="Event image"
-                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            <div id="g-naziv"
-                                class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                Kultura
+                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80"
+                                alt="Projekt Slika"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:rotate-1 group-hover:scale-110">
+
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-50 transition-opacity duration-500">
                             </div>
+
                         </div>
 
-                        <!-- Tekstualni deo -->
-                        <div class="w-2/3 p-6 flex flex-col">
-                            <!-- Naslov i opis -->
-                            <div class="flex-grow mb-4">
-                                <h3 id="g-title"
-                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                    Savremene Perspektive
-                                </h3>
-                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
-                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                    savremenih trendova u umetnosti i tehnologiji.
-                                </p>
-                            </div>
+                        <div class="p-6 md:p-8 flex flex-col h-full">
 
-                            <!-- Datum, vreme, lokacija -->
-                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-calendar-alt text-primary"></i>
-                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-clock text-secondary"></i>
-                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-map-marker-alt text-accent"></i>
-                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                        Umetnosti</span>
-                                </div>
-                            </div>
+                            <h3 id="g-naslov"
+                                class="text-3xl font-heading font-extrabold text-primary mb-3 leading-tight group-hover:text-accent transition-colors duration-300">
+                                Digitalna Transformacija 2.0
+                            </h3>
 
-                            <!-- CTA dugme -->
+                            <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
+                                Projekat digitalizacije naše institucije sa ciljem poboljšanja dostupnosti, interaktivnosti
+                                i
+                                efikasnosti internih procesa. U fokusu je implementacija AI rešenja.
+                            </p>
+
+
+
                             <div>
                                 <a id="g-ovise"
-                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
+                                    class="bg-primary text-white font-bold py-3 px-8 rounded-full hover:bg-primary_hover transition-all duration-300 text-base shadow-md inline-flex items-center group-hover:bg-accent group-hover:shadow-lg">
                                     Više informacija
+                                    <i
+                                        class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-
                 <?php endfor; ?>
             </div>
 
-            <div class="text-center mt-12">
-                <a href="/aktivnosti/dogadjaji?category=Seminari" id="eventsView"
-                    class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve Seminaree
+            <div class="text-center mt-16">
+                <a href="/projekti" id="projektiView"
+                    class="bg-gradient-to-r from-primary to-accent text-white px-10 py-5 rounded-full font-bold text-lg hover:opacity-95 transition-all duration-300 flex items-center justify-center shadow-2xl mx-auto max-w-sm w-full transform hover:-translate-y-1">
+                    <i class="fas fa-rocket mr-3 fa-lg"></i>
+                    Pogledaj sve projekte
                 </a>
             </div>
 
@@ -1213,7 +1194,7 @@
                         <div
                             class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-surface mr-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
+                                stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
@@ -1221,32 +1202,32 @@
                         <h3 class="text-xl font-heading font-bold">KULTURNI NEXUS</h3>
                     </div>
                     <p class="text-surface/80 mb-4">
-                        Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Beograda.
+                        Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Zrenjanina.
                     </p>
-                    <div class="flex space-x-3">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-facebook-f"></i>
+                    <div class="flex space-x-3" aria-label="Društvene mreže">
+                        <a href="https://www.facebook.com/kulturni.zrenjanina/"
+                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors"
+                            aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/kulturnicentarzr/"
+                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors"
+                            aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-youtube"></i>
+                        <a href="https://www.youtube.com/user/kczr1978"
+                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors"
+                            aria-label="YouTube">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-spotify"></i>
-                        </a>
+
                     </div>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="asde" class="text-surface/80 hover:text-accent transition-colors">Izložbe</a></li>
+                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Izložbe</a></li>
                         <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Bioskop</a></li>
                         <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Pozorište</a></li>
                         <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Koncerti</a></li>
@@ -1260,20 +1241,20 @@
                     <h4 class="text-lg font-heading font-bold mb-6">Informacije</h4>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">Knez Mihailova 56, 11000 Beograd</span>
+                            <i class="fas fa-map-marker-alt text-accent mt-1 mr-3" aria-hidden="true"></i>
+                            <span class="text-surface">Kulturni centar Zrenjanina, Narodne omladine 1, Zrenjanin
+                                23000</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">+381 11 123 4567</span>
+                            <i class="fas fa-phone text-accent mt-1 mr-3" aria-hidden="true"></i>
+                            <span class="text-surface">023/566712</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">info@kulturninexus.rs</span>
-
+                            <i class="fas fa-envelope text-accent mt-1 mr-3" aria-hidden="true"></i>
+                            <span class="text-surface">kczr@kczr.org</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-clock text-accent mt-1 mr-3"></i>
+                            <i class="fas fa-clock text-accent mt-1 mr-3" aria-hidden="true"></i>
                             <span class="text-surface">
                                 Utorak - Nedelja: 10:00 - 21:00<br>
                                 Ponedeljak: zatvoreno
@@ -1286,17 +1267,41 @@
                     <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
                     <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
-                            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62998.84817160032!2d20.389999!3d45.378201!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475adb41ee812cd7%3A0xbea5bea41817ab1!2sCultural%20Center!5e1!3m2!1sen!2sus!4v1763194112885!5m2!1sen!2sus"
+                            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            aria-label="Mapa lokacije Kulturnog centra Zrenjanina"></iframe>
                     </div>
                 </div>
             </div>
 
+            <!-- Dodatni red sa SECO logoom i izjavom -->
+            <!-- Dodatni red sa SECO logoom i izjavom -->
+            <div
+                class="border-t border-primary/10 pt-6 mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+
+                <!-- LEVI DEO: Logo, što veći i centriran -->
+                <div class="w-full flex justify-center items-center">
+                    <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO Logo"
+                        class="max-w-full w-auto object-contain hover:scale-105 transition-transform duration-300" />
+                </div>
+
+
+            </div>
+
+
             <div class="border-t border-surface/70 pt-8 text-center text-surface/60 text-sm">
+                <div class="flex  items-center justify-center md:justify-start gap-3 mt-3">
+                    <p class="w-full">
+                        Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
+                        zvanični stav Vlade Švajcarske.
+                    </p>
+                </div>
                 <p>&copy; 2023 Kulturni Centar Nexus. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
+
 
 
 

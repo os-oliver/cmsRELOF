@@ -779,138 +779,196 @@
         </div>
     </header>
 
-    <section class="relative slider-container">
-        <div class="particles">
-            <div class="particle" style="width: 12px; height: 12px; left: 10%; animation-delay: 0s;"></div>
-            <div class="particle" style="width: 8px; height: 8px; left: 25%; animation-delay: 2s;"></div>
-            <div class="particle" style="width: 15px; height: 15px; left: 40%; animation-delay: 4s;"></div>
-            <div class="particle" style="width: 10px; height: 10px; left: 60%; animation-delay: 1s;"></div>
-            <div class="particle" style="width: 12px; height: 12px; left: 75%; animation-delay: 3s;"></div>
-            <div class="particle" style="width: 9px; height: 9px; left: 90%; animation-delay: 5s;"></div>
+    <section class="hero-bg min-h-screen relative flex items-center grid-pattern">
+        <!-- Decorative Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-20 left-10 w-2 h-2 bg-purple-400 rounded-full opacity-60 animate-pulse"></div>
+            <div class="absolute top-40 right-20 w-3 h-3 bg-blue-400 rounded-full opacity-60 animate-pulse"
+                style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-32 left-1/4 w-2 h-2 bg-pink-400 rounded-full opacity-60 animate-pulse"
+                style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/3 right-1/3 w-2 h-2 bg-indigo-400 rounded-full opacity-60 animate-pulse"
+                style="animation-delay: 1.5s;"></div>
         </div>
 
-        <div class="slider-wrapper" id="slider">
-            <div class="slider-item">
-                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1920&h=1080&fit=crop"
-                    alt="Stare knjige">
-                <div class="slider-overlay bg-gradient-to-b from-secondary/60 to-black/30 backdrop-blur-md"></div>
-                <div class="absolute inset-0 flex items-center">
-                    <div class="container mx-auto px-6">
-                        <div class="max-w-4xl hero-content">
-                            <div
-                                class="inline-block px-4 py-2 bg-primary/80 border border-primary rounded-full text-white text-sm font-medium mb-6 backdrop-blur-sm">
-                                <i class="fas fa-star mr-2"></i>Preko 150.000 dokumenata
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <!-- Badge -->
+                    <div class="animate-fade-in-up" style="animation-delay: 0.2s; opacity: 0;">
+                        <div
+                            class="inline-flex items-center gap-3 px-5 py-2.5 glass-morphism rounded-full text-sm font-medium text-white/90 hover:bg-white/10 transition-all duration-300 cursor-pointer group">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span class="group-hover:text-white transition-colors">Preduzeće kulture grada
+                                Pančeva</span>
+                            <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <div class="animate-slide-in-left" style="animation-delay: 0.4s; opacity: 0;">
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6">
+                            Gde Kultura
+                            <br />
+                            <span class="gradient-text">Oživljava</span>
+                        </h1>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="animate-fade-in-up" style="animation-delay: 0.6s; opacity: 0;">
+                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl">
+                            Centар za umetnost, nauku i društvo. Istraživanje preko 150.000 dokumenata, 8 vekova
+                            istorije, i beskrajne inspiracije.
+                        </p>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay: 0.8s; opacity: 0;">
+                        <button
+                            class="cta-button px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-base font-semibold text-white shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105 transform transition-all duration-300">
+                            <i class="fas fa-compass mr-2"></i>
+                            Počni Istraživanje
+                        </button>
+                        <button
+                            class="cta-button px-8 py-4 glass-morphism rounded-full text-base font-semibold text-white hover:bg-white/10 transform hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-play-circle mr-2"></i>
+                            Pogledaj Video
+                        </button>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 animate-fade-in-up"
+                        style="animation-delay: 1s; opacity: 0;">
+                        <div
+                            class="stat-card glass-morphism rounded-2xl p-5 hover:bg-white/10 transition-all duration-300 cursor-pointer group">
+                            <div class="text-3xl font-bold text-white mb-1 group-hover:scale-110 transition-transform">
+                                150K+</div>
+                            <div class="text-sm text-gray-400">Dokumenata</div>
+                        </div>
+                        <div
+                            class="stat-card glass-morphism rounded-2xl p-5 hover:bg-white/10 transition-all duration-300 cursor-pointer group">
+                            <div class="text-3xl font-bold text-white mb-1 group-hover:scale-110 transition-transform">8
                             </div>
-                            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 glow text-white leading-tight">
-                                Čuvamo Prošlost<br />
-                                <span class="text-accent">Za Budućnost</span>
-                            </h1>
-                            <p class="text-lg md:text-xl lg:text-2xl mb-10 text-white max-w-2xl leading-relaxed">
-                                Digitalizovani dokumenti iz 8 vekova istorije, dostupni svima koji žele da istraže naše
-                                bogato nasleđe
-                            </p>
-                            <div class="flex flex-wrap gap-4">
-                                <button
-                                    class="px-6 py-3 md:px-8 md:py-4 bg-primary hover:bg-primary_hover rounded-full text-base md:text-lg font-semibold hover:shadow-2xl hover:shadow-primary/30 transition btn-shine text-white transform hover:scale-105">
-                                    <i class="fas fa-book-open mr-2"></i>Istraži Fondove
-                                </button>
-                                <button
-                                    class="px-6 py-3 md:px-8 md:py-4 glass rounded-full text-base md:text-lg font-semibold hover:bg-white/50 transition text-primary_text transform hover:scale-105">
-                                    <i class="fas fa-play mr-2"></i>Video Tour
-                                </button>
+                            <div class="text-sm text-gray-400">Vekova</div>
+                        </div>
+                        <div
+                            class="stat-card glass-morphism rounded-2xl p-5 hover:bg-white/10 transition-all duration-300 cursor-pointer group">
+                            <div class="text-3xl font-bold text-white mb-1 group-hover:scale-110 transition-transform">
+                                24/7</div>
+                            <div class="text-sm text-gray-400">Pristup</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Feature Cards -->
+                <div class="relative animate-slide-in-right" style="animation-delay: 0.6s; opacity: 0;">
+                    <div class="space-y-4">
+                        <!-- Feature Card 1 -->
+                        <div
+                            class="feature-card glass-morphism rounded-3xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer group">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="feature-icon w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-book-open text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3
+                                        class="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                                        Digitalni Arhiv</h3>
+                                    <p class="text-gray-400 text-sm leading-relaxed">Pristupite retkim dokumentima i
+                                        rukopisima iz različitih epoha</p>
+                                </div>
+                                <i
+                                    class="fas fa-arrow-right text-gray-400 group-hover:text-white group-hover:translate-x-2 transition-all"></i>
+                            </div>
+                        </div>
+
+                        <!-- Feature Card 2 -->
+                        <div class="feature-card glass-morphism rounded-3xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer group"
+                            style="margin-left: 2rem;">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="feature-icon w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-palette text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3
+                                        class="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                                        Kulturni Programi</h3>
+                                    <p class="text-gray-400 text-sm leading-relaxed">Izložbe, radionice i događaji koji
+                                        spajaju tradiciju i modernost</p>
+                                </div>
+                                <i
+                                    class="fas fa-arrow-right text-gray-400 group-hover:text-white group-hover:translate-x-2 transition-all"></i>
+                            </div>
+                        </div>
+
+                        <!-- Feature Card 3 -->
+                        <div
+                            class="feature-card glass-morphism rounded-3xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer group">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="feature-icon w-14 h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-users text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3
+                                        class="text-xl font-bold text-white mb-2 group-hover:text-orange-300 transition-colors">
+                                        Edukacija</h3>
+                                    <p class="text-gray-400 text-sm leading-relaxed">Programi za sve uzraste fokusirani
+                                        na očuvanje kulturnog nasleđa</p>
+                                </div>
+                                <i
+                                    class="fas fa-arrow-right text-gray-400 group-hover:text-white group-hover:translate-x-2 transition-all"></i>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge -->
+                        <div class="absolute -top-8 -right-8 glass-morphism rounded-2xl p-4 shadow-2xl animate-float">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-star text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-sm">4.9/5</div>
+                                    <div class="text-gray-400 text-xs">2,500+ recenzija</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="slider-item">
-                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1920&h=1080&fit=crop"
-                    alt="Arhivski dokumenti">
-                <div class="slider-overlay"></div>
-                <div class="absolute inset-0 flex items-center">
-                    <div class="container mx-auto px-6">
-                        <div class="max-w-4xl hero-content">
-                            <div
-                                class="inline-block px-4 py-2 bg-primary/20 border border-primary/50 rounded-full text-white text-sm font-medium mb-6 backdrop-blur-sm">
-                                <i class="fas fa-laptop mr-2"></i>Pristup 24/7
-                            </div>
-                            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 glow text-white leading-tight">
-                                Digitalna<br />
-                                <span class="text-accent">Revolucija</span>
-                            </h1>
-                            <p class="text-lg md:text-xl lg:text-2xl mb-10 text-white max-w-2xl leading-relaxed">
-                                Pristupite arhivskoj građi online, bilo gde, bilo kada. Vaša istorija na dohvat ruke
-                            </p>
-                            <div class="flex flex-wrap gap-4">
-                                <button
-                                    class="px-6 py-3 md:px-8 md:py-4 bg-primary hover:bg-primary_hover rounded-full text-base md:text-lg font-semibold hover:shadow-2xl hover:shadow-primary/30 transition btn-shine text-white transform hover:scale-105">
-                                    <i class="fas fa-laptop mr-2"></i>Digitalna Čitaonica
-                                </button>
-                                <button
-                                    class="px-6 py-3 md:px-8 md:py-4 glass rounded-full text-base md:text-lg font-semibold hover:bg-white/50 transition text-primary_text transform hover:scale-105">
-                                    <i class="fas fa-info-circle mr-2"></i>Saznaj Više
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="slider-item">
-                <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1920&h=1080&fit=crop"
-                    alt="Biblioteka">
-                <div class="slider-overlay"></div>
-                <div class="absolute inset-0 flex items-center">
-                    <div class="container mx-auto px-6">
-                        <div class="max-w-4xl hero-content">
-                            <div
-                                class="inline-block px-4 py-2 bg-primary/20 border border-primary/50 rounded-full text-white text-sm font-medium mb-6 backdrop-blur-sm">
-                                <i class="fas fa-users mr-2"></i>Stručna podrška
-                            </div>
-                            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 glow text-white leading-tight">
-                                Istraživačke<br />
-                                <span class="text-accent">Usluge</span>
-                            </h1>
-                            <p class="text-lg md:text-xl lg:text-2xl mb-10 text-white max-w-2xl leading-relaxed">
-                                Profesionalna podrška za vaša istorijska istraživanja od strane certificiranih arhivista
-                            </p>
-                            <div class="flex flex-wrap gap-4">
-                                <button
-                                    class="px-6 py-3 md:px-8 md:py-4 bg-primary hover:bg-primary_hover rounded-full text-base md:text-lg font-semibold hover:shadow-2xl hover:shadow-primary/30 transition btn-shine text-white transform hover:scale-105">
-                                    <i class="fas fa-calendar-check mr-2"></i>Zakaži Posetu
-                                </button>
-                                <button
-                                    class="px-6 py-3 md:px-8 md:py-4 glass rounded-full text-base md:text-lg font-semibold hover:bg-white/50 transition text-primary_text transform hover:scale-105">
-                                    <i class="fas fa-phone mr-2"></i>Kontaktiraj Nas
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <button id="prevButton" onclick="prevSlide()"
-            class="slider-control slider-next absolute left-6 top-1/2 transform -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center z-10">
-            <i class="fas fa-chevron-left text-xl md:text-2xl text-primary_text"></i>
-        </button>
-
-        <button id="nextButton" onclick="nextSlide()"
-            class="slider-control absolute right-6 top-1/2 transform -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center z-10">
-            <i class="fas fa-chevron-right text-xl md:text-2xl text-primary_text"></i>
-        </button>
-
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-            <button id="indicator0" onclick="goToSlide(0)"
-                class="slider-indicator w-3 h-3 rounded-full bg-white active"></button>
-            <button id="indicator1" onclick="goToSlide(1)"
-                class="slider-indicator w-3 h-3 rounded-full bg-white/30"></button>
-            <button id="indicator2" onclick="goToSlide(2)"
-                class="slider-indicator w-3 h-3 rounded-full bg-white/30"></button>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <div
+                class="flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors cursor-pointer">
+                <span class="text-xs font-medium">Skroluj dole</span>
+                <i class="fas fa-chevron-down text-sm"></i>
+            </div>
         </div>
-
     </section>
+
+    <style>
+        @keyframes slow-zoom {
+
+            0%,
+            100% {
+                transform: scale(1.05);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .animate-slow-zoom {
+            animation: slow-zoom 20s ease-in-out infinite;
+        }
+    </style>
 
     <section id="fondovi" class="py-16 md:py-24 bg-background">
         <div class="container mx-auto px-4">

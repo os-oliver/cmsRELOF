@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-session_start();
 
 use App\Models\Content;
 use App\Models\Event;
@@ -489,6 +488,7 @@ class PersonalContentController
             switch ($type) {
                 case 'Anketa':
                     $mainContent = $this->getAnketaContent($type, $locale, $structure);
+                    break;
                 case 'Vrtici':
                     $mainContent = $this->getVrticiContent($type, $locale, $structure);
                     break;
@@ -508,9 +508,172 @@ class PersonalContentController
             $mainContent = $this->getErrorContent($e->getMessage());
         }
 
+        // Wrap in main tag and then compile the entire HTML
         $html = '<main class="min-h-screen pt-16 bg-white">' . $mainContent . '</main>';
-        $pageBuilder->setHtml($html);
-        return $pageBuilder->buildPage();
+
+        $compiledHtml = $this->compilePhpString($html);
+        ;
+        $pageBuilder->setHtml($compiledHtml);
+        $skripta = <<<JS
+            <script>
+
+                document.addEventListener('DOMContentLoaded', () => {
+                console.log("Lightbox sa sliderom aktivan");
+
+                // === 1. Kreiranje MODALA ===
+                const modal = document.createElement('div');
+                modal.id = 'galleryModal';
+                modal.className = `
+                    fixed inset-0 bg-black bg-opacity-80 hidden 
+                    flex items-center justify-center z-[999999]
+                `;
+
+                modal.innerHTML = `
+                    <span class="absolute top-4 right-6 text-white text-4xl cursor-pointer select-none close-btn">&times;</span>
+                    <button class="prev-btn absolute left-4 text-white text-5xl font-bold px-4 cursor-pointer select-none">&lt;</button>
+                    <img id="modalImage" class="max-w-[90%] max-h-[90%] rounded shadow-xl transition-all duration-200">
+                    <button class="next-btn absolute right-4 text-white text-5xl font-bold px-4 cursor-pointer select-none">&gt;</button>
+                `;
+
+                document.body.appendChild(modal);
+
+                const modalImage = modal.querySelector("#modalImage");
+                const closeBtn = modal.querySelector(".close-btn");
+                const prevBtn = modal.querySelector(".prev-btn");
+                const nextBtn = modal.querySelector(".next-btn");
+
+                // === 2. Prikupljanje svih slika iz galerije ===
+                const galleryItems = document.getElementsByClassName('gallery-item');
+                const images = []; // lista svih linkova
+                let currentIndex = 0;
+
+                for (let i = 0; i < galleryItems.length; i++) {
+                    const link = galleryItems[i].querySelector(".gallery-image-link");
+                    if (link) images.push(link.getAttribute("href"));
+                }
+
+                // === 3. Funckija za otvaranje modala ===
+                const openModal = (index) => {
+                    currentIndex = index;
+                    modalImage.src = images[currentIndex];
+
+                    modal.classList.remove("hidden");
+                    document.body.classList.add("overflow-hidden");
+                };
+
+                // === 4. Klik na item gallery ===
+                for (let i = 0; i < galleryItems.length; i++) {
+                    galleryItems[i].addEventListener("click", (event) => {
+                        const link = galleryItems[i].querySelector(".gallery-image-link");
+                        if (!link) return;
+
+                        event.preventDefault();
+                        openModal(i);
+                    });
+                }
+
+                // === 5. Slider funkcije ===
+                const showNext = () => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    modalImage.src = images[currentIndex];
+                };
+
+                const showPrev = () => {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    modalImage.src = images[currentIndex];
+                };
+
+                nextBtn.addEventListener("click", showNext);
+                prevBtn.addEventListener("click", showPrev);
+
+                // === 6. ZATVARANJE ===
+                const closeModal = () => {
+                    modal.classList.add("hidden");
+                    modalImage.src = "";
+                    document.body.classList.remove("overflow-hidden");
+                };
+
+                closeBtn.addEventListener("click", closeModal);
+
+                modal.addEventListener("click", (e) => {
+                    if (e.target === modal) closeModal();
+                });
+
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape") closeModal();
+                    if (e.key === "ArrowRight") showNext();
+                    if (e.key === "ArrowLeft") showPrev();
+                });
+            });
+
+            </script>
+         
+            JS;
+
+        $pageBuilder->setScript($skripta);
+
+        $fullPageHtml = $pageBuilder->buildPage();
+        $stringCompiled = $this->compilePhpString($fullPageHtml);
+
+        echo $stringCompiled;
+    }
+
+    private function compilePhpString(string $phpCode, array $vars = []): string
+    {
+        // Decode HTML entities first
+        $phpCode = html_entity_decode($phpCode, ENT_QUOTES, 'UTF-8');
+
+        // Extract variables for the template
+        if (!empty($vars)) {
+            extract($vars, EXTR_SKIP);
+        }
+
+        // Define base paths
+        $publicRoot = realpath(__DIR__ . '/../../public/exportedPages/');
+
+        // Fix __DIR__ references in require/include statements
+        // Pattern: require_once __DIR__ . '/../landingPageComponents/...'
+        // Should become: require_once '/var/www/html/public/landingPageComponents/...'
+        $phpCode = preg_replace_callback(
+            '/(?:require|include|require_once|include_once)\s+__DIR__\s*\.\s*[\'"](\/?\.\.\/+)*([^\'"]+)[\'"]/i',
+            function ($matches) use ($publicRoot) {
+                $path = $matches[2]; // Get the path without ../
+                // Remove any leading slashes that might come from the pattern
+                $path = ltrim($path, '/');
+                return 'require \'' . $publicRoot . '/' . $path . '\'';
+            },
+            $phpCode
+        );
+
+        // Also fix other relative includes
+        $patterns = [
+            '/require\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "require '" . $publicRoot . "/$1'",
+            '/require_once\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "require_once '" . $publicRoot . "/$1'",
+            '/include\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "include '" . $publicRoot . "/$1'",
+            '/include_once\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "include_once '" . $publicRoot . "/$1'",
+        ];
+
+        foreach ($patterns as $pattern => $replacement) {
+            $phpCode = preg_replace($pattern, $replacement, $phpCode);
+        }
+
+        ob_start();
+        try {
+            // Set the include path to the public directory
+            set_include_path($publicRoot . PATH_SEPARATOR . get_include_path());
+
+            // Execute the PHP code directly
+            eval ("?>" . $phpCode);
+
+            $output = ob_get_clean();
+        } catch (\Throwable $e) {
+            ob_end_clean();
+            $output = "<!-- Error executing PHP: " .
+                htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8')
+                . " -->";
+        }
+
+        return $output === false ? '' : $output;
     }
 
     private function getAnketaContent(string $type, string $locale, array $structure): string
@@ -1011,14 +1174,13 @@ class PersonalContentController
         }
 
         $data = $contentController->fetchItem($id, $locale);
-
         if (!$data['success'] || !isset($data['item'])) {
             return $this->getNotFoundContent($type);
         }
 
         $item = $data['item'];
         $fields = $item['fields'];
-
+        error_log('Fetched fields: ' . print_r($data, true));
         // Allowed document extensions
         $docExtensions = ['pdf', 'xls', 'xlsx', 'doc', 'docx'];
 
@@ -1081,31 +1243,40 @@ class PersonalContentController
 
         // Display fields in grid
         foreach ($fields as $field => $values) {
-            if ($field === $titleField || !isset($values[$locale]))
+            if ($field === $titleField || !isset($values[$locale])) {
                 continue;
+            }
 
             $value = $values[$locale];
-            if (empty(trim($value)))
+            if (empty(trim($value))) {
                 continue;
+            }
 
             $displayLabel = $labels[$field] ?? ucwords(str_replace('_', ' ', $field));
             $icon = $this->getFieldIcon($field, $fieldIcons);
+
+            // Escape vrednosti za HTML
             $escapedValue = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 
-            // Determine if this is a long text field
+            // Ako je dug tekst, pretvori \n u dupli <br>
             $isLongText = strlen($value) > 100;
-            $fullWidthClass = $isLongText ? ' full-width' : '';
-
             if ($isLongText) {
-                $escapedValue = nl2br($escapedValue);
+                $escapedValue = str_replace("\n", "<br><br>", $escapedValue);
             }
 
+            $fullWidthClass = $isLongText ? ' full-width' : '';
+
+            // Generisanje HTML-a
             $html .= '
-                <div class="field-row' . $fullWidthClass . '">
-                    <span class="field-label"><i class="' . $icon . '"></i>' . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '</span>
-                    <span class="field-value">' . $escapedValue . '</span>
-                </div>';
+        <div class="field-row' . $fullWidthClass . '">
+            <span class="field-label"><i class="' . $icon . '"></i> ' .
+                htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '
+            </span>
+            <span class="field-value">' . $escapedValue . '</span>
+        </div>';
         }
+
+
 
         $html .= '</div>'; // Close fields-grid
 

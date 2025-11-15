@@ -89,7 +89,6 @@ class Content
         $where = "ge.type = :type";
         $params = [':type' => $type];
         error_log("caoo");
-        error_log(json_encode($categoryId));
         // ✅ Handle both int and string category
         if ($categoryId !== null) {
             error_log("zdravo");
@@ -102,7 +101,6 @@ class Content
                 error_log("nisam");
                 // if it's a string, resolve it to numeric id first
                 $resolvedId = $this->fetchCategoryIdByName((string) $categoryId);
-                error_log($resolvedId);
                 if ($resolvedId !== null) {
                     $where .= " AND ge.category_id = :category_id";
                     $params[':category_id'] = $resolvedId;
@@ -277,6 +275,12 @@ class Content
     {
         error_log("Processing text field: $fieldName with value: $value for locale: $locale");
         if ($fieldName === 'link') {
+            $variants = [
+                'sr' => $value,
+                'sr-Cyrl' => $value,
+                'en' => $value
+            ];
+        } else if ($type === 'email') {
             $variants = [
                 'sr' => $value,
                 'sr-Cyrl' => $value,

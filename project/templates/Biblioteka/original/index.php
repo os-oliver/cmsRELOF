@@ -197,6 +197,7 @@
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-secondary"></i>Početna
                     </a>
+
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all"
@@ -224,23 +225,96 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                             </a>
-
-
+                            <a data-page="Organi upravljanja" href="/o-nama/organi-upravljanja"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-users-cog mr-2 text-secondary"></i>Organi upravljanja
+                            </a>
+                            <a data-page="Objekat" href="/o-nama/objekat"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
+                            </a>
+                            <a data-page="Informacije" href="/o-nama/informacije"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-hand-holding-heart mr-2 text-accent"></i>Informacije
+                            </a>
+                            <a data-page="Pitanja" href="/o-nama/pitanja"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-handshake mr-2 text-primary"></i>Pitanja
                             </a>
                         </div>
                     </div>
+
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all"
+                            id="mobileActivitiesToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar-alt mr-3 text-accent"></i>Aktivnosti
+                            </div>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-200"
+                                id="mobileActivitiesIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileActivitiesMenu">
+                            <a data-page="Ankete" href="/aktivnosti/ankete"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-poll mr-2 text-secondary"></i>Ankete
+                            </a>
+                            <a data-page="Vesti" href="/aktivnosti/vesti"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-newspaper mr-2 text-secondary"></i>Vesti
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all"
+                            id="mobileServicesToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-concierge-bell mr-3 text-accent"></i>Usluge
+                            </div>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-200"
+                                id="mobileServicesIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileServicesMenu">
+                            <a data-page="Odeljenje za odrasle" href="/usluge/odeljenje-za-odrasle"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-user mr-2 text-primary"></i>Odeljenje za odrasle
+                            </a>
+                            <a data-page="Dečje odeljenje" href="/usluge/decje-odeljenje"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-child mr-2 text-secondary"></i>Dečje odeljenje
+                            </a>
+                            <a data-page="Zavičajni fond" href="/usluge/zavicajni-fond"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-archive mr-2 text-accent"></i>Zavičajni fond
+                            </a>
+                            <a data-page="Legat" href="/usluge/legat"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-gift mr-2 text-primary"></i>Legat
+                            </a>
+                            <a data-page="Programi kulture" href="/usluge/programi-kulture"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-music mr-2 text-accent"></i>Programi kulture
+                            </a>
+                        </div>
+                    </div>
+
                     <a data-page="Dogadjaji" href="/dogadjaji"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Dogadjaji
+                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Događaji
                     </a>
+
                     <a data-page="Galerija" href="/galerija"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-primary"></i>Galerija
                     </a>
+
                     <a data-page="Dokumenti" href="/dokumenti"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-secondary"></i>Dokumenti
                     </a>
+
                     <a data-page="Kontakt" href="/kontakt"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
@@ -292,7 +366,7 @@
 
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3">
-                        <a href="/o-nama/uvod"
+                        <a static="true" href="/o-nama/uvod"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Uvod</span>
@@ -302,7 +376,7 @@
                             <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija i vizija</span>
                         </a>
-                        <a href="/o-nama/istorijat"
+                        <a static="tre" href="/o-nama/istorijat"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
@@ -374,25 +448,40 @@
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3">
                         <a href="/usluge/odeljenje-za-odrasle"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2"
+                            static="true">
                             <i class="fas fa-user mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Odeljenje za odrasle</span>
                         </a>
+
                         <a href="/usluge/decje-odeljenje"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2"
+                            static="true">
                             <i class="fas fa-child mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Dečje odeljenje</span>
                         </a>
+
                         <a href="/usluge/zavicajni-fond"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2"
+                            static="true">
                             <i class="fas fa-archive mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Zavičajni fond</span>
                         </a>
+
                         <a href="/usluge/legat"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2"
+                            static="true">
                             <i class="fas fa-gift mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Legat</span>
                         </a>
+
+                        <a href="/usluge/programi-kulture"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2"
+                            static="true">
+                            <i class="fas fa-music mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Programi kulture</span>
+                        </a>
+
 
                     </div>
                 </div>

@@ -1,108 +1,217 @@
 [
   {
-    "Fondovi": {
-      "sr": "Fondovi",
-      "en": "Funds",
-      "sr-Cyrl": "Фондови",
-      "icon": "fas fa-piggy-bank",
+    "Vesti": {
+      "sr": "Vesti",
+      "en": "News",
+      "sr-Cyrl": "Вести",
+      "icon": "fas fa-newspaper",
       "categories": [
-        "Stipendije",
-        "Grantovi",
-        "Investicioni fondovi",
-        "Istraživački fondovi",
-        "Fondovi za startape"
+        "Fotografije",
+        "Dokumenta",
+        "Novine",
+        "Knjige",
+        "Rukopisi",
+        "Mape i planovi",
+        "Plakata i oglasi",
+        "Lična prepiska"
       ],
       "fields": [
         {
-          "name": "title",
+          "name": "naslov",
           "type": "text",
           "label": {
-            "sr": "Naziv fonda",
-            "en": "Fund name",
-            "sr-Cyrl": "Назив фонда"
+            "sr": "Naslov vesti",
+            "en": "News title",
+            "sr-Cyrl": "Наслов вести"
           },
           "required": true
         },
         {
-          "name": "kategorija",
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum vesti",
+            "en": "News date",
+            "sr-Cyrl": "Датум вести"
+          },
+          "required": true,
+          "property": "auto"
+        },
+        {
+          "name": "naziv",
           "type": "categories",
           "label": {
-            "sr": "Vrsta fonda",
-            "en": "Fund type",
-            "sr-Cyrl": "Врста фонда"
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
           },
           "options": [
-            "Stipendije",
-            "Grantovi",
-            "Investicioni fondovi",
-            "Istraživački fondovi",
-            "Fondovi za startape"
+            "Kultura",
+            "Obrazovanje",
+            "Inovacije",
+            "Zdravlje",
+            "Tehnologija"
           ],
           "required": true
         },
         {
-          "name": "organizacija",
+          "name": "autor",
           "type": "text",
           "label": {
-            "sr": "Organizacija / institucija",
-            "en": "Organization / Institution",
-            "sr-Cyrl": "Организација / институција"
-          },
-          "required": true
-        },
-        {
-          "name": "rok",
-          "type": "date",
-          "label": {
-            "sr": "Rok za prijavu",
-            "en": "Application deadline",
-            "sr-Cyrl": "Рок за пријаву"
-          },
-          "required": true
-        },
-        {
-          "name": "iznos",
-          "type": "text",
-          "label": {
-            "sr": "Iznos finansiranja",
-            "en": "Funding amount",
-            "sr-Cyrl": "Износ финансирања"
-          }
-        },
-        {
-          "name": "uslovi",
-          "type": "textarea",
-          "label": {
-            "sr": "Uslovi i kriterijumi",
-            "en": "Eligibility criteria",
-            "sr-Cyrl": "Услови и критеријуми"
+            "sr": "Autor",
+            "en": "Author",
+            "sr-Cyrl": "Аутор"
           }
         },
         {
           "name": "opis",
           "type": "textarea",
           "label": {
-            "sr": "Opis fonda",
-            "en": "Fund description",
-            "sr-Cyrl": "Опис фонда"
-          }
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Link za prijavu",
-            "en": "Application link",
-            "sr-Cyrl": "Линк за пријаву"
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
           }
         },
         {
           "name": "slika",
           "type": "file",
           "label": {
-            "sr": "Logo ili slika fonda",
-            "en": "Fund image or logo",
-            "sr-Cyrl": "Лого или слика фонда"
+            "sr": "Naslovna slika vesti",
+            "en": "News image",
+            "sr-Cyrl": "Насловна слика вести"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Eksterni link",
+            "en": "External link",
+            "sr-Cyrl": "Екстерни линк"
+          }
+        }
+      ]
+    },
+    "Zbirke": {
+      "sr": "Zbirke",
+      "en": "Collections",
+      "sr-Cyrl": "Збирке",
+      "icon": "fas fa-book-open",
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov zbirke",
+            "en": "Collection title",
+            "sr-Cyrl": "Наслов збирке"
+          },
+          "required": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis zbirke",
+            "en": "Collection description",
+            "sr-Cyrl": "Опис збирке"
+          },
+          "required": true
+        },
+        {
+          "name": "slike",
+          "type": "file",
+          "label": {
+            "sr": "Slike zbirke",
+            "en": "Collection images",
+            "sr-Cyrl": "Слике збирке"
+          },
+          "multiple": true
+        }
+      ]
+    },
+    "Novine": {
+      "sr": "Novine",
+      "en": "Newspapers",
+      "sr-Cyrl": "Новине",
+      "icon": "fas fa-file-alt",
+      "categories": [
+        "1950-1959",
+        "1960-1969",
+        "1970-1979",
+        "1980-1989",
+        "1990-1999",
+        "2000-2009",
+        "2010-2019",
+        "2020-2029"
+      ],
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov izdanja",
+            "en": "Issue title",
+            "sr-Cyrl": "Наслов издања"
+          },
+          "required": true
+        },
+        {
+          "name": "decenija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija (Dekada)",
+            "en": "Category (Decade)",
+            "sr-Cyrl": "Категорија (Декада)"
+          },
+          "options": [
+            "1950-1959",
+            "1960-1969",
+            "1970-1979",
+            "1980-1989",
+            "1990-1999",
+            "2000-2009",
+            "2010-2019",
+            "2020-2029"
+          ],
+          "required": true
+        },
+        {
+          "name": "godina",
+          "type": "text",
+          "label": {
+            "sr": "Godina izdanja",
+            "en": "Publication year",
+            "sr-Cyrl": "Година издања"
+          },
+          "required": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis / Napomena",
+            "en": "Short description / Note",
+            "sr-Cyrl": "Кратак опис / Напомена"
+          }
+        },
+        {
+          "name": "slike",
+          "type": "file",
+          "label": {
+            "sr": "Slike novinskih strana",
+            "en": "Newspaper pages images",
+            "sr-Cyrl": "Слике новинских страна"
+          },
+          "multiple": true
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Link do izdanja (Izvor)",
+            "en": "Link to issue (Source)",
+            "sr-Cyrl": "Линк до издања (Извор)"
           }
         }
       ]

@@ -1,0 +1,92 @@
+<section class="py-16 md:py-24 bg-background">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 glow decorative-line text-primary_text">
+                <?= htmlspecialchars($dynamicText['t_istorijskiarhiv_1e2371_709803']['text'] ?? 'Naša Istorija', ENT_QUOTES, 'UTF-8'); ?>
+            </h2>
+            <p class="text-base md:text-xl text-secondary_text max-w-3xl mx-auto"><?= htmlspecialchars($dynamicText['t_istorijskiarhiv_a0945c_9fb44b']['text'] ?? 'Više od jednog veka čuvanja
+                    kulturnog nasleđa', ENT_QUOTES, 'UTF-8'); ?></p>
+        </div>
+        <div class="relative max-w-5xl mx-auto">
+            <div class="timeline-glow absolute left-4 md:left-8 top-0 bottom-0"></div>
+            <div class="space-y-8 md:space-y-12">
+                <div class="relative pl-16 md:pl-24 group">
+                    <div
+                        class="absolute left-0 w-12 h-12 md:w-16 md:h-16 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition">
+                        <span class="text-lg md:text-xl font-bold text-white">1947</span></div>
+                    <div class="glass-dark rounded-2xl p-6 md:p-8 hover:bg-secondary_background/30 transition">
+                        <h3 class="text-xl md:text-3xl font-bold mb-3 text-primary_text">
+                            <?= htmlspecialchars($dynamicText['t_istorijskiarhiv_af4857_62a549']['text'] ?? 'Osnivanje Arhiva', ENT_QUOTES, 'UTF-8'); ?>
+                        </h3>
+                        <p class="text-secondary_text text-base md:text-lg"></p>
+                        <p data-start="104" data-end="412">
+                            <?= htmlspecialchars($dynamicText['t_istorijskiarhiv_5c4605_4f94fb']['text'] ?? 'Zrenjaninski istorijski arhiv počinje sa radom 1. avgusta 1947. godine pod imenom „Arhivsko središte broj 4“. Teritorijalna nadležnost obuhvatala je grad Zrenjanin i srezove: Begejski, Tamiški i Jašatomički. Prvi upravnik bio je Timotej Tima Rajić, priznat arhivski stručnjak.', ENT_QUOTES, 'UTF-8'); ?>
+                        </p>
+                        <p data-start="414" data-end="501"></p>
+                    </div>
+                </div>
+                <div class="relative pl-16 md:pl-24 group">
+                    <div
+                        class="absolute left-0 w-12 h-12 md:w-16 md:h-16 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition">
+                        <span class="text-lg md:text-xl font-bold text-white">1965</span></div>
+                    <div class="glass-dark rounded-2xl p-6 md:p-8 hover:bg-secondary_background/30 transition">
+                        <h3 class="text-xl md:text-3xl font-bold mb-3 text-primary_text">
+                            <?= htmlspecialchars($dynamicText['t_istorijskiarhiv_fc2213_587b4f']['text'] ?? 'Promena naziva', ENT_QUOTES, 'UTF-8'); ?>
+                        </h3>
+                        <p class="text-secondary_text text-base md:text-lg"></p>
+                        <p data-start="414" data-end="501">
+                            <?= htmlspecialchars($dynamicText['t_istorijskiarhiv_6e7642_25fb64']['text'] ?? 'Arhiv dobija današnji naziv „Istorijski arhiv Zrenjanin“.', ENT_QUOTES, 'UTF-8'); ?>
+                        </p>
+                        <p data-start="503" data-end="757"></p>
+                    </div>
+                </div>
+                <div class="relative pl-16 md:pl-24 group">
+                    <div
+                        class="absolute left-0 w-12 h-12 md:w-16 md:h-16 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition">
+                        <span class="text-lg md:text-xl font-bold text-white">1998</span></div>
+                    <div class="glass-dark rounded-2xl p-6 md:p-8 hover:bg-secondary_background/30 transition">
+                        <h3 class="text-xl md:text-3xl font-bold mb-3 text-primary_text"><strong data-start="503"
+                                data-end="536"><?= htmlspecialchars($dynamicText['t_istorijskiarhiv_17f281_e154cd']['text'] ?? 'Kategorizacija fondova', ENT_QUOTES, 'UTF-8'); ?></strong><br
+                                data-start="536" data-end="539"></h3>
+                        <p class="text-secondary_text text-base md:text-lg"></p>
+                        <p data-start="503" data-end="757">
+                            <?= htmlspecialchars($dynamicText['t_istorijskiarhiv_3230fc_bf2a88']['text'] ?? 'Na osnovu izvršene kategorizacije, 67 fondova (1765–1956) proglašeno je kulturnim dobrom od izuzetnog značaja, a 66 fondova (1769–1970) od velikog značaja. Izdvojeno je 116 rariteta koji se čuvaju u posebim uslovima.', ENT_QUOTES, 'UTF-8'); ?>
+                        </p>
+                        <p data-start="759" data-end="911"></p>
+                    </div>
+                </div>
+                <div class="relative pl-16 md:pl-24 group">
+                    <div
+                        class="absolute left-0 w-12 h-12 md:w-16 md:h-16 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition">
+                        <span class="text-lg md:text-xl font-bold text-white">2003</span></div>
+                    <div class="glass-dark rounded-2xl p-6 md:p-8 hover:bg-secondary_background/30 transition">
+                        <h3 class="text-xl md:text-3xl font-bold mb-3 text-primary_text"><strong data-start="759"
+                                data-end="801"><?= htmlspecialchars($dynamicText['t_istorijskiarhiv_f72d83_2f7e06']['text'] ?? 'Digitalizacija i mikrofimovanje', ENT_QUOTES, 'UTF-8'); ?></strong><br
+                                data-start="801" data-end="804"></h3>
+                        <p class="text-secondary_text text-base md:text-lg"></p>
+                        <p data-start="759" data-end="911" id="iwfawj">
+                            <?= htmlspecialchars($dynamicText['t_istorijskiarhiv_13cfc0_0f50d1']['text'] ?? 'Arhiv započinje proces mikrofimovanja i digitalizacije arhivske građe radi lakše dostupnosti korisnicima.', ENT_QUOTES, 'UTF-8'); ?>
+                        </p>
+                        <p data-start="913" data-end="1083"></p>
+                    </div>
+                </div>
+                <div class="relative pl-16 md:pl-24 group">
+                    <div
+                        class="absolute left-0 w-12 h-12 md:w-16 md:h-16 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition pulse">
+                        <span class="text-lg md:text-xl font-bold text-white">2007</span></div>
+                    <div
+                        class="glass-dark rounded-2xl p-6 md:p-8 hover:bg-secondary_background/30 transition border-2 border-primary">
+                        <h3 class="text-xl md:text-3xl font-bold mb-3 text-primary_text">
+                            <?= htmlspecialchars($dynamicText['t_istorijskiarhiv_71293a_7d2435']['text'] ?? 'Nagrada i izložbeni salon', ENT_QUOTES, 'UTF-8'); ?>
+                        </h3>
+                        <p class="text-secondary_text text-base md:text-lg"></p>
+                        <p data-start="913" data-end="1083">
+                            <?= htmlspecialchars($dynamicText['t_istorijskiarhiv_f1b85c_026084']['text'] ?? 'Arhiv je nagrađen prestižnom nagradom „Zlatni arhiv“ i otvara reprezentativan izložbeni salon za prikaz bogatih fondova i zbirki.', ENT_QUOTES, 'UTF-8'); ?>
+                        </p>
+                        <p data-start="1085" data-end="1669"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -670,6 +670,13 @@ class PageExporter
                 return new GoalPageBuilder($name, $this->data);
             case 'predstave':
                 return new DynamicPageBuilder('predstave');
+            case 'program':
+                return new ProgramiObukePageBuilder('program');
+            case 'projekti':
+                return new DynamicPageBuilder('projekti');
+            case 'produkcija':
+                return new DynamicPageBuilder('produkcija');
+
             case 'vesti':
                 return new VestiPageBuilder('Vesti');
             case 'vrtici':
@@ -787,6 +794,13 @@ class PageExporter
             return 'obavestenja';
         } elseif (strpos($name, 'seminari') !== false) {
             return 'seminari';
+
+        } elseif (strpos($name, 'programi') !== false) {
+            return 'program';
+        } elseif (strpos($name, 'projekti') !== false) {
+            return 'projekti';
+        } elseif (strpos($name, 'produkcija') !== false) {
+            return 'produkcija';
         } elseif (strpos($name, 'primer') !== false) {
             return 'primer';
         } elseif (strpos($name, 'cilj') !== false) {
