@@ -361,7 +361,11 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-terracotta"></i>Zaposleni
+                                <i class="fas fa-users-cog mr-2 text-velvet"></i>Organi upravljanja
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
+                                <i class="fas fa-sitemap mr-2 text-terracotta"></i>Organizaciona struktura
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
@@ -420,7 +424,8 @@
                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block">
-                    <h1 class="text-xl lg:text-2xl font-heading text-primary font-bold tracking-wider">Centar za obrazovanje</h1>
+                    <h1 class="text-xl lg:text-2xl font-heading text-primary font-bold tracking-wider">Centar za
+                        obrazovanje</h1>
                     <p class="text-xs text-barn_red tracking-widest hidden md:block">CENTAR ZA OBRAZOVANJE</p>
                 </div>
                 <div class="block sm:hidden">
@@ -440,37 +445,43 @@
                         class="nav-link text-primary font-semibold hover:text-primary_hover transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
                         <i class="fas fa-info-circle mr-2 text-ochre transition-colors text-sm"></i>
                         <span class="hidden xl:inline font-semibold">O nama</span>
-                        <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2  min-w-max max-w-xs w-auto bg-background rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-border_light transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-bullseye mr-3 text-royal-blue flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Cilj</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Zaposleni</span>
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users-cog mr-3 text-velvet flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Organi upravljanja</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Organizaciona struktura</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-flag mr-3 text-deep-teal flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-circle-question mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Pitanja</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 text-primary hover:text-primary_hover text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-bullhorn mr-3 text-tomato_red flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Informacije</span>
                         </a>
@@ -479,8 +490,7 @@
 
                 <a href="#"
                     class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
-                    <i
-                        class="fas fa-newspaper mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
+                    <i class="fas fa-newspaper mr-2 text-royal-blue group-hover:text-deep-teal transition-colors"></i>
                     <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#"
@@ -503,8 +513,7 @@
                     <i class="fas fa-address-book mr-2 text-deep-teal transition-colors"></i>
                     <span class="hidden xl:inline">Kontakt</span>
                 </a>
-                <a href="#"
-                    class="hidden">
+                <a href="#" class="hidden">
                     Ankete
                 </a>
                 <?php
@@ -524,16 +533,17 @@
                 }
                 ?>
                 <div class="locale dropdown nonPage relative group flex items-center">
-                    <button class="nav-link text-primary font-semibold hover:text-primary_hover transition-colors flex items-center whitespace-nowrap">
-                        <span class="mr-2"><?= $languages[$locale]['flag'] ?></span>
-                        <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    <button class="nav-link text-primary hover:text-primary_hover font-semibold transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
+                        <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
+                        <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+                        <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
-                    <div class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg z-50">
+                    <div class="dropdown-menu absolute top-full right-0 min-w-max bg-surface rounded-xl shadow-2xl z-50 py-2 backdrop-blur-sm">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>" class="dropdown-item text-primary hover:text-primary_hover flex items-center px-4 py-2 bg-background hover:bg-background-50 rounded-md text-sm font-medium">
-                                <span class="mr-2"><?= $lang['flag'] ?></span>
-                                <?= $lang['label'] ?>
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                                <span class="font-medium"><?= $lang['label'] ?></span>
                             </a>
                         <?php endforeach; ?>
                     </div>
@@ -604,7 +614,6 @@
             </div>
         </div>
     </section>
-
     <!-- Najnnovije vesti -->
     <section id="vesti" class="py-20 bg-background">
         <div class="container mx-auto px-4">
@@ -614,7 +623,8 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam semper lobortis neque non eleifend.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
+                    semper lobortis neque non eleifend.
                 </p>
             </div>
 
@@ -622,9 +632,8 @@
                 <!-- News 1 -->
                 <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-slika"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -636,7 +645,8 @@
                         </h3>
 
                         <p id="g-tekst" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -657,9 +667,8 @@
                 <!-- News 2 -->
                 <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-slika"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -671,7 +680,8 @@
                         </h3>
 
                         <p id="g-tekst" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -692,9 +702,8 @@
                 <!-- News 3 -->
                 <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-slika"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -706,7 +715,8 @@
                         </h3>
 
                         <p id="g-tekst" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -745,7 +755,8 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-white max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam semper lobortis neque non eleifend.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
+                    semper lobortis neque non eleifend.
                 </p>
             </div>
 
@@ -753,9 +764,8 @@
                 <!-- Event 1 -->
                 <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-slika"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -767,7 +777,8 @@
                         </h3>
 
                         <p id="g-tekst" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -788,9 +799,8 @@
                 <!-- Event 2 -->
                 <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-slika"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -802,7 +812,8 @@
                         </h3>
 
                         <p id="g-tekst" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -823,9 +834,8 @@
                 <!-- Event 3 -->
                 <article class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-slika"
-                            src="https://picsum.photos/600/300"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
+                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            class="w-full h-full object-cover">
 
                     </div>
                     <div class="p-6">
@@ -837,7 +847,8 @@
                         </h3>
 
                         <p id="g-tekst" class="text-secondary_text mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae suscipit quis, pharetra a dui.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                            suscipit quis, pharetra a dui.
                         </p>
                         <div class="flex justify-between items-center">
                             <div>
@@ -867,7 +878,8 @@
     </section>
 
     <!-- Nasa dostignuca -->
-    <section class="relative bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=60')] bg-cover bg-center bg-fixed">
+    <section
+        class="relative bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=60')] bg-cover bg-center bg-fixed">
         <div class="bg-black/60 py-20 px-4">
             <div class="max-w-6xl mx-auto text-center text-white">
                 <h2 class="text-4xl font-heading font-bold">Naša dostignuća</h2>
@@ -907,7 +919,8 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam semper lobortis neque non eleifend.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
+                    semper lobortis neque non eleifend.
                 </p>
             </div>
 
@@ -994,7 +1007,8 @@
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
+                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu
+                                korisnika</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
                         <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
@@ -1040,11 +1054,10 @@
             </div>
 
             <div class="flex flex-col items-center border-t border-white pt-8 text-center text-white text-sm">
-                <img
-                    src="/assets/img/SECO-logo-640px-white.png"
-                    alt="SECO logo"
-                    class="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto mb-4">
-                <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+                <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo"
+                    class="w-full max-w-md md:max-w-lg h-auto mb-4">
+                <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
+                    zvanični stav Vlade Švajcarske.</p>
             </div>
 
             <div class="pt-8 text-center text-white text-sm">
@@ -1136,7 +1149,7 @@
                 dropdown.classList.toggle('active');
             });
         });
-        document.getElementById('searchButton').addEventListener('click', function() {
+        document.getElementById('searchButton').addEventListener('click', function () {
             const container = document.getElementById('searchInputContainer');
             const input = document.getElementById('searchInput');
 
@@ -1149,7 +1162,7 @@
             }
         });
 
-        document.getElementById('closeSearch').addEventListener('click', function() {
+        document.getElementById('closeSearch').addEventListener('click', function () {
             const container = document.getElementById('searchInputContainer');
             container.classList.add('opacity-0');
             setTimeout(() => {
@@ -1157,7 +1170,7 @@
             }, 300);
         });
 
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             const searchContainer = document.getElementById('searchInputContainer');
             const searchButton = document.getElementById('searchButton');
 
@@ -1182,7 +1195,7 @@
             }, 300);
         });
         // Header scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
@@ -1256,7 +1269,7 @@
 
         // Event listeners
         if (hamburger) {
-            hamburger.addEventListener('click', function(e) {
+            hamburger.addEventListener('click', function (e) {
                 e.stopPropagation();
                 if (mobileMenu.classList.contains('hidden')) {
                     openMobileMenu();
@@ -1275,7 +1288,7 @@
         }
 
         if (mobileAboutToggle) {
-            mobileAboutToggle.addEventListener('click', function(e) {
+            mobileAboutToggle.addEventListener('click', function (e) {
                 e.preventDefault();
                 toggleMobileAbout();
             });
@@ -1284,21 +1297,21 @@
         // Close menu when clicking on menu links (except dropdown toggle)
         const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
         menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 // Close menu after a short delay to allow for navigation
                 setTimeout(closeMobileMenuFunc, 150);
             });
         });
 
         // Close menu on window resize if screen becomes large
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
         });
 
         // Handle escape key to close menu
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
@@ -1306,7 +1319,7 @@
 
         // Prevent menu panel clicks from closing the menu
         if (mobileMenuPanel) {
-            mobileMenuPanel.addEventListener('click', function(e) {
+            mobileMenuPanel.addEventListener('click', function (e) {
                 e.stopPropagation();
             });
         }

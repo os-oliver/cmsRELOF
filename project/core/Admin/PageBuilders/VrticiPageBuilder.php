@@ -296,8 +296,8 @@ PHP;
 <main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-heading text-primary_text mb-2 text-center">Vrtići</h1>
-            <p class="font-heading2 text-secondary_text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Vrtići</h1>
+            <p class="text-lg font-heading2 text-secondary_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         </div>
         
         
@@ -383,7 +383,6 @@ HTML;
         $additionalPHP .= "\n" . $this->cardTemplate;
         $additionalPHP .= "\n" . $this->cardRender;
         $additionalPHP .= "\n" . $this->pagination;
-        //$additionalPHP .= "\n" . $this->topBar;
         $additionalPHP = str_replace('__SLUG__', addslashes($this->slug), $additionalPHP);
         $additionalPHP = str_replace('__ITEMS_PER_PAGE__', $this->itemsPerPage, $additionalPHP);
         $additionalPHP = str_replace('__DESC_MAX_LENGTH__', $this->descriptionMaxLength, $additionalPHP);

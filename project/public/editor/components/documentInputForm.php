@@ -126,6 +126,3 @@
         </form>
     </div>
 </div>
-
-<!-- NE DIRAJ ovu liniju (tvoj JS fajl ostaje nepromenjen) -->
-<script src="/assets/js/dashboard/fileUploader.js"></script>

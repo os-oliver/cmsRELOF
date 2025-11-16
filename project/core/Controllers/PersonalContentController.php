@@ -501,6 +501,9 @@ class PersonalContentController
                 case 'Projekti':
                     $mainContent = $this->getProjektiContent($type, $locale, $structure);
                     break;
+                case 'Zaposleni':
+                    $mainContent = $this->getZaposleniContent($type, $locale, $structure);
+                    break;
                 default:
                     $mainContent = $this->getDefaultContent($type, $locale, $structure);
             }
@@ -813,8 +816,9 @@ class PersonalContentController
         }
 
         if (!empty($images)) {
+            $galleryLabel = $this->getGalleryLabel($locale);
             $html .= '<div class="mt-8">
-                        <h3 class="text-xl font-heading text-primary_text mb-4"><i class="fas fa-images"></i> Galerija</h3>
+                        <h3 class="text-xl font-heading text-primary_text mb-4"><i class="fas fa-images mr-2"></i>' . $galleryLabel . '</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">';
             foreach ($images as $img) {
                 $path = htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8');
@@ -969,7 +973,7 @@ class PersonalContentController
                         rel="noopener noreferrer"
                         class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors duration-300 font-medium">
                             <i class="fas fa-external-link-alt mr-2"></i>
-                            Posjetite zvaničnu stranicu projekta
+                            Posetite zvaničnu stranicu projekta
                         </a>
                     </div>' : '') . '
                 </div>
@@ -996,6 +1000,136 @@ class PersonalContentController
                 </div>' : '') . '
             </div>
         </div>';
+
+        return $html;
+    }
+
+    private function getZaposleniContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $ime        = $fields['ime'][$locale]        ?? '';
+        $pozicija   = $fields['pozicija'][$locale]   ?? '';
+        $biografija = $fields['biografija'][$locale] ?? '';
+        $kontakt    = $fields['kontakt'][$locale]    ?? '';
+        $slika      = $fields['slika'][$locale]      ?? '';
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $fieldIcons = $this->getFieldIcons($type, $structure);
+
+        $labelIme      = $labels['ime']        ?? 'Ime i prezime';
+        $labelPozicija = $labels['pozicija']   ?? 'Pozicija';
+        $labelBio      = $labels['biografija'] ?? 'Biografija';
+        $labelEmail    = $labels['kontakt']    ?? 'Email kontakt';
+
+        $allFiles = \App\Models\Image::fetchByElement($id);
+
+        $images = array_filter(
+            $allFiles,
+            fn($file) =>
+            !in_array(strtolower(pathinfo($file['file_path'], PATHINFO_EXTENSION)), ['pdf', 'xlsx', 'xls', 'doc', 'docx'])
+        );
+
+        if (!$slika && !empty($images)) {
+            $slika = $images[0]['file_path'];
+        }
+
+        $html = '
+    <div class="content-wrapper">
+        <div class="page-header">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h1>' . htmlspecialchars($ime ?: "Zaposleni", ENT_QUOTES, "UTF-8") . '</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-3">
+            <div class="max-w-4xl mx-auto">
+
+                <div class="fields-grid">
+
+                    <div class="field-row full-width">
+                        <span class="field-label">
+                            <i class="' . $this->getFieldIcon("slika", $fieldIcons) . '"></i>Fotografija
+                        </span>
+                        <span class="field-value">
+                            ' . ($slika ? '
+                                <img src="' . htmlspecialchars($slika, ENT_QUOTES, "UTF-8") . '" 
+                                     class="w-48 h-auto rounded-xl shadow" />'
+            : 'Nema fotografije') . '
+                        </span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("ime", $fieldIcons) . '"></i>' . $labelIme . '</span>
+                        <span class="field-value">' . htmlspecialchars($ime, ENT_QUOTES, "UTF-8") . '</span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("pozicija", $fieldIcons) . '"></i>' . $labelPozicija . '</span>
+                        <span class="field-value">' . htmlspecialchars($pozicija, ENT_QUOTES, "UTF-8") . '</span>
+                    </div>
+
+                    ' . (!empty($kontakt) ? '
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("kontakt", $fieldIcons) . '"></i>' . $labelEmail . '</span>
+                        <span class="field-value">
+                            <a href="mailto:' . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") . '" class="text-blue-600 underline">'
+            . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") .
+            '</a>
+                        </span>
+                    </div>' : '') . '
+
+                    ' . (!empty($biografija) ? '
+                    <div class="field-row full-width">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("biografija", $fieldIcons) . '"></i>' . $labelBio . '</span>
+                        <span class="field-value">' . nl2br(htmlspecialchars($biografija, ENT_QUOTES, "UTF-8")) . '</span>
+                    </div>' : '') . '
+
+                </div>
+    ';
+
+        if (count($images) > 1) {
+            $html .= '
+            <div class="section-divider"></div>
+            <div class="gallery-header"><i class="fas fa-images"></i>Galerija</div>
+            <div class="gallery-grid">';
+
+            foreach ($images as $img) {
+                $imgPath = htmlspecialchars($img["file_path"], ENT_QUOTES, "UTF-8");
+
+                $html .= '
+                <div class="gallery-item">
+                    <a href="' . $imgPath . '" class="gallery-image-link block">
+                        <img src="' . $imgPath . '" alt="">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white text-xl"></i>
+                        </div>
+                    </a>
+                </div>';
+            }
+
+            $html .= '</div>';
+        }
+
+        $html .= '
+            </div>
+        </div>
+    </div>';
 
         return $html;
     }

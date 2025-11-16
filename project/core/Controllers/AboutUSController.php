@@ -34,7 +34,7 @@ class AboutUSController
             $siteTitleRaw = trim($payload['site_title'] ?? '');
 
             $iconPath = null;
-            $allowed = ['png', 'jpg', 'jpeg', 'gif', 'svg'];
+            $allowed = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'ico'];
             $destDir = __DIR__ . '/../../public/assets/icons';
             $finalIconName = 'icon.png'; // always overwrite this
 

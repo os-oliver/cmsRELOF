@@ -95,7 +95,7 @@ $totalPages = (int) ceil($totalCount / $limit);
         <div class="flex-1 flex flex-col overflow-hidden">
 
             <?php require_once __DIR__ . "/../components/topBar.php" ?>
-            <div class="overflow-y-auto 2xl:overflow-y-hidden overflow-x-hidden container mx-auto px-4 py-8 ">
+            <div class="overflow-y-auto container mx-auto px-4 py-8 ">
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">
@@ -236,7 +236,16 @@ $totalPages = (int) ceil($totalCount / $limit);
                 <div
                     class="flex items-center justify-between bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                     <div class="hidden md:block text-sm text-gray-700">
-                        <?= __('gallery.pagination_summary', ['shown' => count($images), 'of' => $totalCount]) ?>
+                        <?php
+
+                        $paginacijaString = __('gallery.pagination_summary');
+                        $paginacijaString = str_replace(
+                            ['{{shown}}', '{{of}}'],
+                            [count($images), $totalCount],
+                            $paginacijaString
+                        );
+                        echo $paginacijaString;
+                        ?>
                     </div>
 
                     <nav class="flex items-center gap-2">

@@ -32,7 +32,6 @@ HTML;
     public function buildPage(): string
     {
         $additionalPHP = <<<'PHP'
-    use App\Models\AboutUs;
     $dataAboutUS = new AboutUs();
 PHP;
 

@@ -123,6 +123,12 @@ document.addEventListener("DOMContentLoaded", () => {
     formEls.eventForm.classList.remove("invisible");
   };
 
+  const closeForm = () => {
+    formEls.eventForm.classList.add("invisible");
+    formEls.eventForm.classList.remove("visible");
+    document.body.classList.remove("overflow-hidden");
+  };
+
   const showModal = () => {
     modalEls.modal.classList.remove("hidden");
     document.body.classList.add("overflow-hidden");
@@ -147,6 +153,133 @@ document.addEventListener("DOMContentLoaded", () => {
     formEls.ctg.value = "";
     formEls.titleOfForm.innerHTML = "Novi dokument";
     formEls.fileInput.classList.remove("hidden");
+  });
+
+  // Handle file input change - populate name, extension, fileSize
+  const fileInput = document.getElementById("documetFile");
+  const MAX_FILE_SIZE_MB = 200; // 200MB limit
+
+  if (fileInput) {
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      // Proveravamo veličinu fajla
+      const fileSizeMB = file.size / 1024 / 1024;
+
+      if (fileSizeMB > MAX_FILE_SIZE_MB) {
+        alert(
+          `Greška! Fajl je prevelik.\n\nMaksimalna dozvoljena veličina: ${MAX_FILE_SIZE_MB}MB\nVaš fajl: ${fileSizeMB.toFixed(
+            2
+          )}MB\n\nMolimo izaberite manji fajl.`
+        );
+        fileInput.value = ""; // Čisti fajl input
+        formEls.nameInput.value = "";
+        formEls.extInput.value = "";
+        formEls.sizeInput.value = "";
+        return;
+      }
+
+      formEls.nameInput.value = file.name;
+      const parts = file.name.split(".");
+      formEls.extInput.value = parts.length > 1 ? parts.pop() : "";
+      formEls.sizeInput.value = fileSizeMB.toFixed(2);
+    });
+  }
+
+  // Handle form submission
+  formEls.form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (fileInput.value == "" && formEls.method.value === "POST") {
+      alert("Greška!\n\n niste dodali dokument.");
+      formEls.titleForm.focus();
+      return;
+    }
+
+    const formData = new FormData(formEls.form);
+
+    try {
+      let res = null;
+      if (formEls.method.value === "PUT") {
+        const payload = {
+          name: formEls.nameInput.value,
+          extension: formEls.extInput.value,
+          fileSize: formEls.sizeInput.value,
+          category: formEls.ctg.value,
+          title: formEls.titleForm.value,
+          description: formEls.desc.value,
+        };
+
+        const fetchOptions = {
+          method: formEls.method.value,
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        };
+        res = await fetch(formEls.endpoint.value, fetchOptions);
+      } else {
+        const fetchOptions = {
+          method: formEls.method.value,
+          body: formData,
+        };
+
+        res = await fetch(formEls.endpoint.value, fetchOptions);
+      }
+
+      if (!res.ok) {
+        let errorMsg = "Greška pri čuvanju dokumenta";
+        try {
+          const errorData = await res.json();
+          if (errorData.error) {
+            errorMsg = errorData.error;
+          }
+        } catch (e) {
+          const errorText = await res.text();
+          if (errorText) {
+            errorMsg = errorText;
+          }
+        }
+        throw new Error(errorMsg);
+      }
+
+      alert(" Dokument uspešno sačuvan!");
+      location.reload();
+      formEls.form.reset();
+      closeForm();
+    } catch (err) {
+      console.error("Greška:", err);
+      alert(" " + err.message);
+    }
+  });
+
+  // Handle cancel button
+  const cancelBtn = document.getElementById("cancelButton");
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", () => {
+      formEls.form.reset();
+      closeForm();
+    });
+  }
+
+  // Handle ESC key
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "Escape" &&
+      !formEls.eventForm.classList.contains("invisible")
+    ) {
+      formEls.form.reset();
+      closeForm();
+    }
+  });
+
+  // Close modal when clicking outside
+  formEls.eventForm.addEventListener("click", (e) => {
+    if (e.target === formEls.eventForm) {
+      formEls.form.reset();
+      closeForm();
+    }
   });
 
   // Handle document cards

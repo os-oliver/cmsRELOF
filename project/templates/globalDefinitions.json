@@ -28,7 +28,6 @@
         }
       ]
     },
-    
     "Pitanja": {
       "sr": "Često postavljena pitanja",
       "en": "Frequently asked questions",
@@ -54,6 +53,61 @@
             "sr-Cyrl": "Одговор"
           },
           "required": true
+        }
+      ]
+    },
+    "OrganiUpravljanja": {
+      "sr": "Organi upravljanja",
+      "en": "Management bodies",
+      "sr-Cyrl": "Органи управљања",
+      "icon": "fas fa-users-cog",
+      "fields": [
+        {
+          "name": "ime",
+          "type": "text",
+          "label": {
+            "sr": "Ime i prezime",
+            "en": "Full name",
+            "sr-Cyrl": "Име и презиме"
+          },
+          "required": true
+        },
+        {
+          "name": "pozicija",
+          "type": "text",
+          "label": {
+            "sr": "Pozicija",
+            "en": "Position",
+            "sr-Cyrl": "Позиција"
+          },
+          "required": true
+        },
+        {
+          "name": "biografija",
+          "type": "textarea",
+          "label": {
+            "sr": "Biografija",
+            "en": "biography",
+            "sr-Cyrl": "Биографиј"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Fotografija člana",
+            "en": "Member photo",
+            "sr-Cyrl": "Фотографија члана"
+          }
+        },
+        {
+          "name": "kontakt",
+          "type": "email",
+          "label": {
+            "sr": "Email kontakt",
+            "en": "Email contact",
+            "sr-Cyrl": "Имејл контакт"
+          }
         }
       ]
     }

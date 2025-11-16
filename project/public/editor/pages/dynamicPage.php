@@ -28,7 +28,6 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 
 
 
-
 ?>
 <!DOCTYPE html>
 <html lang="sr" class="scroll-smooth">
@@ -58,7 +57,7 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
                 <div class="mx-auto space-y-6">
                     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                         <h1 class="text-3xl font-bold text-gray-800">
-                            <?= htmlspecialchars($slug ?? '', ENT_QUOTES, 'UTF-8') ?>
+                            <?= htmlspecialchars($config[$locale] ?? '', ENT_QUOTES, 'UTF-8') ?>
                         </h1>
                         <div class="flex flex-wrap items-center gap-3">
                             <?php if (strtolower($slug) === 'ankete'): ?>
@@ -70,7 +69,7 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
                             <?php endif; ?>
                             <button id="newEventButton"
                                 class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg">
-                                <i class="fas fa-plus text-sm"></i><?= $slug ?>
+                                <i class="fas fa-plus text-sm"></i><?= $config[$locale] ?>
                             </button>
                         </div>
                     </div>
@@ -108,7 +107,7 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
                                 $end = min($start + $itemsPerPage - 1, $itemsList['total']);
                                 echo CardRenderer::renderPagination($currentPage, $totalPages, $start, $end, $itemsList['total'], 'editor');
                             } else {
-                                echo "<div class='bg-white rounded-xl shadow-md p-12 text-center'><i class='fas fa-inbox text-6xl text-gray-300 mb-4'></i><p class='text-gray-500 text-lg'>Nema pronađenih stavki</p></div>";
+                                echo "<div class='bg-white rounded-xl shadow-md p-12 text-center'><i class='fas fa-inbox text-6xl text-gray-300 mb-4'></i><p class='text-gray-500 text-lg'><?=_('dynamic.noitems')?></p></div>";
                             }
                         } catch (\Throwable $e) {
                             error_log('List render error: ' . $e->getMessage());

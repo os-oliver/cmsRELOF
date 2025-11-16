@@ -76,16 +76,16 @@ class Document
         string $sort = 'date_desc',
         string $lang = 'sr-Cyrl'
     ): array {
-        // parametri koji će se bind-ovati (jezik se koristi u podupitima za text)
+        // --- parametri koji će se bind-ovati ---
         $params = [
             ':lang_doc' => $lang,
             ':lang_cat' => $lang,
         ];
 
-        // --- WHERE delovi (pripremamo bez prefiksa "AND") ---
+        // --- WHERE delovi ---
         $whereParts = [];
 
-        // Ako postoji search, koristimo d.id IN (SELECT ... WHERE t.content LIKE :search)
+        // Search filter
         if ($search !== '') {
             $whereParts[] = "d.id IN (
             SELECT DISTINCT t.source_id
@@ -94,8 +94,10 @@ class Document
               AND t.content LIKE :search
         )";
             $params[':search'] = '%' . $search . '%';
+            error_log("DEBUG: Applying search filter with :search = {$params[':search']}");
         }
 
+        // Categories filter
         if (!empty($categories)) {
             $categoryPlaceholders = [];
             foreach ($categories as $i => $cat) {
@@ -104,46 +106,34 @@ class Document
                 $params[$placeholder] = (int) $cat;
             }
             $whereParts[] = "s.category_id IN (" . implode(", ", $categoryPlaceholders) . ")";
+            error_log("DEBUG: Applying categories filter with placeholders: " . implode(", ", $categoryPlaceholders));
         }
+
+        // Status filter
         if ($status !== '') {
             $whereParts[] = "d.status = :status";
             $params[':status'] = $status;
+            error_log("DEBUG: Applying status filter with :status = {$status}");
         }
 
         $whereSql = $whereParts ? 'WHERE ' . implode(' AND ', $whereParts) : '';
+        error_log("DEBUG: WHERE SQL = {$whereSql}");
 
-        // --- VALIDACIJA offset/limit i Overflow detekcija ---
+        // --- VALIDACIJA offset/limit ---
         try {
             if (!is_numeric($offset) || !is_numeric($limit)) {
                 throw new InvalidArgumentException('Offset i limit moraju biti numerički.');
             }
-            $offsetFloat = (float) $offset;
-            $limitFloat = (float) $limit;
-
-            if ($offsetFloat > PHP_INT_MAX || $limitFloat > PHP_INT_MAX) {
-                throw new OverflowException('Offset ili limit prelazi dozvoljeni opseg integera.');
-            }
-
-            $offsetInt = (int) $offsetFloat;
-            $limitInt = (int) $limitFloat;
-
-            $maxLimit = 10000;
-            if ($limitInt < 0)
-                $limitInt = 0;
-            if ($offsetInt < 0)
-                $offsetInt = 0;
-            if ($limitInt > $maxLimit)
-                $limitInt = $maxLimit;
-
-        } catch (OverflowException $oe) {
-            $offsetInt = 0;
-            $limitInt = 100;
-        } catch (Exception $e) {
+            $offsetInt = max(0, min(PHP_INT_MAX, (int) $offset));
+            $limitInt = max(0, min(10000, (int) $limit));
+        } catch (\Exception $e) {
+            error_log("DEBUG: Invalid offset/limit, using defaults. Exception: " . $e->getMessage());
             $offsetInt = 0;
             $limitInt = 100;
         }
+        error_log("DEBUG: Using OFFSET = {$offsetInt}, LIMIT = {$limitInt}");
 
-        // --- DYNAMIC SORT MAP ---
+        // --- SORT MAP ---
         $sortMap = [
             'date_desc' => 'd.datetime DESC',
             'date_asc' => 'd.datetime ASC',
@@ -153,10 +143,10 @@ class Document
             'id_asc' => 'd.id ASC',
         ];
         $orderByInner = $sortMap[$sort] ?? $sortMap['date_desc'];
-        // Outer order: isto, pa dodajemo te.field_name kao tie-breaker
         $orderByOuter = $orderByInner . ', te.field_name';
+        error_log("DEBUG: ORDER BY INNER = {$orderByInner}, OUTER = {$orderByOuter}");
 
-        // --- GLAVNI UPIT: prvo limitiramo dokumente po id-u, pa joinujemo ostalo (preslikava tvoju želju) ---
+        // --- GLAVNI UPIT ---
         $sql = "
 SELECT
   d.id,
@@ -172,7 +162,6 @@ SELECT
 FROM
   (SELECT d.id FROM document d
     JOIN subcategory_document s ON s.id = d.subcategory_id
-
     {$whereSql}
     ORDER BY {$orderByInner}
     LIMIT {$offsetInt}, {$limitInt}
@@ -203,47 +192,54 @@ LEFT JOIN (
 ORDER BY {$orderByOuter};
 ";
 
-        try {
-            error_log("SQL: " . $sql);
-            error_log("PARAMS: " . print_r($params, true));
-            $stmt = $this->pdo->prepare($sql);
+        error_log("DEBUG: Full SQL = {$sql}");
+        error_log("DEBUG: Params = " . print_r($params, true));
 
-            // bind-ujemo parametre za glavni upit
+        // --- EXECUTE ---
+        try {
+            $stmt = $this->pdo->prepare($sql);
             foreach ($params as $k => $v) {
                 $type = is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR;
                 $stmt->bindValue($k, $v, $type);
             }
-
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            error_log("DEBUG: Number of rows fetched = " . count($rows));
         } catch (\PDOException $e) {
-            error_log('Query failed: ' . $e->getMessage());
+            error_log('Query failed: ' . $e->getMessage() . ' | SQLSTATE: ' . $e->getCode());
             $rows = [];
         }
 
-        // ukupno (broj dokumenata posle filtera, bez limit-a) — boljе za paginaciju
+        // --- COUNT for pagination ---
         try {
-            $countSql = "SELECT COUNT(*) FROM document d JOIN subcategory_document s ON s.id = d.subcategory_id
- {$whereSql}";
+            $countSql = "SELECT COUNT(*) FROM document d JOIN subcategory_document s ON s.id = d.subcategory_id {$whereSql}";
             $countStmt = $this->pdo->prepare($countSql);
-            // Bind only parameters that are actually present in the COUNT SQL
             foreach ($params as $k => $v) {
-                if (strpos($countSql, $k) === false) {
-                    // this parameter (e.g. :lang_doc or :lang_cat) is not used in the COUNT query
+                if (strpos($countSql, $k) === false)
                     continue;
-                }
                 $type = is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR;
                 $countStmt->bindValue($k, $v, $type);
             }
             $countStmt->execute();
             $total = (int) $countStmt->fetchColumn();
+            error_log("DEBUG: Total count after filters = {$total}");
         } catch (\PDOException $e) {
-            error_log('Count failed: ' . $e->getMessage());
+            error_log('Count failed: ' . $e->getMessage() . ' | SQLSTATE: ' . $e->getCode());
             $total = 0;
         }
 
-        return [$this->pivoter->pivot($rows), $total];
+        $result = $this->pivoter->pivot($rows);
+
+        // Ako je sortiranje po imenu
+        if (isset($sort) && $sort === 'ime') {
+            usort($result, function ($a, $b) {
+                return strcmp($a['title'] ?? '', $b['title'] ?? '');
+            });
+        }
+
+        return [$result, $total];
     }
+
 
 
 
@@ -251,11 +247,13 @@ ORDER BY {$orderByOuter};
     {
         try {
             $this->pdo->beginTransaction();
+            error_log('Transaction started');
 
             $stmt = $this->pdo->prepare("
-                INSERT INTO document (filepath, extension, fileSize, subcategory_id, datetime)
-                VALUES (:filepath, :extension, :fileSize, :category, NOW())
-            ");
+            INSERT INTO document (filepath, extension, fileSize, subcategory_id, datetime)
+            VALUES (:filepath, :extension, :fileSize, :category, NOW())
+        ");
+
             $stmt->execute([
                 ':filepath' => $data['filepath'] ?? '',
                 ':extension' => $data['extension'] ?? '',
@@ -264,7 +262,14 @@ ORDER BY {$orderByOuter};
             ]);
 
             $documentId = (int) $this->pdo->lastInsertId();
+            error_log("Inserted document ID: $documentId");
+
+            if (!$documentId) {
+                throw new \Exception('Document ID not returned after insert');
+            }
+
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+            error_log("Locale: $locale");
 
             // koristi TextHelper koji uključuje transliteraciju
             TextHelper::insertTextEntries(
@@ -273,21 +278,31 @@ ORDER BY {$orderByOuter};
                 'title',
                 TextHelper::transliterateVariants((string) ($data['title'] ?? ''), $locale)
             );
+            error_log("Title inserted");
+
             TextHelper::insertTextEntries(
                 $this->pdo,
                 $documentId,
                 'description',
                 TextHelper::transliterateVariants((string) ($data['description'] ?? ''), $locale)
             );
+            error_log("Description inserted");
 
             $this->pdo->commit();
+            error_log("Transaction committed successfully");
             return true;
+
         } catch (\PDOException $e) {
             $this->pdo->rollBack();
-            error_log('Insert failed: ' . $e->getMessage());
+            error_log('PDOException: ' . $e->getMessage() . ' | Code: ' . $e->getCode());
+            return false;
+        } catch (\Exception $e) {
+            $this->pdo->rollBack();
+            error_log('General Exception: ' . $e->getMessage());
             return false;
         }
     }
+
     public function update(int $documentId, array $data): bool
     {
         try {

@@ -54,14 +54,45 @@ class GalleryController
 
     public function update(int $id): void
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'PUT') {
+        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+
+        if (!in_array($method, ['PUT', 'POST'])) {
             http_response_code(405);
-            echo json_encode(['error' => 'Method Not Allowed, use PUT']);
+            echo json_encode(['error' => 'Method Not Allowed, use PUT or POST']);
             return;
         }
 
-        $raw = file_get_contents('php://input');
-        $data = json_decode($raw, true);
+        $data = [];
+
+        // PUT expects JSON body
+        if ($method === 'PUT') {
+            $raw = file_get_contents('php://input');
+            $data = json_decode($raw, true) ?? [];
+        } else {
+            // POST expects multipart/form-data (used when uploading a new file)
+            $data['title'] = $_POST['galleryTitle'] ?? null;
+            $data['description'] = $_POST['galleryDescription'] ?? null;
+
+            $file = $_FILES['galleryImage'] ?? null;
+            $uploadDir = dirname(__DIR__) . '/../public/uploads/gallery/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0775, true);
+            }
+
+            try {
+                if ($file && $file['error'] !== UPLOAD_ERR_NO_FILE) {
+                    $uploader = new FileUploader($uploadDir);
+                    $filename = $uploader->upload($file);
+                    $data['image_file_path'] = $filename;
+                }
+            } catch (\RuntimeException $e) {
+                error_log("Upload error: " . $e->getMessage());
+                http_response_code(400);
+                echo json_encode(['error' => $e->getMessage()]);
+                return;
+            }
+        }
+
         if (empty($id) || !is_numeric($id)) {
             http_response_code(400);
             echo json_encode(['error' => 'Invalid image ID']);

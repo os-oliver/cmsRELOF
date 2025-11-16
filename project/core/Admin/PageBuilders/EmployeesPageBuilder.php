@@ -11,11 +11,11 @@ class EmployeesPageBuilder extends BasePageBuilder
      * HTML template stranice
      */
     protected string $html = <<<'HTML'
-<main class="flex-grow pt-24">
-    <div class="container mx-auto px-4 py-12">
+<main class="flex-grow pt-24 bg-background">
+    <div class="container mx-auto px-4 py-12 text-secondary_text font-body">
         <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">Naš Tim</h1>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h1 class="text-4xl font-bold mb-4 text-primary_text font-heading">Naš tim</h1>
+            <p class="text-lg max-w-2xl mx-auto">
                 Upoznajte članove našeg tima koji svakodnevno rade na unapređenju naše organizacije
             </p>
         </div>
@@ -32,10 +32,10 @@ class EmployeesPageBuilder extends BasePageBuilder
                         name="search"
                         value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
                         placeholder="Pretraži zaposlene..."
-                        class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                     >
                 </div>
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition">
+                <button type="submit" class="bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-lg transition">
                     Primena
                 </button>
             </div>
@@ -45,22 +45,22 @@ class EmployeesPageBuilder extends BasePageBuilder
         <?php if (count($employees) > 0): ?>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach ($employees as $employee): ?>
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in">
+                    <div class="bg-surface rounded-xl shadow-md overflow-hidden card-hover fade-in">
                         <div class="p-6">
                             <div class="flex items-center mb-6">
-                                <div class="initials-avatar bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold">
+                                <div class="initials-avatar bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold">
                                     <?= mb_substr($employee['name'], 0, 1, 'UTF-8') . mb_substr($employee['surname'], 0, 1, 'UTF-8') ?>
                                 </div>
                                 <div class="ml-4">
-                                    <h3 class="text-xl font-bold text-gray-800">
+                                    <h3 class="text-xl font-bold text-primary_text">
                                         <?= htmlspecialchars($employee['name'] . ' ' . $employee['surname'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
                                     </h3>
-                                    <p class="text-blue-600 font-medium">
+                                    <p class="font-medium">
                                         <?= htmlspecialchars($employee['position'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
                                     </p>
                                 </div>
                             </div>
-                            <div class="border-t border-gray-100 pt-4">
+                            <div class="border-t border-secondary pt-4">
                                 <p class="text-gray-600 line-clamp-3">
                                     <?= htmlspecialchars($employee['biography']) ?>
                                 </p>
@@ -86,7 +86,7 @@ class EmployeesPageBuilder extends BasePageBuilder
                     for ($i = $startPage; $i <= $endPage; $i++):
                     ?>
                         <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>"
-                           class="w-10 h-10 flex items-center justify-center rounded-lg <?= $i == $page ? 'bg-blue-600 text-white' : 'bg-white hover:bg-gray-100' ?> shadow">
+                           class="w-10 h-10 flex items-center justify-center rounded-lg <?= $i == $page ? 'bg-secondary text-white' : 'bg-white hover:bg-gray-100' ?> shadow">
                             <?= $i ?>
                         </a>
                     <?php endfor; ?>
@@ -104,11 +104,11 @@ class EmployeesPageBuilder extends BasePageBuilder
                 <div class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
                     <i class="fas fa-users text-gray-400 text-3xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Nema pronađenih zaposlenih</h3>
-                <p class="text-gray-600 mb-6">
+                <h3 class="text-2xl font-primary text-primary_text mb-4">Nema pronađenih zaposlenih</h3>
+                <p class="mb-6">
                     Promenite parametre pretrage ili proverite kasnije.
                 </p>
-                <a href="?" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                <a href="?" class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary_hover transition">
                     Resetuj pretragu
                 </a>
             </div>
@@ -126,7 +126,6 @@ HTML;
         $additionalPHP = <<<'PHP'
     use App\Models\Employee;
     use App\Controllers\AuthController;
-AuthController::requireEditor();
 
 // Parametri iz GET
 $search = $_GET['search'] ?? '';

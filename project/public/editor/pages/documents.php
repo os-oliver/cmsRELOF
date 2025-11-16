@@ -107,7 +107,7 @@ function getFileConfig(string $ext): array
         <div class="flex-1 flex flex-col overflow-hidden">
             <?php require_once __DIR__ . "/../components/topBar.php"; ?>
 
-            <div class="overflow-y-auto 2xl:overflow-y-hidden overflow-x-hidden container mx-auto px-4 py-8">
+            <div class="overflow-y-auto container mx-auto px-4 py-8">
                 <!--  Naslov i dugme za dodavanje dokumenta -->
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                     <div>
@@ -128,7 +128,7 @@ function getFileConfig(string $ext): array
                 </div>
 
                 <!--  Pretraga i filteri -->
-                <form method="GET" action="" class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
+                <form id="filterForm" method="GET" action="" class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
                     <div class="space-y-4">
                         <!-- Search and Sort Row -->
                         <div class="flex flex-col sm:flex-row gap-4">
@@ -200,8 +200,9 @@ function getFileConfig(string $ext): array
                                 $date = date('j. F Y. \u\  H:i\h', strtotime($doc['datetime']));
                                 ?>
                                 <div class="document-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group relative"
-                                    data-title="<?= htmlspecialchars($doc['title']) ?>"
-                                    data-description="<?= htmlspecialchars($doc['description']) ?>"
+                                    data-title="<?= htmlspecialchars($doc['title'] ?? '') ?>"
+                                    data-description="<?= htmlspecialchars($doc['description'] ?? '') ?>"
+
                                     data-category="<?= htmlspecialchars($doc['subcategory_id']) ?>"
                                     data-file-url="<?= htmlspecialchars($doc['filepath']) ?>"
                                     data-file-type="<?= htmlspecialchars($doc['extension']) ?>"
@@ -251,13 +252,14 @@ function getFileConfig(string $ext): array
                                             </button>
                                         </div>
 
-                                        <h3 id="title"
-                                            class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600">
-                                            <?= htmlspecialchars($doc['title']) ?>
-                                        </h3>
-                                        <p id="description" class="text-gray-600 text-sm mb-4 line-clamp-2">
-                                            <?= htmlspecialchars($doc['description']) ?>
-                                        </p>
+                                       <h3 id="title"
+    class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600">
+    <?= htmlspecialchars($doc['title'] ?? '') ?>
+                                    </h3>
+                                    <p id="description" class="<?= !empty($doc['description']) ? 'text-gray-600 ' : '' ?>text-sm mb-4 line-clamp-2">
+                                        <?= htmlspecialchars($doc['description'] ?? '') ?>
+                                    </p>
+
                                         <div class="flex items-center gap-4">
                                             <div class="flex items-center gap-2 text-sm text-gray-500">
                                                 <i class="fas fa-calendar h-4 w-4"></i> <?= $date ?>
@@ -314,6 +316,14 @@ function getFileConfig(string $ext): array
 
     <script src="/assets/js/dashboard/documents.js" defer></script>
     <script src="/assets/js/dashboard/mobileMenu.js" defer></script>
+    <script>
+        // Auto-submit filter form when category checkbox is clicked
+        document.querySelectorAll('input[name="categories[]"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                document.getElementById('filterForm').submit();
+            });
+        });
+    </script>
 </body>
 
 </html>
