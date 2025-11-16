@@ -44,6 +44,96 @@
           }
         }
       ]
+    },
+    "Vesti": {
+      "sr": "Vesti",
+      "en": "News",
+      "sr-Cyrl": "Вести",
+      "icon": "fas fa-newspaper",
+      "categories": [
+        "Kultura",
+        "Obrazovanje",
+        "Inovacije",
+        "Zdravlje",
+        "Tehnologija",
+        "Naučni klub"
+      ],
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov vesti",
+            "en": "News title",
+            "sr-Cyrl": "Наслов вести"
+          },
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum vesti",
+            "en": "News date",
+            "sr-Cyrl": "Датум вести"
+          },
+          "required": true,
+          "property": "auto"
+        },
+        {
+          "name": "naziv",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
+          },
+          "options": [
+            "Kultura",
+            "Obrazovanje",
+            "Inovacije",
+            "Zdravlje",
+            "Tehnologija"
+          ],
+          "required": true
+        },
+        {
+          "name": "autor",
+          "type": "text",
+          "label": {
+            "sr": "Autor",
+            "en": "Author",
+            "sr-Cyrl": "Аутор"
+          }
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika vesti",
+            "en": "News image",
+            "sr-Cyrl": "Насловна слика вести"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Eksterni link",
+            "en": "External link",
+            "sr-Cyrl": "Екстерни линк"
+          }
+        }
+      ]
     }
   }
 ]
