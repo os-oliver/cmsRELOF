@@ -295,6 +295,14 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-users-cog mr-2 text-secondary"></i>Organizaciona struktura
                             </a>
+                            <a data-page="Informacije" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-info-circle mr-2 text-accent"></i>Informacije
+                            </a>
+                            <a data-page="Pitanja" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-question-circle mr-2 text-secondary"></i>Pitanja
+                            </a>
                             <a data-page="Organi upravljanja" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-gavel mr-2 text-primary"></i>Organi upravljanja
@@ -448,13 +456,21 @@
                             class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
                             <i class="fas fa-flag mr-2 text-secondary"></i>Misija i vizija
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
                             <i class="fas fa-history mr-2 text-accent"></i>Istorijat
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
                             <i class="fas fa-users-cog mr-2 text-secondary"></i>Organizaciona struktura
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
+                            <i class="fas fa-info-circle mr-2 text-accent"></i>Informacije
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
+                            <i class="fas fa-question-circle mr-2 text-secondary"></i>Pitanja
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
@@ -735,99 +751,96 @@
     </section>
 
 
-    <!-- Featured Sports Section -->
-    <section id="Sportovi" class="py-20 bg-white">
+
+    <section id="Objekti" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
-                    SPORTOVI
+                    SPORTSKI OBJEKTI
                 </span>
                 <h2 class="text-5xl font-heading font-bold text-primary_text mb-4">
-                    NAŠI SPORTOVI
+                    NAŠI OBJEKTI
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto font-medium">
-                    Raznovrsni sportovi prilagođeni svim nivoima i interesovanjima
+                    Sportski objekti dostupni za sve aktivnosti i događaje
                 </p>
             </div>
 
-            <div id="SportoviCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="ObjektiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php
                 // Primer podataka - u realnoj aplikaciji bi ovo došlo iz baze
-                $sports = [
+                $objekti = [
                     [
-                        'image' => 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80',
-                        'naziv' => 'Fudbal',
-                        'termin' => 'Pon-Pet 18:00'
+                        'slika' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
+                        'nazivObjekta' => 'Sportska hala',
+                        'adresa' => 'Ulica Sportista 1',
+                        'radnoVreme' => 'Pon-Ned 08:00-22:00',
+                        'kapacitet' => 500,
+                        'opis' => 'Moderna hala za razne sportove i događaje.'
                     ],
                     [
-                        'image' => 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80',
-                        'naziv' => 'Košarka',
-                        'termin' => 'Uto-Čet 17:00'
+                        'slika' => 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
+                        'nazivObjekta' => 'Fudbalski stadion',
+                        'adresa' => 'Stadionska 5',
+                        'radnoVreme' => 'Pon-Ned 09:00-20:00',
+                        'kapacitet' => 2000,
+                        'opis' => 'Stadion sa tribinama i modernom infrastrukturom.'
                     ],
                     [
-                        'image' => 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80',
-                        'naziv' => 'Yoga',
-                        'termin' => 'Svakog dana 09:00'
+                        'slika' => 'https://images.unsplash.com/photo-1505843277359-0c2ba7a43dba?auto=format&fit=crop&w=600&q=80',
+                        'nazivObjekta' => 'Teniski tereni',
+                        'adresa' => 'Teniska 10',
+                        'radnoVreme' => 'Pon-Ned 07:00-21:00',
+                        'kapacitet' => 100,
+                        'opis' => 'Otvoreni i zatvoreni tereni za tenis.'
                     ]
                 ];
 
-                foreach ($sports as $sport) {
+                foreach ($objekti as $objekat) {
                     echo '
 
-        <!-- helper css (stavi u globalni stylesheet ili ovde) -->
-<style>
-  /* fallback za višelinijski clamp ako ne koristiš Tailwind plugin */
-  .clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>
+    <style>
+      .clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    </style>
 
-<div class="card-hover bg-transparent rounded-2xl overflow-hidden shadow-2xl border border-gray-100 max-w-sm">
-  <div class="relative h-64 overflow-hidden rounded-2xl">
-    <!-- slika -->
-    <img id="g-image" src="' . $sport['image'] . '" alt="' . $sport['naziv'] . '"
-         class="w-full h-full object-cover transition-transform duration-700 transform hover:scale-110">
+    <div class="card-hover bg-transparent rounded-2xl overflow-hidden shadow-2xl border border-gray-100 max-w-sm">
+      <div class="relative h-64 overflow-hidden rounded-2xl">
+        <img id="g-slika" src="' . $objekat['slika'] . '" alt="' . $objekat['nazivObjekta'] . '"
+             class="w-full h-full object-cover transition-transform duration-700 transform hover:scale-110">
 
-    <!-- tamni gradient preko slike -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none"></div>
 
-    <!-- overlay kartica (frosted glass feel) -->
-    <div class="absolute left-4 right-4 bottom-4 p-4 rounded-xl backdrop-blur-md bg-white/10 border border-white/10 text-white">
-      <div class="flex items-start justify-between gap-3">
-        <div class="flex-1">
-          <h3 id="g-nazivSporta" class="text-lg md:text-2xl font-heading font-bold leading-tight">
-            ' . $sport['naziv'] . '
-          </h3>
-
-          <p id="g-opis" class="mt-2 text-sm md:text-base leading-relaxed clamp-3">
-            ' . ($sport['opis'] ?? '') . '
-          </p>
-
-          <div class="mt-3 flex items-center text-sm text-gray-100/90">
-            <i class="fas fa-clock mr-2 text-sm"></i>
-            <span class="font-medium text-sm">' . ($sport['termin'] ?? 'Nije određeno') . '</span>
+        <div class="absolute left-4 right-4 bottom-4 p-4 rounded-xl backdrop-blur-md bg-white/10 border border-white/10 text-white">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1">
+              <h3 id="g-nazivObjekta" class="text-lg md:text-2xl font-heading font-bold leading-tight">
+                ' . $objekat['nazivObjekta'] . '
+              </h3>
+              <p class="mt-1 text-sm text-gray-100/90">
+                <i class="fas fa-map-marker-alt mr-2"></i>' . $objekat['adresa'] . '
+              </p>
+              
+            </div>
+            <div class="flex-shrink-0 ml-3 self-center">
+              <a href="#"
+              id="g-ovise"
+                 class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold
+                        bg-gradient-to-r from-primary to-primary_hover shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Više</span>
+              </a>
+            </div>
           </div>
-        </div>
-
-        <!-- href dugme -->
-        <div class="flex-shrink-0 ml-3 self-center">
-          <a href="#"
-          id="g-ovise"
-             class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold
-                    bg-gradient-to-r from-primary to-primary_hover shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>Više</span>
-          </a>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
                 ';
                 }
@@ -835,10 +848,12 @@
             </div>
 
             <div class="text-center mt-12">
-                <button
-                    class="bg-secondary text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-secondary_hover transition-all shadow-xl transform hover:scale-105">
-                    <i class="fas fa-th-large mr-3"></i>Svi Sportovi
-                </button>
+                <a href="/ponuda/objekti"
+                    class="bg-secondary text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-secondary_hover transition-all shadow-xl transform hover:scale-105 inline-flex items-center justify-center">
+                    <i class="fas fa-th-large mr-3"></i>Svi Objekti
+                </a>
+
+
             </div>
         </div>
     </section>
@@ -913,7 +928,8 @@
     <!-- Footer -->
     <footer class="bg-secondary text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
                         <div
@@ -921,9 +937,8 @@
                             <i class="fas fa-dumbbell text-xl text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-heading font-bold">SPORTSKI ARENA</h3>
-                            <p class="text-xs text-accent tracking-widest font-oswald">PROFESIONALNI SPORTSKI OBJEKAT
-                            </p>
+                            <h3 class="text-2xl font-heading font-bold">Sportski objekti</h3>
+                            <p class="text-xs text-accent tracking-widest font-oswald">JAVNA USTANOVA</p>
                         </div>
                     </div>
                     <p class="text-gray-300 mb-4">
@@ -969,24 +984,6 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xl font-heading font-bold mb-6 text-accent">SPORTOVI</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
-                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Fudbal</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
-                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Košarka</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
-                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Odbojka</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
-                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Tenis</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
-                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Plivanje</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
-                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Atletika</a></li>
-                    </ul>
-                </div>
-
-                <div>
                     <h4 class="text-xl font-heading font-bold mb-6 text-accent">KONTAKT</h4>
                     <ul class="space-y-4">
                         <li class="flex items-start">
@@ -999,7 +996,7 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope text-primary mr-3"></i>
-                            <span class="text-gray-300">info@sportskaarena.rs</span>
+                            <span class="text-gray-300">info@sportskiobjekti.rs</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-clock text-primary mr-3"></i>
@@ -1007,20 +1004,27 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
 
-            <div class="pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm mb-4 md:mb-0">
-                    &copy; 2023 Sportski Centar Arena. Sva prava zadržana.
-                </p>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Uslovi korišćenja</a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Politika
-                        privatnosti</a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Cookies</a>
+            <div
+                class="border-t border-primary/10 pt-6 mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+
+                <div class="flex items-center order-1 md:order-1">
+                    <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO Logo"
+                        class="h-15 md:h-15 object-contain hover:scale-105 transition-transform duration-300" />
+                </div>
+
+                <div class="text-xs opacity-80 md:w-3/5 order-2 md:order-2 text-center md:text-left">
+                    <p class="mb-2">© 2023 Javna ustanova "Sportski objekti". Sva prava zadržana.</p>
+                    <div class="flex items-center justify-center md:justify-start gap-3 mt-3">
+                        <p>
+                            Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
+                            zvanični stav Vlade Švajcarske.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
     </footer>
 
     <script>
@@ -1235,7 +1239,7 @@
                     closeMobileMenuFn();
                 }
             });
-        });
+    });
     </script>
 </body>
 

@@ -45,6 +45,70 @@
         }
       ]
     },
+    "Objekti": {
+      "sr": "Sportski objekti",
+      "en": "Sports facilities",
+      "sr-Cyrl": "Спортски објекти",
+      "icon": "fas fa-building",
+      "fields": [
+        {
+          "name": "nazivObjekta",
+          "type": "text",
+          "label": {
+            "sr": "Naziv objekta",
+            "en": "Facility name",
+            "sr-Cyrl": "Назив објекта"
+          },
+          "required": true
+        },
+        {
+          "name": "adresa",
+          "type": "text",
+          "label": {
+            "sr": "Adresa",
+            "en": "Address",
+            "sr-Cyrl": "Адреса"
+          },
+          "required": true
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Slika objekta",
+            "en": "Facility image",
+            "sr-Cyrl": "Слика објекта"
+          }
+        },
+        {
+          "name": "radnoVreme",
+          "type": "text",
+          "label": {
+            "sr": "Radno vreme",
+            "en": "Working hours",
+            "sr-Cyrl": "Радно време"
+          }
+        },
+        {
+          "name": "kapacitet",
+          "type": "number",
+          "label": {
+            "sr": "Kapacitet (broj ljudi)",
+            "en": "Capacity (number of people)",
+            "sr-Cyrl": "Капацитет (број људи)"
+          }
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis objekta",
+            "en": "Facility description",
+            "sr-Cyrl": "Опис објекта"
+          }
+        }
+      ]
+    },
     "Vesti": {
       "sr": "Vesti",
       "en": "News",

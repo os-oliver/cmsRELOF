@@ -25,8 +25,7 @@ class DocumentsPageBuilder extends BasePageBuilder
         will-change: transform;
     }
 
-    .card-body { margin-bottom: 1rem; }
-    .card-footer { margin-top: 1rem; }
+  
 
     .card-hover {
         transition: all 0.28s cubic-bezier(.2,.9,.2,1);
@@ -255,7 +254,7 @@ HTML;
                                     </div>
                                 </div>
 
-                                <h3 class="text-lg font-semibold text-gray-800 mb-2"><?= $title ?: basename($filepath) ?></h3>
+                                <h3 class="text-lg font-semibold text-gray-800 "><?= $title ?: basename($filepath) ?></h3>
                                 <p class="text-sm text-gray-600 mb-4 leading-relaxed"><?= $description ?: '&nbsp;' ?></p>
 
                                 <div class="flex items-center justify-between text-sm doc-meta mb-5">

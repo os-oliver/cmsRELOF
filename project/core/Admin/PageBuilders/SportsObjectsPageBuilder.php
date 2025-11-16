@@ -4,7 +4,7 @@ namespace App\Admin\PageBuilders;
 use App\Controllers\ContentController;
 use App\Controllers\LanguageMapperController;
 
-class SportoviPageBuilder extends BasePageBuilder
+class SportsObjectsPageBuilder extends BasePageBuilder
 {
     protected string $slug;
     private LanguageMapperController $translator;
@@ -36,7 +36,7 @@ class SportoviPageBuilder extends BasePageBuilder
             'all_categories' => 'Sve kategorije',
             'date_and_time' => 'Datum i vreme',
             'location' => 'Lokacija',
-            'event_details' => 'Detalji sportova',
+            'event_details' => 'Detalji',
             'no_items_found' => 'Nema pronađenih stavki',
             'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
         ];
@@ -73,9 +73,6 @@ function renderTopbar(array $categories, string $searchValue = '', int|string|nu
             {$texts['apply_button']}
         </button>
     </div>";
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category' class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-            <option value=''>{$texts['all_categories']}</option>";
 
     foreach ($categories as $cat) {
         $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
@@ -112,13 +109,11 @@ PHP;
                 <h3 class="text-xl font-bold text-primary-text mb-4 line-clamp-2 group-hover:text-primary transition-colors">
                     {{naslov}}
                 </h3>
-                <div class="space-y-3 mb-4">
-                    {{dateTimeRow}}
-                </div>
+            
                 <div class="mb-5 p-4 bg-surface rounded-xl border border-white/30">
                     <p class="text-sm text-secondary-text leading-relaxed">{{opis}}</p>
                 </div>
-                <a href="/sadrzaj?id={{itemId}}&tip=Sportovi" class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
+                <a href="/sadrzaj?id={{itemId}}&tip=Objekti" class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
                     <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-ticket-alt"></i>
                         <span>{{eventDetails}}</span>
@@ -136,36 +131,21 @@ HTML;
     protected string $cardRender = <<<'HTML'
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, string $cardTemplate = ''): string
 {
-    $naslov = htmlspecialchars($item['fields']['nazivSporta'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $naslov = htmlspecialchars($item['fields']['nazivObjekta'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
-    $termin = htmlspecialchars($item['fields']['termin'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
 
     $imageSection = $imageUrl
         ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Sport image'>"
         : "<div class='absolute inset-0 flex items-center justify-center'><i class='fas fa-futbol text-6xl text-secondary'></i></div>";
 
-    $terminRow = $termin
-        ? "<div class='flex items-start gap-3'>
-               <div class='flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center'>
-                   <i class='fas fa-calendar-alt text-primary'></i>
-               </div>
-               <div class='flex-1'>
-                   <div class='text-xs font-semibold text-secondary-text uppercase tracking-wide mb-0.5'>{$texts['date_and_time']}</div>
-                   <div class='text-sm font-semibold text-primary-text'>{$termin}</div>
-               </div>
-           </div>"
-        : '';
 
     $replacements = [
         '{{naslov}}' => $naslov,
         '{{opis}}' => $opis,
         '{{imageSection}}' => $imageSection,
-        '{{dateTimeRow}}' => $terminRow,
-        '{{itemId}}' => $itemId,
-        '{{kategorija}}' => $kategorija,
+       '{{itemId}}' => $itemId,
         '{{eventDetails}}' => $texts['event_details'] ?? 'Details'
     ];
 
@@ -219,8 +199,8 @@ PHP;
 <main class="bg-gradient-to-br from-secondary_background to-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-primary-text mb-2">Sportovi</h1>
-            <p class="text-secondary-text">Istražite naše sportove</p>
+            <h1 class="text-3xl font-bold text-primary-text mb-2">Objekti</h1>
+            <p class="text-secondary-text">Istražite naše objekte</p>
         </div>
 
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
@@ -295,7 +275,7 @@ $latinTexts = [
     'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Termin',
     'location' => 'Lokacija',
-    'event_details' => 'Detalji sprotova',
+    'event_details' => 'Detalji',
     'no_items_found' => 'Nema pronađenih stavki',
     'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
 ];

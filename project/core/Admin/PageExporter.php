@@ -16,6 +16,7 @@ use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\SportoviPageBuilder;
 use App\Admin\PageBuilders\SavetovalistePageBuilder;
+use App\Admin\PageBuilders\SportsObjectsPageBuilder;
 use App\Admin\PageBuilders\TestBuilder;
 use App\Admin\PageBuilders\UvodPageBuilder;
 use App\Admin\PageBuilders\VestiPageBuilder;
@@ -731,6 +732,8 @@ class PageExporter
                 return new ZnacajaStranica('ZnacajaStranica', $this->data);
             case 'objekat':
                 return new ObjekatPageBuilder('Objekat', $this->data);
+            case 'objekti':
+                return new SportsObjectsPageBuilder('Objekti');
             case 'fondovi':
                 return new DynamicPageBuilder('fondovi');
             case 'sportovi':
@@ -794,6 +797,9 @@ class PageExporter
             return 'cilj';
         } elseif (strpos($name, 'programi-obuke') !== false || strpos($name, 'programi obuke') !== false) {
             return 'programi-obuke';
+        } elseif (strpos($name, 'posebne') !== false) {
+        } elseif (strpos($name, 'objekti') !== false || strpos($name, 'programi obuke') !== false) {
+            return 'objekti';
         } elseif (strpos($name, 'posebne') !== false) {
             return 'posebne';
         } elseif (strpos($name, 'usluge') !== false) {
