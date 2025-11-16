@@ -488,16 +488,8 @@
         <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
             <!-- Logo Section -->
             <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-                <div
-                    class="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-primary_light via-primary_medium to-primary_hover rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-white drop-shadow-sm" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path d="M21.4 9.64C21.4 5.24 18.29 2 12 2S2.6 5.24 2.6 9.64c0 2.5 1.1 4.8 2.8 6.4L12 22l6.6-6c1.7-1.6 2.8-3.9 2.8-6.36zM12 11.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-                        <circle cx="9" cy="9" r="1" opacity="0.7"/>
-                        <circle cx="15" cy="9" r="1" opacity="0.7"/>
-                        <circle cx="12" cy="13" r="1" opacity="0.7"/>
-                    </svg>
+                <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                    <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block">
                     <h1
