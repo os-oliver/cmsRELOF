@@ -372,13 +372,9 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-bullseye mr-2 text-green-600"></i>Cilj
                             </a>
-                            <a data-page="Misija" href="#"
+                            <a data-page="Sluzbe" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-compass mr-2 text-blue-600"></i>Misija
-                            </a>
-                            <a data-page="Istorijat" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-history mr-2 text-brown"></i>Istorijat
+                                <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
                             </a>
                             <a data-page="OrganiUpravljanja" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
@@ -388,13 +384,17 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-orange-600"></i>Organizaciona struktura
                             </a>
+                            <a data-page="Misija" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-compass mr-2 text-blue-600"></i>Misija
+                            </a>
+                            <a data-page="Istorijat" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-history mr-2 text-brown"></i>Istorijat
+                            </a>
                             <a data-page="Galerija" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-images mr-2 text-velvet"></i>Galerija
-                            </a>
-                            <a data-page="Sluzbe" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
                             </a>
                             <a data-page="Pitanja" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
@@ -533,13 +533,8 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-compass mr-3 text-info flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Misija</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Istorijat</span>
+                            <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Službe</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -553,13 +548,18 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-images mr-3 text-velvet flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Galerija</span>
+                            <i class="fas fa-compass mr-3 text-info flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Misija</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Službe</span>
+                            <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Istorijat</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-images mr-3 text-velvet flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Galerija</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
