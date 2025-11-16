@@ -1,5 +1,8 @@
 <?php
 namespace App\Models;
+
+use App\Controllers\LanguageMapperController;
+use App\Utils\LocaleManager;
 class PageLoader
 {
     private static string $filePath = __DIR__ . '/../../public/assets/data/pages.json';
@@ -22,13 +25,25 @@ class PageLoader
     public static function getGroupedStaticPages(): array
     {
         $staticPages = self::getStaticPages();
+        $langMapper = new LanguageMapperController();
+        $locale = LocaleManager::get();
+
         $groupedPages = [];
 
         foreach ($staticPages as $page) {
             ;
             if (isset($page['column'])) {
-                $column = $page['column'];
-                $groupedPages[$column][] = $page;
+                if ($locale == 'sr-Cyrl') {
+                    echo json_encode($page);
+                    $column = $langMapper->latin_to_cyrillic($page['column']);
+                    $page['name'] = $langMapper->latin_to_cyrillic($page['name']);
+                    $groupedPages[$column][] = $page;
+
+                } else {
+                    $column = $page['column'];
+                    $groupedPages[$column][] = $page;
+                }
+
             }
 
         }

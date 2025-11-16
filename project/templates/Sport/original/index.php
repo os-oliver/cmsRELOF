@@ -250,9 +250,9 @@
 
 <body class="bg-background text-primary_text font-body">
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden hidden">
+    <div id="mobileMenu" class="fixed inset-0 z-[999] lg:hidden hidden">
         <div class="fixed inset-0 bg-black bg-opacity-70" id="mobileMenuOverlay"></div>
-        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
+        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto"
             id="mobileMenuPanel">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-8">
@@ -302,38 +302,7 @@
                         </div>
                     </div>
 
-                    <!-- Automatski (Mega Menu) dropdown -->
-                    <div class="mobile-dropdown">
-                        <button
-                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all"
-                            id="mobileAutoToggle">
-                            <div class="flex items-center">
-                                <i class="fas fa-info-circle mr-3 text-secondary"></i>Automatski
-                            </div>
-                            <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-icon"
-                                id="mobileAutoIcon"></i>
-                        </button>
-                        <div class="ml-6 mt-2 space-y-2 mobile-dropdown-menu" id="mobileAutoMenu">
-                            <div class="text-xs font-semibold text-slate uppercase tracking-wider pb-2">
-                                [Naslov sekcije]
-                            </div>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0"></span>
-                                <span>[Stavka 1]</span>
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0"></span>
-                                <span>[Stavka 2]</span>
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0"></span>
-                                <span>[Stavka 3]</span>
-                            </a>
-                        </div>
-                    </div>
+
 
                     <!-- Ponuda dropdown -->
                     <div class="mobile-dropdown">
@@ -397,8 +366,9 @@
                     </a>
 
                     <!-- Language Selector -->
+                    <!-- Language Selector -->
                     <div class="border-t border-gray-200 pt-4 mt-4">
-                        <div class="mobile-dropdown">
+                        <div class="mobile-dropdown mobile-language">
                             <button
                                 class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all"
                                 id="mobileLanguageToggle">
@@ -408,14 +378,23 @@
                                 <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-icon"
                                     id="mobileLanguageIcon"></i>
                             </button>
-                            <div class="ml-6 mt-2 space-y-2 mobile-dropdown-menu" id="mobileLanguageMenu">
-                                <?php foreach ($languages as $key => $lang): ?>
-                                    <a href="?locale=<?= $key ?>"
-                                        class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                        <span class="mr-3"><?= $lang['flag'] ?></span>
-                                        <span><?= $lang['label'] ?></span>
-                                    </a>
-                                <?php endforeach; ?>
+
+                            <!-- MENU -->
+                            <div class="ml-6 mt-2 space-y-2 mobile-dropdown-menu hidden" id="mobileLanguageMenu">
+                                <button data-locale="sr"
+                                    class="block w-full text-left px-4 py-2 hover:bg-surface rounded">
+                                    Srpski (Latin)
+                                </button>
+
+                                <button data-locale="sr-Cyrl"
+                                    class="block w-full text-left px-4 py-2 hover:bg-surface rounded">
+                                    Српски (Ћирилица)
+                                </button>
+
+                                <button data-locale="en"
+                                    class="block w-full text-left px-4 py-2 hover:bg-surface rounded">
+                                    English
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -452,53 +431,7 @@
                     class="nav-link text-secondary font-medium text-sm flex items-center hover:text-primary transition-colors py-2">
                     <i class="fas fa-home mr-2 text-base"></i>Početna
                 </a>
-                <div class="dropdown nonPage megaMenu relative group">
-                    <button
-                        class="nav-link text-secondary font-medium text-sm flex items-center hover:text-primary transition-colors py-2">
-                        <i class="fas fa-info-circle mr-2 text-base"></i>Automatski <i
-                            class="fas fa-chevron-down ml-1 text-xs transition-transform duration-200 group-hover:rotate-180"></i>
-                    </button>
 
-                    <!-- MEGA MENU -->
-                    <div
-                        class="dropdown-menu absolute top-full left-0 w-auto min-w-[500px] max-w-4xl bg-paper rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-4 grid grid-cols-2 md:grid-cols-3 gap-4">
-
-                        <!-- Sekcija (dinamički se dodaje) -->
-                        <div class="section-mega-menu">
-                            <h3
-                                class="font-semibold text-slate mb-2 text-xs uppercase tracking-wider border-b border-gray-200 pb-1.5">
-                                [Naslov sekcije]</h3>
-                            <ul class="space-y-1">
-                                <li>
-                                    <a href="#"
-                                        class="flex items-center text-sm py-1.5 px-2 rounded hover:text-terracotta hover:bg-gray-50 transition-colors group/item">
-                                        <span
-                                            class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0 group-hover/item:bg-terracotta transition-colors"></span>
-                                        <span class="whitespace-nowrap">[Stavka 1]</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="flex items-center text-sm py-1.5 px-2 rounded hover:text-terracotta hover:bg-gray-50 transition-colors group/item">
-                                        <span
-                                            class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0 group-hover/item:bg-terracotta transition-colors"></span>
-                                        <span class="whitespace-nowrap">[Stavka 2]</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="flex items-center text-sm py-1.5 px-2 rounded hover:text-terracotta hover:bg-gray-50 transition-colors group/item">
-                                        <span
-                                            class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0 group-hover/item:bg-terracotta transition-colors"></span>
-                                        <span class="whitespace-nowrap">[Stavka 3]</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Dupliraj ili izbriši sekciju po potrebi -->
-                    </div>
-                </div>
                 <div class="dropdown group relative">
                     <button
                         class="nav-link text-secondary font-medium text-sm flex items-center hover:text-primary transition-colors py-2">
@@ -529,53 +462,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="dropdown nonPage megaMenu relative group">
-                    <button
-                        class="nav-link text-secondary font-medium text-sm flex items-center hover:text-primary transition-colors py-2">
-                        <i class="fas fa-info-circle mr-2 text-base"></i>Automatski <i
-                            class="fas fa-chevron-down ml-1 text-xs transition-transform duration-200 group-hover:rotate-180"></i>
-                    </button>
 
-                    <!-- MEGA MENU -->
-                    <div
-                        class="dropdown-menu absolute top-full left-0 w-auto min-w-[500px] max-w-4xl bg-paper rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-4 grid grid-cols-2 md:grid-cols-3 gap-4">
-
-                        <!-- Sekcija (dinamički se dodaje) -->
-                        <div class="section-mega-menu">
-                            <h3
-                                class="font-semibold text-slate mb-2 text-xs uppercase tracking-wider border-b border-gray-200 pb-1.5">
-                                [Naslov sekcije]</h3>
-                            <ul class="space-y-1">
-                                <li>
-                                    <a href="#"
-                                        class="flex items-center text-sm py-1.5 px-2 rounded hover:text-terracotta hover:bg-gray-50 transition-colors group/item">
-                                        <span
-                                            class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0 group-hover/item:bg-terracotta transition-colors"></span>
-                                        <span class="whitespace-nowrap">[Stavka 1]</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="flex items-center text-sm py-1.5 px-2 rounded hover:text-terracotta hover:bg-gray-50 transition-colors group/item">
-                                        <span
-                                            class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0 group-hover/item:bg-terracotta transition-colors"></span>
-                                        <span class="whitespace-nowrap">[Stavka 2]</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="flex items-center text-sm py-1.5 px-2 rounded hover:text-terracotta hover:bg-gray-50 transition-colors group/item">
-                                        <span
-                                            class="w-1 h-1 bg-gray-400 rounded-full mr-2.5 flex-shrink-0 group-hover/item:bg-terracotta transition-colors"></span>
-                                        <span class="whitespace-nowrap">[Stavka 3]</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Dupliraj ili izbriši sekciju po potrebi -->
-                    </div>
-                </div>
                 <div class="dropdown group relative">
                     <button
                         class="nav-link text-secondary font-medium text-sm flex items-center hover:text-primary transition-colors py-2">
@@ -656,11 +543,11 @@
                     <div
                         class="dropdown-menu absolute top-full right-0 min-w-max bg-white rounded-xl shadow-2xl border border-gray-100 z-50 py-2 hidden group-hover:block transition-all duration-300 ease-out origin-top">
                         <?php foreach ($languages as $key => $lang): ?>
-                                <a href="?locale=<?= $key ?>"
-                                    class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150 rounded-lg mx-1">
-                                    <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
-                                    <span class="font-medium text-secondary"><?= $lang['label'] ?></span>
-                                    </a>
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150 rounded-lg mx-1">
+                                <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
+                                <span class="font-medium text-secondary"><?= $lang['label'] ?></span>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -970,45 +857,45 @@
             </div>
 
             <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <?php for ($i = 0; $i < 3; $i++): ?>
-                        <article
-                            class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
-                            <div class="h-56 relative overflow-hidden">
-                                <img id="g-slika"
-                                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
-                                    alt="Vest"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <?php for ($i = 0; $i < 3; $i++): ?>
+                    <article
+                        class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                        <div class="h-56 relative overflow-hidden">
+                            <img id="g-slika"
+                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                                alt="Vest"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-4">
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
+                                    <i class="fas fa-newspaper text-lg"></i>
+                                </div>
+                                <div class="flex items-center text-sm text-secondary_text">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span id="g-datum">15. Oktobar 2025</span>
                                 </div>
                             </div>
-                            <div class="p-6">
-                                <div class="flex items-center gap-3 mb-4">
-                                    <div
-                                        class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
-                                        <i class="fas fa-newspaper text-lg"></i>
-                                    </div>
-                                    <div class="flex items-center text-sm text-secondary_text">
-                                        <i class="fas fa-calendar-alt mr-2"></i>
-                                        <span id="g-datum">15. Oktobar 2025</span>
-                                    </div>
-                                    </div>
 
-                                <h3 id="g-naslov"
-                                    class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
-                                    Novi kulturni centar otvara vrata građanima
-                                    </h3>
-                                <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
-                                    Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
-                                    kreativnosti i umetnosti u našem gradu.
-                                    </p>
-                                <a id="g-ovise" href="#"
-                                    class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
-                                    Pročitaj više
-                                    <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
-                                </a>
-                            </div>
-                            </article>
+                            <h3 id="g-naslov"
+                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                                Novi kulturni centar otvara vrata građanima
+                            </h3>
+                            <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
+                                Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
+                                kreativnosti i umetnosti u našem gradu.
+                            </p>
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>
                 <?php endfor; ?>
             </div>
 
@@ -1139,6 +1026,28 @@
     <script>
         // Modern Mobile Menu with improved logic
         document.addEventListener('DOMContentLoaded', function () {
+            const langToggle = document.getElementById("mobileLanguageToggle");
+            const langMenu = document.getElementById("mobileLanguageMenu");
+            const langIcon = document.getElementById("mobileLanguageIcon");
+
+            langToggle.addEventListener("click", () => {
+                langMenu.classList.toggle("hidden");
+                langIcon.classList.toggle("rotate-180");
+            });
+
+            // Handle locale selection
+            document.querySelectorAll("#mobileLanguageMenu button").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const locale = btn.getAttribute("data-locale");
+
+                    // Create new URL and update locale param while keeping all others
+                    const url = new URL(window.location);
+                    url.searchParams.set("locale", locale);
+
+                    // Redirect
+                    window.location = url.toString();
+                });
+            });
             // ============================================
             // MOBILE MENU - OPEN/CLOSE FUNCTIONALITY
             // ============================================

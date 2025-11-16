@@ -62,7 +62,7 @@ class EmployeesPageBuilder extends BasePageBuilder
                             </div>
                             <div class="border-t border-secondary pt-4">
                                 <p class="text-gray-600 line-clamp-3">
-                                    <?= htmlspecialchars($employee['biography']) ?>
+<?= isset($employee['biography']) ? htmlspecialchars($employee['biography']) : '' ?>
                                 </p>
                             </div>
                         </div>
