@@ -190,10 +190,6 @@
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                             </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-users mr-2 text-primary"></i>Timovi
-                            </a>
                         </div>
                     </div>
 
@@ -297,10 +293,6 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            Timovi
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             Pitanja
                         </a>
                         <a href="#"
@@ -323,12 +315,6 @@
             <i
                 class="fas fa-calendar-alt mr-2 text-primary"></i>
             <span class="hidden xl:inline">Vesti</span>
-        </a>
-        <a href="#"
-            class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
-            <i
-                class="fas fa-diagram-project mr-2 text-primary"></i>
-            <span class="hidden xl:inline">Projekti</span>
         </a>
         <a href="#"
             class="nav-link transition-colors flex items-center whitespace-nowrap px-1">
