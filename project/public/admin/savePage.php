@@ -14,6 +14,11 @@ AuthController::requireAdmin();
 
 // Always return JSON
 header("Content-Type: application/json");
+// Prevent caching of JSON responses
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: Sun, 01 Jan 2000 00:00:00 GMT");
 
 /**
  * Read and decode JSON request body
@@ -62,7 +67,6 @@ function handleStaticPages(array $data): void
     $dynamicPages = array_filter($existingPages, function ($page) {
         return empty($page['static']);
     });
-
     // If pages array is empty and type is static, we're clearing all static pages
     if (empty($data['pages'])) {
         if (file_put_contents($pagesJsonPath, json_encode(array_values($dynamicPages), JSON_PRETTY_PRINT))) {
@@ -99,19 +103,101 @@ function handleStaticPages(array $data): void
         }
     }
 
+    // Ensure exported pages/pages directory exists (create once)
+    $pagesDir = rtrim($pagesBasePath, '/') . '/pages';
+    if (!is_dir($pagesDir)) {
+        if (!mkdir($pagesDir, 0777, true) && !is_dir($pagesDir)) {
+            throw new Exception("Failed to create directory: " . $pagesDir);
+        }
+    }
+
+    // Build maps of existing filename->id and href->id so we can decide ownership.
+    $existingFileToId = [];
+    $existingHrefToId = [];
+    foreach ($existingPages as $ep) {
+        if (!empty($ep['file'])) {
+            $existingFileToId[$ep['file']] = $ep['id'] ?? null;
+        }
+        if (!empty($ep['href'])) {
+            $existingHrefToId[$ep['href']] = $ep['id'] ?? null;
+        }
+    }
+
+    // We'll assign temporary owner ids for new pages so subsequent new pages in the same
+    // batch will see them as taken.
     foreach ($data['pages'] as $page) {
         error_log(json_encode($page));
+
         // Determine target column from assignments (page id is used by frontend)
         $columnName = $pageToColumn[$page['id']] ?? null; // null means top-level (no column)
-        $fileName = $page['name'];
-        $cleanFileName = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $fileName));
 
-        // Ensure exported pages/pages directory exists
-        $pagesDir = rtrim($pagesBasePath, '/') . '/pages';
-        if (!is_dir($pagesDir)) {
-            if (!mkdir($pagesDir, 0777, true) && !is_dir($pagesDir)) {
-                throw new Exception("Failed to create directory: " . $pagesDir);
+        $fileName = $page['name'];
+        // create a clean slug: replace non-alnum with '-', collapse multiple '-' and trim
+        $baseClean = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $fileName));
+        $baseClean = preg_replace('/-+/', '-', $baseClean);
+        $baseClean = trim($baseClean, '-');
+        // fallback if cleaning removed all characters (avoid names like "-1")
+        if ($baseClean === '') {
+            $baseClean = 'page';
+        }
+
+        // Determine a unique filename + href by appending a numeric suffix when collisions found
+        $suffix = 0;
+        $tmpOwnerId = $page['id'] ?? uniqid('new_', true);
+        while (true) {
+            $candidate = $baseClean . ($suffix > 0 ? ('-' . $suffix) : '');
+            $candidateFile = $candidate . '.php';
+            // If page is marked not-movable and has an explicit href, honor it
+            $useProvidedHref = (isset($page['movable']) && $page['movable'] === false && !empty($page['href']));
+            if ($useProvidedHref) {
+                // Use provided href as candidate (normalize leading/trailing slashes)
+                $candidateHref = $page['href'];
+                if (substr($candidateHref, 0, 1) !== '/') {
+                    $candidateHref = '/' . $candidateHref;
+                }
+                $candidateHref = rtrim($candidateHref, '/');
+                // if provided href was just '/', keep it as '/'
+                if ($candidateHref === '') {
+                    $candidateHref = '/';
+                }
+            } else {
+                if ($columnName && trim((string) $columnName) !== '') {
+                    $candidateHref = '/' . trim($columnName, '/') . '/' . $candidate;
+                } else {
+                    $candidateHref = '/' . $candidate;
+                }
             }
+
+            // Check file ownership: if file is present in existing map and owned by different id => conflict
+            $fileOwnedBy = $existingFileToId[$candidateFile] ?? null;
+            $fileConflict = false;
+            if ($fileOwnedBy !== null) {
+                if ($fileOwnedBy !== ($page['id'] ?? null)) {
+                    $fileConflict = true;
+                }
+            } else {
+                // not present in JSON; check disk
+                if (file_exists($pagesDir . '/' . $candidateFile)) {
+                    $fileConflict = true;
+                }
+            }
+
+            // Check href ownership similarly
+            $hrefOwnedBy = $existingHrefToId[$candidateHref] ?? null;
+            $hrefConflict = ($hrefOwnedBy !== null && $hrefOwnedBy !== ($page['id'] ?? null));
+
+            if ($fileConflict || $hrefConflict) {
+                $suffix++;
+                continue;
+            }
+
+            // Reserve this candidate for current page (so next pages in batch see it as taken)
+            $existingFileToId[$candidateFile] = $tmpOwnerId;
+            $existingHrefToId[$candidateHref] = $tmpOwnerId;
+
+            // Use candidate as final name
+            $cleanFileName = $candidate;
+            break;
         }
 
         // Prepare file path and content
@@ -138,20 +224,37 @@ function handleStaticPages(array $data): void
         </main>');
         $basicPageContent = $builder->buildPage();
 
-        // Save the file
-        if (file_put_contents($filePath, $basicPageContent) === false) {
-            throw new Exception("Failed to create page file: " . $filePath);
+        // Save the file only if it doesn't already exist with content
+        if (file_exists($filePath) && filesize($filePath) > 0) {
+            // File already exists with content, skip overwriting
+            error_log("File already exists with content, skipping: " . $filePath);
+        } else {
+            // File doesn't exist or is empty, create/overwrite it
+            if (file_put_contents($filePath, $basicPageContent) === false) {
+                throw new Exception("Failed to create page file: " . $filePath);
+            }
         }
 
         // Update page data
         $page['path'] = "pages/" . $cleanFileName . ".php";
-        // Build href: include column segment if assigned
-        if ($columnName && trim((string) $columnName) !== '') {
-            $page['href'] = "/" . trim($columnName, '/') . "/" . $cleanFileName;
+        // Preserve explicit href for non-movable pages; otherwise assign generated href
+        if (isset($page['movable']) && $page['movable'] === false && !empty($page['href'])) {
+            // Normalize provided href (ensure leading slash)
+            if (substr($page['href'], 0, 1) !== '/') {
+                $page['href'] = '/' . $page['href'];
+            }
+            // Ensure file is set to the generated filename if not provided
+            if (empty($page['file'])) {
+                $page['file'] = $cleanFileName . ".php";
+            }
         } else {
-            $page['href'] = "/" . $cleanFileName;
+            if ($columnName && trim((string) $columnName) !== '') {
+                $page['href'] = "/" . trim($columnName, '/') . "/" . $cleanFileName;
+            } else {
+                $page['href'] = "/" . $cleanFileName;
+            }
+            $page['file'] = $cleanFileName . ".php";
         }
-        $page['file'] = $cleanFileName . ".php";
 
         $processedPages[] = $page;
     }
@@ -209,6 +312,10 @@ try {
     $data = getJsonInput();
     $t0 = microtime(true);
     $saveComponents = $data['singlePage'] ?? false;
+    $staticPage = $data['type'] ?? false;
+    if ($staticPage === 'static') {
+        handleStaticPages($data);
+    }
     if (!$saveComponents) {
         $jsonPath = __DIR__ . "/../../templates/" . $data['typeOfInstitution'] . "/json/data_definition.json";
         $globalJsonPath = __DIR__ . "/../../templates/globalDefinitions.json";

@@ -82,6 +82,14 @@
                 text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             }
 
+            .text-shadow-strong {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            }
+
+            .text-shadow-medium {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
             .artistic-underline {
                 background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 20"><path fill="none" stroke="%23d4a373" stroke-width="3" stroke-linecap="round" d="M2,17 C15,17 25,5 40,10 C55,15 65,3 80,8 C95,13 105,5 118,12"/></svg>') bottom center no-repeat;
                 background-size: 100% 12px;
@@ -99,6 +107,11 @@
 
             .nav-link:hover::after {
                 width: 100%;
+            }
+
+            /* Remove underline from dropdown buttons */
+            button.nav-link::after {
+                display: none;
             }
 
             .artistic-card {
@@ -327,67 +340,6 @@
             .gallery-item:hover .overlay-content {
                 bottom: 0;
             }
-
-            /* Hero Image Slider Styles */
-            .hero-slider {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                border-radius: 12px;
-            }
-
-            .hero-slide {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                opacity: 0;
-                transition: opacity 1s ease-in-out;
-            }
-
-            .hero-slide.active {
-                opacity: 1;
-            }
-
-            .hero-slide img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            /* Slider Dots */
-            .slider-dots {
-                position: absolute;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                display: flex;
-                gap: 10px;
-                z-index: 10;
-            }
-
-            .dot {
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: rgba(255,255,255,0.5);
-                cursor: pointer;
-                transition: all 0.3s ease;
-                border: 1px solid rgba(255,255,255,0.8);
-            }
-
-            .dot.active {
-                background: white;
-                transform: scale(1.2);
-                box-shadow: 0 0 10px rgba(255,255,255,0.8);
-            }
-
-            .dot:hover {
-                background: rgba(255,255,255,0.8);
-                transform: scale(1.1);
-            }
         }
     </style>
 </head>
@@ -425,20 +377,45 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-bullseye mr-2 text-green-600"></i>Cilj
                             </a>
-                            <a data-page="Misija" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-compass mr-2 text-blue-600"></i>Misija
-                            </a>
-                            <a data-page="Zaposleni" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-user-tie mr-2 text-purple-600"></i>Zaposleni
-                            </a>
                             <a data-page="Sluzbe" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
                             </a>
+                            <a data-page="OrganiUpravljanja" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-users-cog mr-2 text-blue-600"></i>Organi upravljanja
+                            </a>
+                            <a data-page="OrganizacionaStruktura" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-sitemap mr-2 text-orange-600"></i>Organizaciona struktura
+                            </a>
+                            <a data-page="Misija" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-compass mr-2 text-blue-600"></i>Misija
+                            </a>
+                            <a data-page="Istorijat" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-history mr-2 text-brown"></i>Istorijat
+                            </a>
+                            <a data-page="Galerija" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-images mr-2 text-velvet"></i>Galerija
+                            </a>
+                            <a data-page="Pitanja" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-circle-question mr-2 text-pink-600"></i>Pitanja
+                            </a>
+                            <a data-page="Informacije" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-bullhorn mr-2 text-red-600"></i>Informacije
+                            </a>
                         </div>
                     </div>
+
+                    <a data-page="Vesti" href="#"
+                        class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
+                        <i class="fas fa-newspaper mr-3 text-accent_indigo"></i>Vesti
+                    </a>
 
                     <!-- Prava i usluge dropdown -->
                     <div class="mobile-dropdown">
@@ -470,11 +447,6 @@
                         <i class="fas fa-folder-open mr-3 text-warning"></i>Dokumenti
                     </a>
 
-                    <a data-page="Vesti" href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
-                        <i class="fas fa-newspaper mr-3 text-accent_indigo"></i>Vesti
-                    </a>
-
                     <!-- Za korisnike dropdown -->
                     <div class="mobile-dropdown">
                         <button
@@ -492,10 +464,6 @@
                             <a data-page="Obrasci" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-primary transition-colors">
                                 <i class="fas fa-file-signature mr-2 text-success"></i>Obrasci za podnošenje zahteva
-                            </a>
-                            <a data-page="FAQ" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-primary transition-colors">
-                                <i class="fas fa-question-circle mr-2 text-accent_orange"></i>FAQ
                             </a>
                         </div>
                     </div>
@@ -516,20 +484,12 @@
         </button>
     </div>
     <header
-        class="fixed w-full z-50 transition-all duration-300 py-3 sm:py-4 backdrop-blur-md shadow-lg bg-light/95 border-b border-gray-100">
+        class="fixed w-full z-50 transition-all duration-300 py-3 sm:py-4 backdrop-blur-md shadow-sm bg-background">
         <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
             <!-- Logo Section -->
             <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-                <div
-                    class="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-primary_light via-primary_medium to-primary_hover rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-white drop-shadow-sm" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path d="M21.4 9.64C21.4 5.24 18.29 2 12 2S2.6 5.24 2.6 9.64c0 2.5 1.1 4.8 2.8 6.4L12 22l6.6-6c1.7-1.6 2.8-3.9 2.8-6.36zM12 11.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-                        <circle cx="9" cy="9" r="1" opacity="0.7"/>
-                        <circle cx="15" cy="9" r="1" opacity="0.7"/>
-                        <circle cx="12" cy="13" r="1" opacity="0.7"/>
-                    </svg>
+                <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                    <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block">
                     <h1
@@ -570,21 +530,53 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Službe</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users-cog mr-3 text-info flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Organi upravljanja</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-sitemap mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Organizaciona struktura</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-compass mr-3 text-info flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-user-tie mr-3 text-accent_purple flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Zaposleni</span>
+                            <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Istorijat</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Službe</span>
+                            <i class="fas fa-images mr-3 text-velvet flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Galerija</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-circle-question mr-3 text-accent_pink flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Pitanja</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-bullhorn mr-3 text-danger flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Informacije</span>
                         </a>
                     </div>
                 </div>
+
+                <a href="#"
+                    class="nav-link text-slate font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
+                    <i
+                        class="fas fa-newspaper mr-2 text-accent_indigo group-hover:text-accent_indigo_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Vesti</span>
+                </a>
 
                 <div class="dropdown relative group">
                     <button
@@ -622,13 +614,6 @@
                     <span class="hidden xl:inline text-sm">Dokumenti</span>
                 </a>
 
-                <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
-                    <i
-                        class="fas fa-newspaper mr-2 text-accent_indigo group-hover:text-accent_indigo_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Vesti</span>
-                </a>
-
                 <div class="dropdown relative group">
                     <button
                         class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
@@ -650,11 +635,6 @@
                             <i class="fas fa-file-signature mr-3 text-success flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Obrasci za podnošenje zahteva</span>
                         </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-question-circle mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">FAQ</span>
-                        </a>
                     </div>
                 </div>
 
@@ -663,6 +643,10 @@
                     <i
                         class="fas fa-address-book mr-2 text-accent_teal group-hover:text-accent_teal_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Kontakt</span>
+                </a>
+
+                <a href="#" class="hidden">
+                    Ankete
                 </a>
 
                 <?php
@@ -681,7 +665,7 @@
                     $locale = 'sr';
                 }
                 ?>
-                <div class="dropdown nonPage relative group ">
+                <div class="locale dropdown nonPage relative group ">
                     <button
                         class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
                         <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
@@ -692,8 +676,7 @@
                     <div
                         class="dropdown-menu absolute top-full right-0 min-w-max bg-surface rounded-xl shadow-2xl border border-border_light z-50 py-2 backdrop-blur-sm">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="?locale=<?= $key ?>"
-                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                            <a href="?locale=<?= $key ?>" class="locale-link dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
                                 <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
                                 <span class="font-medium"><?= $lang['label'] ?></span>
                             </a>
@@ -748,113 +731,33 @@
 
 
 
-    <!-- Enhanced Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 bg-gradient-to-br from-info_light via-white to-primary_lightest">
-        <!-- Decorative background elements -->
-        <div class="absolute inset-0 z-0">
-            <!-- Floating care elements -->
-            <div class="absolute top-20 left-10 w-80 h-40 bg-info_hover_light opacity-15 transform rotate-12 rounded-full floating">
-            </div>
-            <div class="absolute bottom-40 right-20 w-64 h-32 bg-success_hover_light opacity-10 transform -rotate-6 rounded-full floating"
-                style="animation-delay: 1s;"></div>
-            <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-primary_hover_light opacity-10 floating" style="animation-delay: 2s;">
-            </div>
-            <div class="absolute top-1/2 right-1/3 w-32 h-32 bg-accent_orange_hover opacity-10 rounded-full floating"
-                style="animation-delay: 3s;"></div>
+    <!-- Hero Section -->
+    <section class="slider-item hero relative flex items-center z-10 w-full h-[600px] overflow-hidden">
+        <img id="g-slider-image-1" src="https://picsum.photos/1600/600" alt="Pozadinska slika za slider"
+            class="absolute inset-0 w-full h-full object-cover z-10">
 
-            <!-- Pattern overlay -->
-            <div class="absolute inset-0 opacity-10"
-                style="background-image: radial-gradient(#374151 1px, transparent 1px); background-size: 20px 20px;">
-            </div>
-
-            <!-- Heart shapes -->
-            <div class="absolute top-1/4 right-1/5 w-24 h-24 bg-primary_disabled opacity-10 rounded-full"
-                style="clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"></div>
-            <div class="absolute bottom-1/3 left-1/6 w-20 h-20 bg-info_disabled opacity-10"
-                style="clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);"></div>
+        <div class="overlay-blur absolute inset-0 z-20 backdrop-blur-sm bg-[rgba(42,157,143,0.35)]">
         </div>
 
-        <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="max-w-2xl">
-                    <div class="mb-8">
-                        <span class="inline-block bg-success_light text-success_text px-4 py-1 rounded-full text-sm font-medium mb-6">
-                            <i class="fas fa-heart mr-2"></i>Podrška za sve
-                        </span>
-                        <h1 class="text-5xl md:text-6xl font-display font-bold leading-tight text-slate mb-6">
-                            <span class="block">Dobro došli u</span>
-                            <span class="block text-primary mt-2">Centar za socijalni rad</span>
-                        </h1>
-                    </div>
+        <div class="max-w-6xl mx-auto px-4 py-20 text-center relative z-30 text-white w-full">
+            <div class="mb-8">
+                <span class="inline-block bg-white/20 backdrop-blur-md text-white px-4 py-1 rounded-full text-sm font-medium mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                    <i class="fas fa-heart mr-2"></i>Podrška za sve
+                </span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold leading-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.6);">
+                    Dobro došli u Centar za socijalni rad
+                </h1>
+            </div>
 
-                    <div class="mb-10 relative pl-6 border-l-4 border-primary_light">
-                        <p class="text-xl text-text_primary leading-relaxed max-w-lg mb-6">
-                            Naš cilj je da pružimo podršku i pomoć pojedincima, porodicama i zajednici u rešavanju životnih poteškoća i unapređenju kvaliteta života.
-                        </p>
-                        <p class="text-text_secondary italic">
-                            "Centar za socijalni rad je tu da vas sasluša, posavetuje i podrži. Zajedno gradimo društvo solidarnosti."
-                            <span class="block font-medium text-primary mt-2">— Dr Marija Petrović, Direktor</span>
-                        </p>
-                    </div>
-
-                    <!-- Quick links -->
-                    <div class="mt-10 flex flex-wrap gap-3">
-                        <a href="#" class="flex items-center text-text_secondary hover:text-primary transition-colors">
-                            <span class="w-3 h-3 bg-info rounded-full mr-2"></span>
-                            Službe
-                        </a>
-                        <a href="#" class="flex items-center text-text_secondary hover:text-primary transition-colors">
-                            <span class="w-3 h-3 bg-success rounded-full mr-2"></span>
-                            Programi obuke
-                        </a>
-                        <a href="#" class="flex items-center text-text_secondary hover:text-primary transition-colors">
-                            <span class="w-3 h-3 bg-accent_orange rounded-full mr-2"></span>
-                            Vesti
-                        </a>
-                        <a href="#" class="flex items-center text-text_secondary hover:text-primary transition-colors">
-                            <span class="w-3 h-3 bg-accent_teal rounded-full mr-2"></span>
-                            Kontakt
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Social Services Showcase -->
-                <div class="relative flex justify-center h-full" style="margin-top: 120px;">
-                    <!-- Hero Image Slider -->
-                    <div class="bg-surface rounded-xl overflow-hidden relative shadow-lg hover:shadow-xl transition-shadow" style="width: 900px; height: 500px; min-height: 500px;">
-                        <div class="hero-slider">
-                            <!-- Slide 1 -->
-                            <div class="hero-slide active">
-                                <img src="https://picsum.photos/800/600?random=1" alt="Socijalna zaštita" />
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="hero-slide">
-                                <img src="https://picsum.photos/800/600?random=2" alt="Porodična podrška" />
-                            </div>
-                            <!-- Slide 3 -->
-                            <div class="hero-slide">
-                                <img src="https://picsum.photos/800/600?random=3" alt="Pomoć starima" />
-                            </div>
-                            
-                            <!-- Dots Indicator -->
-                            <div class="slider-dots">
-                                <span class="dot active" data-slide="0"></span>
-                                <span class="dot" data-slide="1"></span>
-                                <span class="dot" data-slide="2"></span>
-                            </div>
-                        </div>
-                        
-                        <div class="absolute top-4 right-4 bg-info_bg text-white px-3 py-1.5 rounded-lg text-sm font-medium z-10">
-                            Socijalna zaštita
-                        </div>
-                    </div>
-                </div>
+            <div class="mb-10">
+                <p class="text-xl text-white leading-relaxed max-w-3xl mx-auto mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                    Naš cilj je da pružimo podršku i pomoć pojedincima, porodicama i zajednici u rešavanju životnih poteškoća i unapređenju kvaliteta života.
+                </p>
+                <p class="text-white/90 italic text-lg max-w-2xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                    "Centar za socijalni rad je tu da vas sasluša, posavetuje i podrži. Zajedno gradimo društvo solidarnosti."
+                </p>
             </div>
         </div>
-
-       
-
-
     </section>
 
     <!-- Featured News Section -->
@@ -989,7 +892,7 @@
     </section>
 
     <!-- Training Programs Section -->
-    <section id="obuke" class="py-20 bg-surface">
+    <section id="programiobuke" class="py-20 bg-surface">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
@@ -1001,37 +904,37 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div id="programiobukeCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <!-- Training Program 1 -->
                 <div class="bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/400?random=20"
+                        <img id="g-slika" src="https://picsum.photos/600/400?random=20"
                             alt="Roditeljske veštine" class="w-full h-full object-cover">
-                        <div class="absolute top-4 right-4 bg-success_bg/80 text-white px-2 py-1 rounded text-sm">Novo</div>
+                        <div class="absolute top-4 right-4 bg-success_bg/80 text-white px-2 py-1 rounded text-sm"><span id="g-oznaka">Novo</span></div>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
                             <div class="w-10 h-10 rounded-full bg-success_bg flex items-center justify-center text-white mr-3">
-                                <i class="fas fa-baby"></i>
+                                <i id="g-ikonica" class="fas fa-baby"></i>
                             </div>
-                            <span class="text-success font-bold">RODITELJSTVO</span>
+                            <span id="g-kategorija" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
-                        <h3 class="text-xl font-display font-bold text-slate mb-2">Program obuke „Roditeljske veštine"</h3>
-                        <p class="text-text_secondary mb-4">Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.</p>
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-slate mb-2">Program obuke „Roditeljske veštine"</h3>
+                        <p id="g-kratakOpis" class="text-text_secondary mb-4">Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.</p>
                         <div class="flex justify-between items-center">
                             <div class="text-sm text-text_secondary">
                                 <div class="flex items-center mb-1">
                                     <i class="fas fa-calendar mr-2"></i>
-                                    <span>Svake nedelje</span>
+                                    <span id="g-ucestalost">Svake nedelje</span>
                                 </div>
                                 <div class="flex items-center">
                                     <i class="fas fa-clock mr-2"></i>
-                                    <span>18:00 - 20:00</span>
+                                    <span id="g-vremePocetka">18:00</span> - <span id="g-vremeZavrsetka">20:00</span>
                                 </div>
                             </div>
-                            <button class="bg-success_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-success_hover transition-colors">
+                            <a id="g-linkPrijave" href="#" class="bg-success_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-success_hover transition-colors">
                                 Prijavi se
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1039,7 +942,7 @@
                 <!-- Training Program 2 -->
                 <div class="bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/400?random=21"
+                        <img id="g-obuka-image-2" src="https://picsum.photos/600/400?random=21"
                             alt="Komunikacija sa decom" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
@@ -1072,7 +975,7 @@
                 <!-- Training Program 3 -->
                 <div class="bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/400?random=22"
+                        <img id="g-obuka-image-3" src="https://picsum.photos/600/400?random=22"
                             alt="Podrška starima" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
@@ -1321,6 +1224,7 @@
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Naše službe</h4>
                     <ul class="space-y-3">
+                        <li><a href="/ankete" class="text-white/80 hover:text-primary_lighter transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Zaštita dece</a></li>
                         <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Porodično savetovanje</a></li>
                         <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Pomoć starima</a></li>
@@ -1469,39 +1373,6 @@
                 }
             }
         }
-
-
-        // Hero Image Slider Functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.dot');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            // Hide all slides
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Show current slide
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        // Auto slider - change every 4 seconds
-        setInterval(nextSlide, 4000);
-
-        // Dot click functionality
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
 
         const btn = document.getElementById('increaseFontBtn');
 
@@ -1701,6 +1572,15 @@
 
         document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
             observer.observe(el);
+        });
+
+        // Ensure language links always trigger full page reload
+        document.querySelectorAll('.locale-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Allow default behavior (full page reload)
+                // This ensures the PHP session gets the new locale value
+                return true;
+            });
         });
     </script>
 </body>

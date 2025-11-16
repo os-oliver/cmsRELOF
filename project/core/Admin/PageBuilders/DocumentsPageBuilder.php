@@ -25,8 +25,7 @@ class DocumentsPageBuilder extends BasePageBuilder
         will-change: transform;
     }
 
-    .card-body { margin-bottom: 1rem; }
-    .card-footer { margin-top: 1rem; }
+  
 
     .card-hover {
         transition: all 0.28s cubic-bezier(.2,.9,.2,1);
@@ -87,6 +86,11 @@ class DocumentsPageBuilder extends BasePageBuilder
 
     protected string $script = <<<'HTML'
 <script>
+        document.querySelectorAll('input[name="categories[]"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                document.getElementById('filter-form').submit();
+            });
+        });
 function showDownloadNotification(e, name) {
     const note = document.getElementById('download-notification');
     const text = document.getElementById('download-notification-text');
@@ -250,7 +254,7 @@ HTML;
                                     </div>
                                 </div>
 
-                                <h3 class="text-lg font-semibold text-gray-800 mb-2"><?= $title ?: basename($filepath) ?></h3>
+                                <h3 class="text-lg font-semibold text-gray-800 "><?= $title ?: basename($filepath) ?></h3>
                                 <p class="text-sm text-gray-600 mb-4 leading-relaxed"><?= $description ?: '&nbsp;' ?></p>
 
                                 <div class="flex items-center justify-between text-sm doc-meta mb-5">
@@ -321,7 +325,7 @@ $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
 // pagination
-$limit = 3; // nicer grid by default
+$limit = 15; // nicer grid by default
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 

@@ -29,10 +29,50 @@ class DocumentController
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0775, true);
         }
-        error_log(message: "fajl:" . $file);
+
+        // Validacija obaveznih polja
+        $title = trim($data['title'] ?? '');
+        $description = trim($data['description'] ?? '');
+
+
+
+
+        // Detaljno logovanje za debug
+        error_log("=== UPLOAD DEBUG START ===");
+        error_log("POST data: " . print_r($data, true));
+        error_log("FILE data: " . print_r($file, true));
+
+        if ($file) {
+            $errorCodes = [
+                UPLOAD_ERR_OK => 'UPLOAD_ERR_OK',
+                UPLOAD_ERR_INI_SIZE => 'UPLOAD_ERR_INI_SIZE',
+                UPLOAD_ERR_FORM_SIZE => 'UPLOAD_ERR_FORM_SIZE',
+                UPLOAD_ERR_PARTIAL => 'UPLOAD_ERR_PARTIAL',
+                UPLOAD_ERR_NO_FILE => 'UPLOAD_ERR_NO_FILE',
+                UPLOAD_ERR_NO_TMP_DIR => 'UPLOAD_ERR_NO_TMP_DIR',
+                UPLOAD_ERR_CANT_WRITE => 'UPLOAD_ERR_CANT_WRITE',
+                UPLOAD_ERR_EXTENSION => 'UPLOAD_ERR_EXTENSION',
+            ];
+
+            $errorCode = $file['error'] ?? null;
+            $errorMessage = $errorCodes[$errorCode] ?? 'UNKNOWN_ERROR';
+            error_log("Upload error code: {$errorCode} ({$errorMessage})");
+
+            // Validacija veličine fajla (200MB limit)
+            $maxSizeMB = 200;
+            $maxSizeBytes = $maxSizeMB * 1024 * 1024;
+            if ($file['size'] > $maxSizeBytes) {
+                http_response_code(413);
+                echo json_encode(['error' => "Fajl je prevelik! Maksimalna dozvljena veličina: {$maxSizeMB}MB"]);
+                return;
+            }
+        } else {
+            error_log("Nema fajla u \$_FILES['documetFile']");
+        }
+        error_log("=== UPLOAD DEBUG END ===");
 
         try {
-            if ($file && $file['error'] !== UPLOAD_ERR_NO_FILE) {
+            if ($file && $file['error'] === UPLOAD_ERR_OK) {
                 $uploader = new FileUploader($uploadDir);
                 $filename = $uploader->upload($file);
                 $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
@@ -48,7 +88,7 @@ class DocumentController
                 $data['filepath'] = null;
             }
         } catch (\RuntimeException $e) {
-            error_log("greska:" . $e->getMessage());
+            error_log("greska: " . $e->getMessage());
             http_response_code(400);
             echo json_encode(['error' => $e->getMessage()]);
             return;
@@ -59,6 +99,7 @@ class DocumentController
         echo json_encode(['id' => $id]);
     }
 
+
     public function update(int $id): void
     {
         error_log("caooo");
@@ -68,29 +109,34 @@ class DocumentController
             echo json_encode(['error' => 'Method Not Allowed, use PUT']);
             return;
         }
-        error_log(message: "caooo:" . $id);
+
+        error_log("caooo:" . $id);
 
         $data = json_decode(file_get_contents('php://input'), true);
-        foreach ($data as $key => $value) {
-            error_log(message: $key . ':' . $value);
-        }
-        error_log(message: 'mess' . $data['description']);
-        if (empty($id) || !is_numeric($id)) {
-            error_log(message: "NE:" . $id);
 
+        if (!is_array($data)) {
+            error_log("Data is null or not valid JSON");
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid or missing JSON data']);
+            return;
+        }
+
+        foreach ($data as $key => $value) {
+            error_log($key . ':' . $value);
+        }
+
+        if (empty($id) || !is_numeric($id)) {
+            error_log("Invalid ID:" . $id);
             http_response_code(400);
             echo json_encode(['error' => 'Invalid document ID']);
             return;
         }
 
         try {
-            // If supporting file uploads via PUT, additional handling would be needed here
-            // For now, only updating metadata fields
-            error_log(message: "HEEJ:" . $id);
-
+            error_log("Updating document: " . $id);
             (new Document())->update($id, $data);
         } catch (\RuntimeException $e) {
-            error_log("hej:" . $e->getMessage());
+            error_log("Error updating document: " . $e->getMessage());
             http_response_code(400);
             echo json_encode(['error' => $e->getMessage()]);
             return;
@@ -99,6 +145,7 @@ class DocumentController
         http_response_code(200);
         echo json_encode(['updated' => true]);
     }
+
 
     public function delete($id): void
     {

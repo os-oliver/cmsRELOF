@@ -54,96 +54,105 @@ class ZnacajaStranica extends BasePageBuilder
         .mobile-toggle{display:inline-flex;border:1px solid var(--border);border-radius:8px;padding:6px 10px;background:#fff;cursor:pointer;color:var(--text)}
         .nav.open .nav-links{display:flex;flex-direction:column;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px;position:absolute;left:16px;right:16px;top:62px;z-index:60}
         }
-    
+
         CSS;
+
     protected string $html = <<<'HTML'
-<main class="min-h-screen pt-24 flex-grow">
-    <div class="container">
-      <header style="margin-bottom:18px">
-        <h1>Информације од јавног значаја</h1>
-        <p class="lead">
-          Право на приступ информацијама од јавног значаја остварује се подношењем захтева надлежном органу.
-          Овде се налази кратко упутство и образац <strong>(PDF)</strong> за преузимање.
-        </p>
-      </header>
+<main class="bg-background min-h-screen pt-24 flex-grow font-body text-secondary_text">
+  <div class="container mx-auto px-4">
 
-      <div class="grid">
-        <!-- MAIN -->
-        <article>
-          <section>
-            <h2>Поступак подношења захтева</h2>
-            <ol>
-              <li><strong>Преузмите формулар</strong> кликом на дугме „Преузми формулар (PDF)”.</li>
-              <li><strong>Попуните формулар</strong> на вашем рачунару (електронски или одштампан). Наведите
-                  које информације/документе тражите и период на који се захтев односи.</li>
-              <li><strong>Пошаљите попуњен захтев</strong> на адресу електронске поште:
-                <a href="mailto:pisarnica@vas-domen.rs?subject=%D0%97%D0%B0%D1%85%D1%82%D0%B5%D0%B2%20%D0%B7%D0%B0%20%D0%BF%D1%80%D0%B8%D1%81%D1%82%D1%83%D0%BF%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%98%D0%B0%D0%BC%D0%B0%20%D0%BE%D0%B4%20%D1%98%D0%B0%D0%B2%D0%BD%D0%BE%D0%B3%20%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D1%98%D0%B0">
-                  pisarnica@vas-domen.rs                </a>. Можете послати и поштом/лично у писарници.</li>
-              <li><strong>Одговор</strong>: након обраде добићете е-поруку са адресом/линком
-                  одакле можете преузети тражене информације, или образложење ако захтев није могуће у целости уважити.</li>
-            </ol>
-          </section>
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-10">
+      <!-- MAIN -->
+      <article>
+        <section class="mb-4">
+          <h1 class="font-heading text-4xl md:text-5xl font-extrabold text-primary_text tracking-tight">
+            Informacije od javnog značaja
+          </h1>
+          <p class="lead text-secondary_text/90 mt-2">
+            Pravo na pristup informacijama od javnog značaja ostvaruje se podnošenjem zahteva nadležnom organu.
+            Ovde se nalazi kratko uputstvo i obrazac <strong>(PDF)</strong> za preuzimanje.
+          </p>
+        </section>
 
-          <section class="card pad" style="margin-top:18px">
-            <h3>Напомене</h3>
-            <ul>
-              <li>Приступ може бити ограничен у законом прописаним случајевима (заштита приватности, поверљивост, злоупотреба права и сл.).</li>
-              <li>Уколико одговор не добијете у законском року, можете изјавити жалбу у складу са прописима.</li>
-            </ul>
-          </section>
+        <section>
+          <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Postupak podnošenja zahteva</h2>
+          <ol class="list-decimal pl-6 space-y-2">
+            <li><strong>Preuzmite formular</strong>&nbsp;klikom na dugme „Preuzmi formular (PDF)”.</li>
+            <li><strong>Popunite formular</strong>&nbsp;na vašem računaru (elektronski ili odštampan), navedite
+              koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
+            <li><strong>Pošaljite popunjen zahtev</strong>&nbsp;na adresu elektronske pošte:&nbsp;
+              <a data-translate="off" class="text-accent hover:text-accent_hover underline-offset-2 hover:underline"
+                 href="mailto:pisarnica@vas-domen.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                 pisarnica@vas-domen.rs
+              </a>. Možete poslati i poštom ili lično, u pisarnici.</li>
+            <li><strong>Odgovor</strong>: nakon obrade, dobićete e-poruku sa adresom ili linkom,
+              sa koje možete preuzeti tražene informacije, ili obrazloženje ako zahtev nije moguće u celosti uvažiti.</li>
+          </ol>
+        </section>
 
-          <!-- (Optional) Ovlašćena lica – edit or remove -->
-          <section style="margin-top:18px">
-            <h2>Овлашћена лица / Контакт</h2>
-            <div class="card pad">
-              <p><strong>За управу и националне заједнице</strong><br>Име Презиме — 021/000-00-00 — <a href="mailto:primer1@vas-domen.rs">primer1@vas-domen.rs</a></p>
-              <hr style="border:none;border-top:1px solid var(--border);margin:12px 0">
-              <p><strong>За област образовања</strong><br>Име Презиме — 021/000-00-01 — <a href="mailto:primer2@vas-domen.rs">primer2@vas-domen.rs</a></p>
-              <hr style="border:none;border-top:1px solid var(--border);margin:12px 0">
-              <p><strong>За област финансија</strong><br>Име Презиме — 021/000-00-02 — <a href="mailto:primer3@vas-domen.rs">primer3@vas-domen.rs</a></p>
-            </div>
-          </section>
-        </article>
+        <section class="bg-surface border border-secondary/20 rounded-2xl p-6 mt-4">
+          <h3 class="font-heading text-xl text-primary_text mb-3">Napomene</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Pristup može biti ograničen u zakonom propisanim slučajevima (zaštita privatnosti, poverljivost, zloupotreba prava i sl.).</li>
+            <li>Ukoliko odgovor ne dobijete u zakonskom roku, možete izjaviti žalbu u skladu sa propisima.</li>
+          </ul>
+        </section>
 
-        <!-- SIDEBAR -->
-        <aside>
-          <div class="sticky">
-            <div class="card pad">
-              <h3>Документа</h3>
-              <p class="muted" style="margin-top:-4px">Преузмите и попуните образац, затим пошаљите е-поштом.</p>
-              <p style="margin:14px 0 0">
-                <a class="btn" href="project/public/docs/sablon-zahtev.pdf" download="">
-                  <!-- simple pdf icon -->
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h10a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg>
-                  Преузми формулар (PDF)
+        <!-- (Optional) Ovlašćena lica – edit or remove -->
+        <section class="mt-4">
+          <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
+          <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
+            <p><strong>Za upravu i nacionalne zajednice</strong><br>Ime Prezime — 021/000-00-00 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer1@vas-domen.rs">primer1@vas-domen.rs</a></p>
+            <hr class="border-t border-secondary/30 my-3">
+            <p><strong>Za oblast obrazovanja</strong><br>Ime Prezime — 021/000-00-01 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer2@vas-domen.rs">primer2@vas-domen.rs</a></p>
+            <hr class="border-t border-secondary/30 my-3">
+            <p><strong>Za oblast finansija</strong><br>Ime Prezime — 021/000-00-02 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer3@vas-domen.rs">primer3@vas-domen.rs</a></p>
+          </div>
+        </section>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="sticky top-24">
+          <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
+            <h3 class="font-heading text-xl text-primary_text">Dokumenta</h3>
+            <p class="text-secondary_text/80 mt-1">Preuzmite i popunite obrazac, a zatim ga pošaljite e-poštom.</p>
+            <p class="mt-3">
+              <a class="inline-flex items-center gap-2 bg-primary hover:bg-primary_hover text-white font-semibold rounded-full px-4 py-2"
+                 href="/docs/sablon-zahtev.pdf" download="">
+                <svg class="logocolor1" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h10a2 2 0 0 0 2-2V8z"></path>
+                  <path d="M14 2v6h6"></path>
+                </svg>
+                Preuzmi formular (PDF)
+              </a>
+            </p>
+
+            <div class="mt-3">
+              <div class="flex items-center justify-between gap-2 bg-white border border-secondary/30 rounded-xl px-3 py-2">
+                <span class="truncate text-primary_text" data-translate="off">pisarnica@vas-domen.rs</span>
+                <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
+                        onclick="navigator.clipboard.writeText('pisarnica@vas-domen.rs')">
+                  Kopiraj
+                </button>
+              </div>
+              <p class="mt-2">
+                <a class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
+                   href="mailto:pisarnica@vas-domen.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                  Otvori e-poštu
                 </a>
               </p>
-
-              <div style="margin-top:14px">
-                <div class="email-box">
-                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">pisarnica@vas-domen.rs</span>
-                  <button class="btn btn-secondary" onclick="navigator.clipboard.writeText('pisarnica@vas-domen.rs')">Копирај</button>
-                </div>
-                <p style="margin:8px 0 0">
-                  <a class="btn btn-secondary" href="mailto:pisarnica@vas-domen.rs?subject=%D0%97%D0%B0%D1%85%D1%82%D0%B5%D0%B2%20%D0%B7%D0%B0%20%D0%BF%D1%80%D0%B8%D1%81%D1%82%D1%83%D0%BF%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%98%D0%B0%D0%BC%D0%B0%20%D0%BE%D0%B4%20%D1%98%D0%B0%D0%B2%D0%BD%D0%BE%D0%B3%20%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D1%98%D0%B0">Отвори е-пошту</a>
-                </p>
-              </div>
-
-              <p class="muted" style="margin-top:12px;font-size:14px">
-                Ако немате могућност слања е-поштом, захтев можете послати поштом или предати лично у писарници.
-              </p>
             </div>
-          </div>
-        </aside>
-      </div>
-    </div>
 
-    <footer>
-      <div class="container">
-        © 2025 — Lorem ipsum dolor • Информације од јавног значаја
-      </div>
-    </footer>
-  </main>
+            <p class="text-secondary_text/70 mt-3 text-sm">
+              Ako nemate mogućnost slanja e-poštom, zahtev možete poslati poštom ili predati lično u pisarnici.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
 HTML;
 
     public function buildPage(): string

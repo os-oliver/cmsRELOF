@@ -21,7 +21,7 @@ class FileUploader
             'application/vnd.ms-excel',
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         ],
-        int $maxFileSize = 5 * 1024 * 1024 * 1024 // 1GB
+        int $maxFileSize = 200 * 1024 * 1024 // 200 MB
     ) {
         $this->uploadDir = rtrim($uploadDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         $this->allowedMime = $allowedMime;
@@ -80,17 +80,20 @@ class FileUploader
         if (!$tmp || !is_uploaded_file($tmp)) {
             throw new \RuntimeException("Possible file upload attack or missing tmp_name.");
         }
-
-        // generate unique name
+        // get original filename without extension
         $originalName = pathinfo($file['name'], PATHINFO_FILENAME);
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 
-        // Sanitize the filename (optional but recommended)
-        $originalName = preg_replace('/[^a-zA-Z0-9-_]/', '_', $originalName);
+        // replace spaces with underscores
+        $originalName = str_replace(' ', '_', $originalName);
 
-        // Start with original filename
+        // remove any character that is NOT a letter (any language), number, dash or underscore
+        $originalName = preg_replace('/[^\p{L}\p{N}_-]/u', '', $originalName);
+
+        // rebuild filename
         $filename = $originalName . '.' . $ext;
         $target = $this->uploadDir . $filename;
+
 
         // If file exists, add random suffix
         while (file_exists($target)) {

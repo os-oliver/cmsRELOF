@@ -355,6 +355,42 @@
           "property": "auto"
         }
       ]
+    },
+    "Jelovnik": {
+      "sr": "Jelovnik",
+      "en": "Menu",
+      "sr-Cyrl": "Јеловник",
+      "icon": "fas fa-newspaper",
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
+          },
+          "required": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "Fajl",
+          "type": "file",
+          "label": {
+            "sr": "PDF jelovnik",
+            "en": "PDF Menu",
+            "sr-Cyrl": "ПДФ јеловник"
+          }
+        }
+      ]
     }
   }
 ]
