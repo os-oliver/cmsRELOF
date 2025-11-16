@@ -357,7 +357,11 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
+                                <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-users-cog mr-2 text-primary"></i>Organi upravljanja
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
@@ -370,6 +374,14 @@
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-school mr-2 text-primary"></i>Vrtići
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fa-question mr-2 text-primary"></i>Pitanja
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
@@ -478,19 +490,23 @@
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
+                            <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            <i class="fas fa-users-cog mr-2 text-primary"></i>Organi upravljanja
+                        </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-flag mr-2 text-primary"></i>Misija
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-history mr-2 text-primary"></i>Istorijat
                         </a>
@@ -501,6 +517,14 @@
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-users mr-2 text-primary"></i>Timovi
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            <i class="fas fa-question mr-2 text-primary"></i>Pitanja
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                         </a>
                     </div>
                 </div>
@@ -521,23 +545,23 @@
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-info-circle mr-2 text-primary"></i>Obaveštenja
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-receipt mr-2 text-primary"></i>Cenovnik
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-file-alt mr-2 text-primary"></i>Upis
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-clock mr-2 text-primary"></i>Raspored aktivnosti
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
                         </a>
@@ -569,6 +593,9 @@
                     class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-address-book mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Kontakt</span>
+                </a>
+                <a href="#" class="hidden">
+                    Ankete
                 </a>
                 <?php
                 if (isset($_GET['locale'])) {
@@ -952,17 +979,14 @@
                 <div>
                     <h4 class="mb-6">Informacije</h4>
                     <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-logocolor2 mt-1 mr-3"></i>
-                            <span>Lorem ipsum dolor</span>
-                        </li>
+                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
                             <span>Lorem ipsum dolor</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span>Lorem ipsum dolor</span>
+                            <span data-translate="off">Lorem ipsum dolor</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
@@ -982,8 +1006,15 @@
                     </div>
                 </div>
             </div>
-            <div class="pt-8 text-center text-sm">
-                <p>&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+            <div class="text-center text-sm">
+                <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
+                    <img
+                        src="/assets/img/SECO-logo-640px.png"
+                        alt="SECO logo"
+                        class="w-full max-w-md md:max-w-lg h-auto mb-4">
+                    <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+                </div>
+                <p class="pt-6">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
             </div>
         </div>
     </footer>

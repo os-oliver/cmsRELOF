@@ -31,8 +31,8 @@ $activeTab = 'settings';
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-        tailwind.config = { theme: { extend: { colors: { primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' } }, fontFamily: { sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'] }, boxShadow: { 'soft': '0 2px 8px rgba(0, 0, 0, 0.04)', 'medium': '0 4px 12px rgba(0, 0, 0, 0.08)', 'strong': '0 8px 24px rgba(0, 0, 0, 0.12)' } } } }
     </script>
+    <script src="/assets/js/dashboard/tailwindConf.js"></script>
     <style>
         * {
             -webkit-font-smoothing: antialiased;
@@ -270,7 +270,9 @@ $activeTab = 'settings';
     <div id="toastContainer"></div>
 
     <div class="flex h-screen overflow-hidden">
-        <?php require_once __DIR__ . "/../components/sidebar.php" ?>
+        <?php
+        $activeTab = "aboutus";
+        require_once __DIR__ . "/../components/sidebar.php" ?>
         <div class="flex-1 flex flex-col overflow-hidden">
             <?php require_once __DIR__ . "/../components/topBar.php" ?>
             <main class="flex-1 overflow-y-auto p-4 md:p-8">
@@ -433,7 +435,7 @@ $activeTab = 'settings';
                                                             data-name="<?= htmlspecialchars($member['name']) ?>"
                                                             data-surname="<?= htmlspecialchars($member['surname']) ?>"
                                                             data-position="<?= htmlspecialchars($member['position']) ?>"
-                                                            data-biography="<?= htmlspecialchars($member['biography']) ?>"
+                                                            data-biography="<?= isset($member['biography']) ? htmlspecialchars($member['biography']) : '' ?>"
                                                             title="<?= __("settings.edit") ?>">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
@@ -517,12 +519,7 @@ $activeTab = 'settings';
                     <textarea id="biography" name="biography" rows="4"
                         class="input-field w-full rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 resize-none"></textarea>
                 </div>
-                <div>
-                    <label for="icon"
-                        class="block text-sm font-semibold text-gray-700 mb-2"><?= __("settings.member_icon") ?></label>
-                    <input type="file" id="icon" name="icon" accept="image/*"
-                        class="input-field w-full rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400">
-                </div>
+
                 <div class="flex gap-3 pt-4">
                     <button type="button" id="cancelMemberBtn"
                         class="flex-1 px-6 py-3 border-2 border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-50 transition-all"><?= __("settings.cancel") ?></button>
@@ -631,20 +628,27 @@ $activeTab = 'settings';
             const cancelBtn = document.getElementById('cancelMemberBtn');
 
             addBtn.addEventListener('click', () => {
+                // Prepare modal for creating new member: clear all fields explicitly (fail-safe)
                 modalTitle.textContent = '<?= __("settings.add_member_title") ?>';
                 memberForm.reset();
                 document.getElementById('memberId').value = '';
+                // Ensure fields are empty strings (some browsers may not clear values set programmatically)
+                document.getElementById('name').value = '';
+                document.getElementById('surname').value = '';
+                document.getElementById('position').value = '';
+                document.getElementById('biography').value = '';
                 modal.classList.remove('hidden');
             });
 
             document.querySelectorAll('.edit-member').forEach(btn => {
                 btn.addEventListener('click', () => {
+                    // Fail-safe: if any dataset property is missing, fall back to empty string
                     modalTitle.textContent = '<?= __("settings.edit_member_title") ?>';
-                    document.getElementById('memberId').value = btn.dataset.id;
-                    document.getElementById('name').value = btn.dataset.name;
-                    document.getElementById('surname').value = btn.dataset.surname;
-                    document.getElementById('position').value = btn.dataset.position;
-                    document.getElementById('biography').value = btn.dataset.biography;
+                    document.getElementById('memberId').value = btn.dataset.id ?? '';
+                    document.getElementById('name').value = btn.dataset.name ?? '';
+                    document.getElementById('surname').value = btn.dataset.surname ?? '';
+                    document.getElementById('position').value = btn.dataset.position ?? '';
+                    document.getElementById('biography').value = btn.dataset.biography ?? '';
                     modal.classList.remove('hidden');
                 });
             });

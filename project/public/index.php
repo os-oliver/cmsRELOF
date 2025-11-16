@@ -4,6 +4,9 @@ require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../core/Utils/translations.php';
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
+use App\Database; // Ensure this is available, assuming you have an App\Database class
+// use PDO; // Ensure PDO is available
+
 define('PROJECT_ROOT', dirname(__DIR__));
 define('PUBLIC_ROOT', __DIR__);
 
@@ -12,131 +15,159 @@ $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
+    // Tracking already registered routes to prevent duplicates
+    $registeredRoutes = [];
+
+    // Helper function to register a route and mark it as registered
+    $registerRoute = function ($method, $route, $handler) use ($r, &$registeredRoutes) {
+        $routeKey = $method . ':' . $route;
+        if (!isset($registeredRoutes[$routeKey])) {
+            $r->addRoute($method, $route, $handler);
+            $registeredRoutes[$routeKey] = true;
+        }
+    };
+
     # UI/page routes + ones in assetes/data/pages.json
-    $r->addRoute('GET', '/test', 'PageController@test');
-    $r->addRoute('GET', '/kontrolna-tabla/galerija', 'PageController@gallery');
-    $r->addRoute('GET', '/kontrolna-tabla/promocija', 'PageController@promotion');
-    $r->addRoute('GET', '/kontrolna-tabla/zalbe', 'PageController@complaints');
-    $r->addRoute('GET', '/kontrolna-tabla', 'PageController@dashboard');
-    $r->addRoute('GET', '/kontrolna-tabla/dokumenti', 'PageController@documents');
-    $r->addRoute('GET', '/kontrolna-tabla/dogadjaji', 'PageController@events');
-    $r->addRoute('GET', '/kontrolna-tabla/stranice', 'PageController@StaticPageEditor');
-    $r->addRoute('GET', '/kontrolna-tabla/poruke', 'PageController@chats');
-    $r->addRoute('GET', '/kontrolna-tabla/o-nama', 'PageController@aboutUS');
-    $r->addRoute('GET', '/kontrolna-tabla/boje', 'PageController@colors');
+    $registerRoute('GET', '/kontrolna-tabla/galerija', 'PageController@gallery');
+    $registerRoute('GET', '/kontrolna-tabla/promocija', 'PageController@promotion');
+    $registerRoute('GET', '/kontrolna-tabla/zalbe', 'PageController@complaints');
+    $registerRoute('GET', '/kontrolna-tabla', 'PageController@dashboard');
+    $registerRoute('GET', '/kontrolna-tabla/dokumenti', 'PageController@documents');
+    $registerRoute('GET', '/kontrolna-tabla/dogadjaji', 'PageController@events');
+    $registerRoute('GET', '/kontrolna-tabla/stranice', 'PageController@StaticPageEditor');
+    $registerRoute('GET', '/kontrolna-tabla/poruke', 'PageController@chats');
+    $registerRoute('GET', '/kontrolna-tabla/o-nama', 'PageController@aboutUS');
+    $registerRoute('GET', '/kontrolna-tabla/boje', 'PageController@colors');
+    // The dynamic route must be registered, but its registration is complex due to the wildcard,
+    // so we handle it outside the helper for simplicity if it might overlap.
+    // However, for routes with slugs, the check might not be reliable, but let's assume specific ones are checked.
     $r->addRoute('GET', '/kontrolna-tabla/{slug:.+}', 'PageController@editorDynamic');
 
+
     // Editor utility routes
-    $r->addRoute('GET', '/editor/getModal', 'ModalController@get');
-    // Endpoint for dynamic editor submissions (AJAX form post)
-    $r->addRoute('POST', '/editor/insert', 'ContentController@createFromRequest');
-    // Endpoint to list generic elements for the editor (search + pagination)
-    $r->addRoute('GET', '/editor/list', 'ContentController@listFromRequest');
-    // Get a single generic element (for editing)
-    $r->addRoute('GET', '/editor/item', 'ContentController@getItemFromRequest');
-    // Delete a generic element
-    $r->addRoute('POST', '/editor/delete', 'ContentController@deleteFromRequest');
+    $registerRoute('GET', '/editor/getModal', 'ModalController@get');
+    $registerRoute('POST', '/editor/insert', 'ContentController@createFromRequest');
+    $registerRoute('GET', '/editor/list', 'ContentController@listFromRequest');
+    $registerRoute('GET', '/editor/item', 'ContentController@getItemFromRequest');
+    $registerRoute('POST', '/editor/delete', 'ContentController@deleteFromRequest');
 
-    $r->addRoute('GET', '/sadmin/stil-stranica', 'PageController@adminStyle');
-    $r->addRoute('GET', '/sadmin/korisnici', 'PageController@userStyle');
-    $r->addRoute('GET', '/sadmin/kategorije', 'PageController@categoryStyle');
+    $registerRoute('GET', '/sadmin/stil-stranica', 'PageController@adminStyle');
+    $registerRoute('GET', '/sadmin/korisnici', 'PageController@userStyle');
+    $registerRoute('GET', '/sadmin/kategorije', 'PageController@categoryStyle');
 
-    $r->addRoute('GET', '/pretraga', 'PageController@search');
-    $r->addRoute('POST', '/save-component', 'UserUpdateController@saveComponent');
+    $registerRoute('GET', '/pretraga', 'PageController@search');
+    $registerRoute('POST', '/save-component', 'UserUpdateController@saveComponent');
 
-    # API/action routes - should stay in english
-    $r->addRoute('GET', '/', 'PageController@home');
-    $r->addRoute('GET', '/buildingWizard', 'PageController@buildWizard');
-    $r->addRoute('GET', '/style', 'PageController@style');
-    $r->addRoute('POST', '/savePage', 'PageController@savePage');
-    $r->addRoute('POST', '/deletePage', 'PageController@deletePage');
-    $r->addRoute('GET', '/loadComponent', 'ComponentController@loadComponent');
-    $r->addRoute('POST', '/saveComponent', 'ComponentController@saveComponent');
-    $r->addRoute('POST', '/saveLandigPageComponent', 'ComponentController@saveLandigPageComponent');
-    $r->addRoute('GET', '/template', 'PageController@template');
+    # API/action routes
+    $registerRoute('GET', '/', 'PageController@home'); // Registered via helper
+    $registerRoute('GET', '/buildingWizard', 'PageController@buildWizard');
+    $registerRoute('GET', '/style', 'PageController@style');
+    $registerRoute('POST', '/savePage', 'PageController@savePage');
+    $registerRoute('POST', '/deletePage', 'PageController@deletePage');
+    $registerRoute('GET', '/loadComponent', 'ComponentController@loadComponent');
+    $registerRoute('POST', '/saveComponent', 'ComponentController@saveComponent');
+    $registerRoute('POST', '/saveLandigPageComponent', 'ComponentController@saveLandigPageComponent');
+    $registerRoute('GET', '/template', 'PageController@template');
 
-    $r->addRoute(
+    // Route with a specific slug template
+    $registerRoute(
         'GET',
         '/{templateSlug:informacije-od-javnog-znacaja}',
         'PageController@templateBySlug'
     );
-    $r->addRoute('GET', '/component', 'ComponentController@loadComponent');
+    $registerRoute('GET', '/component', 'ComponentController@loadComponent');
 
-    $r->addRoute('POST', '/contact', 'ContactController@create');
-    $r->addRoute('DELETE', '/contact/{id:\d+}', 'ContactController@delete');
+    $registerRoute('POST', '/contact', 'ContactController@create');
+    $registerRoute('DELETE', '/contact/{id:\d+}', 'ContactController@delete');
 
-    $r->addRoute('POST', '/document', 'DocumentController@newDocument');
-    $r->addRoute('GET', '/document', 'DocumentController@list');
-    $r->addRoute('PUT', '/document/{id:\d+}', 'DocumentController@update');
-    $r->addRoute('DELETE', '/document/{id:\d+}', 'DocumentController@delete');
+    $registerRoute('POST', '/document', 'DocumentController@newDocument');
+    $registerRoute('GET', '/document', 'DocumentController@list');
+    $registerRoute('PUT', '/document/{id:\d+}', 'DocumentController@update');
+    $registerRoute('DELETE', '/document/{id:\d+}', 'DocumentController@delete');
 
-    #change this one for URL to be in serbian if needed
-    $r->addRoute('GET', '/login', 'PageController@login');
+    $registerRoute('GET', '/login', 'PageController@login'); // Registered via helper
 
     // ColorsController rute
-    $r->addRoute('GET', '/colors', 'ColorsController@index');        // Dohvatanje trenutnih boja
-    $r->addRoute('POST', '/colors-change', 'ColorsController@index'); // Čuvanje izmena boja
+    $registerRoute('GET', '/colors', 'ColorsController@index');
+    $registerRoute('POST', '/colors-change', 'ColorsController@index');
 
-    $r->addRoute('POST', '/login', 'AuthController@auth');
-    $r->addRoute('GET', '/logout', 'AuthController@logout');
+    $registerRoute('POST', '/login', 'AuthController@auth');
+    $registerRoute('GET', '/logout', 'AuthController@logout');
 
-    $r->addRoute('GET', '/events', 'EventController@list');
-    $r->addRoute('GET', '/events/{id:\d+}', 'EventController@show');
-    $r->addRoute('POST', '/events', 'EventController@create');
-    $r->addRoute('PUT', '/events/{id:\d+}', 'EventController@update');
-    $r->addRoute('DELETE', '/events/{id:\d+}', 'EventController@delete');
+    $registerRoute('GET', '/events', 'EventController@list');
+    $registerRoute('GET', '/events/{id:\d+}', 'EventController@show');
+    $registerRoute('POST', '/events', 'EventController@create');
+    $registerRoute('PUT', '/events/{id:\d+}', 'EventController@update');
+    $registerRoute('DELETE', '/events/{id:\d+}', 'EventController@delete');
 
-    $r->addRoute('PUT', '/aboutus/{id:\d+}', 'AboutUSController@aboutUs');
-    $r->addRoute('POST', '/employees', 'AboutUSController@employees');
-    $r->addRoute('PUT', '/employees/{id:\d+}', 'AboutUSController@employees');
-    $r->addRoute('DELETE', '/employees/{id:\d+}', 'AboutUSController@employees');
-    $r->addRoute('PUT', '/settings', 'AboutUSController@settings');
-    $r->addRoute('GET', '/settings', 'AboutUSController@settings');
-    $r->addRoute('POST', '/settings', 'AboutUSController@settings');
+    $registerRoute('PUT', '/aboutus/{id:\d+}', 'AboutUSController@aboutUs');
+    $registerRoute('POST', '/employees', 'AboutUSController@employees');
+    $registerRoute('POST', '/employees/{id:\d+}', 'AboutUSController@employees');
+    $registerRoute('DELETE', '/employees/{id:\d+}', 'AboutUSController@employees');
+    $registerRoute('PUT', '/settings', 'AboutUSController@settings');
+    $registerRoute('GET', '/settings', 'AboutUSController@settings');
+    $registerRoute('POST', '/settings', 'AboutUSController@settings');
 
-    $r->addRoute('GET', '/gallery', 'GalleryController@list');
-    $r->addRoute('GET', '/gallery/{id:\d+}', 'GalleryController@show');
-    $r->addRoute('POST', '/gallery', 'GalleryController@newImage');
-    $r->addRoute('PUT', '/gallery/{id:\d+}', 'GalleryController@update');
-    $r->addRoute('DELETE', '/gallery/{id:\d+}', 'GalleryController@delete');
+    $registerRoute('GET', '/gallery', 'GalleryController@list');
+    $registerRoute('GET', '/gallery/{id:\d+}', 'GalleryController@show');
+    $registerRoute('POST', '/gallery', 'GalleryController@newImage');
+    $registerRoute('POST', '/gallery/{id:\d+}', 'GalleryController@update');
+    $registerRoute('PUT', '/gallery/{id:\d+}', 'GalleryController@update');
+    $registerRoute('DELETE', '/gallery/{id:\d+}', 'GalleryController@delete');
 
-    $r->addRoute('POST', '/users', 'UserController@create');
-    $r->addRoute('PUT', '/users/{id:\d+}', 'UserController@update');
-    $r->addRoute('DELETE', '/users/{id:\d+}', 'UserController@delete');
-    $r->addRoute('GET', '/sadrzaj', 'PageController@renderElement');
+    $registerRoute('POST', '/users', 'UserController@create');
+    $registerRoute('PUT', '/users/{id:\d+}', 'UserController@update');
+    $registerRoute('DELETE', '/users/{id:\d+}', 'UserController@delete');
+    $registerRoute('GET', '/sadrzaj', 'PageController@renderElement');
 
-
+    // --- NEW LOGIC: Load pages from JSON file with duplicate check ---
     $pages = json_decode(
         @file_get_contents(__DIR__ . '/assets/data/pages.json'),
         true
     );
 
-    if (!empty($pages)) {
+    if (!empty($pages) && is_array($pages)) {
         foreach ($pages as $page) {
-            if ($page['href'] === '/') {
+            if (empty($page['href']) || $page['href'] === '/') {
                 continue;
             }
+
+            $routeKey = 'GET:' . $page['href'];
+
+            // Skip if route already registered
+            if (isset($registeredRoutes[$routeKey])) {
+                continue;
+            }
+
             $r->addRoute('GET', $page['href'], 'PageController@renderJsonPage');
+            $registeredRoutes[$routeKey] = true;
         }
     }
+    // --- END NEW LOGIC ---
 
-    // Also register routes from DB (userdefinedpages) so pages created via UI are routable
+    // Load pages from database
     try {
-        $db = new \App\Database();
+        $db = new Database(); // Changed to use the imported class
         $pdo = $db->GetPDO();
-        $stmt = $pdo->query("SELECT href FROM userdefinedpages WHERE href IS NOT NULL AND href != ''");
+        $stmt = $pdo->query("SELECT DISTINCT href FROM userdefinedpages WHERE href IS NOT NULL AND href != '' AND href != '/'");
+        // Ensure PDO::FETCH_COLUMN is available, using its full name for clarity
         $dbPages = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+
         foreach ($dbPages as $dbHref) {
-            if ($dbHref === '/')
+            $routeKey = 'GET:' . $dbHref;
+
+            // Skip if route already registered
+            if (isset($registeredRoutes[$routeKey])) {
                 continue;
-            // avoid duplicating routes already added
+            }
+
             $r->addRoute('GET', $dbHref, 'PageController@renderJsonPage');
+            $registeredRoutes[$routeKey] = true;
         }
     } catch (Throwable $e) {
-        // ignore DB errors here — fallback to JSON-only routing
+        // Ignore DB errors - fallback to JSON-only routing
+        error_log("Error loading routes from database: " . $e->getMessage());
     }
-
-
 });
 
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
@@ -158,9 +189,10 @@ switch ($routeInfo[0]) {
 
         $headers = getallheaders();
 
-
+        // Assuming App\Controllers namespace is correct
         $fqcn = "\\App\\Controllers\\{$controllerName}";
         $controller = new $fqcn();
-        call_user_func_array([$controller, $action], array_values($vars));
+        // Use an empty array for arguments if $vars is not available or if it's an empty array
+        call_user_func_array([$controller, $action], array_values($vars ?? []));
         break;
 }

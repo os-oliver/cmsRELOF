@@ -237,26 +237,82 @@ function setupLinkLogging(editor) {
 
     const openNavEditor = (anchorEl, comp) => {
       try {
-        // Try to open a simple link editor UI in the parent document
+        // Get the modal elements
+        const navBlock = parent.document.getElementById("navBlock");
         const hrefInput = parent.document.getElementById("linkHref");
+        const linkTextInput = parent.document.getElementById("linkText");
         const applyBtn = parent.document.getElementById("applyLink");
-        if (!hrefInput || !applyBtn) return;
 
-        const originalHref = (anchorEl && anchorEl.getAttribute("href")) || "";
-        hrefInput.value = originalHref;
+        if (!navBlock || !hrefInput || !linkTextInput || !applyBtn) {
+          console.error("Required modal elements not found");
+          return;
+        }
 
+        // Store current elements for later use
+        window.currentEditingAnchor = anchorEl;
+        window.currentEditingComponent = comp;
+
+        // Get current values
+        const currentHref = anchorEl.getAttribute("href") || "";
+        const currentText = anchorEl.textContent.trim() || "";
+
+        // Update input fields
+        hrefInput.value = currentHref;
+        linkTextInput.value = currentText;
+
+        // Show the modal
+        navBlock.classList.remove("hidden");
+
+        // Wire up apply button
         applyBtn.onclick = () => {
           const newHref = hrefInput.value || "";
+          const newText = linkTextInput.value || "";
+
+          // Update component if available
           if (comp && typeof comp.addAttributes === "function") {
             try {
               comp.addAttributes({ href: newHref });
+              comp.components(newText);
             } catch (e) {
-              console.warn("Failed to set comp attributes", e);
+              console.warn("Failed to update component:", e);
             }
           }
+
+          // Update DOM element
           try {
-            if (anchorEl) anchorEl.setAttribute("href", newHref);
-          } catch (e) {}
+            anchorEl.setAttribute("href", newHref);
+            anchorEl.textContent = newText;
+
+            // Show success notification
+            const notification = document.createElement("div");
+            notification.className =
+              "fixed top-4 right-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-lg z-[9999] flex items-center";
+            notification.innerHTML = `
+              <i class="fas fa-check-circle mr-2"></i>
+              <span>Link je uspešno ažuriran!</span>
+            `;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+              notification.remove();
+            }, 3000);
+          } catch (e) {
+            console.warn("Failed to update anchor element:", e);
+
+            // Show error notification
+            const notification = document.createElement("div");
+            notification.className =
+              "fixed top-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg z-[9999] flex items-center";
+            notification.innerHTML = `
+              <i class="fas fa-exclamation-circle mr-2"></i>
+              <span>Greška pri ažuriranju linka!</span>
+            `;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+              notification.remove();
+            }, 3000);
+          }
         };
       } catch (err) {
         console.warn("openNavEditor error", err);
@@ -402,6 +458,17 @@ function setupLinkLogging(editor) {
             console.warn("Error finding link component:", err);
           }
 
+          // Show nav block with animation
+          const nb = document.getElementById("navBlock");
+          if (nb) {
+            nb.classList.remove("hidden");
+            nb.classList.add("flex");
+            // Focus the document select after showing
+            setTimeout(() => {
+              const select = document.getElementById("documentSelect");
+              if (select) select.focus();
+            }, 100);
+          }
           openNavEditor(anchor, comp);
         } catch (err) {
           console.error("Click handler error:", err);
@@ -740,6 +807,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Also await load so subsequent code runs after editor is ready
     await new Promise((resolve) => grapesjsEditor.on("load", resolve));
 
+    // Wire up link chooser behaviors
+    const select = document.getElementById("documentSelect");
+    const pageSelect = document.getElementById("pageSelect");
+    const hrefInput = document.getElementById("linkHref");
+    const linkTextInput = document.getElementById("linkText");
+    const navBlock = document.getElementById("navBlock");
+
+    if (select && pageSelect && hrefInput && linkTextInput) {
+      // Handler for both selects to update href
+      const onSelectChange = (e) => {
+        const value = e.target.value;
+        if (value) {
+          // Clear the other select
+          const otherSelect = e.target === select ? pageSelect : select;
+          otherSelect.value = "";
+          // Update href
+          hrefInput.value = value;
+        }
+      };
+
+      select.addEventListener("change", onSelectChange);
+      pageSelect.addEventListener("change", onSelectChange);
+
+      // Show/hide nav block
+      const navClose = document.getElementById("navClose");
+      if (navClose && navBlock) {
+        navClose.addEventListener("click", () => {
+          navBlock.classList.remove("flex");
+          navBlock.classList.add("hidden");
+        });
+      }
+    }
+
     // Učitavanje trenutne aktivne komponente u editor
     const currentComponentNameEl = document.querySelector(
       "[data-current-component]"
@@ -894,6 +994,36 @@ document.addEventListener("DOMContentLoaded", async () => {
         await loadComponentIntoEditor(componentPath);
       });
     });
+
+    // --- Client-side augmentation: populate #documentSelect with pages.json if available ---
+    try {
+      const select = document.getElementById("documentSelect");
+      if (select) {
+        const resp = await fetch("/assets/data/pages.json");
+        if (resp.ok) {
+          const pages = await resp.json();
+          if (Array.isArray(pages)) {
+            pages.forEach((p) => {
+              const href = p.href || p.path || "";
+              const label = p.name || p.file || href;
+              if (!href) return;
+              // Avoid duplicates (value match)
+              const exists = Array.from(select.options).some(
+                (o) =>
+                  o.value === href || o.value === "/uploads/documents/" + href
+              );
+              if (exists) return;
+              const opt = document.createElement("option");
+              opt.value = href;
+              opt.textContent = label;
+              select.appendChild(opt);
+            });
+          }
+        }
+      }
+    } catch (e) {
+      console.warn("Failed to augment documentSelect with pages.json", e);
+    }
   } catch (err) {
     console.error("Kritična greška pri inicijalizaciji:", err);
     alert("Kritična greška pri inicijalizaciji editora: " + err.message);

@@ -15,14 +15,58 @@ class Contact
         $this->pdo = $db->GetPDO();
     }
 
-    public function list(int $limit = 10, int $offset = 0): array
-    {
+    public function list(
+        int $limit = 10,
+        int $offset = 0,
+        ?string $sortColumn = 'created_at',
+        string $sortDirection = 'DESC',
+        array $filters = []
+    ): array {
+        // Dozvoljene kolone za sortiranje
+        $allowedSortColumns = ['id', 'ime', 'prezime', 'email', 'phone', 'naslov', 'created_at'];
+        $sortColumn = in_array($sortColumn, $allowedSortColumns) ? $sortColumn : 'created_at';
+        $sortDirection = strtoupper($sortDirection) === 'ASC' ? 'ASC' : 'DESC';
+
+        // Osnovni SQL upit
         $sql = "SELECT SQL_CALC_FOUND_ROWS id, ime, prezime, email, phone, naslov, poruka, created_at
-                FROM contacts
-                ORDER BY created_at DESC
-                LIMIT :limit OFFSET :offset";
+            FROM contacts
+            WHERE 1=1";
+
+        // Dinamično dodavanje filtera
+        $params = [];
+        $conditions = [];
+        $params = [];
+
+        if (!empty($filters['ime'])) {
+            $conditions[] = "ime LIKE :ime";
+            $params[':ime'] = '%' . $filters['ime'] . '%';
+        }
+        if (!empty($filters['prezime'])) {
+            $conditions[] = "prezime LIKE :prezime";
+            $params[':prezime'] = '%' . $filters['prezime'] . '%';
+        }
+        if (!empty($filters['email'])) {
+            $conditions[] = "email LIKE :email";
+            $params[':email'] = '%' . $filters['email'] . '%';
+        }
+
+        if (!empty($conditions)) {
+            $sql .= " AND (" . implode(" OR ", $conditions) . ")";
+        }
+
+
+        // Sortiranje i paginacija
+        $sql .= " ORDER BY $sortColumn $sortDirection
+              LIMIT :limit OFFSET :offset";
 
         $stmt = $this->pdo->prepare($sql);
+
+        // Vezivanje filter parametara
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
+
+        // Paginacija
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 
@@ -33,6 +77,7 @@ class Contact
 
         return [$data, $total];
     }
+
     public function delete(int $id): bool
     {
         $stmt = $this->pdo->prepare("DELETE FROM contacts WHERE id = :id");

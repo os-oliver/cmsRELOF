@@ -1,6 +1,11 @@
 <?php
-
 namespace App\Utils;
+if (session_status() === PHP_SESSION_NONE) {
+    // Session has not started
+    session_start();
+} else {
+    // Session is already started
+}
 
 class CardRenderer
 {
@@ -12,17 +17,17 @@ class CardRenderer
 
         // Search input with full width
         $html .= "<div class='flex w-full sm:w-auto flex-1 gap-2'>
-                <input type='text' name='search' value='{$safeSearchValue}' placeholder='Pretraži...' 
+                <input type='text' name='search' value='{$safeSearchValue}' placeholder='{{PRETRAGA}}...' 
                     class='w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow shadow-sm'>
                 <button type='submit' class='bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition-all shadow-sm'>
-                    Primeni
+                {{PRIMENI}}
                 </button>
               </div>";
 
         // Category dropdown
         $html .= "<div class='flex items-center w-full sm:w-auto'>
                 <select name='category' class='w-full sm:w-64 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow shadow-sm'>
-                    <option value=''>Sve kategorije</option>";
+                    <option value=''>{{kategorije}}</option>";
 
         foreach ($categories as $cat) {
             $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
@@ -35,6 +40,9 @@ class CardRenderer
 
         $html .= "</form>";
 
+        $html = str_replace('{{PRIMENI}}', __('documents.apply'), $html);
+        $html = str_replace('{{kategorije}}', __('documents.all_categories'), $html);
+        $html = str_replace('{{PRETRAGA}}', __('dynamic.search'), $html);
         return $html;
     }
 
