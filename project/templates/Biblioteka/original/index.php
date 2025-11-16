@@ -197,6 +197,45 @@
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-secondary"></i>Početna
                     </a>
+                    <div class="mobile-dropdown nonPage megaMenu relative group">
+                        <button
+                            class="nav-link text-slate font-semibold hover:text-terracotta transition-colors flex items-center whitespace-nowrap">
+                            <i class="fas fa-info-circle mr-2 text-ochre group-hover:text-sage transition-colors"></i>
+                            <span class="hidden xl:inline">
+                                <p>Naslov</p>
+                            </span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+
+                        <!-- MEGA MENU -->
+                        <div
+                            class="mobile-dropdown-menu absolute top-full left-0 w-[600px] bg-paper rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-6 grid grid-cols-3 gap-6">
+
+                            <!-- Sekcija (dinamički se dodaje) -->
+                            <div>
+                                <h3 class="font-bold text-slate mb-2">[Naslov sekcije]</h3>
+                                <ul class="space-y-2">
+                                    <li>
+                                        <a href="#" class="flex items-center text-sm hover:text-terracotta">
+                                            <i class="fas fa-circle mr-2 text-gray-400"></i>[Stavka 1]
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center text-sm hover:text-terracotta">
+                                            <i class="fas fa-circle mr-2 text-gray-400"></i>[Stavka 2]
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center text-sm hover:text-terracotta">
+                                            <i class="fas fa-circle mr-2 text-gray-400"></i>[Stavka 3]
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Dupliraj ili izbriši sekciju po potrebi -->
+                        </div>
+                    </div>
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all"
@@ -788,90 +827,83 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary_text text-background pt-16 pb-8">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+    <footer class="bg-secondary text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
 
                 <div>
-                    <div class="flex items-center mb-5">
+                    <div class="flex items-center space-x-3 mb-6">
                         <div
-                            class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-background mr-3 shadow-md">
-                            <i class="fas fa-book-open text-xl"></i>
+                            class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                            <i class="fas fa-dumbbell text-xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-heading font-bold tracking-wide">KULTURNI NEXUS</h3>
+                        <div>
+                            <h3 class="text-2xl font-heading font-bold">Sportski objekti</h3>
+                            <p class="text-xs text-accent tracking-widest font-oswald">JAVNA USTANOVA</p>
+                        </div>
                     </div>
-                    <p class="mb-6 leading-relaxed text-sm opacity-90">
-                        Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Beograda.
+                    <p class="text-gray-300 mb-4">
+                        Vodeći sportski centar sa najsavremenijom opremom, profesionalnim trenerima i raznovrsnim
+                        programima za sve uzraste i nivoe.
                     </p>
-                    <div class="flex space-x-3">
+                    <div class="flex space-x-4">
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/20 hover:bg-secondary flex items-center justify-center transition-all duration-300">
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/20 hover:bg-secondary flex items-center justify-center transition-all duration-300">
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/20 hover:bg-secondary flex items-center justify-center transition-all duration-300">
-                            <i class="fab fa-youtube"></i>
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
+                            <i class="fab fa-twitter"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/20 hover:bg-secondary flex items-center justify-center transition-all duration-300">
-                            <i class="fab fa-spotify"></i>
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
+                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-heading font-bold mb-5 border-b border-secondary/30 pb-2 inline-block">Brzi
-                        linkovi</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-accent transition-colors">Izložbe</a></li>
-                        <li><a href="#" class="hover:text-accent transition-colors">Knjižni fond</a></li>
-                        <li><a href="#" class="hover:text-accent transition-colors">Radionice</a></li>
-                        <li><a href="#" class="hover:text-accent transition-colors">Događaji</a></li>
-                        <li><a href="#" class="hover:text-accent transition-colors">Članstvo</a></li>
-                        <li><a href="#" class="hover:text-accent transition-colors">Kalendar</a></li>
+                    <h4 class="text-xl font-heading font-bold mb-6 text-accent">BRZI LINKOVI</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Početna</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> O nama</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Sportovi</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Članstvo</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Dokumenti</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Kontakt</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-heading font-bold mb-5 border-b border-secondary/30 pb-2 inline-block">
-                        Informacije</h4>
-                    <ul class="space-y-3 text-sm">
+                    <h4 class="text-xl font-heading font-bold mb-6 text-accent">KONTAKT</h4>
+                    <ul class="space-y-4">
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                            <span>Knez Mihailova 56, 11000 Beograd</span>
+                            <i class="fas fa-map-marker-alt text-primary mr-3 mt-1"></i>
+                            <span class="text-gray-300">Sportska 15, 11000 Beograd</span>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-                            <span>+381 11 123 4567</span>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-300">+381 11 123 4567</span>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span data-translate="off">info@kulturninexus.rs</span>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-300">info@sportskiobjekti.rs</span>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-clock text-accent mt-1 mr-3"></i>
-                            <span>
-                                Utorak - Nedelja: 10:00 - 20:00<br>
-                                Ponedeljak: zatvoreno
-                            </span>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-primary mr-3"></i>
+                            <span class="text-gray-300">Pon-Ned: 06:00 - 23:00</span>
                         </li>
                     </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-heading font-bold mb-5 border-b border-secondary/30 pb-2 inline-block">
-                        Lokacija</h4>
-                    <div class="rounded-lg overflow-hidden shadow-md border border-primary/20">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.9759498375095!2d20.46121261577774!3d44.81381237909862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa4b2187733%3A0x63b8abe847a02ea1!2z0KHRgtGD0LTQtdC90YLRgdC60Lgg0YLRgNCzLCDQkdC10L7Qs9GA0LDQtA!5e0!3m2!1ssr!2srs!4v1629890732953!5m2!1ssr!2srs"
-                            class="w-full h-44 md:h-52" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
                 </div>
 
             </div>
@@ -880,7 +912,7 @@
                 class="border-t border-primary/10 pt-6 mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
 
                 <div class="text-xs opacity-80 md:w-3/5 order-2 md:order-1 text-center md:text-left">
-                    <p class="mb-2">© 2023 Biblioteka Nexus. Sva prava zadržana.</p>
+                    <p class="mb-2">© 2023 Javna ustanova "Sportski objekti". Sva prava zadržana.</p>
                     <div class="flex items-center justify-center md:justify-start gap-3 mt-3">
                         <p>
                             Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
@@ -894,6 +926,7 @@
                         class="h-15 md:h-15 object-contain hover:scale-105 transition-transform duration-300" />
                 </div>
             </div>
+
         </div>
     </footer>
 

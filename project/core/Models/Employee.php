@@ -29,7 +29,9 @@ class Employee
     {
         $params = [];
         $whereClause = '';
-
+        if ($locale == 'en') {
+            $locale = 'sr-Cyrl';
+        }
         if (!empty($search)) {
             $params[':search'] = '%' . $search . '%';
             $whereClause = "WHERE e.id IN (

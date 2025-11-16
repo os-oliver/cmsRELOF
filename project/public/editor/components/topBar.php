@@ -1,7 +1,10 @@
 <?php
+use App\Controllers\LanguageMapperController;
 use App\Models\Contact;
+use App\Utils\LocaleManager;
 $contact = new Contact();
 $numOfContacts = $contact->count();
+$locale = LocaleManager::get();
 ?>
 
 <header class="glass-panel py-4 px-6 flex items-center justify-between border-b border-gray-200">
@@ -10,6 +13,11 @@ $numOfContacts = $contact->count();
             <i class="fas fa-bars text-xl"></i>
         </button>
         <h2 class="text-xl font-bold text-gray-800">
+            <?php
+            if ($locale == 'sr-Cyrl') {
+                $name = (new LanguageMapperController())->latin_to_cyrillic($name);
+            }
+            ?>
             <?= __('topbar.welcome') . ', ' . $name ?>
         </h2>
     </div>
