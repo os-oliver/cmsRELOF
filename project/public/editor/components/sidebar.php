@@ -140,6 +140,10 @@
             <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
         </div>
         <div class="ml-3">
+            <?php
+
+
+            ?>
             <p class="text-sm font-medium text-gray-800"><?= $name . ' ' . $surname ?> </p>
             <p class="text-xs text-primary-600"><?= $role ?></p>
         </div>
