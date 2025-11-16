@@ -109,6 +109,11 @@
                 width: 100%;
             }
 
+            /* Remove underline from dropdown buttons */
+            button.nav-link::after {
+                display: none;
+            }
+
             .artistic-card {
                 clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
                 transition: all 0.4s ease;
@@ -407,6 +412,11 @@
                         </div>
                     </div>
 
+                    <a data-page="Vesti" href="#"
+                        class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
+                        <i class="fas fa-newspaper mr-3 text-accent_indigo"></i>Vesti
+                    </a>
+
                     <!-- Prava i usluge dropdown -->
                     <div class="mobile-dropdown">
                         <button
@@ -435,11 +445,6 @@
                     <a data-page="Dokumenti" href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-warning"></i>Dokumenti
-                    </a>
-
-                    <a data-page="Vesti" href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
-                        <i class="fas fa-newspaper mr-3 text-accent_indigo"></i>Vesti
                     </a>
 
                     <!-- Za korisnike dropdown -->
@@ -574,6 +579,13 @@
                     </div>
                 </div>
 
+                <a href="#"
+                    class="nav-link text-slate font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
+                    <i
+                        class="fas fa-newspaper mr-2 text-accent_indigo group-hover:text-accent_indigo_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Vesti</span>
+                </a>
+
                 <div class="dropdown relative group">
                     <button
                         class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
@@ -608,13 +620,6 @@
                     <i
                         class="fas fa-folder-open mr-2 text-warning group-hover:text-warning_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Dokumenti</span>
-                </a>
-
-                <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
-                    <i
-                        class="fas fa-newspaper mr-2 text-accent_indigo group-hover:text-accent_indigo_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Vesti</span>
                 </a>
 
                 <div class="dropdown relative group">
