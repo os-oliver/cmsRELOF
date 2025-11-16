@@ -17,39 +17,46 @@
                 extend: {
                     colors: {
                         // Background colors
-                        background: '#F8F5F0',           // Main background
-                        secondary_background: '#E9E4D8',  // Secondary background
+                        background: '#FFFFFF',
+                        secondary_background: '#FAF5FF',
 
-                        // Primary colors - for main elements like navbar
-                        primary: '#2C5530',              // Navbar background
-                        primary_hover: '#1F3D22',         // Navbar hover
+                        // Primary colors
+                        primary: '#8B5CF6',
+                        primary_hover: '#7C3AED',
+
+                        // Secondary colors
+                        secondary: '#64748B',
+                        secondary_hover: '#475569',
+
+                        // Accent colors
+                        accent: '#EC4899',
+                        accent_hover: '#DB2777',
 
                         // Text colors
-                        primary_text: '#2C3E50',          // Main text on light backgrounds
-                        secondary_text: '#5D4037',        // Secondary text
+                        primary_text: '#1E293B',
+                        secondary_text: '#64748B',
 
-                        // Secondary colors - for buttons, accents
-                        secondary: '#8B6B61',            // Buttons, borders
-                        secondary_hover: '#6D544A',       // Button hover
-
-                        // Accent colors - for highlights
-                        accent: '#D4AF37',               // Highlights, icons
-                        accent_hover: '#B8941F',          // Accent hover
-
-                        // Surface colors - for cards
-                        surface: '#FFFFFF',               // Cards, dropdowns
+                        // Surface color
+                        surface: '#F3E8FF'
                     },
-                    fontFamily: {
-                        'heading': ['Playfair Display', 'serif'],
-                        'heading2': ['Crimson Pro', 'serif'],
-                        'body': ['Raleway', 'sans-serif'],
-                    }
                 }
             }
         }
     </script>
 
     <style>
+        /* Prilagođena klasa za text-shadow radi poboljšanja čitljivosti */
+        .text-shadow-custom {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            /* Blaga tamna senka */
+        }
+
+        /* Dodatna klasa za jaču masku */
+        .bg-image-mask {
+            background-color: rgba(0, 0, 0, 0.55);
+            /* Povećana tamna maska */
+        }
+
         @media (min-width: 1024px) {
             .dropdown:hover .dropdown-menu {
                 opacity: 1;
@@ -197,6 +204,7 @@
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-secondary"></i>Početna
                     </a>
+
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all"
@@ -224,23 +232,85 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                             </a>
-
-
+                            <a data-page="Organi upravljanja" href="/o-nama/organi-upravljanja"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-users-cog mr-2 text-secondary"></i>Organi upravljanja
+                            </a>
+                            <a data-page="Objekat" href="/o-nama/objekat"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
+                            </a>
+                            <a data-page="Informacije" href="/o-nama/informacije"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-hand-holding-heart mr-2 text-accent"></i>Informacije
+                            </a>
+                            <a data-page="Pitanja" href="/o-nama/pitanja"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-handshake mr-2 text-primary"></i>Pitanja
                             </a>
                         </div>
                     </div>
+
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all"
+                            id="mobileActivitiesToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar-alt mr-3 text-accent"></i>Aktivnosti
+                            </div>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-200"
+                                id="mobileActivitiesIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileActivitiesMenu">
+                            <a data-page="Ankete" href="/aktivnosti/ankete"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-poll mr-2 text-secondary"></i>Ankete
+                            </a>
+                            <a data-page="Vesti" href="/aktivnosti/vesti"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-newspaper mr-2 text-secondary"></i>Vesti
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all"
+                            id="mobileServicesToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-concierge-bell mr-3 text-accent"></i>Usluge
+                            </div>
+                            <i class="fas fa-chevron-down text-sm transition-transform duration-200"
+                                id="mobileServicesIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileServicesMenu">
+                            <a data-page="Odeljenje za odrasle" href="/usluge/odeljenje-za-odrasle"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-user mr-2 text-primary"></i>Odeljenje za odrasle
+                            </a>
+                            <a data-page="Dečje odeljenje" href="/usluge/decje-odeljenje"
+                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-secondary transition-colors">
+                                <i class="fas fa-child mr-2 text-secondary"></i>Dečje odeljenje
+                            </a>
+
+                        </div>
+                    </div>
+
                     <a data-page="Dogadjaji" href="/dogadjaji"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Dogadjaji
+                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Događaji
                     </a>
+
                     <a data-page="Galerija" href="/galerija"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-primary"></i>Galerija
                     </a>
+
                     <a data-page="Dokumenti" href="/dokumenti"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-secondary"></i>Dokumenti
                     </a>
+
                     <a data-page="Kontakt" href="/kontakt"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-secondary hover:bg-secondary_background rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
@@ -292,7 +362,7 @@
 
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3">
-                        <a href="/o-nama/uvod"
+                        <a static="true" href="/o-nama/uvod"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Uvod</span>
@@ -302,7 +372,7 @@
                             <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija i vizija</span>
                         </a>
-                        <a href="/o-nama/istorijat"
+                        <a static="tre" href="/o-nama/istorijat"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
@@ -374,25 +444,26 @@
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3">
                         <a href="/usluge/odeljenje-za-odrasle"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2"
+                            static="true">
                             <i class="fas fa-user mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Odeljenje za odrasle</span>
                         </a>
+
                         <a href="/usluge/decje-odeljenje"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2"
+                            static="true">
                             <i class="fas fa-child mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Dečje odeljenje</span>
                         </a>
+
                         <a href="/usluge/zavicajni-fond"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2"
+                            static="true">
                             <i class="fas fa-archive mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Zavičajni fond</span>
                         </a>
-                        <a href="/usluge/legat"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-gift mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Legat</span>
-                        </a>
+
 
                     </div>
                 </div>
@@ -489,87 +560,217 @@
     </header>
 
     <!-- Hero Section with library theme -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 library-pattern">
-        <div class="absolute inset-0 z-0 opacity-10">
-            <div class="absolute top-0 left-0 w-full h-full"
-                style="background: radial-gradient(circle, #2C3E50 1px, transparent 1px); background-size: 40px 40px;">
-            </div>
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-12 pb-24 bg-surface text-primary_text">
+
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1610116306796-6fea9f4fae38?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Background image of books" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-image-mask backdrop-blur-sm"></div>
         </div>
 
-        <div class="container mx-auto px-4 py-24 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="max-w-2xl bg-surface p-8 rounded-xl shadow-xl">
-                    <div class="mb-8">
+        <div class="absolute inset-0 z-0 opacity-5">
+            <div
+                class="absolute top-1/4 left-1/4 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse">
+            </div>
+            <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"
+                style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 py-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <div class="lg:col-span-7 max-w-2xl order-2 lg:order-1 space-y-8">
+
+                    <span
+                        class="inline-flex items-center bg-secondary text-white border border-secondary px-5 py-2 rounded-full text-sm font-semibold mb-6 transition-colors duration-300 shadow-md hover:bg-secondary_hover">
+                        <i class="fas fa-landmark mr-2"></i>
+                        Biblioteka „Veljko Petrović"
+                    </span>
+
+                    <h1
+                        class="text-5xl md:text-6xl font-heading font-extrabold leading-snug mb-6 text-shadow-custom text-surface">
+                        <span class="block text-surface">Otkrijte svet</span>
                         <span
-                            class="inline-block bg-accent text-primary_text px-4 py-1 rounded-full text-sm font-medium mb-6">
-                            <i class="fas fa-star mr-2"></i>Istaknuto ovog meseca
+                            class="block bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent mt-1">
+                            pisane reči.
                         </span>
-                        <h1 class="text-4xl md:text-5xl font-heading font-bold leading-tight text-primary_text mb-6">
-                            <span class="block">Mesto gde se umetnost, knjiga i</span>
-                            <span class="block text-secondary mt-2">kultura susreću</span>
-                        </h1>
-                    </div>
+                    </h1>
 
-                    <div class="mb-10 relative pl-6 border-l-4 border-secondary">
-                        <p class="text-lg text-primary_text leading-relaxed max-w-lg mb-6">
-                            Doživite bogatstvo književnosti, umetnosti i kulture u našem novom renoviranom prostoru.
-                        </p>
-                        <p class="text-primary_text italic">
-                            "Biblioteka nije luksuz, već jedna od potreba života."
-                            <span class="block font-medium text-secondary mt-2">— Henry Ward Beecher</span>
-                        </p>
-                    </div>
-
-                    <div class="mt-8 grid grid-cols-2 gap-4">
-                        <div class="flex items-center bg-secondary_background p-3 rounded-lg">
-                            <i class="fas fa-book text-secondary text-xl mr-3"></i>
-                            <span class="text-primary_text">Preko 50,000 naslova</span>
-                        </div>
-                        <div class="flex items-center bg-secondary_background p-3 rounded-lg">
-                            <i class="fas fa-users text-secondary text-xl mr-3"></i>
-                            <span class="text-primary_text">Čitaonice za sve uzraste</span>
-                        </div>
-                        <div class="flex items-center bg-secondary_background p-3 rounded-lg">
-                            <i class="fas fa-calendar text-secondary text-xl mr-3"></i>
-                            <span class="text-primary_text">Dnevni kulturni program</span>
-                        </div>
-                        <div class="flex items-center bg-secondary_background p-3 rounded-lg">
-                            <i class="fas fa-wifi text-secondary text-xl mr-3"></i>
-                            <span class="text-primary_text">Besplatan internet</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative hidden lg:block">
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="book-spine bg-secondary h-96 rounded-lg shadow-lg transform rotate-1"></div>
-                        <div class="book-spine bg-primary_text h-80 rounded-lg shadow-lg transform -rotate-2 mt-8">
-                        </div>
-                        <div class="book-spine bg-accent h-88 rounded-lg shadow-lg transform rotate-3 mt-4"></div>
-                        <div class="book-spine bg-secondary h-84 rounded-lg shadow-lg transform -rotate-1 mt-12"></div>
-                        <div class="book-spine bg-primary_text h-92 rounded-lg shadow-lg transform rotate-2 mt-6"></div>
-                        <div class="book-spine bg-accent h-76 rounded-lg shadow-lg transform -rotate-3 mt-10"></div>
-                    </div>
+                    <p class="text-xl text-surface leading-relaxed font-light mb-8 text-shadow-custom">
+                        Stolećima inspirišemo, obrazujemo i povezujemo ljude kroz moć pisane reči, otvarajući vrata
+                        novim svetovima znanja.
+                    </p>
 
                     <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-surface rounded-full flex items-center justify-center shadow-xl">
-                        <div class="text-center p-6">
-                            <h3 class="font-heading text-xl font-bold text-primary_text">Kulturna Oaza</h3>
-                            <p class="text-secondary mt-2">Prostor za učenje, razmišljanje i inspiraciju</p>
+                        class="bg-secondary_background/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-secondary_background transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-center gap-4 mb-5">
+                            <div class="text-accent">
+                                <i class="fas fa-search text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-primary_text">Pretražite katalog</h3>
+                                <p class="text-primary_text/80 text-sm">COBISS digitalna baza</p>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <input type="text" placeholder="Unesite naslov, autora ili ključnu reč..."
+                                class="w-full px-5 py-3 pr-28 rounded-lg border border-secondary_background focus:border-accent outline-none text-primary_text bg-surface text-base transition-colors shadow-inner" />
+                            <button
+                                class="absolute right-1.5 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-secondary to-accent text-surface px-4 py-2 rounded-md font-semibold text-sm hover:opacity-90 transition-opacity flex items-center gap-1">
+                                <i class="fas fa-arrow-right"></i>
+                                <span>Traži</span>
+                            </button>
+                        </div>
+
+                        <a href="https://plus-legacy.cobiss.net/cobiss/sr/sr/colib/ZABALJ" target="_blank"
+                            class="mt-3 block text-accent hover:text-secondary transition-colors duration-300 text-xs font-medium w-fit">
+                            Napredna pretraga COBISS
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+                        <div
+                            class="flex flex-col items-center p-4 rounded-xl transition-all duration-300 bg-secondary_background/50 hover:bg-secondary_background/70 hover:shadow-xl cursor-pointer border-t-2 border-transparent hover:border-secondary group">
+                            <div
+                                class="bg-secondary p-3 rounded-full mb-2 transition-colors duration-300 group-hover:bg-secondary_hover group-hover:scale-105">
+                                <i class="fas fa-book-reader text-white text-xl"></i>
+                            </div>
+                            <span class="text-primary_text font-medium text-sm text-center">Čitaonice</span>
+                        </div>
+
+                        <div
+                            class="flex flex-col items-center p-4 rounded-xl transition-all duration-300 bg-secondary_background/50 hover:bg-secondary_background/70 hover:shadow-xl cursor-pointer border-t-2 border-transparent hover:border-accent group">
+                            <div
+                                class="bg-accent p-3 rounded-full mb-2 transition-colors duration-300 group-hover:bg-accent_hover group-hover:scale-105">
+                                <i class="fas fa-theater-masks text-white text-xl"></i>
+                            </div>
+                            <span class="text-primary_text font-medium text-sm text-center">Kulturni programi</span>
+                        </div>
+
+                        <div
+                            class="flex flex-col items-center p-4 rounded-xl transition-all duration-300 bg-secondary_background/50 hover:bg-secondary_background/70 hover:shadow-xl cursor-pointer border-t-2 border-transparent hover:border-secondary group">
+                            <div
+                                class="bg-secondary p-3 rounded-full mb-2 transition-colors duration-300 group-hover:bg-secondary_hover group-hover:scale-105">
+                                <i class="fas fa-laptop text-white text-xl"></i>
+                            </div>
+                            <span class="text-primary_text font-medium text-sm text-center">Digitalna zbirka</span>
+                        </div>
+
+                        <div
+                            class="flex flex-col items-center p-4 rounded-xl transition-all duration-300 bg-secondary_background/50 hover:bg-secondary_background/70 hover:shadow-xl cursor-pointer border-t-2 border-transparent hover:border-accent group">
+                            <div
+                                class="bg-accent p-3 rounded-full mb-2 transition-colors duration-300 group-hover:bg-accent_hover group-hover:scale-105">
+                                <i class="fas fa-child text-white text-xl"></i>
+                            </div>
+                            <span class="text-primary_text font-medium text-sm text-center">Dečji program</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-5 relative flex items-center justify-center order-1 lg:order-2 h-[550px]">
+                    <div class="relative w-full h-full flex items-center justify-center">
+
+                        <div
+                            class="absolute -top-10 lg:-top-16 left-1/2 transform -translate-x-1/2 bg-surface p-5 rounded-xl shadow-2xl border-l-4 border-secondary max-w-sm z-40">
+                            <p class="text-primary_text text-lg italic leading-relaxed mb-3">
+                                "Biblioteka je čarobno mesto gde svaka knjiga otvara vrata u novi svet."
+                            </p>
+                            <p class="font-bold text-secondary text-sm text-right">
+                                — Neil Gaiman
+                            </p>
+                        </div>
+
+                        <div class="relative mt-20" style="perspective: 1000px;">
+
+                            <div
+                                class="absolute top-8 -right-4 w-60 h-80 bg-gray-300 rounded-lg shadow-xl transform rotate-3 transition-all duration-500 z-10">
+                                <div class="p-6 h-full flex flex-col justify-between">
+                                    <div class="text-primary_text/50 font-bold text-sm">ISTORIJA</div>
+                                    <div class="space-y-2">
+                                        <div class="w-full h-1.5 bg-primary_text/20 rounded"></div>
+                                        <div class="w-4/5 h-1.5 bg-primary_text/20 rounded"></div>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 border border-white/20 rounded-lg"></div>
+                            </div>
+
+                            <div class="relative mt-20" style="perspective: 1500px;">
+                                <div
+                                    class="absolute -top-4 -left-20 w-72 h-[360px] bg-gradient-to-br from-indigo-400 to-purple-500 rounded-lg shadow-2xl transform -rotate-12 transition-all duration-500 z-10 opacity-75">
+                                    <div class="p-8 h-full flex flex-col justify-between">
+                                        <div class="text-white/60 font-bold text-sm tracking-widest">ROMAN</div>
+                                        <div class="space-y-3">
+                                            <div class="w-full h-2 bg-white/30 rounded"></div>
+                                            <div class="w-4/5 h-2 bg-white/30 rounded"></div>
+                                            <div class="w-3/5 h-2 bg-white/30 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="absolute -top-8 -right-20 w-72 h-[360px] bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg shadow-2xl transform rotate-12 transition-all duration-500 z-10 opacity-75">
+                                    <div class="p-8 h-full flex flex-col justify-between">
+                                        <div class="text-white/60 font-bold text-sm tracking-widest">BIOGRAFIJA</div>
+                                        <div class="space-y-3">
+                                            <div class="w-full h-2 bg-white/30 rounded"></div>
+                                            <div class="w-4/5 h-2 bg-white/30 rounded"></div>
+                                            <div class="w-3/5 h-2 bg-white/30 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="absolute top-0 left-1/2 transform -translate-x-1/2 w-80 h-[400px] bg-gradient-to-br from-blue-400 to-teal-500 rounded-lg shadow-2xl transition-all duration-500 z-20 opacity-85">
+                                    <div class="p-8 h-full flex flex-col justify-between">
+                                        <div class="text-white/70 font-bold text-base tracking-widest">KLASICI</div>
+                                        <div class="space-y-3">
+                                            <div class="w-full h-2 bg-white/40 rounded"></div>
+                                            <div class="w-5/6 h-2 bg-white/40 rounded"></div>
+                                            <div class="w-4/6 h-2 bg-white/40 rounded"></div>
+                                            <div class="w-3/6 h-2 bg-white/40 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="relative w-96 h-[480px] bg-gradient-to-br from-secondary to-accent rounded-lg shadow-2xl transform hover:scale-[1.05] transition-all duration-500 z-30 group">
+                                    <div class="p-10 h-full flex flex-col justify-between">
+                                        <div>
+                                            <div class="text-surface font-bold text-xl mb-6 tracking-widest">KNJIŽEVNOST
+                                            </div>
+                                            <i class="fas fa-book-open text-surface text-6xl opacity-95"></i>
+                                        </div>
+                                        <div class="space-y-4">
+                                            <div class="w-full h-2.5 bg-surface opacity-80 rounded"></div>
+                                            <div class="w-5/6 h-2.5 bg-surface opacity-80 rounded"></div>
+                                            <div class="w-4/6 h-2.5 bg-surface opacity-80 rounded"></div>
+                                            <div class="w-3/6 h-2.5 bg-surface opacity-80 rounded"></div>
+                                            <div class="w-2/6 h-2.5 bg-surface opacity-80 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-surface px-5 py-2 rounded-full shadow-xl border border-secondary_background z-40">
+                                <span class="text-primary_text font-semibold text-sm flex items-center">
+                                    <i class="fas fa-heart mr-2 text-accent"></i>
+                                    Srce zajednice
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Scrolling indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-            <div class="animate-bounce w-8 h-14 rounded-full border-2 border-secondary flex justify-center p-1">
-                <div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+        <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-20">
+            <div class="animate-bounce w-6 h-10 rounded-full border border-secondary flex justify-center p-0.5">
+                <div class="w-1 h-1 bg-secondary rounded-full animate-pulse"></div>
             </div>
         </div>
     </section>
-
     <!-- Featured Events Section -->
     <section id="events" class="py-20 bg-secondary_background">
         <div class="container mx-auto px-4">
