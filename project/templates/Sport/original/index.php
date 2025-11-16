@@ -464,7 +464,7 @@
                             class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
                             <i class="fas fa-users-cog mr-2 text-secondary"></i>Organizaciona struktura
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
                             <i class="fas fa-info-circle mr-2 text-accent"></i>Informacije
                         </a>
@@ -1239,7 +1239,7 @@
                     closeMobileMenuFn();
                 }
             });
-    });
+        });
     </script>
 </body>
 

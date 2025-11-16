@@ -147,10 +147,25 @@ function handleStaticPages(array $data): void
         while (true) {
             $candidate = $baseClean . ($suffix > 0 ? ('-' . $suffix) : '');
             $candidateFile = $candidate . '.php';
-            if ($columnName && trim((string) $columnName) !== '') {
-                $candidateHref = '/' . trim($columnName, '/') . '/' . $candidate;
+            // If page is marked not-movable and has an explicit href, honor it
+            $useProvidedHref = (isset($page['movable']) && $page['movable'] === false && !empty($page['href']));
+            if ($useProvidedHref) {
+                // Use provided href as candidate (normalize leading/trailing slashes)
+                $candidateHref = $page['href'];
+                if (substr($candidateHref, 0, 1) !== '/') {
+                    $candidateHref = '/' . $candidateHref;
+                }
+                $candidateHref = rtrim($candidateHref, '/');
+                // if provided href was just '/', keep it as '/'
+                if ($candidateHref === '') {
+                    $candidateHref = '/';
+                }
             } else {
-                $candidateHref = '/' . $candidate;
+                if ($columnName && trim((string) $columnName) !== '') {
+                    $candidateHref = '/' . trim($columnName, '/') . '/' . $candidate;
+                } else {
+                    $candidateHref = '/' . $candidate;
+                }
             }
 
             // Check file ownership: if file is present in existing map and owned by different id => conflict
@@ -222,12 +237,24 @@ function handleStaticPages(array $data): void
 
         // Update page data
         $page['path'] = "pages/" . $cleanFileName . ".php";
-        if ($columnName && trim((string) $columnName) !== '') {
-            $page['href'] = "/" . trim($columnName, '/') . "/" . $cleanFileName;
+        // Preserve explicit href for non-movable pages; otherwise assign generated href
+        if (isset($page['movable']) && $page['movable'] === false && !empty($page['href'])) {
+            // Normalize provided href (ensure leading slash)
+            if (substr($page['href'], 0, 1) !== '/') {
+                $page['href'] = '/' . $page['href'];
+            }
+            // Ensure file is set to the generated filename if not provided
+            if (empty($page['file'])) {
+                $page['file'] = $cleanFileName . ".php";
+            }
         } else {
-            $page['href'] = "/" . $cleanFileName;
+            if ($columnName && trim((string) $columnName) !== '') {
+                $page['href'] = "/" . trim($columnName, '/') . "/" . $cleanFileName;
+            } else {
+                $page['href'] = "/" . $cleanFileName;
+            }
+            $page['file'] = $cleanFileName . ".php";
         }
-        $page['file'] = $cleanFileName . ".php";
 
         $processedPages[] = $page;
     }
