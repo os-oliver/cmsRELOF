@@ -16,6 +16,7 @@ use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\SportoviPageBuilder;
 use App\Admin\PageBuilders\SavetovalistePageBuilder;
+use App\Admin\PageBuilders\SportsObjectsPageBuilder;
 use App\Admin\PageBuilders\TestBuilder;
 use App\Admin\PageBuilders\UvodPageBuilder;
 use App\Admin\PageBuilders\VestiPageBuilder;
@@ -594,6 +595,7 @@ class PageExporter
         use App\Models\AboutUs;
         $dataAboutUS = new AboutUs();
         $aboutUsData = $dataAboutUS->list($locale);
+        $groupedPages = PageLoader::getGroupedStaticPages();
 
         // Load dynamic texts
         $textModel = new Text();
@@ -714,6 +716,8 @@ class PageExporter
             case 'gastronomija':
                 return new DynamicPageBuilder('Gastronomija');
             case 'ansambl':
+                return new DynamicPageBuilder('Ansambl');
+            case 'ansambl':
                 return new AnsambalPageBuilder('Ansambl');
             case 'projekti':
                 return new ProjektiPageBuilder('Projekti');
@@ -726,6 +730,8 @@ class PageExporter
             case 'ankete':
                 return new AnketePageBuilder('Ankete');
             case 'repertoar':
+                return new RepertoarPageBuilder('Repertoar');
+            case 'repertoar':
                 return new LibraryProgramPageBuilder('repertoar');
             case 'izlozbe':
                 return new IzlozbePageBuilder('izlozbe');
@@ -733,14 +739,12 @@ class PageExporter
                 return new ZnacajaStranica('ZnacajaStranica', $this->data);
             case 'objekat':
                 return new ObjekatPageBuilder('Objekat', $this->data);
+            case 'objekti':
+                return new SportsObjectsPageBuilder('Objekti');
             case 'fondovi':
                 return new DynamicPageBuilder('fondovi');
             case 'sportovi':
                 return new SportoviPageBuilder('sportovi');
-            case 'repertoar':
-                return new RepertoarPageBuilder('Repertoar');
-            case 'ansambl':
-                return new DynamicPageBuilder('Ansambl');
             case 'pitanja':
                 return new FAQPageBuilder('Pitanja');
             case 'jelovnik':
@@ -774,7 +778,7 @@ class PageExporter
             return 'kontakt';
         } elseif (strpos($name, 'dokumenti') !== false) {
             return 'dokumenti';
-        } elseif (strpos($name, 'dogadjaji') !== false) {
+        } elseif (strpos($name, 'dogadjaji') !== false || strpos($name, 'dogadaji') !== false) {
             return 'dogadjaji';
         } elseif (strpos($name, 'predstave') !== false) {
             return 'predstave';
@@ -805,10 +809,10 @@ class PageExporter
             return 'primer';
         } elseif (strpos($name, 'cilj') !== false) {
             return 'cilj';
-        } elseif (strpos($name, 'dogadaji') !== false) {
-            return 'dogadjaji';
         } elseif (strpos($name, 'programi-obuke') !== false || strpos($name, 'programi obuke') !== false) {
             return 'programi-obuke';
+        } elseif (strpos($name, 'objekti') !== false) {
+            return 'objekti';
         } elseif (strpos($name, 'posebne') !== false) {
             return 'posebne';
         } elseif (strpos($name, 'usluge') !== false) {
@@ -827,14 +831,14 @@ class PageExporter
             return 'manifestacije';
         } elseif (strpos($name, 'smestaj') !== false) {
             return 'smestaj';
+        } elseif (strpos($name, 'raspored-aktivnosti') !== false) {
+            return 'raspored-aktivnosti';
         } elseif (strpos($name, 'aktivnosti') !== false) {
             return 'aktivnosti';
         } elseif (strpos($name, 'gastronomija') !== false) {
             return 'gastronomija';
         } elseif (strpos($name, 'ansambl') !== false) {
             return 'ansambl';
-        } elseif (strpos($name, 'projekti') !== false) {
-            return 'projekti';
         } elseif (strpos($name, 'organizaciona-struktura') !== false) {
             return 'organizaciona-struktura';
         } elseif (strpos($name, 'rukovodstvo') !== false) {
@@ -845,8 +849,6 @@ class PageExporter
             return 'uvod';
         } elseif (strpos($name, 'istorijat') !== false) {
             return 'istorijat';
-        } elseif (strpos($name, 'objekat') !== false) {
-            return 'objekat';
         } elseif (strpos($name, 'donacije-i-podrska') !== false) {
             return 'donacije-i-podrska';
         } elseif (strpos($name, 'partneri') !== false) {
@@ -863,15 +865,8 @@ class PageExporter
             return 'objekat';
         } elseif (strpos($name, 'fondovi') !== false) {
             return 'fondovi';
-
         } elseif (strpos($name, 'sportovi') !== false) {
             return 'sportovi';
-
-
-        } elseif (strpos($name, 'repertoar') !== false) {
-            return 'repertoar';
-        } elseif (strpos($name, 'ansambl') !== false) {
-            return 'ansambl';
         } elseif (strpos($name, 'pitanja') !== false) {
             return 'pitanja';
         } elseif (strpos($name, 'test123') !== false) {
@@ -880,23 +875,15 @@ class PageExporter
             return 'jelovnik';
         } elseif (strpos($name, 'cenovnik') !== false) {
             return 'cenovnik';
-        } elseif (strpos($name, 'raspored-aktivnosti') !== false) {
-            return 'raspored-aktivnosti';
-        } elseif (strpos($name, 'istorijat') !== false) {
-            return 'istorijat';
         } elseif (strpos($name, 'upis') !== false) {
             return 'upis';
         } elseif (strpos($name, 'savetovaliste') !== false) {
             return 'savetovaliste';
-
-
         } elseif (strpos($name, 'zaposleni') !== false) {
             return 'zaposleni';
         } elseif (strpos($name, 'organi-upravljanja') !== false) {
             return 'organi-upravljanja';
         }
-
-
 
         return 'basic';
     }

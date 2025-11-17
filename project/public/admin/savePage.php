@@ -147,10 +147,25 @@ function handleStaticPages(array $data): void
         while (true) {
             $candidate = $baseClean . ($suffix > 0 ? ('-' . $suffix) : '');
             $candidateFile = $candidate . '.php';
-            if ($columnName && trim((string) $columnName) !== '') {
-                $candidateHref = '/' . trim($columnName, '/') . '/' . $candidate;
+            // If page is marked not-movable and has an explicit href, honor it
+            $useProvidedHref = (isset($page['movable']) && $page['movable'] === false && !empty($page['href']));
+            if ($useProvidedHref) {
+                // Use provided href as candidate (normalize leading/trailing slashes)
+                $candidateHref = $page['href'];
+                if (substr($candidateHref, 0, 1) !== '/') {
+                    $candidateHref = '/' . $candidateHref;
+                }
+                $candidateHref = rtrim($candidateHref, '/');
+                // if provided href was just '/', keep it as '/'
+                if ($candidateHref === '') {
+                    $candidateHref = '/';
+                }
             } else {
-                $candidateHref = '/' . $candidate;
+                if ($columnName && trim((string) $columnName) !== '') {
+                    $candidateHref = '/' . trim($columnName, '/') . '/' . $candidate;
+                } else {
+                    $candidateHref = '/' . $candidate;
+                }
             }
 
             // Check file ownership: if file is present in existing map and owned by different id => conflict
@@ -209,19 +224,37 @@ function handleStaticPages(array $data): void
         </main>');
         $basicPageContent = $builder->buildPage();
 
-        // Save the file
-        if (file_put_contents($filePath, $basicPageContent) === false) {
-            throw new Exception("Failed to create page file: " . $filePath);
+        // Save the file only if it doesn't already exist with content
+        if (file_exists($filePath) && filesize($filePath) > 0) {
+            // File already exists with content, skip overwriting
+            error_log("File already exists with content, skipping: " . $filePath);
+        } else {
+            // File doesn't exist or is empty, create/overwrite it
+            if (file_put_contents($filePath, $basicPageContent) === false) {
+                throw new Exception("Failed to create page file: " . $filePath);
+            }
         }
 
         // Update page data
         $page['path'] = "pages/" . $cleanFileName . ".php";
-        if ($columnName && trim((string) $columnName) !== '') {
-            $page['href'] = "/" . trim($columnName, '/') . "/" . $cleanFileName;
+        // Preserve explicit href for non-movable pages; otherwise assign generated href
+        if (isset($page['movable']) && $page['movable'] === false && !empty($page['href'])) {
+            // Normalize provided href (ensure leading slash)
+            if (substr($page['href'], 0, 1) !== '/') {
+                $page['href'] = '/' . $page['href'];
+            }
+            // Ensure file is set to the generated filename if not provided
+            if (empty($page['file'])) {
+                $page['file'] = $cleanFileName . ".php";
+            }
         } else {
-            $page['href'] = "/" . $cleanFileName;
+            if ($columnName && trim((string) $columnName) !== '') {
+                $page['href'] = "/" . trim($columnName, '/') . "/" . $cleanFileName;
+            } else {
+                $page['href'] = "/" . $cleanFileName;
+            }
+            $page['file'] = $cleanFileName . ".php";
         }
-        $page['file'] = $cleanFileName . ".php";
 
         $processedPages[] = $page;
     }
@@ -320,14 +353,7 @@ try {
             json_encode([$dataArray], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
         );
 
-        $allCategoriesToInsert = [];
-        foreach ($dataArray as $typeKey => $typeData) {
-            foreach (($typeData['categories'] ?? []) as $category) {
-                $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
-            }
-        }
 
-        GenericCategory::replaceAllCategories($allCategoriesToInsert);
     } else {
         error_log("Single page export mode — skipping structure and categories.");
     }

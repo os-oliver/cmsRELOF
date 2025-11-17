@@ -52,6 +52,166 @@
         };
     </script>
     <style>
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 0.1;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes particle-float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(10px, -10px) rotate(90deg);
+            }
+
+            50% {
+                transform: translate(0, -20px) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(-10px, -10px) rotate(270deg);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        .animate-particle {
+            animation: particle-float 8s ease-in-out infinite;
+        }
+
+        .shimmer-effect {
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #1E40AF 0%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30, 64, 175, 0.2);
+        }
+
+        .decorative-line {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .decorative-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #1E40AF, transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        .shimmer-effect {
+            background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.1), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #d4a574 0%, #e8c8a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.3);
+        }
+
+        .decorative-line {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .decorative-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4a574, transparent);
+            animation: shimmer 2s infinite;
+        }
+
         .search-container {
             position: relative;
             display: flex;
@@ -709,132 +869,202 @@
         </div>
     </header>
 
-    <!-- Enhanced Hero Section -->
-    <section
-        class="relative min-h-screen flex items-center overflow-hidden pt-16 bg-gradient-to-br from-surface to-accent">
-        <!-- Decorative background elements -->
-        <div class="absolute inset-0 z-0">
-            <!-- Floating paint elements -->
 
-            <div
-                class="absolute top-20 left-10 w-80 h-40 bg-primary opacity-15 transform rotate-12 rounded-full animate-float">
+    <section
+        class="relative w-full min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-surface to-white">
+
+        <!-- Advanced Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <!-- Animated gradient orbs -->
+            <div class="absolute top-20 left-10 w-96 h-96 bg-primary opacity-10 blur-3xl rounded-full animate-float">
             </div>
-            <div class="absolute bottom-40 right-20 w-64 h-32 bg-secondary opacity-10 transform -rotate-6 rounded-full animate-float"
+            <div class="absolute bottom-40 right-20 w-80 h-80 bg-secondary opacity-8 blur-3xl rounded-full animate-float"
                 style="animation-delay: 1s;"></div>
-            <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-accent opacity-10 animate-float"
+            <div class="absolute top-1/3 left-1/4 w-72 h-72 bg-accent opacity-8 blur-3xl animate-float"
                 style="animation-delay: 2s;"></div>
-            <div class="absolute top-1/2 right-1/3 w-32 h-32 bg-secondary opacity-10 rounded-full animate-float"
+            <div class="absolute top-1/2 right-1/3 w-64 h-64 bg-primary opacity-10 blur-3xl rounded-full animate-pulse-glow"
                 style="animation-delay: 3s;"></div>
 
-            <!-- Pattern overlay -->
-            <div class="absolute inset-0 opacity-10"
-                style="background-image: radial-gradient(#1f2937 1px, transparent 1px); background-size: 20px 20px;">
+            <!-- Geometric patterns -->
+            <div class="absolute inset-0 opacity-[0.03]"
+                style="background-image: radial-gradient(circle, #1E40AF 1px, transparent 1px); background-size: 40px 40px;">
+            </div>
+            <div class="absolute inset-0 opacity-[0.03]"
+                style="background-image: linear-gradient(45deg, transparent 48%, #0F4C75 48%, #0F4C75 52%, transparent 52%); background-size: 80px 80px;">
             </div>
 
-            <!-- Paint splatters -->
-            <div class="absolute top-1/4 right-1/5 w-24 h-24 bg-secondary opacity-10 rounded-full"
-                style="clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"></div>
-            <div class="absolute bottom-1/3 left-1/6 w-20 h-20 bg-primary opacity-10"
-                style="clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);"></div>
+            <!-- Decorative shapes with borders -->
+            <div class="absolute top-1/4 right-1/5 w-32 h-32 border-2 border-primary/20 rounded-full animate-float"
+                style="animation-delay: 1.5s;"></div>
+            <div class="absolute bottom-1/3 left-1/6 w-24 h-24 border-2 border-secondary/20 rotate-45 animate-float"
+                style="animation-delay: 2.5s;"></div>
+
+            <!-- Floating particles -->
+            <div class="particle absolute top-1/4 left-1/3 w-2 h-2 bg-accent/40 animate-particle"
+                style="animation-delay: 0s;"></div>
+            <div class="particle absolute top-2/3 right-1/4 w-3 h-3 bg-primary/30 animate-particle"
+                style="animation-delay: 2s;"></div>
+            <div class="particle absolute bottom-1/4 left-1/2 w-2 h-2 bg-secondary/30 animate-particle"
+                style="animation-delay: 4s;"></div>
+            <div class="particle absolute top-1/2 right-1/2 w-1.5 h-1.5 bg-accent/50 animate-particle"
+                style="animation-delay: 6s;"></div>
+
+            <!-- Light rays -->
+            <div
+                class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-primary/10 via-transparent to-transparent">
+            </div>
+            <div
+                class="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-accent/10 via-transparent to-transparent">
+            </div>
         </div>
 
-        <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="max-w-2xl">
-                    <div class="mb-8">
-                        <span
-                            class="inline-block bg-surface text-primary_text px-4 py-1 rounded-full text-sm font-medium mb-6">
-                            <i class="fas fa-star mr-2 text-accent"></i>Istaknuto ovog meseca
-                        </span>
-                        <h1 class="text-5xl md:text-6xl font-heading font-bold leading-tight text-primary_text mb-6">
-                            <span class="block artistic-underline">Mesto gde se umetnost, film i</span>
-                            <span class="block text-primary mt-2">kultura susreću</span>
+        <div class="container  mx-auto px-6 lg:px-12 py-16 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                <!-- Content Section -->
+                <div class="space-y-8">
+                    <!-- Badge -->
+                    <div
+                        class="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full border-2 border-primary/20 shadow-lg backdrop-blur-sm">
+                        <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                        <span class="text-primary_text text-sm font-semibold tracking-wide">Od 1978. godine u službi
+                            kulture</span>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <div class="space-y-6">
+                        <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight text-primary_text">
+                            <span class="block decorative-line pb-3">Kulturni centar</span>
+                            <span class="block gradient-text mt-2">Zrenjanin</span>
                         </h1>
+                        <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full"></div>
                     </div>
 
-                    <div class="mb-10 relative pl-6 border-l-4 border-secondary">
-                        <p class="text-xl text-primary_text leading-relaxed max-w-lg mb-6">
-                            Doživite živopisnu spoju vizuelnih umetnosti, nezavisnog filma, pozorišta i kulturne baštine
-                            u našem novom renoviranom prostoru.
+                    <!-- Description with decorative border -->
+                    <div class="relative pl-8 space-y-6">
+                        <div
+                            class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-transparent rounded-full">
+                        </div>
+
+                        <p class="text-xl text-primary_text leading-relaxed font-medium">
+                            Jedinstvena ustanova kulture koja već više od četiri decenije obogaćuje kulturni život grada
+                            kroz raznovrsne programe i manifestacije.
                         </p>
-                        <p class="text-secondary_text italic">
-                            "Kulturni centar je srce zajednice, gde različiti izrazi pronalaze zajednički jezik."
-                            <span class="block font-medium text-accent mt-2">— Elena Rodriguez, Umetnički
-                                direktor</span>
+
+                        <p class="text-lg text-secondary_text leading-relaxed">
+                            Osnovan 1978. godine kao Dom mladosti, danas Kulturni centar predstavlja srce kulturnog
+                            života Zrenjanina, spajajući tradiciju i savremene forme umetničkog izražavanja.
                         </p>
+
+                        <blockquote
+                            class="relative pl-6 border-l-4 border-accent italic text-secondary_text bg-surface/50 py-4 rounded-r-lg">
+                            <p class="text-lg">"Mesto gde se susreću različiti oblici umetnosti, gde kultura postaje
+                                dostupna svima."</p>
+                            <footer class="mt-3 text-primary font-semibold not-italic">— Vizija Kulturnog centra
+                            </footer>
+                        </blockquote>
                     </div>
 
-                    <!-- Quick links -->
-                    <div class="mt-10 flex flex-wrap gap-3">
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
-                            <span class="w-3 h-3 bg-secondary rounded-full mr-2"></span>
-                            Trenutne izložbe
+
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4 pt-6">
+                        <a href="/sadrzaji/programi"
+                            class="group px-8 py-4 bg-gradient-to-r from-primary to-primary_hover text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center gap-2">
+                            <span>Pregledaj programe</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
-                            <span class="w-3 h-3 bg-primary rounded-full mr-2"></span>
-                            Raspored filmova
-                        </a>
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
-                            <span class="w-3 h-3 bg-secondary rounded-full mr-2"></span>
-                            Pozorišne predstave
-                        </a>
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
-                            <span class="w-3 h-3 bg-accent rounded-full mr-2"></span>
-                            Muzički događaji
+                        <a href="/o-nama/o-kczr-u"
+                            class="px-8 py-4 bg-white text-primary_text font-semibold rounded-xl border-2 border-primary/30 hover:border-primary hover:bg-surface shadow-lg transition-all duration-300 flex items-center gap-2">
+                            <i class="fas fa-info-circle text-primary"></i>
+                            <span>O nama</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Image Gallery -->
+                <!-- Image Gallery Section -->
                 <div class="relative order-1 lg:order-2">
-                    <!-- Main Image Container -->
-                    <div class="relative w-full h-[500px] lg:h-[600px]">
-                        <!-- Large Featured Image -->
+                    <div class="relative w-full h-[550px] lg:h-[650px]">
+
+                        <!-- Main large image -->
                         <div
-                            class="slider-item absolute top-0 right-0 w-[70%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface">
+                            class="slider-item absolute top-0 right-0 w-[68%] h-[62%] rounded-3xl overflow-hidden shadow-2xl shadow-primary/20 transform hover:scale-105 transition-all duration-700 border-4 border-white group">
                             <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800"
                                 alt="Kulturna aktivnost" class="w-full h-full object-cover" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-primary_text/40 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary_text/60 to-transparent"></div>
+                            <div
+                                class="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <span
+                                    class="inline-block px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg shadow-lg">Pozorišne
+                                    predstave</span>
+                            </div>
                         </div>
 
-                        <!-- Small Image Top Left -->
+                        <!-- Top left image -->
                         <div
-                            class="slider-item absolute top-10 left-0 w-[45%] h-[35%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
-                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600"
-                                alt="Muzika i umetnost" class="w-full h-full object-cover" />
-                            <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent"></div>
+                            class="slider-item absolute top-8 left-0 w-[48%] h-[36%] rounded-3xl overflow-hidden shadow-xl shadow-secondary/20 transform hover:scale-105 transition-all duration-700 border-4 border-white z-10 group">
+                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600" alt="Muzika"
+                                class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-br from-secondary/40 to-transparent"></div>
+                            <div
+                                class="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3">
+                                <span
+                                    class="inline-block px-3 py-1.5 bg-secondary text-white text-xs font-semibold rounded-lg shadow-lg">Muzički
+                                    program</span>
+                            </div>
                         </div>
 
-                        <!-- Small Image Bottom Left -->
+                        <!-- Bottom left image -->
                         <div
-                            class="slider-item absolute bottom-0 left-10 w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
-                            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600"
-                                alt="Ansambl nastup" class="w-full h-full object-cover" />
-                            <div class="absolute inset-0 bg-gradient-to-tl from-secondary/30 to-transparent"></div>
+                            class="slider-item absolute bottom-0 left-8 w-[52%] h-[42%] rounded-3xl overflow-hidden shadow-xl shadow-accent/20 transform hover:scale-105 transition-all duration-700 border-4 border-white z-10 group">
+                            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600" alt="Izložbe"
+                                class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-tl from-accent/40 to-transparent"></div>
+                            <div
+                                class="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3">
+                                <span
+                                    class="inline-block px-3 py-1.5 bg-accent text-white text-xs font-semibold rounded-lg shadow-lg">Kulturne
+                                    izložbe</span>
+                            </div>
                         </div>
 
-                        <!-- Decorative Elements -->
+                        <!-- Decorative glowing orbs -->
                         <div
-                            class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full opacity-20 blur-2xl">
+                            class="absolute -top-8 -right-8 w-40 h-40 bg-gradient-to-br from-primary to-accent rounded-full opacity-15 blur-3xl animate-pulse-glow">
+                        </div>
+                        <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-gradient-to-tr from-secondary to-accent rounded-full opacity-15 blur-3xl animate-pulse-glow"
+                            style="animation-delay: 2s;"></div>
+
+                        <!-- Decorative frame elements -->
+                        <div
+                            class="absolute -top-4 -right-4 w-32 h-32 border-t-4 border-r-4 border-primary/30 rounded-tr-3xl">
                         </div>
                         <div
-                            class="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-tr from-secondary to-accent rounded-full opacity-20 blur-2xl">
+                            class="absolute -bottom-4 -left-4 w-32 h-32 border-b-4 border-l-4 border-secondary/30 rounded-bl-3xl">
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
 
-
-
-        <!-- Scrolling indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-            <div class="animate-bounce w-8 h-14 rounded-full border-2 border-primary flex justify-center p-1">
-                <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+            <span class="text-secondary_text text-xs uppercase tracking-widest font-semibold">Scroll</span>
+            <div
+                class="animate-bounce w-6 h-10 rounded-full border-2 border-primary flex justify-center pt-2 bg-white shadow-lg">
+                <div class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
             </div>
         </div>
+
     </section>
+
 
 
 

@@ -370,151 +370,8 @@ class PersonalContentController
 
     private function getPageScripts(): string
     {
-        return '
-            document.addEventListener("DOMContentLoaded", function() {
-                // Image gallery lightbox
-                const galleryImages = document.querySelectorAll(".gallery-image-link");
-                
-                galleryImages.forEach(function(link) {
-                    link.addEventListener("click", function(e) {
-                        e.preventDefault();
-                        const imgSrc = this.getAttribute("href");
-                        const lightbox = document.createElement("div");
-                        lightbox.className = "lightbox";
-                        lightbox.innerHTML = 
-                            "<div class=\'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4\' style=\'backdrop-filter: blur(8px);\'>" +
-                            "    <div class=\'relative max-w-7xl mx-auto\'>" +
-                            "        <img src=\'" + imgSrc + "\' class=\'lightbox-image max-h-[90vh] max-w-full object-contain rounded-lg shadow-2xl\' alt=\'Enlarged image\'>" +
-                            "        <button class=\'absolute -top-12 right-0 text-white text-4xl hover:text-gray-300 transition-colors w-12 h-12 flex items-center justify-center font-light\'>&times;</button>" +
-                            "    </div>" +
-                            "</div>";
-                        document.body.appendChild(lightbox);
-                        document.body.style.overflow = "hidden";
-                        
-                        lightbox.addEventListener("click", function(e) {
-                            if (e.target === lightbox || e.target.closest("button") || e.target === lightbox.firstElementChild) {
-                                document.body.style.overflow = "auto";
-                                lightbox.remove();
-                            }
-                        });
-                        
-                        document.addEventListener("keydown", function escHandler(e) {
-                            if (e.key === "Escape") {
-                                document.body.style.overflow = "auto";
-                                lightbox.remove();
-                                document.removeEventListener("keydown", escHandler);
-                            }
-                        });
-                    });
-                });
-            });
-        ';
-    }
-
-    private function getDocumentIcon(string $extension): array
-    {
-        $icons = [
-            'pdf' => ['icon' => 'fas fa-file-pdf', 'class' => 'pdf'],
-            'doc' => ['icon' => 'fas fa-file-word', 'class' => 'word'],
-            'docx' => ['icon' => 'fas fa-file-word', 'class' => 'word'],
-            'xls' => ['icon' => 'fas fa-file-excel', 'class' => 'excel'],
-            'xlsx' => ['icon' => 'fas fa-file-excel', 'class' => 'excel'],
-        ];
-
-        return $icons[$extension] ?? ['icon' => 'fas fa-file', 'class' => 'default'];
-    }
-
-    private function formatFileSize(string $filePath): string
-    {
-        if (file_exists($filePath)) {
-            $bytes = filesize($filePath);
-            if ($bytes >= 1048576) {
-                return number_format($bytes / 1048576, 2) . ' MB';
-            } elseif ($bytes >= 1024) {
-                return number_format($bytes / 1024, 2) . ' KB';
-            }
-            return $bytes . ' B';
-        }
-        return '';
-    }
-
-    private function getGalleryLabel(string $locale): string
-    {
-        $labels = [
-            'sr' => 'Galerija',
-            'en' => 'Gallery',
-            'sr-Cyrl' => 'Галерија'
-        ];
-        return $labels[$locale] ?? $labels['sr'];
-    }
-
-    private function getDocumentsLabel(string $locale): string
-    {
-        $labels = [
-            'sr' => 'Dokumenta',
-            'en' => 'Documents',
-            'sr-Cyrl' => 'Документа'
-        ];
-        return $labels[$locale] ?? $labels['sr'];
-    }
-
-    public function renderContent($id, $type)
-    {
-        // Load structure configuration
-        $structurePath = __DIR__ . '/../../public/assets/data/structure.json';
-        $structure = [];
-        if (is_file($structurePath)) {
-            $structureData = file_get_contents($structurePath);
-            $structure = json_decode($structureData, true);
-            if (!is_array($structure) || empty($structure)) {
-                $structure = [];
-            }
-        }
-
-        // Get locale
-        $locale = LocaleManager::get();
-        if (!$locale) {
-            $locale = $_SESSION['locale'] ?? 'sr';
-        }
-
-        // Initialize page builder
-        $pageBuilder = new BasicPageBuilder('naziv', [
-            'css' => $this->getPageStyles(),
-            'js' => $this->getPageScripts()
-        ]);
-
-        // Generate content
-        try {
-            switch ($type) {
-                case 'Anketa':
-                    $mainContent = $this->getAnketaContent($type, $locale, $structure);
-                    break;
-                case 'Vrtici':
-                    $mainContent = $this->getVrticiContent($type, $locale, $structure);
-                    break;
-                case 'Timovi':
-                    $mainContent = $this->getTimoviContent($type, $locale, $structure);
-                    break;
-                case 'Obavestenja':
-                    $mainContent = $this->getObavestenjaContent($type, $locale, $structure);
-                    break;
-                case 'Projekti':
-                    $mainContent = $this->getProjektiContent($type, $locale, $structure);
-                    break;
-                default:
-                    $mainContent = $this->getDefaultContent($type, $locale, $structure);
-            }
-        } catch (\Exception $e) {
-            $mainContent = $this->getErrorContent($e->getMessage());
-        }
-
-        // Wrap in main tag and then compile the entire HTML
-        $html = '<main class="min-h-screen pt-16 bg-white">' . $mainContent . '</main>';
-
-        $compiledHtml = $this->compilePhpString($html);
-        ;
-        $pageBuilder->setHtml($compiledHtml);
-        $skripta = <<<JS
+        return
+            <<<JS
             <script>
 
                 document.addEventListener('DOMContentLoaded', () => {
@@ -609,43 +466,147 @@ class PersonalContentController
             </script>
          
             JS;
+    }
+
+    private function getDocumentIcon(string $extension): array
+    {
+        $icons = [
+            'pdf' => ['icon' => 'fas fa-file-pdf', 'class' => 'pdf'],
+            'doc' => ['icon' => 'fas fa-file-word', 'class' => 'word'],
+            'docx' => ['icon' => 'fas fa-file-word', 'class' => 'word'],
+            'xls' => ['icon' => 'fas fa-file-excel', 'class' => 'excel'],
+            'xlsx' => ['icon' => 'fas fa-file-excel', 'class' => 'excel'],
+        ];
+
+        return $icons[$extension] ?? ['icon' => 'fas fa-file', 'class' => 'default'];
+    }
+
+    private function formatFileSize(string $filePath): string
+    {
+        if (file_exists($filePath)) {
+            $bytes = filesize($filePath);
+            if ($bytes >= 1048576) {
+                return number_format($bytes / 1048576, 2) . ' MB';
+            } elseif ($bytes >= 1024) {
+                return number_format($bytes / 1024, 2) . ' KB';
+            }
+            return $bytes . ' B';
+        }
+        return '';
+    }
+
+
+    private function getGalleryLabel(string $locale): string
+    {
+        $labels = [
+            'sr' => 'Galerija',
+            'en' => 'Gallery',
+            'sr-Cyrl' => 'Галерија'
+        ];
+        return $labels[$locale] ?? $labels['sr'];
+    }
+
+    private function getDocumentsLabel(string $locale): string
+    {
+        $labels = [
+            'sr' => 'Dokumenta',
+            'en' => 'Documents',
+            'sr-Cyrl' => 'Документа'
+        ];
+        return $labels[$locale] ?? $labels['sr'];
+    }
+
+    public function renderContent($id, $type)
+    {
+        // Load structure configuration
+        $structurePath = __DIR__ . '/../../public/assets/data/structure.json';
+        $structure = [];
+        if (is_file($structurePath)) {
+            $structureData = file_get_contents($structurePath);
+            $structure = json_decode($structureData, true);
+            if (!is_array($structure) || empty($structure)) {
+                $structure = [];
+            }
+        }
+
+        // Get locale
+        $locale = LocaleManager::get();
+        if (!$locale) {
+            $locale = $_SESSION['locale'] ?? 'sr';
+        }
+
+        // Initialize page builder
+        $pageBuilder = new BasicPageBuilder('naziv', [
+            'css' => $this->getPageStyles(),
+            'js' => $this->getPageScripts()
+        ]);
+
+        // Generate content
+        try {
+            switch ($type) {
+                case 'Anketa':
+                    $mainContent = $this->getAnketaContent($type, $locale, $structure);
+                    break;
+                case 'Vrtici':
+                    $mainContent = $this->getVrticiContent($type, $locale, $structure);
+                    break;
+                case 'Timovi':
+                    $mainContent = $this->getTimoviContent($type, $locale, $structure);
+                    break;
+                case 'Obavestenja':
+                    $mainContent = $this->getObavestenjaContent($type, $locale, $structure);
+                    break;
+                case 'Projekti':
+                    $mainContent = $this->getProjektiContent($type, $locale, $structure);
+                    break;
+                case 'Zaposleni':
+                    $mainContent = $this->getZaposleniContent($type, $locale, $structure);
+                    break;
+                default:
+                    $mainContent = $this->getDefaultContent($type, $locale, $structure);
+            }
+        } catch (\Exception $e) {
+            $mainContent = $this->getErrorContent($e->getMessage());
+        }
+
+        // Wrap in main tag and then compile the entire HTML
+        $html = '<main class="min-h-screen pt-16 bg-white">' . $mainContent . '</main>';
+
+        $compiledHtml = $this->compilePhpString($html);
+
+
+        $pageBuilder->setHtml($compiledHtml);
+        $skripta = $this->getPageScripts();
 
         $pageBuilder->setScript($skripta);
 
         $fullPageHtml = $pageBuilder->buildPage();
+        $fullPageHtml = $pageBuilder->buildPage();
         $stringCompiled = $this->compilePhpString($fullPageHtml);
-
         echo $stringCompiled;
     }
 
     private function compilePhpString(string $phpCode, array $vars = []): string
     {
-        // Decode HTML entities first
         $phpCode = html_entity_decode($phpCode, ENT_QUOTES, 'UTF-8');
 
-        // Extract variables for the template
         if (!empty($vars)) {
             extract($vars, EXTR_SKIP);
         }
 
-        // Define base paths
         $publicRoot = realpath(__DIR__ . '/../../public/exportedPages/');
 
-        // Fix __DIR__ references in require/include statements
-        // Pattern: require_once __DIR__ . '/../landingPageComponents/...'
-        // Should become: require_once '/var/www/html/public/landingPageComponents/...'
+
         $phpCode = preg_replace_callback(
             '/(?:require|include|require_once|include_once)\s+__DIR__\s*\.\s*[\'"](\/?\.\.\/+)*([^\'"]+)[\'"]/i',
             function ($matches) use ($publicRoot) {
-                $path = $matches[2]; // Get the path without ../
-                // Remove any leading slashes that might come from the pattern
+                $path = $matches[2];
                 $path = ltrim($path, '/');
                 return 'require \'' . $publicRoot . '/' . $path . '\'';
             },
             $phpCode
         );
 
-        // Also fix other relative includes
         $patterns = [
             '/require\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "require '" . $publicRoot . "/$1'",
             '/require_once\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "require_once '" . $publicRoot . "/$1'",
@@ -659,10 +620,8 @@ class PersonalContentController
 
         ob_start();
         try {
-            // Set the include path to the public directory
             set_include_path($publicRoot . PATH_SEPARATOR . get_include_path());
 
-            // Execute the PHP code directly
             eval ("?>" . $phpCode);
 
             $output = ob_get_clean();
@@ -675,7 +634,6 @@ class PersonalContentController
 
         return $output === false ? '' : $output;
     }
-
     private function getAnketaContent(string $type, string $locale, array $structure): string
     {
         $contentController = new Content();
@@ -1133,7 +1091,7 @@ class PersonalContentController
                         rel="noopener noreferrer"
                         class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors duration-300 font-medium">
                             <i class="fas fa-external-link-alt mr-2"></i>
-                            Posjetite zvaničnu stranicu projekta
+                            Posetite zvaničnu stranicu projekta
                         </a>
                     </div>' : '') . '
                 </div>
@@ -1160,6 +1118,136 @@ class PersonalContentController
                 </div>' : '') . '
             </div>
         </div>';
+
+        return $html;
+    }
+
+    private function getZaposleniContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $ime = $fields['ime'][$locale] ?? '';
+        $pozicija = $fields['pozicija'][$locale] ?? '';
+        $biografija = $fields['biografija'][$locale] ?? '';
+        $kontakt = $fields['kontakt'][$locale] ?? '';
+        $slika = $fields['slika'][$locale] ?? '';
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $fieldIcons = $this->getFieldIcons($type, $structure);
+
+        $labelIme = $labels['ime'] ?? 'Ime i prezime';
+        $labelPozicija = $labels['pozicija'] ?? 'Pozicija';
+        $labelBio = $labels['biografija'] ?? 'Biografija';
+        $labelEmail = $labels['kontakt'] ?? 'Email kontakt';
+
+        $allFiles = \App\Models\Image::fetchByElement($id);
+
+        $images = array_filter(
+            $allFiles,
+            fn($file) =>
+            !in_array(strtolower(pathinfo($file['file_path'], PATHINFO_EXTENSION)), ['pdf', 'xlsx', 'xls', 'doc', 'docx'])
+        );
+
+        if (!$slika && !empty($images)) {
+            $slika = $images[0]['file_path'];
+        }
+
+        $html = '
+    <div class="content-wrapper">
+        <div class="page-header">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h1>' . htmlspecialchars($ime ?: "Zaposleni", ENT_QUOTES, "UTF-8") . '</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-3">
+            <div class="max-w-4xl mx-auto">
+
+                <div class="fields-grid">
+
+                    <div class="field-row full-width">
+                        <span class="field-label">
+                            <i class="' . $this->getFieldIcon("slika", $fieldIcons) . '"></i>Fotografija
+                        </span>
+                        <span class="field-value">
+                            ' . ($slika ? '
+                                <img src="' . htmlspecialchars($slika, ENT_QUOTES, "UTF-8") . '" 
+                                     class="w-48 h-auto rounded-xl shadow" />'
+            : 'Nema fotografije') . '
+                        </span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("ime", $fieldIcons) . '"></i>' . $labelIme . '</span>
+                        <span class="field-value">' . htmlspecialchars($ime, ENT_QUOTES, "UTF-8") . '</span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("pozicija", $fieldIcons) . '"></i>' . $labelPozicija . '</span>
+                        <span class="field-value">' . htmlspecialchars($pozicija, ENT_QUOTES, "UTF-8") . '</span>
+                    </div>
+
+                    ' . (!empty($kontakt) ? '
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("kontakt", $fieldIcons) . '"></i>' . $labelEmail . '</span>
+                        <span class="field-value">
+                            <a href="mailto:' . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") . '" class="text-blue-600 underline">'
+            . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") .
+            '</a>
+                        </span>
+                    </div>' : '') . '
+
+                    ' . (!empty($biografija) ? '
+                    <div class="field-row full-width">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("biografija", $fieldIcons) . '"></i>' . $labelBio . '</span>
+                        <span class="field-value">' . nl2br(htmlspecialchars($biografija, ENT_QUOTES, "UTF-8")) . '</span>
+                    </div>' : '') . '
+
+                </div>
+    ';
+
+        if (count($images) > 1) {
+            $html .= '
+            <div class="section-divider"></div>
+            <div class="gallery-header"><i class="fas fa-images"></i>Galerija</div>
+            <div class="gallery-grid">';
+
+            foreach ($images as $img) {
+                $imgPath = htmlspecialchars($img["file_path"], ENT_QUOTES, "UTF-8");
+
+                $html .= '
+                <div class="gallery-item">
+                    <a href="' . $imgPath . '" class="gallery-image-link block">
+                        <img src="' . $imgPath . '" alt="">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white text-xl"></i>
+                        </div>
+                    </a>
+                </div>';
+            }
+
+            $html .= '</div>';
+        }
+
+        $html .= '
+            </div>
+        </div>
+    </div>';
 
         return $html;
     }

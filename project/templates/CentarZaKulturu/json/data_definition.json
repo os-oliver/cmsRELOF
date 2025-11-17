@@ -65,6 +65,15 @@
           },
           "options_ref": "Program.categories",
           "required": true
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Slike",
+            "en": "image",
+            "sr-Cyrl": "сликe "
+          }
         }
       ]
     },

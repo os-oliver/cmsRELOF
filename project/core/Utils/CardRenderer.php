@@ -97,7 +97,7 @@ class CardRenderer
                 $html .= "
         <div class='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-30'>
             <div class='mx-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center gap-3'>
-                <a href='/sadrzaj?id={$itemId}&tip=generic_element' 
+                <a href='/sadrzaj?id={$itemId}&tip={{slug}}' 
                     class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm' 
                     title='Pogledaj'>
                     <i class='fas fa-eye'></i>
@@ -116,7 +116,7 @@ class CardRenderer
             $html .= "
     <div class='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-30'>
         <div class='mx-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center gap-3'>
-            <a href='/sadrzaj?id={$itemId}&tip=generic_element' 
+            <a href='/sadrzaj?id={$itemId}&tip={{slug}}' 
                 class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm' 
                 title='Pogledaj'>
                 <i class='fas fa-eye'></i>
@@ -130,7 +130,7 @@ class CardRenderer
         </div>
     </div>";
         }
-
+        $html = str_replace('{{slug}}', htmlspecialchars($item['type'] ?? 'generic_element', ENT_QUOTES, 'UTF-8'), $html);
         // Polja i kategorija
         $html .= "<div class='p-3'>";
         if (!empty($fields)) {

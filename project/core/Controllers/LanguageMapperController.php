@@ -9,11 +9,10 @@ class LanguageMapperController
         // Digraphs & trigraphs first (important for correct replacement)
         'Dž' => 'Џ',
         'dž' => 'џ',
-        'Dz' => 'Џ',
-        'dz' => 'џ',
         'Nj' => 'Њ',
         'nj' => 'њ',
         'Lj' => 'Љ',
+        'LJ' => 'Љ',
         'lj' => 'љ',
         'Dj' => 'Ђ',
         'dj' => 'ђ',
