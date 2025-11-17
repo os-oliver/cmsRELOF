@@ -799,6 +799,7 @@
                 </p>
             </div>
             <div id="vrticiCards" class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+                
                 <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img
@@ -806,60 +807,111 @@
                             class="w-full h-full object-cover rounded-l-lg"
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
-                    <div class="p-5 w-3/4">
+                    <div class="p-5 w-2/4 h-full flex flex-col justify-between">
                         <h3 class="text-primary_text font-heading text-2xl">
                             <p id="g-title" class="text-3xl">Lorem ipsum</p>
                         </h3>
-                        <p id="g-description" class="mt-3 mb-4">
+
+                        <div class="mt-auto">
+                            <h2 class="text-primary_text font-heading text-xl">
+                                <p id="g-location" class="text-xl">Lorem ipsum</p>
+                            </h2>
+
+                            <h1 class="text-primary_text font-heading text-xl">
+                                <p id="g-telefon" class="text-xl">Lorem ipsum</p>
+                            </h1>
+                        </div>
+
+                        <!-- <p id="g-description" class="mt-3 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
+                        </p> -->
                     </div>
                 </div>
-                <div class="vrtici-card flex  items-center bg-surface rounded-lg shadow h-48">
-                    <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5 w-3/4">
-                        <h3 class="text-primary_text tracking-tight text-2xl">
-                            <p id="g-naslov">Lorem ipsum</p>
-                        </h3>
-                        <p class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                    </div>
-                </div>
+                
                 <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img
+                            id="g-image"
                             class="w-full h-full object-cover rounded-l-lg"
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
-                    <div class="p-5 w-3/4">
-                        <h3 class="text-primary_text tracking-tight text-2xl">
-                            <p>Lorem ipsum</p>
+                    <div class="p-5 w-2/4 h-full flex flex-col justify-between">
+                        <h3 class="text-primary_text font-heading text-2xl">
+                            <p id="g-title" class="text-3xl">Lorem ipsum</p>
                         </h3>
-                        <p class="mt-3 mb-4">
+
+                        <div class="mt-auto">
+                            <h2 class="text-primary_text font-heading text-xl">
+                                <p id="g-location" class="text-xl">Lorem ipsum</p>
+                            </h2>
+
+                            <h1 class="text-primary_text font-heading text-xl">
+                                <p id="g-telefon" class="text-xl">Lorem ipsum</p>
+                            </h1>
+                        </div>
+
+                        <!-- <p id="g-description" class="mt-3 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
+                        </p> -->
                     </div>
                 </div>
+
                 <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img
+                            id="g-image"
                             class="w-full h-full object-cover rounded-l-lg"
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
                     </a>
-                    <div class="p-5 w-3/4">
-                        <h3 class="text-primary_text tracking-tight text-2xl">
-                            <p>Lorem ipsum</p>
+                    <div class="p-5 w-2/4 h-full flex flex-col justify-between">
+                        <h3 class="text-primary_text font-heading text-2xl">
+                            <p id="g-title" class="text-3xl">Lorem ipsum</p>
                         </h3>
-                        <p class="mt-3 mb-4">
+
+                        <div class="mt-auto">
+                            <h2 class="text-primary_text font-heading text-xl">
+                                <p id="g-location" class="text-xl">Lorem ipsum</p>
+                            </h2>
+
+                            <h1 class="text-primary_text font-heading text-xl">
+                                <p id="g-telefon" class="text-xl">Lorem ipsum</p>
+                            </h1>
+                        </div>
+
+                        <!-- <p id="g-description" class="mt-3 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
+                        </p> -->
                     </div>
                 </div>
+
+                <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
+                    <a href="#" class="w-1/4 h-full">
+                        <img
+                            id="g-image"
+                            class="w-full h-full object-cover rounded-l-lg"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
+                    </a>
+                    <div class="p-5 w-2/4 h-full flex flex-col justify-between">
+                        <h3 class="text-primary_text font-heading text-2xl">
+                            <p id="g-title" class="text-3xl">Lorem ipsum</p>
+                        </h3>
+
+                        <div class="mt-auto">
+                            <h2 class="text-primary_text font-heading text-xl">
+                                <p id="g-location" class="text-xl">Lorem ipsum</p>
+                            </h2>
+
+                            <h1 class="text-primary_text font-heading text-xl">
+                                <p id="g-telefon" class="text-xl">Lorem ipsum</p>
+                            </h1>
+                        </div>
+
+                        <!-- <p id="g-description" class="mt-3 mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p> -->
+                    </div>
+                </div>
+                
             </div>
             <div class="text-center mt-12">
                 <a href="/o-nama/vrtici"

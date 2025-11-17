@@ -262,6 +262,16 @@
           "required": true
         },
         {
+          "name": "telefon",
+          "type": "text",
+          "label": {
+            "sr": "Broj telefona",
+            "en": "Phone number",
+            "sr-Cyrl": "Број телефона"
+          },
+          "required": true
+        },
+        {
           "name": "description",
           "type": "textarea",
           "label": {
