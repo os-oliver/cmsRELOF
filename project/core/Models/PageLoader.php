@@ -34,7 +34,6 @@ class PageLoader
             ;
             if (isset($page['column'])) {
                 if ($locale == 'sr-Cyrl') {
-                    echo json_encode($page);
                     $column = $langMapper->latin_to_cyrillic($page['column']);
                     $page['name'] = $langMapper->latin_to_cyrillic($page['name']);
                     $groupedPages[$column][] = $page;

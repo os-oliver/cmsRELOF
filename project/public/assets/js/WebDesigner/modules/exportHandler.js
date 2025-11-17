@@ -276,14 +276,19 @@ async function exportComponent(editor, komponenta) {
 
   const wrapper = editor.DomComponents.getWrapper();
   const combinedHTML = wrapper.toHTML();
+  const cssRules = editor.CssComposer && editor.CssComposer.getAll();
+  let cssText = "";
 
+  cssRules.forEach((rule) => {
+    cssText += rule.toCSS();
+  });
   const payload = {
     singlePage: true,
     saveComponents: true,
     components: [komponenta],
     cmp: komponenta,
     html: combinedHTML,
-    css: editor.getCss(),
+    css: cssText,
   };
 
   try {
@@ -362,7 +367,7 @@ function exportFullPage(editor, tipUstanove) {
         break;
     }
   });
-  console.log("tree:",tree);
+  console.log("tree:", tree);
   console.log("ids collected from sections:", ids);
 
   const css = editor.getCss();

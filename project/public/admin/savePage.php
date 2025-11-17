@@ -353,14 +353,7 @@ try {
             json_encode([$dataArray], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
         );
 
-        $allCategoriesToInsert = [];
-        foreach ($dataArray as $typeKey => $typeData) {
-            foreach (($typeData['categories'] ?? []) as $category) {
-                $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
-            }
-        }
 
-        GenericCategory::replaceAllCategories($allCategoriesToInsert);
     } else {
         error_log("Single page export mode — skipping structure and categories.");
     }

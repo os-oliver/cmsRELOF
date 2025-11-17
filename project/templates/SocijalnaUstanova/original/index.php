@@ -109,11 +109,6 @@
                 width: 100%;
             }
 
-            /* Remove underline from dropdown buttons */
-            button.nav-link::after {
-                display: none;
-            }
-
             .artistic-card {
                 clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
                 transition: all 0.4s ease;
@@ -377,29 +372,21 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-bullseye mr-2 text-green-600"></i>Cilj
                             </a>
-                            <a data-page="Sluzbe" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
-                            </a>
-                            <a data-page="OrganiUpravljanja" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-users-cog mr-2 text-blue-600"></i>Organi upravljanja
-                            </a>
-                            <a data-page="OrganizacionaStruktura" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-orange-600"></i>Organizaciona struktura
-                            </a>
                             <a data-page="Misija" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-compass mr-2 text-blue-600"></i>Misija
                             </a>
-                            <a data-page="Istorijat" href="#"
+                            <a data-page="Zaposleni" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-history mr-2 text-brown"></i>Istorijat
+                                <i class="fas fa-user-tie mr-2 text-purple-600"></i>Zaposleni
                             </a>
                             <a data-page="Galerija" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-images mr-2 text-velvet"></i>Galerija
+                            </a>
+                            <a data-page="Sluzbe" href="#"
+                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
+                                <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
                             </a>
                             <a data-page="Pitanja" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
@@ -411,11 +398,6 @@
                             </a>
                         </div>
                     </div>
-
-                    <a data-page="Vesti" href="#"
-                        class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
-                        <i class="fas fa-newspaper mr-3 text-accent_indigo"></i>Vesti
-                    </a>
 
                     <!-- Prava i usluge dropdown -->
                     <div class="mobile-dropdown">
@@ -445,6 +427,11 @@
                     <a data-page="Dokumenti" href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
                         <i class="fas fa-folder-open mr-3 text-warning"></i>Dokumenti
+                    </a>
+
+                    <a data-page="Vesti" href="#"
+                        class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
+                        <i class="fas fa-newspaper mr-3 text-accent_indigo"></i>Vesti
                     </a>
 
                     <!-- Za korisnike dropdown -->
@@ -488,8 +475,16 @@
         <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
             <!-- Logo Section -->
             <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-                <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                    <img src="" alt="" style="width:75px;height:auto;" />
+                <div
+                    class="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-primary_light via-primary_medium to-primary_hover rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-white drop-shadow-sm" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path d="M21.4 9.64C21.4 5.24 18.29 2 12 2S2.6 5.24 2.6 9.64c0 2.5 1.1 4.8 2.8 6.4L12 22l6.6-6c1.7-1.6 2.8-3.9 2.8-6.36zM12 11.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+                        <circle cx="9" cy="9" r="1" opacity="0.7"/>
+                        <circle cx="15" cy="9" r="1" opacity="0.7"/>
+                        <circle cx="12" cy="13" r="1" opacity="0.7"/>
+                    </svg>
                 </div>
                 <div class="hidden sm:block">
                     <h1
@@ -530,33 +525,23 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Službe</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-users-cog mr-3 text-info flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Organi upravljanja</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-sitemap mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Organizaciona struktura</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-compass mr-3 text-info flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Istorijat</span>
+                            <i class="fas fa-user-tie mr-3 text-accent_purple flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Zaposleni</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-images mr-3 text-velvet flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Galerija</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Službe</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -570,13 +555,6 @@
                         </a>
                     </div>
                 </div>
-
-                <a href="#"
-                    class="nav-link text-slate font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
-                    <i
-                        class="fas fa-newspaper mr-2 text-accent_indigo group-hover:text-accent_indigo_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Vesti</span>
-                </a>
 
                 <div class="dropdown relative group">
                     <button
@@ -612,6 +590,13 @@
                     <i
                         class="fas fa-folder-open mr-2 text-warning group-hover:text-warning_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Dokumenti</span>
+                </a>
+
+                <a href="#"
+                    class="nav-link text-slate font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
+                    <i
+                        class="fas fa-newspaper mr-2 text-accent_indigo group-hover:text-accent_indigo_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Vesti</span>
                 </a>
 
                 <div class="dropdown relative group">

@@ -13,6 +13,7 @@ class TextHelper
     public static function transliterateVariants(string $text, string $locale): array
     {
         $mapper = new LanguageMapperController();
+        error_log("Transliterating text: {$text} for locale: {$locale}");
         if ($locale === 'sr-Cyrl') {
             return ['sr-Cyrl' => $text, 'sr' => $mapper->cyrillic_to_latin($text)];
         }
