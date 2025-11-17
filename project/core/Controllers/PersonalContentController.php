@@ -569,6 +569,7 @@ class PersonalContentController
             $mainContent = $this->getErrorContent($e->getMessage());
         }
 
+        // Wrap in main tag and then compile the entire HTML
         $html = '<main class="min-h-screen pt-16 bg-white">' . $mainContent . '</main>';
 
         $compiledHtml = $this->compilePhpString($html);
@@ -1187,7 +1188,7 @@ class PersonalContentController
                             ' . ($slika ? '
                                 <img src="' . htmlspecialchars($slika, ENT_QUOTES, "UTF-8") . '" 
                                      class="w-48 h-auto rounded-xl shadow" />'
-                : 'Nema fotografije') . '
+            : 'Nema fotografije') . '
                         </span>
                     </div>
 
@@ -1206,8 +1207,8 @@ class PersonalContentController
                         <span class="field-label"><i class="' . $this->getFieldIcon("kontakt", $fieldIcons) . '"></i>' . $labelEmail . '</span>
                         <span class="field-value">
                             <a href="mailto:' . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") . '" class="text-blue-600 underline">'
-                . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") .
-                '</a>
+            . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") .
+            '</a>
                         </span>
                     </div>' : '') . '
 
@@ -1331,31 +1332,40 @@ class PersonalContentController
 
         // Display fields in grid
         foreach ($fields as $field => $values) {
-            if ($field === $titleField || !isset($values[$locale]))
+            if ($field === $titleField || !isset($values[$locale])) {
                 continue;
+            }
 
             $value = $values[$locale];
-            if (empty(trim($value)))
+            if (empty(trim($value))) {
                 continue;
+            }
 
             $displayLabel = $labels[$field] ?? ucwords(str_replace('_', ' ', $field));
             $icon = $this->getFieldIcon($field, $fieldIcons);
+
+            // Escape vrednosti za HTML
             $escapedValue = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 
-            // Determine if this is a long text field
+            // Ako je dug tekst, pretvori \n u dupli <br>
             $isLongText = strlen($value) > 100;
-            $fullWidthClass = $isLongText ? ' full-width' : '';
-
             if ($isLongText) {
-                $escapedValue = nl2br($escapedValue);
+                $escapedValue = str_replace("\n", "<br><br>", $escapedValue);
             }
 
+            $fullWidthClass = $isLongText ? ' full-width' : '';
+
+            // Generisanje HTML-a
             $html .= '
-                <div class="field-row' . $fullWidthClass . '">
-                    <span class="field-label"><i class="' . $icon . '"></i>' . htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '</span>
-                    <span class="field-value">' . $escapedValue . '</span>
-                </div>';
+        <div class="field-row' . $fullWidthClass . '">
+            <span class="field-label"><i class="' . $icon . '"></i> ' .
+                htmlspecialchars($displayLabel, ENT_QUOTES, 'UTF-8') . '
+            </span>
+            <span class="field-value">' . $escapedValue . '</span>
+        </div>';
         }
+
+
 
         $html .= '</div>'; // Close fields-grid
 
