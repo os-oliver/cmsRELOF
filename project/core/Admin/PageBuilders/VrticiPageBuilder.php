@@ -313,7 +313,9 @@ PHP;
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
             <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Vrtići</h1>
-            <p class="text-lg font-heading2 text-secondary_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p class="text-lg font-heading2 text-secondary_text">
+                Pogledajte listu svih naših vrtića
+            </p>
         </div>
         
         

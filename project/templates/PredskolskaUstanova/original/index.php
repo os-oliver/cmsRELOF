@@ -392,7 +392,7 @@
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fa-question mr-2 text-primary"></i>Pitanja
                             </a>
-                            <a href="#"
+                            <a static = "true" href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                             </a>
@@ -537,7 +537,7 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-question mr-2 text-primary"></i>Pitanja
                         </a>
-                        <a href="#"
+                        <a static = "true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                         </a>
@@ -799,7 +799,7 @@
                 </p>
             </div>
             <div id="vrticiCards" class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-                
+
                 <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img
@@ -974,6 +974,14 @@
                 <div class="gallery-item rounded-xl overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1562788865-5638f7446611?auto=format&fit=crop&w=600&q=80"
                         alt="Theater" class="w-full h-full object-cover">
+                    <div class="overlay-content text-background">
+                        <h3>Lorem ipsum</h3>
+                        <p>Lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80"
+                        alt="Workshop" class="w-full h-full object-cover">
                     <div class="overlay-content text-background">
                         <h3>Lorem ipsum</h3>
                         <p>Lorem ipsum</p>
