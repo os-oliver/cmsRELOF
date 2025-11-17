@@ -50,6 +50,7 @@ use App\Admin\PageBuilders\TimoviPageBuilder;
 use App\Admin\PageBuilders\UpisPageBuilder;
 use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
+use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
 
 use DOMDocument;
@@ -756,6 +757,8 @@ class PageExporter
                 return new PosebneUslugePageBuilder('PosebneUsluge', $this->data);
             case 'organi-upravljanja':
                 return new OrganizacijaPageBuilder('OrganiUpravljanja');
+            case 'publikacije':
+                return new PublikacijePageBuilder('Publikacije');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -869,6 +872,8 @@ class PageExporter
             return 'zaposleni';
         } elseif (strpos($name, 'organi-upravljanja') !== false) {
             return 'organi-upravljanja';
+        } elseif (strpos($name, 'publikacije') !== false) {
+            return 'publikacije';
         }
 
         return 'basic';
