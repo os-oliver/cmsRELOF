@@ -797,8 +797,7 @@ class PageExporter
             return 'cilj';
         } elseif (strpos($name, 'programi-obuke') !== false || strpos($name, 'programi obuke') !== false) {
             return 'programi-obuke';
-        } elseif (strpos($name, 'posebne') !== false) {
-        } elseif (strpos($name, 'objekti') !== false || strpos($name, 'programi obuke') !== false) {
+        } elseif (strpos($name, 'objekti') !== false) {
             return 'objekti';
         } elseif (strpos($name, 'posebne') !== false) {
             return 'posebne';
