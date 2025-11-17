@@ -115,13 +115,26 @@
             }
 
             .hero-gradient {
+                background-image: url('/assets/img/PU-Uzice-Hero-image.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                position: relative;
+            }
+
+            .hero-gradient::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
                 background: linear-gradient(to bottom,
                         #F1F7ED 0%,
                         #a4d1aaff 50%,
                         #F1F7ED 100%);
-                text-align: left;
-                padding-top: 8rem;
-                padding-bottom: 6rem;
+                opacity: 0.7;
+                z-index: 1;
             }
 
 
@@ -696,16 +709,17 @@
             </div>
         </div>
     </section>
+
     <!-- VESTI -->
     <section id="events" class="py-20 bg-background text-secondary_text">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-heading2">
                 <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                    Lorem ipsum
+                    Aktuelne vesti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit
+                    Izdvajamo najnovije vesti
                 </p>
             </div>
             <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -780,12 +794,11 @@
     <section id="vrtici" class="bg-background text-secondary_text font-heading2">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">Objekti
+                <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">Vrtići
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="lg:mb-16 sm:text-xl">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                    Lista Užičkih vrtića
                 </p>
             </div>
             <div id="vrticiCards" class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
@@ -940,11 +953,8 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl">Lorem ipsum dolor</h3>
+                        <h3 class="text-xl">Predškolska ustanova Užice</h3>
                     </div>
-                    <p class="mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit
-                    </p>
                     <div class="flex space-x-3">
                         <a href="#"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
@@ -958,10 +968,6 @@
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-spotify"></i>
-                        </a>
                     </div>
                 </div>
                 <div>
@@ -972,8 +978,7 @@
                         <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
                         <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
                         <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a>
-                        </li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
                     </ul>
                 </div>
                 <div>
@@ -982,11 +987,15 @@
                         <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>Lorem ipsum dolor</span>
+                            <span>031-517-855</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+                            <span>031-511-485</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate="off">Lorem ipsum dolor</span>
+                            <span data-translate="off">vrticue@mts.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
@@ -1001,8 +1010,9 @@
                     <h4 class="mb-6">Mapa lokacije</h4>
                     <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
-                            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4652.460081564469!2d19.8477697!3d43.85824269999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4759d3451ec42fd9%3A0x9b2ab96d36d55845!2sNemanjina%2018%2C%20U%C5%BEice!5e1!3m2!1sen!2srs!4v1763411383777!5m2!1sen!2srs"
+                            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -1014,7 +1024,7 @@
                         class="w-full max-w-md md:max-w-lg h-auto mb-4">
                     <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
                 </div>
-                <p class="pt-6">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                <p class="pt-6">&copy; Sva prava zadrzana - Predškolska ustanova Užice</p>
             </div>
         </div>
     </footer>
