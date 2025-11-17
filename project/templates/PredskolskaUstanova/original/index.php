@@ -708,7 +708,7 @@
     </section>
 
     <!-- VESTI -->
-    <section id="events" class="py-20 bg-background text-secondary_text">
+    <section id="vesti" class="py-20 bg-background text-secondary_text">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-heading2">
                 <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
@@ -719,8 +719,10 @@
                     Izdvajamo najnovije vesti
                 </p>
             </div>
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Event 1 -->
+
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Vest 1 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-image"
@@ -731,15 +733,18 @@
                         <div class="flex items-center mb-3">
                             <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
                         </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
-                        </h3>
+                        <h3 id="g-naslov" class="text-xl mb-2">Novo mesto za učenje i igru</h3>
+                        <div class="flex items-center mb-3">
+                            <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
+                        </div>
                         <a id="g-ovise" href="#"
                             class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
                             Pročitaj
                         </a>
                     </div>
                 </div>
-                <!-- Event 2 -->
+
+                <!-- Vest 2 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-image"
@@ -750,15 +755,18 @@
                         <div class="flex items-center mb-3">
                             <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
                         </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
-                        </h3>
-                        <button
+                        <h3 id="g-naslov" class="text-xl mb-2">Novo mesto za učenje i igru</h3>
+                        <div class="flex items-center mb-3">
+                            <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
+                        </div>
+                        <a id="g-ovise" href="#"
                             class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
                             Pročitaj
-                        </button>
+                        </a>
                     </div>
                 </div>
-                <!-- Event 3 -->
+
+                <!-- Vest 3 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
                         <img id="g-image"
@@ -769,25 +777,29 @@
                         <div class="flex items-center mb-3">
                             <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
                         </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
-                        </h3>
-                        <button
+                        <h3 id="g-naslov" class="text-xl mb-2">Novo mesto za učenje i igru</h3>
+                        <div class="flex items-center mb-3">
+                            <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
+                        </div>
+                        <a id="g-ovise" href="#"
                             class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
                             Pročitaj
-                        </button>
+                        </a>
                     </div>
                 </div>
+
             </div>
             <div class="text-center mt-12">
                 <a href="/vesti" id="eventsView"
                     class="bg-primary text-background px-8 py-4 text-lg rounded-full hover:bg-primary_hover transition-colors flex items-center shadow-lg mx-auto w-fit">
                     <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve
+                    Pogledajte sve
                 </a>
             </div>
         </div>
     </section>
-    <!-- objekti -->
+
+    <!-- Vrtici section -->
     <section id="vrtici" class="bg-background text-secondary_text font-heading2">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
@@ -921,6 +933,8 @@
             </div>
         </div>
     </section>
+
+    <!-- Numbers Section -->
     <section class="py-16 bg-background text-secondary_text">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -941,6 +955,7 @@
             </div>
         </div>
     </section>
+
     <!-- Gallery Section -->
     <section id="gallery" class="py-20 bg-background text-secondary_text font-heading2">
         <div class="container mx-auto px-4">
@@ -998,6 +1013,7 @@
             </div>
         </div>
     </section>
+
     <footer class="bg-secondary_background text-secondary_text font-heading2 pt-20 pb-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
