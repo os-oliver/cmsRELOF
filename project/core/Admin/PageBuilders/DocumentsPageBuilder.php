@@ -25,7 +25,8 @@ class DocumentsPageBuilder extends BasePageBuilder
         will-change: transform;
     }
 
-  
+    .card-body { margin-bottom: 1rem; }
+    .card-footer { margin-top: 1rem; }
 
     .card-hover {
         transition: all 0.28s cubic-bezier(.2,.9,.2,1);
