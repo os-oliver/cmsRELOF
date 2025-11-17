@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorem ipsum dolor</title>
+    <title>Predškolska ustanova Užice</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -483,8 +483,10 @@
                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block font-heading text-primary_text">
-                    <div class="text-xl leading-tight">Lorem ipsum dolor</div>
-                    <div class="text-xs tracking-wide hidden md:block">Lorem ipsum dolor sit amet consectetu</div>
+                    <div class="text-xl leading-tight">Predškolska ustanova</div>
+                    <div class="text-xl leading-tight">"Užice"</div>
+
+                    <!-- <div class="text-xs tracking-wide hidden md:block"> "Užice" </div> -->
                 </div>
             </a>
             <!-- Desktop Navigation -->
@@ -689,16 +691,11 @@
                 <div>
                     <div class="mb-8 text-center">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondary_text font-heading2">Lorem ipsum dolor sit</span>
+                            <span class="block font-heading text-primary_text">Predškolska ustanova "Užice"</span>
                         </h1>
                         <p class="mx-4 md:mx-20 mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+                            Naša predškolska ustanova okuplja vrtiće širom Užica i pruža roditeljima sve važne informacije na jednom mestu — od upisa i programa rada, do jelovnika i aktuelnih obaveštenja. 
+                            Posvećeni smo stvaranju bezbednog, podsticajnog i radosnog okruženja u kojem deca svakodnevno uče, rastu i razvijaju svoje potencijale
                         </p>
                         <a href="/o-nama/cilj"
                             class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
@@ -877,8 +874,8 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <?php
                 $stats = [
-                    ['number' => '20', 'label' => 'Generacija'],
-                    ['number' => '15', 'label' => 'Objekata'],
+                    ['number' => '30+', 'label' => 'Generacija'],
+                    ['number' => '10+', 'label' => 'Objekata'],
                     ['number' => '1000+', 'label' => 'Osmeha'],
                     ['number' => '50+', 'label' => 'Zaposlenih'],
                 ];
@@ -901,7 +898,7 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-2xl max-w-2xl mx-auto">
-                    Lorem ipsum dolor amet consectetur adipiscing
+                    Pogledajte izdvojene slike
                 </p>
             </div>
             <div id="galleryCards" class="gallery-grid gap-6">
@@ -973,18 +970,13 @@
                 <div>
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
+                        <!-- <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li> -->
                     </ul>
                 </div>
                 <div>
                     <h4 class="mb-6">Informacije</h4>
                     <ul class="space-y-3">
-                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
                             <span>031-517-855</span>
@@ -1000,8 +992,9 @@
                         <li class="flex items-start">
                             <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
                             <span>
-                                Lorem ipsum dolor<br>
-                                Lorem ipsum dolor
+                                Radno vreme ustanove:<br>
+                                Prva smena: 05:30 - 16:30 <br>
+                                Druga smena: 12:00 - 22:30
                             </span>
                         </li>
                     </ul>
