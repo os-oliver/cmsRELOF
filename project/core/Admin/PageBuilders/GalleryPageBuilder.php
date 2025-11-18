@@ -192,13 +192,13 @@ CSS;
 
         <div class="gallery-grid">
             <?php foreach ($images as $index => $image): ?>
-                <div class="gallery-item" 
-                    data-id='<?= $image->id ?>' 
+                <div class="gallery-item"
+                    data-id='<?= $image->id ?>'
                     data-index='<?= $index ?>'
-                    data-title='<?= htmlspecialchars($image->title) ?>'
-                    data-description='<?= htmlspecialchars($image->description) ?>'>
-                    <img src='<?= $image->image_file_path ?>' 
-                        alt='<?= htmlspecialchars($image->title) ?>'
+                    data-title='<?= htmlspecialchars($image->title ?? "") ?>'
+                    data-description='<?= htmlspecialchars($image->description ?? "") ?>'>
+                    <img src='<?= $image->image_file_path ?>'
+                        alt='<?= htmlspecialchars($image->title ?? "") ?>'
                         loading="lazy">
                 </div>
             <?php endforeach; ?>
