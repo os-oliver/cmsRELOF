@@ -449,10 +449,6 @@
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-diagram-project mr-3 text-primary"></i>Projekti
-                    </a>
-                    <a href="#"
-                        class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-primary"></i>Galerija
                     </a>
                     <a href="#"
@@ -587,12 +583,6 @@
                     <i
                         class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Vesti</span>
-                </a>
-                <a href="#"
-                    class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i
-                        class="fas fa-diagram-project mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Projekti</span>
                 </a>
                 <a href="#"
                     class="nav-link transition-colors flex items-center whitespace-nowrap">
