@@ -25,7 +25,8 @@ class DocumentsPageBuilder extends BasePageBuilder
         will-change: transform;
     }
 
-  
+    .card-body { margin-bottom: 1rem; }
+    .card-footer { margin-top: 1rem; }
 
     .card-hover {
         transition: all 0.28s cubic-bezier(.2,.9,.2,1);
@@ -157,7 +158,7 @@ HTML;
 <main>
     <div class="text-center px-2 pt-32">
         <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
 
         <div class="mx-auto max-w-6xl">
             <form id="filter-form" method="GET" action="" class="bg-white rounded-2xl shadow p-6 mb-8 border border-gray-100">
@@ -254,7 +255,7 @@ HTML;
                                     </div>
                                 </div>
 
-                                <h3 class="text-lg font-semibold text-gray-800 "><?= $title ?: basename($filepath) ?></h3>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2"><?= $title ?: basename($filepath) ?></h3>
                                 <p class="text-sm text-gray-600 mb-4 leading-relaxed"><?= $description ?: '&nbsp;' ?></p>
 
                                 <div class="flex items-center justify-between text-sm doc-meta mb-5">

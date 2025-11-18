@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorem ipsum dolor</title>
+    <title>Predškolska ustanova | Detinjstvo Žabalj</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -369,74 +369,13 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-history mr-2 text-primary"></i>Istorijat
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-school mr-2 text-primary"></i>Vrtići
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fa-question mr-2 text-primary"></i>Pitanja
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-users mr-2 text-primary"></i>Timovi
-                            </a>
-                        </div>
-                    </div>
-                    <div class="mobile-dropdown">
-                        <button
-                            class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
-                            id="mobileParentsToggle">
-                            <div class="flex items-center">
-                                <i class="fas fa-info-circle mr-3 text-primary"></i>Za roditelje
-                            </div>
-                            <i class="fas fa-chevron-down transition-transform duration-200"
-                                id="mobileParentsIcon"></i>
-                        </button>
-                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileParentsMenu">
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-utensils mr-2 text-primary"></i>Jelovnik
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-info-circle mr-2 text-primary"></i>Obaveštenja
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-receipt mr-2 text-primary"></i>Cenovnik
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-file-alt mr-2 text-primary"></i>Upis
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-clock mr-2 text-primary"></i>Raspored aktivnosti
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
                             </a>
                         </div>
                     </div>
                     <a href="#"
                         class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primary"></i>Vesti
-                    </a>
-                    <a href="#"
-                        class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-diagram-project mr-3 text-primary"></i>Projekti
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 rounded-lg transition-all">
@@ -465,13 +404,12 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo Section -->
             <a href="/" class="flex items-center gap-3 flex-shrink-0">
-                <div
-                    class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <img src="" alt="" style="width:75px;height:auto;" />
+                <div class="w-11 h-11 flex items-center justify-center hover:scale-105 transition-all duration-300">
+                    <img src="https://www.pu-detinjstvo.com/wp-content/uploads/2016/06/cropped-detinjstvo.jpg" alt="Logo" class="w-full h-full object-contain" />
                 </div>
                 <div class="hidden sm:block font-heading text-primary_text">
-                    <div class="text-xl leading-tight">Lorem ipsum dolor</div>
-                    <div class="text-xs tracking-wide hidden md:block">Lorem ipsum dolor sit amet consectetu</div>
+                    <div class="text-xl leading-tight">PU "Detinjstvo"</div>
+                    <div class="text-xs tracking-wide hidden md:block">Žabalj</div>
                 </div>
             </a>
             <!-- Desktop Navigation -->
@@ -506,64 +444,9 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-flag mr-2 text-primary"></i>Misija
                         </a>
-                        <a href="#" static="true"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-history mr-2 text-primary"></i>Istorijat
-                        </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-school mr-2 text-primary"></i>Vrtići
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-users mr-2 text-primary"></i>Timovi
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-question mr-2 text-primary"></i>Pitanja
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
-                        </a>
-                    </div>
-                </div>
-                <div class="dropdown relative group transition-colors">
-                    <button
-                        class="nav-link transition-colors flex items-center whitespace-nowrap">
-                        <i class="fas fa-users mr-2 text-primary"></i>
-                        <span class="hidden xl:inline">Za roditelje</span>
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                    </button>
-                    <div
-                        class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="#"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-utensils mr-2 text-primary"></i>Jelovnik
-                        </a>
-                        <a href="#"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-info-circle mr-2 text-primary"></i>Obaveštenja
-                        </a>
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-receipt mr-2 text-primary"></i>Cenovnik
-                        </a>
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-file-alt mr-2 text-primary"></i>Upis
-                        </a>
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-clock mr-2 text-primary"></i>Raspored aktivnosti
-                        </a>
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
-                        </a>
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
                         </a>
                     </div>
                 </div>
@@ -572,12 +455,6 @@
                     <i
                         class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Vesti</span>
-                </a>
-                <a href="#"
-                    class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i
-                        class="fas fa-diagram-project mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Projekti</span>
                 </a>
                 <a href="#"
                     class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -676,103 +553,27 @@
                 <div>
                     <div class="mb-8 text-center">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondary_text font-heading2">Lorem ipsum dolor sit</span>
+                            <span class="block font-heading text-primary_text">Dobrodošli</span>
                         </h1>
                         <p class="mx-4 md:mx-20 mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+                            Jeste li ikada razmišljali o tome,<br>
+                            vi primerci odrasle vrste,<br>
+                            šta bi bilo da morate na prste,<br>
+                            da se propinjete svakog minuta i sata,<br>
+                            da bi otvorili obična vrata?<br>
+                            Jeste li ikada razmišljali o tome?<br>
+                            Niste, dabome!<br>
+                            Što srce žudi, to igra budi,<br>
+                            talasi sreće sada nas nose,<br>
+                            igrom rastemo dobri ljudi,<br>
+                            Igrajmo se, igrajmo se!<br>
+                            Neka vesele pesme drage<br>
+                            ispune dvorac naš šareni<br>
+                            dolaze nama nove snage<br>
+                            dobro došao narode maleni!
                         </p>
-                        <a href="/o-nama/cilj"
-                            class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
-                            Saznajte o nama
-                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- VESTI -->
-    <section id="events" class="py-20 bg-background text-secondary_text">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 font-heading2">
-                <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                    Lorem ipsum
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
-                </h2>
-                <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit
-                </p>
-            </div>
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Event 1 -->
-                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
-                    <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
-                        </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
-                        </h3>
-                        <a id="g-ovise" href="#"
-                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
-                            Pročitaj
-                        </a>
-                    </div>
-                </div>
-                <!-- Event 2 -->
-                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
-                    <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
-                        </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
-                        </h3>
-                        <button
-                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
-                            Pročitaj
-                        </button>
-                    </div>
-                </div>
-                <!-- Event 3 -->
-                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
-                    <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
-                        </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
-                        </h3>
-                        <button
-                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
-                            Pročitaj
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <a href="/vesti" id="eventsView"
-                    class="bg-primary text-background px-8 py-4 text-lg rounded-full hover:bg-primary_hover transition-colors flex items-center shadow-lg mx-auto w-fit">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve
-                </a>
             </div>
         </div>
     </section>
@@ -783,10 +584,6 @@
                 <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">Objekti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
-                <p class="lg:mb-16 sm:text-xl">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
             </div>
             <div id="vrticiCards" class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                 <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
@@ -800,7 +597,7 @@
                         <h3 class="text-primary_text font-heading text-2xl">
                             <p id="g-title" class="text-3xl">Lorem ipsum</p>
                         </h3>
-                        <p id="g-description" class="mt-3 mb-4">
+                        <p id="g-description" class="mt-3 mb-4 text-sm">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
@@ -815,7 +612,7 @@
                         <h3 class="text-primary_text tracking-tight text-2xl">
                             <p id="g-naslov">Lorem ipsum</p>
                         </h3>
-                        <p class="mt-3 mb-4">
+                        <p class="mt-3 mb-4 text-sm">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
@@ -830,7 +627,7 @@
                         <h3 class="text-primary_text tracking-tight text-2xl">
                             <p>Lorem ipsum</p>
                         </h3>
-                        <p class="mt-3 mb-4">
+                        <p class="mt-3 mb-4 text-sm">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
@@ -845,7 +642,7 @@
                         <h3 class="text-primary_text tracking-tight text-2xl">
                             <p>Lorem ipsum</p>
                         </h3>
-                        <p class="mt-3 mb-4">
+                        <p class="mt-3 mb-4 text-sm">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
@@ -865,7 +662,7 @@
                 <?php
                 $stats = [
                     ['number' => '20', 'label' => 'Generacija'],
-                    ['number' => '15', 'label' => 'Objekata'],
+                    ['number' => '4', 'label' => 'Objekta'],
                     ['number' => '1000+', 'label' => 'Osmeha'],
                     ['number' => '50+', 'label' => 'Zaposlenih'],
                 ];
@@ -887,9 +684,6 @@
                     Galerija
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
-                <p class="text-2xl max-w-2xl mx-auto">
-                    Lorem ipsum dolor amet consectetur adipiscing
-                </p>
             </div>
             <div id="galleryCards" class="gallery-grid gap-6">
                 <div class="gallery-item rounded-xl overflow-hidden relative">
@@ -940,60 +734,42 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl">Lorem ipsum dolor</h3>
+                        <h3 class="text-xl">PU "Detinjstvo"</h3>
                     </div>
                     <p class="mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit
+                        Predškolska ustanova "Detinjstvo" u Žablju
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
+                        <a href="https://www.facebook.com/people/%D0%9F%D1%83-%D0%94%D0%B5%D1%82%D0%B8%D1%9A%D1%81%D1%82%D0%B2%D0%BE-%D0%96%D0%B0%D0%B1%D0%B0%D1%99/100087466317139/#"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/pu_detinjstvo_zabalj/"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-spotify"></i>
                         </a>
                     </div>
                 </div>
                 <div>
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a>
-                        </li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Početna</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Vesti</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Galerija</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Dokumenti</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Kontakt</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="mb-6">Informacije</h4>
                     <ul class="space-y-3">
-                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>Lorem ipsum dolor</span>
+                            <span>+381 21 2931 326</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate="off">Lorem ipsum dolor</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
-                            <span>
-                                Lorem ipsum dolor<br>
-                                Lorem ipsum dolor
-                            </span>
+                            <span data-translate="off">detinjstvozabalj@gmail.com</span>
                         </li>
                     </ul>
                 </div>
@@ -1001,7 +777,7 @@
                     <h4 class="mb-6">Mapa lokacije</h4>
                     <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2802.864498804511!2d20.063800699999998!3d45.3717293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475b230463a09207%3A0xf95b56f00f5f5d35!2sPredskolska%20ustanova%20%22Detinjstvo%22%20Zabalj!5e0!3m2!1sen!2srs!4v1763427079830!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -1014,7 +790,7 @@
                         class="w-full max-w-md md:max-w-lg h-auto mb-4">
                     <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
                 </div>
-                <p class="pt-6">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                <p class="pt-6">Copyright &copy; 2025 | Detinjstvo Žabalj</p>
             </div>
         </div>
     </footer>

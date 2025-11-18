@@ -306,7 +306,7 @@
   "documentInputForm.category": "Категорија",
   "documentInputForm.select_category": "-- Одаберите категорију --",
   "documentInputForm.document_title": "Наслов документа",
-  "documentInputForm.optional_title": "наслов",
+  "documentInputForm.optional_title": "Опциони наслов",
   "documentInputForm.document_description": "Опис документа",
   "placeholder.enter": "Унесите",
   "documentInputForm.detailed_description": "Детаљан опис (опционо)",

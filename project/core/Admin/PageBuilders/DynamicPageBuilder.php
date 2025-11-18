@@ -255,12 +255,9 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     $imageUrl = !empty($item['image']) ? htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') : null;
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $fieldCount = count($fields);
-                                $translator = new LanguageMapperController();
 
     $html = "<div class='glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1'>";
-    $vise = ($locale === 'sr-Cyrl') 
-                ? $translator->latin_to_cyrillic('Saznaj više') 
-                : 'Saznaj više';
+
     // Image section with overlay
     if ($imageUrl) {
         $html .= "<div class='relative w-full h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200'>
@@ -310,7 +307,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     // Enhanced action link
     $html .= "<a href='/sadrzaj?id={$itemId}&tip={{SLUG}}' class='card-action-link mt-5'>
                 <span class='link-content'>
-                <span>{$vise}</span>
+                    <span>Saznaj više</span>
                     <svg class='link-icon' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
                         <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
                     </svg>
@@ -419,7 +416,6 @@ HTML;
 
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
             $slug = '__SLUG__';
-            
             $pageTitle = ($locale === 'sr-Cyrl') 
                 ? $translator->latin_to_cyrillic(ucfirst($slug)) 
                 : ucfirst($slug);
