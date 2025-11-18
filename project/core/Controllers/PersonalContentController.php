@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-session_start();
 
 use App\Models\Content;
 use App\Models\Event;
@@ -371,45 +370,102 @@ class PersonalContentController
 
     private function getPageScripts(): string
     {
-        return '
-            document.addEventListener("DOMContentLoaded", function() {
-                // Image gallery lightbox
-                const galleryImages = document.querySelectorAll(".gallery-image-link");
-                
-                galleryImages.forEach(function(link) {
-                    link.addEventListener("click", function(e) {
-                        e.preventDefault();
-                        const imgSrc = this.getAttribute("href");
-                        const lightbox = document.createElement("div");
-                        lightbox.className = "lightbox";
-                        lightbox.innerHTML = 
-                            "<div class=\'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4\' style=\'backdrop-filter: blur(8px);\'>" +
-                            "    <div class=\'relative max-w-7xl mx-auto\'>" +
-                            "        <img src=\'" + imgSrc + "\' class=\'lightbox-image max-h-[90vh] max-w-full object-contain rounded-lg shadow-2xl\' alt=\'Enlarged image\'>" +
-                            "        <button class=\'absolute -top-12 right-0 text-white text-4xl hover:text-gray-300 transition-colors w-12 h-12 flex items-center justify-center font-light\'>&times;</button>" +
-                            "    </div>" +
-                            "</div>";
-                        document.body.appendChild(lightbox);
-                        document.body.style.overflow = "hidden";
-                        
-                        lightbox.addEventListener("click", function(e) {
-                            if (e.target === lightbox || e.target.closest("button") || e.target === lightbox.firstElementChild) {
-                                document.body.style.overflow = "auto";
-                                lightbox.remove();
-                            }
-                        });
-                        
-                        document.addEventListener("keydown", function escHandler(e) {
-                            if (e.key === "Escape") {
-                                document.body.style.overflow = "auto";
-                                lightbox.remove();
-                                document.removeEventListener("keydown", escHandler);
-                            }
-                        });
+        return
+            <<<JS
+            <script>
+
+                document.addEventListener('DOMContentLoaded', () => {
+                console.log("Lightbox sa sliderom aktivan");
+
+                // === 1. Kreiranje MODALA ===
+                const modal = document.createElement('div');
+                modal.id = 'galleryModal';
+                modal.className = `
+                    fixed inset-0 bg-black bg-opacity-80 hidden 
+                    flex items-center justify-center z-[999999]
+                `;
+
+                modal.innerHTML = `
+                    <span class="absolute top-4 right-6 text-white text-4xl cursor-pointer select-none close-btn">&times;</span>
+                    <button class="prev-btn absolute left-4 text-white text-5xl font-bold px-4 cursor-pointer select-none">&lt;</button>
+                    <img id="modalImage" class="max-w-[90%] max-h-[90%] rounded shadow-xl transition-all duration-200">
+                    <button class="next-btn absolute right-4 text-white text-5xl font-bold px-4 cursor-pointer select-none">&gt;</button>
+                `;
+
+                document.body.appendChild(modal);
+
+                const modalImage = modal.querySelector("#modalImage");
+                const closeBtn = modal.querySelector(".close-btn");
+                const prevBtn = modal.querySelector(".prev-btn");
+                const nextBtn = modal.querySelector(".next-btn");
+
+                // === 2. Prikupljanje svih slika iz galerije ===
+                const galleryItems = document.getElementsByClassName('gallery-item');
+                const images = []; // lista svih linkova
+                let currentIndex = 0;
+
+                for (let i = 0; i < galleryItems.length; i++) {
+                    const link = galleryItems[i].querySelector(".gallery-image-link");
+                    if (link) images.push(link.getAttribute("href"));
+                }
+
+                // === 3. Funckija za otvaranje modala ===
+                const openModal = (index) => {
+                    currentIndex = index;
+                    modalImage.src = images[currentIndex];
+
+                    modal.classList.remove("hidden");
+                    document.body.classList.add("overflow-hidden");
+                };
+
+                // === 4. Klik na item gallery ===
+                for (let i = 0; i < galleryItems.length; i++) {
+                    galleryItems[i].addEventListener("click", (event) => {
+                        const link = galleryItems[i].querySelector(".gallery-image-link");
+                        if (!link) return;
+
+                        event.preventDefault();
+                        openModal(i);
                     });
+                }
+
+                // === 5. Slider funkcije ===
+                const showNext = () => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    modalImage.src = images[currentIndex];
+                };
+
+                const showPrev = () => {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    modalImage.src = images[currentIndex];
+                };
+
+                nextBtn.addEventListener("click", showNext);
+                prevBtn.addEventListener("click", showPrev);
+
+                // === 6. ZATVARANJE ===
+                const closeModal = () => {
+                    modal.classList.add("hidden");
+                    modalImage.src = "";
+                    document.body.classList.remove("overflow-hidden");
+                };
+
+                closeBtn.addEventListener("click", closeModal);
+
+                modal.addEventListener("click", (e) => {
+                    if (e.target === modal) closeModal();
+                });
+
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape") closeModal();
+                    if (e.key === "ArrowRight") showNext();
+                    if (e.key === "ArrowLeft") showPrev();
                 });
             });
-        ';
+
+            </script>
+         
+            JS;
     }
 
     private function getDocumentIcon(string $extension): array
@@ -438,6 +494,7 @@ class PersonalContentController
         }
         return '';
     }
+
 
     private function getGalleryLabel(string $locale): string
     {
@@ -489,6 +546,7 @@ class PersonalContentController
             switch ($type) {
                 case 'Anketa':
                     $mainContent = $this->getAnketaContent($type, $locale, $structure);
+                    break;
                 case 'Vrtici':
                     $mainContent = $this->getVrticiContent($type, $locale, $structure);
                     break;
@@ -512,10 +570,69 @@ class PersonalContentController
         }
 
         $html = '<main class="min-h-screen pt-16 bg-white">' . $mainContent . '</main>';
-        $pageBuilder->setHtml($html);
-        return $pageBuilder->buildPage();
+
+        $compiledHtml = $this->compilePhpString($html);
+
+
+        $pageBuilder->setHtml($compiledHtml);
+        $skripta = $this->getPageScripts();
+
+        $pageBuilder->setScript($skripta);
+
+        $fullPageHtml = $pageBuilder->buildPage();
+        $fullPageHtml = $pageBuilder->buildPage();
+        $stringCompiled = $this->compilePhpString($fullPageHtml);
+        echo $stringCompiled;
     }
 
+    private function compilePhpString(string $phpCode, array $vars = []): string
+    {
+        $phpCode = html_entity_decode($phpCode, ENT_QUOTES, 'UTF-8');
+
+        if (!empty($vars)) {
+            extract($vars, EXTR_SKIP);
+        }
+
+        $publicRoot = realpath(__DIR__ . '/../../public/exportedPages/');
+
+
+        $phpCode = preg_replace_callback(
+            '/(?:require|include|require_once|include_once)\s+__DIR__\s*\.\s*[\'"](\/?\.\.\/+)*([^\'"]+)[\'"]/i',
+            function ($matches) use ($publicRoot) {
+                $path = $matches[2];
+                $path = ltrim($path, '/');
+                return 'require \'' . $publicRoot . '/' . $path . '\'';
+            },
+            $phpCode
+        );
+
+        $patterns = [
+            '/require\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "require '" . $publicRoot . "/$1'",
+            '/require_once\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "require_once '" . $publicRoot . "/$1'",
+            '/include\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "include '" . $publicRoot . "/$1'",
+            '/include_once\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "include_once '" . $publicRoot . "/$1'",
+        ];
+
+        foreach ($patterns as $pattern => $replacement) {
+            $phpCode = preg_replace($pattern, $replacement, $phpCode);
+        }
+
+        ob_start();
+        try {
+            set_include_path($publicRoot . PATH_SEPARATOR . get_include_path());
+
+            eval ("?>" . $phpCode);
+
+            $output = ob_get_clean();
+        } catch (\Throwable $e) {
+            ob_end_clean();
+            $output = "<!-- Error executing PHP: " .
+                htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8')
+                . " -->";
+        }
+
+        return $output === false ? '' : $output;
+    }
     private function getAnketaContent(string $type, string $locale, array $structure): string
     {
         $contentController = new Content();
@@ -1021,19 +1138,19 @@ class PersonalContentController
         $item = $data['item'];
         $fields = $item['fields'];
 
-        $ime        = $fields['ime'][$locale]        ?? '';
-        $pozicija   = $fields['pozicija'][$locale]   ?? '';
+        $ime = $fields['ime'][$locale] ?? '';
+        $pozicija = $fields['pozicija'][$locale] ?? '';
         $biografija = $fields['biografija'][$locale] ?? '';
-        $kontakt    = $fields['kontakt'][$locale]    ?? '';
-        $slika      = $fields['slika'][$locale]      ?? '';
+        $kontakt = $fields['kontakt'][$locale] ?? '';
+        $slika = $fields['slika'][$locale] ?? '';
 
         $labels = $this->getLabelsFromStructure($type, $structure, $locale);
         $fieldIcons = $this->getFieldIcons($type, $structure);
 
-        $labelIme      = $labels['ime']        ?? 'Ime i prezime';
-        $labelPozicija = $labels['pozicija']   ?? 'Pozicija';
-        $labelBio      = $labels['biografija'] ?? 'Biografija';
-        $labelEmail    = $labels['kontakt']    ?? 'Email kontakt';
+        $labelIme = $labels['ime'] ?? 'Ime i prezime';
+        $labelPozicija = $labels['pozicija'] ?? 'Pozicija';
+        $labelBio = $labels['biografija'] ?? 'Biografija';
+        $labelEmail = $labels['kontakt'] ?? 'Email kontakt';
 
         $allFiles = \App\Models\Image::fetchByElement($id);
 
@@ -1070,7 +1187,7 @@ class PersonalContentController
                             ' . ($slika ? '
                                 <img src="' . htmlspecialchars($slika, ENT_QUOTES, "UTF-8") . '" 
                                      class="w-48 h-auto rounded-xl shadow" />'
-            : 'Nema fotografije') . '
+                : 'Nema fotografije') . '
                         </span>
                     </div>
 
@@ -1089,8 +1206,8 @@ class PersonalContentController
                         <span class="field-label"><i class="' . $this->getFieldIcon("kontakt", $fieldIcons) . '"></i>' . $labelEmail . '</span>
                         <span class="field-value">
                             <a href="mailto:' . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") . '" class="text-blue-600 underline">'
-            . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") .
-            '</a>
+                . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") .
+                '</a>
                         </span>
                     </div>' : '') . '
 

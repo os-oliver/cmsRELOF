@@ -303,7 +303,7 @@
   "documentInputForm.category": "Category",
   "documentInputForm.select_category": "-- Select category --",
   "documentInputForm.document_title": "Document title",
-  "documentInputForm.optional_title": "Optional title",
+  "documentInputForm.optional_title": "title",
   "documentInputForm.document_description": "Document description",
   "placeholder.enter": "Enter",
   "documentInputForm.detailed_description": "Detailed description (optional)",
