@@ -613,7 +613,7 @@
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-poll mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Ankete</span>
+                            <span class="fofnt-medium">Ankete</span>
                         </a>
                     </div>
 
@@ -1203,7 +1203,7 @@
             </div>
         </div>
     </section>
-
+    <!-- Footer -->
     <!-- Footer -->
     <footer class="bg-secondary text-surface pt-20 pb-10">
         <div class="container mx-auto px-4">
