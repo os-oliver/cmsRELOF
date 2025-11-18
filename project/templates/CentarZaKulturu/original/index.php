@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kulturni Centar Nexus</title>
+    <title>Kancelarija za inkluziju Roma | Žabalj</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,300;0,400;0,700;1,400&display=swap"
@@ -481,11 +481,11 @@
                 <div class="hidden sm:block">
                     <h1
                         class="text-sm sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
-                        KULTURNI CENTAR
+                        Kancelarija za inkluziju Roma
                     </h1>
                     <p
                         class="text-xs sm:text-xs lg:text-sm text-secondary tracking-widest hidden md:block opacity-80 font-medium">
-                        CENTAR ZA UMETNOST I BAŠTINU
+                        Žabalj
                     </p>
                 </div>
 
@@ -743,43 +743,20 @@
                             <i class="fas fa-star mr-2 text-accent"></i>Istaknuto ovog meseca
                         </span>
                         <h1 class="text-5xl md:text-6xl font-heading font-bold leading-tight text-primary_text mb-6">
-                            <span class="block artistic-underline">Mesto gde se umetnost, film i</span>
-                            <span class="block text-primary mt-2">kultura susreću</span>
+                            <span class="block artistic-underline">Mesto gde podrška, znanje i zajedništvo</span>
+                            <span class="block text-primary mt-2">grade jednake šanse</span>
                         </h1>
                     </div>
 
                     <div class="mb-10 relative pl-6 border-l-4 border-secondary">
                         <p class="text-xl text-primary_text leading-relaxed max-w-lg mb-6">
-                            Doživite živopisnu spoju vizuelnih umetnosti, nezavisnog filma, pozorišta i kulturne baštine
-                            u našem novom renoviranom prostoru.
+                            Kancelarija za inkluziju Roma posvećena je unapređenju položaja romske zajednice kroz obrazovanje, zapošljavanje, kulturu i socijalnu podršku.
                         </p>
                         <p class="text-secondary_text italic">
-                            "Kulturni centar je srce zajednice, gde različiti izrazi pronalaze zajednički jezik."
-                            <span class="block font-medium text-accent mt-2">— Elena Rodriguez, Umetnički
-                                direktor</span>
+                            "Inkluzija počinje onda kada svako dete, mladi čovek i porodica dobiju jednaku priliku da ostvare svoje potencijale."
+                            <span class="block font-medium text-accent mt-2">— Direktor Kancelarije</span>
                         </p>
                     </div>
-
-                    <!-- Quick links -->
-                    <div class="mt-10 flex flex-wrap gap-3">
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
-                            <span class="w-3 h-3 bg-secondary rounded-full mr-2"></span>
-                            Trenutne izložbe
-                        </a>
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
-                            <span class="w-3 h-3 bg-primary rounded-full mr-2"></span>
-                            Raspored filmova
-                        </a>
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
-                            <span class="w-3 h-3 bg-secondary rounded-full mr-2"></span>
-                            Pozorišne predstave
-                        </a>
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
-                            <span class="w-3 h-3 bg-accent rounded-full mr-2"></span>
-                            Muzički događaji
-                        </a>
-                    </div>
-                </div>
 
                 <!-- Image Gallery -->
                 <div class="relative order-1 lg:order-2">
@@ -916,294 +893,6 @@
         </div>
     </section>
 
-
-    <!-- Featured Exhibition Section -->
-    <section id="promocija" class="py-20 bg-gradient-to-br from-background to-primary/10">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2 relative">
-                    <div class="artistic-frame">
-                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=800&q=80"
-                            alt="Featured Exhibition" class="rounded-xl shadow-2xl">
-                    </div>
-                    <div
-                        class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent rounded-full flex items-center justify-center text-white text-5xl font-heading font-bold shadow-xl">
-                        50%
-                    </div>
-                </div>
-                <div class="lg:w-1/2">
-                    <span
-                        class="inline-block bg-surface text-primary_text px-4 py-1 rounded-full text-sm font-medium mb-6">
-                        <i class="fas fa-fire mr-2 text-accent"></i>Specijalna ponuda
-                    </span>
-                    <h2 class="text-4xl font-heading font-bold text-primary_text mb-6">
-                        <span class="block">Retrospektiva</span>
-                        <span class="block text-accent">Miodraga Miće Popovića</span>
-                    </h2>
-                    <p class="text-lg text-primary_text mb-6 leading-relaxed">
-                        Ekskluzivna izložba koja obuhvata najznačajnija dela jednog od najuticajnijih srpskih umetnika
-                        20. veka. Ova retrospektiva predstavlja jedinstvenu priliku da se upoznate sa evolucijom
-                        Popovićevog stvaralaštva kroz pet decenija.
-                    </p>
-                    <div class="flex flex-wrap gap-4 mb-8">
-                        <div class="flex items-center">
-                            <i class="fas fa-calendar-day text-accent text-xl mr-3"></i>
-                            <div>
-                                <p class="text-sm text-secondary_text">Datum</p>
-                                <p class="font-medium">1. jun - 15. jul</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-clock text-accent text-xl mr-3"></i>
-                            <div>
-                                <p class="text-sm text-secondary_text">Vreme</p>
-                                <p class="font-medium">10:00 - 20:00</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-accent text-xl mr-3"></i>
-                            <div>
-                                <p class="text-sm text-secondary_text">Lokacija</p>
-                                <p class="font-medium">Galerija Savremene Umetnosti</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-4">
-                        <button
-                            class="bg-gradient-to-r from-accent to-accent_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg">
-                            <i class="fas fa-ticket-alt mr-3"></i>
-                            Rezerviši karte
-                        </button>
-                        <button
-                            class="border-2 border-accent text-accent px-8 py-4 rounded-full font-medium hover:bg-accent/10 transition-all flex items-center">
-                            <i class="fas fa-info-circle mr-3"></i>
-                            Saznaj više
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="Naučni klub" data-elements="Vesti" class="py-20 bg-secondary_background">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Predstojeći Seminari
-                    <span
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
-                </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Ovde se nalaze najnoviji seminari nase institucije
-                </p>
-            </div>
-
-            <div id="Naučni klubCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <?php for ($i = 0; $i < 3; $i++): ?>
-                    <div
-                        class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
-                        <!-- Slika sa leve strane -->
-                        <div class="w-1/3 relative flex-shrink-0">
-                            <img id="g-image"
-                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                alt="Event image"
-                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            <div id="g-naziv"
-                                class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                Kultura
-                            </div>
-                        </div>
-
-                        <!-- Tekstualni deo -->
-                        <div class="w-2/3 p-6 flex flex-col">
-                            <!-- Naslov i opis -->
-                            <div class="flex-grow mb-4">
-                                <h3 id="g-title"
-                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                    Savremene Perspektive
-                                </h3>
-                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
-                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                    savremenih trendova u umetnosti i tehnologiji.
-                                </p>
-                            </div>
-
-                            <!-- Datum, vreme, lokacija -->
-                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-calendar-alt text-primary"></i>
-                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-clock text-secondary"></i>
-                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-map-marker-alt text-accent"></i>
-                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                        Umetnosti</span>
-                                </div>
-                            </div>
-
-                            <!-- CTA dugme -->
-                            <div>
-                                <a id="g-ovise"
-                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
-                                    Više informacija
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                <?php endfor; ?>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="/aktivnosti/dogadjaji?category=Seminari" id="eventsView"
-                    class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve Seminaree
-                </a>
-            </div>
-
-        </div>
-    </section>
-    <!-- News Section -->
-    <section id="vesti" class="py-20 bg-gradient-to-br from-surface to-background">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Najnovije Vesti
-                    <div
-                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
-                    </div>
-                </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
-                    Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
-                </p>
-            </div>
-
-            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <?php for ($i = 0; $i < 3; $i++): ?>
-                    <article
-                        class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
-                        <div class="h-56 relative overflow-hidden">
-                            <img id="g-slika"
-                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
-                                alt="Vest"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div
-                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
-                                    <i class="fas fa-newspaper text-lg"></i>
-                                </div>
-                                <div class="flex items-center text-sm text-secondary_text">
-                                    <i class="fas fa-calendar-alt mr-2"></i>
-                                    <span id="g-datum">15. Oktobar 2025</span>
-                                </div>
-                            </div>
-
-                            <h3 id="g-naslov"
-                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
-                                Novi kulturni centar otvara vrata građanima
-                            </h3>
-
-                            <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
-                                Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
-                                kreativnosti i umetnosti u našem gradu.
-                            </p>
-
-                            <a id="g-ovise" href="#"
-                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
-                                Pročitaj više
-                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </article>
-                <?php endfor; ?>
-            </div>
-
-            <div class="text-center mt-16">
-                <button id="vestiView"
-                    class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
-                    <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
-                    Pogledaj sve vesti
-                    <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-secondary_background">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4">
-                    Upoznajte Naš Prostor
-                </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto">
-                    Moderni, inspirativni prostori dizajnirani za raznovrsne kulturne aktivnosti
-                </p>
-            </div>
-
-            <div id="galleryCards" class="gallery-grid gap-6">
-                <div class="gallery-item rounded-xl overflow-hidden relative">
-                    <img id="g-image_file_path"
-                        src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=600&q=80"
-                        alt="Gallery Space" class="w-full h-full object-cover">
-                    <div class="overlay-content">
-                        <h3 id="g-description" class="font-bold text-lg">Galerija Savremene Umetnosti</h3>
-                        <p id="g-title" class="text-sm">Prostor za izložbe</p>
-                    </div>
-                </div>
-                <div class="gallery-item rounded-xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=600&q=80"
-                        alt="Cinema" class="w-full h-full object-cover">
-                    <div class="overlay-content">
-                        <h3 class="font-bold text-lg">Nexus Bioskop</h3>
-                        <p class="text-sm">Projekcione sale</p>
-                    </div>
-                </div>
-                <div class="gallery-item rounded-xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1562788865-5638f7446611?auto=format&fit=crop&w=600&q=80"
-                        alt="Theater" class="w-full h-full object-cover">
-                    <div class="overlay-content">
-                        <h3 class="font-bold text-lg">Pozorišna Scena</h3>
-                        <p class="text-sm">Mesto za predstave</p>
-                    </div>
-                </div>
-                <div class="gallery-item rounded-xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80"
-                        alt="Workshop" class="w-full h-full object-cover">
-                    <div class="overlay-content">
-                        <h3 class="font-bold text-lg">Kreativne Radionice</h3>
-                        <p class="text-sm">Prostor za učenje</p>
-                    </div>
-                </div>
-                <div class="gallery-item rounded-xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80"
-                        alt="Cafe" class="w-full h-full object-cover">
-                    <div class="overlay-content">
-                        <h3 class="font-bold text-lg">Nexus Kafić</h3>
-                        <p class="text-sm">Mesto za opuštanje</p>
-                    </div>
-                </div>
-                <div class="gallery-item rounded-xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=600&q=80"
-                        alt="Library" class="w-full h-full object-cover">
-                    <div class="overlay-content">
-                        <h3 class="font-bold text-lg">Umetnička Biblioteka</h3>
-                        <p class="text-sm">Prostor za čitanje</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="bg-secondary text-surface pt-20 pb-10">
         <div class="container mx-auto px-4">
@@ -1218,11 +907,8 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-heading font-bold">KULTURNI NEXUS</h3>
+                        <h3 class="text-xl font-heading font-bold">Kancelarija za inkluziju Roma</h3>
                     </div>
-                    <p class="text-surface/80 mb-4">
-                        Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Beograda.
-                    </p>
                     <div class="flex space-x-3">
                         <a href="#"
                             class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
@@ -1261,15 +947,15 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">Knez Mihailova 56, 11000 Beograd</span>
+                            <span class="text-surface">Nikole Tesle 47, 21230 Žabalj</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">+381 11 123 4567</span>
+                            <span class="text-surface">+381 21 2102 260</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">info@kulturninexus.rs</span>
+                            <span class="text-surface">inkluzija.romaopstinazabalj@gmail.com</span>
 
                         </li>
                         <li class="flex items-start">
@@ -1286,14 +972,14 @@
                     <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
                     <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2802.8700346056494!2d20.059321950291636!3d45.37161759671337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475b22265c1e180f%3A0xa7bdd0aa4ad948ff!2sNikole%20Tesle%2047%2C%20%C5%BDabalj!5e0!3m2!1sen!2srs!4v1763493675590!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
 
             <div class="border-t border-surface/70 pt-8 text-center text-surface/60 text-sm">
-                <p>&copy; 2023 Kulturni Centar Nexus. Sva prava zadržana.</p>
+                <p>&copy; 2025 Kancelarija za inkluziju Roma. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
