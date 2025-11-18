@@ -439,6 +439,10 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-comments mr-2 text-primary"></i>kutak za roditelje
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
                             </a>
                         </div>
@@ -571,6 +575,10 @@
                         <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
+                        </a>
+                        <a href="#" static="true"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            <i class="fas fa-comments mr-2 text-primary"></i>Kutak za roditelje
                         </a>
                         <a href="#" static="true"
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
