@@ -156,7 +156,7 @@ HTML;
     protected string $html = <<<'HTML'
 <main>
     <div class="text-center px-2 pt-32">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
 
         <div class="mx-auto max-w-6xl">
@@ -175,7 +175,7 @@ HTML;
                             <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>Najstariji prvo</option>
                             <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>Po nazivu</option>
                         </select>
-                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl whitespace-nowrap">Primeni</button>
+                        <button type="submit" class="bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-xl whitespace-nowrap">Primeni</button>
                     </div>
 
                     <div class="w-full">
@@ -201,9 +201,6 @@ HTML;
                                 </label>
                             <?php endforeach; ?>
                         </div>
-                        </div>
-                    </div>
-
                     </div>
                 </div>
             </form>
@@ -287,7 +284,7 @@ HTML;
                         $endPage = min($totalPages, $page + 2);
                         for ($i = $startPage; $i <= $endPage; $i++):
                         ?>
-                            <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>" class="w-9 h-9 flex items-center justify-center rounded-full <?= $i == $page ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white' : 'bg-white hover:bg-gray-100' ?> shadow"><?= $i ?></a>
+                            <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>" class="w-9 h-9 flex items-center justify-center rounded-full <?= $i == $page ? 'bg-primary text-white' : 'bg-white hover:bg-gray-100' ?> shadow"><?= $i ?></a>
                         <?php endfor; ?>
                     </div>
 
@@ -303,7 +300,7 @@ HTML;
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-4">Nema pronađenih dokumenata</h3>
                     <p class="text-gray-600 max-w-md mx-auto mb-6">Promenite filtere da biste videli druge dokumente ili proverite kasnije.</p>
-                    <a href="?" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl">Resetuj filtere</a>
+                    <a href="?" class="px-6 py-3 bg-primary hover:bg-primary_hover text-white rounded-xl">Resetuj filtere</a>
                 </div>
             <?php endif; ?>
         </div>

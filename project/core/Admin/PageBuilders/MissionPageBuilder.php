@@ -19,7 +19,7 @@ class MissionPageBuilder extends BasePageBuilder
     </div>
 
     <!-- Naslovna sekcija -->
-    <section class="relative pt-28 pb-16 bg-secondary_background border-b border-secondary/30 text-center">
+    <section class="relative pt-28 pb-16 text-center">
         <div class="container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-heading font-extrabold text-primary_text mb-3 tracking-tight">
                 Misija i Vizija
@@ -35,8 +35,8 @@ class MissionPageBuilder extends BasePageBuilder
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
 
             <!-- Misija -->
-            <div class="bg-surface border border-secondary/20 rounded-2xl p-10 transition">
-                <header class="border-b border-secondary/30 pb-4 mb-6">
+            <div class="bg-surface shadow-md rounded-2xl p-10 transition">
+                <header class="pb-4 mb-6">
                     <h2 class="text-3xl font-heading font-semibold text-primary mb-2">Naša Misija</h2>
                     <p class="text-secondary_text/70 text-sm uppercase tracking-widest font-medium">
                         Svrha i posvećenost
@@ -48,9 +48,9 @@ class MissionPageBuilder extends BasePageBuilder
             </div>
 
             <!-- Vizija -->
-            <div class="bg-surface border border-secondary/20 rounded-2xl p-10 transition">
-                <header class="border-b border-secondary/30 pb-4 mb-6">
-                    <h2 class="text-3xl font-heading font-semibold text-accent mb-2">Naša Vizija</h2>
+            <div class="bg-surface shadow-md rounded-2xl p-10 transition">
+                <header class="pb-4 mb-6">
+                    <h2 class="text-3xl font-heading font-semibold text-primary mb-2">Naša Vizija</h2>
                     <p class="text-secondary_text/70 text-sm uppercase tracking-widest font-medium">
                         Pogled ka budućnosti
                     </p>

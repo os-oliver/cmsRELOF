@@ -357,7 +357,7 @@
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-royal-blue"></i>Cilj
+                                <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
@@ -370,10 +370,6 @@
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
                                 <i class="fas fa-building mr-2 text-gray-700"></i>Resursi
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
-                                <i class="fas fa-flag mr-2 text-deep-teal"></i>Misija
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
@@ -428,16 +424,15 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo Section -->
             <a href="/" class="flex items-center space-x-3 flex-shrink-0">
-                <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                    <img src="" alt="" style="width:75px;height:auto;" />
+                <div class="w-20 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                    <img src="" alt="" style="width:100px;height:auto;" />
                 </div>
                 <div class="hidden sm:block">
-                    <h1 class="text-xl lg:text-2xl font-heading text-primary font-bold tracking-wider">Centar za
-                        obrazovanje</h1>
-                    <p class="text-xs text-barn_red tracking-widest hidden md:block">CENTAR ZA OBRAZOVANJE</p>
+                    <h1 class="text-xl lg:text-2xl font-heading text-primary font-bold tracking-wider">RCU</h1>
+                    <p class="text-xs text-barn_red tracking-widest hidden md:block">Regionalni centar za profesionalni razvoj <br>zaposlenih u obrazovanju Užice</p>
                 </div>
                 <div class="block sm:hidden">
-                    <h1 class="text-lg font-heading text-primary font-bold">CZO</h1>
+                    <h1 class="text-lg font-heading text-primary font-bold">RCU</h1>
                 </div>
             </a>
 
@@ -460,8 +455,8 @@
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-border_light transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-bullseye mr-3 text-royal-blue flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Cilj</span>
+                            <i class="fas fa-flag mr-3 text-deep-teal flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Misija</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -477,11 +472,6 @@
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-building mr-3 text-gray-700 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Resursi</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-flag mr-3 text-deep-teal flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Misija</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -623,7 +613,7 @@
             <h2 class="text-3xl sm:text-4xl font-heading font-bold leading-tight">Dobrodošli u našu ustanovu</h2>
             <p class="mt-4 text-lg max-w-2xl mx-auto">Znanje, inovacije i budućnost u srcu obrazovanja.</p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/o-nama/cilj"
+                <a href="/o-nama/misija"
                     class="inline-flex items-center px-6 py-3 rounded-md bg-accent text-primary font-semibold shadow-md hover:bg-accent_hover transition">Saznaj
                     više</a>
                 <a href="/seminari"
@@ -641,8 +631,7 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
-                    semper lobortis neque non eleifend.
+                    Saznajte šta je novo kod nas — programi obuka, radionice, stručna usavršavanja i inicijative koje podržavaju rast i napredak zaposlenih u obrazovanju.
                 </p>
             </div>
 
@@ -773,8 +762,7 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-white max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
-                    semper lobortis neque non eleifend.
+                    U Naučnom klubu istražujemo svet nauke kroz interaktivne radionice, predavanja i eksperimente — prostor za učenike, nastavnike i sve radoznale umove.
                 </p>
             </div>
 
@@ -937,8 +925,7 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
-                    semper lobortis neque non eleifend.
+                    Zavirite u našu galeriju i upoznajte atmosferu sa seminara, radionica i programa koje organizujemo.
                 </p>
             </div>
 
@@ -997,27 +984,23 @@
                         <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
                             <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
-                        <h3 class="text-xl font-heading font-bold">CENTAR ZA OBRAZOVANJE</h3>
+                        <h3 class="text-xl font-heading font-bold">RCU</h3>
                     </div>
                     <p class="mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Regionalni centar za profesionalni razvoj zaposlenih u obrazovanju Užice
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
+                        <a href="https://www.facebook.com/regionalnicentaruzice/"
                             class="w-10 h-10 rounded-full bg-primary_text/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/rcu_uzice/"
                             class="w-10 h-10 rounded-full bg-primary_text/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://www.youtube.com/channel/UCWajrUZXlS4TvfIpHw1TG4A"
                             class="w-10 h-10 rounded-full bg-primary_text/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
                             <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-primary_text/90 hover:bg-accent hover:text-black flex items-center justify-center text-white transition-colors">
-                            <i class="fab fa-spotify"></i>
                         </a>
                     </div>
                 </div>
@@ -1025,13 +1008,14 @@
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu
-                                korisnika</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a>
+                        <li><a href="https://informator.poverenik.rs/informator?org=LC4BdWRJ68iBgMXAe" class="hover:text-secondary transition-colors">Informator o radu</a></li>
+                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
+                        <li><a href="https://ceo.edu.rs/" class="hover:text-secondary transition-colors">Zavod za vrednovanje kvaliteta</a></li>
+                        <li><a href="https://prosveta.gov.rs/" class="hover:text-secondary transition-colors">Ministarstvo prosvete Republike Srbije</a></li>
+                        <li><a href="https://uzice.rs/" class="hover:text-secondary transition-colors">Grad Užice</a></li>
+                        <li><a href="https://www.eda.admin.ch/countries/serbia/sr/home.html" class="hover:text-secondary transition-colors">Švajcarska agencija za razvoj i saradnju</a></li>
+                        <li><a href="https://zuov.gov.rs/" class="hover:text-secondary transition-colors">Zavod za unapređenje obrazovanja i vaspitanja</a>
+                        <li><a href="https://www.rcnis.edu.rs/" class="hover:text-secondary transition-colors">Regionalni centri za profesionalni razvoj zaposlenih u obrazovanju u Nišu</a>
                         </li>
                     </ul>
                 </div>
@@ -1041,21 +1025,26 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-secondary mt-1 mr-3"></i>
-                            <span>Knez Mihailova 56, 11000 Beograd</span>
+                            <span>Nemanjina 52, 31000 Užice Srbija</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-secondary mt-1 mr-3"></i>
-                            <span>+381 11 123 4567</span>
+                            <span>031/ 514-624</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-secondary mt-1 mr-3"></i>
+                            <span>062/8086-751</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-secondary mt-1 mr-3"></i>
-                            <span data-translate="off">info@example.rs</span>
+                            <span data-translate="off">direktor@rcu-uzice.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-secondary mt-1 mr-3"></i>
                             <span>
-                                Utorak - Nedelja: 10:00 - 21:00<br>
-                                Ponedeljak: zatvoreno
+                                Ponedejak - Petak: 8:00 - 16:00<br>
+                                Subota: zatvoreno<br>
+                                Nedelja: zatvoreno
                             </span>
                         </li>
                     </ul>
@@ -1065,7 +1054,7 @@
                     <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
                     <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.8558933616478!2d19.844017191030535!3d43.85881546458296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4759d344c1ce373f%3A0xe413bfef88d954d!2z0KDQtdCz0LjQvtC90LDQu9C90Lgg0YbQtdC90YLQsNGAINC30LAg0L_RgNC-0YTQtdGB0LjQvtC90LDQu9C90Lgg0YDQsNC30LLQvtGYINC30LDQv9C-0YHQu9C10L3QuNGFINGDINC-0LHRgNCw0LfQvtCy0LDRmtGDINCj0LbQuNGG0LU!5e0!3m2!1ssr!2srs!4v1763394150986!5m2!1ssr!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -1079,7 +1068,7 @@
             </div>
 
             <div class="pt-8 text-center text-white text-sm">
-                <p>&copy; 2023 Centar za obrazovanje. Sva prava zadržana.</p>
+                <p>&copy; 2025 Regionalni centar za profesionalni razvoj zaposlenih u obrazovanju Užice.<br> Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
