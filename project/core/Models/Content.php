@@ -276,7 +276,7 @@ class Content
     private function processTextField(int $contentID, string $fieldName, string $value, string $locale, bool $isUpdate, string $type = ''): void
     {
         error_log("Processing text field: $fieldName with value: $value for locale: $locale");
-        if ($fieldName === 'link') {
+        if ($fieldName === 'link' || $type == 'email') {
             $variants = [
                 'sr' => $value,
                 'sr-Cyrl' => $value,

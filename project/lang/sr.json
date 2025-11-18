@@ -303,7 +303,7 @@
   "documentInputForm.category": "Kategorija",
   "documentInputForm.select_category": "-- Odaberite kategoriju --",
   "documentInputForm.document_title": "Naslov dokumenta",
-  "documentInputForm.optional_title": "Opcioni naslov",
+  "documentInputForm.optional_title": "naslov",
   "documentInputForm.document_description": "Opis dokumenta",
   "placeholder.enter": "Unesite",
   "documentInputForm.detailed_description": "Detaljan opis (opciono)",

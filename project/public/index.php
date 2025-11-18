@@ -5,7 +5,7 @@ require_once __DIR__ . '/../core/Utils/translations.php';
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 use App\Database; // Ensure this is available, assuming you have an App\Database class
-use PDO; // Ensure PDO is available
+// use PDO; // Ensure PDO is available
 
 define('PROJECT_ROOT', dirname(__DIR__));
 define('PUBLIC_ROOT', __DIR__);
@@ -38,7 +38,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $registerRoute('GET', '/kontrolna-tabla/poruke', 'PageController@chats');
     $registerRoute('GET', '/kontrolna-tabla/o-nama', 'PageController@aboutUS');
     $registerRoute('GET', '/kontrolna-tabla/boje', 'PageController@colors');
-    // The dynamic route must be registered, but its registration is complex due to the wildcard, 
+    // The dynamic route must be registered, but its registration is complex due to the wildcard,
     // so we handle it outside the helper for simplicity if it might overlap.
     // However, for routes with slugs, the check might not be reliable, but let's assume specific ones are checked.
     $r->addRoute('GET', '/kontrolna-tabla/{slug:.+}', 'PageController@editorDynamic');
