@@ -380,9 +380,9 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-history mr-2 text-accent"></i>Istorijat
                             </a>
-                            <a data-page="Rukovodstvo" href="#"
+                            <a data-page="OrganiUpravljanja" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-users-cog mr-2 text-secondary"></i>Rukovodstvo
+                                <i class="fas fa-users-cog mr-2 text-secondary"></i>Organi upravljanja
                             </a>
                             <a data-page="OrganizacionaStruktura" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
@@ -532,7 +532,7 @@
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Rukovodstvo</span>
+                            <span class="font-medium">Organi upravljanja</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -1128,12 +1128,12 @@
             </div>
 
             <div class="text-center mt-16">
-                <button id="vestiView"
-                    class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
+                <a href="/aktivnosti/vesti" id="vestiView"
+                    class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center group shadow-xl">
                     <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
                     Pogledaj sve vesti
                     <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -1218,29 +1218,11 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-heading font-bold">KULTURNI NEXUS</h3>
+                        <h3 class="text-xl font-heading font-bold">GRADSKI KULTURNI CENTAR</h3>
                     </div>
                     <p class="text-surface/80 mb-4">
-                        Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Beograda.
+                        Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Užica.
                     </p>
-                    <div class="flex space-x-3">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-spotify"></i>
-                        </a>
-                    </div>
                 </div>
 
                 <div>
@@ -1261,22 +1243,23 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">Knez Mihailova 56, 11000 Beograd</span>
+                            <span class="text-surface">Trg Svetog Save 11, 31 000 Užice</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">+381 11 123 4567</span>
+                            <span class="text-surface">+381 31/3100-201<br>+381 31/3100-202</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">info@kulturninexus.rs</span>
+                            <span class="text-surface">direktor@gkcuzice.rs</span>
 
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-accent mt-1 mr-3"></i>
                             <span class="text-surface">
-                                Utorak - Nedelja: 10:00 - 21:00<br>
-                                Ponedeljak: zatvoreno
+                                Radnim danima: 08:00 - 24:00<br>
+                                Subotom: 08:00 - 24:00<br>
+                                Nedeljom: ne radi
                             </span>
                         </li>
                     </ul>
@@ -1286,14 +1269,14 @@
                     <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
                     <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2890.8765432109!2d19.841686!3d43.856418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4759d34f6707b693%3A0x93314cc955b4acef!2zVcW-aWNlIENpdHkgQ3VsdHVyYWwgQ2VudGVy!5e0!3m2!1sen!2srs!4v1700000000000!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
 
             <div class="border-t border-surface/70 pt-8 text-center text-surface/60 text-sm">
-                <p>&copy; 2023 Kulturni Centar Nexus. Sva prava zadržana.</p>
+                <p>&copy; 2023 Gradski Kulturni Centar Užice. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>

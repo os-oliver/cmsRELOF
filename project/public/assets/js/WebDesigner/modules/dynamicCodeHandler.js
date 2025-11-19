@@ -50,7 +50,7 @@ export function htmlToDynamicCode(target, type) {
     .toHTML()
     .replace(/\ssrc="[^"]*"/g, "")
     .replace(/imageSourceGen=/g, "src=");
-  const phpLoop = `<?php $__i = 0; foreach ($${type} as $${type}_item): if ($__i++ >= ${nStartingCards}) break; ?>${templateHTML}<?php endforeach; ?>`;
+  const phpLoop = `<?php if (isset($${type}) && is_array($${type})): $__i = 0; foreach ($${type} as $${type}_item): if ($__i++ >= ${nStartingCards}) break; ?>${templateHTML}<?php endforeach; endif; ?>`;
 
   target.components([]);
   target.append([{ type: "textnode", content: phpLoop }]);
