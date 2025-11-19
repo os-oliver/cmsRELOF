@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorem ipsum dolor</title>
+    <title>Narodno pozorište Pirot</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -108,12 +108,10 @@
             }
 
             .hero-gradient {
-                background: linear-gradient(
-                    to bottom,       
-                    rgb(247, 241, 237) 0%,      
-                    rgb(239, 178, 178) 50%,     
-                    rgba(255, 255, 255, 0.96) 100%     
-                );
+                background: linear-gradient(to bottom,
+                        rgb(247, 241, 237) 0%,
+                        rgb(239, 178, 178) 50%,
+                        rgba(255, 255, 255, 0.96) 100%);
                 text-align: left;
                 padding-top: 8rem;
                 padding-bottom: 6rem;
@@ -347,25 +345,34 @@
 
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-flag mr-2 text-primary"></i>Misija
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Istorija
+                                <i class="fas fa-flag mr-2 text-primary"></i>Istorijat
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Partneri
+                                <i class="fas fa-users mr-2 text-primary"></i>Partneri
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Organizaciona struktura
+                                <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Organi Upravljanja
+                                <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
+                            </a>
+                            <a static="true" href="#"
+                                class="hidden">
+                                Bon ton
+                            </a>
+                            <a static="true" href="#"
+                                class="hidden">
+                                Rezervacija karata
+                            </a>
+                            <a static="true" href="#"
+                                class="hidden">
+                                Scena
                             </a>
                         </div>
 
@@ -392,7 +399,7 @@
                         <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Pitanja
+                        <i class="fas fa-question mr-3 text-primary"></i>Pitanja
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primary"></i>Informacije
@@ -418,39 +425,35 @@
             <!-- Logo Section -->
             <div class="flex items-center space-x-3 flex-shrink-0">
                 <div
-                    class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    class="w-13 h-13 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
 
-                <div class="hidden sm:block font-body text-primary_text">
-                    <h1 class="text-xl lg:text-2xl tracking-wider">Lorem ipsum dolor</h1>
-                    <p class="text-xs tracking-widest hidden md:block">Lorem ipsum dolor sit amet consectetu</p>
+                <div class="hidden sm:block font-body text-primary_text mr-2">
+                    <h1 class="text-xl lg:text-2xl tracking-wider">Narodno pozorište</h1>
+                    <p class="text-l tracking-widest hidden md:block">Pirot</p>
                 </div>
                 <div class="block sm:hidden">
-                    <h1 class="text-lg text-primary_text">Lorem ipsum</h1>
+                    <h1 class="text-lg text-primary_text">Narodno pozorište</h1>
                 </div>
             </div>
 
 
             <!-- Desktop Navigation -->
             <nav id="navBarID"
-                class="hidden lg:flex space-x-4 xl:space-x-8 font-body text-secondary_text hover:text-primary_text">
+                class="hidden lg:flex space-x-4 xl:space-x-8 font-body text-secondary_text hover:text-primary_text ml-5">
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-home mr-2 text-primary transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
                 <div class="dropdown relative group transition-colors">
-                    <button class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <button class="nav-link transition-colors flex items-center whitespace-nowrap mt-1">
                         <i class="fas fa-info-circle mr-2 text-primary"></i>
                         <span class="hidden xl:inline">O nama</span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="#"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
-                        </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
@@ -459,34 +462,44 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-flag mr-2 text-primary"></i>Misija
                         </a>
-                        <a static = "true" href="#"
+                        <a static="true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Istorija
+                            <i class="fas fa-flag mr-2 text-primary"></i>Istorijat
                         </a>
-                        <a static = "true" href="#"
+                        <a static="true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Partneri
+                            <i class="fas fa-users mr-2 text-primary"></i>Partneri
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Organi Upravljanja
+                            <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
                         </a>
 
                         <a data-page="OrganizacionaStruktura" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-secondary"></i>Organizaciona struktura
+                            class="flex items-center py-2 px-4 text-sm transition-colors">
+                            <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                         </a>
 
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Pitanja
+                            <i class="fas fa-question mr-2 text-primary"></i>Pitanja
                         </a>
-
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-flag mr-2 text-primary"></i>Informacije
                         </a>
-
+                        <a static="true" href="#"
+                            class="hidden">
+                            Bon ton
+                        </a>
+                        <a static="true" href="#"
+                            class="hidden">
+                            Rezervacija karata
+                        </a>
+                        <a static="true" href="#"
+                            class="hidden">
+                            Scena
+                        </a>
                     </div>
                 </div>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -527,7 +540,6 @@
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
                     'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -603,21 +615,19 @@
                 <div>
                     <div class="mb-8 text-left">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondary_text font-body">Lorem ipsum dolor sit</span>
+                            <span class="block font-heading text-primary_text">Dobrodošli u</span>
+                            <span class="block mt-2 text-secondary_text font-body">Narodno pozorište Pirot</span>
                         </h1>
                         <p class="mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+                            U srcu Pirota, naše pozorište već decenijama čuva duh zajedništva i ljubavi prema umetnosti.
+                            Publika nam je porodica, a svaka predstava novo putovanje kroz smeh, suze i emocije.
+                            Naš repertoar je pažljivo biran za sve generacije.
+                            Zakoračite u svet gde se susreću tradicija i savremena scena.
                         </p>
-                        <button
-                            class="bg-primary text-primarybtntxt px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors">
+                        <a href="/repertoar"
+                            class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
                             Pogledajte repertoar
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="hidden md:flex justify-center">
@@ -729,7 +739,7 @@
 
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="text-center mt-12">
@@ -758,7 +768,7 @@
             </div>
 
             <div id="vestiCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-                
+
                 <!-- vest 1 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
@@ -769,7 +779,7 @@
                         <div class="flex items-center mb-3">
                             <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
-                        
+
                         <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
 
                         <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
@@ -794,7 +804,7 @@
                         <div class="flex items-center mb-3">
                             <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
-                        
+
                         <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
 
                         <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
@@ -819,7 +829,7 @@
                         <div class="flex items-center mb-3">
                             <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
-                        
+
                         <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
 
                         <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
@@ -834,7 +844,7 @@
                     </div>
                 </div>
 
-                
+
             </div>
 
             <div class="text-center mt-12">
@@ -895,37 +905,31 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl">Lorem ipsum dolor</h3>
+                        <h3 class="text-xl">Narodno pozorište Pirot</h3>
                     </div>
                     <p class="mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit
+                        Posetite nas i na društvenim mrežama
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
+                        <a href="https://www.facebook.com/people/Narodno-Pozoriste-Pirot/100081268901840/"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#"
+                        <a href="https://www.youtube.com/results?search_query=narodno+pozoriste+pirot"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-spotify"></i>
                         </a>
                     </div>
                 </div>
                 <div>
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-
+                        <li><a href="https://www.kultura.gov.rs/" class="text-logocolor2/90 hover:text-primary_text transition-colors">Ministarstvo kulture i informisanja RS</a></li>
+                        <li><a href="https://www.pirot.rs/" class="text-logocolor2/90 hover:text-primary_text transition-colors">Grad Pirot - lokalna samouprava</a></li>
+                        <li><a href="o-nama/bon-ton" class="text-logocolor2/90 hover:text-primary_text transition-colors">Pozorišni bon ton</a></li>
+                        <li><a href="o-nama/rezervacija-karata" class="text-logocolor2/90 hover:text-primary_text transition-colors">Rezervacija karata - Marketing NP Pirot</a></li>
+                        <li><a href="o-nama/scena" class="text-logocolor2/90 hover:text-primary_text transition-colors">Scena Narodnog pozorišta Pirot</a></li>
+                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Informator o radu</a></li>
                     </ul>
                 </div>
                 <div>
@@ -933,24 +937,23 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-logocolor2 mt-1 mr-3"></i>
-                            <span>adresa adresa adresa</span>
+                            <span>Branka Radičevića 1, 18300 Srbija</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>+38121231231</span>
+                            <span>010/321 587</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+                            <span>010/322 677</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate = "off">info@pozoriste.rs</span>
+                            <span data-translate="off">pozoristepi@open.telekom.rs</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
-                            <span>
-                                Radno vreme:<br>
-                                Ponedeljak - Petak: 10:00 - 18:00<br>
-                                Subota: 10:00 - 14:00<br>
-                                Nedelja: 10:00 - 14:00
-                            </span>
+                            <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
+                            <span data-translate="off">pozoristepi@gmail.com</span>
                         </li>
                     </ul>
                 </div>
@@ -958,7 +961,7 @@
                     <h4 class="mb-6">Mapa lokacije</h4>
                     <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2910.5676419736833!2d22.586171699999998!3d43.155607599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47553d255f8e1bb9%3A0xa818f2b55505f94f!2sNational%20Theater%20Pirot!5e0!3m2!1ssr!2srs!4v1763577172290!5m2!1ssr!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -969,6 +972,7 @@
                 <p class="text-xs md:text-sm text-primary_text max-w-5xl">
                     Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.
                 </p>
+                <p class="pt-6">&copy; Narodno pozorište Pirot. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
@@ -978,23 +982,23 @@
             theme: {
                 extend: {
                     colors: {
-                        background: '#F7F2EA',       // warm parchment
+                        background: '#F7F2EA', // warm parchment
                         secondary_background: '#faf0ca',
-                        primary: '#8B1E3F',    // velvet red
+                        primary: '#8B1E3F', // velvet red
                         primary_hover: '#701932',
-                        secondary: '#2D3047',  // deep navy
+                        secondary: '#2D3047', // deep navy
                         secondary_hover: '#24273B',
-                        primary_text: '#1F1A1A',      // charcoal
-                        secondary_text: '#5D4E4E',    // warm gray
-                        logocolor1: '#8B1E3F',       // gold
-                        logocolor2: '#2D3047',       // pairs with gold
-                        primarybtntxt: '#FFF7E6',    // soft ivory on red/navy
-                        surface: '#8B1E3F1A',       // translucent velvet for cards
-                        footerbg: '#EFE3D6',         // creamy footer
+                        primary_text: '#1F1A1A', // charcoal
+                        secondary_text: '#5D4E4E', // warm gray
+                        logocolor1: '#8B1E3F', // gold
+                        logocolor2: '#2D3047', // pairs with gold
+                        primarybtntxt: '#FFF7E6', // soft ivory on red/navy
+                        surface: '#8B1E3F1A', // translucent velvet for cards
+                        footerbg: '#EFE3D6', // creamy footer
                     },
                     fontFamily: {
                         heading: ['"Bodoni Moda"', 'serif'], // headings (classic & dramatic)
-                        body: ['Inter', 'sans-serif']  
+                        body: ['Inter', 'sans-serif']
                     }
                 }
             }
@@ -1002,11 +1006,11 @@
 
         const btn = document.getElementById('increaseFontBtn');
 
-        let currentSize = 16;       // initial font size in px
-        let step = 2;               // px to increase or decrease per click
-        let maxSteps = 3;           // max increments before toggling direction
-        let count = 0;              // how many increments or decrements done
-        let increasing = true;      // track if currently increasing font size
+        let currentSize = 16; // initial font size in px
+        let step = 2; // px to increase or decrease per click
+        let maxSteps = 3; // max increments before toggling direction
+        let count = 0; // how many increments or decrements done
+        let increasing = true; // track if currently increasing font size
 
         btn.addEventListener('click', () => {
             if (increasing) {
@@ -1036,7 +1040,7 @@
                 dropdown.classList.toggle('active');
             });
         });
-        document.getElementById('searchButton').addEventListener('click', function () {
+        document.getElementById('searchButton').addEventListener('click', function() {
             const container = document.getElementById('searchInputContainer');
             const input = document.getElementById('searchInput');
 
@@ -1049,7 +1053,7 @@
             }
         });
 
-        document.getElementById('closeSearch').addEventListener('click', function () {
+        document.getElementById('closeSearch').addEventListener('click', function() {
             const container = document.getElementById('searchInputContainer');
             container.classList.add('opacity-0');
             setTimeout(() => {
@@ -1057,7 +1061,7 @@
             }, 300);
         });
 
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
             const searchContainer = document.getElementById('searchInputContainer');
             const searchButton = document.getElementById('searchButton');
 
@@ -1082,7 +1086,7 @@
             }, 300);
         });
         // Header scroll effect
-        window.addEventListener('scroll', function () {
+        window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
@@ -1156,7 +1160,7 @@
 
         // Event listeners
         if (hamburger) {
-            hamburger.addEventListener('click', function (e) {
+            hamburger.addEventListener('click', function(e) {
                 e.stopPropagation();
                 if (mobileMenu.classList.contains('hidden')) {
                     openMobileMenu();
@@ -1175,7 +1179,7 @@
         }
 
         if (mobileAboutToggle) {
-            mobileAboutToggle.addEventListener('click', function (e) {
+            mobileAboutToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 toggleMobileAbout();
             });
@@ -1184,21 +1188,21 @@
         // Close menu when clicking on menu links (except dropdown toggle)
         const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
         menuLinks.forEach(link => {
-            link.addEventListener('click', function () {
+            link.addEventListener('click', function() {
                 // Close menu after a short delay to allow for navigation
                 setTimeout(closeMobileMenuFunc, 150);
             });
         });
 
         // Close menu on window resize if screen becomes large
-        window.addEventListener('resize', function () {
+        window.addEventListener('resize', function() {
             if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
         });
 
         // Handle escape key to close menu
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
@@ -1206,7 +1210,7 @@
 
         // Prevent menu panel clicks from closing the menu
         if (mobileMenuPanel) {
-            mobileMenuPanel.addEventListener('click', function (e) {
+            mobileMenuPanel.addEventListener('click', function(e) {
                 e.stopPropagation();
             });
         }
@@ -1218,7 +1222,9 @@
                     entry.target.classList.add('fade-in');
                 }
             });
-        }, { threshold: 0.1 });
+        }, {
+            threshold: 0.1
+        });
 
         document.querySelectorAll('.repertoar-card, .gallery-item, .section-divider').forEach(el => {
             observer.observe(el);

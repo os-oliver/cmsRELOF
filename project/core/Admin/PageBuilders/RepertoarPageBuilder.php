@@ -160,12 +160,12 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     
-    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-3xl shadow-xl mb-10 gap-4 border border-secondary/20'>";
+    $html = "<form method='GET' action='' class='glass-search bg-white flex flex-col sm:flex-row items-center justify-between p-6 rounded-3xl shadow-xl mb-10 gap-4 border border-secondary/20'>";
     
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
         <input type='text' name='search' value='{$safeSearchValue}' 
                placeholder='{$texts['search_placeholder']}' 
-               class='w-full border border-secondary/30 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm bg-background text-primary_text placeholder-secondary_text font-body'>
+               class='w-full border rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm bg-white/80 text-primary_text placeholder-secondary_text font-body'>
         <button type='submit' 
                 class='bg-primary hover:bg-primary_hover text-primarybtntxt px-6 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl font-semibold font-body'>
             {$texts['apply_button']}
@@ -174,7 +174,7 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
     
     $html .= "<div class='flex items-center w-full sm:w-auto'>
         <select name='category' 
-                class='w-full sm:w-64 border border-secondary/30 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all shadow-sm bg-background text-primary_text font-body appearance-none cursor-pointer'>
+                class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all shadow-sm bg-white/80 text-primary_text font-body appearance-none cursor-pointer'>
             <option value=''>{$texts['all_categories']}</option>";
     
     foreach ($categories as $cat) {
@@ -394,7 +394,7 @@ PHP;
 <main class="bg-background min-h-screen font-body">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-10 text-center md:text-left">
-            <h1 class="text-3xl md:text-4xl font-bold text-primary_text font-heading mb-2">Repertoar</h1>
+            <h1 class="text-3xl md:text-3xl font-bold text-primary_text font-heading mb-2 mt-5">Repertoar</h1>
             <p class="text-secondary_text max-w-2xl">Pregled naših predstava i izvođenja</p>
         </div>
         
