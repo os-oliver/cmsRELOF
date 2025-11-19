@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Turizam Regija | Otkrijte Našu Prirodnu Baštinu</title>
+  <title>Zapadna Srbija | Otkrijte Našu Prirodnu Baštinu</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -243,7 +243,7 @@
             <img src="" alt="" style="width:75px;height:auto;" />
         </div>
         <div class="hidden sm:block">
-          <div class="text-xl font-bold text-primary_text font-heading2">Turizam Regija</div>
+          <div class="text-xl font-bold text-primary_text font-heading2">Zapadna Srbija</div>
           <div class="text-xs text-secondary_text">Turistička Organizacija</div>
         </div>
       </a>
@@ -493,10 +493,10 @@
   <section class="relative pt-20 overflow-hidden">
     <!-- Full-screen Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
-      <img src="https://bookaweb.s3.eu-central-1.amazonaws.com/assets/62e7d75ccd410.jpg" alt="Mountain landscape"
+      <img src="https://westserbia.org/wp-content/uploads/2022/05/Zlatar6@2x.png" alt="Mountain landscape"
         class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-b from-gray-900/30 via-gray-900/20 to-gray-900/25"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30"></div>
+      <!-- Dark tint overlay (removed green tint) -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60"></div>
     </div>
 
     <!-- Content -->
@@ -510,14 +510,14 @@
               d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
             </path>
           </svg>
-          <span>Najbolja turistička destinacija 2025</span>
+          <span>Vaša početna stanica za odmor u našoj regiji</span>
         </div>
 
         <!-- Heading -->
         <h1
           class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up">
-          Otkrijte Prirodnu Lepotu<br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Naše Regije</span>
+          Dobrodošli u<br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Zapadnu Srbiju</span>
         </h1>
 
         <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto animate-fade-in-up font-heading2">
@@ -560,12 +560,12 @@
         <!-- Quick Stats -->
         <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
           <div class="text-center">
-            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">120+</div>
+            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">14+</div>
             <div class="text-sm lg:text-base text-gray-300">Destinacija</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">2000+</div>
-            <div class="text-sm lg:text-base text-gray-300">Smeštaja</div>
+            <div class="text-4xl lg:text-5xl font-bold text-white mb-2">28</div>
+            <div class="text-sm lg:text-base text-gray-300">Vidikovaca</div>
           </div>
           <div class="text-center">
             <div class="text-4xl lg:text-5xl font-bold text-white mb-2">50+</div>
@@ -583,89 +583,95 @@
     </div>
   </section>
 
-  <!-- Featured Destinations -->
+  <!-- Destinacije: left text / right image (matches current site convention) -->
   <section id="destinacije" class="py-20 bg-background">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold mb-4 font-heading text-primary_text">
-          Istaknute Destinacije
-        </h2>
-        <p class="text-xl text-secondary_text max-w-2xl mx-auto font-heading2">
-          Istražite najlepše prirodne i kulturne destinacije naše regije
-        </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+        <!-- Left: title + text + list -->
+        <div>
+          <p class="text-sm uppercase text-secondary text-left mb-3 font-semibold">TURISTIČKA REGIJA ZAPADNA SRBIJA</p>
+          <h2 class="text-5xl lg:text-6xl font-bold mb-6 font-heading text-primary_text">Destinacije</h2>
+
+          <p class="text-lg text-secondary_text max-w-2xl mb-6">
+            Turistička organizacija regije Zapadna Srbija obuhvata 14 celina i prožeta je manjim urbanim centrima, ruralnim predelima sa idiličnim turističkim lokalitetima kao i planinama koje čine osnov turizma ove regije.
+          </p>
+
+          <hr class="border-t border-primary/20 mb-6 w-24">
+
+          <div class="grid grid-cols-2 gap-4 text-sm text-primary_text">
+            <ul class="space-y-2">
+              <li>Užice</li>
+              <li>Zlatibor</li>
+              <li>Tara - Drina - Bajina Bašta</li>
+              <li>Zlatar - Nova Varoš</li>
+              <li>Čačak</li>
+              <li>Prijepolje</li>
+              <li>Ljubovija</li>
+            </ul>
+            <ul class="space-y-2">
+              <li>Ivanjica</li>
+              <li>Sjenica</li>
+              <li>Dragačevo - Guča</li>
+              <li>Arilje</li>
+              <li>Požega</li>
+              <li>Kosjerić</li>
+              <li>Mali Zvornik</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: map / picture -->
+        <div class="text-right">
+          <img src="https://westserbia.org/wp-content/uploads/2022/11/Mapa.svg" alt="Mapa Zapadne Srbije" class="w-full h-auto rounded-xl shadow-lg object-contain"/>
+        </div>
       </div>
 
-      <div id="destinacijeCards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Destination Card 1 -->
-        <div
-          class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
+      <!-- Dynamic destination cards (backend-connected) -->
+      <div id="destinacijeCards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <!-- Destination Card 1 (kept IDs for backend mapping) -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
           <div class="relative h-80 overflow-hidden clip-diagonal">
-            <img id= "g-slika" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
-              alt="Mountain peak"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <img id="g-slika" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop" alt="Mountain peak" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <div id="g-naziv" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">
-              Planina
-            </div>
+            <div id="g-naziv" class="inline-block px-3 py-1 bg-primary rounded-full text-sm font-medium mb-3">Planina</div>
             <h3 id="g-naziv_destinacije" class="text-2xl font-bold mb-2">Vrhovi Regije</h3>
-            <p id="g-kratak_opis" class="text-gray-200 mb-4">
-              Spektakularni pogledi i planinarske staze
-            </p>
-            <a id="g-ovise" href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">
-              Saznajte više
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
+            <p id="g-kratak_opis" class="text-gray-200 mb-4">Spektakularni pogledi i planinarske staze</p>
+            <a id="g-ovise" href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">Saznajte više
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </a>
           </div>
         </div>
 
         <!-- Destination Card 2 -->
-        <div
-          class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
+        <div class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
           <div class="relative h-80 overflow-hidden clip-diagonal">
-            <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600&h=400&fit=crop" alt="Forest"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600&h=400&fit=crop" alt="Forest" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <div class="inline-block px-3 py-1 bg-secondary rounded-full text-sm font-medium mb-3">
-              Priroda
-            </div>
+            <div class="inline-block px-3 py-1 bg-secondary rounded-full text-sm font-medium mb-3">Priroda</div>
             <h3 class="text-2xl font-bold mb-2">Nacionalni Parkovi</h3>
             <p class="text-gray-200 mb-4">Očuvana divljina i biodiverzitet</p>
-            <a href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">
-              Saznajte više
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
+            <a href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">Saznajte više
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </a>
           </div>
         </div>
 
         <!-- Destination Card 3 -->
-        <div
-          class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
+        <div class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-surface">
           <div class="relative h-80 overflow-hidden clip-diagonal">
-            <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=600&h=400&fit=crop" alt="River"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=600&h=400&fit=crop" alt="River" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <div class="inline-block px-3 py-1 bg-accent rounded-full text-sm font-medium mb-3">
-              Reka
-            </div>
+            <div class="inline-block px-3 py-1 bg-accent rounded-full text-sm font-medium mb-3">Reka</div>
             <h3 class="text-2xl font-bold mb-2">Reke i Kanjoni</h3>
-            <p class="text-gray-200 mb-4">
-              Rafting i avanturistički sportovi
-            </p>
-            <a href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">
-              Saznajte više
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
+            <p class="text-gray-200 mb-4">Rafting i avanturistički sportovi</p>
+            <a href="#" class="inline-flex items-center text-white font-medium hover:text-accent transition">Saznajte više
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </a>
           </div>
         </div>
@@ -674,97 +680,64 @@
   </section>
 
 
-  <!-- Footer -->
-  <footer class="bg-secondary_background text-secondary_text text-gray-200 font-heading2 pt-20 pb-10">
-      <div class="container mx-auto px-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-              <div>
-                  <div class="flex items-center mb-6">
-                      <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24"
-                              stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                          </svg>
-                      </div>
-                      <h3 class="text-xl">Lorem ipsum dolor</h3>
-                  </div>
-                  <p class="mb-4">
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit
-                  </p>
-                  <div class="flex space-x-3">
-                      <a href="#"
-                          class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                          <i class="fab fa-facebook-f"></i>
-                      </a>
-                      <a href="#"
-                          class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                          <i class="fab fa-instagram"></i>
-                      </a>
-                      <a href="#"
-                          class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                          <i class="fab fa-youtube"></i>
-                      </a>
-                      <a href="#"
-                          class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                          <i class="fab fa-spotify"></i>
-                      </a>
-                  </div>
-              </div>
-              <div>
-                  <h4 class="mb-6">Brzi linkovi</h4>
-                  <ul class="space-y-3">
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a>
-                      </li>
-                  </ul>
-              </div>
-              <div>
-                  <h4 class="mb-6">Informacije</h4>
-                  <ul class="space-y-3">
-                      <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
-                      <li class="flex items-start">
-                          <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                          <span>Lorem ipsum dolor</span>
-                      </li>
-                      <li class="flex items-start">
-                          <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                          <span data-translate="off">Lorem ipsum dolor</span>
-                      </li>
-                      <li class="flex items-start">
-                          <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
-                          <span>
-                              Lorem ipsum dolor<br>
-                              Lorem ipsum dolor
-                          </span>
-                      </li>
-                  </ul>
-              </div>
-              <div>
-                  <h4 class="mb-6">Mapa lokacije</h4>
-                  <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
-                      <iframe
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
-                          class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                  </div>
-              </div>
-          </div>
-          <div class="text-center text-sm">
-              <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
-                  <img
-                      src="/assets/img/SECO-logo-640px-white.png"
-                      alt="SECO logo"
-                      class="w-full max-w-md md:max-w-lg h-auto mb-4">
-                  <p class="text-gray-400"> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
-              </div>
-              <p class="pt-6 text-gray-400">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
-          </div>
+    <!-- Footer -->
+    <footer class="bg-secondary_background text-secondary_text font-heading2 pt-12 pb-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Turistička organizacija regije Zapadna Srbija</h3>
+        <address class="not-italic text-sm text-gray-200 mb-3">
+        D.Tucovića 52, 31000 Užice<br>
+        <a href="tel:+38131500155" class="hover:text-primary">+381 31/ 500 - 155</a><br>
+        <a href="mailto:office@westserbia.org" class="hover:text-primary">office@westserbia.org</a>
+        </address>
       </div>
-  </footer>
+
+      <div>
+        <h4 class="mb-2 font-semibold">Navigacija</h4>
+        <ul class="space-y-2 text-sm">
+        <li><a href="#" class="hover:text-primary">Organizacija</a></li>
+        <li><a href="#" class="hover:text-primary">O nama</a></li>
+        <li><a href="#" class="hover:text-primary">Brošure</a></li>
+        <li><a href="#" class="hover:text-primary">OPEN AIR EVERYWHERE</a></li>
+        <li><a href="#" class="hover:text-primary">Kontakt</a></li>
+        <li><a href="#" class="hover:text-primary">Informator</a></li>
+        <li><a href="#" class="hover:text-primary">Turizam</a></li>
+        <li><a href="#" class="hover:text-primary">Seoski turizam</a></li>
+        <li><a href="#" class="hover:text-primary">Aktivni odmor</a></li>
+        <li><a href="#" class="hover:text-primary">Gastronomija</a></li>
+        <li><a href="#" class="hover:text-primary">Manifestacije</a></li>
+        <li><a href="#" class="hover:text-primary">Vesti</a></li>
+        <li><a href="#" class="hover:text-primary">Turistički centri</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="mb-2 font-semibold">Turistički centri</h4>
+        <ul class="grid grid-cols-2 gap-2 text-sm">
+        <li>Užice</li>
+        <li>Zlatibor</li>
+        <li>Tara – Drina – Bajina Bašta</li>
+        <li>Zlatar – Nova Varoš</li>
+        <li>Čačak</li>
+        <li>Prijepolje</li>
+        <li>Ivanjica</li>
+        <li>Sjenica</li>
+        <li>Dragačevo – Guča</li>
+        <li>Arilje</li>
+        <li>Požega</li>
+        <li>Kosjerić</li>
+        <li>Ljubovija</li>
+        <li>Mali Zvornik</li>
+        </ul>
+      </div>
+      </div>
+
+      <div class="border-t border-secondary_text pt-4 text-center text-sm text-gray-400">
+      <p>&copy; 2021 Turistička organizacija regije Zapadna Srbija. All rights reserved.</p>
+      </div>
+    </div>
+    </footer>
 
   <!-- Bottom helper scripts -->
   <script>
