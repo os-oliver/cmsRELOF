@@ -345,22 +345,16 @@
 
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-flag mr-2 text-primary"></i>Misija
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-flag mr-2 text-primary"></i>Istorijat
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-users mr-2 text-primary"></i>Partneri
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
+                                <i class="fas fa-users-cog mr-2 text-primary"></i>Organi upravljanja
                             </a>
                             <a static="true" href="#"
                                 class="hidden">
@@ -456,23 +450,15 @@
                         class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-flag mr-2 text-primary"></i>Misija
                         </a>
                         <a static="true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-flag mr-2 text-primary"></i>Istorijat
                         </a>
-                        <a static="true" href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-users mr-2 text-primary"></i>Partneri
-                        </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
+                            <i class="fas fa-users-cog mr-2 text-primary"></i>Organi upravljanja
                         </a>
 
                         <a data-page="OrganizacionaStruktura" href="#"
@@ -861,7 +847,7 @@
     <section class="py-16 text-secondary_text">
         <div class="text-center mb-16 font-body">
             <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                Prijatelji pozorista
+                Prijatelji pozorišta
                 <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
             </h2>
         </div>
@@ -869,20 +855,24 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <?php
                 $stats = [
-                    ['label' => 'Knjaz Milos'],
-                    ['label' => 'Vlada Republike Srbije'],
-                    ['label' => 'AikBanka'],
-                    ['label' => 'Firma4'],
+                    ['label' => 'Opština Pirot'],
+                    ['label' => 'Osnivač'],
+                    ['label' => 'Samostalni sindikat TIGAR TYRES'],
+                    ['label' => 'Sindikat zapošljenih u zdravstvu'],
+                    ['label' => 'Opšta bolnica Pirot'],
+                    ['label' => 'Sindikat Doma zdravlja'],
+                    ['label' => 'Organizacija sindikata HE pirot'],
+                    ['label' => 'PSSS Pirot'],
+                    ['label' => 'Samostalni i nezavisni sindikat JP Komunalac'],
+                    ['label' => 'ED Jugoistok DOO Niš - SOED Pirot'],
+                    ['label' => 'Sindikat Telekoma "Srbija" - Pirot'],
+                    ['label' => 'JP "Pošta Srbije"'],
+                    ['label' => 'RJ Poštansko saobraćaja "Pirot"'],
+                    ['label' => 'Nezavisni sindikat Policije'],
                 ];
                 foreach ($stats as $index => $stat): ?>
                     <div class="bg-surface p-6 rounded-xl shadow-lg transform transition hover:scale-105"
                         style="animation-delay: <?= $index * 0.2 ?>s">
-
-                        <!-- Added image -->
-                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="<?= htmlspecialchars($stat['label'], ENT_QUOTES) ?>"
-                            class="w-full h-24 object-cover rounded-md mb-4" loading="lazy" />
-
                         <div><?= $stat['label'] ?></div>
                     </div>
                 <?php endforeach; ?>
@@ -929,7 +919,7 @@
                         <li><a href="o-nama/bon-ton" class="text-logocolor2/90 hover:text-primary_text transition-colors">Pozorišni bon ton</a></li>
                         <li><a href="o-nama/rezervacija-karata" class="text-logocolor2/90 hover:text-primary_text transition-colors">Rezervacija karata - Marketing NP Pirot</a></li>
                         <li><a href="o-nama/scena" class="text-logocolor2/90 hover:text-primary_text transition-colors">Scena Narodnog pozorišta Pirot</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Informator o radu</a></li>
+                        <li><a href="https://informator.poverenik.rs/informator?org=PdspbBiA5onEJPonZ" class="text-logocolor2/90 hover:text-primary_text transition-colors">Informator o radu</a></li>
                     </ul>
                 </div>
                 <div>

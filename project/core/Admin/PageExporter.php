@@ -840,8 +840,6 @@ class PageExporter
             return 'istorijat';
         } elseif (strpos($name, 'donacije-i-podrska') !== false) {
             return 'donacije-i-podrska';
-        } elseif (strpos($name, 'partneri') !== false) {
-            return 'partneri';
         } elseif (strpos($name, 'ankete') !== false) {
             return 'ankete';
         } elseif (strpos($name, 'repertoar') !== false) {
