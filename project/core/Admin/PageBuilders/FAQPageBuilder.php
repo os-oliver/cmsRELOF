@@ -266,6 +266,9 @@ PHP;
     protected string $html = <<<'HTML'
 <main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
+        <br>
+        <br>
+        <br>
         <div class="mb-8">
             <h1 class="text-3xl font-heading font-bold text-primary_text mb-2">Često postavljena pitanja</h1>
             <p class="text-secondary_text">Pronađite odgovore na najčešće nedoumice i pitanja u vezi sa našim uslugama i procesima.</p>

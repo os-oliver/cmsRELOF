@@ -279,6 +279,9 @@ PHP;
     protected string $html = <<<'HTML'
 <main class="bg-gradient-to-br from-green-50 to-teal-50 min-h-screen">
     <section class="container mx-auto px-4 py-12">
+        <br>
+        <br>
+        <br>
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Obrasci za podnošenje zahteva</h1>
             <p class="text-gray-600">Preuzmite potrebne obrasce za podnošenje zahteva</p>

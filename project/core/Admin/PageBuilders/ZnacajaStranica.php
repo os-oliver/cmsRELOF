@@ -65,6 +65,10 @@ class ZnacajaStranica extends BasePageBuilder
       <!-- MAIN -->
       <article>
         <section class="mb-4">
+          <br>
+          <br>
+          <br>
+
           <h1 class="font-heading text-4xl md:text-5xl font-extrabold text-primary_text tracking-tight">
             Informacije od javnog značaja
           </h1>
@@ -113,6 +117,9 @@ class ZnacajaStranica extends BasePageBuilder
 
       <!-- SIDEBAR -->
       <aside>
+      <br>
+          <br>
+          <br>
         <div class="sticky top-24">
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
             <h3 class="font-heading text-xl text-primary_text">Dokumenta</h3>

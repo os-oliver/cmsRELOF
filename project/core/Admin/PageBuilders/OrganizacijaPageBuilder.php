@@ -205,6 +205,9 @@ PHP;
     protected string $html = <<<'HTML'
 <main class="bg-gradient-to-br from-secondary_background to-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
+        <br>
+        <br>
+        <br>
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-primary-text mb-2">Organi upravljanja</h1>
             <p class="text-secondary-text">Članovi organizacione strukture</p>

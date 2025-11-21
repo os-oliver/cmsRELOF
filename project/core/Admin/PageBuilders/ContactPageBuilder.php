@@ -160,40 +160,77 @@ HTML;
             <div class="grid lg:grid-cols-5 gap-8">
                 <!-- Contact Info -->
                 <div class="lg:col-span-2">
-                    <div class="bg-white rounded-3xl shadow-2xl p-8 card-hover h-fit">
+                    <div class="bg-white rounded-4xl shadow-2xl p-8 card-hover h-fit">
                         <h2 class="text-3xl font-bold text-gray-800 mb-8">Kontakt informacije</h2>
 
                         <div class="space-y-8">
                             <div class="flex items-start space-x-6">
-                                <div class="icon-bg p-4 rounded-2xl">
+                                <!-- <div class="icon-bg p-4 rounded-2xl">
                                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
                                         </path>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
-                                </div>
+                                </div> -->
+
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">Centar za umetnost i baštinu<br>Trg
-                                        slobode 1<br>21000 Novi Sad, Srbija</p>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">
+                                        Služba za opšte i finansijsko-računovodstvene poslove
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Adresa: ul. Čika Matina 5, 34000 Kragujevac
+                                    </p>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Telefon: 034 355 485
+                                    </p>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        E-mail: centarkg@kneginjaljubica.org.rs
+                                    </p>
                                 </div>
                             </div>
 
                             <div class="flex items-start space-x-6">
-                                <div class="icon-bg-blue p-4 rounded-2xl">
+                                <!-- <div class="icon-bg-blue p-4 rounded-2xl">
                                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
                                         </path>
                                     </svg>
-                                </div>
+                                </div> -->
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
-                                    <p class="text-gray-600 text-lg">+381 21 123 456</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">
+                                        Savetovalište za brak i porodicu
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed">Adresa: ul. Prvoslava Stojanovića br. 8, 34000 Kragujevac</p>
+                                    <p class="text-gray-600 leading-relaxed">Telefon: 034 356 778</p>
                                 </div>
                             </div>
 
                             <div class="flex items-start space-x-6">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">
+                                        Pomoć i nega u kući za odrasla i stara lica
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Adresa: ul. Čika Matina br. 5, 34000 Kragujevac
+                                    </p>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Telefon: 034 203 431, 034 207 624
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-6">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">
+                                        Organizaciona jedinica – Smeštaj u Prihvatilište
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                    Telefon: 065/612 04 90
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- <div class="flex items-start space-x-6">
                                 <div class="icon-bg-green p-4 rounded-2xl">
                                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
@@ -205,10 +242,11 @@ HTML;
                                     <p class="text-gray-600 text-lg" data-translate="off">info@kulturnynexus.rs</p>
                                     <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
-                        <div class="mt-10 p-6 bg-gradient-to-br from-orange-50 to-blue-50 rounded-2xl border border-orange-100">
+                        <!-- Radno Vreme -->
+                        <!-- <div class="mt-10 p-6 bg-gradient-to-br from-orange-50 to-blue-50 rounded-2xl border border-orange-100">
                             <h3 class="text-xl font-bold text-gray-800 mb-4">Radno vreme</h3>
                             <div class="text-gray-700 space-y-2">
                                 <div class="flex justify-between">
@@ -224,7 +262,8 @@ HTML;
                                     <span class="text-red-500">Zatvoreno</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+
                     </div>
                 </div>
 

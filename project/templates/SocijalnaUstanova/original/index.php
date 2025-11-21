@@ -373,10 +373,6 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
                         </button>
                         <div>
-                            <a data-page="Cilj" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-green-600"></i>Cilj
-                            </a>
                             <a data-page="Sluzbe" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
@@ -393,7 +389,7 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-compass mr-2 text-blue-600"></i>Misija
                             </a>
-                            <a data-page="Istorijat" href="#"
+                            <a static = "true" data-page="Istorijat" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-history mr-2 text-brown"></i>Istorijat
                             </a>
@@ -486,19 +482,24 @@
     <header
         class="fixed w-full z-50 transition-all duration-300 py-3 sm:py-4 backdrop-blur-md shadow-sm bg-background">
         <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
+            
             <!-- Logo Section -->
             <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-                <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                    <img src="" alt="" style="width:75px;height:auto;" />
-                </div>
-                <div class="hidden sm:block">
+                <a href="#" class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4 cursor-pointer hover:opacity-80 transition-opacity">
+                    <img src="/assets/img/ljubica%20logo.jpg" alt="Knjeginja Ljubica Logo" style="width:75px;height:auto;" />
+                </a>
+                <a href="#" class="hidden sm:block cursor-pointer hover:opacity-80 transition-opacity">
                     <h1
                         class="text-base sm:text-lg lg:text-xl xl:text-2xl font-display text-slate font-bold tracking-wider leading-tight">
-                        CENTAR ZA SOCIJALNI RAD</h1>
+                        Centar za razvoj usluga </h1>
+                        <h1 class="text-base sm:text-lg lg:text-xl xl:text-2xl font-display text-slate font-bold tracking-wider leading-tight">
+                        socijale ustanove   
+                        </h1>
                     <p
                         class="text-xs sm:text-xs lg:text-sm text-primary tracking-widest hidden md:block opacity-80 font-medium">
-                        PODRŠKA I BRIGA ZA ZAJEDNICU</p>
-                </div>
+                        "Knjegina Ljubica"
+                    </p>
+                </a>
                 <div class="block sm:hidden">
                     <h1 class="text-base font-display text-slate font-bold tracking-wide">CSR</h1>
                 </div>
@@ -525,11 +526,6 @@
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-border_light transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-bullseye mr-3 text-success flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Cilj</span>
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Službe</span>
                         </a>
@@ -548,7 +544,7 @@
                             <i class="fas fa-compass mr-3 text-info flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija</span>
                         </a>
-                        <a href="#"
+                        <a static = "true" href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
@@ -732,11 +728,10 @@
 
 
     <!-- Hero Section -->
-    <section class="slider-item hero relative flex items-center z-10 w-full h-[600px] overflow-hidden">
-        <img id="g-slider-image-1" src="https://picsum.photos/1600/600" alt="Pozadinska slika za slider"
-            class="absolute inset-0 w-full h-full object-cover z-10">
+    <section class="slider-item hero relative flex items-center z-10 w-full h-[800px] overflow-hidden">
+        <img id="g-slider-image-1" src="/assets/img/centar-soc-rad-hero.jpg" alt="Centar za socijalni rad"
+            class="absolute w-full h-full object-cover z-10">
 
-        <div class="overlay-blur absolute inset-0 z-20 backdrop-blur-sm bg-[rgba(42,157,143,0.35)]">
         </div>
 
         <div class="max-w-6xl mx-auto px-4 py-20 text-center relative z-30 text-white w-full">
@@ -746,6 +741,9 @@
                 </span>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold leading-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.6);">
                     Dobro došli u Centar za socijalni rad
+                </h1>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary leading-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.6);">
+                    "Knjeginja Ljubica"
                 </h1>
             </div>
 
@@ -766,7 +764,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
                     Najnovije vesti
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary_light to-info_bg"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg text-text_secondary max-w-2xl mx-auto mt-4">
                     Pratite najnovije vesti i obaveštenja iz našeg centra. Ostanite informisani o svim važnim dešavanjima.
@@ -883,7 +881,7 @@
 
             <div class="text-center mt-12">
                 <a href="/vesti" id="vestiView"
-                    class="bg-gradient-to-r from-info to-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
+                    class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-newspaper mr-3"></i>
                     Pogledaj sve vesti
                 </a>
@@ -897,7 +895,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
                     Programi obuke
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-success_bg to-info_bg"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg text-text_secondary max-w-2xl mx-auto mt-4">
                     Učestvujte u našim programima obuke i unapredite svoje veštine. Svi programi su besplatni i prilagođeni različitim grupama korisnika.
@@ -1007,7 +1005,7 @@
             </div>
 
             <div class="text-center">
-                <a href="/prava-i-usluge/programi-obuke" class="bg-gradient-to-r from-success to-info text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
+                <a href="/prava-i-usluge/programi-obuke" class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-graduation-cap mr-3"></i>
                     Pogledaj sve programe obuke
                 </a>
@@ -1021,7 +1019,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
                     Službe
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-info_bg to-success_bg"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg text-text_secondary max-w-2xl mx-auto mt-4">
                     Centar za socijalni rad pruža širok spektar usluga namenjenih različitim kategorijama građana koji se nalaze u stanju socijalne potrebe.
@@ -1119,7 +1117,7 @@
             </div>
 
             <div class="text-center">
-                <a data-page="Sluzbe" href="/o-nama/sluzbe" class="bg-gradient-to-r from-info to-success text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
+                <a data-page="Sluzbe" href="/o-nama/sluzbe" class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-hands-helping mr-3"></i>
                     Saznaj više o našim službama
                 </a>
@@ -1134,7 +1132,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
                     Upoznajte naš prostor
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-info"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto">
                     Pogledajte fotografije našeg centra i aktivnosti koje organizujemo za korisnike naših usluga.
@@ -1196,7 +1194,12 @@
                         <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mr-3">
                             <i class="fas fa-heart text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-display font-bold">CENTAR ZA SOCIJALNI RAD</h3>
+                        <h3 class="text-xl font-display font-bold">
+                        Centar za razvoj usluga socijale ustanove   
+                        "Knjegina Ljubica"
+
+
+                        </h3>
                     </div>
                     <p class="text-white/80 mb-4">
                         Pružamo podršku i pomoć pojedincima, porodicama i zajednici u rešavanju životnih poteškoća.
@@ -1222,15 +1225,9 @@
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-display font-bold mb-6">Naše službe</h4>
+                    <h4 class="text-lg font-display font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
                         <li><a href="/ankete" class="text-white/80 hover:text-primary_lighter transition-colors">Ankete o zadovoljstvu korisnika</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Zaštita dece</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Porodično savetovanje</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Pomoć starima</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Novčana pomoć</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Programi obuke</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Sigurna kuća</a></li>
                     </ul>
                 </div>
 
@@ -1239,38 +1236,39 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-primary_lighter mt-1 mr-3"></i>
-                            <span>Bulevar oslobođenja 26, 21000 Novi Sad</span>
+                            <span>Čika Matina 5, 34000 kragujevac</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-primary_lighter mt-1 mr-3"></i>
-                            <span>+381 21 123 456</span>
+                            <span>034 355 485</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-primary_lighter mt-1 mr-3"></i>
-                            <span>info@csr-novisad.rs</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-clock text-primary_lighter mt-1 mr-3"></i>
-                            <span>
-                                Ponedeljak - Petak: 07:30 - 15:30<br>
-                                Hitni slučajevi: 24/7
-                            </span>
+                            <span data-translate="off">centarkg@kneginjaljubica.org.rs</span>
                         </li>
                     </ul>
                 </div>
-
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Lokacija</h4>
                     <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d19.8451920155352!3d45.25407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sBulevar%20oslobo%C4%91enja%2026%2C%20Novi%20Sad!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
-                            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5279.994130178201!2d20.899095240995276!3d44.02324531535237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47572137b2f013b1%3A0xf42720737e50f6fd!2sCika%20Matina%205%2C%20Kragujevac!5e1!3m2!1sen!2srs!4v1763730586386!5m2!1sen!2srs"
+                            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                        
                     </div>
                 </div>
-            </div>
 
-            <div class="border-t border-border_dark pt-8 text-center text-white/60 text-sm">
+            </div>
+            <div class=" pt-8 text-center text-white/60 text-sm">
                 <p>&copy; 2024 Centar za socijalni rad Novi Sad. Sva prava zadržana.</p>
+            </div>
+            <div class="mt-10 flex flex-col items-center space-y-4 text-center">
+                <div class="w-full border-t-2 border-primary"></div>
+                <img src="/assets/img/SECO-logo-640px.png" alt="SECO logo" class="max-h-24 w-auto object-contain mt-4">
+                <p class="text-xs md:text-sm text-white max-w-5xl">
+                    Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.
+                </p>
             </div>
         </div>
     </footer>
