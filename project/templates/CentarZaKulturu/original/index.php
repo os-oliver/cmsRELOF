@@ -388,26 +388,12 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-secondary"></i>Organizaciona struktura
                             </a>
-
                             <a data-page="Objekat" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
                             </a>
-                            <a data-page="Donacije i podrška" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-hand-holding-heart mr-2 text-accent"></i>Donacije i podrška
-                            </a>
-                            <a data-page="Partneri" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-handshake mr-2 text-primary"></i>Partneri
-                            </a>
                         </div>
                     </div>
-
-                    <a data-page="Ansambl" href="#"
-                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
-                        <i class="fas fa-users mr-3 text-primary"></i>Ansambl
-                    </a>
 
                     <a data-page="Projekti" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
@@ -481,17 +467,17 @@
                 <div class="hidden sm:block">
                     <h1
                         class="text-sm sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
-                        KULTURNI CENTAR
+                        DOM KULTURE
                     </h1>
                     <p
                         class="text-xs sm:text-xs lg:text-sm text-secondary tracking-widest hidden md:block opacity-80 font-medium">
-                        CENTAR ZA UMETNOST I BAŠTINU
+                        BABUŠNICA
                     </p>
                 </div>
 
                 <!-- Tekst za mobilni -->
                 <div class="block sm:hidden">
-                    <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">NEXUS</h1>
+                    <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">DOM KULTURE</h1>
                 </div>
             </div>
 
@@ -539,33 +525,13 @@
                             <i class="fas fa-sitemap mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Organizaciona struktura</span>
                         </a>
-
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Objekat</span>
                         </a>
-                        <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Donacije i podrška</span>
-                        </a>
-                        <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Partneri</span>
-                        </a>
                     </div>
                 </div>
-
-
-
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-                    <i
-                        class="fas fa-users mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Ansambl</span>
-                </a>
 
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
@@ -984,89 +950,7 @@
             </div>
         </div>
     </section>
-    <section id="Naučni klub" data-elements="Vesti" class="py-20 bg-secondary_background">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Predstojeći Seminari
-                    <span
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
-                </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Ovde se nalaze najnoviji seminari nase institucije
-                </p>
-            </div>
 
-            <div id="Naučni klubCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <?php for ($i = 0; $i < 3; $i++): ?>
-                    <div
-                        class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
-                        <!-- Slika sa leve strane -->
-                        <div class="w-1/3 relative flex-shrink-0">
-                            <img id="g-image"
-                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                alt="Event image"
-                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            <div id="g-naziv"
-                                class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                Kultura
-                            </div>
-                        </div>
-
-                        <!-- Tekstualni deo -->
-                        <div class="w-2/3 p-6 flex flex-col">
-                            <!-- Naslov i opis -->
-                            <div class="flex-grow mb-4">
-                                <h3 id="g-title"
-                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                    Savremene Perspektive
-                                </h3>
-                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
-                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                    savremenih trendova u umetnosti i tehnologiji.
-                                </p>
-                            </div>
-
-                            <!-- Datum, vreme, lokacija -->
-                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-calendar-alt text-primary"></i>
-                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-clock text-secondary"></i>
-                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-map-marker-alt text-accent"></i>
-                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                        Umetnosti</span>
-                                </div>
-                            </div>
-
-                            <!-- CTA dugme -->
-                            <div>
-                                <a id="g-ovise"
-                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
-                                    Više informacija
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                <?php endfor; ?>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="/aktivnosti/dogadjaji?category=Seminari" id="eventsView"
-                    class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve Seminaree
-                </a>
-            </div>
-
-        </div>
-    </section>
     <!-- News Section -->
     <section id="vesti" class="py-20 bg-gradient-to-br from-surface to-background">
         <div class="container mx-auto px-4">
@@ -1218,13 +1102,13 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-heading font-bold">KULTURNI NEXUS</h3>
+                        <h3 class="text-xl font-heading font-bold">DOM KULTURE</h3>
                     </div>
                     <p class="text-surface/80 mb-4">
-                        Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Beograda.
+                        Okupljamo kreativce i publiku u Babušnici i okolini.
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
+                        <a href="https://www.facebook.com/p/Info-Servis-Doma-kulture-Babu%C5%A1nica-100069259052201/"
                             class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
@@ -1236,23 +1120,18 @@
                             class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-spotify"></i>
-                        </a>
                     </div>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="asde" class="text-surface/80 hover:text-accent transition-colors">Izložbe</a></li>
+                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Izložbe</a></li>
                         <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Bioskop</a></li>
                         <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Pozorište</a></li>
                         <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Koncerti</a></li>
                         <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Radionice</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Kalendar
-                                događaja</a></li>
+                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Kalendar događaja</a></li>
                     </ul>
                 </div>
 
@@ -1261,22 +1140,22 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">Knez Mihailova 56, 11000 Beograd</span>
+                            <span class="text-surface">Babušnica, Srbija</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">+381 11 123 4567</span>
+                            <span class="text-surface">+381 10 385 588</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">info@kulturninexus.rs</span>
+                            <span class="text-surface" data-translate="off">domkulturebabusnica@yahoo.com</span>
 
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-accent mt-1 mr-3"></i>
                             <span class="text-surface">
-                                Utorak - Nedelja: 10:00 - 21:00<br>
-                                Ponedeljak: zatvoreno
+                                Ponedeljak - petak: 7:00 - 15:00<br>
+                                Subota i nedelja: zatvoreno
                             </span>
                         </li>
                     </ul>
@@ -1286,19 +1165,22 @@
                     <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
                     <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.8406792388814!2d22.4097020121554!3d43.06594719009326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47551520a2d5898f%3A0x7c0c4e0d8eafae37!2sDom%20Kulture!5e1!3m2!1sen!2srs!4v1763817103343!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-surface/70 pt-8 text-center text-surface/60 text-sm">
-                <p>&copy; 2023 Kulturni Centar Nexus. Sva prava zadržana.</p>
+            <div class="flex flex-col items-center border-t pt-8 text-center text-sm">
+                <img
+                    src="/assets/img/SECO-logo-640px-white.png"
+                    alt="SECO logo"
+                    class="w-full max-w-md md:max-w-lg h-auto mb-4">
+                <p class="pt-6">Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+                <p class="pt-6">&copy; 2025 Dom Kulture Babušnica. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
-
-
 
 
     <script>
