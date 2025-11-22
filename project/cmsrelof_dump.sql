@@ -555,7 +555,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$12$gCJhYbZreyojxAWXyMKr/.OuDuacMFGy9PdNUECoWAAmXVGsKhpDm','admin','Luka','Glisic','2025-06-26'),(8,'markic','$2y$12$vzaIj7ajz65Sh/Uiqyb2m.Vpz0Pvntl7bucGdFqE6cIg/FqohjqGi','editor','','','2025-06-26'),(11,'fffff','$2y$12$PBHa30Tq7fClY7jCMMefouzvAyhRtjYhivciT6dftSXbpTICj.aPK','admin','fds','fds','2025-06-26'),(12,'markon','$2y$12$BFsV5gkCcE7q61ROnANi6.BCOANTer.rkBjIrK5DOyCiYmqq9EFsG','editor','testtest','test','2025-06-26'),(14,'sda','$2y$12$woGjXFR/nbfpf1MXztds5OG8FGNfypK/2lcOZupEOQJlntE3OD.La','editor','fds','fds','2025-06-26'),(16,'ddd','$2y$12$ZbgW0vyOo74GgItANxaLOeOYB9aqGqrwvREL7jxill6fVEGEg/Baq','editor','asd','asd','2025-09-21');
+INSERT INTO `users` VALUES (1,'admin','$2y$12$gCJhYbZreyojxAWXyMKr/.OuDuacMFGy9PdNUECoWAAmXVGsKhpDm','admin','Admin','Korisnik','2025-06-26'),(8,'markic','$2y$12$vzaIj7ajz65Sh/Uiqyb2m.Vpz0Pvntl7bucGdFqE6cIg/FqohjqGi','editor','','','2025-06-26'),(11,'fffff','$2y$12$PBHa30Tq7fClY7jCMMefouzvAyhRtjYhivciT6dftSXbpTICj.aPK','admin','fds','fds','2025-06-26'),(12,'markon','$2y$12$BFsV5gkCcE7q61ROnANi6.BCOANTer.rkBjIrK5DOyCiYmqq9EFsG','editor','testtest','test','2025-06-26'),(14,'sda','$2y$12$woGjXFR/nbfpf1MXztds5OG8FGNfypK/2lcOZupEOQJlntE3OD.La','editor','fds','fds','2025-06-26'),(16,'ddd','$2y$12$ZbgW0vyOo74GgItANxaLOeOYB9aqGqrwvREL7jxill6fVEGEg/Baq','editor','asd','asd','2025-09-21');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
