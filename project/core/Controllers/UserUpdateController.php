@@ -49,7 +49,7 @@ class UserUpdateController
             // Backup
             $backupDir = $componentsDir . DIRECTORY_SEPARATOR . 'backups';
             if (!is_dir($backupDir))
-                mkdir($backupDir, 0755, true);
+                mkdir($backupDir, 0775, true);
 
             $backupFileName = pathinfo($componentFileName, PATHINFO_FILENAME) . '_backup_' . date('Y-m-d_H-i-s') . '.php';
             $backupPath = $backupDir . DIRECTORY_SEPARATOR . $backupFileName;
