@@ -658,7 +658,7 @@ class PageExporter
     {
         switch (strtolower($pageType)) {
 
-            case 'galerija':
+            case 'multimedija':
                 return new GalleryPageBuilder($name, $this->data);
             case 'kontakt':
                 return new ContactPageBuilder($name, $this->data);
@@ -666,7 +666,7 @@ class PageExporter
                 return new DocumentsPageBuilder($name, $this->data);
             case 'događaji':
             case 'dogadjaji':
-                return new EventsPageBuilder($name);
+                return new DynamicPageBuilder($name);
             case 'misija':
                 return new MissionPageBuilder($name, $this->data);
             case 'cilj':
@@ -704,7 +704,7 @@ class PageExporter
             case 'manifestacije':
                 return new DynamicPageBuilder('Manifestacije');
             case 'smestaj':
-                return new DynamicPageBuilder('Smestaj');
+                return new DynamicPageBuilder('Smeštaj');
             case 'aktivnosti':
                 return new DynamicPageBuilder('Aktivnosti');
             case 'gastronomija':
@@ -768,8 +768,8 @@ class PageExporter
     {
         error_log("nameL:" . $name);
         $name = strtolower($name);
-        if (strpos($name, 'galerija') !== false) {
-            return 'galerija';
+        if (strpos($name, 'multimedija') !== false) {
+            return 'multimedija';
         } elseif (strpos($name, 'kontakt') !== false) {
             return 'kontakt';
         } elseif (strpos($name, 'dokumenti') !== false) {
