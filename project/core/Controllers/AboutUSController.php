@@ -39,7 +39,7 @@ class AboutUSController
             $finalIconName = 'icon.png'; // always overwrite this
 
             if (!is_dir($destDir)) {
-                mkdir($destDir, 0755, true);
+                mkdir($destDir, 0775, true);
             }
 
             // Handle uploaded icon
@@ -218,7 +218,7 @@ class AboutUSController
                 }
                 $destDir = __DIR__ . '/../../public/assets/icons';
                 if (!is_dir($destDir)) {
-                    mkdir($destDir, 0755, true);
+                    mkdir($destDir, 0775, true);
                 }
                 $newName = uniqid('icon_') . '.' . $ext;
                 if (!move_uploaded_file($tmp, $destDir . '/' . $newName)) {
@@ -289,7 +289,7 @@ class AboutUSController
                 }
                 $destDir = __DIR__ . '/../../public/assets/icons';
                 if (!is_dir($destDir)) {
-                    mkdir($destDir, 0755, true);
+                    mkdir($destDir, 0775, true);
                 }
                 $newName = uniqid('icon_') . '.' . $ext;
                 if (!move_uploaded_file($tmp, $destDir . '/' . $newName)) {
