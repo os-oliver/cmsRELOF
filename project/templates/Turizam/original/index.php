@@ -26,9 +26,9 @@
             surface: '#ffffff',
           },
           fontFamily: {
-            heading: ['"Playfair Display"', 'serif'],
-            heading2: ['"Inter"', 'sans-serif'],
-            body: ['"Inter"', 'sans-serif'],
+            heading: ['Playfair Display', 'serif'],
+            heading2: ['Inter', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
           }
         }
       }
@@ -442,7 +442,6 @@
               <i class="fas fa-chevron-down  transition-transform duration-200" id="mobileAboutIcon"></i>
             </button>
             <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
-              <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-bullseye mr-2 text-primary"></i>Cilj</a>
               <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura</a>
               <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-users-cog mr-2 text-primary"></i>Rukovodstvo</a>
               <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-flag mr-2 text-primary"></i>Misija</a>
@@ -454,7 +453,6 @@
           </div>
 
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinacije</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-calendar-alt mr-3 text-primary"></i>Manifestacije</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-bed mr-3 text-primary"></i>Smeštaj</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-person-hiking mr-3 text-primary"></i>Aktivnosti</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-utensils mr-3 text-primary"></i>Gastronomija</a>
@@ -476,8 +474,8 @@
     <div class="container mx-auto px-4 flex justify-between items-center">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3">
-        <div class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-          <img src="" alt="" style="width:75px;height:auto;" />
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+          <img src="/assets/img/logo-crop.png" alt="" style="width:75px;height:auto;" />
         </div>
         <div class="hidden sm:block">
           <div class="text-xl font-bold text-primary_text font-heading2">KRAGUJEVAC</div>
@@ -493,7 +491,6 @@
             <i class="fas fa-chevron-down ml-1 text-xs"></i>
           </button>
           <div class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a href="#" static="true" class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">Cilj</a>
             <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Organizaciona struktura</a>
             <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Rukovodstvo</a>
             <a href="#" static="true" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Misija</a>
@@ -505,7 +502,6 @@
         </div>
 
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Destinacije</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Manifestacije</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Smeštaj</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Aktivnosti</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Gastronomija</a>
@@ -1057,74 +1053,151 @@
   </section>
 
   <!-- ===== PARTNERI / LOGO TRAKA ===== -->
-  <section class="py-10 bg-background">
-    <div class="container mx-auto px-4">
-      <div class="partners-strip grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-        <img src="https://raw.githubusercontent.com/ajcloud-dev/assets/main/kultura-kg.png" alt="Kultura Kragujevac" style="width:150px;height:auto;" />
-        <img src="https://raw.githubusercontent.com/ajcloud-dev/assets/main/arsenal-fest.png" alt="Arsenal Fest" style="width:150px;height:auto;" />
-        <img src="https://raw.githubusercontent.com/ajcloud-dev/assets/main/srce-srbije.png" alt="Srce Srbije" style="width:150px;height:auto;" />
-        <img src="https://raw.githubusercontent.com/ajcloud-dev/assets/main/google-play-badge.png" alt="Google Play" style="width:150px;height:auto;" />
-      </div>
+<!-- ===== PARTNERI / LOGO TRAKA ===== -->
+<section class="py-10 bg-background">
+  <div class="container mx-auto px-4">
+    <div class="partners-strip grid grid-cols-1 sm:grid-cols-3 gap-8 items-center justify-items-center">
+      <a href="https://kulturakg.rs" target="_blank" rel="noopener" aria-label="Kultura Kragujevac">
+        <img src="/assets/img/partneri/kulturakg.png" alt="Kultura Kragujevac" style="width:150px;height:auto;" />
+      </a>
+
+      <a href="https://arsenalfest.rs" target="_blank" rel="noopener" aria-label="Arsenal Fest">
+        <img src="/assets/img/partneri/arsenal.jpg" alt="Arsenal Fest" style="width:150px;height:auto;" />
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=motovate.visitsumadija" target="_blank" rel="noopener" aria-label="Visit Šumadija aplikacija">
+        <img src="/assets/img/partneri/Srce.jpg" alt="Visit Šumadija / Srce Šumadije" style="width:150px;height:auto;" />
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ===== Footer ===== -->
-  <footer class="bg-secondary_background text-secondary_text text-gray-200 font-heading2 pt-20 pb-10">
-      <div class="container mx-auto px-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-              <div>
-                  <div class="flex items-center mb-6">
-                      <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                          </svg>
-                      </div>
-                      <h3 class="text-xl">Lorem ipsum dolor</h3>
-                  </div>
-                  <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
-                  <div class="flex space-x-3">
-                      <a href="#" class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors"><i class="fab fa-facebook-f"></i></a>
-                      <a href="#" class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors"><i class="fab fa-instagram"></i></a>
-                      <a href="#" class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors"><i class="fab fa-youtube"></i></a>
-                      <a href="#" class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors"><i class="fab fa-spotify"></i></a>
-                  </div>
-              </div>
-              <div>
-                  <h4 class="mb-6">Brzi linkovi</h4>
-                  <ul class="space-y-3">
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                      <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                  </ul>
-              </div>
-              <div>
-                  <h4 class="mb-6">Informacije</h4>
-                  <ul class="space-y-3">
-                      <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
-                      <li class="flex items-start"><i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i><span>Lorem ipsum dolor</span></li>
-                      <li class="flex items-start"><i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i><span data-translate="off">Lorem ipsum dolor</span></li>
-                      <li class="flex items-start"><i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i><span> Lorem ipsum dolor<br> Lorem ipsum dolor </span></li>
-                  </ul>
-              </div>
-              <div>
-                  <h4 class="mb-6">Mapa lokacije</h4>
-                  <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                  </div>
-              </div>
-          </div>
-          <div class="text-center text-sm">
-              <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
-                  <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo" class="w-full max-w-md md:max-w-lg h-auto mb-4">
-                  <p class="text-gray-400"> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
-              </div>
-              <p class="pt-6 text-gray-400">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
-          </div>
-      </div>
-  </footer>
+<footer class="bg-secondary_background text-secondary_text text-gray-200 font-heading2 pt-20 pb-10">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Kolona 1: naziv + mreže -->
+            <div>
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl">
+                        Gradska turistička organizacija Kragujevac
+                    </h3>
+                </div>
+                <p class="mb-4">
+                    Zvanična turistička organizacija grada Kragujevca.
+                </p>
+                <div class="flex space-x-3">
+                    <a href="https://www.facebook.com/gradskaturistickaorganizacijakragujevac/" target="_blank" rel="noopener"
+                       class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/kragujevac.turizam/" target="_blank" rel="noopener"
+                       class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCPzxUjB97RUt9c_aVLPC4rQ" target="_blank" rel="noopener"
+                       class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kolona 2: brzi linkovi -->
+            <div>
+                <h4 class="mb-6">Brzi linkovi</h4>
+                <ul class="space-y-3">
+                    <li><a href="/" class="text-logocolor2/90 hover:text-primary_text transition-colors">Početna</a></li>
+                    <li><a href="/informacije" class="text-logocolor2/90 hover:text-primary_text transition-colors">Informacije od javnog značaja</a></li>
+                    <li><a href="/pitanja" class="text-logocolor2/90 hover:text-primary_text transition-colors">Česta pitanja</a></li>
+                    <li><a href="/dokumenti" class="text-logocolor2/90 hover:text-primary_text transition-colors">Dokumenti</a></li>
+                    <li><a href="/kontakt" class="text-logocolor2/90 hover:text-primary_text transition-colors">Kontakt</a></li>
+                    <li><a href="/vesti" class="text-logocolor2/90 hover:text-primary_text transition-colors">Vesti</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolona 3: kontakt informacije (duplo) -->
+            <div>
+                <h4 class="mb-6">Informacije</h4>
+
+                <!-- GTO Kragujevac -->
+                <div class="mb-6">
+                    <p class="font-semibold mb-2">
+                        Gradska turistička organizacija „Kragujevac“
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+                            <span>+381 34 332172</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
+                            <span data-translate="off">info@gtokg.org.rs</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- TIC -->
+                <div>
+                    <p class="font-semibold mb-2">
+                        Turistički informativni centar
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+                            <span>+381 34 335302</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
+                            <span data-translate="off">tic@gtokg.org.rs</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Kolona 4: dve mape lokacije -->
+            <div>
+                <h4 class="mb-6">Mapa lokacije</h4>
+
+                <!-- GTO Kragujevac mapa -->
+                <!--<div class="mb-6">
+                    <p class="font-semibold mb-2">
+                        Gradska turistička organizacija „Kragujevac“
+                    </p>
+                    <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14123.04983159532!2d20.912673000000005!3d44.012197!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475721217b356833%3A0x288c1902e8fa9b2!2z0JrRgNCw0ZnQsCDQkNC70LXQutGB0LDQvdC00YDQsCBJINCa0LDRgNCw0ZLQvtGA0ZLQtdCy0LjRm9CwIDQ0LCDQmtGA0LDQs9GD0ZjQtdCy0LDRhg!5e1!3m2!1ssr!2srs!4v1763837317163!5m2!1ssr!2srs" width="320" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>-->
+
+                <!-- TIC mapa -->
+                <div>
+                    <p class="font-semibold mb-2">
+                        Turistički informativni centar
+                    </p>
+                    <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14123.156040557698!2d20.918669!3d44.011751000000004!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47572120a14cc32f%3A0xb8c98e4781fb6eb5!2zVWxpY2EgRHIuIFpvcmFuYSBEamluZGppxIdhIDExLCDQmtGA0LDQs9GD0ZjQtdCy0LDRhiAzNDAwMA!5e1!3m2!1ssr!2srs!4v1763837407992!5m2!1ssr!2srs" width="320" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OVDE NIŠTA NE MENJAMO -->
+        <div class="text-center text-sm">
+            <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
+                <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo" class="w-full max-w-md md:max-w-lg h-auto mb-4">
+                <p class="text-gray-400">
+                    Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.
+                </p>
+            </div>
+            <p class="pt-6 text-gray-400">&copy; RELOF3 PROJEKAT</p>
+        </div>
+    </div>
+</footer>
+
 
 </body>
 </html>
