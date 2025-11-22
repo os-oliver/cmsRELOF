@@ -21,7 +21,6 @@ if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structur
     $config = $parsed[0][$slug] ?? [];
     $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
 }
-
 // Pagination
 $itemsPerPage = 3;
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
