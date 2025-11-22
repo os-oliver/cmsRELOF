@@ -83,7 +83,7 @@ class PageExporter
     {
         foreach ([$this->baseDir, $this->compDir, $this->pagesDir] as $dir) {
             if (!is_dir($dir)) {
-                mkdir($dir, 0755, true);
+                mkdir($dir, 0775, true);
             }
         }
     }
@@ -482,7 +482,7 @@ class PageExporter
 
                 // Kreiraj direktorijume ako ne postoje
                 if (!is_dir($dirPath)) {
-                    mkdir($dirPath, 0755, true);
+                    mkdir($dirPath, 0775, true);
                 }
                 if (!is_dir($backupDirPath)) {
                     mkdir($backupDirPath, 0775, true);
@@ -927,7 +927,6 @@ class PageExporter
 
         $html = $this->data['html'];
 
-        // Load DOM to isolate <main>
         $dom = new \DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -939,19 +938,28 @@ class PageExporter
         if (!$mainNode) {
             throw new \RuntimeException("No <main> element found in HTML");
         }
-        $page = $this->determinePageType($this->data['cmp']);
-        $builder = $this->getPageBuilder($page, $page);
-        // Extract <main> inner HTML
+
+        $outsideSections = $xpath->query('//section[not(ancestor::main)]');
+        $toMove = [];
+        foreach ($outsideSections as $section) {
+            $toMove[] = $section;
+        }
+        foreach ($toMove as $section) {
+            $mainNode->appendChild($section);
+        }
+
         $innerHTML = '';
         foreach ($mainNode->childNodes as $child) {
             $innerHTML .= $dom->saveHTML($child);
         }
 
-        // Process content into dynamic text placeholders
-        // pageSlug can be something like "single-page" or from $this->data['cmp']
+        $page = $this->determinePageType($this->data['cmp']);
+        $builder = $this->getPageBuilder($page, $page);
+
         $pageSlug = $this->data['cmp'] ?? 'single-page';
         error_log("Processing single page with slug: $pageSlug");
         $processedContent = $this->processContent($innerHTML, $pageSlug);
+
         $wrappedContent = <<<HTML
 <main class="min-h-screen pt-12 bg-background flex-grow">
 $processedContent
@@ -962,31 +970,34 @@ HTML;
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
-        $baseCss = <<<CSS
-            .dropdown:hover .dropdown-menu {
-                display: block;
-            }
 
-            .dropdown-menu {
-                display: none;
-                position: absolute;
-                background-color: white;
-                min-width: 200px;
-                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-                z-index: 1;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            CSS;
+        $baseCss = <<<CSS
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+CSS;
 
         $datacss = $this->data['css'] ?? '';
+        error_log("Data CSS: " . $datacss);
         $builder->setCss($baseCss . "\n" . $datacss);
 
         $filePath = $directory . $pageSlug . '.php';
         $builder->setHtml($wrappedContent);
-        error_log("Final HTML content: " . $builder->buildPage());
-        // Save processed content
-        $success = file_put_contents($filePath, $builder->buildPage());
+        $finalPage = $builder->buildPage();
+        error_log("Final HTML content: " . $finalPage);
+
+        $success = file_put_contents($filePath, $finalPage);
 
         if ($success === false) {
             throw new \RuntimeException("Failed to write file: $filePath");
@@ -1024,7 +1035,7 @@ HTML;
 
         $dataDir = dirname(__DIR__) . '/../public/assets/data';
         if (!is_dir($dataDir)) {
-            mkdir($dataDir, 0755, true);
+            mkdir($dataDir, 0775, true);
         }
 
         $pagesJsonPath = "$dataDir/pages.json";
