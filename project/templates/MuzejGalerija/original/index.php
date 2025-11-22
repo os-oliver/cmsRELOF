@@ -282,10 +282,6 @@
               <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
             </button>
             <div class="ml-6 mt-2 space-y-2 mobile-dropdown-content">
-              <a href="about.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Uvod
-              </a>
               <a href="mission.html"
                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                 Misija i vizija
@@ -297,18 +293,6 @@
               <a href="management.html"
                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                 Rukovodstvo
-              </a>
-              <a href="facility.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Objekat
-              </a>
-              <a href="donations.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Donacije i podrška
-              </a>
-              <a href="partners.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Partneri
               </a>
             </div>
           </div>
@@ -384,12 +368,8 @@
         <div class="hidden sm:block">
           <h1
             class="text-sm sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
-            KULTURNI NEXUS
+            MUZEJ PONIŠAVLJA PIROT
           </h1>
-          <p
-            class="text-xs sm:text-xs lg:text-sm text-secondary tracking-widest hidden md:block opacity-80 font-medium">
-            CENTAR ZA UMETNOST I BAŠTINU
-          </p>
         </div>
 
         <div class="block sm:hidden">
@@ -416,11 +396,6 @@
             class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
             <a href="#" static="true"
               class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Uvod</span>
-            </a>
-            <a href="#" static="true"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
               <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
               <span class="font-medium">Misija i vizija</span>
             </a>
@@ -433,21 +408,6 @@
               class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
               <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
               <span class="font-medium">Rukovodstvo</span>
-            </a>
-            <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Objekat</span>
-            </a>
-            <a href="#" static="true"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Donacije i podrška</span>
-            </a>
-            <a href="#" static="true"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Partneri</span>
             </a>
           </div>
         </div>
@@ -497,12 +457,6 @@
               class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
               <i class="fas fa-newspaper mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
               <span class="font-medium">Vesti</span>
-            </a>
-
-            <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-calendar-alt mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Događaji</span>
             </a>
 
             <a href="#"
@@ -625,10 +579,6 @@
               class="bg-primary hover:bg-primary_hover text-white px-8 py-4 rounded-lg font-medium shadow-lg transition-all transform hover:scale-105">
               <i class="fas fa-eye mr-2"></i>Trenutne izložbe
             </a>
-            <a href="/aktivnosti/dogadjaji"
-              class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-lg font-medium transition-all">
-              <i class="fas fa-calendar mr-2"></i>Program događaja
-            </a>
           </div>
 
           <div class="grid grid-cols-3 gap-6 mt-12">
@@ -649,7 +599,7 @@
 
         <div class="relative hidden lg:block">
           <div class="artistic-frame rounded-xl overflow-hidden shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80"
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Pirot_Konak_Malog_Riste.JPG"
               alt="Galerija prostor" class="rounded-xl w-full">
           </div>
           <div
@@ -746,8 +696,7 @@
           Naša Priča i Misija
         </h2>
         <p class="text-lg text-secondary_text max-w-3xl mx-auto">
-          Galerija i muzej posvećeni očuvanju, istraživanju i promovisanju umetničkog nasleđa i savremene umetničke
-          prakse
+          Muzej je posvećen očuvanju, istraživanju i promovisanju umetničkog nasleđa i savremene umetničke prakse
         </p>
       </div>
 
@@ -755,30 +704,20 @@
         <div>
           <div class="space-y-6">
             <div>
-              <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Istorijat</h3>
               <p class="text-secondary_text leading-relaxed">
-                Osnovana 1972. godine, naša galerija je tokom decenija postala jedno od najznačajnijih kulturnih
-                središta u regionu.
-                Kroz svoju bogatu istoriju, galerija je predstavila radove preko hiljadu umetnika iz zemlje i
-                inostranstva.
+                Muzej je osnovan oktobra 1947. godine odlukom Gradskog narodnog odbora Pirota pod nazivom Narodni muzej. Već je posedovao izvestan broj predmeta, uglavnom poklona od građana Pirota i okoline. Odlukom Skupštine opštine Pirot, Muzej je 1969. godine dobio današnji naziv.
               </p>
             </div>
 
             <div>
-              <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Misija</h3>
               <p class="text-secondary_text leading-relaxed">
-                Naša misija je da očuvamo i promovišemo umetničko nasleđe, podstaknemo kreativnost i kritičko
-                razmišljanje,
-                i omogućimo široj publici pristup raznovrsnim umetničkim iskustvima kroz edukaciju i druženje.
+                Kao regionalna muzejska ustanova, koja koncepcijski spada u kategoriju zavičajnih muzejskih ustanova kompleksnog tipa, delatnost proučavanja, zaštite i prezentacije kulturnog tipa, delatnost i proučavanje, zaštite i prezentacije kulturno umetničkih i istorijskih dela, odnosno pokretnih kulturnih dobara, ova muzejska ustanova obavlja na teritoriji opštine Pirot, Dimitrovgrad, Babušnica i Bela Palanka.
               </p>
             </div>
 
             <div>
-              <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Vizija</h3>
               <p class="text-secondary_text leading-relaxed">
-                Težimo ka tome da postanemo vodeća kulturna institucija koja podstiče dijalog između tradicije i
-                savremenosti,
-                povezuje umetnike i publiku, i doprinosi kulturnom životu zajednice kroz inovativne programe i izložbe.
+                Organizacionu strukturu Muzeja čine odeljenja za arheologiju, etnologiju, numizmatiku, istoriju i istoriju umetnosti. Zbirke navedenih odeljenja formiraju muzejski fond od oko 6.500 predmeta. U sastav muzejskog fonda ulazi i fond Galerije fresaka u Starom gradu koga čine reprodukcije fresaka iz manastira Svetog Jovana Bogoslova, zadužbine Konstantina Dejanovića, u selu Poganovu, kao i dva legata, od kojih je jedan legat učitelja Ćire Rančića iz oblasti dečije književnosti, a drugi legat učitelja Duška Ćirića sa etnološko-istorijskom građom. Pored toga, Muzej ima depandanse u Babušnici, Beloj Palanci i Dimitrovgradu.
               </p>
             </div>
           </div>
@@ -800,8 +739,8 @@
             class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white rounded-full flex items-center justify-center shadow-2xl">
             <div class="text-center p-6">
               <i class="fas fa-university text-5xl text-primary mb-4"></i>
-              <h3 class="font-heading text-xl font-bold text-primary_text">GALERIJA</h3>
-              <p class="text-secondary_text mt-2 text-sm">Od 1972. godine</p>
+              <h3 class="font-heading text-xl font-bold text-primary_text">MUZEJ</h3>
+              <p class="text-secondary_text mt-2 text-sm">Od 1947. godine</p>
             </div>
           </div>
         </div>
@@ -818,7 +757,7 @@
           </div>
         </h2>
         <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
-          Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
+          Budite u toku sa najnovijim dešavanjima iz sveta kulture i umetnosti.
         </p>
       </div>
 
@@ -888,11 +827,10 @@
             <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mr-3">
               <i class="fas fa-landmark text-xl"></i>
             </div>
-            <h3 class="text-2xl font-heading font-bold">KULTURNI NEXUS</h3>
+            <h3 class="text-2xl font-heading font-bold">MUZEJ PONIŠAVLJA PIROT</h3>
           </div>
           <p class="text-gray-300 mb-4 leading-relaxed">
-            Vodeća kulturna institucija posvećena očuvanju, istraživanju i promovisanju umetničkog nasleđa i savremene
-            umetničke prakse.
+            Vodeća kulturna institucija posvećena očuvanju, istraživanju i promovisanju umetničkog nasleđa i savremene umetničke prakse u Pirotu.
           </p>
           <div class="flex space-x-3">
             <a href="#"
@@ -932,21 +870,22 @@
           <ul class="space-y-3">
             <li class="flex items-start">
               <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-              <span>Trg slobode 15, 11000 Beograd</span>
+              <span>18300 Pirot, Nikole Pašića 49</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-              <span>+381 11 123 4567</span>
+              <span>010-313850</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-              <span>info@kulturninexus.rs</span>
+              <span>muzejpirot@gmail.com</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-clock text-accent mt-1 mr-3"></i>
               <span>
-                Utorak - Nedelja: 10:00 - 20:00<br>
-                Ponedeljak: zatvoreno
+                Ponedeljak - Petar 08-16h<br>
+                Subota 09-15h<br>
+                Nedelja - ukoliko ima zakazanih poseta<br>
               </span>
             </li>
           </ul>
@@ -955,15 +894,14 @@
         <div>
           <h4 class="text-lg font-heading font-bold mb-6">Lokacija</h4>
           <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9 h-48">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sTrg%20slobode%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
-              class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5461.047773539655!2d22.585724051300488!3d43.16160586090616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47553d326473e795%3A0xfb1d0cdfc71f6bc4!2sMuseum%20of%20Poni%C5%A1avlje!5e0!3m2!1sen!2srs!4v1763575719150!5m2!1sen!2srs"
+            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
       </div>
 
       <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-        <p>&copy; 2024 Kulturni Nexus. Sva prava zadržana.</p>
+        <p>&copy; © 2024 Sva prava zadržava Muzej Ponišavlja Pirot</p>
       </div>
     </div>
   </footer>
