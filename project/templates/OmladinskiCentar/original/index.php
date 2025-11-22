@@ -205,16 +205,14 @@
                                 <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                                 <span class="font-medium">Donacije i podrška</span>
                             </a>
-                            <a href="#" static="true"
-                                class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                                <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-                                <span class="font-medium">Partneri</span>
-                            </a>
                         </div>
                     </div>
-                    <a href="#" class="nav-link font-medium hover:text-primary px-3 py-2">Programi</a>
                     <a href="#" class="nav-link font-medium hover:text-primary px-3 py-2">Vesti</a>
-                    <a href="#" class="nav-link font-medium hover:text-primary px-3 py-2">Partneri</a>
+                    <a href="#" class="nav-link font-medium hover:text-primary px-3 py-2">Manifestacije</a>
+                    <a href="#" class="nav-link font-medium hover:text-primary px-3 py-2">Izložbe</a>
+                    <a href="#" class="nav-link font-medium hover:text-primary px-3 py-2">Predstave</a>
+                    <a href="#" class="nav-link font-medium hover:text-primary px-3 py-2">Filmovi</a>
+                    <a href="#" class="nav-link font-medium hover:text-primary px-3 py-2">Galerija</a>
                     <a href="#" class="nav-link font-medium hover:text-primary px-3 py-2">Dokumenti</a>
 
                     <?php
