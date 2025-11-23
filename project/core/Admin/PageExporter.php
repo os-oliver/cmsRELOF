@@ -759,6 +759,8 @@ class PageExporter
                 return new OrganizacijaPageBuilder('OrganiUpravljanja');
             case 'publikacije':
                 return new PublikacijePageBuilder('Publikacije');
+            case 'brendovi':
+                return new DynamicPageBuilder('Brendovi');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -874,8 +876,9 @@ class PageExporter
             return 'organi-upravljanja';
         } elseif (strpos($name, 'publikacije') !== false) {
             return 'publikacije';
+        }  elseif (strpos($name, 'brendovi') !== false) {
+            return 'brendovi';
         }
-
         return 'basic';
     }
 

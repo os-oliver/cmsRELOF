@@ -1272,6 +1272,84 @@
           }
         }
       ]
+    },
+    "Brendovi": {
+  "sr": "Brendovi",
+  "en": "Local brands",
+  "sr-Cyrl": "Брендови",
+  "icon": "fas fa-pepper-hot",
+  "fields": [
+    {
+      "name": "naziv_brenda",
+      "type": "text",
+      "label": {
+        "sr": "Naziv brenda",
+        "en": "Brand name",
+        "sr-Cyrl": "Назив бренда"
+      },
+      "required": true
+    },
+    {
+      "name": "tip_brenda",
+      "type": "text",
+      "label": {
+        "sr": "Tip brenda",
+        "en": "Brand type",
+        "sr-Cyrl": "Тип бренда"
+      },
+      "placeholder": {
+        "sr": "npr. gastronomski proizvod, piće, manifestacija",
+        "en": "e.g., food product, drink, event",
+        "sr-Cyrl": "нпр. гастрономски производ, пиће, манифестација"
+      }
+    },
+    {
+      "name": "mesto_porekla",
+      "type": "text",
+      "label": {
+        "sr": "Mesto/oblast porekla",
+        "en": "Place/area of origin",
+        "sr-Cyrl": "Место/област порекла"
+      }
+    },
+    {
+      "name": "opis",
+      "type": "textarea",
+      "label": {
+        "sr": "Opis brenda",
+        "en": "Brand description",
+        "sr-Cyrl": "Опис бренда"
+      }
+    },
+    {
+      "name": "slika",
+      "type": "file",
+      "label": {
+        "sr": "Glavna slika brenda",
+        "en": "Main brand image",
+        "sr-Cyrl": "Главна слика бренда"
+      }
+    },
+    {
+      "name": "galerija",
+      "type": "file",
+      "label": {
+        "sr": "Galerija (više slika)",
+        "en": "Gallery (multiple images)",
+        "sr-Cyrl": "Галерија (више слика)"
+      },
+      "property": "multiple"
+    },
+    {
+      "name": "zvanicni_sajt",
+      "type": "url",
+      "label": {
+        "sr": "Zvanični sajt brenda",
+        "en": "Official brand website",
+        "sr-Cyrl": "Званични сајт бренда"
+      }
+    }
+  ]
     }
   }
 ]

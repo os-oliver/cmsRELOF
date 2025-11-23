@@ -13,39 +13,55 @@
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- 1) CDN FIRST -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- 2) THEN CONFIG -->
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#059669',
-            primary_hover: '#047857',
-            secondary: '#0d9488',
-            secondary_hover: '#0f766e',
-            accent: '#0ea5e9',
-            accent_hover: '#0284c7',
-            primary_text: '#111827',
-            secondary_text: '#4b5563',
-            background: '#f9fafb',
-            secondary_background: '#111827',
-            surface: '#ffffff',
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          /* main CTA buttons – warm coral like existing site */
+          primary: '#E6765F',
+          primary_hover: '#D55C45',
 
-            /* you use these in the footer: bg-logocolor2, text-logocolor2 */
-            logocolor2: '#059669', // <-- put your real brand color here
-          },
-          fontFamily: {
-            heading: ['Roboto Slab', 'Arial', 'Helvetica', 'sans-serif'],
-            heading2: ['Roboto', 'Arial', 'Helvetica', 'sans-serif'],
-            body: ['Roboto', 'Arial', 'Helvetica', 'sans-serif'],
-          },
-        }
+          /* headings / key text – plum from current titles */
+          secondary: '#5B4A5C',
+          secondary_hover: '#443545',
+
+          /* fresh accent (links, small badges, hover states) – teal for nature/water vibe */
+          accent: '#2F9E8D',
+          accent_hover: '#257A6C',
+
+          /* text + backgrounds derived from screenshots */
+          primary_text: '#2B252C',   // almost-black used for most text
+          secondary_text: '#968D99', // lighter paragraph text
+          background: '#FFFFFF',     // main page background
+          secondary_background: '#2B252C', // dark footer bar
+          surface: '#FFFFFF',        // cards, content blocks
+          muted_surface: '#F3F6F7',  // pale sections behind cards/strips
+
+          /* logo red (for special highlights, borders, etc.) */
+          logocolor2: '#C84032',
+        },
+        fontFamily: {
+          /* big hero title + section titles (looks close to this) */
+          heading: ['Montserrat', 'system-ui', 'sans-serif'],
+
+          /* subheadings, card titles */
+          heading2: ['Montserrat', 'system-ui', 'sans-serif'],
+
+          /* body text, buttons, nav */
+          body: ['Open Sans', 'system-ui', 'sans-serif'],
+        },
       }
     }
-  </script>
+  }
+</script>
+
+
 
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
@@ -458,6 +474,7 @@
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-bed mr-3 text-primary"></i>Smeštaj</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-person-hiking mr-3 text-primary"></i>Aktivnosti</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-utensils mr-3 text-primary"></i>Gastronomija</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-pepper-hot mr-3 text-primary"></i>Brendovi</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all font-body"><i class="fas fa-file-alt mr-3 text-primary"></i>Dokumenti</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-address-book mr-3 text-primary"></i>Kontakt</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-calendar-alt mr-2 text-primary"></i>Vesti</a>
@@ -507,6 +524,7 @@
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Smeštaj</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Aktivnosti</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Gastronomija</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Brendovi</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Dokumenti</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Kontakt</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Vesti</a>
@@ -652,425 +670,477 @@
         document.body.style.fontSize = currentSize + 'px';
       });
     })();
-  </script>
+</script>
 
-  <!-- ===== HERO: Video background with title + glass search ===== -->
-  <section class="relative pt-20 overflow-hidden min-h-[80vh] lg:min-h-[92vh] flex items-center">
-    <div class="absolute inset-0 z-0">
-      <video
-        class="w-full h-full object-cover"
-        autoplay
-        muted
-        loop
-        playsinline
-        poster="/assets/img/hero-poster.jpg"
-        preload="metadata">
-        <source src="/assets/videos/Uvodni-spot-sa-novim-logotipom.webm" type="video/webm">
-        <source src="/assets/videos/Uvodni-spot-sa-novim-logotipom.mp4"  type="video/mp4">
-        Vaš pregledač ne podržava HTML5 video.
-      </video>
+<!-- ===== HERO: Fiksirana pozadinska slika + naslov + pretraga ===== -->
+<section
+  class="relative pt-20 overflow-hidden min-h-[80vh] lg:min-h-[92vh] flex items-center bg-fixed bg-cover bg-center"
+  style="background-image: url('/assets/img/babusnica/hero-babusnica.jpg');"
+>
+  <!-- Tamni gradijent preko slike -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80"></div>
 
-      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80"></div>
-    </div>
+  <div class="container mx-auto px-4 relative z-10 py-40 lg:py-48">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="font-heading text-white text-4xl md:text-6xl lg:text-7xl font-bold drop-shadow-xl tracking-[0.22em] uppercase">
+        Turistička organizacija<br class="hidden md:block" />
+        opštine Babušnica
+      </h1>
 
-    <div class="container mx-auto px-4 relative z-10 py-40 lg:py-48">
-      <div class="max-w-6xl mx-auto text-center">
-        <h1 class="font-heading text-white text-5xl md:text-7xl font-bold drop-shadow-xl tracking-[0.25em] uppercase">
-          Kragujevac
-        </h1>
-
-        <div class="max-w-3xl mx-auto mt-10">
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-2 border border-white/25 shadow-xl">
-            <div class="relative">
-              <form class="flex items-center w-full p-2" action="/pretraga" method="GET">
-                <input
-                  type="text"
-                  name="q"
-                  placeholder="Pretražite destinacije, smeštaj, manifestacije…"
-                  class="w-full px-6 py-4 bg-white/5 rounded-xl border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary/70 font-body"
-                  required
-                />
-                <button
-                  type="submit"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-gradient-to-r from-primary to-secondary_hover hover:from-secondary hover:to-primary_hover rounded-lg transition-all duration-300 shadow-md"
-                  aria-label="Traži">
-                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== DOBRO DOŠLI ===== -->
-  <section class="section-intro py-14 md:py-20 bg-surface">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="flex items-center justify-between">
-        <span class="hidden md:block w-24 h-[3px] bg-gradient-to-r from-primary to-accent rounded-full"></span>
-        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
-          Dobro došli u grad sa dušom, dobro došli u Kragujevac
-        </h2>
-        <span class="hidden md:block w-24 h-[3px] bg-gradient-to-r from-accent to-secondary rounded-full"></span>
-      </div>
-      <p class="mt-6 text-secondary_text leading-relaxed text-lg md:text-xl text-center max-w-4xl mx-auto font-heading2">
-        Od tradicionalnih, kulturnih i verskih lokaliteta do jedinstvenih parkova, galerija i muzeja – Kragujevac ima atrakcije
-        i znamenitosti za svačiji ukus. Grad spaja autentični ritam, gastronomiju i noćni život u prijatnoj, dinamičnoj atmosferi.
-      </p>
-
-      <div class="mt-10">
-        <img
-          src="/assets/img/ja-volim-kg.jpg"
-          alt="Ja volim Kragujevac"
-          style="width:100%;height:auto;"
-          class="rounded-3xl shadow-2xl border border-gray-100"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Destinations -->
-  <section id="destinacije" class="py-20 bg-background">
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="text-center mb-16">
-        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
-          Šta videti - Istaknute destinacije
-        </h2>
-      </div>
-
-      <div id="destinacijeCards" class="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
-        <!-- Destination Card 1 -->
-        <div class="group dest-card bg-surface">
-          <div class="relative h-80 overflow-hidden clip-diagonal">
-            <img id="g-slika"
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
-              alt="Mountain peak"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
-            <div class="dest-card-gradient"></div>
-          </div>
-          <div class="dest-card-footer">
-            <div id="g-naziv" class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
-              Planina
-            </div>
-            <h3 id="g-naziv_destinacije" class="text-2xl font-heading font-bold mb-1">
-              Vrhovi Regije
-            </h3>
-            <p id="g-kratak_opis" class="text-sm text-gray-100 mb-4 font-body">
-              Spektakularni pogledi i planinarske staze.
-            </p>
-            <a id="g-ovise" href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
-              Saznajte više
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Destination Card 2 -->
-        <div class="group dest-card bg-surface">
-          <div class="relative h-80 overflow-hidden clip-diagonal">
-            <img
-              src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600&h=400&fit=crop"
-              alt="Forest"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
-            <div class="dest-card-gradient"></div>
-          </div>
-          <div class="dest-card-footer">
-            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
-              Priroda
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-1">
-              Nacionalni Parkovi
-            </h3>
-            <p class="text-sm text-gray-100 mb-4 font-body">
-              Očuvana divljina i bogat biodiverzitet.
-            </p>
-            <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
-              Saznajte više
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Destination Card 3 -->
-        <div class="group dest-card bg-surface">
-          <div class="relative h-80 overflow-hidden clip-diagonal">
-            <img
-              src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=600&h=400&fit=crop"
-              alt="River"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
-            <div class="dest-card-gradient"></div>
-          </div>
-          <div class="dest-card-footer">
-            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
-              Reka
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-1">
-              Reke i Kanjoni
-            </h3>
-            <p class="text-sm text-gray-100 mb-4 font-body">
-              Rafting i avanturistički sportovi.
-            </p>
-            <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
-              Saznajte više
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Destination Card 4 -->
-        <div class="group dest-card bg-surface">
-          <div class="relative h-80 overflow-hidden clip-diagonal">
-            <img
-              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=400&fit=crop"
-              alt="City"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
-            <div class="dest-card-gradient"></div>
-          </div>
-          <div class="dest-card-footer">
-            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
-              Grad
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-1">
-              Istorijsko Jezgro
-            </h3>
-            <p class="text-sm text-gray-100 mb-4 font-body">
-              Šetnje kroz trgove, ulice i znamenitosti.
-            </p>
-            <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
-              Saznajte više
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
+      <div class="max-w-3xl mx-auto mt-10">
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-2 border border-white/25 shadow-xl">
+          <div class="relative">
+            <form class="flex items-center w-full p-2" action="/pretraga" method="GET">
+              <input
+                type="text"
+                name="q"
+                placeholder="Pretražite destinacije, brendove, smeštaj, manifestacije…"
+                class="w-full px-6 py-4 bg-white/5 rounded-xl border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary/70 font-body"
+                required
+              />
+              <button
+                type="submit"
+                class="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-gradient-to-r from-primary to-secondary_hover hover:from-secondary hover:to-primary_hover rounded-lg transition-all duration-300 shadow-md"
+                aria-label="Traži">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </button>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== MULTIMEDIJA / GALERIJA ===== -->
-  <section id="gallery" class="py-20 bg-background text-secondary_text font-heading2">
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="text-center mb-16">
-        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
-          Multimedija
-        </h2>
-        <p class="text-lg md:text-xl max-w-2xl mx-auto text-secondary_text mt-4 font-body">
-          Doživite Kragujevac kroz fotografije, video zapise i virtuelne ture.
-        </p>
-      </div>
-      <div id="galleryCards" class="gallery-grid gap-6">
-        <div class="gallery-item rounded-2xl overflow-hidden relative">
-          <img id="g-image_file_path"
-            src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=600&q=80"
-            alt="Gallery Space" class="w-full h-full object-cover">
-          <div class="overlay-content text-background">
-            <h3 id="g-description" class="font-heading">Galerije i muzeji</h3>
-            <p id="g-title" class="font-body">Umetnost i istorija grada</p>
-          </div>
-        </div>
-        <div class="gallery-item rounded-2xl overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=600&q=80"
-            alt="Cinema" class="w-full h-full object-cover">
-          <div class="overlay-content text-background">
-            <h3 class="font-heading">Kino i projekcije</h3>
-            <p class="font-body">Filmske večeri i festivali</p>
-          </div>
-        </div>
-        <div class="gallery-item rounded-2xl overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1562788865-5638f7446611?auto=format&fit=crop&w=600&q=80"
-            alt="Theater" class="w-full h-full object-cover">
-          <div class="overlay-content text-background">
-            <h3 class="font-heading">Pozorišne scene</h3>
-            <p class="font-body">Predstave i performansi</p>
-          </div>
-        </div>
-        <div class="gallery-item rounded-2xl overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80"
-            alt="Workshop" class="w-full h-full object-cover">
-          <div class="overlay-content text-background">
-            <h3 class="font-heading">Manifestacije</h3>
-            <p class="font-body">Koncerti, radionice i događaji</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== DOGAĐAJI ===== -->
-  <section id="events" class="py-20 bg-background">
-    <div class="container mx-auto px-4 text-center relative z-10">
-
-      <div class="text-center mb-10">
-        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
-          Događaji
-        </h2>
-      </div>
-
-      <div id="eventsCards" class="mt-6 grid md:grid-cols-3 gap-8 text-left">
-        <?php for ($i = 0; $i < 3; $i++): ?>
-          <div class="event-card bg-surface flex flex-col">
-            <div class="relative w-full h-56 md:h-60 overflow-hidden">
-              <img id="g-image"
-                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                alt="Event image"
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-              <div id="g-naziv"
-                class="hidden absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase shadow-md font-heading2">
-                Kultura
-              </div>
-            </div>
-
-            <div class="w-full p-6">
-              <div class="mb-3">
-                <h3 id="g-title"
-                  class="font-heading text-2xl leading-snug event-title-color hover:text-accent transition-colors duration-200 underline-offset-2 hover:underline">
-                  Savremene Perspektive
-                </h3>
-                <p id="g-description" class="hidden font-body">
-                  Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                  savremenih trendova u umetnosti i tehnologiji.
-                </p>
-              </div>
-
-              <div class="mt-1 text-secondary_text text-sm flex flex-wrap items-center gap-x-3 gap-y-1">
-                <div class="flex items-center gap-2">
-                  <span id="g-datum" class="font-semibold text-primary_text font-body">30.10.2025</span>
-                </div>
-                <span class="text-secondary_text font-body">•</span>
-                <div class="flex items-center gap-2">
-                  <span id="g-time" class="font-semibold text-primary_text font-body">18:00 - 21:00</span>
-                </div>
-                <span class="text-secondary_text font-body">•</span>
-                <div class="flex items-center gap-2">
-                  <span id="g-location" class="font-semibold text-primary_text font-body">Galerija Savremene Umetnosti</span>
-                </div>
-              </div>
-
-              <div class="mt-4">
-                <a id="g-ovise"
-                  class="inline-flex items-center text-primary hover:text-primary_hover font-medium font-body">
-                  Više informacija
-                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        <?php endfor; ?>
-      </div>
-
-      <div class="text-center mt-12">
-        <a href="dogadjaji" id="eventsView"
-          class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto font-heading2">
-          <i class="fas fa-calendar-alt mr-3"></i>
-          Pogledaj sve događaje
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== VESTI (full-width rows) ===== -->
-  <section id="vesti" class="py-20 bg-background">
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="text-center mb-16">
-        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
-          Najnovije Vesti
-        </h2>
-        <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6 font-body">
-          Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija.
-        </p>
-      </div>
-
-      <div id="vestiCards" class="grid grid-cols-1 gap-10">
-        <?php for ($i = 0; $i < 3; $i++): ?>
-          <article
-            class="news-card group md:flex bg-surface transition-all duration-300">
-            <div class="news-image md:w-2/5 overflow-hidden">
-              <img id="g-slika"
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
-                alt="Vest"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            </div>
-            <div class="p-6 md:w-3/5 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center gap-3 mb-4">
-                  <div
-                    class="w-12 h-12 rounded-full news-badge flex items-center justify-center text-white shadow-md">
-                    <i class="fas fa-newspaper text-lg"></i>
-                  </div>
-                  <div class="flex items-center text-sm text-secondary_text font-body">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    <span id="g-datum" class="font-body">15. Oktobar 2025</span>
-                  </div>
-                </div>
-
-                <h3 id="g-naslov"
-                  class="text-xl md:text-2xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
-                  Novi kulturni centar otvara vrata građanima
-                </h3>
-
-                <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed font-body">
-                  Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
-                  kreativnosti i umetnosti u našem gradu.
-                </p>
-              </div>
-
-              <div>
-                <a id="g-ovise" href="#"
-                  class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link font-body">
-                  Pročitaj više
-                  <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-        <?php endfor; ?>
-      </div>
-
-      <div class="text-center mt-16">
-        <button id="vestiView"
-          class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl font-heading2">
-          <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
-          Pogledaj sve vesti
-          <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PARTNERI / LOGO TRAKA ===== -->
-<!-- ===== PARTNERI / LOGO TRAKA ===== -->
-<section class="py-10 bg-background">
-  <div class="container mx-auto px-4">
-    <div class="partners-strip grid grid-cols-1 sm:grid-cols-3 gap-8 items-center justify-items-center">
-      <a href="https://kulturakg.rs" target="_blank" rel="noopener" aria-label="Kultura Kragujevac">
-        <img src="/assets/img/partneri/kulturakg.png" alt="Kultura Kragujevac" style="width:150px;height:auto;" />
-      </a>
-
-      <a href="https://arsenalfest.rs" target="_blank" rel="noopener" aria-label="Arsenal Fest">
-        <img src="/assets/img/partneri/arsenal.jpg" alt="Arsenal Fest" style="width:150px;height:auto;" />
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=motovate.visitsumadija" target="_blank" rel="noopener" aria-label="Visit Šumadija aplikacija">
-        <img src="/assets/img/partneri/Srce.jpg" alt="Visit Šumadija / Srce Šumadije" style="width:150px;height:auto;" />
-      </a>
     </div>
   </div>
 </section>
+
+<!-- ===== WELCOMING / UVODNI TEKST ===== -->
+<section class="section-intro py-14 md:py-20 bg-surface">
+  <div class="container mx-auto px-4 max-w-6xl">
+
+    <div class="mt-2">
+      <img
+        src="/assets/img/babusnica/babusnica-kolaz.jpg"
+        alt="Babušnica – lepota netaknute prirode"
+        class="rounded-3xl shadow-2xl border border-gray-100 w-full h-auto"
+      />
+    </div>
+
+    <div class="mt-12 text-center">
+      <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
+        Babušnička opština – lepota prirode
+      </h2>
+      <p class="mt-6 text-secondary_text leading-relaxed text-lg md:text-xl max-w-4xl mx-auto font-heading2">
+        Opština Babušnica je deo Pirotskog okruga. Okružena je pirotskom i belopalanačkom opštinom sa severa,
+        bugarskom granicom sa istoka, vlasotinačkom i crnotravskom opštinom sa juga i gadžihanskom opštinom sa zapada.
+        Babušnica se nalazi na magistralnom putu M-9 od Leskovca ka Pirotu koji povezuje autoput E-75 (ka jugu Evrope)
+        i autoput E-80 (ka istoku Evrope). Udaljena je 65 km jugoistočno od Niša, 25 km jugozapadno od Pirota i 55 km.
+        Opština Babušnica se nalazi u brdsko-planinskom reonu jugoistočne Srbije. Zahvata Lužničku kotlinu, deo
+        zvonačkog kraja i gornje Zaplanje na površini od 529 km². Upoznajte ovo područje, netaknutu prirodu, dobre ljude,
+        dobru hranu – nećete zažaliti… DOBRO DOŠLI!
+      </p>
+
+      <div class="mt-10 flex justify-center">
+        <a href="#vesti"
+           class="bg-primary hover:bg-primary_hover text-white px-10 py-4 rounded-full font-heading2 font-semibold shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105">
+          Nastavi
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VESTI (full-width rows) ===== -->
+<section id="vesti" class="py-20 bg-background">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
+        Najnovije vesti i dešavanja
+      </h2>
+      <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6 font-body">
+        Budite u toku sa najnovijim vestima, obaveštenjima i događajima opštine Babušnica i Lužničkog kraja.
+      </p>
+    </div>
+
+    <div id="vestiCards" class="grid grid-cols-1 gap-10">
+      <?php for ($i = 0; $i < 3; $i++): ?>
+        <article
+          class="news-card group md:flex bg-surface transition-all duration-300">
+          <div class="news-image md:w-2/5 overflow-hidden">
+            <img id="g-slika"
+                 src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                 alt="Vest"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-6 md:w-3/5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-12 h-12 rounded-full news-badge flex items-center justify-center text-white shadow-md">
+                  <i class="fas fa-newspaper text-lg"></i>
+                </div>
+                <div class="flex items-center text-sm text-secondary_text font-body">
+                  <i class="fas fa-calendar-alt mr-2"></i>
+                  <span id="g-datum" class="font-body">15. oktobar 2025</span>
+                </div>
+              </div>
+
+              <h3 id="g-naslov"
+                  class="text-xl md:text-2xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                Novi sadržaji i ponuda za turiste u Babušnici
+              </h3>
+
+              <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed font-body">
+                Pratite aktuelne informacije o manifestacijama, kulturnim događajima, konkursima i turističkoj ponudi
+                Lužničkog kraja.
+              </p>
+            </div>
+
+            <div>
+              <a id="g-ovise" href="#"
+                 class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link font-body">
+                Pročitaj više
+                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      <?php endfor; ?>
+    </div>
+
+    <div class="text-center mt-16">
+      <button id="vestiView"
+              class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl font-heading2">
+        <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
+        Pogledaj sve vesti
+        <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BRENDOVI LUŽNICE ===== -->
+<section id="brendovi" class="py-20 bg-background">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-12">
+      <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
+        Brendovi Lužnice
+      </h2>
+      <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6 font-body">
+        Autentični ukusi, proizvodi i specijaliteti po kojima je Babušnica prepoznatljiva – probajte Lužnicu na tanjiru.
+      </p>
+    </div>
+
+    <div id="brendoviCards" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Vurda -->
+      <article class="bg-surface rounded-2xl shadow-md overflow-hidden flex flex-col">
+        <img
+          id="g-slika"
+          src="/assets/img/brendovi/vurda.jpg"
+          alt="Vurda"
+          class="w-full h-52 object-cover">
+        <div class="p-6 flex flex-col flex-1">
+          <div id="g-tip_brenda" class="text-xs uppercase tracking-[0.18em] text-secondary_text mb-2 font-heading2">
+            Gastronomski proizvod
+          </div>
+          <h3 id="g-naziv_brenda" class="font-heading text-xl font-bold mb-1 text-primary_text">
+            Vurda
+          </h3>
+          <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
+            Babušnica, Lužnica
+          </p>
+          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
+            Autentični lužnički mlečni specijalitet čija se receptura vekovima prenosi sa kolena na koleno.
+          </p>
+          <a id="g-zvanicni_sajt" href="#"
+             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
+            Saznajte više
+            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Rakija -->
+      <article class="bg-surface rounded-2xl shadow-md overflow-hidden flex flex-col">
+        <img
+          id="g-slika"
+          src="/assets/img/brendovi/rakija.jpg"
+          alt="Rakija"
+          class="w-full h-52 object-cover">
+        <div class="p-6 flex flex-col flex-1">
+          <div id="g-tip_brenda" class="text-xs uppercase tracking-[0.18em] text-secondary_text mb-2 font-heading2">
+            Piće
+          </div>
+          <h3 id="g-naziv_brenda" class="font-heading text-xl font-bold mb-1 text-primary_text">
+            Rakija
+          </h3>
+          <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
+            Lužnički kraj
+          </p>
+          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
+            Simbol lužničkog kraja – domaća rakija uz dobro društvo i priče iz kraja.
+          </p>
+          <a id="g-zvanicni_sajt" href="#"
+             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
+            Saznajte više
+            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Banica -->
+      <article class="bg-surface rounded-2xl shadow-md overflow-hidden flex flex-col">
+        <img
+          id="g-slika"
+          src="/assets/img/brendovi/banica.jpg"
+          alt="Banica"
+          class="w-full h-52 object-cover">
+        <div class="p-6 flex flex-col flex-1">
+          <div id="g-tip_brenda" class="text-xs uppercase tracking-[0.18em] text-secondary_text mb-2 font-heading2">
+            Gastronomski proizvod
+          </div>
+          <h3 id="g-naziv_brenda" class="font-heading text-xl font-bold mb-1 text-primary_text">
+            Banica
+          </h3>
+          <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
+            Lužnica
+          </p>
+          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
+            Lužnička suvana banica – tradicionalna pita koja se ne propušta ni na jednoj trpezi.
+          </p>
+          <a id="g-zvanicni_sajt" href="#"
+             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
+            Saznajte više
+            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Punjena paprika -->
+      <article class="bg-surface rounded-2xl shadow-md overflow-hidden flex flex-col">
+        <img
+          id="g-slika"
+          src="/assets/img/brendovi/punjena-paprika.jpg"
+          alt="Punjena paprika"
+          class="w-full h-52 object-cover">
+        <div class="p-6 flex flex-col flex-1">
+          <div id="g-tip_brenda" class="text-xs uppercase tracking-[0.18em] text-secondary_text mb-2 font-heading2">
+            Gastronomski proizvod
+          </div>
+          <h3 id="g-naziv_brenda" class="font-heading text-xl font-bold mb-1 text-primary_text">
+            Punjena paprika
+          </h3>
+          <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
+            Babušnica i okolina
+          </p>
+          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
+            Omiljeno jelo Lužničana – bilo da je mrsna ili posna varijanta, uvek ide uz dobro društvo.
+          </p>
+          <a id="g-ovise" href="#"
+             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
+            Saznajte više
+            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== DESTINACIJE – NAJPOPULARNIJE ===== -->
+<section id="destinacije" class="py-20 bg-background">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
+        Pogledajte najpopularnije destinacije
+      </h2>
+      <p class="text-lg md:text-xl max-w-3xl mx-auto text-secondary_text mt-4 font-body">
+        Svesni smo da je naš kraj nedovoljno promovisan… Zbog toga krećemo u „OFANZIVU“! Prirodne lepote,
+        dobra i zdrava hrana, a nadasve prijatni i gostoprimljivi ljudi čekaju na vas.
+      </p>
+    </div>
+
+    <div id="destinacijeCards" class="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
+      <!-- Destination Card 1 -->
+      <div class="group dest-card bg-surface">
+        <div class="relative h-80 overflow-hidden clip-diagonal">
+          <img
+            id = "g-slika"
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
+            alt="Tradicionalni izlet Šanac"
+            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+          <div class="dest-card-gradient"></div>
+        </div>
+        <div class="dest-card-footer">
+          <div id="g-naziv" class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
+            Izlet
+          </div>
+          <h3 id="g-naziv_destinacije" class="text-2xl font-heading font-bold mb-1">
+            Tradicionalni izlet – Šanac
+          </h3>
+          <p id="g-kratak_opis" class="text-sm text-gray-100 mb-4 font-body">
+            Mesto okupljanja, druženja i uživanja u prirodi nadomak Babušnice.
+          </p>
+          <a id="g-ovise" href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
+            Saznajte više
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Destination Card 2 -->
+      <div class="group dest-card bg-surface">
+        <div class="relative h-80 overflow-hidden clip-diagonal">
+          <img
+            src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600&h=400&fit=crop"
+            alt="Kanjon Skokovi"
+            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+          <div class="dest-card-gradient"></div>
+        </div>
+        <div class="dest-card-footer">
+          <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
+            Kanjon
+          </div>
+          <h3 class="text-2xl font-heading font-bold mb-1">
+            Kanjon Skokovi
+          </h3>
+          <p class="text-sm text-gray-100 mb-4 font-body">
+            Divlji krajolik, vodene kaskade i staze za istinske ljubitelje avanture.
+          </p>
+          <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
+            Saznajte više
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Destination Card 3 -->
+      <div class="group dest-card bg-surface">
+        <div class="relative h-80 overflow-hidden clip-diagonal">
+          <img
+            src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=600&h=400&fit=crop"
+            alt="Komarički vir"
+            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+          <div class="dest-card-gradient"></div>
+        </div>
+        <div class="dest-card-footer">
+          <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
+            Priroda
+          </div>
+          <h3 class="text-2xl font-heading font-bold mb-1">
+            Komarički vir
+          </h3>
+          <p class="text-sm text-gray-100 mb-4 font-body">
+            Bistra reka, stene i zelenilo – idealno mesto za beg od gradske vreve.
+          </p>
+          <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
+            Saznajte više
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Destination Card 4 -->
+      <div class="group dest-card bg-surface">
+        <div class="relative h-80 overflow-hidden clip-diagonal">
+          <img
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=400&fit=crop"
+            alt="Vidikovci Lužnice"
+            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+          <div class="dest-card-gradient"></div>
+        </div>
+        <div class="dest-card-footer">
+          <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
+            Vidikovac
+          </div>
+          <h3 class="text-2xl font-heading font-bold mb-1">
+            Vidikovci Lužnice
+          </h3>
+          <p class="text-sm text-gray-100 mb-4 font-body">
+            Pogledi na dolinu, planinske vrhove i selo koje živi u ritmu prirode.
+          </p>
+          <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
+            Saznajte više
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OPŠTI PODACI O LUŽNIČKOM KRAJU ===== -->
+<section id="opsti-podaci" class="py-20 bg-secondary_background text-white relative">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-12">
+      <h2 class="font-heading font-bold text-3xl md:text-4xl lg:text-5xl">
+        Opšti podaci o Lužničkom kraju
+      </h2>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="bg-black/40 border border-white/10 rounded-xl p-6 flex flex-col items-center text-center">
+        <i class="fas fa-people-group text-3xl mb-3"></i>
+        <p class="text-2xl font-heading font-bold">6.500</p>
+        <p class="text-xs uppercase tracking-[0.18em] mt-1 font-heading2">
+          Broj stanovnika Babušnice
+        </p>
+      </div>
+
+      <div class="bg-black/40 border border-white/10 rounded-xl p-6 flex flex-col items-center text-center">
+        <i class="fas fa-users text-3xl mb-3"></i>
+        <p class="text-2xl font-heading font-bold">12.100</p>
+        <p class="text-xs uppercase tracking-[0.18em] mt-1 font-heading2">
+          Broj stanovnika ukupno
+        </p>
+      </div>
+
+      <div class="bg-black/40 border border-white/10 rounded-xl p-6 flex flex-col items-center text-center">
+        <i class="fas fa-map-marked-alt text-3xl mb-3"></i>
+        <p class="text-2xl font-heading font-bold">529 km²</p>
+        <p class="text-xs uppercase tracking-[0.18em] mt-1 font-heading2">
+          Površina opštine Babušnica
+        </p>
+      </div>
+
+      <div class="bg-black/40 border border-white/10 rounded-xl p-6 flex flex-col items-center text-center">
+        <i class="fas fa-envelope text-3xl mb-3"></i>
+        <p class="text-2xl font-heading font-bold">18330</p>
+        <p class="text-xs uppercase tracking-[0.18em] mt-1 font-heading2">
+          Poštanski broj
+        </p>
+      </div>
+
+      <div class="bg-black/40 border border-white/10 rounded-xl p-6 flex flex-col items-center text-center">
+        <i class="fas fa-phone text-3xl mb-3"></i>
+        <p class="text-2xl font-heading font-bold">+381 10</p>
+        <p class="text-xs uppercase tracking-[0.18em] mt-1 font-heading2">
+          Pozivni broj
+        </p>
+      </div>
+
+      <div class="bg-black/40 border border-white/10 rounded-xl p-6 flex flex-col items-center text-center">
+        <i class="fas fa-arrows-alt-v text-3xl mb-3"></i>
+        <p class="text-2xl font-heading font-bold">490 m</p>
+        <p class="text-xs uppercase tracking-[0.18em] mt-1 font-heading2">
+          Nadmorska visina
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- ===== Footer ===== -->
 <footer class="bg-secondary_background text-secondary_text text-gray-200 font-heading2 pt-20 pb-10">
