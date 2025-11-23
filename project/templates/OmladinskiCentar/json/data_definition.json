@@ -790,6 +790,34 @@
           "required": true
         },
         {
+          "name": "datum_pocetka",
+          "type": "date",
+          "label": {
+            "sr": "Datum",
+            "en": "Date",
+            "sr-Cyrl": "Датум"
+          },
+          "required": true
+        },
+        {
+          "name": "vreme_pocetka",
+          "type": "time",
+          "label": {
+            "sr": "Vreme",
+            "en": "Time",
+            "sr-Cyrl": "Време"
+          }
+        },
+        {
+          "name": "kratak_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
           "name": "trajanjeMin",
           "type": "number",
           "label": {
@@ -853,6 +881,34 @@
             "sr-Cyrl": "Жанр"
           },
           "required": true
+        },
+        {
+          "name": "datum_pocetka",
+          "type": "date",
+          "label": {
+            "sr": "Datum",
+            "en": "Date",
+            "sr-Cyrl": "Датум"
+          },
+          "required": true
+        },
+        {
+          "name": "vreme_pocetka",
+          "type": "time",
+          "label": {
+            "sr": "Vreme",
+            "en": "Time",
+            "sr-Cyrl": "Време"
+          }
+        },
+        {
+          "name": "kratak_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
         },
         {
           "name": "trajanjeMin",
