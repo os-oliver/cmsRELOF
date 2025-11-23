@@ -628,7 +628,7 @@ class PageExporter
 
     private function generateIndexBody(): string
     {
-        $content = '';
+        $content = '<body class="font-body">';
 
         if ($this->headerPath) {
             $content .= "\n<?php require_once __DIR__ . '/landingPageComponents/{$this->headerPath}'; ?>\n";

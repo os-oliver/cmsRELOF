@@ -855,7 +855,6 @@ if ($total > 0) {
             const btn = document.getElementById('revertComponent');
             const feedback = document.getElementById('revertFeedback');
             const activeNode = document.querySelector('[data-current-component]');
-            const activeFile = activeNode ? activeNode.getAttribute('data-current-component') : null;
             const componentsBaseUrl = <?= json_encode($backupUrl) ?>;
 
             async function waitForEditor(timeout = 3000) {

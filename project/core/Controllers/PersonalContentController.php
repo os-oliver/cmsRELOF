@@ -1186,7 +1186,7 @@ class PersonalContentController
                             ' . ($slika ? '
                                 <img src="' . htmlspecialchars($slika, ENT_QUOTES, "UTF-8") . '"
                                      class="w-48 h-auto rounded-xl shadow" />'
-                : 'Nema fotografije') . '
+            : 'Nema fotografije') . '
                         </span>
                     </div>
 
@@ -1205,8 +1205,8 @@ class PersonalContentController
                         <span class="field-label"><i class="' . $this->getFieldIcon("kontakt", $fieldIcons) . '"></i>' . $labelEmail . '</span>
                         <span class="field-value">
                             <a href="mailto:' . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") . '" class="text-blue-600 underline">'
-                . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") .
-                '</a>
+            . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") .
+            '</a>
                         </span>
                     </div>' : '') . '
 
@@ -1307,7 +1307,7 @@ class PersonalContentController
         $title = '';
         $titleField = null;
         foreach ($fields as $field => $values) {
-            if (in_array(strtolower($field), ['title', 'name', 'heading', 'naziv', 'naslov']) && isset($values[$locale])) {
+            if (in_array(strtolower($field), ['naziv_destinacije', 'title', 'name', 'heading', 'naziv', 'naslov']) && isset($values[$locale])) {
                 $title = htmlspecialchars($values[$locale], ENT_QUOTES, 'UTF-8');
                 $titleField = $field;
                 break;

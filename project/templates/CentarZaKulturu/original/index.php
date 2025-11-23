@@ -10,6 +10,8 @@
         href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,300;0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+
     <script>
         tailwind.config = {
             theme: {
@@ -28,7 +30,7 @@
                         surface: '#fff'
                     },
                     fontFamily: {
-                        heading: ['Playfair Display', 'serif'],
+                        heading: ['Tangerine', 'cursive'], // rukopisni font za naslove
                         heading2: ['Crimson Pro', 'serif'],
                         body: ['Raleway', 'sans-serif']
                     },
@@ -52,6 +54,8 @@
         };
     </script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
         .search-container {
             position: relative;
             display: flex;
