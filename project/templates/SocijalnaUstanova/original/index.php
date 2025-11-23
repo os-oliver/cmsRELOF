@@ -371,7 +371,7 @@
                         class="flex items-center py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-red-600"></i>Početna
                     </a>
-                    
+
                     <!-- O nama dropdown -->
                     <div class="mobile-dropdown">
                         <button
@@ -471,22 +471,22 @@
     <header
         class="fixed w-full z-50 transition-all duration-300 py-3 sm:py-4 backdrop-blur-md shadow-sm bg-background">
         <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
-            
+
             <!-- Logo Section -->
             <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
                 <a href="" class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4 cursor-pointer hover:opacity-80 transition-opacity">
-                    <img src="/assets/img/ljubica%20logo.jpg" alt="Knjeginja Ljubica Logo" style="width:75px;height:auto;" />
+                    <img src="/assets/img/ljubica%20logo.jpg" alt="Kneginja Ljubica Logo" style="width:75px;height:auto;" />
                 </a>
                 <a href="" class="hidden sm:block cursor-pointer hover:opacity-80 transition-opacity">
                     <h1
                         class="text-base sm:text-lg lg:text-xl xl:text-2xl font-display text-slate font-bold tracking-wider leading-tight">
                         Centar za razvoj usluga </h1>
                         <h1 class="text-base sm:text-lg lg:text-xl xl:text-2xl font-display text-slate font-bold tracking-wider leading-tight">
-                        socijalne ustanove   
+                        socijalne zaštite
                         </h1>
                     <p
                         class="text-xs sm:text-xs lg:text-sm text-primary tracking-widest hidden md:block opacity-80 font-medium">
-                        "Knjegina Ljubica"
+                        "Kneginja Ljubica"
                     </p>
                 </a>
             </div>
@@ -704,11 +704,11 @@
                     <i class="fas fa-heart mr-2"></i>Podrška za sve
                 </span>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold leading-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.6);">
-                Centar za razvoj usluga socijalne ustanove   
+                Centar za razvoj usluga socijalne zaštite
 
                 </h1>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary leading-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.6);">
-                    "Knjeginja Ljubica"
+                    "Kneginja Ljubica"
                 </h1>
             </div>
 
@@ -1004,7 +1004,7 @@
                         <p id="g-naziv" class="text-xl font-display font-bold  mb-2">
                             Program obuke „Roditeljske veštine"
                         </p>
-                        
+
                         <div class="flex items-center mb-3">
                             <span id="g-kategorija" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
@@ -1012,11 +1012,11 @@
                         <p id="g-kratakOpis" class="text-text_secondary mb-4">
                             Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.
                         </p>
-                        
+
                         <div class="flex items-center mb-3">
                             <span id="g-kategorija" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
-                        
+
                         <div class="flex justify-between items-center">
                             <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
                                 Saznajte više
@@ -1033,12 +1033,12 @@
                     <div class="h-48 relative">
                         <img id="g-slika" src="https://picsum.photos/600/400?random=20" alt="Roditeljske veštine" class="w-full h-full object-cover">
                     </div>
-                    
+
                     <div class="p-6">
                         <p id="g-naziv" class="text-xl font-display font-bold  mb-2">
                             Program obuke „Roditeljske veštine"
                         </p>
-                        
+
                         <div class="flex items-center mb-3">
                             <span id="g-kategorija" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
@@ -1046,11 +1046,11 @@
                         <p id="g-kratakOpis" class="text-text_secondary mb-4">
                             Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.
                         </p>
-                        
+
                         <div class="flex items-center mb-3">
                             <span id="g-kategorija" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
-                        
+
                         <div class="flex justify-between items-center">
                             <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
                                 Saznajte više
@@ -1067,12 +1067,12 @@
                     <div class="h-48 relative">
                         <img id="g-slika" src="https://picsum.photos/600/400?random=20" alt="Roditeljske veštine" class="w-full h-full object-cover">
                     </div>
-                    
+
                     <div class="p-6">
                         <p id="g-naziv" class="text-xl font-display font-bold  mb-2">
                             Program obuke „Roditeljske veštine"
                         </p>
-                        
+
                         <div class="flex items-center mb-3">
                             <span id="g-kategorija" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
@@ -1080,11 +1080,11 @@
                         <p id="g-kratakOpis" class="text-text_secondary mb-4">
                             Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.
                         </p>
-                        
+
                         <div class="flex items-center mb-3">
                             <span id="g-kategorija" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
-                        
+
                         <div class="flex justify-between items-center">
                             <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
                                 Saznajte više
@@ -1100,7 +1100,7 @@
 
             <br>
             <br>
-            
+
             <div class="text-center">
                 <a data-page="Sluzbe" href="/o-nama/sluzbe" class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-hands-helping mr-3"></i>
@@ -1204,8 +1204,8 @@
                             <i class="fas fa-heart text-xl"></i>
                         </div>
                         <h3 class="text-xl font-display font-bold">
-                        Centar za razvoj usluga socijalne ustanove   
-                        "Knjegina Ljubica"
+                        Centar za razvoj usluga socijalne zaštite
+                        "Kneginja Ljubica"
 
 
                         </h3>
@@ -1264,13 +1264,13 @@
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5279.994130178201!2d20.899095240995276!3d44.02324531535237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47572137b2f013b1%3A0xf42720737e50f6fd!2sCika%20Matina%205%2C%20Kragujevac!5e1!3m2!1sen!2srs!4v1763730586386!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy">
                         </iframe>
-                        
+
                     </div>
                 </div>
 
             </div>
             <div class=" pt-8 text-center text-white/60 text-sm">
-                <p>&copy; 2025 Centar za razvoj usluga socijalne ustanove "Knjeginja Ljubica". Sva prava zadržana.</p>
+                <p>&copy; 2025 Centar za razvoj usluga socijalne zaštite "Kneginja Ljubica". Sva prava zadržana.</p>
             </div>
             <div class="mt-10 flex flex-col items-center space-y-4 text-center">
                 <div class="w-full border-t-2 border-primary"></div>
