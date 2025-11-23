@@ -256,6 +256,10 @@
                    class="nav-link text-xs lg:text-sm font-semibold tracking-wide px-4 py-2 rounded-full text-slate-100/80 hover:text-white border border-transparent hover:border-sky-400/70 hover:bg-sky-500/10 transition-all duration-200">
                     Dokumenti
                 </a>
+                <a href="#"
+                   class="nav-link text-xs lg:text-sm font-semibold tracking-wide px-4 py-2 rounded-full text-slate-100/80 hover:text-white border border-transparent hover:border-sky-400/70 hover:bg-sky-500/10 transition-all duration-200">
+                    Kontakt
+                </a>
 
                 <!-- LOCALE DROPDOWN (PHP KOD OSTAO ISTI, SAMO STIL PROMENJEN) -->
                 <?php
