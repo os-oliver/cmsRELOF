@@ -105,10 +105,8 @@ class ZnacajaStranica extends BasePageBuilder
         <!-- (Optional) Ovlašćena lica – edit or remove -->
         <section class="mt-4">
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
-
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
-            <p><strong>Za upravu i nacionalne zajednice</strong>
-            <br>Slavica Božović, dipl.pravnik
+            Slavica Božović, dipl.pravnik
             <br>
             Kontakt telefon: +38134355485, +38134370195
             <br>
