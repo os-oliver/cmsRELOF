@@ -81,7 +81,7 @@ class ZnacajaStranica extends BasePageBuilder
             <li><strong>Popunite formular</strong>&nbsp;na vašem računaru (elektronski ili odštampan), navedite
               koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
             <li><strong>Pošaljite popunjen zahtev</strong>&nbsp;na adresu elektronske pošte:&nbsp;
-              <a data-translate="off" class="text-accent hover:text-accent_hover underline-offset-2 hover:underline"
+              <a data-translate="off" class="text-orange-600 hover:text-accent_hover underline-offset-2 hover:underline"
                  href="mailto:pisarnica@vas-domen.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
                  pisarnica@vas-domen.rs
               </a>. Možete poslati i poštom ili lično, u pisarnici.</li>
@@ -102,11 +102,11 @@ class ZnacajaStranica extends BasePageBuilder
         <section class="mt-4">
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
-            <p><strong>Za upravu i nacionalne zajednice</strong><br>Ime Prezime — 021/000-00-00 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer1@vas-domen.rs">primer1@vas-domen.rs</a></p>
+            <p><strong>Za upravu i nacionalne zajednice</strong><br>Ime Prezime — 021/000-00-00 — <a class="text-orange-600 hover:text-accent_hover" data-translate="off" href="mailto:primer1@vas-domen.rs">primer1@vas-domen.rs</a></p>
             <hr class="border-t border-secondary/30 my-3">
-            <p><strong>Za oblast obrazovanja</strong><br>Ime Prezime — 021/000-00-01 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer2@vas-domen.rs">primer2@vas-domen.rs</a></p>
+            <p><strong>Za oblast obrazovanja</strong><br>Ime Prezime — 021/000-00-01 — <a class="text-orange-600 hover:text-accent_hover" data-translate="off" href="mailto:primer2@vas-domen.rs">primer2@vas-domen.rs</a></p>
             <hr class="border-t border-secondary/30 my-3">
-            <p><strong>Za oblast finansija</strong><br>Ime Prezime — 021/000-00-02 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer3@vas-domen.rs">primer3@vas-domen.rs</a></p>
+            <p><strong>Za oblast finansija</strong><br>Ime Prezime — 021/000-00-02 — <a class="text-orange-600 hover:text-accent_hover" data-translate="off" href="mailto:primer3@vas-domen.rs">primer3@vas-domen.rs</a></p>
           </div>
         </section>
       </article>

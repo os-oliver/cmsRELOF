@@ -32,8 +32,8 @@
                 </div>
                 <h2 class="text-xl font-bold">Adresa</h2>
             </div>
-            <p class="text-gray-700 mb-2">Ulica Primer 123</p>
-            <p class="text-gray-700">Žabalj, Srbija</p>
+            <p class="text-gray-700 mb-2">Kej 37. sandžačke divizije A</p>
+            <p class="text-gray-700">36300 Novi Pazar, Srbija</p>
             <div class="mt-4">
                 <a href="#" class="text-blue-500 hover:underline flex items-center">
                     <i class="fas fa-directions mr-2"></i> Pronađite nas na mapi
@@ -49,10 +49,10 @@
                 </div>
                 <h2 class="text-xl font-bold">Telefon</h2>
             </div>
-            <p class="text-gray-700 mb-2">+381 63 486 384</p>
+            <p class="text-gray-700 mb-2">+381 20 317 390</p>
             <p class="text-gray-700">Radno vreme: 09:00 - 17:00</p>
             <div class="mt-4">
-                <a href="tel:+38163486384" class="text-green-500 hover:underline flex items-center">
+                <a href="tel:+38120317390" class="text-green-500 hover:underline flex items-center">
                     <i class="fas fa-phone-volume mr-2"></i> Pozovite nas odmah
                 </a>
             </div>
@@ -66,9 +66,9 @@
                 </div>
                 <h2 class="text-xl font-bold">Email</h2>
             </div>
-            <p class="text-gray-700 mb-4" data-translate="off">info@primer.com</p>
+            <p class="text-gray-700 mb-4" data-translate="off">djoleduga@gmail.com</p>
             <div class="mt-4">
-                <a href="mailto:info@primer.com" class="text-purple-500 hover:underline flex items-center">
+                <a href="mailto:djoleduga@gmail.com" class="text-purple-500 hover:underline flex items-center">
                     <i class="fas fa-paper-plane mr-2"></i> Pošaljite email
                 </a>
             </div>

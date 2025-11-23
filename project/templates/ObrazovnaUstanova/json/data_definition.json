@@ -80,54 +80,6 @@
         }
       ]
     },
-    "Seminari": {
-      "sr": "Akreditovani seminari",
-      "en": "Accredited seminars",
-      "sr-Cyrl": "Акредитовани семинари",
-      "icon": "fas fa-graduation-cap",
-      "fields": [
-        {
-          "name": "catalogNumber",
-          "type": "number",
-          "label": {
-            "sr": "Kataloški broj",
-            "en": "Catalog number",
-            "sr-Cyrl": "Каталошки број"
-          },
-          "required": true
-        },
-        {
-          "name": "title",
-          "type": "text",
-          "label": {
-            "sr": "Naziv seminara",
-            "en": "Seminar title",
-            "sr-Cyrl": "Назив семинара"
-          },
-          "required": true
-        },
-        {
-          "name": "area",
-          "type": "text",
-          "label": {
-            "sr": "Oblast",
-            "en": "Subject area",
-            "sr-Cyrl": "Област"
-          },
-          "required": true
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "ZUOV link",
-            "en": "ZUOV link",
-            "sr-Cyrl": "ЗУОВ линк"
-          },
-          "required": true
-        }
-      ]
-    },
     "Publikacije": {
       "sr": "Publikacije",
       "en": "Publications",
