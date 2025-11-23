@@ -58,11 +58,7 @@ export function initializeEditor() {
     // the canvas version of Tailwind knows our custom color names (they map to CSS variables).
     canvas: {
       scripts: [
-        // Inline script as data URI that sets tailwind.config to use CSS variables for project colors
-        "data:text/javascript;charset=utf-8," +
-          encodeURIComponent(
-            "tailwind.config = { theme: { extend: { colors: { \"primary\": 'var(--color-primary)', \"primary_hover\": 'var(--color-primary_hover)', \"secondary\": 'var(--color-secondary)', \"secondary_hover\": 'var(--color-secondary_hover)', \"accent\": 'var(--color-accent)', \"accent_hover\": 'var(--color-accent_hover)', \"primary_text\": 'var(--color-primary_text)', \"secondary_text\": 'var(--color-secondary_text)', \"background\": 'var(--color-background)', \"secondary_background\": 'var(--color-secondary_background)', \"surface\": 'var(--color-surface)' } } } };"
-          ),
+        
         "https://cdn.tailwindcss.com",
       ],
     },

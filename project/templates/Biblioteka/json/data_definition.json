@@ -44,11 +44,12 @@
             "sr-Cyrl": "Категорија вести"
           },
           "options": [
-            "Kultura",
-            "Obrazovanje",
-            "Inovacije",
-            "Zdravlje",
-            "Tehnologija"
+            "Književnost",
+            "Nauka",
+            "Istorija",
+            "Umjetnost",
+            "Tehnologija",
+            "Deca"
           ],
           "required": true
         },
@@ -90,79 +91,86 @@
         }
       ]
     },
-    "Repertoar": {
-      "sr": "Repertoar",
-      "en": "Library Program",
-      "sr-Cyrl": "Репертоар",
-      "icon": "fas fa-book",
-      "categories": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
+    "Dogadaji": {
+      "sr": "Događaji",
+      "en": "Events",
+      "sr-Cyrl": "Догађаји",
+      "icon": "fas fa-calendar-alt",
+      "categories": [
+        "Književnost",
+        "Nauka",
+        "Istorija",
+        "Umjetnost",
+        "Tehnologija",
+        "Deca"
+      ],
       "fields": [
         {
-          "name": "naslov",
+          "name": "title",
           "type": "text",
           "label": {
-            "sr": "Naslov stavke",
-            "en": "Item title",
-            "sr-Cyrl": "Наслов ставке"
+            "sr": "Naslov događaja",
+            "en": "Event title",
+            "sr-Cyrl": "Наслов догађаја"
           },
           "required": true
+        },
+        {
+          "name": "naziv",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
+          },
+         
+          "required": true
+        },
+        {
+          "name": "location",
+          "type": "text",
+          "label": {
+            "sr": "Lokacija",
+            "en": "Location",
+            "sr-Cyrl": "Локација"
+          }
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis događaja",
+            "en": "Event description",
+            "sr-Cyrl": "Опис догађаја"
+          }
         },
         {
           "name": "datum",
           "type": "date",
           "label": {
-            "sr": "Datum dostupnosti",
-            "en": "Availability date",
-            "sr-Cyrl": "Датум доступности"
+            "sr": "Datum događaja",
+            "en": "Event date",
+            "sr-Cyrl": "Датум догађаја"
           },
           "required": true,
           "property": "auto"
         },
         {
-          "name": "kategorija",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija",
-            "en": "Category",
-            "sr-Cyrl": "Категорија"
-          },
-          "options": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
-          "required": true
-        },
-        {
-          "name": "autor",
+          "name": "time",
           "type": "text",
           "label": {
-            "sr": "Autor / Izvođač",
-            "en": "Author / Performer",
-            "sr-Cyrl": "Аутор / Извођач"
-          }
-        },
-        {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
+            "sr": "Vreme događaja",
+            "en": "Event time",
+            "sr-Cyrl": "Време догађаја"
           }
         },
         {
           "name": "slika",
           "type": "file",
           "label": {
-            "sr": "Naslovna slika",
-            "en": "Cover image",
-            "sr-Cyrl": "Насловна слика"
-          }
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Eksterni link",
-            "en": "External link",
-            "sr-Cyrl": "Екстерни линк"
+            "sr": "Naslovna slika vesti",
+            "en": "News image",
+            "sr-Cyrl": "Насловна слика вести"
           }
         }
       ]

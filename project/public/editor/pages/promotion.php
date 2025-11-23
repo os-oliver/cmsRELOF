@@ -618,7 +618,7 @@ if ($total > 0) {
         document.getElementById('saveColors').addEventListener('click', async () => {
             const btn = document.getElementById('saveColors');
             const feedback = document.getElementById('colorsFeedback');
-
+            console.log('Saving colors:', currentColors);
             if (Object.keys(currentColors).length === 0) {
                 feedback.innerHTML = `
                     <div class="inline-flex items-center px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg text-yellow-700 text-sm">
