@@ -1308,7 +1308,7 @@ class PersonalContentController
         $title = '';
         $titleField = null;
         foreach ($fields as $field => $values) {
-            if (in_array(strtolower($field), ['title', 'name', 'heading', 'naziv', 'naslov']) && isset($values[$locale])) {
+            if (in_array(strtolower($field), ['title', 'name', 'heading', 'naziv', 'naslov', 'naziv_destinacije']) && isset($values[$locale])) {
                 $title = htmlspecialchars($values[$locale], ENT_QUOTES, 'UTF-8');
                 $titleField = $field;
                 break;

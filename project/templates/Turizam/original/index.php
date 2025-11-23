@@ -26,10 +26,10 @@
             surface: '#ffffff',
           },
           fontFamily: {
-            heading: ['Playfair Display', 'serif'],
-            heading2: ['Inter', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-          }
+            heading: ['"Roboto Slab"', 'Arial', 'Helvetica', 'sans-serif'],
+            heading2: ['Roboto', 'Arial', 'Helvetica', 'sans-serif'],
+            body: ['Roboto', 'Arial', 'Helvetica', 'sans-serif'],
+          },
         }
       }
     }
@@ -39,6 +39,14 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <style>
     :root{
