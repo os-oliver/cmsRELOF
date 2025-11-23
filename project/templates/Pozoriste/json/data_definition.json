@@ -114,7 +114,7 @@
             "en": "Date & time",
             "sr-Cyrl": "Датум и време"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "zanr",
@@ -124,7 +124,7 @@
             "en": "Genre",
             "sr-Cyrl": "Жанр"
           },
-          "required": true
+          "required": false
         },
         {
           "name": "trajanjeMin",

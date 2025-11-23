@@ -369,10 +369,7 @@
 
                     </div>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-images mr-3 text-primary"></i>Ansambl
-                    </a>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-folder-open mr-3 text-primary"></i>Predstave
+                        <i class="fas fa-users mr-3 text-primary"></i>Ansambl
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primary"></i>Repertoar
@@ -409,14 +406,14 @@
         </button>
     </div>
 
-    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm ">
+    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm bg-surface2/80">
         <div class="container mx-auto px-4 flex justify-between items-center">
 
 
             <!-- Logo Section -->
             <a href="/" class="flex items-center space-x-3 flex-shrink-0">
                 <div
-                    class="w-12 h-12 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    class="w-12 h-12 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
 
@@ -453,7 +450,6 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-users-cog mr-2 text-primary"></i>Organi upravljanja
                         </a>
-
                         <a data-page="OrganizacionaStruktura" href="#"
                             class="flex items-center py-2 px-4 text-sm transition-colors">
                             <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
@@ -482,12 +478,8 @@
                     </div>
                 </div>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
+                    <i class="fas fa-users mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Ansambl</span>
-                </a>
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Predstave</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-calendar-alt mr-2 text-primary"></i>
@@ -525,16 +517,16 @@
                     $locale = 'sr';
                 }
                 ?>
-                <div class="locale dropdown nonPage relative group ">
+                <div class="locale dropdown nonPage relative group">
                     <button
-                        class="nav-link text-slate font-semibold hover:text-terracotta transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
+                        class="nav-link text-secondary_text hover:text-primary_text font-semibold transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
                         <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute top-full right-0  min-w-max bg-paper rounded-xl shadow-2xl border border-gray-100 z-50 py-2 backdrop-blur-sm">
+                        class="dropdown-menu absolute top-full right-0  min-w-max bg-paper rounded-xl shadow-2xl border border-gray-100 z-50 py-2 backdrop-blur-sm bg-background">
                         <?php foreach ($languages as $key => $lang): ?>
                             <a href="?locale=<?= $key ?>"
                                 class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
@@ -589,19 +581,20 @@
 
     <!-- Enhanced Hero Section -->
     <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondary_text">
-        <img src="assets/img/herosectionPozoriste.jpg"
+        <img src="assets/img/herosectionPozoriste.jpeg"
             alt="herosectionPozoriste"
-            class="absolute inset-0 w-full h-full object-cover opacity-40 z-0">
-        <div class="absolute inset-0 bg-[rgba(11,53,88,0.2)] backdrop-blur-sm z-0"></div>
+            class="absolute inset-0 w-full h-full object-cover z-0">
+
+        <div class="absolute inset-0 bg-[rgba(0,0,0,0.5)] z-0"></div>
         <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                 <div>
                     <div class="mb-8 text-left">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Dobrodošli u</span>
-                            <span class="block mt-2 text-secondary_text font-heading">Narodno pozorište Pirot</span>
+                            <span class="block font-heading text-white">Dobrodošli u</span>
+                            <span class="block mt-2 text-white font-heading">Narodno pozorište Pirot</span>
                         </h1>
-                        <p class="mb-10 text-primary_text">
+                        <p class="mb-10 text-white">
                             U srcu Pirota, naše pozorište već decenijama čuva duh zajedništva i ljubavi prema umetnosti.
                             Publika nam je porodica, a svaka predstava novo putovanje kroz smeh, suze i emocije.
                             Naš repertoar je pažljivo biran za sve generacije.
@@ -640,7 +633,7 @@
                 </p>
             </div>
 
-            <div id="repertoarCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+            <div id="repertoarCards" class="flex justify-center gap-8 flex-wrap">
                 <!-- repertoar card 1 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
@@ -853,16 +846,11 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <a class="flex items-center mb-6">
-                        <div
-                            class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
+                    <a href="/" class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                            <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
-                        <h3 class="text-xl">Narodno pozorište Pirot</h3>
+                        <h3 class="text-xl font-heading font-bold">Narodno pozorište Pirot</h3>
                     </a>
                     <p class="mb-4">
                         Posetite nas i na društvenim mrežama
@@ -928,13 +916,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
 
                     <!-- Kolone 1 i 2 – SLIKA preko dve kolone -->
-                    <div class="lg:col-span-2 flex flex-col items-center">
+                    <div class="lg:col-span-2 flex flex-col">
                         <img src="/assets/img/SECO-logo-640px.png"
                             alt="SECO logo"
                             class="max-h-32 w-auto mb-4">
 
                         <!-- Tekst ispod slike -->
-                        <p class="text-xs md:text-sm text-secondary_text text-center max-w-md">
+                        <p class="text-xs md:text-sm text-secondary_text ml-[77px]">
                             Izradu ovog veb-sajta omogućila je Vlada Švajcarske.<br>
                             Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.
                         </p>
@@ -1011,7 +999,7 @@
                         logocolor2: '#2D3047', // pairs with gold
                         primarybtntxt: '#FFF7E6', // soft ivory on red/navy
                         surface: '#8B1E3F1A', // translucent velvet for cards
-                        surface2: '#e0d1d6',
+                        surface2: '#e8dbdf',
                         footerbg: '#EFE3D6', // creamy footer
                     },
                     fontFamily: {

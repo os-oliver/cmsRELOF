@@ -208,7 +208,7 @@ PHP;
                     {{genreRow}}
                 </div>
 
-                <a href="sadrzaj?id={{itemId}}&tip=generic_element"
+                <a href="sadrzaj?id={{itemId}}&tip=Repertoar"
                 class="block w-full text-center bg-primary hover:bg-primary_hover text-primarybtntxt text-sm font-semibold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-body">
                     <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-theater-masks"></i>
