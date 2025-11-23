@@ -6,20 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KRAGUJEVAC | Gradska Turistička Organizacija</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-
+  <!-- Roboto & Roboto Slab only (you can drop Playfair/Inter since you don't use them anymore) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- 1) CDN FIRST -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 2) THEN CONFIG -->
   <script>
-    // Tailwind Play CDN config — tokenized colors & fonts
     tailwind.config = {
       theme: {
         extend: {
@@ -35,9 +33,12 @@
             background: '#f9fafb',
             secondary_background: '#111827',
             surface: '#ffffff',
+
+            /* you use these in the footer: bg-logocolor2, text-logocolor2 */
+            logocolor2: '#059669', // <-- put your real brand color here
           },
           fontFamily: {
-            heading: ['"Roboto Slab"', 'Arial', 'Helvetica', 'sans-serif'],
+            heading: ['Roboto Slab', 'Arial', 'Helvetica', 'sans-serif'],
             heading2: ['Roboto', 'Arial', 'Helvetica', 'sans-serif'],
             body: ['Roboto', 'Arial', 'Helvetica', 'sans-serif'],
           },
@@ -95,10 +96,8 @@
 
     /* ========= GLOBAL SECTION HEADINGS ========= */
     .section-heading {
-      font-family: "Playfair Display", serif;
-      font-weight: 700;
-      color: var(--color-primary_text);
-      font-size: clamp(2.4rem, 3vw, 3rem);
+      /* font handled by Tailwind */
+      /* color & size handled by Tailwind */
       text-align: center;
       position: relative;
       display: inline-flex;
@@ -343,17 +342,11 @@
       z-index: 10;
     }
     .overlay-content h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.35rem;
+      /* font handled by Tailwind */
+      /* size handled by Tailwind */
       margin-bottom: .25rem;
     }
-    .overlay-content p {
-      font-family: "Inter", sans-serif;
-      font-size: .82rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      opacity: .85;
-    }
+    /* .overlay-content p handled completely by Tailwind classes */
 
     /* Event cards */
     .event-card {
@@ -422,7 +415,8 @@
     @media (max-width: 768px) {
       /* nothing special for headings, just let them breathe */
     }
-  </style>
+</style>
+
 </head>
 
 <body class="bg-background font-body text-primary_text">
@@ -716,7 +710,7 @@
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="flex items-center justify-between">
         <span class="hidden md:block w-24 h-[3px] bg-gradient-to-r from-primary to-accent rounded-full"></span>
-        <h2 class="section-heading font-heading">
+        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
           Dobro došli u grad sa dušom, dobro došli u Kragujevac
         </h2>
         <span class="hidden md:block w-24 h-[3px] bg-gradient-to-r from-accent to-secondary rounded-full"></span>
@@ -741,7 +735,7 @@
   <section id="destinacije" class="py-20 bg-background">
     <div class="container mx-auto px-4 relative z-10">
       <div class="text-center mb-16">
-        <h2 class="section-heading font-heading">
+        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
           Šta videti - Istaknute destinacije
         </h2>
       </div>
@@ -866,14 +860,13 @@
   <section id="gallery" class="py-20 bg-background text-secondary_text font-heading2">
     <div class="container mx-auto px-4 relative z-10">
       <div class="text-center mb-16">
-        <h2 class="section-heading font-heading">
+        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
           Multimedija
         </h2>
         <p class="text-lg md:text-xl max-w-2xl mx-auto text-secondary_text mt-4 font-body">
           Doživite Kragujevac kroz fotografije, video zapise i virtuelne ture.
         </p>
       </div>
-
       <div id="galleryCards" class="gallery-grid gap-6">
         <div class="gallery-item rounded-2xl overflow-hidden relative">
           <img id="g-image_file_path"
@@ -920,7 +913,7 @@
     <div class="container mx-auto px-4 text-center relative z-10">
 
       <div class="text-center mb-10">
-        <h2 class="section-heading font-heading">
+        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
           Događaji
         </h2>
       </div>
@@ -994,7 +987,7 @@
   <section id="vesti" class="py-20 bg-background">
     <div class="container mx-auto px-4 relative z-10">
       <div class="text-center mb-16">
-        <h2 class="section-heading font-heading">
+        <h2 class="section-heading font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary_text">
           Najnovije Vesti
         </h2>
         <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6 font-body">
