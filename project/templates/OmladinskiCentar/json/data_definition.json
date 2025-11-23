@@ -929,6 +929,34 @@
           }
         }
       ]
+    },
+    "Donacije I Podrska": {
+      "sr": "Partneri",
+      "en": "Partners",
+      "sr-Cyrl": "Партнери",
+      "icon": "fas fa-theater-masks",
+      "fields": [
+        {
+          "name": "partner",
+          "type": "text",
+          "label": {
+            "sr": "Partner",
+            "en": "Partner",
+            "sr-Cyrl": "Партнер"
+          },
+          "required": true
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Slika",
+            "en": "Image",
+            "sr-Cyrl": "Слика"
+          },
+          "required": true
+        }
+      ]
     }
   }
 ]

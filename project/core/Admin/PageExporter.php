@@ -763,6 +763,8 @@ class PageExporter
                 return new DynamicPageBuilder('Koncerti');
             case 'filmovi':
                 return new DynamicPageBuilder('Filmovi');
+            case 'donacije-i-podrska':
+                return new DynamicPageBuilder('Donacije I Podrska');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -835,7 +837,7 @@ class PageExporter
         } elseif (strpos($name, 'organizaciona-struktura') !== false) {
             return 'organizaciona-struktura';
         } elseif (strpos($name, 'rukovodstvo') !== false) {
-            return 'rukovodstvo';
+            return 'organi-upravljanja';
         } elseif (strpos($name, 'misija-i-vizija') !== false) {
             return 'misija-i-vizija';
         } elseif (strpos($name, 'uvod') !== false) {
