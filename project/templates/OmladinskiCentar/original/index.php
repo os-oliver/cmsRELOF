@@ -151,22 +151,21 @@
     <header class="sticky top-0 z-50 bg-slate-950 border-b border-slate-800 backdrop-blur-xl border-b border-slate-800 shadow-[0_0_40px_rgba(56,189,248,0.4)]">
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-3 md:py-4">
-            <!-- LOGO + TITLE -->
-            <div class="flex items-center">
-                <div
-                    class="w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-gradient-to-tr from-sky-500 via-fuchsia-500 to-amber-400 flex items-center justify-center mr-3 shadow-lg shadow-sky-500/40">
-                    <i class="fas fa-bolt text-white text-xl md:text-2xl drop-shadow-md"></i>
+            <a href="/">
+                <!-- LOGO + TITLE -->
+                <div class="flex items-center">
+                    <div class="w-11 h-11 md:w-12 md:h-12 rounded-2xl overflow-hidden mr-3 shadow-lg shadow-sky-500/40 bg-white">
+                        <img src="../../../../uploads/566567587_1125765533100671_453683319234025121_n-1024x1004.jpg" alt="Logo" class="w-full h-full object-contain p-1">
+                    </div>
+
+                    <div class="flex flex-col leading-tight">
+                        <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-slate-50">
+                            <span class="text-white">Dom Omladine</span><br>
+                            <span class="bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">Kragujevac</span>
+                        </h1>
+                    </div>
                 </div>
-                <div class="flex flex-col leading-tight">
-                    <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-slate-50">
-                        Omladinski <span
-                            class="bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">Centar</span>
-                    </h1>
-                    <span class="text-xs md:text-sm text-slate-400">
-                        prostor za ideje, muziku, film i druženje
-                    </span>
-                </div>
-            </div>
+            </a>
 
             <!-- NAV DESKTOP -->
             <nav id="navBarID" class="hidden md:flex items-center space-x-2 lg:space-x-4">
@@ -187,11 +186,6 @@
                     <div
                         class="dropdown-menu absolute top-[115%] left-1/2 -translate-x-1/2 min-w-max max-w-xs w-auto bg-slate-900/95 border border-slate-700 rounded-2xl shadow-[0_0_35px_rgba(129,140,248,0.55)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-3 backdrop-blur-xl">
                         <a href="#" static="true"
-                           class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.6)] transition-all duration-150 rounded-xl mx-2">
-                            <i class="fas fa-book mr-3 text-sky-400 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium text-white">Uvod</span>
-                        </a>
-                        <a href="#" static="true"
                            class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(236,72,153,0.7)] transition-all duration-150 rounded-xl mx-2">
                             <i class="fas fa-flag mr-3 text-pink-400 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium text-white">Misija i vizija</span>
@@ -210,16 +204,6 @@
                            class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(59,130,246,0.7)] transition-all duration-150 rounded-xl mx-2">
                             <i class="fas fa-sitemap mr-3 text-sky-300 flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium text-white">Organizaciona struktura</span>
-                        </a>
-                        <a href="#" static="true"
-                           class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(148,163,184,0.8)] transition-all duration-150 rounded-xl mx-2">
-                            <i class="fas fa-building mr-3 text-slate-300 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium text-white">Objekat</span>
-                        </a>
-                        <a href="#" static="true"
-                           class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(244,114,182,0.8)] transition-all duration-150 rounded-xl mx-2">
-                            <i class="fas fa-hand-holding-heart mr-3 text-rose-300 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium text-white">Donacije i podrška</span>
                         </a>
                     </div>
                 </div>
@@ -323,14 +307,14 @@
                         </div>
 
                         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-white">
-                            Omladinski centar
+                            Dom Omladine
                             <span class="block bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">
-                                za muziku, film, igru i druženje
+                                Kragujevac
                             </span>
                         </h1>
 
                         <p class="text-base md:text-lg text-slate-300 max-w-xl mb-8">
-                            Koncerti, radionice, filmske večeri, predstave i još mnogo toga – sve na jednom mestu
+                            Koncerti, izložbe, filmske večeri, predstave i još mnogo toga – sve na jednom mestu
                             za tinejdžere i mlade koji žele da se povežu, nauče nešto novo i lepo provedu vreme.
                         </p>
 
@@ -340,25 +324,20 @@
                                 <i class="fas fa-calendar-star mr-2"></i>
                                 Pogledaj aktuelne događaje
                             </a>
-                            <a href="#"
-                            class="inline-flex items-center px-6 py-3 rounded-full border border-slate-600 text-sm font-semibold text-slate-100 hover:border-sky-400 hover:bg-slate-900/70 transition-all">
-                                <i class="fas fa-user-plus mr-2"></i>
-                                Postani volonter
-                            </a>
                         </div>
 
                         <div class="flex flex-wrap gap-3 text-xs md:text-sm text-slate-300">
                             <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-sky-500/50 text-white">
                                 <i class="fas fa-music mr-2 text-sky-400"></i>
-                                Bendovi & open mic
+                                Filmovi
                             </span>
                             <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-fuchsia-500/50 text-white">
                                 <i class="fas fa-theater-masks mr-2 text-fuchsia-400"></i>
-                                Predstave & improv
+                                Predstave
                             </span>
                             <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-amber-400/60 text-white">
                                 <i class="fas fa-film mr-2 text-amber-300"></i>
-                                Filmske večeri
+                                Izložbe
                             </span>
                         </div>
                     </div>
@@ -393,11 +372,6 @@
                                     <i class="fas fa-ticket mr-2 text-sky-400"></i>
                                     Ulaz slobodan
                                 </span>
-                                <a href="#vesti"
-                                class="text-sm font-semibold text-sky-300 hover:text-sky-200 inline-flex items-center gap-2">
-                                    Detalji događaja
-                                    <i class="fas fa-arrow-right text-xs"></i>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -427,34 +401,33 @@
                     <!-- News 1 -->
                     <article class="event-card bg-slate-900/80 border border-slate-700/70 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_35px_rgba(56,189,248,0.6)] transition-all duration-200 group">
                         <div class="h-48 relative overflow-hidden">
-                            <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                            <img id="g-slika" src="../../../../uploads/62221226_2167296830055124_4049000927049285632_n.jpg" alt="Art Exhibition"
                                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-80"></div>
                             <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 text-sky-300 border border-sky-400/60">
                                 <i class="fas fa-bullhorn mr-2"></i>
-                                Novo
+                                Predstave
                             </span>
                         </div>
                         <div class="p-6">
                             <div class="flex items-center mb-3">
                                 <span id="g-kategorije" class="text-xs font-semibold uppercase tracking-wide text-sky-400">
-                                    Lorem ipsum
+                                    Predstave
                                 </span>
                             </div>
                             <h3 id="g-naslov"
                                 class="text-lg md:text-xl font-bold text-slate-50 mb-3 group-hover:text-sky-300 transition-colors">
-                                Lorem ipsum dolor sit amet
+                                Premijera predstave Dečije pozorišne radionice – Nemušti jezik
                             </h3>
 
                             <p id="g-tekst" class="text-sm text-slate-300 mb-5">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
-                                suscipit quis, pharetra a dui.
+                                Ulaz 100rsd
                             </p>
 
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center text-xs text-slate-400">
                                     <i class="fas fa-calendar-days mr-2 text-sky-400"></i>
-                                    <span class="text-white" id="g-datum">28.9.2025.</span>
+                                    <span class="text-white" id="g-datum">15.06.2019. 17h</span>
                                 </div>
                                 <a id="g-ovise" href="#"
                                 class="inline-flex items-center text-sm font-semibold text-sky-300 hover:text-sky-200 gap-2 transition-all group/link">
@@ -468,7 +441,7 @@
                     <!-- News 2 -->
                     <article class="event-card bg-slate-900/80 border border-slate-700/70 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-200 group">
                         <div class="h-48 relative overflow-hidden">
-                            <img id="g-slika" src="https://picsum.photos/601/300" alt="Event image"
+                            <img id="g-slika" src="../../../../uploads/IMG_2288.jpg" alt="Event image"
                                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-80"></div>
                             <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 text-fuchsia-300 border border-fuchsia-400/60">
@@ -479,23 +452,26 @@
                         <div class="p-6">
                             <div class="flex items-center mb-3">
                                 <span id="g-kategorije" class="text-xs font-semibold uppercase tracking-wide text-fuchsia-300">
-                                    Lorem ipsum
+                                    Album
                                 </span>
                             </div>
                             <h3 id="g-naslov"
                                 class="text-lg md:text-xl font-bold text-slate-50 mb-3 group-hover:text-fuchsia-300 transition-colors">
-                                Lorem ipsum dolor sit amet
+                                Uskoro Dead Joker – ”AMBIVIOLENT”
                             </h3>
 
                             <p id="g-tekst" class="text-sm text-slate-300 mb-5">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
-                                suscipit quis, pharetra a dui.
+                                Kad se stvore uslovi bude i promocije:
+
+                                AMBIVIOLENT je povratnički album DEAD JOKER-a posle 27 godina od izlaska legendarnog VENTURE-a.
+                                Album sadrži 11 numera na kojima je gostovalo 8 istaknutih kragujevačkih muzičara.Produkciju potpisuje Ivan Ilić-Ćili,mastering cuveni Jens Bogren.
+                                https://www.youtube.com/watch?v=wUGzcmGOVyw
                             </p>
 
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center text-xs text-slate-400">
                                     <i class="fas fa-calendar-days mr-2 text-fuchsia-400"></i>
-                                    <span class="text-white" id="g-datum">28.9.2025.</span>
+                                    <span class="text-white" id="g-datum">2025-11-22</span>
                                 </div>
                                 <a id="g-ovise" href="#"
                                 class="inline-flex items-center text-sm font-semibold text-fuchsia-300 hover:text-fuchsia-200 gap-2 transition-all group/link">
@@ -509,34 +485,33 @@
                     <!-- News 3 -->
                     <article class="event-card bg-slate-900/80 border border-slate-700/70 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_35px_rgba(251,191,36,0.6)] transition-all duration-200 group">
                         <div class="h-48 relative overflow-hidden">
-                            <img id="g-slika" src="https://picsum.photos/602/300" alt="Event image"
+                            <img id="g-slika" src="../../../../uploads/LOGO-DOM-OMLADINE-vektor-01-footer.jpg" alt="Event image"
                                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-80"></div>
                             <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 text-amber-300 border border-amber-400/70">
                                 <i class="fas fa-palette mr-2"></i>
-                                Izložba
+                                Album
                             </span>
                         </div>
                         <div class="p-6">
                             <div class="flex items-center mb-3">
                                 <span id="g-kategorije" class="text-xs font-semibold uppercase tracking-wide text-amber-300">
-                                    Lorem ipsum
+                                    Muzika
                                 </span>
                             </div>
                             <h3 id="g-naslov"
                                 class="text-lg md:text-xl font-bold text-slate-50 mb-3 group-hover:text-amber-300 transition-colors">
-                                Lorem ipsum dolor sit amet
+                                Pobednik konkursa za najbolji album 2019.
                             </h3>
 
                             <p id="g-tekst" class="text-sm text-slate-300 mb-5">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
-                                suscipit quis, pharetra a dui.
+                                 omladine se zahvaljuje svim bendovima koji su učestvovali na konkursu za izdavanje albuma autorskom bendu...
                             </p>
 
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center text-xs text-slate-400">
                                     <i class="fas fa-calendar-days mr-2 text-amber-300"></i>
-                                    <span class="text-white" id="g-datum">28.9.2025.</span>
+                                    <span class="text-white" id="g-datum">2025-11-22</span>
                                 </div>
                                 <a id="g-ovise" href="#"
                                 class="inline-flex items-center text-sm font-semibold text-amber-300 hover:text-amber-200 gap-2 transition-all group/link">
@@ -569,7 +544,7 @@
         </div>
 
         <div class="container mx-auto px-4 relative">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
                 <!-- Col 1 -->
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-slate-50">
@@ -579,24 +554,6 @@
                         Prostor za mlade da razvijaju svoje potencijale, stiču nova znanja i iskustva
                         kroz raznovrsne programe i aktivnosti.
                     </p>
-                    <div class="flex space-x-3">
-                        <a href="#"
-                        class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-sky-300 hover:border-sky-400/80 hover:bg-sky-500/10 transition-all duration-150">
-                            <i class="fab fa-facebook-f text-sm text-slate-300 hover:text-sky-300 transition-colors"></i>
-                        </a>
-                        <a href="#"
-                        class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-pink-400 hover:border-pink-400/80 hover:bg-pink-500/10 transition-all duration-150">
-                            <i class="fab fa-instagram text-sm text-slate-300 hover:text-sky-300 transition-colors"></i>
-                        </a>
-                        <a href="#"
-                        class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-red-500 hover:border-red-500/80 hover:bg-red-500/10 transition-all duration-150">
-                            <i class="fab fa-youtube text-sm text-slate-300 hover:text-sky-300 transition-colors"></i>
-                        </a>
-                        <a href="#"
-                        class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-sky-300 hover:border-sky-300/80 hover:bg-sky-500/10 transition-all duration-150">
-                            <i class="fab fa-twitter text-sm text-slate-300 hover:text-sky-300 transition-colors"></i>
-                        </a>
-                    </div>
                 </div>
 
                 <!-- Col 2 -->
@@ -605,13 +562,23 @@
                         Brzi Linkovi
                     </h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="text-slate-300 hover:text-sky-300 transition-colors">Početna</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-sky-300 transition-colors">O nama</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-sky-300 transition-colors">Programi</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-sky-300 transition-colors">Vesti</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-sky-300 transition-colors">Partneri</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-sky-300 transition-colors">Dokumenti</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-sky-300 transition-colors">Kontakt</a></li>
+                        <li><a href="/" class="text-slate-300 hover:text-sky-300 transition-colors">Početna</a></li>
+                        <li><a href="/o-nama/istorijat" class="text-slate-300 hover:text-sky-300 transition-colors">O nama</a></li>
+                        <li><a href="/vesti" class="text-slate-300 hover:text-sky-300 transition-colors">Vesti</a></li>
+                        <li><a href="/manifestacije" class="text-slate-300 hover:text-sky-300 transition-colors">Manifestacije</a></li>
+                        <li><a href="/koncerti" class="text-slate-300 hover:text-sky-300 transition-colors">Koncerti</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-slate-50"></h3><br>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/izlozbe" class="text-slate-300 hover:text-sky-300 transition-colors">Izložbe</a></li>
+                        <li><a href="/predstave" class="text-slate-300 hover:text-sky-300 transition-colors">Predstave</a></li>
+                        <li><a href="/filmovi" class="text-slate-300 hover:text-sky-300 transition-colors">Filmovi</a></li>
+                        <li><a href="/galerija" class="text-slate-300 hover:text-sky-300 transition-colors">Galerija</a></li>
+                        <li><a href="/dokumenti" class="text-slate-300 hover:text-sky-300 transition-colors">Dokumenti</a></li>
                     </ul>
                 </div>
 
@@ -623,26 +590,27 @@
                     <ul class="space-y-3 text-sm">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-sky-400 mt-1 mr-3"></i>
-                            <span class="text-slate-300 hover:text-sky-300 transition-colors">Omladinska ulica 15, Beograd</span>
+                            <span class="text-slate-300 hover:text-sky-300 transition-colors">Branka Radičevića 1</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-sky-400 mt-1 mr-3"></i>
-                            <span class="text-slate-300 hover:text-sky-300 transition-colors">+381 11 123 4567</span>
+                            <span class="text-slate-300 hover:text-sky-300 transition-colors">+381 (0) 34 30 24 27</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-sky-400 mt-1 mr-3"></i>
-                            <span class="text-slate-300 hover:text-sky-300 transition-colors">info@omladinskicentar.rs</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-clock text-sky-400 mt-1 mr-3"></i>
-                            <span class="text-slate-300 hover:text-sky-300 transition-colors">Pon-Pet: 09:00 - 20:00<br>Sub: 10:00 - 15:00</span>
+                            <span class="text-slate-300 hover:text-sky-300 transition-colors" data-translate="off">office@domomladine.com</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
+            <div class="flex flex-col items-center border-t border-white pt-8 text-center text-white text-sm">
+                <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo" class="w-full max-w-md md:max-w-lg h-auto mb-4">
+                <p class="text-slate-300 transition-colors">Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+            </div>
+
             <div class="border-t border-slate-800 mt-10 pt-5 text-center text-xs md:text-sm text-slate-500 relative">
-                <p>&copy; 2023 Omladinski Centar. Sva prava zadržana.</p>
+                <p class="text-slate-300 transition-colors">&copy; 2023 Dom omladine Kragujevac zadržava sva prava</p>
             </div>
         </div>
     </footer>
