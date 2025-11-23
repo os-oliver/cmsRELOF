@@ -1236,42 +1236,6 @@
           }
         }
       ]
-    },
-    "Timovi": {
-      "sr": "Timovi",
-      "en": "Teams",
-      "sr-Cyrl": "Тимови",
-      "icon": "fas fa-users",
-      "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika tima",
-            "en": "Team image",
-            "sr-Cyrl": "Насловна слика тима"
-          }
-        },
-        {
-          "name": "title",
-          "type": "text",
-          "label": {
-            "sr": "Naziv tima",
-            "en": "Team name",
-            "sr-Cyrl": "Назив тима"
-          },
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis",
-            "en": "Description",
-            "sr-Cyrl": "Опис"
-          }
-        }
-      ]
     }
   }
 ]

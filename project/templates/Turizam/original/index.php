@@ -6,6 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KRAGUJEVAC | Gradska Turistička Organizacija</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     // Tailwind Play CDN config — tokenized colors & fonts
@@ -36,17 +47,6 @@
   </script>
 
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -433,49 +433,49 @@
     <div id="mobileMenuPanel" class="fixed top-0 right-0 h-full w-80 max-w-full bg-surface shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out">
       <div class="p-6 text-secondary_text">
         <div class="flex justify-between items-center mb-8">
-          <h2 class="text-xl text-primary_text">Menu</h2>
+          <h2 class="text-xl text-primary_text font-heading2">Menu</h2>
           <button id="closeMobileMenu" class="text-primary_text transition-colors">
             <i class="fas fa-times text-xl"></i>
           </button>
         </div>
 
         <nav id="navBarIDm" class="space-y-4">
-          <a href="/" class="flex items-center py-3 px-4 rounded-lg transition-all">
+          <a href="/" class="flex items-center py-3 px-4 rounded-lg transition-all font-body">
             <i class="fas fa-home mr-3 text-primary"></i>Početna
           </a>
 
           <div class="mobile-dropdown">
             <button class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all" id="mobileAboutToggle">
-              <div class="flex items-center"><i class="fas fa-info-circle mr-3 text-primary"></i>O nama</div>
+              <div class="flex items-center font-body"><i class="fas fa-info-circle mr-3 text-primary"></i>O nama</div>
               <i class="fas fa-chevron-down  transition-transform duration-200" id="mobileAboutIcon"></i>
             </button>
             <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
-              <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura</a>
-              <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-users-cog mr-2 text-primary"></i>Rukovodstvo</a>
-              <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-flag mr-2 text-primary"></i>Misija</a>
-              <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-history mr-2 text-primary"></i>Istorijat</a>
-              <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fa-question mr-2 text-primary"></i>Pitanja</a>
-              <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije</a>
-              <a href="#" class="flex items-center py-2 px-4 transition-colors"><i class="fas fa-users mr-2 text-primary"></i>Timovi</a>
+              <a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura</a>
+              <!--<a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-users-cog mr-2 text-primary"></i>Rukovodstvo</a>-->
+              <a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-flag mr-2 text-primary"></i>Misija</a>
+              <a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-history mr-2 text-primary"></i>Istorijat</a>
+              <a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fa-question mr-2 text-primary"></i>Pitanja</a>
+              <a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije</a>
+              <!--<a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-users mr-2 text-primary"></i>Timovi</a>-->
             </div>
           </div>
 
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinacije</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-bed mr-3 text-primary"></i>Smeštaj</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-person-hiking mr-3 text-primary"></i>Aktivnosti</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-utensils mr-3 text-primary"></i>Gastronomija</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all"><i class="fas fa-file-alt mr-3 text-primary"></i>Dokumenti</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-address-book mr-3 text-primary"></i>Kontakt</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i class="fas fa-calendar-alt mr-2 text-primary"></i>Vesti</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all"><i  class="fas fa-diagram-project mr-2 text-primary"></i>Događaji</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50"><i  class="fas fa-images mr-2 text-primary"></i>Multimedija</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinacije</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-bed mr-3 text-primary"></i>Smeštaj</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-person-hiking mr-3 text-primary"></i>Aktivnosti</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-utensils mr-3 text-primary"></i>Gastronomija</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all font-body"><i class="fas fa-file-alt mr-3 text-primary"></i>Dokumenti</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-address-book mr-3 text-primary"></i>Kontakt</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-calendar-alt mr-2 text-primary"></i>Vesti</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all font-body"><i  class="fas fa-diagram-project mr-2 text-primary"></i>Događaji</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i  class="fas fa-images mr-2 text-primary"></i>Multimedija</a>
         </nav>
       </div>
     </div>
   </div>
 
   <!-- Font size button -->
-  <button id="increaseFontBtn" class="fixed bottom-6 right-6 z-40 bg-primary hover:bg-primary_hover text-white py-3 px-5 rounded-full shadow-lg transition" aria-label="Povećaj font">A+</button>
+  <button id="increaseFontBtn" class="fixed bottom-6 right-6 z-40 bg-primary hover:bg-primary_hover text-white py-3 px-5 rounded-full shadow-lg transition font-heading2" aria-label="Povećaj font">A+</button>
 
   <!-- ===== Sticky Header ===== -->
   <header id="navbar" class="fixed w-full z-30 transition-all duration-300 py-3 bg-background/95 backdrop-blur-md">
@@ -487,37 +487,37 @@
         </div>
         <div class="hidden sm:block">
           <div class="text-xl font-bold text-primary_text font-heading2">KRAGUJEVAC</div>
-          <div class="text-xs text-secondary_text">Gradska Turistička Organizacija</div>
+          <div class="text-xs text-secondary_text font-body">Gradska Turistička Organizacija</div>
         </div>
       </a>
 
       <!-- Desktop Navigation -->
       <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-6 text-secondary_text">
         <div class="dropdown relative group transition-colors">
-          <button class="px-3 py-2 nav-link transition-colors flex items-center whitespace-nowrap px-1">
-            <span class="hidden xl:inline flex items-center">O nama</span>
+          <button class="px-3 py-2 nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">
+            <span class="hidden xl:inline flex items-center font-heading2">O nama</span>
             <i class="fas fa-chevron-down ml-1 text-xs"></i>
           </button>
           <div class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Organizaciona struktura</a>
-            <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Rukovodstvo</a>
-            <a href="#" static="true" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Misija</a>
-            <a href="#" static="true" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Istorijat</a>
-            <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Timovi</a>
-            <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Pitanja</a>
-            <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">Informacije</a>
+            <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Organizaciona struktura</a>
+            <!--<a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Rukovodstvo</a>-->
+            <a href="#" static="true" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Misija</a>
+            <a href="#" static="true" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Istorijat</a>
+            <!--<a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Timovi</a>-->
+            <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Pitanja</a>
+            <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Informacije</a>
           </div>
         </div>
 
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Destinacije</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Smeštaj</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Aktivnosti</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Gastronomija</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Dokumenti</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Kontakt</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Vesti</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Događaji</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1">Multimedija</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Destinacije</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Smeštaj</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Aktivnosti</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Gastronomija</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Dokumenti</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Kontakt</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Vesti</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Događaji</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Multimedija</a>
 
         <!-- Language dropdown -->
         <?php
@@ -526,21 +526,20 @@
           $languages = [
             'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
             'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-            'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
           ];
           if (!isset($languages[$locale])) { $locale = 'sr'; }
         ?>
         <div class="dropdown nonPage relative group ">
-          <button class="nav-link text-secondary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
+          <button class="nav-link text-secondary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg group font-heading2">
             <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
-            <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+            <span class="hidden xl:inline text-sm font-medium font-body"><?= $languages[$locale]['label'] ?></span>
             <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
           </button>
           <div class="dropdown-menu absolute top-full right-0 min-w-max bg-surface rounded-xl shadow-2xl border border-gray-100 z-50 py-2 backdrop-blur-sm">
             <?php foreach ($languages as $key => $lang): ?>
-              <a href="?locale=<?= $key ?>" class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+              <a href="?locale=<?= $key ?>" class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1 font-body">
                 <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
-                <span class="font-medium"><?= $lang['label'] ?></span>
+                <span class="font-medium font-body"><?= $lang['label'] ?></span>
               </a>
             <?php endforeach; ?>
           </div>
@@ -550,12 +549,12 @@
       <!-- Right: Search button & Hamburger -->
       <div class="flex items-center space-x-2 sm:space-x-4">
         <div class="relative">
-          <button id="searchButton" class="text-secondary_text hover:text-primary_text p-2" aria-label="Search">
+          <button id="searchButton" class="text-secondary_text hover:text-primary_text p-2 font-body" aria-label="Search">
             <i class="fas fa-search"></i>
           </button>
           <div id="searchInputContainer" class="absolute right-0 top-full mt-2 opacity-0 hidden z-50 min-w-[300px] bg-surface rounded-md shadow-lg border border-gray-200 overflow-hidden">
             <form id="searchForm" class="flex items-center w-full p-2" action="/pretraga" method="GET">
-              <input id="searchInput" type="text" name="q" placeholder="Pretražite destinacije, smeštaj, manifestacije…" class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-3 py-2 placeholder-gray-400" required />
+              <input id="searchInput" type="text" name="q" placeholder="Pretražite destinacije, smeštaj, manifestacije…" class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-3 py-2 placeholder-gray-400 font-body" required />
               <button type="submit" class="p-2 w-8 h-8 flex items-center justify-center" aria-label="Submit search">
                 <i class="fas fa-search text-sm"></i>
               </button>
@@ -694,7 +693,7 @@
                   type="text"
                   name="q"
                   placeholder="Pretražite destinacije, smeštaj, manifestacije…"
-                  class="w-full px-6 py-4 bg-white/5 rounded-xl border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary/70"
+                  class="w-full px-6 py-4 bg-white/5 rounded-xl border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary/70 font-body"
                   required
                 />
                 <button
@@ -717,7 +716,7 @@
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="flex items-center justify-between">
         <span class="hidden md:block w-24 h-[3px] bg-gradient-to-r from-primary to-accent rounded-full"></span>
-        <h2 class="section-heading">
+        <h2 class="section-heading font-heading">
           Dobro došli u grad sa dušom, dobro došli u Kragujevac
         </h2>
         <span class="hidden md:block w-24 h-[3px] bg-gradient-to-r from-accent to-secondary rounded-full"></span>
@@ -742,7 +741,7 @@
   <section id="destinacije" class="py-20 bg-background">
     <div class="container mx-auto px-4 relative z-10">
       <div class="text-center mb-16">
-        <h2 class="section-heading">
+        <h2 class="section-heading font-heading">
           Šta videti - Istaknute destinacije
         </h2>
       </div>
@@ -758,16 +757,16 @@
             <div class="dest-card-gradient"></div>
           </div>
           <div class="dest-card-footer">
-            <div id="g-naziv" class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3">
+            <div id="g-naziv" class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
               Planina
             </div>
             <h3 id="g-naziv_destinacije" class="text-2xl font-heading font-bold mb-1">
               Vrhovi Regije
             </h3>
-            <p id="g-kratak_opis" class="text-sm text-gray-100 mb-4">
+            <p id="g-kratak_opis" class="text-sm text-gray-100 mb-4 font-body">
               Spektakularni pogledi i planinarske staze.
             </p>
-            <a id="g-ovise" href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition">
+            <a id="g-ovise" href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
               Saznajte više
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -786,16 +785,16 @@
             <div class="dest-card-gradient"></div>
           </div>
           <div class="dest-card-footer">
-            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3">
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
               Priroda
             </div>
             <h3 class="text-2xl font-heading font-bold mb-1">
               Nacionalni Parkovi
             </h3>
-            <p class="text-sm text-gray-100 mb-4">
+            <p class="text-sm text-gray-100 mb-4 font-body">
               Očuvana divljina i bogat biodiverzitet.
             </p>
-            <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition">
+            <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
               Saznajte više
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -814,16 +813,16 @@
             <div class="dest-card-gradient"></div>
           </div>
           <div class="dest-card-footer">
-            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3">
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
               Reka
             </div>
             <h3 class="text-2xl font-heading font-bold mb-1">
               Reke i Kanjoni
             </h3>
-            <p class="text-sm text-gray-100 mb-4">
+            <p class="text-sm text-gray-100 mb-4 font-body">
               Rafting i avanturistički sportovi.
             </p>
-            <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition">
+            <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
               Saznajte više
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -842,16 +841,16 @@
             <div class="dest-card-gradient"></div>
           </div>
           <div class="dest-card-footer">
-            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3">
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase dest-card-badge mb-3 font-heading2">
               Grad
             </div>
             <h3 class="text-2xl font-heading font-bold mb-1">
               Istorijsko Jezgro
             </h3>
-            <p class="text-sm text-gray-100 mb-4">
+            <p class="text-sm text-gray-100 mb-4 font-body">
               Šetnje kroz trgove, ulice i znamenitosti.
             </p>
-            <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition">
+            <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
               Saznajte više
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -867,10 +866,10 @@
   <section id="gallery" class="py-20 bg-background text-secondary_text font-heading2">
     <div class="container mx-auto px-4 relative z-10">
       <div class="text-center mb-16">
-        <h2 class="section-heading">
+        <h2 class="section-heading font-heading">
           Multimedija
         </h2>
-        <p class="text-lg md:text-xl max-w-2xl mx-auto text-secondary_text mt-4">
+        <p class="text-lg md:text-xl max-w-2xl mx-auto text-secondary_text mt-4 font-body">
           Doživite Kragujevac kroz fotografije, video zapise i virtuelne ture.
         </p>
       </div>
@@ -881,8 +880,8 @@
             src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=600&q=80"
             alt="Gallery Space" class="w-full h-full object-cover">
           <div class="overlay-content text-background">
-            <h3 id="g-description">Galerije i muzeji</h3>
-            <p id="g-title">Umetnost i istorija grada</p>
+            <h3 id="g-description" class="font-heading">Galerije i muzeji</h3>
+            <p id="g-title" class="font-body">Umetnost i istorija grada</p>
           </div>
         </div>
         <div class="gallery-item rounded-2xl overflow-hidden">
@@ -890,8 +889,8 @@
             src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=600&q=80"
             alt="Cinema" class="w-full h-full object-cover">
           <div class="overlay-content text-background">
-            <h3>Kino i projekcije</h3>
-            <p>Filmske večeri i festivali</p>
+            <h3 class="font-heading">Kino i projekcije</h3>
+            <p class="font-body">Filmske večeri i festivali</p>
           </div>
         </div>
         <div class="gallery-item rounded-2xl overflow-hidden">
@@ -899,8 +898,8 @@
             src="https://images.unsplash.com/photo-1562788865-5638f7446611?auto=format&fit=crop&w=600&q=80"
             alt="Theater" class="w-full h-full object-cover">
           <div class="overlay-content text-background">
-            <h3>Pozorišne scene</h3>
-            <p>Predstave i performansi</p>
+            <h3 class="font-heading">Pozorišne scene</h3>
+            <p class="font-body">Predstave i performansi</p>
           </div>
         </div>
         <div class="gallery-item rounded-2xl overflow-hidden">
@@ -908,8 +907,8 @@
             src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80"
             alt="Workshop" class="w-full h-full object-cover">
           <div class="overlay-content text-background">
-            <h3>Manifestacije</h3>
-            <p>Koncerti, radionice i događaji</p>
+            <h3 class="font-heading">Manifestacije</h3>
+            <p class="font-body">Koncerti, radionice i događaji</p>
           </div>
         </div>
       </div>
@@ -921,7 +920,7 @@
     <div class="container mx-auto px-4 text-center relative z-10">
 
       <div class="text-center mb-10">
-        <h2 class="section-heading">
+        <h2 class="section-heading font-heading">
           Događaji
         </h2>
       </div>
@@ -936,7 +935,7 @@
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
               <div id="g-naziv"
-                class="hidden absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase shadow-md">
+                class="hidden absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase shadow-md font-heading2">
                 Kultura
               </div>
             </div>
@@ -947,7 +946,7 @@
                   class="font-heading text-2xl leading-snug event-title-color hover:text-accent transition-colors duration-200 underline-offset-2 hover:underline">
                   Savremene Perspektive
                 </h3>
-                <p id="g-description" class="hidden">
+                <p id="g-description" class="hidden font-body">
                   Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
                   savremenih trendova u umetnosti i tehnologiji.
                 </p>
@@ -955,21 +954,21 @@
 
               <div class="mt-1 text-secondary_text text-sm flex flex-wrap items-center gap-x-3 gap-y-1">
                 <div class="flex items-center gap-2">
-                  <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
+                  <span id="g-datum" class="font-semibold text-primary_text font-body">30.10.2025</span>
                 </div>
-                <span class="text-secondary_text">•</span>
+                <span class="text-secondary_text font-body">•</span>
                 <div class="flex items-center gap-2">
-                  <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
+                  <span id="g-time" class="font-semibold text-primary_text font-body">18:00 - 21:00</span>
                 </div>
-                <span class="text-secondary_text">•</span>
+                <span class="text-secondary_text font-body">•</span>
                 <div class="flex items-center gap-2">
-                  <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene Umetnosti</span>
+                  <span id="g-location" class="font-semibold text-primary_text font-body">Galerija Savremene Umetnosti</span>
                 </div>
               </div>
 
               <div class="mt-4">
                 <a id="g-ovise"
-                  class="inline-flex items-center text-primary hover:text-primary_hover font-medium">
+                  class="inline-flex items-center text-primary hover:text-primary_hover font-medium font-body">
                   Više informacija
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -983,7 +982,7 @@
 
       <div class="text-center mt-12">
         <a href="dogadjaji" id="eventsView"
-          class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
+          class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto font-heading2">
           <i class="fas fa-calendar-alt mr-3"></i>
           Pogledaj sve događaje
         </a>
@@ -995,10 +994,10 @@
   <section id="vesti" class="py-20 bg-background">
     <div class="container mx-auto px-4 relative z-10">
       <div class="text-center mb-16">
-        <h2 class="section-heading">
+        <h2 class="section-heading font-heading">
           Najnovije Vesti
         </h2>
-        <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
+        <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6 font-body">
           Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija.
         </p>
       </div>
@@ -1020,9 +1019,9 @@
                     class="w-12 h-12 rounded-full news-badge flex items-center justify-center text-white shadow-md">
                     <i class="fas fa-newspaper text-lg"></i>
                   </div>
-                  <div class="flex items-center text-sm text-secondary_text">
+                  <div class="flex items-center text-sm text-secondary_text font-body">
                     <i class="fas fa-calendar-alt mr-2"></i>
-                    <span id="g-datum">15. Oktobar 2025</span>
+                    <span id="g-datum" class="font-body">15. Oktobar 2025</span>
                   </div>
                 </div>
 
@@ -1031,7 +1030,7 @@
                   Novi kulturni centar otvara vrata građanima
                 </h3>
 
-                <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
+                <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed font-body">
                   Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
                   kreativnosti i umetnosti u našem gradu.
                 </p>
@@ -1039,7 +1038,7 @@
 
               <div>
                 <a id="g-ovise" href="#"
-                  class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
+                  class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link font-body">
                   Pročitaj više
                   <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
                 </a>
@@ -1051,7 +1050,7 @@
 
       <div class="text-center mt-16">
         <button id="vestiView"
-          class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
+          class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl font-heading2">
           <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
           Pogledaj sve vesti
           <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
@@ -1092,11 +1091,11 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                     </div>
-                    <h3 class="text-xl">
+                    <h3 class="text-xl font-heading">
                         Gradska turistička organizacija Kragujevac
                     </h3>
                 </div>
-                <p class="mb-4">
+                <p class="mb-4 font-body">
                     Zvanična turistička organizacija grada Kragujevca.
                 </p>
                 <div class="flex space-x-3">
@@ -1117,51 +1116,55 @@
 
             <!-- Kolona 2: brzi linkovi -->
             <div>
-                <h4 class="mb-6">Brzi linkovi</h4>
+                <h4 class="mb-6 font-heading">
+                    Brzi linkovi
+                </h4>
                 <ul class="space-y-3">
-                    <li><a href="/" class="text-logocolor2/90 hover:text-primary_text transition-colors">Početna</a></li>
-                    <li><a href="/informacije" class="text-logocolor2/90 hover:text-primary_text transition-colors">Informacije od javnog značaja</a></li>
-                    <li><a href="/pitanja" class="text-logocolor2/90 hover:text-primary_text transition-colors">Česta pitanja</a></li>
-                    <li><a href="/dokumenti" class="text-logocolor2/90 hover:text-primary_text transition-colors">Dokumenti</a></li>
-                    <li><a href="/kontakt" class="text-logocolor2/90 hover:text-primary_text transition-colors">Kontakt</a></li>
-                    <li><a href="/vesti" class="text-logocolor2/90 hover:text-primary_text transition-colors">Vesti</a></li>
+                    <li><a href="/" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Početna</a></li>
+                    <li><a href="/informacije" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Informacije od javnog značaja</a></li>
+                    <li><a href="/pitanja" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Česta pitanja</a></li>
+                    <li><a href="/dokumenti" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Dokumenti</a></li>
+                    <li><a href="/kontakt" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Kontakt</a></li>
+                    <li><a href="/vesti" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Vesti</a></li>
                 </ul>
             </div>
 
             <!-- Kolona 3: kontakt informacije (duplo) -->
             <div>
-                <h4 class="mb-6">Informacije</h4>
+                <h4 class="mb-6 font-heading">
+                    Informacije
+                </h4>
 
                 <!-- GTO Kragujevac -->
                 <div class="mb-6">
-                    <p class="font-semibold mb-2">
+                    <p class="font-semibold mb-2 font-heading2">
                         Gradska turistička organizacija „Kragujevac“
                     </p>
                     <ul class="space-y-2">
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>+381 34 332172</span>
+                            <span class="font-body">+381 34 332172</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate="off">info@gtokg.org.rs</span>
+                            <span data-translate="off" class="font-body">info@gtokg.org.rs</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- TIC -->
                 <div>
-                    <p class="font-semibold mb-2">
+                    <p class="font-semibold mb-2 font-heading2">
                         Turistički informativni centar
                     </p>
                     <ul class="space-y-2">
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>+381 34 335302</span>
+                            <span class="font-body">+381 34 335302</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate="off">tic@gtokg.org.rs</span>
+                            <span data-translate="off" class="font-body">tic@gtokg.org.rs</span>
                         </li>
                     </ul>
                 </div>
@@ -1169,7 +1172,9 @@
 
             <!-- Kolona 4: dve mape lokacije -->
             <div>
-                <h4 class="mb-6">Mapa lokacije</h4>
+                <h4 class="mb-6 font-heading">
+                    Mapa lokacije
+                </h4>
 
                 <!-- GTO Kragujevac mapa -->
                 <!--<div class="mb-6">
@@ -1183,7 +1188,7 @@
 
                 <!-- TIC mapa -->
                 <div>
-                    <p class="font-semibold mb-2">
+                    <p class="font-semibold mb-2 font-heading2">
                         Turistički informativni centar
                     </p>
                     <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
