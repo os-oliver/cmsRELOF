@@ -330,9 +330,6 @@
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-home mr-3 text-primary"></i>Početna
-                    </a>
                     <div class="mobile-dropdown">
 
                         <button class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
@@ -417,29 +414,25 @@
 
 
             <!-- Logo Section -->
-            <div class="flex items-center space-x-3 flex-shrink-0">
+            <a href="/" class="flex items-center space-x-3 flex-shrink-0">
                 <div
-                    class="w-13 h-13 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    class="w-12 h-12 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
 
                 <div class="hidden sm:block font-body text-primary_text mr-2">
-                    <h1 class="text-xl lg:text-2xl tracking-wider">Narodno pozorište</h1>
+                    <h1 class="text-xl lg:text-2xl tracking-wider font-heading">Narodno pozorište</h1>
                     <p class="text-l tracking-widest hidden md:block">Pirot</p>
                 </div>
                 <div class="block sm:hidden">
-                    <h1 class="text-lg text-primary_text">Narodno pozorište</h1>
+                    <h1 class="text-lg text-primary_text font-heading">Narodno pozorište</h1>
                 </div>
-            </div>
+            </a>
 
 
             <!-- Desktop Navigation -->
             <nav id="navBarID"
                 class="hidden lg:flex space-x-4 xl:space-x-8 font-body text-secondary_text hover:text-primary_text ml-5">
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-home mr-2 text-primary transition-colors"></i>
-                    <span class="hidden xl:inline">Početna</span>
-                </a>
                 <div class="dropdown relative group transition-colors">
                     <button class="nav-link transition-colors flex items-center whitespace-nowrap mt-1">
                         <i class="fas fa-info-circle mr-2 text-primary"></i>
@@ -596,15 +589,19 @@
 
     <!-- Enhanced Hero Section -->
     <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondary_text">
+        <img src="assets/img/herosectionPozoriste.jpg"
+            alt="herosectionPozoriste"
+            class="absolute inset-0 w-full h-full object-cover opacity-40 z-0">
+        <div class="absolute inset-0 bg-[rgba(11,53,88,0.2)] backdrop-blur-sm z-0"></div>
         <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                 <div>
                     <div class="mb-8 text-left">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
                             <span class="block font-heading text-primary_text">Dobrodošli u</span>
-                            <span class="block mt-2 text-secondary_text font-body">Narodno pozorište Pirot</span>
+                            <span class="block mt-2 text-secondary_text font-heading">Narodno pozorište Pirot</span>
                         </h1>
-                        <p class="mb-10">
+                        <p class="mb-10 text-primary_text">
                             U srcu Pirota, naše pozorište već decenijama čuva duh zajedništva i ljubavi prema umetnosti.
                             Publika nam je porodica, a svaka predstava novo putovanje kroz smeh, suze i emocije.
                             Naš repertoar je pažljivo biran za sve generacije.
@@ -613,6 +610,10 @@
                         <a href="/repertoar"
                             class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
                             Pogledajte repertoar
+                        </a>
+                        <a href="/o-nama/rezervacija-karata"
+                            class="ml-5 bg-secondary text-background px-6 py-4 rounded-full text-lg hover:bg-secondary_hover transition-colors w-fit">
+                            Rezervacija karata
                         </a>
                     </div>
                 </div>
@@ -624,6 +625,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Repertoar -->
     <section id="repertoar" class="py-20 text-secondary_text">
@@ -741,7 +743,7 @@
 
 
     <!-- Vesti -->
-    <section id="vesti" class="py-20 text-secondary_text">
+    <section id="vesti" class="bg-surface2 py-20 text-secondary_text">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-body">
                 <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
@@ -843,42 +845,7 @@
         </div>
     </section>
 
-    <!-- Prijatelji -->
-    <section class="py-16 text-secondary_text">
-        <div class="text-center mb-16 font-body">
-            <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                Prijatelji pozorišta
-                <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
-            </h2>
-        </div>
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <?php
-                $stats = [
-                    ['label' => 'Opština Pirot'],
-                    ['label' => 'Osnivač'],
-                    ['label' => 'Samostalni sindikat TIGAR TYRES'],
-                    ['label' => 'Sindikat zapošljenih u zdravstvu'],
-                    ['label' => 'Opšta bolnica Pirot'],
-                    ['label' => 'Sindikat Doma zdravlja'],
-                    ['label' => 'Organizacija sindikata HE pirot'],
-                    ['label' => 'PSSS Pirot'],
-                    ['label' => 'Samostalni i nezavisni sindikat JP Komunalac'],
-                    ['label' => 'ED Jugoistok DOO Niš - SOED Pirot'],
-                    ['label' => 'Sindikat Telekoma "Srbija" - Pirot'],
-                    ['label' => 'JP "Pošta Srbije"'],
-                    ['label' => 'RJ Poštansko saobraćaja "Pirot"'],
-                    ['label' => 'Nezavisni sindikat Policije'],
-                ];
-                foreach ($stats as $index => $stat): ?>
-                    <div class="bg-surface p-6 rounded-xl shadow-lg transform transition hover:scale-105"
-                        style="animation-delay: <?= $index * 0.2 ?>s">
-                        <div><?= $stat['label'] ?></div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
+
 
 
     <!-- FOOTER -->
@@ -886,7 +853,7 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <div class="flex items-center mb-6">
+                    <a class="flex items-center mb-6">
                         <div
                             class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none"
@@ -896,7 +863,7 @@
                             </svg>
                         </div>
                         <h3 class="text-xl">Narodno pozorište Pirot</h3>
-                    </div>
+                    </a>
                     <p class="mb-4">
                         Posetite nas i na društvenim mrežama
                     </p>
@@ -956,14 +923,74 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-10 flex flex-col items-center space-y-4 text-center">
-                <div class="w-full border-t-2 border-primary"></div>
-                <img src="/assets/img/SECO-logo-640px.png" alt="SECO logo" class="max-h-24 w-auto object-contain mt-4">
-                <p class="text-xs md:text-sm text-primary_text max-w-5xl">
-                    Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.
-                </p>
-                <p class="pt-6">&copy; Narodno pozorište Pirot. Sva prava zadržana.</p>
+            <div class="mt-10 w-full border-t-2 border-primary pt-10">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+
+                    <!-- Kolone 1 i 2 – SLIKA preko dve kolone -->
+                    <div class="lg:col-span-2 flex flex-col items-center">
+                        <img src="/assets/img/SECO-logo-640px.png"
+                            alt="SECO logo"
+                            class="max-h-32 w-auto mb-4">
+
+                        <!-- Tekst ispod slike -->
+                        <p class="text-xs md:text-sm text-secondary_text text-center max-w-md">
+                            Izradu ovog veb-sajta omogućila je Vlada Švajcarske.<br>
+                            Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.
+                        </p>
+                    </div>
+
+                    <!-- Kolona 3 – Medijski sponzori -->
+                    <div class="text-center lg:text-left">
+                        <h4 class="text-lg font-semibold mb-4">Medijski sponzori</h4>
+
+                        <!-- GRID: uvek 3 logotipa gore, 2 dole -->
+                        <div class="grid grid-cols-3 gap-4 place-items-center">
+
+                            <!-- 1 -->
+                            <a href="https://www.sloboda-pirot.rs/fliper/pages/large/" target="_blank" class="transition-transform hover:scale-105">
+                                <img src="/assets/img/sloboda.png" alt="Sloboda Pirot" class="h-12 w-auto object-contain">
+                            </a>
+
+                            <!-- 2 -->
+                            <a href="https://radiopirot.com/" target="_blank" class="transition-transform hover:scale-105">
+                                <img src="/assets/img/radiopirot.png" alt="Radio Pirot" class="h-12 w-auto object-contain">
+                            </a>
+
+                            <!-- 3 -->
+                            <a href="https://www.pikanal.rs/" target="_blank" class="transition-transform hover:scale-105">
+                                <img src="/assets/img/picanal.png" alt="Pikanal" class="h-12 w-auto object-contain">
+                            </a>
+
+                            <!-- 4 -->
+                            <a href="https://www.plusonline.rs/" target="_blank" class="transition-transform hover:scale-105 col-span-1 md:col-span-1">
+                                <img src="/assets/img/plusradio.png" alt="Plus Radio" class="h-12 w-auto object-contain">
+                            </a>
+
+                            <!-- 5 -->
+                            <a href="https://my.eunethosting.com/lp/ss/" target="_blank" class="transition-transform hover:scale-105 col-span-1 md:col-span-1">
+                                <img src="/assets/img/tvpirot.png" alt="TV Pirot" class="h-12 w-auto object-contain">
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Kolona 4 – Prijatelji pozorišta -->
+                    <div class="text-center lg:text-left">
+                        <h4 class="text-lg font-semibold mb-2">Prijatelji pozorišta</h4>
+                        <p class="text-xs md:text-sm text-primary_text">
+                            Opština Pirot, Osnivač, Samostalni sindikat TIGAR TYRES, Sindikat zapošljenih u zdravstvu, Opšta bolnica Pirot, Sindikat Doma zdravlja, Organizacija sindikata HE pirot, PSSS Pirot, Samostalni i nezavisni sindikat JP Komunalac, ED Jugoistok DOO Niš - SOED Pirot, Sindikat Telekoma "Srbija" - Pirot, JP "Pošta Srbije", RJ Poštansko saobraćaja "Pirot", Nezavisni sindikat Policije
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+                <p class="pt-10 text-center">&copy; Narodno pozorište Pirot. Sva prava zadržana.</p>
             </div>
+
         </div>
     </footer>
 
@@ -979,11 +1006,12 @@
                         secondary: '#2D3047', // deep navy
                         secondary_hover: '#24273B',
                         primary_text: '#1F1A1A', // charcoal
-                        secondary_text: '#5D4E4E', // warm gray
+                        secondary_text: '#4a3e3e', // warm gray
                         logocolor1: '#8B1E3F', // gold
                         logocolor2: '#2D3047', // pairs with gold
                         primarybtntxt: '#FFF7E6', // soft ivory on red/navy
                         surface: '#8B1E3F1A', // translucent velvet for cards
+                        surface2: '#e0d1d6',
                         footerbg: '#EFE3D6', // creamy footer
                     },
                     fontFamily: {
