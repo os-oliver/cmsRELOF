@@ -164,7 +164,7 @@ PHP;
                 <div class="flex flex-wrap gap-3">
                     {{mapButton}}
                     {{siteButton}}
-                    <a href="sadrzaj?id={{itemId}}&tip=generic_element"
+                    <a href="sadrzaj?id={{itemId}}&tip=Destinacije"
                        class="ml-auto inline-flex items-center gap-2 bg-gradient-to-r from-primary to-accent hover:from-primary_hover hover:to-accent_hover text-white text-sm font-bold py-3 px-4 rounded-xl transition-all shadow-md">
                         <i class="fas fa-compass"></i>
                         <span>{{destinationDetails}}</span>
@@ -395,7 +395,7 @@ PHP;
     <section class="container mx-auto px-4 py-12">
         <!-- Hero -->
         <div class="mb-8">
-            <h1 class="hero-title font-heading text-4xl md:text-5xl font-bold text-primary_text mb-2">
+            <h1 class="hero-title font-heading text-4xl md:text-5xl font-bold text-primary_text mb-2 mt-10">
                 <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Destinacije</span>
             </h1>
             <p class="text-secondary_text">Istražite inspirativna mesta za vaše sledeće putovanje</p>

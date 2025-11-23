@@ -174,8 +174,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">Centar za umetnost i baštinu<br>Trg
-                                        slobode 1<br>21000 Novi Sad, Srbija</p>
+                                    <p class="text-gray-600 leading-relaxed">Gradska turistička organizacija Kragujevac<br>Kralja Aleksandra I Karađorđevića 44<br>34000 Kragujevac, Srbija</p>
                                 </div>
                             </div>
 
@@ -188,7 +187,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
-                                    <p class="text-gray-600 text-lg">+381 21 123 456</p>
+                                    <p class="text-gray-600 text-lg">+381 34 332172</p>
                                     <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
                                 </div>
                             </div>
@@ -202,7 +201,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">info@kulturnynexus.rs</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">info@gtokg.org.rs</p>
                                     <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
                                 </div>
                             </div>

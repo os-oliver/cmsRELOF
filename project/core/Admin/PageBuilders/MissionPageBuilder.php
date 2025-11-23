@@ -19,7 +19,10 @@ class MissionPageBuilder extends BasePageBuilder
     </div>
 
     <!-- Naslovna sekcija -->
-    <section class="relative pt-28 pb-16 bg-secondary_background border-b border-secondary/30 text-center">
+    <section
+        class="relative border-b border-secondary/30 text-center bg-cover bg-center bg-no-repeat min-h-[560px] flex items-center"
+        style="background-image: url('/assets/img/560-x1920-px-rgb-sa-oblacima.jpg');"
+    >
         <div class="container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-heading font-extrabold text-primary_text mb-3 tracking-tight">
                 Misija i Vizija
@@ -29,6 +32,8 @@ class MissionPageBuilder extends BasePageBuilder
             </p>
         </div>
     </section>
+
+
 
     <!-- Glavni sadržaj -->
     <section class="py-20 lg:py-28 container mx-auto px-6">
