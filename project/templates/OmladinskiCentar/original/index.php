@@ -178,8 +178,8 @@
                 <!-- O NAMA DROPDOWN -->
                 <div class="dropdown relative group">
                     <button
-                        class="nav-link flex items-center text-xs lg:text-sm font-semibold tracking-wide px-4 py-2 rounded-full text-slate-100/80 border border-slate-700/60 bg-slate-900/60 hover:bg-slate-800/80 hover:border-sky-400/70 hover:text-white transition-all duration-200">
-                        <span class="hidden xl:inline mr-1">O nama</span>
+                        class="nav-link flex items-center text-xs lg:text-sm font-semibold tracking-wide px-4 py-2 rounded-full text-slate-100/80 border border-slate-700/60 hover:border-sky-400/70 hover:text-white transition-all duration-200">
+                        <span class="hidden xl:inline mr-1 text-white">O nama</span>
                         <i
                             class="fas fa-chevron-down text-[0.6rem] group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
@@ -189,37 +189,37 @@
                         <a href="#" static="true"
                            class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.6)] transition-all duration-150 rounded-xl mx-2">
                             <i class="fas fa-book mr-3 text-sky-400 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Uvod</span>
+                            <span class="font-medium text-white">Uvod</span>
                         </a>
                         <a href="#" static="true"
                            class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(236,72,153,0.7)] transition-all duration-150 rounded-xl mx-2">
                             <i class="fas fa-flag mr-3 text-pink-400 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Misija i vizija</span>
+                            <span class="font-medium text-white">Misija i vizija</span>
                         </a>
                         <a href="#" static="true"
                            class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(248,250,252,0.7)] transition-all duration-150 rounded-xl mx-2">
                             <i class="fas fa-history mr-3 text-amber-300 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Istorijat</span>
+                            <span class="font-medium text-white">Istorijat</span>
                         </a>
                         <a href="#"
                            class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(110,231,183,0.7)] transition-all duration-150 rounded-xl mx-2">
                             <i class="fas fa-users-cog mr-3 text-emerald-300 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Rukovodstvo</span>
+                            <span class="font-medium text-white">Rukovodstvo</span>
                         </a>
                         <a href="#"
                            class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(59,130,246,0.7)] transition-all duration-150 rounded-xl mx-2">
                             <i class="fas fa-sitemap mr-3 text-sky-300 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Organizaciona struktura</span>
+                            <span class="font-medium text-white">Organizaciona struktura</span>
                         </a>
                         <a href="#" static="true"
                            class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(148,163,184,0.8)] transition-all duration-150 rounded-xl mx-2">
                             <i class="fas fa-building mr-3 text-slate-300 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Objekat</span>
+                            <span class="font-medium text-white">Objekat</span>
                         </a>
                         <a href="#" static="true"
                            class="dropdown-item flex items-center px-5 py-3 text-sm text-slate-100/90 hover:bg-slate-800/80 hover:shadow-[0_0_0_1px_rgba(244,114,182,0.8)] transition-all duration-150 rounded-xl mx-2">
                             <i class="fas fa-hand-holding-heart mr-3 text-rose-300 flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Donacije i podrška</span>
+                            <span class="font-medium text-white">Donacije i podrška</span>
                         </a>
                     </div>
                 </div>
@@ -278,7 +278,7 @@
                     <button
                         class="nav-link flex items-center text-xs font-semibold px-3 py-2 rounded-full bg-slate-900/80 border border-slate-700/70 text-slate-100/90 hover:border-sky-400/80 hover:bg-slate-800/90 transition-all duration-200">
                         <span class="mr-1 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
-                        <span class="hidden xl:inline text-[0.75rem] font-medium">
+                        <span class="text-white hidden xl:inline text-[0.75rem] font-medium">
                             <?= $languages[$locale]['label'] ?>
                         </span>
                         <i class="fas fa-chevron-down ml-1 text-[0.55rem] group-hover:rotate-180 transition-transform duration-200"></i>
@@ -289,34 +289,12 @@
                             <a href="?locale=<?= $key ?>"
                                class="dropdown-item flex items-center px-4 py-2.5 hover:bg-slate-800/80 text-sm whitespace-nowrap text-slate-100/90 rounded-xl mx-1 transition-all duration-150">
                                 <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
-                                <span class="font-medium"><?= $lang['label'] ?></span>
+                                <span class="font-medium text-white"><?= $lang['label'] ?></span>
                             </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
             </nav>
-
-            <!-- SOCIAL + BURGER -->
-            <div class="flex items-center space-x-3 md:space-x-4">
-                <div class="hidden sm:flex space-x-2">
-                    <a href="#"
-                       class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-pink-400 hover:border-pink-400/80 hover:bg-pink-500/10 transition-all duration-150">
-                        <i class="fab fa-instagram text-sm"></i>
-                    </a>
-                    <a href="#"
-                       class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-400/80 hover:bg-sky-500/10 transition-all duration-150">
-                        <i class="fab fa-facebook text-sm"></i>
-                    </a>
-                    <a href="#"
-                       class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-red-500 hover:border-red-500/80 hover:bg-red-500/10 transition-all duration-150">
-                        <i class="fab fa-youtube text-sm"></i>
-                    </a>
-                </div>
-
-                <button class="md:hidden text-2xl text-slate-100 border border-slate-700/70 rounded-full w-10 h-10 flex items-center justify-center hover:border-sky-400 hover:bg-slate-900/80 transition-all duration-150">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
         </div>
     </div>
     </header>
@@ -340,7 +318,7 @@
                             Mesto gde se ideje pretvaraju u događaje
                         </div>
 
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-white">
                             Omladinski centar
                             <span class="block bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">
                                 za muziku, film, igru i druženje
@@ -366,15 +344,15 @@
                         </div>
 
                         <div class="flex flex-wrap gap-3 text-xs md:text-sm text-slate-300">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-sky-500/50">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-sky-500/50 text-white">
                                 <i class="fas fa-music mr-2 text-sky-400"></i>
                                 Bendovi & open mic
                             </span>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-fuchsia-500/50">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-fuchsia-500/50 text-white">
                                 <i class="fas fa-theater-masks mr-2 text-fuchsia-400"></i>
                                 Predstave & improv
                             </span>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-amber-400/60">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-amber-400/60 text-white">
                                 <i class="fas fa-film mr-2 text-amber-300"></i>
                                 Filmske večeri
                             </span>
@@ -472,7 +450,7 @@
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center text-xs text-slate-400">
                                     <i class="fas fa-calendar-days mr-2 text-sky-400"></i>
-                                    <span id="g-datum">28.9.2025.</span>
+                                    <span class="text-white" id="g-datum">28.9.2025.</span>
                                 </div>
                                 <a id="g-ovise" href="#"
                                 class="inline-flex items-center text-sm font-semibold text-sky-300 hover:text-sky-200 gap-2 transition-all group/link">
@@ -513,7 +491,7 @@
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center text-xs text-slate-400">
                                     <i class="fas fa-calendar-days mr-2 text-fuchsia-400"></i>
-                                    <span id="g-datum">28.9.2025.</span>
+                                    <span class="text-white" id="g-datum">28.9.2025.</span>
                                 </div>
                                 <a id="g-ovise" href="#"
                                 class="inline-flex items-center text-sm font-semibold text-fuchsia-300 hover:text-fuchsia-200 gap-2 transition-all group/link">
@@ -554,7 +532,7 @@
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center text-xs text-slate-400">
                                     <i class="fas fa-calendar-days mr-2 text-amber-300"></i>
-                                    <span id="g-datum">28.9.2025.</span>
+                                    <span class="text-white" id="g-datum">28.9.2025.</span>
                                 </div>
                                 <a id="g-ovise" href="#"
                                 class="inline-flex items-center text-sm font-semibold text-amber-300 hover:text-amber-200 gap-2 transition-all group/link">
@@ -579,7 +557,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800/80 pt-14 pb-10 mt-16 relative overflow-hidden">
+    <footer class="bg-slate-950 border-t border-slate-800/80 pt-14 pb-10 relative overflow-hidden">
         <!-- subtle background glow -->
         <div class="pointer-events-none absolute inset-0">
             <div class="absolute -top-24 right-[-40px] w-64 h-64 bg-fuchsia-500/15 rounded-full blur-3xl"></div>
@@ -587,7 +565,7 @@
         </div>
 
         <div class="container mx-auto px-4 relative">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
                 <!-- Col 1 -->
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-slate-50">
@@ -600,19 +578,19 @@
                     <div class="flex space-x-3">
                         <a href="#"
                         class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-sky-300 hover:border-sky-400/80 hover:bg-sky-500/10 transition-all duration-150">
-                            <i class="fab fa-facebook-f text-sm"></i>
+                            <i class="fab fa-facebook-f text-sm text-slate-300 hover:text-sky-300 transition-colors"></i>
                         </a>
                         <a href="#"
                         class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-pink-400 hover:border-pink-400/80 hover:bg-pink-500/10 transition-all duration-150">
-                            <i class="fab fa-instagram text-sm"></i>
+                            <i class="fab fa-instagram text-sm text-slate-300 hover:text-sky-300 transition-colors"></i>
                         </a>
                         <a href="#"
                         class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-red-500 hover:border-red-500/80 hover:bg-red-500/10 transition-all duration-150">
-                            <i class="fab fa-youtube text-sm"></i>
+                            <i class="fab fa-youtube text-sm text-slate-300 hover:text-sky-300 transition-colors"></i>
                         </a>
                         <a href="#"
                         class="w-9 h-9 rounded-full border border-slate-700/70 flex items-center justify-center text-slate-200 hover:text-sky-300 hover:border-sky-300/80 hover:bg-sky-500/10 transition-all duration-150">
-                            <i class="fab fa-twitter text-sm"></i>
+                            <i class="fab fa-twitter text-sm text-slate-300 hover:text-sky-300 transition-colors"></i>
                         </a>
                     </div>
                 </div>
@@ -638,22 +616,22 @@
                     <h3 class="text-xl font-bold mb-4 text-slate-50">
                         Kontakt
                     </h3>
-                    <ul class="space-y-3 text-sm text-slate-300">
+                    <ul class="space-y-3 text-sm">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-sky-400 mt-1 mr-3"></i>
-                            <span>Omladinska ulica 15, Beograd</span>
+                            <span class="text-slate-300 hover:text-sky-300 transition-colors">Omladinska ulica 15, Beograd</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-sky-400 mt-1 mr-3"></i>
-                            <span>+381 11 123 4567</span>
+                            <span class="text-slate-300 hover:text-sky-300 transition-colors">+381 11 123 4567</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-sky-400 mt-1 mr-3"></i>
-                            <span>info@omladinskicentar.rs</span>
+                            <span class="text-slate-300 hover:text-sky-300 transition-colors">info@omladinskicentar.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-sky-400 mt-1 mr-3"></i>
-                            <span>Pon-Pet: 09:00 - 20:00<br>Sub: 10:00 - 15:00</span>
+                            <span class="text-slate-300 hover:text-sky-300 transition-colors">Pon-Pet: 09:00 - 20:00<br>Sub: 10:00 - 15:00</span>
                         </li>
                     </ul>
                 </div>
