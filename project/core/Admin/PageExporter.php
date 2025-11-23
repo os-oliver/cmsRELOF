@@ -759,6 +759,10 @@ class PageExporter
                 return new OrganizacijaPageBuilder('OrganiUpravljanja');
             case 'publikacije':
                 return new PublikacijePageBuilder('Publikacije');
+            case 'koncerti':
+                return new DynamicPageBuilder('Koncerti');
+            case 'filmovi':
+                return new DynamicPageBuilder('Filmovi');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -874,6 +878,10 @@ class PageExporter
             return 'organi-upravljanja';
         } elseif (strpos($name, 'publikacije') !== false) {
             return 'publikacije';
+        }elseif (strpos($name, 'koncerti') !== false) {
+            return 'koncerti';
+        }elseif (strpos($name, 'filmovi') !== false) {
+            return 'filmovi';
         }
 
         return 'basic';

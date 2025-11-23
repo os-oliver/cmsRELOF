@@ -234,6 +234,10 @@
                 </a>
                 <a href="#"
                    class="nav-link text-xs lg:text-sm font-semibold tracking-wide px-4 py-2 rounded-full text-slate-100/80 hover:text-white border border-transparent hover:border-sky-400/70 hover:bg-sky-500/10 transition-all duration-200">
+                    Koncerti
+                </a>
+                <a href="#"
+                   class="nav-link text-xs lg:text-sm font-semibold tracking-wide px-4 py-2 rounded-full text-slate-100/80 hover:text-white border border-transparent hover:border-sky-400/70 hover:bg-sky-500/10 transition-all duration-200">
                     Izložbe
                 </a>
                 <a href="#"
@@ -319,258 +323,260 @@
 
     <div class="bg-slate-950 text-slate-50">
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="relative overflow-hidden pt-28 pb-20">
-        <!-- Gradient blobs in background -->
-        <div class="pointer-events-none absolute inset-0">
-            <div class="absolute -top-24 -left-16 w-72 h-72 bg-sky-500/30 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-16 right-0 w-80 h-80 bg-fuchsia-500/25 rounded-full blur-3xl"></div>
-        </div>
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative overflow-hidden pt-28 pb-20">
+            <!-- Gradient blobs in background -->
+            <div class="pointer-events-none absolute inset-0">
+                <div class="absolute -top-24 -left-16 w-72 h-72 bg-sky-500/30 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-16 right-0 w-80 h-80 bg-fuchsia-500/25 rounded-full blur-3xl"></div>
+            </div>
 
-        <div class="container mx-auto px-4 relative">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- LEFT: TEXT -->
-                <div>
-                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-sky-400/60 bg-slate-900/70 text-xs font-semibold tracking-wide text-sky-200 mb-5">
-                        <i class="fas fa-bolt mr-2 text-[0.7rem]"></i>
-                        Mesto gde se ideje pretvaraju u događaje
-                    </div>
-
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
-                        Omladinski centar
-                        <span class="block bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">
-                            za muziku, film, igru i druženje
-                        </span>
-                    </h1>
-
-                    <p class="text-base md:text-lg text-slate-300 max-w-xl mb-8">
-                        Koncerti, radionice, filmske večeri, predstave i još mnogo toga – sve na jednom mestu
-                        za tinejdžere i mlade koji žele da se povežu, nauče nešto novo i lepo provedu vreme.
-                    </p>
-
-                    <div class="flex flex-wrap items-center gap-4 mb-6">
-                        <a href="#vesti"
-                           class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-sky-500 via-fuchsia-500 to-amber-400 text-sm font-semibold text-slate-950 shadow-lg shadow-sky-500/40 hover:brightness-110 transition-all">
-                            <i class="fas fa-calendar-star mr-2"></i>
-                            Pogledaj aktuelne događaje
-                        </a>
-                        <a href="#"
-                           class="inline-flex items-center px-6 py-3 rounded-full border border-slate-600 text-sm font-semibold text-slate-100 hover:border-sky-400 hover:bg-slate-900/70 transition-all">
-                            <i class="fas fa-user-plus mr-2"></i>
-                            Postani volonter
-                        </a>
-                    </div>
-
-                    <div class="flex flex-wrap gap-3 text-xs md:text-sm text-slate-300">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-sky-500/50">
-                            <i class="fas fa-music mr-2 text-sky-400"></i>
-                            Bendovi & open mic
-                        </span>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-fuchsia-500/50">
-                            <i class="fas fa-theater-masks mr-2 text-fuchsia-400"></i>
-                            Predstave & improv
-                        </span>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-amber-400/60">
-                            <i class="fas fa-film mr-2 text-amber-300"></i>
-                            Filmske večeri
-                        </span>
-                    </div>
-                </div>
-
-                <!-- RIGHT: FEATURED CARD / PREVIEW -->
-                <div class="md:justify-self-end">
-                    <div class="bg-slate-900/80 border border-slate-700/80 rounded-3xl p-5 md:p-6 shadow-[0_0_40px_rgba(56,189,248,0.5)] max-w-md mx-auto">
-                        <div class="text-xs font-semibold uppercase tracking-wide text-sky-300 mb-2">
-                            Sledeći događaj
+            <div class="container mx-auto px-4 relative">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <!-- LEFT: TEXT -->
+                    <div>
+                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-sky-400/60 bg-slate-900/70 text-xs font-semibold tracking-wide text-sky-200 mb-5">
+                            <i class="fas fa-bolt mr-2 text-[0.7rem]"></i>
+                            Mesto gde se ideje pretvaraju u događaje
                         </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-slate-50 mb-2">
-                            Veče kratkog filma & razgovor sa autorima
-                        </h3>
-                        <p class="text-sm text-slate-300 mb-4">
-                            Pridruži nam se na projekciji kratkih filmova lokalnih autora, uz Q&A sesiju i druženje
-                            u chill zoni centra.
+
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                            Omladinski centar
+                            <span class="block bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">
+                                za muziku, film, igru i druženje
+                            </span>
+                        </h1>
+
+                        <p class="text-base md:text-lg text-slate-300 max-w-xl mb-8">
+                            Koncerti, radionice, filmske večeri, predstave i još mnogo toga – sve na jednom mestu
+                            za tinejdžere i mlade koji žele da se povežu, nauče nešto novo i lepo provedu vreme.
                         </p>
 
-                        <div class="space-y-2 mb-4 text-sm">
-                            <div class="flex items-center text-slate-200">
-                                <i class="fas fa-calendar-day mr-2 text-sky-400"></i>
-                                Petak, 12. april · 19:00
-                            </div>
-                            <div class="flex items-center text-slate-200">
-                                <i class="fas fa-location-dot mr-2 text-fuchsia-400"></i>
-                                Velika sala · Omladinski centar
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800/80 text-xs text-sky-200 border border-sky-500/40">
-                                <i class="fas fa-ticket mr-2 text-sky-400"></i>
-                                Ulaz slobodan
-                            </span>
+                        <div class="flex flex-wrap items-center gap-4 mb-6">
                             <a href="#vesti"
-                               class="text-sm font-semibold text-sky-300 hover:text-sky-200 inline-flex items-center gap-2">
-                                Detalji događaja
-                                <i class="fas fa-arrow-right text-xs"></i>
+                            class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-sky-500 via-fuchsia-500 to-amber-400 text-sm font-semibold text-slate-950 shadow-lg shadow-sky-500/40 hover:brightness-110 transition-all">
+                                <i class="fas fa-calendar-star mr-2"></i>
+                                Pogledaj aktuelne događaje
                             </a>
+                            <a href="#"
+                            class="inline-flex items-center px-6 py-3 rounded-full border border-slate-600 text-sm font-semibold text-slate-100 hover:border-sky-400 hover:bg-slate-900/70 transition-all">
+                                <i class="fas fa-user-plus mr-2"></i>
+                                Postani volonter
+                            </a>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3 text-xs md:text-sm text-slate-300">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-sky-500/50">
+                                <i class="fas fa-music mr-2 text-sky-400"></i>
+                                Bendovi & open mic
+                            </span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-fuchsia-500/50">
+                                <i class="fas fa-theater-masks mr-2 text-fuchsia-400"></i>
+                                Predstave & improv
+                            </span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-900/70 border border-amber-400/60">
+                                <i class="fas fa-film mr-2 text-amber-300"></i>
+                                Filmske večeri
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: FEATURED CARD / PREVIEW -->
+                    <div class="md:justify-self-end">
+                        <div class="bg-slate-900/80 border border-slate-700/80 rounded-3xl p-5 md:p-6 shadow-[0_0_40px_rgba(56,189,248,0.5)] max-w-md mx-auto">
+                            <div class="text-xs font-semibold uppercase tracking-wide text-sky-300 mb-2">
+                                Sledeći događaj
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-slate-50 mb-2">
+                                Veče kratkog filma & razgovor sa autorima
+                            </h3>
+                            <p class="text-sm text-slate-300 mb-4">
+                                Pridruži nam se na projekciji kratkih filmova lokalnih autora, uz Q&A sesiju i druženje
+                                u chill zoni centra.
+                            </p>
+
+                            <div class="space-y-2 mb-4 text-sm">
+                                <div class="flex items-center text-slate-200">
+                                    <i class="fas fa-calendar-day mr-2 text-sky-400"></i>
+                                    Petak, 12. april · 19:00
+                                </div>
+                                <div class="flex items-center text-slate-200">
+                                    <i class="fas fa-location-dot mr-2 text-fuchsia-400"></i>
+                                    Velika sala · Omladinski centar
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800/80 text-xs text-sky-200 border border-sky-500/40">
+                                    <i class="fas fa-ticket mr-2 text-sky-400"></i>
+                                    Ulaz slobodan
+                                </span>
+                                <a href="#vesti"
+                                class="text-sm font-semibold text-sky-300 hover:text-sky-200 inline-flex items-center gap-2">
+                                    Detalji događaja
+                                    <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- NAJNOVIJE VESTI (NEWS CARDS) -->
-    <section id="vesti" class="py-20 relative">
-        <div class="pointer-events-none absolute inset-0">
-            <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-sky-500/15 rounded-full blur-3xl"></div>
-        </div>
-
-        <div class="container mx-auto px-4 relative">
-            <div class="text-center mb-12">
-                <h2 class="inline-block text-3xl md:text-4xl font-extrabold text-slate-50 tracking-tight mb-3 relative">
-                    Najnovije vesti
-                    <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-32 h-[3px] rounded-full bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300"></span>
-                </h2>
-                <p class="text-base md:text-lg text-slate-300 max-w-2xl mx-auto mt-6">
-                    Prati šta se dešava u centru – nove radionice, koncerti, izložbe, filmske večeri i svi
-                    programi koji ne smeju da se propuste.
-                </p>
+        <!-- NAJNOVIJE VESTI (NEWS CARDS) -->
+        <section id="vesti" class="py-20 relative">
+            <div class="pointer-events-none absolute inset-0">
+                <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-sky-500/15 rounded-full blur-3xl"></div>
             </div>
 
-            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- News 1 -->
-                <article class="event-card bg-slate-900/80 border border-slate-700/70 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_35px_rgba(56,189,248,0.6)] transition-all duration-200 group">
-                    <div class="h-48 relative overflow-hidden">
-                        <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
-                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-80"></div>
-                        <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 text-sky-300 border border-sky-400/60">
-                            <i class="fas fa-bullhorn mr-2"></i>
-                            Novo
-                        </span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-kategorije" class="text-xs font-semibold uppercase tracking-wide text-sky-400">
-                                Lorem ipsum
+            <div class="container mx-auto px-4 relative">
+                <div class="text-center mb-12">
+                    <h2 class="inline-block text-3xl md:text-4xl font-extrabold text-slate-50 tracking-tight mb-3 relative">
+                        Najnovije vesti
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-32 h-[3px] rounded-full bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300"></span>
+                    </h2>
+                    <p class="text-base md:text-lg text-slate-300 max-w-2xl mx-auto mt-6">
+                        Prati šta se dešava u centru – nove radionice, koncerti, izložbe, filmske večeri i svi
+                        programi koji ne smeju da se propuste.
+                    </p>
+                </div>
+
+                <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- News 1 -->
+                    <article class="event-card bg-slate-900/80 border border-slate-700/70 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_35px_rgba(56,189,248,0.6)] transition-all duration-200 group">
+                        <div class="h-48 relative overflow-hidden">
+                            <img id="g-slika" src="https://picsum.photos/600/300" alt="Art Exhibition"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-80"></div>
+                            <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 text-sky-300 border border-sky-400/60">
+                                <i class="fas fa-bullhorn mr-2"></i>
+                                Novo
                             </span>
                         </div>
-                        <h3 id="g-naslov"
-                            class="text-lg md:text-xl font-bold text-slate-50 mb-3 group-hover:text-sky-300 transition-colors">
-                            Lorem ipsum dolor sit amet
-                        </h3>
-
-                        <p id="g-tekst" class="text-sm text-slate-300 mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
-                            suscipit quis, pharetra a dui.
-                        </p>
-
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-xs text-slate-400">
-                                <i class="fas fa-calendar-days mr-2 text-sky-400"></i>
-                                <span id="g-datum">28.9.2025.</span>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span id="g-kategorije" class="text-xs font-semibold uppercase tracking-wide text-sky-400">
+                                    Lorem ipsum
+                                </span>
                             </div>
-                            <a id="g-ovise" href="#"
-                               class="inline-flex items-center text-sm font-semibold text-sky-300 hover:text-sky-200 gap-2 transition-all group/link">
-                                Pročitaj više
-                                <i class="fas fa-arrow-right text-xs group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
+                            <h3 id="g-naslov"
+                                class="text-lg md:text-xl font-bold text-slate-50 mb-3 group-hover:text-sky-300 transition-colors">
+                                Lorem ipsum dolor sit amet
+                            </h3>
 
-                <!-- News 2 -->
-                <article class="event-card bg-slate-900/80 border border-slate-700/70 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-200 group">
-                    <div class="h-48 relative overflow-hidden">
-                        <img id="g-slika" src="https://picsum.photos/601/300" alt="Event image"
-                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-80"></div>
-                        <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 text-fuchsia-300 border border-fuchsia-400/60">
-                            <i class="fas fa-music mr-2"></i>
-                            Muzika
-                        </span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-kategorije" class="text-xs font-semibold uppercase tracking-wide text-fuchsia-300">
-                                Lorem ipsum
+                            <p id="g-tekst" class="text-sm text-slate-300 mb-5">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                                suscipit quis, pharetra a dui.
+                            </p>
+
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-xs text-slate-400">
+                                    <i class="fas fa-calendar-days mr-2 text-sky-400"></i>
+                                    <span id="g-datum">28.9.2025.</span>
+                                </div>
+                                <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-sm font-semibold text-sky-300 hover:text-sky-200 gap-2 transition-all group/link">
+                                    Pročitaj više
+                                    <i class="fas fa-arrow-right text-xs group-hover/link:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- News 2 -->
+                    <article class="event-card bg-slate-900/80 border border-slate-700/70 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-200 group">
+                        <div class="h-48 relative overflow-hidden">
+                            <img id="g-slika" src="https://picsum.photos/601/300" alt="Event image"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-80"></div>
+                            <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 text-fuchsia-300 border border-fuchsia-400/60">
+                                <i class="fas fa-music mr-2"></i>
+                                Muzika
                             </span>
                         </div>
-                        <h3 id="g-naslov"
-                            class="text-lg md:text-xl font-bold text-slate-50 mb-3 group-hover:text-fuchsia-300 transition-colors">
-                            Lorem ipsum dolor sit amet
-                        </h3>
-
-                        <p id="g-tekst" class="text-sm text-slate-300 mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
-                            suscipit quis, pharetra a dui.
-                        </p>
-
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-xs text-slate-400">
-                                <i class="fas fa-calendar-days mr-2 text-fuchsia-400"></i>
-                                <span id="g-datum">28.9.2025.</span>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span id="g-kategorije" class="text-xs font-semibold uppercase tracking-wide text-fuchsia-300">
+                                    Lorem ipsum
+                                </span>
                             </div>
-                            <a id="g-ovise" href="#"
-                               class="inline-flex items-center text-sm font-semibold text-fuchsia-300 hover:text-fuchsia-200 gap-2 transition-all group/link">
-                                Pročitaj više
-                                <i class="fas fa-arrow-right text-xs group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
+                            <h3 id="g-naslov"
+                                class="text-lg md:text-xl font-bold text-slate-50 mb-3 group-hover:text-fuchsia-300 transition-colors">
+                                Lorem ipsum dolor sit amet
+                            </h3>
 
-                <!-- News 3 -->
-                <article class="event-card bg-slate-900/80 border border-slate-700/70 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_35px_rgba(251,191,36,0.6)] transition-all duration-200 group">
-                    <div class="h-48 relative overflow-hidden">
-                        <img id="g-slika" src="https://picsum.photos/602/300" alt="Event image"
-                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-80"></div>
-                        <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 text-amber-300 border border-amber-400/70">
-                            <i class="fas fa-palette mr-2"></i>
-                            Izložba
-                        </span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-kategorije" class="text-xs font-semibold uppercase tracking-wide text-amber-300">
-                                Lorem ipsum
+                            <p id="g-tekst" class="text-sm text-slate-300 mb-5">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                                suscipit quis, pharetra a dui.
+                            </p>
+
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-xs text-slate-400">
+                                    <i class="fas fa-calendar-days mr-2 text-fuchsia-400"></i>
+                                    <span id="g-datum">28.9.2025.</span>
+                                </div>
+                                <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-sm font-semibold text-fuchsia-300 hover:text-fuchsia-200 gap-2 transition-all group/link">
+                                    Pročitaj više
+                                    <i class="fas fa-arrow-right text-xs group-hover/link:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- News 3 -->
+                    <article class="event-card bg-slate-900/80 border border-slate-700/70 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_35px_rgba(251,191,36,0.6)] transition-all duration-200 group">
+                        <div class="h-48 relative overflow-hidden">
+                            <img id="g-slika" src="https://picsum.photos/602/300" alt="Event image"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-80"></div>
+                            <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-950/80 text-amber-300 border border-amber-400/70">
+                                <i class="fas fa-palette mr-2"></i>
+                                Izložba
                             </span>
                         </div>
-                        <h3 id="g-naslov"
-                            class="text-lg md:text-xl font-bold text-slate-50 mb-3 group-hover:text-amber-300 transition-colors">
-                            Lorem ipsum dolor sit amet
-                        </h3>
-
-                        <p id="g-tekst" class="text-sm text-slate-300 mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
-                            suscipit quis, pharetra a dui.
-                        </p>
-
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-xs text-slate-400">
-                                <i class="fas fa-calendar-days mr-2 text-amber-300"></i>
-                                <span id="g-datum">28.9.2025.</span>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span id="g-kategorije" class="text-xs font-semibold uppercase tracking-wide text-amber-300">
+                                    Lorem ipsum
+                                </span>
                             </div>
-                            <a id="g-ovise" href="#"
-                               class="inline-flex items-center text-sm font-semibold text-amber-300 hover:text-amber-200 gap-2 transition-all group/link">
-                                Pročitaj više
-                                <i class="fas fa-arrow-right text-xs group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
+                            <h3 id="g-naslov"
+                                class="text-lg md:text-xl font-bold text-slate-50 mb-3 group-hover:text-amber-300 transition-colors">
+                                Lorem ipsum dolor sit amet
+                            </h3>
+
+                            <p id="g-tekst" class="text-sm text-slate-300 mb-5">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
+                                suscipit quis, pharetra a dui.
+                            </p>
+
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-xs text-slate-400">
+                                    <i class="fas fa-calendar-days mr-2 text-amber-300"></i>
+                                    <span id="g-datum">28.9.2025.</span>
+                                </div>
+                                <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-sm font-semibold text-amber-300 hover:text-amber-200 gap-2 transition-all group/link">
+                                    Pročitaj više
+                                    <i class="fas fa-arrow-right text-xs group-hover/link:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="/vesti"
+                    class="bg-gradient-to-r from-sky-500 via-fuchsia-500 to-amber-400 text-slate-950 px-8 py-3 rounded-full font-semibold hover:brightness-110 transition-all inline-flex items-center shadow-lg shadow-sky-500/40">
+                        <i class="fas fa-calendar-alt mr-3"></i>
+                        Pogledaj sve vesti
+                    </a>
+                </div>
             </div>
+        </section>
 
-            <div class="text-center mt-12">
-                <a href="/vesti"
-                   class="bg-gradient-to-r from-sky-500 via-fuchsia-500 to-amber-400 text-slate-950 px-8 py-3 rounded-full font-semibold hover:brightness-110 transition-all inline-flex items-center shadow-lg shadow-sky-500/40">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve vesti
-                </a>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-slate-950 border-t border-slate-800/80 pt-14 pb-10 mt-16 relative overflow-hidden">
@@ -627,21 +633,6 @@
                     </ul>
                 </div>
 
-                <!-- Col 3 -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-slate-50">
-                        Programi
-                    </h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="text-slate-300 hover:text-fuchsia-300 transition-colors">Kreativne radionice</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-fuchsia-300 transition-colors">Obrazovni projekti</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-fuchsia-300 transition-colors">Kampovi za mlade</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-fuchsia-300 transition-colors">Volonterski programi</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-fuchsia-300 transition-colors">Mentorski programi</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-fuchsia-300 transition-colors">EU projekti</a></li>
-                    </ul>
-                </div>
-
                 <!-- Col 4 -->
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-slate-50">
@@ -673,9 +664,6 @@
             </div>
         </div>
     </footer>
-
-</div>
-
 
     <script>
         // Simple JavaScript for mobile menu toggle
