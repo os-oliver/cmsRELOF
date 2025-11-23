@@ -21,13 +21,13 @@ class MissionPageBuilder extends BasePageBuilder
     <!-- Naslovna sekcija -->
     <section
         class="relative border-b border-secondary/30 text-center bg-cover bg-center bg-no-repeat min-h-[560px] flex items-center"
-        style="background-image: url('/assets/img/560-x1920-px-rgb-sa-oblacima.jpg');"
+        style="background-image: url('/assets/img/header.jpg');"
     >
         <div class="container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-heading font-extrabold text-primary_text mb-3 tracking-tight">
                 Misija i Vizija
             </h1>
-            <p class="text-lg md:text-xl text-secondary_text/80 max-w-2xl mx-auto">
+            <p class="text-lg md:text-xl text-primary_text/80 max-w-2xl mx-auto">
                 Načela koja nas vode i ciljevi kojima težimo.
             </p>
         </div>

@@ -69,44 +69,80 @@ class ZnacajaStranica extends BasePageBuilder
             Informacije od javnog značaja
           </h1>
           <p class="lead text-secondary_text/90 mt-2">
-            Pravo na pristup informacijama od javnog značaja ostvaruje se podnošenjem zahteva nadležnom organu.
-            Ovde se nalazi kratko uputstvo i obrazac <strong>(PDF)</strong> za preuzimanje.
+            Pravo na pristup informacijama od javnog značaja ostvaruje se podnošenjem zahteva Turističkoj organizaciji
+            opštine Babušnica kao organu vlasti. Na ovoj stranici nalazi se kratko uputstvo i obrazac
+            <strong>(PDF)</strong> za podnošenje zahteva.
           </p>
         </section>
 
         <section>
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Postupak podnošenja zahteva</h2>
           <ol class="list-decimal pl-6 space-y-2">
-            <li><strong>Preuzmite formular</strong>&nbsp;klikom na dugme „Preuzmi formular (PDF)”.</li>
-            <li><strong>Popunite formular</strong>&nbsp;na vašem računaru (elektronski ili odštampan), navedite
-              koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
-            <li><strong>Pošaljite popunjen zahtev</strong>&nbsp;na adresu elektronske pošte:&nbsp;
-              <a data-translate="off" class="text-accent hover:text-accent_hover underline-offset-2 hover:underline"
-                 href="mailto:pisarnica@vas-domen.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
-                 pisarnica@vas-domen.rs
-              </a>. Možete poslati i poštom ili lično, u pisarnici.</li>
-            <li><strong>Odgovor</strong>: nakon obrade, dobićete e-poruku sa adresom ili linkom,
-              sa koje možete preuzeti tražene informacije, ili obrazloženje ako zahtev nije moguće u celosti uvažiti.</li>
+            <li>
+              <strong>Preuzmite formular</strong> klikom na dugme „Preuzmi formular (PDF)”.
+            </li>
+            <li>
+              <strong>Popunite formular</strong> na računaru (elektronski) ili odštampan, jasno navedite
+              koje informacije ili dokumenta tražite, kao i period na koji se zahtev odnosi.
+            </li>
+            <li>
+              <strong>Pošaljite popunjen zahtev</strong> elektronskom poštom na adresu:
+              <a data-translate="off"
+                 class="text-accent hover:text-accent_hover underline-offset-2 hover:underline"
+                 href="mailto:turizambabusnica@gmail.com?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                turizambabusnica@gmail.com
+              </a>.
+              Zahtev možete poslati i poštom ili predati lično na pisarnici Turističke organizacije opštine Babušnica.
+            </li>
+            <li>
+              <strong>Odgovor</strong>: nakon obrade zahteva, dobićete odgovor sa informacijom, uvidom ili
+              kopijama traženih dokumenata, odnosno obrazloženjem ako zahtev nije moguće u celosti uvažiti.
+            </li>
           </ol>
         </section>
 
         <section class="bg-surface border border-secondary/20 rounded-2xl p-6 mt-4">
           <h3 class="font-heading text-xl text-primary_text mb-3">Napomene</h3>
           <ul class="list-disc pl-6 space-y-2">
-            <li>Pristup može biti ograničen u zakonom propisanim slučajevima (zaštita privatnosti, poverljivost, zloupotreba prava i sl.).</li>
-            <li>Ukoliko odgovor ne dobijete u zakonskom roku, možete izjaviti žalbu u skladu sa propisima.</li>
+            <li>
+              Pristup informacijama može biti ograničen u zakonom propisanim slučajevima
+              (zaštita privatnosti, poverljivih podataka, sprečavanje zloupotrebe prava i sl.).
+            </li>
+            <li>
+              Ukoliko odgovor ne dobijete u zakonskom roku, imate pravo na žalbu u skladu sa Zakonom
+              o slobodnom pristupu informacijama od javnog značaja.
+            </li>
           </ul>
         </section>
 
-        <!-- (Optional) Ovlašćena lica – edit or remove -->
+        <!-- Ovlašćeno lice -->
         <section class="mt-4">
-          <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
-          <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
-            <p><strong>Za upravu i nacionalne zajednice</strong><br>Ime Prezime — 021/000-00-00 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer1@vas-domen.rs">primer1@vas-domen.rs</a></p>
-            <hr class="border-t border-secondary/30 my-3">
-            <p><strong>Za oblast obrazovanja</strong><br>Ime Prezime — 021/000-00-01 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer2@vas-domen.rs">primer2@vas-domen.rs</a></p>
-            <hr class="border-t border-secondary/30 my-3">
-            <p><strong>Za oblast finansija</strong><br>Ime Prezime — 021/000-00-02 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer3@vas-domen.rs">primer3@vas-domen.rs</a></p>
+          <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćeno lice / kontakt</h2>
+          <div class="bg-surface border border-secondary/20 rounded-2xl p-6 space-y-3">
+            <p>
+              <strong>Ovlašćeno lice za postupanje po zahtevima za slobodan pristup informacijama od javnog značaja</strong><br>
+              Dušica Ćirić<br>
+              Samostalno finansijsko računovodstveni saradnik<br>
+              Turistička organizacija opštine Babušnica<br>
+              Telefon: 010/383-161<br>
+              E-mail:
+              <a class="text-accent hover:text-accent_hover"
+                 data-translate="off"
+                 href="mailto:turizambabusnica@gmail.com">
+                turizambabusnica@gmail.com
+              </a>
+            </p>
+
+            <p class="text-secondary_text/80 text-sm">
+              Ovlašćeno lice prima zahteve, obaveštava tražioce o posedovanju informacija, obezbeđuje uvid
+              u dokumenta koja sadrže traženu informaciju ili dostavlja kopije na odgovarajući način, odlučuje
+              o odbijanju zahteva rešenjem i pruža neophodnu pomoć tražiocima u ostvarivanju prava na slobodan
+              pristup informacijama od javnog značaja.
+            </p>
+
+            <p class="text-secondary_text/70 text-xs">
+              Ovlašćenje važi od 28.10.2022. godine, do opoziva posebnog akta.
+            </p>
           </div>
         </section>
       </article>
@@ -116,10 +152,12 @@ class ZnacajaStranica extends BasePageBuilder
         <div class="sticky top-24">
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
             <h3 class="font-heading text-xl text-primary_text">Dokumenta</h3>
-            <p class="text-secondary_text/80 mt-1">Preuzmite i popunite obrazac, a zatim ga pošaljite e-poštom.</p>
+            <p class="text-secondary_text/80 mt-1">
+              Preuzmite i popunite obrazac, a zatim ga pošaljite elektronskom poštom ili predate lično.
+            </p>
             <p class="mt-3">
               <a class="inline-flex items-center gap-2 bg-primary hover:bg-primary_hover text-white font-semibold rounded-full px-4 py-2"
-                 href="/docs/sablon-zahtev.pdf" download="">
+                 href="/docs/sablon-zahtev.pdf" download>
                 <svg class="logocolor1" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M14 2H6a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h10a2 2 0 0 0 2-2V8z"></path>
                   <path d="M14 2v6h6"></path>
@@ -130,22 +168,27 @@ class ZnacajaStranica extends BasePageBuilder
 
             <div class="mt-3">
               <div class="flex items-center justify-between gap-2 bg-white border border-secondary/30 rounded-xl px-3 py-2">
-                <span class="truncate text-primary_text" data-translate="off">pisarnica@vas-domen.rs</span>
-                <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                        onclick="navigator.clipboard.writeText('pisarnica@vas-domen.rs')">
+                <span class="truncate text-primary_text" data-translate="off">
+                  turizambabusnica@gmail.com
+                </span>
+                <button
+                  class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
+                  onclick="navigator.clipboard.writeText('turizambabusnica@gmail.com')">
                   Kopiraj
                 </button>
               </div>
               <p class="mt-2">
                 <a class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                   href="mailto:pisarnica@vas-domen.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                   href="mailto:turizambabusnica@gmail.com?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
                   Otvori e-poštu
                 </a>
               </p>
             </div>
 
             <p class="text-secondary_text/70 mt-3 text-sm">
-              Ako nemate mogućnost slanja e-poštom, zahtev možete poslati poštom ili predati lično u pisarnici.
+              Ako nemate mogućnost slanja e-poštom, zahtev možete poslati poštom na adresu
+              ul. Stevana Sindelića bb, 18330 Babušnica, ili predati lično u pisarnici Turističke
+              organizacije opštine Babušnica.
             </p>
           </div>
         </div>

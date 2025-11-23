@@ -461,6 +461,9 @@
             </button>
             <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
               <a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura</a>
+              <a href="#" class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-users-cog mr-2 text-primary"></i>Organi upravljanja
+                            </a>
               <!--<a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-users-cog mr-2 text-primary"></i>Rukovodstvo</a>-->
               <a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-flag mr-2 text-primary"></i>Misija</a>
               <a href="#" class="flex items-center py-2 px-4 transition-colors font-body"><i class="fas fa-history mr-2 text-primary"></i>Istorijat</a>
@@ -472,13 +475,13 @@
 
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinacije</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-bed mr-3 text-primary"></i>Smeštaj</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-person-hiking mr-3 text-primary"></i>Aktivnosti</a>
+          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-person-hiking mr-3 text-primary"></i>Manifestacije</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-utensils mr-3 text-primary"></i>Gastronomija</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-pepper-hot mr-3 text-primary"></i>Brendovi</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all font-body"><i class="fas fa-file-alt mr-3 text-primary"></i>Dokumenti</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-address-book mr-3 text-primary"></i>Kontakt</a>
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i class="fas fa-calendar-alt mr-2 text-primary"></i>Vesti</a>
-          <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all font-body"><i  class="fas fa-diagram-project mr-2 text-primary"></i>Događaji</a>
+          <!--<a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all font-body"><i  class="fas fa-diagram-project mr-2 text-primary"></i>Događaji</a>-->
           <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all hover:bg-gray-50 font-body"><i  class="fas fa-images mr-2 text-primary"></i>Multimedija</a>
         </nav>
       </div>
@@ -494,11 +497,11 @@
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3">
         <div class="w-11 h-11 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-          <img src="/assets/img/logo-crop.png" alt="" style="width:75px;height:auto;" />
+          <img src="/assets/img/LOGO.png" alt="" style="width:75px;height:auto;" />
         </div>
         <div class="hidden sm:block">
-          <div class="text-xl font-bold text-primary_text font-heading2">KRAGUJEVAC</div>
-          <div class="text-xs text-secondary_text font-body">Gradska Turistička Organizacija</div>
+          <div class="text-xl font-bold text-primary_text font-heading2">OPŠTINA BABUŠNICA</div>
+          <div class="text-xs text-secondary_text font-body">Turistička Organizacija</div>
         </div>
       </a>
 
@@ -511,6 +514,7 @@
           </button>
           <div class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
             <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Organizaciona struktura</a>
+            <a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Organi upravljanja</a>
             <!--<a href="#" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Rukovodstvo</a>-->
             <a href="#" static="true" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Misija</a>
             <a href="#" static="true" class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm font-body">Istorijat</a>
@@ -522,14 +526,14 @@
 
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Destinacije</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Smeštaj</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Aktivnosti</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Manifestacije</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Gastronomija</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Brendovi</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Dokumenti</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Kontakt</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Vesti</a>
-        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Događaji</a>
         <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Multimedija</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Vesti</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Kontakt</a>
+        <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Dokumenti</a>
+        <!--<a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap px-1 font-heading2">Događaji</a>-->
 
         <!-- Language dropdown -->
         <?php
@@ -675,13 +679,23 @@
 <!-- ===== HERO: Fiksirana pozadinska slika + naslov + pretraga ===== -->
 <section
   class="relative pt-20 overflow-hidden min-h-[80vh] lg:min-h-[92vh] flex items-center bg-fixed bg-cover bg-center"
-  style="background-image: url('/assets/img/babusnica/hero-babusnica.jpg');"
+  style="background-image: url('/assets/img/header.jpg');"
 >
   <!-- Tamni gradijent preko slike -->
-  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/20"></div>
 
   <div class="container mx-auto px-4 relative z-10 py-40 lg:py-48">
     <div class="max-w-6xl mx-auto text-center">
+
+      <!-- LOGO IZNAD NASLOVA -->
+      <div class="flex justify-center mb-6 md:mb-8">
+        <img
+          src="/assets/img/LOGO.png"
+          alt="Logo Turističke organizacije opštine Babušnica"
+          class="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-white/80 shadow-xl bg-white/90 object-contain"
+        />
+      </div>
+
       <h1 class="font-heading text-white text-4xl md:text-6xl lg:text-7xl font-bold drop-shadow-xl tracking-[0.22em] uppercase">
         Turistička organizacija<br class="hidden md:block" />
         opštine Babušnica
@@ -722,7 +736,7 @@
 
     <div class="mt-2">
       <img
-        src="/assets/img/babusnica/babusnica-kolaz.jpg"
+        src="/assets/img/welcome.jpg"
         alt="Babušnica – lepota netaknute prirode"
         class="rounded-3xl shadow-2xl border border-gray-100 w-full h-auto"
       />
@@ -851,13 +865,14 @@
           <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
             Babušnica, Lužnica
           </p>
-          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
+          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4 line-clamp-3">
             Autentični lužnički mlečni specijalitet čija se receptura vekovima prenosi sa kolena na koleno.
           </p>
-          <a id="g-zvanicni_sajt" href="#"
-             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
+          <a id="g-ovise" href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
             Saznajte više
-            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
           </a>
         </div>
       </article>
@@ -882,7 +897,7 @@
           <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
             Simbol lužničkog kraja – domaća rakija uz dobro društvo i priče iz kraja.
           </p>
-          <a id="g-zvanicni_sajt" href="#"
+          <a id="g-ovise" href="#"
              class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
             Saznajte više
             <i class="fas fa-arrow-right ml-2 text-xs"></i>
@@ -910,7 +925,7 @@
           <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
             Lužnička suvana banica – tradicionalna pita koja se ne propušta ni na jednoj trpezi.
           </p>
-          <a id="g-zvanicni_sajt" href="#"
+          <a id="g-ovise" href="#"
              class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
             Saznajte više
             <i class="fas fa-arrow-right ml-2 text-xs"></i>
@@ -935,7 +950,7 @@
           <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
             Babušnica i okolina
           </p>
-          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
+          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4 line-clamp-3">
             Omiljeno jelo Lužničana – bilo da je mrsna ili posna varijanta, uvek ide uz dobro društvo.
           </p>
           <a id="g-ovise" href="#"
@@ -1144,134 +1159,132 @@
 
   <!-- ===== Footer ===== -->
 <footer class="bg-secondary_background text-secondary_text text-gray-200 font-heading2 pt-20 pb-10">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            <!-- Kolona 1: naziv + mreže -->
-            <div>
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-heading">
-                        Gradska turistička organizacija Kragujevac
-                    </h3>
-                </div>
-                <p class="mb-4 font-body">
-                    Zvanična turistička organizacija grada Kragujevca.
-                </p>
-                <div class="flex space-x-3">
-                    <a href="https://www.facebook.com/gradskaturistickaorganizacijakragujevac/" target="_blank" rel="noopener"
-                       class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/kragujevac.turizam/" target="_blank" rel="noopener"
-                       class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCPzxUjB97RUt9c_aVLPC4rQ" target="_blank" rel="noopener"
-                       class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Kolona 2: brzi linkovi -->
-            <div>
-                <h4 class="mb-6 font-heading">
-                    Brzi linkovi
-                </h4>
-                <ul class="space-y-3">
-                    <li><a href="/" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Početna</a></li>
-                    <li><a href="/informacije" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Informacije od javnog značaja</a></li>
-                    <li><a href="/pitanja" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Česta pitanja</a></li>
-                    <li><a href="/dokumenti" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Dokumenti</a></li>
-                    <li><a href="/kontakt" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Kontakt</a></li>
-                    <li><a href="/vesti" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Vesti</a></li>
-                </ul>
-            </div>
-
-            <!-- Kolona 3: kontakt informacije (duplo) -->
-            <div>
-                <h4 class="mb-6 font-heading">
-                    Informacije
-                </h4>
-
-                <!-- GTO Kragujevac -->
-                <div class="mb-6">
-                    <p class="font-semibold mb-2 font-heading2">
-                        Gradska turistička organizacija „Kragujevac“
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span class="font-body">+381 34 332172</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate="off" class="font-body">info@gtokg.org.rs</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- TIC -->
-                <div>
-                    <p class="font-semibold mb-2 font-heading2">
-                        Turistički informativni centar
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span class="font-body">+381 34 335302</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate="off" class="font-body">tic@gtokg.org.rs</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Kolona 4: dve mape lokacije -->
-            <div>
-                <h4 class="mb-6 font-heading">
-                    Mapa lokacije
-                </h4>
-
-                <!-- GTO Kragujevac mapa -->
-                <!--<div class="mb-6">
-                    <p class="font-semibold mb-2">
-                        Gradska turistička organizacija „Kragujevac“
-                    </p>
-                    <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14123.04983159532!2d20.912673000000005!3d44.012197!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475721217b356833%3A0x288c1902e8fa9b2!2z0JrRgNCw0ZnQsCDQkNC70LXQutGB0LDQvdC00YDQsCBJINCa0LDRgNCw0ZLQvtGA0ZLQtdCy0LjRm9CwIDQ0LCDQmtGA0LDQs9GD0ZjQtdCy0LDRhg!5e1!3m2!1ssr!2srs!4v1763837317163!5m2!1ssr!2srs" width="320" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>-->
-
-                <!-- TIC mapa -->
-                <div>
-                    <p class="font-semibold mb-2 font-heading2">
-                        Turistički informativni centar
-                    </p>
-                    <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14123.156040557698!2d20.918669!3d44.011751000000004!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47572120a14cc32f%3A0xb8c98e4781fb6eb5!2zVWxpY2EgRHIuIFpvcmFuYSBEamluZGppxIdhIDExLCDQmtGA0LDQs9GD0ZjQtdCy0LDRhiAzNDAwMA!5e1!3m2!1ssr!2srs!4v1763837407992!5m2!1ssr!2srs" width="320" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-            </div>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <!-- Kolona 1: naziv + mreže -->
+      <div>
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-heading text-gray-100">
+            Turistička organizacija opštine Babušnica
+          </h3>
         </div>
-
-        <!-- OVDE NIŠTA NE MENJAMO -->
-        <div class="text-center text-sm">
-            <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
-                <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo" class="w-full max-w-md md:max-w-lg h-auto mb-4">
-                <p class="text-gray-400">
-                    Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.
-                </p>
-            </div>
-            <p class="pt-6 text-gray-400">&copy; RELOF3 PROJEKAT</p>
+        <p class="mb-4 font-body">
+          Zvanična turistička organizacija opštine Babušnica i Lužničkog kraja.
+        </p>
+        <div class="flex space-x-3">
+          <a href="https://www.facebook.com/turistickaorganizacija.babusnica" target="_blank" rel="noopener"
+             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/to_babusnica/" target="_blank" rel="noopener"
+             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.youtube.com/@TuristickaorganizacijaBabusnica" target="_blank" rel="noopener"
+             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+            <i class="fab fa-youtube"></i>
+          </a>
         </div>
+      </div>
+
+      <!-- Kolona 2: brzi linkovi -->
+      <div>
+        <h4 class="mb-6 font-heading">
+          Brzi linkovi
+        </h4>
+        <ul class="space-y-3">
+          <li><a href="/" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Početna</a></li>
+          <li><a href="/o-nama/informacije" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Informacije od javnog značaja</a></li>
+          <li><a href="/o-nama/pitanja" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Česta pitanja</a></li>
+          <li><a href="/dokumenti" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Dokumenti</a></li>
+          <li><a href="/kontakt" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Kontakt</a></li>
+          <li><a href="/vesti" class="text-logocolor2/90 hover:text-primary_text transition-colors font-body">Vesti</a></li>
+        </ul>
+      </div>
+
+      <!-- Kolona 3: kontakt informacije -->
+      <div>
+        <h4 class="mb-6 font-heading">
+          Informacije
+        </h4>
+
+        <div class="mb-6">
+          <p class="font-semibold mb-2 font-heading2">
+            Turistička organizacija opštine Babušnica
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+              <span class="font-body">010/383-161</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
+              <a href="mailto:turizambabusnica@gmail.com"
+                 data-translate="off"
+                 class="font-body hover:underline">
+                turizambabusnica@gmail.com
+              </a>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-globe text-logocolor2 mt-1 mr-3"></i>
+              <a href="https://www.tobabusnica.com/" target="_blank" rel="noopener"
+                 data-translate="off"
+                 class="font-body hover:underline">
+                www.tobabusnica.com
+              </a>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-logocolor2 mt-1 mr-3"></i>
+              <span class="font-body">
+                ul. Stevana Sindelića bb, 18330 Babušnica
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Kolona 4: mapa lokacije -->
+      <div>
+        <h4 class="mb-6 font-heading">
+          Mapa lokacije
+        </h4>
+
+        <div class="mb-6">
+          <p class="font-semibold mb-2 font-heading2">
+            Turistička organizacija opštine Babušnica
+          </p>
+          <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3484.0437752145644!2d22.406929!3d43.067608!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475514de93821a7b%3A0xa7238b91a9a3d97!2z0JrRg9C_0LDQu9C40YjQvdC4INC60L7QvNC_0LvQtdC60YEg0YMg0JHQsNCx0YPRiNC90LjRhtC4!5e1!3m2!1ssr!2srs!4v1763924539880!5m2!1ssr!2srs"
+              width="320"
+              height="200"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Donji deo footera ostaje isti -->
+    <div class="text-center text-sm">
+      <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
+        <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo" class="w-full max-w-md md:max-w-lg h-auto mb-4">
+        <p class="text-gray-400">
+          Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.
+        </p>
+      </div>
+      <p class="pt-6 text-gray-400">&copy; RELOF3 PROJEKAT</p>
+    </div>
+  </div>
 </footer>
 
 

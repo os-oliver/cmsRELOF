@@ -152,8 +152,7 @@ HTML;
                     Kontaktirajte nas
                 </h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    Vaše mišljenje nam je važno. Kontaktirajte nas za sve informacije ili pošaljite žalbu kako bismo
-                    mogli da poboljšamo naše usluge.
+                    Vaše mišljenje nam je važno. Kontaktirajte nas za sve informacije, sugestije ili pitanja u vezi sa boravkom u Babušnici i Lužničkoj kotlini.
                 </p>
             </div>
 
@@ -174,7 +173,11 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">Gradska turistička organizacija Kragujevac<br>Kralja Aleksandra I Karađorđevića 44<br>34000 Kragujevac, Srbija</p>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Turistička organizacija opštine Babušnica<br>
+                                        ul. Stevana Sindelića bb<br>
+                                        18330 Babušnica, Srbija
+                                    </p>
                                 </div>
                             </div>
 
@@ -187,8 +190,8 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
-                                    <p class="text-gray-600 text-lg">+381 34 332172</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <p class="text-gray-600 text-lg">010/383-161</p>
+                                    <p class="text-gray-500 text-sm">Radnim danima – tokom radnog vremena organizacije</p>
                                 </div>
                             </div>
 
@@ -201,8 +204,10 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">info@gtokg.org.rs</p>
-                                    <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">
+                                        turizambabusnica@gmail.com
+                                    </p>
+                                    <p class="text-gray-500 text-sm">Odgovaramo u najkraćem mogućem roku.</p>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +236,6 @@ HTML;
                 <div class="lg:col-span-3">
                     <div class="bg-white rounded-3xl shadow-2xl p-8 card-hover">
 
-
                         <!-- Success Message (hidden by default) -->
                         <div id="success-message" class="hidden mb-8 p-6 bg-green-50 border-2 border-green-200 rounded-2xl success-message">
                             <div class="flex items-center space-x-3">
@@ -243,7 +247,7 @@ HTML;
                                 <div>
                                     <p class="text-green-800 font-bold text-lg" id="success-title">Vaša poruka je
                                         uspešno poslata!</p>
-                                    <p class="text-green-700">Odgovoriće vam u najkraćem mogućem roku.</p>
+                                    <p class="text-green-700">Odgovorićemo vam u najkraćem mogućem roku.</p>
                                 </div>
                             </div>
                         </div>
