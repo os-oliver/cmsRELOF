@@ -6,8 +6,7 @@
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
       "categories": [
-        "Najave",
-        "Festivali",
+        "Manifestacije",
         "Bioskop",
         "Pozorište",
         "Izložbe",
@@ -15,22 +14,22 @@
       ],
       "fields": [
         {
-          "name": "naslov",
-          "type": "text",
+          "name": "slika",
+          "type": "file",
           "label": {
-            "sr": "Naslov vesti",
-            "en": "News title",
-            "sr-Cyrl": "Наслов вести"
+            "sr": "Naslovna slika",
+            "en": "Cover image",
+            "sr-Cyrl": "Насловна слика"
           },
           "required": true
         },
         {
-          "name": "opis",
-          "type": "textarea",
+          "name": "autor",
+          "type": "text",
           "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
+            "sr": "Autor",
+            "en": "Author",
+            "sr-Cyrl": "Аутор"
           }
         },
         {
@@ -41,48 +40,642 @@
             "en": "News date",
             "sr-Cyrl": "Датум вести"
           },
+          "required": true,
+          "property": "auto"
+        },
+        {
+          "name": "kategorije",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
+          },
+          "options": [
+            "Vesti",
+            "Naučni klub",
+            "Seminari",
+            "Radionice"
+          ],
           "required": true
         },
         {
-          "name": "slika",
-          "type": "file",
+          "name": "naslov",
+          "type": "text",
           "label": {
-            "sr": "Naslovna slika vesti",
-            "en": "News image",
-            "sr-Cyrl": "Насловна слика вести"
-          }
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
+          },
+          "required": true
         },
         {
-          "name": "link",
-          "type": "url",
+          "name": "tekst",
+          "type": "textarea",
           "label": {
-            "sr": "Link vesti",
-            "en": "News link",
-            "sr-Cyrl": "Линк вести"
+            "sr": "Tekst vesti",
+            "en": "Article text",
+            "sr-Cyrl": "Текст вести"
           }
         }
       ]
     },
-    "Programi": {
-      "sr": "Programi",
-      "en": "Programs",
-      "sr-Cyrl": "Програми",
-      "icon": "fas fa-newspaper",
+    "Manifestacije": {
+      "sr": "Manifestacije",
+      "en": "Festivals & Events",
+      "sr-Cyrl": "Манифестације",
+      "icon": "fas fa-theater-masks",
       "categories": [
+        "Festival",
+        "Koncert",
+        "Sajam",
+        "Gastro",
         "Kultura",
-        "Obrazovanje",
-        "Sport"
+        "Sport",
+        "Porodično",
+        "Tradicionalno",
+        "Karneval",
+        "Izložba"
       ],
       "fields": [
         {
-          "name": "naslov",
+          "name": "naziv",
           "type": "text",
           "label": {
-            "sr": "Naslov vesti",
-            "en": "News title",
-            "sr-Cyrl": "Наслов вести"
+            "sr": "Naziv manifestacije",
+            "en": "Event name",
+            "sr-Cyrl": "Назив манифестације"
           },
           "required": true
+        },
+        {
+          "name": "poslednje_azuriranje",
+          "type": "date",
+          "label": {
+            "sr": "Poslednje ažuriranje",
+            "en": "Last updated",
+            "sr-Cyrl": "Последње ажурирање"
+          },
+          "required": true,
+          "property": "auto"
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija manifestacije",
+            "en": "Event category",
+            "sr-Cyrl": "Категорија манифестације"
+          },
+          "required": true
+        },
+        {
+          "name": "drzava",
+          "type": "text",
+          "label": {
+            "sr": "Država",
+            "en": "Country",
+            "sr-Cyrl": "Држава"
+          },
+          "required": true
+        },
+        {
+          "name": "grad",
+          "type": "text",
+          "label": {
+            "sr": "Grad / opština",
+            "en": "City / municipality",
+            "sr-Cyrl": "Град / општина"
+          }
+        },
+        {
+          "name": "lokacija",
+          "type": "text",
+          "label": {
+            "sr": "Lokacija / mesto održavanja",
+            "en": "Venue / location",
+            "sr-Cyrl": "Локација / место одржавања"
+          }
+        },
+        {
+          "name": "adresa",
+          "type": "text",
+          "label": {
+            "sr": "Adresa",
+            "en": "Address",
+            "sr-Cyrl": "Адреса"
+          }
+        },
+        {
+          "name": "datum_pocetka",
+          "type": "date",
+          "label": {
+            "sr": "Datum početka",
+            "en": "Start date",
+            "sr-Cyrl": "Датум почетка"
+          },
+          "required": true
+        },
+        {
+          "name": "datum_zavrsetka",
+          "type": "date",
+          "label": {
+            "sr": "Datum završetka",
+            "en": "End date",
+            "sr-Cyrl": "Датум завршетка"
+          }
+        },
+        {
+          "name": "vreme_pocetka",
+          "type": "time",
+          "label": {
+            "sr": "Vreme početka",
+            "en": "Start time",
+            "sr-Cyrl": "Време почетка"
+          }
+        },
+        {
+          "name": "vreme_zavrsetka",
+          "type": "time",
+          "label": {
+            "sr": "Vreme završetka",
+            "en": "End time",
+            "sr-Cyrl": "Време завршетка"
+          }
+        },
+        {
+          "name": "kratak_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "detaljan_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Detaljan opis",
+            "en": "Detailed description",
+            "sr-Cyrl": "Детаљан опис"
+          }
+        },
+        {
+          "name": "program",
+          "type": "url",
+          "label": {
+            "sr": "Program (PDF/URL)",
+            "en": "Programme (PDF/URL)",
+            "sr-Cyrl": "Програм (PDF/URL)"
+          }
+        },
+        {
+          "name": "ulaznica_cena",
+          "type": "text",
+          "label": {
+            "sr": "Cena ulaznice",
+            "en": "Ticket price",
+            "sr-Cyrl": "Цена улазнице"
+          },
+          "placeholder": {
+            "sr": "npr. RSD 1200 | EUR 15 | Besplatno",
+            "en": "e.g., RSD 1200 | EUR 15 | Free",
+            "sr-Cyrl": "нпр. РСД 1200 | ЕУР 15 | Бесплатно"
+          }
+        },
+        {
+          "name": "tip_ulaza",
+          "type": "text",
+          "label": {
+            "sr": "Tip ulaza",
+            "en": "Entry type",
+            "sr-Cyrl": "Тип улаза"
+          },
+          "placeholder": {
+            "sr": "npr. Besplatno, Rezervacija, Plaćanje na licu mesta, Online",
+            "en": "e.g., Free, Reservation, Pay at venue, Online",
+            "sr-Cyrl": "нпр. Бесплатно, Резервација, Плаћање на лицу места, Онлајн"
+          }
+        },
+        {
+          "name": "uzrast",
+          "type": "text",
+          "label": {
+            "sr": "Preporučeni uzrast / publika",
+            "en": "Recommended audience",
+            "sr-Cyrl": "Препоручена публика"
+          },
+          "placeholder": {
+            "sr": "npr. Porodično, 12+, Odrasli",
+            "en": "e.g., Family, 12+, Adults",
+            "sr-Cyrl": "нпр. Породично, 12+, Одрасли"
+          }
+        },
+        {
+          "name": "tagovi",
+          "type": "text",
+          "label": {
+            "sr": "Tagovi (zarezom odvojeni)",
+            "en": "Tags (comma-separated)",
+            "sr-Cyrl": "Тагови (зарезом одвојени)"
+          },
+          "placeholder": {
+            "sr": "npr. muzika, gastro, tradicija",
+            "en": "e.g., music, food, tradition",
+            "sr-Cyrl": "нпр. музика, гастро, традиција"
+          }
+        },
+        {
+          "name": "aktivnosti",
+          "type": "text",
+          "label": {
+            "sr": "Aktivnosti / sadržaji",
+            "en": "Activities / content",
+            "sr-Cyrl": "Активности / садржаји"
+          },
+          "placeholder": {
+            "sr": "npr. Koncerti, Radionice, Izložbe, Defile, Takmičenja",
+            "en": "e.g., Concerts, Workshops, Exhibitions, Parade, Competitions",
+            "sr-Cyrl": "нпр. Концерти, Радионице, Изложбе, Дефиле, Такмичења"
+          }
+        },
+        {
+          "name": "pristupacnost",
+          "type": "text",
+          "label": {
+            "sr": "Pristupačnost",
+            "en": "Accessibility",
+            "sr-Cyrl": "Приступачност"
+          },
+          "placeholder": {
+            "sr": "npr. Pristup za kolica, Tumač za znakovni jezik",
+            "en": "e.g., Wheelchair access, Sign language interpreter",
+            "sr-Cyrl": "нпр. Приступ за колица, Тумач за знаковни језик"
+          }
+        },
+        {
+          "name": "organizator",
+          "type": "text",
+          "label": {
+            "sr": "Organizator",
+            "en": "Organizer",
+            "sr-Cyrl": "Организатор"
+          }
+        },
+        {
+          "name": "kontakt",
+          "type": "text",
+          "label": {
+            "sr": "Kontakt (email ili telefon)",
+            "en": "Contact (email or phone)",
+            "sr-Cyrl": "Контакт (имејл или телефон)"
+          }
+        },
+        {
+          "name": "map_link",
+          "type": "url",
+          "label": {
+            "sr": "Link ka mapi (Google/OSM)",
+            "en": "Map link (Google/OSM)",
+            "sr-Cyrl": "Линк ка мапи (Google/OSM)"
+          }
+        },
+        {
+          "name": "zvanicni_sajt",
+          "type": "url",
+          "label": {
+            "sr": "Zvanični sajt",
+            "en": "Official website",
+            "sr-Cyrl": "Званични сајт"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika",
+            "en": "Hero image",
+            "sr-Cyrl": "Насловна слика"
+          }
+        },
+        {
+          "name": "galerija",
+          "type": "file",
+          "label": {
+            "sr": "Galerija (više slika)",
+            "en": "Gallery (multiple images)",
+            "sr-Cyrl": "Галерија (више слика)"
+          },
+          "property": "multiple"
+        },
+        {
+          "name": "video",
+          "type": "url",
+          "label": {
+            "sr": "Video link (YouTube/Vimeo)",
+            "en": "Video link (YouTube/Vimeo)",
+            "sr-Cyrl": "Видео линк (YouTube/Vimeo)"
+          }
+        },
+        {
+          "name": "ocena",
+          "type": "text",
+          "label": {
+            "sr": "Ocena (1–5)",
+            "en": "Rating (1–5)",
+            "sr-Cyrl": "Оцена (1–5)"
+          }
+        }
+      ]
+    },
+    "Koncerti": {
+      "sr": "Koncerti",
+      "en": "Concerts",
+      "sr-Cyrl": "Концерти",
+      "icon": "fas fa-theater-masks",
+      "categories": [
+        "Rok",
+        "Pop",
+        "Džez",
+        "Klasika",
+        "Folk",
+        "Elektronska"
+      ],
+      "fields": [
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": {
+            "sr": "Naziv manifestacije",
+            "en": "Event name",
+            "sr-Cyrl": "Назив манифестације"
+          },
+          "required": true
+        },
+        {
+          "name": "poslednje_azuriranje",
+          "type": "date",
+          "label": {
+            "sr": "Poslednje ažuriranje",
+            "en": "Last updated",
+            "sr-Cyrl": "Последње ажурирање"
+          },
+          "required": true,
+          "property": "auto"
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija manifestacije",
+            "en": "Event category",
+            "sr-Cyrl": "Категорија манифестације"
+          },
+          "required": true
+        },
+        {
+          "name": "drzava",
+          "type": "text",
+          "label": {
+            "sr": "Država",
+            "en": "Country",
+            "sr-Cyrl": "Држава"
+          },
+          "required": true
+        },
+        {
+          "name": "grad",
+          "type": "text",
+          "label": {
+            "sr": "Grad / opština",
+            "en": "City / municipality",
+            "sr-Cyrl": "Град / општина"
+          }
+        },
+        {
+          "name": "lokacija",
+          "type": "text",
+          "label": {
+            "sr": "Lokacija / mesto održavanja",
+            "en": "Venue / location",
+            "sr-Cyrl": "Локација / место одржавања"
+          }
+        },
+        {
+          "name": "datum_pocetka",
+          "type": "date",
+          "label": {
+            "sr": "Datum",
+            "en": "Date",
+            "sr-Cyrl": "Датум"
+          },
+          "required": true
+        },
+        {
+          "name": "vreme_pocetka",
+          "type": "time",
+          "label": {
+            "sr": "Vreme",
+            "en": "Time",
+            "sr-Cyrl": "Време"
+          }
+        },
+        {
+          "name": "kratak_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "detaljan_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Detaljan opis",
+            "en": "Detailed description",
+            "sr-Cyrl": "Детаљан опис"
+          }
+        },
+        {
+          "name": "program",
+          "type": "url",
+          "label": {
+            "sr": "Program (PDF/URL)",
+            "en": "Programme (PDF/URL)",
+            "sr-Cyrl": "Програм (PDF/URL)"
+          }
+        },
+        {
+          "name": "ulaznica_cena",
+          "type": "text",
+          "label": {
+            "sr": "Cena ulaznice",
+            "en": "Ticket price",
+            "sr-Cyrl": "Цена улазнице"
+          },
+          "placeholder": {
+            "sr": "npr. RSD 1200 | EUR 15 | Besplatno",
+            "en": "e.g., RSD 1200 | EUR 15 | Free",
+            "sr-Cyrl": "нпр. РСД 1200 | ЕУР 15 | Бесплатно"
+          }
+        },
+        {
+          "name": "tip_ulaza",
+          "type": "text",
+          "label": {
+            "sr": "Tip ulaza",
+            "en": "Entry type",
+            "sr-Cyrl": "Тип улаза"
+          },
+          "placeholder": {
+            "sr": "npr. Besplatno, Rezervacija, Plaćanje na licu mesta, Online",
+            "en": "e.g., Free, Reservation, Pay at venue, Online",
+            "sr-Cyrl": "нпр. Бесплатно, Резервација, Плаћање на лицу места, Онлајн"
+          }
+        },
+        {
+          "name": "uzrast",
+          "type": "text",
+          "label": {
+            "sr": "Preporučeni uzrast / publika",
+            "en": "Recommended audience",
+            "sr-Cyrl": "Препоручена публика"
+          },
+          "placeholder": {
+            "sr": "npr. Porodično, 12+, Odrasli",
+            "en": "e.g., Family, 12+, Adults",
+            "sr-Cyrl": "нпр. Породично, 12+, Одрасли"
+          }
+        },
+        {
+          "name": "tagovi",
+          "type": "text",
+          "label": {
+            "sr": "Tagovi (zarezom odvojeni)",
+            "en": "Tags (comma-separated)",
+            "sr-Cyrl": "Тагови (зарезом одвојени)"
+          },
+          "placeholder": {
+            "sr": "npr. muzika, gastro, tradicija",
+            "en": "e.g., music, food, tradition",
+            "sr-Cyrl": "нпр. музика, гастро, традиција"
+          }
+        },
+        {
+          "name": "aktivnosti",
+          "type": "text",
+          "label": {
+            "sr": "Aktivnosti / sadržaji",
+            "en": "Activities / content",
+            "sr-Cyrl": "Активности / садржаји"
+          },
+          "placeholder": {
+            "sr": "npr. Koncerti, Radionice, Izložbe, Defile, Takmičenja",
+            "en": "e.g., Concerts, Workshops, Exhibitions, Parade, Competitions",
+            "sr-Cyrl": "нпр. Концерти, Радионице, Изложбе, Дефиле, Такмичења"
+          }
+        },
+        {
+          "name": "organizator",
+          "type": "text",
+          "label": {
+            "sr": "Organizator",
+            "en": "Organizer",
+            "sr-Cyrl": "Организатор"
+          }
+        },
+        {
+          "name": "map_link",
+          "type": "url",
+          "label": {
+            "sr": "Link ka mapi (Google/OSM)",
+            "en": "Map link (Google/OSM)",
+            "sr-Cyrl": "Линк ка мапи (Google/OSM)"
+          }
+        },
+        {
+          "name": "zvanicni_sajt",
+          "type": "url",
+          "label": {
+            "sr": "Zvanični sajt",
+            "en": "Official website",
+            "sr-Cyrl": "Званични сајт"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika",
+            "en": "Hero image",
+            "sr-Cyrl": "Насловна слика"
+          }
+        },
+        {
+          "name": "galerija",
+          "type": "file",
+          "label": {
+            "sr": "Galerija (više slika)",
+            "en": "Gallery (multiple images)",
+            "sr-Cyrl": "Галерија (више слика)"
+          },
+          "property": "multiple"
+        },
+        {
+          "name": "video",
+          "type": "url",
+          "label": {
+            "sr": "Video link (YouTube/Vimeo)",
+            "en": "Video link (YouTube/Vimeo)",
+            "sr-Cyrl": "Видео линк (YouTube/Vimeo)"
+          }
+        }
+      ]
+    },
+    "Izlozbe": {
+      "sr": "Izložbe",
+      "en": "Exhibitions",
+      "sr-Cyrl": "Изложбе",
+      "icon": "fas fa-image",
+      "categories": [
+        "Likovna umetnost",
+        "Fotografija",
+        "Skulptura",
+        "Multimedija",
+        "Digitalna umetnost"
+      ],
+      "fields": [
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika izložbe",
+            "en": "Exhibition image",
+            "sr-Cyrl": "Насловна слика изложбе"
+          },
+          "required": true
+        },
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": {
+            "sr": "Naziv izložbe",
+            "en": "Exhibition name",
+            "sr-Cyrl": "Назив изложбе"
+          },
+          "required": true
+        },
+        {
+          "name": "autor",
+          "type": "text",
+          "label": {
+            "sr": "Autor izložbe",
+            "en": "Exhibition author",
+            "sr-Cyrl": "Аутор изложбе"
+          }
         },
         {
           "name": "opis",
@@ -94,12 +687,262 @@
           }
         },
         {
-          "name": "datum",
+          "name": "datumPocetka",
           "type": "date",
           "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
+            "sr": "Datum početka",
+            "en": "Start date",
+            "sr-Cyrl": "Датум почетка"
+          },
+          "required": true
+        },
+        {
+          "name": "datumZavrsetka",
+          "type": "date",
+          "label": {
+            "sr": "Datum završetka",
+            "en": "End date",
+            "sr-Cyrl": "Датум завршетка"
+          }
+        },
+        {
+          "name": "lokacija",
+          "type": "text",
+          "label": {
+            "sr": "Lokacija izložbe",
+            "en": "Exhibition location",
+            "sr-Cyrl": "Локација изложбе"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Zvanični link izložbe",
+            "en": "Official exhibition link",
+            "sr-Cyrl": "Званични линк изложбе"
+          }
+        },
+        {
+          "name": "sekcija",
+          "type": "relation",
+          "label": {
+            "sr": "Sekcija centra",
+            "en": "Center section",
+            "sr-Cyrl": "Секција центра"
+          },
+          "related_to": "Sekcije"
+        }
+      ]
+    },
+    "Predstave": {
+      "sr": "Predstave",
+      "en": "Plays",
+      "sr-Cyrl": "Представе",
+      "icon": "fas fa-theater-masks",
+      "categories": ["Drama", "Komedija", "Tragedija", "Mjuzikl", "Opera", "Balet"],
+      "fields": [
+        {
+          "name": "nazivPredstave",
+          "type": "text",
+          "label": {
+            "sr": "Naziv predstave",
+            "en": "Play title",
+            "sr-Cyrl": "Назив представе"
+          },
+          "required": true
+        },
+        {
+          "name": "autor",
+          "type": "text",
+          "label": {
+            "sr": "Autor",
+            "en": "Author",
+            "sr-Cyrl": "Аутор"
+          }
+        },
+        {
+          "name": "glumci",
+          "type": "text",
+          "label": {
+            "sr": "Glumci",
+            "en": "Actors",
+            "sr-Cyrl": "Глумци"
+          }
+        },
+        {
+          "name": "rezija",
+          "type": "text",
+          "label": {
+            "sr": "Režija",
+            "en": "Director",
+            "sr-Cyrl": "Режија"
+          }
+        },
+        {
+          "name": "zanr",
+          "type": "categories",
+          "label": {
+            "sr": "Žanr",
+            "en": "Genre",
+            "sr-Cyrl": "Жанр"
+          },
+          "required": true
+        },
+        {
+          "name": "datum_pocetka",
+          "type": "date",
+          "label": {
+            "sr": "Datum",
+            "en": "Date",
+            "sr-Cyrl": "Датум"
+          },
+          "required": true
+        },
+        {
+          "name": "vreme_pocetka",
+          "type": "time",
+          "label": {
+            "sr": "Vreme",
+            "en": "Time",
+            "sr-Cyrl": "Време"
+          }
+        },
+        {
+          "name": "kratak_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "trajanjeMin",
+          "type": "number",
+          "label": {
+            "sr": "Trajanje (min)",
+            "en": "Duration (min)",
+            "sr-Cyrl": "Трајање (мин)"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika predstave",
+            "en": "Play cover image",
+            "sr-Cyrl": "Насловна слика представе"
+          }
+        }
+      ]
+    },
+    "Filmovi": {
+      "sr": "Filmovi",
+      "en": "Movies",
+      "sr-Cyrl": "Филмови",
+      "icon": "fas fa-theater-masks",
+      "categories": ["Drama", "Komedija", "Mjuzikl", "Akcija", "Dokumentarac"],
+      "fields": [
+        {
+          "name": "nazivFilma",
+          "type": "text",
+          "label": {
+            "sr": "Naziv filma",
+            "en": "Movie title",
+            "sr-Cyrl": "Назив филма"
+          },
+          "required": true
+        },
+        {
+          "name": "reziser",
+          "type": "text",
+          "label": {
+            "sr": "Režiser",
+            "en": "Director",
+            "sr-Cyrl": "Режисер"
+          }
+        },
+        {
+          "name": "glumci",
+          "type": "text",
+          "label": {
+            "sr": "Glumci",
+            "en": "Actors",
+            "sr-Cyrl": "Глумци"
+          }
+        },
+        {
+          "name": "zanr",
+          "type": "categories",
+          "label": {
+            "sr": "Žanr",
+            "en": "Genre",
+            "sr-Cyrl": "Жанр"
+          },
+          "required": true
+        },
+        {
+          "name": "datum_pocetka",
+          "type": "date",
+          "label": {
+            "sr": "Datum",
+            "en": "Date",
+            "sr-Cyrl": "Датум"
+          },
+          "required": true
+        },
+        {
+          "name": "vreme_pocetka",
+          "type": "time",
+          "label": {
+            "sr": "Vreme",
+            "en": "Time",
+            "sr-Cyrl": "Време"
+          }
+        },
+        {
+          "name": "kratak_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "trajanjeMin",
+          "type": "number",
+          "label": {
+            "sr": "Trajanje (min)",
+            "en": "Duration (min)",
+            "sr-Cyrl": "Трајање (мин)"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika predstave",
+            "en": "Play cover image",
+            "sr-Cyrl": "Насловна слика представе"
+          }
+        }
+      ]
+    },
+    "Donacije I Podrska": {
+      "sr": "Partneri",
+      "en": "Partners",
+      "sr-Cyrl": "Партнери",
+      "icon": "fas fa-theater-masks",
+      "fields": [
+        {
+          "name": "partner",
+          "type": "text",
+          "label": {
+            "sr": "Partner",
+            "en": "Partner",
+            "sr-Cyrl": "Партнер"
           },
           "required": true
         },
@@ -107,19 +950,11 @@
           "name": "slika",
           "type": "file",
           "label": {
-            "sr": "Naslovna slika vesti",
-            "en": "News image",
-            "sr-Cyrl": "Насловна слика вести"
-          }
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Link vesti",
-            "en": "News link",
-            "sr-Cyrl": "Линк вести"
-          }
+            "sr": "Slika",
+            "en": "Image",
+            "sr-Cyrl": "Слика"
+          },
+          "required": true
         }
       ]
     }

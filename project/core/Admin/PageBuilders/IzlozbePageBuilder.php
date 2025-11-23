@@ -261,8 +261,8 @@ PHP;
 <main class="bg-gradient-to-br from-secondary_background to-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-primary-text mb-2">Događaji</h1>
-            <p class="text-secondary-text">Istražite našu bogatu ponudu kulturnih događaja</p>
+            <h1 class="text-3xl font-bold text-primary-text mb-2">Izložbe</h1>
+            <p class="text-secondary-text">Istražite izložbe</p>
         </div>
 
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
