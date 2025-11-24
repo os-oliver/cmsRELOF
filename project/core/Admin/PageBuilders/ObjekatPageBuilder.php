@@ -11,7 +11,7 @@ class ObjekatPageBuilder extends BasePageBuilder
     <div class="container mx-auto px-6 max-w-5xl">
 
       <!-- Naslov sekcije sa linijom -->
-      <h2 class="text-4xl font-extrabold text-text_primary mb-6 relative inline-block">
+      <h2 class="text-5xl font-bold text-center font-heading text-primary mb-6 relative inline-block">
         Naš Objekat
         <span class="block w-24 h-1 bg-primary mt-2 rounded-full"></span>
       </h2>

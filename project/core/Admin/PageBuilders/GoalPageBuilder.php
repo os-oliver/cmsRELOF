@@ -21,7 +21,7 @@ class GoalPageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
     <div class="relative z-10 w-full max-w-3xl mx-auto text-center text-secondary_text font-body">
         <h1 class="text-5xl mb-4 text-primary_text font-heading">Misija naše institucije</h1>
-        <h2 class="text-3xl mx-5 italic mb-4 text-justify"><?= $aboutUsData ?></h1>
+        <h2 class="text-3xl mx-5 font-body italic mb-4 text-justify"><?= $aboutUsData ?></h1>
     </div>
   </section>
 </main>

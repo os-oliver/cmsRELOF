@@ -154,10 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
 HTML;
 
     protected string $html = <<<'HTML'
-<main>
+<main class="bg-background min-h-screen pb-10">
     <div class="text-center px-2 pt-32">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
+        <h1 class="text-5xl font-bold font-heading text-primary mb-4">Dokumenti za preuzimanje</h1>
+        <p class="text-lg text-gray-600 font-body max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
 
         <div class="mx-auto max-w-6xl">
             <form id="filter-form" method="GET" action="" class="bg-white rounded-2xl shadow p-6 mb-8 border border-gray-100">
@@ -175,7 +175,7 @@ HTML;
                             <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>Najstariji prvo</option>
                             <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>Po nazivu</option>
                         </select>
-                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl whitespace-nowrap">Primeni</button>
+                        <button type="submit" class="bg-primary hover:primary_hover text-white px-6 py-3 rounded-xl whitespace-nowrap">Primeni</button>
                     </div>
 
                     <div class="w-full">
@@ -201,9 +201,6 @@ HTML;
                                 </label>
                             <?php endforeach; ?>
                         </div>
-                        </div>
-                    </div>
-
                     </div>
                 </div>
             </form>
@@ -287,7 +284,7 @@ HTML;
                         $endPage = min($totalPages, $page + 2);
                         for ($i = $startPage; $i <= $endPage; $i++):
                         ?>
-                            <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>" class="w-9 h-9 flex items-center justify-center rounded-full <?= $i == $page ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white' : 'bg-white hover:bg-gray-100' ?> shadow"><?= $i ?></a>
+                            <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>" class="w-9 h-9 flex items-center justify-center rounded-full <?= $i == $page ? 'bg-primary text-white' : 'bg-white hover:bg-gray-100' ?> shadow"><?= $i ?></a>
                         <?php endfor; ?>
                     </div>
 

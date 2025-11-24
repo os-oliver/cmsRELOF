@@ -6,12 +6,10 @@
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
       "categories": [
-        "Kultura",
-        "Obrazovanje",
-        "Inovacije",
-        "Zdravlje",
-        "Tehnologija",
-        "Naučni klub"
+        "Obaveštenja",
+        "Novi naslovi",
+        "Projekti",
+        "Konkursi"
       ],
       "fields": [
         {
@@ -44,11 +42,10 @@
             "sr-Cyrl": "Категорија вести"
           },
           "options": [
-            "Kultura",
-            "Obrazovanje",
-            "Inovacije",
-            "Zdravlje",
-            "Tehnologija"
+            "Obaveštenja",
+            "Novi naslovi",
+            "Projekti",
+            "Konkursi"
           ],
           "required": true
         },
@@ -86,6 +83,98 @@
             "sr": "Eksterni link",
             "en": "External link",
             "sr-Cyrl": "Екстерни линк"
+          }
+        }
+      ]
+    },
+    "Dogadjaji": {
+      "sr": "Događaji",
+      "en": "Events",
+      "sr-Cyrl": "Догађаји",
+      "icon": "fas fa-calendar-days",
+      "categories": [
+        "Promocije",
+        "Seminari",
+        "Radionice",
+        "Takmičenja",
+        "Izložbe",
+        "Projekcije"
+      ],
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naslov događaja",
+            "en": "Event title",
+            "sr-Cyrl": "Наслов догађаја"
+          },
+          "required": true
+        },
+        {
+          "name": "naziv",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija događaja",
+            "en": "Event category",
+            "sr-Cyrl": "Категорија догађаја"
+          },
+          "options": [
+            "Promocije",
+            "Seminari",
+            "Radionice",
+            "Takmičenja",
+            "Izložbe",
+            "Projekcije"
+          ],
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum održavanja",
+            "en": "Event date",
+            "sr-Cyrl": "Датум одржавања"
+          },
+          "required": true
+        },
+        {
+          "name": "time",
+          "type": "time",
+          "label": {
+            "sr": "Vreme početka",
+            "en": "Start time",
+            "sr-Cyrl": "Време почетка"
+          },
+          "required": true
+        },
+        {
+          "name": "location",
+          "type": "text",
+          "label": {
+            "sr": "Lokacija događaja",
+            "en": "Event location",
+            "sr-Cyrl": "Локација догађаја"
+          },
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis događaja",
+            "en": "Event description",
+            "sr-Cyrl": "Опис догађаја"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika događaja",
+            "en": "Event image",
+            "sr-Cyrl": "Насловна слика догађаја"
           }
         }
       ]

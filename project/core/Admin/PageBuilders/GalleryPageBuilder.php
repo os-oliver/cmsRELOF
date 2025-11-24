@@ -184,8 +184,8 @@ CSS;
 
     <section class="container mx-auto px-4 py-12 pt-32 text-secondary_text font-body">
         <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold font-heading text-primary_text mb-2">Kolekcija Slika</h2>
-            <p class="text-lg font-heading2 text-secondary_text">
+            <h2 class="text-5xl font-bold font-heading text-primary mb-2">Kolekcija slika</h2>
+            <p class="text-lg font-body text-secondary_text">
                 Istražite našu pažljivo odabranu kolekciju slika. Kliknite na bilo koju sliku da je pogledate u punoj veličini i da se krećete kroz galeriju.
             </p>
         </div>
@@ -290,7 +290,8 @@ HTML;
         \$documentModal = new Gallery();
         [\$images, \$totalCount] = \$documentModal->list(
             limit: \$limit,
-            offset: \$offset
+            offset: \$offset,
+            lang: \$locale
         );
         \$totalPages = (int) ceil(\$totalCount / \$limit);
         PHP;
