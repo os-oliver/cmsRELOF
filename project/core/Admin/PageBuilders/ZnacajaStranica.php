@@ -71,7 +71,7 @@ class ZnacajaStranica extends BasePageBuilder
           <p class="lead text-secondary_text/90 mt-2">
             Pravo na pristup informacijama od javnog značaja ostvaruje se podnošenjem zahteva Turističkoj organizaciji
             opštine Babušnica kao organu vlasti. Na ovoj stranici nalazi se kratko uputstvo i obrazac
-            <strong>(PDF)</strong> za podnošenje zahteva.
+            <strong>(DOC)</strong> za podnošenje zahteva.
           </p>
         </section>
 
@@ -79,7 +79,7 @@ class ZnacajaStranica extends BasePageBuilder
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Postupak podnošenja zahteva</h2>
           <ol class="list-decimal pl-6 space-y-2">
             <li>
-              <strong>Preuzmite formular</strong> klikom na dugme „Preuzmi formular (PDF)”.
+              <strong>Preuzmite formular</strong> klikom na dugme „Preuzmi formular (DOC)”.
             </li>
             <li>
               <strong>Popunite formular</strong> na računaru (elektronski) ili odštampan, jasno navedite
@@ -157,12 +157,12 @@ class ZnacajaStranica extends BasePageBuilder
             </p>
             <p class="mt-3">
               <a class="inline-flex items-center gap-2 bg-primary hover:bg-primary_hover text-white font-semibold rounded-full px-4 py-2"
-                 href="/docs/sablon-zahtev.pdf" download>
+                 href="/docs/zahtev-za-pristup-informacijama.doc" download="">
                 <svg class="logocolor1" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M14 2H6a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h10a2 2 0 0 0 2-2V8z"></path>
                   <path d="M14 2v6h6"></path>
                 </svg>
-                Preuzmi formular (PDF)
+                Preuzmi formular (DOC)
               </a>
             </p>
 

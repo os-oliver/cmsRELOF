@@ -761,6 +761,12 @@ class PageExporter
                 return new PublikacijePageBuilder('Publikacije');
             case 'brendovi':
                 return new DynamicPageBuilder('Brendovi');
+            case 'koncerti':
+                return new DynamicPageBuilder('Koncerti');
+            case 'filmovi':
+                return new DynamicPageBuilder('Filmovi');
+            case 'donacije-i-podrska':
+                return new DynamicPageBuilder('Donacije I Podrska');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -833,7 +839,7 @@ class PageExporter
         } elseif (strpos($name, 'organizaciona-struktura') !== false) {
             return 'organizaciona-struktura';
         } elseif (strpos($name, 'rukovodstvo') !== false) {
-            return 'rukovodstvo';
+            return 'organi-upravljanja';
         } elseif (strpos($name, 'misija-i-vizija') !== false) {
             return 'misija-i-vizija';
         } elseif (strpos($name, 'uvod') !== false) {
@@ -878,6 +884,10 @@ class PageExporter
             return 'publikacije';
         }  elseif (strpos($name, 'brendovi') !== false) {
             return 'brendovi';
+        }elseif (strpos($name, 'koncerti') !== false) {
+            return 'koncerti';
+        }elseif (strpos($name, 'filmovi') !== false) {
+            return 'filmovi';
         }
         return 'basic';
     }
