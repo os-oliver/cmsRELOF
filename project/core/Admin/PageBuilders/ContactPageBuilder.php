@@ -138,17 +138,17 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 HTML;
 
     protected string $html = <<<'HTML'
-<main class="pt-2 flex-grow">
+<main class="pt-2 flex-grow bg-background">
 <div class="py-12 mt-20 px-4 flex-1">
         <div>
-            <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-primary hover:primary_hover text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
+            <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-secondary hover:secondary_hover text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
                 A+
             </button>
         </div>
         <div class="max-w-6xl mx-auto font-body">
             <!-- Header -->
             <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold font-heading text-gray-800 mb-6 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">
+                <h1 class="text-4xl font-bold font-heading text-primary_text mb-5">
                     Kontaktirajte nas
                 </h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">

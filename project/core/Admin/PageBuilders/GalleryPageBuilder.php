@@ -290,7 +290,8 @@ HTML;
         \$documentModal = new Gallery();
         [\$images, \$totalCount] = \$documentModal->list(
             limit: \$limit,
-            offset: \$offset
+            offset: \$offset,
+            lang: \$locale
         );
         \$totalPages = (int) ceil(\$totalCount / \$limit);
         PHP;

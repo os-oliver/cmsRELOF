@@ -154,10 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
 HTML;
 
     protected string $html = <<<'HTML'
-<main>
-    <div class="text-center px-2 pt-32">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
+<main class="bg-background min-h-screen pb-10">
+    <div class="text-center px-2 pt-32 font-body text-secondary_text">
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-primary_text mb-4">Dokumenti za preuzimanje</h1>
+        <p class="text-lg max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
 
         <div class="mx-auto max-w-6xl">
             <form id="filter-form" method="GET" action="" class="bg-white rounded-2xl shadow p-6 mb-8 border border-gray-100">
@@ -201,9 +201,6 @@ HTML;
                                 </label>
                             <?php endforeach; ?>
                         </div>
-                        </div>
-                    </div>
-
                     </div>
                 </div>
             </form>

@@ -374,6 +374,18 @@
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primary"></i>Repertoar
                     </a>
+                    <a static="true" href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
+                        <i class="fas fa-flag mr-3 text-primary"></i>Arhiva
+                    </a>
+                    <a static="true" href="#" class="hidden">
+                        Arhiva1
+                    </a>
+                    <a static="true" href="#" class="hidden">
+                        Arhiva2
+                    </a>
+                    <a static="true" href="#" class="hidden">
+                        Arhiva3
+                    </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primary"></i>Vesti
                     </a>
@@ -484,6 +496,19 @@
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Repertoar</span>
+                </a>
+                <a static="true" href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <i class="fas fa-flag mr-2 text-primary"></i>
+                    <span class="hidden xl:inline">Arhiva</span>
+                </a>
+                <a static="true" href="#" class="hidden">
+                    Arhiva1
+                </a>
+                <a static="true" href="#" class="hidden">
+                    Arhiva2
+                </a>
+                <a static="true" href="#" class="hidden">
+                    Arhiva3
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-calendar-alt mr-2 text-primary"></i>
@@ -748,12 +773,12 @@
                 </p>
             </div>
 
-            <div id="vestiCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+            <div id="vestiCards" class="flex justify-center gap-8 flex-wrap">
 
                 <!-- vest 1 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="w-full h-48 overflow-hidden rounded-lg">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" class="w-full h-full object-cover" />
                     </div>
                     <div class="p-6">
 
@@ -777,8 +802,8 @@
 
                 <!-- vest 2 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="w-full h-48 overflow-hidden rounded-lg">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" class="w-full h-full object-cover" />
                     </div>
                     <div class="p-6">
 
@@ -802,8 +827,33 @@
 
                 <!-- vest 3 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="w-full h-48 overflow-hidden rounded-lg">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+
+                        <div class="flex items-center mb-3">
+                            <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
+                        </div>
+
+                        <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
+
+                        <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
+
+                        <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
+                            Saznajte više
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                    <div class="w-full h-48 overflow-hidden rounded-lg">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" class="w-full h-full object-cover" />
                     </div>
                     <div class="p-6">
 
@@ -871,9 +921,9 @@
                     <ul class="space-y-3">
                         <li><a href="https://www.kultura.gov.rs/" class="text-logocolor2/90 hover:text-primary_text transition-colors">Ministarstvo kulture i informisanja RS</a></li>
                         <li><a href="https://www.pirot.rs/" class="text-logocolor2/90 hover:text-primary_text transition-colors">Grad Pirot - lokalna samouprava</a></li>
-                        <li><a href="o-nama/bon-ton" class="text-logocolor2/90 hover:text-primary_text transition-colors">Pozorišni bon ton</a></li>
-                        <li><a href="o-nama/rezervacija-karata" class="text-logocolor2/90 hover:text-primary_text transition-colors">Rezervacija karata - Marketing NP Pirot</a></li>
-                        <li><a href="o-nama/scena" class="text-logocolor2/90 hover:text-primary_text transition-colors">Scena Narodnog pozorišta Pirot</a></li>
+                        <li><a href="/o-nama/bon-ton" class="text-logocolor2/90 hover:text-primary_text transition-colors">Pozorišni bon ton</a></li>
+                        <li><a href="/o-nama/rezervacija-karata" class="text-logocolor2/90 hover:text-primary_text transition-colors">Rezervacija karata - Marketing NP Pirot</a></li>
+                        <li><a href="/o-nama/scena" class="text-logocolor2/90 hover:text-primary_text transition-colors">Scena Narodnog pozorišta Pirot</a></li>
                         <li><a href="https://informator.poverenik.rs/informator?org=PdspbBiA5onEJPonZ" class="text-logocolor2/90 hover:text-primary_text transition-colors">Informator o radu</a></li>
                     </ul>
                 </div>

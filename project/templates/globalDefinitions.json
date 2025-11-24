@@ -87,8 +87,8 @@
           "type": "textarea",
           "label": {
             "sr": "Biografija",
-            "en": "biography",
-            "sr-Cyrl": "Биографиј"
+            "en": "Biography",
+            "sr-Cyrl": "Биографија"
           }
         },
         {

@@ -31,25 +31,8 @@
             "en": "News date",
             "sr-Cyrl": "Датум вести"
           },
-          "required": true,
+          "required": false,
           "property": "auto"
-        },
-        {
-          "name": "naziv",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
-          },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
-          "required": true
         },
         {
           "name": "autor",
@@ -137,87 +120,13 @@
         },
         {
           "name": "opisPredstave",
-          "type": "text",
+          "type": "textarea",
           "label": {
             "sr": "Opis predstave",
             "en": "Play description",
             "sr-Cyrl": "Опис представе"
           },
           "required": true
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika predstave",
-            "en": "Play cover image",
-            "sr-Cyrl": "Насловна слика представе"
-          }
-        }
-      ]
-    },
-    "Predstave": {
-      "sr": "Predstave",
-      "en": "Plays",
-      "sr-Cyrl": "Представе",
-      "icon": "fas fa-theater-masks",
-      "categories": ["Drama", "Komedija", "Tragedija", "Muzikal", "Opera", "Balet"],
-      "fields": [
-        {
-          "name": "nazivPredstave",
-          "type": "text",
-          "label": {
-            "sr": "Naziv predstave",
-            "en": "Play title",
-            "sr-Cyrl": "Назив представе"
-          },
-          "required": true
-        },
-        {
-          "name": "autor",
-          "type": "text",
-          "label": {
-            "sr": "Autor",
-            "en": "Author",
-            "sr-Cyrl": "Аутор"
-          }
-        },
-        {
-          "name": "glumci",
-          "type": "text",
-          "label": {
-            "sr": "Glumci",
-            "en": "Actors",
-            "sr-Cyrl": "Глумци"
-          }
-        },
-        {
-          "name": "rezija",
-          "type": "text",
-          "label": {
-            "sr": "Režija",
-            "en": "Director",
-            "sr-Cyrl": "Режија"
-          }
-        },
-        {
-          "name": "zanr",
-          "type": "categories",
-          "label": {
-            "sr": "Žanr",
-            "en": "Genre",
-            "sr-Cyrl": "Жанр"
-          },
-          "required": true
-        },
-        {
-          "name": "trajanjeMin",
-          "type": "number",
-          "label": {
-            "sr": "Trajanje (min)",
-            "en": "Duration (min)",
-            "sr-Cyrl": "Трајање (мин)"
-          }
         },
         {
           "name": "slika",

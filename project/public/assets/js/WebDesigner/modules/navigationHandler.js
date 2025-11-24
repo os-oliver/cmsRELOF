@@ -105,17 +105,17 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
                 ?>
                 <div class="locale dropdown nonPage relative group">
                     <button
-                        class="nav-link text-primary_text font-semibold hover:text-secondary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
+                        class="nav-link text-secondary_text hover:text-primary_text font-semibold transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
                         <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
                     <div
-                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3">
+                        class="dropdown-menu absolute top-full right-0  min-w-max bg-paper rounded-xl shadow-2xl border border-gray-100 z-50 py-2 backdrop-blur-sm bg-background">
                         <?php foreach ($languages as $key => $lang): ?>
-                            <a href="<?= buildLocaleUrl($key) ?>"
-                                class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-primary_text text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <a href="?locale=<?= $key ?>"
+                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-gray-50 text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
                                 <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
                                 <span class="font-medium"><?= $lang['label'] ?></span>
                             </a>

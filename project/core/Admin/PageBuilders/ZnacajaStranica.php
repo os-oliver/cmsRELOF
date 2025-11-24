@@ -65,7 +65,7 @@ class ZnacajaStranica extends BasePageBuilder
       <!-- MAIN -->
       <article>
         <section class="mb-4">
-          <h1 class="font-heading text-4xl md:text-5xl font-extrabold text-primary_text tracking-tight">
+          <h1 class="font-heading text-3xl md:text-5xl font-extrabold text-primary_text tracking-tight">
             Informacije od javnog značaja
           </h1>
           <p class="lead text-secondary_text/90 mt-2">
