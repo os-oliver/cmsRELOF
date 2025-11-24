@@ -206,10 +206,10 @@
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3">
         <div class="w-11 h-11 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-          <img src="/assets/img/LOGO.png" alt="" style="width:75px;height:auto;" />
+          <img src="/assets/img/logo2.png" alt="TOPirot" style="width:75px;height:auto;" />
         </div>
         <div class="hidden sm:block">
-          <div class="text-xl font-bold text-primary_text font-heading2">OPŠTINA BABUŠNICA</div>
+          <div class="text-xl font-bold text-primary_text font-heading2">PIROT</div>
           <div class="text-xs text-secondary_text font-body">Turistička Organizacija</div>
         </div>
       </a>
@@ -786,12 +786,13 @@
     </div>
 
     <div class="text-center mt-16">
-      <button id="vestiView"
-              class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl font-heading2">
-        <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
-        Pogledaj sve vesti
-        <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-      </button>
+      <a href="/vesti"
+        id="vestiView"
+        class="inline-flex items-center gap-3 bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-8 py-3 rounded-full font-heading2 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+        <i class="fas fa-newspaper group-hover:rotate-12 transition-transform"></i>
+        <span>Pogledaj sve vesti</span>
+        <i class="fas fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
+      </a>
     </div>
   </div>
 </section>
@@ -1186,57 +1187,101 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
       <!-- Scroll area -->
       <div
         id="partnersScroller"
-        class="scrollbar-hide overflow-x-auto px-8 md:px-12"
+        class="scrollbar-hide overflow-hidden px-8 md:px-12"
       >
         <div
           id="partnersTrack"
           class="partners-strip flex items-center gap-16 py-4 justify-start"
         >
           <!-- 13 placeholders: replace href/src with real links + logos -->
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-01.png" alt="Partner 1" class="h-12 md:h-14 w-auto" />
+          <a href="https://pirotskapeglana.rs/kvalitet/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/peglana.png" alt="Pirotska peglana" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-02.png" alt="Partner 2" class="h-12 md:h-14 w-auto" />
+          <a href="https://damskosrce.com/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/damskosrce.png" alt="Damsko Srce" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-03.png" alt="Partner 3" class="h-12 md:h-14 w-auto" />
+          <a href="https://www.skijalistasrbije.rs/sr" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/skijalista.png" alt="Skijališta Srbije" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-04.png" alt="Partner 4" class="h-12 md:h-14 w-auto" />
+          <a href="https://srbijasume.rs/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/sume.png" alt="Šume Srbije" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-05.png" alt="Partner 5" class="h-12 md:h-14 w-auto" />
+          <a href="https://europa.rs/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/europa.png" alt="Evropa" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-06.png" alt="Partner 6" class="h-12 md:h-14 w-auto" />
+          <a href="https://bookaweb.com/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/bookaweb.png" alt="Bookaweb" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-07.png" alt="Partner 7" class="h-12 md:h-14 w-auto" />
+          <a href="http://www.muzejpirot.com/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/muzej.png" alt="Muzej Pirot" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-08.png" alt="Partner 8" class="h-12 md:h-14 w-auto" />
+          <a href="https://www.pirot.rs/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/pirot.png" alt="Pirot" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-09.png" alt="Partner 9" class="h-12 md:h-14 w-auto" />
+          <a href="https://www.serbia.travel/%d0%bf%d0%be%d1%87%d0%b5%d1%82%d0%bd%d0%b0.283.html" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/travel.png" alt="Srbija Travel" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-10.png" alt="Partner 10" class="h-12 md:h-14 w-auto" />
+          <a href="https://www.jpstaraplanina.rs/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/staraplanina.png" alt="JP Stara Planina" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-11.png" alt="Partner 11" class="h-12 md:h-14 w-auto" />
+          <a href="https://www.grlica.org/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/grlica.png" alt="Grlica" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-12.png" alt="Partner 12" class="h-12 md:h-14 w-auto" />
+          <a href="https://mtt.gov.rs/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/srb.png" alt="Partner 12" class="h-12 md:h-14 w-auto" />
           </a>
-          <a href="#" target="_blank" rel="noopener">
-            <img src="/assets/img/partneri/partner-13.png" alt="Partner 13" class="h-12 md:h-14 w-auto" />
+          <a href="https://www.dkpirot.com/" target="_blank" rel="noopener">
+            <img src="/assets/img/partneri/dom.png" alt="Dom Kulture" class="h-12 md:h-14 w-auto" />
           </a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    const track   = document.getElementById('partnersTrack');
+    const prevBtn = document.getElementById('partnersPrev');
+    const nextBtn = document.getElementById('partnersNext');
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    // Take original list of partner items
+    const allItems = Array.from(track.children);
+    const total    = allItems.length;
+    const visibleCount = 10; // show exactly 10 at a time
+    let startIndex = 0;
+
+    // Render current window of 10 items
+    function render() {
+      track.innerHTML = '';
+      for (let i = 0; i < visibleCount; i++) {
+        const idx = (startIndex + i) % total;
+        // cloneNode so we don't destroy original list in allItems
+        const clone = allItems[idx].cloneNode(true);
+        track.appendChild(clone);
+      }
+    }
+
+    function next() {
+      startIndex = (startIndex + 1) % total;
+      render();
+    }
+
+    function prev() {
+      startIndex = (startIndex - 1 + total) % total;
+      render();
+    }
+
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+
+    // initial draw
+    render();
+  })();
+</script>
+
 
 
   <!-- ===== Footer ===== -->
@@ -1253,29 +1298,25 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
             </svg>
           </div>
           <h3 class="text-xl font-heading text-gray-100">
-            Turistička organizacija opštine Babušnica
+            Turistička organizacija Pirot
           </h3>
         </div>
         <p class="mb-4 font-body">
-          Zvanična turistička organizacija opštine Babušnica i Lužničkog kraja.
+          Zvanična turistička organizacija grada Pirota.
         </p>
         <div class="flex space-x-3">
-          <a href="https://www.facebook.com/turistickaorganizacija.babusnica" target="_blank" rel="noopener"
+          <a href="https://www.facebook.com/turistickaorganizacija.pirota" target="_blank" rel="noopener"
              class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="https://www.instagram.com/to_babusnica/" target="_blank" rel="noopener"
-             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.youtube.com/@TuristickaorganizacijaBabusnica" target="_blank" rel="noopener"
-             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+          <a href="https://www.youtube.com/channel/UC4pINCX-AYozf3HxrQ8Np6g" target="_blank" rel="noopener"
+             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-red-600 flex items-center justify-center text-background transition-colors">
             <i class="fab fa-youtube"></i>
           </a>
         </div>
       </div>
 
-      <!-- Kolona 2: brzi linkovi -->
+      <!-- Kolona 2: brzi linkovi (ostaje isto) -->
       <div>
         <h4 class="mb-6 font-heading">
           Brzi linkovi
@@ -1290,7 +1331,7 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
         </ul>
       </div>
 
-      <!-- Kolona 3: kontakt informacije -->
+      <!-- Kolona 3: kontakt informacije (Pirot) -->
       <div>
         <h4 class="mb-6 font-heading">
           Informacije
@@ -1298,40 +1339,40 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
 
         <div class="mb-6">
           <p class="font-semibold mb-2 font-heading2">
-            Turistička organizacija opštine Babušnica
+            Turistička organizacija Pirot
           </p>
           <ul class="space-y-2">
             <li class="flex items-start">
               <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-              <span class="font-body">010/383-161</span>
+              <span class="font-body">010/320-838</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-              <a href="mailto:turizambabusnica@gmail.com"
+              <a href="mailto:top010@mts.rs"
                  data-translate="off"
                  class="font-body hover:underline">
-                turizambabusnica@gmail.com
+                top010@mts.rs
               </a>
             </li>
             <li class="flex items-start">
               <i class="fas fa-globe text-logocolor2 mt-1 mr-3"></i>
-              <a href="https://www.tobabusnica.com/" target="_blank" rel="noopener"
+              <a href="https://www.topirot.com/" target="_blank" rel="noopener"
                  data-translate="off"
                  class="font-body hover:underline">
-                www.tobabusnica.com
+                www.topirot.com
               </a>
             </li>
             <li class="flex items-start">
               <i class="fas fa-map-marker-alt text-logocolor2 mt-1 mr-3"></i>
               <span class="font-body">
-                ul. Stevana Sindelića bb, 18330 Babušnica
+                ul. Srpskih vladara br. 77, 18300 Pirot, Srbija
               </span>
             </li>
           </ul>
         </div>
       </div>
 
-      <!-- Kolona 4: mapa lokacije -->
+      <!-- Kolona 4: mapa lokacije (Pirot) -->
       <div>
         <h4 class="mb-6 font-heading">
           Mapa lokacije
@@ -1339,11 +1380,11 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
 
         <div class="mb-6">
           <p class="font-semibold mb-2 font-heading2">
-            Turistička organizacija opštine Babušnica
+            Turistička organizacija Pirot
           </p>
           <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3484.0437752145644!2d22.406929!3d43.067608!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475514de93821a7b%3A0xa7238b91a9a3d97!2z0JrRg9C_0LDQu9C40YjQvdC4INC60L7QvNC_0LvQtdC60YEg0YMg0JHQsNCx0YPRiNC90LjRhtC4!5e1!3m2!1ssr!2srs!4v1763924539880!5m2!1ssr!2srs"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d563.9686976724253!2d22.58566179464235!3d43.155670432491405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47553d2ff58953c5%3A0x8813e4c97af63631!2sSrpskih%20Vladara%2077%2C%20Pirot%2018300!5e1!3m2!1sen!2srs!4v1763993413858!5m2!1sen!2srs"
               width="320"
               height="200"
               style="border:0;"
@@ -1356,7 +1397,7 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
       </div>
     </div>
 
-    <!-- Donji deo footera ostaje isti -->
+    <!-- Donji deo footera OSTAVLJEN KAKAV JESTE -->
     <div class="text-center text-sm">
       <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
         <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo" class="w-full max-w-md md:max-w-lg h-auto mb-4">
