@@ -658,7 +658,7 @@ class PageExporter
     {
         switch (strtolower($pageType)) {
 
-            case 'galerija':
+            case 'multimedija':
                 return new GalleryPageBuilder($name, $this->data);
             case 'kontakt':
                 return new ContactPageBuilder($name, $this->data);
@@ -666,7 +666,7 @@ class PageExporter
                 return new DocumentsPageBuilder($name, $this->data);
             case 'događaji':
             case 'dogadjaji':
-                return new EventsPageBuilder($name);
+                return new DynamicPageBuilder($name);
             case 'misija':
                 return new MissionPageBuilder($name, $this->data);
             case 'cilj':
@@ -704,7 +704,7 @@ class PageExporter
             case 'manifestacije':
                 return new DynamicPageBuilder('Manifestacije');
             case 'smestaj':
-                return new DynamicPageBuilder('Smestaj');
+                return new DynamicPageBuilder('Smeštaj');
             case 'aktivnosti':
                 return new DynamicPageBuilder('Aktivnosti');
             case 'gastronomija':
@@ -759,12 +759,8 @@ class PageExporter
                 return new OrganizacijaPageBuilder('OrganiUpravljanja');
             case 'publikacije':
                 return new PublikacijePageBuilder('Publikacije');
-            case 'koncerti':
-                return new DynamicPageBuilder('Koncerti');
-            case 'filmovi':
-                return new DynamicPageBuilder('Filmovi');
-            case 'donacije-i-podrska':
-                return new DynamicPageBuilder('Donacije I Podrska');
+            case 'brendovi':
+                return new DynamicPageBuilder('Brendovi');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -774,8 +770,8 @@ class PageExporter
     {
         error_log("nameL:" . $name);
         $name = strtolower($name);
-        if (strpos($name, 'galerija') !== false) {
-            return 'galerija';
+        if (strpos($name, 'multimedija') !== false) {
+            return 'multimedija';
         } elseif (strpos($name, 'kontakt') !== false) {
             return 'kontakt';
         } elseif (strpos($name, 'dokumenti') !== false) {
@@ -837,7 +833,7 @@ class PageExporter
         } elseif (strpos($name, 'organizaciona-struktura') !== false) {
             return 'organizaciona-struktura';
         } elseif (strpos($name, 'rukovodstvo') !== false) {
-            return 'organi-upravljanja';
+            return 'rukovodstvo';
         } elseif (strpos($name, 'misija-i-vizija') !== false) {
             return 'misija-i-vizija';
         } elseif (strpos($name, 'uvod') !== false) {
@@ -880,12 +876,9 @@ class PageExporter
             return 'organi-upravljanja';
         } elseif (strpos($name, 'publikacije') !== false) {
             return 'publikacije';
-        }elseif (strpos($name, 'koncerti') !== false) {
-            return 'koncerti';
-        }elseif (strpos($name, 'filmovi') !== false) {
-            return 'filmovi';
+        }  elseif (strpos($name, 'brendovi') !== false) {
+            return 'brendovi';
         }
-
         return 'basic';
     }
 
