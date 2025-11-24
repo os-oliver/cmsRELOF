@@ -141,14 +141,14 @@ HTML;
 <main class="pt-2 flex-grow">
 <div class="py-12 mt-20 px-4 flex-1">
         <div>
-            <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
+            <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-primary hover:primary_hover text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
                 A+
             </button>
         </div>
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-6xl mx-auto font-body">
             <!-- Header -->
             <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">
+                <h1 class="text-5xl font-bold font-heading text-gray-800 mb-6 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">
                     Kontaktirajte nas
                 </h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -161,7 +161,7 @@ HTML;
                 <!-- Contact Info -->
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-3xl shadow-2xl p-8 card-hover h-fit">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-8">Kontakt informacije</h2>
+                        <h2 class="text-3xl font-bold font-heading text-gray-800 mb-8">Kontakt informacije</h2>
 
                         <div class="space-y-8">
                             <div class="flex items-start space-x-6">
@@ -173,9 +173,8 @@ HTML;
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">Centar za umetnost i baštinu<br>Trg
-                                        slobode 1<br>21000 Novi Sad, Srbija</p>
+                                    <h3 class="text-xl font-heading text-gray-800 mb-2">Adresa</h3>
+                                    <p class="text-gray-600 leading-relaxed">Branka Radičevića 1<br>Pirot, Srbija</p>
                                 </div>
                             </div>
 
@@ -187,9 +186,9 @@ HTML;
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
-                                    <p class="text-gray-600 text-lg">+381 21 123 456</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <h3 class="text-xl font-heading text-gray-800 mb-2">Telefon</h3>
+                                    <p class="text-gray-600 text-lg">010/321 587</p>
+                                    <p class="text-gray-600 text-lg">010/322 677</p>
                                 </div>
                             </div>
 
@@ -201,27 +200,9 @@ HTML;
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">info@kulturnynexus.rs</p>
-                                    <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-10 p-6 bg-gradient-to-br from-orange-50 to-blue-50 rounded-2xl border border-orange-100">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Radno vreme</h3>
-                            <div class="text-gray-700 space-y-2">
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Ponedeljak - Petak:</span>
-                                    <span>09:00 - 17:00</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Subota:</span>
-                                    <span>10:00 - 14:00</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Nedelja:</span>
-                                    <span class="text-red-500">Zatvoreno</span>
+                                    <h3 class="text-xl font-heading text-gray-800 mb-2">Email</h3>
+                                    <p class="text-gray-600 text-lg" data-translate="off">pozoristepi@open.telekom.rs</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">pozoristepi@gmail.com</p>
                                 </div>
                             </div>
                         </div>
@@ -242,9 +223,9 @@ HTML;
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-green-800 font-bold text-lg" id="success-title">Vaša poruka je
+                                    <p class="text-green-800 font-bold font-heading text-lg" id="success-title">Vaša poruka je
                                         uspešno poslata!</p>
-                                    <p class="text-green-700">Odgovoriće vam u najkraćem mogućem roku.</p>
+                                    <p class="text-green-700">Odgovoriće Vam u najkraćem mogućem roku.</p>
                                 </div>
                             </div>
                         </div>
@@ -253,13 +234,13 @@ HTML;
                         <form id="contact-form" class="space-y-6">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3">
+                                    <label class="block text-sm text-gray-700 mb-3">
                                         Ime i prezime *
                                     </label>
                                     <input type="text" name="ime" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="Unesite vaše ime i prezime">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3">
+                                    <label class="block text-sm text-gray-700 mb-3">
                                         Email adresa *
                                     </label>
                                     <input type="email" name="email" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="vasa.email@primer.com">
@@ -268,13 +249,13 @@ HTML;
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3">
+                                    <label class="block text-sm text-gray-700 mb-3">
                                         Broj telefona
                                     </label>
                                     <input type="tel" name="telefon" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="+381 xx xxx xxxx">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-3">
+                                    <label class="block text-sm text-gray-700 mb-3">
                                         <span id="subject-label">Naslov poruke *</span>
                                     </label>
                                     <input type="text" name="naslov" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="Kratko opišite razlog kontakta" id="subject-input">
@@ -282,14 +263,14 @@ HTML;
                             </div>
 
                             <div>
-                                <label class="block text-sm font-bold text-gray-700 mb-3">
+                                <label class="block text-sm text-gray-700 mb-3">
                                     <span id="message-label">Vaša poruka *</span>
                                 </label>
                                 <textarea name="poruka" required="" rows="6" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg resize-none" placeholder="Detaljno opišite vaš upit ili problem..." id="message-input"></textarea>
                             </div>
 
                             <div class="pt-6">
-                                <button type="submit" class="w-full text-white font-bold py-5 px-8 rounded-2xl submit-btn text-lg" id="submit-button">
+                                <button type="submit" class="w-full text-white py-5 px-8 rounded-2xl submit-btn text-lg" id="submit-button">
                                     <span class="flex items-center justify-center space-x-3">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
