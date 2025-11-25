@@ -730,12 +730,11 @@
 
             <!-- Tekstualni deo -->
             <div class="p-6 flex flex-col h-full">
-              <h3 id="g-naziv"
-                  class="text-2xl font-heading font-semibold text-primary_text mb-4 hover:text-primary transition-colors duration-200 line-clamp-2">
+              <p id="g-naziv" class="text-2xl font-heading font-semibold text-primary_text mb-4 hover:text-primary transition-colors duration-200">
                 Kreativni impulsi
-              </h3>
+              </p>
 
-              <p class="text-sm text-secondary_text mb-6 line-clamp-3">
+              <p id="g-opis" class="text-sm text-secondary_text mb-6 line-clamp-3">
                 Izložba savremene umetnosti koja kroz različite medije i autorske poetike promišlja identitet,
                 nasleđe i svakodnevicu Ponišavlja.
               </p>
@@ -894,7 +893,7 @@
                 Novi kulturni centar otvara vrata građanima
               </h3>
 
-              <p id="g-opis"
+              <p id="g-tekst"
                 class="text-sm text-secondary_text leading-relaxed mb-5 line-clamp-3">
                 Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar kreativnosti
                 i umetnosti u našem gradu.
