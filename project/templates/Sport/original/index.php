@@ -116,7 +116,7 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #1E40AF, #F59E0B);
+            background: linear-gradient(180deg, #2e51b1ff, #97b4f3ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -266,7 +266,6 @@
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-primary"></i>Početna
                     </a>
-
                     <!-- O nama dropdown -->
                     <div class="mobile-dropdown">
                         <button
@@ -279,17 +278,13 @@
                                 id="mobileAboutIcon"></i>
                         </button>
                         <div class="ml-6 mt-2 space-y-2 mobile-dropdown-menu" id="mobileAboutMenu">
-                            <a data-page="Uvod" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-book mr-2 text-primary"></i>Uvod
-                            </a>
                             <a data-page="Misija i vizija" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-flag mr-2 text-secondary"></i>Misija i vizija
                             </a>
                             <a data-page="Istorijat" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-history mr-2 text-accent"></i>Istorijat
+                                Istorijat
                             </a>
                             <a data-page="Organizaciona struktura" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
@@ -309,8 +304,6 @@
                             </a>
                         </div>
                     </div>
-
-
 
                     <!-- Ponuda dropdown -->
                     <div class="mobile-dropdown">
@@ -334,6 +327,11 @@
                             </a>
                         </div>
                     </div>
+
+                    <a data-page="Projekti" href="#"
+                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
+                        <i class="fas fa-images mr-3 text-secondary"></i>Projekti
+                    </a>
 
                     <a data-page="Galerija" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
@@ -374,7 +372,6 @@
                     </a>
 
                     <!-- Language Selector -->
-                    <!-- Language Selector -->
                     <div class="border-t border-gray-200 pt-4 mt-4">
                         <div class="mobile-dropdown mobile-language">
                             <button
@@ -399,10 +396,10 @@
                                     Српски (Ћирилица)
                                 </button>
 
-                                <button data-locale="en"
+                                <!-- <button data-locale="en"
                                     class="block w-full text-left px-4 py-2 hover:bg-surface rounded">
                                     English
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </div>
@@ -424,12 +421,14 @@
         <div class="w-full mx-auto px-8 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div
-                    class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-lg energy-pulse">
-                    <i class="fas fa-dumbbell text-2xl text-white"></i>
+                class="w-12 h-12 flex items-center justify-center">
+                    <a href="/">
+                        <img src="/assets/img/logo.png" height="48" />
+                    </a>
                 </div>
                 <div>
-                    <h1 class="text-xl font-heading font-bold text-secondary tracking-wide">SPORTSKI ARENA</h1>
-                    <p class="text-xs text-primary tracking-widest font-oswald uppercase">Profesionalni Sportski Objekat
+                    <h1 class="text-xl font-heading font-bold text-secondary tracking-wide">SPORTSKI CENTAR</h1>
+                    <p class="text-xs text-primary tracking-widest font-oswald uppercase">PIROT
                     </p>
                 </div>
             </div>
@@ -450,15 +449,11 @@
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max bg-white rounded-xl shadow-2xl border border-gray-100 z-50 py-2 hidden group-hover:block transition-all duration-300 ease-out origin-top">
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
-                            <i class="fas fa-book mr-2 text-primary"></i>Uvod
+                            <i class="fas fa-flag mr-2 text-secondary"></i>Misija i vizija
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
-                            <i class="fas fa-flag mr-2 text-secondary"></i>Misija i vizija
-                        </a>
-                        <a href="#" static="true"
-                            class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
-                            <i class="fas fa-history mr-2 text-accent"></i>Istorijat
+                            <i class="fas fa-users-cog mr-2 text-secondary"></i>Istorijat
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 hover:bg-gray-50 text-sm whitespace-nowrap transition-colors duration-150">
@@ -496,6 +491,11 @@
                             <i class="fas fa-building mr-2 text-secondary"></i>Objekti </a>
                     </div>
                 </div>
+
+                <a href="#"
+                    class="nav-link text-secondary font-medium text-sm flex items-center hover:text-primary transition-colors py-2">
+                    <i class="fas fa-images mr-2 text-base"></i>Projekti
+                </a>
 
                 <a href="#"
                     class="nav-link text-secondary font-medium text-sm flex items-center hover:text-primary transition-colors py-2">
@@ -541,7 +541,7 @@
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
                     'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    // 'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -608,27 +608,32 @@
     <section class="relative min-h-screen flex items-center overflow-hidden pt-20 gradient-figures">
         <div class="absolute inset-0 z-0 bg-gradient-to-br from-secondary via-transparent to-primary opacity-20"></div>
 
+         <!-- Full-screen Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="/assets/img/bg-image.webp" alt="Bazeni"
+                class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-gray-900/30 via-gray-900/20 to-gray-900/25"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30"></div>
+        </div>
+
         <div class="container mx-auto px-4 py-24 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="max-w-2xl">
                     <span
                         class="inline-block bg-accent text-secondary px-6 py-2 rounded-full text-sm font-bold mb-6 shadow-lg">
-                        <i class="fas fa-city mr-2"></i>JAVNA USTANOVA OPŠTINE ŽABALJ
+                        <i class="fas fa-city mr-2"></i>PIROT
                     </span>
 
                     <h1 class="text-6xl md:text-7xl font-heading font-bold leading-tight text-white mb-6">
-                        <span class="block">SRCE SPORTA</span>
-                        <span class="block text-accent mt-2">U OPŠTINI ŽABALJ</span>
+                        <span class="block">SPORTSKI CENTAR</span>
                     </h1>
 
                     <div class="mb-10">
                         <p class="text-xl text-white leading-relaxed mb-6 font-medium">
-                            Brinemo o održavanju, razvoju i dostupnosti sportske infrastrukture – od stadiona do
-                            školskih
-                            sala, čineći sport sastavnim delom života naše zajednice.
+                            Mesto gde sport i zajednica postaju jedno!
                         </p>
                         <p class="text-white italic text-lg border-l-4 border-accent pl-4">
-                            "Sportski objekti su temelj za zdrav život i okupljanje svih generacija Žablja."
+                            "Sportski objekti su temelj za zdrav život i okupljanje svih generacija."
                         </p>
                     </div>
 
@@ -637,15 +642,11 @@
                             class="bg-primary hover:bg-primary_hover text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl transition-all transform hover:scale-105">
                             <i class="fas fa-map-marker-alt mr-2"></i>Vidi Lokacije Objekata
                         </button>
-                        <button
-                            class="border-3 border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full font-bold text-lg transition-all">
-                            <i class="fas fa-file-alt mr-2"></i>Statut Ustanove
-                        </button>
                     </div>
 
                     <div class="grid grid-cols-3 gap-6 mt-12">
                         <div class="text-center">
-                            <div class="stat-number font-heading">4+</div>
+                            <div class="stat-number font-heading text-white">4+</div>
                             <p class="text-white font-semibold uppercase text-sm">Velika Objekta</p>
                         </div>
                         <div class="text-center">
@@ -680,19 +681,12 @@
                     </div>
 
                     <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white rounded-full flex items-center justify-center shadow-2xl">
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full flex items-center justify-center shadow-2xl
+                        bg-gradient-to-r from-blue-400 to-blue-800">
                         <div class="text-center p-8">
-                            <i class="fas fa-users text-6xl text-primary mb-4"></i>
-                            <h3 class="font-heading text-2xl font-bold text-primary_text">ZAJEDNICA</h3>
-                            <p class="text-secondary_text mt-2 font-medium">Mesto okupljanja i rekreacije</p>
+                            <img src="/assets/img/logo-scp-horizontal-beli.svg" width="400">
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-                <div class="animate-bounce w-10 h-16 rounded-full border-3 border-accent flex justify-center p-2">
-                    <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
                 </div>
             </div>
     </section>
@@ -824,7 +818,7 @@
               <p class="mt-1 text-sm text-gray-100/90">
                 <i class="fas fa-map-marker-alt mr-2"></i>' . $objekat['adresa'] . '
               </p>
-              
+
             </div>
             <div class="flex-shrink-0 ml-3 self-center">
               <a href="#"
@@ -933,34 +927,25 @@
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
                         <div
-                            class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                            <i class="fas fa-dumbbell text-xl text-white"></i>
+                            class="flex items-center justify-center">
+                            <img src="/assets/img/logo-scp-horizontal-beli.svg" width="200" />
                         </div>
                         <div>
-                            <h3 class="text-2xl font-heading font-bold">Sportski objekti</h3>
-                            <p class="text-xs text-accent tracking-widest font-oswald">JAVNA USTANOVA</p>
+                            <h3 class="text-2xl font-heading font-bold">Sportski centar</h3>
+                            <p class="text-xs text-accent tracking-widest font-oswald">PIROT</p>
                         </div>
                     </div>
                     <p class="text-gray-300 mb-4">
-                        Vodeći sportski centar sa najsavremenijom opremom, profesionalnim trenerima i raznovrsnim
-                        programima za sve uzraste i nivoe.
+                        Mesto gde sport i zajednica postaju jedno!
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#"
+                        <a href="https://www.facebook.com/scpirot"
                             class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/sportskicentarpirot"
                             class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary_hover transition-colors">
-                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
@@ -975,8 +960,6 @@
                         <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
                                     class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Sportovi</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
-                                    class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Članstvo</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
                                     class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Dokumenti</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-primary transition-colors flex items-center"><i
                                     class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Kontakt</a></li>
@@ -988,15 +971,15 @@
                     <ul class="space-y-4">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-primary mr-3 mt-1"></i>
-                            <span class="text-gray-300">Sportska 15, 11000 Beograd</span>
+                            <span class="text-gray-300">Takovska 15, 18300 Pirot</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone text-primary mr-3"></i>
-                            <span class="text-gray-300">+381 11 123 4567</span>
+                            <span class="text-gray-300">+381 10 320 311</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope text-primary mr-3"></i>
-                            <span class="text-gray-300">info@sportskiobjekti.rs</span>
+                            <span class="text-gray-300" data-translate="off">info@scpirot.rs</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-clock text-primary mr-3"></i>
