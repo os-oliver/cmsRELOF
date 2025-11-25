@@ -34,32 +34,32 @@ class DestinacijePageBuilder extends BasePageBuilder
 
         // Define static texts in Serbian Latin (will convert to Cyrillic if needed)
         $latinTexts = [
-            'page_title'           => 'Destinacije',
-            'page_subtitle'        => 'Istražite inspirativna mesta za vaše sledeće putovanje',
-            'search_placeholder'   => 'Pretraži destinacije...',
-            'apply_button'         => 'Primeni',
-            'all_categories'       => 'Sve kategorije',
-            'filters'              => 'Filteri',
-            'country'              => 'Država',
-            'region'               => 'Region',
-            'updated'              => 'Ažurirano',
-            'rating'               => 'Ocena',
-            'activities'           => 'Aktivnosti',
-            'season'               => 'Sezona',
-            'best_months'          => 'Najbolji meseci',
-            'recommended_stay'     => 'Preporučeno trajanje',
-            'avg_cost'             => 'Prosečna cena/dan',
-            'amenities'            => 'Pogodnosti',
-            'map'                  => 'Mapa',
-            'contact'              => 'Kontakt',
-            'official_website'     => 'Zvanični sajt',
-            'destination_details'  => 'Detalji destinacije',
-            'no_items_found'       => 'Nema pronađenih destinacija',
-            'sort_by'              => 'Sortiraj',
-            'sort_best_rated'      => 'Najbolje ocenjene',
-            'sort_low_price'       => 'Najniža cena',
-            'sort_high_price'      => 'Najviša cena',
-            'sort_last_updated'    => 'Najskorije ažurirano',
+            'page_title' => 'Destinacije',
+            'page_subtitle' => 'Istražite inspirativna mesta za vaše sledeće putovanje',
+            'search_placeholder' => 'Pretraži destinacije...',
+            'apply_button' => 'Primeni',
+            'all_categories' => 'Sve kategorije',
+            'filters' => 'Filteri',
+            'country' => 'Država',
+            'region' => 'Region',
+            'updated' => 'Ažurirano',
+            'rating' => 'Ocena',
+            'activities' => 'Aktivnosti',
+            'season' => 'Sezona',
+            'best_months' => 'Najbolji meseci',
+            'recommended_stay' => 'Preporučeno trajanje',
+            'avg_cost' => 'Prosečna cena/dan',
+            'amenities' => 'Pogodnosti',
+            'map' => 'Mapa',
+            'contact' => 'Kontakt',
+            'official_website' => 'Zvanični sajt',
+            'destination_details' => 'Detalji destinacije',
+            'no_items_found' => 'Nema pronađenih destinacija',
+            'sort_by' => 'Sortiraj',
+            'sort_best_rated' => 'Najbolje ocenjene',
+            'sort_low_price' => 'Najniža cena',
+            'sort_high_price' => 'Najviša cena',
+            'sort_last_updated' => 'Najskorije ažurirano',
         ];
 
         $this->texts = ($locale === 'sr-Cyrl')
@@ -164,7 +164,7 @@ PHP;
                 <div class="flex flex-wrap gap-3">
                     {{mapButton}}
                     {{siteButton}}
-                    <a href="sadrzaj?id={{itemId}}&tip=generic_element"
+                    <a href="sadrzaj?id={{itemId}}&tip=Destinacije"
                        class="ml-auto inline-flex items-center gap-2 bg-gradient-to-r from-primary to-accent hover:from-primary_hover hover:to-accent_hover text-white text-sm font-bold py-3 px-4 rounded-xl transition-all shadow-md">
                         <i class="fas fa-compass"></i>
                         <span>{{destinationDetails}}</span>

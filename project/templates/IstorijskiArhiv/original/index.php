@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Istorijski Arhiv - Digitalno Čuvanje Nasleđa</title>
+    <title>Istorijski Arhiv Pirot - Čuvanje Nasleđa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -132,6 +132,24 @@
         .slider-overlay {
             position: absolute;
             inset: 0;
+            background: rgba(0, 0, 0, 0.6) !important;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-content p {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content .inline-block {
+            display: block !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .hero-content .flex-wrap {
+            justify-content: center !important;
         }
 
         .float {
@@ -323,6 +341,12 @@
 
         .hero-content {
             animation: fadeInUp 1s ease-out 0.3s both;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
         }
 
         @keyframes fadeInUp {
@@ -604,6 +628,7 @@
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-lg border border-secondary_background opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
@@ -619,25 +644,35 @@
                             <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
                         </a>
+
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <i class="fas fa-user-tie mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Rukovodstvo</span>
                         </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-sitemap mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Organi upravljanja</span>
+                        </a>
+
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Objekat</span>
                         </a>
-                        <a href="#" static="true"
+
+                        <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Donacije i podrška</span>
+                            <i class="fas fa-file-invoice mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Informator o radu</span>
                         </a>
+
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Partneri</span>
+                            <i class="fas fa-question mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Pitanja</span>
                         </a>
                     </div>
                 </div>
@@ -645,10 +680,54 @@
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
                     <i
-                        class="fas fa-archive mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Fondovi</span>
+                        class="fas fa-user-friends mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Za korisnike</span>
                 </a>
-                <!-- Galerija -->
+
+                <div class="dropdown relative group">
+                    <button
+                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
+                        <i
+                            class="fas fa-layer-group mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                        <span class="hidden xl:inline text-sm">Građa i izdanja</span>
+                        <i
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-lg border border-secondary_background opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-info mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">O arhivskoj građi</span>
+                        </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-map-signs mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Vodič</span>
+                        </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-box-open mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Fondovi</span>
+                        </a>
+
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-archive mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Zbirke</span>
+                        </a>
+
+                        <div class="h-px bg-secondary_background mx-2 my-1"></div> <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-secondary_background text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-book-open mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Izdavačka delatnost</span>
+                        </a>
+                    </div>
+                </div>
+
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
                     <i
@@ -656,13 +735,13 @@
                     <span class="hidden xl:inline text-sm">Galerija</span>
                 </a>
 
-                <!-- Dokumenta -->
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
                     <i
                         class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Dokumenti</span>
                 </a>
+
                 <div class="dropdown relative group">
                     <button
                         class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
@@ -793,10 +872,10 @@
             <div class="slider-item">
                 <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1920&h=1080&fit=crop"
                     alt="Stare knjige">
-                <div class="slider-overlay bg-gradient-to-b from-secondary/60 to-black/30 backdrop-blur-md"></div>
+                <div class="slider-overlay"></div>
                 <div class="absolute inset-0 flex items-center">
                     <div class="container mx-auto px-6">
-                        <div class="max-w-4xl hero-content">
+                        <div class="max-w-4xl mx-auto hero-content">
                             <div
                                 class="inline-block px-4 py-2 bg-primary/80 border border-primary rounded-full text-white text-sm font-medium mb-6 backdrop-blur-sm">
                                 <i class="fas fa-star mr-2"></i>Preko 150.000 dokumenata
@@ -830,7 +909,7 @@
                 <div class="slider-overlay"></div>
                 <div class="absolute inset-0 flex items-center">
                     <div class="container mx-auto px-6">
-                        <div class="max-w-4xl hero-content">
+                        <div class="max-w-4xl mx-auto hero-content">
                             <div
                                 class="inline-block px-4 py-2 bg-primary/20 border border-primary/50 rounded-full text-white text-sm font-medium mb-6 backdrop-blur-sm">
                                 <i class="fas fa-laptop mr-2"></i>Pristup 24/7
@@ -863,7 +942,7 @@
                 <div class="slider-overlay"></div>
                 <div class="absolute inset-0 flex items-center">
                     <div class="container mx-auto px-6">
-                        <div class="max-w-4xl hero-content">
+                        <div class="max-w-4xl mx-auto hero-content">
                             <div
                                 class="inline-block px-4 py-2 bg-primary/20 border border-primary/50 rounded-full text-white text-sm font-medium mb-6 backdrop-blur-sm">
                                 <i class="fas fa-users mr-2"></i>Stručna podrška
@@ -1133,75 +1212,126 @@
         </div>
     </section>
 
-    <footer class="bg-secondary_background text-secondary_text py-8 md:py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary flex items-center justify-center mr-3">
-                            <i class="fas fa-landmark text-lg md:text-xl text-white"></i>
-                        </div>
-                        <h3 class="text-lg md:text-xl font-bold text-primary_text">Istorijski Arhiv</h3>
-                    </div>
-                    <p class="mb-4 text-sm md:text-base">Čuvamo i činimo dostupnim istorijsko nasleđe za sadašnje i
-                        buduće generacije.</p>
-                    <p class="text-xs md:text-sm">&copy; 2023 Sva prava zadržana.</p>
-                </div>
+   
 
-                <div>
-                    <h4 class="text-base md:text-lg font-bold text-primary_text mb-4">Brzi Linkovi</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">O Nama</a></li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Fondovi i Zbirke</a>
-                        </li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Digitalna Arhiva</a>
-                        </li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Priručnici</a></li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Vesti</a></li>
-                    </ul>
-                </div>
+    <footer class="bg-secondary_background text-secondary_text py-10 md:py-16">
+    <div class="container mx-auto px-6">
 
-                <div>
-                    <h4 class="text-base md:text-lg font-bold text-primary_text mb-4">Usluge</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Čitaonica</a></li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Reprografija</a></li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Digitalizacija</a>
-                        </li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Stručna Pomoć</a>
-                        </li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Online Pretraga</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="mb-8 md:mb-12 pb-6 border-b border-primary/20 flex flex-wrap gap-4 md:gap-8 items-center justify-center">
+            
+      
 
-                <div>
-                    <h4 class="text-base md:text-lg font-bold text-primary_text mb-4">Resursi</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">FAQ</a></li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Vodiči za
-                                Istraživače</a></li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Propisi i Pravila</a>
-                        </li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Publikacije</a></li>
-                        <li><a href="#" class="hover:text-primary transition text-sm md:text-base">Karijera</a></li>
-                    </ul>
+            <a href="http://pirot.rs" target="_blank" title="Grad Pirot"
+                class="group relative flex items-center justify-center h-14 w-32 md:w-36 bg-surface rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 transform shadow-md hover:shadow-xl border border-primary/10 p-2">
+                <div class="absolute inset-0 bg-secondary_background/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                <img src="https://arhivpirot.rs/wp-content/uploads/2019/12/grad-pirot-logo.png"
+                    alt="Grad Pirot" class="h-full w-full object-contain filter  group-hover:-0 transition-all duration-300">
+            </a>
+
+            <a href="http://www.kultura.gov.rs/" target="_blank" title="Ministarstvo Kulture"
+                class="group relative flex items-center justify-center h-14 w-32 md:w-36 bg-surface rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 transform shadow-md hover:shadow-xl border border-primary/10 p-2">
+                 <div class="absolute inset-0 bg-secondary_background/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                <img src="https://arhivpirot.rs/wp-content/uploads/2019/12/ministarstvo-logo.png"
+                    alt="Ministarstvo" class="h-full w-full object-contain filter  group-hover:-0 transition-all duration-300">
+            </a>
+
+            <a href="http://www.arhivsrbije.org.rs/" target="_blank" title="Arhiv Srbije"
+                class="group relative flex items-center justify-center h-14 w-32 md:w-36 bg-surface rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 transform shadow-md hover:shadow-xl border border-primary/10 p-2">
+                <div class="absolute inset-0 bg-secondary_background/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                <img src="https://arhivpirot.rs/wp-content/uploads/2019/12/arhiv-srbije-logo.png"
+                    alt="Arhiv Srbije" class="h-full w-full object-contain filter  group-hover:-0 transition-all duration-300">
+            </a>
+
+            <a href="http://arhivistickodrustvosrbije.org.rs/" target="_blank" title="Arhivističko Društvo"
+                class="group relative flex items-center justify-center h-14 w-32 md:w-36 bg-surface rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 transform shadow-md hover:shadow-xl border border-primary/10 p-2">
+                <div class="absolute inset-0 bg-secondary_background/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                <img src="https://arhivpirot.rs/wp-content/uploads/2019/12/Hvataj-150x73.png"
+                    alt="Arhivističko Društvo" class="h-full w-full object-contain filter  group-hover:-0 transition-all duration-300">
+            </a>
+
+            <a href="http://www.arhivistika.edu.rs/index.php" target="_blank"
+                title="Akademija za Arhivistiku"
+                class="group relative flex items-center justify-center h-14 w-32 md:w-36 bg-surface rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 transform shadow-md hover:shadow-xl border border-primary/10 p-2">
+                <div class="absolute inset-0 bg-secondary_background/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                <img src="https://arhivpirot.rs/wp-content/uploads/2020/01/arhivistika-baner-150x32.png"
+                    alt="Arhivistika" class="h-full w-full object-contain filter  group-hover:-0 transition-all duration-300">
+            </a>
+
+            <a href="https://kultura.rs/" target="_blank" title="Pretraživač Kulturnog Nasleđa"
+                class="group relative flex items-center justify-center h-14 w-32 md:w-36 bg-surface rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 transform shadow-md hover:shadow-xl border border-primary/10 p-2">
+                <div class="absolute inset-0 bg-secondary_background/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                <img src="https://arhivpirot.rs/wp-content/uploads/2019/12/Pretraživač-kulturnog-nasleđa.jpg"
+                    alt="Pretraživač" class="h-full w-full object-contain filter  group-hover:-0 transition-all duration-300">
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8">
+            <div>
+                <div class="flex items-center mb-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center mr-3">
+                        <i class="fas fa-landmark text-xl text-white"></i></div>
+                    <h3 class="text-xl font-bold text-primary_text">Istorijski Arhiv Pirot</h3>
                 </div>
+                <p class="mb-4 text-sm md:text-base">Čuvamo i činimo dostupnim bogatstvo istorijskog nasleđa Pirotskog kraja za sadašnje i buduće generacije.</p>
             </div>
-
-            <div class="border-t border-surface pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-xs md:text-sm mb-4 md:mb-0">Dizajnirano sa <i class="fas fa-heart text-red-500"></i> za
-                    očuvanje
-                    istorije</p>
-                <div class="flex space-x-4 md:space-x-6 text-xs md:text-sm">
-                    <a href="#" class="hover:text-primary transition">Politika Privatnosti</a>
-                    <a href="#" class="hover:text-primary transition">Uslovi Korišćenja</a>
-                    <a href="#" class="hover:text-primary transition">Mapa Sajta</a>
+            <div>
+                <h4 class="text-lg font-bold text-primary_text mb-4 border-b border-primary/30 pb-2 flex items-center"><i
+                        class="fas fa-link mr-2 text-primary"></i>Brzi Linkovi</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-primary transition text-sm md:text-base flex items-center"><i
+                                class="fas fa-info-circle mr-2 w-4 text-primary/80"></i>O nama</a></li>
+                    <li><a href="#" class="hover:text-primary transition text-sm md:text-base flex items-center"><i
+                                class="fas fa-archive mr-2 w-4 text-primary/80"></i>Fondovi i Zbirke</a></li>
+                    <li><a href="#" class="hover:text-primary transition text-sm md:text-base flex items-center"><i
+                                class="fas fa-laptop-code mr-2 w-4 text-primary/80"></i>Digitalna Arhiva</a></li>
+                    <li><a href="#" class="hover:text-primary transition text-sm md:text-base flex items-center"><i
+                                class="fas fa-book-open mr-2 w-4 text-primary/80"></i>Vodiči za Istraživače</a></li>
+                    <li><a href="#" class="hover:text-primary transition text-sm md:text-base flex items-center"><i
+                                class="fas fa-newspaper mr-2 w-4 text-primary/80"></i>Vesti</a></li>
+                </ul>
+            </div>
+            <div id="i9d3hc">
+                <h4 class="text-lg font-bold text-primary_text mb-4 border-b border-primary/30 pb-2 flex items-center"><i
+                        class="fas fa-headset mr-2 text-primary"></i>Kontakt i Lokacija</h4>
+                <ul class="space-y-3 text-sm md:text-base">
+                    <li class="flex items-start"><i
+                            class="fas fa-map-marker-alt text-primary mt-1 mr-2 w-4"></i><span>Adresa:<br><strong>Srpskih vladara 130, 18300 Pirot</strong></span></li>
+                    <li class="flex items-start"><i
+                            class="fas fa-phone-alt text-primary mt-1 mr-2 w-4"></i><span>Pisarnica:<br><strong>+381 10 320-952</strong></span></li>
+                    <li class="flex items-start"><i
+                            class="fas fa-phone-alt text-primary mt-1 mr-2 w-4"></i><span>Direktor:<br><strong>+381 10 310-592</strong></span></li>
+                    <li class="flex items-start pt-2"><i class="fas fa-envelope text-primary mt-1 mr-2 w-4"></i><a
+                            href="mailto:istorijskiarhivpi@gmail.com"
+                            class="hover:text-primary transition">istorijskiarhivpi@gmail.com</a></li>
+                    <li class="flex items-start"><i class="fas fa-envelope text-primary mt-1 mr-2 w-4"></i><a
+                            href="mailto:direktor@arhivpirot.rs"
+                            class="hover:text-primary transition">direktor@arhivpirot.rs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-primary_text mb-4 border-b border-primary/30 pb-2 flex items-center"><i
+                        class="fas fa-map-marked-alt mr-2 text-primary"></i>Mapa Lokacije</h4>
+                <div class="rounded-xl overflow-hidden shadow-xl border-2 border-primary/30 aspect-video" id="i22mzn">
+                    <iframe
+                        frameborder="0"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11365.993408897266!2d21.935649!3d43.201314!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475251d2c9d8e7db%3A0x7e9d8e8e8e8e8e8e!2sIstorijski%20Arhiv%20Pirot!5e0!3m2!1sen!2sus!4v1700000000000"
+                        width="100%" height="100%" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="Mapa lokacije Istorijskog Arhiva Pirot"
+                        id="i4yxwe">
+                    </iframe>
                 </div>
+                <p class="text-xs mt-3 text-center opacity-80">Srpskih vladara 130, Pirot</p>
             </div>
         </div>
-    </footer>
+
+        <div
+            class="border-t border-primary/10 pt-6 mt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-xs opacity-80 w-full text-center">
+                <p>© 2025 Istorijski Arhiv Pirot. Sva prava zadržana. | Čuvar istorijskog nasleđa Pirotskog kraja.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <button onclick="scrollToTop()" id="scrollTopBtn"
         class="fixed bottom-6 right-6 md:bottom-8 md:right-8 w-10 h-10 md:w-14 md:h-14 bg-primary hover:bg-primary_hover rounded-full flex items-center justify-center shadow-lg hover:shadow-primary/50 transition opacity-0 pointer-events-none z-50">
@@ -1389,6 +1519,7 @@
         console.log('%c🏛️ Istorijski Arhiv', 'font-size: 24px; font-weight: bold; color: #1e40af;');
         console.log('%cDobrodošli u konzolu našeg arhiva!', 'font-size: 16px; color: #666;');
     </script>
+
 
 </body>
 

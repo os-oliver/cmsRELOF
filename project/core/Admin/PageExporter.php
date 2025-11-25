@@ -628,7 +628,7 @@ class PageExporter
 
     private function generateIndexBody(): string
     {
-        $content = '';
+        $content = '<body class="font-body">';
 
         if ($this->headerPath) {
             $content .= "\n<?php require_once __DIR__ . '/landingPageComponents/{$this->headerPath}'; ?>\n";
@@ -759,12 +759,6 @@ class PageExporter
                 return new OrganizacijaPageBuilder('OrganiUpravljanja');
             case 'publikacije':
                 return new PublikacijePageBuilder('Publikacije');
-            case 'koncerti':
-                return new DynamicPageBuilder('Koncerti');
-            case 'filmovi':
-                return new DynamicPageBuilder('Filmovi');
-            case 'donacije-i-podrska':
-                return new DynamicPageBuilder('Donacije I Podrska');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -837,7 +831,7 @@ class PageExporter
         } elseif (strpos($name, 'organizaciona-struktura') !== false) {
             return 'organizaciona-struktura';
         } elseif (strpos($name, 'rukovodstvo') !== false) {
-            return 'organi-upravljanja';
+            return 'rukovodstvo';
         } elseif (strpos($name, 'misija-i-vizija') !== false) {
             return 'misija-i-vizija';
         } elseif (strpos($name, 'uvod') !== false) {
@@ -880,10 +874,6 @@ class PageExporter
             return 'organi-upravljanja';
         } elseif (strpos($name, 'publikacije') !== false) {
             return 'publikacije';
-        }elseif (strpos($name, 'koncerti') !== false) {
-            return 'koncerti';
-        }elseif (strpos($name, 'filmovi') !== false) {
-            return 'filmovi';
         }
 
         return 'basic';

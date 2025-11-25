@@ -362,7 +362,7 @@ function exportFullPage(editor, tipUstanove) {
         break;
     }
   });
-  console.log("tree:",tree);
+  console.log("tree:", tree);
   console.log("ids collected from sections:", ids);
 
   const css = editor.getCss();
@@ -381,12 +381,23 @@ function exportFullPage(editor, tipUstanove) {
   } catch (e) {
     console.warn("Error parsing Tailwind config:", e);
   }
-  const cssRules = editor.CssComposer && editor.CssComposer.getAll();
-  let cssText = "";
+  const cssText = editor.getCss();
+  const iframe = editor.Canvas.getFrameEl();
+  const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-  cssRules.forEach((rule) => {
-    cssText += rule.toCSS();
-  });
+  // Select all <link> tags in the iframe head
+  const linkTags = iframeDoc.querySelectorAll('link[rel="stylesheet"]');
+
+  // Get the full <link> tag HTML
+  const allLinkHTML = Array.from(linkTags)
+    .map((link) => link.outerHTML)
+    .join("\n");
+  console.log(allLinkHTML);
+
+  // Or just get the URLs (href)
+  const allLinkHrefs = Array.from(linkTags).map((link) => link.href);
+  console.log(allLinkHrefs);
+
   console.log("test123", cssText);
 
   const exportData = {

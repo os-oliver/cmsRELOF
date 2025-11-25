@@ -106,6 +106,189 @@
           }
         }
       ]
+    },
+    "Vesti": {
+      "sr": "Vesti",
+      "en": "News",
+      "sr-Cyrl": "Вести",
+      "icon": "fas fa-newspaper",
+      "categories": [
+        "Fotografije",
+        "Dokumenta",
+        "Novine",
+        "Knjige",
+        "Rukopisi",
+        "Mape i planovi",
+        "Plakata i oglasi",
+        "Lična prepiska"
+      ],
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov vesti",
+            "en": "News title",
+            "sr-Cyrl": "Наслов вести"
+          },
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum vesti",
+            "en": "News date",
+            "sr-Cyrl": "Датум вести"
+          },
+          "required": true,
+          "property": "auto"
+        },
+        {
+          "name": "naziv",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija vesti",
+            "en": "News category",
+            "sr-Cyrl": "Категорија вести"
+          },
+          "options": [
+            "Kultura",
+            "Obrazovanje",
+            "Inovacije",
+            "Zdravlje",
+            "Tehnologija"
+          ],
+          "required": true
+        },
+        {
+          "name": "autor",
+          "type": "text",
+          "label": {
+            "sr": "Autor",
+            "en": "Author",
+            "sr-Cyrl": "Аутор"
+          }
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika vesti",
+            "en": "News image",
+            "sr-Cyrl": "Насловна слика вести"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Eksterni link",
+            "en": "External link",
+            "sr-Cyrl": "Екстерни линк"
+          }
+        }
+      ]
+    },
+    "Zbirke": {
+      "sr": "Zbirke",
+      "en": "Collections",
+      "sr-Cyrl": "Збирке",
+      "icon": "fas fa-book-open",
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov zbirke",
+            "en": "Collection title",
+            "sr-Cyrl": "Наслов збирке"
+          },
+          "required": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis zbirke",
+            "en": "Collection description",
+            "sr-Cyrl": "Опис збирке"
+          },
+          "required": true
+        },
+        {
+          "name": "slike",
+          "type": "file",
+          "label": {
+            "sr": "Slike zbirke",
+            "en": "Collection images",
+            "sr-Cyrl": "Слике збирке"
+          },
+          "multiple": true
+        }
+      ]
+    }, "Vodic": {
+      "sr": "Vodič arhivskih fondova",
+      "en": "Guide to archival collections",
+      "sr-Cyrl": "Водич архивских фондова",
+      "icon": "fas fa-archive",
+
+      "categories": [
+        "Arhivski fondovi 1918 – 1941.",
+        "Arhivski fondovi od 1944.",
+        "Narodni odbori srezova",
+        "Skupštine opština",
+        "Narodni odbori opština",
+        "Mesni narodni odbori",
+        "Vodic Istorijskog arhiva u Pirotu",
+        "A.2. Pravosuđe",
+        "Prosvetne, kulturne i naučne ustanove i organizacije",
+        "Socijalne ustanove",
+        "Zdravstvene ustanove",
+        "Banke i novčani zavodi",
+        "Privredna udruženja",
+        "Privredna preduzeća",
+        "Zadruge",
+        "Privreda i bankarstvo",
+        "Industrija i rudarstvo",
+        "Poljoprivreda i šumarstvo",
+        "Trgovina, ugostiteljstvo i turizam",
+        "Političke, društveno-političke organizacije, društva i udruženja",
+        "Načelstvo Okruga pirotskog – Pirot (1878 – 1915)",
+        "NARODNI ODBORI SREZOVA"
+      ],
+
+      "fields": [
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": "Naziv"
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": "Opis"
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": "Kategorija"
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": "Slika"
+        }
+      ]
     }
   }
 ]
