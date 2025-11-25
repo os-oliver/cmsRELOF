@@ -356,124 +356,136 @@
     A+
   </button>
 
-  <!-- Header -->
-  <header
-    class="fixed w-full z-50 transition-all duration-300 py-2 sm:py-3 backdrop-blur-md shadow-lg bg-secondary_background/95 border-b border-surface">
-    <div class="px-3 sm:px-4 lg:px-6 flex justify-between items-center">
-      <div class="flex items-center space-x-3 flex-shrink-0">
-        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
-          <i class="fas fa-landmark text-lg"></i>
+<!-- Header -->
+<header
+  class="fixed top-0 inset-x-0 z-50 bg-secondary_background/98 backdrop-blur-md border-b border-surface/80 shadow-md">
+  <div class="px-3 sm:px-4 lg:px-6">
+    <div class="flex items-center justify-between gap-6 py-4 lg:py-5">
+      <!-- LEVA STRANA: logo + naziv -->
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <!-- Veći, formalniji logo -->
+        <div
+          class="w-14 h-14 lg:w-16 lg:h-16 rounded-full border border-surface/90 bg-gradient-to-br from-surface via-secondary_background to-surface flex items-center justify-center shadow-lg shadow-black/20">
+          <i class="fas fa-landmark text-2xl lg:text-3xl text-accent"></i>
         </div>
 
-        <div class="hidden sm:block">
+        <!-- Naziv ustanove -->
+        <div class="leading-tight">
+          <div
+            class="font-heading text-primary_text tracking-[0.18em] text-xs lg:text-sm xl:text-[0.9rem] uppercase">
+            USTANOVA KULTURE
+          </div>
           <h1
-            class="text-sm sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
+            class="mt-1 font-heading text-primary_text text-lg sm:text-xl lg:text-2xl xl:text-[1.55rem] font-semibold tracking-[0.12em] uppercase">
             MUZEJ PONIŠAVLJA PIROT
           </h1>
-        </div>
-
-        <div class="block sm:hidden">
-          <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">NEXUS</h1>
+          <p class="hidden md:block mt-1 text-[0.78rem] text-secondary_text tracking-[0.14em] uppercase">
+            Tradicija, nasleđe i identitet
+          </p>
         </div>
       </div>
 
-      <nav id="navBarID" class="hidden lg:flex items-center space-x-1 xl:space-x-3">
+      <!-- SREDINA: glavna navigacija (desktop) -->
+      <nav id="navBarID"
+           class="hidden lg:flex items-center gap-3 xl:gap-5 text-[0.85rem] xl:text-[0.92rem] uppercase tracking-[0.16em]">
         <a href="#"
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i class="fas fa-home mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Početna</span>
+           class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
+          <i class="fas fa-home mr-2 text-sm text-primary/90"></i>
+          <span>Početna</span>
         </a>
 
+        <!-- O nama dropdown -->
         <div class="dropdown relative group">
           <button
-            class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+            class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
+            <i class="fas fa-info-circle mr-2 text-sm text-secondary"></i>
+            <span>O NAMA</span>
             <i
-              class="fas fa-info-circle mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
-            <span class="hidden xl:inline text-sm">O nama</span>
-            <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+              class="fas fa-chevron-down ml-1 text-[0.6rem] text-secondary_text group-hover:rotate-180 transition-transform duration-200"></i>
           </button>
           <div
-            class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
+            class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-[240px] max-w-xs bg-secondary_background/98 rounded-xl shadow-2xl border border-surface/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2.5">
             <a href="#" static="true"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Misija i vizija</span>
+               class="dropdown-item flex items-center px-4 py-2.5  hover:bg-surface/80 rounded-lg transition-colors duration-150">
+              <i class="fas fa-flag mr-3 text-secondary w-4 text-xs flex-shrink-0"></i>
+              <span class="">Misija i vizija</span>
             </a>
             <a href="#" static="true"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Istorijat</span>
+               class="dropdown-item flex items-center px-4 py-2.5  hover:bg-surface/80 rounded-lg transition-colors duration-150">
+              <i class="fas fa-history mr-3 text-accent w-4 text-xs flex-shrink-0"></i>
+              <span class="">Istorijat</span>
             </a>
             <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Rukovodstvo</span>
+               class="dropdown-item flex items-center px-4 py-2.5 hover:bg-surface/80 rounded-lg transition-colors duration-150">
+              <i class="fas fa-users-cog mr-3 text-secondary w-4 text-xs flex-shrink-0"></i>
+              <span class="">Rukovodstvo</span>
             </a>
           </div>
         </div>
 
         <a
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i class="fas fa-palette mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Izložbe</span>
+          class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
+          <i class="fas fa-palette mr-2 text-sm text-primary/90"></i>
+          <span>Izložbe</span>
         </a>
 
         <a
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i
-            class="fas fa-project-diagram mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Projekti</span>
+          class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
+          <i class="fas fa-project-diagram mr-2 text-sm text-primary/90"></i>
+          <span>Projekti</span>
         </a>
 
         <a href="#"
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i class="fas fa-images mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Galerija</span>
+           class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
+          <i class="fas fa-images mr-2 text-sm text-secondary"></i>
+          <span>Galerija</span>
         </a>
 
         <a href="#"
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-surface">
-          <i class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Dokumenti</span>
-        </a>
-        <a href="#"
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-surface">
-          <i class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">informacije</span>
+           class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
+          <i class="fas fa-folder-open mr-2 text-sm text-accent"></i>
+          <span>Dokumenti</span>
         </a>
 
+        <a href="#"
+           class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
+          <i class="fas fa-info mr-2 text-sm text-accent"></i>
+          <span>Informacije</span>
+        </a>
+
+        <!-- Aktivnosti dropdown -->
         <div class="dropdown relative group">
           <button
-            class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-            <i class="fas fa-bullhorn mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-            <span class="hidden xl:inline text-sm">Aktivnosti</span>
-            <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+            class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
+            <i class="fas fa-bullhorn mr-2 text-sm text-primary/90"></i>
+            <span>AKTIVNOSTI</span>
+            <i
+              class="fas fa-chevron-down ml-1 text-[0.6rem] text-secondary_text group-hover:rotate-180 transition-transform duration-200"></i>
           </button>
 
           <div
-            class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
-
+            class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-[220px] bg-secondary_background/98 rounded-xl shadow-2xl border border-surface/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2.5">
             <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-newspaper mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Vesti</span>
+               class="dropdown-item flex items-center px-4 py-2.5 text-[0.8rem] text-primary_text/95 hover:bg-surface/80 rounded-lg transition-colors duration-150">
+              <i class="fas fa-newspaper mr-3 text-primary w-4 text-xs flex-shrink-0"></i>
+              <span class="font-medium normal-case tracking-normal">Vesti</span>
             </a>
 
             <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-poll mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Ankete</span>
+               class="dropdown-item flex items-center px-4 py-2.5 text-[0.8rem] text-primary_text/95 hover:bg-surface/80 rounded-lg transition-colors duration-150">
+              <i class="fas fa-poll mr-3 text-accent w-4 text-xs flex-shrink-0"></i>
+              <span class="font-medium normal-case tracking-normal">Ankete</span>
             </a>
           </div>
         </div>
 
         <a href="#"
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i
-            class="fas fa-address-book mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Kontakt</span>
+           class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
+          <i class="fas fa-address-book mr-2 text-sm text-secondary"></i>
+          <span>Kontakt</span>
         </a>
 
+        <!-- LOCALE DROPDOWN (PHP logika ostaje, samo klase) -->
         <?php
         if (isset($_GET['locale'])) {
           $_SESSION['locale'] = $_GET['locale'];
@@ -490,64 +502,70 @@
           $locale = 'sr';
         }
         ?>
-        <div class="locale dropdown nonPage relative group ">
+        <div class="locale dropdown nonPage relative group">
           <button
-            class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+            class="nav-link inline-flex items-center px-3 py-2 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
             <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
-            <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
-            <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+            <span class="hidden xl:inline text-[0.8rem] font-medium normal-case tracking-normal"><?= $languages[$locale]['label'] ?></span>
+            <i
+              class="fas fa-chevron-down ml-1 text-[0.6rem] text-secondary_text group-hover:rotate-180 transition-transform duration-200"></i>
           </button>
           <div
-            class="dropdown-menu absolute top-full right-0 min-w-max bg-secondary_background rounded-xl shadow-2xl border border-surface z-50 py-2 backdrop-blur-sm">
+            class="dropdown-menu absolute top-full right-0 mt-3 min-w-[190px] bg-secondary_background/98 rounded-xl shadow-2xl border border-surface/80 z-50 py-2">
             <?php foreach ($languages as $key => $lang): ?>
               <a href="?locale=<?= $key ?>"
-                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                 class="dropdown-item flex items-center px-3.5 py-2.5 text-[0.8rem] text-primary_text/95 hover:bg-surface/80 rounded-lg transition-colors duration-150">
                 <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
-                <span class="font-medium"><?= $lang['label'] ?></span>
+                <span class="font-medium normal-case tracking-normal"><?= $lang['label'] ?></span>
               </a>
             <?php endforeach; ?>
           </div>
         </div>
       </nav>
 
-      <div class="flex items-center space-x-1 sm:space-x-3">
+      <!-- DESNA STRANA: search + hamburger (uvek tu) -->
+      <div class="flex items-center gap-1.5 sm:gap-3">
+        <!-- PRETRAGA -->
         <div class="relative">
           <button id="searchButton"
-            class="text-secondary_text hover:text-primary transition-all duration-200 focus:outline-none p-2 sm:p-2.5 rounded-full hover:bg-surface"
-            aria-label="Search">
+                  class="text-secondary_text hover:text-primary transition-colors duration-200 focus:outline-none p-2.5 rounded-full hover:bg-surface/80"
+                  aria-label="Search">
             <i class="fas fa-search text-sm sm:text-base"></i>
           </button>
           <div id="searchInputContainer"
-            class="absolute right-0 top-full mt-3 hidden opacity-0 transition-all duration-300 ease-in-out z-50 min-w-[280px] sm:min-w-[320px] bg-white rounded-xl shadow-2xl border border-surface overflow-hidden backdrop-blur-sm">
-            <form id="searchForm" class="flex items-center w-full p-2" action="/search" method="GET">
+               class="absolute right-0 top-full mt-3 hidden opacity-0 transition-all duration-300 ease-out z-50 min-w-[280px] sm:min-w-[320px] bg-secondary_background/98 rounded-xl shadow-2xl border border-surface/80 overflow-hidden">
+            <form id="searchForm" class="flex items-center w-full p-2.5" action="/search" method="GET">
               <input type="text" name="q" placeholder="Pretražite sadržaj..."
-                class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-4 py-2.5 text-primary_text placeholder-secondary_text bg-surface rounded-lg"
-                id="searchInput" required />
-              <div class="flex items-center space-x-1 ml-2">
+                     class="flex-1 border-0 focus:outline-none focus:ring-0 text-sm px-3.5 py-2.5 text-primary_text bg-surface rounded-lg placeholder-secondary_text"
+                     id="searchInput" required />
+              <div class="flex items-center gap-1.5 ml-2">
                 <button type="submit"
-                  class="text-secondary_text hover:text-primary transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-surface w-9 h-9 flex items-center justify-center"
-                  aria-label="Submit search">
-                  <i class="fas fa-search text-sm"></i>
+                        class="text-secondary_text hover:text-primary transition-colors duration-200 focus:outline-none p-2 rounded-full hover:bg-surface/80 w-9 h-9 flex items-center justify-center"
+                        aria-label="Submit search">
+                  <i class="fas fa-search text-xs"></i>
                 </button>
                 <button type="button"
-                  class="text-secondary_text hover:text-accent transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-surface w-9 h-9 flex items-center justify-center"
-                  id="closeSearch" aria-label="Close search">
-                  <i class="fas fa-times text-sm"></i>
+                        class="text-secondary_text hover:text-accent transition-colors duration-200 focus:outline-none p-2 rounded-full hover:bg-surface/80 w-9 h-9 flex items-center justify-center"
+                        id="closeSearch" aria-label="Close search">
+                  <i class="fas fa-times text-xs"></i>
                 </button>
               </div>
             </form>
           </div>
         </div>
 
+        <!-- HAMBURGER (mobilni meni) -->
         <button id="hamburger"
-          class="hamburger lg:hidden text-primary_text w-9 h-9 sm:w-10 sm:h-10 flex flex-col justify-center items-center space-y-1 p-2 rounded-lg hover:bg-surface transition-all duration-200">
-          <span class="block w-5 h-0.5 bg-primary_text rounded transition-all duration-300"></span>
-          <span class="block w-5 h-0.5 bg-primary_text rounded transition-all duration-300"></span>
-          <span class="block w-5 h-0.5 bg-primary_text rounded transition-all duration-300"></span>
+                class="hamburger lg:hidden text-primary_text w-10 h-10 flex flex-col justify-center items-center space-y-1.5 p-2.5 rounded-lg border border-surface/80 bg-secondary_background/95 hover:bg-surface/80 transition-all duration-200">
+          <span class="block w-6 h-[2px] bg-primary_text rounded transition-all duration-300"></span>
+          <span class="block w-6 h-[2px] bg-primary_text rounded transition-all duration-300"></span>
+          <span class="block w-6 h-[2px] bg-primary_text rounded transition-all duration-300"></span>
         </button>
       </div>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center overflow-hidden pt-20 artistic-pattern">
@@ -825,50 +843,45 @@
         <div>
           <div class="flex items-center mb-6">
             <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mr-3">
-              <i class="fas fa-landmark text-xl"></i>
+              <img src="../../../uploads/logo muzej ponisavlja.jpg" alt="Logo" class="rounded-xl w-full">
             </div>
             <h3 class="text-2xl font-heading font-bold">MUZEJ PONIŠAVLJA PIROT</h3>
           </div>
-          <p class="text-gray-300 mb-4 leading-relaxed">
+          <p class="text-gray-300 mb-4 leading-relaxed ">
             Vodeća kulturna institucija posvećena očuvanju, istraživanju i promovisanju umetničkog nasleđa i savremene umetničke prakse u Pirotu.
           </p>
           <div class="flex space-x-3">
-            <a href="#"
+            <a href="https://muzejpirot.com/#"
               class="w-10 h-10 bg-primary hover:bg-primary_hover rounded-full flex items-center justify-center text-white transition-colors">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#"
+            <a href="https://muzejpirot.com/#"
               class="w-10 h-10 bg-primary hover:bg-primary_hover rounded-full flex items-center justify-center text-white transition-colors">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#"
+            <a href="https://muzejpirot.com/#"
               class="w-10 h-10 bg-primary hover:bg-primary_hover rounded-full flex items-center justify-center text-white transition-colors">
               <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#"
-              class="w-10 h-10 bg-primary hover:bg-primary_hover rounded-full flex items-center justify-center text-white transition-colors">
-              <i class="fab fa-youtube"></i>
             </a>
           </div>
         </div>
 
         <div>
           <h4 class="text-lg font-heading font-bold mb-6">Brzi Linkovi</h4>
-          <ul class="space-y-3">
-            <li><a href="index.html" class="text-gray-300 hover:text-accent transition-colors">Početna</a></li>
-            <li><a href="about.html" class="text-gray-300 hover:text-accent transition-colors">O nama</a></li>
-            <li><a href="current-exhibitions.html" class="text-gray-300 hover:text-accent transition-colors">Izložbe</a>
-            </li>
-            <li><a href="artists.html" class="text-gray-300 hover:text-accent transition-colors">Umetnici</a></li>
-            <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors">Programi</a></li>
-            <li><a href="projects.html" class="text-gray-300 hover:text-accent transition-colors">Projekti</a></li>
+          <ul class="space-y-3 text-gray-300">
+            <li><a href="/" class="text-gray-300 hover:text-accent transition-colors">Početna</a></li>
+            <li><a href="/o-nama/istorijat" class="text-gray-300 hover:text-accent transition-colors">O nama</a></li>
+            <li><a href="/izlozbe" class="text-gray-300 hover:text-accent transition-colors">Izložbe</a></li>
+            <li><a href="/projekti" class="text-gray-300 hover:text-accent transition-colors">Projekti</a></li>
+            <li><a href="/dokumenti" class="text-gray-300 hover:text-accent transition-colors">Dokumenti</a></li>
+            <li><a href="/galerija" class="text-gray-300 hover:text-accent transition-colors">Galerija</a></li>
           </ul>
         </div>
 
         <div>
           <h4 class="text-lg font-heading font-bold mb-6">Informacije</h4>
-          <ul class="space-y-3">
-            <li class="flex items-start">
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-start ">
               <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
               <span>18300 Pirot, Nikole Pašića 49</span>
             </li>
