@@ -203,7 +203,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-secondary_background to-background min-h-screen">
+<main class="bg-gradient-to-br from-secondary_background to-background min-h-screen mt-20">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-primary-text mb-2">Organi upravljanja</h1>

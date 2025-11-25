@@ -173,7 +173,7 @@ class GalleryPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $html = <<<'HTML'
-<main class="bg-background">
+<main class="bg-background mt-20">
     <div>
         <button id="increaseFontBtn"
             class="fixed bottom-6 z-20 right-6 bg-primary hover:bg-primary_hover text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"

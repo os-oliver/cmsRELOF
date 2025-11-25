@@ -58,7 +58,7 @@ class ZnacajaStranica extends BasePageBuilder
         CSS;
 
     protected string $html = <<<'HTML'
-<main class="bg-background min-h-screen pt-24 flex-grow font-body text-secondary_text">
+<main class="bg-background min-h-screen pt-24 flex-grow font-body text-secondary_text mt-20">
   <div class="container mx-auto px-4">
 
     <div class="grid md:grid-cols-2 gap-6 lg:gap-10">

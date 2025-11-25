@@ -155,7 +155,7 @@ HTML;
 
     protected string $html = <<<'HTML'
 <main>
-    <div class="text-center px-2 pt-32">
+    <div class="text-center px-2 pt-32 mt-20">
         <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
 

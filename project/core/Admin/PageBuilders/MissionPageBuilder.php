@@ -7,7 +7,7 @@ use App\Models\Gallery;
 class MissionPageBuilder extends BasePageBuilder
 {
     protected string $html = <<<'HTML'
-<main class="bg-background min-h-screen font-body text-secondary_text">
+<main class="bg-background min-h-screen font-body text-secondary_text mt-20">
 
     <!-- Dugme za povećanje fonta -->
     <div>

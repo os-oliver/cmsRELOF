@@ -139,7 +139,7 @@ HTML;
 
     protected string $html = <<<'HTML'
 <main class="pt-2 flex-grow">
-<div class="py-12 mt-20 px-4 flex-1">
+<div class="py-20 mt-20 px-4 flex-1">
         <div>
             <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
                 A+

@@ -579,7 +579,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-background min-h-screen">
+<main class="bg-background min-h-screen mt-20">
     <section class="container mx-auto px-4 py-12">
         <!-- Zaglavlje -->
         <div class="mb-8">
