@@ -88,18 +88,16 @@ class Content
 
         $where = "ge.type = :type";
         $params = [':type' => $type];
-        error_log("caoo");
+
         error_log(json_encode($categoryId));
         // ✅ Handle both int and string category
         if ($categoryId !== null) {
-            error_log("zdravo");
+
             if (is_numeric($categoryId)) {
-                error_log("usao");
                 // if it's an integer, use directly
                 $where .= " AND ge.category_id = :category_id";
                 $params[':category_id'] = (int) $categoryId;
             } else {
-                error_log("nisam");
                 // if it's a string, resolve it to numeric id first
                 $resolvedId = $this->fetchCategoryIdByName((string) $categoryId);
                 error_log($resolvedId);
@@ -163,10 +161,10 @@ class Content
         }
 
         $sql = "
-        SELECT generic_category.id 
+        SELECT generic_category.id
         FROM generic_category
-        JOIN text 
-            ON text.source_id = generic_category.id 
+        JOIN text
+            ON text.source_id = generic_category.id
             AND text.source_table = 'generic_category'
             AND text.lang = 'sr'
         WHERE text.content = :categoryName
@@ -520,9 +518,9 @@ class Content
     {
         $in = implode(',', array_fill(0, count($ids), '?'));
         $sql = "
-            SELECT 
-                ge.id AS element_id, 
-                gc.id AS category_id, 
+            SELECT
+                ge.id AS element_id,
+                gc.id AS category_id,
                 gc.type AS category_type,
                 COALESCE(txt.content, txt_fallback.content) AS category_content
             FROM generic_element ge
@@ -674,8 +672,8 @@ class Content
 
     private function fetchItemFields(int $id, $lang = null): array
     {
-        $sql = "SELECT field_name, lang, content 
-            FROM text 
+        $sql = "SELECT field_name, lang, content
+            FROM text
             WHERE source_table = 'generic_element' AND source_id = ?";
 
         // If a specific language is provided, add it to the WHERE clause

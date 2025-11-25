@@ -42,6 +42,8 @@ class UserController
         $payload = json_decode(file_get_contents('php://input'), true) ?: [];
 
         $data = [
+            'name' => $payload['name'] ?? '',
+            'surname' => $payload['surname'] ?? '',
             'username' => $payload['username'] ?? null,
             'password' => $payload['password'] ?? null,
             'role' => $payload['role'] ?? null,
@@ -61,8 +63,6 @@ class UserController
      */
     public function delete(int $id): void
     {
-
-
         $model = new User();
         $result = $model->delete($id);
 
