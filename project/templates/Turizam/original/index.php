@@ -418,21 +418,21 @@
         alt="PANORAMA PIROTA"
         class="w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/60"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70"></div>
 
-      <div class="relative z-10 h-full">
-        <div class="container mx-auto h-full px-4 flex items-center">
-          <!-- text on RIGHT -->
-          <div
-            class="hero-slide-content max-w-xl ml-auto text-right text-white opacity-0 transition-all duration-700 ease-out"
-            data-enter-class="translate-x-8 md:translate-x-16"
-          >
+      <!-- TEXT OVERLAY -->
+      <div class="absolute inset-0">
+        <div class="container mx-auto h-full px-4 flex justify-end items-center">
+          <div class="max-w-xl text-right text-white">
             <p class="font-body tracking-[0.35em] uppercase text-xs md:text-sm text-white/70 mb-3">
               Pirot
             </p>
-            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight">
-              <span class="font-bold">PANORAMA</span> PIROTA
+            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-3">
+              <span class="font-bold">PANORAMA</span>&nbsp;PIROTA
             </h2>
+            <p class="max-w-md ml-auto text-sm md:text-base text-white/80">
+              Pogled na grad okružen Starom planinom – Pirot u zlatnom svetlu zalaska.
+            </p>
           </div>
         </div>
       </div>
@@ -445,21 +445,21 @@
         alt="PIROTSKI KEJ"
         class="w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/60"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/70"></div>
 
-      <div class="relative z-10 h-full">
-        <div class="container mx-auto h-full px-4 flex items-center">
-          <!-- text on LEFT -->
-          <div
-            class="hero-slide-content max-w-xl mr-auto text-left text-white opacity-0 transition-all duration-700 ease-out"
-            data-enter-class="-translate-x-8 md:-translate-x-16"
-          >
+      <!-- TEXT OVERLAY -->
+      <div class="absolute inset-0">
+        <div class="container mx-auto h-full px-4 flex justify-start items-center">
+          <div class="max-w-xl text-left text-white">
             <p class="font-body tracking-[0.35em] uppercase text-xs md:text-sm text-white/70 mb-3">
-              KEJ
+              Kej
             </p>
-            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight">
-              PIROTSKI <span class="font-bold">KEJ</span>
+            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-3">
+              PIROTSKI&nbsp;<span class="font-bold">KEJ</span>
             </h2>
+            <p class="max-w-md text-sm md:text-base text-white/80">
+              Šetalište uz reku, mesto susreta, odmora i uživanja u prirodi nadomak centra.
+            </p>
           </div>
         </div>
       </div>
@@ -472,21 +472,21 @@
         alt="STARA PLANINA"
         class="w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/75"></div>
 
-      <div class="relative z-10 h-full">
-        <div class="container mx-auto h-full px-4 flex items-center">
-          <!-- text on RIGHT -->
-          <div
-            class="hero-slide-content max-w-xl ml-auto text-right text-white opacity-0 transition-all duration-700 ease-out"
-            data-enter-class="translate-x-8 md:translate-x-16"
-          >
+      <!-- TEXT OVERLAY -->
+      <div class="absolute inset-0">
+        <div class="container mx-auto h-full px-4 flex justify-end items-center">
+          <div class="max-w-xl text-right text-white">
             <p class="font-body tracking-[0.35em] uppercase text-xs md:text-sm text-white/70 mb-3">
-              Pirot
+              Stara planina
             </p>
-            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight">
-              <span class="font-bold">STARA PLANINA</span>
+            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-3">
+              <span class="font-bold">STARA&nbsp;PLANINA</span>
             </h2>
+            <p class="max-w-md ml-auto text-sm md:text-base text-white/80">
+              Netaknuta priroda, planinski vrhovi i vidikovci koji ostavljaju bez daha.
+            </p>
           </div>
         </div>
       </div>
@@ -499,22 +499,21 @@
         alt="CENTAR GRADA"
         class="w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-black/15 to-black/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/70"></div>
 
-      <div class="relative z-10 h-full">
-        <div class="container mx-auto h-full px-4 flex items-center">
-          <!-- text on LEFT -->
-          <div
-            class="hero-slide-content max-w-xl mr-auto text-left text-white opacity-0 transition-all duration-700 ease-out"
-            data-enter-class="-translate-x-8 md:-translate-x-16"
-          >
+      <!-- TEXT OVERLAY -->
+      <div class="absolute inset-0">
+        <div class="container mx-auto h-full px-4 flex justify-start items-center">
+          <div class="max-w-xl text-left text-white">
             <p class="font-body tracking-[0.35em] uppercase text-xs md:text-sm text-white/70 mb-3">
-              CENTAR GRADA
+              Centar grada
             </p>
-            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight">
-              CENTAR
-              <span class="font-bold">GRADA</span>
+            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-3">
+              CENTAR&nbsp;<span class="font-bold">GRADA</span>
             </h2>
+            <p class="max-w-md text-sm md:text-base text-white/80">
+              Urban puls Pirota – trgovi, kafei i svakodnevni život starog i novog grada.
+            </p>
           </div>
         </div>
       </div>
@@ -527,21 +526,21 @@
         alt="Zavojsko jezero"
         class="w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/80"></div>
 
-      <div class="relative z-10 h-full">
-        <div class="container mx-auto h-full px-4 flex items-center">
-          <!-- text on RIGHT -->
-          <div
-            class="hero-slide-content max-w-xl ml-auto text-right text-white opacity-0 transition-all duration-700 ease-out"
-            data-enter-class="translate-x-8 md:translate-x-16"
-          >
+      <!-- TEXT OVERLAY -->
+      <div class="absolute inset-0">
+        <div class="container mx-auto h-full px-4 flex justify-end items-center">
+          <div class="max-w-xl text-right text-white">
             <p class="font-body tracking-[0.35em] uppercase text-xs md:text-sm text-white/70 mb-3">
               Zavojsko jezero
             </p>
-            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight">
+            <h2 class="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-3">
               <span class="font-bold">ZAVOJSKO JEZERO</span>
             </h2>
+            <p class="max-w-md ml-auto text-sm md:text-base text-white/80">
+              Jedno od najlepših jezera u Srbiji – spoj kristalno čiste vode i strmih stena.
+            </p>
           </div>
         </div>
       </div>
@@ -550,11 +549,11 @@
 
   <!-- DOTS / NAVIGATION -->
   <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-    <button class="hero-dot h-2 rounded-full bg-white/40 transition-all duration-300"></button>
-    <button class="hero-dot h-2 rounded-full bg-white/40 transition-all duration-300"></button>
-    <button class="hero-dot h-2 rounded-full bg-white/40 transition-all duration-300"></button>
-    <button class="hero-dot h-2 rounded-full bg-white/40 transition-all duration-300"></button>
-    <button class="hero-dot h-2 rounded-full bg-white/40 transition-all duration-300"></button>
+    <button class="hero-dot h-2 rounded-full bg-white/40 w-3 transition-all duration-300"></button>
+    <button class="hero-dot h-2 rounded-full bg-white/40 w-3 transition-all duration-300"></button>
+    <button class="hero-dot h-2 rounded-full bg-white/40 w-3 transition-all duration-300"></button>
+    <button class="hero-dot h-2 rounded-full bg-white/40 w-3 transition-all duration-300"></button>
+    <button class="hero-dot h-2 rounded-full bg-white/40 w-3 transition-all duration-300"></button>
   </div>
 </section>
 
@@ -564,92 +563,61 @@
     if (!carousel) return;
 
     const slides = carousel.querySelectorAll('.hero-slide');
-    const dots = carousel.querySelectorAll('.hero-dot');
+    const dots   = carousel.querySelectorAll('.hero-dot');
     if (!slides.length) return;
 
     let current = 0;
-    const delay = 7000; // ms between slides
+    const delay = 7000;
     let timer;
 
-    // Prepare text elements (start off-screen + invisible)
-    slides.forEach(slide => {
-      const content = slide.querySelector('.hero-slide-content');
-      if (!content) return;
-      const enterClasses = (content.dataset.enterClass || '').split(' ').filter(Boolean);
-      content.classList.add(...enterClasses, 'opacity-0');
-    });
-
-    function setActive(index) {
+    function showSlide(index) {
       slides.forEach((slide, i) => {
-        const content = slide.querySelector('.hero-slide-content');
-        const enterClasses = (content?.dataset.enterClass || '').split(' ').filter(Boolean);
-
-        if (i === index) {
-          // show slide
-          slide.classList.add('opacity-100', 'z-10');
-          slide.classList.remove('opacity-0', 'z-0');
-
-          if (content) {
-            // text "lands" – remove offset + fade in
-            content.classList.remove('opacity-0', ...enterClasses);
-          }
-        } else {
-          // hide slide
-          slide.classList.add('opacity-0', 'z-0');
-          slide.classList.remove('opacity-100', 'z-10');
-
-          if (content) {
-            // reset text back off-screen for next time
-            content.classList.add('opacity-0', ...enterClasses);
-          }
-        }
+        const active = i === index;
+        slide.classList.toggle('opacity-100', active);
+        slide.classList.toggle('z-10', active);
+        slide.classList.toggle('z-0', !active);
       });
 
-      // dots
       dots.forEach((dot, i) => {
-        if (i === index) {
-          dot.classList.add('bg-white', 'w-8');
-          dot.classList.remove('bg-white/40', 'w-3');
-        } else {
-          dot.classList.add('bg-white/40', 'w-3');
-          dot.classList.remove('bg-white', 'w-8');
-        }
+        const active = i === index;
+        dot.classList.toggle('bg-white', active);
+        dot.classList.toggle('w-8', active);
+        dot.classList.toggle('bg-white/40', !active);
+        dot.classList.toggle('w-3', !active);
       });
 
       current = index;
     }
 
-    function next() {
-      const nextIndex = (current + 1) % slides.length;
-      setActive(nextIndex);
+    function nextSlide() {
+      showSlide((current + 1) % slides.length);
     }
 
     function startTimer() {
       stopTimer();
-      timer = setInterval(next, delay);
+      timer = setInterval(nextSlide, delay);
     }
 
     function stopTimer() {
       if (timer) clearInterval(timer);
     }
 
-    // dots click
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
-        setActive(index);
+        showSlide(index);
         startTimer();
       });
     });
 
-    // pause on hover
     carousel.addEventListener('mouseenter', stopTimer);
     carousel.addEventListener('mouseleave', startTimer);
 
     // init
-    setActive(0);
+    showSlide(0);
     startTimer();
   })();
 </script>
+
 
 <!-- ===== WELCOMING / UVODNI TEKST ===== -->
 <section class="section-intro py-14 md:py-20 bg-surface">
@@ -1001,7 +969,7 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
   </div>
 </section>
 
-<!-- ===== BRENDOVI LUŽNICE ===== -->
+<!-- ===== BRENDOVI PIROTA ===== -->
 <section id="brendovi" class="py-20 bg-background">
   <div class="container mx-auto px-4 relative z-10">
     <div class="text-center mb-12">
@@ -1026,32 +994,37 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
       </p>
     </div>
 
-    <div id="brendoviCards" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+   <div class="grid gap-10 lg:grid-cols-2 items-start">
+  <!-- LEFT COLUMN: samo kartice brendova -->
+  <div>
+    <div id="brendoviCards" class="grid gap-8 sm:grid-cols-2">
       <!-- Vurda -->
       <article class="bg-surface rounded-2xl shadow-md overflow-hidden flex flex-col">
         <img
           id="g-slika"
           src="/assets/img/brendovi/vurda.jpg"
           alt="Vurda"
-          class="w-full h-52 object-cover">
-        <div class="p-6 flex flex-col flex-1">
-          <div id="g-tip_brenda" class="text-xs uppercase tracking-[0.18em] text-secondary_text mb-2 font-heading2">
+          class="w-full h-40 object-cover">
+        <div class="p-4 flex flex-col flex-1">
+          <div id="g-tip_brenda"
+               class="text-[10px] uppercase tracking-[0.18em] text-secondary_text mb-1 font-heading2">
             Gastronomski proizvod
           </div>
-          <h3 id="g-naziv_brenda" class="font-heading text-xl font-bold mb-1 text-primary_text">
+          <h4 id="g-naziv_brenda"
+              class="font-heading text-lg font-bold mb-1 text-primary_text">
             Vurda
-          </h3>
-          <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
+          </h4>
+          <p id="g-mesto_porekla" class="text-[11px] text-secondary_text mb-2 font-body">
             Babušnica, Lužnica
           </p>
-          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4 line-clamp-3">
+          <p id="g-opis"
+             class="font-body text-secondary_text text-xs mb-3 line-clamp-3">
             Autentični lužnički mlečni specijalitet čija se receptura vekovima prenosi sa kolena na koleno.
           </p>
-          <a id="g-ovise" href="#" class="inline-flex items-center text-accent font-medium hover:text-accent_hover transition font-body">
+          <a id="g-ovise" href="#"
+             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-xs">
             Saznajte više
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
+            <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
           </a>
         </div>
       </article>
@@ -1062,24 +1035,27 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
           id="g-slika"
           src="/assets/img/brendovi/rakija.jpg"
           alt="Rakija"
-          class="w-full h-52 object-cover">
-        <div class="p-6 flex flex-col flex-1">
-          <div id="g-tip_brenda" class="text-xs uppercase tracking-[0.18em] text-secondary_text mb-2 font-heading2">
+          class="w-full h-40 object-cover">
+        <div class="p-4 flex flex-col flex-1">
+          <div id="g-tip_brenda"
+               class="text-[10px] uppercase tracking-[0.18em] text-secondary_text mb-1 font-heading2">
             Piće
           </div>
-          <h3 id="g-naziv_brenda" class="font-heading text-xl font-bold mb-1 text-primary_text">
+          <h4 id="g-naziv_brenda"
+              class="font-heading text-lg font-bold mb-1 text-primary_text">
             Rakija
-          </h3>
-          <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
+          </h4>
+          <p id="g-mesto_porekla" class="text-[11px] text-secondary_text mb-2 font-body">
             Lužnički kraj
           </p>
-          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
+          <p id="g-opis"
+             class="font-body text-secondary_text text-xs mb-3">
             Simbol lužničkog kraja – domaća rakija uz dobro društvo i priče iz kraja.
           </p>
           <a id="g-ovise" href="#"
-             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
+             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-xs">
             Saznajte više
-            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+            <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
           </a>
         </div>
       </article>
@@ -1090,24 +1066,27 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
           id="g-slika"
           src="/assets/img/brendovi/banica.jpg"
           alt="Banica"
-          class="w-full h-52 object-cover">
-        <div class="p-6 flex flex-col flex-1">
-          <div id="g-tip_brenda" class="text-xs uppercase tracking-[0.18em] text-secondary_text mb-2 font-heading2">
+          class="w-full h-40 object-cover">
+        <div class="p-4 flex flex-col flex-1">
+          <div id="g-tip_brenda"
+               class="text-[10px] uppercase tracking-[0.18em] text-secondary_text mb-1 font-heading2">
             Gastronomski proizvod
           </div>
-          <h3 id="g-naziv_brenda" class="font-heading text-xl font-bold mb-1 text-primary_text">
+          <h4 id="g-naziv_brenda"
+              class="font-heading text-lg font-bold mb-1 text-primary_text">
             Banica
-          </h3>
-          <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
+          </h4>
+          <p id="g-mesto_porekla" class="text-[11px] text-secondary_text mb-2 font-body">
             Lužnica
           </p>
-          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4">
+          <p id="g-opis"
+             class="font-body text-secondary_text text-xs mb-3">
             Lužnička suvana banica – tradicionalna pita koja se ne propušta ni na jednoj trpezi.
           </p>
           <a id="g-ovise" href="#"
-             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
+             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-xs">
             Saznajte više
-            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+            <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
           </a>
         </div>
       </article>
@@ -1118,28 +1097,63 @@ Veliki izbor turističkih destinacija garantuje sjajan provod i želju za što d
           id="g-slika"
           src="/assets/img/brendovi/punjena-paprika.jpg"
           alt="Punjena paprika"
-          class="w-full h-52 object-cover">
-        <div class="p-6 flex flex-col flex-1">
-          <div id="g-tip_brenda" class="text-xs uppercase tracking-[0.18em] text-secondary_text mb-2 font-heading2">
+          class="w-full h-40 object-cover">
+        <div class="p-4 flex flex-col flex-1">
+          <div id="g-tip_brenda"
+               class="text-[10px] uppercase tracking-[0.18em] text-secondary_text mb-1 font-heading2">
             Gastronomski proizvod
           </div>
-          <h3 id="g-naziv_brenda" class="font-heading text-xl font-bold mb-1 text-primary_text">
+          <h4 id="g-naziv_brenda"
+              class="font-heading text-lg font-bold mb-1 text-primary_text">
             Punjena paprika
-          </h3>
-          <p id="g-mesto_porekla" class="text-xs text-secondary_text mb-2 font-body">
+          </h4>
+          <p id="g-mesto_porekla" class="text-[11px] text-secondary_text mb-2 font-body">
             Babušnica i okolina
           </p>
-          <p id="g-opis" class="font-body text-secondary_text text-sm mb-4 line-clamp-3">
+          <p id="g-opis"
+             class="font-body text-secondary_text text-xs mb-3 line-clamp-3">
             Omiljeno jelo Lužničana – bilo da je mrsna ili posna varijanta, uvek ide uz dobro društvo.
           </p>
           <a id="g-ovise" href="#"
-             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-sm">
+             class="mt-auto inline-flex items-center text-accent font-semibold hover:text-accent_hover font-body text-xs">
             Saznajte više
-            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+            <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
           </a>
         </div>
       </article>
     </div>
+  </div>
+
+  <!-- RIGHT COLUMN: naslov + tekst + dugme + velika slika -->
+  <div class="flex flex-col h-full">
+    <!-- Tekst iznad slike -->
+    <div class="mb-6">
+      <h3 class="text-2xl md:text-3xl font-heading font-bold text-primary_text mb-4">
+        BRENDOVI PIROTA
+      </h3>
+
+      <p class="text-secondary_text font-body leading-relaxed mb-4">
+        Karakteristični etno motivi sa ovog područja su karakteristična narodna nošnja za ovaj kraj,
+        nadaleko poznati pirotski ćilim koji se po načinu tkanja i po šarama sasvim razlikuje od
+        persijskog ćilimarstva. Šare na pirotskom ćilimu su zasigurno autohtone.
+      </p>
+
+      <a href="/brendovi"
+         class="inline-flex items-center bg-primary hover:bg-primary_hover text-white px-10 py-4 rounded-full font-heading2 font-semibold shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105">
+        Brendovi Pirota...
+      </a>
+    </div>
+
+    <!-- Velika slika ispod teksta -->
+    <div class="relative flex-1">
+      <img
+        src="/assets/img/brend.jpg"
+        alt="Pirotski ćilim"
+        class="w-full h-full max-h-[520px] object-cover rounded-3xl shadow-2xl" />
+    </div>
+  </div>
+</div>
+
   </div>
 </section>
 
