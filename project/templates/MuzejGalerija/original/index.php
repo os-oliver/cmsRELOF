@@ -39,6 +39,7 @@
   </script>
 
   <style>
+
     .artistic-pattern {
       background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238B4513' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
@@ -362,37 +363,35 @@
     <div class="px-3 sm:px-4 lg:px-6">
       <div class="flex items-center justify-between gap-6 py-4 lg:py-5">
         <!-- LEVA STRANA: logo + naziv -->
-        <div class="flex items-center gap-4 flex-shrink-0">
-          <!-- Veći, formalniji logo -->
-          <div
-            class="w-14 h-14 lg:w-16 lg:h-16 border border-surface/90 bg-gradient-to-br from-surface via-secondary_background to-surface flex items-center justify-center shadow-lg shadow-black/20">
-            <img src="../../../uploads/logo muzej ponisavlja.jpg"
-              alt="Logo" class="rounded-xl w-full">
-          </div>
-
-          <!-- Naziv ustanove -->
-          <div class="leading-tight">
+         <a href="/">
+          <div class="flex items-center gap-4 flex-shrink-0">
+            <!-- Veći, formalniji logo -->
             <div
-              class="font-heading text-primary_text tracking-[0.18em] text-xs lg:text-sm xl:text-[0.9rem] uppercase">
-              USTANOVA KULTURE
+              class="w-14 h-14 lg:w-16 lg:h-16 border border-surface/90 bg-gradient-to-br from-surface via-secondary_background to-surface flex items-center justify-center shadow-lg shadow-black/20">
+              <img src="../../../uploads/logo muzej ponisavlja.jpg"
+                alt="Logo" class="rounded-xl w-full">
             </div>
-            <h1
-              class="mt-1 font-heading text-primary_text text-lg sm:text-xl lg:text-2xl xl:text-[1.55rem] font-semibold tracking-[0.12em] uppercase">
-              MUZEJ PONIŠAVLJA PIROT
-            </h1>
-            <p class="hidden md:block mt-1 text-[0.78rem] text-secondary_text tracking-[0.14em] uppercase">
-              Tradicija, nasleđe i identitet
-            </p>
+
+            <!-- Naziv ustanove -->
+            <div class="leading-tight">
+              <div
+                class="font-heading text-primary_text tracking-[0.18em] text-xs lg:text-sm xl:text-[0.9rem] uppercase">
+                USTANOVA KULTURE
+              </div>
+              <h1
+                class="mt-1 font-heading text-primary_text text-lg sm:text-xl lg:text-2xl xl:text-[1.55rem] font-semibold tracking-[0.12em] uppercase">
+                MUZEJ PONIŠAVLJA PIROT
+              </h1>
+              <p class="hidden md:block mt-1 text-[0.78rem] text-secondary_text tracking-[0.14em] uppercase">
+                Tradicija, nasleđe i identitet
+              </p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- SREDINA: glavna navigacija (desktop) -->
         <nav id="navBarID"
             class="hidden lg:flex items-center gap-3 xl:gap-5 text-[0.85rem] xl:text-[0.92rem] uppercase tracking-[0.16em]">
-          <a href="#"
-            class="nav-link inline-flex items-center px-3.5 py-2.5 border-b-2 border-transparent text-primary_text/90 hover:text-primary hover:border-accent transition-all duration-200">
-            <span>Početna</span>
-          </a>
 
           <!-- O nama dropdown -->
           <div class="dropdown relative group">
@@ -554,135 +553,208 @@
   </header>
 
 
-  <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center overflow-hidden pt-20 artistic-pattern">
-    <div class="absolute inset-0 z-0 bg-gradient-to-br from-surface via-transparent to-primary opacity-10"></div>
+  <!-- HERO SEKCIJA -->
+  <section class="relative w-full bg-secondary_background pt-36 pb-28 overflow-hidden border-b border-surface/60 relative pt-36 lg:pt-40">
 
-    <div class="container mx-auto px-4 py-24 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="max-w-2xl">
-          <span class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-medium mb-6 shadow-md">
-            <i class="fas fa-star mr-2"></i>ISTAKNUTO OVOG MESECA
-          </span>
-          <h1 class="text-5xl md:text-6xl font-heading font-bold leading-tight text-primary_text mb-6">
-            <span class="block">SVET UMETNOSTI</span>
-            <span class="block text-primary mt-2">I KULTURNE BAŠTINE</span>
-          </h1>
+    <!-- Suptilna pozadina -->
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-32 -left-24 w-[420px] h-[420px] bg-primary/7 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-[-6rem] right-[-4rem] w-[520px] h-[520px] bg-accent/7 rounded-full blur-3xl"></div>
+    </div>
 
-          <div class="mb-10">
-            <p class="text-xl text-primary_text leading-relaxed mb-6">
-              Doživite bogatstvo kulturnog nasleđa kroz izložbe, edukativne programe i umetničke događaje u srcu grada.
-            </p>
-            <p class="text-primary_text italic text-lg border-l-4 border-primary pl-4">
-              "Umetnost je laž koja nam omogućava da shvatimo istinu."
-              <span class="block font-medium text-accent mt-2">— Pablo Picasso</span>
-            </p>
+    <div class="relative max-w-7xl mx-auto px-4 lg:px-8 xl:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 xl:gap-20 items-center">
+
+        <!-- CENTRALNI BLOK – naslov i uvod -->
+        <div class="lg:col-span-7">
+          <p class="text-[0.8rem] tracking-[0.28em] uppercase text-secondary_text mb-4">
+            Čuvar kulturne baštine Ponišavlja
+          </p>
+
+          <div class="relative mb-8">
+            <!-- velika, svetla pozadinska reč -->
+            <div
+              class="pointer-events-none absolute -top-10 -left-2 text-6xl md:text-7xl font-heading text-primary_text/5 uppercase tracking-[0.3em]">
+              Ponišavlje
+            </div>
+
+            <h1 class="relative font-heading text-primary_text font-semibold text-4xl md:text-5xl lg:text-[3.4rem] leading-tight">
+              MUZEJ PONIŠAVLJA PIROT<br class="hidden md:block" />
+            </h1>
           </div>
 
-          <div class="flex flex-wrap gap-4 mb-8">
-            <a href="/izlozbe"
-              class="bg-primary hover:bg-primary_hover text-white px-8 py-4 rounded-lg font-medium shadow-lg transition-all transform hover:scale-105">
-              <i class="fas fa-eye mr-2"></i>Trenutne izložbe
-            </a>
+          <p class="text-[1.05rem] md:text-lg text-primary_text/90 leading-relaxed max-w-xl mb-6">
+            Muzej smešten u istorijskom Konaku Malog Riste čuva etnografske, istorijske i umetničke zbirke
+            koje svedoče o životu, običajima i identitetu Pirota i Ponišavlja.
+          </p>
+
+          <p class="text-sm md:text-[0.9rem] text-secondary_text leading-relaxed border-l-2 border-surface/80 pl-4 mb-10 max-w-xl">
+            Otkrijte stalne postavke, tematske izložbe i posebne programe posvećene nasleđu ćilimarstva,
+            urbanog života starog Pirota i kulturnih veza ovog kraja sa svetom.
+          </p>
+
+          <!-- CTA + kratke informacije -->
+          <div class="flex flex-wrap items-center gap-6 mb-10">
+            <div class="flex gap-4">
+              <a href="/poseta"
+                class="px-8 py-3.5 rounded-md bg-primary text-white text-sm tracking-[0.14em] uppercase font-medium hover:bg-primary_hover transition">
+                Planirajte posetu
+              </a>
+
+              <a href="/izlozbe"
+                class="px-8 py-3.5 rounded-md border border-surface text-sm tracking-[0.14em] uppercase text-primary_text bg-secondary_background/70 hover:border-primary hover:text-primary transition">
+                Stalne postavke
+              </a>
+            </div>
+
+            <div class="hidden md:block text-xs text-secondary_text tracking-[0.18em] uppercase">
+              Otvoreno: utorak–nedelja • 10:00–18:00
+            </div>
           </div>
 
-          <div class="grid grid-cols-3 gap-6 mt-12">
-            <div class="text-center">
-              <div class="text-3xl font-heading font-bold text-primary mb-2">50+</div>
-              <p class="text-secondary_text font-medium text-sm">Godina postojanja</p>
+          <!-- Statistika u liniji -->
+          <div class="flex flex-wrap gap-8 md:gap-12">
+            <div>
+              <div class="font-heading text-2xl md:text-3xl font-semibold text-primary_text mb-1">50+</div>
+              <p class="text-[0.78rem] text-secondary_text tracking-[0.12em] uppercase">Godina rada</p>
             </div>
-            <div class="text-center">
-              <div class="text-3xl font-heading font-bold text-primary mb-2">200+</div>
-              <p class="text-secondary_text font-medium text-sm">Izložbi godišnje</p>
+            <div>
+              <div class="font-heading text-2xl md:text-3xl font-semibold text-primary_text mb-1">3</div>
+              <p class="text-[0.78rem] text-secondary_text tracking-[0.12em] uppercase">Zbirke</p>
             </div>
-            <div class="text-center">
-              <div class="text-3xl font-heading font-bold text-primary mb-2">10K+</div>
-              <p class="text-secondary_text font-medium text-sm">Posetilaca</p>
+            <div>
+              <div class="font-heading text-2xl md:text-3xl font-semibold text-primary_text mb-1">10K+</div>
+              <p class="text-[0.78rem] text-secondary_text tracking-[0.12em] uppercase">Posetilaca godišnje</p>
             </div>
           </div>
         </div>
 
-        <div class="relative hidden lg:block">
-          <div class="artistic-frame rounded-xl overflow-hidden shadow-2xl">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Pirot_Konak_Malog_Riste.JPG"
-              alt="Galerija prostor" class="rounded-xl w-full">
-          </div>
-          <div
-            class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent rounded-full flex items-center justify-center text-white text-4xl font-heading font-bold shadow-xl">
-            <i class="fas fa-paint-brush"></i>
+        <!-- DESNA STRANA – kolaž slika kao „zid postavke“ -->
+        <div class="lg:col-span-5">
+          <div class="relative h-[460px] xl:h-[500px]">
+
+            <!-- glavna velika slika -->
+            <div class="absolute top-0 right-0 w-[78%] h-[68%] rounded-2xl overflow-hidden shadow-2xl border border-surface/80 bg-surface/80">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Pirot_Konak_Malog_Riste.JPG"
+                alt="Konak Malog Riste – spoljašnji izgled"
+                class="w-full h-full object-cover object-center">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-5 py-4">
+                <p class="text-[0.7rem] tracking-[0.18em] uppercase text-slate-200/80 mb-1">Istorijski objekat</p>
+                <p class="text-sm text-white font-medium">Konak Malog Riste, kraj XIX veka</p>
+              </div>
+            </div>
+
+            <!-- manja slika – detalj dvorišta / postavke -->
+            <div class="absolute bottom-0 left-0 w-[60%] h-[52%] rounded-2xl overflow-hidden shadow-xl border border-surface/80 bg-surface/80">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Pirot_Konak_Malog_Riste.JPG"
+                alt="Dvorište muzeja"
+                class="w-full h-full object-cover object-bottom">
+              <div class="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
+              <div class="absolute bottom-4 left-4">
+                <p class="text-[0.7rem] tracking-[0.18em] uppercase text-slate-100/80">Muzejsko dvorište</p>
+                <p class="text-xs text-slate-100/90">Prostor za programe na otvorenom</p>
+              </div>
+            </div>
+
+            <!-- vertikalna uska slika – „detalj postavke“ -->
+            <div class="hidden xl:block absolute top-10 -left-8 w-32 h-[260px] rounded-2xl overflow-hidden shadow-lg border border-surface/80 bg-surface/80">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Pirot_Konak_Malog_Riste.JPG"
+                alt="Detalj enterijera"
+                class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-black/25 mix-blend-multiply"></div>
+            </div>
+
           </div>
         </div>
+
       </div>
     </div>
 
-    <!-- Scrolling indicator -->
-    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-      <div class="animate-bounce w-8 h-14 rounded-full border-2 border-primary flex justify-center p-1">
-        <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+    <!-- indikator skrolovanja -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+      <div class="flex flex-col items-center gap-2 text-secondary_text/80 text-[0.7rem] tracking-[0.18em] uppercase">
+        <span class="hidden sm:inline">Pomeri nadole</span>
+        <div class="w-7 h-12 rounded-full border border-surface flex items-start justify-center p-1">
+          <div class="w-1.5 h-1.5 rounded-full bg-primary animate-bounce"></div>
+        </div>
       </div>
     </div>
   </section>
 
-
   <!-- Current Exhibitions -->
-  <section id="izlozbe" class="py-20 bg-secondary_background">
-    <div class="container mx-auto px-4">
+  <section id="izlozbe" class="relative py-10 bg-secondary_background overflow-hidden">
+
+    <div class="relative max-w-7xl mx-auto px-4 lg:px-8 xl:px-10">
+
+      <!-- Naslov sekcije -->
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-          Predstojeće Izložbe
-          <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
+        <p class="text-xs uppercase tracking-[0.26em] text-secondary_text mb-3">
+          Program izložbi
+        </p>
+
+        <h2 class="text-4xl md:text-5xl font-heading font-semibold text-primary_text mb-6">
+          Predstojeće izložbe
         </h2>
-        <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-          Istražite najnovija umetnička dela i postavke u našem centru.
+
+        <div class="w-16 h-[2px] bg-primary mx-auto mb-6"></div>
+
+        <p class="text-lg text-secondary_text max-w-2xl mx-auto">
+          Istražite postavke koje uskoro otvaramo – nove priče, kolekcije i umetnička čitanja Ponišavlja.
         </p>
       </div>
 
+      <!-- Kartice izložbi -->
       <div id="izlozbeCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         <?php for ($i = 0; $i < 3; $i++): ?>
           <div
-            class="izlozba-card bg-surface rounded-3xl overflow-hidden shadow-2xl hover:shadow-primary/50 transition-all duration-500 transform hover:-translate-y-1">
+            class="izlozba-card bg-white/70 backdrop-blur-sm border border-surface/70 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
 
-            <div class="relative h-64">
+            <!-- Slika -->
+            <div class="relative h-60">
               <img id="g-slika"
-                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80"
-                alt="Naslovna slika izložbe"
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                  src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80"
+                  alt="Naslovna slika izložbe"
+                  class="w-full h-full object-cover">
 
-              <div
-                class="absolute bottom-0 left-0 right-0 bg-primary/90 text-white p-3 flex justify-between items-center text-sm font-semibold">
-
-                <div class="flex items-center gap-2">
-                  <i class="fas fa-calendar-check"></i>
-                  Početak: <span id="g-datumPocetka">20. Decembar 2025</span>
-                </div>
-
-                <i class="fas fa-arrow-right"></i>
+              <!-- datum kao diskretan overlay -->
+              <div class="absolute top-4 left-4 bg-black/65 text-white px-3 py-1.5 rounded-full text-[0.7rem] tracking-[0.18em] uppercase flex items-center gap-2">
+                <span>Početak</span>
+                <span id="g-datumPocetka" class="font-semibold tracking-normal normal-case">
+                  20. decembar 2025.
+                </span>
               </div>
             </div>
 
-            <div class="p-6">
-
+            <!-- Tekstualni deo -->
+            <div class="p-6 flex flex-col h-full">
               <h3 id="g-naziv"
-                class="text-3xl font-heading font-extrabold text-primary_text mb-3 hover:text-primary transition-colors duration-300 line-clamp-2">
-                Kreativni Impulsi
+                  class="text-2xl font-heading font-semibold text-primary_text mb-4 hover:text-primary transition-colors duration-200 line-clamp-2">
+                Kreativni impulsi
               </h3>
 
+              <p class="text-sm text-secondary_text mb-6 line-clamp-3">
+                Izložba savremene umetnosti koja kroz različite medije i autorske poetike promišlja identitet,
+                nasleđe i svakodnevicu Ponišavlja.
+              </p>
 
-
-              <a id="g-ovise" href="#"
-                class="mt-4 block text-center bg-accent text-white font-bold py-3 rounded-xl hover:bg-accent/90 transition-colors duration-300">
-                Pogledajte Detaljnije
-                <i class="fas fa-external-link-alt ml-2"></i>
-              </a>
+              <div class="mt-auto pt-2">
+                <a id="g-ovise" href="#"
+                  class="inline-flex items-center justify-center w-full text-sm font-medium tracking-[0.12em] uppercase border border-primary_text/30 text-primary_text px-4 py-3 rounded-md hover:border-primary hover:text-primary transition-colors duration-200">
+                  Pogledajte detaljnije
+                </a>
+              </div>
             </div>
           </div>
         <?php endfor; ?>
       </div>
 
+      <!-- Link ka svim izložbama -->
       <div class="text-center mt-16">
         <a href="/izlozbe" id="izlozbeView"
-          class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-          <i class="fas fa-palette mr-3"></i>
+          class="inline-flex items-center justify-center px-9 py-3.5 rounded-md bg-primary text-white text-sm font-medium tracking-[0.14em] uppercase hover:bg-primary_hover transition shadow-md">
           Prikaži sve izložbe
         </a>
       </div>
@@ -690,136 +762,165 @@
     </div>
   </section>
 
+
   <!-- About Section -->
-  <section id="about" class="py-20 bg-secondary_background">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <span class="inline-block bg-surface text-primary_text px-6 py-2 rounded-full text-sm font-medium mb-4">
-          O GALERIJI
-        </span>
-        <h2 class="text-4xl font-heading font-bold text-primary_text mb-4">
-          Naša Priča i Misija
+  <section id="about" class="relative py-10 bg-secondary_background overflow-hidden">
+
+    <div class="relative max-w-7xl mx-auto px-4 lg:px-8 xl:px-10">
+
+      <!-- Naslov -->
+      <div class="text-center mb-20">
+        <p class="text-xs uppercase tracking-[0.26em] text-secondary_text mb-3">
+          Naša istorija i uloga
+        </p>
+
+        <h2 class="text-4xl md:text-5xl font-heading font-semibold text-primary_text mb-6">
+          Naša Priča<br class="hidden md:block" /> i Misija
         </h2>
+
         <p class="text-lg text-secondary_text max-w-3xl mx-auto">
-          Muzej je posvećen očuvanju, istraživanju i promovisanju umetničkog nasleđa i savremene umetničke prakse
+          Muzej je posvećen očuvanju, istraživanju i predstavljanju bogatog nasleđa Ponišavlja – 
+          kroz zbirke, izložbe i programe koji čuvaju identitet našeg kraja.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <div class="space-y-6">
-            <div>
-              <p class="text-secondary_text leading-relaxed">
-                Muzej je osnovan oktobra 1947. godine odlukom Gradskog narodnog odbora Pirota pod nazivom Narodni muzej. Već je posedovao izvestan broj predmeta, uglavnom poklona od građana Pirota i okoline. Odlukom Skupštine opštine Pirot, Muzej je 1969. godine dobio današnji naziv.
-              </p>
-            </div>
+      <!-- Glavni layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 xl:gap-20">
 
-            <div>
-              <p class="text-secondary_text leading-relaxed">
-                Kao regionalna muzejska ustanova, koja koncepcijski spada u kategoriju zavičajnih muzejskih ustanova kompleksnog tipa, delatnost proučavanja, zaštite i prezentacije kulturnog tipa, delatnost i proučavanje, zaštite i prezentacije kulturno umetničkih i istorijskih dela, odnosno pokretnih kulturnih dobara, ova muzejska ustanova obavlja na teritoriji opštine Pirot, Dimitrovgrad, Babušnica i Bela Palanka.
-              </p>
-            </div>
+        <!-- Tekst leva kolona -->
+        <div class="lg:col-span-6 space-y-10">
 
-            <div>
-              <p class="text-secondary_text leading-relaxed">
-                Organizacionu strukturu Muzeja čine odeljenja za arheologiju, etnologiju, numizmatiku, istoriju i istoriju umetnosti. Zbirke navedenih odeljenja formiraju muzejski fond od oko 6.500 predmeta. U sastav muzejskog fonda ulazi i fond Galerije fresaka u Starom gradu koga čine reprodukcije fresaka iz manastira Svetog Jovana Bogoslova, zadužbine Konstantina Dejanovića, u selu Poganovu, kao i dva legata, od kojih je jedan legat učitelja Ćire Rančića iz oblasti dečije književnosti, a drugi legat učitelja Duška Ćirića sa etnološko-istorijskom građom. Pored toga, Muzej ima depandanse u Babušnici, Beloj Palanci i Dimitrovgradu.
-              </p>
-            </div>
+          <div class="pl-6 border-l-2 border-primary/40">
+            <h3 class="text-xl font-heading font-semibold text-primary_text mb-4">
+              Počeci Muzeja
+            </h3>
+            <p class="text-secondary_text leading-relaxed">
+              Muzej je osnovan oktobra 1947. godine odlukom Gradskog narodnog odbora Pirota pod nazivom 
+              Narodni muzej. Već tada posedovao je izvestan broj predmeta – pretežno poklone građana Pirota 
+              i okoline. Odlukom Skupštine opštine Pirot, Muzej je 1969. godine dobio današnji naziv.
+            </p>
           </div>
+
+          <div class="pl-6 border-l-2 border-primary/40">
+            <h3 class="text-xl font-heading font-semibold text-primary_text mb-4">
+              Naša regionalna uloga
+            </h3>
+            <p class="text-secondary_text leading-relaxed">
+              Kao zavičajna muzejska ustanova kompleksnog tipa, Muzej proučava, štiti i prezentuje kulturna 
+              dobra na prostoru Pirota, Dimitrovgrada, Babušnice i Bele Palanke. Delatnost obuhvata 
+              etnološko, istorijsko, umetničko i kulturno nasleđe regiona.
+            </p>
+          </div>
+
         </div>
 
-        <div class="relative">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="space-y-4">
-              <div class="h-48 bg-gradient-to-br from-primary to-secondary rounded-xl shadow-lg"></div>
-              <div class="h-64 bg-gradient-to-br from-accent to-primary rounded-xl shadow-lg"></div>
-            </div>
-            <div class="space-y-4 mt-8">
-              <div class="h-64 bg-gradient-to-br from-secondary to-primary rounded-xl shadow-lg"></div>
-              <div class="h-48 bg-gradient-to-br from-primary to-accent rounded-xl shadow-lg"></div>
-            </div>
-          </div>
-
+        <!-- Tekst desna kolona u posebnoj kartici -->
+        <div class="lg:col-span-6">
           <div
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white rounded-full flex items-center justify-center shadow-2xl">
-            <div class="text-center p-6">
-              <i class="fas fa-university text-5xl text-primary mb-4"></i>
-              <h3 class="font-heading text-xl font-bold text-primary_text">MUZEJ</h3>
-              <p class="text-secondary_text mt-2 text-sm">Od 1947. godine</p>
-            </div>
+            class="bg-white/60 backdrop-blur-sm border border-surface/70 rounded-2xl shadow-xl px-8 py-10">
+            
+            <h3 class="text-xl font-heading font-semibold text-primary_text mb-6">
+              Zbirke i struktura Muzeja
+            </h3>
+
+            <p class="text-secondary_text leading-relaxed mb-6">
+              Muzej je organizovan kroz odeljenja za arheologiju, etnologiju, numizmatiku, istoriju i istoriju 
+              umetnosti. Zbirke navedenih odeljenja čine muzejski fond od oko 6.500 predmeta.
+            </p>
+
+            <p class="text-secondary_text leading-relaxed mb-6">
+              U sastav fonda ulazi i Galerija fresaka u Starom gradu – reprodukcije fresaka iz manastira 
+              Svetog Jovana Bogoslova u Poganovu – kao i dva legata, Ćire Rančića i Duška Ćirića.
+            </p>
+
+            <p class="text-secondary_text leading-relaxed">
+              Muzej ima depandanse u Babušnici, Beloj Palanci i Dimitrovgradu, čime svoju kulturnu misiju 
+              širi na čitavo područje Ponišavlja.
+            </p>
+
           </div>
         </div>
+
       </div>
     </div>
   </section>
-  <section id="vesti" class="py-20 bg-gradient-to-br from-surface to-background">
-    <div class="container mx-auto px-4">
+
+  <!-- Najnovije vesti -->
+  <section id="vesti" class="relative py-24 bg-secondary_background border-t border-surface/60">
+    <div class="relative max-w-7xl mx-auto px-4 lg:px-8 xl:px-10">
+
+      <!-- Naslov sekcije -->
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-          Najnovije Vesti
-          <div
-            class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
-          </div>
+        <p class="text-xs uppercase tracking-[0.26em] text-secondary_text mb-3">
+          Program vesti
+        </p>
+
+        <h2 class="text-4xl md:text-5xl font-heading font-semibold text-primary_text mb-6">
+          Najnovije vesti
         </h2>
-        <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
-          Budite u toku sa najnovijim dešavanjima iz sveta kulture i umetnosti.
+
+        <div class="w-16 h-[2px] bg-primary mx-auto mb-6"></div>
+
+        <p class="text-lg text-secondary_text max-w-2xl mx-auto">
+          Budite u toku sa najnovijim dešavanjima iz muzeja, izložbi i kulturnog života Ponišavlja.
         </p>
       </div>
 
-      <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Kartice vesti -->
+      <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         <?php for ($i = 0; $i < 3; $i++): ?>
           <article
-            class="relative rounded-xl overflow-hidden shadow-2xl transition-all duration-500 group cursor-pointer bg-black/50 aspect-video md:aspect-[4/3] max-w-sm mx-auto">
-            <img id="g-slika"
-              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
-              alt="Galerijska Slika"
-              class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out">
+            class="relative max-w-sm mx-auto bg-white/70 backdrop-blur-sm border border-surface/70 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
 
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6 flex flex-col justify-end transition-all duration-500">
+            <!-- Slika -->
+            <div class="relative h-52">
+              <img id="g-slika"
+                  src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                  alt="Galerijska slika"
+                  class="w-full h-full object-cover">
 
-              <div class="relative z-10 text-white">
-
-                <div
-                  class="flex items-center text-sm mb-2 opacity-70 group-hover:opacity-100 transition-opacity duration-500 delay-150">
-                  <i class="far fa-calendar-alt mr-2 text-accent"></i>
-                  <span id="g-datum">15. Oktobar 2025</span>
-                </div>
-
-                <h3 id="g-naslov"
-                  class="text-2xl font-heading font-bold mb-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-200 line-clamp-2">
-                  Novi kulturni centar otvara vrata građanima
-                </h3>
-
-                <p id="g-opis"
-                  class="text-sm mb-4 max-h-0 opacity-0 group-hover:max-h-full group-hover:opacity-100 transition-all duration-500 ease-out line-clamp-3">
-                  Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
-                  kreativnosti i umetnosti u našem gradu.
-                </p>
-
-                <a id="g-ovise" href="#"
-                  class="inline-flex items-center text-accent font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">
-                  Pogledaj detalje
-                  <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                </a>
+              <!-- Datum kao badge -->
+              <div class="absolute top-4 left-4 bg-black/65 text-white px-3 py-1.5 rounded-full text-[0.7rem] tracking-[0.18em] uppercase flex items-center gap-2">
+                <span id="g-datum" class="tracking-normal normal-case">
+                  15. oktobar 2025.
+                </span>
               </div>
             </div>
 
-            <div class="absolute top-4 left-4 p-2 bg-accent rounded-full text-white shadow-lg z-20">
-              <i class="fas fa-camera text-lg"></i>
+            <!-- Tekstualni deo -->
+            <div class="p-6 flex flex-col h-full">
+              <h3 id="g-naslov"
+                  class="text-xl font-heading font-semibold text-primary_text mb-3 line-clamp-2">
+                Novi kulturni centar otvara vrata građanima
+              </h3>
+
+              <p id="g-opis"
+                class="text-sm text-secondary_text leading-relaxed mb-5 line-clamp-3">
+                Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar kreativnosti
+                i umetnosti u našem gradu.
+              </p>
+
+              <div class="mt-auto pt-1">
+                <a id="g-ovise" href="#"
+                  class="inline-flex items-center text-sm font-medium tracking-[0.12em] uppercase text-primary_text hover:text-primary transition-colors">
+                  Pogledaj detalje
+                </a>
+              </div>
             </div>
           </article>
         <?php endfor; ?>
       </div>
 
+      <!-- Dugme ka svim vestima -->
       <div class="text-center mt-16">
-        <button id="vestiView"
-          class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
-          <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
-          Pogledaj sve vesti
-          <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-        </button>
+        <a href="/aktivnosti/vesti">
+          <button id="vestiView"
+                  class="inline-flex items-center justify-center px-9 py-3.5 rounded-md bg-primary text-white text-sm font-medium tracking-[0.14em] uppercase hover:bg-primary_hover transition shadow-md">
+            Pogledaj sve vesti
+          </button>
+        </a>
       </div>
+
     </div>
   </section>
 
