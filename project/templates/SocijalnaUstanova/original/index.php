@@ -1239,11 +1239,11 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-primary_lighter mt-1 mr-3"></i>
-                            <span>Bulevar oslobođenja 26, 21000 Novi Sad</span>
+                            <span>Bulevar oslobođenja 26, Novi Pazar</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-primary_lighter mt-1 mr-3"></i>
-                            <span>+381 21 123 456</span>
+                            <span>+381 64 0698099</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-primary_lighter mt-1 mr-3"></i>

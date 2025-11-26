@@ -932,7 +932,7 @@
           <ul class="space-y-3">
             <li class="flex items-start">
               <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-              <span>Trg slobode 15, 11000 Beograd</span>
+              <span>Dvorana Pendik5, 11000 Beograd</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-phone text-accent mt-1 mr-3"></i>
