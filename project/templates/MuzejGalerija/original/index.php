@@ -402,7 +402,7 @@
                 class="fas fa-chevron-down ml-1 text-[0.6rem] text-secondary_text group-hover:rotate-180 transition-transform duration-200"></i>
             </button>
             <div
-              class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-[240px] max-w-xs bg-secondary_background/98 rounded-xl shadow-2xl border border-surface/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2.5">
+              class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 min-w-[240px] max-w-xs bg-secondary_background/98 rounded-xl shadow-2xl border border-surface/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2.5">
               <a href="#" static="true"
                 class="dropdown-item flex items-center px-4 py-2.5  hover:bg-surface/80 rounded-lg transition-colors duration-150">
                 <span class="">Misija i vizija</span>
@@ -453,7 +453,7 @@
             </button>
 
             <div
-              class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-[220px] bg-secondary_background/98 rounded-xl shadow-2xl border border-surface/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2.5">
+              class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 min-w-[220px] bg-secondary_background/98 rounded-xl shadow-2xl border border-surface/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2.5">
               <a href="#"
                 class="dropdown-item flex items-center px-4 py-2.5 hover:bg-surface/80 rounded-lg transition-colors duration-150">
                 <span class="">Vesti</span>
@@ -778,7 +778,7 @@
         </h2>
 
         <p class="text-lg text-secondary_text max-w-3xl mx-auto">
-          Muzej je posvećen očuvanju, istraživanju i predstavljanju bogatog nasleđa Ponišavlja – 
+          Muzej je posvećen očuvanju, istraživanju i predstavljanju bogatog nasleđa Ponišavlja –
           kroz zbirke, izložbe i programe koji čuvaju identitet našeg kraja.
         </p>
       </div>
@@ -794,8 +794,8 @@
               Počeci Muzeja
             </h3>
             <p class="text-secondary_text leading-relaxed">
-              Muzej je osnovan oktobra 1947. godine odlukom Gradskog narodnog odbora Pirota pod nazivom 
-              Narodni muzej. Već tada posedovao je izvestan broj predmeta – pretežno poklone građana Pirota 
+              Muzej je osnovan oktobra 1947. godine odlukom Gradskog narodnog odbora Pirota pod nazivom
+              Narodni muzej. Već tada posedovao je izvestan broj predmeta – pretežno poklone građana Pirota
               i okoline. Odlukom Skupštine opštine Pirot, Muzej je 1969. godine dobio današnji naziv.
             </p>
           </div>
@@ -805,8 +805,8 @@
               Naša regionalna uloga
             </h3>
             <p class="text-secondary_text leading-relaxed">
-              Kao zavičajna muzejska ustanova kompleksnog tipa, Muzej proučava, štiti i prezentuje kulturna 
-              dobra na prostoru Pirota, Dimitrovgrada, Babušnice i Bele Palanke. Delatnost obuhvata 
+              Kao zavičajna muzejska ustanova kompleksnog tipa, Muzej proučava, štiti i prezentuje kulturna
+              dobra na prostoru Pirota, Dimitrovgrada, Babušnice i Bele Palanke. Delatnost obuhvata
               etnološko, istorijsko, umetničko i kulturno nasleđe regiona.
             </p>
           </div>
@@ -817,23 +817,23 @@
         <div class="lg:col-span-6">
           <div
             class="bg-white/60 backdrop-blur-sm border border-surface/70 rounded-2xl shadow-xl px-8 py-10">
-            
+
             <h3 class="text-xl font-heading font-semibold text-primary_text mb-6">
               Zbirke i struktura Muzeja
             </h3>
 
             <p class="text-secondary_text leading-relaxed mb-6">
-              Muzej je organizovan kroz odeljenja za arheologiju, etnologiju, numizmatiku, istoriju i istoriju 
+              Muzej je organizovan kroz odeljenja za arheologiju, etnologiju, numizmatiku, istoriju i istoriju
               umetnosti. Zbirke navedenih odeljenja čine muzejski fond od oko 6.500 predmeta.
             </p>
 
             <p class="text-secondary_text leading-relaxed mb-6">
-              U sastav fonda ulazi i Galerija fresaka u Starom gradu – reprodukcije fresaka iz manastira 
+              U sastav fonda ulazi i Galerija fresaka u Starom gradu – reprodukcije fresaka iz manastira
               Svetog Jovana Bogoslova u Poganovu – kao i dva legata, Ćire Rančića i Duška Ćirića.
             </p>
 
             <p class="text-secondary_text leading-relaxed">
-              Muzej ima depandanse u Babušnici, Beloj Palanci i Dimitrovgradu, čime svoju kulturnu misiju 
+              Muzej ima depandanse u Babušnici, Beloj Palanci i Dimitrovgradu, čime svoju kulturnu misiju
               širi na čitavo područje Ponišavlja.
             </p>
 
@@ -978,12 +978,12 @@
             </li>
             <li class="flex items-start">
               <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-              <span>muzejpirot@gmail.com</span>
+              <span data-translate="off">muzejpirot@gmail.com</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-clock text-accent mt-1 mr-3"></i>
               <span>
-                Ponedeljak - Petar 08-16h<br>
+                Ponedeljak - Petak 08-16h<br>
                 Subota 09-15h<br>
                 Nedelja - ukoliko ima zakazanih poseta<br>
               </span>
