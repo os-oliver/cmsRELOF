@@ -134,7 +134,7 @@ HTML;
 
         $slug = '__SLUG__';
         $pageTitle = ucfirst($slug);
-        $pageDescription = 'Pregled svih stavki';
+        $pageDescription = 'Saznajte više o našim predstavama';
 
         $itemsPerPage = 3;
         $currentPage = max(1, (int) ($_GET['page'] ?? 1));

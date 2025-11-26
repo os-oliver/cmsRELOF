@@ -19,11 +19,7 @@ class IstorijatPageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
     <div class="relative z-10 w-full max-w-5xl mx-auto text-center font-body text-secondary_text">
       <h1 class="text-primary_text text-5xl font-heading mt-10 mb-4">Istorijat naše ustanove</h1>
-      <h2 class="text-3xl mx-5 italic mb-4 text-justify">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-    Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-</h2>
+      <h2 class="text-3xl mx-5 italic mb-4 text-justify">Regionalno pozorište Novi Pazar je profesionalna pozorišna ustanova u Novom Pazaru, osnovana 2003. godine. Predstavlja jednu od najmlađih pozorišnih institucija u Srbiji i značajan kulturni centar regiona. Radi u zgradi Kulturnog centra Novi Pazar uz podršku Ministarstva kulture Republike Srbije. Regionalno pozorište Novi Pazar smešteno je u zgradi Kulturnog centra Novi Pazar, u ulici Stefana Nemanje br. 2, u samom centru grada. Nalazi se u neposrednoj blizini centralne pešačke zone (Ulica 28. novembra), Žitnog trga i Muzeja „Ras”. Pozorište i Kulturni centar ostvaruju blisku saradnju u realizaciji programa. Trenutni direktor pozorišta je Seadetin Mujezinović.</h2>
     </div>
   </section>
 </main>

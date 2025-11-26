@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorem ipsum dolor</title>
+    <title>Regionalno pozorište | Novi Pazar</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -332,72 +332,50 @@
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-home mr-3 text-primary"></i>Početna
-                    </a>
                     <div class="mobile-dropdown">
 
                         <button class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
                             id="mobileAboutToggle">
                             <div class="flex items-center">
-                                <i class="fas fa-info-circle mr-3 text-primary"></i>O nama
+                                O nama
                             </div>
                             <i class="fas fa-chevron-down  transition-transform duration-200" id="mobileAboutIcon"></i>
                         </button>
 
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
+                                Misija
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
+                                Istorijat
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Misija
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Istorija
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Partneri
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Organizaciona struktura
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Organi Upravljanja
+                                Organizaciona struktura
                             </a>
                         </div>
 
                     </div>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-images mr-3 text-primary"></i>Ansambl
+                        Ansambl
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-folder-open mr-3 text-primary"></i>Predstave
+                        Predstave
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-address-book mr-3 text-primary"></i>Repertoar
+                        Repertoar
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Vesti
+                        Vesti
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-images mr-3 text-primary"></i>Galerija
+                        Galerija
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-folder-open mr-3 text-primary"></i>Dokumenti
+                        Dokumenti
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
+                        Kontakt
                     </a>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Pitanja
-                    </a>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Informacije
-                    </a>
-
                 </nav>
             </div>
         </div>
@@ -413,108 +391,79 @@
 
     <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm ">
         <div class="container mx-auto px-4 flex justify-between items-center">
-
-
             <!-- Logo Section -->
-            <div class="flex items-center space-x-3 flex-shrink-0">
-                <div
-                    class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <img src="" alt="" style="width:75px;height:auto;" />
-                </div>
+            <a href="/"
+                class="flex items-center space-x-3 flex-shrink-0 hover:opacity-90 transition-opacity duration-200">
+                    <div
+                        class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <img src="https://scontent.fbeg2-1.fna.fbcdn.net/v/t39.30808-6/291167544_494822552551507_2797973856938447551_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=sxk1_Et2tpgQ7kNvwHEWRdb&_nc_oc=AdkWhSgyE8VigXV5nV25vAfgNBuYmDSb7uajlvYa6revJAhz-SCJIKNIc0dUiWpXZPs&_nc_zt=23&_nc_ht=scontent.fbeg2-1.fna&_nc_gid=TXO64FX3kc26K-6iLByjmA&oh=00_Afj1kPB3oZGceLdEceTq49Oauf91TEgOToT5w9wJHKjFCQ&oe=692BD11C"
+                            alt="Logo" style="width:75px;height:auto;" />
+                    </div>
 
-                <div class="hidden sm:block font-body text-primary_text">
-                    <h1 class="text-xl lg:text-2xl tracking-wider">Lorem ipsum dolor</h1>
-                    <p class="text-xs tracking-widest hidden md:block">Lorem ipsum dolor sit amet consectetu</p>
-                </div>
-                <div class="block sm:hidden">
-                    <h1 class="text-lg text-primary_text">Lorem ipsum</h1>
-                </div>
-            </div>
+                    <div class="hidden sm:block font-body text-primary_text">
+                        <h1 class="text-md lg:text-xl">Regionalno pozorište</h1>
+                        <p class="text-xs tracking-widest hidden md:block">Novi Pazar</p>
+                    </div>
 
+                    <div class="block sm:hidden">
+                        <h1 class="text-lg text-primary_text">Regionalno pozorište</h1>
+                    </div>
+                </a>
 
             <!-- Desktop Navigation -->
             <nav id="navBarID"
-                class="hidden lg:flex space-x-4 xl:space-x-8 font-body text-secondary_text hover:text-primary_text">
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-home mr-2 text-primary transition-colors"></i>
-                    <span class="hidden xl:inline">Početna</span>
-                </a>
+                class="hidden lg:flex items-center space-x-4 xl:space-x-8 font-body text-secondary_text hover:text-primary_text">
                 <div class="dropdown relative group transition-colors">
                     <button class="nav-link transition-colors flex items-center whitespace-nowrap">
-                        <i class="fas fa-info-circle mr-2 text-primary"></i>
                         <span class="hidden xl:inline">O nama</span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <a href="#"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
-                        </a>
-                        <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Misija
+                            Misija
                         </a>
                         <a static = "true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Istorija
+                            Istorijat
                         </a>
-                        <a static = "true" href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Partneri
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Organi Upravljanja
-                        </a>
-
                         <a data-page="OrganizacionaStruktura" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-secondary"></i>Organizaciona struktura
+                                Organizaciona struktura
                         </a>
 
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Pitanja
+                            Pitanja
                         </a>
 
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Informacije
+                            Informacije
                         </a>
 
                     </div>
                 </div>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Ansambl</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Predstave</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Repertoar</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-images mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Galerija</span>
                 </a>
                 <a href="#" class="nav-link transition-colors group flex items-center whitespace-nowrap">
-                    <i class="fas fa-folder-open mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Dokumenti</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-address-book mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Kontakt</span>
                 </a>
 
@@ -527,7 +476,6 @@
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
                     'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -595,35 +543,29 @@
         </div>
     </header>
 
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 text-secondary_text">
+        <div
+            class="absolute inset-x-0 top-20 bottom-0 -z-10 bg-[url('https://scontent.fbeg1-1.fna.fbcdn.net/v/t39.30808-6/495171846_1287515836615504_141970921409432064_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=v6PRQJFBpLIQ7kNvwFAYGhX&_nc_oc=AdnZd4TnJQJ9U8bdRPIJpikV-cDzZeilN2tVYpB9R_-UlbKi_TqyC3JstjTcdAHYwtE&_nc_zt=23&_nc_ht=scontent.fbeg1-1.fna&_nc_gid=IDsDW44dAiXy-Id_rqhIew&oh=00_AfjzHizdl0ekjMEXMePAV8h1p2bRd1DEDDYHF-PInGeLLQ&oe=692BD460')] bg-cover bg-center bg-no-repeat">
+        </div>
 
-    <!-- Enhanced Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondary_text">
+        <div class="absolute inset-x-0 top-20 bottom-0 -z-0 bg-black/40"></div>
+        
         <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <div class="mb-8 text-left">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondary_text font-body">Lorem ipsum dolor sit</span>
+                            <span class="block font-heading text-white">Dom kulture, umetnosti i tradicije</span>
                         </h1>
-                        <p class="mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+                        <p class="mb-10 text-white">
+                            U srcu Novog Pazara već decenijama negujemo pozorišnu umetnost, spajamo tradiciju i savremeni izraz i stvaramo repertoar koji inspiriše sve generacije.
                         </p>
-                        <button
-                            class="bg-primary text-primarybtntxt px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors">
-                            Pogledajte repertoar
-                        </button>
+                        <a href="/repertoar" id="repertoarView">
+                            <button class="bg-primary text-primarybtntxt px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors">
+                                Pogledajte repertoar
+                            </button>
+                        </a>
                     </div>
-                </div>
-                <div class="hidden md:flex justify-center">
-                    <img class="dark:hidden"
-                        src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/girl-shopping-list.svg"
-                        alt="shopping illustration" />
                 </div>
             </div>
         </div>
@@ -736,7 +678,7 @@
                 <a href="/repertoar" id="repertoarView"
                     class="bg-primary text-background px-8 py-4 text-lg rounded-full hover:bg-primary_hover transition-colors flex items-center shadow-lg mx-auto w-fit">
                     <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sav repertoar
+                    Pogledaj ceo repertoar
                 </a>
             </div>
 
@@ -851,7 +793,7 @@
     <section class="py-16 text-secondary_text">
         <div class="text-center mb-16 font-body">
             <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                Prijatelji pozorista
+                Prijatelji pozorišta
                 <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
             </h2>
         </div>
@@ -859,10 +801,10 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <?php
                 $stats = [
-                    ['label' => 'Knjaz Milos'],
+                    ['label' => 'Knjaz Miloš'],
                     ['label' => 'Vlada Republike Srbije'],
                     ['label' => 'AikBanka'],
-                    ['label' => 'Firma4'],
+                    ['label' => 'Kancelarija za mlade'],
                 ];
                 foreach ($stats as $index => $stat): ?>
                     <div class="bg-surface p-6 rounded-xl shadow-lg transform transition hover:scale-105"
@@ -895,37 +837,30 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl">Lorem ipsum dolor</h3>
+                        <h3 class="text-xl">Regionalno pozorište</h3>
                     </div>
                     <p class="mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit
+                        Zvanična veb prezentacija Regionalnog pozorišta u Novom Pazaru
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
+                        <a href="https://www.facebook.com/RegionalnoPozoristeNoviPazar"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#"
+                        <a href="www.instagram.com/regionalnopozoriste"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-spotify"></i>
                         </a>
                     </div>
                 </div>
                 <div>
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-
+                        <li><a href="predstave" class="text-logocolor2/90 hover:text-primary_text transition-colors">Predstave</a></li>
+                        <li><a href="repertoar" class="text-logocolor2/90 hover:text-primary_text transition-colors">Repertoar</a></li>
+                        <li><a href="vesti" class="text-logocolor2/90 hover:text-primary_text transition-colors">Vesti</a></li>
+                        <li><a href="galerija" class="text-logocolor2/90 hover:text-primary_text transition-colors">Galerija</a></li>
+                        <li><a href="dokumenti" class="text-logocolor2/90 hover:text-primary_text transition-colors">Dokumenti</a></li>
                     </ul>
                 </div>
                 <div>
@@ -933,23 +868,23 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-logocolor2 mt-1 mr-3"></i>
-                            <span>adresa adresa adresa</span>
+                            <span>Stevana Nemanje 2, Novi Pazar</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>+38121231231</span>
+                            <span>+381 20 322 819</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate = "off">info@pozoriste.rs</span>
+                            <span data-translate = "off">regionalnopozoristenp@gmail.com</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
                             <span>
                                 Radno vreme:<br>
-                                Ponedeljak - Petak: 10:00 - 18:00<br>
-                                Subota: 10:00 - 14:00<br>
-                                Nedelja: 10:00 - 14:00
+                                Ponedeljak - Petak: 08:00 - 15:00<br>
+                                Subota: Zatvoreno<br>
+                                Nedelja: Zatvoreno
                             </span>
                         </li>
                     </ul>
@@ -958,7 +893,7 @@
                     <h4 class="mb-6">Mapa lokacije</h4>
                     <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2911.252451725829!2d20.5195132!3d43.141227799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47562812e709f671%3A0x8b2b26c7f2a30e6a!2z0JrQpiDQndC-0LLQuCDQn9Cw0LfQsNGA!5e0!3m2!1ssr!2srs!4v1764100735505!5m2!1ssr!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
