@@ -1,6 +1,8 @@
 <?php
 namespace App\Utils;
 
+use App\Controllers\AuthController;
+use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
 
 class ModalGenerator
@@ -464,9 +466,18 @@ class ModalGenerator
         $value = $field['value'] ?? '';
 
         if (($field['property'] ?? '') === 'auto') {
-            error_log("evo me:" . $type);
+            error_log("auto popunjavanje za polje: $name");
             if ($type === 'date' && empty($value)) {
                 $value = date('Y-m-d'); // danasnji datum
+            }
+            if($name === 'autor' && empty($value)) {
+
+                [$name, $surname, $role] = AuthController::getUserInfo();
+
+                $value = $name . ' ' . $surname;
+                if ($this->lang == 'sr-Cyrl') {
+                    $value = (new LanguageMapperController())->latin_to_cyrillic($value);
+                }
             }
         }
 
