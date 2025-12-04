@@ -20,7 +20,6 @@ class EmployeesPageBuilder extends BasePageBuilder
             </p>
         </div>
 
-        <!-- Search Form -->
         <form method="GET" class="bg-white rounded-xl shadow-md p-6 mb-8">
             <div class="flex flex-col md:flex-row gap-4">
                 <div class="relative flex-grow">
@@ -41,36 +40,57 @@ class EmployeesPageBuilder extends BasePageBuilder
             </div>
         </form>
 
-        <!-- Employees Grid -->
         <?php if (count($employees) > 0): ?>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach ($employees as $employee): ?>
-                    <div class="bg-surface rounded-xl shadow-md overflow-hidden card-hover fade-in">
+                    <div class="bg-surface rounded-xl shadow-md overflow-hidden card-hover fade-in" 
+                         data-employee-id="<?= htmlspecialchars($employee['id'] ?? '', ENT_QUOTES) ?>">
                         <div class="p-6">
-                            <div class="flex items-center mb-6">
-                                <div class="initials-avatar bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold">
-                                    <?= mb_substr($employee['name'], 0, 1, 'UTF-8') . mb_substr($employee['surname'], 0, 1, 'UTF-8') ?>
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center">
+                                    <div class="initials-avatar bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                                        <?= mb_substr($employee['name'], 0, 1, 'UTF-8') . mb_substr($employee['surname'], 0, 1, 'UTF-8') ?>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-xl font-bold text-primary_text">
+                                            <?= htmlspecialchars($employee['name'] . ' ' . $employee['surname'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                                        </h3>
+                                        <p class="font-medium text-secondary_text">
+                                            <?= htmlspecialchars($employee['position'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="ml-4">
-                                    <h3 class="text-xl font-bold text-primary_text">
-                                        <?= htmlspecialchars($employee['name'] . ' ' . $employee['surname'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
-                                    </h3>
-                                    <p class="font-medium">
-                                        <?= htmlspecialchars($employee['position'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                                <button type="button" 
+                                        class="show-more-details text-primary hover:text-primary_hover transition p-2 rounded-full"
+                                        aria-label="Prikaži više detalja"
+                                        data-employee-id="<?= htmlspecialchars($employee['id'] ?? '', ENT_QUOTES) ?>"
+                                        data-employee-name="<?= htmlspecialchars($employee['name'] . ' ' . $employee['surname'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        data-employee-biography="<?= htmlspecialchars($employee['biography'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        data-employee-email="<?= htmlspecialchars($employee['email'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        data-employee-position="<?= htmlspecialchars($employee['position'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        >
+                                    <i class="fas fa-eye text-2xl"></i>
+                                </button>
+                            </div>
+
+                            <div class="border-t border-secondary pt-4 space-y-3">
+                                <p class="flex items-center">
+                                    <i class="fas fa-envelope mr-3 text-primary"></i>
+                                    <a href="mailto:<?= htmlspecialchars($employee['email'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" class="text-gray-700 hover:text-primary transition truncate">
+                                        <?= htmlspecialchars($employee['email'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                                    </a>
+                                </p>
+                                <div class="text-gray-600 line-clamp-3">
+                                    <p>
+<?= isset($employee['biography']) ? htmlspecialchars($employee['biography']) : 'Nema dostupne biografije.' ?>
                                     </p>
                                 </div>
-                            </div>
-                            <div class="border-t border-secondary pt-4">
-                                <p class="text-gray-600 line-clamp-3">
-<?= isset($employee['biography']) ? htmlspecialchars($employee['biography']) : '' ?>
-                                </p>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
 
-            <!-- Pagination -->
             <div class="mt-12 flex justify-center items-center space-x-4">
                 <?php if ($page > 1): ?>
                     <a href="?<?= http_build_query(array_merge($_GET, ['page' => $page - 1])) ?>"
@@ -115,6 +135,81 @@ class EmployeesPageBuilder extends BasePageBuilder
         <?php endif; ?>
     </div>
 </main>
+
+<div id="employee-details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
+    <div class="bg-white rounded-xl p-8 max-w-lg w-full m-4 shadow-2xl">
+        <div class="flex justify-between items-center border-b pb-3 mb-4">
+            <h2 id="modal-employee-name" class="text-2xl font-bold text-primary_text">Detalji zaposlenog</h2>
+            <button id="close-modal" class="text-gray-500 hover:text-gray-800 transition">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <p class="mb-2"><strong class="text-primary_text">Pozicija:</strong> <span id="modal-employee-position"></span></p>
+        <p class="mb-4"><strong class="text-primary_text">E-pošta:</strong> <a id="modal-employee-email" href="" class="text-primary hover:underline"></a></p>
+        <h3 class="text-lg font-semibold text-primary_text mb-2">Biografija:</h3>
+        <p id="modal-employee-biography" class="text-gray-600 whitespace-pre-line"></p>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('employee-details-modal');
+    const closeModalButton = document.getElementById('close-modal');
+    const moreDetailsButtons = document.querySelectorAll('.show-more-details');
+    
+    // Funkcija za otvaranje modala
+    function openModal(employee) {
+        document.getElementById('modal-employee-name').textContent = employee.name;
+        document.getElementById('modal-employee-position').textContent = employee.position;
+        
+        const emailLink = document.getElementById('modal-employee-email');
+        emailLink.textContent = employee.email;
+        emailLink.href = 'mailto:' + employee.email;
+        
+        document.getElementById('modal-employee-biography').textContent = employee.biography;
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Sprečava skrolovanje pozadine
+    }
+
+    // Funkcija za zatvaranje modala
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    // Dodavanje listenera na dugmad "Oko"
+    moreDetailsButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const employeeData = {
+                id: this.dataset.employeeId,
+                name: this.dataset.employeeName,
+                biography: this.dataset.employeeBiography,
+                email: this.dataset.employeeEmail,
+                position: this.dataset.employeePosition
+            };
+            openModal(employeeData);
+        });
+    });
+
+    // Zatvaranje modala klikom na X
+    closeModalButton.addEventListener('click', closeModal);
+
+    // Zatvaranje modala klikom izvan njega
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Zatvaranje modala pritiskom na ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+});
+</script>
 HTML;
 
     /**
@@ -129,11 +224,13 @@ HTML;
 
 // Parametri iz GET
 $search = $_GET['search'] ?? '';
-$limit = $_GET['limit'] ?? 3;
+// Povećao sam limit radi testiranja, vratite na 3 ako želite manji broj
+$limit = $_GET['limit'] ?? 6; 
 $page = max(1, (int)($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
 $employeeModel = new Employee();
+// Proverite da li list() metoda vraća 'email' i 'id'
 [$employees, $totalCount] = $employeeModel->list(
     limit: $limit,
     offset: $offset,
