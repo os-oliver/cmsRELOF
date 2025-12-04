@@ -7,9 +7,6 @@ use App\Controllers\AuthController;
 
 class EmployeesPageBuilder extends BasePageBuilder
 {
-    /**
-     * HTML template stranice
-     */
     protected string $html = <<<'HTML'
 <main class="flex-grow pt-24 bg-background">
     <div class="container mx-auto px-4 py-12 text-secondary_text font-body">
@@ -136,7 +133,7 @@ class EmployeesPageBuilder extends BasePageBuilder
     </div>
 </main>
 
-<div id="employee-details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
+<div id="employee-details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4">
     <div class="bg-white rounded-xl p-8 max-w-lg w-full m-4 shadow-2xl">
         <div class="flex justify-between items-center border-b pb-3 mb-4">
             <h2 id="modal-employee-name" class="text-2xl font-bold text-primary_text">Detalji zaposlenog</h2>
@@ -144,10 +141,17 @@ class EmployeesPageBuilder extends BasePageBuilder
                 <i class="fas fa-times text-xl"></i>
             </button>
         </div>
-        <p class="mb-2"><strong class="text-primary_text">Pozicija:</strong> <span id="modal-employee-position"></span></p>
-        <p class="mb-4"><strong class="text-primary_text">E-pošta:</strong> <a id="modal-employee-email" href="" class="text-primary hover:underline"></a></p>
+        
+        <div class="space-y-3 mb-6">
+            <p><strong class="text-primary_text">Pozicija:</strong> <span id="modal-employee-position"></span></p>
+            <p><strong class="text-primary_text">E-pošta:</strong> <a id="modal-employee-email" href="" class="text-primary hover:underline"></a></p>
+        </div>
+
         <h3 class="text-lg font-semibold text-primary_text mb-2">Biografija:</h3>
-        <p id="modal-employee-biography" class="text-gray-600 whitespace-pre-line"></p>
+        
+        <div id="modal-employee-biography-wrapper" class="max-h-96 overflow-y-auto pr-2 bg-gray-50 p-4 rounded-lg border border-gray-200">
+             <p id="modal-employee-biography" class="text-gray-700 whitespace-pre-wrap"></p>
+        </div>
     </div>
 </div>
 
@@ -157,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModalButton = document.getElementById('close-modal');
     const moreDetailsButtons = document.querySelectorAll('.show-more-details');
     
-    // Funkcija za otvaranje modala
     function openModal(employee) {
         document.getElementById('modal-employee-name').textContent = employee.name;
         document.getElementById('modal-employee-position').textContent = employee.position;
@@ -169,16 +172,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modal-employee-biography').textContent = employee.biography;
         
         modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Sprečava skrolovanje pozadine
+        document.body.style.overflow = 'hidden'; 
     }
 
-    // Funkcija za zatvaranje modala
     function closeModal() {
         modal.classList.add('hidden');
         document.body.style.overflow = '';
     }
 
-    // Dodavanje listenera na dugmad "Oko"
     moreDetailsButtons.forEach(button => {
         button.addEventListener('click', function() {
             const employeeData = {
@@ -192,17 +193,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Zatvaranje modala klikom na X
     closeModalButton.addEventListener('click', closeModal);
 
-    // Zatvaranje modala klikom izvan njega
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModal();
         }
     });
 
-    // Zatvaranje modala pritiskom na ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
             closeModal();
@@ -212,25 +210,18 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 HTML;
 
-    /**
-     * Generiše i vraća kompletan sadržaj stranice za zaposlene
-     */
     public function buildPage(): string
     {
-        // PHP kod koji se izvršava pre HTML template-a
         $additionalPHP = <<<'PHP'
     use App\Models\Employee;
     use App\Controllers\AuthController;
 
-// Parametri iz GET
 $search = $_GET['search'] ?? '';
-// Povećao sam limit radi testiranja, vratite na 3 ako želite manji broj
 $limit = $_GET['limit'] ?? 6; 
 $page = max(1, (int)($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
 $employeeModel = new Employee();
-// Proverite da li list() metoda vraća 'email' i 'id'
 [$employees, $totalCount] = $employeeModel->list(
     limit: $limit,
     offset: $offset,
