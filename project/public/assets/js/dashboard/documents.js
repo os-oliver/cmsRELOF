@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const fileInput = document.getElementById("documetFile");
-  const MAX_FILE_SIZE_MB = 200;
+  const MAX_FILE_SIZE_MB = 50;
 
   if (fileInput) {
     fileInput.addEventListener("change", () => {
