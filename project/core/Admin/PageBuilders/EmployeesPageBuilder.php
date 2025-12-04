@@ -41,7 +41,7 @@ class EmployeesPageBuilder extends BasePageBuilder
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach ($employees as $employee): ?>
                     <div class="bg-surface rounded-xl shadow-md overflow-hidden card-hover fade-in" 
-                         data-employee-id="<?= htmlspecialchars($employee['id'] ?? '', ENT_QUOTES) ?>">
+                             data-employee-id="<?= htmlspecialchars($employee['id'] ?? '', ENT_QUOTES) ?>">
                         <div class="p-6">
                             <div class="flex items-start justify-between mb-4">
                                 <div class="flex items-center">
@@ -71,15 +71,17 @@ class EmployeesPageBuilder extends BasePageBuilder
                             </div>
 
                             <div class="border-t border-secondary pt-4 space-y-3">
+                                <?php if (!empty($employee['email'])): ?>
                                 <p class="flex items-center">
                                     <i class="fas fa-envelope mr-3 text-primary"></i>
                                     <a href="mailto:<?= htmlspecialchars($employee['email'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" class="text-gray-700 hover:text-primary transition truncate">
                                         <?= htmlspecialchars($employee['email'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
                                     </a>
                                 </p>
+                                <?php endif; ?>
                                 <div class="text-gray-600 line-clamp-3">
                                     <p>
-<?= isset($employee['biography']) ? htmlspecialchars($employee['biography']) : 'Nema dostupne biografije.' ?>
+                                        <?= isset($employee['biography']) ? htmlspecialchars($employee['biography']) : 'Nema dostupne biografije.' ?>
                                     </p>
                                 </div>
                             </div>
@@ -144,7 +146,7 @@ class EmployeesPageBuilder extends BasePageBuilder
         
         <div class="space-y-3 mb-6">
             <p><strong class="text-primary_text">Pozicija:</strong> <span id="modal-employee-position"></span></p>
-            <p><strong class="text-primary_text">E-pošta:</strong> <a id="modal-employee-email" href="" class="text-primary hover:underline"></a></p>
+            <p id="modal-email-container"><strong class="text-primary_text">E-pošta:</strong> <a id="modal-employee-email" href="" class="text-primary hover:underline"></a></p>
         </div>
 
         <h3 class="text-lg font-semibold text-primary_text mb-2">Biografija:</h3>
@@ -160,15 +162,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('employee-details-modal');
     const closeModalButton = document.getElementById('close-modal');
     const moreDetailsButtons = document.querySelectorAll('.show-more-details');
-    
+    const emailContainer = document.getElementById('modal-email-container'); // Novi element
+
     function openModal(employee) {
         document.getElementById('modal-employee-name').textContent = employee.name;
         document.getElementById('modal-employee-position').textContent = employee.position;
         
+        const email = employee.email.trim();
         const emailLink = document.getElementById('modal-employee-email');
-        emailLink.textContent = employee.email;
-        emailLink.href = 'mailto:' + employee.email;
         
+        // **USLOVNA LOGIKA ZA MODAL**
+        if (email !== '') {
+            emailContainer.classList.remove('hidden'); // Prikazuje e-poštu
+            emailLink.textContent = email;
+            emailLink.href = 'mailto:' + email;
+        } else {
+            emailContainer.classList.add('hidden'); // Sakriva e-poštu
+            emailLink.textContent = '';
+            emailLink.href = '';
+        }
+        // **KRAJ USLOVNE LOGIKE ZA MODAL**
+
         document.getElementById('modal-employee-biography').textContent = employee.biography;
         
         modal.classList.remove('hidden');
@@ -217,7 +231,7 @@ HTML;
     use App\Controllers\AuthController;
 
 $search = $_GET['search'] ?? '';
-$limit = $_GET['limit'] ?? 6; 
+$limit = $_GET['limit'] ?? 12; 
 $page = max(1, (int)($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
