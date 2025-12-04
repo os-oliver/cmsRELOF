@@ -14,7 +14,80 @@ const deletePicture = (id) => {
     .catch((err) => alert(err.message));
 };
 
+const createLoaderOverlay = () => {
+  const overlay = document.createElement("div");
+  overlay.className = "fixed inset-0 bg-black/70 z-[9999] flex items-center justify-center";
+  overlay.id = "loader-overlay";
+
+  const spinnerContainer = document.createElement("div");
+  spinnerContainer.id = "spinner-container";
+  spinnerContainer.className = "border-[5px] border-white/15 border-t-white rounded-full w-[60px] h-[60px] animate-spin";
+
+  overlay.appendChild(spinnerContainer);
+  return overlay;
+};
+
+const showSuccessCheck = (overlay) => {
+  const spinner = overlay.querySelector('#spinner-container');
+  if (!spinner) return;
+  
+  spinner.className = "w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-[0_8px_25px_rgba(16,185,129,0.4)] animate-[scaleIn_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)]";
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "w-[52px] h-[52px]");
+  svg.setAttribute("viewBox", "0 0 52 52");
+  
+  const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circle.setAttribute("class", "stroke-white stroke-2 fill-none");
+  circle.setAttribute("cx", "26");
+  circle.setAttribute("cy", "26");
+  circle.setAttribute("r", "25");
+  circle.style.strokeDasharray = "166";
+  circle.style.strokeDashoffset = "166";
+  circle.style.animation = "circleGrow 0.3s ease-out forwards";
+  
+  const check = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  check.setAttribute("class", "stroke-white stroke-[3] fill-none");
+  check.setAttribute("stroke-linecap", "round");
+  check.setAttribute("stroke-linejoin", "round");
+  check.setAttribute("d", "M14.1 27.2l7.1 7.2 16.7-16.8");
+  check.style.strokeDasharray = "48";
+  check.style.strokeDashoffset = "48";
+  check.style.animation = "checkmark 0.3s 0.3s ease-out forwards";
+  
+  svg.appendChild(circle);
+  svg.appendChild(check);
+  spinner.appendChild(svg);
+};
+
+const injectStyles = () => {
+  if (document.getElementById('gallery-loader-styles')) return;
+
+  const style = document.createElement('style');
+  style.id = 'gallery-loader-styles';
+  style.innerHTML = `
+    @keyframes scaleIn {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes checkmark {
+      0% { stroke-dashoffset: 48; }
+      100% { stroke-dashoffset: 0; }
+    }
+    
+    @keyframes circleGrow {
+      0% { stroke-dashoffset: 166; }
+      100% { stroke-dashoffset: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
+  injectStyles();
+
   const form = $("#galleryForm"),
     galleryModal = $("#galleryModal"),
     cancelBtn = $("#galleryCancelButton"),
@@ -42,7 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
     uploadPlaceholder.classList.remove("hidden");
   };
 
-  // Image preview
   imageInput.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -55,9 +127,20 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   });
 
-  // Form submit
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    const submitBtn = form.querySelector("button[type=submit]");
+    if (submitBtn?.disabled) return;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-70");
+    }
+
+    const loaderOverlay = createLoaderOverlay();
+    document.body.appendChild(loaderOverlay);
+
     const method = $("#galleryMethod").value;
     const endpoint = $("#galleryEndpoint").value;
     const fileInput = form.querySelector("input[type=file]");
@@ -76,27 +159,33 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch(endpoint, options);
       if (!res.ok) throw new Error(res.statusText);
-      alert(
-        method === "POST"
-          ? "Galerija uspešno sačuvana!"
-          : "Galerija uspešno izmenjena!"
-      );
-      form.reset();
-      closeModal(galleryModal);
-      location.reload();
+
+      showSuccessCheck(loaderOverlay);
+
+      setTimeout(() => {
+        form.reset();
+        closeModal(galleryModal);
+        location.reload();
+      }, 300);
+              closeModal(galleryModal);
+
     } catch {
+      loaderOverlay.remove();
       alert("Došlo je do greške. Pokušajte ponovo.");
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-70");
+      }
     }
   });
 
-  // Gallery items
   $$(".gallery-item").forEach((item) => {
     const { id, title, description } = item.dataset;
 
     item.querySelector(".gallery-edit")?.addEventListener("click", () => {
       $("#galleryTitle").value = title;
       $("#galleryDescription").value = description;
-      // Use POST for edit so multipart/form-data uploads are sent and handled by the server
       $("#galleryMethod").value = "POST";
       $("#galleryEndpoint").value = `/gallery/${id}`;
       if (!form.querySelector('[name="id"]'))
@@ -119,7 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ?.addEventListener("click", () => deletePicture(id));
   });
 
-  // New image
   newImageBtn.addEventListener("click", () => {
     form.reset();
     $("#galleryMethod").value = "POST";
@@ -129,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
     openModal(galleryModal);
   });
 
-  // Cancel & close handlers
   cancelBtn.addEventListener("click", () => {
     form.reset();
     closeModal(galleryModal);
@@ -145,7 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
     )
   );
 
-  // Close on ESC: reset form for galleryModal (same as Cancel), close fullImageModal
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       if (!galleryModal.classList.contains("invisible")) {
