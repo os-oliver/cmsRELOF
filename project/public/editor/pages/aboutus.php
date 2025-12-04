@@ -12,7 +12,7 @@ $dataAboutUS = new AboutUs();
 $aboutUsData = $dataAboutUS->list($locale);
 $search = $_GET['search'] ?? '';
 $sort = $_GET['sort'] ?? 'name_asc';
-$limit = $_GET['limit'] ?? 3;
+$limit = $_GET['limit'] ?? 6;
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
@@ -34,6 +34,7 @@ $activeTab = 'settings';
     </script>
     <script src="/assets/js/dashboard/tailwindConf.js"></script>
     <style>
+
         * {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale
@@ -436,6 +437,7 @@ $activeTab = 'settings';
                                                             data-surname="<?= htmlspecialchars($member['surname']) ?>"
                                                             data-position="<?= htmlspecialchars($member['position']) ?>"
                                                             data-biography="<?= isset($member['biography']) ? htmlspecialchars($member['biography']) : '' ?>"
+                                                            data-email="<?= isset($member['email']) ? htmlspecialchars($member['email']) : '' ?>"
                                                             title="<?= __("settings.edit") ?>">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
@@ -486,50 +488,103 @@ $activeTab = 'settings';
             </main>
         </div>
     </div>
-
-    <div id="teamMemberModal"
-        class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[50] hidden p-4">
-        <div class="modal-content bg-white rounded-3xl shadow-strong w-full max-w-lg">
-            <div class="border-b border-gray-100 px-8 py-6">
-                <h3 class="text-2xl font-bold text-gray-900" id="modalTitle"><?= __("settings.add_new_member") ?></h3>
+<div id="teamMemberModal"
+      class="modal-backdrop overflo fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[50] hidden p-4">
+      <div class="modal-content bg-white shadow-2xl w-full max-w-md md:max-w-lg max-h-[90vh] overflow-y-auto transform transition-all">
+            
+                    <div class="sticky top-0 z-10 relative bg-gradient-to-br from-primary-600 via-primary-600 to-primary-700 px-6 md:px-8 py-6 md:py-8 overflow-hidden">
+                  <div class="absolute top-0 right-0 w-24 md:w-32 h-24 md:h-32 bg-white/10 rounded-full -mr-12 md:-mr-16 -mt-12 md:-mt-16"></div>
+                  <div class="absolute bottom-0 left-0 w-20 md:w-24 h-20 md:h-24 bg-white/10 rounded-full -ml-10 md:-ml-12 -mb-10 md:-mb-12"></div>
+                  <div class="relative flex items-center">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-white/20 backdrop-blur-sm rounded-xl md:rounded-2xl flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+                              <i class="fas fa-user-plus text-xl md:text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white" id="modalTitle">
+                              <?= __("settings.add_new_member") ?>
+                        </h3>
+                  </div>
             </div>
-            <form id="teamMemberForm" class="p-8 space-y-6">
-                <input type="hidden" id="memberId" name="id" value="">
-                <div>
-                    <label for="name"
-                        class="block text-sm font-semibold text-gray-700 mb-2"><?= __("settings.member_first_name") ?></label>
-                    <input type="text" id="name" name="name" required
-                        class="input-field w-full rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400">
-                </div>
-                <div>
-                    <label for="surname"
-                        class="block text-sm font-semibold text-gray-700 mb-2"><?= __("settings.member_last_name") ?></label>
-                    <input type="text" id="surname" name="surname" required
-                        class="input-field w-full rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400">
-                </div>
-                <div>
-                    <label for="position"
-                        class="block text-sm font-semibold text-gray-700 mb-2"><?= __("settings.member_position") ?></label>
-                    <input type="text" id="position" name="position" required
-                        class="input-field w-full rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400">
-                </div>
-                <div>
-                    <label for="biography"
-                        class="block text-sm font-semibold text-gray-700 mb-2"><?= __("settings.biography") ?></label>
-                    <textarea id="biography" name="biography" rows="4"
-                        class="input-field w-full rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 resize-none"></textarea>
-                </div>
 
-                <div class="flex gap-3 pt-4">
-                    <button type="button" id="cancelMemberBtn"
-                        class="flex-1 px-6 py-3 border-2 border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-50 transition-all"><?= __("settings.cancel") ?></button>
-                    <button type="submit" class="flex-1 btn-primary text-white px-6 py-3 rounded-xl font-medium">
-                        <i class="fas fa-save mr-2"></i><?= __("settings.save") ?>
-                    </button>
-                </div>
+                        <form id="teamMemberForm" class="p-6 md:p-8 space-y-4 md:space-y-5">
+                  <input type="hidden" id="memberId" name="id" value="">
+                  
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                                                <div class="group">
+                              <label for="name" class="block text-sm font-semibold text-light-700 mb-2 flex items-center">
+                                    <div class="w-7 h-7 md:w-8 md:h-8 bg-primary-50 rounded-lg flex items-center justify-center mr-2 flex-shrink-0">
+                                          <i class="fas fa-user text-primary-600 text-xs md:text-sm"></i>
+                                    </div>
+                                    <span class="truncate"><?= __("settings.member_first_name") ?></span>
+                                    <span class="text-red-500 ml-1">*</span>
+                              </label>
+                              <input type="text" id="name" name="name" required
+                                    class="w-full rounded-xl border-2 border-light-200 bg-light-50 px-3 md:px-4 py-3 md:py-3.5 text-light-900 placeholder-light-400 focus:border-primary-500 focus:bg-white focus:ring-4 focus:ring-primary-100 transition-all outline-none text-base">
+                        </div>
+                  
+                                                <div class="group">
+                              <label for="surname" class="block text-sm font-semibold text-light-700 mb-2 flex items-center">
+                                    <div class="w-7 h-7 md:w-8 md:h-8 bg-primary-50 rounded-lg flex items-center justify-center mr-2 flex-shrink-0">
+                                          <i class="fas fa-user-tag text-primary-600 text-xs md:text-sm"></i>
+                              </div>
+                              <span class="truncate"><?= __("settings.member_last_name") ?></span>
+                              <span class="text-red-500 ml-1">*</span>
+                        </label>
+                        <input type="text" id="surname" name="surname" required
+                              class="w-full rounded-xl border-2 border-light-200 bg-light-50 px-3 md:px-4 py-3 md:py-3.5 text-light-900 placeholder-light-400 focus:border-primary-500 focus:bg-white focus:ring-4 focus:ring-primary-100 transition-all outline-none text-base">
+                        </div>
+            </div>
+                  
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                                                <div class="group">
+                              <label for="email" class="block text-sm font-semibold text-light-700 mb-2 flex items-center">
+                                                            <div class="w-7 h-7 md:w-8 md:h-8 **bg-light-100** rounded-lg flex items-center justify-center mr-2 flex-shrink-0">
+                                          <i class="fas fa-envelope **text-light-600** text-xs md:text-sm"></i>
+                                    </div>
+                                    <span class="truncate"><?= __("settings.email") ?></span>
+                              </label>
+                                                  <input type="email" id="email" name="email" 
+                                    class="w-full rounded-xl border-2 border-light-200 bg-light-50 px-3 md:px-4 py-3 md:py-3.5 text-light-900 placeholder-light-400 focus:border-primary-500 focus:bg-white focus:ring-4 focus:ring-primary-100 transition-all outline-none text-base">
+                        </div>
+                  
+                                                <div class="group">
+                              <label for="position" class="block text-sm font-semibold text-light-700 mb-2 flex items-center">
+                                    <div class="w-7 h-7 md:w-8 md:h-8 bg-primary-50 rounded-lg flex items-center justify-center mr-2 flex-shrink-0">
+                                          <i class="fas fa-briefcase text-primary-600 text-xs md:text-sm"></i>
+                              </div>
+                              <span class="truncate"><?= __("settings.member_position") ?></span>
+                              <span class="text-red-500 ml-1">*</span>
+                        </label>
+                        <input type="text" id="position" name="position" required
+                              class="w-full rounded-xl border-2 border-light-200 bg-light-50 px-3 md:px-4 py-3 md:py-3.5 text-light-900 placeholder-light-400 focus:border-primary-500 focus:bg-white focus:ring-4 focus:ring-primary-100 transition-all outline-none text-base">
+                        </div>
+            </div>
+
+                                    <div class="group">
+                        <label for="biography" class="block text-sm font-semibold text-light-700 mb-2 flex items-center">
+                              <div class="w-7 h-7 md:w-8 md:h-8 bg-light-100 rounded-lg flex items-center justify-center mr-2 flex-shrink-0">
+                                    <i class="fas fa-align-left text-light-600 text-xs md:text-sm"></i>
+                              </div>
+                              <span class="truncate"><?= __("settings.biography") ?></span>
+                        </label>
+                        <textarea id="biography" name="biography" rows="3" 
+                              class="w-full rounded-xl border-2 border-light-200 bg-light-50 px-3 md:px-4 py-3 md:py-3.5 text-light-900 placeholder-light-400 focus:border-primary-500 focus:bg-white focus:ring-4 focus:ring-primary-100 transition-all outline-none resize-none text-base"></textarea>
+                  </div>
+
+                                    <div class="flex flex-col sm:flex-row gap-3 pt-4 md:pt-6">
+                        <button type="button" id="cancelMemberBtn"
+                              class="w-full sm:flex-1 px-6 py-3 md:py-3.5 border-2 border-light-300 bg-white rounded-xl text-light-700 font-semibold hover:bg-light-50 hover:border-light-400 transition-all duration-200 shadow-sm">
+                              <i class="fas fa-times mr-2"></i>
+                              <?= __("settings.cancel") ?>
+                        </button>
+                        <button type="submit" 
+                              class="w-full sm:flex-1 px-6 py-3 md:py-3.5 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200">
+                              <i class="fas fa-save mr-2"></i>
+                              <?= __("settings.save") ?>
+                        </button>
+                  </div>
             </form>
-        </div>
-    </div>
+      </div>
+</div>
 
     <script>
         function showToast(message, type = 'success') {
@@ -649,6 +704,7 @@ $activeTab = 'settings';
                     document.getElementById('surname').value = btn.dataset.surname ?? '';
                     document.getElementById('position').value = btn.dataset.position ?? '';
                     document.getElementById('biography').value = btn.dataset.biography ?? '';
+                    document.getElementById('email').value = btn.dataset.email ?? '';
                     modal.classList.remove('hidden');
                 });
             });
@@ -681,6 +737,7 @@ $activeTab = 'settings';
                 form.append('surname', document.getElementById('surname').value.trim());
                 form.append('position', document.getElementById('position').value.trim());
                 form.append('biography', document.getElementById('biography').value.trim());
+                form.append('email', document.getElementById('email').value.trim());
                 if (fileInput && fileInput.files && fileInput.files[0]) {
                     form.append('icon', fileInput.files[0]);
                 }
