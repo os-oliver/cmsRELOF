@@ -243,6 +243,7 @@ class AboutUSController
                 'surname' => $data['surname'],
                 'position' => $data['position'] ?? null,
                 'biography' => $data['biography'] ?? null,
+                'email' => $data['email'] ?? null,
             ];
             if ($iconPath) {
                 $insertData['icon'] = $iconPath;
@@ -270,7 +271,7 @@ class AboutUSController
             }
 
             $updateData = [];
-            foreach (['name', 'surname', 'position', 'biography'] as $field) {
+            foreach (['name', 'surname', 'position', 'biography','email'] as $field) {
                 if (isset($payload[$field])) {
                     $updateData[$field] = trim($payload[$field]);
                 }
