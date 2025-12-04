@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Handle file input change - populate name, extension, fileSize
   const fileInput = document.getElementById("documetFile");
-  const MAX_FILE_SIZE_MB = 200; // 200MB limit
+  const MAX_FILE_SIZE_MB = 50; // 200MB limit
 
   if (fileInput) {
     fileInput.addEventListener("change", () => {
