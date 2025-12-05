@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     imageInput = $("#galleryImage"),
     imagePreview = $("#imagePreview"),
     uploadPlaceholder = $("#uploadPlaceholder");
+    const MAX_SIZE = 10 * 1024 * 1024;
 
   const openModal = (m) => {
     m.classList.remove("invisible", "hidden");
@@ -118,6 +119,12 @@ document.addEventListener("DOMContentLoaded", () => {
   imageInput.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (!file) return;
+      if (file.size > MAX_SIZE) {
+      alert("Maksimalna veličina fajla je 10MB.");
+      imageInput.value = "";
+      resetPreview();
+      return;
+    }
     const reader = new FileReader();
     reader.onload = (ev) => {
       imagePreview.src = ev.target.result;
