@@ -104,12 +104,8 @@ export default class ModalManager {
         } else {
           wrapper.innerHTML = `<div class="w-full h-32 p-3 bg-gray-50 flex flex-col items-center justify-center gap-2">
             <i class="fas fa-file text-3xl"></i>
-            <div class="text-sm font-medium text-gray-700 truncate w-full text-center px-2">${
-              file.name
-            }</div>
-            <div class="text-xs text-gray-500">${Math.round(
-              file.size / 1024
-            )} KB</div>
+            <div class="text-sm font-medium text-gray-700 truncate w-full text-center px-2">${file.name}</div>
+            <div class="text-xs text-gray-500">${Math.round(file.size / 1024)} KB</div>
           </div>`;
         }
 
@@ -139,7 +135,16 @@ export default class ModalManager {
 
     inp.addEventListener("change", (ev) => {
       const selected = Array.from(ev.target.files || []);
-      if (!selected.length) {
+      const validFiles = [];
+
+      selected.forEach(f => {
+        const isImage = /\.(jpe?g|png|gif|webp|bmp|svg)$/i.test(f.name) || f.type?.startsWith("image/");
+        const maxSize = isImage ? 10 * 1024 * 1024 : 50 * 1024 * 1024;
+        if (f.size <= maxSize) validFiles.push(f);
+        else alert(`Fajl "${f.name}" prelazi maksimalnu dozvoljenu veličinu od ${isImage ? '10MB za slike' : '50MB za dokumente'}.`);
+      });
+
+      if (!validFiles.length) {
         if (!inp.multiple) {
           inp.__dt = new DataTransfer();
           inp.files = inp.__dt.files;
@@ -149,7 +154,7 @@ export default class ModalManager {
       }
 
       if (inp.multiple) {
-        for (const f of selected) {
+        for (const f of validFiles) {
           const exists = Array.from(inp.__dt.files).some(
             (of) => of.name === f.name && of.size === f.size
           );
@@ -157,7 +162,7 @@ export default class ModalManager {
         }
       } else {
         inp.__dt = new DataTransfer();
-        inp.__dt.items.add(selected[0]);
+        inp.__dt.items.add(validFiles[0]);
       }
       inp.files = inp.__dt.files;
       renderFiles();
@@ -165,6 +170,7 @@ export default class ModalManager {
 
     renderFiles();
   }
+
 
   attachListeners(container) {
     if (!container || container.__modalInitialized) return;
