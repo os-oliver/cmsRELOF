@@ -11,7 +11,7 @@ class VrticiPageBuilder extends BasePageBuilder
     private LanguageMapperController $translator;
 
     // Configurable variables
-    private int $itemsPerPage = 3;
+    private int $itemsPerPage = 15;
     private int $descriptionMaxLength = 120;
     private int $imageHeight = 56; // in rem units (h-56 = 14rem)
     private int $paginationRange = 2; // Number of pages to show on each side
@@ -291,6 +291,38 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     
     return $html;
 }
+
+function renderPerPageDropdown(int $currentItemsPerPage): string
+{
+    $perPageOptions = [9, 15, 30];
+
+    if (!in_array($currentItemsPerPage, $perPageOptions)) {
+        $currentItemsPerPage = $perPageOptions[1]; 
+    }
+ 
+    $html = '<select name="per_page" id="per_page" onchange="document.getElementById(\'perPageForm\').submit();">';
+
+    foreach ($perPageOptions as $option) {
+        $selected = ($currentItemsPerPage === $option) ? 'selected' : '';
+        $html .= "<option value=\"{$option}\" {$selected}>{$option}</option>";
+    }
+
+    $html .= '</select>';
+
+    foreach ($_GET as $key => $value) {
+        if ($key === 'per_page' || $key === 'page') continue;
+
+        if (is_array($value)) {
+            foreach ($value as $v) {
+                $html .= '<input type="hidden" name="'.htmlspecialchars($key).'[]" value="'.htmlspecialchars($v).'">';
+            }
+        } else {
+            $html .= '<input type="hidden" name="'.htmlspecialchars($key).'" value="'.htmlspecialchars($value).'">';
+        }
+    }
+    
+    return $html;
+}
 PHP;
     protected string $html = <<<'HTML'
 <main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
@@ -321,6 +353,10 @@ PHP;
             }
             ?>
         </div>
+        <form method="GET" id="perPageForm" class="inline-block mb-5 font-body">
+            <label for="per_page">Broj stavki po stranici:</label>
+            <?php echo renderPerPageDropdown($itemsPerPage) ?>
+        </form>
     </section>
 </main>
 HTML;
@@ -343,6 +379,9 @@ HTML;
 
         // Configuration variables
         $itemsPerPage = __ITEMS_PER_PAGE__;
+        if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+            $itemsPerPage = (int)$_GET['per_page'];
+        }
         $descriptionMaxLength = __DESC_MAX_LENGTH__;
         $paginationRange = __PAGINATION_RANGE__;
 
