@@ -201,9 +201,6 @@ HTML;
                                 </label>
                             <?php endforeach; ?>
                         </div>
-                        </div>
-                    </div>
-
                     </div>
                 </div>
             </form>
@@ -306,6 +303,12 @@ HTML;
                     <a href="?" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl">Resetuj filtere</a>
                 </div>
             <?php endif; ?>
+            <div class="text-left">
+                <form method="GET" id="perPageForm" class="inline-block mb-5 font-body">
+                    <label for="per_page"><?= htmlspecialchars($dynamicText['t_dokumenti_ff6704_6af64d']['text'] ?? 'Broj stavki po stranici:', ENT_QUOTES, 'UTF-8'); ?></label>
+                    <?php echo renderPerPageDropdown($limit) ?>
+                </form>
+            </div>
         </div>
     </div>
 </main>
@@ -325,7 +328,10 @@ $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
 // pagination
-$limit = 15; // nicer grid by default
+$limit = 15;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $limit = (int)$_GET['per_page'];
+}
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
@@ -362,6 +368,38 @@ function getFileConfig(string $ext): array {
     ];
 
     return $configs[$ext] ?? $configs['default'];
+}
+
+function renderPerPageDropdown(int $currentItemsPerPage): string
+{
+    $perPageOptions = [9, 15, 30];
+
+    if (!in_array($currentItemsPerPage, $perPageOptions)) {
+        $currentItemsPerPage = $perPageOptions[1]; 
+    }
+ 
+    $html = '<select name="per_page" id="per_page" onchange="document.getElementById(\'perPageForm\').submit();">';
+
+    foreach ($perPageOptions as $option) {
+        $selected = ($currentItemsPerPage === $option) ? 'selected' : '';
+        $html .= "<option value=\"{$option}\" {$selected}>{$option}</option>";
+    }
+
+    $html .= '</select>';
+
+    foreach ($_GET as $key => $value) {
+        if ($key === 'per_page' || $key === 'page') continue;
+
+        if (is_array($value)) {
+            foreach ($value as $v) {
+                $html .= '<input type="hidden" name="'.htmlspecialchars($key).'[]" value="'.htmlspecialchars($v).'">';
+            }
+        } else {
+            $html .= '<input type="hidden" name="'.htmlspecialchars($key).'" value="'.htmlspecialchars($value).'">';
+        }
+    }
+    
+    return $html;
 }
 
 PHP;

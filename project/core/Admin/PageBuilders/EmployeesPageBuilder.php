@@ -132,6 +132,10 @@ class EmployeesPageBuilder extends BasePageBuilder
                 </a>
             </div>
         <?php endif; ?>
+        <form method="GET" id="perPageForm" class="inline-block mb-5 font-body">
+            <label for="per_page">Broj stavki po stranici:</label>
+            <?php echo renderPerPageDropdown($limit) ?>
+        </form>
     </div>
 </main>
 
@@ -231,7 +235,10 @@ HTML;
     use App\Controllers\AuthController;
 
 $search = $_GET['search'] ?? '';
-$limit = $_GET['limit'] ?? 12; 
+$limit = 15; 
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $limit = (int)$_GET['per_page'];
+}
 $page = max(1, (int)($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
@@ -244,6 +251,38 @@ $employeeModel = new Employee();
 );
 
 $totalPages = (int) ceil($totalCount / $limit);
+
+function renderPerPageDropdown(int $currentItemsPerPage): string
+{
+    $perPageOptions = [9, 15, 30];
+
+    if (!in_array($currentItemsPerPage, $perPageOptions)) {
+        $currentItemsPerPage = $perPageOptions[1]; 
+    }
+ 
+    $html = '<select name="per_page" id="per_page" onchange="document.getElementById(\'perPageForm\').submit();">';
+
+    foreach ($perPageOptions as $option) {
+        $selected = ($currentItemsPerPage === $option) ? 'selected' : '';
+        $html .= "<option value=\"{$option}\" {$selected}>{$option}</option>";
+    }
+
+    $html .= '</select>';
+
+    foreach ($_GET as $key => $value) {
+        if ($key === 'per_page' || $key === 'page') continue;
+
+        if (is_array($value)) {
+            foreach ($value as $v) {
+                $html .= '<input type="hidden" name="'.htmlspecialchars($key).'[]" value="'.htmlspecialchars($v).'">';
+            }
+        } else {
+            $html .= '<input type="hidden" name="'.htmlspecialchars($key).'" value="'.htmlspecialchars($value).'">';
+        }
+    }
+    
+    return $html;
+}
 
 PHP;
 
