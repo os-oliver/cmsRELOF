@@ -223,6 +223,10 @@ CSS;
                 </div>
             <?php endif; ?>
         </div>
+        <form method="GET" id="perPageForm" class="inline-block mb-5 font-body">
+            <label for="per_page_limit">Slika po stranici:</label>
+            <?php echo renderPerPageDropdown($limit); ?>
+        </form>
     </section>
 </main>
 
@@ -284,7 +288,13 @@ HTML;
         $additionalPHP = <<<PHP
         use App\Models\Gallery;
 
-        \$limit = 6;
+        \$limit = 15;
+        \$limitOptions = [15, 30, 90];
+
+        if (isset(\$_GET['limit']) && is_numeric(\$_GET['limit']) && in_array((int)\$_GET['limit'], \$limitOptions)) {
+            \$limit = (int)\$_GET['limit'];
+        }
+
         \$page = max(1, (int) (\$_GET["page"] ?? 1));
         \$offset = (\$page - 1) * \$limit;
         \$documentModal = new Gallery();
@@ -293,6 +303,39 @@ HTML;
             offset: \$offset
         );
         \$totalPages = (int) ceil(\$totalCount / \$limit);
+
+
+        function renderPerPageDropdown(int \$currentLimit): string
+        {
+            \$limitOptions = [15, 30, 90];
+            
+            if (!in_array(\$currentLimit, \$limitOptions)) {
+                \$currentLimit = \$limitOptions[1]; 
+            }
+            
+            \$html = '<select name="limit" id="per_page_limit" onchange="document.getElementById(\'perPageForm\').submit();">';
+            
+            foreach (\$limitOptions as \$option) {
+                \$selected = (\$currentLimit === \$option) ? 'selected' : '';
+                \$html .= "<option value=\"{\$option}\" {\$selected}>{\$option}</option>";
+            }
+
+            \$html .= '</select>';
+
+            foreach (\$_GET as \$key => \$value) {
+                if (\$key === 'limit' || \$key === 'page') continue;
+
+                if (is_array(\$value)) {
+                    foreach (\$value as \$v) {
+                        \$html .= '<input type="hidden" name="'.htmlspecialchars(\$key).'[]" value="'.htmlspecialchars(\$v).'">';
+                    }
+                } else {
+                    \$html .= '<input type="hidden" name="'.htmlspecialchars(\$key).'" value="'.htmlspecialchars(\$value).'">';
+                }
+            }
+            
+            return \$html;
+        }
         PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
