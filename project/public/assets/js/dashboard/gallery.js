@@ -30,13 +30,13 @@ const createLoaderOverlay = () => {
 const showSuccessCheck = (overlay) => {
   const spinner = overlay.querySelector('#spinner-container');
   if (!spinner) return;
-  
+
   spinner.className = "w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-[0_8px_25px_rgba(16,185,129,0.4)] animate-[scaleIn_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)]";
 
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("class", "w-[52px] h-[52px]");
   svg.setAttribute("viewBox", "0 0 52 52");
-  
+
   const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   circle.setAttribute("class", "stroke-white stroke-2 fill-none");
   circle.setAttribute("cx", "26");
@@ -45,7 +45,7 @@ const showSuccessCheck = (overlay) => {
   circle.style.strokeDasharray = "166";
   circle.style.strokeDashoffset = "166";
   circle.style.animation = "circleGrow 0.3s ease-out forwards";
-  
+
   const check = document.createElementNS("http://www.w3.org/2000/svg", "path");
   check.setAttribute("class", "stroke-white stroke-[3] fill-none");
   check.setAttribute("stroke-linecap", "round");
@@ -54,7 +54,7 @@ const showSuccessCheck = (overlay) => {
   check.style.strokeDasharray = "48";
   check.style.strokeDashoffset = "48";
   check.style.animation = "checkmark 0.3s 0.3s ease-out forwards";
-  
+
   svg.appendChild(circle);
   svg.appendChild(check);
   spinner.appendChild(svg);
@@ -95,9 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
     fullImageModal = $("#fullImageModal"),
     closeFullImageModalBtn = $("#closeFullImageModal"),
     imageInput = $("#galleryImage"),
+    dropzone = $('#imageUploadLabel'),
     imagePreview = $("#imagePreview"),
     uploadPlaceholder = $("#uploadPlaceholder");
-    const MAX_SIZE = 10 * 1024 * 1024;
+  const MAX_SIZE = 10 * 1024 * 1024;
 
   const openModal = (m) => {
     m.classList.remove("invisible", "hidden");
@@ -119,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
   imageInput.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (!file) return;
-      if (file.size > MAX_SIZE) {
+    if (file.size > MAX_SIZE) {
       alert("Maksimalna veličina fajla je 10MB.");
       imageInput.value = "";
       resetPreview();
@@ -132,6 +133,27 @@ document.addEventListener("DOMContentLoaded", () => {
       uploadPlaceholder.classList.add("hidden");
     };
     reader.readAsDataURL(file);
+  });
+
+  dropzone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropzone.classList.add("border-blue-500", "bg-blue-50");
+  });
+
+  dropzone.addEventListener("dragleave", (e) => {
+    e.preventDefault();
+    dropzone.classList.remove("border-blue-500", "bg-blue-50");
+  });
+
+  dropzone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropzone.classList.remove("border-blue-500", "bg-blue-50");
+
+    const files = e.dataTransfer.files;
+    if (!files || !files.length) return;
+
+    imageInput.files = files;
+    imageInput.dispatchEvent(new Event("change"));
   });
 
   form.addEventListener("submit", async (e) => {
@@ -174,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
         closeModal(galleryModal);
         location.reload();
       }, 300);
-              closeModal(galleryModal);
+      closeModal(galleryModal);
 
     } catch {
       loaderOverlay.remove();
