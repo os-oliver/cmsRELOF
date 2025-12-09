@@ -14,13 +14,13 @@ const createLoaderOverlay = () => {
 const showSuccessCheck = (overlay) => {
   const spinner = overlay.querySelector('#spinner-container');
   if (!spinner) return;
-  
+
   spinner.className = "w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-[0_8px_25px_rgba(16,185,129,0.4)] animate-[scaleIn_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)]";
 
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("class", "w-[52px] h-[52px]");
   svg.setAttribute("viewBox", "0 0 52 52");
-  
+
   const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   circle.setAttribute("class", "stroke-white stroke-2 fill-none");
   circle.setAttribute("cx", "26");
@@ -29,7 +29,7 @@ const showSuccessCheck = (overlay) => {
   circle.style.strokeDasharray = "166";
   circle.style.strokeDashoffset = "166";
   circle.style.animation = "circleGrow 0.3s ease-out forwards";
-  
+
   const check = document.createElementNS("http://www.w3.org/2000/svg", "path");
   check.setAttribute("class", "stroke-white stroke-[3] fill-none");
   check.setAttribute("stroke-linecap", "round");
@@ -38,7 +38,7 @@ const showSuccessCheck = (overlay) => {
   check.style.strokeDasharray = "48";
   check.style.strokeDashoffset = "48";
   check.style.animation = "checkmark 0.3s 0.3s ease-out forwards";
-  
+
   svg.appendChild(circle);
   svg.appendChild(check);
   spinner.appendChild(svg);
@@ -221,9 +221,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const fileInput = document.getElementById("documetFile");
+  const dropzone = document.getElementById("fileDropzone");
   const MAX_FILE_SIZE_MB = 50;
 
-  if (fileInput) {
+  if (fileInput && dropzone) {
     fileInput.addEventListener("change", () => {
       const file = fileInput.files[0];
       if (!file) return;
@@ -247,6 +248,27 @@ document.addEventListener("DOMContentLoaded", () => {
       const parts = file.name.split(".");
       formEls.extInput.value = parts.length > 1 ? parts.pop() : "";
       formEls.sizeInput.value = fileSizeMB.toFixed(2);
+    });
+
+    dropzone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropzone.classList.add("border-blue-500", "bg-blue-50");
+    });
+
+    dropzone.addEventListener("dragleave", () => {
+      dropzone.classList.remove("border-blue-500", "bg-blue-50");
+    });
+
+    dropzone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      dropzone.classList.remove("border-blue-500", "bg-blue-50");
+
+      const files = e.dataTransfer.files;
+      if (!files || !files.length) return;
+
+      fileInput.files = files;
+
+      fileInput.dispatchEvent(new Event("change"));
     });
   }
 

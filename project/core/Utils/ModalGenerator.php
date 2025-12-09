@@ -492,7 +492,7 @@ class ModalGenerator
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
 
-                    <label for="<?= htmlspecialchars($name) ?>"
+                    <label for="<?= htmlspecialchars($name) ?>" id="file-dropzone"
                         class="group flex flex-col items-center justify-center w-full min-h-[140px] px-6 py-6 transition-all duration-200 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-blue-500 hover:bg-blue-50 text-center">
                         <div
                             class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3 group-hover:bg-blue-200 transition-colors">

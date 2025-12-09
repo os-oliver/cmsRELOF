@@ -12,9 +12,8 @@ export default class ModalManager {
 
   async fetchModal(id = null) {
     const s = this.slug || window.SLUG || document.body.dataset.slug || "";
-    const url = `${this.baseUrl}/getModal?slug=${encodeURIComponent(s)}${
-      id ? `&id=${encodeURIComponent(id)}` : ""
-    }`;
+    const url = `${this.baseUrl}/getModal?slug=${encodeURIComponent(s)}${id ? `&id=${encodeURIComponent(id)}` : ""
+      }`;
     const res = await fetch(url, { credentials: "same-origin" });
     if (!res.ok) throw new Error("Neuspešno učitavanje modala: " + res.statusText);
     const html = await res.text();
@@ -171,6 +170,36 @@ export default class ModalManager {
     renderFiles();
   }
 
+  _handleDragAndDrop(inp) {
+    const dropzone = inp.closest("#file-dropzone") || inp.parentNode;
+
+    if (dropzone) {
+      dropzone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropzone.classList.add("border-blue-500", "bg-blue-50");
+      });
+
+      dropzone.addEventListener("dragleave", (e) => {
+        e.preventDefault();
+        dropzone.classList.remove("border-blue-500", "bg-blue-50");
+      });
+
+      dropzone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropzone.classList.remove("border-blue-500", "bg-blue-50");
+
+        const files = e.dataTransfer.files;
+        if (!files || !files.length) return;
+
+        inp.__dt = new DataTransfer();
+        for (const f of files) inp.__dt.items.add(f);
+        inp.files = inp.__dt.files;
+
+        inp.dispatchEvent(new Event("change"));
+      });
+    }
+  };
+
 
   attachListeners(container) {
     if (!container || container.__modalInitialized) return;
@@ -194,7 +223,10 @@ export default class ModalManager {
 
     form
       .querySelectorAll("input[type=file]")
-      .forEach((inp) => this._attachFileInput(inp, container));
+      .forEach((inp) => {
+        this._attachFileInput(inp, container);
+        this._handleDragAndDrop(inp);
+      });
 
     container.querySelectorAll(".existing-remove-btn").forEach((btn) => {
       if (btn.__removeHandlerAttached) return;
@@ -250,20 +282,20 @@ export default class ModalManager {
 
         if (res.ok && json.success) {
           form.querySelector(".p-3.rounded-lg.mb-4")?.remove();
-          
+
           showSuccessCheck(loaderOverlay);
 
           setTimeout(() => {
-                      loaderOverlay.remove();
+            loaderOverlay.remove();
 
             window.location.reload();
 
             this.close(container);
-          }, 500); 
+          }, 500);
         } else {
           loaderOverlay.remove();
           this.showMessage(form, json?.error || "Neuspelo čuvanje", "error");
-          
+
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.classList.remove("opacity-70");
@@ -273,7 +305,7 @@ export default class ModalManager {
         console.error(err);
         loaderOverlay.remove();
         this.showMessage(form, "Greška u mreži", "error");
-        
+
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.classList.remove("opacity-70");
@@ -295,31 +327,31 @@ export default class ModalManager {
     }
 
     function showSuccessCheck(overlay) {
-        const spinner = overlay.querySelector('#spinner-container');
-        if (!spinner) return;
-        
-        spinner.classList.remove("modal-manager-spinner");
-        spinner.classList.add("modal-manager-success-circle");
+      const spinner = overlay.querySelector('#spinner-container');
+      if (!spinner) return;
 
-        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg.setAttribute("class", "modal-manager-checkmark");
-        svg.setAttribute("viewBox", "0 0 52 52");
-        
-        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        circle.setAttribute("class", "modal-manager-checkmark-circle");
-        circle.setAttribute("cx", "26");
-        circle.setAttribute("cy", "26");
-        circle.setAttribute("r", "25");
-        circle.setAttribute("fill", "none");
-        
-        const check = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        check.setAttribute("class", "modal-manager-checkmark-check");
-        check.setAttribute("fill", "none");
-        check.setAttribute("d", "M14.1 27.2l7.1 7.2 16.7-16.8");
-        
-        svg.appendChild(circle);
-        svg.appendChild(check);
-        spinner.appendChild(svg);
+      spinner.classList.remove("modal-manager-spinner");
+      spinner.classList.add("modal-manager-success-circle");
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("class", "modal-manager-checkmark");
+      svg.setAttribute("viewBox", "0 0 52 52");
+
+      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      circle.setAttribute("class", "modal-manager-checkmark-circle");
+      circle.setAttribute("cx", "26");
+      circle.setAttribute("cy", "26");
+      circle.setAttribute("r", "25");
+      circle.setAttribute("fill", "none");
+
+      const check = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      check.setAttribute("class", "modal-manager-checkmark-check");
+      check.setAttribute("fill", "none");
+      check.setAttribute("d", "M14.1 27.2l7.1 7.2 16.7-16.8");
+
+      svg.appendChild(circle);
+      svg.appendChild(check);
+      spinner.appendChild(svg);
     }
   }
 
