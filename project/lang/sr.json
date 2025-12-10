@@ -428,5 +428,7 @@
 
   "transparency.score.need_more": "Zahteva još rada",
   "transparency.score.title": "Skor Transparentnosti",
-  "transparency.score.update_age": "Osveženo danas"
+  "transparency.score.update_age": "Osveženo danas",
+
+  "items_per_page": "Broj stavki po stranici"
 }

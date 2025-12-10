@@ -427,5 +427,7 @@
 
   "transparency.score.need_more": "Needs work",
   "transparency.score.title": "Transparency Score",
-  "transparency.score.update_age": "Updated today"
+  "transparency.score.update_age": "Updated today",
+
+    "items_per_page": "Number of items per page"
 }

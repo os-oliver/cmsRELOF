@@ -304,10 +304,7 @@ HTML;
                 </div>
             <?php endif; ?>
             <div class="text-left">
-                <form method="GET" id="perPageForm" class="inline-block mb-5 font-body">
-                    <label for="per_page"><?= htmlspecialchars($dynamicText['t_dokumenti_ff6704_6af64d']['text'] ?? 'Broj stavki po stranici:', ENT_QUOTES, 'UTF-8'); ?></label>
-                    <?php echo renderPerPageDropdown($limit) ?>
-                </form>
+                <?php echo renderPerPageDropdown($limit) ?>
             </div>
         </div>
     </div>
@@ -369,43 +366,11 @@ function getFileConfig(string $ext): array {
 
     return $configs[$ext] ?? $configs['default'];
 }
-
-function renderPerPageDropdown(int $currentItemsPerPage): string
-{
-    $perPageOptions = [9, 15, 30];
-
-    if (!in_array($currentItemsPerPage, $perPageOptions)) {
-        $currentItemsPerPage = $perPageOptions[1]; 
-    }
- 
-    $html = '<select name="per_page" id="per_page" onchange="document.getElementById(\'perPageForm\').submit();">';
-
-    foreach ($perPageOptions as $option) {
-        $selected = ($currentItemsPerPage === $option) ? 'selected' : '';
-        $html .= "<option value=\"{$option}\" {$selected}>{$option}</option>";
-    }
-
-    $html .= '</select>';
-
-    foreach ($_GET as $key => $value) {
-        if ($key === 'per_page' || $key === 'page') continue;
-
-        if (is_array($value)) {
-            foreach ($value as $v) {
-                $html .= '<input type="hidden" name="'.htmlspecialchars($key).'[]" value="'.htmlspecialchars($v).'">';
-            }
-        } else {
-            $html .= '<input type="hidden" name="'.htmlspecialchars($key).'" value="'.htmlspecialchars($value).'">';
-        }
-    }
-    
-    return $html;
-}
-
 PHP;
 
         $content = $this->getHeader($this->css, $phpAdditional);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
         $content .= $this->script;
