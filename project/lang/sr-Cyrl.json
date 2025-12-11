@@ -430,5 +430,7 @@
 
   "transparency.score.need_more": "Захтева још рада",
   "transparency.score.title": "Скор Транспарентности",
-  "transparency.score.update_age": "Освежено данас"
+  "transparency.score.update_age": "Освежено данас",
+
+    "items_per_page": "Број ставки по страници"
 }

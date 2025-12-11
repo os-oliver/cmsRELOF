@@ -132,6 +132,7 @@ class EmployeesPageBuilder extends BasePageBuilder
                 </a>
             </div>
         <?php endif; ?>
+        <?php echo renderPerPageDropdown($limit) ?>
     </div>
 </main>
 
@@ -231,7 +232,10 @@ HTML;
     use App\Controllers\AuthController;
 
 $search = $_GET['search'] ?? '';
-$limit = $_GET['limit'] ?? 12; 
+$limit = 15; 
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $limit = (int)$_GET['per_page'];
+}
 $page = max(1, (int)($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
@@ -244,11 +248,11 @@ $employeeModel = new Employee();
 );
 
 $totalPages = (int) ceil($totalCount / $limit);
-
 PHP;
 
         $content = $this->getHeader(additionalPhp: $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 
