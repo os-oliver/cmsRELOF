@@ -20,7 +20,7 @@
                         <span class="text-red-500">*</span>
                     </label>
 
-                    <label for="documetFile" id="fileDropzone"
+                    <label for="documetFile"
                         class="group flex flex-col items-center justify-center w-full min-h-[110px] px-4 py-4 transition-colors border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 text-center">
                         <i class="fas fa-cloud-upload-alt text-3xl sm:text-4xl text-gray-400 group-hover:text-blue-500 mb-2 transition-colors"
                             aria-hidden="true"></i>
@@ -94,7 +94,6 @@
                 <div class="md:col-span-2">
                     <label for="titleForm" class="block text-sm font-medium text-gray-700 mb-1">
                         <?= __("documentInputForm.document_title") ?>
-                        <span class="text-red-500">*</span>
                     </label>
                     <input required type="text" id="titleForm" name="title"
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"

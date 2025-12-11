@@ -70,11 +70,11 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $registerRoute('GET', '/template', 'PageController@template');
 
     // Route with a specific slug template
-    // $registerRoute(
-    //     'GET',
-    //     '/{templateSlug:informacije-od-javnog-znacaja}',
-    //     'PageController@templateBySlug'
-    // );
+    $registerRoute(
+        'GET',
+        '/{templateSlug:informacije-od-javnog-znacaja}',
+        'PageController@templateBySlug'
+    );
     $registerRoute('GET', '/component', 'ComponentController@loadComponent');
 
     $registerRoute('POST', '/contact', 'ContactController@create');

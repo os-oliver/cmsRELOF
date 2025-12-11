@@ -41,33 +41,6 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="/assets/js/dashboard/tailwindConf.js"></script>
     <link rel="stylesheet" href="/assets/css/dashboard/structure.css">
-    <style>#loader-overlay {
-  position: fixed; /* Fixes it in the viewport */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  z-index: 9999; /* Ensure it's on top of everything */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Simple CSS spinner example */
-.spinner {
-  border: 4px solid #f3f3f3; /* Light grey */
-  border-top: 4px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}</style>
 </head>
 
 <body class="bg-gradient-to-br from-light-100 to-light-200 text-gray-700 font-sans">

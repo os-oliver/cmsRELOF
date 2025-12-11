@@ -21,7 +21,7 @@
                             <?= __("gallery.drag_image_here") ?>
                         </span>
                     </div>
-                    <input type="file" id="galleryImage" name="galleryImage" accept=".jpg,.jpeg,.png,.webp" class="hidden" />
+                    <input type="file" id="galleryImage" name="galleryImage" accept=".jpg,.jpeg,.png" class="hidden" />
                 </label>
             </div>
 
