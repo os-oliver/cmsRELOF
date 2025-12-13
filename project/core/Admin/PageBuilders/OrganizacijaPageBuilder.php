@@ -9,7 +9,7 @@ class OrganizacijaPageBuilder extends BasePageBuilder
     protected string $slug;
     private LanguageMapperController $translator;
 
-    private int $itemsPerPage = 3;
+    private int $itemsPerPage = 15;
     private int $descriptionMaxLength = 120;
     private int $imageHeight = 56;
     private int $paginationRange = 2;
@@ -233,6 +233,7 @@ PHP;
             }
             ?>
         </div>
+        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -254,6 +255,9 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih stavki';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $itemsPerPage = (int)$_GET['per_page'];
+}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
@@ -307,6 +311,7 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 

@@ -10,7 +10,7 @@ class ProgramiObukePageBuilder extends BasePageBuilder
     private LanguageMapperController $translator;
 
     // Configurable variables
-    private int $itemsPerPage = 6;
+    private int $itemsPerPage = 15;
     private int $descriptionMaxLength = 200;
     private int $imageHeight = 48; // in rem units (h-48 = 12rem)
     private int $paginationRange = 2; // Number of pages to show on each side
@@ -421,6 +421,7 @@ PHP;
             }
             ?>
         </div>
+        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -443,6 +444,9 @@ $pageDescription = 'Pregled svih programa obuke';
 
 // Configuration variables
 $itemsPerPage = __ITEMS_PER_PAGE__;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $itemsPerPage = (int)$_GET['per_page'];
+}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
@@ -499,6 +503,7 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 

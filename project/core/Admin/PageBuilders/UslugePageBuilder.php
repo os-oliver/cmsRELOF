@@ -10,7 +10,7 @@ class UslugePageBuilder extends BasePageBuilder
     private LanguageMapperController $translator;
 
     // Configurable variables
-    private int $itemsPerPage = 9;
+    private int $itemsPerPage = 15;
     private int $descriptionMaxLength = 250;
     private int $paginationRange = 2;
 
@@ -312,6 +312,8 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     
     return $html;
 }
+
+
 PHP;
 
     protected string $html = <<<'HTML'
@@ -346,6 +348,7 @@ PHP;
             }
             ?>
         </div>
+        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -367,6 +370,9 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih usluga';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $itemsPerPage = (int)$_GET['per_page'];
+}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
@@ -419,6 +425,7 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 
