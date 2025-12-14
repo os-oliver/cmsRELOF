@@ -41,6 +41,7 @@ class VrticiPageBuilder extends BasePageBuilder
             'all_categories' => 'Sve kategorije',
             'date_and_time' => 'Datum i vreme',
             'location' => 'Lokacija',
+            'phone' => 'Telefon',
             'event_details' => 'Detalji događaja',
             'no_items_found' => 'Nema pronađenih stavki',
             'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
@@ -169,6 +170,7 @@ CSS;
 
                 <div class="space-y-3 mb-4 text-secondary_text font-body">
                     {{locationRow}}
+                    {{telefonRow}}
                 </div>
 
                 <div class="mb-5 p-4 bg-gray-50 rounded-xl border border-gray-100">
@@ -196,6 +198,7 @@ HTML;
     $naslov = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['description'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $lokacija = htmlspecialchars($item['fields']['location'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $telefon = htmlspecialchars($item['fields']['telefon'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
 
@@ -219,12 +222,25 @@ HTML;
            </div>"
         : '';
 
+    $telefonRow = $telefon
+        ? "<div class='flex items-start gap-3'>
+               <div class='flex-shrink-0 w-10 h-10 bg-background rounded-lg flex items-center justify-center'>
+                   <i class='fas fa-phone text-primary'></i>
+               </div>
+               <div class='flex-1 min-w-0'>
+                   <div class='text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5'>{$texts['phone']}</div>
+                   <div class='text-sm font-semibold text-gray-900 truncate'>{$telefon}</div>
+               </div>
+           </div>"
+        : '';
+
     // Replace placeholders
     $replacements = [
         '{{naslov}}' => $naslov,
         '{{opis}}' => $opis,
         '{{imageSection}}' => $imageSection,
         '{{locationRow}}' => $locationRow,
+        '{{telefonRow}}' => $telefonRow,
         '{{itemId}}' => $itemId,
         '{{eventDetails}}' => $texts['event_details'] ?? 'Details'
     ];
@@ -297,7 +313,9 @@ PHP;
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
             <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Vrtići</h1>
-            <p class="text-lg font-heading2 text-secondary_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p class="text-lg font-heading2 text-secondary_text">
+                Pogledajte listu svih naših vrtića
+            </p>
         </div>
         
         
@@ -374,6 +392,7 @@ HTML;
             'all_categories' => 'Sve kategorije',
             'date_and_time' => 'Datum i vreme',
             'location' => 'Lokacija',
+            'phone' => 'Telefon',
             'event_details' => 'Detaljnije',
             'no_items_found' => 'Nema pronađenih stavki',
             'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']

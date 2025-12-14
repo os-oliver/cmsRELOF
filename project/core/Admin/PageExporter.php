@@ -52,6 +52,8 @@ use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
+use App\Admin\PageBuilders\KutakZaRoditelje;
+
 
 use DOMDocument;
 use DOMNode;
@@ -753,6 +755,8 @@ class PageExporter
                 return new UpisPageBuilder('Upis', $this->data);
             case 'savetovaliste':
                 return new SavetovalistePageBuilder('Savetovaliste', $this->data);
+            case 'kutak-za-roditelje':
+                return new KutakZaRoditelje('KutakZaRoditelje', $this->data);
             case 'posebne':
                 return new PosebneUslugePageBuilder('PosebneUsluge', $this->data);
             case 'organi-upravljanja':
@@ -878,6 +882,8 @@ class PageExporter
             return 'zaposleni';
         } elseif (strpos($name, 'organi-upravljanja') !== false) {
             return 'organi-upravljanja';
+        } elseif (strpos($name, 'kutak-za-roditelje') !== false) {
+            return 'kutak-za-roditelje';
         } elseif (strpos($name, 'publikacije') !== false) {
             return 'publikacije';
         }elseif (strpos($name, 'koncerti') !== false) {

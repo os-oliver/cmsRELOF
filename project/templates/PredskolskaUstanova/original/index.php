@@ -692,7 +692,7 @@
                             <span class="block font-heading text-primary_text">Predškolska ustanova "Užice"</span>
                         </h1>
                         <p class="mx-4 md:mx-20 mb-10">
-                            Naša predškolska ustanova okuplja vrtiće širom Užica i pruža roditeljima sve važne informacije na jednom mestu — od upisa i programa rada, do jelovnika i aktuelnih obaveštenja.
+                            Naša predškolska ustanova okuplja vrtiće širom Užica i pruža roditeljima sve važne informacije na jednom mestu — od upisa i programa rada, do jelovnika i aktuelnih obaveštenja. 
                             Posvećeni smo stvaranju bezbednog, podsticajnog i radosnog okruženja u kojem deca svakodnevno uče, rastu i razvijaju svoje potencijale
                         </p>
                         <div class="flex flex-col md:flex-row justify-center gap-4">
