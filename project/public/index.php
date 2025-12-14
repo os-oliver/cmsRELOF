@@ -27,13 +27,13 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
         }
     };
 
-    # UI/page routes + ones in assetes/data/pages.json
+    # UI/page routes + ones in assets/data/pages.json
     $registerRoute('GET', '/kontrolna-tabla/galerija', 'PageController@gallery');
     $registerRoute('GET', '/kontrolna-tabla/promocija', 'PageController@promotion');
     $registerRoute('GET', '/kontrolna-tabla/zalbe', 'PageController@complaints');
     $registerRoute('GET', '/kontrolna-tabla', 'PageController@dashboard');
     $registerRoute('GET', '/kontrolna-tabla/dokumenti', 'PageController@documents');
-    $registerRoute('GET', '/kontrolna-tabla/dogadjaji', 'PageController@events');
+    // $registerRoute('GET', '/kontrolna-tabla/dogadjaji', 'PageController@events'); // obsolete -> moved to editorDynamic
     $registerRoute('GET', '/kontrolna-tabla/stranice', 'PageController@StaticPageEditor');
     $registerRoute('GET', '/kontrolna-tabla/poruke', 'PageController@chats');
     $registerRoute('GET', '/kontrolna-tabla/o-nama', 'PageController@aboutUS');
@@ -54,6 +54,10 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $registerRoute('GET', '/sadmin/stil-stranica', 'PageController@adminStyle');
     $registerRoute('GET', '/sadmin/korisnici', 'PageController@userStyle');
     $registerRoute('GET', '/sadmin/kategorije', 'PageController@categoryStyle');
+    $registerRoute('GET', '/sadmin/migrate', 'MigrateController@migrations');
+    $registerRoute('GET', '/sadmin/migrate2', 'MigrateController@migrations2');
+
+    $registerRoute('GET', '/content-types', 'ContentController@contentTypes');
 
     $registerRoute('GET', '/pretraga', 'PageController@search');
     $registerRoute('POST', '/save-component', 'UserUpdateController@saveComponent');

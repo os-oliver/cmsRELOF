@@ -1,0 +1,288 @@
+<?php
+namespace App\Controllers;
+
+use App\Controllers\AuthController;
+use App\Database;
+use \PDO;
+
+
+class MigrateController
+{
+    private \PDO $pdo;
+
+    public function __construct()
+    {
+        AuthController::requireAdmin();
+        $db = new Database();
+        $this->pdo = $db->GetPDO();
+    }
+
+    public function migrations(): void
+    {
+        $stmt = $this->pdo->prepare("SELECT id FROM text WHERE lang=:en AND content=:resource");
+        $stmt->execute([
+            ':en' => 'en',
+            ':resource' => 'General decisions',
+        ]);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!empty($rows)) {
+            die('Already migrated');
+        }
+
+        try {
+            /* General decisions main category */
+
+            $stmt = $this->pdo->prepare("INSERT INTO category_document (color_code) VALUES (:code)");
+            $stmt->execute([
+                ':code' => 'red-500',
+            ]);
+
+            $opsteOdlukeId = $this->pdo->lastInsertId();
+
+            $stmt = $this->pdo->prepare("INSERT INTO text (source_id, source_table, field_name, lang, content)
+                VALUES (:source_id, :source_table, :field_name, :lang, :content)
+            ");
+
+            $translations = [
+                'sr' => 'Opšte odluke',
+                'sr-Cyrl' => 'Опште одлуке',
+                'en'  => 'General decisions',
+            ];
+
+            foreach ($translations as $lang => $content) {
+                $stmt->execute([
+                    ':source_id' => $opsteOdlukeId,
+                    ':source_table' => 'category_document',
+                    ':field_name' => 'name',
+                    ':lang' => $lang,
+                    ':content' => $content,
+                ]);
+            }
+        } catch (\PDOException $e) {
+            die ("General decisions category failed");
+        }
+
+        try {
+            /* Site resource main category */
+
+            $stmt = $this->pdo->prepare("INSERT INTO category_document (color_code) VALUES (:code)");
+            $stmt->execute([
+                ':code' => 'yellow-700',
+            ]);
+
+            $siteResourcesId = $this->pdo->lastInsertId();
+
+            $stmt = $this->pdo->prepare("INSERT INTO text (source_id, source_table, field_name, lang, content)
+                VALUES (:source_id, :source_table, :field_name, :lang, :content)
+            ");
+
+            $translations = [
+                'sr' => 'Resurs sajta',
+                'sr-Cyrl' => 'Ресурс сајта',
+                'en'  => 'Site resource',
+            ];
+
+            foreach ($translations as $lang => $content) {
+                $stmt->execute([
+                    ':source_id' => $siteResourcesId,
+                    ':source_table' => 'category_document',
+                    ':field_name' => 'name',
+                    ':lang' => $lang,
+                    ':content' => $content,
+                ]);
+            }
+
+        } catch (\PDOException $e) {
+            die ("Site resource category failed");
+        }
+
+        try {
+            /* Decisions subcategory */
+
+            $stmt = $this->pdo->prepare("INSERT INTO subcategory_document (category_id) VALUES (:catId)");
+            $stmt->execute([
+                ':catId' => $opsteOdlukeId,
+            ]);
+
+            $decisionsSubId = $this->pdo->lastInsertId();
+
+            $stmt = $this->pdo->prepare("INSERT INTO text (source_id, source_table, field_name, lang, content)
+                VALUES (:source_id, :source_table, :field_name, :lang, :content)
+            ");
+
+            $translations = [
+                'sr' => 'Odluke',
+                'sr-Cyrl' => 'Одлуке',
+                'en'  => 'Decisions',
+            ];
+
+            foreach ($translations as $lang => $content) {
+                $stmt->execute([
+                    ':source_id' => $decisionsSubId,
+                    ':source_table' => 'subcategory_document',
+                    ':field_name' => 'name',
+                    ':lang' => $lang,
+                    ':content' => $content,
+                ]);
+            }
+
+        } catch (\PDOException $e) {
+            die ("Decisions subcategory failed");
+        }
+
+        try {
+            /* Magazine subcategory */
+
+            $stmt = $this->pdo->prepare("INSERT INTO subcategory_document (category_id) VALUES (:catId)");
+            $stmt->execute([
+                ':catId' => $siteResourcesId,
+            ]);
+
+            $siteResourcesSubId = $this->pdo->lastInsertId();
+
+            $stmt = $this->pdo->prepare("INSERT INTO text (source_id, source_table, field_name, lang, content)
+                VALUES (:source_id, :source_table, :field_name, :lang, :content)
+            ");
+
+            $translations = [
+                'sr' => 'Časopis',
+                'sr-Cyrl' => 'Часопис',
+                'en'  => 'Magazine',
+            ];
+
+            foreach ($translations as $lang => $content) {
+                $stmt->execute([
+                    ':source_id' => $siteResourcesSubId,
+                    ':source_table' => 'subcategory_document',
+                    ':field_name' => 'name',
+                    ':lang' => $lang,
+                    ':content' => $content,
+                ]);
+            }
+
+        } catch (\PDOException $e) {
+            die ("Magazine subcategory failed");
+        }
+
+    }
+
+    public function migrations2(): void
+    {
+        // IF NOT EXISTS ( (SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME = 'content_type') )
+        // THEN
+        //     ....
+        // END IF;
+
+        $stmt = $this->pdo->prepare("SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME = 'content_type'");
+        $stmt->execute([]);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // if (!empty($rows)) {
+        //     die('Already migrated');
+        // }
+
+        $sql = "CREATE TABLE IF NOT EXISTS `content_type` (
+            `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `code` varchar(255) DEFAULT NULL,
+            `name` varchar(255) DEFAULT NULL,
+            `icon` varchar(255) DEFAULT NULL,
+            `translations` json DEFAULT NULL,
+            INDEX IDX_content_type_code (code)
+            )
+            DEFAULT CHARSET=utf8mb4
+            COLLATE=utf8mb4_unicode_ci
+            ENGINE=InnoDB
+        ";
+
+        $this->pdo->exec($sql);
+
+        $sql = "CREATE TABLE IF NOT EXISTS custom_field (
+            `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `content_type_code` varchar(255) NOT NULL,
+            `code` varchar(255) DEFAULT NULL,
+            `type` varchar(255) DEFAULT NULL,
+            `ordno` int DEFAULT NULL,
+            `input_type` varchar(255) DEFAULT NULL,
+            `placeholder` json DEFAULT NULL,
+            `required` int(1) DEFAULT 0,
+            `name` varchar(255) DEFAULT NULL,
+            `translations` json DEFAULT NULL,
+            `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+            INDEX IDX_cf_content_type_code (content_type_code),
+            CONSTRAINT FK_content_type_code FOREIGN KEY (content_type_code) REFERENCES content_type (code) ON DELETE CASCADE
+            )
+            DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ENGINE=InnoDB
+        ";
+
+        $this->pdo->exec($sql);
+
+        $sql = "CREATE TABLE IF NOT EXISTS custom_field_value (
+            `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `custom_field_id` int NOT NULL,
+            `language` varchar(10) DEFAULT NULL,
+            `content` varchar(5000) DEFAULT NULL,
+            `yesno` int DEFAULT NULL,
+            `date` datetime DEFAULT NULL,
+            `option` varchar(255) DEFAULT NULL,
+            `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+            INDEX IDX_cfv_custom_field_id (custom_field_id),
+            CONSTRAINT FK_cfv_custom_field_id FOREIGN KEY (custom_field_id) REFERENCES custom_field (id) ON DELETE CASCADE
+            )
+            DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ENGINE=InnoDB
+        ";
+
+        $this->pdo->exec($sql);
+
+        $sql = "CREATE TABLE IF NOT EXISTS custom_field_option (
+            `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `custom_field_id` int NOT NULL,
+            `translations` json DEFAULT NULL,
+            `option_value` varchar(255) DEFAULT NULL,
+            `ordno` int DEFAULT NULL,
+            `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+            INDEX IDX_cfo_custom_field_id (custom_field_id),
+            CONSTRAINT FK_cfo_custom_field_id FOREIGN KEY (custom_field_id) REFERENCES custom_field (id) ON DELETE CASCADE
+            )
+            DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ENGINE=InnoDB
+        ";
+
+        $this->pdo->exec($sql);
+
+        $sql = "CREATE TABLE IF NOT EXISTS content_type_category (
+            `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `content_type_code` varchar(255) NOT NULL,
+            `code` varchar(255) DEFAULT NULL,
+            `ordno` int DEFAULT NULL,
+            `translations` json DEFAULT NULL,
+            `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+            INDEX IDX_cat_content_type_code(content_type_code),
+            CONSTRAINT FK_cat_content_type_code FOREIGN KEY (content_type_code) REFERENCES content_type (code) ON DELETE CASCADE
+            )
+            DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ENGINE=InnoDB
+        ";
+
+        $this->pdo->exec($sql);
+
+        // $sql = "CREATE TABLE IF NOT EXISTS column_translation (
+        //     `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        //     `source_id` int NOT NULL,
+        //     `source_table` varchar(255) NOT NULL,
+        //     `column_name` varchar(255) NOT NULL,
+        //     `language` varchar(10) NOT NULL,
+        //     `translation` varchar(1023) NOT NULL,
+        //     `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+        //     `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        //     INDEX IDX_trans_source_id (source_id),
+        //     INDEX IDX_trans_source_table (source_table),
+        //     INDEX IDX_trans_column_name (column_name)
+        //     )
+        //     DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ENGINE=InnoDB
+        // ";
+
+        // $this->pdo->exec($sql);
+    }
+
+}

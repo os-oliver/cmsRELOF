@@ -55,12 +55,12 @@ const injectStyles = () => {
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-    
+
     @keyframes checkmark {
       0% { stroke-dashoffset: 48; }
       100% { stroke-dashoffset: 0; }
     }
-    
+
     @keyframes circleGrow {
       0% { stroke-dashoffset: 166; }
       100% { stroke-dashoffset: 0; }
@@ -430,8 +430,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  modalEls.close.addEventListener("click", hideModal);
-  modalEls.modal.addEventListener("click", (e) => {
-    if (e.target === modalEls.modal) hideModal();
-  });
+  if (modalEls.close) {
+    modalEls.close.addEventListener("click", hideModal);
+  }
+  if (modalEls.modal) {
+    modalEls.modal.addEventListener("click", (e) => {
+      if (e.target === modalEls.modal) hideModal();
+    });
+  }
 });
