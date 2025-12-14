@@ -392,7 +392,7 @@
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fa-question mr-2 text-primary"></i>Pitanja
                             </a>
-                            <a static = "true" href="#"
+                            <a static="true" href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                             </a>
@@ -537,7 +537,7 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-question mr-2 text-primary"></i>Pitanja
                         </a>
-                        <a static = "true" href="#"
+                        <a static="true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                         </a>
@@ -692,13 +692,23 @@
                             <span class="block font-heading text-primary_text">Predškolska ustanova "Užice"</span>
                         </h1>
                         <p class="mx-4 md:mx-20 mb-10">
-                            Naša predškolska ustanova okuplja vrtiće širom Užica i pruža roditeljima sve važne informacije na jednom mestu — od upisa i programa rada, do jelovnika i aktuelnih obaveštenja. 
+                            Naša predškolska ustanova okuplja vrtiće širom Užica i pruža roditeljima sve važne informacije na jednom mestu — od upisa i programa rada, do jelovnika i aktuelnih obaveštenja.
                             Posvećeni smo stvaranju bezbednog, podsticajnog i radosnog okruženja u kojem deca svakodnevno uče, rastu i razvijaju svoje potencijale
                         </p>
-                        <a href="/o-nama/cilj"
-                            class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
-                            Saznajte o nama
-                        </a>
+                        <div class="flex flex-col md:flex-row justify-center gap-4">
+                            <a href="/o-nama/cilj"
+                                class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors min-w-[180px] text-center">
+                                O nama
+                            </a>
+                            <a href="/za-roditelje/jelovnik"
+                                class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors min-w-[180px] text-center">
+                                Naš jelovnik
+                            </a>
+                            <a href="/za-roditelje/upis"
+                                class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors min-w-[180px] text-center">
+                                Upis
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -837,34 +847,6 @@
                         </p> -->
                     </div>
                 </div>
-                
-                <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
-                    <a href="#" class="w-1/4 h-full">
-                        <img
-                            id="g-image"
-                            class="w-full h-full object-cover rounded-l-lg"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
-                    </a>
-                    <div class="p-5 w-2/4 h-full flex flex-col justify-between">
-                        <h3 class="text-primary_text font-heading text-2xl">
-                            <p id="g-title" class="text-3xl">Lorem ipsum</p>
-                        </h3>
-
-                        <div class="mt-auto">
-                            <h2 class="text-primary_text font-heading text-xl">
-                                <p id="g-location" class="text-xl">Lorem ipsum</p>
-                            </h2>
-
-                            <h1 class="text-primary_text font-heading text-xl">
-                                <p id="g-telefon" class="text-xl">Lorem ipsum</p>
-                            </h1>
-                        </div>
-
-                        <!-- <p id="g-description" class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p> -->
-                    </div>
-                </div>
 
                 <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
@@ -921,7 +903,35 @@
                         </p> -->
                     </div>
                 </div>
-                
+
+                <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
+                    <a href="#" class="w-1/4 h-full">
+                        <img
+                            id="g-image"
+                            class="w-full h-full object-cover rounded-l-lg"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
+                    </a>
+                    <div class="p-5 w-2/4 h-full flex flex-col justify-between">
+                        <h3 class="text-primary_text font-heading text-2xl">
+                            <p id="g-title" class="text-3xl">Lorem ipsum</p>
+                        </h3>
+
+                        <div class="mt-auto">
+                            <h2 class="text-primary_text font-heading text-xl">
+                                <p id="g-location" class="text-xl">Lorem ipsum</p>
+                            </h2>
+
+                            <h1 class="text-primary_text font-heading text-xl">
+                                <p id="g-telefon" class="text-xl">Lorem ipsum</p>
+                            </h1>
+                        </div>
+
+                        <!-- <p id="g-description" class="mt-3 mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p> -->
+                    </div>
+                </div>
+
             </div>
             <div class="text-center mt-12">
                 <a href="/o-nama/vrtici"
@@ -1017,14 +1027,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl">Predškolska ustanova Užice</h3>
+                        <a href="/" class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                                <img src="" alt="" style="width:75px;height:auto;" />
+                            </div>
+                            <h3 class="text-xl font-body">Predškolska ustanova Užice</h3>
+                        </a>
                     </div>
                     <div class="flex space-x-3">
                         <a href="#"
@@ -1091,7 +1099,7 @@
                         class="w-full max-w-md md:max-w-lg h-auto mb-4">
                     <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
                 </div>
-                <p class="pt-6">&copy; Sva prava zadrzana - Predškolska ustanova Užice</p>
+                <p class="pt-6">&copy; Sva prava zadržana - Predškolska ustanova Užice</p>
             </div>
         </div>
     </footer>
