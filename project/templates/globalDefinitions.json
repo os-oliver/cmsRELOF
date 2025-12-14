@@ -1,6 +1,7 @@
 [
   {
     "Ankete": {
+      "code": "ankete",
       "sr": "Ankete",
       "en": "Surveys",
       "sr-Cyrl": "Анкете",
@@ -29,9 +30,10 @@
       ]
     },
     "Pitanja": {
-      "sr": "Često postavljena pitanja",
+      "code": "pitanja",
+      "sr": "Često postavljana pitanja",
       "en": "Frequently asked questions",
-      "sr-Cyrl": "Често постављена питања",
+      "sr-Cyrl": "Често постављана питања",
       "icon": "fa-solid fa-circle-question",
       "fields": [
         {
@@ -57,6 +59,7 @@
       ]
     },
     "OrganiUpravljanja": {
+      "code": "organi-upravljanja",
       "sr": "Organi upravljanja",
       "en": "Management bodies",
       "sr-Cyrl": "Органи управљања",
@@ -88,7 +91,7 @@
           "label": {
             "sr": "Biografija",
             "en": "biography",
-            "sr-Cyrl": "Биографиј"
+            "sr-Cyrl": "Биографија"
           }
         },
         {
