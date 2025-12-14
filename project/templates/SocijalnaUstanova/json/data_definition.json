@@ -6,11 +6,7 @@
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
       "categories": [
-        "Kultura",
-        "Obrazovanje",
-        "Inovacije",
-        "Zdravlje",
-        "Tehnologija"
+        "Vesti"
       ],
       "fields": [
         {

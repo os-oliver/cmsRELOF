@@ -410,7 +410,7 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-circle-question mr-2 text-pink-600"></i>Pitanja
                             </a>
-                            <a data-page="Informacije" href="#"
+                            <a static="true" data-page="Informacije" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-bullhorn mr-2 text-red-600"></i>Informacije
                             </a>
@@ -425,6 +425,11 @@
                     <a data-page="Vesti" href="#"
                         class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
                         <i class="fas fa-users mr-3 text-accent_indigo"></i>Programi obuke
+                    </a>
+
+                    <a data-page="Casopis" static="true" href="#"
+                        class="flex items-center py-3 px-4 text-slate hover:text-primary hover:bg-background rounded-lg transition-all">
+                        <i class="fas fa-users mr-3 text-accent_indigo"></i>Časopis
                     </a>
 
                     <a data-page="Dokumenti" href="#"
@@ -474,20 +479,18 @@
 
             <!-- Logo Section -->
             <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-                <a href="" class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4 cursor-pointer hover:opacity-80 transition-opacity">
-                    <img src="/assets/img/ljubica%20logo.jpg" alt="Kneginja Ljubica Logo" style="width:75px;height:auto;" />
+                <a href="/" class="w-24 h-24 rounded-xl flex items-center justify-center text-white text-2xl cursor-pointer hover:opacity-80 transition-opacity">
+                    <img src="/assets/img/ljubica%20logo.jpg" alt="Kneginja Ljubica Logo" style="width:92px;height:auto" />
                 </a>
-                <a href="" class="hidden sm:block cursor-pointer hover:opacity-80 transition-opacity">
-                    <h1
-                        class="text-base sm:text-lg lg:text-xl xl:text-2xl font-display text-slate font-bold tracking-wider leading-tight">
+                <a href="/" class="hidden sm:block cursor-pointer hover:opacity-80 transition-opacity">
+                    <h1 class="text-base sm:text-lg lg:text-l xl:text-xl font-display text-slate font-bold tracking-wider leading-tight">
                         Centar za razvoj usluga </h1>
-                        <h1 class="text-base sm:text-lg lg:text-xl xl:text-2xl font-display text-slate font-bold tracking-wider leading-tight">
+                    <h1 class="text-base sm:text-lg lg:text-l xl:text-xl font-display text-slate font-bold tracking-wider leading-tight">
                         socijalne zaštite
                         </h1>
-                    <p
-                        class="text-xs sm:text-xs lg:text-sm text-primary tracking-widest hidden md:block opacity-80 font-medium">
+                    <h1 class="text-base sm:text-lg lg:text-l xl:text-xl font-display text-slate font-bold tracking-wider leading-tight">
                         "Kneginja Ljubica"
-                    </p>
+                        </h1>
                 </a>
             </div>
 
@@ -530,7 +533,7 @@
                             <i class="fas fa-compass mr-3 text-info flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija</span>
                         </a>
-                        <a static = "true" href="#"
+                        <a static="true" href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
@@ -545,7 +548,7 @@
                             <i class="fas fa-circle-question mr-3 text-accent_pink flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Pitanja</span>
                         </a>
-                        <a href="#"
+                        <a static="true" href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-bullhorn mr-3 text-danger flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Informacije</span>
@@ -560,8 +563,15 @@
                     <span class="hidden xl:inline text-sm">Vesti</span>
                 </a>
 
-                <a href="#"
+                <a static="true" href="#"
                     class="nav-link text-slate font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
+                    <i
+                        class="fas fa-book mr-2 text-accent_indigo transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Časopis</span>
+                </a>
+
+                <a href="#"
+                    class="nav-link text-slate font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group" style="display:none;">
                     <i
                         class="fas fa-users mr-2 text-accent_indigo transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Programi obuke</span>
@@ -618,7 +628,7 @@
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
                     'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    // 'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -703,11 +713,11 @@
                 <span class="inline-block bg-white/20 backdrop-blur-md text-white px-4 py-1 rounded-full text-sm font-medium mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
                     <i class="fas fa-heart mr-2"></i>Podrška za sve
                 </span>
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold leading-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.6);">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold leading-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.6);">
                 Centar za razvoj usluga socijalne zaštite
 
                 </h1>
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary leading-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.6);">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold leading-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.6);">
                     "Kneginja Ljubica"
                 </h1>
             </div>
@@ -715,9 +725,6 @@
             <div class="mb-10">
                 <p class="text-xl text-white leading-relaxed max-w-3xl mx-auto mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
                     Naš cilj je da pružimo podršku i pomoć pojedincima, porodicama i zajednici u rešavanju životnih poteškoća i unapređenju kvaliteta života.
-                </p>
-                <p class="text-white/90 italic text-lg max-w-2xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                    "Centar za socijalni rad je tu da vas sasluša, posavetuje i podrži. Zajedno gradimo društvo solidarnosti."
                 </p>
             </div>
         </div>
@@ -1195,8 +1202,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate text-white pt-20 pb-10">
-        <div class="container mx-auto px-4">
+    <footer class="bg-accent text-white pt-20 pb-10 "><!-- bg-slate -->
+        <div class="container mx-auto px-4" style="background-color: #16a34a">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
@@ -1206,8 +1213,6 @@
                         <h3 class="text-xl font-display font-bold">
                         Centar za razvoj usluga socijalne zaštite
                         "Kneginja Ljubica"
-
-
                         </h3>
                     </div>
                     <p class="text-white/80 mb-4">
@@ -1226,17 +1231,13 @@
                             class="w-10 h-10 rounded-full bg-primary/30 hover:bg-primary flex items-center justify-center text-white transition-colors">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-primary/30 hover:bg-primary flex items-center justify-center text-white transition-colors">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
                     </div>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="/ankete" class="text-white/80 hover:text-primary_lighter transition-colors">Ankete o zadovoljstvu korisnika</a></li>
+                        <li><a href="/ankete" class="text-white/80 hover:text-primary/30 transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                     </ul>
                 </div>
 
@@ -1244,15 +1245,15 @@
                     <h4 class="text-lg font-display font-bold mb-6">Kontakt informacije</h4>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-primary_lighter mt-1 mr-3"></i>
-                            <span>Čika Matina 5, 34000 kragujevac</span>
+                            <i class="fas fa-map-marker-alt text-primary/30 mt-1 mr-3"></i>
+                            <span>Čika Matina 5, 34000 Kragujevac</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-phone text-primary_lighter mt-1 mr-3"></i>
+                            <i class="fas fa-phone text-primary/30 mt-1 mr-3"></i>
                             <span>034 355 485</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-envelope text-primary_lighter mt-1 mr-3"></i>
+                            <i class="fas fa-envelope text-primary/30 mt-1 mr-3"></i>
                             <span data-translate="off">centarkg@kneginjaljubica.org.rs</span>
                         </li>
                     </ul>

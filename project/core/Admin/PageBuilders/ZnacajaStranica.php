@@ -74,7 +74,7 @@ class ZnacajaStranica extends BasePageBuilder
           </h1>
           <p class="lead text-secondary_text/90 mt-2">
             Pravo na pristup informacijama od javnog značaja ostvaruje se podnošenjem zahteva nadležnom organu.
-            Ovde se nalazi kratko uputstvo i obrazac <strong>(DOC)</strong> za preuzimanje.
+            Ovde se nalazi kratko uputstvo i obrazac&nbsp;<strong>(DOC)</strong>&nbsp;za preuzimanje.
           </p>
         </section>
 

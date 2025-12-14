@@ -15,15 +15,22 @@ class IstorijatPageBuilder extends BasePageBuilder
     </button>
   </div>
 
-  <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient">
+  <section class="relative min-h-screen flex items-center overflow-hidden pt-16 bg-background">
     <div class="absolute inset-0 z-0"></div>
     <div class="relative z-10 w-full max-w-5xl mx-auto text-center font-body text-secondary_text">
       <h1 class="text-primary_text text-5xl font-heading mt-10 mb-4">Istorijat naše ustanove</h1>
-      <h2 class="text-3xl mx-5 italic mb-4 text-justify">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-    Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-</h2>
+      <p class="text-3xl mx-5 mb-4 text-left text-black/80">Centar za razvoj usluga socijalne zaštite „Kneginja Ljubica“ Kragujevac osnovan
+        je od strane Skupštine Grada Kragujevca 27. maja 2011. godine, kao ustanova koja ima za cilj uspostavljanje,
+        pružanje i razvijanje usluga socijalne zaštite iz nadležnosti lokalne samouprave.</p>
+      <p class="text-3xl mx-5 mb-4 text-left text-black/80">Centar ima svojstvo pravnog lica i od 10. novembra 2011. godine realizuje usluge za decu,
+        odrasla i starija lica, u skladu sa Zakonom o socijalnoj zaštiti
+        Republike Srbije i Odlukom o socijalnoj zaštiti Grada Kragujevca.</p>
+      <p class="text-3xl mx-5 mb-4 text-left text-black/80">Ustanova se finansira iz budžeta Grada Kragujevca i
+        sredstava po osnovu participacije korisnika, kao i iz donatorskih sredstava i projekata.</p>
+      <p class="text-3xl mx-5 mb-4 text-left text-black/80">Vizija Centra je razvijena i efikasna mreža usluga socijalne
+        zaštite koja na kvalitetan način zadovoljava raznovrsne potrebe građana i porodice u najmanje restriktivnom okruženju.</p>
+      <p class="text-3xl mx-5 mb-4 text-left text-black/80">Usluge Centra realizuje tim stručnih radnika i saradnika
+        koji ulažu ogromne napore kako bi se potrebe korisnika zadovoljile u skladu sa postavljenim standardima usluga.</p>
     </div>
   </section>
 </main>

@@ -38,6 +38,7 @@ use App\Admin\PageBuilders\GalleryPageBuilder;
 use App\Admin\PageBuilders\ContactPageBuilder;
 use App\Admin\PageBuilders\DocumentsPageBuilder;
 use App\Admin\PageBuilders\BasicPageBuilder;
+use App\Admin\PageBuilders\CasopisPageBuilder;
 use App\Admin\PageBuilders\CenovnikPageBuilder;
 use App\Admin\PageBuilders\EventsPageBuilder;
 use App\Admin\PageBuilders\IstorijatPageBuilder;
@@ -743,6 +744,8 @@ class PageExporter
                 return new FAQPageBuilder('Pitanja');
             case 'jelovnik':
                 return new JelovnikPageBuilder('Jelovnik', $this->data);
+            case 'casopis':
+                return new CasopisPageBuilder('Casopis', $this->data);
             case 'cenovnik':
                 return new CenovnikPageBuilder('Cenovnik', $this->data);
             case 'raspored-aktivnosti':
@@ -868,6 +871,8 @@ class PageExporter
             return 'test123';
         } elseif (strpos($name, 'jelovnik') !== false) {
             return 'jelovnik';
+        } elseif (strpos($name, 'casopis') !== false) {
+            return 'casopis';
         } elseif (strpos($name, 'cenovnik') !== false) {
             return 'cenovnik';
         } elseif (strpos($name, 'upis') !== false) {
