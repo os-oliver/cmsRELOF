@@ -58,6 +58,9 @@ class CardRenderer
                 continue;
             $label = $fieldLabels[$fn]['label'][$locale] ?? $fieldLabels[$fn]['label']['en'] ?? $fn;
             $value = (string) ($translations[$locale] ?? reset($translations) ?? '');
+            if (($fieldLabels[$fn]['type'] ?? '') === 'date' && $value !== '') {
+                $value = self::formatDate($value);
+            }
             $value = mb_strlen($value) > 10 ? mb_substr($value, 0, 10) . '...' : $value;
             $fields[] = ['name' => $fn, 'label' => $label, 'value' => $value];
         }
@@ -150,6 +153,28 @@ class CardRenderer
         return $html;
     }
 
+    private static function formatDate(string $value): string
+    {
+        $trimmed = trim($value);
+        if ($trimmed === '') {
+            return '';
+        }
+
+        $formats = ['Y-m-d', 'Y-m-d H:i:s', 'Y-m-d\TH:i:s', 'Y-m-d\TH:i:sP', 'd/m/Y', 'd.m.Y'];
+        foreach ($formats as $fmt) {
+            $dt = \DateTime::createFromFormat($fmt, $trimmed);
+            if ($dt instanceof \DateTime) {
+                return $dt->format('d/m/Y');
+            }
+        }
+
+        $ts = strtotime($trimmed);
+        if ($ts !== false) {
+            return date('d/m/Y', $ts);
+        }
+
+        return $value;
+    }
 
 
 

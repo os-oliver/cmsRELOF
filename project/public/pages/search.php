@@ -154,7 +154,7 @@ if ($term !== '') {
 
                                             <?php if (isset($mergedRecord['created_at'])): ?>
                                                 <span class="bg-gray-100 px-2 py-1 rounded">
-                                                    📅 <?= date('d.m.Y', strtotime($mergedRecord['created_at'])) ?>
+                                                    📅 <?= date('d/m/Y', strtotime($mergedRecord['created_at'])) ?>
                                                 </span>
                                             <?php endif; ?>
 
