@@ -159,7 +159,22 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $autor = htmlspecialchars($item['fields']['autor'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $rawDatum = $item['fields']['datum'][$locale] ?? '';
+    $formattedDatum = '';
+    if ($rawDatum) {
+        $formats = ['Y-m-d', 'Y-m-d H:i:s', 'd/m/Y', 'd.m.Y'];
+        foreach ($formats as $fmt) {
+            $dt = \DateTime::createFromFormat($fmt, $rawDatum);
+            if ($dt instanceof \DateTime) {
+                $formattedDatum = $dt->format('d/m/Y');
+                break;
+            }
+        }
+        if ($formattedDatum === '' && strtotime($rawDatum) !== false) {
+            $formattedDatum = date('d/m/Y', strtotime($rawDatum));
+        }
+    }
+    $datum = htmlspecialchars($formattedDatum, ENT_QUOTES, 'UTF-8');
     $link = htmlspecialchars($item['fields']['link'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
