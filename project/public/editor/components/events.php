@@ -22,7 +22,7 @@
         <?php if (!empty($news) && is_iterable($news)): ?>
             <?php foreach ($news as $item):
                 $category = htmlspecialchars($item->naziv ?? '');
-                $date = !empty($item->datum) ? date('d.m.Y.', strtotime($item->datum)) : '';
+                $date = !empty($item->datum) ? date('d/m/Y', strtotime($item->datum)) : '';
                 $author = htmlspecialchars($item->autor ?? 'Nepoznat autor');
                 $desc = htmlspecialchars($item->opis ?? '');
                 $url = !empty($item->link) ? htmlspecialchars($item->link) : "/sadrzaj?id={$item->id}&tip=vesti";
