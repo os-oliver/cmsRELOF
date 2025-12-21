@@ -227,7 +227,7 @@ HTML;
                         } catch (\Exception $e) {
                             $date = new DateTime();
                         }
-                        $formattedDate = $date->format('d.m.Y');
+                        $formattedDate = $date->format('d/m/Y');
                         $fileSize = isset($document['fileSize']) ? number_format((float)$document['fileSize'], 2) : '0.00';
                     ?>
                         <article class="document-card bg-white rounded-2xl shadow card-hover p-6 fade-in" data-category="<?= $categoryName ?>" data-name="<?= $title ?>">

@@ -169,14 +169,14 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     // Image handling: common shapes -> file array with 'url', or string URL, or nested structure
         $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
 
-    // Datum početka - try to parse ISO date and format to dd.mm.YYYY
+    // Datum početka - try to parse ISO date and format to dd/mm/YYYY
     $rawDatum = $getField('datumPocetka') ?? '';
     $formattedDatum = '';
     if ($rawDatum) {
         try {
             $dt = new DateTime($rawDatum);
-            // format: 1. Jan 2025 -> 01.01.2025 (local-friendly)
-            $formattedDatum = $dt->format('d.m.Y');
+            // format: 1. Jan 2025 -> 01/01/2025 (local-friendly)
+            $formattedDatum = $dt->format('d/m/Y');
         } catch (Exception $e) {
             // fallback to raw string sanitized
             $formattedDatum = htmlspecialchars($rawDatum, ENT_QUOTES, 'UTF-8');
