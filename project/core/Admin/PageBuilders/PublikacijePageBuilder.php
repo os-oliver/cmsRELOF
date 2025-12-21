@@ -212,7 +212,22 @@ HTML;
     }
     $tekst = htmlspecialchars($tekst, ENT_QUOTES, 'UTF-8');
 
-    $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $rawDatum = $item['fields']['datum'][$locale] ?? '';
+    $formattedDatum = '';
+    if ($rawDatum) {
+        $formats = ['Y-m-d', 'Y-m-d H:i:s', 'd/m/Y', 'd.m.Y'];
+        foreach ($formats as $fmt) {
+            $dt = \DateTime::createFromFormat($fmt, $rawDatum);
+            if ($dt instanceof \DateTime) {
+                $formattedDatum = $dt->format('d/m/Y');
+                break;
+            }
+        }
+        if ($formattedDatum === '' && strtotime($rawDatum) !== false) {
+            $formattedDatum = date('d/m/Y', strtotime($rawDatum));
+        }
+    }
+    $datum = htmlspecialchars($formattedDatum, ENT_QUOTES, 'UTF-8');
 
     $files = $item['fields']['file'] ?? [];
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');

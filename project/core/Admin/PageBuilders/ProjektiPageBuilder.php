@@ -447,7 +447,22 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
         $opis .= '...';
     }
     
-    $datumPocetka = htmlspecialchars($item['fields']['datumPocetka'][$locale] ?? $item['fields']['datumPocetka'] ?? '', ENT_QUOTES, 'UTF-8');
+    $rawDatumPocetka = $item['fields']['datumPocetka'][$locale] ?? $item['fields']['datumPocetka'] ?? '';
+    $formattedStart = '';
+    if ($rawDatumPocetka) {
+        $formats = ['Y-m-d', 'Y-m-d H:i:s', 'd/m/Y', 'd.m.Y'];
+        foreach ($formats as $fmt) {
+            $dt = \DateTime::createFromFormat($fmt, $rawDatumPocetka);
+            if ($dt instanceof \DateTime) {
+                $formattedStart = $dt->format('d/m/Y');
+                break;
+            }
+        }
+        if ($formattedStart === '' && strtotime($rawDatumPocetka) !== false) {
+            $formattedStart = date('d/m/Y', strtotime($rawDatumPocetka));
+        }
+    }
+    $datumPocetka = htmlspecialchars($formattedStart, ENT_QUOTES, 'UTF-8');
     $budzet = htmlspecialchars((string)($item['fields']['budzet'][$locale] ?? $item['fields']['budzet'] ?? ''), ENT_QUOTES, 'UTF-8');
     $linkRaw = $item['fields']['link'][$locale] ?? $item['fields']['link'] ?? '';
     $linkEsc = htmlspecialchars((string)$linkRaw, ENT_QUOTES, 'UTF-8');
