@@ -383,28 +383,28 @@ class VestiPageBuilder extends BasePageBuilder
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
-    
+
     .glass-card {
         margin-bottom: 1rem;
     }
-    
+
     .card-action-link {
         font-size: 0.8125rem;
         padding: 0.75rem 1rem;
     }
-    
+
     .news-hero-image {
         height: 280px;
     }
-    
+
     .news-title-hero {
         font-size: 1.5rem;
     }
-    
+
     .news-content-area {
         padding: 24px;
     }
-    
+
     .news-cta-button {
         padding: 12px 24px;
         font-size: 0.875rem;
@@ -514,7 +514,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
         <div class='news-hero-image'>
             <img src='{$imageUrl}' alt='{$naslov}'>
             <div class='news-gradient-overlay'></div>";
-        
+
         // Kategorijska traka
         if ($kategorija) {
             $gradientStyle = "background: linear-gradient(135deg, {$categoryColor['from']} 0%, {$categoryColor['to']} 100%);";
@@ -524,16 +524,16 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
                 <span>{$kategorija}</span>
             </div>";
         }
-        
+
         // Sadržaj preko slike
         $html .= "
             <div class='news-content-area'>
                 <h3 class='news-title-hero'>{$naslov}</h3>";
-        
+
         if ($shortDescription) {
             $html .= "<p class='news-description-hero'>{$shortDescription}</p>";
         }
-        
+
         $targetLink = "sadrzaj?id={$itemId}&tip=Vesti";
         $html .= "
                 <a href='{$targetLink}' class='bg-primary news-cta-button hover:bg-primary_hover'>
@@ -547,7 +547,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     // Meta footer sa datumom i autorom
     if ($datum || $autor) {
         $html .= "<div class='news-meta-footer'>";
-        
+
         if ($datum) {
             $html .= "
             <div class='news-meta-item'>
@@ -555,7 +555,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
                 <span>{$datum}</span>
             </div>";
         }
-        
+
         if ($autor) {
             $html .= "
             <div class='news-meta-item'>
@@ -563,12 +563,12 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
                 <span>{$autor}</span>
             </div>";
         }
-        
+
         $html .= "</div>";
     }
 
     $html .= "</div>";
-    
+
     return $html;
 }
 
@@ -664,8 +664,8 @@ $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
+    ? (is_numeric($_GET['category'])
+        ? (int) $_GET['category']
         : trim((string) $_GET['category'])
       )
     : null;

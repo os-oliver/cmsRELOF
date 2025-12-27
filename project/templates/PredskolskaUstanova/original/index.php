@@ -373,6 +373,47 @@
                             </a>
                         </div>
                     </div>
+                    <div class="mobile-dropdown">
+                        <button
+                            class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
+                            id="mobileParentsToggle">
+                            <div class="flex items-center">
+                                <i class="fas fa-info-circle mr-3 text-primary"></i>Za roditelje
+                            </div>
+                            <i class="fas fa-chevron-down transition-transform duration-200"
+                                id="mobileParentsIcon"></i>
+                        </button>
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileParentsMenu">
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-utensils mr-2 text-primary"></i>Jelovnik
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-info-circle mr-2 text-primary"></i>Obaveštenja
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-receipt mr-2 text-primary"></i>Cenovnik
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-file-alt mr-2 text-primary"></i>Upis
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-clock mr-2 text-primary"></i>Raspored aktivnosti
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
+                            </a>
+                        </div>
+                    </div>
                     <a href="#"
                         class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primary"></i>Vesti
@@ -447,6 +488,45 @@
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-school mr-2 text-primary"></i>Vrtići
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown relative group transition-colors">
+                    <button
+                        class="nav-link transition-colors flex items-center whitespace-nowrap">
+                        <i class="fas fa-users mr-2 text-primary"></i>
+                        <span class="hidden xl:inline">Za roditelje</span>
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="#"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            <i class="fas fa-utensils mr-2 text-primary"></i>Jelovnik
+                        </a>
+                        <a href="#"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            <i class="fas fa-info-circle mr-2 text-primary"></i>Obaveštenja
+                        </a>
+                        <a href="#" static="true"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            <i class="fas fa-receipt mr-2 text-primary"></i>Cenovnik
+                        </a>
+                        <a href="#" static="true"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            <i class="fas fa-file-alt mr-2 text-primary"></i>Upis
+                        </a>
+                        <a href="#" static="true"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            <i class="fas fa-clock mr-2 text-primary"></i>Raspored aktivnosti
+                        </a>
+                        <a href="#" static="true"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
+                        </a>
+                        <a href="#" static="true"
+                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
+                            <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
                         </a>
                     </div>
                 </div>

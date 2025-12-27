@@ -65,7 +65,7 @@ class Employee
         $localeClause = $locale !== null ? "AND t.lang = :locale" : "";
 
         $sql = "
-        SELECT 
+        SELECT
             e.id,
             e.position,
             t.lang,

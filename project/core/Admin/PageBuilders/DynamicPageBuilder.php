@@ -165,11 +165,11 @@ class DynamicPageBuilder extends BasePageBuilder
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
-    
+
     .glass-card {
         margin-bottom: 1rem;
     }
-    
+
     .card-action-link {
         font-size: 0.8125rem;
         padding: 0.75rem 1rem;
@@ -241,7 +241,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
         if (!empty(trim($value))) {
             // Check if value is a URL
             $isLink = filter_var($value, FILTER_VALIDATE_URL) !== false;
-            
+
             $displayValue = mb_strlen($value) > 100 ? mb_substr($value, 0, 100) . '...' : $value;
             $fields[] = [
                 'label' => htmlspecialchars($label, ENT_QUOTES, 'UTF-8'),
@@ -275,19 +275,19 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     if (!empty($fields)) {
         // Determine grid layout: 2 columns for even count, auto for odd (last takes full width)
         $gridClass = $fieldCount % 2 === 0 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : 'grid grid-cols-1 md:grid-cols-2 gap-4';
-        
+
         $html .= "<div class='{$gridClass}'>";
-        
+
         foreach ($fields as $index => $f) {
             // If odd count and this is the last field, make it span full width
             $spanClass = ($fieldCount % 2 !== 0 && $index === $fieldCount - 1) ? 'md:col-span-2' : '';
-            
+
             $html .= "<div class='card-field {$spanClass}'>
                         <div class='text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5'>{$f['label']}</div>";
-            
+
             if ($f['isLink']) {
                 // Render as a clickable link with icon
-                $html .= "<a href='{$f['rawValue']}' target='_blank' rel='noopener noreferrer' 
+                $html .= "<a href='{$f['rawValue']}' target='_blank' rel='noopener noreferrer'
                             class='inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium leading-relaxed transition-colors duration-200 hover:underline'>
                             <span>{$f['value']}</span>
                             <svg class='w-4 h-4 flex-shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
@@ -298,7 +298,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
                 // Regular text field
                 $html .= "<div class='text-sm text-gray-800 font-medium leading-relaxed'>{$f['value']}</div>";
             }
-            
+
             $html .= "</div>";
         }
         $html .= "</div>";
@@ -323,46 +323,46 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
 function renderPagination(int $currentPage, int $totalPages): string
 {
     if ($totalPages <= 1) return '';
-    
+
     $html = "<div class='flex justify-center items-center gap-2 mt-10'>";
-    
+
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}' class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
                     <i class='fas fa-chevron-left text-gray-600'></i>
                   </a>";
     }
-    
+
     $start = max(1, $currentPage - 2);
     $end = min($totalPages, $currentPage + 2);
-    
+
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
         $html .= "<a href='{$url}' class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
         if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
     }
-    
+
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
-        $class = $i === $currentPage 
-            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md' 
+        $class = $i === $currentPage
+            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md'
             : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
-    
+
     if ($end < $totalPages) {
         if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
         $html .= "<a href='{$url}' class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
     }
-    
+
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}' class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
                     <i class='fas fa-chevron-right text-gray-600'></i>
                   </a>";
     }
-    
+
     $html .= "</div>";
     return $html;
 }
@@ -375,7 +375,7 @@ PHP;
             <h1 class="text-3xl font-bold text-gray-900 mb-2"><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></h1>
             <p class="text-gray-600"><?php echo htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
-        
+
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
 
         <div class="performances-grid">
@@ -386,7 +386,7 @@ PHP;
                     echo cardRender($item, $fieldLabels, $locale);
                 }
                 echo '</div>';
-                
+
                 $totalPages = ceil($itemsList['total'] / $itemsPerPage);
                 echo renderPagination($currentPage, $totalPages);
             } else {
@@ -416,29 +416,29 @@ HTML;
 
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
             $slug = '__SLUG__';
-            $pageTitle = ($locale === 'sr-Cyrl') 
-                ? $translator->latin_to_cyrillic(ucfirst($slug)) 
+            $pageTitle = ($locale === 'sr-Cyrl')
+                ? $translator->latin_to_cyrillic(ucfirst($slug))
                 : ucfirst($slug);
 
-            $pageDescription = ($locale === 'sr-Cyrl') 
-                ? $translator->latin_to_cyrillic('Pregled svih stavki') 
+            $pageDescription = ($locale === 'sr-Cyrl')
+                ? $translator->latin_to_cyrillic('Pregled svih stavki')
                 : 'Pregled svih stavki';
 
-         
+
             $itemsPerPage = 3;
             $currentPage = max(1, (int) ($_GET['page'] ?? 1));
             $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-        ? (is_numeric($_GET['category']) 
-            ? (int) $_GET['category'] 
+        ? (is_numeric($_GET['category'])
+            ? (int) $_GET['category']
             : trim((string) $_GET['category'])
         )
         : null;
             $search = $_GET['search'] ?? '';
-            
+
             $categories = GenericCategory::fetchAll($slug, $locale);
             $itemsList = $slug ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
                             : ['success' => false, 'items' => []];
-            
+
             $config = $fieldLabels = [];
             if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
                 $parsed = json_decode(file_get_contents($structurePath), true);
