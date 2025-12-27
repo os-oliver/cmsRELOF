@@ -202,9 +202,6 @@ HTML;
                                 </label>
                             <?php endforeach; ?>
                         </div>
-                        </div>
-                    </div>
-
                     </div>
                 </div>
             </form>
@@ -307,6 +304,9 @@ HTML;
                     <a href="?" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl">Resetuj filtere</a>
                 </div>
             <?php endif; ?>
+            <div class="text-left">
+                <?php echo renderPerPageDropdown($limit) ?>
+            </div>
         </div>
     </div>
 </main>
@@ -326,7 +326,10 @@ $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
 // pagination
-$limit = 15; // nicer grid by default
+$limit = 15;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $limit = (int)$_GET['per_page'];
+}
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
@@ -364,11 +367,11 @@ function getFileConfig(string $ext): array {
 
     return $configs[$ext] ?? $configs['default'];
 }
-
 PHP;
 
         $content = $this->getHeader($this->css, $phpAdditional);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
         $content .= $this->script;

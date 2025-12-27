@@ -7,6 +7,7 @@
   "settings.save_changes": "Save Changes",
   "settings.about_us": "About Us",
   "settings.goal": "Goal",
+  "settings.email": "Email",
   "settings.enter_goal": "Enter goal",
   "settings.save_goal": "Save Goal",
   "settings.mission": "Mission",
@@ -426,5 +427,7 @@
 
   "transparency.score.need_more": "Needs work",
   "transparency.score.title": "Transparency Score",
-  "transparency.score.update_age": "Updated today"
+  "transparency.score.update_age": "Updated today",
+
+    "items_per_page": "Number of items per page"
 }
