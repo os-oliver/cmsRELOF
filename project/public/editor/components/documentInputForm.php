@@ -7,7 +7,8 @@
             <?= __("documentInputForm.add_new_document") ?>
         </h2>
 
-        <form id="documentForm" enctype="multipart/form-data" class="space-y-4">
+        <form id="documentForm" enctype="multipart/form-data" class="space-y-4"
+            data-max-bytes="<?= \App\Utils\FileUploader::getIniUploadLimit(); ?>">
             <!-- Hidden -->
             <input class="hidden" id="method" value="POST" />
             <input class="hidden" id="endpoint" value="/document" />
