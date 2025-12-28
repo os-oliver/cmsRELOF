@@ -9,17 +9,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const endpoint = document.getElementById("endpoint");
   const method = document.getElementById("method");
 
-  const maxSize = 200 * 1024 * 1024; // 200 MB
+  const maxSizeAttr = Number(form?.dataset?.maxBytes);
+  const maxSize =
+    Number.isFinite(maxSizeAttr) && maxSizeAttr > 0
+      ? maxSizeAttr
+      : 200 * 1024 * 1024; // fallback 200 MB
+  const maxSizeMB = maxSize / 1024 / 1024;
 
   // Kad se fajl izabere, popuni name, extension i fileSize
   fileInput.addEventListener("change", () => {
     const file = fileInput.files[0];
     if (!file) return;
 
-    const kb = file.size / 1024 / 1024;
-    sizeInput.value = kb.toFixed(2);
+    const sizeMB = file.size / 1024 / 1024;
+    sizeInput.value = sizeMB.toFixed(2);
     if (file.size > maxSize) {
-      alert("Fajl je prevelik! Maksimalna veličina je 200 MB.");
+      alert(
+        `Fajl je prevelik (${sizeMB.toFixed(
+          2
+        )} MB). Maksimalna veličina je ${maxSizeMB} MB.`
+      );
       fileInput.value = "";
       nameInput.value = "";
       extInput.value = "";
@@ -77,14 +86,28 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const res = await fetch(endpoint.value, fetchOptions);
-      if (!res.ok) throw new Error(`Status: ${res.status}`);
-      console.log(res.text());
-      alert("Dokument uspešno sačuvan!");
+
+      let payload = null;
+      try {
+        payload = await res.json();
+      } catch (parseErr) {
+        console.warn("Nije moguće parsirati odgovor:", parseErr);
+      }
+
+      if (!res.ok) {
+        const serverMessage =
+          payload?.error ||
+          payload?.message ||
+          `Greška pri čuvanju dokumenta (status ${res.status}).`;
+        throw new Error(serverMessage);
+      }
+
+      alert(payload?.message || "Dokument uspešno sačuvan!");
       form.reset();
       closeModal();
     } catch (err) {
       console.error(err);
-      alert("Greška pri čuvanju dokumenta, pokušajte ponovo.");
+      alert(err?.message || "Greška pri čuvanju dokumenta, pokušajte ponovo.");
     }
   });
 
