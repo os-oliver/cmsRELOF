@@ -243,7 +243,6 @@
 ./project/public/assets/js/dashboard/staticPageBuilder.js
 ./project/public/assets/js/dashboard/modalManager.js
 ./project/public/assets/js/dashboard/dynamicPages.js
-./project/public/assets/js/dashboard/events.js
 ./project/public/assets/js/dashboard/promotionLoader.js
 ./project/public/assets/js/dashboard/dashboard.js
 ./project/public/assets/js/dashboard/documents.js

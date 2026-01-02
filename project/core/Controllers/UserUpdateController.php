@@ -49,7 +49,7 @@ class UserUpdateController
             // Backup
             $backupDir = $componentsDir . DIRECTORY_SEPARATOR . 'backups';
             if (!is_dir($backupDir))
-                mkdir($backupDir, 0755, true);
+                mkdir($backupDir, 0775, true);
 
             $backupFileName = pathinfo($componentFileName, PATHINFO_FILENAME) . '_backup_' . date('Y-m-d_H-i-s') . '.php';
             $backupPath = $backupDir . DIRECTORY_SEPARATOR . $backupFileName;
@@ -113,7 +113,7 @@ class UserUpdateController
         return "t_{$pageSlug}_{$pathHash}_{$textHash}";
     }
 
-    private function shouldMakeDynamic(string $text, \DOMNode $node): bool
+        private function shouldMakeDynamic(string $text, \DOMNode $node): bool
     {
 
         // Trim the text for checking
@@ -174,6 +174,13 @@ class UserUpdateController
                         return false;
                     }
                 }
+
+                if ($parent->hasAttribute('data-translate')) {
+                    $translateAttr = $parent->getAttribute('data-translate');
+                    if ('off' == strtolower($translateAttr)) {
+                        return false;
+                    }
+                }
             }
             $parent = $parent->parentNode;
         }
@@ -188,6 +195,7 @@ class UserUpdateController
         // Only convert text that appears to be natural language content
         return preg_match('/^[\p{L}\p{N}\s\p{P}]+$/u', $text);
     }
+
 
 
     private function getElementPath(DOMNode $node): string
