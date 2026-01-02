@@ -192,13 +192,13 @@ CSS;
 
         <div class="gallery-grid">
             <?php foreach ($images as $index => $image): ?>
-                <div class="gallery-item" 
-                    data-id='<?= $image->id ?>' 
+                <div class="gallery-item"
+                    data-id='<?= $image->id ?>'
                     data-index='<?= $index ?>'
-                    data-title='<?= htmlspecialchars($image->title) ?>'
-                    data-description='<?= htmlspecialchars($image->description) ?>'>
-                    <img src='<?= $image->image_file_path ?>' 
-                        alt='<?= htmlspecialchars($image->title) ?>'
+                    data-title='<?= htmlspecialchars($image->title ?? "") ?>'
+                    data-description='<?= htmlspecialchars($image->description ?? "") ?>'>
+                    <img src='<?= $image->image_file_path ?>'
+                        alt='<?= htmlspecialchars($image->title ?? "") ?>'
                         loading="lazy">
                 </div>
             <?php endforeach; ?>
@@ -223,6 +223,7 @@ CSS;
                 </div>
             <?php endif; ?>
         </div>
+        <?php echo renderPerPageDropdown($limit); ?>
     </section>
 </main>
 
@@ -284,7 +285,12 @@ HTML;
         $additionalPHP = <<<PHP
         use App\Models\Gallery;
 
-        \$limit = 6;
+        \$limit = 15;
+
+        if (isset(\$_GET['per_page']) && is_numeric(\$_GET['per_page'])) {
+            \$limit = (int)\$_GET['per_page'];
+        }
+
         \$page = max(1, (int) (\$_GET["page"] ?? 1));
         \$offset = (\$page - 1) * \$limit;
         \$documentModal = new Gallery();
@@ -297,6 +303,7 @@ HTML;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
         return $content;

@@ -25,8 +25,7 @@ class DocumentsPageBuilder extends BasePageBuilder
         will-change: transform;
     }
 
-    .card-body { margin-bottom: 1rem; }
-    .card-footer { margin-top: 1rem; }
+  
 
     .card-hover {
         transition: all 0.28s cubic-bezier(.2,.9,.2,1);
@@ -202,9 +201,6 @@ HTML;
                                 </label>
                             <?php endforeach; ?>
                         </div>
-                        </div>
-                    </div>
-
                     </div>
                 </div>
             </form>
@@ -255,7 +251,7 @@ HTML;
                                     </div>
                                 </div>
 
-                                <h3 class="text-lg font-semibold text-gray-800 mb-2"><?= $title ?: basename($filepath) ?></h3>
+                                <h3 class="text-lg font-semibold text-gray-800 "><?= $title ?: basename($filepath) ?></h3>
                                 <p class="text-sm text-gray-600 mb-4 leading-relaxed"><?= $description ?: '&nbsp;' ?></p>
 
                                 <div class="flex items-center justify-between text-sm doc-meta mb-5">
@@ -307,6 +303,9 @@ HTML;
                     <a href="?" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl">Resetuj filtere</a>
                 </div>
             <?php endif; ?>
+            <div class="text-left">
+                <?php echo renderPerPageDropdown($limit) ?>
+            </div>
         </div>
     </div>
 </main>
@@ -326,7 +325,10 @@ $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
 // pagination
-$limit = 15; // nicer grid by default
+$limit = 15;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $limit = (int)$_GET['per_page'];
+}
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
@@ -364,11 +366,11 @@ function getFileConfig(string $ext): array {
 
     return $configs[$ext] ?? $configs['default'];
 }
-
 PHP;
 
         $content = $this->getHeader($this->css, $phpAdditional);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
         $content .= $this->script;
