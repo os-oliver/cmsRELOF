@@ -5,14 +5,18 @@
       "en": "News",
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
-      "categories": [
-        "Kultura",
-        "Obrazovanje",
-        "Inovacije",
-        "Zdravlje",
-        "Tehnologija",
-        "Naučni klub"
-      ],
+     "categories": [
+  "Kultura i umetnost",
+  "Obrazovni programi",
+  "Književnost",
+  "Zavičajna zbirka",
+  "Radionice i tribine",
+  "Takmičenja",
+  "Naučni klub",
+  "Zabava",
+  "Obaveštenjе"
+],
+
       "fields": [
         {
           "name": "naslov",
@@ -90,20 +94,135 @@
         }
       ]
     },
-    "Repertoar": {
-      "sr": "Repertoar",
-      "en": "Library Program",
-      "sr-Cyrl": "Репертоар",
-      "icon": "fas fa-book",
-      "categories": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
+    "Znacajne_licnosti": {
+      "sr": "Značajne ličnosti",
+      "en": "Notable Persons",
+      "sr-Cyrl": "Значајне личности",
+      "icon": "fas fa-user",
+      "categories": ["Istorija", "Nauka", "Kultura", "Umjetnost", "Sport"],
+      "fields": [
+        {
+          "name": "ime",
+          "type": "text",
+          "label": {
+            "sr": "Ime i prezime",
+            "en": "Full Name",
+            "sr-Cyrl": "Име и презиме"
+          },
+          "required": true
+        },
+        {
+          "name": "datum_rodjenja",
+          "type": "date",
+          "label": {
+            "sr": "Datum rođenja",
+            "en": "Date of Birth",
+            "sr-Cyrl": "Датум рођења"
+          }
+        },
+        {
+          "name": "biografija",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratka biografija",
+            "en": "Short Biography",
+            "sr-Cyrl": "Кратка биографија"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Fotografija",
+            "en": "Photo",
+            "sr-Cyrl": "Фотографија"
+          }
+        },
+        {
+          "name": "link",
+          "type": "url",
+          "label": {
+            "sr": "Više informacija",
+            "en": "More Info",
+            "sr-Cyrl": "Више информација"
+          }
+        }
+      ]
+    },
+    "Odeljenja": {
+      "sr": "Odeljenja",
+      "en": "Departments",
+      "sr-Cyrl": "Одељења",
+      "icon": "fas fa-building",
+      "categories": [
+        "Administracija",
+        "Biblioteka",
+        "Informacione Tehnologije",
+        "Obrazovanje"
+      ],
+      "fields": [
+        {
+          "name": "naziv",
+          "type": "text",
+          "label": {
+            "sr": "Naziv odeljenja",
+            "en": "Department Name",
+            "sr-Cyrl": "Назив одељења"
+          },
+          "required": true
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis odeljenja",
+            "en": "Department Description",
+            "sr-Cyrl": "Опис одељења"
+          }
+        },
+        {
+          "name": "kontakt",
+          "type": "text",
+          "label": {
+            "sr": "Kontakt osoba",
+            "en": "Contact Person",
+            "sr-Cyrl": "Контакт особа"
+          }
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "label": {
+            "sr": "Email odeljenja",
+            "en": "Department Email",
+            "sr-Cyrl": "Имејл одељења"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Slika odeljenja",
+            "en": "Department Image",
+            "sr-Cyrl": "Слика одељења"
+          }
+        }
+      ]
+    },
+    "Najave": {
+      "sr": "Najave",
+      "en": "Announcements",
+      "sr-Cyrl": "Најаве",
+      "icon": "fas fa-bullhorn",
+      "categories": ["Događaji", "Radionice", "Predavanja", "Takmičenja"],
       "fields": [
         {
           "name": "naslov",
           "type": "text",
           "label": {
-            "sr": "Naslov stavke",
-            "en": "Item title",
-            "sr-Cyrl": "Наслов ставке"
+            "sr": "Naslov najave",
+            "en": "Announcement Title",
+            "sr-Cyrl": "Наслов најаве"
           },
           "required": true
         },
@@ -111,58 +230,37 @@
           "name": "datum",
           "type": "date",
           "label": {
-            "sr": "Datum dostupnosti",
-            "en": "Availability date",
-            "sr-Cyrl": "Датум доступности"
+            "sr": "Datum najave",
+            "en": "Announcement Date",
+            "sr-Cyrl": "Датум најаве"
           },
           "required": true,
           "property": "auto"
         },
         {
-          "name": "kategorija",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija",
-            "en": "Category",
-            "sr-Cyrl": "Категорија"
-          },
-          "options": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
-          "required": true
-        },
-        {
-          "name": "autor",
-          "type": "text",
-          "label": {
-            "sr": "Autor / Izvođač",
-            "en": "Author / Performer",
-            "sr-Cyrl": "Аутор / Извођач"
-          }
-        },
-        {
           "name": "opis",
           "type": "textarea",
           "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
-          }
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika",
-            "en": "Cover image",
-            "sr-Cyrl": "Насловна слика"
+            "sr": "Opis",
+            "en": "Description",
+            "sr-Cyrl": "Опис"
           }
         },
         {
           "name": "link",
           "type": "url",
           "label": {
-            "sr": "Eksterni link",
-            "en": "External link",
-            "sr-Cyrl": "Екстерни линк"
+            "sr": "Više informacija",
+            "en": "More Info",
+            "sr-Cyrl": "Више информација"
+          }
+        }, {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Slika najave",
+            "en": "Announcement Image",
+            "sr-Cyrl": "Слика најаве"
           }
         }
       ]

@@ -35,6 +35,20 @@ class PersonalContentController
                 overflow: hidden;
             }
 
+            /* Drop cap style - Newspaper effect */
+            .drop-cap::first-letter {
+                font-size: 4rem;
+                font-weight: 900;
+                float: left;
+                line-height: 3rem;
+                padding-right: 0.5rem;
+                margin-top: -0.1rem;
+                background: linear-gradient(135deg, var(--primary, #667eea), var(--secondary, #764ba2));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
             /* Page header - compact */
             .page-header {
                 background: white;
@@ -255,7 +269,7 @@ class PersonalContentController
                 opacity: 1;
             }
 
-            /* Gallery - compact */
+            /* Gallery - enhanced with lightbox support */
             .gallery-header {
                 font-size: 1rem;
                 font-weight: 700;
@@ -275,33 +289,41 @@ class PersonalContentController
             .gallery-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 0.5rem;
+                gap: 0.75rem;
                 margin-top: 0.5rem;
             }
 
             .gallery-item {
                 position: relative;
                 overflow: hidden;
-                border-radius: 0.375rem;
+                border-radius: 0.5rem;
                 transition: all 0.3s ease;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                 aspect-ratio: 1;
             }
 
             .gallery-item:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+                transform: translateY(-4px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .gallery-image-link {
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
             }
 
             .gallery-item img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transition: transform 0.3s ease;
+                transition: transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1);
             }
 
             .gallery-item:hover img {
-                transform: scale(1.05);
+                transform: scale(1.1);
             }
 
             .gallery-overlay {
@@ -313,6 +335,7 @@ class PersonalContentController
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                z-index: 10;
             }
 
             .gallery-item:hover .gallery-overlay {
@@ -363,6 +386,10 @@ class PersonalContentController
                 }
                 .documents-grid {
                     grid-template-columns: 1fr;
+                }
+                .drop-cap::first-letter {
+                    font-size: 3rem;
+                    line-height: 2.5rem;
                 }
             }
         ';
@@ -561,6 +588,12 @@ class PersonalContentController
                     break;
                 case 'Zaposleni':
                     $mainContent = $this->getZaposleniContent($type, $locale, $structure);
+                    break;
+                case 'Odeljenja':
+                    $mainContent = $this->getOdeljenjaContent($type, $locale, $structure);
+                    break;
+                case 'Znacajne_licnosti':
+                    $mainContent = $this->getZnacajneLicnostiContent($type, $locale, $structure);
                     break;
                 default:
                     $mainContent = $this->getDefaultContent($type, $locale, $structure);
@@ -1246,6 +1279,317 @@ class PersonalContentController
             </div>
         </div>
     </div>';
+
+        return $html;
+    }
+
+    private function getOdeljenjaContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $fieldIcons = $this->getFieldIcons($type, $structure);
+        $typeData = $this->getTypeData($type, $structure, $locale);
+        $typeName = $typeData['name'] ?? 'Odeljenje';
+
+        $images = \App\Models\Image::fetchByElement($id);
+
+        // Extract fields
+        $naziv = $fields['naziv'][$locale] ?? $typeName;
+        $opis = $fields['opis'][$locale] ?? '';
+        $kontakt = $fields['kontakt'][$locale] ?? '';
+        $email = $fields['email'][$locale] ?? '';
+        $slika = $fields['slika'][$locale] ?? '';
+
+        // Use first image if no cover image set
+        if (!$slika && !empty($images)) {
+            $slika = htmlspecialchars($images[0]['file_path'], ENT_QUOTES, 'UTF-8');
+        } else {
+            $slika = htmlspecialchars($slika, ENT_QUOTES, 'UTF-8');
+        }
+
+        // Build HTML with modern newspaper-style design
+        $html = '
+        <div class="content-wrapper font-body">
+            <div class="container mx-auto px-4 py-12 max-w-5xl">
+                
+                <!-- Hero Section with Large Image -->
+                <article class="mb-12">
+                    ' . ($slika ? '
+                    <figure class="relative mb-10 -mx-4 sm:mx-0 sm:rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="' . $slika . '" alt="' . htmlspecialchars($naziv, ENT_QUOTES, 'UTF-8') . '"
+                            class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700 ease-out">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                        <figcaption class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                            <h1 class="text-5xl font-heading font-bold leading-tight drop-shadow-lg">
+                                ' . htmlspecialchars($naziv, ENT_QUOTES, 'UTF-8') . '
+                            </h1>
+                        </figcaption>
+                    </figure>' : '
+                    <h1 class="text-5xl font-heading font-bold text-primary_text mb-6">
+                        ' . htmlspecialchars($naziv, ENT_QUOTES, 'UTF-8') . '
+                    </h1>') . '
+                    
+                    <!-- Accent Line -->
+                    <div class="flex items-center gap-4 mb-10">
+                        <div class="h-1 w-16 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                        <p class="text-sm font-semibold text-secondary_text uppercase tracking-widest">Odeljenje</p>
+                    </div>
+
+                    <!-- Content Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Main Article Content -->
+                        <div class="lg:col-span-2">
+                            ' . ($opis ? '
+                            <div class="prose prose-lg max-w-none">
+                                <p class="drop-cap text-secondary_text leading-8 text-lg first-letter:text-6xl first-letter:font-bold first-letter:float-left first-letter:pr-2 first-letter:py-1 first-letter:text-primary">
+                                    ' . nl2br(htmlspecialchars($opis, ENT_QUOTES, 'UTF-8')) . '
+                                </p>
+                            </div>' : '') . '
+                        </div>
+
+                        <!-- Sidebar - Contact Card -->
+                        <aside class="lg:col-span-1">
+                            <div class="sticky top-24">
+                                ' . ($kontakt || $email ? '
+                                <div class="bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 rounded-3xl shadow-lg p-8 border border-primary/20 backdrop-blur-sm">
+                                    <h3 class="text-2xl font-heading font-bold text-primary_text mb-8 flex items-center">
+                                        <span class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mr-3 flex-shrink-0">
+                                            <i class="fas fa-info text-white text-sm"></i>
+                                        </span>
+                                        Kontakt
+                                    </h3>
+                                    
+                                    ' . ($kontakt ? '
+                                    <div class="mb-6 pb-6 border-b border-secondary/20">
+                                        <div class="flex items-start gap-4">
+                                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                                                <i class="fas fa-user text-primary text-lg"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-xs font-bold text-secondary_text uppercase tracking-wider mb-1">Osoba zadužena</p>
+                                                <p class="text-base font-semibold text-primary_text break-words">' . htmlspecialchars($kontakt, ENT_QUOTES, 'UTF-8') . '</p>
+                                            </div>
+                                        </div>
+                                    </div>' : '') . '
+                                    
+                                    ' . ($email ? '
+                                    <div>
+                                        <div class="flex items-start gap-4">
+                                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-secondary/20 to-secondary/10 flex items-center justify-center">
+                                                <i class="fas fa-envelope text-secondary text-lg"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-xs font-bold text-secondary_text uppercase tracking-wider mb-1">Email</p>
+                                                <a href="mailto:' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '" 
+                                                   class="text-base font-semibold text-primary hover:text-primary_hover transition-colors break-all hover:underline">
+                                                    ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>' : '') . '
+                                </div>' : '') . '
+                            </div>
+                        </aside>
+
+                    </div>
+                </article>
+
+                ' . (!empty($images) && count($images) > 0 ? '
+                <!-- Gallery Section -->
+                <section class="mt-16 pt-12 border-t border-gray-200">
+                    <header class="mb-8">
+                        <h2 class="text-3xl font-heading font-bold text-primary_text flex items-center gap-3">
+                            <i class="fas fa-images text-primary text-2xl"></i>
+                            Galerija
+                        </h2>
+                        <div class="h-1 w-12 bg-gradient-to-r from-primary to-secondary rounded-full mt-3"></div>
+                    </header>
+                    <div class="gallery-grid">
+                        ' . implode('', array_map(fn($img) => '
+                        <div class="gallery-item overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all group cursor-pointer">
+                            <a href="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" class="gallery-image-link block overflow-hidden h-64">
+                                <img src="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" 
+                                     alt="Galerija odeljenja"
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="gallery-overlay">
+                                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                                </div>
+                            </a>
+                        </div>
+                        ', $images)) . '
+                    </div>
+                </section>' : '') . '
+
+            </div>
+        </div>';
+
+        return $html;
+    }
+
+    private function getZnacajneLicnostiContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $typeData = $this->getTypeData($type, $structure, $locale);
+
+        $images = \App\Models\Image::fetchByElement($id);
+
+        // Extract fields
+        $ime = $fields['ime'][$locale] ?? 'Značajna ličnost';
+        $biografija = $fields['biografija'][$locale] ?? '';
+        $datumRodjenja = $fields['datum_rodjenja'][$locale] ?? '';
+        $link = $fields['link'][$locale] ?? '';
+        $kategorija = $fields['naziv'][$locale] ?? '';
+        $slika = $fields['slika'][$locale] ?? '';
+
+        // Use first image if no cover image set
+        if (!$slika && !empty($images)) {
+            $slika = htmlspecialchars($images[0]['file_path'], ENT_QUOTES, 'UTF-8');
+        } else {
+            $slika = htmlspecialchars($slika, ENT_QUOTES, 'UTF-8');
+        }
+
+        // Format birth date
+        $formattedDate = '';
+        if ($datumRodjenja) {
+            $parts = explode('-', $datumRodjenja);
+            if (count($parts) === 3) {
+                $formattedDate = $parts[2] . '. ' . $parts[1] . '. ' . $parts[0] . '.';
+            } else {
+                $formattedDate = $datumRodjenja;
+            }
+        }
+
+        // Build HTML with profile design
+        $html = '
+        <div class="content-wrapper font-body">
+            <div class="container mx-auto px-4 py-12 max-w-5xl">
+                
+                <!-- Hero Section -->
+                <article class="mb-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Profile Image Column -->
+                        <div class="lg:col-span-1 order-2 lg:order-1">
+                            ' . ($slika ? '
+                            <div class="sticky top-24">
+                                <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-gradient-to-br from-primary/20 to-secondary/20 bg-gradient-to-br from-primary/10 to-secondary/10">
+                                    <img src="' . $slika . '" alt="' . htmlspecialchars($ime, ENT_QUOTES, 'UTF-8') . '"
+                                        class="w-full h-auto aspect-[3/4] object-cover">
+                                </div>
+                            </div>' : '') . '
+                        </div>
+
+                        <!-- Content Column -->
+                        <div class="lg:col-span-2 order-1 lg:order-2">
+                            <!-- Header -->
+                            <div class="mb-10">
+                                ' . ($kategorija ? '
+                                <div class="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
+                                    <i class="fas fa-tag text-primary text-sm"></i>
+                                    <span class="text-sm font-semibold text-primary uppercase">' . htmlspecialchars($kategorija, ENT_QUOTES, 'UTF-8') . '</span>
+                                </div>' : '') . '
+                                
+                                <h1 class="text-5xl font-heading font-bold text-primary_text mb-4 leading-tight">
+                                    ' . htmlspecialchars($ime, ENT_QUOTES, 'UTF-8') . '
+                                </h1>
+                                
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="h-1 w-16 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <!-- Birth Date -->
+                            ' . ($formattedDate ? '
+                            <div class="mb-8 flex items-center gap-3 p-4 rounded-xl bg-secondary/10 border-l-4 border-secondary">
+                                <i class="fas fa-calendar text-secondary text-xl"></i>
+                                <div>
+                                    <p class="text-xs font-bold text-secondary_text uppercase">Datum rođenja</p>
+                                    <p class="text-lg font-semibold text-primary_text">' . htmlspecialchars($formattedDate, ENT_QUOTES, 'UTF-8') . '</p>
+                                </div>
+                            </div>' : '') . '
+
+                            <!-- Biography -->
+                            ' . ($biografija ? '
+                            <div class="prose prose-lg max-w-none mb-10">
+                                <p class="drop-cap text-secondary_text leading-8 text-lg first-letter:text-6xl first-letter:font-bold first-letter:float-left first-letter:pr-3 first-letter:py-1 first-letter:text-primary">
+                                    ' . nl2br(htmlspecialchars($biografija, ENT_QUOTES, 'UTF-8')) . '
+                                </p>
+                            </div>' : '') . '
+
+                            <!-- External Link -->
+                            ' . ($link ? '
+                            <div class="mt-10 pt-8 border-t border-gray-200">
+                                <a href="' . htmlspecialchars($link, ENT_QUOTES, 'UTF-8') . '" 
+                                   target="_blank" rel="noopener noreferrer"
+                                   class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg transition-all hover:scale-105">
+                                    <i class="fas fa-external-link-alt text-sm"></i>
+                                    Više informacija
+                                </a>
+                            </div>' : '') . '
+                        </div>
+                    </div>
+                </article>
+
+                ' . (!empty($images) && count($images) > 1 ? '
+                <!-- Gallery Section -->
+                <section class="mt-16 pt-12 border-t border-gray-200">
+                    <header class="mb-8">
+                        <h2 class="text-3xl font-heading font-bold text-primary_text flex items-center gap-3">
+                            <i class="fas fa-images text-primary text-2xl"></i>
+                            Galerija
+                        </h2>
+                        <div class="h-1 w-12 bg-gradient-to-r from-primary to-secondary rounded-full mt-3"></div>
+                    </header>
+                    <div class="gallery-grid">
+                        ' . implode('', array_map(fn($img) => '
+                        <div class="gallery-item overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all group cursor-pointer">
+                            <a href="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" class="gallery-image-link block overflow-hidden h-64">
+                                <img src="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" 
+                                     alt="Galerija"
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="gallery-overlay">
+                                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                                </div>
+                            </a>
+                        </div>
+                        ', $images)) . '
+                    </div>
+                </section>' : '') . '
+
+            </div>
+        </div>';
 
         return $html;
     }

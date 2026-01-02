@@ -10,7 +10,9 @@ use App\Admin\PageBuilders\GoalPageBuilder;
 use App\Admin\PageBuilders\IzlozbePageBuilder;
 use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
+use App\Admin\PageBuilders\NajavePageBuilder;
 use App\Admin\PageBuilders\ObjekatPageBuilder;
+use App\Admin\PageBuilders\OdeljenjaPageBuilder;
 use App\Admin\PageBuilders\OrganizacijaPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
@@ -28,6 +30,7 @@ use App\Admin\PageBuilders\ObrasciPageBuilder;
 use App\Admin\PageBuilders\NasiKorisniciPageBuilder;
 use App\Admin\PageBuilders\DestinacijePageBuilder;
 use App\Admin\PageBuilders\ZnacajaStranica;
+use App\Admin\PageBuilders\ZnacajneLicnostiBuilder;
 use App\Controllers\AuthController;
 use App\Models\Content;
 use App\Models\Text;
@@ -765,6 +768,12 @@ class PageExporter
                 return new DynamicPageBuilder('Filmovi');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
+            case 'odeljenja':
+                return new OdeljenjaPageBuilder('odeljenja');
+            case 'znacajne-licnosti':
+                return new ZnacajneLicnostiBuilder('Znacajne_licnosti');
+            case 'najave':
+                return new NajavePageBuilder('Najave');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -884,6 +893,15 @@ class PageExporter
             return 'koncerti';
         }elseif (strpos($name, 'filmovi') !== false) {
             return 'filmovi';
+        
+        }elseif (strpos($name, 'odeljenja') !== false) {
+            return 'odeljenja';
+        
+        }elseif (strpos($name, 'znacajne-licnosti') !== false) {
+            return 'znacajne-licnosti';
+        
+        }elseif (strpos($name, 'najave') !== false) {
+            return 'najave';
         }
 
         return 'basic';
