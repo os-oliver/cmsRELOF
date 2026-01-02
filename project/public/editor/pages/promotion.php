@@ -30,84 +30,100 @@ $colorKeys = [
 
 // Predefinisane color palete
 $colorPalettes = [
-    'ocean' => [
-        'name' => 'Okeanska',
+    'default' => [
+        'name' => 'Plava (Default)',
         'colors' => [
-            'primary' => '#1E3A5F',
-            'primary_hover' => '#152A4A',
-            'secondary' => '#4A6572',
-            'secondary_hover' => '#3A515D',
-            'accent' => '#38B2AC',
-            'accent_hover' => '#2C9A94',
-            'primary_text' => '#2D3748',
-            'secondary_text' => '#4A5568',
-            'background' => '#F0F4F8',
-            'secondary_background' => '#E2E8F0',
-            'surface' => '#FFFFFF'
+            'primary' => '#3B82F6',
+            'primary_hover' => '#2563EB',
+            'secondary' => '#64748B',
+            'secondary_hover' => '#475569',
+            'accent' => '#8B5CF6',
+            'accent_hover' => '#7C3AED',
+            'primary_text' => '#1E293B',
+            'secondary_text' => '#64748B',
+            'background' => '#FFFFFF',
+            'secondary_background' => '#F8FAFC',
+            'surface' => '#F1F5F9'
         ]
     ],
-    'berry' => [
-        'name' => 'Bobičasta',
+    'green' => [
+        'name' => 'Zelena',
         'colors' => [
-            'primary' => '#6B46C1',
-            'primary_hover' => '#553C9A',
-            'secondary' => '#9F7AEA',
-            'secondary_hover' => '#805AD5',
-            'accent' => '#ED64A6',
-            'accent_hover' => '#D53F8C',
-            'primary_text' => '#2D3748',
-            'secondary_text' => '#4A5568',
-            'background' => '#FAF5FF',
-            'secondary_background' => '#E9D8FD',
-            'surface' => '#FFFFFF'
+            'primary' => '#10B981',
+            'primary_hover' => '#059669',
+            'secondary' => '#6B7280',
+            'secondary_hover' => '#4B5563',
+            'accent' => '#F59E0B',
+            'accent_hover' => '#D97706',
+            'primary_text' => '#000000',
+            'secondary_text' => '#000000',
+            'background' => '#75ff71',
+            'secondary_background' => '#F9FAFB',
+            'surface' => '#F3F4F6'
         ]
     ],
-    'sunset' => [
-        'name' => 'Zalazak',
+    'purple' => [
+        'name' => 'Ljubičasta',
         'colors' => [
-            'primary' => '#C53030',
-            'primary_hover' => '#9B2C2C',
-            'secondary' => '#ED8936',
-            'secondary_hover' => '#DD6B20',
-            'accent' => '#ECC94B',
-            'accent_hover' => '#D69E2E',
-            'primary_text' => '#2D3748',
-            'secondary_text' => '#4A5568',
-            'background' => '#FFF5F5',
-            'secondary_background' => '#FED7D7',
-            'surface' => '#FFFFFF'
+            'primary' => '#8B5CF6',
+            'primary_hover' => '#7C3AED',
+            'secondary' => '#64748B',
+            'secondary_hover' => '#475569',
+            'accent' => '#EC4899',
+            'accent_hover' => '#DB2777',
+            'primary_text' => '#1E293B',
+            'secondary_text' => '#64748B',
+            'background' => '#FFFFFF',
+            'secondary_background' => '#FAF5FF',
+            'surface' => '#F3E8FF'
         ]
     ],
-    'slate' => [
-        'name' => 'Škriljev',
+    'orange' => [
+        'name' => 'Narandžasta',
         'colors' => [
-            'primary' => '#2D3748',
-            'primary_hover' => '#1A202C',
-            'secondary' => '#718096',
-            'secondary_hover' => '#4A5568',
-            'accent' => '#4299E1',
-            'accent_hover' => '#3182CE',
-            'primary_text' => '#2D3748',
-            'secondary_text' => '#4A5568',
-            'background' => '#F7FAFC',
-            'secondary_background' => '#EDF2F7',
-            'surface' => '#FFFFFF'
+            'primary' => '#F97316',
+            'primary_hover' => '#EA580C',
+            'secondary' => '#78716C',
+            'secondary_hover' => '#57534E',
+            'accent' => '#EAB308',
+            'accent_hover' => '#CA8A04',
+            'primary_text' => '#1C1917',
+            'secondary_text' => '#78716C',
+            'background' => '#FFFFFF',
+            'secondary_background' => '#FFF7ED',
+            'surface' => '#FFEDD5'
         ]
     ],
-    'coral' => [
-        'name' => 'Koralna',
+    'dark' => [
+        'name' => 'Tamna',
         'colors' => [
-            'primary' => '#DD6B20',
-            'primary_hover' => '#C05621',
-            'secondary' => '#ED8936',
-            'secondary_hover' => '#DD6B20',
-            'accent' => '#38B2AC',
-            'accent_hover' => '#319795',
-            'primary_text' => '#2D3748',
-            'secondary_text' => '#4A5568',
-            'background' => '#FFFAF0',
-            'secondary_background' => '#FEEBC8',
-            'surface' => '#FFFFFF'
+            'primary' => '#3B82F6',
+            'primary_hover' => '#2563EB',
+            'secondary' => '#9CA3AF',
+            'secondary_hover' => '#6B7280',
+            'accent' => '#06B6D4',
+            'accent_hover' => '#0891B2',
+            'primary_text' => '#F9FAFB',
+            'secondary_text' => '#D1D5DB',
+            'background' => '#111827',
+            'secondary_background' => '#1F2937',
+            'surface' => '#374151'
+        ]
+    ],
+    'red' => [
+        'name' => 'Crvena',
+        'colors' => [
+            'primary' => '#EF4444',
+            'primary_hover' => '#DC2626',
+            'secondary' => '#64748B',
+            'secondary_hover' => '#475569',
+            'accent' => '#F59E0B',
+            'accent_hover' => '#D97706',
+            'primary_text' => '#1E293B',
+            'secondary_text' => '#64748B',
+            'background' => '#FFFFFF',
+            'secondary_background' => '#FEF2F2',
+            'surface' => '#FEE2E2'
         ]
     ]
 ];
@@ -832,6 +848,7 @@ if ($total > 0) {
     </script>
     <!-- Load GrapesJS and promotionLoader (module) -->
     <script src="/assets/js/WebDesigner/grapesjs/grapes.min.js"></script>
+    <script src="/assets/js/dashboard/linkManager.js"></script>
     <script type="module" src="/assets/js/dashboard/promotionLoader.js"></script>
     <script>
         (function () {

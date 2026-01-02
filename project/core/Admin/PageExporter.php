@@ -10,7 +10,6 @@ use App\Admin\PageBuilders\GoalPageBuilder;
 use App\Admin\PageBuilders\IzlozbePageBuilder;
 use App\Admin\PageBuilders\LibraryProgramPageBuilder;
 use App\Admin\PageBuilders\MissionPageBuilder;
-use App\Admin\PageBuilders\NovinePageBuilder;
 use App\Admin\PageBuilders\ObjekatPageBuilder;
 use App\Admin\PageBuilders\OrganizacijaPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
@@ -676,8 +675,6 @@ class PageExporter
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
                 return new VestiPageBuilder('Vesti');
-            case 'novine':
-                return new NovinePageBuilder('Novine');
             case 'vrtici':
                 return new VrticiPageBuilder('Vrtici');
             case 'timovi':
@@ -736,8 +733,6 @@ class PageExporter
                 return new ZnacajaStranica('ZnacajaStranica', $this->data);
             case 'objekat':
                 return new ObjekatPageBuilder('Objekat', $this->data);
-            case 'zbika':
-                return new DynamicPageBuilder('Zbirke');
             case 'objekti':
                 return new SportsObjectsPageBuilder('Objekti');
             case 'fondovi':
@@ -746,10 +741,6 @@ class PageExporter
                 return new SportoviPageBuilder('sportovi');
             case 'pitanja':
                 return new FAQPageBuilder('Pitanja');
-            case 'zbirka-povelja-i-diploma':
-                return new DynamicPageBuilder('Zbirke');
-            case 'arhive':
-                return new DynamicPageBuilder('Arhive');
             case 'jelovnik':
                 return new JelovnikPageBuilder('Jelovnik', $this->data);
             case 'cenovnik':
@@ -795,8 +786,6 @@ class PageExporter
             return 'predstave';
         } elseif (strpos($name, 'vesti') !== false) {
             return 'vesti';
-        } elseif (strpos($name, 'list-zrenjanin') !== false) {
-            return 'novine';
         } elseif (strpos($name, 'misija') !== false) {
             return 'misija';
         } elseif (strpos($name, 'naucni-klub') !== false) {
@@ -869,11 +858,6 @@ class PageExporter
             return 'informacije';
         } elseif (strpos($name, 'objekat') !== false) {
             return 'objekat';
-        } elseif (strpos($name, 'zbirka-povelja-i-diploma') !== false) {
-            return 'zbirka-povelja-i-diploma';
-        } elseif (strpos($name, 'Arhive') !== false) {
-            return 'arhive';
-
         } elseif (strpos($name, 'fondovi') !== false) {
             return 'fondovi';
         } elseif (strpos($name, 'sportovi') !== false) {

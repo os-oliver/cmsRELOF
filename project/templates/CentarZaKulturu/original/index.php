@@ -547,24 +547,24 @@
                         </a>
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-key mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Iznajmljivanje</span>
+                            <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Donacije i podrška</span>
+                        </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Partneri</span>
                         </a>
                     </div>
                 </div>
 
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-                    <i
-                        class="fas fa-theater-masks mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Programi</span>
-                </a>
+
 
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
-                        class="fas fa-film mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Produkcija</span>
+                        class="fas fa-users mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                    <span class="hidden xl:inline text-sm">Ansambl</span>
                 </a>
 
                 <a href="#"
@@ -613,7 +613,7 @@
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-poll mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="fofnt-medium">Ankete</span>
+                            <span class="font-medium">Ankete</span>
                         </a>
                     </div>
 
@@ -834,71 +834,82 @@
 
 
 
-    <!-- Programs Section -->
-    <section id="programi" class="py-20 bg-secondary_background">
+    <!-- Featured Events Section -->
+    <section id="events" class="py-20 bg-secondary_background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Naši Programi
+                    Predstojeći Događaji
                     <span
                         class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Otkrijte raznovrsne programe koje nudimo za sve generacije
+                    Istražite našu bogatu ponudu kulturnih događaja koji će vas inspirisati i zabaviti
                 </p>
             </div>
 
-            <div id="programiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
-                    <article
-                        class="bg-surface rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
-                        <div class="h-56 relative overflow-hidden">
+                    <div
+                        class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex flex-col md:flex-row overflow-hidden">
+                        <div class="w-full md:w-1/3 relative flex-shrink-0 h-64 md:h-auto">
                             <img id="g-image"
-                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
-                                alt="Program"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                                alt="Event image"
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                             <div id="g-naziv"
                                 class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                Program
+                                Kultura
                             </div>
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div
-                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
-                                    <i class="fas fa-graduation-cap text-lg"></i>
+
+                        <div class="w-full md:w-2/3 p-6 flex flex-col justify-between">
+                            <div class="mb-4">
+                                <h3 id="g-title"
+                                    class="text-xl md:text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
+                                    Savremene Perspektive
+                                </h3>
+                                <p id="g-description"
+                                    class="text-primary_text text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-2">
+                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
+                                    savremenih trendova u umetnosti i tehnologiji.
+                                </p>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-calendar-alt text-primary"></i>
+                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
                                 </div>
-                                <div class="flex items-center text-sm text-secondary_text">
-                                    <i class="fas fa-calendar-alt mr-2"></i>
-                                    <span id="g-datum">15. Oktobar 2025</span>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-clock text-secondary"></i>
+                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-map-marker-alt text-accent"></i>
+                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
+                                        Umetnosti</span>
                                 </div>
                             </div>
 
-                            <h3 id="g-title"
-                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
-                                Edukativni program
-                            </h3>
-
-                            <p id="g-description" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
-                                Program namenjen edukaciji i razvoju veština sa fokusom na kreativne discipline i
-                                savremenoje tehnologije.
-                            </p>
-
-                            <a id="g-ovise" href="#"
-                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
-                                Saznaj više
-                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
+                            <div>
+                                <a id="g-ovise"
+                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm inline-block text-center w-full md:w-auto">
+                                    Više informacija
+                                </a>
+                            </div>
                         </div>
-                    </article>
+                    </div>
+
+
                 <?php endfor; ?>
             </div>
 
             <div class="text-center mt-12">
-                <a href="/programi" id="programiView"
+                <a href="/aktivnosti/dogadjaji" id="eventsView"
                     class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-                    <i class="fas fa-book mr-3"></i>
-                    Pogledaj sve programe
+                    <i class="fas fa-calendar-alt mr-3"></i>
+                    Pogledaj sve događaje
                 </a>
             </div>
 
@@ -973,33 +984,32 @@
             </div>
         </div>
     </section>
-    <!-- Projects Section -->
-    <section id="projekti" data-elements="Vesti" class="py-20 bg-secondary_background">
+    <section id="Naučni klub" data-elements="Vesti" class="py-20 bg-secondary_background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Naši Projekti
+                    Predstojeći Seminari
                     <span
                         class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Saznajte više o inovativnim projektima koje realizujemo
+                    Ovde se nalaze najnoviji seminari nase institucije
                 </p>
             </div>
 
-            <div id="projektiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="Naučni klubCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php for ($i = 0; $i < 3; $i++): ?>
                     <div
-                        class="projekt-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
+                        class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
                         <!-- Slika sa leve strane -->
                         <div class="w-1/3 relative flex-shrink-0">
                             <img id="g-image"
                                 src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                alt="Projekt"
+                                alt="Event image"
                                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                             <div id="g-naziv"
                                 class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                Projekat
+                                Kultura
                             </div>
                         </div>
 
@@ -1009,11 +1019,11 @@
                             <div class="flex-grow mb-4">
                                 <h3 id="g-title"
                                     class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                    Digitalna transformacija
+                                    Savremene Perspektive
                                 </h3>
                                 <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
-                                    Projekat digitalizacije naše institucije sa ciljem poboljšanja dostupnosti i
-                                    interaktivnosti.
+                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
+                                    savremenih trendova u umetnosti i tehnologiji.
                                 </p>
                             </div>
 
@@ -1048,10 +1058,10 @@
             </div>
 
             <div class="text-center mt-12">
-                <a href="/projekti" id="projektiView"
+                <a href="/aktivnosti/dogadjaji?category=Seminari" id="eventsView"
                     class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-                    <i class="fas fa-rocket mr-3"></i>
-                    Pogledaj sve projekte
+                    <i class="fas fa-calendar-alt mr-3"></i>
+                    Pogledaj sve Seminaree
                 </a>
             </div>
 
@@ -1193,7 +1203,7 @@
             </div>
         </div>
     </section>
-    <!-- Footer -->
+
     <!-- Footer -->
     <footer class="bg-secondary text-surface pt-20 pb-10">
         <div class="container mx-auto px-4">

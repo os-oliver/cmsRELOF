@@ -2,7 +2,6 @@
 namespace App\Models;
 
 use App\Database;
-use App\Utils\LocaleManager;
 use App\Utils\TextHelper;
 use App\Utils\Pivoter;
 use GuzzleHttp\Psr7\Query;
@@ -333,13 +332,12 @@ ORDER BY {$orderByOuter};
             ]);
 
             // locale iz sesije (isto kao u insert)
-            $locale = LocaleManager::get();
-            session_start();
-            error_log("Locale for update: $locale");
+            $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
+
             // koristi TextHelper koji uključuje transliteraciju
             $titleVariants = TextHelper::transliterateVariants((string) ($data['title'] ?? ''), $locale);
             $descVariants = TextHelper::transliterateVariants((string) ($data['description'] ?? ''), $locale);
-            error_log("Title variants: " . print_r($titleVariants, true));
+
             // Ako postoji metoda za update u TextHelper, koristi je — inače obriši postojeće i ubaci nove
             if (method_exists(TextHelper::class, 'updateTextEntries')) {
                 TextHelper::updateTextEntries(
