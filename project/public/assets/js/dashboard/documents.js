@@ -1,8 +1,80 @@
+const createLoaderOverlay = () => {
+  const overlay = document.createElement("div");
+  overlay.className = "fixed inset-0 bg-black/70 z-[9999] flex items-center justify-center";
+  overlay.id = "loader-overlay";
+
+  const spinnerContainer = document.createElement("div");
+  spinnerContainer.id = "spinner-container";
+  spinnerContainer.className = "border-[5px] border-white/15 border-t-white rounded-full w-[60px] h-[60px] animate-spin";
+
+  overlay.appendChild(spinnerContainer);
+  return overlay;
+};
+
+const showSuccessCheck = (overlay) => {
+  const spinner = overlay.querySelector('#spinner-container');
+  if (!spinner) return;
+
+  spinner.className = "w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-[0_8px_25px_rgba(16,185,129,0.4)] animate-[scaleIn_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)]";
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "w-[52px] h-[52px]");
+  svg.setAttribute("viewBox", "0 0 52 52");
+
+  const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circle.setAttribute("class", "stroke-white stroke-2 fill-none");
+  circle.setAttribute("cx", "26");
+  circle.setAttribute("cy", "26");
+  circle.setAttribute("r", "25");
+  circle.style.strokeDasharray = "166";
+  circle.style.strokeDashoffset = "166";
+  circle.style.animation = "circleGrow 0.3s ease-out forwards";
+
+  const check = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  check.setAttribute("class", "stroke-white stroke-[3] fill-none");
+  check.setAttribute("stroke-linecap", "round");
+  check.setAttribute("stroke-linejoin", "round");
+  check.setAttribute("d", "M14.1 27.2l7.1 7.2 16.7-16.8");
+  check.style.strokeDasharray = "48";
+  check.style.strokeDashoffset = "48";
+  check.style.animation = "checkmark 0.3s 0.3s ease-out forwards";
+
+  svg.appendChild(circle);
+  svg.appendChild(check);
+  spinner.appendChild(svg);
+};
+
+const injectStyles = () => {
+  if (document.getElementById('document-loader-styles')) return;
+
+  const style = document.createElement('style');
+  style.id = 'document-loader-styles';
+  style.innerHTML = `
+    @keyframes scaleIn {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes checkmark {
+      0% { stroke-dashoffset: 48; }
+      100% { stroke-dashoffset: 0; }
+    }
+    
+    @keyframes circleGrow {
+      0% { stroke-dashoffset: 166; }
+      100% { stroke-dashoffset: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
+  injectStyles();
+
   const els = (id) => document.getElementById(id);
   const form = document.querySelector("form");
 
-  // Handle category selection with visual feedback
   document
     .querySelectorAll('input[name="categories[]"]')
     .forEach((checkbox) => {
@@ -28,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-  // Handle pagination with filters
   const updateQueryString = (page) => {
     const url = new URL(window.location.href);
     const formData = new FormData(form);
@@ -43,8 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return url.toString();
   };
 
-  // Update pagination links
-
   document.querySelectorAll("nav button").forEach((button) => {
     const page = button.textContent.trim();
     if (page && !isNaN(page)) {
@@ -55,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Handle previous/next buttons
   const prevButton = document
     .querySelector("button[disabled] .fa-chevron-left")
     ?.closest("button");
@@ -87,7 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Form elements
   const formEls = {
     eventForm: els("newDocument"),
     form: els("documentForm"),
@@ -104,7 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
     titleOfForm: els("typeForm"),
   };
 
-  // Modal elements
   const modalEls = {
     modal: els("documentModal"),
     close: els("closeModal"),
@@ -142,7 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   els("btnNewDocument")?.addEventListener("click", () => {
     showForm();
-    // Reset form to initial state for new document
     formEls.method.value = "POST";
     formEls.endpoint.value = "/document";
     formEls.nameInput.value = "";
@@ -155,16 +220,15 @@ document.addEventListener("DOMContentLoaded", () => {
     formEls.fileInput.classList.remove("hidden");
   });
 
-  // Handle file input change - populate name, extension, fileSize
   const fileInput = document.getElementById("documetFile");
-  const MAX_FILE_SIZE_MB = 200; // 200MB limit
+  const dropzone = document.getElementById("fileDropzone");
+  const MAX_FILE_SIZE_MB = 50;
 
-  if (fileInput) {
+  if (fileInput && dropzone) {
     fileInput.addEventListener("change", () => {
       const file = fileInput.files[0];
       if (!file) return;
 
-      // Proveravamo veličinu fajla
       const fileSizeMB = file.size / 1024 / 1024;
 
       if (fileSizeMB > MAX_FILE_SIZE_MB) {
@@ -173,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
             2
           )}MB\n\nMolimo izaberite manji fajl.`
         );
-        fileInput.value = ""; // Čisti fajl input
+        fileInput.value = "";
         formEls.nameInput.value = "";
         formEls.extInput.value = "";
         formEls.sizeInput.value = "";
@@ -185,16 +249,48 @@ document.addEventListener("DOMContentLoaded", () => {
       formEls.extInput.value = parts.length > 1 ? parts.pop() : "";
       formEls.sizeInput.value = fileSizeMB.toFixed(2);
     });
+
+    dropzone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropzone.classList.add("border-blue-500", "bg-blue-50");
+    });
+
+    dropzone.addEventListener("dragleave", () => {
+      dropzone.classList.remove("border-blue-500", "bg-blue-50");
+    });
+
+    dropzone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      dropzone.classList.remove("border-blue-500", "bg-blue-50");
+
+      const files = e.dataTransfer.files;
+      if (!files || !files.length) return;
+
+      fileInput.files = files;
+
+      fileInput.dispatchEvent(new Event("change"));
+    });
   }
 
-  // Handle form submission
   formEls.form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    const submitBtn = formEls.form.querySelector("button[type=submit]");
+    if (submitBtn?.disabled) return;
+
     if (fileInput.value == "" && formEls.method.value === "POST") {
       alert("Greška!\n\n niste dodali dokument.");
       formEls.titleForm.focus();
       return;
     }
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-70");
+    }
+
+    const loaderOverlay = createLoaderOverlay();
+    document.body.appendChild(loaderOverlay);
 
     const formData = new FormData(formEls.form);
 
@@ -244,17 +340,25 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error(errorMsg);
       }
 
-      alert(" Dokument uspešno sačuvan!");
-      location.reload();
-      formEls.form.reset();
-      closeForm();
+      showSuccessCheck(loaderOverlay);
+
+      setTimeout(() => {
+        formEls.form.reset();
+        closeForm();
+        location.reload();
+      }, 200);
     } catch (err) {
       console.error("Greška:", err);
+      loaderOverlay.remove();
       alert(" " + err.message);
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-70");
+      }
     }
   });
 
-  // Handle cancel button
   const cancelBtn = document.getElementById("cancelButton");
   if (cancelBtn) {
     cancelBtn.addEventListener("click", () => {
@@ -263,7 +367,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Handle ESC key
   document.addEventListener("keydown", (e) => {
     if (
       e.key === "Escape" &&
@@ -274,7 +377,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Close modal when clicking outside
   formEls.eventForm.addEventListener("click", (e) => {
     if (e.target === formEls.eventForm) {
       formEls.form.reset();
@@ -282,7 +384,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Handle document cards
   document.querySelectorAll(".document-card").forEach((card) => {
     const data = card.dataset;
 

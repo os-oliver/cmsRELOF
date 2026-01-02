@@ -79,7 +79,7 @@ class Employee
            AND t.source_table = 'employee'
            $localeClause
         WHERE e.id IN (" . implode(',', $ids) . ")
-        ORDER BY e.id
+        ORDER BY e.id desc
     ";
 
         $stmt = $this->pdo->prepare($sql);
@@ -141,7 +141,7 @@ class Employee
         $stmt->execute();
 
         $id = (int) $this->pdo->lastInsertId();
-
+        error_log("FIELDS TO INSERT: " . print_r($data, true));
         // Process all text fields
         foreach ($data as $field => $value) {
             $this->processTextField($id, $field, $value, $locale, false);

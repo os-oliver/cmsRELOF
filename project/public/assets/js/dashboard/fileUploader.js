@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Submit
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    console.log("caocaoaco");
     // Provera da su polja popunjena
 
     let dataTosend = null;
