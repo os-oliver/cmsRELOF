@@ -37,7 +37,7 @@ $documentModal = new Document();
 $totalPages = (int) ceil($totalCount / $limit);
 $DocumentCategories = $documentModal->getCategories($locale);
 $DocumentSubCategories = $documentModal->getSubCategories($locale);
-error_log("locale for page: $locale");
+
 //  Konfiguracija fajlova po ekstenziji
 function getFileConfig(string $ext): array
 {

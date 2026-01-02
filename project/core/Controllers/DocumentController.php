@@ -3,9 +3,7 @@ namespace App\Controllers;
 use App\Controllers\AuthController;
 use App\Models\Document;
 use App\Utils\FileUploader;
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+
 
 class DocumentController
 {

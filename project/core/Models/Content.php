@@ -78,8 +78,10 @@ class Content
         string $q = '',
         int $page = 1,
         int $per = 10,
-        int|string|null $categoryId = null, // ✅ can be id or name
-        string $lang = 'sr'
+        int|string|null $categoryId = null, 
+        string $lang = 'sr',
+        int|null $fromYear = null,
+        int|null $toYear = null
     ): array {
         $q = trim((string) $q);
         $page = max(1, $page);
@@ -89,8 +91,17 @@ class Content
         $where = "ge.type = :type";
         $params = [':type' => $type];
 
+        if ($fromYear !== null && $fromYear > 0) {
+            $where .= " AND CAST(SUBSTRING(t_year.content, 1, 4) AS UNSIGNED) >= :from_year";
+            $params[':from_year'] = $fromYear;
+        }
+
+        if ($toYear !== null && $toYear > 0) {
+            $where .= " AND CAST(SUBSTRING(t_year.content, 1, 4) AS UNSIGNED) <= :to_year";
+            $params[':to_year'] = $toYear;
+        }
+
         error_log(json_encode($categoryId));
-        // ✅ Handle both int and string category
         if ($categoryId !== null) {
 
             if (is_numeric($categoryId)) {
@@ -118,13 +129,18 @@ class Content
         }
 
         $joinText = "";
-        if ($q !== '') {
+        if ($q !== '' || $fromYear !== null || $toYear !== null) {
             $joinText = "JOIN text t ON t.source_table = 'generic_element' AND t.source_id = ge.id AND t.content LIKE :q";
             $params[':q'] = '%' . $q . '%';
+            
+            // Add year field join if year filtering is needed
+            if ($fromYear !== null || $toYear !== null) {
+                $joinText .= " JOIN text t_year ON t_year.source_table = 'generic_element' AND t_year.source_id = ge.id AND t_year.field_name = 'godina'";
+            }
         }
 
         $total = $this->fetchTotalCount($where, $joinText, $params);
-        $ids = $this->fetchContentIds($where, $joinText, $params, $per, $offset);
+        $ids = $this->fetchContentIds($where, $joinText, $params, $per, $offset, $type);
 
         if (empty($ids)) {
             return [
@@ -477,11 +493,11 @@ class Content
         return (int) $stmt->fetchColumn();
     }
 
-    private function fetchContentIds(string $where, string $joinText, array $params, int $limit, int $offset): array
+    private function fetchContentIds(string $where, string $joinText, array $params, int $limit, int $offset, string $type=''): array
     {
         $sql = "SELECT DISTINCT ge.id FROM generic_element ge {$joinText} WHERE {$where} ORDER BY ge.id DESC LIMIT :lim OFFSET :off";
         $stmt = $this->pdo->prepare($sql);
-
+        
         foreach ($params as $k => $v) {
             $stmt->bindValue($k, $v, $k === ':q' ? PDO::PARAM_STR : (is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR));
         }
