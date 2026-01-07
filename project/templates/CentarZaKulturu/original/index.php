@@ -388,10 +388,9 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-secondary"></i>Organizaciona struktura
                             </a>
-
-                            <a data-page="Objekat" href="#"
+                            <a data-page="Informacije" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
+                                <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                             </a>
                             <a data-page="Donacije i podrška" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
@@ -403,11 +402,6 @@
                             </a>
                         </div>
                     </div>
-
-                    <a data-page="Ansambl" href="#"
-                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
-                        <i class="fas fa-users mr-3 text-primary"></i>Ansambl
-                    </a>
 
                     <a data-page="Projekti" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
@@ -491,7 +485,7 @@
 
                 <!-- Tekst za mobilni -->
                 <div class="block sm:hidden">
-                    <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">NEXUS</h1>
+                    <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">Kancelarija za inkluziju Roma</h1>
                 </div>
             </div>
 
@@ -542,8 +536,8 @@
 
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Objekat</span>
+                            <i class="fas fa-bullhorn mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Informacije</span>
                         </a>
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -558,14 +552,6 @@
                     </div>
                 </div>
 
-
-
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-                    <i
-                        class="fas fa-users mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Ansambl</span>
-                </a>
 
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
@@ -635,7 +621,7 @@
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
                     'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    // 'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -736,10 +722,27 @@
 
         <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative w-full h-[500px] lg:h-[600px]">
+                        <!-- Large Featured Image -->
+                    <div class="slider-item absolute top-0 right-0 w-[70%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface">
+                        <img src="/assets/img/zastava.png" alt="Zastava" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary_text/40 to-transparent"></div>
+                    </div>
+                    <!-- Small Image Top Left -->
+                    <div class="absolute top-10 left-0 w-[45%] h-[35%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
+                        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600" alt="Muzika i umetnost" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent"></div>
+                    </div>
+                    <!-- Small Image Bottom Left -->
+                    <!-- Decorative Elements -->
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full opacity-20 blur-2xl"></div>
+                    <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-tr from-secondary to-accent rounded-full opacity-20 blur-2xl"></div>
+
+                </div>
+
                 <div class="max-w-2xl">
                     <div class="mb-8">
-                        <span
-                            class="inline-block bg-surface text-primary_text px-4 py-1 rounded-full text-sm font-medium mb-6">
+                        <span class="inline-block bg-surface text-primary_text px-4 py-1 rounded-full text-sm font-medium mb-6">
                             <i class="fas fa-star mr-2 text-accent"></i>Istaknuto ovog meseca
                         </span>
                         <h1 class="text-5xl md:text-6xl font-heading font-bold leading-tight text-primary_text mb-6">
@@ -747,55 +750,16 @@
                             <span class="block text-primary mt-2">grade jednake šanse</span>
                         </h1>
                     </div>
-
                     <div class="mb-10 relative pl-6 border-l-4 border-secondary">
-                        <p class="text-xl text-primary_text leading-relaxed max-w-lg mb-6">
-                            Kancelarija za inkluziju Roma posvećena je unapređenju položaja romske zajednice kroz obrazovanje, zapošljavanje, kulturu i socijalnu podršku.
-                        </p>
-                        <p class="text-secondary_text italic">
-                            "Inkluzija počinje onda kada svako dete, mladi čovek i porodica dobiju jednaku priliku da ostvare svoje potencijale."
+                        <p class="text-xl text-primary_text leading-relaxed max-w-lg mb-6">Kancelarija za inkluziju Roma posvećena je unapređenju položaja romske zajednice kroz obrazovanje, zapošljavanje, kulturu i socijalnu podršku.</p>
+                        <p class="text-secondary_text italic">"Inkluzija počinje onda kada svako dete, mladi čovek i porodica dobiju jednaku priliku da ostvare svoje potencijale."
                             <span class="block font-medium text-accent mt-2">— Direktor Kancelarije</span>
                         </p>
                     </div>
-
-                <!-- Image Gallery -->
-                <div class="relative order-1 lg:order-2">
-                    <!-- Main Image Container -->
-                    <div class="relative w-full h-[500px] lg:h-[600px]">
-                        <!-- Large Featured Image -->
-                        <div
-                            class="slider-item absolute top-0 right-0 w-[70%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface">
-                            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800"
-                                alt="Kulturna aktivnost" class="w-full h-full object-cover" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-primary_text/40 to-transparent"></div>
-                        </div>
-
-                        <!-- Small Image Top Left -->
-                        <div
-                            class="absolute top-10 left-0 w-[45%] h-[35%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
-                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600"
-                                alt="Muzika i umetnost" class="w-full h-full object-cover" />
-                            <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent"></div>
-                        </div>
-
-                        <!-- Small Image Bottom Left -->
-                        <div
-                            class="absolute bottom-0 left-10 w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
-                            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600"
-                                alt="Ansambl nastup" class="w-full h-full object-cover" />
-                            <div class="absolute inset-0 bg-gradient-to-tl from-secondary/30 to-transparent"></div>
-                        </div>
-
-                        <!-- Decorative Elements -->
-                        <div
-                            class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full opacity-20 blur-2xl">
-                        </div>
-                        <div
-                            class="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-tr from-secondary to-accent rounded-full opacity-20 blur-2xl">
-                        </div>
-                    </div>
-
+                    <!-- Image Gallery -->
+                    <div class="relative order-1 lg:order-2"><!-- Main Image Container --></div>
                 </div>
+
             </div>
         </div>
 
@@ -809,89 +773,6 @@
         </div>
     </section>
 
-
-
-    <!-- Featured Events Section -->
-    <section id="events" class="py-20 bg-secondary_background">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Predstojeći Događaji
-                    <span
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
-                </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Istražite našu bogatu ponudu kulturnih događaja koji će vas inspirisati i zabaviti
-                </p>
-            </div>
-
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <?php for ($i = 0; $i < 3; $i++): ?>
-                    <div
-                        class="event-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex flex-col md:flex-row overflow-hidden">
-                        <div class="w-full md:w-1/3 relative flex-shrink-0 h-64 md:h-auto">
-                            <img id="g-image"
-                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                alt="Event image"
-                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            <div id="g-naziv"
-                                class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                Kultura
-                            </div>
-                        </div>
-
-                        <div class="w-full md:w-2/3 p-6 flex flex-col justify-between">
-                            <div class="mb-4">
-                                <h3 id="g-title"
-                                    class="text-xl md:text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                    Savremene Perspektive
-                                </h3>
-                                <p id="g-description"
-                                    class="text-primary_text text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-2">
-                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                    savremenih trendova u umetnosti i tehnologiji.
-                                </p>
-                            </div>
-
-                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-calendar-alt text-primary"></i>
-                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-clock text-secondary"></i>
-                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-map-marker-alt text-accent"></i>
-                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                        Umetnosti</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <a id="g-ovise"
-                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm inline-block text-center w-full md:w-auto">
-                                    Više informacija
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                <?php endfor; ?>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="/aktivnosti/dogadjaji" id="eventsView"
-                    class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve događaje
-                </a>
-            </div>
-
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="bg-secondary text-surface pt-20 pb-10">
@@ -932,13 +813,10 @@
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="asde" class="text-surface/80 hover:text-accent transition-colors">Izložbe</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Bioskop</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Pozorište</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Koncerti</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Radionice</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Kalendar
-                                događaja</a></li>
+                        <li><a href="/galerija" class="text-surface/80 hover:text-accent transition-colors">Galerija</a></li>
+                        <li><a href="/dokumenti" class="text-surface/80 hover:text-accent transition-colors">Dokumenti</a></li>
+                        <li><a href="/vesti" class="text-surface/80 hover:text-accent transition-colors">Vesti</a></li>
+                        <li><a href="/o-nama/informacije" class="text-surface/80 hover:text-accent transition-colors">Informacije</a></li>
                     </ul>
                 </div>
 
@@ -955,7 +833,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">inkluzija.romaopstinazabalj@gmail.com</span>
+                            <span class="text-surface" data-translate="off">inkluzija.romaopstinazabalj@gmail.com</span>
 
                         </li>
                         <li class="flex items-start">
@@ -978,7 +856,12 @@
                 </div>
             </div>
 
-            <div class="border-t border-surface/70 pt-8 text-center text-surface/60 text-sm">
+            <div class="flex flex-col items-center border-t border-white pt-8 text-center text-white text-sm">
+                <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo" class="w-full max-w-md md:max-w-lg h-auto mb-4">
+                <p class="text-slate-300 transition-colors">Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+            </div>
+
+            <div class="border-surface/70 pt-8 text-center text-surface/60 text-sm">
                 <p>&copy; 2025 Kancelarija za inkluziju Roma. Sva prava zadržana.</p>
             </div>
         </div>
