@@ -126,6 +126,14 @@ HTML;
         return $content;
     }
 
+    protected function getPerPageDropdown(): string
+    {
+        $content = "<?php\n";
+        $content .= "require_once __DIR__ . '/../../../core/Utils/PerPageDropdown.php';\n";
+        $content .= "?>\n\n";
+        return $content;
+    }
+
     protected function getCommonIncludes(): string
     {
         $content = "<?php\n";

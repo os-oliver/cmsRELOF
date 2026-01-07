@@ -11,6 +11,7 @@ class FileUploader
     public function __construct(
         string $uploadDir,
         array $allowedMime = [
+            'image/webp',
             'image/jpeg',
             'image/png',
             'image/gif',
