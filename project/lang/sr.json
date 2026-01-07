@@ -14,6 +14,7 @@
   "settings.save_mission": "Sačuvaj misiju",
   "settings.team_members": "Članovi tima",
   "settings.employees_list": "Lista zaposlenih",
+  "settings.email": "E-adresa",
   "settings.showing": "Prikazano",
   "settings.of": "od",
   "settings.members": "članova",
@@ -277,7 +278,7 @@
   "gallery.view_full_image": "Prikaži celu sliku",
   "gallery.pagination_summary": "Prikazano {{shown}} od {{of}} slika",
 
-  "promotion.page_title": "Upravlajnje - Administracija",
+  "promotion.page_title": "Upravljanje - Administracija",
   "promotion.management_title": "Upravljanje promocijom",
   "promotion.management_subtitle": "Pregled i upravljanje detaljima najnovijih ",
   "promotion.revert_confirm_title": "Da li ste sigurni?",
@@ -427,5 +428,7 @@
 
   "transparency.score.need_more": "Zahteva još rada",
   "transparency.score.title": "Skor Transparentnosti",
-  "transparency.score.update_age": "Osveženo danas"
+  "transparency.score.update_age": "Osveženo danas",
+
+  "items_per_page": "Broj stavki po stranici"
 }
