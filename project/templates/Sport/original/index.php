@@ -428,7 +428,7 @@
                     <i class="fas fa-dumbbell text-2xl text-white"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-heading font-bold text-secondary tracking-wide">SPORTSKI ARENA</h1>
+                    <h1 class="text-xl font-heading font-bold text-secondary tracking-wide">SPORTSKI CENTAR ARENA</h1>
                     <p class="text-xs text-primary tracking-widest font-oswald uppercase">Profesionalni Sportski Objekat
                     </p>
                 </div>
@@ -541,7 +541,7 @@
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
                     'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    // 'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -605,96 +605,134 @@
         </div>
     </header>
 
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-20 gradient-figures">
-        <div class="absolute inset-0 z-0 bg-gradient-to-br from-secondary via-transparent to-primary opacity-20"></div>
-
-        <div class="container mx-auto px-4 py-24 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="max-w-2xl">
-                    <span
-                        class="inline-block bg-accent text-secondary px-6 py-2 rounded-full text-sm font-bold mb-6 shadow-lg">
-                        <i class="fas fa-city mr-2"></i>JAVNA USTANOVA OPŠTINE ŽABALJ
-                    </span>
-
-                    <h1 class="text-6xl md:text-7xl font-heading font-bold leading-tight text-white mb-6">
-                        <span class="block">SRCE SPORTA</span>
-                        <span class="block text-accent mt-2">U OPŠTINI ŽABALJ</span>
-                    </h1>
-
-                    <div class="mb-10">
-                        <p class="text-xl text-white leading-relaxed mb-6 font-medium">
-                            Brinemo o održavanju, razvoju i dostupnosti sportske infrastrukture – od stadiona do
-                            školskih
-                            sala, čineći sport sastavnim delom života naše zajednice.
-                        </p>
-                        <p class="text-white italic text-lg border-l-4 border-accent pl-4">
-                            "Sportski objekti su temelj za zdrav život i okupljanje svih generacija Žablja."
-                        </p>
+    <section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-secondary via-[#1a2936] to-primary">
+        <!-- Decorative background elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 lg:w-96 lg:h-96 bg-accent/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 lg:w-[600px] lg:h-[600px] bg-primary/20 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/2 w-80 h-80 lg:w-[400px] lg:h-[400px] bg-accent/5 rounded-full blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-24 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+                <!-- Content Column -->
+                <div class="lg:col-span-1 xl:col-span-5 space-y-6 md:space-y-8 max-w-2xl mx-auto lg:mx-0">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center bg-accent text-secondary px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                        <i class="fas fa-city mr-2 text-base sm:text-lg"></i>
+                        <span>JAVNA USTANOVA</span>
                     </div>
-
-                    <div class="flex flex-wrap gap-4 mb-8">
-                        <button
-                            class="bg-primary hover:bg-primary_hover text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl transition-all transform hover:scale-105">
-                            <i class="fas fa-map-marker-alt mr-2"></i>Vidi Lokacije Objekata
-                        </button>
-                        <button
-                            class="border-3 border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full font-bold text-lg transition-all">
-                            <i class="fas fa-file-alt mr-2"></i>Statut Ustanove
-                        </button>
+                    <!-- Heading -->
+                    <div>
+                        <h1 class="font-heading leading-tight">
+                            <span class="block text-white drop-shadow-lg text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold">SPORTSKI OBJEKTI</span>
+                            <span class="block text-accent mt-2 drop-shadow-lg text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold">ŽABALJ</span>
+                        </h1>
                     </div>
-
-                    <div class="grid grid-cols-3 gap-6 mt-12">
-                        <div class="text-center">
-                            <div class="stat-number font-heading">4+</div>
-                            <p class="text-white font-semibold uppercase text-sm">Velika Objekta</p>
+                    <!-- Description -->
+                    <div class="space-y-4 sm:space-y-5">
+                        <p class="font-body text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">Brinemo o održavanju, razvoju i dostupnosti sportske infrastrukture – od stadiona do školskih sala, čineći sport sastavnim delom života naše zajednice.</p>
+                        <!-- Quote -->
+                        <div class="bg-white/5 backdrop-blur-sm border-l-4 border-accent pl-4 sm:pl-5 pr-4 py-3 sm:py-4 rounded-r-lg">
+                            <p class="font-body text-white/95 italic text-xs sm:text-sm md:text-base">"Sportski objekti su temelj za zdrav život i okupljanje svih generacija Žablja."</p>
                         </div>
-                        <div class="text-center">
-                            <div class="stat-number font-heading">20+</div>
-                            <p class="text-white font-semibold uppercase text-sm">Godišnjih Manifestacija</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="stat-number font-heading">1000+</div>
-                            <p class="text-white font-semibold uppercase text-sm">Korisnika Mesečno</p>
-                        </div>
+                    </div>
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4">
+                        <a href="/kontakt" class="inline-flex items-center px-5 sm:px-7 py-3 sm:py-3.5 bg-accent hover:bg-accent_hover text-secondary text-sm sm:text-base font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">Kontaktirajte nas</a>
+                        <a href="/ponuda/objekti" class="inline-flex items-center px-5 sm:px-7 py-3 sm:py-3.5 bg-white/10 hover:bg-white/20 text-white text-sm sm:text-base font-bold rounded-lg backdrop-blur-sm border border-white/20 transition-all duration-300">Naši objekti</a>
                     </div>
                 </div>
-
-                <div class="relative hidden lg:block">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="space-y-4">
-                            <div
-                                class="h-64 bg-gradient-to-br from-primary to-secondary rounded-2xl shadow-2xl transform rotate-3">
+                <!-- Logo Column -->
+                <div class="lg:col-span-1 xl:col-span-7 relative">
+                    <div class="relative flex items-center justify-center py-8 lg:py-0">
+                        <!-- Main logo container -->
+                        <div class="relative w-full max-w-md lg:max-w-lg xl:max-w-xl">
+                            <!-- Large glow effect -->
+                            <div class="absolute inset-0 bg-accent/20 blur-3xl rounded-full scale-110"></div>
+                            <div class="absolute inset-0 bg-primary/30 blur-2xl rounded-full scale-105 animate-pulse"></div>
+                            <!-- Logo circle -->
+                            <div class="relative bg-surface/80 backdrop-blur-md rounded-full p-12 sm:p-14 md:p-16 lg:p-20 shadow-2xl border-4 sm:border-8 border-accent/20">
+                                <!-- Logo image placeholder -->
+                                <div class="aspect-square flex items-center justify-center">
+                                    <img src="/assets/img/logo.png" alt="Logo opštine Žabalj" class="w-full h-full object-contain drop-shadow-2xl">
+                                </div>
                             </div>
-                            <div
-                                class="h-48 bg-gradient-to-br from-accent to-primary rounded-2xl shadow-2xl transform -rotate-2">
+                            <!-- Floating decorative cards -->
+                            <div class="absolute -top-4 sm:-top-6 md:-top-8 -right-4 sm:-right-6 md:-right-8 lg:-right-12 bg-surface backdrop-blur-md px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl border border-accent/30 transform hover:scale-105 transition-transform duration-300">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-accent rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-futbol text-secondary text-sm sm:text-base md:text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-heading2 font-bold text-primary_text text-sm sm:text-base md:text-lg">Sport</p>
+                                        <p class="font-body text-secondary_text text-xs">Aktivnost</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="space-y-4 mt-8">
-                            <div
-                                class="h-48 bg-gradient-to-br from-secondary to-primary rounded-2xl shadow-2xl transform -rotate-3">
+                            <div class="absolute -bottom-4 sm:-bottom-6 md:-bottom-8 -left-4 sm:-left-6 md:-left-8 lg:-left-12 bg-surface backdrop-blur-md px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl border border-accent/30 transform hover:scale-105 transition-transform duration-300">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-users text-white text-sm sm:text-base md:text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-heading2 font-bold text-primary_text text-sm sm:text-base md:text-lg">Zajednica</p>
+                                        <p class="font-body text-secondary_text text-xs">Okupljanje</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div
-                                class="h-64 bg-gradient-to-br from-primary to-accent rounded-2xl shadow-2xl transform rotate-2">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white rounded-full flex items-center justify-center shadow-2xl">
-                        <div class="text-center p-8">
-                            <i class="fas fa-users text-6xl text-primary mb-4"></i>
-                            <h3 class="font-heading text-2xl font-bold text-primary_text">ZAJEDNICA</h3>
-                            <p class="text-secondary_text mt-2 font-medium">Mesto okupljanja i rekreacije</p>
+                            <!-- Small accent elements - hidden on smaller screens -->
+                            <div class="absolute top-1/4 -left-6 w-12 h-12 md:w-16 md:h-16 bg-accent/80 rounded-2xl shadow-lg transform rotate-12 hidden md:block"></div>
+                            <div class="absolute bottom-1/4 -right-6 w-10 h-10 md:w-12 md:h-12 bg-primary/80 rounded-2xl shadow-lg transform -rotate-12 hidden md:block"></div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-                <div class="animate-bounce w-10 h-16 rounded-full border-3 border-accent flex justify-center p-2">
-                    <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+            <!-- Stats or features section below -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-12 sm:mt-16 lg:mt-24">
+                <div class="bg-surface/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="flex items-start gap-3 sm:gap-4">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-dumbbell text-accent text-base sm:text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading2 text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Moderna oprema</h3>
+                            <p class="font-body text-xs sm:text-sm text-white/70">Najsavremenija sportska infrastruktura za sve uzraste</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="flex items-start gap-3 sm:gap-4">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-clock text-accent text-base sm:text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading2 text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Dostupnost 24/7</h3>
+                            <p class="font-body text-xs sm:text-sm text-white/70">Otvoreni objekti za sve članove zajednice</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:transform hover:-translate-y-2 sm:col-span-2 md:col-span-1">
+                    <div class="flex items-start gap-3 sm:gap-4">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-heart text-accent text-base sm:text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading2 text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Zdrav životni stil</h3>
+                            <p class="font-body text-xs sm:text-sm text-white/70">Podrška aktivnom i zdravom načinu života</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden lg:block">
+                <a href="#content" class="flex flex-col items-center text-white/50 hover:text-white transition-colors group">
+                    <span class="font-body text-xs mb-2 opacity-0 group-hover:opacity-100 transition-opacity">Skroluj</span>
+                    <div class="w-8 h-12 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
+                        <div class="w-1.5 h-3 bg-white/50 rounded-full animate-pulse"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
@@ -824,7 +862,7 @@
               <p class="mt-1 text-sm text-gray-100/90">
                 <i class="fas fa-map-marker-alt mr-2"></i>' . $objekat['adresa'] . '
               </p>
-              
+
             </div>
             <div class="flex-shrink-0 ml-3 self-center">
               <a href="#"
@@ -988,15 +1026,15 @@
                     <ul class="space-y-4">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-primary mr-3 mt-1"></i>
-                            <span class="text-gray-300">Sportska 15, 11000 Beograd</span>
+                            <span class="text-gray-300">Nikole Tesle 68/a, 21230 Žabalj</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone text-primary mr-3"></i>
-                            <span class="text-gray-300">+381 11 123 4567</span>
+                            <span class="text-gray-300">+381 21 2102240</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope text-primary mr-3"></i>
-                            <span class="text-gray-300">info@sportskiobjekti.rs</span>
+                            <span class="text-gray-300" data-translate="off">sportskiobjektizabalj@gmail.com</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-clock text-primary mr-3"></i>

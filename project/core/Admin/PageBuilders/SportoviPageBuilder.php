@@ -106,7 +106,7 @@ PHP;
             <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
             <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-white to-white/60">
                 {{imageSection}}
-            
+
             </div>
             <div class="p-6">
                 <h3 class="text-xl font-bold text-primary-text mb-4 line-clamp-2 group-hover:text-primary transition-colors">
@@ -273,8 +273,8 @@ $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
+    ? (is_numeric($_GET['category'])
+        ? (int) $_GET['category']
         : trim((string) $_GET['category'])
       )
     : null;
@@ -299,7 +299,7 @@ $latinTexts = [
     'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Termin',
     'location' => 'Lokacija',
-    'event_details' => 'Detalji sprotova',
+    'event_details' => 'Detalji sportova',
     'no_items_found' => 'Nema pronađenih stavki',
     'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
 ];
