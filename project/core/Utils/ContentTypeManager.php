@@ -3,7 +3,7 @@
 namespace App\Utils;
 
 use App\Models\ContentType;
-use App\Models\ContentTypeCategory;
+// use App\Models\ContentTypeCategory;
 use App\Models\CustomField;
 use App\Models\CustomFieldOption;
 use Exception;
@@ -82,9 +82,9 @@ class ContentTypeManager
             }
             $updatedCodes[] = $type['code'];
 
-            if (array_key_exists('coded_categories', $type)) {
-                self::updateContentTypeCategories($type);
-            }
+            // if (array_key_exists('coded_categories', $type)) {
+            //     self::updateContentTypeCategories($type);
+            // }
             self::updateCustomFields($type);
         }
 
@@ -96,6 +96,7 @@ class ContentTypeManager
         }
     }
 
+    /*
     public static function updateContentTypeCategories(array $contentType): void
     {
         $ctCategory = new ContentTypeCategory();
@@ -121,6 +122,7 @@ class ContentTypeManager
             }
         }
     }
+    */
 
     public static function updateCustomFields(array $contentType): void
     {

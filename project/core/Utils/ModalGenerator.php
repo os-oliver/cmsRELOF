@@ -1,6 +1,7 @@
 <?php
 namespace App\Utils;
 
+use App\Models\CustomFieldOption;
 use App\Models\GenericCategory;
 
 class ModalGenerator
@@ -455,19 +456,20 @@ class ModalGenerator
     private function renderField($field)
     {
         $name = $field['name'] ?? '';
+        $code = $field['code'] ?? '';
         $type = $field['type'] ?? 'text';
         $isMultiple = ($type === 'multifile') || ($type === 'file');
         $label = $field['label'][$this->lang] ?? ucfirst(str_replace('_', ' ', $name));
         $required = $field['required'] ?? false;
         $options = $field['options'] ?? [];
-        error_log("gde siii");
+        $coded_options = $field['coded_options'] ?? [];
+        $selected_option_value = $field['option_value'] ?? null;
+
+
         $value = $field['value'] ?? '';
 
-        if (($field['property'] ?? '') === 'auto') {
-            error_log("evo me:" . $type);
-            if ($type === 'date' && empty($value)) {
-                $value = date('Y-m-d'); // danasnji datum
-            }
+        if ($type == 'date') {
+            $value = date('Y-m-d', $field['timestamp'] ?? null);
         }
 
         $rows = $this->getRows($name);
@@ -634,32 +636,31 @@ class ModalGenerator
                 break;
 
             case 'categories':
-                // Fetch all categories for this modal
-                $categories = GenericCategory::fetchAll($this->modalId, $this->lang);
+                // Fetch all categories for this modal - not needed anymore
+                // $categories = GenericCategory::fetchAll($this->modalId, $this->lang);
 
                 ?>
                 <div class="w-full">
-                    <label for="<?= htmlspecialchars($name) ?>"
+                    <label for="<?= $code ?>"
                         class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <i class="fas <?= htmlspecialchars($icon) ?> text-blue-600"></i>
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
                     <div class="relative">
-                        <select id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>" <?= $requiredAttr ?>
+                        <select id="<?= $code ?>" name="<?= $code ?>" <?= $requiredAttr ?>
                             class="w-full px-4 py-3 pr-10 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none bg-white cursor-pointer">
                             <option value=""><?= htmlspecialchars($this->translations['select_option']) ?></option>
-                            <?php foreach ($categories as $option):
-                                // Use 'id' for value and 'name' for label
-                                $optionValue = $option['id'] ?? '';
-                                $optionLabel = $option['name'][$this->lang] ?? $option['name'] ?? '';
+                            <?php foreach ($coded_options as $option):
+                                // Use 'code' for value and 'translations' array for label
+                                $optionValue = $option['code'] ?? '';
+                                $optionLabel = $option['translations'][$this->lang] ?? $option['name'] ?? 'nepoznata opcija!';
                                 ?>
-                                <option value="<?= htmlspecialchars($optionValue) ?>" <?= ($value == $optionValue) ? 'selected' : '' ?>>
+                                <option value="<?= htmlspecialchars($optionValue) ?>" <?= ($selected_option_value == $optionValue) ? 'selected' : '' ?>>
                                     <?= htmlspecialchars($optionLabel) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <i
-                            class="fas fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                        <i class="fas fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                     </div>
                 </div>
                 <?php

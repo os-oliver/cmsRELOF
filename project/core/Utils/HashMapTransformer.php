@@ -48,4 +48,24 @@ class HashMapTransformer
             );
         }, $rawEvents);
     }
+
+    public static function transformNew(array $rawEvents, string $locale): array
+    {
+        return array_map(function ($cfvs) use ($locale) {
+            $item = [];
+            foreach ($cfvs as $cfv) {
+                $item['id'] = $cfv['content_id'];
+                $item[$cfv['code']] = $cfv['textValue'];
+                if ($cfv['code'] == 'main_category') {
+                    $item['naziv'] = $cfv['textValue'];
+                }
+                if (isset($cfv['imageUrl'])) {
+                    $item['image'] = $cfv['imageUrl'];
+                }
+            }
+            $returnValue = (object) $item;
+
+            return $returnValue;
+        }, $rawEvents);
+    }
 }

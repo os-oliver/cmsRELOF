@@ -6,37 +6,9 @@
       "en": "Events",
       "sr-Cyrl": "Догађаји",
       "icon": "fas fa-calendar-days",
-      "categories": [
-        "Konferencije",
-        "Seminari",
-        "Radionice",
-        "Takmičenja",
-        "Kultura"
-      ],
-      "coded_categories": [
-        {
-          "code": "konferencije",
-          "translations": { "sr": "Konferencije", "en": "Conferences", "sr-Cyrl": "Конференције" }
-        },
-        {
-          "code": "seminari",
-          "translations": { "sr": "Seminari", "en": "Seminars", "sr-Cyrl": "Семинари" }
-        },
-        {
-          "code": "radionice",
-          "translations": { "sr": "Radionice", "en": "Workshops", "sr-Cyrl": "Радионице" }
-        },
-        {
-          "code": "takmičenja",
-          "translations": { "sr": "Takmičenja", "en": "Competitions", "sr-Cyrl": "Такмичења" }
-        },
-        {
-          "code": "kultura",
-          "translations": { "sr": "Kultura", "en": "Culture", "sr-Cyrl": "Култура" }
-        }
-      ],
       "fields": [
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -47,6 +19,7 @@
           "required": true
         },
         {
+          "code": "main_category",
           "name": "naziv",
           "type": "categories",
           "label": {
@@ -75,7 +48,7 @@
               "translations": { "sr": "Radionice", "en": "Workshops", "sr-Cyrl": "Радионице" }
             },
             {
-              "code": "takmičenja",
+              "code": "takmicenja",
               "translations": { "sr": "Takmičenja", "en": "Competitions", "sr-Cyrl": "Такмичења" }
             },
             {
@@ -137,356 +110,309 @@
     },
     "Destinacije": {
       "code": "destinacije",
-  "sr": "Destinacije",
-  "en": "Destinations",
-  "sr-Cyrl": "Дестинације",
-  "icon": "fas fa-map-marked-alt",
-  "categories": [
-    "Priroda",
-    "Gradovi",
-    "More",
-    "Planine",
-    "Jezera",
-    "Nacionalni parkovi",
-    "Banjska lečilišta",
-    "Seoski turizam",
-    "Kulturna baština"
-  ],
-  "coded_categories": [
-    {
-      "code": "priroda",
-      "translations": { "sr": "Priroda", "en": "Nature", "sr-Cyrl": "Природа" }
-    },
-    {
-      "code": "gradovi",
-      "translations": { "sr": "Gradovi", "en": "Cities", "sr-Cyrl": "Градови" }
-    },
-    {
-      "code": "more",
-      "translations": { "sr": "More", "en": "Seaside", "sr-Cyrl": "Море" }
-    },
-    {
-      "code": "planine",
-      "translations": { "sr": "Planine", "en": "Mountains", "sr-Cyrl": "Планине" }
-    },
-    {
-      "code": "jezera",
-      "translations": { "sr": "Jezera", "en": "Lakes", "sr-Cyrl": "Језера" }
-    },
-    {
-      "code": "nacionalni_parkovi",
-      "translations": { "sr": "Nacionalni parkovi", "en": "National parks", "sr-Cyrl": "Национални паркови" }
-    },
-    {
-      "code": "banjska_lecilista",
-      "translations": { "sr": "Banjska lečilišta", "en": "Spa", "sr-Cyrl": "Бањска лечилишта" }
-    },
-    {
-      "code": "seoski_turizam",
-      "translations": { "sr": "Seoski turizam", "en": "Rural areas", "sr-Cyrl": "Сеоски туризам" }
-    },
-    {
-      "code": "kulturna_bastina",
-      "translations": { "sr": "Kulturna baština", "en": "Cultural heritage", "sr-Cyrl": "Културна баштина" }
-    }
-  ],
-  "fields": [
-    {
-      "name": "naziv_destinacije",
-      "type": "text",
-      "label": {
-        "sr": "Naziv destinacije",
-        "en": "Destination name",
-        "sr-Cyrl": "Назив дестинације"
-      },
-      "required": true
-    },
-    {
-      "name": "poslednje_azuriranje",
-      "type": "date",
-      "label": {
-        "sr": "Poslednje ažuriranje",
-        "en": "Last updated",
-        "sr-Cyrl": "Последње ажурирање"
-      },
-      "required": true,
-      "property": "auto"
-    },
-    { "name": "kategorija_destinacije",
-    "type": "categories",
-    "label": { "sr": "Kategorija destinacije", "en": "Destination category", "sr-Cyrl": "Категорија дестинације" },
-    "options": [ "Priroda", "Gradovi", "More", "Planine", "Jezera", "Nacionalni parkovi", "Banjska lečilišta", "Seoski turizam", "Kulturna baština" ],
-    "coded_options": [
-      {
-        "code": "priroda",
-        "translations": { "sr": "Priroda", "en": "Nature", "sr-Cyrl": "Природа" }
-      },
-      {
-        "code": "gradovi",
-        "translations": { "sr": "Gradovi", "en": "Cities", "sr-Cyrl": "Градови" }
-      },
-      {
-        "code": "more",
-        "translations": { "sr": "More", "en": "Seaside", "sr-Cyrl": "Море" }
-      },
-      {
-        "code": "planine",
-        "translations": { "sr": "Planine", "en": "Mountains", "sr-Cyrl": "Планине" }
-      },
-      {
-        "code": "jezera",
-        "translations": { "sr": "Jezera", "en": "Lakes", "sr-Cyrl": "Језера" }
-      },
-      {
-        "code": "nacionalni_parkovi",
-        "translations": { "sr": "Nacionalni parkovi", "en": "National parks", "sr-Cyrl": "Национални паркови" }
-      },
-      {
-        "code": "banjska_lecilista",
-        "translations": { "sr": "Banjska lečilišta", "en": "Spa", "sr-Cyrl": "Бањска лечилишта" }
-      },
-      {
-        "code": "seoski_turizam",
-        "translations": { "sr": "Seoski turizam", "en": "Rural areas", "sr-Cyrl": "Сеоски туризам" }
-      },
-      {
-        "code": "kulturna_bastina",
-        "translations": { "sr": "Kulturna baština", "en": "Cultural heritage", "sr-Cyrl": "Културна баштина" }
-      }
-    ],
-    "required": true },
-    {
-      "name": "drzava",
-      "type": "text",
-      "label": {
-        "sr": "Država",
-        "en": "Country",
-        "sr-Cyrl": "Држава"
-      },
-      "required": true
-    },
-    {
-      "name": "region",
-      "type": "text",
-      "label": {
-        "sr": "Region / oblast",
-        "en": "Region / area",
-        "sr-Cyrl": "Регион / област"
-      }
-    },
-    {
-      "name": "kratak_opis",
-      "type": "textarea",
-      "label": {
-        "sr": "Kratak opis",
-        "en": "Short description",
-        "sr-Cyrl": "Кратак опис"
-      }
-    },
-    {
-      "name": "detaljan_opis",
-      "type": "textarea",
-      "label": {
-        "sr": "Detaljan opis",
-        "en": "Detailed description",
-        "sr-Cyrl": "Детаљан опис"
-      }
-    },
-    {
-      "name": "atrakcije",
-      "type": "text",
-      "label": {
-        "sr": "Glavne atrakcije (zarezom odvojene)",
-        "en": "Main attractions (comma-separated)",
-        "sr-Cyrl": "Главне атракције (зарезом одвојене)"
-      },
-      "placeholder": {
-        "sr": "npr. Stari grad, Vodopad, Nacionalni muzej",
-        "en": "e.g., Old Town, Waterfall, National Museum",
-        "sr-Cyrl": "нпр. Стари град, Водопад, Национални музеј"
-      }
-    },
-    {
-      "name": "aktivnosti",
-      "type": "text",
-      "label": {
-        "sr": "Aktivnosti",
-        "en": "Activities",
-        "sr-Cyrl": "Активности"
-      },
-      "placeholder": {
-        "sr": "npr. Planinarenje, Skijanje, Plivanje, Biciklizam, Kajak/rafting, Muzeji i galerije, Noćni život, Gastro, Porodično, Romantično",
-        "en": "e.g., Hiking, Skiing, Swimming, Cycling, Kayak/Rafting, Museums & Galleries, Nightlife, Food, Family, Romantic",
-        "sr-Cyrl": "нпр. Планинарење, Скијање, Пливање, Бициклизам, Кајак/рафтинг, Музеји и галерије, Ноћни живот, Гастро, Породично, Романтично"
-      }
-    },
-    {
-      "name": "sezona",
-      "type": "text",
-      "label": {
-        "sr": "Sezona",
-        "en": "Season",
-        "sr-Cyrl": "Сезона"
-      },
-      "placeholder": {
-        "sr": "npr. Proleće | Leto | Jesen | Zima | Celu godinu",
-        "en": "e.g., Spring | Summer | Autumn | Winter | All year",
-        "sr-Cyrl": "нпр. Пролеће | Лето | Јесен | Зима | Целу годину"
-      }
-    },
-    {
-      "name": "najbolji_meseci",
-      "type": "text",
-      "label": {
-        "sr": "Najbolji meseci za posetu",
-        "en": "Best months to visit",
-        "sr-Cyrl": "Најбољи месеци за посету"
-      },
-      "placeholder": {
-        "sr": "npr. Maj, Jun, Septembar (zarezom odvojeno)",
-        "en": "e.g., May, June, September (comma-separated)",
-        "sr-Cyrl": "нпр. Мај, Јун, Септембар (зарезом одвојено)"
-      }
-    },
-    {
-      "name": "preporuceno_trajanje",
-      "type": "text",
-      "label": {
-        "sr": "Preporučeno trajanje posete (dani)",
-        "en": "Recommended stay (days)",
-        "sr-Cyrl": "Препоручено трајање посете (дани)"
-      }
-    },
-    {
-      "name": "prosecna_cena_dnevno",
-      "type": "text",
-      "label": {
-        "sr": "Prosečna cena dnevno (valuta + iznos)",
-        "en": "Average daily cost (currency + amount)",
-        "sr-Cyrl": "Просечна цена дневно (валута + износ)"
-      },
-      "placeholder": {
-        "sr": "npr. EUR 70 | RSD 3500",
-        "en": "e.g., EUR 70 | RSD 3500",
-        "sr-Cyrl": "нпр. EUR 70 | RSD 3500"
-      }
-    },
-    {
-      "name": "smestaj",
-      "type": "text",
-      "label": {
-        "sr": "Tipovi smeštaja",
-        "en": "Accommodation types",
-        "sr-Cyrl": "Типови смештаја"
-      },
-      "placeholder": {
-        "sr": "npr. Hoteli, Apartmani, Hosteli, Kamp, Odmaralište, Etno-domaćinstvo, Spa/Wellness",
-        "en": "e.g., Hotels, Apartments, Hostels, Camping, Resort, Ethno-household, Spa/Wellness",
-        "sr-Cyrl": "нпр. Хотели, Апартмани, Хостели, Камп, Одмаралиште, Етно-домаћинство, Спа/Велнес"
-      }
-    },
-    {
-      "name": "pogodnosti",
-      "type": "text",
-      "label": {
-        "sr": "Pogodnosti",
-        "en": "Amenities",
-        "sr-Cyrl": "Погодности"
-      },
-      "placeholder": {
-        "sr": "npr. Pet-friendly, Pristupačnost, Besplatan Wi-Fi, Parking, Plaža u blizini, Skijalište u blizini, Termalni izvori",
-        "en": "e.g., Pet-friendly, Accessibility, Free Wi-Fi, Parking, Near beach, Near ski area, Thermal springs",
-        "sr-Cyrl": "нпр. Пет-френдли, Приступачност, Бесплатан Wi-Fi, Паркинг, Плажа у близини, Скијалиште у близини, Термални извори"
-      }
-    },
-    {
-      "name": "adresa",
-      "type": "text",
-      "label": {
-        "sr": "Adresa / lokacija",
-        "en": "Address / location",
-        "sr-Cyrl": "Адреса / локација"
-      }
-    },
-    {
-      "name": "map_link",
-      "type": "url",
-      "label": {
-        "sr": "Link ka mapi (Google/OSM)",
-        "en": "Map link (Google/OSM)",
-        "sr-Cyrl": "Линк ка мапи (Google/OSM)"
-      }
-    },
-    {
-      "name": "kontakt",
-      "type": "text",
-      "label": {
-        "sr": "Kontakt (email ili telefon)",
-        "en": "Contact (email or phone)",
-        "sr-Cyrl": "Контакт (имејл или телефон)"
-      }
-    },
-    {
-      "name": "slika",
-      "type": "file",
-      "label": {
-        "sr": "Naslovna slika destinacije",
-        "en": "Hero image",
-        "sr-Cyrl": "Насловна слика дестинације"
-      }
-    },
-    {
-      "name": "galerija",
-      "type": "file",
-      "label": {
-        "sr": "Galerija (više slika)",
-        "en": "Gallery (multiple images)",
-        "sr-Cyrl": "Галерија (више слика)"
-      },
-      "property": "multiple"
-    },
-    {
-      "name": "video",
-      "type": "url",
-      "label": {
-        "sr": "Video link (YouTube/Vimeo)",
-        "en": "Video link (YouTube/Vimeo)",
-        "sr-Cyrl": "Видео линк (YouTube/Vimeo)"
-      }
-    },
-    {
-      "name": "zvanicni_sajt",
-      "type": "url",
-      "label": {
-        "sr": "Zvanični sajt",
-        "en": "Official website",
-        "sr-Cyrl": "Званични сајт"
-      }
-    },
-    {
-      "name": "ocena",
-      "type": "text",
-      "label": {
-        "sr": "Ocena (1–5)",
-        "en": "Rating (1–5)",
-        "sr-Cyrl": "Оцена (1–5)"
-      }
-    },
-    {
-      "name": "tagovi",
-      "type": "text",
-      "label": {
-        "sr": "Tagovi (zarezom odvojeni)",
-        "en": "Tags (comma-separated)",
-        "sr-Cyrl": "Тагови (зарезом одвојени)"
-      },
-      "placeholder": {
-        "sr": "npr. planine, jezera, porodično",
-        "en": "e.g., mountains, lakes, family",
-        "sr-Cyrl": "нпр. планине, језера, породично"
-      }
-    }
-  ]
+      "sr": "Destinacije",
+      "en": "Destinations",
+      "sr-Cyrl": "Дестинације",
+      "icon": "fas fa-map-marked-alt",
+      "fields": [
+        {
+          "name": "naziv_destinacije",
+          "type": "text",
+          "label": {
+            "sr": "Naziv destinacije",
+            "en": "Destination name",
+            "sr-Cyrl": "Назив дестинације"
+          },
+          "required": true
+        },
+        {
+          "name": "poslednje_azuriranje",
+          "type": "date",
+          "label": {
+            "sr": "Poslednje ažuriranje",
+            "en": "Last updated",
+            "sr-Cyrl": "Последње ажурирање"
+          },
+          "required": true,
+          "property": "auto"
+        },
+        {
+          "name": "main_category",
+          "type": "categories",
+          "label": { "sr": "Kategorija destinacije", "en": "Destination category", "sr-Cyrl": "Категорија дестинације" },
+          "options": [ "Priroda", "Gradovi", "More", "Planine", "Jezera", "Nacionalni parkovi", "Banjska lečilišta", "Seoski turizam", "Kulturna baština" ],
+          "coded_options": [
+            {
+              "code": "priroda",
+              "translations": { "sr": "Priroda", "en": "Nature", "sr-Cyrl": "Природа" }
+            },
+            {
+              "code": "gradovi",
+              "translations": { "sr": "Gradovi", "en": "Cities", "sr-Cyrl": "Градови" }
+            },
+            {
+              "code": "more",
+              "translations": { "sr": "More", "en": "Seaside", "sr-Cyrl": "Море" }
+            },
+            {
+              "code": "planine",
+              "translations": { "sr": "Planine", "en": "Mountains", "sr-Cyrl": "Планине" }
+            },
+            {
+              "code": "jezera",
+              "translations": { "sr": "Jezera", "en": "Lakes", "sr-Cyrl": "Језера" }
+            },
+            {
+              "code": "nacionalni_parkovi",
+              "translations": { "sr": "Nacionalni parkovi", "en": "National parks", "sr-Cyrl": "Национални паркови" }
+            },
+            {
+              "code": "banjska_lecilista",
+              "translations": { "sr": "Banjska lečilišta", "en": "Spa", "sr-Cyrl": "Бањска лечилишта" }
+            },
+            {
+              "code": "seoski_turizam",
+              "translations": { "sr": "Seoski turizam", "en": "Rural areas", "sr-Cyrl": "Сеоски туризам" }
+            },
+            {
+              "code": "kulturna_bastina",
+              "translations": { "sr": "Kulturna baština", "en": "Cultural heritage", "sr-Cyrl": "Културна баштина" }
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "drzava",
+          "type": "text",
+          "label": {
+            "sr": "Država",
+            "en": "Country",
+            "sr-Cyrl": "Држава"
+          },
+          "required": true
+        },
+        {
+          "name": "region",
+          "type": "text",
+          "label": {
+            "sr": "Region / oblast",
+            "en": "Region / area",
+            "sr-Cyrl": "Регион / област"
+          }
+        },
+        {
+          "name": "kratak_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "name": "detaljan_opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Detaljan opis",
+            "en": "Detailed description",
+            "sr-Cyrl": "Детаљан опис"
+          }
+        },
+        {
+          "name": "atrakcije",
+          "type": "text",
+          "label": {
+            "sr": "Glavne atrakcije (zarezom odvojene)",
+            "en": "Main attractions (comma-separated)",
+            "sr-Cyrl": "Главне атракције (зарезом одвојене)"
+          },
+          "placeholder": {
+            "sr": "npr. Stari grad, Vodopad, Nacionalni muzej",
+            "en": "e.g., Old Town, Waterfall, National Museum",
+            "sr-Cyrl": "нпр. Стари град, Водопад, Национални музеј"
+          }
+        },
+        {
+          "name": "aktivnosti",
+          "type": "text",
+          "label": {
+            "sr": "Aktivnosti",
+            "en": "Activities",
+            "sr-Cyrl": "Активности"
+          },
+          "placeholder": {
+            "sr": "npr. Planinarenje, Skijanje, Plivanje, Biciklizam, Kajak/rafting, Muzeji i galerije, Noćni život, Gastro, Porodično, Romantično",
+            "en": "e.g., Hiking, Skiing, Swimming, Cycling, Kayak/Rafting, Museums & Galleries, Nightlife, Food, Family, Romantic",
+            "sr-Cyrl": "нпр. Планинарење, Скијање, Пливање, Бициклизам, Кајак/рафтинг, Музеји и галерије, Ноћни живот, Гастро, Породично, Романтично"
+          }
+        },
+        {
+          "name": "sezona",
+          "type": "text",
+          "label": {
+            "sr": "Sezona",
+            "en": "Season",
+            "sr-Cyrl": "Сезона"
+          },
+          "placeholder": {
+            "sr": "npr. Proleće | Leto | Jesen | Zima | Celu godinu",
+            "en": "e.g., Spring | Summer | Autumn | Winter | All year",
+            "sr-Cyrl": "нпр. Пролеће | Лето | Јесен | Зима | Целу годину"
+          }
+        },
+        {
+          "name": "najbolji_meseci",
+          "type": "text",
+          "label": {
+            "sr": "Najbolji meseci za posetu",
+            "en": "Best months to visit",
+            "sr-Cyrl": "Најбољи месеци за посету"
+          },
+          "placeholder": {
+            "sr": "npr. Maj, Jun, Septembar (zarezom odvojeno)",
+            "en": "e.g., May, June, September (comma-separated)",
+            "sr-Cyrl": "нпр. Мај, Јун, Септембар (зарезом одвојено)"
+          }
+        },
+        {
+          "name": "preporuceno_trajanje",
+          "type": "text",
+          "label": {
+            "sr": "Preporučeno trajanje posete (dani)",
+            "en": "Recommended stay (days)",
+            "sr-Cyrl": "Препоручено трајање посете (дани)"
+          }
+        },
+        {
+          "name": "prosecna_cena_dnevno",
+          "type": "text",
+          "label": {
+            "sr": "Prosečna cena dnevno (valuta + iznos)",
+            "en": "Average daily cost (currency + amount)",
+            "sr-Cyrl": "Просечна цена дневно (валута + износ)"
+          },
+          "placeholder": {
+            "sr": "npr. EUR 70 | RSD 3500",
+            "en": "e.g., EUR 70 | RSD 3500",
+            "sr-Cyrl": "нпр. EUR 70 | RSD 3500"
+          }
+        },
+        {
+          "name": "smestaj",
+          "type": "text",
+          "label": {
+            "sr": "Tipovi smeštaja",
+            "en": "Accommodation types",
+            "sr-Cyrl": "Типови смештаја"
+          },
+          "placeholder": {
+            "sr": "npr. Hoteli, Apartmani, Hosteli, Kamp, Odmaralište, Etno-domaćinstvo, Spa/Wellness",
+            "en": "e.g., Hotels, Apartments, Hostels, Camping, Resort, Ethno-household, Spa/Wellness",
+            "sr-Cyrl": "нпр. Хотели, Апартмани, Хостели, Камп, Одмаралиште, Етно-домаћинство, Спа/Велнес"
+          }
+        },
+        {
+          "name": "pogodnosti",
+          "type": "text",
+          "label": {
+            "sr": "Pogodnosti",
+            "en": "Amenities",
+            "sr-Cyrl": "Погодности"
+          },
+          "placeholder": {
+            "sr": "npr. Pet-friendly, Pristupačnost, Besplatan Wi-Fi, Parking, Plaža u blizini, Skijalište u blizini, Termalni izvori",
+            "en": "e.g., Pet-friendly, Accessibility, Free Wi-Fi, Parking, Near beach, Near ski area, Thermal springs",
+            "sr-Cyrl": "нпр. Пет-френдли, Приступачност, Бесплатан Wi-Fi, Паркинг, Плажа у близини, Скијалиште у близини, Термални извори"
+          }
+        },
+        {
+          "name": "adresa",
+          "type": "text",
+          "label": {
+            "sr": "Adresa / lokacija",
+            "en": "Address / location",
+            "sr-Cyrl": "Адреса / локација"
+          }
+        },
+        {
+          "name": "map_link",
+          "type": "url",
+          "label": {
+            "sr": "Link ka mapi (Google/OSM)",
+            "en": "Map link (Google/OSM)",
+            "sr-Cyrl": "Линк ка мапи (Google/OSM)"
+          }
+        },
+        {
+          "name": "kontakt",
+          "type": "text",
+          "label": {
+            "sr": "Kontakt (email ili telefon)",
+            "en": "Contact (email or phone)",
+            "sr-Cyrl": "Контакт (имејл или телефон)"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika destinacije",
+            "en": "Hero image",
+            "sr-Cyrl": "Насловна слика дестинације"
+          }
+        },
+        {
+          "name": "galerija",
+          "type": "file",
+          "label": {
+            "sr": "Galerija (više slika)",
+            "en": "Gallery (multiple images)",
+            "sr-Cyrl": "Галерија (више слика)"
+          },
+          "property": "multiple"
+        },
+        {
+          "name": "video",
+          "type": "url",
+          "label": {
+            "sr": "Video link (YouTube/Vimeo)",
+            "en": "Video link (YouTube/Vimeo)",
+            "sr-Cyrl": "Видео линк (YouTube/Vimeo)"
+          }
+        },
+        {
+          "name": "zvanicni_sajt",
+          "type": "url",
+          "label": {
+            "sr": "Zvanični sajt",
+            "en": "Official website",
+            "sr-Cyrl": "Званични сајт"
+          }
+        },
+        {
+          "name": "ocena",
+          "type": "text",
+          "label": {
+            "sr": "Ocena (1–5)",
+            "en": "Rating (1–5)",
+            "sr-Cyrl": "Оцена (1–5)"
+          }
+        },
+        {
+          "name": "tagovi",
+          "type": "text",
+          "label": {
+            "sr": "Tagovi (zarezom odvojeni)",
+            "en": "Tags (comma-separated)",
+            "sr-Cyrl": "Тагови (зарезом одвојени)"
+          },
+          "placeholder": {
+            "sr": "npr. planine, jezera, porodično",
+            "en": "e.g., mountains, lakes, family",
+            "sr-Cyrl": "нпр. планине, језера, породично"
+          }
+        }
+      ]
     },
     "Manifestacije": {
       "code": "manifestacije",
@@ -494,60 +420,6 @@
       "en": "Festivals & Events",
       "sr-Cyrl": "Манифестације",
       "icon": "fas fa-theater-masks",
-      "categories": [
-        "Festival",
-        "Koncert",
-        "Sajam",
-        "Gastro",
-        "Kultura",
-        "Sport",
-        "Porodično",
-        "Tradicionalno",
-        "Karneval",
-        "Izložba"
-      ],
-      "coded_categories": [
-        {
-          "code": "festival",
-          "translations": { "sr": "Festival", "sr-Cyrl": "Фестивал", "en": "Festival"}
-        },
-        {
-          "code": "koncert",
-          "translations": { "sr": "Koncert", "sr-Cyrl": "Концерт", "en": "Concert"}
-        },
-        {
-          "code": "sajam",
-          "translations": { "sr": "Sajam", "sr-Cyrl": "Сајам", "en": "Fair"}
-        },
-        {
-          "code": "gastro",
-          "translations": { "sr": "Gastro", "sr-Cyrl": "Гастро", "en": "Gastronomic"}
-        },
-        {
-          "code": "kultura",
-          "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
-        },
-        {
-          "code": "sport",
-          "translations": { "sr": "Sport", "sr-Cyrl": "Спорт", "en": "Sport"}
-        },
-        {
-          "code": "porodicno",
-          "translations": { "sr": "Porodično", "sr-Cyrl": "Породично", "en": "Family"}
-        },
-        {
-          "code": "tradicionalno",
-          "translations": { "sr": "Tradicionalno", "sr-Cyrl": "Традиционално", "en": "Traditional"}
-        },
-        {
-          "code": "karneval",
-          "translations": { "sr": "Karneval", "sr-Cyrl": "Карневал", "en": "Carneval"}
-        },
-        {
-          "code": "izlozba",
-          "translations": { "sr": "Izložba", "sr-Cyrl": "Изложба", "en": "Exhibition"}
-        }
-      ],
       "fields": [
         {
           "name": "naziv",
@@ -563,9 +435,51 @@
           "property": "auto"
         },
         {
-          "name": "kategorija",
+          "name": "main_category",
           "type": "categories",
           "label": { "sr": "Kategorija manifestacije", "en": "Event category", "sr-Cyrl": "Категорија манифестације" },
+          "coded_options": [
+            {
+              "code": "festival",
+              "translations": { "sr": "Festival", "sr-Cyrl": "Фестивал", "en": "Festival"}
+            },
+            {
+              "code": "koncert",
+              "translations": { "sr": "Koncert", "sr-Cyrl": "Концерт", "en": "Concert"}
+            },
+            {
+              "code": "sajam",
+              "translations": { "sr": "Sajam", "sr-Cyrl": "Сајам", "en": "Fair"}
+            },
+            {
+              "code": "gastro",
+              "translations": { "sr": "Gastro", "sr-Cyrl": "Гастро", "en": "Gastronomic"}
+            },
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
+            },
+            {
+              "code": "sport",
+              "translations": { "sr": "Sport", "sr-Cyrl": "Спорт", "en": "Sport"}
+            },
+            {
+              "code": "porodicno",
+              "translations": { "sr": "Porodično", "sr-Cyrl": "Породично", "en": "Family"}
+            },
+            {
+              "code": "tradicionalno",
+              "translations": { "sr": "Tradicionalno", "sr-Cyrl": "Традиционално", "en": "Traditional"}
+            },
+            {
+              "code": "karneval",
+              "translations": { "sr": "Karneval", "sr-Cyrl": "Карневал", "en": "Carneval"}
+            },
+            {
+              "code": "izlozba",
+              "translations": { "sr": "Izložba", "sr-Cyrl": "Изложба", "en": "Exhibition"}
+            }
+          ],
           "required": true
         },
 
@@ -710,60 +624,6 @@
       "en": "Accommodation",
       "sr-Cyrl": "Смештај",
       "icon": "fas fa-hotel",
-      "categories": [
-        "Hotel",
-        "Apartman",
-        "Hostel",
-        "Pansion",
-        "Odmaralište",
-        "Kamp",
-        "Vikendica",
-        "B&B",
-        "Spa/Wellness",
-        "Eko-smeštaj"
-      ],
-      "coded_categories": [
-        {
-          "code": "hotel",
-          "translations": { "sr": "Hotel", "sr-Cyrl": "Хотел", "en": "Hotel"}
-        },
-        {
-          "code": "apartman",
-          "translations": { "sr": "Apartman", "sr-Cyrl": "Апартман", "en": "Apartment"}
-        },
-        {
-          "code": "hostel",
-          "translations": { "sr": "Hostel", "sr-Cyrl": "Хостел", "en": "Hostel"}
-        },
-        {
-          "code": "pansion",
-          "translations": { "sr": "Pansion", "sr-Cyrl": "Пансион", "en": "Inn"}
-        },
-        {
-          "code": "odmaraliste",
-          "translations": { "sr": "Odmaralište", "sr-Cyrl": "Одмаралиште", "en": "Resort"}
-        },
-        {
-          "code": "kamp",
-          "translations": { "sr": "Kamp", "sr-Cyrl": "Камп", "en": "Camp"}
-        },
-        {
-          "code": "vikendica",
-          "translations": { "sr": "Vikendica", "sr-Cyrl": "Викендица", "en": "Rural house"}
-        },
-        {
-          "code": "bnb",
-          "translations": { "sr": "B&B", "sr-Cyrl": "ББ", "en": "B&B"}
-        },
-        {
-          "code": "spa",
-          "translations": { "sr": "Spa/Wellness", "sr-Cyrl": "Спа", "en": "Spa/Wellness"}
-        },
-        {
-          "code": "eko_smestaj",
-          "translations": { "sr": "Eko-smeštaj", "sr-Cyrl": "Еко-смештај", "en": "Eko accomodation"}
-        }
-      ],
       "fields": [
         {
           "name": "naziv",
@@ -780,9 +640,51 @@
         },
 
         {
-          "name": "kategorija",
+          "name": "main_category",
           "type": "categories",
           "label": { "sr": "Kategorija smeštaja", "en": "Accommodation category", "sr-Cyrl": "Категорија смештаја" },
+          "coded_categories": [
+            {
+              "code": "hotel",
+              "translations": { "sr": "Hotel", "sr-Cyrl": "Хотел", "en": "Hotel"}
+            },
+            {
+              "code": "apartman",
+              "translations": { "sr": "Apartman", "sr-Cyrl": "Апартман", "en": "Apartment"}
+            },
+            {
+              "code": "hostel",
+              "translations": { "sr": "Hostel", "sr-Cyrl": "Хостел", "en": "Hostel"}
+            },
+            {
+              "code": "pansion",
+              "translations": { "sr": "Pansion", "sr-Cyrl": "Пансион", "en": "Inn"}
+            },
+            {
+              "code": "odmaraliste",
+              "translations": { "sr": "Odmaralište", "sr-Cyrl": "Одмаралиште", "en": "Resort"}
+            },
+            {
+              "code": "kamp",
+              "translations": { "sr": "Kamp", "sr-Cyrl": "Камп", "en": "Camp"}
+            },
+            {
+              "code": "vikendica",
+              "translations": { "sr": "Vikendica", "sr-Cyrl": "Викендица", "en": "Rural house"}
+            },
+            {
+              "code": "bnb",
+              "translations": { "sr": "B&B", "sr-Cyrl": "ББ", "en": "B&B"}
+            },
+            {
+              "code": "spa",
+              "translations": { "sr": "Spa/Wellness", "sr-Cyrl": "Спа", "en": "Spa/Wellness"}
+            },
+            {
+              "code": "eko_smestaj",
+              "translations": { "sr": "Eko-smeštaj", "sr-Cyrl": "Еко-смештај", "en": "Eko accomodation"}
+            }
+          ],
           "required": true
         },
 
@@ -988,70 +890,6 @@
       "en": "Activities",
       "sr-Cyrl": "Активности",
       "icon": "fas fa-person-hiking",
-      "categories": [
-        "Avantura",
-        "Priroda",
-        "Kultura",
-        "Gastro",
-        "Porodično",
-        "Voda",
-        "Planine",
-        "Sport",
-        "Relaks",
-        "Noćni život",
-        "Edukativno",
-        "Wellness"
-      ],
-      "coded_categories": [
-        {
-          "code": "avantura",
-          "translations": { "sr": "Avantura", "sr-Cyrl": "Авантура", "en": "Adventure"}
-        },
-        {
-          "code": "priroda",
-          "translations": { "sr": "Priroda", "sr-Cyrl": "Природа", "en": "Nature"}
-        },
-        {
-          "code": "kultura",
-          "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
-        },
-        {
-          "code": "gastro",
-          "translations": { "sr": "Gastro", "sr-Cyrl": "Гастро", "en": "Gastro"}
-        },
-        {
-          "code": "porodicno",
-          "translations": { "sr": "Porodično", "sr-Cyrl": "Породично", "en": "Family"}
-        },
-        {
-          "code": "voda",
-          "translations": { "sr": "Voda", "sr-Cyrl": "Вода", "en": "Water"}
-        },
-        {
-          "code": "planine",
-          "translations": { "sr": "Planine", "sr-Cyrl": "Планине", "en": "Mountains"}
-        },
-        {
-          "code": "sport",
-          "translations": { "sr": "Sport", "sr-Cyrl": "Спорт", "en": "Sport"}
-        },
-        {
-          "code": "relaks",
-          "translations": { "sr": "Relaks", "sr-Cyrl": "Релакс", "en": "Relax"}
-        },
-        {
-          "code": "nocni_zivot",
-          "translations": { "sr": "Noćni život", "sr-Cyrl": "Ноћни живот", "en": "Nightlife"}
-        },
-        {
-          "code": "edukativno",
-          "translations": { "sr": "Edukativno", "sr-Cyrl": "Едукативно", "en": "Educational"}
-        },
-        {
-          "code": "wellness",
-          "translations": { "sr": "Wellness", "sr-Cyrl": "Спа", "en": "Wellness"}
-        }
-      ],
       "fields": [
         {
           "name": "naziv",
@@ -1068,9 +906,59 @@
         },
 
         {
-          "name": "kategorija",
+          "name": "main_category",
           "type": "categories",
           "label": { "sr": "Kategorija aktivnosti", "en": "Activity category", "sr-Cyrl": "Категорија активности" },
+          "coded_options": [
+            {
+              "code": "avantura",
+              "translations": { "sr": "Avantura", "sr-Cyrl": "Авантура", "en": "Adventure"}
+            },
+            {
+              "code": "priroda",
+              "translations": { "sr": "Priroda", "sr-Cyrl": "Природа", "en": "Nature"}
+            },
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
+            },
+            {
+              "code": "gastro",
+              "translations": { "sr": "Gastro", "sr-Cyrl": "Гастро", "en": "Gastro"}
+            },
+            {
+              "code": "porodicno",
+              "translations": { "sr": "Porodično", "sr-Cyrl": "Породично", "en": "Family"}
+            },
+            {
+              "code": "voda",
+              "translations": { "sr": "Voda", "sr-Cyrl": "Вода", "en": "Water"}
+            },
+            {
+              "code": "planine",
+              "translations": { "sr": "Planine", "sr-Cyrl": "Планине", "en": "Mountains"}
+            },
+            {
+              "code": "sport",
+              "translations": { "sr": "Sport", "sr-Cyrl": "Спорт", "en": "Sport"}
+            },
+            {
+              "code": "relaks",
+              "translations": { "sr": "Relaks", "sr-Cyrl": "Релакс", "en": "Relax"}
+            },
+            {
+              "code": "nocni_zivot",
+              "translations": { "sr": "Noćni život", "sr-Cyrl": "Ноћни живот", "en": "Nightlife"}
+            },
+            {
+              "code": "edukativno",
+              "translations": { "sr": "Edukativno", "sr-Cyrl": "Едукативно", "en": "Educational"}
+            },
+            {
+              "code": "wellness",
+              "translations": { "sr": "Wellness", "sr-Cyrl": "Спа", "en": "Wellness"}
+            }
+          ],
           "required": true
         },
 
@@ -1324,70 +1212,6 @@
   "en": "Gastronomy",
   "sr-Cyrl": "Гастрономија",
   "icon": "fas fa-utensils",
-  "categories": [
-    "Restorani",
-    "Kafane",
-    "Bistro",
-    "Kafići",
-    "Vinarije",
-    "Pivare",
-    "Ulična hrana",
-    "Tržnice",
-    "Pekare",
-    "Slatkiši i deserti",
-    "Gastro događaji",
-    "Domaća radinost"
-  ],
-  "coded_categories": [
-    {
-      "code": "restorani",
-      "translations": { "sr": "Restorani", "sr-Cyrl": "Ресторани", "en": "Restaurants"}
-    },
-    {
-      "code": "kafane",
-      "translations": { "sr": "Kafane", "sr-Cyrl": "Кафане", "en": "Taverns"}
-    },
-    {
-      "code": "bistro",
-      "translations": { "sr": "Bistro", "sr-Cyrl": "Бистро", "en": "Bistros"}
-    },
-    {
-      "code": "kafici",
-      "translations": { "sr": "Kafići", "sr-Cyrl": "Кафићи", "en": "Coffee houses"}
-    },
-    {
-      "code": "vinarije",
-      "translations": { "sr": "Vinarije", "sr-Cyrl": "Винарије", "en": "Wineries"}
-    },
-    {
-      "code": "pivare",
-      "translations": { "sr": "Pivare", "sr-Cyrl": "Пиваре", "en": "Breweries"}
-    },
-    {
-      "code": "ulicna_hrana",
-      "translations": { "sr": "Ulična hrana", "sr-Cyrl": "Улична храна", "en": "Street food"}
-    },
-    {
-      "code": "trznice",
-      "translations": { "sr": "Tržnice", "sr-Cyrl": "Тржнице", "en": "Markets"}
-    },
-    {
-      "code": "pekare",
-      "translations": { "sr": "Pekare", "sr-Cyrl": "Пекаре", "en": "Bakeries"}
-    },
-    {
-      "code": "slatkisi",
-      "translations": { "sr": "Slatkiši i deserti život", "sr-Cyrl": "Слаткиши и десерти", "en": "Sweets"}
-    },
-    {
-      "code": "gastro",
-      "translations": { "sr": "Gastro događaji", "sr-Cyrl": "Гастро догађаји", "en": "Gastronomic events"}
-    },
-    {
-      "code": "domaca_radinost",
-      "translations": { "sr": "Domaća radinost", "sr-Cyrl": "Домаћа радиност", "en": "Home crafts"}
-    }
-  ],
   "fields": [
     {
       "name": "naziv",
@@ -1404,9 +1228,59 @@
     },
 
     {
-      "name": "kategorija",
+      "name": "main_category",
       "type": "categories",
       "label": { "sr": "Kategorija gastronomije", "en": "Gastronomy category", "sr-Cyrl": "Категорија гастрономије" },
+      "coded_options": [
+        {
+          "code": "restorani",
+          "translations": { "sr": "Restorani", "sr-Cyrl": "Ресторани", "en": "Restaurants"}
+        },
+        {
+          "code": "kafane",
+          "translations": { "sr": "Kafane", "sr-Cyrl": "Кафане", "en": "Taverns"}
+        },
+        {
+          "code": "bistro",
+          "translations": { "sr": "Bistro", "sr-Cyrl": "Бистро", "en": "Bistros"}
+        },
+        {
+          "code": "kafici",
+          "translations": { "sr": "Kafići", "sr-Cyrl": "Кафићи", "en": "Coffee houses"}
+        },
+        {
+          "code": "vinarije",
+          "translations": { "sr": "Vinarije", "sr-Cyrl": "Винарије", "en": "Wineries"}
+        },
+        {
+          "code": "pivare",
+          "translations": { "sr": "Pivare", "sr-Cyrl": "Пиваре", "en": "Breweries"}
+        },
+        {
+          "code": "ulicna_hrana",
+          "translations": { "sr": "Ulična hrana", "sr-Cyrl": "Улична храна", "en": "Street food"}
+        },
+        {
+          "code": "trznice",
+          "translations": { "sr": "Tržnice", "sr-Cyrl": "Тржнице", "en": "Markets"}
+        },
+        {
+          "code": "pekare",
+          "translations": { "sr": "Pekare", "sr-Cyrl": "Пекаре", "en": "Bakeries"}
+        },
+        {
+          "code": "slatkisi",
+          "translations": { "sr": "Slatkiši i deserti život", "sr-Cyrl": "Слаткиши и десерти", "en": "Sweets"}
+        },
+        {
+          "code": "gastro",
+          "translations": { "sr": "Gastro događaji", "sr-Cyrl": "Гастро догађаји", "en": "Gastronomic events"}
+        },
+        {
+          "code": "domaca_radinost",
+          "translations": { "sr": "Domaća radinost", "sr-Cyrl": "Домаћа радиност", "en": "Home crafts"}
+        }
+      ],
       "required": true
     },
 

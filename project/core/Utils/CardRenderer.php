@@ -1,5 +1,8 @@
 <?php
 namespace App\Utils;
+
+use App\Utils\LocaleManager;
+
 if (session_status() === PHP_SESSION_NONE) {
     // Session has not started
     session_start();
@@ -17,7 +20,7 @@ class CardRenderer
 
         // Search input with full width
         $html .= "<div class='flex w-full sm:w-auto flex-1 gap-2'>
-                <input type='text' name='search' value='{$safeSearchValue}' placeholder='{{PRETRAGA}}...' 
+                <input type='text' name='search' value='{$safeSearchValue}' placeholder='{{PRETRAGA}}...'
                     class='w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow shadow-sm'>
                 <button type='submit' class='bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition-all shadow-sm'>
                 {{PRIMENI}}
@@ -46,9 +49,47 @@ class CardRenderer
         return $html;
     }
 
+    public static function renderTopbarCT(array $categories, string $searchValue = '', ?string $selectedCategoryCode = null): string
+    {
+        $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
+        $locale = LocaleManager::get();
+
+        $html = "<form method='GET' action='' class='flex flex-col sm:flex-row items-center justify-between bg-white p-4 rounded-xl shadow-md mb-6 gap-4'>";
+
+        // Search input with full width
+        $html .= "<div class='flex w-full sm:w-auto flex-1 gap-2'>
+                <input type='text' name='search' value='{$safeSearchValue}' placeholder='{{PRETRAGA}}...'
+                    class='w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow shadow-sm'>
+                <button type='submit' class='bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition-all shadow-sm'>
+                {{PRIMENI}}
+                </button>
+              </div>";
+
+        // Category dropdown
+        $html .= "<div class='flex items-center w-full sm:w-auto'>
+                <select name='category' class='w-full sm:w-64 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow shadow-sm'>
+                    <option value=''>{{kategorije}}</option>";
+
+        foreach ($categories as $cat) {
+            $translations = $cat['translations'];
+            $code = $cat['option_value'];
+            $name = $translations[$locale] ?? $translations['sr'];
+            $selected = ($selectedCategoryCode == $cat['option_value']) ? 'selected' : '';
+            $html .= "<option value='{$code}' {$selected}>{$name}</option>";
+        }
+
+        $html .= "</select></div>";
+
+        $html .= "</form>";
+
+        $html = str_replace('{{PRIMENI}}', __('documents.apply'), $html);
+        $html = str_replace('{{kategorije}}', __('documents.all_categories'), $html);
+        $html = str_replace('{{PRETRAGA}}', __('dynamic.search'), $html);
+        return $html;
+    }
+
     public static function renderCard(array $item, array $fieldLabels, string $locale, bool $isEditable = false): string
     {
-
         $itemId = htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8');
 
         $fields = [];
@@ -97,8 +138,8 @@ class CardRenderer
                 $html .= "
         <div class='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-30'>
             <div class='mx-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center gap-3'>
-                <a href='/sadrzaj?id={$itemId}&tip=generic_element' 
-                    class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm' 
+                <a href='/sadrzaj?id={$itemId}&tip=generic_element'
+                    class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm'
                     title='Pogledaj'>
                     <i class='fas fa-eye'></i>
                 </a>
@@ -116,8 +157,8 @@ class CardRenderer
             $html .= "
     <div class='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-30'>
         <div class='mx-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center gap-3'>
-            <a href='/sadrzaj?id={$itemId}&tip=generic_element' 
-                class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm' 
+            <a href='/sadrzaj?id={$itemId}&tip=generic_element'
+                class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm'
                 title='Pogledaj'>
                 <i class='fas fa-eye'></i>
             </a>
@@ -138,6 +179,109 @@ class CardRenderer
             foreach ($fields as $f) {
                 $safeLabel = htmlspecialchars($f['label'], ENT_QUOTES, 'UTF-8');
                 $safeValue = nl2br(htmlspecialchars($f['value'], ENT_QUOTES, 'UTF-8'));
+                $html .= "<div class='bg-gray-50 rounded-md p-2 border border-gray-100'>
+                    <div class='text-xs text-gray-500 uppercase tracking-wide mb-1'>{$safeLabel}</div>
+                    <div class='leading-tight'>{$safeValue}</div>
+                  </div>";
+            }
+            $html .= "</div>";
+        }
+
+        $html .= "</div></div>";
+        return $html;
+    }
+
+    public static function renderCardNew(int $itemId, array $fields, string $locale, bool $isEditable = false): string
+    {
+        /*
+        var_dump($fields);
+        $fields = [];
+        // Dodavanje običnih text polja
+        foreach ($item as $fn => $translations) {
+            if (($fieldLabels[$fn]['type'] ?? '') === 'file')
+                continue;
+            $label = $fieldLabels[$fn]['label'][$locale] ?? $fieldLabels[$fn]['label']['en'] ?? $fn;
+            $value = (string) ($translations[$locale] ?? reset($translations) ?? '');
+            $value = mb_strlen($value) > 10 ? mb_substr($value, 0, 10) . '...' : $value;
+            $fields[] = ['name' => $fn, 'label' => $label, 'value' => $value];
+        }
+        // Dodavanje kategorije kao polja
+        if (!empty($item['category'])) {
+            $catLabel = 'Kategorija';
+            $catValue = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
+            if ($catValue) {
+                $fields[] = ['name' => 'category', 'label' => $catLabel, 'value' => $catValue];
+            }
+        }
+
+        // Slika
+        $imageUrl = null;
+        if (!empty($item['image'])) {
+            $imageUrl = htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8');
+        } else {
+            foreach ($fieldLabels as $fieldName => $fieldConfig) {
+                if (($fieldConfig['type'] ?? '') === 'file' && isset($item['fields'][$fieldName])) {
+                    $translations = $item['fields'][$fieldName];
+                    $value = $translations[$locale] ?? reset($translations);
+                    if ($value) {
+                        $imageUrl = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+                        break;
+                    }
+                }
+            }
+        }
+*/
+        $html = "<div class='group relative bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:-translate-y-1 hover:shadow-lg border border-gray-100 max-w-sm'>";
+
+        // Hover akcije za edit/view/delete
+        if (!empty($imageUrl)) {
+            $html .= "<div class='relative w-full h-40 overflow-hidden bg-gray-50'>
+                <img src='{$imageUrl}' class='w-full h-full object-cover'>";
+            if ($isEditable) {
+                $html .= "
+        <div class='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-30'>
+            <div class='mx-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center gap-3'>
+                <a href='/sadrzaj?id={$itemId}&tip=generic_element'
+                    class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm'
+                    title='Pogledaj'>
+                    <i class='fas fa-eye'></i>
+                </a>
+                <button class='edit-item flex items-center justify-center w-9 h-9 rounded-full bg-blue-500 text-white hover:scale-105 shadow-sm' data-id='{$itemId}' title='Uredi'>
+                    <i class='fas fa-edit'></i>
+                </button>
+                <button class='delete-item flex items-center justify-center w-9 h-9 rounded-full bg-red-600 text-white hover:scale-105 shadow-sm' data-id='{$itemId}' title='Obriši'>
+                    <i class='fas fa-trash'></i>
+                </button>
+            </div>
+        </div>";
+            }
+            $html .= "</div>";
+        } else if ($isEditable) {
+            $html .= "
+    <div class='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-30'>
+        <div class='mx-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center gap-3'>
+            <a href='/sadrzaj?id={$itemId}&tip=generic_element'
+                class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm'
+                title='Pogledaj'>
+                <i class='fas fa-eye'></i>
+            </a>
+            <button class='edit-item flex items-center justify-center w-9 h-9 rounded-full bg-blue-500 text-white hover:scale-105 shadow-sm' data-id='{$itemId}' title='Uredi'>
+                <i class='fas fa-edit'></i>
+            </button>
+            <button class='delete-item flex items-center justify-center w-9 h-9 rounded-full bg-red-600 text-white hover:scale-105 shadow-sm' data-id='{$itemId}' title='Obriši'>
+                <i class='fas fa-trash'></i>
+            </button>
+        </div>
+    </div>";
+        }
+
+        // Polja i kategorija
+        $html .= "<div class='p-3'>";
+        if (!empty($fields)) {
+            $html .= "<div class='grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700 mb-3'>";
+            foreach ($fields as $f) {
+                $safeLabel = htmlspecialchars($f['label'], ENT_QUOTES, 'UTF-8');
+                $safeValue = nl2br(htmlspecialchars($f['textValue'] ?? '', ENT_QUOTES, 'UTF-8'));
                 $html .= "<div class='bg-gray-50 rounded-md p-2 border border-gray-100'>
                     <div class='text-xs text-gray-500 uppercase tracking-wide mb-1'>{$safeLabel}</div>
                     <div class='leading-tight'>{$safeValue}</div>

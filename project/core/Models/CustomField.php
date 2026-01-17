@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Database;
+use App\Utils\LocaleManager;
 use PDO;
 
 class CustomField
@@ -22,13 +23,17 @@ class CustomField
     /**
      * Fetch all custom fields
      */
-    public static function fetchAllByContentTypeCode(string $code): array
+    public static function fetchAllByContentTypeCode(string $code, bool $decode = false): array
     {
         $pdo = self::pdo();
         try {
-            $stmt = $pdo->prepare("SELECT * FROM custom_field WHERE content_type_code = :code");
+            $stmt = $pdo->prepare("SELECT * FROM custom_field WHERE content_type_code = :code ORDER BY ordno");
             $stmt->execute([':code' => $code]);
             $customFields = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($decode && !empty($customFields)) {
+                $customFields = LocaleManager::decodeTranslations($customFields);
+            }
 
             return $customFields;
         } catch (\Throwable $e) {
@@ -46,7 +51,7 @@ class CustomField
     {
         try {
             $pdo = self::pdo();
-            $stmt = $pdo->prepare("SELECT * FROM custom_field WHERE `content_type_code` = :ctcode AND `code` = :code");
+            $stmt = $pdo->prepare("SELECT * FROM custom_field WHERE `content_type_code` = :ctcode AND `code` = :code ORDER BY type desc");
             $stmt->execute([
                 ':ctcode' => $ctCode,
                 ':code' => $code,
@@ -57,6 +62,19 @@ class CustomField
         } catch (\Throwable $_) {
             return null;
         }
+    }
+
+    /**
+     * Isolate main category custom field from all the others
+     */
+    public static function isolateMainCategory(array $customFields): ?array
+    {
+        $mainCategoryCF = array_filter($customFields, fn($item) => $item['code'] == 'main_category');
+        if (count($mainCategoryCF) == 1)  {
+            return reset($mainCategoryCF);
+        }
+
+        return [];
     }
 
     public function create(string $ctCode, array $field, int $ordno): void
@@ -154,6 +172,38 @@ class CustomField
             ':ctcode' => $ctCode,
             ':code' => $code,
         ]);
+    }
+
+    public static function decideColumnBasedOnCFtype(string $cfType): ?string
+    {
+        if (empty($cfType)) {
+            return null;
+        }
+
+        switch ($cfType) {
+            case 'text':
+            case 'textarea':
+            case 'url':
+            case 'email':
+            case 'time':
+                return 'content';
+                break;
+            case 'date':
+                return 'date';
+                break;
+            case 'options':
+            case 'categories':
+                return 'option';
+                break;
+            case 'boolean':
+                return 'yesno';
+                break;
+            case 'file':
+                return 'ordno';
+                break;
+            default:
+                throw new \Exception ("ColumnSelector: nepoznat Custom Field type!");
+        }
     }
 
     private function decideCFType(string $inputType): string
