@@ -62,32 +62,30 @@ class ModalController
             // If id provided, fetch item data and prefill fields values
             if ($id > 0) {
                 $cc = new Content();
-                $itemResp = $cc->fetchItem($id);
+                $itemResp = $cc->fetchItemNew($id, $locale);
 
                 if (!empty($itemResp['success']) && !empty($itemResp['item'])) {
                     $item = $itemResp['item'];
 
                     // Map text-like values back into config fields
                     foreach ($config['fields'] as &$f) {
-                        $name = $f['name'] ?? null;
-                        $val = '';
 
-                        if ($name && isset($item['fields'][$name])) {
-                            if (isset($item['fields'][$name][$locale]) && $item['fields'][$name][$locale] !== '') {
-                                $val = $item['fields'][$name][$locale];
-                            } else {
-                                $first = array_values($item['fields'][$name]);
-                                $val = $first[0] ?? '';
+                        // treba ubaciti 'code' za sve field-ove u data_definition
+                        $comparisonKey = array_key_exists('code', $f) ? 'code' : 'name';
+                        foreach ($item['fields'] as $cfv) {
+                            if ($cfv['code'] == $f[$comparisonKey]) {
+                                $f['value'] = $cfv['textValue'];
+                                if (array_key_exists('option_value', $cfv)) {
+                                    $f['option_value'] = $cfv['option_value'];
+                                }
+                                if (array_key_exists('timestamp', $cfv)) {
+                                    $f['timestamp'] = $cfv['timestamp'];
+                                }
                             }
                         }
-
-                        $f['value'] = $val;
-
-                        // 🟢 Automatically set value for category-type fields
-                        if (($f['type'] ?? '') === 'categories' && isset($item['category_id'])) {
-                            $f['value'] = (string) $item['category_id'];
-                        }
                     }
+
+                    // var_dump($config); die;
 
                     // Also pass id so the modal form can include it
                     $config['item_id'] = $id;

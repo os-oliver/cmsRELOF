@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Database;
+use App\Utils\LocaleManager;
 use PDO;
 
 class ContentType
@@ -78,18 +79,75 @@ class ContentType
     /**
      * Fetch single content type by code
      */
-    public static function fetchByCode(string $code): ?array
+    public static function fetchByCode(string $code, bool $decode = false): ?array
     {
         try {
             $pdo = self::pdo();
-            $stmt = $pdo->prepare("SELECT * FROM content_type WHERE code = :code");
+            $stmt = $pdo->prepare("SELECT * FROM content_type c WHERE code = :code");
             $stmt->execute([':code' => $code]);
             $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($decode && !empty($r)) {
+                $r = LocaleManager::decodeTranslations($r);
+            }
 
             return $r ?? null;
         } catch (\Throwable $_) {
             return null;
         }
+    }
+
+    public static function fetchMainCategoriesByContentTypeCode(string $contentTypeCode, bool $decode = false): array
+    {
+        $pdo = self::pdo();
+        try {
+            $stmt = $pdo->prepare("SELECT cfo.* FROM custom_field_option cfo INNER JOIN custom_field cf ON cf.id = cfo.custom_field_id WHERE cf.content_type_code = :code AND cf.code = :mainCat ORDER BY cfo.ordno ASC");
+            $stmt->execute([
+                ':mainCat' => 'main_category',
+                ':code' => $contentTypeCode
+            ]);
+            $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($decode && !empty($categories)) {
+                $categories = LocaleManager::decodeTranslations($categories);
+            }
+            return $categories;
+        } catch (\Throwable $e) {
+            return [];
+        }
+
+        return [];
+    }
+
+    /**
+     * Fetch single content type by code
+     */
+    public static function fetchCategoryByContentTypeCodeAndCode(string $contentTypeCode, string $code, bool $decode = false): array
+    {
+        $pdo = self::pdo();
+        try {
+            $stmt = $pdo->prepare("SELECT cfo.* FROM custom_field_option cfo INNER JOIN custom_field cf ON cf.id = cfo.custom_field_id WHERE cf.content_type_code = :ctcode AND cfo.option_value = :option");
+            $stmt->execute([
+                ':ctcode' => $contentTypeCode,
+                ':option' => $code
+            ]);
+            $category = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($decode && !empty($category)) {
+                $category = LocaleManager::decodeTranslations([$category]);
+                $category = $category[0];
+            }
+
+            if (empty($category)) {
+                $category = null;
+            }
+
+            return $category;
+        } catch (\Throwable $e) {
+            return [];
+        }
+
+        return [];
     }
 
     public function create(array $contentType): void

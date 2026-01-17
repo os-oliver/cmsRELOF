@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Database;
 use PDO;
 use App\Controllers\LanguageMapperController;
+use App\Utils\LocaleManager;
 
 class CustomFieldOption
 {
@@ -25,13 +26,40 @@ class CustomFieldOption
     /**
      * Fetch all custom field options
      */
-    public static function fetchAllByCustomFieldId(int $id): array
+    public static function fetchAllByCustomFieldId(int $id, bool $decode = false): array
     {
         $pdo = self::pdo();
         try {
-            $stmt = $pdo->prepare("SELECT * FROM custom_field_option WHERE custom_field_id = :id");
+            $stmt = $pdo->prepare("SELECT * FROM custom_field_option WHERE custom_field_id = :id ORDER BY ordno ASC");
             $stmt->execute([':id' => $id]);
             $options = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($decode && !empty($options)) {
+                $options = LocaleManager::decodeTranslations($options);
+            }
+
+            return $options;
+        } catch (\Throwable $e) {
+            return [];
+        }
+
+        return [];
+    }
+
+    /**
+     * Fetch all content type code
+     */
+    public static function fetchAllByContentTypeCode(string $code, bool $decode = false): array
+    {
+        $pdo = self::pdo();
+        try {
+            $stmt = $pdo->prepare("SELECT cfo.* FROM custom_field_option cfo INNER JOIN custom_field cf ON cf.id = cfo.custom_field_id WHERE cf.content_type_code = :code ORDER BY ordno ASC");
+            $stmt->execute([':code' => $code]);
+            $options = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($decode && !empty($options)) {
+                $options = LocaleManager::decodeTranslations($options);
+            }
 
             return $options;
         } catch (\Throwable $e) {
@@ -45,7 +73,7 @@ class CustomFieldOption
     /**
      * Fetch single custom field option by custom field id and option value (code)
      */
-    public static function fetchByOptionValue(int $cfId, string $optionValue): ?array
+    public static function fetchByOptionValue(int $cfId, string $optionValue, bool $decode = false): ?array
     {
         try {
             $pdo = self::pdo();
@@ -55,6 +83,10 @@ class CustomFieldOption
                 ':optionValue' => $optionValue,
             ]);
             $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($decode && !empty($r)) {
+                $r = LocaleManager::decodeTranslations($r);
+            }
 
             return $r ?? null;
         } catch (\Throwable $_) {
@@ -120,5 +152,4 @@ class CustomFieldOption
             ':optionValue' => $optionValue,
         ]);
     }
-
 }

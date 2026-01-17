@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Database;
 use PDO;
 use App\Controllers\LanguageMapperController;
+use App\Utils\LocaleManager;
 
 class ContentTypeCategory
 {
@@ -34,7 +35,7 @@ class ContentTypeCategory
             $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($decode && !empty($categories)) {
-                $categories = self::decodeTranslations($categories);
+                $categories = LocaleManager::decodeTranslations($categories);
             }
             return $categories;
         } catch (\Throwable $e) {
@@ -60,7 +61,31 @@ class ContentTypeCategory
             $r = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($decode && !empty($r)) {
-                $r = self::decodeTranslations($r);
+                $r = LocaleManager::decodeTranslations($r);
+            }
+
+            return $r ?? null;
+        } catch (\Throwable $_) {
+            return null;
+        }
+    }
+
+    /**
+     * Fetch single content type category by content type code and category code
+     */
+    public static function fetchByContentTypeCodeAndCode(string $contentTypeCode, string $code, bool $decode = false): ?array
+    {
+        try {
+            $pdo = self::pdo();
+            $stmt = $pdo->prepare("SELECT * FROM content_type_category WHERE `content_type_code` = :ctcode AND `code` = :code");
+            $stmt->execute([
+                ':ctcode' => $contentTypeCode,
+                ':code' => $code,
+            ]);
+            $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($decode && !empty($r)) {
+                $r = LocaleManager::decodeTranslations($r);
             }
 
             return $r ?? null;
@@ -127,19 +152,4 @@ class ContentTypeCategory
             ':code' => $code,
         ]);
     }
-
-    private static function decodeTranslations(array $categories): array
-    {
-        foreach ($categories as $key => $category) {
-            try {
-                $array = json_decode($category['translations'], true);
-                $categories[$key]['translations'] = $array;
-            } catch (\Throwable $e) {
-
-            }
-        }
-
-        return $categories;
-    }
-
 }
