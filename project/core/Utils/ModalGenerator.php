@@ -2,6 +2,7 @@
 namespace App\Utils;
 
 use App\Models\GenericCategory;
+use App\Utils\LocaleManager;
 
 class ModalGenerator
 {
@@ -466,7 +467,7 @@ class ModalGenerator
         if (($field['property'] ?? '') === 'auto') {
             error_log("evo me:" . $type);
             if ($type === 'date' && empty($value)) {
-                $value = date('d/m/Y'); // today's date in human format
+                $value = date(LocaleManager::DATE_FORMAT_STRING); // today's date in human format
             }
         }
 

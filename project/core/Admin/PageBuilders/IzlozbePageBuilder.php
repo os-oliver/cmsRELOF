@@ -176,7 +176,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
         try {
             $dt = new DateTime($rawDatum);
             // format: 1. Jan 2025 -> 01/01/2025 (local-friendly)
-            $formattedDatum = $dt->format('d/m/Y');
+            $formattedDatum = $dt->format(LocalManager::DATE_FORMAT_STRING);
         } catch (Exception $e) {
             // fallback to raw string sanitized
             $formattedDatum = htmlspecialchars($rawDatum, ENT_QUOTES, 'UTF-8');
@@ -315,8 +315,8 @@ $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
+    ? (is_numeric($_GET['category'])
+        ? (int) $_GET['category']
         : trim((string) $_GET['category'])
       )
     : null;
