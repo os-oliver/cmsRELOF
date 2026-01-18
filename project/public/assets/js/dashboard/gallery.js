@@ -71,12 +71,12 @@ const injectStyles = () => {
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-    
+
     @keyframes checkmark {
       0% { stroke-dashoffset: 48; }
       100% { stroke-dashoffset: 0; }
     }
-    
+
     @keyframes circleGrow {
       0% { stroke-dashoffset: 166; }
       100% { stroke-dashoffset: 0; }
@@ -98,7 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
     dropzone = $('#imageUploadLabel'),
     imagePreview = $("#imagePreview"),
     uploadPlaceholder = $("#uploadPlaceholder");
-  const MAX_SIZE = 10 * 1024 * 1024;
+  const maxBytesAttr = Number(form?.dataset?.maxBytes);
+  const MAX_SIZE = Number.isFinite(maxBytesAttr) && maxBytesAttr > 0 ? maxBytesAttr : 10 * 1024 * 1024;
+  const MAX_SIZE_MB = MAX_SIZE / 1024 / 1024;
 
   const openModal = (m) => {
     m.classList.remove("invisible", "hidden");
@@ -120,8 +122,12 @@ document.addEventListener("DOMContentLoaded", () => {
   imageInput.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (!file) return;
+
+    const sizeMB = file.size / 1024 / 1024;
     if (file.size > MAX_SIZE) {
-      alert("Maksimalna veličina fajla je 10MB.");
+      alert(
+        `Slika je prevelika (${sizeMB.toFixed(2)} MB). Dozvoljeno je do ${MAX_SIZE_MB} MB.`
+      );
       imageInput.value = "";
       resetPreview();
       return;
@@ -187,7 +193,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const res = await fetch(endpoint, options);
-      if (!res.ok) throw new Error(res.statusText);
+      let payload = null;
+      try {
+        payload = await res.json();
+      } catch (parseErr) {
+        console.warn("Nije moguće parsirati odgovor:", parseErr);
+      }
+
+      if (!res.ok) {
+        const serverMessage =
+          payload?.error ||
+          payload?.message ||
+          `Došlo je do greške (status ${res.status}).`;
+        throw new Error(serverMessage);
+      }
 
       showSuccessCheck(loaderOverlay);
 
@@ -198,9 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 300);
       closeModal(galleryModal);
 
-    } catch {
+    } catch (error) {
       loaderOverlay.remove();
-      alert("Došlo je do greške. Pokušajte ponovo.");
+      alert(error?.message || "Došlo je do greške. Pokušajte ponovo.");
 
       if (submitBtn) {
         submitBtn.disabled = false;
