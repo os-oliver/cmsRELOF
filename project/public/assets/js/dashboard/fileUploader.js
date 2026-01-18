@@ -25,9 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sizeInput.value = sizeMB.toFixed(2);
     if (file.size > maxSize) {
       alert(
-        `Fajl je prevelik (${sizeMB.toFixed(
-          2
-        )} MB). Maksimalna veličina je ${maxSizeMB} MB.`
+        `Fajl je prevelik (${sizeMB.toFixed(2)} MB). Maksimalna veličina je ${maxSizeMB} MB.`
       );
       fileInput.value = "";
       nameInput.value = "";
