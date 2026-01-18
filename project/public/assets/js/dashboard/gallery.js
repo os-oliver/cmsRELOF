@@ -71,12 +71,12 @@ const injectStyles = () => {
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-    
+
     @keyframes checkmark {
       0% { stroke-dashoffset: 48; }
       100% { stroke-dashoffset: 0; }
     }
-    
+
     @keyframes circleGrow {
       0% { stroke-dashoffset: 166; }
       100% { stroke-dashoffset: 0; }
@@ -126,9 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sizeMB = file.size / 1024 / 1024;
     if (file.size > MAX_SIZE) {
       alert(
-        `Slika je prevelika (${sizeMB.toFixed(
-          2
-        )} MB). Dozvoljeno je do ${MAX_SIZE_MB} MB.`
+        `Slika je prevelika (${sizeMB.toFixed(2)} MB). Dozvoljeno je do ${MAX_SIZE_MB} MB.`
       );
       imageInput.value = "";
       resetPreview();

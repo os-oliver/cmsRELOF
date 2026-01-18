@@ -73,7 +73,7 @@ class DocumentController
                 $sizeMB = number_format($fileSize / (1024 * 1024), 2);
                 http_response_code(413);
                 echo json_encode([
-                    'error' => "Fajl je prevelik ({$sizeMB} MB). Maksimalna dozvljena veličina: {$maxSizeMB} MB"
+                    'error' => "Fajl je prevelik ({$sizeMB} MB). Maksimalna dozvoljena veličina: {$maxSizeMB} MB"
                 ]);
                 return;
             }
