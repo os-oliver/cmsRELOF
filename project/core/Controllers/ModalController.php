@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\Content;
 use App\Utils\ModalGenerator;
 use App\Database;
+use App\Utils\LocaleManager;
 use PDO;
 
 class ModalController
@@ -139,14 +140,14 @@ class ModalController
         foreach ($formats as $fmt) {
             $dt = \DateTime::createFromFormat($fmt, $value);
             if ($dt instanceof \DateTime) {
-                return $dt->format('d/m/Y');
+                return $dt->format(LocaleManager::DATE_FORMAT_STRING);
             }
         }
 
         // Generic strtotime fallback
         $ts = strtotime($value);
         if ($ts !== false) {
-            return date('d/m/Y', $ts);
+            return date(LocaleManager::DATE_FORMAT_STRING, $ts);
         }
 
         // Fallback to raw value if nothing matched
