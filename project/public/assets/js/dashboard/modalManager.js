@@ -270,6 +270,7 @@ export default class ModalManager {
       const fd = new FormData(form);
       const s = this.slug || window.SLUG || document.body.dataset.slug || "";
       if (s && !fd.has("type")) fd.append("type", s);
+      this._normalizeDateFields(fd, form);
 
       let res, json;
       try {
@@ -353,6 +354,28 @@ export default class ModalManager {
       svg.appendChild(check);
       spinner.appendChild(svg);
     }
+  }
+
+  _normalizeDateFields(fd, form) {
+    const inputs = form.querySelectorAll("[data-date-input]");
+    inputs.forEach((input) => {
+      const raw = (input.value || "").trim();
+      if (!raw) return;
+      const iso = this._toIsoDate(raw);
+      if (iso) {
+        fd.set(input.name, iso);
+      }
+    });
+  }
+
+  _toIsoDate(raw) {
+    const match = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+    if (!match) return null;
+    const [, dd, mm, yyyy] = match;
+    const iso = `${yyyy}-${mm}-${dd}`;
+    const parsed = Date.parse(iso);
+    if (Number.isNaN(parsed)) return null;
+    return iso;
   }
 
   _injectLoaderStyles() {
