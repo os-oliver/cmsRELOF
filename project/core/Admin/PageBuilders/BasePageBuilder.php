@@ -77,8 +77,8 @@ abstract class BasePageBuilder
 <?php
 session_start();
 use App\Models\PageLoader;
-use \App\Utils\LocaleManager;
-        use App\Models\AboutUs;
+use App\Utils\LocaleManager;
+use App\Models\AboutUs;
 
 \$dataAboutUS = new AboutUs();
 \$locale = LocaleManager::get();
@@ -106,7 +106,7 @@ $additionalPhp
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="/exportedPages/commonStyle.css" rel="stylesheet" />
-    
+
     <script>
     </script>
 HTML;
@@ -123,6 +123,14 @@ HTML;
 
 
         $content .= "</body>\n</html>\n";
+        return $content;
+    }
+
+    protected function getPerPageDropdown(): string
+    {
+        $content = "<?php\n";
+        $content .= "require_once __DIR__ . '/../../../core/Utils/PerPageDropdown.php';\n";
+        $content .= "?>\n\n";
         return $content;
     }
 
