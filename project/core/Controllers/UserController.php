@@ -63,8 +63,6 @@ class UserController
      */
     public function delete(int $id): void
     {
-
-
         $model = new User();
         $result = $model->delete($id);
 
