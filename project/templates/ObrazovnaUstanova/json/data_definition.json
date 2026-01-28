@@ -127,6 +127,54 @@
           "required": true
         }
       ]
+    },
+    "Publikacije": {
+      "sr": "Publikacije",
+      "en": "Publications",
+      "sr-Cyrl": "Публикације",
+      "icon": "fas fa-book",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
+          },
+          "required": true
+        },
+        {
+          "name": "tekst",
+          "type": "textarea",
+          "label": {
+            "sr": "Tekst",
+            "en": "Article text",
+            "sr-Cyrl": "Текст"
+          }
+        },
+        {
+          "name": "file",
+          "type": "file",
+          "label": {
+            "sr": "Prilozi",
+            "en": "Attachments",
+            "sr-Cyrl": "Прилози"
+          },
+          "required": true
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum objavljivanja",
+            "en": "Publishing date",
+            "sr-Cyrl": "Датум објављивања"
+          },
+          "required": true,
+          "property": "auto"
+        }
+      ]
     }
   }
 ]

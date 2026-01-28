@@ -16,6 +16,7 @@ use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\SportoviPageBuilder;
 use App\Admin\PageBuilders\SavetovalistePageBuilder;
+use App\Admin\PageBuilders\SportsObjectsPageBuilder;
 use App\Admin\PageBuilders\TestBuilder;
 use App\Admin\PageBuilders\UvodPageBuilder;
 use App\Admin\PageBuilders\VestiPageBuilder;
@@ -49,6 +50,7 @@ use App\Admin\PageBuilders\TimoviPageBuilder;
 use App\Admin\PageBuilders\UpisPageBuilder;
 use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
+use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
 
 use DOMDocument;
@@ -731,6 +733,8 @@ class PageExporter
                 return new ZnacajaStranica('ZnacajaStranica', $this->data);
             case 'objekat':
                 return new ObjekatPageBuilder('Objekat', $this->data);
+            case 'objekti':
+                return new SportsObjectsPageBuilder('Objekti');
             case 'fondovi':
                 return new DynamicPageBuilder('fondovi');
             case 'sportovi':
@@ -753,6 +757,14 @@ class PageExporter
                 return new PosebneUslugePageBuilder('PosebneUsluge', $this->data);
             case 'organi-upravljanja':
                 return new OrganizacijaPageBuilder('OrganiUpravljanja');
+            case 'publikacije':
+                return new PublikacijePageBuilder('Publikacije');
+            case 'koncerti':
+                return new DynamicPageBuilder('Koncerti');
+            case 'filmovi':
+                return new DynamicPageBuilder('Filmovi');
+            case 'donacije-i-podrska':
+                return new DynamicPageBuilder('Donacije I Podrska');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -794,6 +806,8 @@ class PageExporter
             return 'cilj';
         } elseif (strpos($name, 'programi-obuke') !== false || strpos($name, 'programi obuke') !== false) {
             return 'programi-obuke';
+        } elseif (strpos($name, 'objekti') !== false) {
+            return 'objekti';
         } elseif (strpos($name, 'posebne') !== false) {
             return 'posebne';
         } elseif (strpos($name, 'usluge') !== false) {
@@ -823,7 +837,7 @@ class PageExporter
         } elseif (strpos($name, 'organizaciona-struktura') !== false) {
             return 'organizaciona-struktura';
         } elseif (strpos($name, 'rukovodstvo') !== false) {
-            return 'rukovodstvo';
+            return 'organi-upravljanja';
         } elseif (strpos($name, 'misija-i-vizija') !== false) {
             return 'misija-i-vizija';
         } elseif (strpos($name, 'uvod') !== false) {
@@ -864,6 +878,12 @@ class PageExporter
             return 'zaposleni';
         } elseif (strpos($name, 'organi-upravljanja') !== false) {
             return 'organi-upravljanja';
+        } elseif (strpos($name, 'publikacije') !== false) {
+            return 'publikacije';
+        }elseif (strpos($name, 'koncerti') !== false) {
+            return 'koncerti';
+        }elseif (strpos($name, 'filmovi') !== false) {
+            return 'filmovi';
         }
 
         return 'basic';

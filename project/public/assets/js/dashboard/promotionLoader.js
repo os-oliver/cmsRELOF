@@ -165,6 +165,17 @@ function initializeCanvasSliders(editor) {
       if (!win.nextSlide) win.nextSlide = next;
       if (!win.goToSlide) win.goToSlide = showIndex;
 
+      // Also expose instance methods on the slider element itself so callers
+      // from the parent document can target the specific slider that was
+      // interacted with (avoids global functions clobbered by multiple sliders).
+      try {
+        slider._gjsNext = next;
+        slider._gjsPrev = prev;
+        slider._gjsGoTo = showIndex;
+      } catch (err) {
+        /* ignore */
+      }
+
       // Initial layout
       apply();
       startAuto();
@@ -268,20 +279,97 @@ function setupLinkLogging(editor) {
           const newHref = hrefInput.value || "";
           const newText = linkTextInput.value || "";
 
+          // Consider links containing 'www' or '.com' as external
+          const isExternal = /www|\.com/i.test(newHref);
+
           // Update component if available
           if (comp && typeof comp.addAttributes === "function") {
             try {
-              comp.addAttributes({ href: newHref });
-              comp.components(newText);
+              const attrs = { href: newHref };
+              if (isExternal) attrs.target = "_blank";
+              comp.addAttributes(attrs);
+              try {
+                // Try to update component content without removing icon elements.
+                // Prefer updating the component's DOM text nodes directly.
+                let elFromComp = null;
+                try {
+                  elFromComp =
+                    typeof comp.getEl === "function" ? comp.getEl() : comp.el;
+                } catch (err) {
+                  elFromComp = null;
+                }
+
+                if (elFromComp && elFromComp.nodeType === 1) {
+                  const newTxt = newText || "";
+                  let foundTextNode = false;
+                  for (let k = 0; k < elFromComp.childNodes.length; k++) {
+                    const node = elFromComp.childNodes[k];
+                    if (node.nodeType === Node.TEXT_NODE) {
+                      node.textContent = newTxt;
+                      foundTextNode = true;
+                      break;
+                    }
+                  }
+                  if (!foundTextNode) {
+                    if (elFromComp.children.length) {
+                      elFromComp.appendChild(
+                        document.createTextNode((newTxt ? " " : "") + newTxt)
+                      );
+                    } else {
+                      elFromComp.textContent = newTxt;
+                    }
+                  }
+                } else {
+                  // Fallback: older/unknown component shape - use components() as last resort
+                  try {
+                    comp.components(newText);
+                  } catch (e) {
+                    console.warn("comp.components fallback failed:", e);
+                  }
+                }
+              } catch (e) {
+                console.warn("comp update failed:", e);
+              }
             } catch (e) {
               console.warn("Failed to update component:", e);
             }
           }
 
-          // Update DOM element
+          // Update DOM element but preserve any icon elements (<i>)
           try {
             anchorEl.setAttribute("href", newHref);
-            anchorEl.textContent = newText;
+            if (isExternal) {
+              anchorEl.setAttribute("target", "_blank");
+              anchorEl.setAttribute("rel", "noopener noreferrer");
+            } else {
+              anchorEl.removeAttribute("target");
+              anchorEl.removeAttribute("rel");
+            }
+
+            // Replace only text nodes to avoid removing icons
+            const text = newText || "";
+            let textNodeFound = false;
+            for (let i = 0; i < anchorEl.childNodes.length; i++) {
+              const node = anchorEl.childNodes[i];
+              if (node.nodeType === Node.TEXT_NODE) {
+                node.textContent = text;
+                textNodeFound = true;
+                break;
+              }
+            }
+
+            if (!textNodeFound) {
+              // If there was no existing text node, append one.
+              // If there are element children (e.g. icons), append a space then the text.
+              if (anchorEl.children.length) {
+                anchorEl.appendChild(
+                  document.createTextNode((text ? " " : "") + text)
+                );
+              } else {
+                // No children at all - safe to set textContent
+                anchorEl.textContent = text;
+              }
+            }
 
             // Show success notification
             const notification = document.createElement("div");
@@ -318,11 +406,26 @@ function setupLinkLogging(editor) {
         console.warn("openNavEditor error", err);
       }
     };
+    let current = 0;
 
     doc.addEventListener(
       "click",
       (e) => {
+        console.log("current:", current);
         try {
+          const slides = doc?.querySelectorAll(".slider-item") || [];
+          const indicators = doc?.querySelectorAll(".slider-indicator") || [];
+          function showSlide(idx) {
+            current = idx;
+
+            slides.forEach((slide, i) => {
+              slide.style.display = i === current ? "block" : "none";
+            });
+
+            indicators.forEach((ind, i) => {
+              ind.classList.toggle("active", i === current);
+            });
+          }
           const wrapper = editor.DomComponents.getWrapper();
           let el = e.target;
           if (!el) return;
@@ -333,14 +436,127 @@ function setupLinkLogging(editor) {
             ".slider-control, .slider-indicator, .nextButton, .slider-next"
           );
 
+          const prev = doc.getElementById("prevButton");
+          const next = doc.getElementById("nextButton");
+          console.log("current:", current);
+
+          if (el === prev) {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+            console.log("prevSlide");
+            return;
+          }
+
+          if (el === next) {
+            console.log("current:", current);
+
+            current = (current + 1) % slides.length;
+            console.log("current:", current);
+
+            showSlide(current);
+            console.log(current);
+            console.log("nextSlide");
+            return;
+          }
           // Slider item or image clicked
           const sliderItem = el.closest(".slider-item");
-          if (sliderItem) {
+          console.log("evo me", el);
+          window.goToSlide?.(1);
+          const frame = editor.Canvas.getFrameEl();
+          // Prefer the frame's window (more reliable) and fall back to
+          // editor.Canvas.getWindow() only if available; finally fall back
+          // to the current window. Call nextSlide safely.
+          const win =
+            (frame &&
+              (frame.contentWindow ||
+                (frame.contentDocument &&
+                  frame.contentDocument.defaultView))) ||
+            (editor?.Canvas && typeof editor.Canvas.getWindow === "function"
+              ? editor.Canvas.getWindow()
+              : null) ||
+            window;
+
+          // Prefer calling instance-specific methods on the slider element
+          // (if present) so we advance the correct slider. Fall back to
+          // canvas-global nextSlide/goToSlide when no instance method exists.
+          const sliderEl =
+            el.closest(".slider, #slider, .carousel") ||
+            (sliderControl && sliderControl.closest
+              ? sliderControl.closest(".slider, #slider, .carousel")
+              : null) ||
+            (sliderItem && sliderItem.closest
+              ? sliderItem.closest(".slider, #slider, .carousel")
+              : null);
+
+          if (sliderEl && typeof sliderEl._gjsNext === "function") {
+            try {
+              sliderEl._gjsNext();
+            } catch (err) {
+              console.warn("sliderEl._gjsNext failed:", err);
+            }
+          } else if (sliderEl && typeof sliderEl._gjsGoTo === "function") {
+            try {
+              sliderEl._gjsGoTo(1);
+            } catch (err) {
+              console.warn("sliderEl._gjsGoTo failed:", err);
+            }
+          } else if (typeof win?.nextSlide === "function") {
+            try {
+              win.nextSlide();
+            } catch (err) {
+              console.warn("nextSlide invocation failed:", err);
+            }
+          }
+
+          // Fallback: if the above didn't visibly change the slider, try
+          // dispatching a native click on the slider's next control inside
+          // the iframe — this triggers any handlers attached directly to
+          // the DOM by component scripts.
+          try {
+            console.log("EVO ME");
+
+            if (sliderEl) {
+              const nextControl = sliderEl.querySelector(
+                ".slider-next, .nextButton, #nextButton, .slider-control.right"
+              );
+              console.log("EVO ME");
+
+              if (nextControl && typeof nextControl.click === "function") {
+                console.log("EVO ME");
+                // Use a small timeout to allow previous invocation to settle
+                setTimeout(() => {
+                  try {
+                    nextControl.click();
+                    console.log(
+                      "Dispatched native click to slider next control"
+                    );
+                  } catch (err) {
+                    console.warn(
+                      "Failed to dispatch native click on next control:",
+                      err
+                    );
+                  }
+                }, 10);
+              }
+            }
+          } catch (err) {
+            console.warn("Fallback next control click failed:", err);
+          }
+
+          console.log(
+            "editor.Canvas.getWindow",
+            typeof editor?.Canvas?.getWindow === "function"
+              ? "function"
+              : editor?.Canvas?.getWindow
+          );
+          console.log("canvas window nextSlide", typeof win?.nextSlide);
+
+          if (sliderItem && !el.matches("a")) {
             // Ignore clicks on typical text/content
             if (
               el.matches &&
               el.matches(
-                "h1, h2, h3, h4, h5, h6, p, span, button, div.hero-content > *, a, i"
+                "h1, h2, h3, h4, h5, h6, p, span, button, div.hero-content > *, i"
               )
             )
               return;
@@ -717,8 +933,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                         .getWrapper()
                         .find(`[attributes.data-src="${escaped}"]`)[0];
                     if (cmp) {
+                      console.log("Selecting image component in slider:", cmp);
                       window.editor.select(cmp);
-                      window.editor.runCommand("open-assets", { target: cmp });
+                      window.editor.runCommand("open-assets", {
+                        target: cmp,
+                      });
                     }
                   }
                 }

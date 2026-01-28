@@ -88,18 +88,16 @@ class Content
 
         $where = "ge.type = :type";
         $params = [':type' => $type];
-        error_log("caoo");
+
         error_log(json_encode($categoryId));
         // ✅ Handle both int and string category
         if ($categoryId !== null) {
-            error_log("zdravo");
+
             if (is_numeric($categoryId)) {
-                error_log("usao");
                 // if it's an integer, use directly
                 $where .= " AND ge.category_id = :category_id";
                 $params[':category_id'] = (int) $categoryId;
             } else {
-                error_log("nisam");
                 // if it's a string, resolve it to numeric id first
                 $resolvedId = $this->fetchCategoryIdByName((string) $categoryId);
                 error_log($resolvedId);
@@ -163,10 +161,10 @@ class Content
         }
 
         $sql = "
-        SELECT generic_category.id 
+        SELECT generic_category.id
         FROM generic_category
-        JOIN text 
-            ON text.source_id = generic_category.id 
+        JOIN text
+            ON text.source_id = generic_category.id
             AND text.source_table = 'generic_category'
             AND text.lang = 'sr'
         WHERE text.content = :categoryName
@@ -259,6 +257,10 @@ class Content
                 continue;
             }
 
+            if ($fieldType === 'date') {
+                $post[$fieldName] = $this->normalizeDateToIso($post[$fieldName] ?? '');
+            }
+
             if ($fieldType === 'categories') {
                 $this->processCategoryField($contentID, $post[$fieldName] ?? null);
                 continue;
@@ -292,6 +294,35 @@ class Content
         } else {
             TextHelper::insertTextEntries($this->pdo, $contentID, $fieldName, $variants, 'generic_element');
         }
+    }
+
+    private function normalizeDateToIso(?string $value): string
+    {
+        $value = trim((string) $value);
+        if ($value === '') {
+            return '';
+        }
+
+        // Accept already-ISO values
+        if (preg_match('/^\d{4}-\d{2}-\d{2}/', $value)) {
+            return substr($value, 0, 10);
+        }
+
+        // Convert dd/mm/yyyy to iso
+        if (preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $value)) {
+            $dt = \DateTime::createFromFormat('d/m/Y', $value);
+            if ($dt instanceof \DateTime) {
+                return $dt->format('Y-m-d');
+            }
+        }
+
+        // Fallback: try strtotime and format if valid
+        $ts = strtotime($value);
+        if ($ts !== false) {
+            return date('Y-m-d', $ts);
+        }
+
+        return $value;
     }
 
     private function processCategoryField(int $contentID, $categoryValue): void
@@ -520,9 +551,9 @@ class Content
     {
         $in = implode(',', array_fill(0, count($ids), '?'));
         $sql = "
-            SELECT 
-                ge.id AS element_id, 
-                gc.id AS category_id, 
+            SELECT
+                ge.id AS element_id,
+                gc.id AS category_id,
                 gc.type AS category_type,
                 COALESCE(txt.content, txt_fallback.content) AS category_content
             FROM generic_element ge
@@ -674,8 +705,8 @@ class Content
 
     private function fetchItemFields(int $id, $lang = null): array
     {
-        $sql = "SELECT field_name, lang, content 
-            FROM text 
+        $sql = "SELECT field_name, lang, content
+            FROM text
             WHERE source_table = 'generic_element' AND source_id = ?";
 
         // If a specific language is provided, add it to the WHERE clause
