@@ -362,7 +362,7 @@
                         class="flex items-center py-3 px-4 text-slate hover:text-red-600 hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-home mr-3 text-red-600"></i>Početna
                     </a>
-                    
+
                     <!-- O nama dropdown -->
                     <div class="mobile-dropdown">
                         <button
@@ -1270,7 +1270,7 @@
             </div>
 
             <div class="border-t border-border_dark pt-8 text-center text-white/60 text-sm">
-                <p>&copy; 2024 Centar za socijalni rad Novi Sad. Sva prava zadržana.</p>
+                <p>&copy; 2025 Centar za pružanje usluga socijalne zaštite grada Zrenjanina. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
