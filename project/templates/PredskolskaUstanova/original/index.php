@@ -467,20 +467,15 @@
             <a href="/" class="flex items-center gap-3 flex-shrink-0">
                 <div
                     class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <img src="" alt="" style="width:75px;height:auto;" />
+                    <img src="/assets/img/znak-vrtica-cika-jova-zmaj.png" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block font-heading text-primary_text">
-                    <div class="text-xl leading-tight">Lorem ipsum dolor</div>
-                    <div class="text-xs tracking-wide hidden md:block">Lorem ipsum dolor sit amet consectetu</div>
+                    <div class="text-xl leading-tight">ČIKA JOVA ZMAJ</div>
+                    <div class="text-xs tracking-wide hidden md:block">Predškolska ustanova</div>
                 </div>
             </a>
             <!-- Desktop Navigation -->
             <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-8 font-heading2 text-secondary_text hover:text-primary_text">
-                <a href="#"
-                    class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-home mr-2 text-primary transition-colors"></i>
-                    <span class="hidden xl:inline">Početna</span>
-                </a>
                 <div class="dropdown relative group transition-colors">
                     <button
                         class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -606,7 +601,7 @@
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
                     'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    // 'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -940,10 +935,10 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl">Lorem ipsum dolor</h3>
+                        <h3 class="text-xl">ČIKA JOVA ZMAJ<br />Pirot</h3>
                     </div>
                     <p class="mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit
+                        Predškolska ustanova
                     </p>
                     <div class="flex space-x-3">
                         <a href="#"
@@ -981,18 +976,22 @@
                     <ul class="space-y-3">
                         <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-logocolor2 mt-1 mr-3"></i>
+                            <span>Vojvode Stepe 15, 18300 Pirot</span>
+                        </li>
+                        <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>Lorem ipsum dolor</span>
+                            <span>010-215-000-5</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate="off">Lorem ipsum dolor</span>
+                            <span data-translate="off">lanepi@mts.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
                             <span>
-                                Lorem ipsum dolor<br>
-                                Lorem ipsum dolor
+                                Pon-Pet: 08-16h<br>
+                                Vikendom ne radi
                             </span>
                         </li>
                     </ul>
@@ -1001,7 +1000,7 @@
                     <h4 class="mb-6">Mapa lokacije</h4>
                     <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4923.073995196191!2d22.58132856290325!3d43.15409698444612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47553d252f2bc403%3A0x45bf4e5844d2108c!2sVojvode%20Stepe%2015%2C%20Pirot!5e1!3m2!1sen!2srs!4v1771520164099!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -1014,7 +1013,7 @@
                         class="w-full max-w-md md:max-w-lg h-auto mb-4">
                     <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
                 </div>
-                <p class="pt-6">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                <p class="pt-6">&copy; 2026. Predškolska ustanova "Čika Jova Zmaj" Pirot</p>
             </div>
         </div>
     </footer>
