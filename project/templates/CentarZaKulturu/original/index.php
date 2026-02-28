@@ -388,10 +388,13 @@
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-secondary"></i>Organizaciona struktura
                             </a>
-
                             <a data-page="Objekat" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 text-sm text-primary_text hover:text-accent transition-colors">
+                                <i class="fas fa-bullhorn mr-2 text-secondary_text"></i>Informacije
                             </a>
                             <a data-page="Donacije i podrška" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
@@ -403,11 +406,6 @@
                             </a>
                         </div>
                     </div>
-
-                    <a data-page="Ansambl" href="#"
-                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
-                        <i class="fas fa-users mr-3 text-primary"></i>Ansambl
-                    </a>
 
                     <a data-page="Projekti" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
@@ -481,7 +479,7 @@
                 <div class="hidden sm:block">
                     <h1
                         class="text-sm sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
-                        Omaldinski centar Novi Pazar
+                        Omladinski centar Novi Pazar
                     </h1>
                     <p
                         class="text-xs sm:text-xs lg:text-sm text-secondary tracking-widest hidden md:block opacity-80 font-medium">
@@ -491,7 +489,7 @@
 
                 <!-- Tekst za mobilni -->
                 <div class="block sm:hidden">
-                    <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">NEXUS</h1>
+                    <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">OMLADINSKI CENTAR</h1>
                 </div>
             </div>
 
@@ -546,6 +544,11 @@
                             <span class="font-medium">Objekat</span>
                         </a>
                         <a href="#" static="true"
+                            class="dropdown-item flex items-center items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-bullhorn mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Informacije</span>
+                        </a>
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Donacije i podrška</span>
@@ -557,15 +560,6 @@
                         </a>
                     </div>
                 </div>
-
-
-
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-                    <i
-                        class="fas fa-users mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Ansambl</span>
-                </a>
 
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
@@ -923,48 +917,48 @@
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2 relative">
                     <div class="artistic-frame">
-                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=800&q=80"
+                        <img src="/assets/img/radionica.jpeg"
                             alt="Featured Exhibition" class="rounded-xl shadow-2xl">
                     </div>
                     <div
-                        class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent rounded-full flex items-center justify-center text-white text-5xl font-heading font-bold shadow-xl">
-                        50%
+                        class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent rounded-full flex items-center justify-center text-white text-4xl font-heading font-bold shadow-xl">
+                        NOVO
                     </div>
                 </div>
                 <div class="lg:w-1/2">
                     <span
                         class="inline-block bg-surface text-primary_text px-4 py-1 rounded-full text-sm font-medium mb-6">
-                        <i class="fas fa-fire mr-2 text-accent"></i>Specijalna ponuda
+                        <i class="fas fa-fire mr-2 text-accent"></i>Najnovije
                     </span>
                     <h2 class="text-4xl font-heading font-bold text-primary_text mb-6">
-                        <span class="block">Retrospektiva</span>
-                        <span class="block text-accent">Miodraga Miće Popovića</span>
+                        <span class="block">Omladinska Akademija</span>
+                        <span class="block text-accent">Javnog Nastupa i Govora</span>
                     </h2>
                     <p class="text-lg text-primary_text mb-6 leading-relaxed">
-                        Ekskluzivna izložba koja obuhvata najznačajnija dela jednog od najuticajnijih srpskih umetnika
-                        20. veka. Ova retrospektiva predstavlja jedinstvenu priliku da se upoznate sa evolucijom
-                        Popovićevog stvaralaštva kroz pet decenija.
+                        Prijavite se na najnoviju 11. radionicu Omladinske akademije javnog
+                        nastupa i govora gde ćemo imati za cilj da kroz praktične zadatke
+                        i analizu slučajeva učesnici nauče kako da priču pretvore u vest.
                     </p>
                     <div class="flex flex-wrap gap-4 mb-8">
                         <div class="flex items-center">
                             <i class="fas fa-calendar-day text-accent text-xl mr-3"></i>
                             <div>
                                 <p class="text-sm text-secondary_text">Datum</p>
-                                <p class="font-medium">1. jun - 15. jul</p>
+                                <p class="font-medium">1. decembar</p>
                             </div>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-clock text-accent text-xl mr-3"></i>
                             <div>
                                 <p class="text-sm text-secondary_text">Vreme</p>
-                                <p class="font-medium">10:00 - 20:00</p>
+                                <p class="font-medium">10:00 - 15:00</p>
                             </div>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-map-marker-alt text-accent text-xl mr-3"></i>
                             <div>
                                 <p class="text-sm text-secondary_text">Lokacija</p>
-                                <p class="font-medium">Galerija Savremene Umetnosti</p>
+                                <p class="font-medium">Kancelarija za mlade Novi Pazar</p>
                             </div>
                         </div>
                     </div>
@@ -972,7 +966,7 @@
                         <button
                             class="bg-gradient-to-r from-accent to-accent_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center shadow-lg">
                             <i class="fas fa-ticket-alt mr-3"></i>
-                            Rezerviši karte
+                            Prijava
                         </button>
                         <button
                             class="border-2 border-accent text-accent px-8 py-4 rounded-full font-medium hover:bg-accent/10 transition-all flex items-center">
@@ -981,159 +975,6 @@
                         </button>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section id="Naučni klub" data-elements="Vesti" class="py-20 bg-secondary_background">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Predstojeći Seminari
-                    <span
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
-                </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Ovde se nalaze najnoviji seminari nase institucije
-                </p>
-            </div>
-
-            <div id="Naučni klubCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <?php for ($i = 0; $i < 3; $i++): ?>
-                    <div
-                        class="Seminari-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-3xl mx-auto flex overflow-hidden h-64">
-                        <!-- Slika sa leve strane -->
-                        <div class="w-1/3 relative flex-shrink-0">
-                            <img id="g-image"
-                                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                                alt="Event image"
-                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            <div id="g-naziv"
-                                class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                Kultura
-                            </div>
-                        </div>
-
-                        <!-- Tekstualni deo -->
-                        <div class="w-2/3 p-6 flex flex-col">
-                            <!-- Naslov i opis -->
-                            <div class="flex-grow mb-4">
-                                <h3 id="g-title"
-                                    class="text-2xl font-heading font-bold text-primary hover:text-primary_hover transition-colors duration-300 mb-2">
-                                    Savremene Perspektive
-                                </h3>
-                                <p id="g-description" class="text-primary_text text-sm leading-relaxed line-clamp-2">
-                                    Radovi mladih umetnika koji istražuju identitet u digitalnom dobu. Inspiracija dolazi iz
-                                    savremenih trendova u umetnosti i tehnologiji.
-                                </p>
-                            </div>
-
-                            <!-- Datum, vreme, lokacija -->
-                            <div class="flex flex-wrap items-center gap-4 text-sm text-secondary_text mb-4">
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-calendar-alt text-primary"></i>
-                                    <span id="g-datum" class="font-semibold text-primary_text">30.10.2025</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-clock text-secondary"></i>
-                                    <span id="g-time" class="font-semibold text-primary_text">18:00 - 21:00</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fas fa-map-marker-alt text-accent"></i>
-                                    <span id="g-location" class="font-semibold text-primary_text">Galerija Savremene
-                                        Umetnosti</span>
-                                </div>
-                            </div>
-
-                            <!-- CTA dugme -->
-                            <div>
-                                <a id="g-ovise"
-                                    class="bg-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-primary_hover transition-colors duration-300 text-sm">
-                                    Više informacija
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                <?php endfor; ?>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="/aktivnosti/dogadjaji?category=Seminari" id="eventsView"
-                    class="bg-gradient-to-r from-primary to-primary_hover text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve Seminaree
-                </a>
-            </div>
-
-        </div>
-    </section>
-    <!-- News Section -->
-    <section id="vesti" class="py-20 bg-gradient-to-br from-surface to-background">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Najnovije Vesti
-                    <div
-                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
-                    </div>
-                </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
-                    Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
-                </p>
-            </div>
-
-            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <?php for ($i = 0; $i < 3; $i++): ?>
-                    <article
-                        class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
-                        <div class="h-56 relative overflow-hidden">
-                            <img id="g-slika"
-                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
-                                alt="Vest"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div
-                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
-                                    <i class="fas fa-newspaper text-lg"></i>
-                                </div>
-                                <div class="flex items-center text-sm text-secondary_text">
-                                    <i class="fas fa-calendar-alt mr-2"></i>
-                                    <span id="g-datum">15. Oktobar 2025</span>
-                                </div>
-                            </div>
-
-                            <h3 id="g-naslov"
-                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
-                                Novi kulturni centar otvara vrata građanima
-                            </h3>
-
-                            <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
-                                Nakon dve godine izgradnje, novi kulturni centar spreman je da postane epicentar
-                                kreativnosti i umetnosti u našem gradu.
-                            </p>
-
-                            <a id="g-ovise" href="#"
-                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
-                                Pročitaj više
-                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </article>
-                <?php endfor; ?>
-            </div>
-
-            <div class="text-center mt-16">
-                <button id="vestiView"
-                    class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
-                    <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
-                    Pogledaj sve vesti
-                    <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-                </button>
             </div>
         </div>
     </section>
@@ -1292,7 +1133,15 @@
             </div>
 
             <div class="border-t border-surface/70 pt-8 text-center text-surface/60 text-sm">
-                <p>&copy; 2026 Omladinski Centar Novi Pazar. Sva prava zadržana.</p>
+                <div class="flex items-center order-1 md:order-2">
+                    <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO Logo"
+                    class="h-15 md:h-15 object-contain hover:scale-105 transition-transform duration-300" />
+                </div>
+                <p class="text-right">
+                    &copy; 2026 Omladinski Centar Novi Pazar. Sva prava zadržana.<br />
+                    Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
+                    zvanični stav Vlade Švajcarske.
+                </p>
             </div>
         </div>
     </footer>
