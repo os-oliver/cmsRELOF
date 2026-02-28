@@ -27,7 +27,7 @@ class PageGenerator
      */
     private function initializeDirectories(): void
     {
-        $this->baseDir = dirname(__DIR__, 2) . '/public/exportedPages';
+        $this->baseDir = PUBLIC_ROOT . '/exportedPages';
         $this->compDir = "{$this->baseDir}/landingPageComponents";
         $this->pagesDir = "{$this->baseDir}/pages";
 

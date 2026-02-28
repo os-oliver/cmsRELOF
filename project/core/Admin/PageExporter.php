@@ -73,7 +73,7 @@ class PageExporter
     public function __construct(array $data)
     {
         $this->data = $data;
-        $this->baseDir = dirname(__DIR__) . '/../public/exportedPages';
+        $this->baseDir = PUBLIC_ROOT . '/exportedPages';
         $this->compDir = "{$this->baseDir}/landingPageComponents";
         $this->pagesDir = "{$this->baseDir}/pages";
         $this->ensureDirectories();
@@ -400,7 +400,7 @@ class PageExporter
             $generatedPhpCount++;
 
             $newNode = $dom->createTextNode($placeholder);
-            $logFile = __DIR__ . "/../../public/exportedPages/log.txt";
+            $logFile = PUBLIC_ROOT . "/exportedPages/log.txt";
             $logMessage = "Replacing text node: '$text' with PHP code: $phpCode" . PHP_EOL;
 
             // Append poruku u log fajl
@@ -541,7 +541,7 @@ class PageExporter
     {
         $phpString = '';
 
-        $jsonDir = __DIR__ . '/../../public/assets/data/structure.json';
+        $jsonDir = PUBLIC_ROOT . '/assets/data/structure.json';
         $jsonData = json_decode(file_get_contents($jsonDir), true);
 
         $structure = $jsonData[0] ?? [];
@@ -976,7 +976,7 @@ $processedContent
 </main>
 HTML;
 
-        $directory = __DIR__ . '/../../public/exportedPages/pages/';
+        $directory = PUBLIC_ROOT . '/exportedPages/pages/';
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
@@ -1043,7 +1043,7 @@ CSS;
             $this->processTree($node, $createdFiles, $pagesData);
         }
 
-        $dataDir = dirname(__DIR__) . '/../public/assets/data';
+        $dataDir = PUBLIC_ROOT . '/assets/data';
         if (!is_dir($dataDir)) {
             mkdir($dataDir, 0775, true);
         }
