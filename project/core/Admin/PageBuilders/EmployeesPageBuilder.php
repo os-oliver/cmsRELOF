@@ -7,9 +7,6 @@ use App\Controllers\AuthController;
 
 class EmployeesPageBuilder extends BasePageBuilder
 {
-    /**
-     * HTML template stranice
-     */
     protected string $html = <<<'HTML'
 <main class="flex-grow pt-24 bg-background">
     <div class="container mx-auto px-4 py-12 text-secondary_text font-body">
@@ -20,7 +17,6 @@ class EmployeesPageBuilder extends BasePageBuilder
             </p>
         </div>
 
-        <!-- Search Form -->
         <form method="GET" class="bg-white rounded-xl shadow-md p-6 mb-8">
             <div class="flex flex-col md:flex-row gap-4">
                 <div class="relative flex-grow">
@@ -41,36 +37,59 @@ class EmployeesPageBuilder extends BasePageBuilder
             </div>
         </form>
 
-        <!-- Employees Grid -->
         <?php if (count($employees) > 0): ?>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach ($employees as $employee): ?>
-                    <div class="bg-surface rounded-xl shadow-md overflow-hidden card-hover fade-in">
+                    <div class="bg-surface rounded-xl shadow-md overflow-hidden card-hover fade-in" 
+                             data-employee-id="<?= htmlspecialchars($employee['id'] ?? '', ENT_QUOTES) ?>">
                         <div class="p-6">
-                            <div class="flex items-center mb-6">
-                                <div class="initials-avatar bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold">
-                                    <?= mb_substr($employee['name'], 0, 1, 'UTF-8') . mb_substr($employee['surname'], 0, 1, 'UTF-8') ?>
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center">
+                                    <div class="initials-avatar bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                                        <?= mb_substr($employee['name'], 0, 1, 'UTF-8') . mb_substr($employee['surname'], 0, 1, 'UTF-8') ?>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-xl font-bold text-primary_text">
+                                            <?= htmlspecialchars($employee['name'] . ' ' . $employee['surname'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                                        </h3>
+                                        <p class="font-medium text-secondary_text">
+                                            <?= htmlspecialchars($employee['position'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="ml-4">
-                                    <h3 class="text-xl font-bold text-primary_text">
-                                        <?= htmlspecialchars($employee['name'] . ' ' . $employee['surname'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
-                                    </h3>
-                                    <p class="font-medium">
-                                        <?= htmlspecialchars($employee['position'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                                <button type="button" 
+                                        class="show-more-details text-primary hover:text-primary_hover transition p-2 rounded-full"
+                                        aria-label="Prikaži više detalja"
+                                        data-employee-id="<?= htmlspecialchars($employee['id'] ?? '', ENT_QUOTES) ?>"
+                                        data-employee-name="<?= htmlspecialchars($employee['name'] . ' ' . $employee['surname'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        data-employee-biography="<?= htmlspecialchars($employee['biography'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        data-employee-email="<?= htmlspecialchars($employee['email'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        data-employee-position="<?= htmlspecialchars($employee['position'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        >
+                                    <i class="fas fa-eye text-2xl"></i>
+                                </button>
+                            </div>
+
+                            <div class="border-t border-secondary pt-4 space-y-3">
+                                <?php if (!empty($employee['email'])): ?>
+                                <p class="flex items-center">
+                                    <i class="fas fa-envelope mr-3 text-primary"></i>
+                                    <a href="mailto:<?= htmlspecialchars($employee['email'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" class="text-gray-700 hover:text-primary transition truncate">
+                                        <?= htmlspecialchars($employee['email'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                                    </a>
+                                </p>
+                                <?php endif; ?>
+                                <div class="text-gray-600 line-clamp-3">
+                                    <p>
+                                        <?= isset($employee['biography']) ? htmlspecialchars($employee['biography']) : 'Nema dostupne biografije.' ?>
                                     </p>
                                 </div>
-                            </div>
-                            <div class="border-t border-secondary pt-4">
-                                <p class="text-gray-600 line-clamp-3">
-<?= isset($employee['biography']) ? htmlspecialchars($employee['biography']) : '' ?>
-                                </p>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
 
-            <!-- Pagination -->
             <div class="mt-12 flex justify-center items-center space-x-4">
                 <?php if ($page > 1): ?>
                     <a href="?<?= http_build_query(array_merge($_GET, ['page' => $page - 1])) ?>"
@@ -113,23 +132,110 @@ class EmployeesPageBuilder extends BasePageBuilder
                 </a>
             </div>
         <?php endif; ?>
+        <?php echo renderPerPageDropdown($limit) ?>
     </div>
 </main>
+
+<div id="employee-details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4">
+    <div class="bg-white rounded-xl p-8 max-w-lg w-full m-4 shadow-2xl">
+        <div class="flex justify-between items-center border-b pb-3 mb-4">
+            <h2 id="modal-employee-name" class="text-2xl font-bold text-primary_text">Detalji zaposlenog</h2>
+            <button id="close-modal" class="text-gray-500 hover:text-gray-800 transition">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        
+        <div class="space-y-3 mb-6">
+            <p><strong class="text-primary_text">Pozicija:</strong> <span id="modal-employee-position"></span></p>
+            <p id="modal-email-container"><strong class="text-primary_text">E-pošta:</strong> <a id="modal-employee-email" href="" class="text-primary hover:underline"></a></p>
+        </div>
+
+        <h3 class="text-lg font-semibold text-primary_text mb-2">Biografija:</h3>
+        
+        <div id="modal-employee-biography-wrapper" class="max-h-96 overflow-y-auto pr-2 bg-gray-50 p-4 rounded-lg border border-gray-200">
+             <p id="modal-employee-biography" class="text-gray-700 whitespace-pre-wrap"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('employee-details-modal');
+    const closeModalButton = document.getElementById('close-modal');
+    const moreDetailsButtons = document.querySelectorAll('.show-more-details');
+    const emailContainer = document.getElementById('modal-email-container'); // Novi element
+
+    function openModal(employee) {
+        document.getElementById('modal-employee-name').textContent = employee.name;
+        document.getElementById('modal-employee-position').textContent = employee.position;
+        
+        const email = employee.email.trim();
+        const emailLink = document.getElementById('modal-employee-email');
+        
+        // **USLOVNA LOGIKA ZA MODAL**
+        if (email !== '') {
+            emailContainer.classList.remove('hidden'); // Prikazuje e-poštu
+            emailLink.textContent = email;
+            emailLink.href = 'mailto:' + email;
+        } else {
+            emailContainer.classList.add('hidden'); // Sakriva e-poštu
+            emailLink.textContent = '';
+            emailLink.href = '';
+        }
+        // **KRAJ USLOVNE LOGIKE ZA MODAL**
+
+        document.getElementById('modal-employee-biography').textContent = employee.biography;
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    moreDetailsButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const employeeData = {
+                id: this.dataset.employeeId,
+                name: this.dataset.employeeName,
+                biography: this.dataset.employeeBiography,
+                email: this.dataset.employeeEmail,
+                position: this.dataset.employeePosition
+            };
+            openModal(employeeData);
+        });
+    });
+
+    closeModalButton.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+});
+</script>
 HTML;
 
-    /**
-     * Generiše i vraća kompletan sadržaj stranice za zaposlene
-     */
     public function buildPage(): string
     {
-        // PHP kod koji se izvršava pre HTML template-a
         $additionalPHP = <<<'PHP'
     use App\Models\Employee;
     use App\Controllers\AuthController;
 
-// Parametri iz GET
 $search = $_GET['search'] ?? '';
-$limit = $_GET['limit'] ?? 3;
+$limit = 15; 
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $limit = (int)$_GET['per_page'];
+}
 $page = max(1, (int)($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
@@ -142,11 +248,11 @@ $employeeModel = new Employee();
 );
 
 $totalPages = (int) ceil($totalCount / $limit);
-
 PHP;
 
         $content = $this->getHeader(additionalPhp: $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 

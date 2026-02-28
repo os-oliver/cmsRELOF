@@ -54,6 +54,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $registerRoute('GET', '/sadmin/stil-stranica', 'PageController@adminStyle');
     $registerRoute('GET', '/sadmin/korisnici', 'PageController@userStyle');
     $registerRoute('GET', '/sadmin/kategorije', 'PageController@categoryStyle');
+    $registerRoute('GET', '/sadmin/migrate', 'MigrateController@migrations');
 
     $registerRoute('GET', '/pretraga', 'PageController@search');
     $registerRoute('POST', '/save-component', 'UserUpdateController@saveComponent');
