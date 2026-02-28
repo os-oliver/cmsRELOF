@@ -5,6 +5,7 @@ use App\Database;
 use PDO;
 use PDOException;
 use App\Controllers\LanguageMapperController;
+use App\Utils\Config;
 
 class Text
 {
@@ -125,7 +126,7 @@ class Text
     public function batchUpdateDynamicTexts(array $texts): void
     {
         // debug log file for tracing batch updates
-        $logFile = PUBLIC_ROOT . '/exportedPages/log.txt';
+        $logFile = Config::getPublicRoot() . '/exportedPages/log.txt';
 
         try {
             $this->pdo->beginTransaction();

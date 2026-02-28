@@ -6,17 +6,26 @@ use RuntimeException;
 final class Config
 {
     private static ?array $structure = null;
-    private static string $defaultStructurePath = PUBLIC_ROOT . '/assets/data/structure.json';
 
     private function __construct()
     {
     }
 
+    public static function getPublicRoot(): string
+    {
+        return dirname(__DIR__, 2) . '/public';
+    }
+
+    private static function getDefaultStructurePath(): string
+    {
+        return self::getPublicRoot() . '/assets/data/structure.json';
+    }
+
     private static function resolvePath(): string
     {
-        $real = realpath(self::$defaultStructurePath);
+        $real = realpath(self::getDefaultStructurePath());
         if ($real === false)
-            throw new RuntimeException("structure.json not found at: " . self::$defaultStructurePath);
+            throw new RuntimeException("structure.json not found at: " . self::getDefaultStructurePath());
         return $real;
     }
 
