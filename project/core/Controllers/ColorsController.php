@@ -28,7 +28,7 @@ class ColorsController
     public function index()
     {
         AuthController::requireEditor();
-        $this->commonScriptPath = realpath(__DIR__ . '/../../public/exportedPages/commonScript.js');
+        $this->commonScriptPath = realpath(PUBLIC_ROOT . '/exportedPages/commonScript.js');
 
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
         if ($method === 'GET') {

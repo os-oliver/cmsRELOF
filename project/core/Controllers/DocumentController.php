@@ -24,7 +24,7 @@ class DocumentController
     {
         $data = $_POST;
         $file = $_FILES['documetFile'] ?? null;
-        $uploadDir = dirname(__DIR__) . '/../public/uploads/documents/';
+        $uploadDir = PUBLIC_ROOT . '/uploads/documents/';
 
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0775, true);
