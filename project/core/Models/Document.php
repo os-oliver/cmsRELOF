@@ -27,8 +27,8 @@ class Document
     public function getCategories(string $lang): array
     {
         $sql = "
-        SELECT 
-            c.*, 
+        SELECT
+            c.*,
             t.field_name,
             t.content,
             t.id AS text_id
@@ -47,8 +47,8 @@ class Document
     public function getSubCategories(string $lang): array
     {
         $sql = "
-        SELECT 
-            sc.*, 
+        SELECT
+            sc.*,
             t.field_name,
             t.content,
             t.id AS text_id
@@ -320,7 +320,7 @@ ORDER BY {$orderByOuter};
             $stmt = $this->pdo->prepare("
             UPDATE document
             SET
-               
+
                 subcategory_id = :category,
                 datetime = NOW()
             WHERE id = :id
@@ -392,7 +392,7 @@ ORDER BY {$orderByOuter};
             $stmtFile->execute([':id' => $documentId]);
             $filepath = $stmtFile->fetchColumn();
             if ($filepath) {
-                $fullPath = __DIR__ . '/../../public/uploads/documents/' . basename($filepath);
+                $fullPath = PUBLIC_ROOT . '/uploads/documents/' . basename($filepath);
                 if (file_exists($fullPath)) {
                     @unlink($fullPath);
                 }

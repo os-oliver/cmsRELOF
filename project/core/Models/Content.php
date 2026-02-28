@@ -29,7 +29,7 @@ class Content
         }
 
         $this->pivoter = new Pivoter('field_name', 'content', 'id');
-        $uploadDir = realpath(__DIR__ . '/../../public/uploads');
+        $uploadDir = realpath(PUBLIC_ROOT . '/uploads');
         $this->uploader = new FileUploader($uploadDir);
         $this->genericHasImageId = $this->checkGenericHasImageId();
     }
