@@ -174,8 +174,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">Centar za umetnost i baštinu<br>Trg
-                                        slobode 1<br>Novi Pazar, Srbija</p>
+                                    <p class="text-gray-600 leading-relaxed">Dvorana Pendik<br>Novi Pazar, Srbija</p>
                                 </div>
                             </div>
 
@@ -189,7 +188,7 @@ HTML;
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
                                     <p class="text-gray-600 text-lg">+381 64 0698099</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 07:30 - 15:00</p>
                                 </div>
                             </div>
 
@@ -202,7 +201,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">Office@kzmnp.rs</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">office@kzmnp.rs</p>
                                     <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
                                 </div>
                             </div>
@@ -213,14 +212,10 @@ HTML;
                             <div class="text-gray-700 space-y-2">
                                 <div class="flex justify-between">
                                     <span class="font-medium">Ponedeljak - Petak:</span>
-                                    <span>09:00 - 17:00</span>
+                                    <span>07:30 - 15:00</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="font-medium">Subota:</span>
-                                    <span>10:00 - 14:00</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Nedelja:</span>
+                                    <span class="font-medium">Subota i Nedelja:</span>
                                     <span class="text-red-500">Zatvoreno</span>
                                 </div>
                             </div>

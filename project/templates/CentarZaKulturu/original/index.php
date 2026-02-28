@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kulturni Centar Nexus</title>
+    <title>Omladinski Centar Novi Pazar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,300;0,400;0,700;1,400&display=swap"
@@ -474,18 +474,18 @@
             <div class="flex items-center space-x-3 flex-shrink-0">
                 <!-- Logo ikonica -->
                 <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
-                    <img class="img-logo" src="" />
+                    <img class="img-logo" src="/assets/img/logo.jpeg" />
                 </div>
 
                 <!-- Tekst za desktop -->
                 <div class="hidden sm:block">
                     <h1
                         class="text-sm sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
-                        KULTURNI CENTAR
+                        Omaldinski centar Novi Pazar
                     </h1>
                     <p
                         class="text-xs sm:text-xs lg:text-sm text-secondary tracking-widest hidden md:block opacity-80 font-medium">
-                        CENTAR ZA UMETNOST I BAŠTINU
+                        CENTAR ZA KREATIVNOST I RAST
                     </p>
                 </div>
 
@@ -740,43 +740,43 @@
                     <div class="mb-8">
                         <span
                             class="inline-block bg-surface text-primary_text px-4 py-1 rounded-full text-sm font-medium mb-6">
-                            <i class="fas fa-star mr-2 text-accent"></i>Istaknuto ovog meseca
+                            <i class="fas fa-star mr-2 text-accent"></i>Centar gde mladi rastu
                         </span>
                         <h1 class="text-5xl md:text-6xl font-heading font-bold leading-tight text-primary_text mb-6">
-                            <span class="block artistic-underline">Mesto gde se umetnost, film i</span>
-                            <span class="block text-primary mt-2">kultura susreću</span>
+                            <span class="block artistic-underline">Mesto gde se mladi povezuju,</span>
+                            <span class="block text-primary mt-2">uče i stvaraju</span>
                         </h1>
                     </div>
 
                     <div class="mb-10 relative pl-6 border-l-4 border-secondary">
                         <p class="text-xl text-primary_text leading-relaxed max-w-lg mb-6">
-                            Doživite živopisnu spoju vizuelnih umetnosti, nezavisnog filma, pozorišta i kulturne baštine
-                            u našem novom renoviranom prostoru.
+                            Kroz radionice, obuke, događaje i volonterske programe,
+                            mladima pružamo priliku da razviju svoje veštine,
+                            istraže nove ideje i grade zajednicu koja podržava njihov rast.
                         </p>
                         <p class="text-secondary_text italic">
-                            "Kulturni centar je srce zajednice, gde različiti izrazi pronalaze zajednički jezik."
-                            <span class="block font-medium text-accent mt-2">— Elena Rodriguez, Umetnički
-                                direktor</span>
+                            "Mladi su pokretači promena — naš centar je mesto gde te promene počinju."
+                            <span class="block font-medium text-accent mt-2">— Tim omladinskog centra</span>
                         </p>
                     </div>
 
                     <!-- Quick links -->
                     <div class="mt-10 flex flex-wrap gap-3">
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
+                        <a href="/o-nama/uvod" class="flex items-center text-secondary_text hover:text-accent transition-colors">
                             <span class="w-3 h-3 bg-secondary rounded-full mr-2"></span>
-                            Trenutne izložbe
+                            Uvod
                         </a>
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
+                        <a href="/galerija" class="flex items-center text-secondary_text hover:text-accent transition-colors">
                             <span class="w-3 h-3 bg-primary rounded-full mr-2"></span>
-                            Raspored filmova
+                            Galerija
                         </a>
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
+                        <a href="/aktivnosti/dogadjaji" class="flex items-center text-secondary_text hover:text-accent transition-colors">
                             <span class="w-3 h-3 bg-secondary rounded-full mr-2"></span>
-                            Pozorišne predstave
+                            Događaji
                         </a>
-                        <a href="#" class="flex items-center text-secondary_text hover:text-accent transition-colors">
+                        <a href="/o-nama/misija-i-vizija" class="flex items-center text-secondary_text hover:text-accent transition-colors">
                             <span class="w-3 h-3 bg-accent rounded-full mr-2"></span>
-                            Muzički događaji
+                            Misija
                         </a>
                     </div>
                 </div>
@@ -788,7 +788,7 @@
                         <!-- Large Featured Image -->
                         <div
                             class="slider-item absolute top-0 right-0 w-[70%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface">
-                            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800"
+                            <img src="/assets/img/landing3.jpeg"
                                 alt="Kulturna aktivnost" class="w-full h-full object-cover" />
                             <div class="absolute inset-0 bg-gradient-to-t from-primary_text/40 to-transparent"></div>
                         </div>
@@ -796,7 +796,7 @@
                         <!-- Small Image Top Left -->
                         <div
                             class="absolute top-10 left-0 w-[45%] h-[35%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
-                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600"
+                            <img src="/assets/img/landing1.jpeg"
                                 alt="Muzika i umetnost" class="w-full h-full object-cover" />
                             <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent"></div>
                         </div>
@@ -804,7 +804,7 @@
                         <!-- Small Image Bottom Left -->
                         <div
                             class="absolute bottom-0 left-10 w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 border-4 border-surface z-10">
-                            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600"
+                            <img src="/assets/img/landing2.jpeg"
                                 alt="Ansambl nastup" class="w-full h-full object-cover" />
                             <div class="absolute inset-0 bg-gradient-to-tl from-secondary/30 to-transparent"></div>
                         </div>
@@ -1218,10 +1218,10 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-heading font-bold">KULTURNI NEXUS</h3>
+                        <h3 class="text-xl font-heading font-bold">Omladinski Centar Novi Pazar</h3>
                     </div>
                     <p class="text-surface/80 mb-4">
-                        Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Beograda.
+                        Omladinski centar koji okuplja kreativce i omladinu u srcu Novog Pazara.
                     </p>
                     <div class="flex space-x-3">
                         <a href="#"
@@ -1246,13 +1246,12 @@
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="asde" class="text-surface/80 hover:text-accent transition-colors">Izložbe</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Bioskop</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Pozorište</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Koncerti</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Radionice</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Kalendar
-                                događaja</a></li>
+                        <li><a href="/aktivnosti/dogadjaji" class="text-surface/80 hover:text-accent transition-colors">Događaji</a></li>
+                        <li><a href="/o-nama/uvod" class="text-surface/80 hover:text-accent transition-colors">Uvod</a></li>
+                        <li><a href="/o-nama/objekat" class="text-surface/80 hover:text-accent transition-colors">Objekat</a></li>
+                        <li><a href="/o-nama/misija-i-vizija" class="text-surface/80 hover:text-accent transition-colors">Vizija</a></li>
+                        <li><a href="/aktivnosti/ankete" class="text-surface/80 hover:text-accent transition-colors">Ankete</a></li>
+                        <li><a href="/o-nama/donacije-i-podrska" class="text-surface/80 hover:text-accent transition-colors">Donacije i podrška</a></li>
                     </ul>
                 </div>
 
@@ -1261,22 +1260,22 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">Knez Mihailova 56, 11000 Beograd</span>
+                            <span class="text-surface">Dvorana Pendik, Novi Pazar</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">+381 11 123 4567</span>
+                            <span class="text-surface">+381 64 0698099</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">info@kulturninexus.rs</span>
+                            <span class="text-surface" data-translate="off">office@kzmnp.rs</span>
 
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-accent mt-1 mr-3"></i>
                             <span class="text-surface">
-                                Utorak - Nedelja: 10:00 - 21:00<br>
-                                Ponedeljak: zatvoreno
+                                Ponedeljak - Petak: 07:30 - 15:00<br>
+                                Subota - Nedelja: 09:00 - 17:00
                             </span>
                         </li>
                     </ul>
@@ -1286,14 +1285,14 @@
                     <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
                     <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.6515855589723!2d20.510187612158255!3d43.137954185481725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475628114e9896cd%3A0x2eb5c29f85077709!2sSports%20Hall%20Pendik!5e1!3m2!1sen!2srs!4v1772303408253!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
 
             <div class="border-t border-surface/70 pt-8 text-center text-surface/60 text-sm">
-                <p>&copy; 2023 Kulturni Centar Nexus. Sva prava zadržana.</p>
+                <p>&copy; 2026 Omladinski Centar Novi Pazar. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
