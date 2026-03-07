@@ -52,7 +52,7 @@ use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
-
+use App\Utils\Config;
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -73,7 +73,7 @@ class PageExporter
     public function __construct(array $data)
     {
         $this->data = $data;
-        $this->baseDir = PUBLIC_ROOT . '/exportedPages';
+        $this->baseDir = Config::getPublicRoot() . '/exportedPages';
         $this->compDir = "{$this->baseDir}/landingPageComponents";
         $this->pagesDir = "{$this->baseDir}/pages";
         $this->ensureDirectories();
@@ -400,7 +400,7 @@ class PageExporter
             $generatedPhpCount++;
 
             $newNode = $dom->createTextNode($placeholder);
-            $logFile = PUBLIC_ROOT . "/exportedPages/log.txt";
+            $logFile = Config::getPublicRoot() . "/exportedPages/log.txt";
             $logMessage = "Replacing text node: '$text' with PHP code: $phpCode" . PHP_EOL;
 
             // Append poruku u log fajl
@@ -541,7 +541,7 @@ class PageExporter
     {
         $phpString = '';
 
-        $jsonDir = PUBLIC_ROOT . '/assets/data/structure.json';
+        $jsonDir = Config::getPublicRoot() . '/assets/data/structure.json';
         $jsonData = json_decode(file_get_contents($jsonDir), true);
 
         $structure = $jsonData[0] ?? [];
@@ -1043,7 +1043,7 @@ CSS;
             $this->processTree($node, $createdFiles, $pagesData);
         }
 
-        $dataDir = PUBLIC_ROOT . '/assets/data';
+        $dataDir = Config::getPublicRoot() . '/assets/data';
         if (!is_dir($dataDir)) {
             mkdir($dataDir, 0775, true);
         }

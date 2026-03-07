@@ -192,8 +192,8 @@ LEFT JOIN (
 ORDER BY {$orderByOuter};
 ";
 
-        error_log("DEBUG: Full SQL = {$sql}");
-        error_log("DEBUG: Params = " . print_r($params, true));
+        // error_log("DEBUG: Full SQL = {$sql}");
+        // error_log("DEBUG: Params = " . print_r($params, true));
 
         // --- EXECUTE ---
         try {

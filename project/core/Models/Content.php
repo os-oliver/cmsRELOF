@@ -487,7 +487,7 @@ class Content
 
     private function deletePhysicalFile(string $relativePath): void
     {
-        $fullPath = realpath(__DIR__ . '/../../public') . DIRECTORY_SEPARATOR . ltrim($relativePath, '/');
+        $fullPath = PUBLIC_ROOT  . DIRECTORY_SEPARATOR . ltrim($relativePath, '/');
         if (is_file($fullPath)) {
             @unlink($fullPath);
         }
