@@ -127,7 +127,7 @@ class PageController
     public function savePagesjson()
     {
         $jsonFile = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/pages.json';
-        $exportBase = dirname(__DIR__) . '/../public/exportedPages/';
+        $exportBase = PUBLIC_ROOT . '/exportedPages/';
 
         // 1) Load old data
         $oldData = [];
@@ -181,7 +181,7 @@ class PageController
 
             if ($isStatic) {
                 // Handle static pages
-                $staticBase = dirname(__DIR__) . '/../public/pages/';
+                $staticBase = PUBLIC_ROOT . '/pages/';
                 $full = $staticBase . $page['file'];
 
                 $dir = dirname($full);
@@ -350,7 +350,7 @@ class PageController
 
         // Render the content with header and footer
         echo $contentController->renderContent($id, $type);
-        echo require_once __DIR__ . '/../../public/exportedPages/landingPageComponents/landingPage/header.php';
+        echo require_once PUBLIC_ROOT . '/exportedPages/landingPageComponents/landingPage/header.php';
 
     }
     public function componentSave()
@@ -373,7 +373,7 @@ class PageController
             }
 
             // Putanja do direktorijuma sa komponentama
-            $componentsDir = realpath(__DIR__ . '/../../public/exportedPages/landingPageComponents/landingPage');
+            $componentsDir = realpath(PUBLIC_ROOT . '/exportedPages/landingPageComponents/landingPage');
 
             if (!$componentsDir || !is_dir($componentsDir)) {
                 throw new Exception('Direktorijum komponenti ne postoji');
@@ -396,7 +396,7 @@ class PageController
             // Kreiranje backup-a prije prepisivanja (opcionalno ali preporučeno)
             $backupDir = $componentsDir . DIRECTORY_SEPARATOR . 'backups';
             if (!is_dir($backupDir)) {
-                mkdir($backupDir, 0755, true);
+                mkdir($backupDir, 0775, true);
             }
 
             $backupFileName = pathinfo($componentFileName, PATHINFO_FILENAME) .

@@ -52,7 +52,7 @@ use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
-
+use App\Utils\Config;
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -73,7 +73,7 @@ class PageExporter
     public function __construct(array $data)
     {
         $this->data = $data;
-        $this->baseDir = dirname(__DIR__) . '/../public/exportedPages';
+        $this->baseDir = Config::getPublicRoot() . '/exportedPages';
         $this->compDir = "{$this->baseDir}/landingPageComponents";
         $this->pagesDir = "{$this->baseDir}/pages";
         $this->ensureDirectories();
@@ -400,7 +400,7 @@ class PageExporter
             $generatedPhpCount++;
 
             $newNode = $dom->createTextNode($placeholder);
-            $logFile = __DIR__ . "/../../public/exportedPages/log.txt";
+            $logFile = Config::getPublicRoot() . "/exportedPages/log.txt";
             $logMessage = "Replacing text node: '$text' with PHP code: $phpCode" . PHP_EOL;
 
             // Append poruku u log fajl
@@ -541,7 +541,7 @@ class PageExporter
     {
         $phpString = '';
 
-        $jsonDir = __DIR__ . '/../../public/assets/data/structure.json';
+        $jsonDir = Config::getPublicRoot() . '/assets/data/structure.json';
         $jsonData = json_decode(file_get_contents($jsonDir), true);
 
         $structure = $jsonData[0] ?? [];
@@ -759,6 +759,12 @@ class PageExporter
                 return new OrganizacijaPageBuilder('OrganiUpravljanja');
             case 'publikacije':
                 return new PublikacijePageBuilder('Publikacije');
+            case 'koncerti':
+                return new DynamicPageBuilder('Koncerti');
+            case 'filmovi':
+                return new DynamicPageBuilder('Filmovi');
+            case 'donacije-i-podrska':
+                return new DynamicPageBuilder('Donacije I Podrska');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -831,7 +837,7 @@ class PageExporter
         } elseif (strpos($name, 'organizaciona-struktura') !== false) {
             return 'organizaciona-struktura';
         } elseif (strpos($name, 'rukovodstvo') !== false) {
-            return 'rukovodstvo';
+            return 'organi-upravljanja';
         } elseif (strpos($name, 'misija-i-vizija') !== false) {
             return 'misija-i-vizija';
         } elseif (strpos($name, 'uvod') !== false) {
@@ -872,6 +878,10 @@ class PageExporter
             return 'organi-upravljanja';
         } elseif (strpos($name, 'publikacije') !== false) {
             return 'publikacije';
+        }elseif (strpos($name, 'koncerti') !== false) {
+            return 'koncerti';
+        }elseif (strpos($name, 'filmovi') !== false) {
+            return 'filmovi';
         }
 
         return 'basic';
@@ -964,7 +974,7 @@ $processedContent
 </main>
 HTML;
 
-        $directory = __DIR__ . '/../../public/exportedPages/pages/';
+        $directory = PUBLIC_ROOT . '/exportedPages/pages/';
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
@@ -1031,7 +1041,7 @@ CSS;
             $this->processTree($node, $createdFiles, $pagesData);
         }
 
-        $dataDir = dirname(__DIR__) . '/../public/assets/data';
+        $dataDir = Config::getPublicRoot() . '/assets/data';
         if (!is_dir($dataDir)) {
             mkdir($dataDir, 0775, true);
         }
