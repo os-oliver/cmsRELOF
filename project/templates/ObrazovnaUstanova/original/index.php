@@ -608,8 +608,7 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
-                    semper lobortis neque non eleifend.
+                    Najava predstojećih događaja i arhiva vesti
                 </p>
             </div>
 
@@ -772,8 +771,7 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-secondary"></span>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices vitae nibh at ultrices. Etiam
-                    semper lobortis neque non eleifend.
+                    Istražite našu pažljivo odabranu kolekciju slika
                 </p>
             </div>
 
