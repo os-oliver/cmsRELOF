@@ -31,7 +31,7 @@ class LocaleManager
         return self::$localeMap[$locale] ?? self::$defaultLocale;
     }
 
-    public function formatDateFromRawString($rawDatum): string
+    public static function formatDateFromRawString($rawDatum): string
     {
         $formatted = '';
         if ($rawDatum) {
