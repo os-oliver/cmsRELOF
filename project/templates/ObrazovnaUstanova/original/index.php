@@ -369,6 +369,10 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
+                                <i class="fas fa-circle-question mr-2 text-coral"></i>Ankete
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
                                 <i class="fas fa-circle-question mr-2 text-coral"></i>Pitanja
                             </a>
                             <a href="#"
@@ -459,6 +463,11 @@
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-circle-question mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Ankete</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-circle-question mr-3 text-coral flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Pitanja</span>
                         </a>
                         <a href="#"
@@ -493,9 +502,6 @@
                     class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-address-book mr-2 text-deep-teal transition-colors"></i>
                     <span class="hidden xl:inline">Kontakt</span>
-                </a>
-                <a href="#" class="hidden">
-                    Ankete
                 </a>
                 <?php
                 if (isset($_GET['locale'])) {
@@ -843,12 +849,7 @@
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu
-                                korisnika</a></li>
-                        <!-- <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Lorem ipsum</a></li> -->
+                        <li><a href="/o-nama/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                     </ul>
                 </div>
 
@@ -865,12 +866,12 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-secondary mt-1 mr-3"></i>
-                            <span data-translate="off">djoleduga@gmail.com</span>
+                            <span data-translate="off">centarduga@gmail.com</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-secondary mt-1 mr-3"></i>
                             <span>
-                                Ponedeljak - Petak: 09:00 - 17:00<br>
+                                Ponedeljak - Petak: 07:30 - 20:00<br>
                                 Subota / Nedelja: zatvoreno
                             </span>
                         </li>

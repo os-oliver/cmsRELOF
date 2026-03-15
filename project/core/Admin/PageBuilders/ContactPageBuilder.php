@@ -188,7 +188,7 @@ HTML;
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
                                     <p class="text-gray-600 text-lg">+381 20 317 390</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 07:30 - 20:00</p>
                                 </div>
                             </div>
 
@@ -201,7 +201,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">djoleduga@gmail.com</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">centarduga@gmail.com</p>
                                     <p class="text-gray-500 text-sm">Odgovaramo u roku od 7 dana</p>
                                 </div>
                             </div>
@@ -212,7 +212,7 @@ HTML;
                             <div class="text-gray-700 space-y-2">
                                 <div class="flex justify-between">
                                     <span class="font-medium">Ponedeljak - Petak:</span>
-                                    <span>09:00 - 17:00</span>
+                                    <span>07:30 - 20:00</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="font-medium">Subota / Nedelja:</span>
