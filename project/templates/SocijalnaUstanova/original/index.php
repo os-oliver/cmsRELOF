@@ -733,7 +733,16 @@
 
     <!-- Hero Section -->
     <section class="slider-item hero relative flex items-center z-10 w-full h-[600px] overflow-hidden">
-        <img id="g-slider-image-1" src="https://picsum.photos/1600/600" alt="Pozadinska slika za slider"
+        <?php
+            $slike = [
+                '/img/assets/homepage-1.jpg',
+                '/img/assets/homepage-2.jpg',
+                '/img/assets/homepage-3.jpg',
+            ];
+
+            $izabrana = rand(0, count($slike)-1);
+        ?>
+        <img id="g-slider-image-1" src="<?php echo $slike[$izabrana]; ?>" alt="Pozadinska slika za slider"
             class="absolute inset-0 w-full h-full object-cover z-10">
 
         <div class="overlay-blur absolute inset-0 z-20 backdrop-blur-sm bg-[rgba(42,157,143,0.35)]">
