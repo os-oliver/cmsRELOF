@@ -74,7 +74,7 @@ class AuthController
         $role = $_SESSION['role'] ?? null;
         if (!in_array($role, $allowedRoles, true)) {
             http_response_code(403);
-            exit(include dirname(__DIR__) . '/../public/pages/forbidden.html');
+            exit(include PUBLIC_ROOT . '/pages/forbidden.html');
         }
     }
 

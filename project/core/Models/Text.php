@@ -5,6 +5,7 @@ use App\Database;
 use PDO;
 use PDOException;
 use App\Controllers\LanguageMapperController;
+use App\Utils\Config;
 
 class Text
 {
@@ -28,7 +29,7 @@ class Text
             $this->pdo->beginTransaction();
 
             $stmtEntry = $this->pdo->prepare(
-                "INSERT INTO text_entries (id, original_text, dom_path, tag) 
+                "INSERT INTO text_entries (id, original_text, dom_path, tag)
                  VALUES (:id, :original_text, :dom_path, :tag)
                  ON DUPLICATE KEY UPDATE original_text = VALUES(original_text), dom_path = VALUES(dom_path), tag = VALUES(tag)"
             );
@@ -90,13 +91,13 @@ class Text
     {
         try {
             $stmt = $this->pdo->prepare("
-            SELECT 
-                te.id, 
+            SELECT
+                te.id,
                 COALESCE(tt.translated_text, ttc.translated_text, te.original_text) AS text,
-                te.dom_path, 
+                te.dom_path,
                 te.tag
             FROM text_entries te
-            LEFT JOIN text_translations tt 
+            LEFT JOIN text_translations tt
                 ON te.id = tt.entry_id AND tt.lang = :lang
             LEFT JOIN text_translations ttc
                 ON te.id = ttc.entry_id AND ttc.lang = 'sr-Cyrl'
@@ -125,16 +126,16 @@ class Text
     public function batchUpdateDynamicTexts(array $texts): void
     {
         // debug log file for tracing batch updates
-        $logFile = __DIR__ . '/../../public/exportedPages/log.txt';
+        $logFile = Config::getPublicRoot() . '/exportedPages/log.txt';
 
         try {
             $this->pdo->beginTransaction();
             file_put_contents($logFile, "\n[batchUpdateDynamicTexts] starting batch of " . count($texts) . " items\n", FILE_APPEND | LOCK_EX);
 
             $stmtCheck = $this->pdo->prepare("
-            SELECT id FROM text_entries 
-            WHERE page_slug = :page_slug 
-              AND dom_path = :dom_path 
+            SELECT id FROM text_entries
+            WHERE page_slug = :page_slug
+              AND dom_path = :dom_path
               AND tag = :tag
         ");
 
@@ -143,12 +144,12 @@ class Text
         ");
 
             $stmtInsert = $this->pdo->prepare("
-            INSERT INTO text_entries (id, page_slug, original_text, text_hash, dom_path, path_hash, tag, created_at, updated_at) 
+            INSERT INTO text_entries (id, page_slug, original_text, text_hash, dom_path, path_hash, tag, created_at, updated_at)
             VALUES (:id, :page_slug, :original_text, :text_hash, :dom_path, :path_hash, :tag, NOW(), NOW())
         ");
 
             $stmtUpdateTextOnly = $this->pdo->prepare("
-            UPDATE text_entries 
+            UPDATE text_entries
             SET original_text = :original_text,
                 text_hash = :text_hash,
                 updated_at = NOW()
@@ -169,7 +170,7 @@ class Text
             $stmtTrans = $this->pdo->prepare("
             INSERT INTO text_translations (entry_id, lang, translated_text, created_at, updated_at)
             VALUES (:entry_id, :lang, :translated_text, NOW(), NOW())
-            ON DUPLICATE KEY UPDATE 
+            ON DUPLICATE KEY UPDATE
                 translated_text = VALUES(translated_text),
                 updated_at = NOW()
         ");
@@ -316,7 +317,7 @@ class Text
             // Update original text and hashes
             $newTextHash = substr(md5($newContent), 0, 6);
             $stmtUpdate = $this->pdo->prepare("
-                UPDATE text_entries 
+                UPDATE text_entries
                 SET original_text = :original_text,
                     text_hash = :text_hash,
                     updated_at = NOW()
@@ -332,7 +333,7 @@ class Text
             if ($result && $stmtUpdate->rowCount() > 0) {
                 // Update translations
                 $stmtTransUpdate = $this->pdo->prepare("
-                    UPDATE text_translations 
+                    UPDATE text_translations
                     SET translated_text = :translated_text,
                         updated_at = NOW()
                     WHERE entry_id = :entry_id AND lang = :lang
@@ -396,7 +397,7 @@ class Text
     public function getAllTexts(?string $pageSlug = null): array
     {
         $query = "
-            SELECT te.id, te.page_slug, te.original_text, te.text_hash, 
+            SELECT te.id, te.page_slug, te.original_text, te.text_hash,
                    te.dom_path, te.path_hash, te.tag, te.created_at, te.updated_at,
                    tt.lang, tt.translated_text
             FROM text_entries te
@@ -430,14 +431,14 @@ class Text
 
             // Delete orphaned translations
             $stmtDeleteTrans = $this->pdo->prepare("
-                DELETE FROM text_translations 
+                DELETE FROM text_translations
                 WHERE entry_id NOT IN ($placeholders)
             ");
             $stmtDeleteTrans->execute($currentTextIds);
 
             // Delete orphaned entries
             $stmtDeleteEntries = $this->pdo->prepare("
-                DELETE FROM text_entries 
+                DELETE FROM text_entries
                 WHERE id NOT IN ($placeholders)
             ");
             $stmtDeleteEntries->execute($currentTextIds);

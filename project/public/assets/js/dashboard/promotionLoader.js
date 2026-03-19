@@ -279,20 +279,97 @@ function setupLinkLogging(editor) {
           const newHref = hrefInput.value || "";
           const newText = linkTextInput.value || "";
 
+          // Consider links containing 'www' or '.com' as external
+          const isExternal = /www|\.com/i.test(newHref);
+
           // Update component if available
           if (comp && typeof comp.addAttributes === "function") {
             try {
-              comp.addAttributes({ href: newHref });
-              comp.components(newText);
+              const attrs = { href: newHref };
+              if (isExternal) attrs.target = "_blank";
+              comp.addAttributes(attrs);
+              try {
+                // Try to update component content without removing icon elements.
+                // Prefer updating the component's DOM text nodes directly.
+                let elFromComp = null;
+                try {
+                  elFromComp =
+                    typeof comp.getEl === "function" ? comp.getEl() : comp.el;
+                } catch (err) {
+                  elFromComp = null;
+                }
+
+                if (elFromComp && elFromComp.nodeType === 1) {
+                  const newTxt = newText || "";
+                  let foundTextNode = false;
+                  for (let k = 0; k < elFromComp.childNodes.length; k++) {
+                    const node = elFromComp.childNodes[k];
+                    if (node.nodeType === Node.TEXT_NODE) {
+                      node.textContent = newTxt;
+                      foundTextNode = true;
+                      break;
+                    }
+                  }
+                  if (!foundTextNode) {
+                    if (elFromComp.children.length) {
+                      elFromComp.appendChild(
+                        document.createTextNode((newTxt ? " " : "") + newTxt)
+                      );
+                    } else {
+                      elFromComp.textContent = newTxt;
+                    }
+                  }
+                } else {
+                  // Fallback: older/unknown component shape - use components() as last resort
+                  try {
+                    comp.components(newText);
+                  } catch (e) {
+                    console.warn("comp.components fallback failed:", e);
+                  }
+                }
+              } catch (e) {
+                console.warn("comp update failed:", e);
+              }
             } catch (e) {
               console.warn("Failed to update component:", e);
             }
           }
 
-          // Update DOM element
+          // Update DOM element but preserve any icon elements (<i>)
           try {
             anchorEl.setAttribute("href", newHref);
-            anchorEl.textContent = newText;
+            if (isExternal) {
+              anchorEl.setAttribute("target", "_blank");
+              anchorEl.setAttribute("rel", "noopener noreferrer");
+            } else {
+              anchorEl.removeAttribute("target");
+              anchorEl.removeAttribute("rel");
+            }
+
+            // Replace only text nodes to avoid removing icons
+            const text = newText || "";
+            let textNodeFound = false;
+            for (let i = 0; i < anchorEl.childNodes.length; i++) {
+              const node = anchorEl.childNodes[i];
+              if (node.nodeType === Node.TEXT_NODE) {
+                node.textContent = text;
+                textNodeFound = true;
+                break;
+              }
+            }
+
+            if (!textNodeFound) {
+              // If there was no existing text node, append one.
+              // If there are element children (e.g. icons), append a space then the text.
+              if (anchorEl.children.length) {
+                anchorEl.appendChild(
+                  document.createTextNode((text ? " " : "") + text)
+                );
+              } else {
+                // No children at all - safe to set textContent
+                anchorEl.textContent = text;
+              }
+            }
 
             // Show success notification
             const notification = document.createElement("div");
