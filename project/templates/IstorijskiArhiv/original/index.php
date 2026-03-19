@@ -1212,14 +1212,14 @@
         </div>
     </section>
 
-   
+
 
     <footer class="bg-secondary_background text-secondary_text py-10 md:py-16">
     <div class="container mx-auto px-6">
 
         <div class="mb-8 md:mb-12 pb-6 border-b border-primary/20 flex flex-wrap gap-4 md:gap-8 items-center justify-center">
-            
-      
+
+
 
             <a href="http://pirot.rs" target="_blank" title="Grad Pirot"
                 class="group relative flex items-center justify-center h-14 w-32 md:w-36 bg-surface rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 transform shadow-md hover:shadow-xl border border-primary/10 p-2">
@@ -1302,10 +1302,10 @@
                             class="fas fa-phone-alt text-primary mt-1 mr-2 w-4"></i><span>Direktor:<br><strong>+381 10 310-592</strong></span></li>
                     <li class="flex items-start pt-2"><i class="fas fa-envelope text-primary mt-1 mr-2 w-4"></i><a
                             href="mailto:istorijskiarhivpi@gmail.com"
-                            class="hover:text-primary transition">istorijskiarhivpi@gmail.com</a></li>
+                            class="hover:text-primary transition" data-translate="off">istorijskiarhivpi@gmail.com</a></li>
                     <li class="flex items-start"><i class="fas fa-envelope text-primary mt-1 mr-2 w-4"></i><a
                             href="mailto:direktor@arhivpirot.rs"
-                            class="hover:text-primary transition">direktor@arhivpirot.rs</a></li>
+                            class="hover:text-primary transition" data-translate="off">direktor@arhivpirot.rs</a></li>
                 </ul>
             </div>
             <div>
