@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorem ipsum dolor</title>
+    <title>PU "Pčelica" Sremska Mitrovica</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -115,13 +115,26 @@
             }
 
             .hero-gradient {
+                background-image: url('/assets/img/PU-Sremska-Mitrovica-hero-img.jpeg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                position: relative;
+            }
+
+            .hero-gradient::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
                 background: linear-gradient(to bottom,
                         #F1F7ED 0%,
                         #a4d1aaff 50%,
                         #F1F7ED 100%);
-                text-align: left;
-                padding-top: 8rem;
-                padding-bottom: 6rem;
+                opacity: 0.7;
+                z-index: 1;
             }
 
 
@@ -470,8 +483,8 @@
                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block font-heading text-primary_text">
-                    <div class="text-xl leading-tight">Lorem ipsum dolor</div>
-                    <div class="text-xs tracking-wide hidden md:block">Lorem ipsum dolor sit amet consectetu</div>
+                    <div class="text-xl leading-tight">PU "Pčelica"</div>
+                    <div class="text-xs tracking-wide hidden md:block">Sremska Mitrovica</div>
                 </div>
             </a>
             <!-- Desktop Navigation -->
@@ -676,16 +689,17 @@
                 <div>
                     <div class="mb-8 text-center">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondary_text font-heading2">Lorem ipsum dolor sit</span>
+                            <span class="block font-heading text-primary_text">PU "Pčelica" Sremska Mitrovica</span>
+                            <span class="block mt-2 text-secondary_text text-4xl font-heading2">Marko Peričin Kamenjar 16</span>
                         </h1>
-                        <p class="mx-4 md:mx-20 mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+                        <p class="mx-4 md:mx-20 mb-5 text-2xl text-primary_text">
+                            022 624 398
+                        </p>
+                        <p class="mx-4 md:mx-20 mb-5 text-2xl text-primary_text">
+                            022 623 919 - upis dece
+                        </p>
+                        <p class="mx-4 md:mx-20 mb-10 text-2xl text-primary_text">
+                            060 8010 334
                         </p>
                         <a href="/o-nama/cilj"
                             class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
@@ -701,11 +715,11 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-heading2">
                 <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                    Lorem ipsum
+                    Vesti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit
+                    Pročitajte najnovije vesti naše predškolske ustanove
                 </p>
             </div>
             <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -777,7 +791,7 @@
         </div>
     </section>
     <!-- objekti -->
-    <section id="vrtici" class="bg-background text-secondary_text font-heading2">
+    <section id="vrtici" class="bg-surface text-secondary_text font-heading2">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
                 <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">Objekti
@@ -789,7 +803,7 @@
                 </p>
             </div>
             <div id="vrticiCards" class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-                <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
+                <div class="vrtici-card flex items-center bg-background rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img
                             id="g-image"
@@ -805,7 +819,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="vrtici-card flex  items-center bg-surface rounded-lg shadow h-48">
+                <div class="vrtici-card flex  items-center bg-background rounded-lg shadow h-48">
                     <div class="h-48 relative">
                         <img id="g-image"
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
@@ -820,7 +834,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
+                <div class="vrtici-card flex items-center bg-background rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img
                             class="w-full h-full object-cover rounded-l-lg"
@@ -835,7 +849,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
+                <div class="vrtici-card flex items-center bg-background rounded-lg shadow h-48">
                     <a href="#" class="w-1/4 h-full">
                         <img
                             class="w-full h-full object-cover rounded-l-lg"
@@ -940,27 +954,19 @@
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl">Lorem ipsum dolor</h3>
+                        <h3 class="text-xl">PU "Pčelica"</h3>
                     </div>
                     <p class="mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit
+                        Sremska Mitrovica
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
+                        <a href="https://www.facebook.com/pupcelicasm/#"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/pu_pcelica_sm"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-spotify"></i>
                         </a>
                     </div>
                 </div>
@@ -982,18 +988,19 @@
                         <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>Lorem ipsum dolor</span>
+                            <span>022 624 398</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+                            <span>022 623 919 - upis dece</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
+                            <span>060 8010 334</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate="off">Lorem ipsum dolor</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
-                            <span>
-                                Lorem ipsum dolor<br>
-                                Lorem ipsum dolor
-                            </span>
+                            <span data-translate="off">pu.pcelica@open.telekom.rs</span>
                         </li>
                     </ul>
                 </div>
@@ -1001,7 +1008,7 @@
                     <h4 class="mb-6">Mapa lokacije</h4>
                     <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps?q=Marko+Pericin+Kamenjar+16,+Sremska+Mitrovica&output=embed"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -1025,17 +1032,17 @@
                     colors: {
                         logocolor1: 'rgba(233, 168, 3, 1)',
                         logocolor2: '#2D6A4F',
-                        primary: '#e9a803ff',
-                        primary_hover: '#d39802ff',
-                        secondary: '#32604dff',
-                        secondary_hover: '#255943ff',
-                        accent: "#e9a803ff",
-                        accent_hover: "#d39802ff",
+                        primary: '#197278',
+                        primary_hover: '#283d3b',
+                        secondary: '#c44536',
+                        secondary_hover: '#772e25',
+                        accent: "#283d3b",
+                        accent_hover: "#197278",
                         primary_text: '#1B4332',
                         secondary_text: '#2a644aff',
-                        background: '#F1F7ED',
-                        secondary_background: '#e5cc8c6b',
-                        surface: "#e5cc8c6b",
+                        background: '#F6EEEA',
+                        secondary_background: '#edddd4',
+                        surface: "#edddd4",
                     },
                     fontFamily: {
                         heading: ['Fredoka', 'sans-serif'],
