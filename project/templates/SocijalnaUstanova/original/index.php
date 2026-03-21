@@ -488,17 +488,17 @@
         <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
             <!-- Logo Section -->
             <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-                <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                    <img src="" alt="" style="width:75px;height:auto;" />
+                <div class="w-80 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                    <img src="/assets/img/CentarMOSTlogo_600.png" alt="" style="width:600px;height:auto;" />
                 </div>
-                <div class="hidden sm:block">
+                <!-- <div class="hidden sm:block">
                     <h1
                         class="text-base sm:text-lg lg:text-xl xl:text-2xl font-display text-slate font-bold tracking-wider leading-tight">
                         CENTAR ZA SOCIJALNI RAD</h1>
                     <p
                         class="text-xs sm:text-xs lg:text-sm text-primary tracking-widest hidden md:block opacity-80 font-medium">
                         PODRŠKA I BRIGA ZA ZAJEDNICU</p>
-                </div>
+                </div> -->
                 <div class="block sm:hidden">
                     <h1 class="text-base font-display text-slate font-bold tracking-wide">CSR</h1>
                 </div>
@@ -735,9 +735,9 @@
     <section class="slider-item hero relative flex items-center z-10 w-full h-[600px] overflow-hidden">
         <?php
             $slike = [
-                '/img/assets/homepage-1.jpg',
-                '/img/assets/homepage-2.jpg',
-                '/img/assets/homepage-3.jpg',
+                '/img/assets/homepage-1.png',
+                '/img/assets/homepage-2.png',
+                '/img/assets/homepage-3.png',
             ];
 
             $izabrana = rand(0, count($slike)-1);
@@ -745,7 +745,7 @@
         <img id="g-slider-image-1" src="<?php echo $slike[$izabrana]; ?>" alt="Pozadinska slika za slider"
             class="absolute inset-0 w-full h-full object-cover z-10">
 
-        <div class="overlay-blur absolute inset-0 z-20 backdrop-blur-sm bg-[rgba(42,157,143,0.35)]">
+        <div class="overlay-blur-none absolute inset-0 z-20 backdrop-blur-sm-none bg-[rgba(42,157,143,0.1)]">
         </div>
 
         <div class="max-w-6xl mx-auto px-4 py-20 text-center relative z-30 text-white w-full">
@@ -759,10 +759,10 @@
             </div>
 
             <div class="mb-10">
-                <p class="text-xl text-white leading-relaxed max-w-3xl mx-auto mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                <p class="text-xl text-white font-medium leading-relaxed max-w-3xl mx-auto mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
                     Naš cilj je da pružimo podršku i pomoć pojedincima, porodicama i zajednici u rešavanju životnih poteškoća i unapređenju kvaliteta života.
                 </p>
-                <p class="text-white/90 italic text-lg max-w-2xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                <p class="text-white/90 font-medium text-lg max-w-2xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
                     "Centar za socijalni rad je tu da vas sasluša, posavetuje i podrži. Zajedno gradimo društvo solidarnosti."
                 </p>
             </div>
