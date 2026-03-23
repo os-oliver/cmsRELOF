@@ -744,7 +744,7 @@ class PageExporter
             case 'jelovnik':
                 return new JelovnikPageBuilder('Jelovnik', $this->data);
             case 'cenovnik':
-                return new CenovnikPageBuilder('Cenovnik', $this->data);
+                return new DynamicPageBuilder('Cenovnik');
             case 'raspored-aktivnosti':
                 return new RasporedAktivnostiPageBuilder('RasporedAktivnosti', $this->data);
             case 'istorijat':
@@ -765,6 +765,8 @@ class PageExporter
                 return new DynamicPageBuilder('Filmovi');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
+            case 'saradnja-sa-porodicom':
+                return new DynamicPageBuilder('Saradnja sa porodicom');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -884,6 +886,8 @@ class PageExporter
             return 'koncerti';
         }elseif (strpos($name, 'filmovi') !== false) {
             return 'filmovi';
+        } elseif (strpos($name, 'saradnja-sa-porodicom') !== false) {
+            return 'saradnja-sa-porodicom';
         }
 
         return 'basic';

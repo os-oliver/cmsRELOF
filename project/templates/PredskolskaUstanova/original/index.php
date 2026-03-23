@@ -366,10 +366,6 @@
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                             </a>
                             <a href="#"
@@ -378,7 +374,7 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Misija
+                                <i class="fas fa-flag mr-2 text-primary"></i>Misija i vizija
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
@@ -395,10 +391,6 @@
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-users mr-2 text-primary"></i>Timovi
                             </a>
                         </div>
                     </div>
@@ -429,27 +421,15 @@
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-file-alt mr-2 text-primary"></i>Upis
                             </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-clock mr-2 text-primary"></i>Raspored aktivnosti
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
-                            </a>
                         </div>
                     </div>
                     <a href="#"
                         class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Vesti
+                        <i class="fas fa-users mr-3 text-primary"></i>Saradnja sa porodicom
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-diagram-project mr-3 text-primary"></i>Projekti
+                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Vesti
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 rounded-lg transition-all">
@@ -503,10 +483,6 @@
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
-                        </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
@@ -517,7 +493,7 @@
                         </a>
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Misija
+                            <i class="fas fa-flag mr-2 text-primary"></i>Misija i vizija
                         </a>
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
@@ -526,10 +502,6 @@
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-school mr-2 text-primary"></i>Vrtići
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-users mr-2 text-primary"></i>Timovi
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
@@ -566,31 +538,19 @@
                             class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
                             <i class="fas fa-file-alt mr-2 text-primary"></i>Upis
                         </a>
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-clock mr-2 text-primary"></i>Raspored aktivnosti
-                        </a>
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-comments mr-2 text-primary"></i>Savetovalište
-                        </a>
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-star mr-2 text-primary"></i>Posebne usluge
-                        </a>
                     </div>
                 </div>
                 <a href="#"
                     class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i
-                        class="fas fa-calendar-alt mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Vesti</span>
+                        class="fas fa-users mr-2 text-primary"></i>
+                    <span class="hidden xl:inline">Saradnja sa porodicom</span>
                 </a>
                 <a href="#"
                     class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i
-                        class="fas fa-diagram-project mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Projekti</span>
+                        class="fas fa-calendar-alt mr-2 text-primary"></i>
+                    <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#"
                     class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -618,8 +578,7 @@
 
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>']
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -797,10 +756,6 @@
                 <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">Objekti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
-                <p class="lg:mb-16 sm:text-xl">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
             </div>
             <div id="vrticiCards" class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                 <div class="vrtici-card flex items-center bg-background rounded-lg shadow h-48">
@@ -878,10 +833,10 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <?php
                 $stats = [
-                    ['number' => '20', 'label' => 'Generacija'],
-                    ['number' => '15', 'label' => 'Objekata'],
-                    ['number' => '1000+', 'label' => 'Osmeha'],
-                    ['number' => '50+', 'label' => 'Zaposlenih'],
+                    ['number' => '9', 'label' => 'Objekata'],
+                    ['number' => 'bezbroj', 'label' => 'Osmeha'],
+                    ['number' => '290', 'label' => 'Zaposlenih'],
+                    ['number' => 'od 1944. godine', 'label' => 'Tradicija']
                 ];
                 foreach ($stats as $index => $stat): ?>
                     <div class="bg-surface p-6 rounded-xl shadow-lg transform transition hover:scale-105"
@@ -901,9 +856,6 @@
                     Galerija
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
-                <p class="text-2xl max-w-2xl mx-auto">
-                    Lorem ipsum dolor amet consectetur adipiscing
-                </p>
             </div>
             <div id="galleryCards" class="gallery-grid gap-6">
                 <div class="gallery-item rounded-xl overflow-hidden relative">
@@ -973,12 +925,11 @@
                 <div>
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a>
+                        <li><a href="/za-roditelje/jelovnik" class="text-logocolor2/90 hover:text-primary_text transition-colors">Jelovnik</a></li>
+                        <li><a href="/cenovnik" class="text-logocolor2/90 hover:text-primary_text transition-colors">Cenovnik</a></li>
+                        <li><a href="/kontakt" class="text-logocolor2/90 hover:text-primary_text transition-colors">Kontakt</a></li>
+                        <li><a href="/o-nama/pitanja" class="text-logocolor2/90 hover:text-primary_text transition-colors">Česta pitanja</a></li>
+                        <li><a href="/za-roditelje/upis" class="text-logocolor2/90 hover:text-primary_text transition-colors">Upis</a></li>
                         </li>
                     </ul>
                 </div>

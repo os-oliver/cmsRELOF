@@ -164,6 +164,50 @@
         }
       ]
     },
+    "SaradnjaSaPorodicom": {
+      "sr": "Saradnja sa porodicom",
+      "en": "cooperation with the family",
+      "sr-Cyrl": "Сарадња са породицом",
+      "icon": "fas fa-users",
+      "fields": [
+        {
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov",
+            "en": "News",
+            "sr-Cyrl": "Наслов"
+          }
+        },
+        {
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Оpis",
+            "en": "Description",
+            "sr-Cyrl": "Oпис"
+          }
+        },
+        {
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum",
+            "en": "News",
+            "sr-Cyrl": "Датум"
+          }
+        },
+        {
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika",
+            "en": "Image",
+            "sr-Cyrl": "Насловна слика"
+          }
+        }
+      ]
+    },
     "Vesti": {
       "sr": "Vesti",
       "en": "News",
