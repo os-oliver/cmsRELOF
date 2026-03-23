@@ -174,8 +174,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">Centar za umetnost i baštinu<br>Trg
-                                        slobode 1<br>21000 Novi Sad, Srbija</p>
+                                    <p class="text-gray-600 leading-relaxed">Marko Peričin Kamenjar 16<br>Sremska Mitrovica, Srbija</p>
                                 </div>
                             </div>
 
@@ -188,8 +187,9 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
-                                    <p class="text-gray-600 text-lg">+381 21 123 456</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <p class="text-gray-600 text-lg">+381 22 624 398</p>
+                                    <p class="text-gray-600 text-lg">+381 22 623 919</p>
+                                    <p class="text-gray-600 text-lg">+381 60 8010 334</p>
                                 </div>
                             </div>
 
@@ -201,29 +201,17 @@ HTML;
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">info@kulturnynexus.rs</p>
-                                    <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Mejl</h3>
+                                    <p class="text-gray-600 text-lg" data-translate="off">pu.pcelica@open.telekom.rs</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="mt-10 p-6 bg-gradient-to-br from-orange-50 to-blue-50 rounded-2xl border border-orange-100">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Radno vreme</h3>
-                            <div class="text-gray-700 space-y-2">
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Ponedeljak - Petak:</span>
-                                    <span>09:00 - 17:00</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Subota:</span>
-                                    <span>10:00 - 14:00</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Nedelja:</span>
-                                    <span class="text-red-500">Zatvoreno</span>
-                                </div>
-                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Odgovorno lice za zaštitu podataka o ličnosti</h3>
+                            <p class="text-gray-600 text-lg">JELICA RADAKOVIĆ</p>
+                            <p class="text-gray-600 text-lg">022-624-398</p>
+                            <p class="text-gray-600 text-lg" data-translate="off">j.radakovic73@gmail.com</p>
                         </div>
                     </div>
                 </div>
