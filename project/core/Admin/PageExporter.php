@@ -27,6 +27,7 @@ use App\Admin\PageBuilders\SluzbePageBuilder;
 use App\Admin\PageBuilders\ObrasciPageBuilder;
 use App\Admin\PageBuilders\NasiKorisniciPageBuilder;
 use App\Admin\PageBuilders\DestinacijePageBuilder;
+use App\Admin\PageBuilders\CenovniciPageBuilder;
 use App\Admin\PageBuilders\ZnacajaStranica;
 use App\Controllers\AuthController;
 use App\Models\Content;
@@ -744,7 +745,7 @@ class PageExporter
             case 'jelovnik':
                 return new JelovnikPageBuilder('Jelovnik', $this->data);
             case 'cenovnik':
-                return new DynamicPageBuilder('Cenovnik');
+                return new CenovniciPageBuilder('Cenovnik', $this->data);
             case 'raspored-aktivnosti':
                 return new RasporedAktivnostiPageBuilder('RasporedAktivnosti', $this->data);
             case 'istorijat':
