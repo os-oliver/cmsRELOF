@@ -645,11 +645,8 @@
                         <p class="mx-4 md:mx-20 mb-5 text-2xl text-primary_text">
                             022 624 398
                         </p>
-                        <p class="mx-4 md:mx-20 mb-5 text-2xl text-primary_text">
-                            022 623 919 - upis dece
-                        </p>
                         <p class="mx-4 md:mx-20 mb-10 text-2xl text-primary_text">
-                            060 8010 334
+                            022 623 919 - upis dece
                         </p>
                         <a href="/o-nama/cilj"
                             class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
@@ -900,16 +897,12 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
+                    <a href="/" class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                            <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
-                        <h3 class="text-xl">PU "Pčelica"</h3>
-                    </div>
+                        <h3 class="text-xl font-heading font-bold">PU "Pčelica"</h3>
+                    </a>
                     <p class="mb-4">
                         Sremska Mitrovica
                     </p>
@@ -948,12 +941,8 @@
                             <span>022 623 919 - upis dece</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>060 8010 334</span>
-                        </li>
-                        <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate="off">pu.pcelica@open.telekom.rs</span>
+                            <span data-translate="off">pupcelicasm@gmail.com</span>
                         </li>
                     </ul>
                 </div>

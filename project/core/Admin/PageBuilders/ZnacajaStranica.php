@@ -70,7 +70,7 @@ class ZnacajaStranica extends BasePageBuilder
           </h1>
           <p class="lead text-secondary_text/90 mt-2">
             Pravo na pristup informacijama od javnog značaja ostvaruje se podnošenjem zahteva nadležnom organu.
-            Ovde se nalazi kratko uputstvo i obrazac <strong>(DOC)</strong> za preuzimanje.
+            Ovde se nalazi kratko uputstvo i obrazac (DOC) za preuzimanje.
           </p>
         </section>
 
@@ -82,9 +82,9 @@ class ZnacajaStranica extends BasePageBuilder
               koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
             <li><strong>Pošaljite popunjen zahtev</strong>&nbsp;na adresu elektronske pošte:&nbsp;
               <a data-translate="off" class="text-accent hover:text-accent_hover underline-offset-2 hover:underline"
-                 href="mailto:pisarnica@vas-domen.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
-                 pisarnica@vas-domen.rs
-              </a>. Možete poslati i poštom ili lično, u pisarnici.</li>
+                 href="mailto:pupcelicasm@gmail.com?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                 pupcelicasm@gmail.com
+              </a>.
             <li><strong>Odgovor</strong>: nakon obrade, dobićete e-poruku sa adresom ili linkom,
               sa koje možete preuzeti tražene informacije, ili obrazloženje ako zahtev nije moguće u celosti uvažiti.</li>
           </ol>
@@ -102,11 +102,8 @@ class ZnacajaStranica extends BasePageBuilder
         <section class="mt-4">
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
-            <p><strong>Za upravu i nacionalne zajednice</strong><br>Ime Prezime — 021/000-00-00 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer1@vas-domen.rs">primer1@vas-domen.rs</a></p>
+            <p><strong></strong><br>Tatjana Milosavljević, sekretar — 060 801 0312 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:pupcelicasm@gmail.com">pupcelicasm@gmail.com</a></p>
             <hr class="border-t border-secondary/30 my-3">
-            <p><strong>Za oblast obrazovanja</strong><br>Ime Prezime — 021/000-00-01 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer2@vas-domen.rs">primer2@vas-domen.rs</a></p>
-            <hr class="border-t border-secondary/30 my-3">
-            <p><strong>Za oblast finansija</strong><br>Ime Prezime — 021/000-00-02 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer3@vas-domen.rs">primer3@vas-domen.rs</a></p>
           </div>
         </section>
       </article>
@@ -138,7 +135,7 @@ class ZnacajaStranica extends BasePageBuilder
               </div>
               <p class="mt-2">
                 <a class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                   href="mailto:pisarnica@vas-domen.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                   href="mailto:pupcelicasm@gmail.com?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
                   Otvori e-poštu
                 </a>
               </p>

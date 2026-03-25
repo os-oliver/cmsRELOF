@@ -189,7 +189,6 @@ HTML;
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
                                     <p class="text-gray-600 text-lg">+381 22 624 398</p>
                                     <p class="text-gray-600 text-lg">+381 22 623 919</p>
-                                    <p class="text-gray-600 text-lg">+381 60 8010 334</p>
                                 </div>
                             </div>
 

@@ -6,11 +6,15 @@
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
       "categories": [
-        "Kultura",
-        "Obrazovanje",
-        "Inovacije",
-        "Zdravlje",
-        "Tehnologija"
+        "Zvezdica",
+        "Maslačak",
+        "Bubamara",
+        "Cvrčak",
+        "Leptirić",
+        "Maja",
+        "Đurđevak",
+        "Čuperak",
+        "Lane"
       ],
       "fields": [
         {
@@ -59,6 +63,26 @@
             "en": "News link",
             "sr-Cyrl": "Линк вести"
           }
+        },
+        {
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Vrtić na koji se vest odnosti",
+            "en": "Kindergarten to which the news refers",
+            "sr-Cyrl": "Вртић на који се вест односи"
+          },
+          "options": [
+            "Zvezdica",
+            "Maslačak",
+            "Bubamara",
+            "Cvrčak",
+            "Leptirić",
+            "Maja",
+            "Đurđevak",
+            "Čuperak",
+            "Lane"
+          ]
         }
       ]
     },
@@ -138,8 +162,7 @@
             "sr": "Lokacija vrtića",
             "en": "Kindergarten location",
             "sr-Cyrl": "Локација вртића"
-          },
-          "required": true
+          }
         },
         {
           "name": "description",
