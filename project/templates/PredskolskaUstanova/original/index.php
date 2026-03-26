@@ -648,7 +648,7 @@
                         <p class="mx-4 md:mx-20 mb-10 text-2xl text-primary_text">
                             022 623 919 - upis dece
                         </p>
-                        <a href="/o-nama/cilj"
+                        <a href="o-nama/misija-i-vizija"
                             class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
                             Saznajte o nama
                         </a>
@@ -865,6 +865,14 @@
                 <div class="gallery-item rounded-xl overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1562788865-5638f7446611?auto=format&fit=crop&w=600&q=80"
                         alt="Theater" class="w-full h-full object-cover">
+                    <div class="overlay-content text-background">
+                        <h3>Lorem ipsum</h3>
+                        <p>Lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80"
+                        alt="Workshop" class="w-full h-full object-cover">
                     <div class="overlay-content text-background">
                         <h3>Lorem ipsum</h3>
                         <p>Lorem ipsum</p>
