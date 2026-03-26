@@ -52,6 +52,7 @@ use App\Admin\PageBuilders\UpisPageBuilder;
 use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
+use App\Admin\PageBuilders\SaradnjaSaPorodicomPageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
 use App\Utils\Config;
 use DOMDocument;
@@ -767,7 +768,7 @@ class PageExporter
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
             case 'saradnja-sa-porodicom':
-                return new DynamicPageBuilder('Saradnja sa porodicom');
+                return new SaradnjaSaPorodicomPageBuilder('SaradnjaSaPorodicom', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }

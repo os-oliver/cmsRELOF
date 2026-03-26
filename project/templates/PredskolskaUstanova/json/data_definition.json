@@ -188,8 +188,7 @@
             "sr": "Naslovna slika оbaveštenja",
             "en": "Notification image",
             "sr-Cyrl": "Насловна слика обавештења"
-          },
-          "required": true
+          }
         },
         {
           "name": "naziv",
