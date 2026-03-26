@@ -768,9 +768,6 @@
                         <h3 class="text-primary_text font-heading text-2xl">
                             <p id="g-title" class="text-3xl">Lorem ipsum</p>
                         </h3>
-                        <p id="g-description" class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
                     </div>
                 </div>
                 <div class="vrtici-card flex  items-center bg-background rounded-lg shadow h-48">
@@ -783,9 +780,6 @@
                         <h3 class="text-primary_text tracking-tight text-2xl">
                             <p id="g-naslov">Lorem ipsum</p>
                         </h3>
-                        <p class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
                     </div>
                 </div>
                 <div class="vrtici-card flex items-center bg-background rounded-lg shadow h-48">
@@ -798,9 +792,6 @@
                         <h3 class="text-primary_text tracking-tight text-2xl">
                             <p>Lorem ipsum</p>
                         </h3>
-                        <p class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
                     </div>
                 </div>
                 <div class="vrtici-card flex items-center bg-background rounded-lg shadow h-48">
@@ -813,9 +804,6 @@
                         <h3 class="text-primary_text tracking-tight text-2xl">
                             <p>Lorem ipsum</p>
                         </h3>
-                        <p class="mt-3 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
                     </div>
                 </div>
             </div>
