@@ -656,13 +656,13 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
                         <h3 id="g-naslov" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-tekst" class="text-secondary_text mb-4">
+                        <p id="g-tekst" class="text-secondary_text mb-4 line-clamp-3 md:line-clamp-2">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
                             suscipit quis, pharetra a dui.
                         </p>
@@ -691,13 +691,13 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
                         <h3 id="g-naslov" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-tekst" class="text-secondary_text mb-4">
+                        <p id="g-tekst" class="text-secondary_text mb-4 line-clamp-3 md:line-clamp-2">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
                             suscipit quis, pharetra a dui.
                         </p>
@@ -726,13 +726,13 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
                         <h3 id="g-naslov" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-tekst" class="text-secondary_text mb-4">
+                        <p id="g-tekst" class="text-secondary_text mb-4 line-clamp-3 md:line-clamp-2">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
                             suscipit quis, pharetra a dui.
                         </p>
