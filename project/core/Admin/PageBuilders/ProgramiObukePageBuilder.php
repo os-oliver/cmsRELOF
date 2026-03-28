@@ -231,8 +231,6 @@ HTML;
     $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['kratakOpis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
-    $ikonica = htmlspecialchars($item['fields']['ikonica'][$locale] ?? 'fas fa-graduation-cap', ENT_QUOTES, 'UTF-8');
-    $bojaKategorije = htmlspecialchars($item['fields']['bojaKategorije'][$locale] ?? 'green', ENT_QUOTES, 'UTF-8');
     $vremePocetka = htmlspecialchars($item['fields']['vremePocetka'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $vremeZavrsetka = htmlspecialchars($item['fields']['vremeZavrsetka'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $ucestalost = htmlspecialchars($item['fields']['ucestalost'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
@@ -269,7 +267,6 @@ HTML;
     // Category badge
     $categoryBadge = $kategorija
         ? "<span class='category-badge badge-green'>
-               <i class='{$ikonica}'></i>
                <span>{$kategorija}</span>
            </span>"
         : '';
