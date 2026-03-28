@@ -1175,8 +1175,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mr-3">
-                            <i class="fas fa-heart text-xl"></i>
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                            <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
                         <h3 class="text-xl font-display font-bold">CENTAR ZA SOCIJALNI RAD</h3>
                     </div>
