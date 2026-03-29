@@ -917,7 +917,7 @@
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
                         <li><a href="/za-roditelje/jelovnik" class="text-logocolor2/90 hover:text-primary_text transition-colors">Jelovnik</a></li>
-                        <li><a href="/cenovnik" class="text-logocolor2/90 hover:text-primary_text transition-colors">Cenovnik</a></li>
+                        <li><a href="/za-roditelje/cenovnik" class="text-logocolor2/90 hover:text-primary_text transition-colors">Cenovnik</a></li>
                         <li><a href="/kontakt" class="text-logocolor2/90 hover:text-primary_text transition-colors">Kontakt</a></li>
                         <li><a href="/o-nama/pitanja" class="text-logocolor2/90 hover:text-primary_text transition-colors">Česta pitanja</a></li>
                         <li><a href="/za-roditelje/upis" class="text-logocolor2/90 hover:text-primary_text transition-colors">Upis</a></li>
