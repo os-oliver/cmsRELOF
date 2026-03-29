@@ -229,7 +229,7 @@ CSS;
 
 <div class="lightbox" id="lightbox">
     <button class="close-btn" id="closeLightbox">&times;</button>
-    <button class="nav-btn prev-btn bg-primary hover:primary_hover" id="prevBtn">&#10094;</button>
+    <button class="nav-btn prev-btn bg-primary hover:bg-primary_hover" id="prevBtn">&#10094;</button>
 
     <div class="lightbox-content">
         <img id="lightboxImage" src="" alt="">
@@ -240,7 +240,7 @@ CSS;
         </div>
     </div>
 
-    <button class="nav-btn next-btn bg-primary hover:primary_hover" id="nextBtn">&#10095;</button>
+    <button class="nav-btn next-btn bg-primary hover:bg-primary_hover" id="nextBtn">&#10095;</button>
 </div>
 
 <script>
