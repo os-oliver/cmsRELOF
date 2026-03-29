@@ -112,16 +112,16 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
         <input type='text' name='search' value='{$safeSearchValue}'
                placeholder='{$texts['search_placeholder']}'
-               class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
+               class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
         <button type='submit'
-                class='bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+                class='bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
             {$texts['apply_button']}
         </button>
     </div>";
 
     $html .= "<div class='flex items-center w-full sm:w-auto'>
         <select name='category'
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
             <option value=''>{$texts['all_categories']}</option>";
 
     foreach ($categories as $cat) {
@@ -140,7 +140,7 @@ PHP;
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
         <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
-            <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-green-100 to-teal-100">
+            <div class="relative w-full h-56 overflow-hidden">
                 {{imageSection}}
             </div>
 
@@ -149,7 +149,7 @@ PHP;
                     {{categoryBadge}}
                 </div>
 
-                <h3 class="text-xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-green-600 transition-colors">
+                <h3 class="text-xl font-bold text-gray-900 mb-4 line-clamp-2 transition-colors">
                     {{naziv}}
                 </h3>
 
@@ -158,7 +158,7 @@ PHP;
                 </div>
 
                 <a href="/sadrzaj?id={{itemId}}&tip=generic_element"
-                   class="block text-center bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
+                   class="block text-center bg-primary hover:bg-primary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
                     <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-info-circle"></i>
                         <span>{{departmentDetails}}</span>
@@ -185,7 +185,7 @@ HTML;
     $imageSection = $imageUrl
         ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Department image'>"
         : "<div class='absolute inset-0 flex items-center justify-center'>
-                <i class='fas fa-building text-6xl text-green-300'></i>
+                <i class='fas fa-building text-6xl text-red-300'></i>
            </div>";
 
     // Category badge
@@ -215,61 +215,66 @@ HTML;
 function renderPagination(int $currentPage, int $totalPages, int $range = 2): string
 {
     if ($totalPages <= 1) return '';
-
+    
     $html = "<div class='flex justify-center items-center gap-2 mt-10'>";
-
+    
+    // Previous button
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
-        $html .= "<a href='{$prevUrl}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow'>
+        $html .= "<a href='{$prevUrl}' 
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
             <i class='fas fa-chevron-left text-gray-600'></i>
         </a>";
     }
-
+    
     $start = max(1, $currentPage - $range);
     $end = min($totalPages, $currentPage + $range);
-
+    
+    // First page + ellipsis
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
-        $html .= "<a href='{$url}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
+        $html .= "<a href='{$url}' 
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
         if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
     }
-
+    
+    // Page numbers
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
-        $class = $i === $currentPage
-            ? 'px-4 py-2 bg-green-600 text-white rounded-xl font-semibold shadow-md'
-            : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow font-medium';
+        $class = $i === $currentPage 
+            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md' 
+            : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
-
+    
+    // Last page + ellipsis
     if ($end < $totalPages) {
         if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
-        $html .= "<a href='{$url}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
+        $html .= "<a href='{$url}' 
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
     }
-
+    
+    // Next button
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
-        $html .= "<a href='{$nextUrl}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow'>
+        $html .= "<a href='{$nextUrl}' 
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
             <i class='fas fa-chevron-right text-gray-600'></i>
         </a>";
     }
-
+    
     $html .= "</div>";
-
+    
     return $html;
 }
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-green-50 to-teal-50 min-h-screen">
+<main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Službe</h1>
+            <h1 class="text-4xl font-bold font-heading text-gray-900 mb-2">Službe</h1>
             <p class="text-gray-600">Upoznajte naše službe i njihove nadležnosti</p>
         </div>
 

@@ -154,10 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
 HTML;
 
     protected string $html = <<<'HTML'
-<main>
+<main class="bg-background">
     <div class="text-center px-2 pt-32">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10 font-body">Preuzmi sva potrebna dokumenta, obrasce i publikacije Kulturnog Nexusa. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
 
         <div class="mx-auto max-w-6xl">
             <form id="filter-form" method="GET" action="" class="bg-white rounded-2xl shadow p-6 mb-8 border border-gray-100">
@@ -175,7 +175,7 @@ HTML;
                             <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>Najstariji prvo</option>
                             <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>Po nazivu</option>
                         </select>
-                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl whitespace-nowrap">Primeni</button>
+                        <button type="submit" class="bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-xl whitespace-nowrap">Primeni</button>
                     </div>
 
                     <div class="w-full">
@@ -300,7 +300,7 @@ HTML;
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-4">Nema pronađenih dokumenata</h3>
                     <p class="text-gray-600 max-w-md mx-auto mb-6">Promenite filtere da biste videli druge dokumente ili proverite kasnije.</p>
-                    <a href="?" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl">Resetuj filtere</a>
+                    <a href="?" class="px-6 py-3 bg-primary hover:bg-primary_hover text-white font-bold rounded-xl">Resetuj filtere</a>
                 </div>
             <?php endif; ?>
             <div class="text-left">
