@@ -209,7 +209,7 @@ PHP;
 <main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Programi</h1>
+            <h1 class="text-5xl font-bold font-heading text-primary_text mb-2">Programi</h1>
             <p class="text-gray-600">Upoznajte naše programe</p>
         </div>
 

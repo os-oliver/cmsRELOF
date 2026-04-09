@@ -19,7 +19,7 @@ class CenovnikPageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
 
     <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center font-body text-secondary_text">
-      <h1 class="text-5xl font-heading mb-4 text-primary_text">Cenovnik predškolske ustanove</h1>
+      <h1 class="text-5xl font-bold font-heading mb-4 text-primary_text">Cenovnik predškolske ustanove</h1>
 
       <p class="leading-relaxed mb-4 text-justify">
         Naša predškolska ustanova teži da pruži najviši kvalitet vaspitno–obrazovnog rada, uz transparentne i pristupačne cene. 
@@ -39,22 +39,13 @@ class CenovnikPageBuilder extends BasePageBuilder
       </ul>
 
       <div class="flex items-center justify-center gap-4">
-        <a id="downloadMenuBtn" href="#" download
-           class="inline-flex items-center gap-2 bm-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-5 rounded-lg shadow-md focus:outline-none focus:ring-4 focus:ring-green-300"
-           aria-label="Preuzmi cenovnik">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v10a1 1 0 11-2 0V5H4v10a1 1 0 11-2 0V3z" clip-rule="evenodd"/>
-            <path d="M7 11a1 1 0 011.707-.707L9 11.586V2a1 1 0 112 0v9.586l.293-.293A1 1 0 0113 11l-3 3-3-3z"/>
-          </svg>
-          Preuzmi PDF cenovnik
+        <a href="/dokumenti?search=&sort=date_desc&categories%5B%5D=8"
+           class="inline-flex items-center gap-2 bm-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-5 rounded-lg shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">
+          Pogledaj cenovnik
         </a>
 
         <a href="/kontakt" class="inline-block underline">Kontaktirajte nas za više informacija</a>
       </div>
-
-      <p class="text-xs mt-4 text-gray-600">
-        Napomena: Ako preuzimanje ne počne automatski, kliknite desni taster miša na dugme i izaberite "Sačuvaj link kao...".
-      </p>
     </div>
   </section>
 
@@ -68,12 +59,6 @@ class CenovnikPageBuilder extends BasePageBuilder
         if (scale > 1.29) scale = 1;
         container.style.transform = `scale(${scale})`;
         container.style.transition = 'transform 200ms ease';
-      });
-
-      const dl = document.getElementById('downloadMenuBtn');
-      dl?.addEventListener('click', (e) => {
-        const href = dl.getAttribute('href');
-        if (!href) return;
       });
     })();
   </script>

@@ -17,7 +17,7 @@ class SavetRoditeljaPageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
 
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 font-body text-secondary_text">
-        <h1 class="text-5xl font-heading text-primary_text mb-6 mt-10 text-center">Savet roditelja</h1>
+        <h1 class="text-5xl font-bold font-heading text-primary_text mb-6 mt-10 text-center">Savet roditelja</h1>
 
         <div class="text-xl leading-relaxed space-y-4 text-center">
         <p>Članovi Saveta roditelja PU „Dečja radost“ Babušnica su:</p>

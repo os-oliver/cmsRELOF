@@ -17,7 +17,7 @@ class ZastitaPodatakaPageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
 
     <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center font-body text-secondary_text">
-      <h1 class="text-5xl font-heading text-primary_text mb-4">Zakon o zaštiti podataka o ličnosti</h1>
+      <h1 class="text-5xl font-bold font-heading text-primary_text mb-4">Zakon o zaštiti podataka o ličnosti</h1>
 
       <p class="leading-relaxed mb-6 text-center text-xl">
         Sekretar ustanove Adrijana Jovanović je odgovorno lice za zaštitu podataka o ličnosti u PU „Dečja radost“ – Babušnica.

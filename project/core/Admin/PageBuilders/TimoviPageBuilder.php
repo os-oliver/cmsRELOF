@@ -190,10 +190,10 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<main class="bg-background pt-12 min-h-screen font-body text-secondary_text">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Timovi</h1>
+            <h1 class="text-5xl font-bold font-heading text-primary_text mb-2">Timovi</h1>
             <p class="text-lg font-heading2 text-secondary_text">Pogledajte naše posvećene timove i saznajte više o njihovom radu i članovima.</p>
         </div>
         
