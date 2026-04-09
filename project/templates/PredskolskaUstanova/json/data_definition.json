@@ -308,6 +308,60 @@
         }
       ]
     },
+    "Sluzbe": {
+      "sr": "Službe",
+      "en": "Services",
+      "sr-Cyrl": "службе",
+      "icon": "fas fa-users",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naziv službe",
+            "en": "Service name",
+            "sr-Cyrl": "Назив службе"
+          },
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis",
+            "en": "Description",
+            "sr-Cyrl": "Опис"
+          }
+        }
+      ]
+    },
+    "Programi": {
+      "sr": "Programi",
+      "en": "Programs",
+      "sr-Cyrl": "Програми",
+      "icon": "fas fa-users",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naziv programa",
+            "en": "Program name",
+            "sr-Cyrl": "Назив програма"
+          },
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis",
+            "en": "Description",
+            "sr-Cyrl": "Опис"
+          }
+        }
+      ]
+    },
     "Obavestenja": {
       "sr": "Obaveštenja za roditelje",
       "en": "Notifications for Parents",

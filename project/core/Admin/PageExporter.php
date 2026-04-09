@@ -50,8 +50,12 @@ use App\Admin\PageBuilders\TimoviPageBuilder;
 use App\Admin\PageBuilders\UpisPageBuilder;
 use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
+use App\Admin\PageBuilders\ObrazovnoVecePageBuilder;
+use App\Admin\PageBuilders\ProgramiPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
+use App\Admin\PageBuilders\SavetRoditeljaPageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
+use App\Admin\PageBuilders\ZastitaPodatakaPageBuilder;
 use App\Utils\Config;
 use DOMDocument;
 use DOMNode;
@@ -687,6 +691,8 @@ class PageExporter
                 return new SeminarPageBuilder('Seminari');
             case 'zaposleni':
                 return new EmployeesPageBuilder($name, $this->data);
+            case 'programi':
+                return new ProgramiPageBuilder('Programi');
             case 'programi-obuke':
                 return new ProgramiObukePageBuilder('ProgramiObuke');
             case 'usluge':
@@ -765,6 +771,12 @@ class PageExporter
                 return new DynamicPageBuilder('Filmovi');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
+            case 'zakon-o-zastiti-podataka-o-licnosti':
+                return new ZastitaPodatakaPageBuilder('ZakonOZastitiPodatakaOLicnosti', $this->data);
+            case 'savet-roditelja':
+                return new SavetRoditeljaPageBuilder('savetRoditelja', $this->data);
+            case 'vaspitno-obrazovno-vece':
+                return new ObrazovnoVecePageBuilder('VaspitnoObrazovnoVece', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -880,10 +892,18 @@ class PageExporter
             return 'organi-upravljanja';
         } elseif (strpos($name, 'publikacije') !== false) {
             return 'publikacije';
-        }elseif (strpos($name, 'koncerti') !== false) {
+        } elseif (strpos($name, 'koncerti') !== false) {
             return 'koncerti';
-        }elseif (strpos($name, 'filmovi') !== false) {
+        } elseif (strpos($name, 'filmovi') !== false) {
             return 'filmovi';
+        } elseif (strpos($name, 'zakon-o-zastiti-podataka-o-licnosti') !== false) {
+            return 'zakon-o-zastiti-podataka-o-licnosti';
+        } elseif (strpos($name, 'savet-roditelja') !== false) {
+            return 'savet-roditelja';
+        } elseif (strpos($name, 'vaspitno-obrazovno-vece') !== false) {
+            return 'vaspitno-obrazovno-vece';
+        } elseif (strpos($name, 'programi') !== false) {
+            return 'programi';
         }
 
         return 'basic';

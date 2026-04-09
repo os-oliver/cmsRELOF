@@ -13,25 +13,30 @@ class UpisPageBuilder extends BasePageBuilder
     </button>
   </div>
 
-  <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient">
+ <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient">
     <div class="absolute inset-0 z-0"></div>
 
-    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center font-body text-secondary_text">
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 text-center font-body text-secondary_text">
       <h1 class="text-5xl font-heading text-primary_text mb-4">Upis</h1>
 
-      <p class="leading-relaxed mb-6 text-center">
-        Dobrodošli! Ovde možete pronaći sve informacije o upisu u našu predškolsku ustanovu. 
-        Za detalje o dokumentaciji i procedurama, pogledajte dokumentaciju klikom na link ispod.
+      <p class="leading-relaxed mb-6 text-center text-xl">
+        Poštovani roditelji,
+        Obaveštavamo vas da će se upis dece uzrasta od 1 do 6,5 godina, u PU “Dečja radost” za radnu 2022/2023. godinu vršiti od <strong class="mx-1">01. APRILA do 1. MAJA 2022.</strong> godine.
+        Obrazac prijave možete preuzeti na portalu 
+        <a href="https://euprava.gov.rs/usluge/5577" class="hover:text-primary_hover ml-1" data-translate="off">https://euprava.gov.rs/usluge/5577</a>,
+        <a href="/dokumenti?search=&sort=date_desc&categories%5B%5D=7" class="hover:text-primary_hover mx-1">sajtu Predškolske ustanove</a>
+        ili ličnim dolaskom roditelja/staratelja u ustanovu. Upis se odnosi na decu koja se <strong class="mx-1">prvi put</strong> prijavljuju za pohađanje Predškolske ustanove.
+        Za decu koja su već upisana i pohađaju Predškolsku ustanovu nije potrebno podnositi novu prijavu, već je roditelj/staratelj u obavezi da do 31. 8.2022. godine zaključi novi <strong class="mx-1">Ugovor o boravku deteta</strong>.
+        Dokumentacija, koju je potrebno priložiti uz prijavu biće sastavni deo teksta konkursa koji će biti objavljen 1. aprila na sajtu PU.
+        Detaljnije informacije o upisu roditelji će dobiti na <strong class="mx-1">DAN OTVORENIH VRATA</strong> u PU «DEČJA RADOST» dana 1. aprila 2022. godine sa početkom u 12 časova.
+        PU “Dečja radost”
       </p>
 
-      <a href="/dokumenti" target="_blank"
-         class="inline-block bg-primary hover:bg-primary_hover text-background py-3 px-6 rounded-lg shadow-md mb-4 transition"
-         aria-label="Pogledajte dokumentaciju za upis">
-        Dokumentacija za upis
-      </a>
-
-      <p class="text-sm mt-4 text-gray-600">
-        Klikom na link bićete preusmereni na stranicu koja sadrži sve potrebne informacije za upis.
+      <p data-translate="off">
+        sekretar.vrticbb@gmail.com
+      </p>
+      <p>
+        Za sve dodatne informacije javite se na telefon 010 385 202
       </p>
     </div>
   </section>

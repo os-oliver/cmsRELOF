@@ -4,7 +4,7 @@ namespace App\Admin\PageBuilders;
 use App\Controllers\ContentController;
 use App\Controllers\LanguageMapperController;
 
-class SluzbePageBuilder extends BasePageBuilder
+class ProgramiPageBuilder extends BasePageBuilder
 {
     protected string $slug;
     private LanguageMapperController $translator;
@@ -33,11 +33,11 @@ class SluzbePageBuilder extends BasePageBuilder
         $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
         $latinTexts = [
-            'search_placeholder' => 'Pretraži službe...',
+            'search_placeholder' => 'Pretraži programe...',
             'apply_button' => 'Primeni',
             'all_categories' => 'Sve vrste službi',
-            'department_details' => 'Detalji službe',
-            'no_items_found' => 'Nema pronađenih službi'
+            'department_details' => 'Detalji programa',
+            'no_items_found' => 'Nema pronađenih programa'
         ];
 
         if ($locale === 'sr-Cyrl') {
@@ -209,8 +209,8 @@ PHP;
 <main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Službe</h1>
-            <p class="text-gray-600">Upoznajte naše službe i njihove nadležnosti</p>
+            <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Programi</h1>
+            <p class="text-gray-600">Upoznajte naše programe</p>
         </div>
 
         <div class="departments-grid">
@@ -283,10 +283,10 @@ if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structur
 
 $translator = new LanguageMapperController();
 $latinTexts = [
-    'search_placeholder' => 'Pretraži službe...',
+    'search_placeholder' => 'Pretraži programe...',
     'apply_button' => 'Primeni',
     'all_categories' => 'Sve vrste službi',
-    'department_details' => 'Detalji službe',
+    'department_details' => 'Detalji programa',
     'no_items_found' => 'Nema pronađenih službi'
 ];
 
