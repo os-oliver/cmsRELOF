@@ -169,13 +169,6 @@
       "en": "News",
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
-      "categories": [
-        "Kultura",
-        "Obrazovanje",
-        "Inovacije",
-        "Zdravlje",
-        "Tehnologija"
-      ],
       "fields": [
         {
           "name": "naslov",

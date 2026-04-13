@@ -33,7 +33,6 @@ class OrganizacijaPageBuilder extends BasePageBuilder
         $latinTexts = [
             'search_placeholder' => 'Pretraži članove...',
             'apply_button' => 'Primeni',
-            'all_categories' => 'Sve kategorije',
             'view_details' => 'Pogledaj više',
             'no_items_found' => 'Nema pronađenih članova',
             'contact' => 'Kontakt'
@@ -61,7 +60,7 @@ main{padding-top:50px}
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
@@ -71,27 +70,6 @@ function renderTopbar(array $categories, string $searchValue = '', int|string|nu
             {$texts['apply_button']}
         </button>
     </div>";
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category' class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-            <option value=''>{$texts['all_categories']}</option>";
-
-    foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-
-        $isSelected = false;
-
-        if ($selectedCategoryId !== null) {
-            if (is_numeric($selectedCategoryId) && (int)$selectedCategoryId === (int)$cat['id']) {
-                $isSelected = true;
-            } elseif (is_string($selectedCategoryId) && strtolower($selectedCategoryId) === strtolower($cat['name'])) {
-                $isSelected = true;
-            }
-        }
-
-        $selected = $isSelected ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
-    }
 
     $html .= "</select></div></form>";
     return $html;
@@ -210,7 +188,7 @@ PHP;
             <p class="text-secondary_text">Članovi organizacione strukture</p>
         </div>
 
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($search, $categoryId, $texts); ?>
 
         <div class="performances-grid">
             <?php
@@ -267,7 +245,6 @@ $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
     : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => [], 'total' => 0];
@@ -283,7 +260,6 @@ $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži...',
     'apply_button' => 'Primeni',
-    'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Termin',
     'location' => 'Lokacija',
     'event_details' => 'Detalji događaja',

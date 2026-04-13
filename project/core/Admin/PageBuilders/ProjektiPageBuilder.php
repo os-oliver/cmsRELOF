@@ -37,7 +37,6 @@ class ProjektiPageBuilder extends BasePageBuilder
         $latinTexts = [
             'search_placeholder' => 'Pretraži projekte...',
             'apply_button' => 'Primeni',
-            'all_categories' => 'Sve kategorije',
             'project_leader' => 'Vođa projekta',
             'budget' => 'Budžet',
             'start_date' => 'Datum početka',
@@ -344,7 +343,7 @@ main {
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
 
@@ -366,22 +365,6 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
             {$texts['apply_button']}
         </button>
     </div>";
-
-    // Kategorija select
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category'
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3
-                       focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
-                       transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer
-                       text-primary_text'>
-            <option value=''>{$texts['all_categories']}</option>";
-
-    foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
-    }
 
     $html .= "</select></div></form>";
 
@@ -590,7 +573,7 @@ PHP;
         </div>
 
         <!-- Pretraga i filteri -->
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($search, $categoryId, $texts); ?>
 
         <!-- Grid sa projektima -->
         <div class="performances-grid">
@@ -651,7 +634,6 @@ $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
     : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => []];
@@ -668,7 +650,6 @@ $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži projekte...',
     'apply_button' => 'Primeni',
-    'all_categories' => 'Sve kategorije',
     'project_leader' => 'Vođa projekta',
     'budget' => 'Budžet',
     'start_date' => 'Datum početka',
