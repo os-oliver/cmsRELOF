@@ -284,7 +284,7 @@ HTML;
                         $endPage = min($totalPages, $page + 2);
                         for ($i = $startPage; $i <= $endPage; $i++):
                         ?>
-                            <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>" class="w-9 h-9 flex items-center justify-center rounded-full <?= $i == $page ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white' : 'bg-white hover:bg-gray-100' ?> shadow"><?= $i ?></a>
+                            <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>" class="w-9 h-9 flex items-center justify-center rounded-full <?= $i == $page ? 'bg-primary text-white' : 'bg-white hover:bg-gray-100' ?> shadow"><?= $i ?></a>
                         <?php endfor; ?>
                     </div>
 

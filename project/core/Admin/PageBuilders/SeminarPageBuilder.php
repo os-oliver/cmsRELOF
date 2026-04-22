@@ -302,7 +302,7 @@ PHP;
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
             <h1 class="text-3xl font-heading font-bold text-primary mb-2">Seminari</h1>
-            <p class="text-secondary_text">Seminari čiju je akreditaciju institucionalno podržao centar za obrazovanje</p>
+            <p class="text-secondary_text">Odobreni programi stalnog stručnog usavršavanja nastavnika, vaspitača i stručnih saradnika za školsku 2025/2026, 2026/2027. i 2027/2028. godinu koje podržava RCU.</p>
         </div>
         
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>

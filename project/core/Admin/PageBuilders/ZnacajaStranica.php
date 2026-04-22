@@ -12,8 +12,7 @@ class ZnacajaStranica extends BasePageBuilder
         }
         html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
         a{color:var(--accent-2);text-decoration:none}
-        a:hover{text-decoration:underline}
-        .container{max-width:1150px;margin:0 auto;padding:0 16px}
+        .container{max-width:1150px;margin:0 auto;}
         /* Header / Nav */
         header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border)}
         .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
@@ -46,7 +45,7 @@ class ZnacajaStranica extends BasePageBuilder
         .sticky{position:sticky;top:90px}
         .row{display:flex;gap:10px;align-items:center}
         .email-box{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#fff;border:1px solid var(--border);padding:8px 10px;border-radius:10px}
-        footer{border-top:1px solid var(--border);margin-top:40px;padding:20px 0;color:#7a6f6f}
+        footer{border-top:1px solid var(--border);padding:20px 0;color:#7a6f6f}
         /* Mobile menu (simple) */
         .mobile-toggle{display:none}
         @media (max-width: 820px){
@@ -59,7 +58,7 @@ class ZnacajaStranica extends BasePageBuilder
 
     protected string $html = <<<'HTML'
 <main class="bg-background min-h-screen pt-24 flex-grow font-body text-secondary_text">
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto">
 
     <div class="grid md:grid-cols-2 gap-6 lg:gap-10">
       <!-- MAIN -->
@@ -70,7 +69,7 @@ class ZnacajaStranica extends BasePageBuilder
           </h1>
           <p class="lead text-secondary_text/90 mt-2">
             Pravo na pristup informacijama od javnog značaja ostvaruje se podnošenjem zahteva nadležnom organu.
-            Ovde se nalazi kratko uputstvo i obrazac <strong>(DOC)</strong> za preuzimanje.
+            Ovde se nalazi kratko uputstvo i obrazac <strong>&nbsp;(DOC)&nbsp;</strong> za preuzimanje.
           </p>
         </section>
 
@@ -78,13 +77,8 @@ class ZnacajaStranica extends BasePageBuilder
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Postupak podnošenja zahteva</h2>
           <ol class="list-decimal pl-6 space-y-2">
             <li><strong>Preuzmite formular</strong>&nbsp;klikom na dugme „Preuzmi formular (DOC)”.</li>
-            <li><strong>Popunite formular</strong>&nbsp;na vašem računaru (elektronski ili odštampan), navedite
-              koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
-            <li><strong>Pošaljite popunjen zahtev</strong>&nbsp;na adresu elektronske pošte:&nbsp;
-              <a data-translate="off" class="text-accent hover:text-accent_hover underline-offset-2 hover:underline"
-                 href="mailto:ivana.panic@csrpirot.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
-                 ivana.panic@csrpirot.rs
-              </a>. Možete poslati i poštom ili lično, u pisarnici.</li>
+            <li><strong>Popunite formular</strong>: navedite koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
+            <li><strong>Lično predajte popunjen zahtev u Centar</strong></li>
             <li><strong>Odgovor</strong>: nakon obrade, dobićete e-poruku sa adresom ili linkom,
               sa koje možete preuzeti tražene informacije, ili obrazloženje ako zahtev nije moguće u celosti uvažiti.</li>
           </ol>
@@ -112,7 +106,7 @@ class ZnacajaStranica extends BasePageBuilder
         <div class="sticky top-24">
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
             <h3 class="font-heading text-xl text-primary_text">Dokumenta</h3>
-            <p class="text-secondary_text/80 mt-1">Preuzmite i popunite obrazac, a zatim ga pošaljite e-poštom.</p>
+            <p class="text-secondary_text/80 mt-1">Preuzmite i popunite obrazac.</p>
             <p class="mt-3">
               <a class="inline-flex items-center gap-2 bg-primary hover:bg-primary_hover text-white font-semibold rounded-full px-4 py-2"
                  href="/docs/zahtev-za-pristup-informacijama.doc" download="">
@@ -122,26 +116,6 @@ class ZnacajaStranica extends BasePageBuilder
                 </svg>
                 Preuzmi formular (DOC)
               </a>
-            </p>
-
-            <div class="mt-3">
-              <div class="flex items-center justify-between gap-2 bg-white border border-secondary/30 rounded-xl px-3 py-2">
-                <span class="truncate text-primary_text" data-translate="off">ivana.panic@csrpirot.rs</span>
-                <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                        onclick="navigator.clipboard.writeText('ivana.panic@csrpirot.rs')">
-                  Kopiraj
-                </button>
-              </div>
-              <p class="mt-2">
-                <a class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                   href="mailto:ivana.panic@csrpirot.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
-                  Otvori e-poštu
-                </a>
-              </p>
-            </div>
-
-            <p class="text-secondary_text/70 mt-3 text-sm">
-              Ako nemate mogućnost slanja e-poštom, zahtev možete poslati poštom ili predati lično u pisarnici.
             </p>
           </div>
         </div>

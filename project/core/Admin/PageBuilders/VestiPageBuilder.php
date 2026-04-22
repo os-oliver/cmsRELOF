@@ -622,7 +622,6 @@ PHP;
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
             <h1 class="text-4xl font-bold text-primary_text font-heading mb-2">Vesti</h1>
-            <p class="text-lg text-secondary_text">Istražite našu bogatu ponudu kulturnih događaja</p>
         </div>
 
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>

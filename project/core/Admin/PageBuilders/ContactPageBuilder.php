@@ -128,20 +128,20 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 HTML;
 
     protected string $html = <<<'HTML'
-<main class="pt-2 flex-grow">
+<main class="pt-2 flex-grow bg-background">
 <div class="py-12 mt-20 px-4 flex-1">
         <div>
-            <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
-                A+
+            <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-primary hover:bg-primary_hover text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
+                Uvećaj
             </button>
         </div>
         <div class="max-w-6xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-16">
-                <h1 class="text-5xl font-heading font-bold text-primary_text">
+                <h1 class="text-5xl font-bold font-heading text-primary mb-6">
                     Kontaktirajte nas
                 </h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-body">
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     Vaše mišljenje nam je važno. Kontaktirajte nas za sve informacije ili pošaljite žalbu kako bismo
                     mogli da poboljšamo naše usluge.
                 </p>
@@ -164,8 +164,8 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">Centar za umetnost i baštinu<br>Trg
-                                        slobode 1<br>21000 Novi Sad, Srbija</p>
+                                    <p class="text-gray-600 leading-relaxed">Regionalni centar za profesionalni razvoj zaposlenih u obrazovanju<br>
+                                    Nemanjina 52<br>31000 Užice, Srbija</p>
                                 </div>
                             </div>
 
@@ -178,8 +178,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
-                                    <p class="text-gray-600 text-lg">+381 21 123 456</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <p class="text-gray-600 text-lg">031/514-624</p>
                                 </div>
                             </div>
 
@@ -191,27 +190,8 @@ HTML;
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">info@kulturnynexus.rs</p>
-                                    <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-10 p-6 bg-gradient-to-br from-orange-50 to-blue-50 rounded-2xl border border-orange-100">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Radno vreme</h3>
-                            <div class="text-gray-700 space-y-2">
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Ponedeljak - Petak:</span>
-                                    <span>09:00 - 17:00</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Subota:</span>
-                                    <span>10:00 - 14:00</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Nedelja:</span>
-                                    <span class="text-red-500">Zatvoreno</span>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate="off">E-pošta</h3>
+                                    <p class="text-gray-600 text-lg" data-translate="off">direktor@rcu-uzice.rs</p>
                                 </div>
                             </div>
                         </div>
@@ -250,7 +230,7 @@ HTML;
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-3">
-                                        Email adresa *
+                                        E-pošta *
                                     </label>
                                     <input type="email" name="email" required="" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 input-focus text-lg" placeholder="vasa.email@primer.com">
                                 </div>

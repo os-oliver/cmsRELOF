@@ -14,17 +14,17 @@ class MissionPageBuilder extends BasePageBuilder
         <button id="increaseFontBtn"
             class="fixed bottom-6 z-20 right-6 bg-primary hover:bg-primary_hover text-white font-semibold py-2.5 px-4 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-accent transition"
             aria-label="Povećaj font">
-            A+
+            Uvećaj
         </button>
     </div>
 
     <!-- Naslovna sekcija -->
-    <section class="relative pt-28 pb-16 bg-background text-center">
+    <section class="relative pt-28 pb-16 text-center">
         <div class="container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-heading font-bold text-primary_text mb-3 tracking-tight">
-                Misija i Vizija
+            <h1 class="text-4xl md:text-5xl font-heading font-extrabold text-primary_text mb-3 tracking-tight">
+                Misija i ciljevi
             </h1>
-            <p class="text-lg md:text-xl text-secondary_text/80 max-w-2xl mx-auto font-body">
+            <p class="text-lg md:text-xl text-secondary_text/80 max-w-2xl mx-auto">
                 Načela koja nas vode i ciljevi kojima težimo.
             </p>
         </div>
@@ -35,9 +35,9 @@ class MissionPageBuilder extends BasePageBuilder
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
 
             <!-- Misija -->
-            <div class="bg-surface border border-secondary/20 rounded-2xl p-10 transition">
-                <header class="border-b border-secondary/30 pb-4 mb-6">
-                    <h2 class="text-3xl font-heading font-semibold text-primary mb-2">Naša Misija</h2>
+            <div class="bg-surface shadow-md rounded-2xl p-10 transition">
+                <header class="pb-4 mb-6">
+                    <h2 class="text-3xl font-heading font-semibold text-primary mb-2">Misija</h2>
                     <p class="text-secondary_text/70 text-sm uppercase tracking-widest font-medium">
                         Svrha i posvećenost
                     </p>
@@ -48,9 +48,9 @@ class MissionPageBuilder extends BasePageBuilder
             </div>
 
             <!-- Vizija -->
-            <div class="bg-surface border border-secondary/20 rounded-2xl p-10 transition">
-                <header class="border-b border-secondary/30 pb-4 mb-6">
-                    <h2 class="text-3xl font-heading font-semibold text-accent mb-2">Naša Vizija</h2>
+            <div class="bg-surface shadow-md rounded-2xl p-10 transition">
+                <header class="pb-4 mb-6">
+                    <h2 class="text-3xl font-heading font-semibold text-primary mb-2">Ciljevi</h2>
                     <p class="text-secondary_text/70 text-sm uppercase tracking-widest font-medium">
                         Pogled ka budućnosti
                     </p>
