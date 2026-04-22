@@ -207,19 +207,19 @@ CSS;
         <div class="pagination mt-12">
             <?php if ($page > 1): ?>
                 <div class="page-item">
-                    <a href="?page=<?= $page - 1 ?>" class="page-link">Prethodna</a>
+                    <a href="<?= htmlspecialchars('?' . http_build_query(array_merge($_GET, ['page' => $page - 1])), ENT_QUOTES, 'UTF-8') ?>" class="page-link">Prethodna</a>
                 </div>
             <?php endif; ?>
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                 <div class="page-item">
-                    <a href="?page=<?= $i ?>" class="page-link <?= $i == $page ? 'active' : '' ?>">
+                    <a href="<?= htmlspecialchars('?' . http_build_query(array_merge($_GET, ['page' => $i])), ENT_QUOTES, 'UTF-8') ?>" class="page-link <?= $i == $page ? 'active' : '' ?>">
                         <?= $i ?>
                     </a>
                 </div>
             <?php endfor; ?>
             <?php if ($page < $totalPages): ?>
                 <div class="page-item">
-                    <a href="?page=<?= $page + 1 ?>" class="page-link">Sledeća</a>
+                    <a href="<?= htmlspecialchars('?' . http_build_query(array_merge($_GET, ['page' => $page + 1])), ENT_QUOTES, 'UTF-8') ?>" class="page-link">Sledeća</a>
                 </div>
             <?php endif; ?>
         </div>
@@ -291,12 +291,14 @@ HTML;
             \$limit = (int)\$_GET['per_page'];
         }
 
+        \$locale = LocaleManager::get();
         \$page = max(1, (int) (\$_GET["page"] ?? 1));
         \$offset = (\$page - 1) * \$limit;
         \$documentModal = new Gallery();
         [\$images, \$totalCount] = \$documentModal->list(
             limit: \$limit,
-            offset: \$offset
+            offset: \$offset,
+            lang: \$locale
         );
         \$totalPages = (int) ceil(\$totalCount / \$limit);
         PHP;
