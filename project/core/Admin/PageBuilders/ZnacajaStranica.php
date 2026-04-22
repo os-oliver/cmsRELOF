@@ -84,7 +84,7 @@ class ZnacajaStranica extends BasePageBuilder
           </ol>
         </section>
 
-        <section class="bg-surface border border-secondary/20 rounded-2xl p-6 mt-4">
+        <section class="bg-surface shadow-md rounded-2xl p-6 mt-4">
           <h3 class="font-heading text-xl text-primary_text mb-3">Napomene</h3>
           <ul class="list-disc pl-6 space-y-2">
             <li>Pristup može biti ograničen u zakonom propisanim slučajevima (zaštita privatnosti, poverljivost, zloupotreba prava i sl.).</li>
@@ -104,7 +104,7 @@ class ZnacajaStranica extends BasePageBuilder
       <!-- SIDEBAR -->
       <aside>
         <div class="sticky top-24">
-          <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
+          <div class="bg-surface shadow-md rounded-2xl p-6">
             <h3 class="font-heading text-xl text-primary_text">Dokumenta</h3>
             <p class="text-secondary_text/80 mt-1">Preuzmite i popunite obrazac.</p>
             <p class="mt-3">
