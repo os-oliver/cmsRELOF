@@ -186,7 +186,7 @@ CSS;
         <div class="text-center mb-12">
             <h2 class="text-4xl font-bold font-heading text-primary_text mb-2">Kolekcija slika</h2>
             <p class="text-lg font-heading2 text-secondary_text">
-                Istražite našu pažljivo odabranu kolekciju slika. Kliknite na bilo koju sliku da je pogledate u punoj veličini i da se krećete kroz galeriju.
+                Istražite našu pažljivo odabranu galeriju. Kliknite na sliku da je pogledate u punoj veličini
             </p>
         </div>
 
