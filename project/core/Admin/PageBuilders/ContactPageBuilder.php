@@ -151,6 +151,10 @@ HTML;
                 <h1 class="text-5xl font-heading font-bold text-gray-800 mb-6 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">
                     Kontaktirajte nas
                 </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-body">
+                    Kontaktirajte nas za sve informacije ili pošaljite žalbu kako bismo
+                    mogli da poboljšamo naše usluge.
+                </p>
             </div>
 
             <div class="grid lg:grid-cols-5 gap-8">

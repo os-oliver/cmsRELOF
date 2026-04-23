@@ -422,9 +422,12 @@
         <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
             <!-- Logo Section -->
             <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-                <div class="w-80 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                    <img src="/assets/img/CentarMOSTlogo_600.png" alt="" style="width:600px;height:auto;" />
-                </div>
+                <a href="/" class="flex items-center flex-shrink-0">
+                    <img
+                        src="putanja-do-logo.png"
+                        alt="Logo"
+                        class="h-11 w-auto object-contain" />
+                </a>
                 <div class="hidden sm:block">
                     <a href="/#"
                         class="text-base sm:text-lg lg:text-xl xl:text-2xl font-display text-slate font-bold tracking-wider leading-tight">
@@ -590,13 +593,13 @@
     <!-- Hero Section -->
     <section class="slider-item hero relative flex items-center z-10 w-full h-[600px] overflow-hidden">
         <?php
-            $slike = [
-                '/img/assets/homepage-1.png',
-                '/img/assets/homepage-2.png',
-                '/img/assets/homepage-3.png',
-            ];
+        $slike = [
+            '/assets/img/homepage-1.png',
+            '/assets/img/homepage-2.png',
+            '/assets/img/homepage-3.png',
+        ];
 
-            $izabrana = rand(0, count($slike)-1);
+        $izabrana = rand(0, count($slike) - 1);
         ?>
         <img id="g-slider-image-1" src="<?php echo $slike[$izabrana]; ?>" alt="Pozadinska slika za slider"
             class="absolute inset-0 w-full h-full object-cover z-10">
@@ -633,29 +636,17 @@
 
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-info_bg flex items-center justify-center text-white mr-3">
-                                <i class="fas fa-newspaper"></i>
-                            </div>
-                            <span id="g-naziv" class="text-info font-bold">OBAVEŠTENJE</span>
-                        </div>
-                        <h3 id="g-title" class="text-xl font-display font-bold text-slate mb-2">Nova usluga Centra za socijalni rad
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-slate mb-2">Nova usluga Centra za socijalni rad
                         </h3>
 
-                        <p id="g-description" class="text-text_secondary mb-4">Centar za socijalni rad proširuje ponudu usluga novim programom podrške porodicama.</p>
+                        <p id="g-opis" class="text-text_secondary mb-4 line-clamp-1">Centar za socijalni rad proširuje ponudu usluga novim programom podrške porodicama.</p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-text_secondary">
                                     <i class="fas fa-calendar-days mr-2"></i>
-                                    <span id="g-date">15. novembar 2024.</span>
-                                </div>
-                                <div class="flex items-center text-sm text-text_secondary">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span id="g-time">Objavljeno danas</span>
+                                    <span id="g-datum">15. novembar 2024.</span>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -671,13 +662,6 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-success_bg flex items-center justify-center text-white mr-3">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <span class="text-success font-bold">PROJEKAT</span>
-                        </div>
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Uspešno završen projekat podrške mladima</h3>
                         <p class="text-text_secondary mb-4">Program podrške mladima u riziku uspešno je završen uz učešće preko 50 korisnika naših usluga.</p>
                         <div class="flex justify-between items-center">
@@ -687,10 +671,6 @@
                                     <span>Autor: CSR Tim</span>
                                 </div>
                             </div>
-                            <button
-                                class="bg-success_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-success_hover transition-colors">
-                                Pročitaj
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -707,11 +687,6 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-accent_orange_bg flex items-center justify-center text-white mr-3">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <span class="text-accent_orange font-bold">SARADNJA</span>
                         </div>
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Nova saradnja sa lokalnim organizacijama</h3>
                         <p class="text-text_secondary mb-4">Potpisani su sporazumi o saradnji sa pet lokalnih nevladinih organizacija za unapređenje socijalne zaštite.</p>
@@ -722,10 +697,6 @@
                                     <span>Autor: Direkcija</span>
                                 </div>
                             </div>
-                            <button
-                                class="bg-accent_orange_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-accent_orange transition-colors">
-                                Saznaj više
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -869,7 +840,7 @@
 
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Lokacija</h4>
-                    <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+                    <div class="bg-white/10 rounded-xl overflow-hidden" style="aspect-ratio:16 / 9">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d19.8451920155352!3d45.25407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sBulevar%20oslobo%C4%91enja%2026%2C%20Novi%20Sad!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
