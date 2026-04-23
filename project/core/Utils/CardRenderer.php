@@ -99,6 +99,9 @@ class CardRenderer
                 continue;
             $label = $fieldLabels[$fn]['label'][$locale] ?? $fieldLabels[$fn]['label']['en'] ?? $fn;
             $value = (string) ($translations[$locale] ?? reset($translations) ?? '');
+            if (($fieldLabels[$fn]['type'] ?? '') === 'date' && $value !== '') {
+                $value = self::formatDate($value);
+            }
             $value = mb_strlen($value) > 10 ? mb_substr($value, 0, 10) . '...' : $value;
             $fields[] = ['name' => $fn, 'label' => $label, 'value' => $value];
         }
@@ -193,44 +196,14 @@ class CardRenderer
 
     public static function renderCardNew(int $itemId, array $fields, string $locale, bool $isEditable = false): string
     {
-        /*
-        var_dump($fields);
-        $fields = [];
-        // Dodavanje običnih text polja
-        foreach ($item as $fn => $translations) {
-            if (($fieldLabels[$fn]['type'] ?? '') === 'file')
-                continue;
-            $label = $fieldLabels[$fn]['label'][$locale] ?? $fieldLabels[$fn]['label']['en'] ?? $fn;
-            $value = (string) ($translations[$locale] ?? reset($translations) ?? '');
-            $value = mb_strlen($value) > 10 ? mb_substr($value, 0, 10) . '...' : $value;
-            $fields[] = ['name' => $fn, 'label' => $label, 'value' => $value];
-        }
-        // Dodavanje kategorije kao polja
-        if (!empty($item['category'])) {
-            $catLabel = 'Kategorija';
-            $catValue = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
-            if ($catValue) {
-                $fields[] = ['name' => 'category', 'label' => $catLabel, 'value' => $catValue];
+        // var_dump($fields);
+
+        foreach ($fields as $field) {
+            if (!empty($field['imageUrl']) && empty($imageUrl)) {
+                $imageUrl = $field['imageUrl'];
             }
         }
 
-        // Slika
-        $imageUrl = null;
-        if (!empty($item['image'])) {
-            $imageUrl = htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8');
-        } else {
-            foreach ($fieldLabels as $fieldName => $fieldConfig) {
-                if (($fieldConfig['type'] ?? '') === 'file' && isset($item['fields'][$fieldName])) {
-                    $translations = $item['fields'][$fieldName];
-                    $value = $translations[$locale] ?? reset($translations);
-                    if ($value) {
-                        $imageUrl = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-                        break;
-                    }
-                }
-            }
-        }
-*/
         $html = "<div class='group relative bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:-translate-y-1 hover:shadow-lg border border-gray-100 max-w-sm'>";
 
         // Hover akcije za edit/view/delete
@@ -280,6 +253,9 @@ class CardRenderer
         if (!empty($fields)) {
             $html .= "<div class='grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700 mb-3'>";
             foreach ($fields as $f) {
+                if (!empty($f['imageUrl'])) {
+                    continue;
+                }
                 $safeLabel = htmlspecialchars($f['label'], ENT_QUOTES, 'UTF-8');
                 $safeValue = nl2br(htmlspecialchars($f['textValue'] ?? '', ENT_QUOTES, 'UTF-8'));
                 $html .= "<div class='bg-gray-50 rounded-md p-2 border border-gray-100'>
@@ -294,6 +270,28 @@ class CardRenderer
         return $html;
     }
 
+    private static function formatDate(string $value): string
+    {
+        $trimmed = trim($value);
+        if ($trimmed === '') {
+            return '';
+        }
+
+        $formats = ['Y-m-d', 'Y-m-d H:i:s', 'Y-m-d\TH:i:s', 'Y-m-d\TH:i:sP', 'd/m/Y', 'd.m.Y'];
+        foreach ($formats as $fmt) {
+            $dt = \DateTime::createFromFormat($fmt, $trimmed);
+            if ($dt instanceof \DateTime) {
+                return $dt->format(LocaleManager::DATE_FORMAT_STRING);
+            }
+        }
+
+        $ts = strtotime($trimmed);
+        if ($ts !== false) {
+            return date(LocaleManager::DATE_FORMAT_STRING, $ts);
+        }
+
+        return $value;
+    }
 
 
 
