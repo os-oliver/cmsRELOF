@@ -39,7 +39,7 @@ class AboutUSController
             $finalIconName = 'icon.png'; // always overwrite this
 
             if (!is_dir($destDir)) {
-                mkdir($destDir, 0775, true);
+                mkdir($destDir, 0755, true);
             }
 
             // Handle uploaded icon
@@ -218,7 +218,7 @@ class AboutUSController
                 }
                 $destDir = __DIR__ . '/../../public/assets/icons';
                 if (!is_dir($destDir)) {
-                    mkdir($destDir, 0775, true);
+                    mkdir($destDir, 0755, true);
                 }
                 $newName = uniqid('icon_') . '.' . $ext;
                 if (!move_uploaded_file($tmp, $destDir . '/' . $newName)) {
@@ -243,7 +243,6 @@ class AboutUSController
                 'surname' => $data['surname'],
                 'position' => $data['position'] ?? null,
                 'biography' => $data['biography'] ?? null,
-                'email' => $data['email'] ?? null,
             ];
             if ($iconPath) {
                 $insertData['icon'] = $iconPath;
@@ -271,7 +270,7 @@ class AboutUSController
             }
 
             $updateData = [];
-            foreach (['name', 'surname', 'position', 'biography','email'] as $field) {
+            foreach (['name', 'surname', 'position', 'biography'] as $field) {
                 if (isset($payload[$field])) {
                     $updateData[$field] = trim($payload[$field]);
                 }
@@ -290,7 +289,7 @@ class AboutUSController
                 }
                 $destDir = __DIR__ . '/../../public/assets/icons';
                 if (!is_dir($destDir)) {
-                    mkdir($destDir, 0775, true);
+                    mkdir($destDir, 0755, true);
                 }
                 $newName = uniqid('icon_') . '.' . $ext;
                 if (!move_uploaded_file($tmp, $destDir . '/' . $newName)) {

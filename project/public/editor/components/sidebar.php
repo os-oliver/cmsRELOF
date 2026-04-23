@@ -43,17 +43,6 @@
                     </span>
                 </a>
             </li>
-
-            <li class="mb-1">
-                <a href="/kontrolna-tabla/galerija" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'gallery')
-                    ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
-                    : 'text-gray-600 hover:text-gray-900' ?>">
-                    <i class="fas fa-image text-primary-500 mr-3 text-lg w-6 text-center"></i>
-                    <span class="font-medium">
-                        <?= __('sidebar.gallery') ?>
-                    </span>
-                </a>
-            </li>
             <li class="mb-1">
                 <a href="/kontrolna-tabla/promocija" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === 'promotion')
                     ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'

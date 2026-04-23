@@ -502,7 +502,6 @@ PHP;
             }
             ?>
         </div>
-        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -536,10 +535,7 @@ HTML;
         $pageTitle = 'Obaveštenja';
         $pageDescription = 'Pregled svih stavki';
         
-        $itemsPerPage = 15;
-        if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
-            $itemsPerPage = (int)$_GET['per_page'];
-        }
+        $itemsPerPage = 6;
         $currentPage = max(1, (int) ($_GET['page'] ?? 1));
         $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
         $search = $_GET['search'] ?? '';
@@ -562,7 +558,6 @@ HTML;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
-        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
         return $content;

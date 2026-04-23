@@ -184,7 +184,7 @@ CSS;
 
     <section class="container mx-auto px-4 py-12 pt-32 text-secondary_text font-body">
         <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold font-heading text-primary_text mb-2">Kolekcija Slika</h2>
+            <h2 class="text-4xl font-bold font-heading text-primary_text mb-2">Kolekcija slika</h2>
             <p class="text-lg font-heading2 text-secondary_text">
                 Istražite našu pažljivo odabranu kolekciju slika. Kliknite na bilo koju sliku da je pogledate u punoj veličini i da se krećete kroz galeriju.
             </p>
@@ -192,13 +192,13 @@ CSS;
 
         <div class="gallery-grid">
             <?php foreach ($images as $index => $image): ?>
-                <div class="gallery-item"
-                    data-id='<?= $image->id ?>'
+                <div class="gallery-item" 
+                    data-id='<?= $image->id ?>' 
                     data-index='<?= $index ?>'
-                    data-title='<?= htmlspecialchars($image->title ?? "") ?>'
-                    data-description='<?= htmlspecialchars($image->description ?? "") ?>'>
-                    <img src='<?= $image->image_file_path ?>'
-                        alt='<?= htmlspecialchars($image->title ?? "") ?>'
+                    data-title='<?= htmlspecialchars($image->title) ?>'
+                    data-description='<?= htmlspecialchars($image->description) ?>'>
+                    <img src='<?= $image->image_file_path ?>' 
+                        alt='<?= htmlspecialchars($image->title) ?>'
                         loading="lazy">
                 </div>
             <?php endforeach; ?>
@@ -207,23 +207,22 @@ CSS;
         <div class="pagination mt-12">
             <?php if ($page > 1): ?>
                 <div class="page-item">
-                    <a href="?page=<?= $page - 1 ?>" class="page-link">Prev</a>
+                    <a href="<?= htmlspecialchars('?' . http_build_query(array_merge($_GET, ['page' => $page - 1])), ENT_QUOTES, 'UTF-8') ?>" class="page-link">Prethodna</a>
                 </div>
             <?php endif; ?>
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                 <div class="page-item">
-                    <a href="?page=<?= $i ?>" class="page-link <?= $i == $page ? 'active' : '' ?>">
+                    <a href="<?= htmlspecialchars('?' . http_build_query(array_merge($_GET, ['page' => $i])), ENT_QUOTES, 'UTF-8') ?>" class="page-link <?= $i == $page ? 'active' : '' ?>">
                         <?= $i ?>
                     </a>
                 </div>
             <?php endfor; ?>
             <?php if ($page < $totalPages): ?>
                 <div class="page-item">
-                    <a href="?page=<?= $page + 1 ?>" class="page-link">Next</a>
+                    <a href="<?= htmlspecialchars('?' . http_build_query(array_merge($_GET, ['page' => $page + 1])), ENT_QUOTES, 'UTF-8') ?>" class="page-link">Sledeća</a>
                 </div>
             <?php endif; ?>
         </div>
-        <?php echo renderPerPageDropdown($limit); ?>
     </section>
 </main>
 
@@ -291,19 +290,20 @@ HTML;
             \$limit = (int)\$_GET['per_page'];
         }
 
+        \$locale = LocaleManager::get();
         \$page = max(1, (int) (\$_GET["page"] ?? 1));
         \$offset = (\$page - 1) * \$limit;
         \$documentModal = new Gallery();
         [\$images, \$totalCount] = \$documentModal->list(
             limit: \$limit,
-            offset: \$offset
+            offset: \$offset,
+            lang: \$locale
         );
         \$totalPages = (int) ceil(\$totalCount / \$limit);
         PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
-        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
         return $content;

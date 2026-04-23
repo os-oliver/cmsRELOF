@@ -10,7 +10,7 @@ class UslugePageBuilder extends BasePageBuilder
     private LanguageMapperController $translator;
 
     // Configurable variables
-    private int $itemsPerPage = 15;
+    private int $itemsPerPage = 9;
     private int $descriptionMaxLength = 250;
     private int $paginationRange = 2;
 
@@ -312,15 +312,13 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     
     return $html;
 }
-
-
 PHP;
 
     protected string $html = <<<'HTML'
 <main class="bg-gradient-to-br from-green-50 to-teal-50 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Usluge</h1>
+            <h1 class="text-3xl font-heading font-bold text-gray-900 mb-2 mt-5">Usluge</h1>
             <p class="text-gray-600">Prava i usluge koje pruža naša ustanova</p>
         </div>
         
@@ -345,7 +343,6 @@ PHP;
             }
             ?>
         </div>
-        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -367,9 +364,6 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih usluga';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
-if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
-    $itemsPerPage = (int)$_GET['per_page'];
-}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
@@ -422,7 +416,6 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
-        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 

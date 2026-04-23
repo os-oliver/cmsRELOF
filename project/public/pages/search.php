@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\SearchModal;
-use App\Utils\LocaleManager;
 
 // Pokreni sesiju ako nije pokrenuta
 if (session_status() === PHP_SESSION_NONE) {
@@ -155,7 +154,7 @@ if ($term !== '') {
 
                                             <?php if (isset($mergedRecord['created_at'])): ?>
                                                 <span class="bg-gray-100 px-2 py-1 rounded">
-                                                    📅 <?= date(LocaleManager::DATE_FORMAT_STRING, strtotime($mergedRecord['created_at'])) ?>
+                                                    📅 <?= date('d.m.Y', strtotime($mergedRecord['created_at'])) ?>
                                                 </span>
                                             <?php endif; ?>
 

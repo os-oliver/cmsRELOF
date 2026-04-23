@@ -396,7 +396,7 @@ class PageController
             // Kreiranje backup-a prije prepisivanja (opcionalno ali preporučeno)
             $backupDir = $componentsDir . DIRECTORY_SEPARATOR . 'backups';
             if (!is_dir($backupDir)) {
-                mkdir($backupDir, 0775, true);
+                mkdir($backupDir, 0755, true);
             }
 
             $backupFileName = pathinfo($componentFileName, PATHINFO_FILENAME) .

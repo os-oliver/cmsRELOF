@@ -4,7 +4,6 @@ namespace App\Controllers;
 use App\Models\Content;
 use App\Utils\ModalGenerator;
 use App\Database;
-use App\Utils\LocaleManager;
 use PDO;
 
 class ModalController
@@ -71,7 +70,6 @@ class ModalController
                     // Map text-like values back into config fields
                     foreach ($config['fields'] as &$f) {
                         $name = $f['name'] ?? null;
-                        $type = $f['type'] ?? '';
                         $val = '';
 
                         if ($name && isset($item['fields'][$name])) {
@@ -81,10 +79,6 @@ class ModalController
                                 $first = array_values($item['fields'][$name]);
                                 $val = $first[0] ?? '';
                             }
-                        }
-
-                        if ($type === 'date' && is_string($val) && $val !== '') {
-                            $val = $this->formatDateForDisplay($val);
                         }
 
                         $f['value'] = $val;
@@ -123,34 +117,5 @@ class ModalController
             http_response_code(500);
             echo 'Error rendering modal: ' . htmlspecialchars($e->getMessage());
         }
-    }
-
-    /**
-     * Convert ISO-ish date strings to dd/mm/yyyy for display in the modal.
-     */
-    private function formatDateForDisplay(string $value): string
-    {
-        $value = trim($value);
-        if ($value === '') {
-            return '';
-        }
-
-        // Try common ISO formats first
-        $formats = ['Y-m-d', 'Y-m-d H:i:s', 'Y-m-d\TH:i:s', 'Y-m-d\TH:i:sP'];
-        foreach ($formats as $fmt) {
-            $dt = \DateTime::createFromFormat($fmt, $value);
-            if ($dt instanceof \DateTime) {
-                return $dt->format(LocaleManager::DATE_FORMAT_STRING);
-            }
-        }
-
-        // Generic strtotime fallback
-        $ts = strtotime($value);
-        if ($ts !== false) {
-            return date(LocaleManager::DATE_FORMAT_STRING, $ts);
-        }
-
-        // Fallback to raw value if nothing matched
-        return $value;
     }
 }

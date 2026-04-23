@@ -9,7 +9,7 @@ class LibraryProgramPageBuilder extends BasePageBuilder
     protected string $slug;
     private LanguageMapperController $translator;
 
-    private int $itemsPerPage = 15;
+    private int $itemsPerPage = 3;
     private int $descriptionMaxLength = 120;
     private int $imageHeight = 56;
     private int $paginationRange = 2;
@@ -93,7 +93,7 @@ PHP;
                 <div class="relative md:w-48 w-full flex-shrink-0 bg-gradient-to-br from-slate-100 to-slate-50">
                     <div class="aspect-[3/4] md:aspect-auto md:h-full relative overflow-hidden">
                         {{imageSection}}
-
+                        
                         <!-- Kategorija Badge -->
                         <div class="absolute top-3 right-3 z-10">
                             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-semibold rounded-full shadow-lg">
@@ -101,14 +101,14 @@ PHP;
                                 <span>{{kategorija}}</span>
                             </span>
                         </div>
-
+                        
                         <!-- Book Spine Effect -->
                         <div class="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-300 opacity-60"></div>
-
+                        
                         {{authorBadge}}
                     </div>
                 </div>
-
+                
                 <!-- Sadržaj Knjige - Desno -->
                 <div class="flex-1 p-6 flex flex-col">
                     <!-- Naslov i Ikona -->
@@ -123,17 +123,17 @@ PHP;
                             {{autorRow}}
                         </div>
                     </div>
-
+                    
                     <!-- Datum Dostupnosti -->
                     {{dateRow}}
-
+                    
                     <!-- Opis Knjige -->
                     <div class="mb-6 flex-1">
                         <div class="p-4 bg-slate-50 rounded-lg border-l-4 border-teal-500">
                             <p class="text-sm text-gray-700 leading-relaxed line-clamp-4">{{opis}}</p>
                         </div>
                     </div>
-
+                    
                     <!-- Action Buttons -->
                     <div class="flex gap-3 mt-auto">
                         <a href="/sadrzaj?id={{itemId}}&tip=generic_element" class="flex-1 text-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm font-bold py-3 px-5 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl">
@@ -159,14 +159,12 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $autor = htmlspecialchars($item['fields']['autor'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $rawDatum = $item['fields']['datum'][$locale] ?? '';
-    $formattedDatum = LocaleManager::formatDateFromRawString($rawDatum);
-    $datum = htmlspecialchars($formattedDatum, ENT_QUOTES, 'UTF-8');
+    $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $link = htmlspecialchars($item['fields']['link'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
     $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
-
+    
     // Ikone za kategorije
     $categoryIcons = [
         'Knjige' => 'fas fa-book',
@@ -176,34 +174,34 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
         'Događaji' => 'fas fa-calendar-star'
     ];
     $categoryIcon = $categoryIcons[$kategorija] ?? 'fas fa-book';
-
+    
     // Slika ili placeholder
-    $imageSection = $imageUrl
-        ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-700 group-hover:scale-105' alt='Cover image'>"
+    $imageSection = $imageUrl 
+        ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-700 group-hover:scale-105' alt='Cover image'>" 
         : "<div class='absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-teal-50'>
               <i class='{$categoryIcon} text-9xl text-blue-600 opacity-10'></i>
            </div>";
-
+    
     // Autor badge ako postoji (na slici)
-    $authorBadge = $autor
+    $authorBadge = $autor 
         ? "<div class='absolute bottom-3 left-3 right-3'>
               <div class='bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg border border-slate-200'>
                   <i class='fas fa-user-circle text-purple-600 text-lg'></i>
                   <span class='text-sm font-semibold text-gray-900 truncate'>{$autor}</span>
               </div>
-           </div>"
+           </div>" 
         : '';
-
+    
     // Autor red u sadržaju (ako nema badge na slici)
-    $autorRow = $autor && !$authorBadge
+    $autorRow = $autor && !$authorBadge 
         ? "<div class='flex items-center gap-2 text-sm text-gray-600 mt-1'>
               <i class='fas fa-user-circle text-purple-600'></i>
               <span class='font-medium'>{$autor}</span>
-           </div>"
+           </div>" 
         : '';
-
+    
     // Datum dostupnosti
-    $dateRow = $datum
+    $dateRow = $datum 
         ? "<div class='flex items-center gap-3 mb-4 p-3 bg-teal-50 rounded-lg border border-teal-200'>
               <div class='flex-shrink-0 w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center'>
                   <i class='fas fa-calendar-check text-white'></i>
@@ -212,16 +210,16 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
                   <div class='text-xs font-semibold text-gray-600 uppercase tracking-wide mb-0.5'>Dostupno</div>
                   <div class='text-sm font-bold text-teal-700'>{$datum}</div>
               </div>
-           </div>"
+           </div>" 
         : '';
-
+    
     // Eksterni link dugme
-    $externalLinkButton = $link
+    $externalLinkButton = $link 
         ? "<a href='{$link}' target='_blank' rel='noopener noreferrer' class='flex-shrink-0 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white p-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl' title='Eksterni link'>
               <i class='fas fa-external-link-alt'></i>
-           </a>"
+           </a>" 
         : '';
-
+    
     $replacements = [
         '{{naslov}}' => $naslov,
         '{{opis}}' => $opis ?: $texts['no_description'] ?? 'Nema opisa',
@@ -235,7 +233,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
         '{{externalLinkButton}}' => $externalLinkButton,
         '{{viewDetails}}' => $texts['view_details'] ?? 'Pogledaj detalje'
     ];
-
+    
     return str_replace(array_keys($replacements), array_values($replacements), $cardTemplate);
 }
 HTML;
@@ -309,7 +307,6 @@ PHP;
             }
             ?>
         </div>
-        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -331,16 +328,13 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih stavki';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
-if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
-    $itemsPerPage = (int)$_GET['per_page'];
-}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category'])
-        ? (int) $_GET['category']
+    ? (is_numeric($_GET['category']) 
+        ? (int) $_GET['category'] 
         : trim((string) $_GET['category'])
       )
     : null;
@@ -386,7 +380,6 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
-        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 

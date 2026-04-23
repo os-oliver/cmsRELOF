@@ -6,7 +6,7 @@ use App\Models\Gallery;
 
 class IstorijatPageBuilder extends BasePageBuilder
 {
-    protected string $html = <<<'HTML'
+  protected string $html = <<<'HTML'
 <main>
   <div>
     <button id="increaseFontBtn"
@@ -15,30 +15,51 @@ class IstorijatPageBuilder extends BasePageBuilder
     </button>
   </div>
 
-  <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient">
+  <section class="relative min-h-screen flex overflow-hidden pt-16 bg-gradient-to-br from-green-50 to-teal-50 ">
     <div class="absolute inset-0 z-0"></div>
-    <div class="relative z-10 w-full max-w-5xl mx-auto text-center font-body text-secondary_text">
-      <h1 class="text-primary_text text-5xl font-heading mt-10 mb-4">Istorijat naše ustanove</h1>
-      <h2 class="text-3xl mx-5 italic mb-4 text-justify">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+    <div class="relative z-10 w-full max-w-7xl mx-auto font-body text-secondary_text">
+      <h1 class="text-primary_text text-5xl font-heading font-bold mt-16 mb-4 text-center">Istorijat naše ustanove</h1>
+      <section class="mx-5 space-y-6 text-gray-700 leading-relaxed text-xl">
 
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-    Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-</h2>
+        <p>
+            U susret novim zakonskim regulativama i iz nastojanja da se obezbedi kvalitetnija i odgovornija društvena briga o svakom građaninu grada Zrenjanina, Skupština grada Zrenjanina je dana 27.09.2019. godine donela Odluku o osnivanju Centra za pružanje usluga socijalne zaštite grada Zrenjanina – Most.
+        </p>
+
+        <p>
+            Centar je počeo sa radom 01.01.2020. godine.
+        </p>
+
+        <p class="font-semibold text-gray-900">
+            U sklopu Centra Most funkcioniše osam usluga socijalne zaštite:
+        </p>
+
+        <ul class="list-disc pl-6 space-y-2">
+            <li>Prihvatilište za odrasle i stare u kriznim situacijama, beskućnike i prosjake</li>
+            <li>Prihvatilište za žene i decu žrtve nasilja u porodici</li>
+            <li>Dnevni boravak za decu i mlade sa telesnim invaliditetom, odnosno intelektualnim teškoćama „Alternativa“</li>
+            <li>Dnevni boravak za odrasle sa telesnim invaliditetom, odnosno intelektualnim teškoćama „Naša priča“</li>
+            <li>Usluga stanovanja uz podršku za mlade koji se osamostaljuju</li>
+            <li>Produženo stanovanje za žene i decu žrtve nasilja u porodici</li>
+            <li>Savetodavno-terapijske i socijalno-edukativne usluge „Savetovalište“</li>
+            <li>Usluga lični pratilac deteta</li>
+        </ul>
+
+    </section>
     </div>
   </section>
 </main>
 HTML;
 
-    public function buildPage(): string
-    {
-        $additionalPHP = <<<'PHP'
+  public function buildPage(): string
+  {
+    $additionalPHP = <<<'PHP'
     $dataAboutUS = new AboutUs();
 PHP;
 
-        $content = $this->getHeader(additionalPhp: $additionalPHP);
-        $content .= $this->getCommonIncludes();
-        $content .= $this->html;
-        $content .= $this->getFooter();
-        return $content;
-    }
+    $content = $this->getHeader(additionalPhp: $additionalPHP);
+    $content .= $this->getCommonIncludes();
+    $content .= $this->html;
+    $content .= $this->getFooter();
+    return $content;
+  }
 }

@@ -10,7 +10,7 @@ class SluzbePageBuilder extends BasePageBuilder
     private LanguageMapperController $translator;
 
     // Configurable variables
-    private int $itemsPerPage = 15;
+    private int $itemsPerPage = 6;
     private int $descriptionMaxLength = 250;
     private int $imageHeight = 56;
     private int $paginationRange = 2;
@@ -103,7 +103,7 @@ class SluzbePageBuilder extends BasePageBuilder
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(string $searchValue = '', array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
 
@@ -119,19 +119,7 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
         </button>
     </div>";
 
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category'
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-            <option value=''>{$texts['all_categories']}</option>";
-
-    foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
-    }
-
-    $html .= "</select></div></form>";
+    $html .= "</div></form>";
 
     return $html;
 }
@@ -145,9 +133,6 @@ PHP;
             </div>
 
             <div class="p-6">
-                <div class="mb-4">
-                    {{categoryBadge}}
-                </div>
 
                 <h3 class="text-xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-green-600 transition-colors">
                     {{naziv}}
@@ -177,7 +162,6 @@ HTML;
 {
     $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $kratakOpis = htmlspecialchars(mb_substr($item['fields']['kratakOpis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
 
@@ -188,20 +172,11 @@ HTML;
                 <i class='fas fa-building text-6xl text-green-300'></i>
            </div>";
 
-    // Category badge
-    $categoryBadge = $kategorija
-        ? "<span class='category-badge'>
-               <i class='fas fa-building'></i>
-               <span>{$kategorija}</span>
-           </span>"
-        : '';
-
     // Replace placeholders
     $replacements = [
         '{{naziv}}' => $naziv,
         '{{kratakOpis}}' => $kratakOpis,
         '{{imageSection}}' => $imageSection,
-        '{{categoryBadge}}' => $categoryBadge,
         '{{itemId}}' => $itemId,
         '{{departmentDetails}}' => $texts['department_details'] ?? 'Details'
     ];
@@ -269,11 +244,10 @@ PHP;
 <main class="bg-gradient-to-br from-green-50 to-teal-50 min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Službe</h1>
-            <p class="text-gray-600">Upoznajte naše službe i njihove nadležnosti</p>
+            <h1 class="text-3xl font-heading font-bold text-gray-900 mb-2 mt-5">Službe</h1>
         </div>
 
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($search, $texts); ?>
 
         <div class="departments-grid">
             <?php
@@ -294,7 +268,6 @@ PHP;
             }
             ?>
         </div>
-        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -316,24 +289,15 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih službi';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
-if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
-    $itemsPerPage = (int)$_GET['per_page'];
-}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
-$categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
-        : trim((string) $_GET['category'])
-      )
-    : null;
+
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
 $itemsList = $slug
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale)
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, null, $locale)
     : ['success' => false, 'items' => []];
 
 $config = $fieldLabels = [];
@@ -347,7 +311,6 @@ $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži službe...',
     'apply_button' => 'Primeni',
-    'all_categories' => 'Sve vrste službi',
     'department_details' => 'Detalji službe',
     'no_items_found' => 'Nema pronađenih službi'
 ];
@@ -368,7 +331,6 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
-        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 

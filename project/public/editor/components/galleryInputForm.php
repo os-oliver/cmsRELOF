@@ -5,8 +5,7 @@
             <?= __("gallery.modal_title") ?>
         </h2>
 
-        <form id="galleryForm" class="gallery-form" enctype="multipart/form-data"
-            data-max-bytes="<?= \App\Utils\FileUploader::getIniUploadLimit(); ?>">
+        <form id="galleryForm" class="gallery-form" enctype="multipart/form-data">
             <div class="md:col-span-2" id="galleryUpload">
                 <label for="galleryImage" class="block text-sm font-medium text-gray-700 mb-1">
                     <?= __("gallery.choose_image") ?>
@@ -22,7 +21,7 @@
                             <?= __("gallery.drag_image_here") ?>
                         </span>
                     </div>
-                    <input type="file" id="galleryImage" name="galleryImage" accept=".jpg,.jpeg,.png,.webp" class="hidden" />
+                    <input type="file" id="galleryImage" name="galleryImage" accept=".jpg,.jpeg,.png" class="hidden" />
                 </label>
             </div>
 

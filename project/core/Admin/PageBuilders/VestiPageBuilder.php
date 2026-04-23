@@ -9,7 +9,7 @@ class VestiPageBuilder extends BasePageBuilder
     protected string $slug;
     private LanguageMapperController $translator;
 
-    private int $itemsPerPage = 15;
+    private int $itemsPerPage = 3;
     private int $descriptionMaxLength = 120;
     private int $imageHeight = 56;
     private int $paginationRange = 2;
@@ -33,7 +33,6 @@ class VestiPageBuilder extends BasePageBuilder
         $latinTexts = [
             'search_placeholder' => 'Pretraži...',
             'apply_button' => 'Primeni',
-            'all_categories' => 'Sve kategorije',
             'date_and_time' => 'Datum i vreme',
             'location' => 'Lokacija',
             'event_details' => 'Detalji događaja',
@@ -383,28 +382,28 @@ class VestiPageBuilder extends BasePageBuilder
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
-
+    
     .glass-card {
         margin-bottom: 1rem;
     }
-
+    
     .card-action-link {
         font-size: 0.8125rem;
         padding: 0.75rem 1rem;
     }
-
+    
     .news-hero-image {
         height: 280px;
     }
-
+    
     .news-title-hero {
         font-size: 1.5rem;
     }
-
+    
     .news-content-area {
         padding: 24px;
     }
-
+    
     .news-cta-button {
         padding: 12px 24px;
         font-size: 0.875rem;
@@ -413,7 +412,7 @@ class VestiPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
@@ -423,28 +422,7 @@ function renderTopbar(array $categories, string $searchValue = '', int|string|nu
             {$texts['apply_button']}
         </button>
     </div>";
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category' class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-            <option value=''>{$texts['all_categories']}</option>";
-
-    foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-
-        $isSelected = false;
-
-        if ($selectedCategoryId !== null) {
-            if (is_numeric($selectedCategoryId) && (int)$selectedCategoryId === (int)$cat['id']) {
-                $isSelected = true;
-            } elseif (is_string($selectedCategoryId) && strtolower($selectedCategoryId) === strtolower($cat['name'])) {
-                $isSelected = true;
-            }
-        }
-
-        $selected = $isSelected ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
-    }
-
+    
     $html .= "</select></div></form>";
     return $html;
 }
@@ -460,9 +438,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     $naslov = htmlspecialchars(trim($item['fields']['naslov'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(trim($item['fields']['opis'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
     $opis = preg_replace('/\s+/', ' ', $opis);
-    $rawDatum = $item['fields']['datum'][$locale] ?? '';
-    $formattedDatum = LocaleManager::formatDateFromRawString($rawDatum);
-    $datum = htmlspecialchars($formattedDatum, ENT_QUOTES, 'UTF-8');
+    $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $link = htmlspecialchars($item['fields']['link'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $autor = htmlspecialchars($item['fields']['autor'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = !empty($item['image']) ? htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') : null;
@@ -516,26 +492,16 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
         <div class='news-hero-image'>
             <img src='{$imageUrl}' alt='{$naslov}'>
             <div class='news-gradient-overlay'></div>";
-
-        // Kategorijska traka
-        if ($kategorija) {
-            $gradientStyle = "background: linear-gradient(135deg, {$categoryColor['from']} 0%, {$categoryColor['to']} 100%);";
-            $html .= "
-            <div class='news-category-ribbon' style='{$gradientStyle}'>
-                <i class='{$categoryIcon}'></i>
-                <span>{$kategorija}</span>
-            </div>";
-        }
-
+        
         // Sadržaj preko slike
         $html .= "
             <div class='news-content-area'>
                 <h3 class='news-title-hero'>{$naslov}</h3>";
-
+        
         if ($shortDescription) {
             $html .= "<p class='news-description-hero'>{$shortDescription}</p>";
         }
-
+        
         $targetLink = "sadrzaj?id={$itemId}&tip=Vesti";
         $html .= "
                 <a href='{$targetLink}' class='bg-primary news-cta-button hover:bg-primary_hover'>
@@ -549,7 +515,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     // Meta footer sa datumom i autorom
     if ($datum || $autor) {
         $html .= "<div class='news-meta-footer'>";
-
+        
         if ($datum) {
             $html .= "
             <div class='news-meta-item'>
@@ -557,7 +523,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
                 <span>{$datum}</span>
             </div>";
         }
-
+        
         if ($autor) {
             $html .= "
             <div class='news-meta-item'>
@@ -565,12 +531,12 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
                 <span>{$autor}</span>
             </div>";
         }
-
+        
         $html .= "</div>";
     }
 
     $html .= "</div>";
-
+    
     return $html;
 }
 
@@ -618,14 +584,13 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-background pt-12 min-h-screen font-body text-secondary_text">
+<main class="bg-gradient-to-br from-green-50 to-teal-50 pt-12 min-h-screen font-body text-secondary_text">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-4xl font-bold text-primary_text font-heading mb-2">Vesti</h1>
-            <p class="text-lg text-secondary_text">Istražite našu bogatu ponudu kulturnih događaja</p>
+            <h1 class="text-4xl font-heading font-bold text-primary_text font-heading mb-2 mt-5">Vesti</h1>
         </div>
 
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($search, $categoryId, $texts); ?>
 
         <div class="performances-grid">
             <?php
@@ -645,7 +610,6 @@ PHP;
             }
             ?>
         </div>
-        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -667,22 +631,18 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih stavki';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
-if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
-    $itemsPerPage = (int)$_GET['per_page'];
-}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category'])
-        ? (int) $_GET['category']
+    ? (is_numeric($_GET['category']) 
+        ? (int) $_GET['category'] 
         : trim((string) $_GET['category'])
       )
     : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => [], 'total' => 0];
@@ -698,7 +658,6 @@ $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži...',
     'apply_button' => 'Primeni',
-    'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Datum i vreme',
     'location' => 'Lokacija',
     'event_details' => 'Detalji događaja',
@@ -721,7 +680,6 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
-        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 
