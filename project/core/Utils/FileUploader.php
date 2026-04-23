@@ -11,7 +11,6 @@ class FileUploader
     public function __construct(
         string $uploadDir,
         array $allowedMime = [
-            'image/webp',
             'image/jpeg',
             'image/png',
             'image/gif',
@@ -22,111 +21,15 @@ class FileUploader
             'application/vnd.ms-excel',
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         ],
-        ?int $maxFileSize = null // default to php.ini limits
+        int $maxFileSize = 200 * 1024 * 1024 // 200 MB
     ) {
         $this->uploadDir = rtrim($uploadDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         $this->allowedMime = $allowedMime;
-        $this->maxFileSize = $maxFileSize ?? self::getIniUploadLimit();
+        $this->maxFileSize = $maxFileSize;
 
         if (!is_dir($this->uploadDir)) {
             mkdir($this->uploadDir, 0775, true);
         }
-    }
-
-    public static function formatBytes(int $bytes): string
-    {
-        if ($bytes <= 0) {
-            return '0 B';
-        }
-
-        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
-        $power = (int) floor(log($bytes, 1024));
-        $power = min($power, count($units) - 1);
-
-        $value = $bytes / (1024 ** $power);
-        return number_format($value, $power === 0 ? 0 : 2) . ' ' . $units[$power];
-    }
-
-    public static function parseIniSize(string $value): int
-    {
-        if ($value === '') {
-            return 0;
-        }
-
-        $trimmed = trim($value);
-        $last = strtolower(substr($trimmed, -1));
-        $number = (float) $trimmed;
-
-        return match ($last) {
-            'g' => (int) ($number * 1024 * 1024 * 1024),
-            'm' => (int) ($number * 1024 * 1024),
-            'k' => (int) ($number * 1024),
-            default => (int) $number,
-        };
-    }
-
-    public static function getIniUploadLimit(): int
-    {
-        $fallback = 200 * 1024 * 1024; // 200MB default fallback
-        $limits = [];
-
-        $uploadMax = ini_get('upload_max_filesize');
-        $postMax = ini_get('post_max_size');
-
-        if ($uploadMax !== false) {
-            $limits[] = self::parseIniSize((string) $uploadMax);
-        }
-
-        if ($postMax !== false) {
-            $limits[] = self::parseIniSize((string) $postMax);
-        }
-
-        // Use the smallest non-zero positive limit
-        $limits = array_filter($limits, fn ($v) => $v > 0);
-        if (empty($limits)) {
-            return $fallback;
-        }
-
-        return (int) min($limits);
-    }
-
-    protected function describeAllowedTypes(): string
-    {
-        $labels = [
-            'image/webp' => 'WEBP',
-            'image/jpeg' => 'JPG/JPEG',
-            'image/png' => 'PNG',
-            'image/gif' => 'GIF',
-            'application/pdf' => 'PDF',
-            'text/csv' => 'CSV',
-            'application/msword' => 'DOC',
-            'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'DOCX',
-            'application/vnd.ms-excel' => 'XLS',
-            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'XLSX',
-        ];
-
-        $friendly = [];
-        foreach ($this->allowedMime as $mime) {
-            $friendly[] = $labels[$mime] ?? $mime;
-        }
-
-        return implode(', ', array_unique($friendly));
-    }
-
-    public static function getUploadErrorMessage(int $error): string
-    {
-        $iniLimit = ini_get('upload_max_filesize');
-
-        return match ($error) {
-            UPLOAD_ERR_INI_SIZE => "The file is larger than the server limit ({$iniLimit}). Please choose a smaller file or contact an administrator.",
-            UPLOAD_ERR_FORM_SIZE => 'The file exceeds the maximum size allowed by the form.',
-            UPLOAD_ERR_PARTIAL => 'The file was only partially uploaded. Please try again.',
-            UPLOAD_ERR_NO_FILE => 'No file was uploaded.',
-            UPLOAD_ERR_NO_TMP_DIR => 'Upload failed because the temporary folder is missing on the server.',
-            UPLOAD_ERR_CANT_WRITE => 'Upload failed because the file could not be written to disk.',
-            UPLOAD_ERR_EXTENSION => 'A server extension stopped the upload. Please contact an administrator.',
-            default => "Unexpected upload error (code {$error}). Please try again.",
-        };
     }
 
     /**
@@ -159,27 +62,23 @@ class FileUploader
         if ($error !== UPLOAD_ERR_OK) {
             // Log the full file array safely for debugging
             error_log('Upload error file data: ' . json_encode($file, JSON_UNESCAPED_UNICODE));
-            $message = self::getUploadErrorMessage((int) $error);
-            throw new \RuntimeException($message);
+            throw new \RuntimeException("Upload error code: {$error}");
         }
 
         $size = isset($file['size']) ? (int) $file['size'] : 0;
         if ($size > $this->maxFileSize) {
             error_log("File too large: {$size}");
-            $maxHuman = $this->formatBytes($this->maxFileSize);
-            $currentHuman = $this->formatBytes($size);
-            throw new \RuntimeException("File is too large ({$currentHuman}). Maximum allowed size is {$maxHuman}.");
+            throw new \RuntimeException("File exceeds max size of {$this->maxFileSize} bytes.");
         }
 
         $type = $file['type'] ?? '';
         if (!in_array($type, $this->allowedMime, true)) {
-            $allowedList = $this->describeAllowedTypes();
-            throw new \RuntimeException("Unsupported file type. Allowed types: {$allowedList}.");
+            throw new \RuntimeException("Invalid MIME type: {$type}");
         }
 
         $tmp = $file['tmp_name'] ?? null;
         if (!$tmp || !is_uploaded_file($tmp)) {
-            throw new \RuntimeException("Server did not receive a valid uploaded file. Please try again.");
+            throw new \RuntimeException("Possible file upload attack or missing tmp_name.");
         }
         // get original filename without extension
         $originalName = pathinfo($file['name'], PATHINFO_FILENAME);
@@ -205,7 +104,7 @@ class FileUploader
 
         // Move uploaded file
         if (!move_uploaded_file($file['tmp_name'], $target)) {
-            throw new \RuntimeException("The file was uploaded but could not be saved. Please try again.");
+            throw new \RuntimeException("Failed to move uploaded file.");
         }
 
         error_log("uploaded filename: {$filename} ext: {$ext}");

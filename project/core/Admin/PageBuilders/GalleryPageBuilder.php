@@ -192,13 +192,13 @@ CSS;
 
         <div class="gallery-grid">
             <?php foreach ($images as $index => $image): ?>
-                <div class="gallery-item"
-                    data-id='<?= $image->id ?>'
+                <div class="gallery-item" 
+                    data-id='<?= $image->id ?>' 
                     data-index='<?= $index ?>'
-                    data-title='<?= htmlspecialchars($image->title ?? "") ?>'
-                    data-description='<?= htmlspecialchars($image->description ?? "") ?>'>
-                    <img src='<?= $image->image_file_path ?>'
-                        alt='<?= htmlspecialchars($image->title ?? "") ?>'
+                    data-title='<?= htmlspecialchars($image->title) ?>'
+                    data-description='<?= htmlspecialchars($image->description) ?>'>
+                    <img src='<?= $image->image_file_path ?>' 
+                        alt='<?= htmlspecialchars($image->title) ?>'
                         loading="lazy">
                 </div>
             <?php endforeach; ?>
@@ -223,13 +223,12 @@ CSS;
                 </div>
             <?php endif; ?>
         </div>
-        <?php echo renderPerPageDropdown($limit); ?>
     </section>
 </main>
 
 <div class="lightbox" id="lightbox">
     <button class="close-btn" id="closeLightbox">&times;</button>
-    <button class="nav-btn prev-btn bg-primary hover:bg-primary_hover" id="prevBtn">&#10094;</button>
+    <button class="nav-btn prev-btn bg-primary hover:primary_hover" id="prevBtn">&#10094;</button>
 
     <div class="lightbox-content">
         <img id="lightboxImage" src="" alt="">
@@ -240,7 +239,7 @@ CSS;
         </div>
     </div>
 
-    <button class="nav-btn next-btn bg-primary hover:bg-primary_hover" id="nextBtn">&#10095;</button>
+    <button class="nav-btn next-btn bg-primary hover:primary_hover" id="nextBtn">&#10095;</button>
 </div>
 
 <script>
@@ -285,12 +284,7 @@ HTML;
         $additionalPHP = <<<PHP
         use App\Models\Gallery;
 
-        \$limit = 15;
-
-        if (isset(\$_GET['per_page']) && is_numeric(\$_GET['per_page'])) {
-            \$limit = (int)\$_GET['per_page'];
-        }
-
+        \$limit = 6;
         \$page = max(1, (int) (\$_GET["page"] ?? 1));
         \$offset = (\$page - 1) * \$limit;
         \$documentModal = new Gallery();
@@ -303,7 +297,6 @@ HTML;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
-        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
         return $content;

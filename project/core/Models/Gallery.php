@@ -207,7 +207,7 @@ class Gallery
                 $old = $stmtOld->fetchColumn();
                 // Only delete old file if the new image is different and not empty
                 if ($old && $old !== ('/uploads/gallery/' . $data['image_file_path'])) {
-                    $fullOld = PUBLIC_ROOT . $old;
+                    $fullOld = __DIR__ . '/../../public' . $old;
                     if (file_exists($fullOld)) {
                         unlink($fullOld);
                     }
@@ -263,7 +263,7 @@ class Gallery
             $stmtFile->execute([':id' => $id]);
             $path = $stmtFile->fetchColumn();
             if ($path) {
-                $full = PUBLIC_ROOT . $path;
+                $full = __DIR__ . '/../../public' . $path;
                 if (file_exists($full))
                     unlink($full);
             }

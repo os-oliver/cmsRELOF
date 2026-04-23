@@ -26,7 +26,7 @@ class GalleryController
         $data['title'] = $_POST['galleryTitle'] ?? null;
         $data['description'] = $_POST['galleryDescription'] ?? null;
         $file = $_FILES['galleryImage'] ?? null;
-        $uploadDir = PUBLIC_ROOT . '/uploads/gallery/';
+        $uploadDir = dirname(__DIR__) . '/../public/uploads/gallery/';
 
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0775, true);
@@ -74,7 +74,7 @@ class GalleryController
             $data['description'] = $_POST['galleryDescription'] ?? null;
 
             $file = $_FILES['galleryImage'] ?? null;
-            $uploadDir = PUBLIC_ROOT . '/uploads/gallery/';
+            $uploadDir = dirname(__DIR__) . '/../public/uploads/gallery/';
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0775, true);
             }

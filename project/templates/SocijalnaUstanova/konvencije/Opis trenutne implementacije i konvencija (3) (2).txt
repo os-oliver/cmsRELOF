@@ -1,0 +1,122 @@
+Opis trenutne implementacije i konvencija
+Sistem se trenutno nalazi u fazi razvoja, pri čemu je builder još uvek u izradi. U ovoj iteraciji,
+sav CSS i JavaScript kod centralizovan je u jednoj datoteci. Ovakav pristup je privremen i
+predviđeno je da se daljim razvojem izvrši razdvajanje u više modula/fajlova, čime će se
+postići bolja organizacija, lakše održavanje i mogućnost proširenja sistema. Istovremeno,
+sa uvođenjem novih funkcionalnosti, postojeća konvencija će se prilagođavati i menjati u
+skladu sa zahtevima projekta.
+Dinamika sekcija definiše se na osnovu vrednosti atributa id:
+•
+
+ID-jevi sa prefiksom g- označavaju dinamički generisana preslikavanja apstraktnih
+kolona baze, dok glavni ID ostaje primarni identifikator tabele.
+
+•
+
+Sekcije čiji id odgovara dinamički implementiranim komponentama (npr. gallery,
+events) transformišu se iz statičkog HTML zapisa u PHP kod, što omogućava
+povezivanje sa bazom podataka i dinamičko učitavanje sadržaja.
+
+•
+
+Sekcije sa statičkim id vrednostima (npr. promocija) ostaju u obliku statičkog HTMLa, te se njihov sadržaj menja direktno putem editora unutar buildera, bez potrebe za
+backend logikom.
+
+Na ovaj način uspostavljena je jasna diferencijacija između dinamičkih sekcija koje povlače
+podatke iz baze i statičkih sekcija koje su u potpunosti dostupne za manuelno uređivanje
+kroz editor.
+
+1) Minimalni skeleton stranice
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8" />
+<title>Primer stranice</title>
+<!-- Stilovi/skripte mogu ići ovde; GrapesJS će ih dodavati u iframe head -->
+</head>
+<body>
+<!-- header/nav, sekcije i footer su top-level elementi koje skripta očekuje -->
+<header> ... </header>
+<!-- Sekcije (section) će biti preuzete kao nezavisne sekcije -->
+<section id="hero"> ... </section>
+<section id="gallery"> ... </section>
+. . .
+
+<footer> ... </footer>
+<!-- Mobilni meni (posebno div sa id="mobileMenu") -->
+<div id="mobileMenu"> ... </div>
+</body>
+</html>
+
+2) Header + desktop navigacija (obavezni id-evi i klase)
+<header>
+<nav id="navBarID">
+<a>Početna</a>
+<a>Kontakt</a>
+<div class="dropdown">
+<button>Usluge</button>
+<div>
+<a>Servis A</a>
+<a>Servis B</a>
+</div>
+</div>
+<a>O nama</a>
+</nav>
+</header>
+
+<!-- 'Početna' => prazna ruta u slug-generaciji -->
+<!-- dropdown klasa koju skripta prepoznaje -->
+<!-- prvo child button -->
+<!-- drugi child: kontejner sa <a> linkovima -->
+
+3) Mobilni meni (poseban id)
+<!-- Kod traži #mobileMenu i u njemu nav sa id="navBarIDm" -->
+<div id="mobileMenu">
+<nav id="navBarIDm">
+<a>Početna</a>
+<div class="mobile-dropdown"> <!-- posebna klasa za mobile dropdown -->
+<button>Proizvodi</button> <!-- dugme za dropdown -->
+<div>
+<a>Proizvod 1</a>
+<a>Proizvod 2</a>
+</div>
+</div>
+<a>Kontakt</a>
+</nav>
+</div>
+
+4) Gallery block — tačno po pravilima za htmlToDynamicCode
+<section id="gallery">
+<!-- galleryCards mora biti prvi div -->
+<div id="galleryCards">
+<!-- Za kontekst aplikacije uzima se prvi element -->
+<div class="card">
+<img id="g-image" src="/placeholder.jpg" alt="..." />
+<h3 id="g-title">Naslov 1</h3>
+<p id="g-desc">Opis 1</p>
+<i class="fa fa-heart"></i> <!-- ova <i> će ostati -->
+</div>
+<!-- Starter card 2 -->
+<div class="card">
+...
+OVO JE SAMO ZA PRIKAZ STATICKOG DIZAJNA
+</div>
+</div>
+</section>
+
+5) Events block — primer za eventsCards
+<section id="events">
+<div id="eventsCards">
+<div class="event-card">
+<img id="g-event-image" src="/ev.jpg" alt="..." />
+<h4 id="g-event-title">Konferencija A</h4>
+<p id="g-event-date">2025-09-01</p>
+<p id="g-event-desc">Opis eventa...</p>
+</div>
+<div class="event-card">
+...
+</div>
+</div>
+</section>
+
+

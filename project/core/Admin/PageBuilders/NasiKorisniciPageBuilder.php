@@ -4,17 +4,52 @@ namespace App\Admin\PageBuilders;
 
 class NasiKorisniciPageBuilder extends BasePageBuilder
 {
+    protected string $css = <<<CSS
+    main {
+        padding-top: 50px;
+    }
+
+    .content-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+    }
+
+    .hero-section {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        border-radius: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .content-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .editable-content {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #374151;
+    }
+CSS;
+
     protected string $html = <<<'HTML'
-<main class="min-h-screen pt-24 flex-grow bg-background">
-    <div class="max-w-6xl mx-auto py-12 px-6">
-        <div class="bg-primary/70 text-white py-16 px-8 text-center rounded-2xl mb-12 shadow-lg">
-            <h1 class="text-4xl font-bold font-heading mb-4">Naši korisnici</h1>
-            <p class="text-xl opacity-90 font-body">Podrška i briga za našu zajednicu</p>
+<main class="min-h-screen pt-24 flex-grow bg-gradient-to-br from-green-50 to-teal-50">
+    <div class="content-section">
+        <div class="hero-section">
+            <h1 class="text-4xl font-bold mb-4">Naši korisnici</h1>
+            <p class="text-xl opacity-90">Podrška i briga za našu zajednicu</p>
         </div>
 
-        <div class="bg-primary/10 p-8 rounded-2xl shadow-md mb-8 border border-gray-100">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 font-heading2">Ko su naši korisnici?</h2>
-            <div class="leading-relaxed text-lg text-gray-700 font-body">
+        <div class="content-card">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ko su naši korisnici?</h2>
+            <div class="editable-content">
                 <p class="mb-4">
                     Centar za socijalni rad pruža podršku širokom spektru korisnika iz naše zajednice.
                     Naši korisnici su pojedinci, porodice i grupe koje se suočavaju sa različitim životnim
@@ -28,9 +63,9 @@ class NasiKorisniciPageBuilder extends BasePageBuilder
         </div>
 
         <div class="content-card">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 font-heading2">Kategorije korisnika</h2>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Kategorije korisnika</h2>
             <div class="editable-content">
-                <ul class="list-disc list-inside space-y-2 ml-4 font-body">
+                <ul class="list-disc list-inside space-y-2 ml-4">
                     <li>Deca i mladi bez adekvatne roditeljske brige</li>
                     <li>Osobe sa invaliditetom</li>
                     <li>Starija lica koja zahtevaju pomoć i negu</li>
@@ -42,8 +77,8 @@ class NasiKorisniciPageBuilder extends BasePageBuilder
         </div>
 
         <div class="content-card">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 font-heading2">Kako možete postati korisnik?</h2>
-            <div class="editable-content font-body">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Kako možete postati korisnik?</h2>
+            <div class="editable-content">
                 <p class="mb-4">
                     Ukoliko vam je potrebna pomoć ili podrška, možete se obratiti našem centru:
                 </p>
@@ -64,7 +99,7 @@ HTML;
 
     public function buildPage(): string
     {
-        $content = $this->getHeader();
+        $content = $this->getHeader($this->css);
         $content .= $this->getCommonIncludes();
         $content .= $this->html;
         $content .= $this->getFooter();

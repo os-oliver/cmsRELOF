@@ -8,7 +8,6 @@ use App\Admin\PageExporter;
 use App\Models\GenericCategory;
 use App\Models\Page;
 use App\Controllers\UserDefinedPagesController;
-use App\Utils\Config;
 
 // Require admin authentication
 AuthController::requireAdmin();
@@ -350,7 +349,7 @@ try {
 
         // Wrap the merged data in an array to ensure JSON starts with []
         file_put_contents(
-            Config::getPublicRoot() . "/assets/data/structure.json",
+            __DIR__ . "/../../public/assets/data/structure.json",
             json_encode([$dataArray], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
         );
 

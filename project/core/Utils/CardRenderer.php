@@ -1,7 +1,5 @@
 <?php
 namespace App\Utils;
-
-use App\Utils\LocaleManager;
 if (session_status() === PHP_SESSION_NONE) {
     // Session has not started
     session_start();
@@ -19,7 +17,7 @@ class CardRenderer
 
         // Search input with full width
         $html .= "<div class='flex w-full sm:w-auto flex-1 gap-2'>
-                <input type='text' name='search' value='{$safeSearchValue}' placeholder='{{PRETRAGA}}...'
+                <input type='text' name='search' value='{$safeSearchValue}' placeholder='{{PRETRAGA}}...' 
                     class='w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow shadow-sm'>
                 <button type='submit' class='bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition-all shadow-sm'>
                 {{PRIMENI}}
@@ -60,9 +58,6 @@ class CardRenderer
                 continue;
             $label = $fieldLabels[$fn]['label'][$locale] ?? $fieldLabels[$fn]['label']['en'] ?? $fn;
             $value = (string) ($translations[$locale] ?? reset($translations) ?? '');
-            if (($fieldLabels[$fn]['type'] ?? '') === 'date' && $value !== '') {
-                $value = self::formatDate($value);
-            }
             $value = mb_strlen($value) > 10 ? mb_substr($value, 0, 10) . '...' : $value;
             $fields[] = ['name' => $fn, 'label' => $label, 'value' => $value];
         }
@@ -102,8 +97,8 @@ class CardRenderer
                 $html .= "
         <div class='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-30'>
             <div class='mx-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center gap-3'>
-                <a href='/sadrzaj?id={$itemId}&tip=generic_element'
-                    class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm'
+                <a href='/sadrzaj?id={$itemId}&tip=generic_element' 
+                    class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm' 
                     title='Pogledaj'>
                     <i class='fas fa-eye'></i>
                 </a>
@@ -121,8 +116,8 @@ class CardRenderer
             $html .= "
     <div class='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-30'>
         <div class='mx-2 px-3 py-2 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center gap-3'>
-            <a href='/sadrzaj?id={$itemId}&tip=generic_element'
-                class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm'
+            <a href='/sadrzaj?id={$itemId}&tip=generic_element' 
+                class='view-item flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 hover:scale-105 shadow-sm' 
                 title='Pogledaj'>
                 <i class='fas fa-eye'></i>
             </a>
@@ -155,28 +150,6 @@ class CardRenderer
         return $html;
     }
 
-    private static function formatDate(string $value): string
-    {
-        $trimmed = trim($value);
-        if ($trimmed === '') {
-            return '';
-        }
-
-        $formats = ['Y-m-d', 'Y-m-d H:i:s', 'Y-m-d\TH:i:s', 'Y-m-d\TH:i:sP', 'd/m/Y', 'd.m.Y'];
-        foreach ($formats as $fmt) {
-            $dt = \DateTime::createFromFormat($fmt, $trimmed);
-            if ($dt instanceof \DateTime) {
-                return $dt->format(LocaleManager::DATE_FORMAT_STRING);
-            }
-        }
-
-        $ts = strtotime($trimmed);
-        if ($ts !== false) {
-            return date(LocaleManager::DATE_FORMAT_STRING, $ts);
-        }
-
-        return $value;
-    }
 
 
 

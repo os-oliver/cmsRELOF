@@ -5,7 +5,7 @@
  *
  * Adjust these to your real values:
  */
-$pdfUrl  = $pdfUrl  ?? '/docs/sablon-zahtev.pdf';
+$pdfUrl  = $pdfUrl  ?? 'project/public/docs/sablon-zahtev.pdf';
 $emailTo = $emailTo ?? 'pisarnica@vas-domen.rs';
 
 if (session_status() === PHP_SESSION_NONE) { session_start(); }

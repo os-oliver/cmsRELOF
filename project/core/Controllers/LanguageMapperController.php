@@ -10,7 +10,6 @@ class LanguageMapperController
         'Dž' => 'Џ',
         'dž' => 'џ',
         'Nj' => 'Њ',
-        'NJ' => 'Њ',
         'nj' => 'њ',
         'Lj' => 'Љ',
         'LJ' => 'Љ',

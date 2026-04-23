@@ -7,7 +7,6 @@
   "settings.save_changes": "Save Changes",
   "settings.about_us": "About Us",
   "settings.goal": "Goal",
-  "settings.email": "Email",
   "settings.enter_goal": "Enter goal",
   "settings.save_goal": "Save Goal",
   "settings.mission": "Mission",
@@ -304,7 +303,7 @@
   "documentInputForm.category": "Category",
   "documentInputForm.select_category": "-- Select category --",
   "documentInputForm.document_title": "Document title",
-  "documentInputForm.optional_title": "title",
+  "documentInputForm.optional_title": "Optional title",
   "documentInputForm.document_description": "Document description",
   "placeholder.enter": "Enter",
   "documentInputForm.detailed_description": "Detailed description (optional)",
@@ -427,7 +426,5 @@
 
   "transparency.score.need_more": "Needs work",
   "transparency.score.title": "Transparency Score",
-  "transparency.score.update_age": "Updated today",
-
-    "items_per_page": "Number of items per page"
+  "transparency.score.update_age": "Updated today"
 }

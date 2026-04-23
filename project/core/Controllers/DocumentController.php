@@ -24,7 +24,7 @@ class DocumentController
     {
         $data = $_POST;
         $file = $_FILES['documetFile'] ?? null;
-        $uploadDir = PUBLIC_ROOT . '/uploads/documents/';
+        $uploadDir = dirname(__DIR__) . '/../public/uploads/documents/';
 
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0775, true);
@@ -58,23 +58,12 @@ class DocumentController
             $errorMessage = $errorCodes[$errorCode] ?? 'UNKNOWN_ERROR';
             error_log("Upload error code: {$errorCode} ({$errorMessage})");
 
-            $fileSize = isset($file['size']) ? (int) $file['size'] : 0;
-            $maxSizeBytes = FileUploader::getIniUploadLimit();
-            $maxSizeMB = number_format($maxSizeBytes / (1024 * 1024), 2);
-
-            if ($errorCode !== UPLOAD_ERR_OK && $errorCode !== UPLOAD_ERR_NO_FILE) {
-                http_response_code(400);
-                echo json_encode(['error' => FileUploader::getUploadErrorMessage((int) $errorCode)]);
-                return;
-            }
-
             // Validacija veličine fajla (200MB limit)
-            if ($fileSize > $maxSizeBytes) {
-                $sizeMB = number_format($fileSize / (1024 * 1024), 2);
+            $maxSizeMB = 200;
+            $maxSizeBytes = $maxSizeMB * 1024 * 1024;
+            if ($file['size'] > $maxSizeBytes) {
                 http_response_code(413);
-                echo json_encode([
-                    'error' => "Fajl je prevelik ({$sizeMB} MB). Maksimalna dozvoljena veličina: {$maxSizeMB} MB"
-                ]);
+                echo json_encode(['error' => "Fajl je prevelik! Maksimalna dozvljena veličina: {$maxSizeMB}MB"]);
                 return;
             }
         } else {

@@ -2,7 +2,6 @@
 namespace App\Utils;
 
 use App\Models\GenericCategory;
-use App\Utils\LocaleManager;
 
 class ModalGenerator
 {
@@ -372,7 +371,7 @@ class ModalGenerator
         if ($type === 'number')
             return '0';
         if ($type === 'date')
-            return 'dd/mm/yyyy';
+            return 'YYYY-MM-DD';
         if ($type === 'tel')
             return '+1 (555) 000-0000';
         // Use project translation helper if available for the word 'Enter'
@@ -467,7 +466,7 @@ class ModalGenerator
         if (($field['property'] ?? '') === 'auto') {
             error_log("evo me:" . $type);
             if ($type === 'date' && empty($value)) {
-                $value = date(LocaleManager::DATE_FORMAT_STRING); // today's date in human format
+                $value = date('Y-m-d'); // danasnji datum
             }
         }
 
@@ -493,7 +492,7 @@ class ModalGenerator
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
 
-                    <label for="<?= htmlspecialchars($name) ?>" id="file-dropzone"
+                    <label for="<?= htmlspecialchars($name) ?>"
                         class="group flex flex-col items-center justify-center w-full min-h-[140px] px-6 py-6 transition-all duration-200 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-blue-500 hover:bg-blue-50 text-center">
                         <div
                             class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3 group-hover:bg-blue-200 transition-colors">
@@ -629,25 +628,6 @@ class ModalGenerator
                             <?= $requiredAttr ?>
                             class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                             placeholder="<?= htmlspecialchars($placeholder) ?>"><?= htmlspecialchars($value) ?></textarea>
-                    </div>
-                </div>
-                <?php
-                break;
-
-            case 'date':
-                ?>
-                <div class="w-full">
-                    <label for="<?= htmlspecialchars($name) ?>"
-                        class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                        <i class="fas <?= $icon ?> text-blue-600"></i>
-                        <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
-                    </label>
-                    <div class="relative">
-                        <input type="text" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" data-date-input="1"
-                            id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>"
-                            value="<?= htmlspecialchars($value) ?>" <?= $requiredAttr ?>
-                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                            placeholder="<?= htmlspecialchars($placeholder) ?>" />
                     </div>
                 </div>
                 <?php

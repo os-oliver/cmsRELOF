@@ -21,7 +21,6 @@ class StaticPageExporter
     private array $data;
     private string $baseDir;
     private string $compDir;
-    private string $pagesDir;
 
     public function __construct($data)
     {
@@ -31,7 +30,7 @@ class StaticPageExporter
         }
 
         $this->data = $data;
-        $this->baseDir = PUBLIC_ROOT . '/exportedPages';
+        $this->baseDir = dirname(__DIR__, 2) . '/public/exportedPages';
         $this->compDir = $this->baseDir . '/landingPageComponents';
         $this->pagesDir = $this->baseDir . '/pages';
 
