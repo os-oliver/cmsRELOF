@@ -1,6 +1,8 @@
 <?php
 use App\Controllers\AuthController;
 use App\Models\User;
+use App\Utils\LocaleManager;
+
 AuthController::requireAdmin();
 
 
@@ -355,7 +357,7 @@ $totalPages = (int) ceil($totalCount / $limit);
                                         </td>
 
                                         <td class="px-6 py-4 text-gray-600">
-                                            <?= date('d.m.Y', strtotime($user['created_at'])) ?>
+                                            <?= date(LocaleManager::DATE_FORMAT_STRING, strtotime($user['created_at'])) ?>
                                         </td>
                                         <td class="px-6 py-4">
                                             <div class="flex items-center gap-2">

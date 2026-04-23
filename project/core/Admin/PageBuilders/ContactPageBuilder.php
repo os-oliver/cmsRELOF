@@ -26,16 +26,6 @@ class ContactPageBuilder extends BasePageBuilder
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .submit-btn {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
-        }
-
         .complaint-submit {
             background: linear-gradient(135deg, #ef4444, #dc2626);
         }
@@ -148,10 +138,10 @@ HTML;
         <div class="max-w-6xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">
+                <h1 class="text-5xl font-heading font-bold text-primary_text">
                     Kontaktirajte nas
                 </h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-body">
                     Vaše mišljenje nam je važno. Kontaktirajte nas za sve informacije ili pošaljite žalbu kako bismo
                     mogli da poboljšamo naše usluge.
                 </p>
@@ -289,7 +279,7 @@ HTML;
                             </div>
 
                             <div class="pt-6">
-                                <button type="submit" class="w-full text-white font-bold py-5 px-8 rounded-2xl submit-btn text-lg" id="submit-button">
+                                <button type="submit" class="w-full text-white font-bold py-5 px-8 rounded-2xl bg-primary hover:bg-primary_hover text-lg" id="submit-button">
                                     <span class="flex items-center justify-center space-x-3">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>

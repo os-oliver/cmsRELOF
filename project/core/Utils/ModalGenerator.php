@@ -3,6 +3,7 @@ namespace App\Utils;
 
 use App\Models\CustomFieldOption;
 use App\Models\GenericCategory;
+use App\Utils\LocaleManager;
 
 class ModalGenerator
 {
@@ -372,7 +373,7 @@ class ModalGenerator
         if ($type === 'number')
             return '0';
         if ($type === 'date')
-            return 'YYYY-MM-DD';
+            return 'dd/mm/yyyy';
         if ($type === 'tel')
             return '+1 (555) 000-0000';
         // Use project translation helper if available for the word 'Enter'
@@ -469,7 +470,7 @@ class ModalGenerator
         $value = $field['value'] ?? '';
 
         if ($type == 'date') {
-            $value = date('Y-m-d', $field['timestamp'] ?? null);
+            $value = date(LocaleManager::DATE_FORMAT_STRING, $field['timestamp'] ?? null);
         }
 
         $rows = $this->getRows($name);
@@ -630,6 +631,25 @@ class ModalGenerator
                             <?= $requiredAttr ?>
                             class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                             placeholder="<?= htmlspecialchars($placeholder) ?>"><?= htmlspecialchars($value) ?></textarea>
+                    </div>
+                </div>
+                <?php
+                break;
+
+            case 'date':
+                ?>
+                <div class="w-full">
+                    <label for="<?= htmlspecialchars($name) ?>"
+                        class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                        <i class="fas <?= $icon ?> text-blue-600"></i>
+                        <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
+                    </label>
+                    <div class="relative">
+                        <input type="text" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" data-date-input="1"
+                            id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>"
+                            value="<?= htmlspecialchars($value) ?>" <?= $requiredAttr ?>
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="<?= htmlspecialchars($placeholder) ?>" />
                     </div>
                 </div>
                 <?php
