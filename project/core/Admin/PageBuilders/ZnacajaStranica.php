@@ -70,7 +70,7 @@ class ZnacajaStranica extends BasePageBuilder
           </h1>
           <p class="lead text-secondary_text/90 mt-2">
             Pravo na pristup informacijama od javnog značaja ostvaruje se podnošenjem zahteva nadležnom organu.
-            Ovde se nalazi kratko uputstvo i obrazac <strong>(DOC)</strong> za preuzimanje.
+            Ovde se nalazi kratko uputstvo i obrazac &nbsp;<strong>(DOC)</strong>&nbsp; za preuzimanje.
           </p>
         </section>
 
@@ -82,8 +82,8 @@ class ZnacajaStranica extends BasePageBuilder
               koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
             <li><strong>Pošaljite popunjen zahtev</strong>&nbsp;na adresu elektronske pošte:&nbsp;
               <a data-translate="off" class="text-accent hover:text-accent_hover underline-offset-2 hover:underline"
-                 href="mailto:ivana.panic@csrpirot.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
-                 ivana.panic@csrpirot.rs
+                 href="mailto:sekretar.vrticbb@gmail.com?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                 sekretar.vrticbb@gmail.com
               </a>. Možete poslati i poštom ili lično, u pisarnici.</li>
             <li><strong>Odgovor</strong>: nakon obrade, dobićete e-poruku sa adresom ili linkom,
               sa koje možete preuzeti tražene informacije, ili obrazloženje ako zahtev nije moguće u celosti uvažiti.</li>
@@ -102,7 +102,7 @@ class ZnacajaStranica extends BasePageBuilder
         <section class="mt-4">
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
-            <p><strong>Lice ovlašćeno za zaštitu podataka o ličnosti</strong><br>Ivana Panić — 010/311-203 i 010/311-205 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:ivana.panic@csrpirot.rs">ivana.panic@csrpirot.rs</a></p>
+            <p><strong>Sekretar ustanove je odgovorno lice za informacije od javnog značaja u PU „Dečja radost“ – Babušnica.</strong><br>Adrijana Jovanović — 010/385-202 i 069/3851255 — &nbsp;<a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:sekretar.vrticbb@gmail.com">sekretar.vrticbb@gmail.com</a></p>
           </div>
         </section>
       </article>
@@ -126,15 +126,15 @@ class ZnacajaStranica extends BasePageBuilder
 
             <div class="mt-3">
               <div class="flex items-center justify-between gap-2 bg-white border border-secondary/30 rounded-xl px-3 py-2">
-                <span class="truncate text-primary_text" data-translate="off">ivana.panic@csrpirot.rs</span>
+                <span class="truncate text-primary_text" data-translate="off">sekretar.vrticbb@gmail.com</span>
                 <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                        onclick="navigator.clipboard.writeText('ivana.panic@csrpirot.rs')">
+                        onclick="navigator.clipboard.writeText('sekretar.vrticbb@gmail.com')">
                   Kopiraj
                 </button>
               </div>
               <p class="mt-2">
                 <a class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                   href="mailto:ivana.panic@csrpirot.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                   href="mailto:sekretar.vrticbb@gmail.com?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
                   Otvori e-poštu
                 </a>
               </p>
