@@ -157,7 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Handle file input change - populate name, extension, fileSize
   const fileInput = document.getElementById("documetFile");
-  const MAX_FILE_SIZE_MB = 200; // 200MB limit
+  const dropzone = document.getElementById("fileDropzone");
+  const maxBytes = Number(formEls.form?.dataset?.maxBytes || 0);
+  const MAX_FILE_SIZE_MB = maxBytes > 0 ? maxBytes / 1024 / 1024 : 50;
 
   if (fileInput) {
     fileInput.addEventListener("change", () => {
@@ -169,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (fileSizeMB > MAX_FILE_SIZE_MB) {
         alert(
-          `Greška! Fajl je prevelik.\n\nMaksimalna dozvoljena veličina: ${MAX_FILE_SIZE_MB}MB\nVaš fajl: ${fileSizeMB.toFixed(
+          `Greška! Fajl je prevelik.\n\nMaksimalna dozvoljena veličina: ${MAX_FILE_SIZE_MB.toFixed(2)}MB\nVaš fajl: ${fileSizeMB.toFixed(
             2
           )}MB\n\nMolimo izaberite manji fajl.`
         );

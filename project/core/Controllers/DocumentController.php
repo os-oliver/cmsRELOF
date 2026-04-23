@@ -24,7 +24,14 @@ class DocumentController
     {
         $data = $_POST;
         $file = $_FILES['documetFile'] ?? null;
+<<<<<<< HEAD
         $uploadDir = dirname(__DIR__) . '/../public/uploads/documents/';
+=======
+        $uploadDir = PUBLIC_ROOT . '/uploads/documents/';
+        $maxSizeBytes = FileUploader::getIniUploadLimit();
+        $maxSizeMB = number_format($maxSizeBytes / (1024 * 1024), 2);
+        $contentLength = isset($_SERVER['CONTENT_LENGTH']) ? (int) $_SERVER['CONTENT_LENGTH'] : 0;
+>>>>>>> main
 
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0775, true);
@@ -34,13 +41,11 @@ class DocumentController
         $title = trim($data['title'] ?? '');
         $description = trim($data['description'] ?? '');
 
-
-
-
         // Detaljno logovanje za debug
         error_log("=== UPLOAD DEBUG START ===");
         error_log("POST data: " . print_r($data, true));
         error_log("FILE data: " . print_r($file, true));
+<<<<<<< HEAD
 
         if ($file) {
             $errorCodes = [
@@ -68,6 +73,56 @@ class DocumentController
             }
         } else {
             error_log("Nema fajla u \$_FILES['documetFile']");
+=======
+        
+        if ($contentLength > 0 && $contentLength > $maxSizeBytes && empty($_POST) && empty($_FILES)) {
+            http_response_code(413);
+            echo json_encode([
+                'error' => "Zahtev je prevelik za server. Maksimalna dozvoljena velicina: {$maxSizeMB} MB"
+                ]);
+            return;
+        }
+
+        if (!$file) {
+            http_response_code(400);
+            echo json_encode([
+                'error' => 'Nijedan fajl nije otpremljen.'
+            ]);
+            return;
+        }
+
+        $errorCodes = [
+            UPLOAD_ERR_OK => 'UPLOAD_ERR_OK',
+            UPLOAD_ERR_INI_SIZE => 'UPLOAD_ERR_INI_SIZE',
+            UPLOAD_ERR_FORM_SIZE => 'UPLOAD_ERR_FORM_SIZE',
+            UPLOAD_ERR_PARTIAL => 'UPLOAD_ERR_PARTIAL',
+            UPLOAD_ERR_NO_FILE => 'UPLOAD_ERR_NO_FILE',
+            UPLOAD_ERR_NO_TMP_DIR => 'UPLOAD_ERR_NO_TMP_DIR',
+            UPLOAD_ERR_CANT_WRITE => 'UPLOAD_ERR_CANT_WRITE',
+            UPLOAD_ERR_EXTENSION => 'UPLOAD_ERR_EXTENSION',
+        ];
+
+        $errorCode = $file['error'] ?? null;
+        $errorMessage = $errorCodes[$errorCode] ?? 'UNKNOWN_ERROR';
+        error_log("Upload error code: {$errorCode} ({$errorMessage})");
+
+        $fileSize = isset($file['size']) ? (int) $file['size'] : 0;
+
+        if ($errorCode !== UPLOAD_ERR_OK) {
+            $statusCode = in_array((int) $errorCode, [UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE], true) ? 413 : 400;
+            http_response_code($statusCode);
+            echo json_encode(['error' => FileUploader::getUploadErrorMessage((int) $errorCode)]);
+            return;
+        }
+
+        if ($fileSize > $maxSizeBytes) {
+            $sizeMB = number_format($fileSize / (1024 * 1024), 2);
+            http_response_code(413);
+            echo json_encode([
+                'error' => "Fajl je prevelik ({$sizeMB} MB). Maksimalna dozvoljena veličina: {$maxSizeMB} MB"
+            ]);
+            return;
+>>>>>>> main
         }
         error_log("=== UPLOAD DEBUG END ===");
 
@@ -94,9 +149,15 @@ class DocumentController
             return;
         }
 
-        $id = (new Document())->insert($data);
+        $inserted = (new Document())->insert($data);
+        if (!$inserted) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Neuspešno čuvanje dokumenta u bazi.']);
+            return;
+        }
+
         http_response_code(201);
-        echo json_encode(['id' => $id]);
+        echo json_encode(['created' => true]);
     }
 
 
