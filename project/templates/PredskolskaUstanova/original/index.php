@@ -959,7 +959,7 @@
                         class="w-full max-w-md md:max-w-lg h-auto mb-4">
                     <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
                 </div>
-                <p class="pt-6">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                <p class="pt-6">&copy; PU "Pčelica" Sremska Mitrovica. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>

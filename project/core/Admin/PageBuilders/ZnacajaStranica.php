@@ -127,9 +127,9 @@ class ZnacajaStranica extends BasePageBuilder
 
             <div class="mt-3">
               <div class="flex items-center justify-between gap-2 bg-white border border-secondary/30 rounded-xl px-3 py-2">
-                <span class="truncate text-primary_text" data-translate="off">pisarnica@vas-domen.rs</span>
+                <span class="truncate text-primary_text" data-translate="off">pupcelicasm@gmail.com</span>
                 <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                        onclick="navigator.clipboard.writeText('pisarnica@vas-domen.rs')">
+                        onclick="navigator.clipboard.writeText('pupcelicasm@gmail.com')">
                   Kopiraj
                 </button>
               </div>
