@@ -1,6 +1,7 @@
 [
   {
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -18,6 +19,7 @@
       ],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -28,6 +30,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -37,6 +40,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -47,6 +51,7 @@
           "required": true
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -56,6 +61,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -65,6 +71,7 @@
           }
         },
         {
+          "code": "main_category",
           "name": "kategorija",
           "type": "categories",
           "label": {
@@ -82,17 +89,57 @@
             "Đurđevak",
             "Čuperak",
             "Lane"
+          ],
+          "coded_options": [
+            {
+              "code": "zvezdica",
+              "translations": { "sr": "Zvezdica", "en": "Zvezdica", "sr-Cyrl": "Звездица" }
+            },
+            {
+              "code": "maslacak",
+              "translations": { "sr": "Maslačak", "en": "Maslačak", "sr-Cyrl": "Маслачак" }
+            },
+            {
+              "code": "bubamara",
+              "translations": { "sr": "Bubamara", "en": "Bubamara", "sr-Cyrl": "Бубамара" }
+            },
+            {
+              "code": "cvrcak",
+              "translations": { "sr": "Cvrčak", "en": "Cvrčak", "sr-Cyrl": "Цврчак" }
+            },
+            {
+              "code": "leptiric",
+              "translations": { "sr": "Leptirić", "en": "Leptirić", "sr-Cyrl": "Лептирић" }
+            },
+            {
+              "code": "maja",
+              "translations": { "sr": "Maja", "en": "Maja", "sr-Cyrl": "Маја" }
+            },
+            {
+              "code": "djurdjevak",
+              "translations": { "sr": "Đurđevak", "en": "Đurđevak", "sr-Cyrl": "Ђурђевак" }
+            },
+            {
+              "code": "cuperak",
+              "translations": { "sr": "Čuperak", "en": "Čuperak", "sr-Cyrl": "Чуперак" }
+            },
+            {
+              "code": "lane",
+              "translations": { "sr": "Lane", "en": "Lane", "sr-Cyrl": "Лане" }
+            }
           ]
         }
       ]
     },
     "SaradnjaSaPorodicom": {
+      "code": "saradnja",
       "sr": "Saradnja sa porodicom",
-      "en": "cooperation with the family",
+      "en": "Cooperation with the family",
       "sr-Cyrl": "Сарадња са породицом",
       "icon": "fas fa-users",
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -102,6 +149,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -111,6 +159,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -120,6 +169,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -131,12 +181,14 @@
       ]
     },
     "Vrtici": {
+      "code": "vrtici",
       "sr": "Vrtići",
       "en": "Kindergarten",
       "sr-Cyrl": "Вртићи",
       "icon": "fas fa-school",
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -146,6 +198,7 @@
           }
         },
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -156,6 +209,7 @@
           "required": true
         },
         {
+          "code": "location",
           "name": "location",
           "type": "text",
           "label": {
@@ -165,6 +219,7 @@
           }
         },
         {
+          "code": "description",
           "name": "description",
           "type": "textarea",
           "label": {
@@ -176,12 +231,14 @@
       ]
     },
     "Obavestenja": {
+      "code": "obavestenja",
       "sr": "Obaveštenja za roditelje",
       "en": "Notifications for Parents",
       "sr-Cyrl": "Обавештења за родитеље",
       "icon": "fas fa-bell",
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -191,6 +248,7 @@
           }
         },
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -201,6 +259,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -210,6 +269,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -223,12 +283,14 @@
       ]
     },
     "Jelovnik": {
+      "code": "jelovnik",
       "sr": "Jelovnik",
       "en": "Menu",
       "sr-Cyrl": "Јеловник",
       "icon": "fas fa-newspaper",
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -239,6 +301,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -248,6 +311,7 @@
           }
         },
         {
+          "code": "fajl",
           "name": "Fajl",
           "type": "file",
           "label": {
@@ -259,12 +323,14 @@
       ]
     },
     "Cenovnik": {
+      "code": "cenovnik",
       "sr": "Cenovnik",
       "en": "Pricelist",
       "sr-Cyrl": "Ценовник",
       "icon": "fas fa-newspaper",
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -275,6 +341,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -284,6 +351,7 @@
           }
         },
         {
+          "code": "fajl",
           "name": "Fajl",
           "type": "file",
           "label": {
