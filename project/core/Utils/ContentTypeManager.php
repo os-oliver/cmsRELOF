@@ -131,17 +131,17 @@ class ContentTypeManager
         $fields = $contentType['fields'];
         $ordno = 1;
         foreach ($fields as $field) {
-            $existing = $cfield->fetchByCode($contentType['code'], $field['name']);
+            $existing = $cfield->fetchByCode($contentType['code'], $field['code']);
             if (empty($existing)) {
                 $cfield->create($contentType['code'], $field, $ordno);
             } else {
                 $cfield->update($contentType['code'], $field, $ordno);
             }
-            $updatedCodes[] = $field['name'];
+            $updatedCodes[] = $field['code'];
             $ordno++;
 
             if (!empty($field['options'])) {
-                $dbCustomField = $cfield->fetchByCode($contentType['code'], $field['name']);
+                $dbCustomField = $cfield->fetchByCode($contentType['code'], $field['code']);
                 self::updateCustomFieldOptions($dbCustomField, $field);
             }
         }
