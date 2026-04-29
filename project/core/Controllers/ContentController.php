@@ -6,6 +6,8 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 use App\Models\Content;
+use App\Models\ContentType;
+use App\Utils\ContentTypeManager;
 use Throwable;
 
 class ContentController
@@ -110,4 +112,20 @@ class ContentController
             echo json_encode(['success' => false, 'message' => 'Server error'], JSON_UNESCAPED_UNICODE);
         }
     }
+
+    public function contentTypes(): void
+    {
+        ContentTypeManager::createTypes('Turizam');
+
+        // $allCategoriesToInsert = [];
+        // foreach ($contentTypes as $typeKey => $typeData) {
+        //     foreach (($typeData['categories'] ?? []) as $category) {
+        //         $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
+        //     }
+        // }
+
+        // return $allCategoriesToInsert;
+
+    }
+
 }
