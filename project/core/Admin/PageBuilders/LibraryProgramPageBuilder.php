@@ -156,6 +156,7 @@ HTML;
     protected string $cardRender = <<<'HTML'
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 160, string $cardTemplate = ''): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $autor = htmlspecialchars($item['fields']['autor'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
@@ -320,6 +321,7 @@ HTML;
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

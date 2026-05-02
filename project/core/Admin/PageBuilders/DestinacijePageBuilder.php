@@ -345,7 +345,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
-        $html .= "<a href='{$prevUrl}' 
+        $html .= "<a href='{$prevUrl}'
                    class='px-4 py-2 bg-surface/80 backdrop-blur-sm rounded-xl border border-secondary_background hover:bg-surface hover:border-secondary_background/80 transition-all shadow-sm'>
             <i class='fas fa-chevron-left text-secondary_text'></i>
         </a>";
@@ -461,6 +461,7 @@ HTML;
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

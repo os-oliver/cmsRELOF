@@ -107,6 +107,7 @@ HTML;
     protected string $cardRender = <<<'HTML'
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, $cardTemplate=''): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $naslov = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['description'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -134,57 +135,57 @@ HTML;
 function renderPagination(int $currentPage, int $totalPages, int $range = 2): string
 {
     if ($totalPages <= 1) return '';
-    
+
     $html = "<div class='flex justify-center items-center gap-2 mt-10'>";
-    
+
     // Previous button
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
-        $html .= "<a href='{$prevUrl}' 
+        $html .= "<a href='{$prevUrl}'
                    class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
             <i class='fas fa-chevron-left text-gray-600'></i>
         </a>";
     }
-    
+
     $start = max(1, $currentPage - $range);
     $end = min($totalPages, $currentPage + $range);
-    
+
     // First page + ellipsis
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
-        $html .= "<a href='{$url}' 
+        $html .= "<a href='{$url}'
                    class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
         if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
     }
-    
+
     // Page numbers
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
-        $class = $i === $currentPage 
-            ? 'px-4 py-2 bg-primarybutton text-white rounded-xl font-semibold shadow-md' 
+        $class = $i === $currentPage
+            ? 'px-4 py-2 bg-primarybutton text-white rounded-xl font-semibold shadow-md'
             : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
-    
+
     // Last page + ellipsis
     if ($end < $totalPages) {
         if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
-        $html .= "<a href='{$url}' 
+        $html .= "<a href='{$url}'
                    class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
     }
-    
+
     // Next button
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
-        $html .= "<a href='{$nextUrl}' 
+        $html .= "<a href='{$nextUrl}'
                    class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
             <i class='fas fa-chevron-right text-gray-600'></i>
         </a>";
     }
-    
+
     $html .= "</div>";
-    
+
     return $html;
 }
 PHP;
@@ -196,7 +197,7 @@ PHP;
             <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Timovi</h1>
             <p class="text-lg font-heading2 text-secondary_text">Pogledajte naše posvećene timove i saznajte više o njihovom radu i članovima.</p>
         </div>
-        
+
         <div class="teams-grid">
             <?php
             if ($itemsList['success'] && !empty($itemsList['items'])) {
@@ -243,8 +244,8 @@ $paginationRange = __PAGINATION_RANGE__;
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $search = $_GET['search'] ?? '';
 
-$itemsList = $slug 
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage) 
+$itemsList = $slug
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage)
     : ['success' => false, 'items' => []];
 
 $config = $fieldLabels = [];

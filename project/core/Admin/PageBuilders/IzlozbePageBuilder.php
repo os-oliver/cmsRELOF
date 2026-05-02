@@ -296,6 +296,7 @@ HTML;
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
