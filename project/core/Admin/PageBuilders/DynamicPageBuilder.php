@@ -217,6 +217,7 @@ function renderTopbar(array $categories, string $searchValue = '', int|string|nu
 
 function cardRender(array $item, array $fieldLabels, string $locale): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $fields = [];
 
     // Add category as a chip if exists
@@ -412,7 +413,7 @@ HTML;
 
             use App\Models\Content;
             use App\Models\GenericCategory;
-            use App\Utils\HashMapTransformer;w
+            use App\Utils\HashMapTransformer;
 
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
