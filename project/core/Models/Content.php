@@ -98,6 +98,7 @@ class Content
         }
 
         $type = $post['type'];
+        $typeBeforeConversion = $post['typeBeforeConversion'] ?? null;
         $isUpdate = isset($post['id']) && ((int) $post['id'] > 0);
         if ($isUpdate) {
             $existing = Content::fetchById($post['id']);
@@ -107,7 +108,13 @@ class Content
         }
 
         if (!Config::hasType($type)) {
-            throw new RuntimeException("No config found for type: {$type}");
+            if (!$typeBeforeConversion) {
+                throw new RuntimeException("No config found for type: {$type}");
+            } else {
+                if (!Config::hasType($typeBeforeConversion)) {
+                    throw new RuntimeException("No config found for type: {$type}");
+                }
+            }
         }
 
         $this->pdo->beginTransaction();
