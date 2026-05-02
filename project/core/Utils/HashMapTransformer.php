@@ -68,4 +68,26 @@ class HashMapTransformer
             return $returnValue;
         }, $rawEvents);
     }
+
+    public static function remapToOldItemStructure(array $item, string $locale): array
+    {
+        $fields = [];
+        $image = null;
+        foreach ($item as $newField) {
+            $fields[$newField['code']][$locale] = $newField['textValue'];
+            if (!empty($newField['imageUrl'])) {
+                $image = $newField['imageUrl'];
+            }
+        }
+
+        $oldItem = [
+            'id' => $item[0]['content_id'],
+            'fields' => $fields,
+        ];
+        if ($image) {
+            $oldItem['image'] = $image;
+        }
+
+        return $oldItem;
+    }
 }
