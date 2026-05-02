@@ -284,9 +284,9 @@ class MigrateController
         if (empty($structure)) {
             die('nema definicija u structure.json!');
         }
-        
+
         $oldTypes = array_keys($structure[0]);
-        foreach($oldTypes as $oldSlug) {   
+        foreach($oldTypes as $oldSlug) {
             $items = (new Content())->fetchListDataOld($oldSlug, '', 1, 1000);
             if ($items['total'] > 0) {
                 $this->convertOldContent($items['items'], $oldSlug, $structure[0][$oldSlug]);
@@ -295,10 +295,10 @@ class MigrateController
 
         echo '<h3>Conversion done!</h3>';
     }
-    
-    
+
+
     /**** converting functions ****/
-    
+
     private function convertOldContent(array $items, string $oldSlug, array $jsonItem): void
     {
         $contentTypeCode = $jsonItem['code'];
@@ -316,20 +316,22 @@ class MigrateController
                 break;
             }
         }
-
         foreach ($items as $item) {
             $content = [];
             $content['type'] = $contentType['code'];
+            $content['typeBeforeConversion'] = $item['type'];
             foreach ($item['fields'] as $key => $field) {
                 if (!empty($field['sr'])) {
                     $content[$key] = $field['sr'];
                 }
             }
 
-            if (empty($item['category']['id'])) {
-                $content['main_category'] = $mainCategories[0]['option_value'];
-            } else {
-                $content['main_category'] = $this->remapCategory($item['category'], $mainCategories);
+            if (!empty($mainCategories)) {
+                if (empty($item['category']['id'])) {
+                    $content['main_category'] = $mainCategories[0]['option_value'];
+                } else {
+                    $content['main_category'] = $this->remapCategory($item['category'], $mainCategories);
+                }
             }
 
             $savedContent = (new Content())->saveContent($content, [], 'sr');
