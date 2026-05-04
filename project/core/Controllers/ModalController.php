@@ -42,8 +42,8 @@ class ModalController
         $config = null;
         // Case-insensitive lookup: structure keys may be capitalized (e.g. "Vesti")
         foreach ($data as $entry) {
-            foreach ($entry as $key => $val) {
-                if (strcasecmp((string) $key, (string) $slug) === 0) {
+            foreach ($entry as $val) {
+                if (strcasecmp($val['code'], (string) $slug) === 0) {
                     $config = $val;
                     break 2;
                 }
