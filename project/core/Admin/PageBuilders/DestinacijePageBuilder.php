@@ -215,6 +215,7 @@ function renderStars($rating): string {
 
 function cardRenderDestination(array $item, string $locale, array $texts = [], int $descMaxLength = 140, $cardTemplate=''): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     // Basics
     $naziv_destinacije    = htmlspecialchars($item['fields']['naziv_destinacije'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $kratak   = htmlspecialchars(mb_substr($item['fields']['kratak_opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
