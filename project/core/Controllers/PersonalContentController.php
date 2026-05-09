@@ -1287,12 +1287,15 @@ class PersonalContentController
         });
 
         // Also check for file URLs inside fields
+        // This is probably not needed anymore, since we collect filepaths from the CFVs now
+        /*
         foreach ($fields as $fieldValues) {
             $ext = strtolower(pathinfo($fieldValues['textValue'], PATHINFO_EXTENSION));
             if (in_array($ext, $docExtensions)) {
                 $files[] = ['filepath' => $fieldValues['textValue']];
             }
         }
+        */
 
         // Get labels and icons
         // $labels = $this->getLabelsFromStructure($type, $structure, $locale);
