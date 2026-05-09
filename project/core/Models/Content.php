@@ -56,41 +56,6 @@ class Content
     // PUBLIC API
     // ============================================================
 
-    public function saveContentOld(array $post, array $files = [], string $locale = 'sr-Cyrl', bool $debug = false): array
-    {
-        if (empty($post['type'])) {
-            throw new InvalidArgumentException('Missing type in data');
-        }
-
-        $type = $post['type'];
-        $isUpdate = isset($post['id']) && ((int) $post['id'] > 0);
-
-        if (!Config::hasType($type)) {
-            throw new RuntimeException("No config found for type: {$type}");
-        }
-
-        $this->pdo->beginTransaction();
-        try {
-            $contentID = $isUpdate
-                ? $this->updateContentRecordOld((int) $post['id'], $type)
-                : $this->insertContentRecordOld($type);
-
-            $fields = Config::getFields($type);
-            $this->processFields($contentID, $fields, $post, $files, $locale, $isUpdate);
-
-            $this->pdo->commit();
-
-            return [
-                'success' => true,
-                'id' => $contentID,
-                'message' => $isUpdate ? 'Updated' : 'Created',
-            ];
-        } catch (Throwable $e) {
-            $this->rollbackTransaction();
-            throw $e;
-        }
-    }
-
     public function saveContent(array $post, array $files = [], string $locale = 'sr-Cyrl', bool $debug = false): array
     {
         if (empty($post['type'])) {
