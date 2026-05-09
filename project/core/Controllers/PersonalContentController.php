@@ -1304,7 +1304,7 @@ class PersonalContentController
         // Find title field
         $title = '';
         $titleField = null;
-        foreach ($fields as $field => $values) {  
+        foreach ($fields as $field => $values) {
             if (in_array($values['code'], ['title', 'name', 'heading', 'naziv', 'naslov'])) {
                 $title = htmlspecialchars($values['textValue'], ENT_QUOTES, 'UTF-8');
                 $titleField = $field;
@@ -1369,7 +1369,7 @@ class PersonalContentController
                 <div class="documents-grid">';
 
             foreach ($files as $file) {
-                $filePath = $file['file_path'];
+                $filePath = $file['filepath'];
                 $fileName = basename($filePath);
                 $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
                 $iconData = $this->getDocumentIcon($extension);
