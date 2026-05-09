@@ -175,7 +175,7 @@ CSS;
                     <p class="text-sm text-gray-700 leading-relaxed font-body">{{opis}}</p>
                 </div>
 
-                <a href="/sadrzaj?id={{itemId}}&tip=Vrtici"
+                <a href="/sadrzaj?id={{itemId}}&tip=vrtici"
                 class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl backdrop-blur-sm">
                 <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-ticket-alt"></i>

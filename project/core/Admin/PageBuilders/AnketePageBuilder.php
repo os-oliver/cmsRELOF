@@ -204,7 +204,7 @@ PHP;
                 {{naslov}}
             </h3>
 
-            <a href="/sadrzaj?id={{itemId}}&tip=Anketa"
+            <a href="/sadrzaj?id={{itemId}}&tip=anketa"
             class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-accent hover:from-primary_hover hover:to-accent_hover text-surface font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
                 <i class="fas fa-external-link-alt text-sm"></i>
                 <span>{{openSurvey}}</span>

@@ -89,7 +89,7 @@ CSS;
                     <p class="text-sm text-gray-700 font-heading2 leading-relaxed">{{opis}}</p>
                 </div>
 
-                <a href="/sadrzaj?id={{itemId}}&tip=Timovi"
+                <a href="/sadrzaj?id={{itemId}}&tip=timovi"
                 class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl backdrop-blur-sm">
                 <span class="flex items-center justify-center gap-2 font-body">
                         <i class="fas fa-users"></i>
