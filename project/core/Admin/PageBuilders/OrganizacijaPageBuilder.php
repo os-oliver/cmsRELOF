@@ -121,7 +121,7 @@ PHP;
                         <i class="fas fa-envelope text-primary"></i>
                         <span class="text-sm text-secondary-text">{{kontakt}}</span>
                     </div>
-                    <a href="/sadrzaj?id={{itemId}}&tip=Zaposleni" class="flex items-center gap-2 text-primary hover:text-primary_hover transition-colors">
+                    <a href="/sadrzaj?id={{itemId}}&tip=zaposleni" class="flex items-center gap-2 text-primary hover:text-primary_hover transition-colors">
                         <span class="text-sm font-medium">{{viewDetails}}</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
