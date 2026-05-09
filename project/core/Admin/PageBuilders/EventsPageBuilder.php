@@ -63,7 +63,7 @@ main{padding-top:50px}
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(array $categories, string $locale, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
@@ -78,21 +78,11 @@ function renderTopbar(array $categories, string $searchValue = '', int|string|nu
             <option value=''>{$texts['all_categories']}</option>";
 
     foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-
-        $isSelected = false;
-
-        if ($selectedCategoryId !== null) {
-            if (is_numeric($selectedCategoryId) && (int)$selectedCategoryId === (int)$cat['id']) {
-                $isSelected = true;
-            } elseif (is_string($selectedCategoryId) && strtolower($selectedCategoryId) === strtolower($cat['name'])) {
-                $isSelected = true;
-            }
-        }
-
-        $selected = $isSelected ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
+        $translations = $cat['translations'];
+        $code = $cat['option_value'];
+        $name = $translations[$locale] ?? $translations['sr'];
+        $selected = ($selectedCategoryId == $cat['option_value']) ? 'selected' : '';
+        $html .= "<option value='{$code}' {$selected}>{$name}</option>";
     }
 
     $html .= "</select></div></form>";
@@ -148,7 +138,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     $vreme = htmlspecialchars($item['fields']['time'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
+    $kategorija = htmlspecialchars($item['fields']['main_category'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
 
     $imageSection = $imageUrl
         ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Event image'>"
@@ -242,7 +232,7 @@ PHP;
             <p class="text-secondary-text">Istražite našu bogatu ponudu kulturnih događaja</p>
         </div>
 
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($categories, $locale, $search, $categoryId, $texts); ?>
 
         <div class="performances-grid">
             <?php
@@ -300,7 +290,7 @@ $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
     : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
+$categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => [], 'total' => 0];
