@@ -196,11 +196,13 @@ class CardRenderer
 
     public static function renderCardNew(int $itemId, array $fields, string $locale, bool $isEditable = false): string
     {
-        // var_dump($fields);
-
+        $docExtensions = ['pdf', 'xls', 'xlsx', 'doc', 'docx'];
         foreach ($fields as $field) {
             if (!empty($field['imageUrl']) && empty($imageUrl)) {
-                $imageUrl = $field['imageUrl'];
+                $ext = strtolower(pathinfo($field['imageUrl'], PATHINFO_EXTENSION));
+                if (!in_array($ext, $docExtensions)) {
+                    $imageUrl = $field['imageUrl'];
+                }
             }
         }
 
@@ -254,7 +256,10 @@ class CardRenderer
             $html .= "<div class='grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700 mb-3'>";
             foreach ($fields as $f) {
                 if (!empty($f['imageUrl'])) {
-                    continue;
+                    $ext = strtolower(pathinfo($f['imageUrl'], PATHINFO_EXTENSION));
+                    if (!in_array($ext, $docExtensions)) {
+                        continue;
+                    }
                 }
                 $safeLabel = htmlspecialchars($f['label'], ENT_QUOTES, 'UTF-8');
                 $safeValue = nl2br(htmlspecialchars($f['textValue'] ?? '', ENT_QUOTES, 'UTF-8'));
