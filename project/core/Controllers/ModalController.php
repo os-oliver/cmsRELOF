@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\Content;
 use App\Utils\ModalGenerator;
 use App\Database;
+use App\Models\CustomFieldValue;
 use App\Utils\LocaleManager;
 use PDO;
 
@@ -86,20 +87,19 @@ class ModalController
                         }
                     }
 
-                    // var_dump($config); die;
-
                     // Also pass id so the modal form can include it
                     $config['item_id'] = $id;
 
                     // Fetch attached images using Image model helper
                     try {
-                        $images = \App\Models\Image::fetchFilePathsForElement($id);
-                        if (!empty($images)) {
+                        $allFiles = CustomFieldValue::findFileCFVsByContentId($id);
+                        if (!empty($allFiles)) {
+                            $paths = array_map(fn($item) => $item['filepath'], $allFiles);
                             foreach ($config['fields'] as &$f) {
                                 $ft = $f['type'] ?? 'text';
                                 if ($ft === 'file') {
                                     // store JSON array of paths for multifile
-                                    $f['value'] = json_encode(array_values($images), JSON_UNESCAPED_UNICODE);
+                                    $f['value'] = json_encode($paths, JSON_UNESCAPED_UNICODE);
                                 }
                             }
                         }
