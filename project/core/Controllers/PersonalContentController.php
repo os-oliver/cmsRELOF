@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Models\Content;
 use App\Models\Event;
 use App\Admin\PageBuilders\BasicPageBuilder;
+use App\Models\ContentType;
 use App\Models\CustomFieldValue;
 use App\Utils\CardRenderer;
 use App\Utils\LocaleManager;
@@ -1528,23 +1529,16 @@ class PersonalContentController
 
     private function getTypeData(string $type, array $structure, string $locale): array
     {
-        if (empty($structure) || !is_array($structure)) {
+        $typeData = ContentType::fetchByCode($type, true);
+        if (empty($typeData) || !is_array($typeData)) {
             return ['name' => $type];
         }
 
-        $structureData = $structure[0] ?? [];
-
-        if (!isset($structureData[$type])) {
-            return ['name' => $type];
-        }
-
-        $typeInfo = $structureData[$type];
-
-        $typeName = $typeInfo[$locale] ?? $typeInfo['sr'] ?? $typeInfo['en'] ?? $type;
+        $typeName = $typeData['translations'][$locale] ?? $type;
 
         return [
             'name' => $typeName,
-            'icon' => $typeInfo['icon'] ?? 'fas fa-file-alt'
+            'icon' => $typeData['icon'] ?? 'fas fa-file-alt'
         ];
     }
 
