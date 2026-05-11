@@ -856,9 +856,15 @@
                     </div>
                 </div>
             </div>
-
-            <div class="border-t border-border_dark pt-8 text-center text-white/60 text-sm">
-                <p>&copy; 2025 Centar za pružanje usluga socijalne zaštite Grada Zrenjanina Most. Sva prava zadržana.</p>
+            <div class="text-center text-sm">
+                <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
+                    <img
+                        src="/assets/img/SECO-logo-640px-white.png"
+                        alt="SECO logo"
+                        class="w-full max-w-md md:max-w-lg h-auto mb-4">
+                    <p class="text-white"> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+                </div>
+                <p class="pt-6">&copy; 2025 Centar za pružanje usluga socijalne zaštite Grada Zrenjanina Most. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
