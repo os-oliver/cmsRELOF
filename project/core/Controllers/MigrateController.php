@@ -238,7 +238,7 @@ class MigrateController
             `content_id` int NOT NULL,
             `custom_field_id` int NOT NULL,
             `language` varchar(10) DEFAULT NULL,
-            `content` varchar(5000) DEFAULT NULL,
+            `content` text DEFAULT NULL,
             `yesno` int DEFAULT NULL,
             `date` datetime DEFAULT NULL,
             `option` varchar(255) DEFAULT NULL,
