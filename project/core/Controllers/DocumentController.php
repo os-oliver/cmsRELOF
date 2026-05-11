@@ -41,6 +41,33 @@ class DocumentController
         error_log("=== UPLOAD DEBUG START ===");
         error_log("POST data: " . print_r($data, true));
         error_log("FILE data: " . print_r($file, true));
+
+        if ($file) {
+            $errorCodes = [
+                UPLOAD_ERR_OK => 'UPLOAD_ERR_OK',
+                UPLOAD_ERR_INI_SIZE => 'UPLOAD_ERR_INI_SIZE',
+                UPLOAD_ERR_FORM_SIZE => 'UPLOAD_ERR_FORM_SIZE',
+                UPLOAD_ERR_PARTIAL => 'UPLOAD_ERR_PARTIAL',
+                UPLOAD_ERR_NO_FILE => 'UPLOAD_ERR_NO_FILE',
+                UPLOAD_ERR_NO_TMP_DIR => 'UPLOAD_ERR_NO_TMP_DIR',
+                UPLOAD_ERR_CANT_WRITE => 'UPLOAD_ERR_CANT_WRITE',
+                UPLOAD_ERR_EXTENSION => 'UPLOAD_ERR_EXTENSION',
+            ];
+
+            $errorCode = $file['error'] ?? null;
+            $errorMessage = $errorCodes[$errorCode] ?? 'UNKNOWN_ERROR';
+            error_log("Upload error code: {$errorCode} ({$errorMessage})");
+
+            // Validacija veličine fajla (200MB limit)
+            $maxSizeMB = 200;
+            $maxSizeBytes = $maxSizeMB * 1024 * 1024;
+            if ($file['size'] > $maxSizeBytes) {
+                http_response_code(413);
+                echo json_encode(['error' => "Fajl je prevelik! Maksimalna dozvljena veličina: {$maxSizeMB}MB"]);
+                return;
+            }
+        } else {
+            error_log("Nema fajla u \$_FILES['documetFile']");
         
         if ($contentLength > 0 && $contentLength > $maxSizeBytes && empty($_POST) && empty($_FILES)) {
             http_response_code(413);
@@ -89,6 +116,7 @@ class DocumentController
                 'error' => "Fajl je prevelik ({$sizeMB} MB). Maksimalna dozvoljena veličina: {$maxSizeMB} MB"
             ]);
             return;
+>>>>>>> main
         }
         error_log("=== UPLOAD DEBUG END ===");
 

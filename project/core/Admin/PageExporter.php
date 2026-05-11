@@ -49,7 +49,6 @@ use App\Admin\PageBuilders\TimoviPageBuilder;
 use App\Admin\PageBuilders\UpisPageBuilder;
 use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
-use App\Admin\PageBuilders\PolitikaPrivatnostiPageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
 use App\Admin\PageBuilders\SigurnaKucaPageBuilder;
 use DOMDocument;
@@ -756,8 +755,6 @@ class PageExporter
                 return new PosebneUslugePageBuilder('PosebneUsluge', $this->data);
             case 'organi-upravljanja':
                 return new OrganizacijaPageBuilder('OrganiUpravljanja', $this->data);
-            case 'politika-privatnosti':
-                return new PolitikaPrivatnostiPageBuilder('PolitikaPrivatnosti', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -871,8 +868,6 @@ class PageExporter
             return 'sigurna-kuca';
         } elseif (strpos($name, 'organi-upravljanja') !== false) {
             return 'organi-upravljanja';
-        } elseif (strpos($name, 'politika-privatnosti') !== false) {
-            return 'politika-privatnosti';
         }
 
         return 'basic';

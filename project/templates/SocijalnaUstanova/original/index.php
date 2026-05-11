@@ -384,10 +384,6 @@
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-history mr-2 text-brown"></i>Istorijat
                             </a>
-                            <a data-page="Politika privatnosti" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-user-shield mr-2 text-ochre"></i>Politika privatnosti
-                            </a>
                         </div>
                     </div>
                     <a data-page="Vesti" href="#"
@@ -475,11 +471,6 @@
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-history mr-3 text-brown flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
-                        </a>
-                        <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-user-shield mr-2 text-ochre"></i>
-                            <span class="font-medium">Politika privatnosti</span>
                         </a>
                     </div>
                 </div>
@@ -793,10 +784,7 @@
                         <h3 class="text-xl font-display font-bold">CENTAR ZA SOCIJALNI RAD</h3>
                     </div>
                     <p class="text-white/80 mb-4">
-                        <strong>Matični broj (MB)</strong> 8970718
-                    </p>
-                    <p class="text-white/80 mb-4">
-                        <strong>Poreski identifikacioni broj (PIB)</strong> 111807038
+                        Pružamo podršku i pomoć pojedincima, porodicama i zajednici u rešavanju životnih poteškoća.
                     </p>
                     <div class="flex space-x-3">
                         <a href="https://www.facebook.com/centar.most.zr/"
@@ -811,15 +799,15 @@
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-primary_lighter mt-1 mr-3"></i>
-                            <span>Gimnazijska 25/2G, Zrenjanin</span>
+                            <span>Bulevar oslobođenja 26, 21000 Novi Sad</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-primary_lighter mt-1 mr-3"></i>
-                            <span>023/608 240</span>
+                            <span>+381 21 123 456</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-primary_lighter mt-1 mr-3"></i>
-                            <span data-translate="off">kontakt@centarmostzr.com</span>
+                            <span data-translate="off">info@csr-novisad.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-primary_lighter mt-1 mr-3"></i>
@@ -833,6 +821,8 @@
                                 Osoba zadužena za slobodan pristup informacijama od javnog značaja
                                 <br>
                                 <p data-translate="off">nevena.montresor@centarmostzr.com</p>
+                                <br>
+                                023 608 240
                             </span>
                         </li>
                         <li class="flex items-start">
@@ -842,6 +832,7 @@
                                 <br>
                                 <p data-translate="off">zastita.podataka@centarmostzr.com</p>
                                 <br>
+                                023 608 240
                             </span>
                         </li>
                     </ul>
@@ -849,9 +840,9 @@
 
                 <div>
                     <h4 class="text-lg font-display font-bold mb-6">Lokacija</h4>
-                    <div class="rounded-xl overflow-hidden" style="aspect-ratio:16 / 9;">
+                    <div class="bg-white/10 rounded-xl overflow-hidden" style="aspect-ratio:16 / 9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2802.48857579743!2d20.391631399999998!3d45.3793143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475adb41b5cfb24d%3A0xe56da8b793c2efb0!2zMjUsINCT0LjQvNC90LDQt9C40ZjRgdC60LAgMiwg0JfRgNC10ZrQsNC90LjQvSAyMzAwMA!5e0!3m2!1ssr!2srs!4v1778438235626!5m2!1ssr!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d19.8451920155352!3d45.25407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sBulevar%20oslobo%C4%91enja%2026%2C%20Novi%20Sad!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
