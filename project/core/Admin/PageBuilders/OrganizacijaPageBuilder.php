@@ -240,6 +240,7 @@ HTML;
         $additionalPHP = <<<'PHP'
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
+use App\Models\ContentType;
 use App\Models\GenericCategory;
 use App\Utils\HashMapTransformer;
 
@@ -265,7 +266,7 @@ $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
     : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
+$categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => [], 'total' => 0];
