@@ -121,7 +121,7 @@ PHP;
                         <i class="fas fa-envelope text-primary"></i>
                         <span class="text-sm text-secondary-text">{{kontakt}}</span>
                     </div>
-                    <a href="/sadrzaj?id={{itemId}}&tip=Zaposleni" class="flex items-center gap-2 text-primary hover:text-primary_hover transition-colors">
+                    <a href="/sadrzaj?id={{itemId}}&tip=zaposleni" class="flex items-center gap-2 text-primary hover:text-primary_hover transition-colors">
                         <span class="text-sm font-medium">{{viewDetails}}</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -135,6 +135,7 @@ HTML;
     protected string $cardRender = <<<'HTML'
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, string $cardTemplate = ''): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $ime = htmlspecialchars($item['fields']['ime'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $pozicija = htmlspecialchars($item['fields']['pozicija'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $biografija = htmlspecialchars(mb_substr($item['fields']['biografija'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
@@ -240,6 +241,7 @@ HTML;
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -256,8 +258,8 @@ $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
+    ? (is_numeric($_GET['category'])
+        ? (int) $_GET['category']
         : trim((string) $_GET['category'])
       )
     : null;

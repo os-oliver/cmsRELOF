@@ -103,17 +103,17 @@ PHP;
             <div class="glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
             <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-white to-white/60">
                 {{imageSection}}
-            
+
             </div>
             <div class="p-6">
                 <h3 class="text-xl font-bold text-primary-text mb-4 line-clamp-2 group-hover:text-primary transition-colors">
                     {{naslov}}
                 </h3>
-            
+
                 <div class="mb-5 p-4 bg-surface rounded-xl border border-white/30">
                     <p class="text-sm text-secondary-text leading-relaxed">{{opis}}</p>
                 </div>
-                <a href="/sadrzaj?id={{itemId}}&tip=Objekti" class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
+                <a href="/sadrzaj?id={{itemId}}&tip=objekti" class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
                     <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-ticket-alt"></i>
                         <span>{{eventDetails}}</span>
@@ -131,6 +131,7 @@ HTML;
     protected string $cardRender = <<<'HTML'
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, string $cardTemplate = ''): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $naslov = htmlspecialchars($item['fields']['nazivObjekta'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -233,6 +234,7 @@ HTML;
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -249,8 +251,8 @@ $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
+    ? (is_numeric($_GET['category'])
+        ? (int) $_GET['category']
         : trim((string) $_GET['category'])
       )
     : null;
