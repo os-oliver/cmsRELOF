@@ -68,7 +68,7 @@ class DocumentController
             }
         } else {
             error_log("Nema fajla u \$_FILES['documetFile']");
-        
+
         if ($contentLength > 0 && $contentLength > $maxSizeBytes && empty($_POST) && empty($_FILES)) {
             http_response_code(413);
             echo json_encode([
@@ -116,7 +116,6 @@ class DocumentController
                 'error' => "Fajl je prevelik ({$sizeMB} MB). Maksimalna dozvoljena veličina: {$maxSizeMB} MB"
             ]);
             return;
->>>>>>> main
         }
         error_log("=== UPLOAD DEBUG END ===");
 
