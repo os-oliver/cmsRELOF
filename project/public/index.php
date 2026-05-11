@@ -58,6 +58,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $registerRoute('GET', '/sadmin/migrate2', 'MigrateController@migrations2');
 
     $registerRoute('GET', '/content-types', 'ContentController@contentTypes');
+    $registerRoute('GET', '/convert-custom-fields', 'MigrateController@convertCustomFields');
 
     $registerRoute('GET', '/pretraga', 'PageController@search');
     $registerRoute('POST', '/save-component', 'UserUpdateController@saveComponent');
