@@ -1,63 +1,5 @@
 [
   {
-    "Ankete": {
-      "code": "ankete",
-      "sr": "Ankete",
-      "en": "Surveys",
-      "sr-Cyrl": "Анкете",
-      "icon": "fas fa-poll",
-      "fields": [
-        {
-          "name": "naslov",
-          "type": "text",
-          "label": {
-            "sr": "Naslov ankete",
-            "en": "Survey title",
-            "sr-Cyrl": "Наслов анкете"
-          },
-          "required": true
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Link ka anketi",
-            "en": "Survey link",
-            "sr-Cyrl": "Линк ка анкети"
-          },
-          "required": true
-        }
-      ]
-    },
-    "Pitanja": {
-      "code": "pitanja",
-      "sr": "Često postavljana pitanja",
-      "en": "Frequently asked questions",
-      "sr-Cyrl": "Често постављана питања",
-      "icon": "fa-solid fa-circle-question",
-      "fields": [
-        {
-          "name": "question",
-          "type": "text",
-          "label": {
-            "sr": "Pitanje",
-            "en": "Question",
-            "sr-Cyrl": "Питање"
-          },
-          "required": true
-        },
-        {
-          "name": "answer",
-          "type": "textarea",
-          "label": {
-            "sr": "Odgovor",
-            "en": "Answer",
-            "sr-Cyrl": "Одговор"
-          },
-          "required": true
-        }
-      ]
-    },
     "OrganiUpravljanja": {
       "code": "organi-upravljanja",
       "sr": "Organi upravljanja",
@@ -66,6 +8,7 @@
       "icon": "fas fa-users-cog",
       "fields": [
         {
+          "code": "ime",
           "name": "ime",
           "type": "text",
           "label": {
@@ -76,6 +19,7 @@
           "required": true
         },
         {
+          "code": "pozicija",
           "name": "pozicija",
           "type": "text",
           "label": {
@@ -86,6 +30,7 @@
           "required": true
         },
         {
+          "code": "biografija",
           "name": "biografija",
           "type": "textarea",
           "label": {
@@ -95,6 +40,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -104,6 +50,7 @@
           }
         },
         {
+          "code": "kontakt",
           "name": "kontakt",
           "type": "email",
           "label": {

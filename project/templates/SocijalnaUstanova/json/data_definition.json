@@ -1,12 +1,14 @@
 [
   {
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -17,6 +19,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -26,6 +29,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -36,6 +40,7 @@
           "required": true
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -45,6 +50,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -56,6 +62,7 @@
       ]
     },
     "Usluge": {
+      "code": "usluge",
       "sr": "Usluge",
       "en": "Services",
       "sr-Cyrl": "Услуге",
@@ -68,6 +75,7 @@
       ],
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -78,6 +86,7 @@
           "required": true
         },
         {
+          "code": "main_category",
           "name": "Tip",
           "type": "categories",
           "label": {
@@ -91,9 +100,28 @@
             "Služba za osamostaljivanje i podršku",
             "Služba za pravne i finansijsko-administrativne poslove"
           ],
+          "coded_options": [
+            {
+              "code": "sluzba-smestaja",
+              "translations": { "sr": "Služba smeštaja", "en": "Accomodation service", "sr-Cyrl": "Служба смештаја" }
+            },
+            {
+              "code": "sluzba-dnevnih-usluga",
+              "translations": { "sr": "Služba dnevnih usluga u zajednici", "en": "Community daily services", "sr-Cyrl": "Служба дневних услуга у заједници" }
+            },
+            {
+              "code": "sluzba-osamostaljivanja",
+              "translations": { "sr": "Služba za osamostaljivanje i podršku", "en": "Support service", "sr-Cyrl": "Служба за осамостаљивање и подршку" }
+            },
+            {
+              "code": "sluzba-pravna",
+              "translations": { "sr": "Služba za pravne i finansijsko-administrativne poslove", "en": "Legal and financing service", "sr-Cyrl": "Служба за правне и финансијско-административне послове" }
+            }
+          ],
           "required": true
         },
         {
+          "code": "kratakOpis",
           "name": "kratakOpis",
           "type": "textarea",
           "label": {
@@ -105,6 +133,7 @@
           "required": true
         },
         {
+          "code": "detaljniOpis",
           "name": "detaljniOpis",
           "type": "textarea",
           "label": {
@@ -115,8 +144,9 @@
           "required": true
         },
         {
+          "code": "tipFinansiranja",
           "name": "tipFinansiranja",
-          "type": "select",
+          "type": "categories",
           "label": {
             "sr": "Način finansiranja",
             "en": "Funding type",
@@ -129,9 +159,32 @@
             "Sufinansiranje",
             "Plaćeno"
           ],
+          "coded_options": [
+            {
+              "code": "besplatno",
+              "translations": { "sr": "Besplatno", "en": "Free", "sr-Cyrl": "Бесплатно" }
+            },
+            {
+              "code": "budzet-opstine",
+              "translations": { "sr": "Budžet opštine", "en": "Municipality budget", "sr-Cyrl": "Буџет општине" }
+            },
+            {
+              "code": "budzet-rs",
+              "translations": { "sr": "Budžet RS", "en": "Republic budget", "sr-Cyrl": "Буџет РС" }
+            },
+            {
+              "code": "sufinansiranje",
+              "translations": { "sr": "Sufinansiranje", "en": "Cofinancing", "sr-Cyrl": "Суфинансирање" }
+            },
+            {
+              "code": "placeno",
+              "translations": { "sr": "Plaćeno", "en": "Paid", "sr-Cyrl": "Плаћено" }
+            }
+          ],
           "required": false
         },
         {
+          "code": "kontakt",
           "name": "kontakt",
           "type": "text",
           "label": {
@@ -142,6 +195,7 @@
           "required": false
         },
         {
+          "code": "dokumentZaPreuzimanje",
           "name": "dokumentZaPreuzimanje",
           "type": "file",
           "label": {
@@ -154,12 +208,14 @@
       ]
     },
     "Sluzbe": {
+      "code": "sluzbe",
       "sr": "Službe",
       "en": "Services Departments",
       "sr-Cyrl": "Службе",
       "icon": "fas fa-building",
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -170,6 +226,7 @@
           "required": true
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -180,6 +237,7 @@
           "required": false
         },
         {
+          "code": "kratakOpis",
           "name": "kratakOpis",
           "type": "textarea",
           "label": {
@@ -191,6 +249,7 @@
           "required": true
         },
         {
+          "code": "detaljniOpis",
           "name": "detaljniOpis",
           "type": "textarea",
           "label": {
