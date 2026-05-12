@@ -79,7 +79,7 @@ class CustomField
 
     public function create(string $ctCode, array $field, int $ordno): void
     {
-        if (empty($field['name'])) {
+        if (empty($field['code'])) {
             throw new \Exception('Custom Field bez code-a!!');
         }
 
@@ -90,7 +90,7 @@ class CustomField
             :placeholder, :required, :name, :translations)
         ");
 
-        $code = $field['name'];
+        $code = $field['code'];
         $type = self::decideCFType($field['type']);
         $inputType = $field['type'] ?? 'text';
         $placeholder = !empty($field['placeholder']) ? [
@@ -127,7 +127,7 @@ class CustomField
 
     public function update(string $ctCode, array $field, int $ordno): void
     {
-        if (empty($field['name'])) {
+        if (empty($field['code'])) {
             throw new \Exception('Custom field bez code-a!!');
         }
 
@@ -137,7 +137,7 @@ class CustomField
             WHERE `content_type_code` = :ctcode AND `code` = :code
         ");
 
-        $code = $field['name'];
+        $code = $field['code'];
         $type = self::decideCFType($field['type']);
         $inputType = $field['type'] ?? 'text';
         $placeholder = !empty($field['placeholder']) ? [
