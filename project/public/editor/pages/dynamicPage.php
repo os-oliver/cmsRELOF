@@ -119,14 +119,10 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
                         try {
 
                             $search = $_GET['search'] ?? '';
-
-                            // Sanitize category — only use it if it's a numeric value
-                            $categoryId = isset($_GET['category']) && is_numeric($_GET['category'])
-                                ? (int) $_GET['category']
-                                : null;
+                            $category = $_GET['category'] ?? null;
 
                             $itemsList = $slug
-                                ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale)
+                                ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $category, $locale)
                                 : ['success' => false, 'items' => []];
 
                             if ($itemsList['success'] && !empty($itemsList['items'])) {
