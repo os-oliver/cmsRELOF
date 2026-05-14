@@ -109,7 +109,7 @@
                         : 'fas fa-folder';
                     ?>
                     <li class="mb-1">
-                        <a href="/kontrolna-tabla/<?= $sectionName ?>" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === $sectionName)
+                        <a href="/kontrolna-tabla/<?= $sectionContent['code'] ?>" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === $sectionContent['code'])
                               ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                               : 'text-gray-600 hover:text-gray-900' ?>">
                             <i

@@ -1147,6 +1147,192 @@
                 card.style.transform = 'translateY(0)';
             });
         });
+d
+        // Function to open mobile menu
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            // Use setTimeout to ensure the display change takes effect before animation
+            setTimeout(() => {
+                mobileMenuPanel.classList.remove('translate-x-full');
+            }, 10);
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = 'hidden';
+            // Add active class to hamburger
+            hamburger.classList.add('active');
+        }
+
+        // Function to close mobile menu
+        function closeMobileMenuFunc() {
+            mobileMenuPanel.classList.add('translate-x-full');
+            // Wait for animation to complete before hiding
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+            // Restore body scroll
+            document.body.style.overflow = '';
+            // Remove active class from hamburger
+            hamburger.classList.remove('active');
+        }
+
+        // Function to toggle mobile about submenu
+        function toggleMobileAbout() {
+            const isHidden = mobileAboutMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                // Show submenu
+                mobileAboutMenu.classList.remove('hidden');
+                mobileAboutIcon.style.transform = 'rotate(180deg)';
+            } else {
+                // Hide submenu
+                mobileAboutMenu.classList.add('hidden');
+                mobileAboutIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function toggleMobileActivities() {
+            const isHidden = mobileActivitiesMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                // Show submenu
+                mobileActivitiesMenu.classList.remove('hidden');
+                mobileActivitiesIcon.style.transform = 'rotate(180deg)';
+            } else {
+                // Hide submenu
+                mobileActivitiesMenu.classList.add('hidden');
+                mobileActivitiesIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function toggleMobileParents() {
+            const isHidden = mobileParentsMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                mobileParentsMenu.classList.remove('hidden');
+                mobileParentsIcon.style.transform = 'rotate(180deg)';
+            } else {
+                mobileAboutMenu.classList.add('hidden');
+                mobileParentsIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Event listeners
+        if (hamburger) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (mobileMenu.classList.contains('hidden')) {
+                    openMobileMenu();
+                } else {
+                    closeMobileMenuFunc();
+                }
+            });
+        }
+
+        if (closeMobileMenu) {
+            closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenuFunc);
+        }
+
+        if (mobileAboutToggle) {
+            mobileAboutToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileAbout();
+            });
+        }
+
+
+        if (mobileActivitiesToggle) {
+            mobileActivitiesToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileActivities();
+            });
+        }
+
+        if (mobileParentsToggle) {
+            mobileParentsToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileParents();
+            });
+        }
+
+        // Close menu on window resize if screen becomes large
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
+                closeMobileMenuFunc();
+            }
+        });
+
+        // Handle escape key to close menu
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                closeMobileMenuFunc();
+            }
+        });
+
+        // Prevent menu panel clicks from closing the menu
+        if (mobileMenuPanel) {
+            mobileMenuPanel.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+
+        document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.getElementById('closeSearch').addEventListener('click', function() {
+            const container = document.getElementById('searchInputContainer');
+            container.classList.add('opacity-0');
+            setTimeout(() => {
+                container.classList.add('hidden');
+            }, 300);
+        });
+
+        document.addEventListener('click', function(e) {
+            const searchContainer = document.getElementById('searchInputContainer');
+            const searchButton = document.getElementById('searchButton');
+
+            if (!searchContainer.contains(e.target) && !searchButton.contains(e.target)) {
+                searchContainer.classList.add('opacity-0');
+                setTimeout(() => {
+                    searchContainer.classList.add('hidden');
+                }, 300);
+            }
+        });
+        // Close search input
+        closeSearch.addEventListener('click', () => {
+            searchInputContainer.classList.add('opacity-0');
+            searchInputContainer.classList.add('translate-x-2');
+            searchInput.classList.add('w-0');
+            searchInput.classList.add('opacity-0');
+            searchButton.classList.remove("invisible");
+
+            setTimeout(() => {
+                searchInputContainer.classList.add('hidden');
+                searchInput.value = '';
+            }, 300);
+        });
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+            } else {
+                header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+            }
+        });
+
+        // Animation for cards on hover
+        document.querySelectorAll('.artistic-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
 
         // Mobile menu toggle
         // Mobile Menu JavaScript
@@ -1267,57 +1453,57 @@
             });
         }
 
-        if (mobileParentsToggle) {
-            mobileParentsToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                toggleMobileParents();
-            });
-        }
-
-        // Close menu when clicking on menu links (except dropdown toggle)
-        const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                // Close menu after a short delay to allow for navigation
-                setTimeout(closeMobileMenuFunc, 150);
-            });
-        });
-
-        // Close menu on window resize if screen becomes large
-        window.addEventListener('resize', function() {
-            if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
-                closeMobileMenuFunc();
+            if (mobileParentsToggle) {
+                mobileParentsToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleMobileParents();
+                });
             }
-        });
 
-        // Handle escape key to close menu
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-                closeMobileMenuFunc();
-            }
-        });
-
-        // Prevent menu panel clicks from closing the menu
-        if (mobileMenuPanel) {
-            mobileMenuPanel.addEventListener('click', function(e) {
-                e.stopPropagation();
+            // Close menu when clicking on menu links (except dropdown toggle)
+            const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Close menu after a short delay to allow for navigation
+                    setTimeout(closeMobileMenuFunc, 150);
+                });
             });
-        }
 
-        // Initialize animations when elements come into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+            // Close menu on window resize if screen becomes large
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
+                    closeMobileMenuFunc();
                 }
             });
-        }, {
-            threshold: 0.1
-        });
 
-        document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
-            observer.observe(el);
-        });
+            // Handle escape key to close menu
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                    closeMobileMenuFunc();
+                }
+            });
+
+            // Prevent menu panel clicks from closing the menu
+            if (mobileMenuPanel) {
+                mobileMenuPanel.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+
+            // Initialize animations when elements come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
+                observer.observe(el);
+            });
     </script>
 
 
