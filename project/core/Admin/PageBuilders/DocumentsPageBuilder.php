@@ -25,8 +25,7 @@ class DocumentsPageBuilder extends BasePageBuilder
         will-change: transform;
     }
 
-    .card-body { margin-bottom: 1rem; }
-    .card-footer { margin-top: 1rem; }
+
 
     .card-hover {
         transition: all 0.28s cubic-bezier(.2,.9,.2,1);
@@ -155,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
 HTML;
 
     protected string $html = <<<'HTML'
-<main>
+<main class="bg-background">
     <div class="text-center px-2 pt-32">
         <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Preuzmi sva potrebna dokumenta, obrasce i publikacije. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
@@ -176,7 +175,7 @@ HTML;
                             <option value="date_asc" <?= ($_GET['sort'] ?? '') === 'date_asc' ? 'selected' : '' ?>>Najstariji prvo</option>
                             <option value="title" <?= ($_GET['sort'] ?? '') === 'title' ? 'selected' : '' ?>>Po nazivu</option>
                         </select>
-                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl whitespace-nowrap">Primeni</button>
+                        <button type="submit" class="bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-xl whitespace-nowrap">Primeni</button>
                     </div>
 
                     <div class="w-full">
@@ -228,7 +227,7 @@ HTML;
                         } catch (\Exception $e) {
                             $date = new DateTime();
                         }
-                        $formattedDate = $date->format('d.m.Y');
+                        $formattedDate = $date->format(LocaleManager::DATE_FORMAT_STRING);
                         $fileSize = isset($document['fileSize']) ? number_format((float)$document['fileSize'], 2) : '0.00';
                     ?>
                         <article class="document-card bg-white rounded-2xl shadow card-hover p-6 fade-in" data-category="<?= $categoryName ?>" data-name="<?= $title ?>">
@@ -301,7 +300,7 @@ HTML;
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-4">Nema pronađenih dokumenata</h3>
                     <p class="text-gray-600 max-w-md mx-auto mb-6">Promenite filtere da biste videli druge dokumente ili proverite kasnije.</p>
-                    <a href="?" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl">Resetuj filtere</a>
+                    <a href="?" class="px-6 py-3 bg-primary hover:bg-primary_hover text-white font-bold rounded-xl">Resetuj filtere</a>
                 </div>
             <?php endif; ?>
             <div class="text-left">
