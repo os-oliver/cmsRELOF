@@ -217,6 +217,7 @@ function renderTopbar(array $categories, string $searchValue = '', int|string|nu
 
 function cardRender(array $item, array $fieldLabels, string $locale): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $fields = [];
 
     // Add category as a chip if exists
@@ -257,7 +258,9 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     $fieldCount = count($fields);
 
     $html = "<div class='glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1'>";
-
+    $vise = ($locale === 'sr-Cyrl')
+                ? $translator->latin_to_cyrillic('Saznaj više')
+                : 'Saznaj više';
     // Image section with overlay
     if ($imageUrl) {
         $html .= "<div class='relative w-full h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200'>
@@ -409,6 +412,7 @@ HTML;
 
             use App\Models\Content;
             use App\Models\GenericCategory;
+            use App\Utils\HashMapTransformer;
 
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
@@ -417,6 +421,7 @@ HTML;
 
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
             $slug = '__SLUG__';
+
             $pageTitle = ($locale === 'sr-Cyrl')
                 ? $translator->latin_to_cyrillic(ucfirst($slug))
                 : ucfirst($slug);
@@ -425,7 +430,7 @@ HTML;
                 ? $translator->latin_to_cyrillic('Pregled svih stavki')
                 : 'Pregled svih stavki';
 
-         
+
             $itemsPerPage = 15;
             if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
                 $itemsPerPage = (int)$_GET['per_page'];
