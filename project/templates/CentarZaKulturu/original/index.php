@@ -701,10 +701,10 @@
 
         <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
 
-            <div class="max-w-5xl mx-auto text-center flex flex-col items-center">
+            <div class="max-w-6xl mx-auto text-center flex flex-col items-center">
                 <div class="mb-8">
                     <h1 class="text-5xl md:text-6xl font-heading font-bold text-primary_text mb-6">
-                        <span class="block artistic-underline">Dobrodošli u Kulturni centar Pirot</span>
+                        <span class="block artistic-underline whitespace-nowrap">Dobrodošli u Kulturni centar Pirot</span>
                         <span class="block artistic-underline">Mesto gde se umetnost, film i</span>
                         <span class="block text-primary mt-2">kultura susreću</span>
                     </h1>
@@ -720,7 +720,7 @@
 
                     <a href="/aktivnosti/folklorni-ansambal"
                         class="flex items-center text-secondary_text hover:text-accent transition-colors">
-                        <span class="w-3 h-3 bg-primary rounded-full mr-2"></span>
+                        <span class="w-3 h-3 bg-accent rounded-full mr-2"></span>
                         Folklorni ansambal
                     </a>
 
@@ -756,8 +756,9 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
                     Predstojeći događaji
-                    <span
-                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
+                    <div
+                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
+                    </div>
                 </h2>
             </div>
 
@@ -839,7 +840,7 @@
                     </div>
                 </h2>
                 <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
-                    Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
+                    Budite u toku sa najnovijim dešavanjima našeg Doma Kulture
                 </p>
             </div>
 
@@ -903,12 +904,12 @@
     <section id="gallery" class="py-20 bg-secondary_background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4">
-                    Upoznajte naš prostor
+                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
+                    Galerija
+                    <div
+                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
+                    </div>
                 </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto">
-                    Moderni, inspirativni prostori dizajnirani za raznovrsne kulturne aktivnosti
-                </p>
             </div>
 
             <div id="galleryCards" class="gallery-grid gap-6">
@@ -963,35 +964,16 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div
-                            class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center text-surface mr-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
-                        </div>
                         <h3 class="text-xl font-heading font-bold">Dom Kulture Pirot</h3>
                     </div>
-                    <p class="text-surface/80 mb-4">
-                        Centar za umetnost i kulturu koji okuplja kreativce i publiku u srcu Beograda.
-                    </p>
                     <div class="flex space-x-3">
-                        <a href="#"
+                        <a href="https://www.facebook.com/domkulture.pirot/"
                             class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/domkulturepirot/"
                             class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-secondary/30 hover:bg-secondary flex items-center justify-center text-surface transition-colors">
-                            <i class="fab fa-spotify"></i>
                         </a>
                     </div>
                 </div>
@@ -999,13 +981,12 @@
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="asde" class="text-surface/80 hover:text-accent transition-colors">Izložbe</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Bioskop</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Pozorište</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Koncerti</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Radionice</a></li>
-                        <li><a href="#" class="text-surface/80 hover:text-accent transition-colors">Kalendar
-                                događaja</a></li>
+                        <li><a href="/o-nama/uvod" class="text-surface/80 hover:text-accent transition-colors">O nama</a></li>
+                        <li><a href="/kontakt" class="text-surface/80 hover:text-accent transition-colors">Kontakt</a></li>
+                        <li><a href="/vesti" class="text-surface/80 hover:text-accent transition-colors">Vesti</a></li>
+                        <li><a href="/dogadjaji" class="text-surface/80 hover:text-accent transition-colors">Događaji</a></li>
+                        <li><a href="/projekti" class="text-surface/80 hover:text-accent transition-colors">Projekti</a></li>
+
                     </ul>
                 </div>
 
@@ -1014,39 +995,50 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">Knez Mihailova 56, 11000 Beograd</span>
+                            <span class="text-surface">Dom kulture Pirot, Srpskih Vladara 77, 18300 Pirot, Srbija</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">+381 11 123 4567</span>
+                            <span class="text-surface">321-666 (direktor)</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">info@kulturninexus.rs</span>
-
+                            <i class="fas fa-phone text-accent mt-1 mr-3"></i>
+                            <span class="text-surface">321-341 (Pravna služba; urednik programa)</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-clock text-accent mt-1 mr-3"></i>
-                            <span class="text-surface">
-                                Utorak - Nedelja: 10:00 - 21:00<br>
-                                Ponedeljak: zatvoreno
-                            </span>
+                            <i class="fas fa-phone text-accent mt-1 mr-3"></i>
+                            <span class="text-surface">322-634 (Pr centar)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-accent mt-1 mr-3"></i>
+                            <span class="text-surface">313-973 (Računovodstvo)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-accent mt-1 mr-3"></i>
+                            <span class="text-surface">313-972 (Ansambal)</span>
                         </li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
-                    <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+                    <div class="bg-white/10 rounded-xl overflow-hidden" style="aspect-ratio: 16/ 9;">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2910.5638435252204!2d22.58608145!3d43.15568735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47553d2ff58e51f9%3A0x7a8081f9666ac454!2z0JTQvtC8INCa0YPQu9GC0YPRgNC1LCBTcnBza2loIFZsYWRhcmEgNzcsINCf0LjRgNC-0YIgMTgzMDA!5e0!3m2!1ssr!2srs!4v1778766098827!5m2!1ssr!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-surface/70 pt-8 text-center text-surface/60 text-sm">
-                <p>&copy; 2023 Kulturni Centar Nexus. Sva prava zadržana.</p>
+             <div class="text-center text-sm">
+                <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
+                    <img
+                        src="/assets/img/SECO-logo-640px-white.png"
+                        alt="SECO logo"
+                        class="w-full max-w-md md:max-w-lg h-auto mb-4">
+                    <p class="text-white"> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
+                </div>
+                <p class="pt-6">&copy; Dom Kulture Pirot. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
