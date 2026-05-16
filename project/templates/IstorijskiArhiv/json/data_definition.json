@@ -1,6 +1,7 @@
 [
   {
     "Fondovi": {
+      "code": "fondovi",
       "sr": "Fondovi",
       "en": "Funds",
       "sr-Cyrl": "Фондови",
@@ -14,6 +15,7 @@
       ],
       "fields": [
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -24,6 +26,7 @@
           "required": true
         },
         {
+          "code": "main_category",
           "name": "kategorija",
           "type": "categories",
           "label": {
@@ -38,9 +41,32 @@
             "Istraživački fondovi",
             "Fondovi za startape"
           ],
+          "coded_options": [
+            {
+              "code": "stipendije",
+              "translations": { "sr": "Stipendije", "sr-Cyrl": "Стипендије", "en": "Scholarship"}
+            },
+            {
+              "code": "grantovi",
+              "translations": { "sr": "Grantovi", "sr-Cyrl": "Грантови", "en": "Grants"}
+            },
+            {
+              "code": "investicioni-fondovi",
+              "translations": { "sr": "Investicioni fondovi", "sr-Cyrl": "Инвестициони фондови", "en": "Investment funds"}
+            },
+            {
+              "code": "istrazivacki-fondovi",
+              "translations": { "sr": "Istraživački fondovi", "sr-Cyrl": "Истраживачки фондови", "en": "Research funds"}
+            },
+            {
+              "code": "fondovi-za-startape",
+              "translations": { "sr": "Fondovi za startape", "sr-Cyrl": "Фондови за стартапе", "en": "Startup funds"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "organizacija",
           "name": "organizacija",
           "type": "text",
           "label": {
@@ -51,6 +77,7 @@
           "required": true
         },
         {
+          "code": "rok",
           "name": "rok",
           "type": "date",
           "label": {
@@ -61,6 +88,7 @@
           "required": true
         },
         {
+          "code": "iznos",
           "name": "iznos",
           "type": "text",
           "label": {
@@ -70,6 +98,7 @@
           }
         },
         {
+          "code": "uslovi",
           "name": "uslovi",
           "type": "textarea",
           "label": {
@@ -79,6 +108,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -88,6 +118,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -97,6 +128,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -108,6 +140,7 @@
       ]
     },
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -124,6 +157,7 @@
       ],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -134,6 +168,7 @@
           "required": true
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -145,6 +180,7 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "naziv",
           "type": "categories",
           "label": {
@@ -159,9 +195,32 @@
             "Zdravlje",
             "Tehnologija"
           ],
+          "coded_options": [
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
+            },
+            {
+              "code": "obrazovanje",
+              "translations": { "sr": "Obrazovanje", "sr-Cyrl": "Образовање", "en": "Education"}
+            },
+            {
+              "code": "inovacije",
+              "translations": { "sr": "Inovacije", "sr-Cyrl": "Иновације", "en": "Inovations"}
+            },
+            {
+              "code": "zdravlje",
+              "translations": { "sr": "Zdravlje", "sr-Cyrl": "Здравље", "en": "Health"}
+            },
+            {
+              "code": "tehnologija",
+              "translations": { "sr": "Tehnologija", "sr-Cyrl": "Технологија", "en": "Technology"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -171,6 +230,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -180,6 +240,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -189,6 +250,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -200,12 +262,14 @@
       ]
     },
     "Zbirke": {
+      "code": "zbirke",
       "sr": "Zbirke",
       "en": "Collections",
       "sr-Cyrl": "Збирке",
       "icon": "fas fa-book-open",
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -216,6 +280,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -226,6 +291,7 @@
           "required": true
         },
         {
+          "code": "slike",
           "name": "slike",
           "type": "file",
           "label": {
@@ -237,11 +303,11 @@
         }
       ]
     }, "Vodic": {
+      "code": "vodic",
       "sr": "Vodič arhivskih fondova",
       "en": "Guide to archival collections",
       "sr-Cyrl": "Водич архивских фондова",
       "icon": "fas fa-archive",
-
       "categories": [
         "Arhivski fondovi 1918 – 1941.",
         "Arhivski fondovi od 1944.",
@@ -269,21 +335,147 @@
 
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
-          "label": "Naziv"
+          "label": {
+            "sr": "Naziv",
+            "en": "Name",
+            "sr-Cyrl": "Назив"
+          }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
-          "label": "Opis"
+          "label": {
+            "sr": "Opis",
+            "en": "Description",
+            "sr-Cyrl": "Опис"
+          }
         },
         {
+          "code": "main_category",
           "name": "kategorija",
           "type": "categories",
-          "label": "Kategorija"
+          "label": {
+            "sr": "Kategorija",
+            "en": "Category",
+            "sr-Cyrl": "Категорија"
+          },
+          "options": [
+            "Arhivski fondovi 1918 – 1941.",
+            "Arhivski fondovi od 1944.",
+            "Narodni odbori srezova",
+            "Skupštine opština",
+            "Narodni odbori opština",
+            "Mesni narodni odbori",
+            "Vodic Istorijskog arhiva u Pirotu",
+            "A.2. Pravosuđe",
+            "Prosvetne, kulturne i naučne ustanove i organizacije",
+            "Socijalne ustanove",
+            "Zdravstvene ustanove",
+            "Banke i novčani zavodi",
+            "Privredna udruženja",
+            "Privredna preduzeća",
+            "Zadruge",
+            "Privreda i bankarstvo",
+            "Industrija i rudarstvo",
+            "Poljoprivreda i šumarstvo",
+            "Trgovina, ugostiteljstvo i turizam",
+            "Političke, društveno-političke organizacije, društva i udruženja",
+            "Načelstvo Okruga pirotskog – Pirot (1878 – 1915)",
+            "NARODNI ODBORI SREZOVA"
+          ],
+          "coded_options": [
+            {
+              "code": "arhivski-fondovi-1918-1941",
+              "translations": { "sr": "Arhivski fondovi 1918 – 1941.", "sr-Cyrl": "Архивски фондови 1918 – 1941", "en": "Archive funds 1918 - 1941"}
+            },
+            {
+              "code": "arhivski-fondovi-od-1944",
+              "translations": { "sr": "Arhivski fondovi od 1944.", "sr-Cyrl": "Архивски фондови од 1944.", "en": "Archive funds since 1944"}
+            },
+            {
+              "code": "narodni-odbori-srezova",
+              "translations": { "sr": "Narodni odbori srezova", "sr-Cyrl": "Народни одбори срезова", "en": "People's committees of counties"}
+            },
+            {
+              "code": "skupstine-opstina",
+              "translations": { "sr": "Skupštine opština", "sr-Cyrl": "Скупштине општина", "en": "Municipal assemblies"}
+            },
+            {
+              "code": "narodni-odbori-opstina",
+              "translations": { "sr": "Narodni odbori opština", "sr-Cyrl": "Народни одбори општина", "en": "Municipal People's Committees"}
+            },
+            {
+              "code": "mesni-narodni-odbori",
+              "translations": { "sr": "Mesni narodni odbori", "sr-Cyrl": "Месни народни одбори", "en": "Local people's committees"}
+            },
+            {
+              "code": "vodic-arhiva-pirot",
+              "translations": { "sr": "Vodič Istorijskog arhiva u Pirotu", "sr-Cyrl": "Водич Историјског архива у Пироту", "en": "Guide to the Historical Archives in Pirot"}
+            },
+            {
+              "code": "a2-pravosudje",
+              "translations": { "sr": "A.2. Pravosuđe", "sr-Cyrl": "А.2. Правосуђе", "en": "A.2. Judiciary"}
+            },
+            {
+              "code": "prosvetne-kulturne-naucne-organizacije",
+              "translations": { "sr": "Prosvetne, kulturne i naučne ustanove i organizacije", "sr-Cyrl": "Просветне, културне и научне установе и организације", "en": "Educational, cultural and scientific institutions and organizations"}
+            },
+            {
+              "code": "socijalne-ustanove",
+              "translations": { "sr": "Socijalne ustanove", "sr-Cyrl": "Социјалне установе", "en": "Social institutions"}
+            },
+            {
+              "code": "zdravstvene-ustanove",
+              "translations": { "sr": "Zdravstvene ustanove", "sr-Cyrl": "Здравствене установе", "en": "Healthcare facilities"}
+            },
+            {
+              "code": "banke-novcani-zavodi",
+              "translations": { "sr": "Banke i novčani zavodi", "sr-Cyrl": "Банке и новчани заводи", "en": "Banks and money exchange offices"}
+            },
+            {
+              "code": "privredna-udruzenja",
+              "translations": { "sr": "Privredna udruženja", "sr-Cyrl": "Привредна удружења", "en": "Business associations"}
+            },
+            {
+              "code": "privredna-preduzeca",
+              "translations": { "sr": "Privredna preduzeća", "sr-Cyrl": "Привредна предузећа", "en": "Привредна предузећа"}
+            },
+            {
+              "code": "zadruge",
+              "translations": { "sr": "Zadruge", "sr-Cyrl": "Задруге", "en": "Cooperatives"}
+            },
+            {
+              "code": "privreda-bankarstvo",
+              "translations": { "sr": "Privreda i bankarstvo", "sr-Cyrl": "Привреда и банкарство", "en": "Economy and banking"}
+            },
+            {
+              "code": "industrija-rudarstvo",
+              "translations": { "sr": "Industrija i rudarstvo", "sr-Cyrl": "Индустрија и рударство", "en": "Industry and mining"}
+            },
+            {
+              "code": "poljoprivreda-sumarstvo",
+              "translations": { "sr": "Poljoprivreda i šumarstvo", "sr-Cyrl": "Пољопривреда и шумарство", "en": "Agriculture and forestry"}
+            },
+            {
+              "code": "trgovina-ugostiteljstvo-turizam",
+              "translations": { "sr": "Trgovina, ugostiteljstvo i turizam", "sr-Cyrl": "Трговина, угоститељство и туризам", "en": "Trade, hospitality and tourism"}
+            },
+            {
+              "code": "politicke-organizacije-drustva-udruzenja",
+              "translations": { "sr": "Političke, društveno-političke organizacije, društva i udruženja", "sr-Cyrl": "Политичке, друштвено-политичке организације, друштва и удружења", "en": "Political, socio-political organizations, societies and associations"}
+            },
+            {
+              "code": "nacelstvo-pritoskog-okruga",
+              "translations": { "sr": "Načelstvo Okruga pirotskog – Pirot (1878 – 1915)", "sr-Cyrl": "Начелство Округа пиротског – Пирот (1878 – 1915)", "en": "Principality of Pirot District – Pirot (1878 – 1915)"}
+            }
+          ]
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": "Slika"
