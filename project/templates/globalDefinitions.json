@@ -92,7 +92,7 @@
           "required": true
         },
         {
-          "codme": "biografija",
+          "code": "biografija",
           "name": "biografija",
           "type": "textarea",
           "label": {
