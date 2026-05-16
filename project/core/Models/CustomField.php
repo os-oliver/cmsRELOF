@@ -226,6 +226,7 @@ class CustomField
             case 'date':
                 return 'date';
                 break;
+            case 'options':
             case 'categories':
                 return 'options';
                 break;

@@ -417,11 +417,11 @@ class Content
         $stmt = $this->pdo->prepare("SELECT * FROM content WHERE content_type_code = :type ORDER BY ordno DESC LIMIT 1");
         $stmt->execute([':type' => $type]);
 
-        $result = $stmt->fetchColumn();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($result === false) {
             $ordno = 1;
         } else {
-            $ordno = (int) $result + 1;
+            $ordno = (int) $result['ordno'] + 1;
         }
 
         $stmt = $this->pdo->prepare("INSERT INTO content (content_type_code, ordno) VALUES (:type, :ordno)");

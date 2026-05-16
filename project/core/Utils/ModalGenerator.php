@@ -655,6 +655,7 @@ class ModalGenerator
                 <?php
                 break;
 
+            case 'options':
             case 'categories':
                 // Fetch all categories for this modal - not needed anymore
                 // $categories = GenericCategory::fetchAll($this->modalId, $this->lang);
