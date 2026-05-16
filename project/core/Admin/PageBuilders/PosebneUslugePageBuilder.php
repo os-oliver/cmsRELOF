@@ -8,7 +8,7 @@ class PosebneUslugePageBuilder extends BasePageBuilder
 <main>
   <div>
     <button id="increaseFontBtn"
-            class="fixed bottom-6 z-20 right-6 bg-primary hover:primary_hover text-background font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"
+            class="fixed bottom-6 z-20 right-6 bg-primary hover:bg-primary_hover text-background font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"
             aria-label="Povećaj veličinu fonta">A+
     </button>
   </div>
