@@ -28,7 +28,7 @@
         {
           "code": "main_category",
           "name": "kategorija",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Vrsta fonda",
             "en": "Fund type",
@@ -182,7 +182,7 @@
         {
           "code": "main_category",
           "name": "naziv",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija vesti",
             "en": "News category",
@@ -335,7 +335,7 @@
 
       "fields": [
         {
-          "code": "naziv",
+          "code": "naslov",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -357,7 +357,7 @@
         {
           "code": "main_category",
           "name": "kategorija",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija",
             "en": "Category",
@@ -478,7 +478,11 @@
           "code": "slika",
           "name": "slika",
           "type": "file",
-          "label": "Slika"
+          "label": {
+            "sr": "Slika",
+            "en": "Image",
+            "sr-Cyrl": "Слика"
+          }
         }
       ]
     }
