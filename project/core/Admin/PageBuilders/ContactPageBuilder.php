@@ -164,8 +164,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">Centar za umetnost i baštinu<br>Trg
-                                        slobode 1<br>21000 Novi Sad, Srbija</p>
+                                    <p class="text-gray-600 leading-relaxed">Predškolska ustanova "Detinjstvo" žabalj<br>Nikole Tesle 47<br>21230 Žabalj, Srbija</p>
                                 </div>
                             </div>
 
@@ -178,8 +177,21 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
-                                    <p class="text-gray-600 text-lg">+381 21 123 456</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <div class="text-gray-600 text-lg space-y-2">
+                                        <div class="flex flex-col">
+                                            <span class="font-medium">Žabalj</span>
+                                            <a href="tel:021-2931-326" class="ml-3 text-gray-700 hover:text-primary">021-2931-326</a>
+                                            <a href="tel:021-2932-894" class="ml-3 text-gray-700 hover:text-primary">021-2932-894</a>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-medium">Đurđevo</span>
+                                            <a href="tel:021-2938-222" class="ml-3 text-gray-700 hover:text-primary">021-2938-222</a>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-medium">Gospođinci</span>
+                                            <a href="tel:021-2936-744" class="ml-3 text-gray-700 hover:text-primary">021-2936-744</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -192,8 +204,9 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">info@kulturnynexus.rs</p>
-                                    <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">detinjstvozabalj@gmail.com</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">detinjstvodjurdjevo@gmail.com</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">detinjstvogospodjinci@gmail.com</p>
                                 </div>
                             </div>
                         </div>

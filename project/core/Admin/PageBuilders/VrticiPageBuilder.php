@@ -159,7 +159,6 @@ CSS;
         <div class="glass-card bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
             <div class="relative w-full h-56 overflow-hidden bg-surface">
                 {{imageSection}}
-                {{kategoria}}
             </div>
 
             <div class="p-6">
@@ -298,11 +297,8 @@ PHP;
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
             <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Vrtići</h1>
-            <p class="text-lg font-heading2 text-secondary_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p class="text-lg font-heading2 text-secondary_text">Pogledajte naše lokacije i odaberite vrtić koji najbolje odgovara vašoj porodici.</p>
         </div>
-
-
-
         <div class="performances-grid">
             <?php
             if ($itemsList['success'] && !empty($itemsList['items'])) {

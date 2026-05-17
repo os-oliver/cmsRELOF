@@ -399,7 +399,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, string $rea
             $html .= "<p class='news-description-hero'>{$shortDescription}</p>";
         }
 
-        $targetLink = "/sadrzaj?id={$itemId}&tip=Obavestenja";
+        $targetLink = "/sadrzaj?id={$itemId}&tip=obavestenja";
         $html .= "
                 <a href='{$targetLink}' class='news-cta-button'>
                     <span>{$readMoreText}</span>

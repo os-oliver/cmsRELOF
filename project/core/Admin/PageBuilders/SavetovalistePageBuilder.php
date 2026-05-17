@@ -26,8 +26,8 @@ class SavetovalistePageBuilder extends BasePageBuilder
       </p>
 
       <ul class="text-left list-disc list-inside max-w-3xl mx-auto mb-6">
-        <li class="mb-2"><strong>Vrtić „Šećerko“: </strong> ulica Vladimira Tomanovića 25, od 8:00 do 14:00 časova.</li>
-        <li class="mb-2"><strong>Vrtić „Čika Jova Zmaj 1“ (zgrada uprave): </strong> ulica Save Šumanovića 1, od 12:00 do 18:00 časova.</li>
+        <li class="mb-2"><strong>Vrtić Mudra sova: </strong> ulica Nikole Tesle 47a, od 8:00 do 14:00 časova.</li>
+        <li class="mb-2"><strong>Vrtić „Meda“ (zgrada uprave): </strong> ulica Svetog Nikole 32, od 12:00 do 18:00 časova.</li>
       </ul>
 
       <p class="text-sm mt-4 text-gray-600">

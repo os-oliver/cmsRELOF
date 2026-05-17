@@ -31,19 +31,19 @@ $colorKeys = [
 // Predefinisane color palete
 $colorPalettes = [
     'default' => [
-        'name' => 'Plava (Default)',
+        'name' => 'Žuta (Default)',
         'colors' => [
-            'primary' => '#3B82F6',
-            'primary_hover' => '#2563EB',
-            'secondary' => '#64748B',
-            'secondary_hover' => '#475569',
-            'accent' => '#8B5CF6',
-            'accent_hover' => '#7C3AED',
-            'primary_text' => '#1E293B',
-            'secondary_text' => '#64748B',
-            'background' => '#FFFFFF',
-            'secondary_background' => '#F8FAFC',
-            'surface' => '#F1F5F9'
+            'primary' => '#e9a803ff',
+            'primary_hover' => '#d39802ff',
+            'secondary' => '#32604dff',
+            'secondary_hover' => '#255943ff',
+            'accent' => "#e9a803ff",
+            'accent_hover' => "#d39802ff",
+            'primary_text' => '#1B4332',
+            'secondary_text' => '#2a644aff',
+            'background' => '#F1F7ED',
+            'secondary_background' => '#e5cc8c6b',
+            'surface' => "#e5cc8c6b",
         ]
     ],
     'green' => [

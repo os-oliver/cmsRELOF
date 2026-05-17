@@ -19,7 +19,7 @@ class MissionPageBuilder extends BasePageBuilder
     </div>
 
     <!-- Naslovna sekcija -->
-    <section class="relative pt-28 pb-16 bg-background text-center">
+    <section class="relative pt-28 pb-16 bg-secondary_background text-center">
         <div class="container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-heading font-bold text-primary_text mb-3 tracking-tight">
                 Misija i Vizija
