@@ -21,6 +21,7 @@ $documentModal = new Gallery();
     offset: $offset,
     sort: $sort,
     search: $search,
+    lang: $locale
 );
 $totalPages = (int) ceil($totalCount / $limit);
 ?>

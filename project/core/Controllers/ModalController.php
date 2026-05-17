@@ -24,7 +24,7 @@ class ModalController
             return;
         }
 
-        $structureFile = __DIR__ . '/../../public/assets/data/structure.json';
+        $structureFile = PUBLIC_ROOT . '/assets/data/structure.json';
         if (!file_exists($structureFile)) {
             http_response_code(500);
             echo 'Structure file not found';
