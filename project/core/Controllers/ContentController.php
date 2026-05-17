@@ -104,7 +104,7 @@ class ContentController
         }
 
         try {
-            $res = $this->model->deleteById($id);
+            $res = $this->model->deleteContentById($id);
             echo json_encode($res, JSON_UNESCAPED_UNICODE);
         } catch (Throwable $e) {
             error_log('DeleteFromRequest failed: ' . $e->getMessage());
@@ -116,16 +116,6 @@ class ContentController
     public function contentTypes(): void
     {
         ContentTypeManager::createTypes('SocijalnaUstanova');
-
-        // $allCategoriesToInsert = [];
-        // foreach ($contentTypes as $typeKey => $typeData) {
-        //     foreach (($typeData['categories'] ?? []) as $category) {
-        //         $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
-        //     }
-        // }
-
-        // return $allCategoriesToInsert;
-
     }
 
 }

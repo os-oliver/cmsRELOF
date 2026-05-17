@@ -3,17 +3,13 @@
 namespace App\Utils;
 
 use App\Models\ContentType;
-// use App\Models\ContentTypeCategory;
 use App\Models\CustomField;
 use App\Models\CustomFieldOption;
-use Exception;
 
 class ContentTypeManager
 {
     public function __construct(
-
     ) {
-
     }
 
     public static function collectTypes(string $typeOfInstitution): array
@@ -82,9 +78,6 @@ class ContentTypeManager
             }
             $updatedCodes[] = $type['code'];
 
-            // if (array_key_exists('coded_categories', $type)) {
-            //     self::updateContentTypeCategories($type);
-            // }
             self::updateCustomFields($type);
         }
 
@@ -95,34 +88,6 @@ class ContentTypeManager
             }
         }
     }
-
-    /*
-    public static function updateContentTypeCategories(array $contentType): void
-    {
-        $ctCategory = new ContentTypeCategory();
-        $updatedCodes = [];
-        $categories = $contentType['coded_categories'];
-        $ordno = 1;
-        foreach ($categories as $category) {
-            $existing = $ctCategory->fetchByCode($contentType['code'], $category['code']);
-            if (empty($existing)) {
-                $ctCategory->create($contentType['code'], $category, $ordno);
-            } else {
-                $ctCategory->update($contentType['code'], $category, $ordno);
-            }
-            $updatedCodes[] = $category['code'];
-            $ordno++;
-        }
-
-        $all = $ctCategory->fetchAllByContentTypeCode($contentType['code']);
-
-        foreach ($all as $category) {
-            if (!in_array($category['code'], $updatedCodes)) {
-                $ctCategory->deleteByCode($contentType['code'], $category['code']);
-            }
-        }
-    }
-    */
 
     public static function updateCustomFields(array $contentType): void
     {

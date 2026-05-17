@@ -202,7 +202,7 @@ class Content
         $params = [':type' => $type];
         $whereForCFV = $where; // we don't need to filter by option here
 
-        if ($categoryId !== null) {
+        if (!empty($categoryId)) {
 
             if (is_numeric($categoryId)) {
                 // if it's an integer, use directly
@@ -210,7 +210,7 @@ class Content
                 $params[':category_id'] = (int) $categoryId;
             } else {
                 $resolvedId = ContentType::fetchCategoryByContentTypeCodeAndCode($type, $categoryId);
-                if ($resolvedId !== null) {
+                if (!empty($resolvedId)) {
                     $where .= " AND cfv.option = :category_id";
                     $params[':category_id'] = $resolvedId['id'];
                 } else {
@@ -357,6 +357,7 @@ class Content
         ];
     }
 
+    /* ovo je verovatno deprecated, i vise se ne koristi */
     public function deleteById(int $id): array
     {
         $id = (int) $id;
@@ -368,6 +369,28 @@ class Content
             $this->pdo->beginTransaction();
             $this->deleteTextEntries($id);
             $this->deleteContentRecord($id);
+            $this->pdo->commit();
+            return ['success' => true];
+        } catch (Throwable $e) {
+            $this->rollbackTransaction();
+            throw $e;
+        }
+    }
+
+    public function deleteContentById(int $id): array
+    {
+        $id = (int) $id;
+        if ($id <= 0) {
+            return ['success' => false, 'message' => 'Invalid id'];
+        }
+
+        try {
+            $this->pdo->beginTransaction();
+
+            $this->deleteContentFiles($id);
+            $stmt = $this->pdo->prepare("DELETE FROM content WHERE id = :id");
+            $stmt->execute([':id' => $id]);
+
             $this->pdo->commit();
             return ['success' => true];
         } catch (Throwable $e) {
@@ -396,11 +419,11 @@ class Content
         $stmt = $this->pdo->prepare("SELECT * FROM content WHERE content_type_code = :type ORDER BY ordno DESC LIMIT 1");
         $stmt->execute([':type' => $type]);
 
-        $result = $stmt->fetchColumn();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($result === false) {
             $ordno = 1;
         } else {
-            $ordno = (int) $result + 1;
+            $ordno = (int) $result['ordno'] + 1;
         }
 
         $stmt = $this->pdo->prepare("INSERT INTO content (content_type_code, ordno) VALUES (:type, :ordno)");
@@ -411,6 +434,19 @@ class Content
     private function updateContentRecord(int $id, string $type): int
     {
         return $id;
+    }
+
+    private function deleteContentFiles(int $contentId)
+    {
+        $files = CustomFieldValue::findFileCFVsByContentId($contentId);
+        foreach($files as $file) {
+            if ($file['filepath']) {
+                $fullPath = PUBLIC_ROOT . $file['filepath'];
+                if (file_exists($fullPath)) {
+                    @unlink($fullPath);
+                }
+            }
+        }
     }
 
     private function insertContentRecordOld(string $type): int
@@ -471,6 +507,11 @@ class Content
                 $this->processTextField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? '', $locale);
                 continue;
             }
+
+            if ($fieldType === 'email' || $fieldType === 'url') {
+                $this->processNonTranslatableField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? '');
+                continue;
+            }
         }
     }
 
@@ -521,20 +562,45 @@ class Content
         }
     }
 
-    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string $dateString, string $format = ''): void
+    private function processNonTranslatableField(int $contentId, array $customField, array | null $cfValueVariants, string $contentValue): void
     {
-        try {
-            if (empty($format)) {
-                $date = new \DateTime($dateString);
-            } else {
-                $date = \DateTime::createFromFormat($format, $dateString);
+        if (empty($cfValueVariants)) {
+            $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, content) VALUES (:content_id, :custom_field_id, :contentValue)");
+            $stmt->execute([
+                ':content_id' => $contentId,
+                ':custom_field_id' => $customField['id'],
+                ':contentValue' => $contentValue
+            ]);
+        } else {
+            $stmt = $this->pdo->prepare("UPDATE custom_field_value SET content = :contentValue WHERE id = :id");
+            // there should always be only one element in this array, otherwise there was some error in the database
+            foreach ($cfValueVariants as $cfValue) {
+                $stmt->execute([
+                    ':id' => $cfValue['id'],
+                    ':contentValue' => $contentValue,
+                ]);
             }
+        }
+    }
 
-            if (!$date) {
-                throw new \Exception("Invalid date string or format: '$dateString'");
-            }
-        } catch (\Throwable $e) {
+    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = ''): void
+    {
+        if (empty($dateString)) {
             $date = null;
+        } else {
+            try {
+                if (empty($format)) {
+                    $date = new \DateTime($dateString);
+                } else {
+                    $date = \DateTime::createFromFormat($format, $dateString);
+                }
+
+                if (!$date) {
+                    throw new \Exception("Invalid date string or format: '$dateString'");
+                }
+            } catch (\Throwable $e) {
+                $date = null;
+            }
         }
 
         if ($date) {
@@ -831,9 +897,11 @@ class Content
             $grouping = 'cfv.' . $orderColumn;
         }
 
-        $sql = "SELECT c.id, {$grouping} FROM content c {$joinText} WHERE {$where} GROUP BY c.id, {$grouping} ORDER BY {$fullOrdering} LIMIT :lim OFFSET :off";
+        $sql = "SELECT c.id, {$grouping} FROM content c {$joinText} WHERE {$where} GROUP BY c.id, {$grouping} ORDER BY {$fullOrdering}";
 
-        $stmt = $this->pdo->prepare($sql);
+        $outerSql = "SELECT DISTINCT id FROM ({$sql}) AS grouped LIMIT :lim OFFSET :off";
+
+        $stmt = $this->pdo->prepare($outerSql);
 
         foreach ($params as $k => $v) {
             $stmt->bindValue($k, $v, $k === ':q' ? PDO::PARAM_STR : (is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR));
