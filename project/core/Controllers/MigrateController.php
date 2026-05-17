@@ -336,7 +336,9 @@ class MigrateController
             }
 
             $savedContent = (new Content())->saveContent($content, [], 'sr');
-            Content::addImagesToContent($savedContent['id'], $imageField, $item['images']);
+            if ($imageField) {
+                Content::addImagesToContent($savedContent['id'], $imageField, $item['images']);
+            }
         }
     }
 
