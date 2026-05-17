@@ -1,12 +1,14 @@
 [
   {
     "Ankete": {
+      "code": "ankete",
       "sr": "Ankete",
       "en": "Surveys",
       "sr-Cyrl": "Анкете",
       "icon": "fas fa-poll",
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -17,6 +19,7 @@
           "required": true
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -29,12 +32,14 @@
       ]
     },
     "Pitanja": {
+      "code": "pitanja",
       "sr": "Često postavljena pitanja",
       "en": "Frequently asked questions",
       "sr-Cyrl": "Често постављена питања",
       "icon": "fa-solid fa-circle-question",
       "fields": [
         {
+          "code": "question",
           "name": "question",
           "type": "text",
           "label": {
@@ -45,6 +50,7 @@
           "required": true
         },
         {
+          "code": "answer",
           "name": "answer",
           "type": "textarea",
           "label": {
@@ -57,6 +63,7 @@
       ]
     },
     "Dogadjaji": {
+      "code": "dogadjaji",
       "sr": "Događaji",
       "en": "Events",
       "sr-Cyrl": "Догађаји",
@@ -70,6 +77,7 @@
       ],
       "fields": [
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -80,8 +88,9 @@
           "required": true
         },
         {
+          "code": "main_category",
           "name": "naziv",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija događaja",
             "en": "Event category",
@@ -94,9 +103,32 @@
             "Takmičenja",
             "Kultura"
           ],
+          "coded_options": [
+            {
+              "code": "konferencije",
+              "translations": { "sr": "Konferencije", "sr-Cyrl": "Конференције", "en": "Conferences"}
+            },
+            {
+              "code": "seminari",
+              "translations": { "sr": "Seminari", "sr-Cyrl": "Семинари", "en": "Seminars"}
+            },
+            {
+              "code": "radionice",
+              "translations": { "sr": "Radionice", "sr-Cyrl": "Радионице", "en": "Workshops"}
+            },
+            {
+              "code": "takmičenja",
+              "translations": { "sr": "Takmičenja", "sr-Cyrl": "Такмичења", "en": "Competitions"}
+            },
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -107,6 +139,7 @@
           "required": true
         },
         {
+          "code": "time",
           "name": "time",
           "type": "time",
           "label": {
@@ -117,6 +150,7 @@
           "required": true
         },
         {
+          "code": "location",
           "name": "location",
           "type": "text",
           "label": {
@@ -127,6 +161,7 @@
           "required": true
         },
         {
+          "code": "description",
           "name": "description",
           "type": "textarea",
           "label": {
@@ -136,6 +171,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -147,6 +183,7 @@
       ]
     },
     "Manifestacije": {
+      "code": "manifestacije",
       "sr": "Manifestacije",
       "en": "Festivals & Events",
       "sr-Cyrl": "Манифестације",
@@ -165,6 +202,7 @@
       ],
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -175,6 +213,7 @@
           "required": true
         },
         {
+          "code": "poslednje_azuriranje",
           "name": "poslednje_azuriranje",
           "type": "date",
           "label": {
@@ -186,16 +225,72 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "kategorija",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija manifestacije",
             "en": "Event category",
             "sr-Cyrl": "Категорија манифестације"
           },
+          "options": [
+            "Festival",
+            "Koncert",
+            "Sajam",
+            "Gastro",
+            "Kultura",
+            "Sport",
+            "Porodično",
+            "Tradicionalno",
+            "Karneval",
+            "Izložba"
+          ],
+          "coded_options": [
+            {
+              "code": "festival",
+              "translations": { "sr": "Festival", "sr-Cyrl": "Фестивал", "en": "Festival"}
+            },
+            {
+              "code": "koncert",
+              "translations": { "sr": "Koncert", "sr-Cyrl": "Концерт", "en": "Concert"}
+            },
+            {
+              "code": "sajam",
+              "translations": { "sr": "Sajam", "sr-Cyrl": "Сајам", "en": "Fair"}
+            },
+            {
+              "code": "gastro",
+              "translations": { "sr": "Gastro", "sr-Cyrl": "Гастро", "en": "Gastro"}
+            },
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
+            },
+            {
+              "code": "sport",
+              "translations": { "sr": "Sport", "sr-Cyrl": "Спорт", "en": "Sport"}
+            },
+            {
+              "code": "porodicno",
+              "translations": { "sr": "Porodično", "sr-Cyrl": "Породично", "en": "Family"}
+            },
+            {
+              "code": "tradicionalno",
+              "translations": { "sr": "Tradicionalno", "sr-Cyrl": "Традиционално", "en": "Traditional"}
+            },
+            {
+              "code": "karneval",
+              "translations": { "sr": "Karneval", "sr-Cyrl": "Карневал", "en": "Carneval"}
+            },
+            {
+              "code": "izlozba",
+              "translations": { "sr": "Izložba", "sr-Cyrl": "Изложба", "en": "Exhibition"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "drzava",
           "name": "drzava",
           "type": "text",
           "label": {
@@ -206,6 +301,7 @@
           "required": true
         },
         {
+          "code": "grad",
           "name": "grad",
           "type": "text",
           "label": {
@@ -215,6 +311,7 @@
           }
         },
         {
+          "code": "lokacija",
           "name": "lokacija",
           "type": "text",
           "label": {
@@ -224,6 +321,7 @@
           }
         },
         {
+          "code": "adresa",
           "name": "adresa",
           "type": "text",
           "label": {
@@ -233,6 +331,7 @@
           }
         },
         {
+          "code": "datum_pocetka",
           "name": "datum_pocetka",
           "type": "date",
           "label": {
@@ -243,6 +342,7 @@
           "required": true
         },
         {
+          "code": "datum_zavrsetka",
           "name": "datum_zavrsetka",
           "type": "date",
           "label": {
@@ -252,6 +352,7 @@
           }
         },
         {
+          "code": "vreme_pocetka",
           "name": "vreme_pocetka",
           "type": "time",
           "label": {
@@ -261,6 +362,7 @@
           }
         },
         {
+          "code": "vreme_zavrsetka",
           "name": "vreme_zavrsetka",
           "type": "time",
           "label": {
@@ -270,6 +372,7 @@
           }
         },
         {
+          "code": "kratak_opis",
           "name": "kratak_opis",
           "type": "textarea",
           "label": {
@@ -279,6 +382,7 @@
           }
         },
         {
+          "code": "detaljan_opis",
           "name": "detaljan_opis",
           "type": "textarea",
           "label": {
@@ -288,6 +392,7 @@
           }
         },
         {
+          "code": "program",
           "name": "program",
           "type": "url",
           "label": {
@@ -297,6 +402,7 @@
           }
         },
         {
+          "code": "ulaznica_cena",
           "name": "ulaznica_cena",
           "type": "text",
           "label": {
@@ -311,6 +417,7 @@
           }
         },
         {
+          "code": "tip_ulaza",
           "name": "tip_ulaza",
           "type": "text",
           "label": {
@@ -325,6 +432,7 @@
           }
         },
         {
+          "code": "uzrast",
           "name": "uzrast",
           "type": "text",
           "label": {
@@ -339,6 +447,7 @@
           }
         },
         {
+          "code": "tagovi",
           "name": "tagovi",
           "type": "text",
           "label": {
@@ -353,6 +462,7 @@
           }
         },
         {
+          "code": "aktivnosti",
           "name": "aktivnosti",
           "type": "text",
           "label": {
@@ -367,6 +477,7 @@
           }
         },
         {
+          "code": "pristupacnost",
           "name": "pristupacnost",
           "type": "text",
           "label": {
@@ -381,6 +492,7 @@
           }
         },
         {
+          "code": "organizator",
           "name": "organizator",
           "type": "text",
           "label": {
@@ -390,6 +502,7 @@
           }
         },
         {
+          "code": "kontakt",
           "name": "kontakt",
           "type": "text",
           "label": {
@@ -399,6 +512,7 @@
           }
         },
         {
+          "code": "map_link",
           "name": "map_link",
           "type": "url",
           "label": {
@@ -408,6 +522,7 @@
           }
         },
         {
+          "code": "zvanicni_sajt",
           "name": "zvanicni_sajt",
           "type": "url",
           "label": {
@@ -417,6 +532,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -426,6 +542,7 @@
           }
         },
         {
+          "code": "galerija",
           "name": "galerija",
           "type": "file",
           "label": {
@@ -436,6 +553,7 @@
           "property": "multiple"
         },
         {
+          "code": "video",
           "name": "video",
           "type": "url",
           "label": {
@@ -445,6 +563,7 @@
           }
         },
         {
+          "code": "ocena",
           "name": "ocena",
           "type": "text",
           "label": {
@@ -456,6 +575,7 @@
       ]
     },
     "Aktivnosti": {
+      "code": "aktivnosti",
       "sr": "Aktivnosti",
       "en": "Activities",
       "sr-Cyrl": "Активности",
@@ -476,6 +596,7 @@
       ],
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -486,6 +607,7 @@
           "required": true
         },
         {
+          "code": "poslednje_azuriranje",
           "name": "poslednje_azuriranje",
           "type": "date",
           "label": {
@@ -497,6 +619,7 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "kategorija",
           "type": "categories",
           "label": {
@@ -504,9 +627,74 @@
             "en": "Activity category",
             "sr-Cyrl": "Категорија активности"
           },
+          "options": [
+            "Avantura",
+            "Priroda",
+            "Kultura",
+            "Gastro",
+            "Porodično",
+            "Voda",
+            "Planine",
+            "Sport",
+            "Relaks",
+            "Noćni život",
+            "Edukativno",
+            "Wellness"
+          ],
+          "coded_options": [
+            {
+              "code": "avantura",
+              "translations": { "sr": "Avantura", "sr-Cyrl": "Авантура", "en": "Adventure"}
+            },
+            {
+              "code": "priroda",
+              "translations": { "sr": "Priroda", "sr-Cyrl": "Природа", "en": "Nature"}
+            },
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
+            },
+            {
+              "code": "gastro",
+              "translations": { "sr": "Gastro", "sr-Cyrl": "Гастро", "en": "Gastro"}
+            },
+            {
+              "code": "porodično",
+              "translations": { "sr": "Porodično", "sr-Cyrl": "Породично", "en": "Family"}
+            },
+            {
+              "code": "voda",
+              "translations": { "sr": "Voda", "sr-Cyrl": "Вода", "en": "Water"}
+            },
+            {
+              "code": "planine",
+              "translations": { "sr": "Planine", "sr-Cyrl": "Планине", "en": "Mountains"}
+            },
+            {
+              "code": "sport",
+              "translations": { "sr": "Sport", "sr-Cyrl": "Спорт", "en": "Sport"}
+            },
+            {
+              "code": "relaks",
+              "translations": { "sr": "Relaks", "sr-Cyrl": "Релакс", "en": "Relax"}
+            },
+            {
+              "code": "nocni-zivot",
+              "translations": { "sr": "Noćni život", "sr-Cyrl": "Ноћни живот", "en": "Nightlife"}
+            },
+            {
+              "code": "edukativno",
+              "translations": { "sr": "Edukativno", "sr-Cyrl": "Едукативно", "en": "Educational"}
+            },
+            {
+              "code": "wellness",
+              "translations": { "sr": "Wellness", "sr-Cyrl": "Велнес", "en": "Wellness"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "drzava",
           "name": "drzava",
           "type": "text",
           "label": {
@@ -517,6 +705,7 @@
           "required": true
         },
         {
+          "code": "destinacija",
           "name": "destinacija",
           "type": "text",
           "label": {
@@ -526,6 +715,7 @@
           }
         },
         {
+          "code": "region",
           "name": "region",
           "type": "text",
           "label": {
@@ -535,6 +725,7 @@
           }
         },
         {
+          "code": "adresa",
           "name": "adresa",
           "type": "text",
           "label": {
@@ -544,6 +735,7 @@
           }
         },
         {
+          "code": "map_link",
           "name": "map_link",
           "type": "url",
           "label": {
@@ -553,6 +745,7 @@
           }
         },
         {
+          "code": "kratak_opis",
           "name": "kratak_opis",
           "type": "textarea",
           "label": {
@@ -562,6 +755,7 @@
           }
         },
         {
+          "code": "detaljan_opis",
           "name": "detaljan_opis",
           "type": "textarea",
           "label": {
@@ -571,6 +765,7 @@
           }
         },
         {
+          "code": "trajanje",
           "name": "trajanje",
           "type": "text",
           "label": {
@@ -585,6 +780,7 @@
           }
         },
         {
+          "code": "vreme_pocetka",
           "name": "vreme_pocetka",
           "type": "time",
           "label": {
@@ -594,6 +790,7 @@
           }
         },
         {
+          "code": "vreme_zavrsetka",
           "name": "vreme_zavrsetka",
           "type": "time",
           "label": {
@@ -603,6 +800,7 @@
           }
         },
         {
+          "code": "termini",
           "name": "termini",
           "type": "text",
           "label": {
@@ -617,6 +815,7 @@
           }
         },
         {
+          "code": "sezona",
           "name": "sezona",
           "type": "text",
           "label": {
@@ -631,6 +830,7 @@
           }
         },
         {
+          "code": "najbolji_meseci",
           "name": "najbolji_meseci",
           "type": "text",
           "label": {
@@ -645,6 +845,7 @@
           }
         },
         {
+          "code": "tezina",
           "name": "tezina",
           "type": "text",
           "label": {
@@ -659,6 +860,7 @@
           }
         },
         {
+          "code": "uzrast",
           "name": "uzrast",
           "type": "text",
           "label": {
@@ -673,6 +875,7 @@
           }
         },
         {
+          "code": "maks_broj_ucesnika",
           "name": "maks_broj_ucesnika",
           "type": "text",
           "label": {
@@ -687,6 +890,7 @@
           }
         },
         {
+          "code": "vodic",
           "name": "vodic",
           "type": "text",
           "label": {
@@ -701,6 +905,7 @@
           }
         },
         {
+          "code": "oprema",
           "name": "oprema",
           "type": "text",
           "label": {
@@ -715,6 +920,7 @@
           }
         },
         {
+          "code": "uslovi_ucesca",
           "name": "uslovi_ucesca",
           "type": "text",
           "label": {
@@ -729,6 +935,7 @@
           }
         },
         {
+          "code": "bezbednost",
           "name": "bezbednost",
           "type": "text",
           "label": {
@@ -738,6 +945,7 @@
           }
         },
         {
+          "code": "cena_od",
           "name": "cena_od",
           "type": "text",
           "label": {
@@ -752,6 +960,7 @@
           }
         },
         {
+          "code": "ukljuceno",
           "name": "ukljuceno",
           "type": "text",
           "label": {
@@ -766,6 +975,7 @@
           }
         },
         {
+          "code": "nije_ukljuceno",
           "name": "nije_ukljuceno",
           "type": "text",
           "label": {
@@ -780,6 +990,7 @@
           }
         },
         {
+          "code": "politika_otkazivanja",
           "name": "politika_otkazivanja",
           "type": "text",
           "label": {
@@ -794,6 +1005,7 @@
           }
         },
         {
+          "code": "kontakt",
           "name": "kontakt",
           "type": "text",
           "label": {
@@ -803,6 +1015,7 @@
           }
         },
         {
+          "code": "zvanicni_sajt",
           "name": "zvanicni_sajt",
           "type": "url",
           "label": {
@@ -812,6 +1025,7 @@
           }
         },
         {
+          "code": "rezervacija_link",
           "name": "rezervacija_link",
           "type": "url",
           "label": {
@@ -821,6 +1035,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -830,6 +1045,7 @@
           }
         },
         {
+          "code": "galerija",
           "name": "galerija",
           "type": "file",
           "label": {
@@ -840,6 +1056,7 @@
           "property": "multiple"
         },
         {
+          "code": "video",
           "name": "video",
           "type": "url",
           "label": {
@@ -849,6 +1066,7 @@
           }
         },
         {
+          "code": "ocena",
           "name": "ocena",
           "type": "text",
           "label": {
@@ -858,6 +1076,7 @@
           }
         },
         {
+          "code": "tagovi",
           "name": "tagovi",
           "type": "text",
           "label": {
