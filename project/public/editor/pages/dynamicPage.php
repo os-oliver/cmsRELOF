@@ -8,6 +8,7 @@ if (isset($_GET['locale']))
 $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 
 use App\Controllers\{AuthController, ContentController};
+use App\Models\ContentType;
 use App\Utils\CardRenderer;
 
 AuthController::requireEditor();
@@ -18,14 +19,17 @@ $slug = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/')
 $config = $fieldLabels = [];
 if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
     $parsed = json_decode(file_get_contents($structurePath), true);
-    $config = $parsed[0][$slug] ?? [];
+    foreach ($parsed[0] as $ctype) {
+        if (empty($config) && $ctype['code'] == $slug) {
+            $config = $ctype;
+            $contentTypeCode = $slug;
+        }
+    }
     $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
 }
 // Pagination
 $itemsPerPage = 3;
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
-
-
 
 ?>
 <!DOCTYPE html>
@@ -104,27 +108,26 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 
                     <div class="mx-auto max-w-7xl p-6">
                         <?php
-                        $categories = GenericCategory::fetchAll($slug, $locale);
-                        echo CardRenderer::renderTopbar($categories, '') ?>
-                        <?php
+                        // old code (old categories) for topbar rendering
+                        // $categories = GenericCategory::fetchAll($slug, $locale);
+                        // echo CardRenderer::renderTopbar($categories, '');
+
+                        $contentTypeCategories = ContentType::fetchMainCategoriesByContentTypeCode($contentTypeCode, true);
+                        echo CardRenderer::renderTopbarCT($contentTypeCategories, '');
+
                         try {
 
                             $search = $_GET['search'] ?? '';
-
-
-                            // Sanitize category — only use it if it's a numeric value
-                            $categoryId = isset($_GET['category']) && is_numeric($_GET['category'])
-                                ? (int) $_GET['category']
-                                : null;
+                            $category = $_GET['category'] ?? null;
 
                             $itemsList = $slug
-                                ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale)
+                                ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $category, $locale)
                                 : ['success' => false, 'items' => []];
 
                             if ($itemsList['success'] && !empty($itemsList['items'])) {
                                 echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
-                                foreach ($itemsList['items'] as $item) {
-                                    echo CardRenderer::renderCard($item, $fieldLabels, $locale, true);
+                                foreach ($itemsList['items'] as $contentId => $item) {
+                                    echo CardRenderer::renderCardNew($contentId, $item, $locale, true);
                                 }
                                 echo '</div>';
 
