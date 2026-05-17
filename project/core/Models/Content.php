@@ -513,7 +513,7 @@ class Content
         }
     }
 
-    private function processCategoryField(int $contentId, array $customField, array | null $cfValueVariants, string $categoryCode, ): void
+    private function processCategoryField(int $contentId, array $customField, array | null $cfValueVariants, string $categoryCode): void
     {
         $category = ContentType::fetchCategoryByContentTypeCodeAndCode($customField['content_type_code'], $categoryCode, true);
         if (empty($category)) {
@@ -539,7 +539,7 @@ class Content
         }
     }
 
-    private function processTimeField(int $contentId, array $customField, array | null $cfValueVariants, string $timeValue): void
+    private function processTimeField(int $contentId, array $customField, array | null $cfValueVariants, string | null $timeValue): void
     {
         if (empty($cfValueVariants)) {
             $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, content) VALUES (:content_id, :custom_field_id, :timeValue)");
@@ -560,7 +560,7 @@ class Content
         }
     }
 
-    private function processNonTranslatableField(int $contentId, array $customField, array | null $cfValueVariants, string $contentValue): void
+    private function processNonTranslatableField(int $contentId, array $customField, array | null $cfValueVariants, string | null $contentValue): void
     {
         if (empty($cfValueVariants)) {
             $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, content) VALUES (:content_id, :custom_field_id, :contentValue)");
@@ -624,7 +624,7 @@ class Content
         }
     }
 
-    private function processTextField(int $contentId, array $customField, array | null $cfValueVariants, string $value, string $locale): void
+    private function processTextField(int $contentId, array $customField, array | null $cfValueVariants, string | null $value, string $locale): void
     {
         // error_log("Processing text field: $fieldName with value: $value for locale: $locale");
         $nonTranslatableTypes = ['url', 'email'];
