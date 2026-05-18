@@ -39,7 +39,7 @@
       "icon": "fa-solid fa-circle-question",
       "fields": [
         {
-          "code": "pitanje",
+          "code": "question",
           "name": "question",
           "type": "text",
           "label": {
