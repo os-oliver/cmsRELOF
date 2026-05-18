@@ -58,6 +58,7 @@ class Content
 
     public function saveContent(array $post, array $files = [], string $locale = 'sr-Cyrl', bool $debug = false): array
     {
+        var_dump($post);
         if (empty($post['type'])) {
             throw new InvalidArgumentException('Missing type in data');
         }
