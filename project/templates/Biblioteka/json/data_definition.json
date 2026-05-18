@@ -1,6 +1,7 @@
 [
   {
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -15,6 +16,7 @@
       ],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -25,6 +27,7 @@
           "required": true
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -36,8 +39,9 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "naziv",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija vesti",
             "en": "News category",
@@ -51,9 +55,36 @@
             "Tehnologija",
             "Deca"
           ],
+          "coded_options": [
+            {
+              "code": "knjizevnost",
+              "translations": { "sr": "Književnost", "sr-Cyrl": "Књижевност", "en": "Literature"}
+            },
+            {
+              "code": "nauka",
+              "translations": { "sr": "Nauka", "sr-Cyrl": "Наука", "en": "Science"}
+            },
+            {
+              "code": "istorija",
+              "translations": { "sr": "Istorija", "sr-Cyrl": "Историја", "en": "History"}
+            },
+            {
+              "code": "umetnost",
+              "translations": { "sr": "Umetnost", "sr-Cyrl": "Уметност", "en": "Art"}
+            },
+            {
+              "code": "tehnologija",
+              "translations": { "sr": "Tehnologija", "sr-Cyrl": "Технологија", "en": "Technology"}
+            },
+            {
+              "code": "deca",
+              "translations": { "sr": "Deca", "sr-Cyrl": "Деца", "en": "Children"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -63,6 +94,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -72,6 +104,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -81,6 +114,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -92,6 +126,7 @@
       ]
     },
     "Dogadaji": {
+      "code": "dogadjaji",
       "sr": "Događaji",
       "en": "Events",
       "sr-Cyrl": "Догађаји",
@@ -106,6 +141,7 @@
       ],
       "fields": [
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -116,17 +152,52 @@
           "required": true
         },
         {
+          "code": "main_category",
           "name": "naziv",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija vesti",
             "en": "News category",
             "sr-Cyrl": "Категорија вести"
           },
-         
+          "options": [
+            "Književnost",
+            "Nauka",
+            "Istorija",
+            "Umjetnost",
+            "Tehnologija",
+            "Deca"
+          ],
+          "coded_options": [
+            {
+              "code": "knjizevnost",
+              "translations": { "sr": "Književnost", "sr-Cyrl": "Књижевност", "en": "Literature"}
+            },
+            {
+              "code": "nauka",
+              "translations": { "sr": "Nauka", "sr-Cyrl": "Наука", "en": "Science"}
+            },
+            {
+              "code": "istorija",
+              "translations": { "sr": "Istorija", "sr-Cyrl": "Историја", "en": "History"}
+            },
+            {
+              "code": "umetnost",
+              "translations": { "sr": "Umetnost", "sr-Cyrl": "Уметност", "en": "Art"}
+            },
+            {
+              "code": "tehnologija",
+              "translations": { "sr": "Tehnologija", "sr-Cyrl": "Технологија", "en": "Technology"}
+            },
+            {
+              "code": "deca",
+              "translations": { "sr": "Deca", "sr-Cyrl": "Деца", "en": "Children"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "location",
           "name": "location",
           "type": "text",
           "label": {
@@ -136,6 +207,7 @@
           }
         },
         {
+          "code": "description",
           "name": "description",
           "type": "textarea",
           "label": {
@@ -145,6 +217,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -156,6 +229,7 @@
           "property": "auto"
         },
         {
+          "code": "time",
           "name": "time",
           "type": "text",
           "label": {
@@ -165,6 +239,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
