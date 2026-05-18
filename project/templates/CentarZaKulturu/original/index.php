@@ -519,6 +519,9 @@
                             <i class="fas fa-bullhorn mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Informacije</span>
                         </a>
+                        <a href="#" class="hidden">
+                            Ankete
+                        </a>
                     </div>
                 </div>
                 <a href="#"
@@ -983,6 +986,7 @@
                     <ul class="space-y-3">
                         <li><a href="/o-nama/uvod" class="text-surface/80 hover:text-accent transition-colors">O nama</a></li>
                         <li><a href="/kontakt" class="text-surface/80 hover:text-accent transition-colors">Kontakt</a></li>
+                        <li><a href="/ankete" class="text-surface/80 hover:text-accent transition-colors">Ankete</a></li>
                         <li><a href="/vesti" class="text-surface/80 hover:text-accent transition-colors">Vesti</a></li>
                         <li><a href="/dogadjaji" class="text-surface/80 hover:text-accent transition-colors">Događaji</a></li>
                         <li><a href="/projekti" class="text-surface/80 hover:text-accent transition-colors">Projekti</a></li>
@@ -1030,7 +1034,7 @@
                 </div>
             </div>
 
-             <div class="text-center text-sm">
+            <div class="text-center text-sm">
                 <div class="flex flex-col items-center border-t border-secondary_text pt-8 text-center text-secondary_text text-sm">
                     <img
                         src="/assets/img/SECO-logo-640px-white.png"
@@ -1147,7 +1151,7 @@
                 card.style.transform = 'translateY(0)';
             });
         });
-d
+        d
         // Function to open mobile menu
         function openMobileMenu() {
             mobileMenu.classList.remove('hidden');
@@ -1453,57 +1457,57 @@ d
             });
         }
 
-            if (mobileParentsToggle) {
-                mobileParentsToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    toggleMobileParents();
-                });
-            }
-
-            // Close menu when clicking on menu links (except dropdown toggle)
-            const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    // Close menu after a short delay to allow for navigation
-                    setTimeout(closeMobileMenuFunc, 150);
-                });
+        if (mobileParentsToggle) {
+            mobileParentsToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileParents();
             });
+        }
 
-            // Close menu on window resize if screen becomes large
-            window.addEventListener('resize', function() {
-                if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
-                    closeMobileMenuFunc();
+        // Close menu when clicking on menu links (except dropdown toggle)
+        const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Close menu after a short delay to allow for navigation
+                setTimeout(closeMobileMenuFunc, 150);
+            });
+        });
+
+        // Close menu on window resize if screen becomes large
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
+                closeMobileMenuFunc();
+            }
+        });
+
+        // Handle escape key to close menu
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                closeMobileMenuFunc();
+            }
+        });
+
+        // Prevent menu panel clicks from closing the menu
+        if (mobileMenuPanel) {
+            mobileMenuPanel.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+
+        // Initialize animations when elements come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
                 }
             });
+        }, {
+            threshold: 0.1
+        });
 
-            // Handle escape key to close menu
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-                    closeMobileMenuFunc();
-                }
-            });
-
-            // Prevent menu panel clicks from closing the menu
-            if (mobileMenuPanel) {
-                mobileMenuPanel.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
-            }
-
-            // Initialize animations when elements come into view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
-                observer.observe(el);
-            });
+        document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 
 

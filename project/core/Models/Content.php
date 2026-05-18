@@ -490,7 +490,7 @@ class Content
                 $this->processTimeField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null);
                 continue;
             }
-
+                   
             if ($fieldType === 'date') {
                 $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, 'Y-m-d');
                 continue;
@@ -584,12 +584,12 @@ class Content
     private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string $dateString, string $format = ''): void
     {
         try {
+            //var_dump($dateString);
             if (empty($format)) {
                 $date = new \DateTime($dateString);
             } else {
                 $date = \DateTime::createFromFormat($format, $dateString);
             }
-
             if (!$date) {
                 throw new \Exception("Invalid date string or format: '$dateString'");
             }
