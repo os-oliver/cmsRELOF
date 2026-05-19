@@ -1,9 +1,7 @@
-console.log("test");
 const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 const sidebar = document.getElementById("sidebar");
 const sidebarClose = document.getElementById("sidebar-close");
 const overlay = document.getElementById("overlay");
-console.log(mobileMenuBtn);
 
 function toggleSidebar() {
   sidebar.classList.toggle("active");
