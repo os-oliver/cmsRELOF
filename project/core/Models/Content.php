@@ -6,6 +6,7 @@ use App\Utils\Config;
 use App\Utils\Pivoter;
 use App\Utils\TextHelper;
 use App\Utils\FileUploader;
+use App\Utils\LocaleManager;
 use DateTime;
 use Exception;
 use PDO;
@@ -187,10 +188,11 @@ class Content
         int $page = 1,
         int $per = 10,
         int|string|null $categoryId = null, // ✅ can be id or name
-        string $lang = 'sr',
+        string $lang = '',
         string $orderingFieldCode = 'title',
         string $sortingDirection = 'DESC'
     ): array {
+        $locale = empty($lang) ? LocaleManager::get() : $lang;
         $q = trim((string) $q);
         $page = max(1, $page);
         $per = max(1, min(100, $per));
@@ -235,7 +237,7 @@ class Content
 
         $total = $this->fetchTotalCountNew($where, $joinText, $params);
         $contentIds = $this->fetchContentIdsNew($where, $joinText, $params, $per, $offset, $orderingColumn, $sortingDirection);
-        $cfvs = $this->fetchContentCFVsNew($contentIds, $whereForCFV, $joinText, $params, $lang);
+        $cfvs = $this->fetchContentCFVsNew($contentIds, $whereForCFV, $joinText, $params, $locale);
 
         if (empty($cfvs)) {
             return [
@@ -250,7 +252,7 @@ class Content
         $customFields = CustomField::fetchAllByContentTypeCode($type, true);
         $allOptions = CustomFieldOption::fetchAllByContentTypeCode($type, true);
 
-        $items = $this->assembleItemsNew($cfvs, $type, $customFields, $allOptions, $lang);
+        $items = $this->assembleItemsNew($cfvs, $type, $customFields, $allOptions, $locale);
 
         return [
             'success' => true,
