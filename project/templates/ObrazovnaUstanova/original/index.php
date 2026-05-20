@@ -1010,7 +1010,7 @@
 
                 <div>
                     <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
-                    <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+                    <div class="rounded-xl overflow-hidden" style="aspect-ratio: 16/9;">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.8558933616478!2d19.844017191030535!3d43.85881546458296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4759d344c1ce373f%3A0xe413bfef88d954d!2z0KDQtdCz0LjQvtC90LDQu9C90Lgg0YbQtdC90YLQsNGAINC30LAg0L_RgNC-0YTQtdGB0LjQvtC90LDQu9C90Lgg0YDQsNC30LLQvtGYINC30LDQv9C-0YHQu9C10L3QuNGFINGDINC-0LHRgNCw0LfQvtCy0LDRmtGDINCj0LbQuNGG0LU!5e0!3m2!1ssr!2srs!4v1763394150986!5m2!1ssr!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>

@@ -51,6 +51,7 @@ use App\Admin\PageBuilders\UpisPageBuilder;
 use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
+use App\Admin\PageBuilders\ResursiPageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
 use App\Utils\Config;
 use DOMDocument;
@@ -567,7 +568,7 @@ class PageExporter
                 $keyForFetch = $key ?? ''; // first parameter
                 $sixthParam = isset($parts[1]) ? "'{$parts[0]}'" : "null"; // use parts[1] if exists, else null
                 $id = str_replace(" ", '_', $id);
-                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale)['items'];\n";
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale, 'datum', 'DESC')['items'];\n";
                 $phpString .= "\$$id = HashMapTransformer::transformNew(\$$id" . "_raw, \$locale);\n\n";
             }
 
@@ -765,6 +766,8 @@ class PageExporter
                 return new DynamicPageBuilder('Filmovi');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
+            case 'resursi':
+                return new ResursiPageBuilder('Resursi', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -884,6 +887,8 @@ class PageExporter
             return 'koncerti';
         }elseif (strpos($name, 'filmovi') !== false) {
             return 'filmovi';
+        }elseif (strpos($name, 'resursi') !== false) {
+            return 'resursi';
         }
 
         return 'basic';

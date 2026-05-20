@@ -68,35 +68,31 @@ class ZnacajaStranica extends BasePageBuilder
             Informacije od javnog značaja
           </h1>
           <p class="lead text-secondary_text/90 mt-2">
-            Pravo na pristup informacijama od javnog značaja ostvaruje se podnošenjem zahteva nadležnom organu.
-            Ovde se nalazi kratko uputstvo i obrazac <strong>&nbsp;(DOC)&nbsp;</strong> za preuzimanje.
+          Pravo na pristup informacijama od javnog značaja sprovodi se u skladu sa Zakonom o
+          slobodnom pristupu informacijama od javnog značaja (Službeni glasnik, br. 120/2004,
+          54/2007, 104/2009, 36/2010 i 105/2021).
           </p>
         </section>
 
         <section>
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Postupak podnošenja zahteva</h2>
           <ol class="list-decimal pl-6 space-y-2">
-            <li><strong>Preuzmite formular</strong>&nbsp;klikom na dugme „Preuzmi formular (DOC)”.</li>
-            <li><strong>Popunite formular</strong>: navedite koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
-            <li><strong>Lično predajte popunjen zahtev u Centar</strong></li>
-            <li><strong>Odgovor</strong>: nakon obrade, dobićete e-poruku sa adresom ili linkom,
-              sa koje možete preuzeti tražene informacije, ili obrazloženje ako zahtev nije moguće u celosti uvažiti.</li>
+            <li><strong>Preuzimanje formulara</strong></li>
+            <li><strong>Popunjavanje formulara</strong></li>
+            <li><strong>Predavanje/slanje popunjenog formulara na adresu Regionalnog centra za
+            profesionalni razvoj zaposlenih u obrazovanju Užice- Nemanjina 52, 31000 Užice ili
+            na mejl ovlašćenog lica.
+            </li>
           </ol>
-        </section>
-
-        <section class="bg-surface shadow-md rounded-2xl p-6 mt-4">
-          <h3 class="font-heading text-xl text-primary_text mb-3">Napomene</h3>
-          <ul class="list-disc pl-6 space-y-2">
-            <li>Pristup može biti ograničen u zakonom propisanim slučajevima (zaštita privatnosti, poverljivost, zloupotreba prava i sl.).</li>
-            <li>Ukoliko odgovor ne dobijete u zakonskom roku, možete izjaviti žalbu u skladu sa propisima.</li>
-          </ul>
         </section>
 
         <!-- (Optional) Ovlašćena lica – edit or remove -->
         <section class="mt-4">
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
-            <p><strong>Lice ovlašćeno za zaštitu podataka o ličnosti</strong><br>Ivana Panić — 010/311-203 i 010/311-205 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:ivana.panic@csrpirot.rs">ivana.panic@csrpirot.rs</a></p>
+            <p><strong>Lice ovlašćeno za postupanje po zahtevima za slobodan pristup informacijama od javnog značaja</strong><br>Ivana Jovanović - <a class="text-blue-600" data-translate="off" href="mailto:ivana.jovanovic@rcu-uzice.rs">&nbsp;ivana.jovanovic@rcu-uzice.rs</a></p>
+          <hr class="border-t border-secondary/30 my-3">
+            <p><strong>Zamenik</strong><br>Darko Ranković - <a class="text-blue-600" data-translate="off" href="mailto:darko.rankovic@rcu-uzice.rs">&nbsp;darko.rankovic@rcu-uzice.rs</a></p>
           </div>
         </section>
       </article>
@@ -106,15 +102,30 @@ class ZnacajaStranica extends BasePageBuilder
         <div class="sticky top-24">
           <div class="bg-surface shadow-md rounded-2xl p-6">
             <h3 class="font-heading text-xl text-primary_text">Dokumenta</h3>
-            <p class="text-secondary_text/80 mt-1">Preuzmite i popunite obrazac.</p>
-            <p class="mt-3">
+            <p class="text-secondary_text/80 mt-1">Ovde možete preuzeti formular:</p>
+            <p>
               <a class="inline-flex items-center gap-2 bg-primary hover:bg-primary_hover text-white font-semibold rounded-full px-4 py-2"
                  href="/docs/zahtev-za-pristup-informacijama.doc" download="">
                 <svg class="logocolor1" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M14 2H6a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h10a2 2 0 0 0 2-2V8z"></path>
                   <path d="M14 2v6h6"></path>
                 </svg>
-                Preuzmi formular (DOC)
+                Preuzmi formular
+                <span data-translate="off">(DOC)</span>
+              </a>
+              <p class="font-bold mt-2">Ukoliko odgovor ne dobijete u zakonskom roku, možete izjaviti žalbu u skladu sa propisima.</p>
+            </p>
+
+            <p class="text-secondary_text/80 mt-4">Ovde možete preuzeti žalbu:</p>
+            <p>
+              <a class="inline-flex items-center gap-2 bg-primary hover:bg-primary_hover text-white font-semibold rounded-full px-4 py-2"
+                 href="/docs/latzalbanedobijanje.doc" download="">
+                <svg class="logocolor1" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h10a2 2 0 0 0 2-2V8z"></path>
+                  <path d="M14 2v6h6"></path>
+                </svg>
+                Preuzmi žalbu
+                <span data-translate="off">(DOC)</span>
               </a>
             </p>
           </div>
