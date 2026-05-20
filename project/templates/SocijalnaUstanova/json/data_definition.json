@@ -61,8 +61,8 @@
         }
       ]
     },
-    "Usluge": {
-      "code": "usluge",
+    "UslugeCentraMost": {
+      "code": "uslugeCentraMost",
       "sr": "Usluge",
       "en": "Services",
       "sr-Cyrl": "Услуге",
