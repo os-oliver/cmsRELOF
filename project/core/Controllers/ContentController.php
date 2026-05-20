@@ -6,6 +6,8 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 use App\Models\Content;
+use App\Models\ContentType;
+use App\Utils\ContentTypeManager;
 use Throwable;
 
 class ContentController
@@ -102,7 +104,7 @@ class ContentController
         }
 
         try {
-            $res = $this->model->deleteById($id);
+            $res = $this->model->deleteContentById($id);
             echo json_encode($res, JSON_UNESCAPED_UNICODE);
         } catch (Throwable $e) {
             error_log('DeleteFromRequest failed: ' . $e->getMessage());
@@ -110,4 +112,10 @@ class ContentController
             echo json_encode(['success' => false, 'message' => 'Server error'], JSON_UNESCAPED_UNICODE);
         }
     }
+
+    public function contentTypes(): void
+    {
+        ContentTypeManager::createTypes('SocijalnaUstanova');
+    }
+
 }

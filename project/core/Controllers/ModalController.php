@@ -4,6 +4,8 @@ namespace App\Controllers;
 use App\Models\Content;
 use App\Utils\ModalGenerator;
 use App\Database;
+use App\Models\CustomFieldValue;
+use App\Utils\LocaleManager;
 use PDO;
 
 class ModalController
@@ -41,8 +43,8 @@ class ModalController
         $config = null;
         // Case-insensitive lookup: structure keys may be capitalized (e.g. "Vesti")
         foreach ($data as $entry) {
-            foreach ($entry as $key => $val) {
-                if (strcasecmp((string) $key, (string) $slug) === 0) {
+            foreach ($entry as $val) {
+                if (strcasecmp($val['code'], (string) $slug) === 0) {
                     $config = $val;
                     break 2;
                 }
@@ -62,30 +64,26 @@ class ModalController
             // If id provided, fetch item data and prefill fields values
             if ($id > 0) {
                 $cc = new Content();
-                $itemResp = $cc->fetchItem($id);
+                $itemResp = $cc->fetchItemNew($id, $locale);
 
                 if (!empty($itemResp['success']) && !empty($itemResp['item'])) {
                     $item = $itemResp['item'];
 
                     // Map text-like values back into config fields
                     foreach ($config['fields'] as &$f) {
-                        $name = $f['name'] ?? null;
-                        $val = '';
 
-                        if ($name && isset($item['fields'][$name])) {
-                            if (isset($item['fields'][$name][$locale]) && $item['fields'][$name][$locale] !== '') {
-                                $val = $item['fields'][$name][$locale];
-                            } else {
-                                $first = array_values($item['fields'][$name]);
-                                $val = $first[0] ?? '';
+                        // treba ubaciti 'code' za sve field-ove u data_definition
+                        $comparisonKey = array_key_exists('code', $f) ? 'code' : 'name';
+                        foreach ($item['fields'] as $cfv) {
+                            if ($cfv['code'] == $f[$comparisonKey]) {
+                                $f['value'] = $cfv['textValue'];
+                                if (array_key_exists('option_value', $cfv)) {
+                                    $f['option_value'] = $cfv['option_value'];
+                                }
+                                if (array_key_exists('timestamp', $cfv)) {
+                                    $f['timestamp'] = $cfv['timestamp'];
+                                }
                             }
-                        }
-
-                        $f['value'] = $val;
-
-                        // 🟢 Automatically set value for category-type fields
-                        if (($f['type'] ?? '') === 'categories' && isset($item['category_id'])) {
-                            $f['value'] = (string) $item['category_id'];
                         }
                     }
 
@@ -94,13 +92,14 @@ class ModalController
 
                     // Fetch attached images using Image model helper
                     try {
-                        $images = \App\Models\Image::fetchFilePathsForElement($id);
-                        if (!empty($images)) {
+                        $allFiles = CustomFieldValue::findFileCFVsByContentId($id);
+                        if (!empty($allFiles)) {
+                            $paths = array_map(fn($item) => $item['filepath'], $allFiles);
                             foreach ($config['fields'] as &$f) {
                                 $ft = $f['type'] ?? 'text';
                                 if ($ft === 'file') {
                                     // store JSON array of paths for multifile
-                                    $f['value'] = json_encode(array_values($images), JSON_UNESCAPED_UNICODE);
+                                    $f['value'] = json_encode($paths, JSON_UNESCAPED_UNICODE);
                                 }
                             }
                         }
