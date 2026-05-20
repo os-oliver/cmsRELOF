@@ -95,7 +95,7 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
                             $category = $_GET['category'] ?? null;
 
                             $itemsList = $slug
-                                ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $category, $locale)
+                                ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $category, $locale, 'datum', 'DESC')
                                 : ['success' => false, 'items' => []];
 
                             if ($itemsList['success'] && !empty($itemsList['items'])) {

@@ -646,7 +646,16 @@ $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
 $search = $_GET['search'] ?? '';
 
 $itemsList = $slug
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
+    ? (new Content())->fetchListData(
+        $slug,
+        $search,
+        $currentPage,
+        $itemsPerPage,
+        $categoryId,
+        $locale,
+        'datum',
+        'DESC'
+    )
     : ['success' => false, 'items' => [], 'total' => 0];
 
 $config = $fieldLabels = [];
