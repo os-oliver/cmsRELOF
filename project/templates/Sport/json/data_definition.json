@@ -1,6 +1,7 @@
 [
   {
     "Projekti": {
+      "code": "projekti",
       "sr": "Projekti",
       "en": "Projects",
       "sr-Cyrl": "Пројекти",
@@ -13,6 +14,7 @@
       ],
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -23,6 +25,7 @@
           "required": true
         },
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -33,6 +36,7 @@
           "required": true
         },
         {
+          "code": "vodja",
           "name": "vodja",
           "type": "text",
           "label": {
@@ -42,6 +46,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -51,6 +56,7 @@
           }
         },
         {
+          "code": "datumPocetka",
           "name": "datumPocetka",
           "type": "date",
           "label": {
@@ -61,8 +67,9 @@
           "required": true
         },
         {
+          "code": "budzet",
           "name": "budzet",
-          "type": "number",
+          "type": "text",
           "label": {
             "sr": "Budžet (u evrima)",
             "en": "Budget (EUR)",
@@ -70,6 +77,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -79,24 +87,50 @@
           }
         },
         {
+          "code": "main_category",
           "name": "sekcija",
-          "type": "relation",
+          "type": "options",
           "label": {
             "sr": "Sekcija centra",
             "en": "Center section",
             "sr-Cyrl": "Секција центра"
           },
-          "related_to": "Sekcije"
+          "options": [
+            "Izgradnja",
+            "Radionica",
+            "Takmičenje",
+            "Edukacija"
+          ],
+          "coded_options": [
+            {
+              "code": "izgradnja",
+              "translations": { "sr": "Izgradnja", "sr-Cyrl": "Изградња", "en": "Build"}
+            },
+            {
+              "code": "radionica",
+              "translations": { "sr": "Radionica", "sr-Cyrl": "Радионица", "en": "Workshop"}
+            },
+            {
+              "code": "takmicenje",
+              "translations": { "sr": "Takmičenje", "sr-Cyrl": "Такмичење", "en": "Competition"}
+            },
+            {
+              "code": "edukacija",
+              "translations": { "sr": "Edukacija", "sr-Cyrl": "Едукација", "en": "Education"}
+            }
+          ]
         }
       ]
     },
     "Sportovi": {
+      "code": "sportovi",
       "sr": "Sportovi",
       "en": "Sports",
       "sr-Cyrl": "Спортови",
       "icon": "fas fa-futbol",
       "fields": [
         {
+          "code": "nazivSporta",
           "name": "nazivSporta",
           "type": "text",
           "label": {
@@ -107,6 +141,7 @@
           "required": true
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -116,8 +151,9 @@
           }
         },
         {
+          "code": "termin",
           "name": "termin",
-          "type": "datetime",
+          "type": "date",
           "label": {
             "sr": "Termin (ako postoji)",
             "en": "Date & time (if applicable)",
@@ -125,6 +161,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -136,12 +173,14 @@
       ]
     },
     "Objekti": {
+      "code": "objekti",
       "sr": "Sportski objekti",
       "en": "Sports facilities",
       "sr-Cyrl": "Спортски објекти",
       "icon": "fas fa-building",
       "fields": [
         {
+          "code": "nazivObjekta",
           "name": "nazivObjekta",
           "type": "text",
           "label": {
@@ -152,6 +191,7 @@
           "required": true
         },
         {
+          "code": "adresa",
           "name": "adresa",
           "type": "text",
           "label": {
@@ -162,6 +202,7 @@
           "required": true
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -171,6 +212,7 @@
           }
         },
         {
+          "code": "radnoVreme",
           "name": "radnoVreme",
           "type": "text",
           "label": {
@@ -180,8 +222,9 @@
           }
         },
         {
+          "code": "kapacitet",
           "name": "kapacitet",
-          "type": "number",
+          "type": "text",
           "label": {
             "sr": "Kapacitet (broj ljudi)",
             "en": "Capacity (number of people)",
@@ -189,6 +232,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -200,6 +244,7 @@
       ]
     },
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -214,6 +259,7 @@
       ],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -224,6 +270,7 @@
           "required": true
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -235,8 +282,9 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "naziv",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija vesti",
             "en": "News category",
@@ -249,9 +297,32 @@
             "Zdravlje",
             "Tehnologija"
           ],
+          "coded_options": [
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
+            },
+            {
+              "code": "obrazovanje",
+              "translations": { "sr": "Obrazovanje", "sr-Cyrl": "Образовање", "en": "Education"}
+            },
+            {
+              "code": "inovacije",
+              "translations": { "sr": "Inovacije", "sr-Cyrl": "Иновације", "en": "Inovations"}
+            },
+            {
+              "code": "zdravlje",
+              "translations": { "sr": "Zdravlje", "sr-Cyrl": "Здравље", "en": "Health"}
+            },
+            {
+              "code": "tehnologija",
+              "translations": { "sr": "Tehnologija", "sr-Cyrl": "Технологија", "en": "Technology"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -261,6 +332,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -270,6 +342,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -279,6 +352,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
