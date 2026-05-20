@@ -417,11 +417,11 @@ class Content
         $stmt = $this->pdo->prepare("SELECT * FROM content WHERE content_type_code = :type ORDER BY ordno DESC LIMIT 1");
         $stmt->execute([':type' => $type]);
 
-        $result = $stmt->fetchColumn();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($result === false) {
             $ordno = 1;
         } else {
-            $ordno = (int) $result + 1;
+            $ordno = (int) $result['ordno'] + 1;
         }
 
         $stmt = $this->pdo->prepare("INSERT INTO content (content_type_code, ordno) VALUES (:type, :ordno)");
@@ -513,7 +513,7 @@ class Content
         }
     }
 
-    private function processCategoryField(int $contentId, array $customField, array | null $cfValueVariants, string $categoryCode, ): void
+    private function processCategoryField(int $contentId, array $customField, array | null $cfValueVariants, string $categoryCode): void
     {
         $category = ContentType::fetchCategoryByContentTypeCodeAndCode($customField['content_type_code'], $categoryCode, true);
         if (empty($category)) {
@@ -539,7 +539,7 @@ class Content
         }
     }
 
-    private function processTimeField(int $contentId, array $customField, array | null $cfValueVariants, string $timeValue): void
+    private function processTimeField(int $contentId, array $customField, array | null $cfValueVariants, string | null $timeValue): void
     {
         if (empty($cfValueVariants)) {
             $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, content) VALUES (:content_id, :custom_field_id, :timeValue)");
@@ -560,7 +560,7 @@ class Content
         }
     }
 
-    private function processNonTranslatableField(int $contentId, array $customField, array | null $cfValueVariants, string $contentValue): void
+    private function processNonTranslatableField(int $contentId, array $customField, array | null $cfValueVariants, string | null $contentValue): void
     {
         if (empty($cfValueVariants)) {
             $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, content) VALUES (:content_id, :custom_field_id, :contentValue)");
@@ -581,20 +581,24 @@ class Content
         }
     }
 
-    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string $dateString, string $format = ''): void
+    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = ''): void
     {
-        try {
-            if (empty($format)) {
-                $date = new \DateTime($dateString);
-            } else {
-                $date = \DateTime::createFromFormat($format, $dateString);
-            }
-
-            if (!$date) {
-                throw new \Exception("Invalid date string or format: '$dateString'");
-            }
-        } catch (\Throwable $e) {
+        if (empty($dateString)) {
             $date = null;
+        } else {
+            try {
+                if (empty($format)) {
+                    $date = new \DateTime($dateString);
+                } else {
+                    $date = \DateTime::createFromFormat($format, $dateString);
+                }
+
+                if (!$date) {
+                    throw new \Exception("Invalid date string or format: '$dateString'");
+                }
+            } catch (\Throwable $e) {
+                $date = null;
+            }
         }
 
         if ($date) {
@@ -620,7 +624,7 @@ class Content
         }
     }
 
-    private function processTextField(int $contentId, array $customField, array | null $cfValueVariants, string $value, string $locale): void
+    private function processTextField(int $contentId, array $customField, array | null $cfValueVariants, string | null $value, string $locale): void
     {
         // error_log("Processing text field: $fieldName with value: $value for locale: $locale");
         $nonTranslatableTypes = ['url', 'email'];
