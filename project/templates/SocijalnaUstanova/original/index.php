@@ -731,48 +731,59 @@
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+
                 <!-- Service 1 -->
-                <div class="group">
-                    <button class="w-full bg-surface hover:bg-accent_orange_light border border-border_medium hover:border-accent_orange_border rounded-xl p-6 transition-all duration-300 hover:shadow-lg text-center">
+                <div class="group h-full">
+                    <button class="w-full h-full bg-surface hover:bg-accent_orange_light border border-border_medium hover:border-accent_orange_border rounded-xl p-6 transition-all duration-300 hover:shadow-lg text-center">
                         <div class="w-16 h-16 bg-accent_orange_light group-hover:bg-accent_orange_border rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-home text-accent_orange text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Služba smeštaja</h3>
+                        <h3 class="text-lg font-semibold text-text_primary mb-2">
+                            Služba smeštaja
+                        </h3>
                     </button>
                 </div>
+
                 <!-- Service 2 -->
-                <div class="group">
-                    <button class="w-full bg-surface hover:bg-accent_purple_light border border-border_medium hover:border-accent_purple_border rounded-xl p-6 transition-all duration-300 hover:shadow-lg text-center">
+                <div class="group h-full">
+                    <button class="w-full h-full bg-surface hover:bg-accent_purple_light border border-border_medium hover:border-accent_purple_border rounded-xl p-6 transition-all duration-300 hover:shadow-lg text-center">
                         <div class="w-16 h-16 bg-accent_purple_light group-hover:bg-accent_purple_border rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-user-friends text-accent_purple text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Služba dnevnih usluga u zajednici</h3>
+                        <h3 class="text-lg font-semibold text-text_primary mb-2">
+                            Služba dnevnih usluga u zajednici
+                        </h3>
                     </button>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="group">
-                    <button class="w-full bg-surface hover:bg-accent_pink_light border border-border_medium hover:border-accent_pink_hover rounded-xl p-6 transition-all duration-300 hover:shadow-lg text-center">
+                <div class="group h-full">
+                    <button class="w-full h-full bg-surface hover:bg-accent_pink_light border border-border_medium hover:border-accent_pink_hover rounded-xl p-6 transition-all duration-300 hover:shadow-lg text-center">
                         <div class="w-16 h-16 bg-accent_pink_light group-hover:bg-accent_pink_hover rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-heart text-accent_pink text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Služba za osamostaljivanje i podršku</h3>
+                        <h3 class="text-lg font-semibold text-text_primary mb-2">
+                            Služba za osamostaljivanje i podršku
+                        </h3>
                     </button>
                 </div>
 
                 <!-- Service 4 -->
-                <div class="group">
-                    <button class="w-full bg-surface hover:bg-warning_light border border-border_medium hover:border-warning rounded-xl p-6 transition-all duration-300 hover:shadow-lg text-center">
+                <div class="group h-full">
+                    <button class="w-full h-full bg-surface hover:bg-warning_light border border-border_medium hover:border-warning rounded-xl p-6 transition-all duration-300 hover:shadow-lg text-center">
                         <div class="w-16 h-16 bg-warning_light group-hover:bg-warning_hover rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-coins text-warning text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Služba za pravne i finansijsko-administrativne poslove</h3>
+                        <h3 class="text-lg font-semibold text-text_primary mb-2">
+                            Služba za pravne i finansijsko-administrativne poslove
+                        </h3>
                     </button>
                 </div>
+
             </div>
 
-            <div class="text-center">
+            <div class="text-center mt-12">
                 <a data-page="Sluzbe" href="/o-nama/sluzbe" class="bg-gradient-to-r from-info to-success text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-hands-helping mr-3"></i>
                     Saznaj više o našim službama
@@ -786,12 +797,12 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mr-3">
-                            <i class="fas fa-heart text-xl"></i>
+                    <a href="/" class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                            <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
-                        <h3 class="text-xl font-display font-bold">CENTAR ZA SOCIJALNI RAD</h3>
-                    </div>
+                        <h3 class="text-xl font-heading font-bold">CENTAR ZA SOCIJALNI RAD</h3>
+                    </a>
                     <p class="text-white/80 mb-4">
                         <strong>Matični broj (MB)</strong> 8970718
                     </p>
