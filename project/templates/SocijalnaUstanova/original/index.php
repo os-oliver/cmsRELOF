@@ -798,8 +798,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <a href="/" class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                            <img src="" alt="" style="width:75px;height:auto;" />
+                        <div class="w-24 h-24 rounded-xl flex items-center justify-center text-white text-2xl mr-4 shrink-0">
+                            <img src="putanja_do_loga.png" alt="Logo" class="w-full h-auto object-contain" />
                         </div>
                         <h3 class="text-xl font-heading font-bold">Centar za pružanje usluga socijalne zaštite Grada Zrenjanina Most</h3>
                     </a>
