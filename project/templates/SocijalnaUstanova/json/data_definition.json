@@ -181,7 +181,7 @@
               "translations": { "sr": "Plaćeno", "en": "Paid", "sr-Cyrl": "Плаћено" }
             }
           ],
-          "required": false
+          "required": true
         },
         {
           "code": "kontakt",

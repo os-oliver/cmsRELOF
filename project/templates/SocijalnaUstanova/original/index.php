@@ -801,7 +801,7 @@
                         <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
                             <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
-                        <h3 class="text-xl font-heading font-bold">CENTAR ZA SOCIJALNI RAD</h3>
+                        <h3 class="text-xl font-heading font-bold">Centar za pružanje usluga socijalne zaštite Grada Zrenjanina Most</h3>
                     </a>
                     <p class="text-white/80 mb-4">
                         <strong>Matični broj (MB)</strong> 8970718

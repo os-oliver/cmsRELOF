@@ -201,7 +201,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Mejl adresa</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">kontakt@centarmostzr.rs</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">kontakt@centarmostzr.com</p>
                                 </div>
                             </div>
                         </div>
