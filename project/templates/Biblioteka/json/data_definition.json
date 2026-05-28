@@ -1,6 +1,7 @@
 [
   {
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -19,6 +20,7 @@
 
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -29,6 +31,7 @@
           "required": true
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -40,23 +43,67 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "naziv",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija vesti",
             "en": "News category",
             "sr-Cyrl": "Категорија вести"
           },
           "options": [
-            "Kultura",
-            "Obrazovanje",
-            "Inovacije",
-            "Zdravlje",
-            "Tehnologija"
+            "Kultura i umetnost",
+            "Obrazovni programi",
+            "Književnost",
+            "Zavičajna zbirka",
+            "Radionice i tribine",
+            "Takmičenja",
+            "Naučni klub",
+            "Zabava",
+            "Obaveštenjе"
+          ],
+          "coded_options": [
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura i umetnost", "en": "Art and Culture", "sr-Cyrl": "Култура и уметност" }
+            },
+            {
+              "code": "obrazovni-programi",
+              "translations": { "sr": "Obrazovni programi", "en": "Educational programs", "sr-Cyrl": "Образовни програми" }
+            },
+            {
+              "code": "knjizevnost",
+              "translations": { "sr": "Književnost", "en": "Literature", "sr-Cyrl": "Књижевност" }
+            },
+            {
+              "code": "zavicajna-zbirka",
+              "translations": { "sr": "Zavičajna zbirka", "en": "Heritage", "sr-Cyrl": "Завичајна збирка" }
+            },
+            {
+              "code": "radionice",
+              "translations": { "sr": "Radionice i tribine", "en": "Workshops", "sr-Cyrl": "Радионице и трибине" }
+            },
+            {
+              "code": "takmicenja",
+              "translations": { "sr": "Takmičenja", "en": "Competitions", "sr-Cyrl": "Такмичења" }
+            },
+            {
+              "code": "naucni-klub",
+              "translations": { "sr": "Naučni klub", "en": "Science club", "sr-Cyrl": "Научни клуб" }
+            },
+            {
+              "code": "zabava",
+              "translations": { "sr": "Zabava", "en": "Leisure", "sr-Cyrl": "Забава" }
+            },
+            {
+              "code": "obavestenje",
+              "translations": { "sr": "Obaveštenjе", "en": "Announcements", "sr-Cyrl": "Обавештење" }
+            }
           ],
           "required": true
         },
         {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -66,6 +113,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -75,6 +123,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -84,6 +133,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -95,6 +145,7 @@
       ]
     },
     "Znacajne_licnosti": {
+      "code": "znacajne-licnosti",
       "sr": "Značajne ličnosti",
       "en": "Notable Persons",
       "sr-Cyrl": "Значајне личности",
@@ -102,6 +153,7 @@
       "categories": ["Istorija", "Nauka", "Kultura", "Umjetnost", "Sport"],
       "fields": [
         {
+          "code": "ime",
           "name": "ime",
           "type": "text",
           "label": {
@@ -112,6 +164,47 @@
           "required": true
         },
         {
+          "code": "main_category",
+          "name": "oblast",
+          "type": "options",
+          "label": {
+            "sr": "Oblast",
+            "en": "Area",
+            "sr-Cyrl": "Област"
+          },
+          "options": [
+            "Kultura",
+            "Istorija",
+            "Nauka",
+            "Umetnost",
+            "Sport"
+          ],
+          "coded_options": [
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura", "en": "Culture", "sr-Cyrl": "Култура" }
+            },
+            {
+              "code": "istorija",
+              "translations": { "sr": "Istorija", "en": "History", "sr-Cyrl": "Историја" }
+            },
+            {
+              "code": "nauka",
+              "translations": { "sr": "Nauka", "en": "Science", "sr-Cyrl": "Наука" }
+            },
+            {
+              "code": "umetnost",
+              "translations": { "sr": "Umetnost", "en": "Art", "sr-Cyrl": "Уметност" }
+            },
+            {
+              "code": "sport",
+              "translations": { "sr": "Sport", "en": "Sport", "sr-Cyrl": "Спорт" }
+            }
+          ],
+          "required": true
+        },
+        {
+          "code": "datum_rodjenja",
           "name": "datum_rodjenja",
           "type": "date",
           "label": {
@@ -121,6 +214,7 @@
           }
         },
         {
+          "code": "biografija",
           "name": "biografija",
           "type": "textarea",
           "label": {
@@ -130,6 +224,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -139,6 +234,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -150,6 +246,7 @@
       ]
     },
     "Odeljenja": {
+      "code": "odeljenja",
       "sr": "Odeljenja",
       "en": "Departments",
       "sr-Cyrl": "Одељења",
@@ -162,6 +259,7 @@
       ],
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -172,6 +270,42 @@
           "required": true
         },
         {
+          "code": "main_category",
+          "name": "vrsta",
+          "type": "options",
+          "label": {
+            "sr": "Tip",
+            "en": "Type",
+            "sr-Cyrl": "Тип"
+          },
+          "options": [
+            "Administracija",
+            "Biblioteka",
+            "Informacione Tehnologije",
+            "Obrazovanje"
+          ],
+          "coded_options": [
+            {
+              "code": "administracija",
+              "translations": { "sr": "Administracija", "en": "Administration", "sr-Cyrl": "Администрација" }
+            },
+            {
+              "code": "biblioteka",
+              "translations": { "sr": "Biblioteka", "en": "Library", "sr-Cyrl": "Библиотека" }
+            },
+            {
+              "code": "informacione-tehnologije",
+              "translations": { "sr": "Informacione Tehnologije", "en": "Information technology", "sr-Cyrl": "Информационе Технологије" }
+            },
+            {
+              "code": "obrazovanje",
+              "translations": { "sr": "Obrazovanje", "en": "Education", "sr-Cyrl": "Образовање" }
+            }
+          ],
+          "required": true
+        },
+        {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -181,6 +315,7 @@
           }
         },
         {
+          "code": "kontakt",
           "name": "kontakt",
           "type": "text",
           "label": {
@@ -190,6 +325,7 @@
           }
         },
         {
+          "code": "email",
           "name": "email",
           "type": "text",
           "label": {
@@ -199,6 +335,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -210,6 +347,7 @@
       ]
     },
     "Najave": {
+      "code": "najave",
       "sr": "Najave",
       "en": "Announcements",
       "sr-Cyrl": "Најаве",
@@ -217,6 +355,7 @@
       "categories": ["Događaji", "Radionice", "Predavanja", "Takmičenja"],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -227,6 +366,42 @@
           "required": true
         },
         {
+          "code": "main_category",
+          "name": "tip",
+          "type": "options",
+          "label": {
+            "sr": "Tip",
+            "en": "Type",
+            "sr-Cyrl": "Тип"
+          },
+          "options": [
+            "Događaji",
+            "Radionice",
+            "Predavanja",
+            "Takmičenja"
+          ],
+          "coded_options": [
+            {
+              "code": "dogadjaji",
+              "translations": { "sr": "Događaji", "en": "Events", "sr-Cyrl": "Догађаји" }
+            },
+            {
+              "code": "radionice",
+              "translations": { "sr": "Radionice", "en": "Workshops", "sr-Cyrl": "Радионице" }
+            },
+            {
+              "code": "predavanja",
+              "translations": { "sr": "Predavanja", "en": "Lectures", "sr-Cyrl": "Предавања" }
+            },
+            {
+              "code": "takmicenja",
+              "translations": { "sr": "Takmičenja", "en": "Competitions", "sr-Cyrl": "Такмичења" }
+            }
+          ],
+          "required": true
+        },
+        {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -238,6 +413,7 @@
           "property": "auto"
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -247,6 +423,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -255,6 +432,7 @@
             "sr-Cyrl": "Више информација"
           }
         }, {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
