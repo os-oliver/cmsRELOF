@@ -1,6 +1,7 @@
 [
   {
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -13,6 +14,7 @@
       ],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -23,6 +25,7 @@
           "required": true
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -34,8 +37,9 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "naziv",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija vesti",
             "en": "News category",
@@ -47,9 +51,28 @@
             "Projekti",
             "Konkursi"
           ],
+          "coded_options": [
+            {
+              "code": "obavestenja",
+              "translations": { "sr": "Obaveštenja", "sr-Cyrl": "Обавештења", "en": "Announcements"}
+            },
+            {
+              "code": "novi-naslovi",
+              "translations": { "sr": "Novi naslovi", "sr-Cyrl": "Нови наслови", "en": "New headlines"}
+            },
+            {
+              "code": "projekti",
+              "translations": { "sr": "Projekti", "sr-Cyrl": "Пројекти", "en": "Projects"}
+            },
+            {
+              "code": "konkursi",
+              "translations": { "sr": "Konkursi", "sr-Cyrl": "Конкурси", "en": "Competitions"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -59,6 +82,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -68,6 +92,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -77,6 +102,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -88,6 +114,7 @@
       ]
     },
     "Dogadjaji": {
+      "code": "dogadjaji",
       "sr": "Događaji",
       "en": "Events",
       "sr-Cyrl": "Догађаји",
@@ -102,6 +129,7 @@
       ],
       "fields": [
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -112,8 +140,9 @@
           "required": true
         },
         {
+          "code": "main_category",
           "name": "naziv",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija događaja",
             "en": "Event category",
@@ -127,9 +156,36 @@
             "Izložbe",
             "Projekcije"
           ],
+          "coded_options": [
+            {
+              "code": "promocije",
+              "translations": { "sr": "Promocije", "sr-Cyrl": "Промоције", "en": "Promotions"}
+            },
+            {
+              "code": "seminari",
+              "translations": { "sr": "Seminari", "sr-Cyrl": "Семинари", "en": "Seminars"}
+            },
+            {
+              "code": "radionice",
+              "translations": { "sr": "Radionice", "sr-Cyrl": "Радионице", "en": "Workshops"}
+            },
+            {
+              "code": "takmicenja",
+              "translations": { "sr": "Takmičenja", "sr-Cyrl": "Такмичења", "en": "Competitions"}
+            },
+            {
+              "code": "izlozbe",
+              "translations": { "sr": "Izložbe", "sr-Cyrl": "Изложбе", "en": "Exhibitions"}
+            },
+            {
+              "code": "projekcije",
+              "translations": { "sr": "Projekcije", "sr-Cyrl": "Пројекције", "en": "Projections"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -140,8 +196,9 @@
           "required": true
         },
         {
+          "code": "time",
           "name": "time",
-          "type": "time",
+          "type": "text",
           "label": {
             "sr": "Vreme početka",
             "en": "Start time",
@@ -150,6 +207,7 @@
           "required": true
         },
         {
+          "code": "location",
           "name": "location",
           "type": "text",
           "label": {
@@ -160,6 +218,7 @@
           "required": true
         },
         {
+          "code": "description",
           "name": "description",
           "type": "textarea",
           "label": {
@@ -169,6 +228,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -180,6 +240,7 @@
       ]
     },
     "Repertoar": {
+      "code": "repertoar",
       "sr": "Repertoar",
       "en": "Library Program",
       "sr-Cyrl": "Репертоар",
@@ -187,6 +248,7 @@
       "categories": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -197,6 +259,7 @@
           "required": true
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -208,17 +271,41 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "kategorija",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija",
             "en": "Category",
             "sr-Cyrl": "Категорија"
           },
           "options": ["Knjige", "Časopisi", "Filmovi", "Muzika", "Događaji"],
+          "coded_options": [
+            {
+              "code": "knjige",
+              "translations": { "sr": "Knjige", "sr-Cyrl": "Књиге", "en": "Books"}
+            },
+            {
+              "code": "casopisi",
+              "translations": { "sr": "Časopisi", "sr-Cyrl": "Часописи", "en": "Magazines"}
+            },
+            {
+              "code": "filmovi",
+              "translations": { "sr": "Filmovi", "sr-Cyrl": "Филмови", "en": "Movies"}
+            },
+            {
+              "code": "muzika",
+              "translations": { "sr": "Muzika", "sr-Cyrl": "Музика", "en": "Music"}
+            },
+            {
+              "code": "dogadjaji",
+              "translations": { "sr": "Događaji", "sr-Cyrl": "Догађаји", "en": "Events"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -228,6 +315,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -237,6 +325,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -246,6 +335,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
