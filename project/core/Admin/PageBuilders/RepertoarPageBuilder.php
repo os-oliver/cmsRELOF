@@ -159,14 +159,14 @@ CSS;
 function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
-    
+
     $html = "<form method='GET' action='' class='glass-search bg-white flex flex-col sm:flex-row items-center justify-between p-6 rounded-3xl shadow-xl mb-10 gap-4 border border-secondary/20'>";
-    
+
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
-        <input type='text' name='search' value='{$safeSearchValue}' 
-               placeholder='{$texts['search_placeholder']}' 
+        <input type='text' name='search' value='{$safeSearchValue}'
+               placeholder='{$texts['search_placeholder']}'
                class='w-full border rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm bg-white/80 text-primary_text placeholder-secondary_text font-body'>
-        <button type='submit' 
+        <button type='submit'
                 class='bg-primary hover:bg-primary_hover text-primarybtntxt px-6 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl font-semibold font-body'>
             {$texts['apply_button']}
         </button>
@@ -430,6 +430,7 @@ HTML;
         $additionalPHP = <<<'PHP'
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
+use App\Models\ContentType;
 use App\Models\GenericCategory;
 use App\Utils\HashMapTransformer;
 
@@ -454,7 +455,7 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
+$categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => []];
