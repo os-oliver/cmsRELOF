@@ -206,8 +206,8 @@ PHP;
 <main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold font-heading text-primary_text mb-2 mt-5">Organi upravljanja</h1>
-            <p class="text-secondary_text">Članovi organizacione strukture</p>
+            <h1 class="text-4xl font-bold font-heading text-primary-text mb-2">Organi upravljanja</h1>
+            <p class="text-secondary-text">Članovi organizacione strukture</p>
         </div>
 
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>

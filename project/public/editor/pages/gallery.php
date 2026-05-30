@@ -22,7 +22,7 @@ $documentModal = new Gallery();
     sort: $sort,
     search: $search,
     lang: $locale
-); 
+);
 $totalPages = (int) ceil($totalCount / $limit);
 ?>
 <!DOCTYPE html>
