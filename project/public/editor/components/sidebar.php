@@ -109,7 +109,7 @@
                         : 'fas fa-folder';
                     ?>
                     <li class="mb-1">
-                        <a href="/kontrolna-tabla/<?= $sectionName ?>" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === $sectionName)
+                        <a href="/kontrolna-tabla/<?= $sectionContent['code'] ?>" class="sidebar-item flex items-center p-3 rounded-lg <?= ($activeTab === $sectionContent['code'])
                               ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700'
                               : 'text-gray-600 hover:text-gray-900' ?>">
                             <i
@@ -140,10 +140,6 @@
             <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
         </div>
         <div class="ml-3">
-            <?php
-
-
-            ?>
             <p class="text-sm font-medium text-gray-800"><?= $name . ' ' . $surname ?> </p>
             <p class="text-xs text-primary-600"><?= $role ?></p>
         </div>
