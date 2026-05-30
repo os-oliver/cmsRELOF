@@ -35,7 +35,7 @@ class AboutUSController
 
             $iconPath = null;
             $allowed = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'ico'];
-            $destDir = __DIR__ . '/../../public/assets/icons';
+            $destDir = PUBLIC_ROOT . '/assets/icons';
             $finalIconName = 'icon.png'; // always overwrite this
 
             if (!is_dir($destDir)) {
@@ -216,7 +216,7 @@ class AboutUSController
                     echo json_encode(['error' => 'Invalid icon type']);
                     return;
                 }
-                $destDir = __DIR__ . '/../../public/assets/icons';
+                $destDir = PUBLIC_ROOT . '/assets/icons';
                 if (!is_dir($destDir)) {
                     mkdir($destDir, 0775, true);
                 }
@@ -243,6 +243,7 @@ class AboutUSController
                 'surname' => $data['surname'],
                 'position' => $data['position'] ?? null,
                 'biography' => $data['biography'] ?? null,
+                'email' => $data['email'] ?? null,
             ];
             if ($iconPath) {
                 $insertData['icon'] = $iconPath;
@@ -270,7 +271,7 @@ class AboutUSController
             }
 
             $updateData = [];
-            foreach (['name', 'surname', 'position', 'biography'] as $field) {
+            foreach (['name', 'surname', 'position', 'biography','email'] as $field) {
                 if (isset($payload[$field])) {
                     $updateData[$field] = trim($payload[$field]);
                 }
@@ -287,7 +288,7 @@ class AboutUSController
                     echo json_encode(['error' => 'Invalid icon type']);
                     return;
                 }
-                $destDir = __DIR__ . '/../../public/assets/icons';
+                $destDir = PUBLIC_ROOT . '/assets/icons';
                 if (!is_dir($destDir)) {
                     mkdir($destDir, 0775, true);
                 }

@@ -138,10 +138,10 @@ HTML;
         <div class="max-w-6xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold font-heading text-primary mb-6">
+                <h1 class="text-5xl font-heading font-bold text-primary_text">
                     Kontaktirajte nas
                 </h1>
-                <p class="text-xl text-primary_text font-body max-w-3xl mx-auto leading-relaxed">
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-body">
                     Vaše mišljenje nam je važno. Kontaktirajte nas za sve informacije ili pošaljite žalbu kako bismo
                     mogli da poboljšamo naše usluge.
                 </p>

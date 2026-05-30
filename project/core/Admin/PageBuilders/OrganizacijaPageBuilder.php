@@ -9,7 +9,7 @@ class OrganizacijaPageBuilder extends BasePageBuilder
     protected string $slug;
     private LanguageMapperController $translator;
 
-    private int $itemsPerPage = 3;
+    private int $itemsPerPage = 15;
     private int $descriptionMaxLength = 120;
     private int $imageHeight = 56;
     private int $paginationRange = 2;
@@ -203,11 +203,11 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-secondary_background to-background min-h-screen">
+<main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-5xl font-bold text-primary font-heading mb-2">Organi upravljanja</h1>
-            <p class="text-secondary-text font-body">Članovi organizacione strukture</p>
+            <h1 class="text-4xl font-bold font-heading text-primary-text mb-2">Organi upravljanja</h1>
+            <p class="text-secondary-text">Članovi organizacione strukture</p>
         </div>
 
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
@@ -230,6 +230,7 @@ PHP;
             }
             ?>
         </div>
+        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -251,6 +252,9 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih stavki';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $itemsPerPage = (int)$_GET['per_page'];
+}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
@@ -304,6 +308,7 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 
