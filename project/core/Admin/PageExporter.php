@@ -567,8 +567,8 @@ class PageExporter
                 $keyForFetch = $key ?? ''; // first parameter
                 $sixthParam = isset($parts[1]) ? "'{$parts[0]}'" : "null"; // use parts[1] if exists, else null
                 $id = str_replace(" ", '_', $id);
-                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale)['items'];\n";
-                $phpString .= "\$$id = HashMapTransformer::transform(\$$id" . "_raw, \$locale);\n\n";
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale, 'datum', 'DESC')['items'];\n";
+                $phpString .= "\$$id = HashMapTransformer::transformNew(\$$id" . "_raw, \$locale);\n\n";
             }
 
             error_log("Entry: '$entry', ID: '$id', Key: '$key', Passed: " . (isset($structureLower[$key]) ? "YES" : "NO"));
