@@ -14,22 +14,23 @@ class PredstavePageBuilder extends BasePageBuilder
     }
 
     protected string $css = <<<CSS
- 
+
     CSS;
     protected string $cardRender = <<<'HTML'
-    
+
     function cardRender(array $item, array $fieldLabels, string $locale): string
     {
-        // 
+        $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
+        //
         $autor = $item['fields']['autor'] ?? reset($item['fields']['autor'] ?? ['Unknown']);
         $naslov = $item['fields']['naslov'] ?? reset($item['fields']['naslov'] ?? ['Untitled']);
-        
+
         $autor = htmlspecialchars($autor, ENT_QUOTES, 'UTF-8');
         $naslov = htmlspecialchars($naslov, ENT_QUOTES, 'UTF-8');
 
         // Image
-        $imageUrl = !empty($item['image']) 
-            ? htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') 
+        $imageUrl = !empty($item['image'])
+            ? htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8')
             : 'https://via.placeholder.com/400x200?text=No+Image';
 
         // Card HTML
@@ -151,7 +152,7 @@ HTML;
         $itemsPerPage = 3;
         $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 
-     
+
 PHP;
         $additionalPHP .= $this->cardRender;
 
