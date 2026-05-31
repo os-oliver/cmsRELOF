@@ -1000,8 +1000,20 @@
         </div>
       </div>
 
-      <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-        <p>&copy; © 2024 Sva prava zadržava Muzej Ponišavlja Pirot</p>
+      <div class="border-t border-primary/10 pt-6 mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-xs opacity-80 md:w-3/5 order-2 md:order-1 text-center md:text-left">
+            <p class="mb-2">&copy; 2025 Sva prava zadržava Muzej Ponišavlja Pirot</p>
+            <div class="flex items-center justify-center md:justify-start gap-3 mt-3">
+                <p>
+                    Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
+                    zvanični stav Vlade Švajcarske.
+                </p>
+            </div>
+        </div>
+        <div class="flex items-center order-1 md:order-2">
+            <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO Logo"
+                class="h-15 md:h-15 object-contain hover:scale-105 transition-transform duration-300" />
+        </div>
       </div>
     </div>
   </footer>
