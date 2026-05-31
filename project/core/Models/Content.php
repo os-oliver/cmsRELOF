@@ -29,7 +29,7 @@ class Content
         }
 
         $this->pivoter = new Pivoter('field_name', 'content', 'id');
-        $uploadDir = realpath(__DIR__ . '/../../public/uploads');
+        $uploadDir = realpath(PUBLIC_ROOT . '/uploads');
         $this->uploader = new FileUploader($uploadDir);
         $this->genericHasImageId = $this->checkGenericHasImageId();
     }
@@ -257,6 +257,10 @@ class Content
                 continue;
             }
 
+            if ($fieldType === 'date') {
+                $post[$fieldName] = $this->normalizeDateToIso($post[$fieldName] ?? '');
+            }
+
             if ($fieldType === 'categories') {
                 $this->processCategoryField($contentID, $post[$fieldName] ?? null);
                 continue;
@@ -290,6 +294,35 @@ class Content
         } else {
             TextHelper::insertTextEntries($this->pdo, $contentID, $fieldName, $variants, 'generic_element');
         }
+    }
+
+    private function normalizeDateToIso(?string $value): string
+    {
+        $value = trim((string) $value);
+        if ($value === '') {
+            return '';
+        }
+
+        // Accept already-ISO values
+        if (preg_match('/^\d{4}-\d{2}-\d{2}/', $value)) {
+            return substr($value, 0, 10);
+        }
+
+        // Convert dd/mm/yyyy to iso
+        if (preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $value)) {
+            $dt = \DateTime::createFromFormat('d/m/Y', $value);
+            if ($dt instanceof \DateTime) {
+                return $dt->format('Y-m-d');
+            }
+        }
+
+        // Fallback: try strtotime and format if valid
+        $ts = strtotime($value);
+        if ($ts !== false) {
+            return date('Y-m-d', $ts);
+        }
+
+        return $value;
     }
 
     private function processCategoryField(int $contentID, $categoryValue): void
@@ -454,7 +487,7 @@ class Content
 
     private function deletePhysicalFile(string $relativePath): void
     {
-        $fullPath = realpath(__DIR__ . '/../../public') . DIRECTORY_SEPARATOR . ltrim($relativePath, '/');
+        $fullPath = PUBLIC_ROOT  . DIRECTORY_SEPARATOR . ltrim($relativePath, '/');
         if (is_file($fullPath)) {
             @unlink($fullPath);
         }
