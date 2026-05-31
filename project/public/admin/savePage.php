@@ -9,6 +9,7 @@ use App\Models\GenericCategory;
 use App\Models\Page;
 use App\Controllers\UserDefinedPagesController;
 use App\Utils\Config;
+use App\Utils\ContentTypeManager;
 
 // Require admin authentication
 AuthController::requireAdmin();
@@ -354,14 +355,8 @@ try {
             json_encode([$dataArray], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
         );
 
-        $allCategoriesToInsert = [];
-        foreach ($dataArray as $typeKey => $typeData) {
-            foreach (($typeData['categories'] ?? []) as $category) {
-                $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
-            }
-        }
+        ContentTypeManager::createTypes($data['typeOfInstitution']);
 
-        GenericCategory::replaceAllCategories($allCategoriesToInsert);
     } else {
         error_log("Single page export mode — skipping structure and categories.");
     }
