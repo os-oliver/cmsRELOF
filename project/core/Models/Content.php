@@ -6,6 +6,9 @@ use App\Utils\Config;
 use App\Utils\Pivoter;
 use App\Utils\TextHelper;
 use App\Utils\FileUploader;
+use App\Utils\LocaleManager;
+use DateTime;
+use Exception;
 use PDO;
 use Throwable;
 use RuntimeException;
@@ -34,6 +37,22 @@ class Content
         $this->genericHasImageId = $this->checkGenericHasImageId();
     }
 
+    public static function fetchById(int $id)
+    {
+        $content = new self;
+        try {
+            $stmt = $content->pdo->prepare("SELECT * FROM content WHERE id = :id");
+            $stmt->execute([':id' => $id]);
+            $content = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $content[0];
+        } catch (\Throwable $e) {
+            return [];
+        }
+
+        return [];
+    }
+
     // ============================================================
     // PUBLIC API
     // ============================================================
@@ -45,26 +64,38 @@ class Content
         }
 
         $type = $post['type'];
+        $typeBeforeConversion = $post['typeBeforeConversion'] ?? null;
         $isUpdate = isset($post['id']) && ((int) $post['id'] > 0);
+        if ($isUpdate) {
+            $existing = Content::fetchById($post['id']);
+            if (empty($existing)) {
+                $isUpdate = false;
+            }
+        }
 
         if (!Config::hasType($type)) {
-            throw new RuntimeException("No config found for type: {$type}");
+            if (!$typeBeforeConversion) {
+                throw new RuntimeException("No config found for type: {$type}");
+            } else {
+                if (!Config::hasType($typeBeforeConversion)) {
+                    throw new RuntimeException("No config found for type: {$type}");
+                }
+            }
         }
 
         $this->pdo->beginTransaction();
         try {
-            $contentID = $isUpdate
+            $contentId = $isUpdate
                 ? $this->updateContentRecord((int) $post['id'], $type)
                 : $this->insertContentRecord($type);
 
-            $fields = Config::getFields($type);
-            $this->processFields($contentID, $fields, $post, $files, $locale, $isUpdate);
+            $this->processFields($contentId, $type, $post, $files, $locale, $isUpdate);
 
             $this->pdo->commit();
 
             return [
                 'success' => true,
-                'id' => $contentID,
+                'id' => $contentId,
                 'message' => $isUpdate ? 'Updated' : 'Created',
             ];
         } catch (Throwable $e) {
@@ -73,7 +104,7 @@ class Content
         }
     }
 
-    public function fetchListData(
+    public function fetchListDataOld(
         string $type,
         string $q = '',
         int $page = 1,
@@ -151,6 +182,87 @@ class Content
         ];
     }
 
+    public function fetchListData(
+        string $type,
+        string $q = '',
+        int $page = 1,
+        int $per = 10,
+        int|string|null $categoryId = null, // ✅ can be id or name
+        string $lang = '',
+        string $orderingFieldCode = 'title',
+        string $sortingDirection = 'DESC'
+    ): array {
+        $locale = empty($lang) ? LocaleManager::get() : $lang;
+        $q = trim((string) $q);
+        $page = max(1, $page);
+        $per = max(1, min(100, $per));
+        $offset = ($page - 1) * $per;
+
+        $where = "c.content_type_code = :type";
+        $params = [':type' => $type];
+        $whereForCFV = $where; // we don't need to filter by option here
+
+        if (!empty($categoryId)) {
+
+            if (is_numeric($categoryId)) {
+                // if it's an integer, use directly
+                $where .= " AND cfv.option = :category_id";
+                $params[':category_id'] = (int) $categoryId;
+            } else {
+                $resolvedId = ContentType::fetchCategoryByContentTypeCodeAndCode($type, $categoryId);
+                if (!empty($resolvedId)) {
+                    $where .= " AND cfv.option = :category_id";
+                    $params[':category_id'] = $resolvedId['id'];
+                } else {
+                    // if no such category found, return empty result
+                    return [
+                        'success' => true,
+                        'total' => 0,
+                        'page' => $page,
+                        'per' => $per,
+                        'items' => []
+                    ];
+                }
+            }
+        }
+
+        $joinText = "INNER JOIN custom_field_value cfv ON cfv.content_id = c.id";
+        if ($q !== '') {
+            $joinText .= " AND cfv.content LIKE :q";
+            $params[':q'] = '%' . $q . '%';
+        }
+
+        $customField = CustomField::fetchByCode($type, $orderingFieldCode);
+        $orderingColumn = CustomField::decideColumnBasedOnCFtype($customField['type'] ?? '');
+
+        $total = $this->fetchTotalCountNew($where, $joinText, $params);
+        $contentIds = $this->fetchContentIdsNew($where, $joinText, $params, $per, $offset, $orderingColumn, $sortingDirection);
+        $cfvs = $this->fetchContentCFVsNew($contentIds, $whereForCFV, $joinText, $params, $locale);
+
+        if (empty($cfvs)) {
+            return [
+                'success' => true,
+                'total' => $total,
+                'page' => $page,
+                'per' => $per,
+                'items' => []
+            ];
+        }
+
+        $customFields = CustomField::fetchAllByContentTypeCode($type, true);
+        $allOptions = CustomFieldOption::fetchAllByContentTypeCode($type, true);
+
+        $items = $this->assembleItemsNew($cfvs, $type, $customFields, $allOptions, $locale);
+
+        return [
+            'success' => true,
+            'total' => $total,
+            'page' => $page,
+            'per' => $per,
+            'items' => $items
+        ];
+    }
+
     private function fetchCategoryIdByName(string $categoryName): ?int
     {
         // Trim to avoid accidental spaces
@@ -181,6 +293,45 @@ class Content
     }
 
 
+    public function fetchItemNew(int $id, $locale = null): array
+    {
+        $id = (int) $id;
+        if ($id <= 0) {
+            return ['success' => false, 'message' => 'Invalid id'];
+        }
+        error_log("Fetching item with id: $id");
+        $content = Content::fetchById($id);
+        $contentTypeCode = $content['content_type_code'];
+        $cfvs = CustomFieldValue::fetchAllByContentId($id, $locale);
+        $customFields = CustomField::fetchAllByContentTypeCode($contentTypeCode, true);
+        $allOptions = CustomFieldOption::fetchAllByContentTypeCode($contentTypeCode, true);
+
+        $mainCategoryCF = CustomField::isolateMainCategory($customFields);
+        $mainCategoryOptions = ContentType::fetchMainCategoriesByContentTypeCode($contentTypeCode, true);
+
+        if ($mainCategoryCF) {
+            foreach ($cfvs as $cfv) {
+                if ($cfv['custom_field_id'] == $mainCategoryCF['id']) {
+                    $mainCategoryTextValue = $this->getTextValue($cfv, 'options', $mainCategoryOptions, $locale);
+                }
+            }
+        }
+
+        $items = $this->assembleItemsNew($cfvs, $contentTypeCode, $customFields, $allOptions, $locale);
+        $item = reset($items);
+
+        return [
+            'success' => true,
+            'item' => [
+                'id' => $id,
+                'category_id' => $mainCategoryCF['code'] ?? null, // mozda option?
+                'category_code' => $mainCategoryCF['code'] ?? '',
+                'type' => $mainCategoryTextValue ?? 'Nepoznat tip sadržaja!',
+                'fields' => $item
+            ]
+        ];
+    }
+
     public function fetchItem(int $id, $locale = null): array
     {
         $id = (int) $id;
@@ -206,6 +357,7 @@ class Content
         ];
     }
 
+    /* ovo je verovatno deprecated, i vise se ne koristi */
     public function deleteById(int $id): array
     {
         $id = (int) $id;
@@ -225,18 +377,86 @@ class Content
         }
     }
 
+    public function deleteContentById(int $id): array
+    {
+        $id = (int) $id;
+        if ($id <= 0) {
+            return ['success' => false, 'message' => 'Invalid id'];
+        }
+
+        try {
+            $this->pdo->beginTransaction();
+
+            $this->deleteContentFiles($id);
+            $stmt = $this->pdo->prepare("DELETE FROM content WHERE id = :id");
+            $stmt->execute([':id' => $id]);
+
+            $this->pdo->commit();
+            return ['success' => true];
+        } catch (Throwable $e) {
+            $this->rollbackTransaction();
+            throw $e;
+        }
+    }
+
+    public static function addImagesToContent(int $contentId, array $imageField, array $images): void
+    {
+        if (empty($images)) {
+            return;
+        }
+
+        foreach ($images as $key => $imagePath) {
+            (new Content())->insertImageCFV($contentId, $imageField['id'], $imagePath, ($key + 1));
+        }
+    }
+
     // ============================================================
     // INSERT / UPDATE HELPERS
     // ============================================================
 
     private function insertContentRecord(string $type): int
     {
+        $stmt = $this->pdo->prepare("SELECT * FROM content WHERE content_type_code = :type ORDER BY ordno DESC LIMIT 1");
+        $stmt->execute([':type' => $type]);
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result === false) {
+            $ordno = 1;
+        } else {
+            $ordno = (int) $result['ordno'] + 1;
+        }
+
+        $stmt = $this->pdo->prepare("INSERT INTO content (content_type_code, ordno) VALUES (:type, :ordno)");
+        $stmt->execute([':type' => $type, ':ordno' => $ordno]);
+        return (int) $this->pdo->lastInsertId();
+    }
+
+    private function updateContentRecord(int $id, string $type): int
+    {
+        return $id;
+    }
+
+    private function deleteContentFiles(int $contentId)
+    {
+        $files = CustomFieldValue::findFileCFVsByContentId($contentId);
+        foreach($files as $file) {
+            if ($file['filepath']) {
+                $fullPath = PUBLIC_ROOT . $file['filepath'];
+                if (file_exists($fullPath)) {
+                    @unlink($fullPath);
+                }
+            }
+        }
+    }
+
+    private function insertContentRecordOld(string $type): int
+    {
         $stmt = $this->pdo->prepare("INSERT INTO generic_element (type) VALUES (:type)");
         $stmt->execute([':type' => $type]);
         return (int) $this->pdo->lastInsertId();
     }
 
-    private function updateContentRecord(int $id, string $type): int
+    private function updateContentRecordOld(int $id, string $type): int
     {
         $stmt = $this->pdo->prepare("UPDATE generic_element SET type = :type WHERE id = :id");
         $stmt->execute([':type' => $type, ':id' => $id]);
@@ -247,38 +467,170 @@ class Content
     // FIELD PROCESSING
     // ============================================================
 
-    private function processFields(int $contentID, array $fields, array $post, array $files, string $locale, bool $isUpdate): void
+    private function processFields(int $contentId, string $contentCode, array $post, array $files, string $locale, bool $isUpdate): void
     {
-        foreach ($fields as $fieldDef) {
-            $fieldName = $fieldDef['name'] ?? null;
-            $fieldType = $fieldDef['type'] ?? 'text';
+        $customFields = CustomField::fetchAllByContentTypeCode($contentCode);
+        $customFieldValues = CustomFieldValue::fetchAllByContentId($contentId);
 
-            if (!$fieldName) {
+        foreach ($customFields as $customField) {
+            $fieldCode = $customField['code'] ?? null;
+            $fieldType = $customField['type'] ?? 'text';
+
+            $cfValueVariants = [];
+            foreach ($customFieldValues as $existingCFV) {
+                if ($existingCFV['custom_field_id'] == $customField['id']) {
+                    $cfValueVariants[] = $existingCFV;
+                }
+            }
+
+            if ($fieldType === 'options') {
+                $this->processCategoryField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null);
+                continue;
+            }
+
+            if ($fieldType === 'time') {
+                $this->processTimeField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null);
                 continue;
             }
 
             if ($fieldType === 'date') {
-                $post[$fieldName] = $this->normalizeDateToIso($post[$fieldName] ?? '');
-            }
-
-            if ($fieldType === 'categories') {
-                $this->processCategoryField($contentID, $post[$fieldName] ?? null);
+                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, 'Y-m-d');
                 continue;
             }
 
             if (in_array($fieldType, ['file', 'multifile'], true)) {
-                $this->processFileField($contentID, $fieldDef, $post, $files, $isUpdate);
+                $this->processFileField($contentId, $customField, $cfValueVariants, $post, $files, $isUpdate);
                 continue;
             }
 
-            $this->processTextField($contentID, $fieldName, $post[$fieldName] ?? '', $locale, $isUpdate, $fieldType);
+            if ($fieldType === 'text' || $fieldType === 'textarea') {
+                $this->processTextField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? '', $locale);
+                continue;
+            }
+
+            if ($fieldType === 'email' || $fieldType === 'url') {
+                $this->processNonTranslatableField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? '');
+                continue;
+            }
         }
     }
 
-    private function processTextField(int $contentID, string $fieldName, string $value, string $locale, bool $isUpdate, string $type = ''): void
+    private function processCategoryField(int $contentId, array $customField, array | null $cfValueVariants, string $categoryCode): void
     {
-        error_log("Processing text field: $fieldName with value: $value for locale: $locale");
-        if ($fieldName === 'link' || $type == 'email') {
+        $category = ContentType::fetchCategoryByContentTypeCodeAndCode($customField['content_type_code'], $categoryCode, true);
+        if (empty($category)) {
+            throw new Exception('Invalid category chosen!');
+            return;
+        }
+
+        if (empty($cfValueVariants)) {
+            $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, `option`) VALUES (:content_id, :custom_field_id, :option)");
+            $stmt->execute([
+                ':content_id' => $contentId,
+                ':custom_field_id' => $customField['id'],
+                ':option' => $category['id']
+            ]);
+        } else {
+            $stmt = $this->pdo->prepare("UPDATE custom_field_value SET `option` = :optionId WHERE id = :id");
+            foreach ($cfValueVariants as $cfValue) {
+                $stmt->execute([
+                    ':id' => $cfValue['id'],
+                    ':optionId' => $category['id']
+                ]);
+            }
+        }
+    }
+
+    private function processTimeField(int $contentId, array $customField, array | null $cfValueVariants, string | null $timeValue): void
+    {
+        if (empty($cfValueVariants)) {
+            $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, content) VALUES (:content_id, :custom_field_id, :timeValue)");
+            $stmt->execute([
+                ':content_id' => $contentId,
+                ':custom_field_id' => $customField['id'],
+                ':timeValue' => $timeValue
+            ]);
+        } else {
+            $stmt = $this->pdo->prepare("UPDATE custom_field_value SET content = :timeValue WHERE id = :id");
+            // there should always be only one element in this array, otherwise there was some error in the database
+            foreach ($cfValueVariants as $cfValue) {
+                $stmt->execute([
+                    ':id' => $cfValue['id'],
+                    ':timeValue' => $timeValue,
+                ]);
+            }
+        }
+    }
+
+    private function processNonTranslatableField(int $contentId, array $customField, array | null $cfValueVariants, string | null $contentValue): void
+    {
+        if (empty($cfValueVariants)) {
+            $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, content) VALUES (:content_id, :custom_field_id, :contentValue)");
+            $stmt->execute([
+                ':content_id' => $contentId,
+                ':custom_field_id' => $customField['id'],
+                ':contentValue' => $contentValue
+            ]);
+        } else {
+            $stmt = $this->pdo->prepare("UPDATE custom_field_value SET content = :contentValue WHERE id = :id");
+            // there should always be only one element in this array, otherwise there was some error in the database
+            foreach ($cfValueVariants as $cfValue) {
+                $stmt->execute([
+                    ':id' => $cfValue['id'],
+                    ':contentValue' => $contentValue,
+                ]);
+            }
+        }
+    }
+
+    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = ''): void
+    {
+        if (empty($dateString)) {
+            $date = null;
+        } else {
+            try {
+                if (empty($format)) {
+                    $date = new \DateTime($dateString);
+                } else {
+                    $date = \DateTime::createFromFormat($format, $dateString);
+                }
+
+                if (!$date) {
+                    throw new \Exception("Invalid date string or format: '$dateString'");
+                }
+            } catch (\Throwable $e) {
+                $date = null;
+            }
+        }
+
+        if ($date) {
+            $date = $date->format('Y-m-d');
+        }
+
+        if (empty($cfValueVariants)) {
+            $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, date) VALUES (:content_id, :custom_field_id, :dateValue)");
+            $stmt->execute([
+                ':content_id' => $contentId,
+                ':custom_field_id' => $customField['id'],
+                ':dateValue' => $date
+            ]);
+        } else {
+            $stmt = $this->pdo->prepare("UPDATE custom_field_value SET date = :dateValue WHERE id = :id");
+            // there should always be only one element in this array, otherwise there was some error in the database
+            foreach ($cfValueVariants as $cfValue) {
+                $stmt->execute([
+                    ':id' => $cfValue['id'],
+                    ':dateValue' => $date,
+                ]);
+            }
+        }
+    }
+
+    private function processTextField(int $contentId, array $customField, array | null $cfValueVariants, string | null $value, string $locale): void
+    {
+        // error_log("Processing text field: $fieldName with value: $value for locale: $locale");
+        $nonTranslatableTypes = ['url', 'email'];
+        if (in_array($customField['type'], $nonTranslatableTypes)) {
             $variants = [
                 'sr' => $value,
                 'sr-Cyrl' => $value,
@@ -286,13 +638,46 @@ class Content
             ];
         } else {
             $variants = TextHelper::transliterateVariants($value, $locale);
-
+            $variants['en'] = $variants['sr'];
         }
 
-        if ($isUpdate) {
-            TextHelper::updateTextEntries($this->pdo, $contentID, $fieldName, $variants, 'generic_element');
+        if (empty($cfValueVariants)) {
+            $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, language, content) VALUES (:content_id, :custom_field_id, :language, :content)");
+            foreach ($variants as $lang => $value) {
+                $stmt->execute([
+                    ':content_id' => $contentId,
+                    ':custom_field_id' => $customField['id'],
+                    ':language' => $lang,
+                    ':content' => $value,
+                ]);
+            }
         } else {
-            TextHelper::insertTextEntries($this->pdo, $contentID, $fieldName, $variants, 'generic_element');
+            $stmt = $this->pdo->prepare("UPDATE custom_field_value SET content = :content WHERE id = :id");
+            foreach ($cfValueVariants as $cfValue) {
+                if (array_key_exists($cfValue['language'], $variants)) {
+                    $stmt->execute([
+                        ':id' => $cfValue['id'],
+                        ':content' => $variants[$cfValue['language']],
+                    ]);
+                }
+            }
+        }
+    }
+
+    private function processFileField(int $contentId, array $customField, array | null $cfValueVariants, array $post, array $files, bool $isUpdate): void
+    {
+        $fieldCode = $customField['code'];
+        $fieldType = $customField['type'];
+        $isMultipleField = $fieldType === 'multifile';
+
+        // Handle file removals
+        if ($isUpdate) {
+            $this->handleFileRemoval($contentId, $post['remove_' . $fieldCode] ?? []);
+        }
+
+        // Handle new file uploads
+        if (isset($files[$fieldCode]) && $files[$fieldCode]['error'] !== UPLOAD_ERR_NO_FILE) {
+            $this->handleFileUpload($contentId, $files[$fieldCode], $customField, $cfValueVariants, $isMultipleField, $isUpdate);
         }
     }
 
@@ -325,41 +710,15 @@ class Content
         return $value;
     }
 
-    private function processCategoryField(int $contentID, $categoryValue): void
-    {
-        $value = $categoryValue !== null ? (int) $categoryValue : null;
-        $stmt = $this->pdo->prepare("UPDATE generic_element SET category_id = :cat WHERE id = :id");
-        $stmt->execute([':cat' => $value, ':id' => $contentID]);
-    }
-
-    private function processFileField(int $contentID, array $fieldDef, array $post, array $files, bool $isUpdate): void
-    {
-        $fieldName = $fieldDef['name'];
-        $fieldType = $fieldDef['type'];
-        $isMultipleField = $fieldType === 'multifile';
-
-        // Handle file removals
-        if ($isUpdate) {
-            $this->handleFileRemoval($contentID, $post['remove_' . $fieldName] ?? []);
-        }
-
-        // Handle new file uploads
-        if (isset($files[$fieldName]) && $files[$fieldName]['error'] !== UPLOAD_ERR_NO_FILE) {
-            $this->handleFileUpload($contentID, $files[$fieldName], $isMultipleField, $isUpdate);
-        }
-    }
-
     // ============================================================
     // FILE HANDLING
     // ============================================================
 
-    private function handleFileRemoval(int $contentID, $removeValues): void
+    private function handleFileRemoval(int $contentId, $removeValues): void
     {
         if (empty($removeValues) || !is_array($removeValues)) {
             return;
         }
-
-        $imageIdCol = Image::primaryKeyName();
 
         foreach ($removeValues as $filePath) {
             $filePath = trim((string) $filePath);
@@ -367,18 +726,17 @@ class Content
                 continue;
             }
 
-            $imgId = $this->findImageIdByPath($filePath);
+            $cfvId = CustomFieldValue::findImageCFVByContentIdAndPath($contentId, $filePath);
 
-            if ($imgId) {
-                $this->deleteImageRecord($imgId);
-                $this->clearGenericElementImageLink($contentID, $imgId);
+            if ($cfvId) {
+                CustomFieldValue::deleteCFV($cfvId);
             }
 
             $this->deletePhysicalFile($filePath);
         }
     }
 
-    private function handleFileUpload(int $contentID, array $fileField, bool $isMultiple, bool $isUpdate): void
+    private function handleFileUpload(int $contentId, array $fileField, array $customField, array $existingCFV, bool $isMultiple, bool $isUpdate): void
     {
         if (!is_array($fileField['name'])) {
             return;
@@ -403,11 +761,18 @@ class Content
             if ($uploadedFilename) {
                 $publicPath = '/uploads/' . $uploadedFilename;
 
-                if ($isMultiple) {
-                    $this->insertImageRecord($contentID, $publicPath);
+                if (!$isMultiple && count($existingCFV) > 0) {
+                    $this->deletePhysicalFile($existingCFV[0]['filepath']);
+                    $this->updateImageCFV($existingCFV[0], $publicPath);
                 } else {
-                    $this->replaceSingleImage($contentID, $publicPath, $isUpdate);
+                    self::insertImageCFV($contentId, $customField['id'], $publicPath, ($k + 1));
                 }
+
+
+                // if ($isMultiple) {
+                // } else {
+                //     $this->replaceSingleImage($contentId, $publicPath, $isUpdate);
+                // }
             }
         }
     }
@@ -426,6 +791,26 @@ class Content
         if ($this->genericHasImageId) {
             $this->updateGenericElementImageId($contentID, $newImgId);
         }
+    }
+
+    private function insertImageCFV(int $contentId, int $customFieldId, string $publicPath, int $ordno): void
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, filepath, ordno) VALUES (:content_id, :custom_field_id, :filepath, :ordno)");
+        $stmt->execute([
+            ':content_id' => $contentId,
+            ':custom_field_id' => $customFieldId,
+            ':filepath' => $publicPath,
+            ':ordno' => $ordno,
+        ]);
+    }
+
+    private function updateImageCFV(array $customFieldValue, string $publicPath): void
+    {
+        $stmt = $this->pdo->prepare("UPDATE custom_field_value SET filepath = :new_path WHERE id = :id");
+        $stmt->execute([
+            ':id' => $customFieldValue['id'],
+            ':new_path' => $publicPath,
+        ]);
     }
 
     // ============================================================
@@ -463,14 +848,6 @@ class Content
         $stmt->execute([':id' => $imageId]);
     }
 
-    private function clearGenericElementImageLink(int $contentID, int $imageId): void
-    {
-        if ($this->genericHasImageId) {
-            $stmt = $this->pdo->prepare("UPDATE generic_element SET image_id = NULL WHERE id = :id AND image_id = :img");
-            $stmt->execute([':id' => $contentID, ':img' => $imageId]);
-        }
-    }
-
     private function fetchOldImageId(int $contentID): ?int
     {
         $stmt = $this->pdo->prepare("SELECT image_id FROM generic_element WHERE id = :id");
@@ -496,6 +873,75 @@ class Content
     // ============================================================
     // FETCH HELPERS
     // ============================================================
+
+    private function fetchTotalCountNew(string $where, string $joinText, array $params): int
+    {
+        $sql = "SELECT COUNT(DISTINCT c.id) FROM content c {$joinText} WHERE {$where}";
+        $stmt = $this->pdo->prepare($sql);
+
+        foreach ($params as $k => $v) {
+            $stmt->bindValue($k, $v, $k === ':q' ? PDO::PARAM_STR : (is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR));
+        }
+
+        $stmt->execute();
+        return (int) $stmt->fetchColumn();
+    }
+
+    private function fetchContentIdsNew(string $where, string $joinText, array $params, int $limit, int $offset, ?string $orderColumn = '', string $direction = 'DESC'): array
+    {
+        $fullOrdering = 'c.id ' . $direction;
+        $grouping = 'cfv.content_id';
+
+        if (!empty($orderColumn)) {
+            $fullOrdering = 'cfv.' . $orderColumn . ' ' . $direction;
+            $grouping = 'cfv.' . $orderColumn;
+        }
+
+        $sql = "SELECT c.id, {$grouping} FROM content c {$joinText} WHERE {$where} GROUP BY c.id, {$grouping} ORDER BY {$fullOrdering}";
+
+        $outerSql = "SELECT DISTINCT id FROM ({$sql}) AS grouped LIMIT :lim OFFSET :off";
+
+        $stmt = $this->pdo->prepare($outerSql);
+
+        foreach ($params as $k => $v) {
+            $stmt->bindValue($k, $v, $k === ':q' ? PDO::PARAM_STR : (is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR));
+        }
+
+        $stmt->bindValue(':lim', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':off', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
+    private function fetchContentCFVsNew(array $contentIds, string $where, string $joinText, array $params, string $locale): array
+    {
+        if (count($contentIds) <= 0) {
+            return [];
+        }
+
+        $ids = [];
+        for ($i = 0; $i < count($contentIds); $i++) {
+            $ids[] = ':id_' . $i;
+        }
+
+        $sql = "SELECT cfv.* FROM content c {$joinText} WHERE {$where}
+            AND (cfv.language = :lang OR cfv.language IS NULL) AND c.id IN (".join(',', $ids).") ORDER BY FIELD(c.id, ".join(',', $ids).")";
+        $stmt = $this->pdo->prepare($sql);
+
+        foreach ($params as $k => $v) {
+            $stmt->bindValue($k, $v, $k === ':q' ? PDO::PARAM_STR : (is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR));
+        }
+
+        foreach ($ids as $index => $id) {
+            $stmt->bindValue($id, $contentIds[$index], PDO::PARAM_INT);
+        }
+
+        $stmt->bindValue(':lang', $locale, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     private function fetchTotalCount(string $where, string $joinText, array $params): int
     {
@@ -545,6 +991,15 @@ class Content
         }
 
         return $texts;
+    }
+
+    private function fetchCategoriesNew(string $type): array
+    {
+        $sql = "SELECT * FROM custom_field_option WHERE content_type_code = :ctcode";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['ctcode' => $type]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     private function fetchCategories(array $ids, string $lang): array
@@ -682,6 +1137,54 @@ class Content
         return $result;
     }
 
+    private function assembleItemsNew(array $cfvs, string $type, array $customFields, array $options, string $lang): array
+    {
+        $customFields = $this->remapById($customFields);
+        $items = [];
+
+        foreach ($cfvs as $cfv) {
+            $cfType = $customFields[$cfv['custom_field_id']]['type'];
+            $cfLabel = $customFields[$cfv['custom_field_id']]['translations'][$lang] ?? 'nepoznat naziv';
+
+            $item = [
+                'content_id' => $cfv['content_id'],
+                'id' => $cfv['id'],
+                'code' => $customFields[$cfv['custom_field_id']]['code'],
+                'label' => $cfLabel,
+                'textValue' => $this->getTextValue($cfv, $cfType, $options, $lang),
+            ];
+
+            // dodatni atributi za neke specijalne slucajeve
+            if ($cfType == 'options') {
+                $options = $this->remapById($options);
+                $option = $options[$cfv['option']]['option_value'] ?? '';
+
+                $item['option_value'] = $option;
+            }
+
+            if ($cfType == 'date') {
+                if (!empty($cfv['date'])) {
+                    $item['timestamp'] = date_timestamp_get(new \DateTime($cfv['date']));
+                }
+            }
+
+            if ($cfType == 'file') {
+                if (!empty($cfv['filepath'])) {
+                    $item['imageUrl'] = $cfv['filepath'];
+                }
+            }
+
+            $items[] = $item;
+        }
+
+        $itemsGroupedByContentId = [];
+        foreach ($items as $item) {
+            $itemsGroupedByContentId[$item['content_id']][] = $item;
+        }
+
+        return $itemsGroupedByContentId;
+    }
+
     private function assembleItems(array $ids, string $type, array $texts, array $categories, array $imagesByElement): array
     {
         $items = [];
@@ -730,6 +1233,42 @@ class Content
         }
 
         return $fields;
+    }
+
+    private function remapById(array $items)
+    {
+        return array_column($items, null, 'id');
+    }
+
+    private function getTextValue(array $cfv, string $cfvType, array $options, string $lang)
+    {
+        $options = $this->remapById($options);
+
+        switch ($cfvType) {
+            case 'text':
+            case 'time':
+            case 'url':
+            case 'email':
+                return $cfv['content'];
+            case 'date':
+                if (!empty($cfv['date'])) {
+                    return date_format(new DateTime($cfv['date']), 'd/m/Y');
+                } else {
+                    return '';
+                }
+            case 'yesno':
+                return (bool) $cfv['yesno'];
+            case 'options':
+                $option = $options[$cfv['option']] ?? '';
+                if (empty($option)) {
+                    return 'nepoznata opcija';
+                }
+                return $option['translations'][$lang] ?? 'nepoznat jezik';
+            case 'file':
+                return $cfv['filepath'];
+            default:
+                return $cfv['content'];
+        }
     }
 
 
