@@ -1,6 +1,7 @@
 [
   {
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -14,6 +15,7 @@
       ],
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -24,6 +26,7 @@
           "required": true
         },
         {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -33,6 +36,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -44,22 +48,47 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "kategorije",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija vesti",
             "en": "News category",
             "sr-Cyrl": "Категорија вести"
           },
           "options": [
-            "Vesti",
-            "Naučni klub",
-            "Seminari",
-            "Radionice"
+            "Manifestacije",
+            "Bioskop",
+            "Pozorište",
+            "Izložbe",
+            "Koncerti"
+          ],
+          "coded_options": [
+            {
+              "code": "manifestacije",
+              "translations": { "sr": "Manifestacije", "sr-Cyrl": "Манифестације", "en": "Events"}
+            },
+            {
+              "code": "bioskop",
+              "translations": { "sr": "Bioskop", "sr-Cyrl": "Биоскоп", "en": "Cinema"}
+            },
+            {
+              "code": "pozoriste",
+              "translations": { "sr": "Pozorište", "sr-Cyrl": "Позориште", "en": "Theater"}
+            },
+            {
+              "code": "izlozbe",
+              "translations": { "sr": "Izložbe", "sr-Cyrl": "Изложбе", "en": "Exhibitions"}
+            },
+            {
+              "code": "koncerti",
+              "translations": { "sr": "Koncerti", "sr-Cyrl": "Концерти", "en": "Concerts"}
+            }
           ],
           "required": true
         },
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -70,6 +99,7 @@
           "required": true
         },
         {
+          "code": "tekst",
           "name": "tekst",
           "type": "textarea",
           "label": {
@@ -81,6 +111,7 @@
       ]
     },
     "Manifestacije": {
+      "code": "manifestacije",
       "sr": "Manifestacije",
       "en": "Festivals & Events",
       "sr-Cyrl": "Манифестације",
@@ -99,6 +130,7 @@
       ],
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -109,6 +141,7 @@
           "required": true
         },
         {
+          "code": "poslednje_azuriranje",
           "name": "poslednje_azuriranje",
           "type": "date",
           "label": {
@@ -120,16 +153,72 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "kategorija",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija manifestacije",
             "en": "Event category",
             "sr-Cyrl": "Категорија манифестације"
           },
+          "options": [
+            "Festival",
+            "Koncert",
+            "Sajam",
+            "Gastro",
+            "Kultura",
+            "Sport",
+            "Porodično",
+            "Tradicionalno",
+            "Karneval",
+            "Izložba"
+          ],
+          "coded_options": [
+            {
+              "code": "festival",
+              "translations": { "sr": "Festival", "sr-Cyrl": "Фестивал", "en": "Festival"}
+            },
+            {
+              "code": "koncert",
+              "translations": { "sr": "Koncert", "sr-Cyrl": "Концерт", "en": "Concert"}
+            },
+            {
+              "code": "sajam",
+              "translations": { "sr": "Sajam", "sr-Cyrl": "Сајам", "en": "Fair"}
+            },
+            {
+              "code": "gastro",
+              "translations": { "sr": "Gastro", "sr-Cyrl": "Гастро", "en": "Gastro"}
+            },
+            {
+              "code": "kultura",
+              "translations": { "sr": "Kultura", "sr-Cyrl": "Култура", "en": "Culture"}
+            },
+            {
+              "code": "sport",
+              "translations": { "sr": "Sport", "sr-Cyrl": "Спорт", "en": "Sport"}
+            },
+            {
+              "code": "porodicno",
+              "translations": { "sr": "Porodično", "sr-Cyrl": "Породично", "en": "Family"}
+            },
+            {
+              "code": "tradicionalno",
+              "translations": { "sr": "Tradicionalno", "sr-Cyrl": "Традиционално", "en": "Traditional"}
+            },
+            {
+              "code": "karneval",
+              "translations": { "sr": "Karneval", "sr-Cyrl": "Карневал", "en": "Carneval"}
+            },
+            {
+              "code": "izlozba",
+              "translations": { "sr": "Izložba", "sr-Cyrl": "Изложба", "en": "Exhibition"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "drzava",
           "name": "drzava",
           "type": "text",
           "label": {
@@ -140,6 +229,7 @@
           "required": true
         },
         {
+          "code": "grad",
           "name": "grad",
           "type": "text",
           "label": {
@@ -149,6 +239,7 @@
           }
         },
         {
+          "code": "lokacija",
           "name": "lokacija",
           "type": "text",
           "label": {
@@ -158,6 +249,7 @@
           }
         },
         {
+          "code": "adresa",
           "name": "adresa",
           "type": "text",
           "label": {
@@ -167,6 +259,7 @@
           }
         },
         {
+          "code": "datum_pocetka",
           "name": "datum_pocetka",
           "type": "date",
           "label": {
@@ -177,6 +270,7 @@
           "required": true
         },
         {
+          "code": "datum_zavrsetka",
           "name": "datum_zavrsetka",
           "type": "date",
           "label": {
@@ -186,8 +280,9 @@
           }
         },
         {
+          "code": "vreme_pocetka",
           "name": "vreme_pocetka",
-          "type": "time",
+          "type": "text",
           "label": {
             "sr": "Vreme početka",
             "en": "Start time",
@@ -195,8 +290,9 @@
           }
         },
         {
+          "code": "vreme_zavrsetka",
           "name": "vreme_zavrsetka",
-          "type": "time",
+          "type": "text",
           "label": {
             "sr": "Vreme završetka",
             "en": "End time",
@@ -204,6 +300,7 @@
           }
         },
         {
+          "code": "kratak_opis",
           "name": "kratak_opis",
           "type": "textarea",
           "label": {
@@ -213,6 +310,7 @@
           }
         },
         {
+          "code": "detaljan_opis",
           "name": "detaljan_opis",
           "type": "textarea",
           "label": {
@@ -222,6 +320,7 @@
           }
         },
         {
+          "code": "program",
           "name": "program",
           "type": "url",
           "label": {
@@ -231,6 +330,7 @@
           }
         },
         {
+          "code": "ulaznica_cena",
           "name": "ulaznica_cena",
           "type": "text",
           "label": {
@@ -245,6 +345,7 @@
           }
         },
         {
+          "code": "tip_ulaza",
           "name": "tip_ulaza",
           "type": "text",
           "label": {
@@ -259,6 +360,7 @@
           }
         },
         {
+          "code": "uzrast",
           "name": "uzrast",
           "type": "text",
           "label": {
@@ -273,6 +375,7 @@
           }
         },
         {
+          "code": "tagovi",
           "name": "tagovi",
           "type": "text",
           "label": {
@@ -287,6 +390,7 @@
           }
         },
         {
+          "code": "aktivnosti",
           "name": "aktivnosti",
           "type": "text",
           "label": {
@@ -301,6 +405,7 @@
           }
         },
         {
+          "code": "pristupacnost",
           "name": "pristupacnost",
           "type": "text",
           "label": {
@@ -315,6 +420,7 @@
           }
         },
         {
+          "code": "organizator",
           "name": "organizator",
           "type": "text",
           "label": {
@@ -324,6 +430,7 @@
           }
         },
         {
+          "code": "kontakt",
           "name": "kontakt",
           "type": "text",
           "label": {
@@ -333,6 +440,7 @@
           }
         },
         {
+          "code": "map_link",
           "name": "map_link",
           "type": "url",
           "label": {
@@ -342,6 +450,7 @@
           }
         },
         {
+          "code": "zvanicni_sajt",
           "name": "zvanicni_sajt",
           "type": "url",
           "label": {
@@ -351,6 +460,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -360,6 +470,7 @@
           }
         },
         {
+          "code": "galerija",
           "name": "galerija",
           "type": "file",
           "label": {
@@ -370,6 +481,7 @@
           "property": "multiple"
         },
         {
+          "code": "video",
           "name": "video",
           "type": "url",
           "label": {
@@ -379,6 +491,7 @@
           }
         },
         {
+          "code": "ocena",
           "name": "ocena",
           "type": "text",
           "label": {
@@ -390,6 +503,7 @@
       ]
     },
     "Koncerti": {
+      "code": "koncerti",
       "sr": "Koncerti",
       "en": "Concerts",
       "sr-Cyrl": "Концерти",
@@ -404,6 +518,7 @@
       ],
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -414,6 +529,7 @@
           "required": true
         },
         {
+          "code": "poslednje_azuriranje",
           "name": "poslednje_azuriranje",
           "type": "date",
           "label": {
@@ -425,16 +541,52 @@
           "property": "auto"
         },
         {
+          "code": "main_category",
           "name": "kategorija",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija manifestacije",
             "en": "Event category",
             "sr-Cyrl": "Категорија манифестације"
           },
+          "options": [
+            "Rok",
+            "Pop",
+            "Džez",
+            "Klasika",
+            "Folk",
+            "Elektronska"
+          ],
+          "coded_options": [
+            {
+              "code": "rok",
+              "translations": { "sr": "Rok", "sr-Cyrl": "Рок", "en": "Rock"}
+            },
+            {
+              "code": "pop",
+              "translations": { "sr": "Pop", "sr-Cyrl": "Поп", "en": "Pop"}
+            },
+            {
+              "code": "dzez",
+              "translations": { "sr": "Džez", "sr-Cyrl": "Џез", "en": "Jazz"}
+            },
+            {
+              "code": "klasika",
+              "translations": { "sr": "Klasika", "sr-Cyrl": "Класика", "en": "Classic"}
+            },
+            {
+              "code": "folk",
+              "translations": { "sr": "Folk", "sr-Cyrl": "Фолк", "en": "Folk"}
+            },
+            {
+              "code": "elektronska",
+              "translations": { "sr": "Elektronska", "sr-Cyrl": "Електронска", "en": "Electronic"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "drzava",
           "name": "drzava",
           "type": "text",
           "label": {
@@ -445,6 +597,7 @@
           "required": true
         },
         {
+          "code": "grad",
           "name": "grad",
           "type": "text",
           "label": {
@@ -454,6 +607,7 @@
           }
         },
         {
+          "code": "lokacija",
           "name": "lokacija",
           "type": "text",
           "label": {
@@ -463,6 +617,7 @@
           }
         },
         {
+          "code": "datum_pocetka",
           "name": "datum_pocetka",
           "type": "date",
           "label": {
@@ -473,8 +628,9 @@
           "required": true
         },
         {
+          "code": "vreme_pocetka",
           "name": "vreme_pocetka",
-          "type": "time",
+          "type": "text",
           "label": {
             "sr": "Vreme",
             "en": "Time",
@@ -482,6 +638,7 @@
           }
         },
         {
+          "code": "kratak_opis",
           "name": "kratak_opis",
           "type": "textarea",
           "label": {
@@ -491,6 +648,7 @@
           }
         },
         {
+          "code": "detaljan_opis",
           "name": "detaljan_opis",
           "type": "textarea",
           "label": {
@@ -500,6 +658,7 @@
           }
         },
         {
+          "code": "program",
           "name": "program",
           "type": "url",
           "label": {
@@ -509,6 +668,7 @@
           }
         },
         {
+          "code": "ulaznica_cena",
           "name": "ulaznica_cena",
           "type": "text",
           "label": {
@@ -523,6 +683,7 @@
           }
         },
         {
+          "code": "tip_ulaza",
           "name": "tip_ulaza",
           "type": "text",
           "label": {
@@ -537,6 +698,7 @@
           }
         },
         {
+          "code": "uzrast",
           "name": "uzrast",
           "type": "text",
           "label": {
@@ -551,6 +713,7 @@
           }
         },
         {
+          "code": "tagovi",
           "name": "tagovi",
           "type": "text",
           "label": {
@@ -565,6 +728,7 @@
           }
         },
         {
+          "code": "aktivnosti",
           "name": "aktivnosti",
           "type": "text",
           "label": {
@@ -579,6 +743,7 @@
           }
         },
         {
+          "code": "organizator",
           "name": "organizator",
           "type": "text",
           "label": {
@@ -588,6 +753,7 @@
           }
         },
         {
+          "code": "map_link",
           "name": "map_link",
           "type": "url",
           "label": {
@@ -597,6 +763,7 @@
           }
         },
         {
+          "code": "zvanicni_sajt",
           "name": "zvanicni_sajt",
           "type": "url",
           "label": {
@@ -606,6 +773,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -615,6 +783,7 @@
           }
         },
         {
+          "code": "galerija",
           "name": "galerija",
           "type": "file",
           "label": {
@@ -625,6 +794,7 @@
           "property": "multiple"
         },
         {
+          "code": "video",
           "name": "video",
           "type": "url",
           "label": {
@@ -636,6 +806,7 @@
       ]
     },
     "Izlozbe": {
+      "code": "izlozbe",
       "sr": "Izložbe",
       "en": "Exhibitions",
       "sr-Cyrl": "Изложбе",
@@ -649,6 +820,7 @@
       ],
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -659,6 +831,7 @@
           "required": true
         },
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -669,6 +842,47 @@
           "required": true
         },
         {
+          "code": "main_category",
+          "name": "kategorija",
+          "type": "options",
+          "label": {
+            "sr": "Kategorija",
+            "en": "Category",
+            "sr-Cyrl": "Категорија"
+          },
+          "options": [
+            "Likovna umetnost",
+            "Fotografija",
+            "Skulptura",
+            "Multimedija",
+            "Digitalna umetnost"
+          ],
+          "coded_options": [
+            {
+              "code": "likovna-umetnost",
+              "translations": { "sr": "Likovna umetnost", "sr-Cyrl": "Ликовна уметност", "en": "Fine art"}
+            },
+            {
+              "code": "fotografija",
+              "translations": { "sr": "Fotografija", "sr-Cyrl": "Фотографија", "en": "Photography"}
+            },
+            {
+              "code": "skulptura",
+              "translations": { "sr": "Skulptura", "sr-Cyrl": "Скулптура", "en": "Scuplture"}
+            },
+            {
+              "code": "multimedija",
+              "translations": { "sr": "Multimedija", "sr-Cyrl": "Мултимедија", "en": "Multimedia"}
+            },
+            {
+              "code": "digitalna-umetnost",
+              "translations": { "sr": "Digitalna umetnost", "sr-Cyrl": "Дигитална уметност", "en": "Digital art"}
+            }
+          ],
+          "required": true
+        },
+        {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -678,6 +892,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -687,6 +902,7 @@
           }
         },
         {
+          "code": "datumPocetka",
           "name": "datumPocetka",
           "type": "date",
           "label": {
@@ -697,6 +913,7 @@
           "required": true
         },
         {
+          "code": "datumZavrsetka",
           "name": "datumZavrsetka",
           "type": "date",
           "label": {
@@ -706,6 +923,7 @@
           }
         },
         {
+          "code": "lokacija",
           "name": "lokacija",
           "type": "text",
           "label": {
@@ -715,6 +933,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -724,8 +943,9 @@
           }
         },
         {
+          "code": "sekcija",
           "name": "sekcija",
-          "type": "relation",
+          "type": "text",
           "label": {
             "sr": "Sekcija centra",
             "en": "Center section",
@@ -736,6 +956,7 @@
       ]
     },
     "Predstave": {
+      "code": "predstave",
       "sr": "Predstave",
       "en": "Plays",
       "sr-Cyrl": "Представе",
@@ -743,6 +964,7 @@
       "categories": ["Drama", "Komedija", "Tragedija", "Mjuzikl", "Opera", "Balet"],
       "fields": [
         {
+          "code": "nazivPredstave",
           "name": "nazivPredstave",
           "type": "text",
           "label": {
@@ -753,6 +975,7 @@
           "required": true
         },
         {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -762,6 +985,7 @@
           }
         },
         {
+          "code": "glumci",
           "name": "glumci",
           "type": "text",
           "label": {
@@ -771,6 +995,7 @@
           }
         },
         {
+          "code": "rezija",
           "name": "rezija",
           "type": "text",
           "label": {
@@ -780,16 +1005,47 @@
           }
         },
         {
+          "code": "main_category",
           "name": "zanr",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Žanr",
             "en": "Genre",
             "sr-Cyrl": "Жанр"
           },
+          "options": [
+            "Drama", "Komedija", "Tragedija", "Mjuzikl", "Opera", "Balet"
+          ],
+          "coded_options": [
+            {
+              "code": "drama",
+              "translations": { "sr": "Drama", "sr-Cyrl": "Драма", "en": "Drama"}
+            },
+            {
+              "code": "komedija",
+              "translations": { "sr": "Komedija", "sr-Cyrl": "Комедија", "en": "Comedy"}
+            },
+            {
+              "code": "tragedija",
+              "translations": { "sr": "Tragedija", "sr-Cyrl": "Трагедија", "en": "Tragedy"}
+            },
+            {
+              "code": "mjuzikl",
+              "translations": { "sr": "Mjuzikl", "sr-Cyrl": "Мјузикл", "en": "Musical"}
+            },
+            {
+              "code": "opera",
+              "translations": { "sr": "Opera", "sr-Cyrl": "Опера", "en": "Opera"}
+            },
+            {
+              "code": "balet",
+              "translations": { "sr": "Balet", "sr-Cyrl": "Балет", "en": "Balet"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "datum_pocetka",
           "name": "datum_pocetka",
           "type": "date",
           "label": {
@@ -800,6 +1056,7 @@
           "required": true
         },
         {
+          "code": "vreme_pocetka",
           "name": "vreme_pocetka",
           "type": "time",
           "label": {
@@ -809,6 +1066,7 @@
           }
         },
         {
+          "code": "kratak_opis",
           "name": "kratak_opis",
           "type": "textarea",
           "label": {
@@ -818,8 +1076,9 @@
           }
         },
         {
+          "code": "trajanjeMin",
           "name": "trajanjeMin",
-          "type": "number",
+          "type": "text",
           "label": {
             "sr": "Trajanje (min)",
             "en": "Duration (min)",
@@ -827,6 +1086,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -838,6 +1098,7 @@
       ]
     },
     "Filmovi": {
+      "code": "filmovi",
       "sr": "Filmovi",
       "en": "Movies",
       "sr-Cyrl": "Филмови",
@@ -845,6 +1106,7 @@
       "categories": ["Drama", "Komedija", "Mjuzikl", "Akcija", "Dokumentarac"],
       "fields": [
         {
+          "code": "nazivFilma",
           "name": "nazivFilma",
           "type": "text",
           "label": {
@@ -855,6 +1117,7 @@
           "required": true
         },
         {
+          "code": "reziser",
           "name": "reziser",
           "type": "text",
           "label": {
@@ -864,6 +1127,7 @@
           }
         },
         {
+          "code": "glumci",
           "name": "glumci",
           "type": "text",
           "label": {
@@ -873,16 +1137,43 @@
           }
         },
         {
+          "code": "main_category",
           "name": "zanr",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Žanr",
             "en": "Genre",
             "sr-Cyrl": "Жанр"
           },
+          "options": [
+            "Drama", "Komedija", "Mjuzikl", "Akcija", "Dokumentarac"
+          ],
+          "coded_options": [
+            {
+              "code": "drama",
+              "translations": { "sr": "Drama", "sr-Cyrl": "Драма", "en": "Drama"}
+            },
+            {
+              "code": "komedija",
+              "translations": { "sr": "Komedija", "sr-Cyrl": "Комедија", "en": "Comedy"}
+            },
+            {
+              "code": "mjuzikl",
+              "translations": { "sr": "Mjuzikl", "sr-Cyrl": "Мјузикл", "en": "Musical"}
+            },
+            {
+              "code": "akcija",
+              "translations": { "sr": "Akcija", "sr-Cyrl": "Акција", "en": "Action"}
+            },
+            {
+              "code": "dokumentarac",
+              "translations": { "sr": "Dokumentarac", "sr-Cyrl": "Документарац", "en": "Documentary"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "datum_pocetka",
           "name": "datum_pocetka",
           "type": "date",
           "label": {
@@ -893,8 +1184,9 @@
           "required": true
         },
         {
+          "code": "vreme_pocetka",
           "name": "vreme_pocetka",
-          "type": "time",
+          "type": "text",
           "label": {
             "sr": "Vreme",
             "en": "Time",
@@ -902,6 +1194,7 @@
           }
         },
         {
+          "code": "kratak_opis",
           "name": "kratak_opis",
           "type": "textarea",
           "label": {
@@ -911,8 +1204,9 @@
           }
         },
         {
+          "code": "trajanjeMin",
           "name": "trajanjeMin",
-          "type": "number",
+          "type": "text",
           "label": {
             "sr": "Trajanje (min)",
             "en": "Duration (min)",
@@ -920,6 +1214,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -931,12 +1226,14 @@
       ]
     },
     "Donacije I Podrska": {
+      "code": "donacije",
       "sr": "Partneri",
       "en": "Partners",
       "sr-Cyrl": "Партнери",
       "icon": "fas fa-theater-masks",
       "fields": [
         {
+          "code": "partner",
           "name": "partner",
           "type": "text",
           "label": {
@@ -947,6 +1244,7 @@
           "required": true
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
