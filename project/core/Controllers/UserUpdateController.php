@@ -27,7 +27,7 @@ class UserUpdateController
                 throw new Exception('Dozvoljeni su samo .php fajlovi.');
             }
 
-            $componentsDir = realpath(__DIR__ . '/../../public/exportedPages/landingPageComponents/landingPage');
+            $componentsDir = realpath(PUBLIC_ROOT . '/exportedPages/landingPageComponents/landingPage');
 
             if (!$componentsDir || !is_dir($componentsDir)) {
                 throw new Exception('Direktorijum komponenti ne postoji');
@@ -113,7 +113,7 @@ class UserUpdateController
         return "t_{$pageSlug}_{$pathHash}_{$textHash}";
     }
 
-    private function shouldMakeDynamic(string $text, \DOMNode $node): bool
+        private function shouldMakeDynamic(string $text, \DOMNode $node): bool
     {
 
         // Trim the text for checking
@@ -174,6 +174,13 @@ class UserUpdateController
                         return false;
                     }
                 }
+
+                if ($parent->hasAttribute('data-translate')) {
+                    $translateAttr = $parent->getAttribute('data-translate');
+                    if ('off' == strtolower($translateAttr)) {
+                        return false;
+                    }
+                }
             }
             $parent = $parent->parentNode;
         }
@@ -188,6 +195,7 @@ class UserUpdateController
         // Only convert text that appears to be natural language content
         return preg_match('/^[\p{L}\p{N}\s\p{P}]+$/u', $text);
     }
+
 
 
     private function getElementPath(DOMNode $node): string
@@ -353,7 +361,7 @@ class UserUpdateController
             $generatedPhpCount++;
 
             $newNode = $dom->createTextNode($placeholder);
-            $logFile = __DIR__ . "/../../public/exportedPages/log.txt";
+            $logFile = PUBLIC_ROOT . "/exportedPages/log.txt";
             $logMessage = "Replacing text node: '$text' with PHP code: $phpCode" . PHP_EOL;
 
             // Append poruku u log fajl
