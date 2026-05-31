@@ -9,7 +9,7 @@ class EventsPageBuilder extends BasePageBuilder
     protected string $slug;
     private LanguageMapperController $translator;
 
-    private int $itemsPerPage = 3;
+    private int $itemsPerPage = 15;
     private int $descriptionMaxLength = 120;
     private int $imageHeight = 56;
     private int $paginationRange = 2;
@@ -141,7 +141,9 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     $naslov = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['description'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $lokacija = htmlspecialchars($item['fields']['location'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $rawDatum = $item['fields']['datum'][$locale] ?? '';
+    $formattedDatum = LocaleManager::formatDateFromRawString($rawDatum);
+    $datum = htmlspecialchars($formattedDatum, ENT_QUOTES, 'UTF-8');
     $vreme = htmlspecialchars($item['fields']['time'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -259,6 +261,7 @@ PHP;
             }
             ?>
         </div>
+        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -280,13 +283,16 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih stavki';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $itemsPerPage = (int)$_GET['per_page'];
+}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
+    ? (is_numeric($_GET['category'])
+        ? (int) $_GET['category']
         : trim((string) $_GET['category'])
       )
     : null;
@@ -332,6 +338,7 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 

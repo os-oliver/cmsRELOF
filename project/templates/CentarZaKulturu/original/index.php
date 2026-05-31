@@ -15,17 +15,17 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#f97316',
-                        primary_hover: '#ea580c',
-                        secondary: '#2f4f4f',
-                        secondary_hover: '#fdba74',
+                        primary: '#2e3961',
+                        primary_hover: '#0a1647',
+                        secondary: '#3b4252',
+                        secondary_hover: '#2e3440',
                         accent: '#d6aa7f',
                         accent_hover: '#fbbf24',
                         primary_text: '#332a21',
                         secondary_text: '#7c5e3d',
-                        background: '#fff7ed',
-                        secondary_background: '#ffedd5',
-                        surface: '#fff'
+                        background: '#edf2fb',
+                        secondary_background: '#d7e1f7',
+                        surface: '#edf2fb'
                     },
                     fontFamily: {
                         heading: ['Playfair Display', 'serif'],
@@ -39,12 +39,20 @@
                     },
                     keyframes: {
                         float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' }
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-15px)'
+                            }
                         },
                         fadeIn: {
-                            from: { opacity: '0' },
-                            to: { opacity: '1' }
+                            from: {
+                                opacity: '0'
+                            },
+                            to: {
+                                opacity: '1'
+                            }
                         }
                     }
                 }
@@ -160,10 +168,6 @@
             letter-spacing: 0.5px;
             backdrop-filter: blur(4px);
             z-index: 20;
-        }
-
-        .hero-gradient {
-            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
         }
 
         .mobile-menu {
@@ -378,7 +382,7 @@
                             </a>
                             <a data-page="Istorijat" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-history mr-2 text-accent"></i>Istorijat
+                                <i class="fas fa-history mr-2 text-secondary"></i>Istorijat
                             </a>
                             <a data-page="Rukovodstvo" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
@@ -391,15 +395,15 @@
 
                             <a data-page="Objekat" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-building mr-2 text-secondary_text"></i>Objekat
+                                <i class="fas fa-building mr-2 text-secondary"></i>Objekat
                             </a>
                             <a data-page="Donacije i podrška" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-hand-holding-heart mr-2 text-accent"></i>Donacije i podrška
+                                <i class="fas fa-hand-holding-heart mr-2 text-secondary"></i>Donacije i podrška
                             </a>
                             <a data-page="Partneri" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-handshake mr-2 text-primary"></i>Partneri
+                                <i class="fas fa-handshake mr-2 text-secondary"></i>Partneri
                             </a>
                         </div>
                     </div>
@@ -421,20 +425,20 @@
 
                     <a data-page="Dokumenti" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
-                        <i class="fas fa-folder-open mr-3 text-accent"></i>Dokumenti
+                        <i class="fas fa-folder-open mr-3 text-secondary"></i>Dokumenti
                     </a>
 
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all"
-                            id="mobileAboutToggle">
+                            id="mobileActivitiesToggle">
                             <div class="flex items-center">
                                 <i class="fas fa-bullhorn mr-3 text-primary"></i>Aktivnosti
                             </div>
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200"
-                                id="mobileAboutMenu"></i>
+                                id="mobileActivitiesIcon"></i>
                         </button>
-                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileActivityMenu">
+                        <div class="ml-6 mt-2 space-y-2 hidden" id="mobileActivitiesMenu">
                             <a data-page="Vesti" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-newspaper mr-2 text-primary"></i>Vesti
@@ -445,7 +449,7 @@
                             </a>
                             <a data-page="Ankete" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-poll mr-2 text-accent"></i>Ankete
+                                <i class="fas fa-poll mr-2 text-secondary"></i>Ankete
                             </a>
                         </div>
                     </div>
@@ -498,16 +502,16 @@
             <!-- Desktop Navigation -->
             <nav id="navBarID" class="hidden lg:flex items-center space-x-1 xl:space-x-3">
                 <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i class="fas fa-home mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Početna</span>
                 </a>
 
                 <div class="dropdown relative group">
                     <button
-                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                         <i
-                            class="fas fa-info-circle mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
+                            class="fas fa-info-circle mr-2 text-secondary group-hover:text-accent transition-colors text-sm"></i>
                         <span class="hidden xl:inline text-sm">O nama</span>
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
@@ -515,44 +519,44 @@
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
                         <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-book mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Uvod</span>
                         </a>
                         <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-flag mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Misija i vizija</span>
                         </a>
                         <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Istorijat</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users-cog mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Rukovodstvo</span>
                         </a>
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-sitemap mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-sitemap mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Organizaciona struktura</span>
                         </a>
 
                         <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-building mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Objekat</span>
                         </a>
                         <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Donacije i podrška</span>
                         </a>
                         <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-handshake mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Partneri</span>
                         </a>
                     </div>
@@ -561,35 +565,35 @@
 
 
                 <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
-                        class="fas fa-users mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                        class="fas fa-users mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Ansambl</span>
                 </a>
 
                 <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
-                        class="fas fa-project-diagram mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                        class="fas fa-project-diagram mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Projekti</span>
                 </a>
                 <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
-                        class="fas fa-images mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
+                        class="fas fa-images mr-2 text-secondary group-hover:text-accent transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Galerija</span>
                 </a>
                 <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-surface">
+                    class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-surface">
                     <i
-                        class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
+                        class="fas fa-folder-open mr-2 text-secondary group-hover:text-accent transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Dokumenti</span>
                 </a>
                 <div class="dropdown relative group">
                     <button
-                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                         <i
-                            class="fas fa-bullhorn mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
+                            class="fas fa-bullhorn mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
                         <span class="hidden xl:inline text-sm">Aktivnosti</span>
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
@@ -599,30 +603,30 @@
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
 
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-newspaper mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-newspaper mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Vesti</span>
                         </a>
 
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-calendar-alt mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-calendar-alt mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
                             <span class="font-medium">Događaji</span>
                         </a>
 
                         <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-poll mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="fofnt-medium">Ankete</span>
+                            <span class="font-medium">Ankete</span>
                         </a>
                     </div>
 
                 </div>
 
                 <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                    class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
-                        class="fas fa-address-book mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
+                        class="fas fa-address-book mr-2 text-secondary group-hover:text-accent transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Kontakt</span>
                 </a>
 
@@ -634,8 +638,7 @@
 
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>']
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -644,17 +647,17 @@
                 ?>
                 <div class="locale dropdown nonPage relative group ">
                     <button
-                        class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
+                        class="nav-link text-primary_text font-semibold hover:text-primary_text transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                         <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
-                        <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
+                        <span class="hidden xl:inline text-sm font-medium hover:text-accent"><?= $languages[$locale]['label'] ?></span>
                         <i
-                            class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                            class="fas fa-chevron-down ml-1 text-xs group-hover:text-accent transition-transform duration-200"></i>
                     </button>
                     <div
                         class="dropdown-menu absolute top-full right-0 min-w-max bg-secondary_background rounded-xl shadow-2xl border border-surface z-50 py-2 backdrop-blur-sm">
                         <?php foreach ($languages as $key => $lang): ?>
                             <a href="?locale=<?= $key ?>"
-                                class="dropdown-item flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
+                                class="dropdown-item flex items-center px-4 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-1">
                                 <span class="mr-3 flex-shrink-0"><?= $lang['flag'] ?></span>
                                 <span class="font-medium"><?= $lang['label'] ?></span>
                             </a>
@@ -708,7 +711,7 @@
 
     <!-- Enhanced Hero Section -->
     <section
-        class="relative min-h-screen flex items-center overflow-hidden pt-16 bg-gradient-to-br from-surface to-accent">
+        class="relative min-h-screen flex items-center overflow-hidden pt-16 bg-gradient-to-br from-background to-secondary_background">
         <!-- Decorative background elements -->
         <div class="absolute inset-0 z-0">
             <!-- Floating paint elements -->
@@ -1203,7 +1206,7 @@
             </div>
         </div>
     </section>
-    <!-- Footer -->
+
     <!-- Footer -->
     <footer class="bg-secondary text-surface pt-20 pb-10">
         <div class="container mx-auto px-4">
@@ -1302,106 +1305,277 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const mobileMenuPanel = document.getElementById('mobileMenuPanel');
-            const closeMobileMenu = document.getElementById('closeMobileMenu');
-            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-            const mobileDropdownButtons = document.querySelectorAll('.mobile-dropdown > button');
-            const searchButton = document.getElementById('searchButton');
-            const searchInputContainer = document.getElementById('searchInputContainer');
-            const closeSearch = document.getElementById('closeSearch');
-            const increaseFontBtn = document.getElementById('increaseFontBtn');
-            let fontSizeIncreased = false;
+        const btn = document.getElementById('increaseFontBtn');
 
-            function openMenu() {
-                if (mobileMenu && mobileMenuPanel && hamburger) {
-                    mobileMenu.classList.remove('hidden');
-                    setTimeout(() => mobileMenuPanel.classList.remove('translate-x-full'), 10);
-                    hamburger.classList.add('active');
+        let currentSize = 16; // initial font size in px
+        let step = 2; // px to increase or decrease per click
+        let maxSteps = 3; // max increments before toggling direction
+        let count = 0; // how many increments or decrements done
+        let increasing = true; // track if currently increasing font size
+
+        btn.addEventListener('click', () => {
+            if (increasing) {
+                currentSize += step;
+                count++;
+                if (count === maxSteps) {
+                    increasing = false;
+                    btn.textContent = 'A-'; // change button to decrease
+                }
+            } else {
+                currentSize -= step;
+                count--;
+                if (count === 0) {
+                    increasing = true;
+                    btn.textContent = 'A+'; // change button back to increase
                 }
             }
+            // Apply font size to body (all page)
+            document.body.style.fontSize = currentSize + 'px';
+        });
 
-            function closeMenu() {
-                if (mobileMenu && mobileMenuPanel && hamburger) {
-                    mobileMenuPanel.classList.add('translate-x-full');
-                    hamburger.classList.remove('active');
-                    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-                }
-            }
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
-            if (hamburger && mobileMenu && mobileMenuPanel) {
-                hamburger.addEventListener('click', function () {
-                    if (mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.remove('hidden');
-                        requestAnimationFrame(() => mobileMenuPanel.classList.remove('translate-x-full'));
-                        hamburger.classList.add('active');
-                    } else {
-                        mobileMenuPanel.classList.add('translate-x-full');
-                        mobileMenuPanel.addEventListener('transitionend', () => {
-                            mobileMenu.classList.add('hidden');
-                        }, { once: true });
-                        hamburger.classList.remove('active');
-                    }
-                });
-            }
+        mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                const dropdown = toggle.closest('.mobile-dropdown');
+                dropdown.classList.toggle('active');
+            });
+        });
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const container = document.getElementById('searchInputContainer');
+            const input = document.getElementById('searchInput');
 
-            if (closeMobileMenu) {
-                closeMobileMenu.addEventListener('click', closeMenu);
-            }
-
-            if (mobileMenuOverlay) {
-                mobileMenuOverlay.addEventListener('click', closeMenu);
-            }
-
-            // Generalized handler: each .mobile-dropdown > button toggles its following submenu
-            if (mobileDropdownButtons && mobileDropdownButtons.length) {
-                mobileDropdownButtons.forEach(btn => {
-                    const menu = btn.nextElementSibling;
-                    const chevron = btn.querySelector('.fa-chevron-down');
-                    btn.setAttribute('aria-expanded', 'false');
-                    btn.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        if (!menu) return;
-                        menu.classList.toggle('hidden');
-                        btn.parentElement && btn.parentElement.classList.toggle('active');
-                        if (chevron) chevron.classList.toggle('rotate-180');
-                        const expanded = btn.getAttribute('aria-expanded') === 'true';
-                        btn.setAttribute('aria-expanded', (!expanded).toString());
-                    });
-                });
-            }
-
-            if (searchButton && searchInputContainer) {
-                searchButton.addEventListener('click', function () {
-                    searchInputContainer.classList.remove('hidden');
-                    setTimeout(() => searchInputContainer.classList.remove('opacity-0'), 10);
-                });
-            }
-
-            if (closeSearch && searchInputContainer) {
-                closeSearch.addEventListener('click', function () {
-                    searchInputContainer.classList.add('opacity-0');
-                    setTimeout(() => searchInputContainer.classList.add('hidden'), 300);
-                });
-            }
-
-            if (increaseFontBtn) {
-                increaseFontBtn.addEventListener('click', function () {
-                    const body = document.body;
-                    if (!fontSizeIncreased) {
-                        body.style.fontSize = '1.1rem';
-                        fontSizeIncreased = true;
-                        increaseFontBtn.textContent = 'A-';
-                    } else {
-                        body.style.fontSize = '';
-                        fontSizeIncreased = false;
-                        increaseFontBtn.textContent = 'A+';
-                    }
-                });
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                setTimeout(() => {
+                    container.classList.remove('opacity-0');
+                    input.focus();
+                }, 10);
             }
         });
+
+        document.getElementById('closeSearch').addEventListener('click', function() {
+            const container = document.getElementById('searchInputContainer');
+            container.classList.add('opacity-0');
+            setTimeout(() => {
+                container.classList.add('hidden');
+            }, 300);
+        });
+
+        document.addEventListener('click', function(e) {
+            const searchContainer = document.getElementById('searchInputContainer');
+            const searchButton = document.getElementById('searchButton');
+
+            if (!searchContainer.contains(e.target) && !searchButton.contains(e.target)) {
+                searchContainer.classList.add('opacity-0');
+                setTimeout(() => {
+                    searchContainer.classList.add('hidden');
+                }, 300);
+            }
+        });
+        // Close search input
+        closeSearch.addEventListener('click', () => {
+            searchInputContainer.classList.add('opacity-0');
+            searchInputContainer.classList.add('translate-x-2');
+            searchInput.classList.add('w-0');
+            searchInput.classList.add('opacity-0');
+            searchButton.classList.remove("invisible");
+
+            setTimeout(() => {
+                searchInputContainer.classList.add('hidden');
+                searchInput.value = '';
+            }, 300);
+        });
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+            } else {
+                header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+            }
+        });
+
+        // Animation for cards on hover
+        document.querySelectorAll('.artistic-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Mobile menu toggle
+        // Mobile Menu JavaScript
+        // Get elements
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileAboutToggle = document.getElementById('mobileAboutToggle');
+        const mobileActivitiesToggle = document.getElementById('mobileActivitiesToggle');
+        const mobileParentsToggle = document.getElementById('mobileParentsToggle');
+        const mobileAboutMenu = document.getElementById('mobileAboutMenu');
+        const mobileActivitiesMenu = document.getElementById('mobileActivitiesMenu');
+        const mobileParentsMenu = document.getElementById('mobileParentsMenu');
+        const mobileAboutIcon = document.getElementById('mobileAboutIcon');
+        const mobileParentsIcon = document.getElementById('mobileParentsIcon');
+
+        // Function to open mobile menu
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            // Use setTimeout to ensure the display change takes effect before animation
+            setTimeout(() => {
+                mobileMenuPanel.classList.remove('translate-x-full');
+            }, 10);
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = 'hidden';
+            // Add active class to hamburger
+            hamburger.classList.add('active');
+        }
+
+        // Function to close mobile menu
+        function closeMobileMenuFunc() {
+            mobileMenuPanel.classList.add('translate-x-full');
+            // Wait for animation to complete before hiding
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+            // Restore body scroll
+            document.body.style.overflow = '';
+            // Remove active class from hamburger
+            hamburger.classList.remove('active');
+        }
+
+        // Function to toggle mobile about submenu
+        function toggleMobileAbout() {
+            const isHidden = mobileAboutMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                // Show submenu
+                mobileAboutMenu.classList.remove('hidden');
+                mobileAboutIcon.style.transform = 'rotate(180deg)';
+            } else {
+                // Hide submenu
+                mobileAboutMenu.classList.add('hidden');
+                mobileAboutIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function toggleMobileActivities() {
+            const isHidden = mobileActivitiesMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                // Show submenu
+                mobileActivitiesMenu.classList.remove('hidden');
+                mobileActivitiesIcon.style.transform = 'rotate(180deg)';
+            } else {
+                // Hide submenu
+                mobileActivitiesMenu.classList.add('hidden');
+                mobileActivitiesIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function toggleMobileParents() {
+            const isHidden = mobileParentsMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                mobileParentsMenu.classList.remove('hidden');
+                mobileParentsIcon.style.transform = 'rotate(180deg)';
+            } else {
+                mobileAboutMenu.classList.add('hidden');
+                mobileParentsIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Event listeners
+        if (hamburger) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (mobileMenu.classList.contains('hidden')) {
+                    openMobileMenu();
+                } else {
+                    closeMobileMenuFunc();
+                }
+            });
+        }
+
+        if (closeMobileMenu) {
+            closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenuFunc);
+        }
+
+        if (mobileAboutToggle) {
+            mobileAboutToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileAbout();
+            });
+        }
+
+
+        if (mobileActivitiesToggle) {
+            mobileActivitiesToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleMobileActivities();
+            });
+        }
+
+            if (mobileParentsToggle) {
+                mobileParentsToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleMobileParents();
+                });
+            }
+
+            // Close menu when clicking on menu links (except dropdown toggle)
+            const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Close menu after a short delay to allow for navigation
+                    setTimeout(closeMobileMenuFunc, 150);
+                });
+            });
+
+            // Close menu on window resize if screen becomes large
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
+                    closeMobileMenuFunc();
+                }
+            });
+
+            // Handle escape key to close menu
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                    closeMobileMenuFunc();
+                }
+            });
+
+            // Prevent menu panel clicks from closing the menu
+            if (mobileMenuPanel) {
+                mobileMenuPanel.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+
+            // Initialize animations when elements come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.event-card, .gallery-item, .section-divider').forEach(el => {
+                observer.observe(el);
+            });
     </script>
 
 

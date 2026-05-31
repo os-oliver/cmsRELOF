@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-session_start();
 
 use App\Models\Content;
 use App\Models\Event;
@@ -21,7 +20,7 @@ class PersonalContentController
                 padding: 0;
                 font-size: 14px;
             }
-            
+
             .dropdown:hover .dropdown-menu {
                 display: block;
             }
@@ -42,7 +41,7 @@ class PersonalContentController
                 border-bottom: 2px solid #667eea;
                 padding: 1rem 0;
             }
-            
+
             .page-header h1 {
                 font-size: 1.5rem;
                 margin: 0;
@@ -52,7 +51,7 @@ class PersonalContentController
             .content-wrapper {
                 background: white;
             }
-            
+
             .section-divider {
                 height: 1px;
                 background: #e2e8f0;
@@ -66,7 +65,7 @@ class PersonalContentController
                 gap: 0.5rem;
                 margin: 0.75rem 0;
             }
-            
+
             .field-row {
                 padding: 0.5rem 0.75rem;
                 background: #f8fafc;
@@ -77,7 +76,7 @@ class PersonalContentController
                 gap: 0.5rem;
                 min-height: 36px;
             }
-            
+
             .field-label {
                 font-weight: 600;
                 color: #4a5568;
@@ -85,13 +84,13 @@ class PersonalContentController
                 white-space: nowrap;
                 flex-shrink: 0;
             }
-            
+
             .field-label i {
                 margin-right: 0.25rem;
                 color: #667eea;
                 font-size: 0.7rem;
             }
-            
+
             .field-value {
                 color: #1a202c;
                 font-size: 0.875rem;
@@ -99,14 +98,14 @@ class PersonalContentController
                 flex: 1;
                 word-break: break-word;
             }
-            
+
             /* Long text fields - full width */
             .field-row.full-width {
                 grid-column: 1 / -1;
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .field-row.full-width .field-label {
                 margin-bottom: 0.25rem;
             }
@@ -118,14 +117,14 @@ class PersonalContentController
                 gap: 0.5rem;
                 margin: 0.75rem 0;
             }
-            
+
             .info-box {
                 background: #f7fafc;
                 padding: 0.5rem;
                 border-radius: 0.25rem;
                 border-left: 2px solid #667eea;
             }
-            
+
             .info-box-label {
                 font-size: 0.625rem;
                 color: #718096;
@@ -134,12 +133,12 @@ class PersonalContentController
                 margin-bottom: 0.25rem;
                 letter-spacing: 0.025em;
             }
-            
+
             .info-box-label i {
                 margin-right: 0.25rem;
                 color: #667eea;
             }
-            
+
             .info-box-value {
                 font-size: 0.875rem;
                 color: #1a202c;
@@ -150,7 +149,7 @@ class PersonalContentController
             .documents-section {
                 margin: 1rem 0;
             }
-            
+
             .documents-header {
                 font-size: 1rem;
                 font-weight: 700;
@@ -162,18 +161,18 @@ class PersonalContentController
                 align-items: center;
                 gap: 0.5rem;
             }
-            
+
             .documents-header i {
                 color: #667eea;
             }
-            
+
             .documents-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                 gap: 0.5rem;
                 margin-top: 0.5rem;
             }
-            
+
             .document-card {
                 display: flex;
                 align-items: center;
@@ -186,14 +185,14 @@ class PersonalContentController
                 text-decoration: none;
                 color: inherit;
             }
-            
+
             .document-card:hover {
                 background: #edf2f7;
                 border-color: #667eea;
                 transform: translateY(-1px);
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
-            
+
             .document-icon {
                 width: 36px;
                 height: 36px;
@@ -204,32 +203,32 @@ class PersonalContentController
                 flex-shrink: 0;
                 font-size: 1.125rem;
             }
-            
+
             .document-icon.pdf {
                 background: #fee;
                 color: #dc2626;
             }
-            
+
             .document-icon.excel {
                 background: #efe;
                 color: #16a34a;
             }
-            
+
             .document-icon.word {
                 background: #eef;
                 color: #2563eb;
             }
-            
+
             .document-icon.default {
                 background: #f5f5f5;
                 color: #64748b;
             }
-            
+
             .document-info {
                 flex: 1;
                 min-width: 0;
             }
-            
+
             .document-name {
                 font-size: 0.813rem;
                 font-weight: 500;
@@ -239,19 +238,19 @@ class PersonalContentController
                 white-space: nowrap;
                 margin-bottom: 0.125rem;
             }
-            
+
             .document-size {
                 font-size: 0.688rem;
                 color: #64748b;
             }
-            
+
             .document-download {
                 color: #667eea;
                 font-size: 1rem;
                 opacity: 0.7;
                 transition: opacity 0.2s;
             }
-            
+
             .document-card:hover .document-download {
                 opacity: 1;
             }
@@ -268,18 +267,18 @@ class PersonalContentController
                 align-items: center;
                 gap: 0.5rem;
             }
-            
+
             .gallery-header i {
                 color: #667eea;
             }
-            
+
             .gallery-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
                 gap: 0.5rem;
                 margin-top: 0.5rem;
             }
-            
+
             .gallery-item {
                 position: relative;
                 overflow: hidden;
@@ -288,23 +287,23 @@ class PersonalContentController
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
                 aspect-ratio: 1;
             }
-            
+
             .gallery-item:hover {
                 transform: translateY(-2px);
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             }
-            
+
             .gallery-item img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 transition: transform 0.3s ease;
             }
-            
+
             .gallery-item:hover img {
                 transform: scale(1.05);
             }
-            
+
             .gallery-overlay {
                 position: absolute;
                 inset: 0;
@@ -315,7 +314,7 @@ class PersonalContentController
                 align-items: center;
                 justify-content: center;
             }
-            
+
             .gallery-item:hover .gallery-overlay {
                 opacity: 1;
             }
@@ -336,16 +335,16 @@ class PersonalContentController
             .lightbox {
                 animation: fadeIn 0.3s ease;
             }
-            
+
             @keyframes fadeIn {
                 from { opacity: 0; }
                 to { opacity: 1; }
             }
-            
+
             .lightbox-image {
                 animation: scaleIn 0.3s ease;
             }
-            
+
             @keyframes scaleIn {
                 from { transform: scale(0.9); opacity: 0; }
                 to { transform: scale(1); opacity: 1; }
@@ -371,45 +370,102 @@ class PersonalContentController
 
     private function getPageScripts(): string
     {
-        return '
-            document.addEventListener("DOMContentLoaded", function() {
-                // Image gallery lightbox
-                const galleryImages = document.querySelectorAll(".gallery-image-link");
-                
-                galleryImages.forEach(function(link) {
-                    link.addEventListener("click", function(e) {
-                        e.preventDefault();
-                        const imgSrc = this.getAttribute("href");
-                        const lightbox = document.createElement("div");
-                        lightbox.className = "lightbox";
-                        lightbox.innerHTML = 
-                            "<div class=\'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4\' style=\'backdrop-filter: blur(8px);\'>" +
-                            "    <div class=\'relative max-w-7xl mx-auto\'>" +
-                            "        <img src=\'" + imgSrc + "\' class=\'lightbox-image max-h-[90vh] max-w-full object-contain rounded-lg shadow-2xl\' alt=\'Enlarged image\'>" +
-                            "        <button class=\'absolute -top-12 right-0 text-white text-4xl hover:text-gray-300 transition-colors w-12 h-12 flex items-center justify-center font-light\'>&times;</button>" +
-                            "    </div>" +
-                            "</div>";
-                        document.body.appendChild(lightbox);
-                        document.body.style.overflow = "hidden";
-                        
-                        lightbox.addEventListener("click", function(e) {
-                            if (e.target === lightbox || e.target.closest("button") || e.target === lightbox.firstElementChild) {
-                                document.body.style.overflow = "auto";
-                                lightbox.remove();
-                            }
-                        });
-                        
-                        document.addEventListener("keydown", function escHandler(e) {
-                            if (e.key === "Escape") {
-                                document.body.style.overflow = "auto";
-                                lightbox.remove();
-                                document.removeEventListener("keydown", escHandler);
-                            }
-                        });
+        return
+            <<<JS
+            <script>
+
+                document.addEventListener('DOMContentLoaded', () => {
+                console.log("Lightbox sa sliderom aktivan");
+
+                // === 1. Kreiranje MODALA ===
+                const modal = document.createElement('div');
+                modal.id = 'galleryModal';
+                modal.className = `
+                    fixed inset-0 bg-black bg-opacity-80 hidden
+                    flex items-center justify-center z-[999999]
+                `;
+
+                modal.innerHTML = `
+                    <span class="absolute top-4 right-6 text-white text-4xl cursor-pointer select-none close-btn">&times;</span>
+                    <button class="prev-btn absolute left-4 text-white text-5xl font-bold px-4 cursor-pointer select-none">&lt;</button>
+                    <img id="modalImage" class="max-w-[90%] max-h-[90%] rounded shadow-xl transition-all duration-200">
+                    <button class="next-btn absolute right-4 text-white text-5xl font-bold px-4 cursor-pointer select-none">&gt;</button>
+                `;
+
+                document.body.appendChild(modal);
+
+                const modalImage = modal.querySelector("#modalImage");
+                const closeBtn = modal.querySelector(".close-btn");
+                const prevBtn = modal.querySelector(".prev-btn");
+                const nextBtn = modal.querySelector(".next-btn");
+
+                // === 2. Prikupljanje svih slika iz galerije ===
+                const galleryItems = document.getElementsByClassName('gallery-item');
+                const images = []; // lista svih linkova
+                let currentIndex = 0;
+
+                for (let i = 0; i < galleryItems.length; i++) {
+                    const link = galleryItems[i].querySelector(".gallery-image-link");
+                    if (link) images.push(link.getAttribute("href"));
+                }
+
+                // === 3. Funckija za otvaranje modala ===
+                const openModal = (index) => {
+                    currentIndex = index;
+                    modalImage.src = images[currentIndex];
+
+                    modal.classList.remove("hidden");
+                    document.body.classList.add("overflow-hidden");
+                };
+
+                // === 4. Klik na item gallery ===
+                for (let i = 0; i < galleryItems.length; i++) {
+                    galleryItems[i].addEventListener("click", (event) => {
+                        const link = galleryItems[i].querySelector(".gallery-image-link");
+                        if (!link) return;
+
+                        event.preventDefault();
+                        openModal(i);
                     });
+                }
+
+                // === 5. Slider funkcije ===
+                const showNext = () => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    modalImage.src = images[currentIndex];
+                };
+
+                const showPrev = () => {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    modalImage.src = images[currentIndex];
+                };
+
+                nextBtn.addEventListener("click", showNext);
+                prevBtn.addEventListener("click", showPrev);
+
+                // === 6. ZATVARANJE ===
+                const closeModal = () => {
+                    modal.classList.add("hidden");
+                    modalImage.src = "";
+                    document.body.classList.remove("overflow-hidden");
+                };
+
+                closeBtn.addEventListener("click", closeModal);
+
+                modal.addEventListener("click", (e) => {
+                    if (e.target === modal) closeModal();
+                });
+
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape") closeModal();
+                    if (e.key === "ArrowRight") showNext();
+                    if (e.key === "ArrowLeft") showPrev();
                 });
             });
-        ';
+
+            </script>
+
+            JS;
     }
 
     private function getDocumentIcon(string $extension): array
@@ -439,6 +495,7 @@ class PersonalContentController
         return '';
     }
 
+
     private function getGalleryLabel(string $locale): string
     {
         $labels = [
@@ -462,7 +519,7 @@ class PersonalContentController
     public function renderContent($id, $type)
     {
         // Load structure configuration
-        $structurePath = __DIR__ . '/../../public/assets/data/structure.json';
+        $structurePath = PUBLIC_ROOT . '/assets/data/structure.json';
         $structure = [];
         if (is_file($structurePath)) {
             $structureData = file_get_contents($structurePath);
@@ -489,6 +546,7 @@ class PersonalContentController
             switch ($type) {
                 case 'Anketa':
                     $mainContent = $this->getAnketaContent($type, $locale, $structure);
+                    break;
                 case 'Vrtici':
                     $mainContent = $this->getVrticiContent($type, $locale, $structure);
                     break;
@@ -501,6 +559,9 @@ class PersonalContentController
                 case 'Projekti':
                     $mainContent = $this->getProjektiContent($type, $locale, $structure);
                     break;
+                case 'Zaposleni':
+                    $mainContent = $this->getZaposleniContent($type, $locale, $structure);
+                    break;
                 default:
                     $mainContent = $this->getDefaultContent($type, $locale, $structure);
             }
@@ -509,10 +570,68 @@ class PersonalContentController
         }
 
         $html = '<main class="min-h-screen pt-16 bg-white">' . $mainContent . '</main>';
-        $pageBuilder->setHtml($html);
-        return $pageBuilder->buildPage();
+
+        $compiledHtml = $this->compilePhpString($html);
+
+
+        $pageBuilder->setHtml($compiledHtml);
+        $skripta = $this->getPageScripts();
+
+        $pageBuilder->setScript($skripta);
+
+        $fullPageHtml = $pageBuilder->buildPage();
+        $stringCompiled = $this->compilePhpString($fullPageHtml);
+        echo $stringCompiled;
     }
 
+    private function compilePhpString(string $phpCode, array $vars = []): string
+    {
+        $phpCode = html_entity_decode($phpCode, ENT_QUOTES, 'UTF-8');
+
+        if (!empty($vars)) {
+            extract($vars, EXTR_SKIP);
+        }
+
+        $publicRoot = realpath(PUBLIC_ROOT . '/exportedPages/');
+
+
+        $phpCode = preg_replace_callback(
+            '/(?:require|include|require_once|include_once)\s+__DIR__\s*\.\s*[\'"](\/?\.\.\/+)*([^\'"]+)[\'"]/i',
+            function ($matches) use ($publicRoot) {
+                $path = $matches[2];
+                $path = ltrim($path, '/');
+                return 'require \'' . $publicRoot . '/' . $path . '\'';
+            },
+            $phpCode
+        );
+
+        $patterns = [
+            '/require\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "require '" . $publicRoot . "/$1'",
+            '/require_once\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "require_once '" . $publicRoot . "/$1'",
+            '/include\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "include '" . $publicRoot . "/$1'",
+            '/include_once\s+[\'"]\.\.\/([^\'"]+)[\'"]/i' => "include_once '" . $publicRoot . "/$1'",
+        ];
+
+        foreach ($patterns as $pattern => $replacement) {
+            $phpCode = preg_replace($pattern, $replacement, $phpCode);
+        }
+
+        ob_start();
+        try {
+            set_include_path($publicRoot . PATH_SEPARATOR . get_include_path());
+
+            eval ("?>" . $phpCode);
+
+            $output = ob_get_clean();
+        } catch (\Throwable $e) {
+            ob_end_clean();
+            $output = "<!-- Error executing PHP: " .
+                htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8')
+                . " -->";
+        }
+
+        return $output === false ? '' : $output;
+    }
     private function getAnketaContent(string $type, string $locale, array $structure): string
     {
         $contentController = new Content();
@@ -572,12 +691,12 @@ class PersonalContentController
 
         <div class="container mx-auto px-4 py-4">
             <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-                <iframe 
-                    src="' . $escapedLink . '" 
-                    width="100%" 
-                    height="900" 
-                    frameborder="0" 
-                    marginheight="0" 
+                <iframe
+                    src="' . $escapedLink . '"
+                    width="100%"
+                    height="900"
+                    frameborder="0"
+                    marginheight="0"
                     marginwidth="0"
                     class="rounded-2xl"
                     style="border:none; background-color:#fafafa;">
@@ -635,7 +754,7 @@ class PersonalContentController
                     </h1>
                     ' . ($coverImage ? '
                     <div class="mb-6">
-                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '" 
+                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '"
                             class="w-full h-80 object-cover rounded-2xl shadow-sm">
                     </div>' : '') . '
                     ' . ($naziv ? '
@@ -709,7 +828,7 @@ class PersonalContentController
                 <div class="bg-bacground rounded-2xl shadow p-6">
                     ' . ($coverImage ? '
                     <div class="mb-6">
-                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '" 
+                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '"
                             class="w-full h-80 object-cover rounded-2xl shadow-sm">
                     </div>' : '') . '
                     <h1 class="text-3xl mb-2">
@@ -894,10 +1013,10 @@ class PersonalContentController
                 <div class="bg-bacground rounded-2xl shadow p-6 bg-surface">
                     ' . ($coverImage ? '
                     <div class="mb-6">
-                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '" 
+                        <img src="' . $coverImage . '" alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '"
                             class="w-full h-80 object-cover rounded-2xl shadow-sm">
                     </div>' : '') . '
-                    
+
                     <h1 class="text-3xl font-heading text-primary_text mb-4">
                         ' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '
                     </h1>
@@ -965,12 +1084,12 @@ class PersonalContentController
                             <i class="fas fa-external-link-alt text-primary mr-2"></i>
                             Zvanični link
                         </h2>
-                        <a href="' . htmlspecialchars($link, ENT_QUOTES, 'UTF-8') . '" 
-                        target="_blank" 
+                        <a href="' . htmlspecialchars($link, ENT_QUOTES, 'UTF-8') . '"
+                        target="_blank"
                         rel="noopener noreferrer"
                         class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors duration-300 font-medium">
                             <i class="fas fa-external-link-alt mr-2"></i>
-                            Posjetite zvaničnu stranicu projekta
+                            Posetite zvaničnu stranicu projekta
                         </a>
                     </div>' : '') . '
                 </div>
@@ -984,11 +1103,11 @@ class PersonalContentController
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         ' . implode('', array_map(fn($img) => '
                             <div class="gallery-item overflow-hidden rounded-xl shadow-sm border border-gray-200">
-                                <a href="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" 
-                                target="_blank" 
+                                <a href="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '"
+                                target="_blank"
                                 class="block overflow-hidden">
-                                    <img src="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '" 
-                                        alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '" 
+                                    <img src="' . htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') . '"
+                                        alt="' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '"
                                         class="w-full h-48 object-cover hover:scale-110 transition-transform duration-300">
                                 </a>
                             </div>
@@ -997,6 +1116,136 @@ class PersonalContentController
                 </div>' : '') . '
             </div>
         </div>';
+
+        return $html;
+    }
+
+    private function getZaposleniContent(string $type, string $locale, array $structure): string
+    {
+        $contentController = new Content();
+        $id = $_GET['id'] ?? 0;
+
+        if (!$id) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $data = $contentController->fetchItem($id, $locale);
+        if (!$data['success'] || !isset($data['item'])) {
+            return $this->getNotFoundContent($type);
+        }
+
+        $item = $data['item'];
+        $fields = $item['fields'];
+
+        $ime = $fields['ime'][$locale] ?? '';
+        $pozicija = $fields['pozicija'][$locale] ?? '';
+        $biografija = $fields['biografija'][$locale] ?? '';
+        $kontakt = $fields['kontakt'][$locale] ?? '';
+        $slika = $fields['slika'][$locale] ?? '';
+
+        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $fieldIcons = $this->getFieldIcons($type, $structure);
+
+        $labelIme = $labels['ime'] ?? 'Ime i prezime';
+        $labelPozicija = $labels['pozicija'] ?? 'Pozicija';
+        $labelBio = $labels['biografija'] ?? 'Biografija';
+        $labelEmail = $labels['kontakt'] ?? 'Email kontakt';
+
+        $allFiles = \App\Models\Image::fetchByElement($id);
+
+        $images = array_filter(
+            $allFiles,
+            fn($file) =>
+            !in_array(strtolower(pathinfo($file['file_path'], PATHINFO_EXTENSION)), ['pdf', 'xlsx', 'xls', 'doc', 'docx'])
+        );
+
+        if (!$slika && !empty($images)) {
+            $slika = $images[0]['file_path'];
+        }
+
+        $html = '
+    <div class="content-wrapper">
+        <div class="page-header">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h1>' . htmlspecialchars($ime ?: "Zaposleni", ENT_QUOTES, "UTF-8") . '</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-3">
+            <div class="max-w-4xl mx-auto">
+
+                <div class="fields-grid">
+
+                    <div class="field-row full-width">
+                        <span class="field-label">
+                            <i class="' . $this->getFieldIcon("slika", $fieldIcons) . '"></i>Fotografija
+                        </span>
+                        <span class="field-value">
+                            ' . ($slika ? '
+                                <img src="' . htmlspecialchars($slika, ENT_QUOTES, "UTF-8") . '"
+                                     class="w-48 h-auto rounded-xl shadow" />'
+                : 'Nema fotografije') . '
+                        </span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("ime", $fieldIcons) . '"></i>' . $labelIme . '</span>
+                        <span class="field-value">' . htmlspecialchars($ime, ENT_QUOTES, "UTF-8") . '</span>
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("pozicija", $fieldIcons) . '"></i>' . $labelPozicija . '</span>
+                        <span class="field-value">' . htmlspecialchars($pozicija, ENT_QUOTES, "UTF-8") . '</span>
+                    </div>
+
+                    ' . (!empty($kontakt) ? '
+                    <div class="field-row">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("kontakt", $fieldIcons) . '"></i>' . $labelEmail . '</span>
+                        <span class="field-value">
+                            <a href="mailto:' . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") . '" class="text-blue-600 underline">'
+                . htmlspecialchars($kontakt, ENT_QUOTES, "UTF-8") .
+                '</a>
+                        </span>
+                    </div>' : '') . '
+
+                    ' . (!empty($biografija) ? '
+                    <div class="field-row full-width">
+                        <span class="field-label"><i class="' . $this->getFieldIcon("biografija", $fieldIcons) . '"></i>' . $labelBio . '</span>
+                        <span class="field-value">' . nl2br(htmlspecialchars($biografija, ENT_QUOTES, "UTF-8")) . '</span>
+                    </div>' : '') . '
+
+                </div>
+    ';
+
+        if (count($images) > 1) {
+            $html .= '
+            <div class="section-divider"></div>
+            <div class="gallery-header"><i class="fas fa-images"></i>Galerija</div>
+            <div class="gallery-grid">';
+
+            foreach ($images as $img) {
+                $imgPath = htmlspecialchars($img["file_path"], ENT_QUOTES, "UTF-8");
+
+                $html .= '
+                <div class="gallery-item">
+                    <a href="' . $imgPath . '" class="gallery-image-link block">
+                        <img src="' . $imgPath . '" alt="">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white text-xl"></i>
+                        </div>
+                    </a>
+                </div>';
+            }
+
+            $html .= '</div>';
+        }
+
+        $html .= '
+            </div>
+        </div>
+    </div>';
 
         return $html;
     }

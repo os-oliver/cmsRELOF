@@ -361,7 +361,15 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-terracotta"></i>Zaposleni
+                                <i class="fas fa-users-cog mr-2 text-velvet"></i>Organi upravljanja
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
+                                <i class="fas fa-sitemap mr-2 text-terracotta"></i>Organizaciona struktura
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
+                                <i class="fas fa-building mr-2 text-gray-700"></i>Resursi
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary hover:text-primary_hover transition-colors">
@@ -388,6 +396,10 @@
                     <a href="#"
                         class="flex items-center py-3 px-4 text-primary hover:text-primary_hover hover:bg-slate-50 rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-velvet"></i>Galerija
+                    </a>
+                    <a href="#"
+                        class="flex items-center py-3 px-4 text-primary hover:text-primary_hover hover:bg-slate-50 rounded-lg transition-all">
+                        <i class="fas fa-images mr-3 text-caramel"></i>Publikacije
                     </a>
                     <a href="#"
                         class="flex items-center py-3 px-4 text-primary hover:text-primary_hover hover:bg-slate-50 rounded-lg transition-all">
@@ -453,8 +465,18 @@
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-users-cog mr-3 text-velvet flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Organi upravljanja</span>
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-sitemap mr-3 text-terracotta flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Zaposleni</span>
+                            <span class="font-medium">Organizaciona struktura</span>
+                        </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+                            <i class="fas fa-building mr-3 text-gray-700 flex-shrink-0 w-4 text-sm"></i>
+                            <span class="font-medium">Resursi</span>
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-white text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
@@ -488,6 +510,11 @@
                     class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-images mr-2 text-velvet group-hover:text-crimson transition-colors"></i>
                     <span class="hidden xl:inline">Galerija</span>
+                </a>
+                <a href="#"
+                    class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors flex items-center whitespace-nowrap">
+                    <i class="fas fa-book mr-2 text-caramel group-hover:text-crimson transition-colors"></i>
+                    <span class="hidden xl:inline">Publikacije</span>
                 </a>
                 <a href="#"
                     class="nav-link text-primary hover:text-primary_hover font-semibold transition-colors group flex items-center whitespace-nowrap">
@@ -524,7 +551,7 @@
                 }
                 ?>
                 <div class="locale dropdown nonPage relative group flex items-center">
-                    <button class="nav-link text-primary hover:text-primary_hover font-semibold transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-background group">
+                    <button class="nav-link text-primary hover:text-primary_hover font-semibold transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
                         <span class="mr-2 flex-shrink-0"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline text-sm font-medium"><?= $languages[$locale]['label'] ?></span>
                         <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
@@ -629,13 +656,13 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
                         <h3 id="g-naslov" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-tekst" class="text-secondary_text mb-4">
+                        <p id="g-tekst" class="text-secondary_text mb-4 line-clamp-3 md:line-clamp-2">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
                             suscipit quis, pharetra a dui.
                         </p>
@@ -664,13 +691,13 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
                         <h3 id="g-naslov" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-tekst" class="text-secondary_text mb-4">
+                        <p id="g-tekst" class="text-secondary_text mb-4 line-clamp-3 md:line-clamp-2">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
                             suscipit quis, pharetra a dui.
                         </p>
@@ -699,13 +726,13 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <span id="g-kategorije" class="text-primary font-bold">Lorem ipsum</span>
+                            <span id="g-naziv" class="text-primary font-bold">Lorem ipsum</span>
                         </div>
                         <h3 id="g-naslov" class="text-xl font-heading font-bold text-primary_text mb-2">
                             Lorem ipsum dolor sit amet
                         </h3>
 
-                        <p id="g-tekst" class="text-secondary_text mb-4">
+                        <p id="g-tekst" class="text-secondary_text mb-4 line-clamp-3 md:line-clamp-2">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis odio nulla, porttitor vitae
                             suscipit quis, pharetra a dui.
                         </p>
@@ -1046,7 +1073,7 @@
 
             <div class="flex flex-col items-center border-t border-white pt-8 text-center text-white text-sm">
                 <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo"
-                    class="w-2/3 sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto mb-4">
+                    class="w-full max-w-md md:max-w-lg h-auto mb-4">
                 <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
                     zvanični stav Vlade Švajcarske.</p>
             </div>
@@ -1090,7 +1117,8 @@
                         coral: '#FF7F50',
                         barn_red: '#770D0D',
                         tomato_red: '#eb493d',
-                        brown: '#a37c39'
+                        brown: '#a37c39',
+                        caramel: '#a46739'
                     },
                     fontFamily: {
                         'heading': ['Playfair Display', 'serif'],

@@ -9,7 +9,7 @@ class OrganizacijaPageBuilder extends BasePageBuilder
     protected string $slug;
     private LanguageMapperController $translator;
 
-    private int $itemsPerPage = 3;
+    private int $itemsPerPage = 15;
     private int $descriptionMaxLength = 120;
     private int $imageHeight = 56;
     private int $paginationRange = 2;
@@ -107,18 +107,21 @@ PHP;
                 <div class="card-image-overlay"></div>
             </div>
             <div class="p-6">
-                <h3 class="text-xl font-bold text-primary-text mb-4 line-clamp-2 group-hover:text-primary transition-colors">
-                    {{ime}}
-                </h3>
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-primary-text line-clamp-2 group-hover:text-primary transition-colors">
+                        {{ime}}
+                    </h3>
+                    <p class="text-sm">{{pozicija}}</p>
+                </div>
                 <div class="mb-4 p-4 bg-surface rounded-xl border border-white/30">
-                    <p class="text-sm text-secondary-text leading-relaxed">{{opis}}</p>
+                    <p class="text-sm text-secondary-text leading-relaxed">{{biografija}}</p>
                 </div>
                 <div class="flex items-center justify-between mt-4">
                     <div class="flex items-center gap-2">
                         <i class="fas fa-envelope text-primary"></i>
                         <span class="text-sm text-secondary-text">{{kontakt}}</span>
                     </div>
-                    <a href="/sadrzaj?id={{itemId}}&tip=generic_element" class="flex items-center gap-2 text-primary hover:text-primary_hover transition-colors">
+                    <a href="/sadrzaj?id={{itemId}}&tip=Zaposleni" class="flex items-center gap-2 text-primary hover:text-primary_hover transition-colors">
                         <span class="text-sm font-medium">{{viewDetails}}</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -133,7 +136,8 @@ HTML;
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, string $cardTemplate = ''): string
 {
     $ime = htmlspecialchars($item['fields']['ime'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
+    $pozicija = htmlspecialchars($item['fields']['pozicija'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $biografija = htmlspecialchars(mb_substr($item['fields']['biografija'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $kontakt = htmlspecialchars($item['fields']['kontakt'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -144,7 +148,8 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
 
     $replacements = [
         '{{ime}}' => $ime,
-        '{{opis}}' => $opis,
+        '{{pozicija}}' => $pozicija,
+        '{{biografija}}' => $biografija,
         '{{imageSection}}' => $imageSection,
         '{{kontakt}}' => $kontakt,
         '{{itemId}}' => $itemId,
@@ -198,10 +203,10 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-secondary_background to-background min-h-screen">
+<main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-primary-text mb-2">Organi upravljanja</h1>
+            <h1 class="text-4xl font-bold font-heading text-primary-text mb-2">Organi upravljanja</h1>
             <p class="text-secondary-text">Članovi organizacione strukture</p>
         </div>
 
@@ -225,6 +230,7 @@ PHP;
             }
             ?>
         </div>
+        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -246,6 +252,9 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih stavki';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $itemsPerPage = (int)$_GET['per_page'];
+}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
@@ -279,6 +288,7 @@ $latinTexts = [
     'location' => 'Lokacija',
     'event_details' => 'Detalji događaja',
     'no_items_found' => 'Nema pronađenih stavki',
+    'view_details' => 'Pogledaj više',
     'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
 ];
 
@@ -298,6 +308,7 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 

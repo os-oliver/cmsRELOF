@@ -260,7 +260,7 @@ CREATE TABLE `generic_category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `type` varchar(125) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +287,7 @@ CREATE TABLE `generic_element` (
   PRIMARY KEY (`id`),
   KEY `fk_generic_element_generic_category` (`category_id`),
   CONSTRAINT `fk_generic_element_generic_category` FOREIGN KEY (`category_id`) REFERENCES `generic_category` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -314,7 +314,7 @@ CREATE TABLE `image` (
   PRIMARY KEY (`id`),
   KEY `generic_element_id` (`generic_element_id`),
   CONSTRAINT `image_ibfk_1` FOREIGN KEY (`generic_element_id`) REFERENCES `generic_element` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -391,7 +391,7 @@ CREATE TABLE `subcategory_document` (
   PRIMARY KEY (`id`),
   KEY `idx_subcategory_category_id` (`category_id`),
   CONSTRAINT `fk_subcategory_category` FOREIGN KEY (`category_id`) REFERENCES `category_document` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -454,7 +454,7 @@ CREATE TABLE `text_entries` (
   PRIMARY KEY (`id`),
   KEY `idx_text_entries_path_hash` (`page_slug`,`path_hash`),
   KEY `idx_text_entries_text_hash` (`text_hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -486,7 +486,7 @@ CREATE TABLE `text_translations` (
   PRIMARY KEY (`entry_id`,`lang`),
   CONSTRAINT `fk_text_translations_entry` FOREIGN KEY (`entry_id`) REFERENCES `text_entries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_translations_entry` FOREIGN KEY (`entry_id`) REFERENCES `text_entries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -516,7 +516,7 @@ CREATE TABLE `userdefinedpages` (
   `static` tinyint(1) NOT NULL DEFAULT '0',
   `new_column` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -555,7 +555,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$12$gCJhYbZreyojxAWXyMKr/.OuDuacMFGy9PdNUECoWAAmXVGsKhpDm','admin','Luka','Glisic','2025-06-26'),(8,'markic','$2y$12$vzaIj7ajz65Sh/Uiqyb2m.Vpz0Pvntl7bucGdFqE6cIg/FqohjqGi','editor','','','2025-06-26'),(11,'fffff','$2y$12$PBHa30Tq7fClY7jCMMefouzvAyhRtjYhivciT6dftSXbpTICj.aPK','admin','fds','fds','2025-06-26'),(12,'markon','$2y$12$BFsV5gkCcE7q61ROnANi6.BCOANTer.rkBjIrK5DOyCiYmqq9EFsG','editor','testtest','test','2025-06-26'),(14,'sda','$2y$12$woGjXFR/nbfpf1MXztds5OG8FGNfypK/2lcOZupEOQJlntE3OD.La','editor','fds','fds','2025-06-26'),(16,'ddd','$2y$12$ZbgW0vyOo74GgItANxaLOeOYB9aqGqrwvREL7jxill6fVEGEg/Baq','editor','asd','asd','2025-09-21');
+INSERT INTO `users` VALUES (1,'admin','$2y$12$gCJhYbZreyojxAWXyMKr/.OuDuacMFGy9PdNUECoWAAmXVGsKhpDm','admin','Admin','Korisnik','2025-06-26'),(8,'markic','$2y$12$vzaIj7ajz65Sh/Uiqyb2m.Vpz0Pvntl7bucGdFqE6cIg/FqohjqGi','editor','','','2025-06-26'),(11,'fffff','$2y$12$PBHa30Tq7fClY7jCMMefouzvAyhRtjYhivciT6dftSXbpTICj.aPK','admin','fds','fds','2025-06-26'),(12,'markon','$2y$12$BFsV5gkCcE7q61ROnANi6.BCOANTer.rkBjIrK5DOyCiYmqq9EFsG','editor','testtest','test','2025-06-26'),(14,'sda','$2y$12$woGjXFR/nbfpf1MXztds5OG8FGNfypK/2lcOZupEOQJlntE3OD.La','editor','fds','fds','2025-06-26'),(16,'ddd','$2y$12$ZbgW0vyOo74GgItANxaLOeOYB9aqGqrwvREL7jxill6fVEGEg/Baq','editor','asd','asd','2025-09-21');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

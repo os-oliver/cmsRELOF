@@ -9,7 +9,7 @@ class SportoviPageBuilder extends BasePageBuilder
     protected string $slug;
     private LanguageMapperController $translator;
 
-    private int $itemsPerPage = 3;
+    private int $itemsPerPage = 15;
     private int $descriptionMaxLength = 120;
     private int $imageHeight = 56;
     private int $paginationRange = 2;
@@ -36,7 +36,7 @@ class SportoviPageBuilder extends BasePageBuilder
             'all_categories' => 'Sve kategorije',
             'date_and_time' => 'Datum i vreme',
             'location' => 'Lokacija',
-            'event_details' => 'Detalji događaja',
+            'event_details' => 'Detalji sportova',
             'no_items_found' => 'Nema pronađenih stavki',
             'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
         ];
@@ -118,7 +118,7 @@ PHP;
                 <div class="mb-5 p-4 bg-surface rounded-xl border border-white/30">
                     <p class="text-sm text-secondary-text leading-relaxed">{{opis}}</p>
                 </div>
-                <a href="/sadrzaj?id={{itemId}}&tip=generic_element" class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
+                <a href="/sadrzaj?id={{itemId}}&tip=Sportovi" class="block w-full text-center bg-gradient-to-r from-primary to-secondary hover:from-primary_hover hover:to-secondary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">
                     <span class="flex items-center justify-center gap-2">
                         <i class="fas fa-ticket-alt"></i>
                         <span>{{eventDetails}}</span>
@@ -243,6 +243,7 @@ PHP;
             }
             ?>
         </div>
+        <?php echo renderPerPageDropdown($itemsPerPage) ?>
     </section>
 </main>
 HTML;
@@ -264,6 +265,9 @@ $pageTitle = ucfirst($slug);
 $pageDescription = 'Pregled svih stavki';
 
 $itemsPerPage = __ITEMS_PER_PAGE__;
+if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+    $itemsPerPage = (int)$_GET['per_page'];
+}
 $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
@@ -295,7 +299,7 @@ $latinTexts = [
     'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Termin',
     'location' => 'Lokacija',
-    'event_details' => 'Detalji događaja',
+    'event_details' => 'Detalji sprotova',
     'no_items_found' => 'Nema pronađenih stavki',
     'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
 ];
@@ -316,6 +320,7 @@ PHP;
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();
+        $content .= $this->getPerPageDropdown();
         $content .= $this->html;
         $content .= $this->getFooter();
 
