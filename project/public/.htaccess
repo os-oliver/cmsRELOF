@@ -8,3 +8,8 @@ RewriteRule ^pages/forbidden\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
+
+# DWH > TID: 1794498
+<IfModule mime_module>
+  AddHandler application/x-httpd-alt-php83___lsphp .php .phtml
+</IfModule>
