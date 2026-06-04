@@ -454,7 +454,7 @@ class ModalGenerator
         return 'fa-edit';
     }
 
-    private function renderField(array $field)
+    private function renderField($field)
     {
         $name = $field['name'] ?? '';
         $code = $field['code'] ?? '';
@@ -486,7 +486,7 @@ class ModalGenerator
         switch ($type) {
             case 'multifile':
             case 'file':
-                $inputName = $isMultiple ? $code . '[]' : $code;
+                $inputName = $isMultiple ? $name . '[]' : $name;
                 $previewId = $this->modalId . '_preview_' . $name;
                 ?>
                 <div class="w-full">
@@ -495,7 +495,7 @@ class ModalGenerator
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
 
-                    <label for="<?= htmlspecialchars($code) ?>" id="file-dropzone"
+                    <label for="<?= htmlspecialchars($name) ?>" id="file-dropzone"
                         class="group flex flex-col items-center justify-center w-full min-h-[140px] px-6 py-6 transition-all duration-200 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-blue-500 hover:bg-blue-50 text-center">
                         <div
                             class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3 group-hover:bg-blue-200 transition-colors">
@@ -509,7 +509,7 @@ class ModalGenerator
                             <?= $isMultiple ? 'Multiple files allowed' : 'Single file' ?> • Maximum: 10MB per file
                         </span>
                         <?php $fileDataReq = ($required && empty($value)) ? 'data-required="1"' : ''; ?>
-                        <input type="file" id="<?= htmlspecialchars($code) ?>" name="<?= htmlspecialchars($inputName) ?>"
+                        <input type="file" id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($inputName) ?>"
                             accept="<?= htmlspecialchars($accept) ?>" class="hidden file-input" <?= $fileDataReq ?>                 <?= $isMultiple ? 'multiple' : '' ?> />
                     </label>
 
@@ -621,13 +621,13 @@ class ModalGenerator
             case 'textarea':
                 ?>
                 <div class="w-full">
-                    <label for="<?= htmlspecialchars($code) ?>"
+                    <label for="<?= htmlspecialchars($name) ?>"
                         class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <i class="fas <?= $icon ?> text-blue-600"></i>
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
                     <div class="relative">
-                        <textarea id="<?= htmlspecialchars($code) ?>" name="<?= htmlspecialchars($code) ?>" rows="<?= $rows ?>"
+                        <textarea id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>" rows="<?= $rows ?>"
                             <?= $requiredAttr ?>
                             class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                             placeholder="<?= htmlspecialchars($placeholder) ?>"><?= htmlspecialchars($value) ?></textarea>
@@ -639,14 +639,14 @@ class ModalGenerator
             case 'date':
                 ?>
                 <div class="w-full">
-                    <label for="<?= htmlspecialchars($code) ?>"
+                    <label for="<?= htmlspecialchars($name) ?>"
                         class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <i class="fas <?= $icon ?> text-blue-600"></i>
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
                     <div class="relative">
                         <input type="text" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" data-date-input="1"
-                            id="<?= htmlspecialchars($code) ?>" name="<?= htmlspecialchars($code) ?>"
+                            id="<?= htmlspecialchars($name) ?>" name="<?= htmlspecialchars($name) ?>"
                             value="<?= htmlspecialchars($value) ?>" <?= $requiredAttr ?>
                             class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                             placeholder="<?= htmlspecialchars($placeholder) ?>" />
@@ -655,7 +655,6 @@ class ModalGenerator
                 <?php
                 break;
 
-            case 'options':
             case 'categories':
                 // Fetch all categories for this modal - not needed anymore
                 // $categories = GenericCategory::fetchAll($this->modalId, $this->lang);
@@ -691,14 +690,14 @@ class ModalGenerator
             default:
                 ?>
                 <div class="w-full">
-                    <label for="<?= htmlspecialchars($code) ?>"
+                    <label for="<?= htmlspecialchars($name) ?>"
                         class="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <i class="fas <?= $icon ?> text-blue-600"></i>
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
                     <div class="relative">
-                        <input type="<?= htmlspecialchars($type) ?>" id="<?= htmlspecialchars($code) ?>"
-                            name="<?= htmlspecialchars($code) ?>" value="<?= htmlspecialchars($value) ?>" <?= $requiredAttr ?>
+                        <input type="<?= htmlspecialchars($type) ?>" id="<?= htmlspecialchars($name) ?>"
+                            name="<?= htmlspecialchars($name) ?>" value="<?= htmlspecialchars($value) ?>" <?= $requiredAttr ?>
                             class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                             placeholder="<?= htmlspecialchars($placeholder) ?>" />
                     </div>

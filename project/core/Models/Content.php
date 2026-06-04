@@ -417,11 +417,11 @@ class Content
         $stmt = $this->pdo->prepare("SELECT * FROM content WHERE content_type_code = :type ORDER BY ordno DESC LIMIT 1");
         $stmt->execute([':type' => $type]);
 
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchColumn();
         if ($result === false) {
             $ordno = 1;
         } else {
-            $ordno = (int) $result['ordno'] + 1;
+            $ordno = (int) $result + 1;
         }
 
         $stmt = $this->pdo->prepare("INSERT INTO content (content_type_code, ordno) VALUES (:type, :ordno)");
@@ -581,24 +581,20 @@ class Content
         }
     }
 
-    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = ''): void
+    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string $dateString, string $format = ''): void
     {
-        if (empty($dateString)) {
-            $date = null;
-        } else {
-            try {
-                if (empty($format)) {
-                    $date = new \DateTime($dateString);
-                } else {
-                    $date = \DateTime::createFromFormat($format, $dateString);
-                }
-
-                if (!$date) {
-                    throw new \Exception("Invalid date string or format: '$dateString'");
-                }
-            } catch (\Throwable $e) {
-                $date = null;
+        try {
+            if (empty($format)) {
+                $date = new \DateTime($dateString);
+            } else {
+                $date = \DateTime::createFromFormat($format, $dateString);
             }
+
+            if (!$date) {
+                throw new \Exception("Invalid date string or format: '$dateString'");
+            }
+        } catch (\Throwable $e) {
+            $date = null;
         }
 
         if ($date) {

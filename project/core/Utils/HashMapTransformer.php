@@ -90,19 +90,4 @@ class HashMapTransformer
 
         return $oldItem;
     }
-
-    public static function remapToOldFieldLabels(array $newItem, string $locale): array
-    {
-        $oldLabels = [];
-        foreach ($newItem as $newField) {
-            $label = [
-                'label' => [
-                    $locale => $newField['label'],
-                ]
-            ];
-            $oldLabels[$newField['code']] = $label;
-        }
-
-        return $oldLabels;
-    }
 }

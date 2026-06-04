@@ -184,7 +184,7 @@ class CardRenderer
                 $safeValue = nl2br(htmlspecialchars($f['value'], ENT_QUOTES, 'UTF-8'));
                 $html .= "<div class='bg-gray-50 rounded-md p-2 border border-gray-100'>
                     <div class='text-xs text-gray-500 uppercase tracking-wide mb-1'>{$safeLabel}</div>
-                    <div class='leading-tight line-clamp-4'>{$safeValue}</div>
+                    <div class='leading-tight'>{$safeValue}</div>
                   </div>";
             }
             $html .= "</div>";
@@ -265,7 +265,7 @@ class CardRenderer
                 $safeValue = nl2br(htmlspecialchars($f['textValue'] ?? '', ENT_QUOTES, 'UTF-8'));
                 $html .= "<div class='bg-gray-50 rounded-md p-2 border border-gray-100'>
                     <div class='text-xs text-gray-500 uppercase tracking-wide mb-1'>{$safeLabel}</div>
-                    <div class='leading-tight line-clamp-4'>{$safeValue}</div>
+                    <div class='leading-tight'>{$safeValue}</div>
                   </div>";
             }
             $html .= "</div>";

@@ -349,7 +349,7 @@ class MigrateController
             }
         }
 
-        return $mainCategories[0]['option_value'];
+        return '';
     }
 
 }
