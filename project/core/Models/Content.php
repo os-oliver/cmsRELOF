@@ -6,6 +6,7 @@ use App\Utils\Config;
 use App\Utils\Pivoter;
 use App\Utils\TextHelper;
 use App\Utils\FileUploader;
+use App\Utils\LocaleManager;
 use DateTime;
 use Exception;
 use PDO;
@@ -187,10 +188,11 @@ class Content
         int $page = 1,
         int $per = 10,
         int|string|null $categoryId = null, // ✅ can be id or name
-        string $lang = 'sr',
+        string $lang = '',
         string $orderingFieldCode = 'title',
         string $sortingDirection = 'DESC'
     ): array {
+        $locale = empty($lang) ? LocaleManager::get() : $lang;
         $q = trim((string) $q);
         $page = max(1, $page);
         $per = max(1, min(100, $per));
@@ -235,7 +237,7 @@ class Content
 
         $total = $this->fetchTotalCountNew($where, $joinText, $params);
         $contentIds = $this->fetchContentIdsNew($where, $joinText, $params, $per, $offset, $orderingColumn, $sortingDirection);
-        $cfvs = $this->fetchContentCFVsNew($contentIds, $whereForCFV, $joinText, $params, $lang);
+        $cfvs = $this->fetchContentCFVsNew($contentIds, $whereForCFV, $joinText, $params, $locale);
 
         if (empty($cfvs)) {
             return [
@@ -250,7 +252,7 @@ class Content
         $customFields = CustomField::fetchAllByContentTypeCode($type, true);
         $allOptions = CustomFieldOption::fetchAllByContentTypeCode($type, true);
 
-        $items = $this->assembleItemsNew($cfvs, $type, $customFields, $allOptions, $lang);
+        $items = $this->assembleItemsNew($cfvs, $type, $customFields, $allOptions, $locale);
 
         return [
             'success' => true,
@@ -513,7 +515,7 @@ class Content
         }
     }
 
-    private function processCategoryField(int $contentId, array $customField, array | null $cfValueVariants, string $categoryCode, ): void
+    private function processCategoryField(int $contentId, array $customField, array | null $cfValueVariants, string $categoryCode): void
     {
         $category = ContentType::fetchCategoryByContentTypeCodeAndCode($customField['content_type_code'], $categoryCode, true);
         if (empty($category)) {
@@ -539,7 +541,7 @@ class Content
         }
     }
 
-    private function processTimeField(int $contentId, array $customField, array | null $cfValueVariants, string $timeValue): void
+    private function processTimeField(int $contentId, array $customField, array | null $cfValueVariants, string | null $timeValue): void
     {
         if (empty($cfValueVariants)) {
             $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, content) VALUES (:content_id, :custom_field_id, :timeValue)");
@@ -560,7 +562,7 @@ class Content
         }
     }
 
-    private function processNonTranslatableField(int $contentId, array $customField, array | null $cfValueVariants, string $contentValue): void
+    private function processNonTranslatableField(int $contentId, array $customField, array | null $cfValueVariants, string | null $contentValue): void
     {
         if (empty($cfValueVariants)) {
             $stmt = $this->pdo->prepare("INSERT INTO custom_field_value (content_id, custom_field_id, content) VALUES (:content_id, :custom_field_id, :contentValue)");
@@ -620,7 +622,7 @@ class Content
         }
     }
 
-    private function processTextField(int $contentId, array $customField, array | null $cfValueVariants, string $value, string $locale): void
+    private function processTextField(int $contentId, array $customField, array | null $cfValueVariants, string | null $value, string $locale): void
     {
         // error_log("Processing text field: $fieldName with value: $value for locale: $locale");
         $nonTranslatableTypes = ['url', 'email'];
