@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Admin\PageBuilders;
 
 use App\Controllers\ContentController;
@@ -38,7 +39,8 @@ class VestiPageBuilder extends BasePageBuilder
             'location' => 'Lokacija',
             'event_details' => 'Detalji događaja',
             'no_items_found' => 'Nema pronađenih stavki',
-            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec'],
+            'read_more' => 'Pročitaj više',
         ];
 
         if ($locale === 'sr-Cyrl') {
@@ -444,7 +446,7 @@ PHP;
 
     protected string $cardRender = <<<'HTML'
 
-function cardRender(array $item, array $fieldLabels, string $locale): string
+function cardRender(array $item, array $fieldLabels, string $locale, array $texts = []): string
 {
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     // Sanitizacija podataka
@@ -530,7 +532,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
         $targetLink = "/sadrzaj?id={$itemId}&tip=vesti";
         $html .= "
                 <a href='{$targetLink}' class='bg-primary news-cta-button hover:bg-primary_hover'>
-                    <span>Pročitaj više</span>
+                    <span>{$texts['read_more']}</span>
                     <i class='fas fa-arrow-right'></i>
                 </a>
             </div>
@@ -623,7 +625,7 @@ PHP;
             if (!empty($itemsList['success']) && !empty($itemsList['items'])) {
                 echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
                 foreach ($itemsList['items'] as $item) {
-                    echo cardRender($item, $fieldLabels, $locale);
+                    echo cardRender($item, $fieldLabels, $locale, $texts);
                 }
                 echo '</div>';
                 $totalPages = max(1, (int) ceil($itemsList['total'] / $itemsPerPage));
@@ -696,7 +698,8 @@ $latinTexts = [
     'location' => 'Lokacija',
     'event_details' => 'Detalji događaja',
     'no_items_found' => 'Nema pronađenih stavki',
-    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec'],
+    'read_more' => 'Pročitaj više',
 ];
 
 $texts = ($locale === 'sr-Cyrl')
