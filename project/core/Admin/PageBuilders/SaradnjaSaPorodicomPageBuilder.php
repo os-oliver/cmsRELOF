@@ -141,7 +141,6 @@ PHP;
                 echo renderPagination($currentPage, $totalPages, $paginationRange);
             } else {
                 echo "<div class='glass-card rounded-lg p-12 text-center border border-white/40'>
-                        <i class='fas fa-utensils text-5xl text-gray-400 mb-4'></i>
                         <p class='text-gray-500'>{$texts['no_items_found']}</p>
                       </div>";
             }
@@ -182,7 +181,7 @@ HTML;
         $translator = new LanguageMapperController();
         $latinTexts = [
             'event_details' => 'Detaljnije',
-            'no_items_found' => 'Nema pronađenih cenovnika'
+            'no_items_found' => 'Nema pronađenih stavki'
         ];
         $texts = ($locale === 'sr-Cyrl')
             ? $translator->latin_to_cyrillic_array($latinTexts)

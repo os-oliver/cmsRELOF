@@ -527,11 +527,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
             $html .= "<p class='news-description-hero'>{$shortDescription}</p>";
         }
 
-<<<<<<< HEAD
-        $targetLink = "sadrzaj?id={$itemId}&tip=vesti";
-=======
         $targetLink = "/sadrzaj?id={$itemId}&tip=vesti";
->>>>>>> fb767f9106a048eb9a1d85921d58c6fd9981ca08
         $html .= "
                 <a href='{$targetLink}' class='bg-primary news-cta-button hover:bg-primary_hover'>
                     <span>Pročitaj više</span>

@@ -4,6 +4,7 @@ namespace App\Admin\PageBuilders;
 
 use App\Controllers\ContentController;
 use App\Controllers\LanguageMapperController;
+use App\Utils\HashMapTransformer;
 
 class JelovnikPageBuilder extends BasePageBuilder
 {
@@ -159,6 +160,7 @@ HTML;
     $additionalPHP = <<<'PHP'
         use App\Models\Content;
         use App\Controllers\LanguageMapperController;
+        use App\Utils\HashMapTransformer;
 
         if (session_status() === PHP_SESSION_NONE) {
             session_start();

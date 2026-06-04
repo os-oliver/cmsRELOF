@@ -191,7 +191,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Mejl</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">pu.pcelica@open.telekom.rs</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">pupcelicasm@gmail.com</p>
                                 </div>
                             </div>
                         </div>

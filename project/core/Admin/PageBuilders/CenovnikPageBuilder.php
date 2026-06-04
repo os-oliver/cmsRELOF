@@ -3,6 +3,7 @@
 namespace App\Admin\PageBuilders;
 
 use App\Models\Gallery;
+use App\Utils\HashMapTransformer;
 
 class CenovnikPageBuilder extends BasePageBuilder
 {
@@ -83,6 +84,7 @@ HTML;
   public function buildPage(): string
   {
     $additionalPHP = <<<'PHP'
+    use App\Utils\HashMapTransformer;
 $menuDescription = "Naša predškolska ustanova teži da pruži najviši kvalitet vaspitno–obrazovnog rada, uz transparentne i pristupačne cene.";
 PHP;
 
