@@ -2,10 +2,9 @@
 
 namespace App\Admin\PageBuilders;
 
-use App\Controllers\ContentController;
 use App\Controllers\LanguageMapperController;
 
-class SeminarPageBuilder extends BasePageBuilder
+class StrucnoOsposobljavanjePageBuilder extends BasePageBuilder
 {
     protected string $slug;
     private LanguageMapperController $translator;
@@ -13,7 +12,6 @@ class SeminarPageBuilder extends BasePageBuilder
     // Configurable variables
     private int $itemsPerPage = 15;
     private int $descriptionMaxLength = 120;
-    private int $imageHeight = 56; // in rem units (h-56 = 14rem)
     private int $paginationRange = 2; // Number of pages to show on each side
 
     // Translatable text variables
@@ -37,16 +35,13 @@ class SeminarPageBuilder extends BasePageBuilder
         // Define all static texts in Latin
         $latinTexts = [
             'search_placeholder' => 'Pretraži...',
-            'catalog_number' => 'Kataloški broj',
-            'subject_area' => 'Oblast',
-            'learn_more' => 'Saznaj više',
             'search_button' => 'Pretraži',
-            'all_categories' => 'Sve kategorije',
-            'date_and_time' => 'Datum i vreme',
-            'location' => 'Lokacija',
-            'event_details' => 'Detalji događaja',
             'no_items_found' => 'Nema pronađenih stavki',
-            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+            'download' => 'Preuzmi dokument',
+            'published_on' => 'Datum objavljivanja',
+            'no_items_found' => 'Nema objavljenih publikacija',
+            'learn_more' => 'Saznaj više',
+            'all_categories' => 'Sve kategorije'
         ];
 
         // Convert to Cyrillic if needed
@@ -158,7 +153,7 @@ class SeminarPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(array $categories, string $locale, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
 
@@ -174,41 +169,42 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
         </button>
     </div>";
 
-    $html .= "</form>";
+    $html .= "<div class='flex items-center w-full sm:w-auto'>
+        <select name='category' class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+            <option value=''>{$texts['all_categories']}</option>";
+
+            foreach ($categories as $cat) {
+                $translations = $cat['translations'];
+                $code = $cat['option_value'];
+                $name = $translations[$locale] ?? $translations['sr'];
+                $selected = ($selectedCategoryId == $cat['option_value']) ? 'selected' : '';
+                $html .= "<option value='{$code}' {$selected}>{$name}</option>";
+            }
+
+    $html .= "</select></div></form>";
 
     return $html;
 }
 PHP;
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
-        <div class="glass-card rounded-lg p-6">
-            <div class="flex items-start justify-between gap-4">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-background flex items-center justify-center">
-                        <i class="fas fa-graduation-cap text-primary"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">{{catalogNumberLabel}}</div>
-                        <div class="text-lg font-semibold text-primary_text">{{catalogNumber}}</div>
-                    </div>
-                </div>
-
-                <div class="text-right">
-                    <div class="text-xs text-gray-500 mb-1">{{subjectArea}}</div>
-                    <div class="text-sm text-primary_text">{{area}}</div>
-                </div>
+        <div class="glass-card rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
+            <h3 class="text-xl font-bold text-primary_text mb-3 tracking-tight">
+                {{title}}
+            </h3>
+            <div class="text-xs text-gray-500 mb-5 flex items-center gap-3">
+                <span class="category-chip">{{category}}</span>
             </div>
+            <p class="text-secondary_text text-sm leading-relaxed mb-4 line-clamp-2">
+                {{tekst}}
+            </p>
+            <a href="{{targetLink}}"
+                class="mt-auto inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                    text-sm font-medium text-primary hover:text-primary_hover
+                    transition-all duration-200">
 
-            <h3 class="mt-4 text-xl font-bold text-primary_text">{{title}}</h3>
-
-            <div class="mt-6 flex gap-3">
-                <a href="{{link}}" target="_blank"
-                class="inline-flex items-center px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg
-                        text-sm font-medium text-gray-700 hover:bg-primary/5 hover:border-primary
-                        hover:text-primary transition-colors duration-200">
-                    <i class="fas fa-info-circle mr-2 text-primary"></i>{{learnMore}}
-                </a>
-            </div>
+                {{learnMore}}
+            </a>
         </div>
         PHP;
 HTML;
@@ -217,22 +213,30 @@ HTML;
  function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120,$cardTemplate=''): string
 {
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
-    $title = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $catalogNumber = htmlspecialchars((string) ($item['fields']['catalogNumber'][$locale] ?? $item['fields']['catalogNumber'] ?? ''), ENT_QUOTES, 'UTF-8');
-    $area = htmlspecialchars((string) ($item['fields']['area'][$locale] ?? $item['fields']['area'] ?? ''), ENT_QUOTES, 'UTF-8');
-    $link = (string) ($item['fields']['link'][$locale] ?? $item['fields']['link'] ?? '');
+
+    $title = htmlspecialchars($item['fields']['title'][$locale] ?? $item['fields']['title'] ?? '', ENT_QUOTES, 'UTF-8');
+
+    $tekst = $item['fields']['tekst'][$locale] ?? $item['fields']['tekst'] ?? '';
+    if (strlen($tekst) > $descMaxLength) {
+        $tekst = mb_substr($tekst, 0, $descMaxLength) . '...';
+    }
+    $tekst = htmlspecialchars($tekst, ENT_QUOTES, 'UTF-8');
+
+    $kategorija = htmlspecialchars($item['fields']['main_category'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+
+    $files = $item['fields']['file'] ?? [];
+
+    $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
+    $targetLink = "sadrzaj?id={$itemId}&tip=generic_element";
 
 
     // Replace placeholders
     $replacements = [
         '{{title}}' => $title,
-        '{{catalogNumber}}' => $catalogNumber,
-        '{{link}}' => $link,
-        '{{area}}' => $area,
+        '{{tekst}}' => $tekst,
+        '{{category}}' => $kategorija,
+        '{{targetLink}}' => $targetLink,
         '{{learnMore}}' => $texts['learn_more'] ?? 'Learn more',
-        '{{subjectArea}}' => $texts['subject_area'] ?? 'Subject area',
-        '{{catalogNumberLabel}}' => $texts['catalog_number'] ?? 'Catalog number',
-        '{{eventDetails}}' => $texts['event_details'] ?? 'Details'
     ];
 
     return str_replace(array_keys($replacements), array_values($replacements), $cardTemplate);
@@ -302,17 +306,18 @@ PHP;
 <main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-heading font-bold text-primary_text mb-2">Seminari</h1>
-            <p class="text-secondary_text">Seminari čiju je akreditaciju institucionalno podržao centar za obrazovanje</p>
+            <h1 class="text-3xl font-heading font-bold text-primary_text mb-2">Stručno osposobljavenje</h1>
+            <p class="text-secondary_text">Istražite našu ponudu i odaberite oblast usavršavanja koja najbolje odgovara vašim profesionalnim ciljevima.</p>
         </div>
 
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($categories, $locale,$search, $categoryId, $texts); ?>
 
         <div class="performances-grid">
             <?php
             if ($itemsList['success'] && !empty($itemsList['items'])) {
                 echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
                 foreach ($itemsList['items'] as $item) {
+
                     echo cardRender($item, $fieldLabels, $locale, $texts, $descriptionMaxLength,$cardTemplate);
                 }
                 echo '</div>';
@@ -369,8 +374,8 @@ $search = $_GET['search'] ?? '';
 
 $categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
-    : ['success' => false, 'items' => []];
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale, 'datum', 'DESC')
+    : ['success' => false, 'items' => [], 'total' => 0];
 
 $config = $fieldLabels = [];
 if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
@@ -383,16 +388,13 @@ if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structur
 $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži...',
-    'catalog_number' => 'Kataloški broj',
-    'subject_area' => 'Oblast',
-    'learn_more' => 'Saznaj više',
     'search_button' => 'Pretraži',
-    'all_categories' => 'Sve kategorije',
-    'date_and_time' => 'Datum i vreme',
-    'location' => 'Lokacija',
-    'event_details' => 'Detalji događaja',
     'no_items_found' => 'Nema pronađenih stavki',
-    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+    'download' => 'Preuzmi dokument',
+    'published_on' => 'Datum objavljivanja',
+    'no_items_found' => 'Trenutno nema objavljenih programa u ovoj kategoriji',
+    'learn_more' => 'Saznaj više',
+    'all_categories' => 'Sve kategorije'
 ];
 
 $texts = ($locale === 'sr-Cyrl')

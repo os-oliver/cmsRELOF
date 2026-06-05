@@ -115,7 +115,17 @@ class ContentController
 
     public function contentTypes(): void
     {
-        ContentTypeManager::createTypes('Turizam');
+        ContentTypeManager::createTypes('ObrazovnaUstanova');
+
+        // $allCategoriesToInsert = [];
+        // foreach ($contentTypes as $typeKey => $typeData) {
+        //     foreach (($typeData['categories'] ?? []) as $category) {
+        //         $allCategoriesToInsert[] = ['name' => $category, 'type' => $typeKey];
+        //     }
+        // }
+
+        // return $allCategoriesToInsert;
+
     }
 
 }

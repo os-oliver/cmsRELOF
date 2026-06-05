@@ -51,7 +51,11 @@ use App\Admin\PageBuilders\UpisPageBuilder;
 use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
+use App\Admin\PageBuilders\RadniProstorPageBuiler;
+use App\Admin\PageBuilders\ResursiPageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
+use App\Admin\PageBuilders\Smestaj2PageBuilder;
+use App\Admin\PageBuilders\StrucnoOsposobljavanjePageBuilder;
 use App\Utils\Config;
 use DOMDocument;
 use DOMNode;
@@ -704,7 +708,7 @@ class PageExporter
             case 'manifestacije':
                 return new DynamicPageBuilder('Manifestacije');
             case 'smestaj':
-                return new DynamicPageBuilder('Smestaj');
+                return new Smestaj2PageBuilder('Smestaj', $this->data);
             case 'aktivnosti':
                 return new DynamicPageBuilder('Aktivnosti');
             case 'gastronomija':
@@ -765,6 +769,12 @@ class PageExporter
                 return new DynamicPageBuilder('Filmovi');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
+            case 'strucno-osposobljavanje':
+                return new StrucnoOsposobljavanjePageBuilder('StrucnoOsposobljavanje', $this->data);
+            case 'resursi':
+                return new ResursiPageBuilder('Resursi', $this->data);
+            case 'radni-prostor':
+                return new RadniProstorPageBuiler('RadniProstor', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -884,6 +894,12 @@ class PageExporter
             return 'koncerti';
         }elseif (strpos($name, 'filmovi') !== false) {
             return 'filmovi';
+        }elseif (strpos($name, 'strucno-osposobljavanje') !== false) {
+            return 'strucno-osposobljavanje';
+        }elseif (strpos($name, 'resursi') !== false) {
+            return 'resursi';
+        }elseif (strpos($name, 'radni-prostor') !== false) {
+            return 'radni-prostor';
         }
 
         return 'basic';

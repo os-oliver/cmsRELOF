@@ -33,18 +33,18 @@ $colorPalettes = [
     'default' => [
         'name' => 'Plava (Default)',
         'colors' => [
-            'primary' => '#3B82F6',
-            'primary_hover' => '#2563EB',
-            'secondary' => '#64748B',
-            'secondary_hover' => '#475569',
-            'accent' => '#8B5CF6',
-            'accent_hover' => '#7C3AED',
-            'primary_text' => '#1E293B',
-            'secondary_text' => '#64748B',
-            'background' => '#FFFFFF',
-            'secondary_background' => '#F8FAFC',
-            'surface' => '#F1F5F9'
-        ]
+            'primary' => '#00309a',
+            'primary_hover' => '#00267a',
+            'secondary' => '#fe0300',
+            'secondary_hover' => '#d00200',
+            'accent' => '#e6ebf5',
+            'accent_hover' => '#d1d9eb',
+            'primary_text' => '#1a1a1a',
+            'secondary_text' => '#4a4a4a',
+            'background' => '#e6eaf5',
+            'secondary_background' => '#ffffff',
+            'surface' => '#ffffff',
+]
     ],
     'green' => [
         'name' => 'Zelena',
