@@ -494,7 +494,7 @@ class Content
             }
 
             if ($fieldType === 'date') {
-                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, 'Y-m-d');
+                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, LocaleManager::DATE_FORMAT_STRING);
                 continue;
             }
 
@@ -583,7 +583,7 @@ class Content
         }
     }
 
-    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = ''): void
+    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = 'd/m/Y'): void
     {
         if (empty($dateString)) {
             $date = null;
