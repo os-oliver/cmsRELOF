@@ -1,15 +1,14 @@
 [
   {
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
-      "categories": [
-        "Vesti"
-      ],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -20,6 +19,7 @@
           "required": true
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -31,23 +31,7 @@
           "property": "auto"
         },
         {
-          "name": "naziv",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
-          },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
-          "required": true
-        },
-        {
+          "code": "autor",
           "name": "autor",
           "type": "text",
           "label": {
@@ -57,6 +41,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -66,6 +51,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -75,6 +61,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -86,6 +73,7 @@
       ]
     },
     "ProgramiObuke": {
+        "code": "programi-obuke",
         "sr": "Programi obuke",
         "en": "Training Programs",
         "sr-Cyrl": "Програми обуке",
@@ -100,28 +88,31 @@
         ],
         "fields": [
             {
-            "name": "slika",
-            "type": "file",
-            "label": {
-                "sr": "Naslovna slika programa",
-                "en": "Program image",
-                "sr-Cyrl": "Насловна слика програма"
-            },
-            "required": true
-            },
-            {
-            "name": "naslov",
-            "type": "text",
-            "label": {
-                "sr": "Naziv programa obuke",
-                "en": "Training program title",
-                "sr-Cyrl": "Назив програма обуке"
-            },
-            "required": true
+              "code": "slika",
+              "name": "slika",
+              "type": "file",
+              "label": {
+                  "sr": "Naslovna slika programa",
+                  "en": "Program image",
+                  "sr-Cyrl": "Насловна слика програма"
+              },
+              "required": true
             },
             {
+              "code": "naslov",
+              "name": "naslov",
+              "type": "text",
+              "label": {
+                  "sr": "Naziv programa obuke",
+                  "en": "Training program title",
+                  "sr-Cyrl": "Назив програма обуке"
+              },
+              "required": true
+            },
+            {
+              "code": "main_category",
               "name": "kategorija",
-              "type": "categories",
+              "type": "options",
               "label": {
                   "sr": "Kategorija programa",
                   "en": "Program category",
@@ -135,30 +126,59 @@
                   "Porodica",
                   "Veštine"
               ],
+              "coded_options": [
+                {
+                  "code": "roditeljstvo",
+                  "translations": { "sr": "Roditeljstvo", "sr-Cyrl": "Родитељство", "en": "Parenthood"}
+                },
+                {
+                  "code": "komunikacija",
+                  "translations": { "sr": "Komunikacija", "sr-Cyrl": "Комуникација", "en": "Communication"}
+                },
+                {
+                  "code": "stariji",
+                  "translations": { "sr": "Stariji", "sr-Cyrl": "Старији", "en": "Elder"}
+                },
+                {
+                  "code": "mladi",
+                  "translations": { "sr": "Mladi", "sr-Cyrl": "Млади", "en": "Young"}
+                },
+                {
+                  "code": "porodica",
+                  "translations": { "sr": "Porodica", "sr-Cyrl": "Породица", "en": "Family"}
+                },
+                {
+                  "code": "vestine",
+                  "translations": { "sr": "Veštine", "sr-Cyrl": "Вештине", "en": "Skills"}
+                }
+              ],
               "required": true
             },
             {
-            "name": "kratakOpis",
-            "type": "textarea",
-            "label": {
-                "sr": "Kratak opis programa",
-                "en": "Short program description",
-                "sr-Cyrl": "Кратак опис програма"
-            },
-            "required": true
-            },
-            {
-            "name": "vremePocetka",
-            "type": "time",
-            "label": {
-                "sr": "Vreme početka",
-                "en": "Start time",
-                "sr-Cyrl": "Време почетка"
-            }
+              "code": "kratakOpis",
+              "name": "kratakOpis",
+              "type": "textarea",
+              "label": {
+                  "sr": "Kratak opis programa",
+                  "en": "Short program description",
+                  "sr-Cyrl": "Кратак опис програма"
+              },
+              "required": true
             },
             {
+              "code": "vremePocetka",
+              "name": "vremePocetka",
+              "type": "text",
+              "label": {
+                  "sr": "Vreme početka",
+                  "en": "Start time",
+                  "sr-Cyrl": "Време почетка"
+              }
+            },
+            {
+              "code": "vremeZavrsetka",
               "name": "vremeZavrsetka",
-              "type": "time",
+              "type": "text",
               "label": {
                   "sr": "Vreme završetka",
                   "en": "End time",
@@ -166,15 +186,17 @@
               }
             },
             {
-            "name": "ucestalost",
-            "type": "select",
-            "label": {
-                "sr": "Učestalost održavanja",
-                "en": "Frequency",
-                "sr-Cyrl": "Учесталост одржавања"
-            }
+              "code": "ucestalost",
+              "name": "ucestalost",
+              "type": "text",
+              "label": {
+                  "sr": "Učestalost održavanja",
+                  "en": "Frequency",
+                  "sr-Cyrl": "Учесталост одржавања"
+              }
             },
             {
+              "code": "linkPrijave",
               "name": "linkPrijave",
               "type": "url",
               "label": {
@@ -186,6 +208,7 @@
         ]
     },
     "Sluzbe": {
+      "code": "sluzbe",
       "sr": "Službe",
       "en": "Services Departments",
       "sr-Cyrl": "Службе",
@@ -202,6 +225,7 @@
       ],
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -212,16 +236,62 @@
           "required": true
         },
         {
+          "code": "main_category",
           "name": "kategorija",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Vrsta službe",
             "en": "Department type",
             "sr-Cyrl": "Врста службе"
           },
+          "options": [
+            "Sigurna dečja kuća",
+            "Zaštita dece i omladine",
+            "Dnevni boravak za decu",
+            "Zaštita odraslih i starih",
+            "Novčana socijalna pomoć",
+            "Zaštićeno stanovanje za žene",
+            "Stručno savetovanje i podrška",
+            "Specijalizovana odeljenja"
+          ],
+          "coded_options": [
+            {
+              "code": "safe-deca",
+              "translations": { "sr": "Sigurna dečja kuća", "sr-Cyrl": "Сигурна дечја кућа", "en": "Safe children's house"}
+            },
+            {
+              "code": "deca-omladina",
+              "translations": { "sr": "Zaštita dece i omladine", "sr-Cyrl": "Заштита деце и омладине", "en": "Protection of children and youth"}
+            },
+            {
+              "code": "dnevni-boravak",
+              "translations": { "sr": "Dnevni boravak za decu", "sr-Cyrl": "Дневни боравак за децу", "en": "Children's daycare"}
+            },
+            {
+              "code": "odrasli-stariji",
+              "translations": { "sr": "Zaštita odraslih i starih", "sr-Cyrl": "Заштита одраслих и старих", "en": "Protection of adults and the elderly"}
+            },
+            {
+              "code": "novcana-pomoc",
+              "translations": { "sr": "Novčana socijalna pomoć", "sr-Cyrl": "Новчана социјална помоћ", "en": "Social assistance"}
+            },
+            {
+              "code": "safe-zene",
+              "translations": { "sr": "Zaštićeno stanovanje za žene", "sr-Cyrl": "Заштићено становање за жене", "en": "Sheltered housing for women"}
+            },
+            {
+              "code": "savetovanje",
+              "translations": { "sr": "Stručno savetovanje i podrška", "sr-Cyrl": "Стручно саветовање и подршка", "en": "Professional advice and support"}
+            },
+            {
+              "code": "specijazovano",
+              "translations": { "sr": "Specijalizovana odeljenja", "sr-Cyrl": "Специјализована одељења", "en": "Specialized departments"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -232,6 +302,7 @@
           "required": false
         },
         {
+          "code": "kratakOpis",
           "name": "kratakOpis",
           "type": "textarea",
           "label": {
@@ -243,6 +314,7 @@
           "required": true
         },
         {
+          "code": "detaljniOpis",
           "name": "detaljniOpis",
           "type": "textarea",
           "label": {
@@ -255,6 +327,7 @@
       ]
     },
     "Obrasci": {
+      "code": "obrasci",
       "sr": "Obrasci",
       "en": "Forms",
       "sr-Cyrl": "Обрасци",
@@ -269,6 +342,7 @@
       ],
       "fields": [
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -279,16 +353,52 @@
           "required": true
         },
         {
+          "code": "main_category",
           "name": "kategorija",
-          "type": "categories",
+          "type": "options",
           "label": {
             "sr": "Kategorija obrasca",
             "en": "Form category",
             "sr-Cyrl": "Категорија обрасца"
           },
+          "options": [
+            "Socijalna zaštita",
+            "Porodica i deca",
+            "Stariji građani",
+            "Osobe sa invaliditetom",
+            "Novčana pomoć",
+            "Ostali obrasci"
+          ],
+          "coded_options": [
+            {
+              "code": "socijalna-zastita",
+              "translations": { "sr": "Socijalna zaštita", "sr-Cyrl": "Социјална заштита", "en": "Social protection"}
+            },
+            {
+              "code": "porodica-deca",
+              "translations": { "sr": "Porodica i deca", "sr-Cyrl": "Породица и деца", "en": "Family and children"}
+            },
+            {
+              "code": "stariji",
+              "translations": { "sr": "Stariji građani", "sr-Cyrl": "Старији грађани", "en": "Senior citizens"}
+            },
+            {
+              "code": "osobe-sa-invaliditetom",
+              "translations": { "sr": "Osobe sa invaliditetom", "sr-Cyrl": "Особе са инвалидитетом", "en": "People with disabilities"}
+            },
+            {
+              "code": "novcana-pomoc",
+              "translations": { "sr": "Novčana pomoć", "sr-Cyrl": "Новчана помоћ", "en": "Financial aid"}
+            },
+            {
+              "code": "ostalo",
+              "translations": { "sr": "Ostali obrasci", "sr-Cyrl": "Остали обрасци", "en": "Other forms"}
+            }
+          ],
           "required": true
         },
         {
+          "code": "kratakOpis",
           "name": "kratakOpis",
           "type": "textarea",
           "label": {
@@ -300,6 +410,7 @@
           "required": false
         },
         {
+          "code": "dokument",
           "name": "dokument",
           "type": "file",
           "label": {
