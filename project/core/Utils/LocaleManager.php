@@ -3,8 +3,8 @@ namespace App\Utils;
 
 class LocaleManager
 {
-    private static string $defaultLocale = 'sr-Cyrl';
     const DATE_FORMAT_STRING = 'd/m/Y';
+    private static string $defaultLocale = 'sr-Cyrl';
 
     private static array $localeMap = [
         'sr-Cyrl' => 'sr-Cyrl',
