@@ -344,11 +344,11 @@
     </style>
 </head>
 
-<body class="bg-light font-body text-slate min-h-screen overflow-x-hidden">
+<body class="bg-background font-body text-slate min-h-screen overflow-x-hidden">
     <!-- Enhanced Header -->
     <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden hidden">
         <div class="fixed inset-0 bg-black bg-opacity-50" id="mobileMenuOverlay"></div>
-        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-light shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
+        <div class="fixed top-0 right-0 h-full w-80 max-w-full bg-background shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
             id="mobileMenuPanel">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-8">
@@ -487,7 +487,7 @@
         class="fixed w-full z-50 transition-all duration-300 py-3 sm:py-4 backdrop-blur-md shadow-sm bg-background">
         <div class="container mx-auto px-3 sm:px-4 lg:px-6 flex justify-between items-center">
             <!-- Logo Section -->
-            <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+            <a href="/" class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
                 <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
@@ -502,7 +502,7 @@
                 <div class="block sm:hidden">
                     <h1 class="text-base font-display text-slate font-bold tracking-wide">CSR</h1>
                 </div>
-            </div>
+            </a>
 
             <!-- Desktop Navigation -->
             <nav id="navBarID" class="hidden lg:flex items-center space-x-0.5 xl:space-x-1">
@@ -777,35 +777,28 @@
                 <!-- News 1 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://picsum.photos/600/300?random=10"
-                            alt="Važna obaveštenje" class="w-full h-full object-cover">
-
+                        <img id="g-slika" src="https://picsum.photos/600/300?random=10" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-info_bg flex items-center justify-center text-white mr-3">
+                            <div class="w-10 h-10 rounded-full bg-info_bg flex items-center justify-center text-white mr-3">
                                 <i class="fas fa-newspaper"></i>
                             </div>
-                            <span id="g-naziv" class="text-info font-bold">OBAVEŠTENJE</span>
+                            <div id="g-naziv" class="text-info font-bold">OBAVEŠTENJE</div>
                         </div>
-                        <h3 id="g-title" class="text-xl font-display font-bold text-slate mb-2">Nova usluga Centra za socijalni rad
+                        <h3 id="g-naslov" class="text-xl font-display font-bold text-slate mb-2">Nova usluga Centra za socijalni rad
                         </h3>
-
-                        <p id="g-description" class="text-text_secondary mb-4">Centar za socijalni rad proširuje ponudu usluga novim programom podrške porodicama.</p>
+                        <p id="g-tekst" class="text-text_secondary mb-4 line-clamp-3 md:line-clamp-2">Centar za socijalni rad proširuje ponudu usluga novim programom podrške porodicama.</p>
                         <div class="flex justify-between items-center">
-                            <div>
-                                <div class="flex items-center text-sm text-text_secondary">
-                                    <i class="fas fa-calendar-days mr-2"></i>
-                                    <span id="g-date">15. novembar 2024.</span>
-                                </div>
-                                <div class="flex items-center text-sm text-text_secondary">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span id="g-time">Objavljeno danas</span>
-                                </div>
+                            <div class="flex items-center text-sm text-text_secondary">
+                                <i class="fas fa-calendar-days mr-2"></i>
+                                <span id="g-datum">15. novembar 2024.</span>
                             </div>
-
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -813,17 +806,11 @@
                 <!-- News 2 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/300?random=11"
-                            alt="Uspešan projekat" class="w-full h-full object-cover">
-                        <div
-                            class="absolute top-4 left-4 bg-success_bg text-white px-3 py-1 rounded-full text-sm font-bold">
-                            12 NOV
-                        </div>
+                        <img src="https://picsum.photos/600/300?random=11" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-success_bg flex items-center justify-center text-white mr-3">
+                            <div class="w-10 h-10 rounded-full bg-success_bg flex items-center justify-center text-white mr-3">
                                 <i class="fas fa-check-circle"></i>
                             </div>
                             <span class="text-success font-bold">PROJEKAT</span>
@@ -831,16 +818,15 @@
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Uspešno završen projekat podrške mladima</h3>
                         <p class="text-text_secondary mb-4">Program podrške mladima u riziku uspešno je završen uz učešće preko 50 korisnika naših usluga.</p>
                         <div class="flex justify-between items-center">
-                            <div>
-                                <div class="flex items-center text-sm text-text_secondary">
-                                    <i class="fas fa-user mr-2"></i>
-                                    <span>Autor: CSR Tim</span>
-                                </div>
+                            <div class="flex items-center text-sm text-text_secondary">
+                                <i class="fas fa-calendar-days mr-2"></i>
+                                <span >15. novembar 2024.</span>
                             </div>
-                            <button
-                                class="bg-success_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-success_hover transition-colors">
-                                Pročitaj
-                            </button>
+                            <a href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -848,12 +834,7 @@
                 <!-- News 3 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
-                        <img src="https://picsum.photos/600/300?random=12"
-                            alt="Saradnja sa institucijama" class="w-full h-full object-cover">
-                        <div
-                            class="absolute top-4 left-4 bg-accent_orange_bg text-white px-3 py-1 rounded-full text-sm font-bold">
-                            8 NOV
-                        </div>
+                        <img src="https://picsum.photos/600/300?random=12" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -866,16 +847,15 @@
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Nova saradnja sa lokalnim organizacijama</h3>
                         <p class="text-text_secondary mb-4">Potpisani su sporazumi o saradnji sa pet lokalnih nevladinih organizacija za unapređenje socijalne zaštite.</p>
                         <div class="flex justify-between items-center">
-                            <div>
-                                <div class="flex items-center text-sm text-text_secondary">
-                                    <i class="fas fa-user mr-2"></i>
-                                    <span>Autor: Direkcija</span>
-                                </div>
+                            <div class="flex items-center text-sm text-text_secondary">
+                                <i class="fas fa-calendar-days mr-2"></i>
+                                <span>15. novembar 2024.</span>
                             </div>
-                            <button
-                                class="bg-accent_orange_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-accent_orange transition-colors">
-                                Saznaj više
-                            </button>
+                            <a href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -908,16 +888,14 @@
                 <!-- Training Program 1 -->
                 <div class="bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <div class="h-48 relative">
-                        <img id="g-slika" src="https://picsum.photos/600/400?random=20"
-                            alt="Roditeljske veštine" class="w-full h-full object-cover">
-                        <div class="absolute top-4 right-4 bg-success_bg/80 text-white px-2 py-1 rounded text-sm"><span id="g-oznaka">Novo</span></div>
+                        <img id="g-slika" src="https://picsum.photos/600/400?random=20" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
                             <div class="w-10 h-10 rounded-full bg-success_bg flex items-center justify-center text-white mr-3">
-                                <i id="g-ikonica" class="fas fa-baby"></i>
+                                <i class="fas fa-baby"></i>
                             </div>
-                            <span id="g-kategorija" class="text-success font-bold">RODITELJSTVO</span>
+                            <span id="g-naziv" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
                         <h3 id="g-naslov" class="text-xl font-display font-bold text-slate mb-2">Program obuke „Roditeljske veštine"</h3>
                         <p id="g-kratakOpis" class="text-text_secondary mb-4">Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.</p>
@@ -932,8 +910,10 @@
                                     <span id="g-vremePocetka">18:00</span> - <span id="g-vremeZavrsetka">20:00</span>
                                 </div>
                             </div>
-                            <a id="g-linkPrijave" href="#" class="bg-success_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-success_hover transition-colors">
-                                Prijavi se
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
                     </div>
@@ -942,8 +922,7 @@
                 <!-- Training Program 2 -->
                 <div class="bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <div class="h-48 relative">
-                        <img id="g-obuka-image-2" src="https://picsum.photos/600/400?random=21"
-                            alt="Komunikacija sa decom" class="w-full h-full object-cover">
+                        <img id="g-obuka-image-2" src="https://picsum.photos/600/400?random=21" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -965,9 +944,11 @@
                                     <span>16:00 - 18:00</span>
                                 </div>
                             </div>
-                            <button class="bg-info_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-info_hover transition-colors">
-                                Prijavi se
-                            </button>
+                            <a href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -975,8 +956,7 @@
                 <!-- Training Program 3 -->
                 <div class="bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <div class="h-48 relative">
-                        <img id="g-obuka-image-3" src="https://picsum.photos/600/400?random=22"
-                            alt="Podrška starima" class="w-full h-full object-cover">
+                        <img id="g-obuka-image-3" src="https://picsum.photos/600/400?random=22" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -998,9 +978,11 @@
                                     <span>14:00 - 17:00</span>
                                 </div>
                             </div>
-                            <button class="bg-accent_orange_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-accent_orange transition-colors">
-                                Prijavi se
-                            </button>
+                            <a href="#"
+                                class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1193,8 +1175,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mr-3">
-                            <i class="fas fa-heart text-xl"></i>
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                            <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
                         <h3 class="text-xl font-display font-bold">CENTAR ZA SOCIJALNI RAD</h3>
                     </div>
@@ -1247,7 +1229,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-primary_lighter mt-1 mr-3"></i>
-                            <span>info@csr-novisad.rs</span>
+                            <span data-translate="off">info@csr-novisad.rs</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-primary_lighter mt-1 mr-3"></i>
@@ -1269,8 +1251,15 @@
                 </div>
             </div>
 
-            <div class="border-t border-border_dark pt-8 text-center text-white/60 text-sm">
-                <p>&copy; 2024 Centar za socijalni rad Novi Sad. Sva prava zadržana.</p>
+            <div class="flex flex-col items-center border-t border-white pt-8 text-center text-white/80 text-sm">
+                <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo"
+                    class="w-full max-w-md md:max-w-lg h-auto mb-4">
+                <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
+                    zvanični stav Vlade Švajcarske.</p>
+            </div>
+
+            <div class="pt-8 text-center text-white/80 text-sm">
+                <p>&copy; 2026 Centar za socijalni rad Novi Sad. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
