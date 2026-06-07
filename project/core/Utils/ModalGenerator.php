@@ -462,7 +462,7 @@ class ModalGenerator
         $isMultiple = ($type === 'multifile') || ($type === 'file');
         $label = $field['label'][$this->lang] ?? ucfirst(str_replace('_', ' ', $name));
         $required = $field['required'] ?? false;
-        $options = $field['options'] ?? [];
+        // $options = $field['options'] ?? [];
         $coded_options = $field['coded_options'] ?? [];
         $selected_option_value = $field['option_value'] ?? null;
 
@@ -471,6 +471,7 @@ class ModalGenerator
 
         if ($type == 'date') {
             $value = date(LocaleManager::DATE_FORMAT_STRING, $field['timestamp'] ?? null);
+            $dateFormattedForForm = date('Y-m-d', $field['timestamp'] ?? null);
         }
 
         $rows = $this->getRows($name);
@@ -645,9 +646,13 @@ class ModalGenerator
                         <?= htmlspecialchars($label) ?>                 <?= $requiredMark ?>
                     </label>
                     <div class="relative">
-                        <input type="text" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" data-date-input="1"
+                        <input type="date" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" data-date-input="1"
+                            <?php if ($required) {
+                                echo "oninvalid='this.setCustomValidity(\"".__('inputForm.required_field')."\")'";
+                                echo "oninput='this.setCustomValidity(\"\")'";
+                            } ?>
                             id="<?= htmlspecialchars($code) ?>" name="<?= htmlspecialchars($code) ?>"
-                            value="<?= htmlspecialchars($value) ?>" <?= $requiredAttr ?>
+                            value="<?= $dateFormattedForForm ?? ''?>" <?= $requiredAttr ?>
                             class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                             placeholder="<?= htmlspecialchars($placeholder) ?>" />
                     </div>
@@ -657,9 +662,6 @@ class ModalGenerator
 
             case 'options':
             case 'categories':
-                // Fetch all categories for this modal - not needed anymore
-                // $categories = GenericCategory::fetchAll($this->modalId, $this->lang);
-
                 ?>
                 <div class="w-full">
                     <label for="<?= $code ?>"
