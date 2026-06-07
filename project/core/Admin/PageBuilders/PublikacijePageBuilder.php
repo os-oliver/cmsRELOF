@@ -204,7 +204,8 @@ HTML;
     protected string $cardRender = <<<'HTML'
  function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120,$cardTemplate=''): string
 {
-     $title = htmlspecialchars($item['fields']['title'][$locale] ?? $item['fields']['title'] ?? '', ENT_QUOTES, 'UTF-8');
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
+    $title = htmlspecialchars($item['fields']['title'][$locale] ?? $item['fields']['title'] ?? '', ENT_QUOTES, 'UTF-8');
 
     $tekst = $item['fields']['tekst'][$locale] ?? $item['fields']['tekst'] ?? '';
     if (strlen($tekst) > $descMaxLength) {
@@ -333,6 +334,7 @@ HTML;
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
