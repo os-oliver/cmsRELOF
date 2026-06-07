@@ -423,6 +423,7 @@
   "complaints.pending3": "Pending",
   "complaints.medium2": "Medium",
   "complaints.showing": "Showing 1-4 of 247 complaints",
+  "inputForm.required_field": "Required field. Please enter a value",
 
   "transparency.score.need_more": "Needs work",
   "transparency.score.title": "Transparency Score",

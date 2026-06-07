@@ -496,7 +496,7 @@ class Content
             }
 
             if ($fieldType === 'date') {
-                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, LocaleManager::DATE_FORMAT_STRING);
+                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, 'Y-m-d'); // date from form should always be received in this format
                 continue;
             }
 
