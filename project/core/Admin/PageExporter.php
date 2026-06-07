@@ -53,8 +53,7 @@ use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
 use App\Admin\PageBuilders\KutakZaRoditelje;
-
-
+use App\Utils\Config;
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -75,7 +74,7 @@ class PageExporter
     public function __construct(array $data)
     {
         $this->data = $data;
-        $this->baseDir = dirname(__DIR__) . '/../public/exportedPages';
+        $this->baseDir = Config::getPublicRoot() . '/exportedPages';
         $this->compDir = "{$this->baseDir}/landingPageComponents";
         $this->pagesDir = "{$this->baseDir}/pages";
         $this->ensureDirectories();
@@ -402,7 +401,7 @@ class PageExporter
             $generatedPhpCount++;
 
             $newNode = $dom->createTextNode($placeholder);
-            $logFile = __DIR__ . "/../../public/exportedPages/log.txt";
+            $logFile = Config::getPublicRoot() . "/exportedPages/log.txt";
             $logMessage = "Replacing text node: '$text' with PHP code: $phpCode" . PHP_EOL;
 
             // Append poruku u log fajl
@@ -543,7 +542,7 @@ class PageExporter
     {
         $phpString = '';
 
-        $jsonDir = __DIR__ . '/../../public/assets/data/structure.json';
+        $jsonDir = Config::getPublicRoot() . '/assets/data/structure.json';
         $jsonData = json_decode(file_get_contents($jsonDir), true);
 
         $structure = $jsonData[0] ?? [];
@@ -605,7 +604,7 @@ class PageExporter
         $dynamicText = $textModel->getDynamicText($locale);
         {{dynamicLandigPageElements}}
 
-        [$images, $totalEvents] = (new Gallery)->list();
+        [$images, $totalEvents] = (new Gallery)->list(lang: $locale);
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -982,7 +981,7 @@ $processedContent
 </main>
 HTML;
 
-        $directory = __DIR__ . '/../../public/exportedPages/pages/';
+        $directory = PUBLIC_ROOT . '/exportedPages/pages/';
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
@@ -1049,7 +1048,7 @@ CSS;
             $this->processTree($node, $createdFiles, $pagesData);
         }
 
-        $dataDir = dirname(__DIR__) . '/../public/assets/data';
+        $dataDir = Config::getPublicRoot() . '/assets/data';
         if (!is_dir($dataDir)) {
             mkdir($dataDir, 0775, true);
         }
