@@ -585,7 +585,7 @@ class Content
         }
     }
 
-    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = 'd/m/Y'): void
+    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = 'Y-m-d'): void
     {
         if (empty($dateString)) {
             $date = null;

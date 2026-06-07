@@ -566,7 +566,7 @@ class PageExporter
                 $keyForFetch = $key ?? ''; // first parameter
                 $sixthParam = isset($parts[1]) ? "'{$parts[0]}'" : "null"; // use parts[1] if exists, else null
                 $id = str_replace(" ", '_', $id);
-                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale)['items'];\n";
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale, 'datum', 'DESC')['items'];\n";
                 $phpString .= "\$$id = HashMapTransformer::transformNew(\$$id" . "_raw, \$locale);\n\n";
             }
 
@@ -673,13 +673,13 @@ class PageExporter
             case 'predstave':
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
-                return new VestiPageBuilder('Vesti');
+                return new VestiPageBuilder('vesti');
             case 'vrtici':
                 return new VrticiPageBuilder('Vrtici');
             case 'timovi':
                 return new TimoviPageBuilder('Timovi');
             case 'projekti':
-                return new ProjektiPageBuilder('Projekti');
+                return new ProjektiPageBuilder('projekti');
             case 'obavestenja':
                 return new ObavestenjaZaRoditeljePageBuilder('Obavestenja');
             case 'seminari':
@@ -713,17 +713,17 @@ class PageExporter
             case 'ansambl':
                 return new AnsambalPageBuilder('Ansambl');
             case 'projekti':
-                return new ProjektiPageBuilder('Projekti');
+                return new ProjektiPageBuilder('projekti');
             case stripos($name, 'uvod') !== false:
                 return new UvodPageBuilder('Uvod', $this->data);
             case stripos($name, 'projekti') !== false:
-                return new ProjektiPageBuilder('Projekti');
+                return new ProjektiPageBuilder('projekti');
             case 'organizaciona-struktura':
                 return new EmployeesPageBuilder('Organizaciona Struktura', $this->data);
             case 'ankete':
-                return new AnketePageBuilder('Ankete');
+                return new AnketePageBuilder('ankete');
             case 'repertoar':
-                return new RepertoarPageBuilder('Repertoar');
+                return new RepertoarPageBuilder('repertoar');
             case 'repertoar':
                 return new LibraryProgramPageBuilder('repertoar');
             case 'izlozbe':
@@ -737,7 +737,7 @@ class PageExporter
             case 'sportovi':
                 return new SportoviPageBuilder('sportovi');
             case 'pitanja':
-                return new FAQPageBuilder('Pitanja');
+                return new FAQPageBuilder('pitanja');
             case 'jelovnik':
                 return new JelovnikPageBuilder('Jelovnik', $this->data);
             case 'cenovnik':
