@@ -480,7 +480,7 @@
             <a href="/" class="flex items-center gap-3 flex-shrink-0">
                 <div
                     class="w-11 h-11  rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <img src="" alt="" style="width:75px;height:auto;" />
+                    <img src="/assets/img/ue-predskolska-logo.png" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block font-heading text-primary_text">
                     <div class="text-xl leading-tight">Predškolska ustanova</div>
@@ -1029,7 +1029,7 @@
                     <div class="flex items-center mb-6">
                         <a href="/" class="flex items-center mb-6">
                             <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                                <img src="" alt="" style="width:75px;height:auto;" />
+                                <img src="/assets/img/ue-predskolska-logo.png" alt="" style="width:75px;height:auto;" />
                             </div>
                             <h3 class="text-xl font-body">Predškolska ustanova Užice</h3>
                         </a>

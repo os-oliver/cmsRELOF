@@ -159,13 +159,14 @@ HTML;
     $additionalPHP = <<<'PHP'
         use App\Models\Content;
         use App\Controllers\LanguageMapperController;
+        use App\Utils\HashMapTransformer;
 
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
         $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
-        $slug = '__SLUG__';
+        $slug = lcase('__SLUG__');
         $itemsPerPage = __ITEMS_PER_PAGE__;
         if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
             $itemsPerPage = (int)$_GET['per_page'];

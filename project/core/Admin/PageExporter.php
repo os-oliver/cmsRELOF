@@ -683,7 +683,7 @@ class PageExporter
             case 'projekti':
                 return new ProjektiPageBuilder('projekti');
             case 'obavestenja':
-                return new ObavestenjaZaRoditeljePageBuilder('Obavestenja');
+                return new ObavestenjaZaRoditeljePageBuilder('obavestenja-za-roditelje');
             case 'seminari':
                 return new SeminarPageBuilder('Seminari');
             case 'zaposleni':
