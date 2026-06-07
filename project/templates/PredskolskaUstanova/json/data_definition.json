@@ -1,6 +1,7 @@
 [
   {
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -14,6 +15,7 @@
       ],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -24,6 +26,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -33,6 +36,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -43,6 +47,7 @@
           "required": true
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -52,6 +57,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -63,12 +69,14 @@
       ]
     },
     "Vrtici": {
+      "code": "vrtici",
       "sr": "Vrtići",
       "en": "Kindergarten",
       "sr-Cyrl": "Вртићи",
       "icon": "fas fa-school",
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -78,6 +86,7 @@
           }
         },
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -88,6 +97,7 @@
           "required": true
         },
         {
+          "code": "location",
           "name": "location",
           "type": "text",
           "label": {
@@ -98,6 +108,7 @@
           "required": true
         },
         {
+          "code": "telefon",
           "name": "telefon",
           "type": "text",
           "label": {
@@ -108,6 +119,7 @@
           "required": true
         },
         {
+          "code": "description",
           "name": "description",
           "type": "textarea",
           "label": {
@@ -119,12 +131,14 @@
       ]
     },
     "Timovi": {
+      "code": "timovi",
       "sr": "Timovi",
       "en": "Teams",
       "sr-Cyrl": "Тимови",
       "icon": "fas fa-users",
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -134,6 +148,7 @@
           }
         },
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -144,6 +159,7 @@
           "required": true
         },
         {
+          "code": "description",
           "name": "description",
           "type": "textarea",
           "label": {
@@ -155,12 +171,14 @@
       ]
     },
     "Obavestenja": {
+      "code": "obavestenja-za-roditelje",
       "sr": "Obaveštenja za roditelje",
       "en": "Notifications for Parents",
       "sr-Cyrl": "Обавештења за родитеље",
       "icon": "fas fa-bell",
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -171,6 +189,7 @@
           "required": true
         },
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -181,6 +200,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -190,6 +210,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -203,12 +224,14 @@
       ]
     },
     "Jelovnik": {
+      "code": "jelovnik",
       "sr": "Jelovnik",
       "en": "Menu",
       "sr-Cyrl": "Јеловник",
       "icon": "fas fa-newspaper",
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -219,6 +242,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -228,6 +252,7 @@
           }
         },
         {
+          "code": "Fajl",
           "name": "Fajl",
           "type": "file",
           "label": {

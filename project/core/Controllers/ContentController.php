@@ -115,7 +115,7 @@ class ContentController
 
     public function contentTypes(): void
     {
-        ContentTypeManager::createTypes('Turizam');
+        ContentTypeManager::createTypes('PredskolskaUstanova');
     }
 
 }
