@@ -966,7 +966,7 @@
                     <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
                         <li><a href="/dogadjaji" class="text-surface/80 hover:text-accent transition-colors">Repertoar događaja</a></li>
-                        <li><a href="/vesti" class="text-surface/80 hover:text-accent transition-colors">Vesti</a></li>
+                        <li><a href="/aktivnosti/vesti" class="text-surface/80 hover:text-accent transition-colors">Vesti</a></li>
                         <li><a href="/galerija" class="text-surface/80 hover:text-accent transition-colors">Galerija</a></li>
                         <li><a href="/aktivnosti/ankete" class="text-surface/80 hover:text-accent transition-colors">Ankete o zadovoljstu korisnika</a></li>
                     </ul>
