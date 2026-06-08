@@ -156,8 +156,8 @@ HTML;
     protected string $html = <<<'HTML'
 <main class="bg-background">
     <div class="text-center px-2 pt-32">
-        <h1 class="text-4xl md:text-5xl font-bold font-heading text-gray-800 mb-4">Dokumenti za preuzimanje</h1>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10 font-body">Preuzmi sva potrebna dokumenta, obrasce i publikacije. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading text-primary_text mb-4">Dokumenti za preuzimanje</h1>
+        <p class="text-lg text-primary_text max-w-3xl mx-auto mb-10 font-body">Preuzmi sva potrebna dokumenta, obrasce i publikacije. Slažemo ih po kategorijama radi lakšeg pronalaženja.</p>
 
         <div class="mx-auto max-w-6xl">
             <form id="filter-form" method="GET" action="" class="bg-white rounded-2xl shadow p-6 mb-8 border border-gray-100">
