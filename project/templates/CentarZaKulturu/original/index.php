@@ -367,10 +367,6 @@
                                 id="mobileAboutIcon"></i>
                         </button>
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
-                            <a data-page="Uvod" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-book mr-2 text-primary"></i>Uvod
-                            </a>
                             <a data-page="Misija i vizija" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
                                 <i class="fas fa-flag mr-2 text-secondary"></i>Misija i vizija
@@ -401,11 +397,6 @@
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primary"></i>Događaji
                     </a>
-                    <a data-page="Projekti" href="#"
-                        class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
-                        <i class="fas fa-project-diagram mr-3 text-primary"></i>Projekti
-                    </a>
-
                     <a data-page="Galerija" href="#"
                         class="flex items-center py-3 px-4 text-primary_text hover:text-accent hover:bg-surface rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-secondary"></i>Galerija
@@ -463,12 +454,12 @@
         class="fixed w-full z-50 transition-all duration-300 py-2 sm:py-3 backdrop-blur-md shadow-lg bg-secondary_background/95 border-b border-surface">
         <div class="px-3 sm:px-4 lg:px-6 flex justify-between items-center">
             <!-- Logo Section -->
-            <div class="flex items-center space-x-3 flex-shrink-0">
+            <div class="flex items-center space-x-2 flex-shrink-0">
                 <!-- Logo ikonica -->
                 <a href="/" class="flex items-center gap-3 flex-shrink-0"></a>
-                <div class="w-30 h-10 rounded-lg flex items-center justify-center text-white">
-                    <img class="img-logo" src="assets/img/" />
-                </div>
+                    <div class="w-30 h-10 rounded-lg flex items-center justify-center text-white">
+                        <img class="img-logo" src="assets/img/" />
+                    </div>
                 </a>
                 <!-- Tekst za mobilni -->
                 <div class="block sm:hidden">
@@ -489,11 +480,6 @@
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
-                        <a href="#" static="true"
-                            class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-book mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Uvod</span>
-                        </a>
                         <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 hover:text-accent text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-flag mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
@@ -535,12 +521,6 @@
                     <i
                         class="fas fa-calendar-alt mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
                     <span class="hidden xl:inline">Događaji</span>
-                </a>
-                <a href="#"
-                    class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-                    <i
-                        class="fas fa-project-diagram mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Projekti</span>
                 </a>
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
@@ -989,8 +969,6 @@
                         <li><a href="/ankete" class="text-surface/80 hover:text-accent transition-colors">Ankete</a></li>
                         <li><a href="/vesti" class="text-surface/80 hover:text-accent transition-colors">Vesti</a></li>
                         <li><a href="/dogadjaji" class="text-surface/80 hover:text-accent transition-colors">Događaji</a></li>
-                        <li><a href="/projekti" class="text-surface/80 hover:text-accent transition-colors">Projekti</a></li>
-
                     </ul>
                 </div>
 
@@ -1052,34 +1030,6 @@
 
     <script>
         const btn = document.getElementById('increaseFontBtn');
-
-        let currentSize = 16; // initial font size in px
-        let step = 2; // px to increase or decrease per click
-        let maxSteps = 3; // max increments before toggling direction
-        let count = 0; // how many increments or decrements done
-        let increasing = true; // track if currently increasing font size
-
-        btn.addEventListener('click', () => {
-            if (increasing) {
-                currentSize += step;
-                count++;
-                if (count === maxSteps) {
-                    increasing = false;
-                    btn.textContent = 'A-'; // change button to decrease
-                }
-            } else {
-                currentSize -= step;
-                count--;
-                if (count === 0) {
-                    increasing = true;
-                    btn.textContent = 'A+'; // change button back to increase
-                }
-            }
-            // Apply font size to body (all page)
-            document.body.style.fontSize = currentSize + 'px';
-        });
-
-        
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileMenuPanel = document.getElementById('mobileMenuPanel');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -1093,6 +1043,34 @@
         const mobileAboutIcon = document.getElementById('mobileAboutIcon');
         const mobileParentsIcon = document.getElementById('mobileParentsIcon');
         const hamburger = document.getElementById('hamburger');
+
+        let currentSize = 16; // initial font size in px
+        let step = 2; // px to increase or decrease per click
+        let maxSteps = 3; // max increments before toggling direction
+        let count = 0; // how many increments or decrements done
+        let increasing = true; // track if currently increasing font size
+
+        if (btn) {
+            btn.addEventListener('click', () => {
+                if (increasing) {
+                    currentSize += step;
+                    count++;
+                    if (count === maxSteps) {
+                        increasing = false;
+                        btn.textContent = 'A-';
+                    }
+                } else {
+                    currentSize -= step;
+                    count--;
+                    if (count === 0) {
+                        increasing = true;
+                        btn.textContent = 'A+';
+                    }
+                }
+                document.body.style.fontSize = currentSize + 'px';
+            });
+        }
+
 
         // Function to open mobile menu
         function openMobileMenu() {
