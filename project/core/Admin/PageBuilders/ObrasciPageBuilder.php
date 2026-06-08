@@ -160,7 +160,7 @@ HTML;
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['kratakOpis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
+    $kategorija = htmlspecialchars($item['fields']['main_category'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $dokument = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
 

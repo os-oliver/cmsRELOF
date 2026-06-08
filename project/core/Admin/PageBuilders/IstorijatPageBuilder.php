@@ -19,11 +19,13 @@ class IstorijatPageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
     <div class="relative z-10 w-full max-w-5xl mx-auto text-center font-body text-secondary_text">
       <h1 class="text-primary_text text-5xl font-heading font-bold mt-10 mb-4">Istorijat naše ustanove</h1>
-      <h2 class="text-3xl mx-5 italic mb-4 text-justify font-body">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+      <p>
+      Centar za socijalni rad Pirot je ustanova socijalne zaštite u kojoj se ostvaruju prava, primenjuju mere porodične i pravne zaštite, obezbeđuje pružanje usluga i obavljaju drugi poslovi u oblasti socijalne zaštite građana na području grada Pirota. 
 
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-    Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-</h2>
+Ova ustanova je osnovana 1. januara 1978. godine i do 2005. godine funkcionisala je kao međuopštinska organizacija nadležna za područja opština Pirot, Dimitrovgrad i Babušnica. Od 12. decembra 2005. godine nastavlja sa radom kao opštinska ustanova pod nazivom Centar za socijalni rad za opštinu Pirot. Nakon što je opština Pirot stekla status grada, 21. aprila 2017. godine ustanova dobija sadašnji naziv - Centar za socijalni rad Pirot.
+
+
+      </p>
     </div>
   </section>
 </main>

@@ -373,10 +373,6 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
                         </button>
                         <div>
-                            <a data-page="Cilj" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-green-600"></i>Cilj
-                            </a>
                             <a data-page="Sluzbe" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-red-600 transition-colors">
                                 <i class="fas fa-user-md mr-2 text-orange-600"></i>Službe
@@ -457,10 +453,6 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
                         </button>
                         <div>
-                            <a data-page="NasiKorisnici" static="true" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-slate hover:text-primary transition-colors">
-                                <i class="fas fa-users mr-2 text-info"></i>Naši korisnici
-                            </a>
                             <a data-page="Obrasci" href="#"
                                 class="flex items-center py-2 px-4 text-sm text-slate hover:text-primary transition-colors">
                                 <i class="fas fa-file-signature mr-2 text-success"></i>Obrasci za podnošenje zahteva
@@ -494,10 +486,12 @@
                 <div class="hidden sm:block">
                     <h1
                         class="text-base sm:text-lg lg:text-xl xl:text-2xl font-display text-slate font-bold tracking-wider leading-tight">
-                        CENTAR ZA SOCIJALNI RAD</h1>
+                        CENTAR ZA SOCIJALNI RAD
+                    </h1>
                     <p
                         class="text-xs sm:text-xs lg:text-sm text-primary tracking-widest hidden md:block opacity-80 font-medium">
-                        PODRŠKA I BRIGA ZA ZAJEDNICU</p>
+                        PIROT
+                    </p>
                 </div>
                 <div class="block sm:hidden">
                     <h1 class="text-base font-display text-slate font-bold tracking-wide">CSR</h1>
@@ -523,11 +517,6 @@
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-border_light transition-all duration-300 z-50 py-3 backdrop-blur-sm">
-                        <a href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-bullseye mr-3 text-success flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Cilj</span>
-                        </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-user-md mr-3 text-accent_orange flex-shrink-0 w-4 text-sm"></i>
@@ -625,11 +614,7 @@
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-surface rounded-xl shadow-2xl border border-border_light transition-all duration-300 z-50 py-3 backdrop-blur-sm">
-                        <a static="true" href="#"
-                            class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-                            <i class="fas fa-users mr-3 text-info flex-shrink-0 w-4 text-sm"></i>
-                            <span class="font-medium">Naši korisnici</span>
-                        </a>
+                        
                         <a href="#"
                             class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-background hover:to-background_gray text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
                             <i class="fas fa-file-signature mr-3 text-success flex-shrink-0 w-4 text-sm"></i>
@@ -657,8 +642,7 @@
 
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>']
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -751,7 +735,7 @@
 
             <div class="mb-10">
                 <p class="text-xl text-white leading-relaxed max-w-3xl mx-auto mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                    Naš cilj je da pružimo podršku i pomoć pojedincima, porodicama i zajednici u rešavanju životnih poteškoća i unapređenju kvaliteta života.
+                    Centar za socijalni rad Pirot sprovodi socijalnu zaštitu na teritoriji grada Pirota. Socijalna zaštita je organizovana društvena delatnost od javnog interesa čiji je cilj pomoć pojedincu i porodici i njihovo osnaživanje za samostalan život u društvu, kao i sprečavanje nastajanja i otklanjanje posledica socijalne isključenosti.
                 </p>
                 <p class="text-white/90 italic text-lg max-w-2xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
                     "Centar za socijalni rad je tu da vas sasluša, posavetuje i podrži. Zajedno gradimo društvo solidarnosti."
@@ -766,7 +750,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
                     Najnovije vesti
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary_light to-info_bg"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-accent"></span>
                 </h2>
                 <p class="text-lg text-text_secondary max-w-2xl mx-auto mt-4">
                     Pratite najnovije vesti i obaveštenja iz našeg centra. Ostanite informisani o svim važnim dešavanjima.
@@ -863,7 +847,7 @@
 
             <div class="text-center mt-12">
                 <a href="/vesti" id="vestiView"
-                    class="bg-gradient-to-r from-info to-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
+                    class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-newspaper mr-3"></i>
                     Pogledaj sve vesti
                 </a>
@@ -872,12 +856,12 @@
     </section>
 
     <!-- Training Programs Section -->
-    <section id="programiobuke" class="py-20 bg-surface">
+    <section id="programiobuke" class="py-20 bg-background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
                     Programi obuke
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-success_bg to-info_bg"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-accent"></span>
                 </h2>
                 <p class="text-lg text-text_secondary max-w-2xl mx-auto mt-4">
                     Učestvujte u našim programima obuke i unapredite svoje veštine. Svi programi su besplatni i prilagođeni različitim grupama korisnika.
@@ -989,7 +973,7 @@
             </div>
 
             <div class="text-center">
-                <a href="/prava-i-usluge/programi-obuke" class="bg-gradient-to-r from-success to-info text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
+                <a href="/prava-i-usluge/programi-obuke" class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-graduation-cap mr-3"></i>
                     Pogledaj sve programe obuke
                 </a>
@@ -1003,7 +987,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
                     Službe
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-info_bg to-success_bg"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-accent"></span>
                 </h2>
                 <p class="text-lg text-text_secondary max-w-2xl mx-auto mt-4">
                     Centar za socijalni rad pruža širok spektar usluga namenjenih različitim kategorijama građana koji se nalaze u stanju socijalne potrebe.
@@ -1101,7 +1085,7 @@
             </div>
 
             <div class="text-center">
-                <a data-page="Sluzbe" href="/o-nama/sluzbe" class="bg-gradient-to-r from-info to-success text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
+                <a data-page="Sluzbe" href="/o-nama/sluzbe" class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-all inline-flex items-center shadow-lg">
                     <i class="fas fa-hands-helping mr-3"></i>
                     Saznaj više o našim službama
                 </a>
@@ -1111,12 +1095,12 @@
 
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-white">
+    <section id="gallery" class="py-20 bg-gradient-to-b from-background to-secondary">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-display font-bold text-slate mb-4 relative inline-block">
                     Upoznajte naš prostor
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-info"></span>
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-accent"></span>
                 </h2>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto">
                     Pogledajte fotografije našeg centra i aktivnosti koje organizujemo za korisnike naših usluga.
@@ -1170,7 +1154,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate text-white pt-20 pb-10">
+    <footer class="text-white pt-20 pb-10 bg-secondary">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
@@ -1184,35 +1168,21 @@
                         Pružamo podršku i pomoć pojedincima, porodicama i zajednici u rešavanju životnih poteškoća.
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-primary/30 hover:bg-primary flex items-center justify-center text-white transition-colors">
+                        <a href="https://www.facebook.com/p/Centar-za-socijalni-rad-Pirot-100090684940168/"
+                            class="w-10 h-10 rounded-full bg-accent hover:bg-accent_hover flex items-center justify-center text-white transition-colors">
                             <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-primary/30 hover:bg-primary flex items-center justify-center text-white transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-primary/30 hover:bg-primary flex items-center justify-center text-white transition-colors">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-primary/30 hover:bg-primary flex items-center justify-center text-white transition-colors">
-                            <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-display font-bold mb-6">Naše službe</h4>
+                    <h4 class="text-lg font-display font-bold mb-6">Korisni linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="/ankete" class="text-white/80 hover:text-primary_lighter transition-colors">Ankete o zadovoljstvu korisnika</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Zaštita dece</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Porodično savetovanje</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Pomoć starima</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Novčana pomoć</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Programi obuke</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-primary_lighter transition-colors">Sigurna kuća</a></li>
+                        <li><a href="/ankete" class="text-white/80 hover:text-accent transition-colors">Ankete o zadovoljstvu korisnika</a></li>
+                        <li><a href="/o-nama/sluzbe" class="text-white/80 hover:text-accent transition-colors">Službe</a></li>
+                        <li><a href="/prava-i-usluge/prava" class="text-white/80 hover:text-accent transition-colors">Prava</a></li>
+                        <li><a href="/prava-i-usluge/usluge" class="text-white/80 hover:text-accent transition-colors">Usluge</a></li>
+                        <li><a href="/za-korisnike/obrasci-za-podnosenje-zahteva" class="text-white/80 hover:text-accent transition-colors">Obrasci za podnošenje zahteva</a></li>
                     </ul>
                 </div>
 
@@ -1220,22 +1190,29 @@
                     <h4 class="text-lg font-display font-bold mb-6">Kontakt informacije</h4>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-primary_lighter mt-1 mr-3"></i>
-                            <span>Bulevar oslobođenja 26, 21000 Novi Sad</span>
+                            <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
+                            <span>Srpskih Vladara 126/A, 18300 Pirot</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-phone text-primary_lighter mt-1 mr-3"></i>
-                            <span>+381 21 123 456</span>
+                            <i class="fas fa-phone text-accent mt-1 mr-3"></i>
+                            <span>010/311-203</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-envelope text-primary_lighter mt-1 mr-3"></i>
-                            <span data-translate="off">info@csr-novisad.rs</span>
+                            <i class="fas fa-phone text-accent mt-1 mr-3"></i>
+                            <span>010/311-205</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-clock text-primary_lighter mt-1 mr-3"></i>
+                            <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
+                            <span data-translate="off">pirot.csr@minrzs.gov.rs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
+                            <span data-translate="off">office@csrpirot.rs </span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock text-accent mt-1 mr-3"></i>
                             <span>
-                                Ponedeljak - Petak: 07:30 - 15:30<br>
-                                Hitni slučajevi: 24/7
+                                Ponedeljak - Petak: 07:00 - 14:30<br>
                             </span>
                         </li>
                     </ul>
@@ -1245,7 +1222,7 @@
                     <h4 class="text-lg font-display font-bold mb-6">Lokacija</h4>
                     <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d19.8451920155352!3d45.25407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sBulevar%20oslobo%C4%91enja%2026%2C%20Novi%20Sad!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2910.6992100798193!2d22.587027000000003!3d43.15284520000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47553d244950546f%3A0x7ea3bd4f6a901a2b!2sCentar%20za%20Socijalni%20Rad!5e0!3m2!1ssr!2srs!4v1774704610513!5m2!1ssr!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -1259,7 +1236,7 @@
             </div>
 
             <div class="pt-8 text-center text-white/80 text-sm">
-                <p>&copy; 2026 Centar za socijalni rad Novi Sad. Sva prava zadržana.</p>
+                <p>&copy; 2026 Centar za socijalni rad Pirot. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
@@ -1270,17 +1247,17 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#dc2626',
-                        'primary_hover': '#b91c1c',
-                        'secondary': '#2563eb',
-                        'secondary_hover': '#1d4ed8',
-                        'accent': '#16a34a',
-                        'accent_hover': '#15803d',
-                        'primary_text': '#334155',
-                        'secondary_text': '#64748b',
-                        'background': '#f8fafc',
-                        'secondary_background': '#f9fafb',
-                        'surface': '#ffffff',
+                        'primary': '#C53030',
+                        'primary_hover': '#9B2C2C',
+                        'secondary': '#30475E',
+                        'secondary_hover': '#1A202C',
+                        'accent': '#E53E3E',
+                        'accent_hover': '#C53030',
+                        'primary_text': '#1A202C',
+                        'secondary_text': '#4A5568',
+                        'background': '#f9f9f7',
+                        'secondary_background': '#FED7D7',
+                        'surface': '#FFFFFF',
                         'primary_light': '#ef4444',
                         'primary_medium': '#dc2626',
                         'primary_lighter': '#f87171',

@@ -128,7 +128,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 HTML;
 
     protected string $html = <<<'HTML'
-<main class="pt-2 flex-grow">
+<main class="bg-background pt-2 flex-grow">
 <div class="py-12 mt-20 px-4 flex-1">
         <div>
             <button id="increaseFontBtn" class="fixed bottom-6 z-20 right-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition" aria-label="Increase font size">
@@ -164,8 +164,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">Centar za umetnost i baštinu<br>Trg
-                                        slobode 1<br>21000 Novi Sad, Srbija</p>
+                                    <p class="text-gray-600 leading-relaxed">Srpskih Vladara 126/A<br>18300 Pirot, Srbija</p>
                                 </div>
                             </div>
 
@@ -178,8 +177,9 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Telefon</h3>
-                                    <p class="text-gray-600 text-lg">+381 21 123 456</p>
-                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 09:00 - 17:00</p>
+                                    <p class="text-gray-600 text-lg">010/311-203</p>
+                                    <p class="text-gray-600 text-lg">010/311-205</p>
+                                    <p class="text-gray-500 text-sm">Ponedeljak - Petak: 07:00 - 14:30</p>
                                 </div>
                             </div>
 
@@ -192,8 +192,8 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                    <p class="text-gray-600 text-lg" data-translate="off">info@kulturnynexus.rs</p>
-                                    <p class="text-gray-500 text-sm">Odgovaramo u roku od 24h</p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">office@csrpirot.rs </p>
+                                    <p class="text-gray-600 text-lg" data-translate="off">pirot.csr@minrzs.gov.rs</p>
                                 </div>
                             </div>
                         </div>
@@ -203,11 +203,11 @@ HTML;
                             <div class="text-gray-700 space-y-2">
                                 <div class="flex justify-between">
                                     <span class="font-medium">Ponedeljak - Petak:</span>
-                                    <span>09:00 - 17:00</span>
+                                    <span>07:00 - 14:30</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="font-medium">Subota:</span>
-                                    <span>10:00 - 14:00</span>
+                                    <span class="text-red-500">Zatvoreno</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="font-medium">Nedelja:</span>
