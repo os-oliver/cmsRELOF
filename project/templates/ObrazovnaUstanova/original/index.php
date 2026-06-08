@@ -552,7 +552,7 @@
                     <i class="fas fa-home mr-2 text-terracotta group-hover:text-coral transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
-                <div class="dropdown relative group">
+                <div class="dropdown relative group whitespace-nowrap">
                     <button
                         class="nav-link text-primary font-semibold hover:text-primary_hover transition-all duration-200 flex items-center px-3 py-2 rounded-lg group">
                         <i class="fas fa-info-circle mr-2 text-ochre transition-colors text-sm"></i>
