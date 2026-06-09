@@ -344,7 +344,7 @@ main {
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(array $categories, string $locale, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
 
@@ -377,10 +377,11 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
             <option value=''>{$texts['all_categories']}</option>";
 
     foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
+        $translations = $cat['translations'];
+        $code = $cat['option_value'];
+        $name = $translations[$locale] ?? $translations['sr'];
+        $selected = ($selectedCategoryId == $cat['option_value']) ? 'selected' : '';
+        $html .= "<option value='{$code}' {$selected}>{$name}</option>";
     }
 
     $html .= "</select></div></form>";
@@ -425,7 +426,7 @@ $cardTemplate = <<<'PHP'
         {{clickableLink}}
 
         <!-- CTA dugme -->
-        <a href="sadrzaj?id={{itemId}}&tip=generic_element" class="bg-primary project-cta hover:bg-primary_hover">
+        <a href="/sadrzaj?id={{itemId}}&tip=projekti" class="bg-primary project-cta hover:bg-primary_hover">
             <i class="fas fa-info-circle"></i>
             <span>{{projectDetails}}</span>
             <i class="fas fa-arrow-right"></i>
@@ -591,7 +592,7 @@ PHP;
         </div>
 
         <!-- Pretraga i filteri -->
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($categories, $locale, $search, $categoryId, $texts); ?>
 
         <!-- Grid sa projektima -->
         <div class="performances-grid">
@@ -624,6 +625,7 @@ HTML;
         $additionalPHP = <<<'PHP'
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
+use App\Models\ContentType;
 use App\Models\GenericCategory;
 use App\Utils\HashMapTransformer;
 
@@ -653,7 +655,7 @@ $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
     : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
+$categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => []];
