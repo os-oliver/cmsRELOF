@@ -19,11 +19,15 @@ class IstorijatPageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
     <div class="relative z-10 w-full max-w-5xl mx-auto text-center font-body text-secondary_text">
       <h1 class="text-primary_text text-5xl font-heading font-bold mt-10 mb-4">Istorijat naše ustanove</h1>
-      <h2 class="text-3xl mx-5 italic mb-4 text-justify font-body">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+      <h2 class="text-3xl mx-5 italic mb-4 text-justify font-body">
+        Dom kulture je osnovan 1986 godine a raspolažemo objektom od 2.000 kvadratnih metara sa velikom salom koja prima 360 gledalaca, većim brojem sala za probe igračkih i muzičkih sekcija, Medija centrom, tonskim studijom i savremenim Klubom koji prima do 130 gledalaca.
 
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-    Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-</h2>
+        Folklorni ansambl raspolaže velikim fundusom narodnih nošnji i instrumenata, a ustanova poseduje dva koncertna klavira, razglas 12 KW, montažnu binu od 250 m2, i veći broj savremenih audio i video sredstava.
+
+        Osnivač Doma kulture: SO Pirot.
+
+        Direktor: Miško Ćirić
+      </h2>
     </div>
   </section>
 </main>

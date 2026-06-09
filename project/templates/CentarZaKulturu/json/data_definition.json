@@ -108,16 +108,6 @@
           "required": true
         },
         {
-          "code": "location",
-          "name": "location",
-          "type": "text",
-          "label": {
-            "sr": "Lokacija događaja",
-            "en": "Event location",
-            "sr-Cyrl": "Локација догађаја"
-          }
-        },
-        {
           "code": "description",
           "name": "description",
           "type": "textarea",
@@ -205,58 +195,6 @@
         }
       ]
     },
-    "Projekti": {
-      "code": "projekti",
-      "sr": "Projekti",
-      "en": "Project",
-      "sr-Cyrl": "Пројекти",
-      "icon": "fas fa-newspaper",
-      "fields": [
-        {
-          "code": "slika",
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika",
-            "en": "Cover image",
-            "sr-Cyrl": "Насловна слика"
-          },
-          "required": true
-        },
-        {
-          "code": "datum",
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
-          },
-          "property": "auto"
-        },
-        {
-          "code": "naslov",
-          "name": "naslov",
-          "type": "text",
-          "label": {
-            "sr": "Naslov",
-            "en": "Title",
-            "sr-Cyrl": "Наслов"
-          },
-          "required": true
-        },
-        {
-          "code": "tekst",
-          "name": "tekst",
-          "type": "textarea",
-          "label": {
-            "sr": "Tekst vesti",
-            "en": "Article text",
-            "sr-Cyrl": "Текст вести"
-          }
-        }
-      ]
-    },
     "AnsambalDomaKulture": {
       "code": "ansambalDomaKulture",
       "sr": "Ansambal doma kulture",
@@ -303,6 +241,47 @@
       "sr": "Folklorni ansambal",
       "en": "Folklore ensemble",
       "sr-Cyrl": "Фолклорни ансамбал",
+      "icon": "fas fa-newspaper",
+      "fields": [
+        {
+          "code": "slika",
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika",
+            "en": "Cover image",
+            "sr-Cyrl": "Насловна слика"
+          },
+          "required": true
+        },
+        {
+          "code": "naslov",
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
+          },
+          "required": true
+        },
+        {
+          "code": "tekst",
+          "name": "tekst",
+          "type": "textarea",
+          "label": {
+            "sr": "Tekst",
+            "en": "Article",
+            "sr-Cyrl": "Текст"
+          }
+        }
+      ]
+    },
+    "SekcijeDomaKulture": {
+      "code": "sekcijeDomaKulture",
+      "sr": "Sekcije doma kulture",
+      "en": "Cultural Center Sections",
+      "sr-Cyrl": "Секције дома културе",
       "icon": "fas fa-newspaper",
       "fields": [
         {

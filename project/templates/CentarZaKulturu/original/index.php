@@ -453,18 +453,15 @@
     <header
         class="fixed w-full z-50 transition-all duration-300 py-2 sm:py-3 backdrop-blur-md shadow-lg bg-secondary_background/95 border-b border-surface">
         <div class="px-3 sm:px-4 lg:px-6 flex justify-between items-center">
-            <!-- Logo Section -->
-            <div class="flex items-center space-x-2 flex-shrink-0">
-                <!-- Logo ikonica -->
-                <a href="/" class="flex items-center gap-3 flex-shrink-0"></a>
-                    <div class="w-30 h-10 rounded-lg flex items-center justify-center text-white">
-                        <img class="img-logo" src="assets/img/" />
-                    </div>
-                </a>
-                <!-- Tekst za mobilni -->
-                <div class="block sm:hidden">
-                    <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">Dom Kulture Pirot</h1>
-                </div>
+            <a href="/" class="flex items-center flex-shrink-0">
+                <img
+                    src="assets/img/logo.png"
+                    alt="Logo"
+                    class="h-16 w-auto object-contain" />
+            </a>
+            <!-- Tekst za mobilni -->
+            <div class="block sm:hidden">
+                <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">Dom Kulture Pirot</h1>
             </div>
 
             <!-- Desktop Navigation -->
@@ -526,20 +523,20 @@
                     class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
                         class="fas fa-images mr-2 text-secondary group-hover:text-accent transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Galerija</span>
+                    <span class="hidden xl:inline">Galerija</span>
                 </a>
                 <a href="#"
                     class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-surface">
                     <i
                         class="fas fa-folder-open mr-2 text-secondary group-hover:text-accent transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Dokumenti</span>
+                    <span class="hidden xl:inline">Dokumenti</span>
                 </a>
                 <div class="dropdown relative group">
                     <button
                         class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                         <i
                             class="fas fa-bullhorn mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
-                        <span class="hidden xl:inline text-sm">Aktivnosti</span>
+                        <span class="hidden xl:inline">Aktivnosti</span>
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
@@ -572,7 +569,7 @@
                     class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                     <i
                         class="fas fa-address-book mr-2 text-secondary group-hover:text-accent transition-colors text-sm"></i>
-                    <span class="hidden xl:inline text-sm">Kontakt</span>
+                    <span class="hidden xl:inline">Kontakt</span>
                 </a>
 
                 <?php
@@ -684,10 +681,10 @@
 
         <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
 
-            <div class="max-w-6xl mx-auto text-center flex flex-col items-center">
+            <div class="max-w-6xl mx-auto text-center flex flex-col items-center px-4">
                 <div class="mb-8">
-                    <h1 class="text-5xl md:text-6xl font-heading font-bold text-primary_text mb-6">
-                        <span class="block artistic-underline whitespace-nowrap">Dobrodošli u Kulturni centar Pirot</span>
+                    <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary_text mb-6">
+                        <span class="block artistic-underline">Dobrodošli u Kulturni centar Pirot</span>
                         <span class="block artistic-underline">Mesto gde se umetnost, film i</span>
                         <span class="block text-primary mt-2">kultura susreću</span>
                     </h1>
@@ -947,7 +944,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <h3 class="text-xl font-heading font-bold">Dom Kulture Pirot</h3>
+                        <h3 class="text-xl font-heading font-bold text-surface">Dom Kulture Pirot</h3>
                     </div>
                     <div class="flex space-x-3">
                         <a href="https://www.facebook.com/domkulture.pirot/"
