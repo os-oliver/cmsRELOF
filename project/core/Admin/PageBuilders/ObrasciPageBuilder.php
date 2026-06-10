@@ -261,7 +261,7 @@ PHP;
 <main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold font-heading text-primary-text mb-2">Obrasci za podnošenje zahteva</h1>
+            <h1 class="text-3xl font-bold font-heading text-primary_text mb-2">Obrasci za podnošenje zahteva</h1>
             <p class="text-gray-600">Preuzmite potrebne obrasce za podnošenje zahteva</p>
         </div>
 
