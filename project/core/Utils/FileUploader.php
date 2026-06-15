@@ -1,6 +1,8 @@
 <?php
-// src/Utils/FileUploader.php
+
 namespace App\Utils;
+
+use App\Controllers\LanguageMapperController;
 
 class FileUploader
 {
@@ -188,8 +190,13 @@ class FileUploader
         // replace spaces with underscores
         $originalName = str_replace(' ', '_', $originalName);
 
-        // remove any character that is NOT a letter (any language), number, dash or underscore
-        $originalName = preg_replace('/[^\p{L}\p{N}_-]/u', '', $originalName);
+        // replace Cyrillic characters with Latin equivalent
+        $mapper = new LanguageMapperController();
+        $originalName = $mapper->cyrillic_to_latin($originalName);
+        $originalName = $mapper->strip_diacritics($originalName);
+
+        // remove any character that is NOT a latin letter, number, dash or underscore
+        $originalName = preg_replace('/[^\p{Latin}\p{N}_-]/u', '', $originalName);
 
         // rebuild filename
         $filename = $originalName . '.' . $ext;
