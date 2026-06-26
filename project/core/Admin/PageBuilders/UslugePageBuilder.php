@@ -125,33 +125,46 @@ CSS;
 function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
-    
+
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
-    
+
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
+<<<<<<< HEAD
         <input type='text' name='search' value='{$safeSearchValue}' 
                placeholder='{$texts['search_placeholder']}' 
                class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
         <button type='submit' 
                 class='bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+=======
+        <input type='text' name='search' value='{$safeSearchValue}'
+               placeholder='{$texts['search_placeholder']}'
+               class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
+        <button type='submit'
+                class='bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+>>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
             {$texts['apply_button']}
         </button>
     </div>";
-    
+
     $html .= "<div class='flex items-center w-full sm:w-auto'>
+<<<<<<< HEAD
         <select name='category' 
                 class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+=======
+        <select name='category'
+                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+>>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
             <option value=''>{$texts['all_categories']}</option>";
-    
+
     foreach ($categories as $cat) {
         $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
         $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
         $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
         $html .= "<option value='{$id}' {$selected}>{$name}</option>";
     }
-    
+
     $html .= "</select></div></form>";
-    
+
     return $html;
 }
 PHP;
@@ -193,6 +206,7 @@ HTML;
     protected string $cardRender = <<<'HTML'
  function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 250, $cardTemplate = ''): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(mb_substr($item['fields']['kratakOpis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -264,19 +278,29 @@ HTML;
 function renderPagination(int $currentPage, int $totalPages, int $range = 2): string
 {
     if ($totalPages <= 1) return '';
-    
+
     $html = "<div class='flex justify-center items-center gap-2 mt-10'>";
+<<<<<<< HEAD
     
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}' 
                    class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow'>
+=======
+
+    // Previous button
+    if ($currentPage > 1) {
+        $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
+        $html .= "<a href='{$prevUrl}'
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
+>>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
             <i class='fas fa-chevron-left text-gray-600'></i>
         </a>";
     }
-    
+
     $start = max(1, $currentPage - $range);
     $end = min($totalPages, $currentPage + $range);
+<<<<<<< HEAD
     
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
@@ -304,12 +328,45 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}' 
                    class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow'>
+=======
+
+    // First page + ellipsis
+    if ($start > 1) {
+        $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
+        $html .= "<a href='{$url}'
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
+        if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
+    }
+
+    // Page numbers
+    for ($i = $start; $i <= $end; $i++) {
+        $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
+        $class = $i === $currentPage
+            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md'
+            : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
+        $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
+    }
+
+    // Last page + ellipsis
+    if ($end < $totalPages) {
+        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
+        $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
+        $html .= "<a href='{$url}'
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
+    }
+
+    // Next button
+    if ($currentPage < $totalPages) {
+        $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
+        $html .= "<a href='{$nextUrl}'
+                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
+>>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
             <i class='fas fa-chevron-right text-gray-600'></i>
         </a>";
     }
-    
+
     $html .= "</div>";
-    
+
     return $html;
 }
 
@@ -323,9 +380,9 @@ PHP;
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Usluge</h1>
             <p class="text-gray-600">Prava i usluge koje pruža naša ustanova</p>
         </div>
-        
+
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
-        
+
         <div class="services-grid">
             <?php
             if ($itemsList['success'] && !empty($itemsList['items'])) {
@@ -334,7 +391,7 @@ PHP;
                     echo cardRender($item, $fieldLabels, $locale, $texts, $descriptionMaxLength, $cardTemplate);
                 }
                 echo '</div>';
-                
+
                 $totalPages = ceil($itemsList['total'] / $itemsPerPage);
                 echo renderPagination($currentPage, $totalPages, $paginationRange);
             } else {
@@ -356,6 +413,7 @@ HTML;
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -375,16 +433,16 @@ $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
+    ? (is_numeric($_GET['category'])
+        ? (int) $_GET['category']
         : trim((string) $_GET['category'])
       )
     : null;
 $search = $_GET['search'] ?? '';
 
 $categories = GenericCategory::fetchAll($slug, $locale);
-$itemsList = $slug 
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale) 
+$itemsList = $slug
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale)
     : ['success' => false, 'items' => []];
 
 $config = $fieldLabels = [];
@@ -406,8 +464,8 @@ $latinTexts = [
     'download_form' => 'Preuzmi obrazac'
 ];
 
-$texts = ($locale === 'sr-Cyrl') 
-    ? $translator->latin_to_cyrillic_array($latinTexts) 
+$texts = ($locale === 'sr-Cyrl')
+    ? $translator->latin_to_cyrillic_array($latinTexts)
     : $latinTexts;
 PHP;
 
