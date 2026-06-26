@@ -35,7 +35,7 @@ class AboutUSController
 
             $iconPath = null;
             $allowed = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'ico'];
-            $destDir = PUBLIC_ROOT . '/assets/icons';
+            $destDir = __DIR__ . '/../../public/assets/icons';
             $finalIconName = 'icon.png'; // always overwrite this
 
             if (!is_dir($destDir)) {
@@ -216,7 +216,7 @@ class AboutUSController
                     echo json_encode(['error' => 'Invalid icon type']);
                     return;
                 }
-                $destDir = PUBLIC_ROOT . '/assets/icons';
+                $destDir = __DIR__ . '/../../public/assets/icons';
                 if (!is_dir($destDir)) {
                     mkdir($destDir, 0775, true);
                 }
@@ -288,7 +288,7 @@ class AboutUSController
                     echo json_encode(['error' => 'Invalid icon type']);
                     return;
                 }
-                $destDir = PUBLIC_ROOT . '/assets/icons';
+                $destDir = __DIR__ . '/../../public/assets/icons';
                 if (!is_dir($destDir)) {
                     mkdir($destDir, 0775, true);
                 }

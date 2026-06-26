@@ -5,7 +5,7 @@ use App\Controllers\LanguageMapperController;
 use App\Utils\LocaleManager;
 class PageLoader
 {
-    private static string $filePath = PUBLIC_ROOT . '/assets/data/pages.json';
+    private static string $filePath = __DIR__ . '/../../public/assets/data/pages.json';
 
     // Load all pages from JSON
     public static function loadPages(): array
@@ -34,6 +34,7 @@ class PageLoader
             ;
             if (isset($page['column'])) {
                 if ($locale == 'sr-Cyrl') {
+                    echo json_encode($page);
                     $column = $langMapper->latin_to_cyrillic($page['column']);
                     $page['name'] = $langMapper->latin_to_cyrillic($page['name']);
                     $groupedPages[$column][] = $page;

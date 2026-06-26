@@ -5,7 +5,6 @@ session_start();
 
 
 use App\Models\Gallery;
-use App\Utils\LocaleManager;
 use App\Utils\FileUploader;
 
 class GalleryController
@@ -15,10 +14,9 @@ class GalleryController
         if (isset($_GET['limit'], $_GET['offset'])) {
             $limit = is_numeric($_GET['limit']) ? (int) $_GET['limit'] : 0;
             $offset = is_numeric($_GET['offset']) ? (int) $_GET['offset'] : 0;
-            $locale = LocaleManager::get();
 
             header('Content-Type: application/json');
-            echo json_encode((new Gallery())->list($limit, $offset, lang: $locale));
+            echo json_encode((new Gallery())->list($limit, $offset));
         }
     }
 
@@ -28,7 +26,7 @@ class GalleryController
         $data['title'] = $_POST['galleryTitle'] ?? null;
         $data['description'] = $_POST['galleryDescription'] ?? null;
         $file = $_FILES['galleryImage'] ?? null;
-        $uploadDir = PUBLIC_ROOT . '/uploads/gallery/';
+        $uploadDir = dirname(__DIR__) . '/../public/uploads/gallery/';
 
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0775, true);
@@ -76,7 +74,7 @@ class GalleryController
             $data['description'] = $_POST['galleryDescription'] ?? null;
 
             $file = $_FILES['galleryImage'] ?? null;
-            $uploadDir = PUBLIC_ROOT . '/uploads/gallery/';
+            $uploadDir = dirname(__DIR__) . '/../public/uploads/gallery/';
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0775, true);
             }

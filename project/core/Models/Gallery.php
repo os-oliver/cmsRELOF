@@ -60,8 +60,6 @@ class Gallery
         ?string $search = null,
         string $lang = 'sr-Cyrl'
     ): array {
-        $lang = $this->resolveLang($lang ?: ($_SESSION['locale'] ?? 'sr-Cyrl'));
-
         $params = [
             ':lang' => $lang,
             ':offset' => $offset,
@@ -209,7 +207,7 @@ class Gallery
                 $old = $stmtOld->fetchColumn();
                 // Only delete old file if the new image is different and not empty
                 if ($old && $old !== ('/uploads/gallery/' . $data['image_file_path'])) {
-                    $fullOld = PUBLIC_ROOT . $old;
+                    $fullOld = __DIR__ . '/../../public' . $old;
                     if (file_exists($fullOld)) {
                         unlink($fullOld);
                     }
@@ -265,7 +263,7 @@ class Gallery
             $stmtFile->execute([':id' => $id]);
             $path = $stmtFile->fetchColumn();
             if ($path) {
-                $full = PUBLIC_ROOT . $path;
+                $full = __DIR__ . '/../../public' . $path;
                 if (file_exists($full))
                     unlink($full);
             }
@@ -287,8 +285,6 @@ class Gallery
      */
     public function search(string $term, string $lang = 'sr-Cyrl'): array
     {
-        $lang = $this->resolveLang($lang ?: ($_SESSION['locale'] ?? 'sr-Cyrl'));
-
         $sql = "
             SELECT g.id, g.image_file_path, g.uploaded_at, t.field_name, t.content
             FROM gallery g
@@ -300,12 +296,8 @@ class Gallery
         ";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':lang' => $lang,
-            ':search' => "%{$term}%"
-        ]);
+        $stmt->execute([':lang' => $lang, ':search' => "%{$term}%"]);
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
         return (new Pivoter('field_name', 'content', 'id'))->pivot($rows);
     }
 }

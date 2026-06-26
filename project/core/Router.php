@@ -28,7 +28,7 @@ class Router
         switch ($routeInfo[0]) {
             case Dispatcher::NOT_FOUND:
                 http_response_code(404);
-                include PUBLIC_ROOT . '/pages/404.php';
+                include __DIR__ . '/../public/pages/404.php';
                 break;
 
             case Dispatcher::METHOD_NOT_ALLOWED:

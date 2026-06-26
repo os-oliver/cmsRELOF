@@ -27,7 +27,7 @@ class UserUpdateController
                 throw new Exception('Dozvoljeni su samo .php fajlovi.');
             }
 
-            $componentsDir = realpath(PUBLIC_ROOT . '/exportedPages/landingPageComponents/landingPage');
+            $componentsDir = realpath(__DIR__ . '/../../public/exportedPages/landingPageComponents/landingPage');
 
             if (!$componentsDir || !is_dir($componentsDir)) {
                 throw new Exception('Direktorijum komponenti ne postoji');
@@ -361,7 +361,7 @@ class UserUpdateController
             $generatedPhpCount++;
 
             $newNode = $dom->createTextNode($placeholder);
-            $logFile = PUBLIC_ROOT . "/exportedPages/log.txt";
+            $logFile = __DIR__ . "/../../public/exportedPages/log.txt";
             $logMessage = "Replacing text node: '$text' with PHP code: $phpCode" . PHP_EOL;
 
             // Append poruku u log fajl

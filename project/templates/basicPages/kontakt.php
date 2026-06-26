@@ -1,7 +1,7 @@
 <!-- Hero Section -->
 <section class="bg-gradient-to-r from-blue-500 to-indigo-600 py-16 text-white">
     <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl font-bold mb-4">Kontaktirajte Nas</h1>
+        <h1 class="text-4xl font-bold mb-4">Kontaktirajte nas</h1>
         <p class="text-lg max-w-2xl mx-auto">Imate pitanje, sugestiju ili žalbu? Na pravom ste mestu. Koristite
             odgovarajući obrazac za brz i efikasan odgovor.</p>
         <div class="mt-8 flex justify-center space-x-4">
@@ -32,8 +32,8 @@
                 </div>
                 <h2 class="text-xl font-bold">Adresa</h2>
             </div>
-            <p class="text-gray-700 mb-2">Ulica Primer 123</p>
-            <p class="text-gray-700">Žabalj, Srbija</p>
+            <p class="text-gray-700 mb-2">Vojvode Stepe 15</p>
+            <p class="text-gray-700">Pirot, Srbija</p>
             <div class="mt-4">
                 <a href="#" class="text-blue-500 hover:underline flex items-center">
                     <i class="fas fa-directions mr-2"></i> Pronađite nas na mapi
@@ -49,8 +49,8 @@
                 </div>
                 <h2 class="text-xl font-bold">Telefon</h2>
             </div>
-            <p class="text-gray-700 mb-2">+381 63 486 384</p>
-            <p class="text-gray-700">Radno vreme: 09:00 - 17:00</p>
+            <p class="text-gray-700 mb-2">+381 10 215 0005</p>
+            <p class="text-gray-700">Radno vreme: 08:00 - 16:00</p>
             <div class="mt-4">
                 <a href="tel:+38163486384" class="text-green-500 hover:underline flex items-center">
                     <i class="fas fa-phone-volume mr-2"></i> Pozovite nas odmah
@@ -66,9 +66,9 @@
                 </div>
                 <h2 class="text-xl font-bold">Email</h2>
             </div>
-            <p class="text-gray-700 mb-4" data-translate="off">info@primer.com</p>
+            <p class="text-gray-700 mb-4" data-translate="off">lanepi@mts.rs</p>
             <div class="mt-4">
-                <a href="mailto:info@primer.com" class="text-purple-500 hover:underline flex items-center">
+                <a href="mailto:lanepi@mts.rs" class="text-purple-500 hover:underline flex items-center">
                     <i class="fas fa-paper-plane mr-2"></i> Pošaljite email
                 </a>
             </div>
@@ -98,7 +98,7 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium mb-2">Email adresa</label>
-                    <input type="email" name="email" required placeholder="primer@email.com"
+                    <input type="email" name="email" required placeholder="lanepi@mts.rs"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
                 </div>
                 <div>

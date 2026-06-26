@@ -519,7 +519,7 @@ class PersonalContentController
     public function renderContent($id, $type)
     {
         // Load structure configuration
-        $structurePath = PUBLIC_ROOT . '/assets/data/structure.json';
+        $structurePath = __DIR__ . '/../../public/assets/data/structure.json';
         $structure = [];
         if (is_file($structurePath)) {
             $structureData = file_get_contents($structurePath);
@@ -592,7 +592,7 @@ class PersonalContentController
             extract($vars, EXTR_SKIP);
         }
 
-        $publicRoot = realpath(PUBLIC_ROOT . '/exportedPages/');
+        $publicRoot = realpath(__DIR__ . '/../../public/exportedPages/');
 
 
         $phpCode = preg_replace_callback(

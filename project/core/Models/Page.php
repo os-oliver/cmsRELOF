@@ -181,7 +181,7 @@ class Page
                 $stmtOld->execute([':id' => $id]);
                 $old = $stmtOld->fetchColumn();
                 if ($old) {
-                    $fullOld = PUBLIC_ROOT . $old;
+                    $fullOld = __DIR__ . '/../../public' . $old;
                     if (file_exists($fullOld))
                         unlink($fullOld);
                 }
@@ -238,7 +238,7 @@ class Page
             $stmtFile->execute([':id' => $id]);
             $path = $stmtFile->fetchColumn();
             if ($path) {
-                $full = PUBLIC_ROOT . $path;
+                $full = __DIR__ . '/../../public' . $path;
                 if (file_exists($full))
                     unlink($full);
             }
