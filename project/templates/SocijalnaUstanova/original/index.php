@@ -792,26 +792,11 @@
                         </div>
                         <h3 id="g-title" class="text-xl font-display font-bold text-slate mb-2">Nova usluga Centra za socijalni rad
                         </h3>
-<<<<<<< HEAD
-
-                        <p id="g-description" class="text-text_secondary mb-4">Centar za socijalni rad proširuje ponudu usluga novim programom podrške porodicama.</p>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <div class="flex items-center text-sm text-text_secondary">
-                                    <i class="fas fa-calendar-days mr-2"></i>
-                                    <span id="g-date">15. novembar 2024.</span>
-                                </div>
-                                <div class="flex items-center text-sm text-text_secondary">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span id="g-time">Objavljeno danas</span>
-                                </div>
-=======
                         <p id="g-tekst" class="text-secondary_text mb-4 line-clamp-3 md:line-clamp-2">Centar za socijalni rad proširuje ponudu usluga novim programom podrške porodicama.</p>
                         <div class="flex justify-between items-center">
                             <div class="flex items-center text-sm text-secondary_text">
                                 <i class="fas fa-calendar-days mr-2"></i>
                                 <span id="g-datum">15. novembar 2024.</span>
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
                             </div>
 
                         </div>
@@ -839,17 +824,9 @@
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Uspešno završen projekat podrške mladima</h3>
                         <p class="text-secondary_text mb-4">Program podrške mladima u riziku uspešno je završen uz učešće preko 50 korisnika naših usluga.</p>
                         <div class="flex justify-between items-center">
-<<<<<<< HEAD
-                            <div>
-                                <div class="flex items-center text-sm text-text_secondary">
-                                    <i class="fas fa-user mr-2"></i>
-                                    <span>Autor: CSR Tim</span>
-                                </div>
-=======
                             <div class="flex items-center text-sm text-secondary_text">
                                 <i class="fas fa-calendar-days mr-2"></i>
                                 <span >15. novembar 2024.</span>
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
                             </div>
                             <button
                                 class="bg-success_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-success_hover transition-colors">
@@ -880,17 +857,9 @@
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Nova saradnja sa lokalnim organizacijama</h3>
                         <p class="text-secondary_text mb-4">Potpisani su sporazumi o saradnji sa pet lokalnih nevladinih organizacija za unapređenje socijalne zaštite.</p>
                         <div class="flex justify-between items-center">
-<<<<<<< HEAD
-                            <div>
-                                <div class="flex items-center text-sm text-text_secondary">
-                                    <i class="fas fa-user mr-2"></i>
-                                    <span>Autor: Direkcija</span>
-                                </div>
-=======
                             <div class="flex items-center text-sm text-secondary_text">
                                 <i class="fas fa-calendar-days mr-2"></i>
                                 <span>15. novembar 2024.</span>
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
                             </div>
                             <button
                                 class="bg-accent_orange_bg text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-accent_orange transition-colors">

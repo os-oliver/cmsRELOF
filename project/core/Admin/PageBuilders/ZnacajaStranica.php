@@ -82,13 +82,8 @@ class ZnacajaStranica extends BasePageBuilder
               koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
             <li><strong>Pošaljite popunjen zahtev</strong>&nbsp;na adresu elektronske pošte:&nbsp;
               <a data-translate="off" class="text-accent hover:text-accent_hover underline-offset-2 hover:underline"
-<<<<<<< HEAD
-                 href="mailto:pisarnica@vas-domen.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
-                 pisarnica@vas-domen.rs
-=======
                  href="mailto:mail@example.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
                  mail@example.rs
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
               </a>. Možete poslati i poštom ili lično, u pisarnici.</li>
             <li><strong>Odgovor</strong>: nakon obrade, dobićete e-poruku sa adresom ili linkom,
               sa koje možete preuzeti tražene informacije, ili obrazloženje ako zahtev nije moguće u celosti uvažiti.</li>
@@ -107,15 +102,7 @@ class ZnacajaStranica extends BasePageBuilder
         <section class="mt-4">
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
-<<<<<<< HEAD
-            <p><strong>Za upravu i nacionalne zajednice</strong><br>Ime Prezime — 021/000-00-00 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer1@vas-domen.rs">primer1@vas-domen.rs</a></p>
-            <hr class="border-t border-secondary/30 my-3">
-            <p><strong>Za oblast obrazovanja</strong><br>Ime Prezime — 021/000-00-01 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer2@vas-domen.rs">primer2@vas-domen.rs</a></p>
-            <hr class="border-t border-secondary/30 my-3">
-            <p><strong>Za oblast finansija</strong><br>Ime Prezime — 021/000-00-02 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer3@vas-domen.rs">primer3@vas-domen.rs</a></p>
-=======
             <p><strong>Lice ovlašćeno za zaštitu podataka o ličnosti</strong><br>Ime Prezime — 021/123-123 i 021/123-123 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:mail@example.rs">mail@example.rs</a></p>
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
           </div>
         </section>
       </article>
@@ -139,25 +126,15 @@ class ZnacajaStranica extends BasePageBuilder
 
             <div class="mt-3">
               <div class="flex items-center justify-between gap-2 bg-white border border-secondary/30 rounded-xl px-3 py-2">
-<<<<<<< HEAD
-                <span class="truncate text-primary_text" data-translate="off">pisarnica@vas-domen.rs</span>
-                <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                        onclick="navigator.clipboard.writeText('pisarnica@vas-domen.rs')">
-=======
                 <span class="truncate text-primary_text" data-translate="off">mail@example.rs</span>
                 <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
                         onclick="navigator.clipboard.writeText('mail@example.rs')">
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
                   Kopiraj
                 </button>
               </div>
               <p class="mt-2">
                 <a class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-<<<<<<< HEAD
-                   href="mailto:pisarnica@vas-domen.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
-=======
                    href="mailto:mail@example.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
                   Otvori e-poštu
                 </a>
               </p>

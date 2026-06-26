@@ -219,18 +219,11 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 
     $html = "<div class='flex justify-center items-center gap-2 mt-10'>";
 
-<<<<<<< HEAD
-    if ($currentPage > 1) {
-        $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
-        $html .= "<a href='{$prevUrl}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow'>
-=======
     // Previous button
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}'
                    class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
             <i class='fas fa-chevron-left text-gray-600'></i>
         </a>";
     }
@@ -238,23 +231,6 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     $start = max(1, $currentPage - $range);
     $end = min($totalPages, $currentPage + $range);
 
-<<<<<<< HEAD
-    if ($start > 1) {
-        $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
-        $html .= "<a href='{$url}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
-        if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
-    }
-
-    for ($i = $start; $i <= $end; $i++) {
-        $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
-        $class = $i === $currentPage
-            ? 'px-4 py-2 bg-green-600 text-white rounded-xl font-semibold shadow-md'
-            : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow font-medium';
-        $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
-    }
-
-=======
     // First page + ellipsis
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
@@ -273,20 +249,10 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     }
 
     // Last page + ellipsis
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
     if ($end < $totalPages) {
         if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
         $html .= "<a href='{$url}'
-<<<<<<< HEAD
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
-    }
-
-    if ($currentPage < $totalPages) {
-        $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
-        $html .= "<a href='{$nextUrl}'
-                   class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-green-400 transition-all shadow-sm hover:shadow'>
-=======
                    class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
     }
 
@@ -295,7 +261,6 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}'
                    class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
             <i class='fas fa-chevron-right text-gray-600'></i>
         </a>";
     }

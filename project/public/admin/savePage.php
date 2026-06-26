@@ -8,11 +8,8 @@ use App\Admin\PageExporter;
 use App\Models\GenericCategory;
 use App\Models\Page;
 use App\Controllers\UserDefinedPagesController;
-<<<<<<< HEAD
-=======
 use App\Utils\Config;
 use App\Utils\ContentTypeManager;
->>>>>>> 7c77f4c022441c83c123d23fd10ae407db6de0ba
 
 // Require admin authentication
 AuthController::requireAdmin();
