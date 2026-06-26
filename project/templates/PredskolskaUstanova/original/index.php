@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorem ipsum dolor</title>
+    <title>Čika Jova Zmaj</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -116,8 +116,7 @@
 
             .hero-gradient {
                 background: linear-gradient(to bottom,
-                        #F1F7ED 0%,
-                        #a4d1aaff 50%,
+                        #fab278 0%,
                         #F1F7ED 100%);
                 text-align: left;
                 padding-top: 8rem;
@@ -353,10 +352,6 @@
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                             </a>
                             <a href="#"
@@ -485,10 +480,6 @@
                     </button>
                     <div
                         class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="#" static="true"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
-                        </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
@@ -671,18 +662,28 @@
                 <div>
                     <div class="mb-8 text-center">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondary_text font-heading2">Lorem ipsum dolor sit</span>
+                            <span class="block font-heading text-primary_text">Nekoliko reči o nama</span>
                         </h1>
-                        <p class="mx-4 md:mx-20 mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                        </p>
-                        <a href="/o-nama/cilj"
+                        <div class="mx-4 md:mx-20 mb-10 text-left">
+                            <p class="mb-4 text-xl">
+                                Jedan od zadataka Ustanove je da pomogne deci koja prvi put dolaze da prevaziđu teškoće koje prouzrokuje izlazak iz porodične sredine i uspostave odgovarajući socio-emocionalni odnos sa vršnjacima i odraslim osobama. Posebnu pažnju ćemo posvetiti periodu prilagođavanja i primeniti odgovarajuće adaptacione mere:
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 mb-4 text-xl">
+                                <li>
+                                    susret sa roditeljima novoupisane dece na celodnevnom boravku krajem juna i upoznavanje roditelja sa stručnim materijalom koji je pripremila pedagoško psihološka služba u Informatoru za roditelje; programom postepene adaptacije, rasporedom dnevnih aktivnosti u vrtiću i procedurama…;
+                                </li>
+                                <li>
+                                    prethodno upoznavanje sa detetom – zajednička igra u dvorištu vrtića;
+                                </li>
+                                <li>
+                                    stvaranje pozitivne atmosfere kod dolaska i prijema deteta – adekvatno uređenje prostora, izbor muzike, igračaka…;
+                                </li>
+                                <li>
+                                    fleksibilnost u prijemu i postepeno produžavanje boravka u kolektivu.
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="/o-nama/misija"
                             class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
                             Saznajte o nama
                         </a>
@@ -692,18 +693,18 @@
         </div>
     </section>
     <!-- VESTI -->
-    <section id="events" class="py-20 bg-background text-secondary_text">
+    <section id="vesti" class="py-20 bg-background text-secondary_text">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-heading2">
                 <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                    Lorem ipsum
+                    Vesti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit
+                    Pročitajte najnovije vesti 
                 </p>
             </div>
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Event 1 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
@@ -715,7 +716,7 @@
                         <div class="flex items-center mb-3">
                             <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
                         </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
+                        <h3 id="g-naslov" class="text-xl mb-2">Novo mesto za učenje i igru
                         </h3>
                         <a id="g-ovise" href="#"
                             class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
@@ -723,6 +724,7 @@
                         </a>
                     </div>
                 </div>
+
                 <!-- Event 2 -->
                 <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
                     <div class="h-48 relative">
@@ -734,7 +736,7 @@
                         <div class="flex items-center mb-3">
                             <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
                         </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
+                        <h3 id="g-naslov" class="text-xl mb-2">Novo mesto za učenje i igru
                         </h3>
                         <button
                             class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
@@ -753,7 +755,7 @@
                         <div class="flex items-center mb-3">
                             <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
                         </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
+                        <h3 id="g-naslov" class="text-xl mb-2">Novo mesto za učenje i igru
                         </h3>
                         <button
                             class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
@@ -772,16 +774,12 @@
         </div>
     </section>
     <!-- objekti -->
-    <section id="vrtici" class="bg-background text-secondary_text font-heading2">
+    <section id="vrtici" class="bg-white text-secondary_text font-heading2">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
                 <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">Objekti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
-                <p class="lg:mb-16 sm:text-xl">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
             </div>
             <div id="vrticiCards" class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                 <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
@@ -854,26 +852,6 @@
             </div>
         </div>
     </section>
-    <section class="py-16 bg-background text-secondary_text">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <?php
-                $stats = [
-                    ['number' => '20', 'label' => 'Generacija'],
-                    ['number' => '15', 'label' => 'Objekata'],
-                    ['number' => '1000+', 'label' => 'Osmeha'],
-                    ['number' => '50+', 'label' => 'Zaposlenih'],
-                ];
-                foreach ($stats as $index => $stat): ?>
-                    <div class="bg-surface p-6 rounded-xl shadow-lg transform transition hover:scale-105"
-                        style="animation-delay: <?= $index * 0.2 ?>s">
-                        <div class="text-4xl text-primary_text mb-2"><?= $stat['number'] ?></div>
-                        <div><?= $stat['label'] ?></div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
     <!-- Gallery Section -->
     <section id="gallery" class="py-20 bg-background text-secondary_text font-heading2">
         <div class="container mx-auto px-4">
@@ -882,9 +860,6 @@
                     Galerija
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
-                <p class="text-2xl max-w-2xl mx-auto">
-                    Lorem ipsum dolor amet consectetur adipiscing
-                </p>
             </div>
             <div id="galleryCards" class="gallery-grid gap-6">
                 <div class="gallery-item rounded-xl overflow-hidden relative">
@@ -941,33 +916,20 @@
                         Predškolska ustanova
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
+                        <a href="https://sr-rs.facebook.com/pages/PU-Cika-Jova-Zmaj-Pirot/258223070886349"
                             class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-spotify"></i>
                         </a>
                     </div>
                 </div>
                 <div>
                     <h4 class="mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a>
+                        <li><a href="/o-nama/misija" class="text-logocolor2/90 hover:text-primary_text transition-colors">O nama</a></li>
+                        <li><a href="/o-nama/pitanja" class="text-logocolor2/90 hover:text-primary_text transition-colors">Česta pitanja</a></li>
+                        <li><a href="/za-roditelje/obavestenja" class="text-logocolor2/90 hover:text-primary_text transition-colors">Obaveštenja za roditelje</a></li>
+                        <li><a href="/dokumenti" class="text-logocolor2/90 hover:text-primary_text transition-colors">Dokumenti</a></li>
+                        <li><a href="/o-nama/kontakt" class="text-logocolor2/90 hover:text-primary_text transition-colors">Kontakt</a>
                         </li>
                     </ul>
                 </div>
@@ -1022,19 +984,19 @@
             theme: {
                 extend: {
                     colors: {
-                        logocolor1: 'rgba(233, 168, 3, 1)',
-                        logocolor2: '#2D6A4F',
-                        primary: '#e9a803ff',
-                        primary_hover: '#d39802ff',
-                        secondary: '#32604dff',
-                        secondary_hover: '#255943ff',
-                        accent: "#e9a803ff",
-                        accent_hover: "#d39802ff",
-                        primary_text: '#1B4332',
-                        secondary_text: '#2a644aff',
-                        background: '#F1F7ED',
-                        secondary_background: '#e5cc8c6b',
-                        surface: "#e5cc8c6b",
+                        logocolor1: '#0D9488',
+                        logocolor2: '#0F766E',
+                        primary: '#0D9488',
+                        primary_hover: '#0F766E',
+                        secondary: '#EA580C',
+                        secondary_hover: '#C2410C',
+                        accent: '#EA580C',
+                        accent_hover: '#C2410C',
+                        primary_text: '#134E4A',
+                        secondary_text: '#1C4F3D',
+                        background: '#F0FDFA',
+                        secondary_background: '#fccba2',
+                        surface: '#CCFBF180',
                     },
                     fontFamily: {
                         heading: ['Fredoka', 'sans-serif'],

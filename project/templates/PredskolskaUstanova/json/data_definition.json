@@ -1,102 +1,14 @@
 [
   {
-    "Dogadjaji": {
-      "sr": "Događaji",
-      "en": "Events",
-      "sr-Cyrl": "Догађаји",
-      "icon": "fas fa-calendar-days",
-      "categories": [
-        "Konferencije",
-        "Seminari",
-        "Radionice",
-        "Takmičenja",
-        "Kultura"
-      ],
-      "fields": [
-        {
-          "name": "title",
-          "type": "text",
-          "label": {
-            "sr": "Naslov događaja",
-            "en": "Event title",
-            "sr-Cyrl": "Наслов догађаја"
-          },
-          "required": true
-        },
-        {
-          "name": "naziv",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
-          },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
-          "required": true
-        },
-        {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum održavanja",
-            "en": "Event date",
-            "sr-Cyrl": "Датум одржавања"
-          },
-          "required": true
-        },
-        {
-          "name": "time",
-          "type": "time",
-          "label": {
-            "sr": "Vreme početka",
-            "en": "Start time",
-            "sr-Cyrl": "Време почетка"
-          },
-          "required": true
-        },
-        {
-          "name": "location",
-          "type": "text",
-          "label": {
-            "sr": "Lokacija događaja",
-            "en": "Event location",
-            "sr-Cyrl": "Локација догађаја"
-          },
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis događaja",
-            "en": "Event description",
-            "sr-Cyrl": "Опис догађаја"
-          }
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika događaja",
-            "en": "Event image",
-            "sr-Cyrl": "Насловна слика догађаја"
-          }
-        }
-      ]
-    },
     "Projekti": {
+      "code" : "projekti",
       "sr": "Projekti",
       "en": "Projects",
       "sr-Cyrl": "Пројекти",
       "icon": "fas fa-diagram-project",
       "fields": [
         {
+          "code" : "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -107,6 +19,7 @@
           "required": true
         },
         {
+          "code" : "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -117,6 +30,7 @@
           "required": true
         },
         {
+          "code" : "vodja",
           "name": "vodja",
           "type": "text",
           "label": {
@@ -126,6 +40,7 @@
           }
         },
         {
+          "code" : "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -135,6 +50,7 @@
           }
         },
         {
+          "code" : "datumPocetka",
           "name": "datumPocetka",
           "type": "date",
           "label": {
@@ -145,8 +61,9 @@
           "required": true
         },
         {
+          "code" : "budzet",
           "name": "budzet",
-          "type": "number",
+          "type": "text",
           "label": {
             "sr": "Budžet (u evrima)",
             "en": "Budget (EUR)",
@@ -154,6 +71,7 @@
           }
         },
         {
+          "code" : "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -165,6 +83,7 @@
       ]
     },
     "Vesti": {
+      "code" : "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -178,6 +97,7 @@
       ],
       "fields": [
         {
+          "code" : "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -188,6 +108,7 @@
           "required": true
         },
         {
+          "code" : "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -197,6 +118,7 @@
           }
         },
         {
+          "code" : "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -207,6 +129,7 @@
           "required": true
         },
         {
+          "code" : "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -216,6 +139,7 @@
           }
         },
         {
+          "code" : "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -227,12 +151,14 @@
       ]
     },
     "Vrtici": {
+      "code" : "vrtici",
       "sr": "Vrtići",
       "en": "Kindergarten",
       "sr-Cyrl": "Вртићи",
       "icon": "fas fa-school",
       "fields": [
         {
+          "code" : "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -242,6 +168,7 @@
           }
         },
         {
+          "code" : "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -252,6 +179,7 @@
           "required": true
         },
         {
+          "code" : "location",
           "name": "location",
           "type": "text",
           "label": {
@@ -262,6 +190,7 @@
           "required": true
         },
         {
+          "code" : "description",
           "name": "description",
           "type": "textarea",
           "label": {
@@ -273,12 +202,14 @@
       ]
     },
     "Timovi": {
+      "code" : "timovi",
       "sr": "Timovi",
       "en": "Teams",
       "sr-Cyrl": "Тимови",
       "icon": "fas fa-users",
       "fields": [
         {
+          "code" : "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -288,6 +219,7 @@
           }
         },
         {
+          "code" : "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -298,6 +230,7 @@
           "required": true
         },
         {
+          "code" : "description",
           "name": "description",
           "type": "textarea",
           "label": {
@@ -309,12 +242,14 @@
       ]
     },
     "Obavestenja": {
+      "code" : "obavestenja",
       "sr": "Obaveštenja za roditelje",
       "en": "Notifications for Parents",
       "sr-Cyrl": "Обавештења за родитеље",
       "icon": "fas fa-bell",
       "fields": [
         {
+          "code" : "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -325,6 +260,7 @@
           "required": true
         },
         {
+          "code" : "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -335,6 +271,7 @@
           "required": true
         },
         {
+          "code" : "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -344,6 +281,7 @@
           }
         },
         {
+          "code" : "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -357,12 +295,14 @@
       ]
     },
     "Jelovnik": {
+      "code" : "jelovnik",
       "sr": "Jelovnik",
       "en": "Menu",
       "sr-Cyrl": "Јеловник",
       "icon": "fas fa-newspaper",
       "fields": [
         {
+          "code": "title",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -373,6 +313,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -382,6 +323,7 @@
           }
         },
         {
+          "code": "Fajl",
           "name": "Fajl",
           "type": "file",
           "label": {
