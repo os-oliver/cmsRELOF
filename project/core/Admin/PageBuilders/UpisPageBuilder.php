@@ -24,7 +24,7 @@ class UpisPageBuilder extends BasePageBuilder
         Za detalje o dokumentaciji i procedurama, pogledajte dokumentaciju klikom na link ispod.
       </p>
 
-      <a href="/dokumenti" target="_blank"
+      <a href="/dokumenti?search=&sort=date_desc&categories%5B%5D=7" target="_blank"
          class="inline-block bg-primary hover:bg-primary_hover text-background py-3 px-6 rounded-lg shadow-md mb-4 transition"
          aria-label="Pogledajte dokumentaciju za upis">
         Dokumentacija za upis
