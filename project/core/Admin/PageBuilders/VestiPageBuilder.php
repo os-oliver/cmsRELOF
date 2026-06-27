@@ -677,7 +677,7 @@ $search = $_GET['search'] ?? '';
 
 $categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale, 'datum', 'DESC')
     : ['success' => false, 'items' => [], 'total' => 0];
 
 $config = $fieldLabels = [];
