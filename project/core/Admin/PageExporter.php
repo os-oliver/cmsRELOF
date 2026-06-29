@@ -607,7 +607,7 @@ class PageExporter
         $dynamicText = $textModel->getDynamicText($locale);
         {{dynamicLandigPageElements}}
 
-        [$images, $totalEvents] = (new Gallery)->list();
+        [$images, $totalEvents] = (new Gallery)->list(lang: $locale);
         ?>
         <!DOCTYPE html>
         <html lang="en">
