@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Admin\PageBuilders;
 
 use App\Controllers\ContentController;
@@ -33,11 +34,13 @@ class VestiPageBuilder extends BasePageBuilder
         $latinTexts = [
             'search_placeholder' => 'Pretraži...',
             'apply_button' => 'Primeni',
+            'all_categories' => 'Sve kategorije',
             'date_and_time' => 'Datum i vreme',
             'location' => 'Lokacija',
             'event_details' => 'Detalji događaja',
             'no_items_found' => 'Nema pronađenih stavki',
-            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec'],
+            'read_more' => 'Pročitaj više',
         ];
 
         if ($locale === 'sr-Cyrl') {
@@ -412,7 +415,7 @@ class VestiPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(string $searchValue = '', array $texts = []): string
+function renderTopbar(array $categories, string $locale, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
@@ -422,6 +425,18 @@ function renderTopbar(string $searchValue = '', array $texts = []): string
             {$texts['apply_button']}
         </button>
     </div>";
+    $html .= "<div class='flex items-center w-full sm:w-auto'>
+        <select name='category' class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+            <option value=''>{$texts['all_categories']}</option>";
+
+    foreach ($categories as $cat) {
+        $translations = $cat['translations'];
+        $code = $cat['option_value'];
+        $name = $translations[$locale] ?? $translations['sr'];
+        $selected = ($selectedCategoryId == $cat['option_value']) ? 'selected' : '';
+        $html .= "<option value='{$code}' {$selected}>{$name}</option>";
+    }
+
     $html .= "</select></div></form>";
     return $html;
 }
@@ -431,7 +446,7 @@ PHP;
 
     protected string $cardRender = <<<'HTML'
 
-function cardRender(array $item, array $fieldLabels, string $locale): string
+function cardRender(array $item, array $fieldLabels, string $locale, array $texts = []): string
 {
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     // Sanitizacija podataka
@@ -517,7 +532,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
         $targetLink = "/sadrzaj?id={$itemId}&tip=vesti";
         $html .= "
                 <a href='{$targetLink}' class='bg-primary news-cta-button hover:bg-primary_hover'>
-                    <span>Pročitaj više</span>
+                    <span>{$texts['read_more']}</span>
                     <i class='fas fa-arrow-right'></i>
                 </a>
             </div>
@@ -599,18 +614,18 @@ PHP;
 <main class="bg-background pt-12 min-h-screen font-body text-secondary_text">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-5xl font-bold text-primary_text font-heading mb-2">Vesti</h1>
-            <p class="text-lg text-secondary_text">Istražite našu bogatu ponudu kulturnih događaja</p>
+            <h1 class="text-4xl font-bold text-primary_text font-heading mb-2">Vesti</h1>
+            <p class="text-lg text-secondary_text">Ovde možete pročitati najnovije vesti naše predškolske ustanove</p>
         </div>
 
-        <?php echo renderTopbar($locale, $search, $texts); ?>
+        <?php echo renderTopbar($categories, $locale, $search, $categoryId, $texts); ?>
 
         <div class="performances-grid">
             <?php
             if (!empty($itemsList['success']) && !empty($itemsList['items'])) {
                 echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
                 foreach ($itemsList['items'] as $item) {
-                    echo cardRender($item, $fieldLabels, $locale);
+                    echo cardRender($item, $fieldLabels, $locale, $texts);
                 }
                 echo '</div>';
                 $totalPages = max(1, (int) ceil($itemsList['total'] / $itemsPerPage));
@@ -662,6 +677,7 @@ $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
     : null;
 $search = $_GET['search'] ?? '';
 
+$categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale, 'datum', 'DESC')
     : ['success' => false, 'items' => [], 'total' => 0];
@@ -677,11 +693,13 @@ $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži...',
     'apply_button' => 'Primeni',
+    'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Datum i vreme',
     'location' => 'Lokacija',
     'event_details' => 'Detalji događaja',
     'no_items_found' => 'Nema pronađenih stavki',
-    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec'],
+    'read_more' => 'Pročitaj više',
 ];
 
 $texts = ($locale === 'sr-Cyrl')

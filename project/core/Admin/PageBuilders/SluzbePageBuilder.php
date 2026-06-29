@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Admin\PageBuilders;
 
 use App\Controllers\ContentController;
@@ -37,7 +38,8 @@ class SluzbePageBuilder extends BasePageBuilder
             'apply_button' => 'Primeni',
             'all_categories' => 'Sve vrste službi',
             'department_details' => 'Detalji službe',
-            'no_items_found' => 'Nema pronađenih službi'
+            'no_items_found' => 'Nema pronađenih službi',
+            'view_more' => 'Saznaj više'
         ];
 
         if ($locale === 'sr-Cyrl') {
@@ -114,12 +116,13 @@ CSS;
                 <div class="mb-5 p-4 bg-gray-50 rounded-xl border border-gray-100">
                     <p class="text-sm text-gray-700 leading-relaxed">{{kratakOpis}}</p>
                 </div>
-
-                <a href="/sadrzaj?id={{itemId}}&tip=generic_element"
-                   class="block text-center bg-primary hover:bg-primary_hover text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl">{{detalji}}
-                </a>
+                <a href='/sadrzaj?id={{itemId}}&tip=generic_element' 
+                    class='inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-xl hover:bg-primary_hover transition-all duration-200 shadow-sm hover:shadow-md'>
+                        <span>{{view_more}}</span>
+                        <i class='fas fa-arrow-right text-xs'></i>
+                 </a>
             </div>
-        </div>
+        </div>";
         PHP;
 HTML;
 
@@ -127,9 +130,8 @@ HTML;
  function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 250, $cardTemplate = ''): string
 {
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
-    $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $kratakOpis = htmlspecialchars(mb_substr($item['fields']['kratakOpis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
+    $naziv = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $kratakOpis = htmlspecialchars(mb_substr($item['fields']['description'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
 
 
@@ -139,7 +141,7 @@ HTML;
         '{{naziv}}' => $naziv,
         '{{kratakOpis}}' => $kratakOpis,
         '{{itemId}}' => $itemId,
-        '{{detalji}}' => $detalji,
+        '{{view_more}}' => htmlspecialchars($texts['view_more']),
     ];
 
     return str_replace(array_keys($replacements), array_values($replacements), $cardTemplate);
@@ -289,7 +291,8 @@ $latinTexts = [
     'apply_button' => 'Primeni',
     'all_categories' => 'Sve vrste službi',
     'department_details' => 'Detalji službe',
-    'no_items_found' => 'Nema pronađenih službi'
+    'no_items_found' => 'Nema pronađenih službi',
+    'view_more' => 'Saznaj više'
 ];
 
 $texts = ($locale === 'sr-Cyrl')

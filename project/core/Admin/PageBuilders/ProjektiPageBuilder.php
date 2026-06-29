@@ -423,6 +423,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
 {
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     // Osnovni podaci
+
     $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? $item['fields']['naziv'] ?? '', ENT_QUOTES, 'UTF-8');
     $vodja = htmlspecialchars($item['fields']['vodja'][$locale] ?? $item['fields']['vodja'] ?? '', ENT_QUOTES, 'UTF-8');
     $rawOpis = $item['fields']['opis'][$locale] ?? $item['fields']['opis'] ?? '';
@@ -442,18 +443,20 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     // Rezolucija slike
     $imageUrl = '';
     if (!empty($item['fields']['slika'])) {
-        $slika = $item['fields']['slika'];
-        if (is_array($slika)) {
-            if (isset($slika[0]) && is_array($slika[0]) && !empty($slika[0]['url'])) {
-                $imageUrl = $slika[0]['url'];
-            } elseif (!empty($slika['url'])) {
-                $imageUrl = $slika['url'];
-            } elseif (!empty($slika[0]) && is_string($slika[0])) {
-                $imageUrl = $slika[0];
-            }
-        } elseif (is_string($slika)) {
-            $imageUrl = $slika;
+    $slika = $item['fields']['slika'];
+    if (is_array($slika)) {
+        if (isset($slika[$locale]) && is_string($slika[$locale])) {
+            $imageUrl = $slika[$locale];          // <- ovo nedostaje
+        } elseif (isset($slika[0]) && is_array($slika[0]) && !empty($slika[0]['url'])) {
+            $imageUrl = $slika[0]['url'];
+        } elseif (!empty($slika['url'])) {
+            $imageUrl = $slika['url'];
+        } elseif (!empty($slika[0]) && is_string($slika[0])) {
+            $imageUrl = $slika[0];
         }
+    } elseif (is_string($slika)) {
+        $imageUrl = $slika;
+    }
     } elseif (!empty($item['image'])) {
         $imageUrl = $item['image'];
     }

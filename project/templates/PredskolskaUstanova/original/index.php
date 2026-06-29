@@ -432,10 +432,6 @@
                                 class="flex items-center py-2 px-4 transition-colors hover:text-secondary_hover">
                                 <i class="fas fa-users mr-2 text-primary"></i>Vaspitno obrazovno veće
                             </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors hover:text-secondary_hover">
-                                <i class="fas fa-star  mr-2 text-primary"></i>Programi
-                            </a>
                         </div>
                     </div>
                     <a href="#"
@@ -559,10 +555,6 @@
                         <a static="true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-users mr-2 text-primary hover:text-primary_hover"></i>Vaspitno obrazovno veće
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-star mr-2 text-primary hover:text-primary_hover"></i>Programi
                         </a>
                     </div>
                 </div>

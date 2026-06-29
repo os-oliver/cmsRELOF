@@ -227,6 +227,7 @@ HTML;
         $additionalPHP = <<<'PHP'
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
