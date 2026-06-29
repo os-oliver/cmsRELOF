@@ -408,7 +408,7 @@ $cardTemplate = <<<'PHP'
         {{clickableLink}}
 
         <!-- CTA dugme -->
-        <a href="sadrzaj?id={{itemId}}&tip=generic_element" class="bg-primary project-cta hover:bg-primary_hover">
+        <a href="/sadrzaj?id={{itemId}}&tip=projekti" class="bg-primary project-cta hover:bg-primary_hover">
             <i class="fas fa-info-circle"></i>
             <span>{{projectDetails}}</span>
             <i class="fas fa-arrow-right"></i>
@@ -421,6 +421,7 @@ HTML;
     protected string $cardRender = <<<'HTML'
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, $cardTemplate=''): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     // Osnovni podaci
     $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? $item['fields']['naziv'] ?? '', ENT_QUOTES, 'UTF-8');
     $vodja = htmlspecialchars($item['fields']['vodja'][$locale] ?? $item['fields']['vodja'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -606,7 +607,9 @@ HTML;
         $additionalPHP = <<<'PHP'
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
+use App\Models\ContentType;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

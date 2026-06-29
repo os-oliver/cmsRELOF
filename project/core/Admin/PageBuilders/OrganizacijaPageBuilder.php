@@ -86,20 +86,20 @@ PHP;
             </div>
             <div class="p-6">
                 <div class="mb-4">
-                    <h3 class="text-xl font-bold text-primary-text line-clamp-2 group-hover:text-primary transition-colors">
+                    <h3 class="text-xl font-bold text-primary_text line-clamp-2 group-hover:text-primary transition-colors">
                         {{ime}}
                     </h3>
                     <p class="text-sm">{{pozicija}}</p>
                 </div>
                 <div class="mb-4 p-4 bg-surface rounded-xl border border-white/30">
-                    <p class="text-sm text-secondary-text leading-relaxed">{{biografija}}</p>
+                    <p class="text-sm text-secondary_text leading-relaxed">{{biografija}}</p>
                 </div>
                 <div class="flex items-center justify-between mt-4">
                     <div class="flex items-center gap-2">
                         <i class="fas fa-envelope text-primary"></i>
-                        <span class="text-sm text-secondary-text">{{kontakt}}</span>
+                        <span class="text-sm text-secondary_text">{{kontakt}}</span>
                     </div>
-                    <a href="/sadrzaj?id={{itemId}}&tip=Zaposleni" class="flex items-center gap-2 text-primary hover:text-primary_hover transition-colors">
+                    <a href="/sadrzaj?id={{itemId}}&tip=zaposleni" class="flex items-center gap-2 text-primary hover:text-primary_hover transition-colors">
                         <span class="text-sm font-medium">{{viewDetails}}</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -113,6 +113,7 @@ HTML;
     protected string $cardRender = <<<'HTML'
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, string $cardTemplate = ''): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $ime = htmlspecialchars($item['fields']['ime'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $pozicija = htmlspecialchars($item['fields']['pozicija'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $biografija = htmlspecialchars(mb_substr($item['fields']['biografija'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
@@ -147,7 +148,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}' class='px-4 py-2 rounded-xl hover:shadow font-medium bg-white/80 backdrop-blur-sm border border-white/30'>
-            <i class='fas fa-chevron-left text-secondary-text'></i>
+            <i class='fas fa-chevron-left text-secondary_text'></i>
         </a>";
     }
     $start = max(1, $currentPage - $range);
@@ -155,7 +156,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
         $html .= "<a href='{$url}' class='px-4 py-2 rounded-xl font-medium bg-white/80 backdrop-blur-sm border border-white/30'>1</a>";
-        if ($start > 2) $html .= "<span class='px-2 text-secondary-text'>...</span>";
+        if ($start > 2) $html .= "<span class='px-2 text-secondary_text'>...</span>";
     }
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
@@ -165,14 +166,14 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
     if ($end < $totalPages) {
-        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-secondary-text'>...</span>";
+        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-secondary_text'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
         $html .= "<a href='{$url}' class='px-4 py-2 rounded-xl font-medium bg-white/80 backdrop-blur-sm border border-white/30'>{$totalPages}</a>";
     }
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}' class='px-4 py-2 rounded-xl hover:shadow font-medium bg-white/80 backdrop-blur-sm border border-white/30'>
-            <i class='fas fa-chevron-right text-secondary-text'></i>
+            <i class='fas fa-chevron-right text-secondary_text'></i>
         </a>";
     }
     $html .= "</div>";
@@ -184,7 +185,7 @@ PHP;
 <main class="bg-background pt-12 min-h-screen font-body text-secondary_text">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-5xl font-bold font-heading text-primary_text mb-2">Organi upravljanja</h1>
+            <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Organi upravljanja</h1>
             <p class="text-secondary_text">Članovi organizacione strukture</p>
         </div>
 
@@ -203,7 +204,7 @@ PHP;
             } else {
                 echo "<div class='glass-card rounded-lg p-12 text-center'>
                     <i class='fas fa-inbox text-5xl text-secondary'></i>
-                    <p class='text-secondary-text mt-4'>{$texts['no_items_found']}</p>
+                    <p class='text-secondary_text mt-4'>{$texts['no_items_found']}</p>
                 </div>";
             }
             ?>
@@ -219,6 +220,7 @@ HTML;
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -238,8 +240,8 @@ $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
+    ? (is_numeric($_GET['category'])
+        ? (int) $_GET['category']
         : trim((string) $_GET['category'])
       )
     : null;

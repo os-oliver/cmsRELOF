@@ -198,11 +198,11 @@ class ObavestenjaZaRoditeljePageBuilder extends BasePageBuilder
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
-    
+
     .glass-card {
         margin-bottom: 1rem;
     }
-    
+
     .card-action-link {
         font-size: 0.8125rem;
         padding: 0.75rem 1rem;
@@ -213,9 +213,10 @@ CSS;
     protected string $functions = <<<'PHP'
 function cardRender(array $item, array $fieldLabels, string $locale, string $readMoreText): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $naslov = htmlspecialchars(trim($item['fields']['naziv'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(trim($item['fields']['opis'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
-    $opis = preg_replace('/\s+/', ' ', $opis); 
+    $opis = preg_replace('/\s+/', ' ', $opis);
     $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = !empty($item['image']) ? htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') : null;
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -381,7 +382,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, string $rea
         font-size: 0.95rem;
     }
     </style>
-    
+
     <div class='news-card-modern text-primary_text'>";
 
     if ($imageUrl) {
@@ -389,15 +390,15 @@ function cardRender(array $item, array $fieldLabels, string $locale, string $rea
         <div class='news-hero-image'>
             <img src='{$imageUrl}' alt='{$naslov}'>
             <div class='news-gradient-overlay'></div>";
-        
+
         $html .= "
             <div class='news-content-area'>
                 <h3 class='news-title-hero'>{$naslov}</h3>";
-        
+
         if ($shortDescription) {
             $html .= "<p class='news-description-hero'>{$shortDescription}</p>";
         }
-        
+
         $targetLink = "/sadrzaj?id={$itemId}&tip=Obavestenja";
         $html .= "
                 <a href='{$targetLink}' class='news-cta-button'>
@@ -410,7 +411,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, string $rea
     // Meta footer sa datumom i autorom
     if ($datum) {
         $html .= "<div class='news-meta-footer'>";
-        
+
         if ($datum) {
             $html .= "
             <div class='news-meta-item'>
@@ -418,58 +419,58 @@ function cardRender(array $item, array $fieldLabels, string $locale, string $rea
                 <span>{$datum}</span>
             </div>";
         }
-        
+
         $html .= "</div>";
     }
 
     $html .= "</div>";
-    
+
     return $html;
 }
 
 function renderPagination(int $currentPage, int $totalPages): string
 {
     if ($totalPages <= 1) return '';
-    
+
     $html = "<div class='flex justify-center items-center gap-2 mt-10'>";
-    
+
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}' class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
                     <i class='fas fa-chevron-left text-gray-600'></i>
                   </a>";
     }
-    
+
     $start = max(1, $currentPage - 2);
     $end = min($totalPages, $currentPage + 2);
-    
+
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
         $html .= "<a href='{$url}' class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>1</a>";
         if ($start > 2) $html .= "<span class='px-2 text-gray-400'>...</span>";
     }
-    
+
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
-        $class = $i === $currentPage 
-            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md' 
+        $class = $i === $currentPage
+            ? 'px-4 py-2 bg-gray-800 text-white rounded-xl font-semibold shadow-md'
             : 'px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
-    
+
     if ($end < $totalPages) {
         if ($end < $totalPages - 1) $html .= "<span class='px-2 text-gray-400'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
         $html .= "<a href='{$url}' class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow font-medium'>{$totalPages}</a>";
     }
-    
+
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}' class='px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-300 hover:bg-white hover:border-gray-400 transition-all shadow-sm hover:shadow'>
                     <i class='fas fa-chevron-right text-gray-600'></i>
                   </a>";
     }
-    
+
     $html .= "</div>";
     return $html;
 }
@@ -491,7 +492,7 @@ PHP;
                     echo cardRender($item, $fieldLabels, $locale, $readMoreText);
                 }
                 echo '</div>';
-                
+
                 $totalPages = ceil($itemsList['total'] / $itemsPerPage);
                 echo renderPagination($currentPage, $totalPages);
             } else {
@@ -512,6 +513,7 @@ HTML;
         $additionalPHP = <<<'PHP'
         use App\Models\Content;
         use App\Models\GenericCategory;
+        use App\Utils\HashMapTransformer;
 
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -535,7 +537,7 @@ HTML;
         $slug = '__SLUG__';
         $pageTitle = 'Obaveštenja';
         $pageDescription = 'Pregled svih stavki';
-        
+
         $itemsPerPage = 15;
         if (isset($_GET['per_page']) && is_numeric($_GET['per_page'])) {
             $itemsPerPage = (int)$_GET['per_page'];
@@ -543,11 +545,11 @@ HTML;
         $currentPage = max(1, (int) ($_GET['page'] ?? 1));
         $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
         $search = $_GET['search'] ?? '';
-        
+
         $categories = GenericCategory::fetchAll($slug, $locale);
         $itemsList = $slug ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale)
                            : ['success' => false, 'items' => []];
-        
+
         $config = $fieldLabels = [];
         if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
             $parsed = json_decode(file_get_contents($structurePath), true);

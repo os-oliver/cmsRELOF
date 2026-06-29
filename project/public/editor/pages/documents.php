@@ -18,7 +18,7 @@ $status = $_GET['status'] ?? '';
 $sort = $_GET['sort'] ?? 'date_desc';
 
 //  Paginacija
-$limit = 3;
+$limit = max(9, (int) ($_GET['pageSize'] ?? 9));
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
@@ -171,16 +171,16 @@ function getFileConfig(string $ext): array
                                     $isChecked = in_array($doc['id'], $selectedCategories);
                                     ?>
                                             <label class="relative inline-flex items-center cursor-pointer">
-                                                <input type="checkbox" 
-                                                       name="categories[]" 
+                                                <input type="checkbox"
+                                                       name="categories[]"
                                                        value="<?= $doc['id'] ?>"
                                                        <?= $isChecked ? 'checked' : '' ?>
                                                        class="sr-only peer"
                                                        id="category_<?= $doc['id'] ?>">
-                                                <label for="category_<?= $doc['id'] ?>" 
+                                                <label for="category_<?= $doc['id'] ?>"
                                                        class="px-4 py-2 rounded-full border cursor-pointer <?= $isChecked
                                                            ? 'bg-blue-50 border-blue-200 text-blue-700'
-                                                           : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50' ?> 
+                                                           : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50' ?>
                                                    transition-all duration-200 text-sm font-medium select-none">
                                                     <?= $doc['name'] ?>
                                                 </label>
@@ -295,16 +295,36 @@ function getFileConfig(string $ext): array
                     </div>
                     <nav class="flex items-center gap-2">
                         <button class="p-2 rounded-lg border text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                            data-gotoPage="1"
                             <?= $page <= 1 ? 'disabled' : '' ?>>
                             <i class="fas fa-chevron-left"></i>
                         </button>
+                        <?php
+                            $beforeCurrentPage = false;
+                            $afterCurrentPage = false;
+                        ?>
                         <?php for ($p = 1; $p <= $totalPages; $p++): ?>
-                                    <button
-                                        class="px-4 py-2 rounded-lg <?= $p === $page ? 'bg-blue-600 text-white' : 'border text-gray-700 hover:bg-gray-50' ?>">
-                                        <?= $p ?>
-                                    </button>
+                            <?php if ($p < $page - 3 && !$beforeCurrentPage) : ?>
+                            <button class="px-4 py-2 rounded-lg border text-gray-700 hover:bg-gray-50">
+                                &hellip;
+                            </button>
+                            <?php $beforeCurrentPage = true; endif; ?>
+
+                            <?php if ($p > $page - 3 && $p < $page + 3) : ?>
+                            <button
+                                class="px-4 py-2 rounded-lg <?= $p === $page ? 'bg-blue-600 text-white' : 'border text-gray-700 hover:bg-gray-50' ?>">
+                                <?= $p ?>
+                            </button>
+                            <?php endif; ?>
+
+                            <?php if (($p > $page + 3) && !$afterCurrentPage) : ?>
+                            <button class="px-4 py-2 rounded-lg border text-gray-700 hover:bg-gray-50">
+                                &hellip;
+                            </button>
+                            <?php $afterCurrentPage = true; endif; ?>
                         <?php endfor; ?>
                         <button class="p-2 rounded-lg border text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                            data-gotoPage="<?= $totalPages ?>"
                             <?= $page >= $totalPages ? 'disabled' : '' ?>>
                             <i class="fas fa-chevron-right"></i>
                         </button>
