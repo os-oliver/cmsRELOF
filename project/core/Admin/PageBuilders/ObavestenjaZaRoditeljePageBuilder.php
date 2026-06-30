@@ -385,28 +385,31 @@ function cardRender(array $item, array $fieldLabels, string $locale, string $rea
 
     <div class='news-card-modern text-primary_text'>";
 
+    $html .= "
+    <div class='news-hero-image'>";
+
     if ($imageUrl) {
-        $html .= "
-        <div class='news-hero-image'>
-            <img src='{$imageUrl}' alt='{$naslov}'>
-            <div class='news-gradient-overlay'></div>";
-
-        $html .= "
-            <div class='news-content-area'>
-                <h3 class='news-title-hero'>{$naslov}</h3>";
-
-        if ($shortDescription) {
-            $html .= "<p class='news-description-hero'>{$shortDescription}</p>";
-        }
-
-        $targetLink = "/sadrzaj?id={$itemId}&tip=Obavestenja";
-        $html .= "
-                <a href='{$targetLink}' class='news-cta-button'>
-                    <span>{$readMoreText}</span>
-                </a>
-            </div>
-        </div>";
+        $html .= "<img src='{$imageUrl}' alt='{$naslov}'>";
     }
+
+    $html .= "
+        <div class='news-gradient-overlay'></div>";
+
+    $html .= "
+        <div class='news-content-area'>
+            <h3 class='news-title-hero'>{$naslov}</h3>";
+
+    if ($shortDescription) {
+        $html .= "<p class='news-description-hero'>{$shortDescription}</p>";
+    }
+
+    $targetLink = "/sadrzaj?id={$itemId}&tip=ObavestenjaZaRoditelje";
+    $html .= "
+            <a href='{$targetLink}' class='news-cta-button'>
+                <span>{$readMoreText}</span>
+            </a>
+        </div>
+    </div>";
 
     // Meta footer sa datumom i autorom
     if ($datum) {

@@ -15,8 +15,7 @@
             "sr": "Naslovna slika projekta",
             "en": "Project image",
             "sr-Cyrl": "Насловна слика пројекта"
-          },
-          "required": true
+          }
         },
         {
           "code" : "naziv",
@@ -271,8 +270,8 @@
         }
       ]
     },
-    "Obavestenja": {
-      "code" : "obavestenja",
+    "ObavestenjaZaRoditelje": {
+      "code" : "ObavestenjaZaRoditelje",
       "sr": "Obaveštenja za roditelje",
       "en": "Notifications for Parents",
       "sr-Cyrl": "Обавештења за родитеље",
@@ -286,8 +285,7 @@
             "sr": "Naslovna slika оbaveštenja",
             "en": "Notification image",
             "sr-Cyrl": "Насловна слика обавештења"
-          },
-          "required": true
+          }
         },
         {
           "code" : "naziv",
@@ -332,7 +330,7 @@
       "icon": "fas fa-newspaper",
       "fields": [
         {
-          "code": "title",
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
