@@ -1,6 +1,7 @@
 [
   {
     "Vesti": {
+      "code" : "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
@@ -14,6 +15,7 @@
       ],
       "fields": [
         {
+          "code" : "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -24,43 +26,7 @@
           "required": true
         },
         {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
-          },
-          "required": true,
-          "property": "auto"
-        },
-        {
-          "name": "naziv",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
-          },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
-          "required": true
-        },
-        {
-          "name": "autor",
-          "type": "text",
-          "label": {
-            "sr": "Autor",
-            "en": "Author",
-            "sr-Cyrl": "Аутор"
-          }
-        },
-        {
+          "code" : "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -70,6 +36,18 @@
           }
         },
         {
+          "code" : "datum",
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum vesti",
+            "en": "News date",
+            "sr-Cyrl": "Датум вести"
+          },
+          "required": true
+        },
+        {
+          "code" : "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -79,24 +57,26 @@
           }
         },
         {
+          "code" : "link",
           "name": "link",
           "type": "url",
           "label": {
-            "sr": "Externalni link",
-            "en": "External link",
-            "sr-Cyrl": "Екстерни линк"
+            "sr": "Link vesti",
+            "en": "News link",
+            "sr-Cyrl": "Линк вести"
           }
         }
       ]
     },
     "Repertoar": {
+      "code": "Repertoar",
       "sr": "Repertoar",
       "en": "Repertoire",
       "sr-Cyrl": "Репертоар",
       "icon": "fas fa-theater-masks",
-      "categories": ["Drama", "Komedija", "Tragedija", "Muzikal", "Opera", "Balet"],
       "fields": [
         {
+          "code": "nazivPredstave",
           "name": "nazivPredstave",
           "type": "text",
           "label": {
@@ -107,6 +87,7 @@
           "required": true
         },
         {
+          "code": "datumVreme",
           "name": "datumVreme",
           "type": "text",
           "label": {
@@ -116,19 +97,296 @@
           },
           "required": true
         },
+
         {
-          "name": "zanr",
+          "code": "main_category",
+          "name": "Žanr",
           "type": "categories",
           "label": {
             "sr": "Žanr",
             "en": "Genre",
             "sr-Cyrl": "Жанр"
           },
+          "options": [
+            "Komedija",
+            "Drama",
+            "Tragedija",
+            "Tragikomedija",
+            "Melodrama",
+            "Farsa",
+            "Satira",
+            "Mjuzikl",
+            "Opera",
+            "Balet",
+            "Pantomima",
+            "Monodrama",
+            "Lutkarska predstava",
+            "Dječija predstava",
+            "Eksperimentalna predstava",
+            "Dokumentarna predstava",
+            "Improvizacijska predstava",
+            "Istorijska",
+            "Biografska",
+            "Kriminalistička",
+            "Romantična",
+            "Horor",
+            "Naučnofantastična",
+            "Fantastična",
+            "Avanturistička",
+            "Psihološka",
+            "Porodična",
+            "Edukativna",
+            "Politička",
+            "Religijska"
+          ],
+          "coded_options": [
+            {
+              "code": "Komedija",
+              "translations": {
+                "sr": "Komedija",
+                "en": "Comedy",
+                "sr-Cyrl": "Комедија"
+              }
+            },
+            {
+              "code": "Drama",
+              "translations": {
+                "sr": "Drama",
+                "en": "Drama",
+                "sr-Cyrl": "Драма"
+              }
+            },
+            {
+              "code": "Tragedija",
+              "translations": {
+                "sr": "Tragedija",
+                "en": "Tragedy",
+                "sr-Cyrl": "Трагедија"
+              }
+            },
+            {
+              "code": "Tragikomedija",
+              "translations": {
+                "sr": "Tragikomedija",
+                "en": "Tragicomedy",
+                "sr-Cyrl": "Трагикомедија"
+              }
+            },
+            {
+              "code": "Melodrama",
+              "translations": {
+                "sr": "Melodrama",
+                "en": "Melodrama",
+                "sr-Cyrl": "Мелодрама"
+              }
+            },
+            {
+              "code": "Farsa",
+              "translations": {
+                "sr": "Farsa",
+                "en": "Farce",
+                "sr-Cyrl": "Фарса"
+              }
+            },
+            {
+              "code": "Satira",
+              "translations": {
+                "sr": "Satira",
+                "en": "Satire",
+                "sr-Cyrl": "Сатира"
+              }
+            },
+            {
+              "code": "Mjuzikl",
+              "translations": {
+                "sr": "Mjuzikl",
+                "en": "Musical",
+                "sr-Cyrl": "Мјузикл"
+              }
+            },
+            {
+              "code": "Opera",
+              "translations": {
+                "sr": "Opera",
+                "en": "Opera",
+                "sr-Cyrl": "Опера"
+              }
+            },
+            {
+              "code": "Balet",
+              "translations": {
+                "sr": "Balet",
+                "en": "Ballet",
+                "sr-Cyrl": "Балет"
+              }
+            },
+            {
+              "code": "Pantomima",
+              "translations": {
+                "sr": "Pantomima",
+                "en": "Pantomime",
+                "sr-Cyrl": "Пантомима"
+              }
+            },
+            {
+              "code": "Monodrama",
+              "translations": {
+                "sr": "Monodrama",
+                "en": "Monodrama",
+                "sr-Cyrl": "Монодрама"
+              }
+            },
+            {
+              "code": "Lutkarska predstava",
+              "translations": {
+                "sr": "Lutkarska predstava",
+                "en": "Puppet Show",
+                "sr-Cyrl": "Луткарска представа"
+              }
+            },
+            {
+              "code": "Dječija predstava",
+              "translations": {
+                "sr": "Dječija predstava",
+                "en": "Children's Play",
+                "sr-Cyrl": "Дјечија представа"
+              }
+            },
+            {
+              "code": "Eksperimentalna predstava",
+              "translations": {
+                "sr": "Eksperimentalna predstava",
+                "en": "Experimental Theatre",
+                "sr-Cyrl": "Експериментална представа"
+              }
+            },
+            {
+              "code": "Dokumentarna predstava",
+              "translations": {
+                "sr": "Dokumentarna predstava",
+                "en": "Documentary Theatre",
+                "sr-Cyrl": "Документарна представа"
+              }
+            },
+            {
+              "code": "Improvizacijska predstava",
+              "translations": {
+                "sr": "Improvizacijska predstava",
+                "en": "Improvisational Theatre",
+                "sr-Cyrl": "Импровизацијска представа"
+              }
+            },
+            {
+              "code": "Istorijska",
+              "translations": {
+                "sr": "Istorijska",
+                "en": "Historical",
+                "sr-Cyrl": "Историјска"
+              }
+            },
+            {
+              "code": "Biografska",
+              "translations": {
+                "sr": "Biografska",
+                "en": "Biographical",
+                "sr-Cyrl": "Биографска"
+              }
+            },
+            {
+              "code": "Kriminalistička",
+              "translations": {
+                "sr": "Kriminalistička",
+                "en": "Crime",
+                "sr-Cyrl": "Криминалистичка"
+              }
+            },
+            {
+              "code": "Romantična",
+              "translations": {
+                "sr": "Romantična",
+                "en": "Romance",
+                "sr-Cyrl": "Романтична"
+              }
+            },
+            {
+              "code": "Horor",
+              "translations": {
+                "sr": "Horor",
+                "en": "Horror",
+                "sr-Cyrl": "Хорор"
+              }
+            },
+            {
+              "code": "Naučnofantastična",
+              "translations": {
+                "sr": "Naučnofantastična",
+                "en": "Science Fiction",
+                "sr-Cyrl": "Научнофантастична"
+              }
+            },
+            {
+              "code": "Fantastična",
+              "translations": {
+                "sr": "Fantastična",
+                "en": "Fantasy",
+                "sr-Cyrl": "Фантастична"
+              }
+            },
+            {
+              "code": "Avanturistička",
+              "translations": {
+                "sr": "Avanturistička",
+                "en": "Adventure",
+                "sr-Cyrl": "Авантуристичка"
+              }
+            },
+            {
+              "code": "Psihološka",
+              "translations": {
+                "sr": "Psihološka",
+                "en": "Psychological",
+                "sr-Cyrl": "Психолошка"
+              }
+            },
+            {
+              "code": "Porodična",
+              "translations": {
+                "sr": "Porodična",
+                "en": "Family",
+                "sr-Cyrl": "Породична"
+              }
+            },
+            {
+              "code": "Edukativna",
+              "translations": {
+                "sr": "Edukativna",
+                "en": "Educational",
+                "sr-Cyrl": "Едукативна"
+              }
+            },
+            {
+              "code": "Politička",
+              "translations": {
+                "sr": "Politička",
+                "en": "Political",
+                "sr-Cyrl": "Политичка"
+              }
+            },
+            {
+              "code": "Religijska",
+              "translations": {
+                "sr": "Religijska",
+                "en": "Religious",
+                "sr-Cyrl": "Религијска"
+              }
+            }
+          ],
           "required": true
         },
         {
+          "code": "trajanjeMin",
           "name": "trajanjeMin",
-          "type": "number",
+          "type": "text",
           "label": {
             "sr": "Trajanje (min)",
             "en": "Duration (min)",
@@ -136,6 +394,7 @@
           }
         },
         {
+          "code": "opisPredstave",
           "name": "opisPredstave",
           "type": "text",
           "label": {
@@ -146,43 +405,7 @@
           "required": true
         },
         {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika predstave",
-            "en": "Play cover image",
-            "sr-Cyrl": "Насловна слика представе"
-          }
-        }
-      ]
-    },
-    "Predstave": {
-      "sr": "Predstave",
-      "en": "Plays",
-      "sr-Cyrl": "Представе",
-      "icon": "fas fa-theater-masks",
-      "categories": ["Drama", "Komedija", "Tragedija", "Muzikal", "Opera", "Balet"],
-      "fields": [
-        {
-          "name": "nazivPredstave",
-          "type": "text",
-          "label": {
-            "sr": "Naziv predstave",
-            "en": "Play title",
-            "sr-Cyrl": "Назив представе"
-          },
-          "required": true
-        },
-        {
-          "name": "autor",
-          "type": "text",
-          "label": {
-            "sr": "Autor",
-            "en": "Author",
-            "sr-Cyrl": "Аутор"
-          }
-        },
-        {
+          "code": "glumci",
           "name": "glumci",
           "type": "text",
           "label": {
@@ -192,6 +415,7 @@
           }
         },
         {
+          "code": "rezija",
           "name": "rezija",
           "type": "text",
           "label": {
@@ -201,25 +425,7 @@
           }
         },
         {
-          "name": "zanr",
-          "type": "categories",
-          "label": {
-            "sr": "Žanr",
-            "en": "Genre",
-            "sr-Cyrl": "Жанр"
-          },
-          "required": true
-        },
-        {
-          "name": "trajanjeMin",
-          "type": "number",
-          "label": {
-            "sr": "Trajanje (min)",
-            "en": "Duration (min)",
-            "sr-Cyrl": "Трајање (мин)"
-          }
-        },
-        {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -231,79 +437,64 @@
       ]
     },
     "Ansambl": {
-    "sr": "Ansambl",
-    "en": "Ensemble",
-    "sr-Cyrl": "Ансамбл",
-    "icon": "fas fa-users",
-    "categories": [ 
-          "Glumac/Glumica",
-          "Reditelj",
-          "Dramaturg",
-          "Scenograf",
-          "Kostimograf",
-          "Koreograf",
-          "Kompozitor",
-          "Tehnička ekipa"
-        ],
-    "fields": [
-      {
-        "name": "imePrezime",
-        "type": "text",
-        "label": {
-          "sr": "Ime i prezime",
-          "en": "Full name",
-          "sr-Cyrl": "Име и презиме"
+      "code": "Ansambl",
+      "sr": "Ansambl",
+      "en": "Ensemble",
+      "sr-Cyrl": "Ансамбл",
+      "icon": "fas fa-users",
+      "fields": [
+        {
+          "code": "imePrezime",
+          "name": "imePrezime",
+          "type": "text",
+          "label": {
+            "sr": "Ime i prezime",
+            "en": "Full name",
+            "sr-Cyrl": "Име и презиме"
+          },
+          "required": true
         },
-        "required": true
-      },
-      {
-        "name": "uloga",
-        "type": "categories",
-        "label": {
-          "sr": "Uloga / Zvanje",
-          "en": "Role / Position",
-          "sr-Cyrl": "Улога / Звање"
+        {
+          "code": "kratkaBio",
+          "name": "kratkaBio",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratka biografija",
+            "en": "Short bio",
+            "sr-Cyrl": "Кратка биографија"
+          }
         },
-        "required": true
-      },
-      {
-        "name": "kratkaBio",
-        "type": "textarea",
-        "label": {
-          "sr": "Kratka biografija",
-          "en": "Short bio",
-          "sr-Cyrl": "Кратка биографија"
+        {
+          "code": "clanOd",
+          "name": "clanOd",
+          "type": "text",
+          "label": {
+            "sr": "Član od (godina)",
+            "en": "Member since (year)",
+            "sr-Cyrl": "Члан од (година)"
+          }
+        },
+        {
+          "code": "kontakt",
+          "name": "kontakt",
+          "type": "text",
+          "label": {
+            "sr": "Kontakt / Linkovi",
+            "en": "Contact / Links",
+            "sr-Cyrl": "Контакт / Линкови"
+          }
+        },
+        {
+          "code": "slika",
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Fotografija člana",
+            "en": "Member photo",
+            "sr-Cyrl": "Фотографија члана"
+          }
         }
-      },
-      {
-        "name": "clanOd",
-        "type": "number",
-        "label": {
-          "sr": "Član od (godina)",
-          "en": "Member since (year)",
-          "sr-Cyrl": "Члан од (година)"
-        }
-      },
-      {
-        "name": "kontakt",
-        "type": "text",
-        "label": {
-          "sr": "Kontakt / Linkovi",
-          "en": "Contact / Links",
-          "sr-Cyrl": "Контакт / Линкови"
-        }
-      },
-      {
-        "name": "slika",
-        "type": "file",
-        "label": {
-          "sr": "Fotografija člana",
-          "en": "Member photo",
-          "sr-Cyrl": "Фотографија члана"
-        }
-      }
-    ]
+      ]
     }
-
   }
 ]

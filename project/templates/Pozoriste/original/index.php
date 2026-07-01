@@ -628,8 +628,8 @@
             </div>
         </div>
     </section>
-
-    <!-- Repertoar -->
+    
+<!-- Repertoar -->
     <section id="repertoar" class="py-20 text-secondary_text">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-body">
@@ -642,7 +642,7 @@
                 </p>
             </div>
 
-            <div id="repertoarCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+            <div id="repertoarCards" class="flex justify-center gap-8 flex-wrap">
                 <!-- repertoar card 1 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
                     <div class="h-48 relative">
@@ -729,7 +729,7 @@
 
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="text-center mt-12">
@@ -745,7 +745,7 @@
 
 
     <!-- Vesti -->
-    <section id="vesti" class="py-20 text-secondary_text">
+    <section id="vesti" class="bg-surface2 py-20 text-secondary_text">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-body">
                 <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
@@ -757,19 +757,19 @@
                 </p>
             </div>
 
-            <div id="vestiCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-                
+            <div id="vestiCards" class="flex justify-center gap-8 flex-wrap">
+
                 <!-- vest 1 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="w-full h-48 overflow-hidden rounded-lg">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" class="w-full h-full object-cover" />
                     </div>
                     <div class="p-6">
 
                         <div class="flex items-center mb-3">
                             <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
-                        
+
                         <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
 
                         <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
@@ -786,15 +786,15 @@
 
                 <!-- vest 2 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="w-full h-48 overflow-hidden rounded-lg">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" class="w-full h-full object-cover" />
                     </div>
                     <div class="p-6">
 
                         <div class="flex items-center mb-3">
                             <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
-                        
+
                         <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
 
                         <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
@@ -811,15 +811,15 @@
 
                 <!-- vest 3 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="w-full h-48 overflow-hidden rounded-lg">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" class="w-full h-full object-cover" />
                     </div>
                     <div class="p-6">
 
                         <div class="flex items-center mb-3">
                             <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
                         </div>
-                        
+
                         <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
 
                         <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
@@ -834,7 +834,32 @@
                     </div>
                 </div>
 
-                
+
+                <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
+                    <div class="w-full h-48 overflow-hidden rounded-lg">
+                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+
+                        <div class="flex items-center mb-3">
+                            <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
+                        </div>
+
+                        <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
+
+                        <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
+
+                        <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
+                            Saznajte više
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+
+
             </div>
 
             <div class="text-center mt-12">
