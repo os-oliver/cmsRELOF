@@ -104,16 +104,20 @@ class CustomFieldValue
     {
         try {
             $pdo = self::pdo();
-            $stmt = $pdo->prepare("SELECT cfv.* FROM custom_field_value cfv INNER JOIN custom_field cf ON cf.id = cfv.custom_field_id WHERE cfv.content_id = :content_id AND cf.type = :type ORDER BY custom_field_id, ordno ASC");
+            $stmt = $pdo->prepare(
+                "SELECT cfv.* FROM custom_field_value cfv " .
+                "INNER JOIN custom_field cf ON cf.id = cfv.custom_field_id " .
+                "WHERE cfv.content_id = :content_id AND cf.type IN ('file', 'multifile') " .
+                "ORDER BY custom_field_id, ordno ASC"
+            );
             $stmt->execute([
                 ':content_id' => $contentId,
-                ':type' => 'file',
             ]);
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $result ?? [];
         } catch (\Throwable $e) {
-            var_dump($e->getMessage());
+            error_log('findFileCFVsByContentId failed: ' . $e->getMessage());
             return null;
         }
     }

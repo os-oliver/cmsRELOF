@@ -483,36 +483,67 @@ class Content
                 }
             }
 
+            $submittedValue = $this->resolveSubmittedValue($post, $customField);
+            $submittedFile = $this->resolveSubmittedFile($files, $customField);
+
             if ($fieldType === 'options') {
-                $this->processCategoryField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null);
+                $this->processCategoryField($contentId, $customField, $cfValueVariants, $submittedValue);
                 continue;
             }
 
             if ($fieldType === 'time') {
-                $this->processTimeField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null);
+                $this->processTimeField($contentId, $customField, $cfValueVariants, $submittedValue);
                 continue;
             }
 
             if ($fieldType === 'date') {
-                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, 'Y-m-d');
+                $this->processDateField($contentId, $customField, $cfValueVariants, $submittedValue ?? null, 'Y-m-d');
                 continue;
             }
 
             if (in_array($fieldType, ['file', 'multifile'], true)) {
-                $this->processFileField($contentId, $customField, $cfValueVariants, $post, $files, $isUpdate);
+                $this->processFileField($contentId, $customField, $cfValueVariants, $post, $submittedFile, $isUpdate);
                 continue;
             }
 
             if ($fieldType === 'text' || $fieldType === 'textarea') {
-                $this->processTextField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? '', $locale);
+                $this->processTextField($contentId, $customField, $cfValueVariants, (string) ($submittedValue ?? ''), $locale);
                 continue;
             }
 
             if ($fieldType === 'email' || $fieldType === 'url') {
-                $this->processNonTranslatableField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? '');
+                $this->processNonTranslatableField($contentId, $customField, $cfValueVariants, (string) ($submittedValue ?? ''));
                 continue;
             }
         }
+    }
+
+    private function resolveSubmittedValue(array $post, array $customField): mixed
+    {
+        $fieldCode = $customField['code'] ?? null;
+        $fieldName = $customField['name'] ?? $fieldCode;
+
+        foreach (array_unique(array_filter([$fieldCode, $fieldName, strtolower((string) $fieldName), ucfirst((string) $fieldName)], static fn ($value) => $value !== null && $value !== '')) as $candidate) {
+            if (array_key_exists($candidate, $post)) {
+                return $post[$candidate];
+            }
+        }
+
+        return null;
+    }
+
+    private function resolveSubmittedFile(array $files, array $customField): ?array
+    {
+        $fieldCode = $customField['code'] ?? null;
+        $fieldName = $customField['name'] ?? $fieldCode;
+
+        foreach (array_unique(array_filter([$fieldCode, $fieldName, strtolower((string) $fieldName), ucfirst((string) $fieldName)], static fn ($value) => $value !== null && $value !== '')) as $candidate) {
+            if (isset($files[$candidate])) {
+                return $files[$candidate];
+            }
+        }
+
+        return null;
     }
 
     private function processCategoryField(int $contentId, array $customField, array | null $cfValueVariants, string $categoryCode): void
@@ -660,9 +691,9 @@ class Content
         }
     }
 
-    private function processFileField(int $contentId, array $customField, array | null $cfValueVariants, array $post, array $files, bool $isUpdate): void
+    private function processFileField(int $contentId, array $customField, array | null $cfValueVariants, array $post, ?array $fileField, bool $isUpdate): void
     {
-        $fieldCode = $customField['code'];
+        $fieldCode = $customField['code'] ?? '';
         $fieldType = $customField['type'];
         $isMultipleField = $fieldType === 'multifile';
 
@@ -672,8 +703,8 @@ class Content
         }
 
         // Handle new file uploads
-        if (isset($files[$fieldCode]) && $files[$fieldCode]['error'] !== UPLOAD_ERR_NO_FILE) {
-            $this->handleFileUpload($contentId, $files[$fieldCode], $customField, $cfValueVariants, $isMultipleField, $isUpdate);
+        if ($fileField && ($fileField['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
+            $this->handleFileUpload($contentId, $fileField, $customField, $cfValueVariants, $isMultipleField, $isUpdate);
         }
     }
 
@@ -734,23 +765,17 @@ class Content
 
     private function handleFileUpload(int $contentId, array $fileField, array $customField, array $existingCFV, bool $isMultiple, bool $isUpdate): void
     {
-        if (!is_array($fileField['name'])) {
-            return;
-        }
+        $uploadEntries = $this->normalizeUploadedFiles($fileField);
 
-        $count = count($fileField['name']);
-        for ($k = 0; $k < $count; $k++) {
-            if ($fileField['error'][$k] === UPLOAD_ERR_NO_FILE) {
+        foreach ($uploadEntries as $k => $single) {
+            $errorCode = $single['error'] ?? UPLOAD_ERR_NO_FILE;
+            if ($errorCode === UPLOAD_ERR_NO_FILE) {
                 continue;
             }
 
-            $single = [
-                'name' => $fileField['name'][$k],
-                'type' => $fileField['type'][$k],
-                'tmp_name' => $fileField['tmp_name'][$k],
-                'error' => $fileField['error'][$k],
-                'size' => $fileField['size'][$k],
-            ];
+            if ($errorCode !== UPLOAD_ERR_OK) {
+                throw new \RuntimeException(FileUploader::getUploadErrorMessage((int) $errorCode));
+            }
 
             $uploadedFilename = $this->uploader->upload($single);
 
@@ -758,19 +783,44 @@ class Content
                 $publicPath = '/uploads/' . $uploadedFilename;
 
                 if (!$isMultiple && count($existingCFV) > 0) {
-                    $this->deletePhysicalFile($existingCFV[0]['filepath']);
+                    $this->deletePhysicalFile($existingCFV[0]['filepath'] ?? '');
                     $this->updateImageCFV($existingCFV[0], $publicPath);
                 } else {
                     self::insertImageCFV($contentId, $customField['id'], $publicPath, ($k + 1));
                 }
-
-
-                // if ($isMultiple) {
-                // } else {
-                //     $this->replaceSingleImage($contentId, $publicPath, $isUpdate);
-                // }
             }
         }
+    }
+
+    private function normalizeUploadedFiles(array $fileField): array
+    {
+        if (!isset($fileField['name'])) {
+            return [];
+        }
+
+        if (is_array($fileField['name'])) {
+            $count = count($fileField['name']);
+            $entries = [];
+            for ($k = 0; $k < $count; $k++) {
+                $entries[] = [
+                    'name' => $fileField['name'][$k] ?? '',
+                    'type' => $fileField['type'][$k] ?? '',
+                    'tmp_name' => $fileField['tmp_name'][$k] ?? '',
+                    'error' => $fileField['error'][$k] ?? UPLOAD_ERR_NO_FILE,
+                    'size' => $fileField['size'][$k] ?? 0,
+                ];
+            }
+
+            return $entries;
+        }
+
+        return [[
+            'name' => $fileField['name'],
+            'type' => $fileField['type'] ?? '',
+            'tmp_name' => $fileField['tmp_name'] ?? '',
+            'error' => $fileField['error'] ?? UPLOAD_ERR_NO_FILE,
+            'size' => $fileField['size'] ?? 0,
+        ]];
     }
 
     private function replaceSingleImage(int $contentID, string $publicPath, bool $isUpdate): void

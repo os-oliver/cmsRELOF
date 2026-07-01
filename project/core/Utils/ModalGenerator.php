@@ -456,7 +456,7 @@ class ModalGenerator
 
     private function renderField($field)
     {
-        $name = $field['name'] ?? '';
+        $name = $field['code'] ?? $field['name'] ?? '';
         $code = $field['code'] ?? '';
         $type = $field['type'] ?? 'text';
         $isMultiple = ($type === 'multifile') || ($type === 'file');

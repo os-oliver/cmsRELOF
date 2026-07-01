@@ -1277,6 +1277,9 @@ class PersonalContentController
         $allFiles = CustomFieldValue::findFileCFVsByContentId($id);
 
         // Separate images and documents
+        $images = [];
+        $files = [];
+
         $images = array_filter($allFiles, function ($file) use ($docExtensions) {
             $ext = strtolower(pathinfo($file['filepath'], PATHINFO_EXTENSION));
             return !in_array($ext, $docExtensions);
@@ -1286,17 +1289,6 @@ class PersonalContentController
             $ext = strtolower(pathinfo($file['filepath'], PATHINFO_EXTENSION));
             return in_array($ext, $docExtensions);
         });
-
-        // Also check for file URLs inside fields
-        // This is probably not needed anymore, since we collect filepaths from the CFVs now
-        /*
-        foreach ($fields as $fieldValues) {
-            $ext = strtolower(pathinfo($fieldValues['textValue'], PATHINFO_EXTENSION));
-            if (in_array($ext, $docExtensions)) {
-                $files[] = ['filepath' => $fieldValues['textValue']];
-            }
-        }
-        */
 
         // Get labels and icons
         // $labels = $this->getLabelsFromStructure($type, $structure, $locale);
