@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorem ipsum dolor</title>
+    <title>Dobrica Milutinović Sremska Mitrovica</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -332,11 +332,7 @@
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-home mr-3 text-primary"></i>Početna
-                    </a>
                     <div class="mobile-dropdown">
-
                         <button class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
                             id="mobileAboutToggle">
                             <div class="flex items-center">
@@ -372,9 +368,6 @@
                     </div>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-primary"></i>Ansambl
-                    </a>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-folder-open mr-3 text-primary"></i>Predstave
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primary"></i>Repertoar
@@ -413,34 +406,28 @@
 
     <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm ">
         <div class="container mx-auto px-4 flex justify-between items-center">
-
-
             <!-- Logo Section -->
-            <div class="flex items-center space-x-3 flex-shrink-0">
+            <a href="/" class="flex items-center space-x-3 flex-shrink-0">
                 <div
-                    class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    class="w-12 h-12 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
 
-                <div class="hidden sm:block font-body text-primary_text">
-                    <h1 class="text-xl lg:text-2xl tracking-wider">Lorem ipsum dolor</h1>
-                    <p class="text-xs tracking-widest hidden md:block">Lorem ipsum dolor sit amet consectetu</p>
+                <div class="hidden sm:block font-body text-primary_text mr-2">
+                    <h1 class="text-xl lg:text-2xl tracking-wider font-heading">Dobrica Milutinović</h1>
+                    <p class="text-l tracking-widest hidden md:block">Narodno pozorište</p>
                 </div>
                 <div class="block sm:hidden">
-                    <h1 class="text-lg text-primary_text">Lorem ipsum</h1>
+                    <h1 class="text-lg text-primary_text font-heading">Narodno pozorište</h1>
                 </div>
-            </div>
+            </a>
 
 
             <!-- Desktop Navigation -->
             <nav id="navBarID"
                 class="hidden lg:flex space-x-4 xl:space-x-8 font-body text-secondary_text hover:text-primary_text">
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-home mr-2 text-primary transition-colors"></i>
-                    <span class="hidden xl:inline">Početna</span>
-                </a>
                 <div class="dropdown relative group transition-colors">
-                    <button class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <button class="nav-link transition-colors flex items-center whitespace-nowrap mt-2">
                         <i class="fas fa-info-circle mr-2 text-primary"></i>
                         <span class="hidden xl:inline">O nama</span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
@@ -495,10 +482,6 @@
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-calendar-alt mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Predstave</span>
-                </a>
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Repertoar</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -526,8 +509,7 @@
 
                 $languages = [
                     'sr' => ['label' => 'Srpski', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>'],
-                    'en' => ['label' => 'English', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/><path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/><path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/></g></svg>'],
+                    'sr-Cyrl' => ['label' => 'Српски', 'flag' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#a)"><path fill="#0052b4" d="m0 167 253.8-19.3L512 167v178l-254.9 32.3L0 345z"/><path fill="#d80027" d="M0 0h512v167H0z"/><path fill="#eee" d="M0 345h512v167H0z"/><path fill="#d80027" d="M66.2 144.7v127.7c0 72.6 94.9 95 94.9 95s94.9-22.4 94.9-95V144.7z"/><path fill="#ffda44" d="M105.4 167h111.4v-44.6l-22.3 11.2-33.4-33.4-33.4 33.4-22.3-11.2zm128.3 123.2-72.3-72.4L89 290.2l23.7 23.6 48.7-48.7 48.7 48.7z"/><path fill="#eee" d="M233.7 222.6H200a22.1 22.1 0 0 0 3-11.1 22.3 22.3 0 0 0-42-10.5 22.3 22.3 0 0 0-41.9 10.5 22.1 22.1 0 0 0 3 11.1H89a23 23 0 0 0 23 22.3h-.7c0 12.3 10 22.2 22.3 22.2 0 11 7.8 20 18.1 21.9l-17.5 39.6a72.1 72.1 0 0 0 27.2 5.3 72.1 72.1 0 0 0 27.2-5.3L171.1 289c10.3-2 18.1-11 18.1-21.9 12.3 0 22.3-10 22.3-22.2h-.8a23 23 0 0 0 23-22.3z"/></g></svg>']
                 ];
 
                 if (!isset($languages[$locale])) {
@@ -599,20 +581,16 @@
     <!-- Enhanced Hero Section -->
     <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondary_text">
         <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-1 items-center gap-8">
                 <div>
                     <div class="mb-8 text-left">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondary_text font-body">Lorem ipsum dolor sit</span>
+                            <span class="block font-heading text-primary_text">Dobrodošli na zvaničan sajt</span>
+                            <span class="block mt-2 text-secondary_text font-body">Narodnog pozorišta Dobrica Milutinović</span>
+                            <span class="block mt-2 text-secondary_text font-body">U Sremskoj Mitrovici</span>
                         </h1>
-                        <p class="mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+                        <p class="mb-10 text-2xl">
+                            Pronađite predstavu koju želite pogledati i vidimo se u pozorištu!
                         </p>
                         <button
                             class="bg-primary text-primarybtntxt px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors">
@@ -628,13 +606,13 @@
             </div>
         </div>
     </section>
-    
+
 <!-- Repertoar -->
     <section id="repertoar" class="py-20 text-secondary_text">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-body">
                 <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                    Naš Repertoar
+                    Naš repertoar
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4">
