@@ -16,8 +16,8 @@ class UpisPageBuilder extends BasePageBuilder
   <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient">
     <div class="absolute inset-0 z-0"></div>
 
-    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center font-body text-secondary_text">
-      <h1 class="text-5xl font-heading text-primary_text mb-4">Upis</h1>
+    <div class="relative z-10 w-full max-w-5xl mx-auto px-6 text-center font-body text-secondary_text">
+      <h1 class="text-5xl font-heading text-primary_text mb-4 mt-5">Upis</h1>
 
       <div class="text-center text-lg md:text-2xl leading-relaxed space-y-4">
         <p>
@@ -37,22 +37,25 @@ class UpisPageBuilder extends BasePageBuilder
         </p>
 
         <p>
-          - Prilikom elektronskog popunjavanja zahteva za upis deteta, zahtev za jedno dete popuniti samo jedanput. Nema potrebe da se za isto dete zahtev popunjava više puta. Ukoliko roditelj nije siguran da je pravilno popunio zahtev elektronski, informaciju o tome može dobiti pola sata nakon popunjenog zahteva, radnim danima od 8:00 do 14:00 časova na broj telefona: 060/8010333.
+          - Prilikom elektronskog popunjavanja zahteva za upis deteta, zahtev za jedno dete popuniti samo jedanput. Nema potrebe da se za isto dete zahtev popunjava više puta. Ukoliko roditelj nije siguran da je pravilno popunio zahtev elektronski, informaciju o tome može dobiti pola sata nakon popunjenog zahteva, radnim danima od 8:00 do 14:00 časova na broj telefona: 
         </p>
+        <p class="text-strong"> 060/8010333. </p>
 
         <p>
-          Za detalje o dokumentaciji, procedurama i uputstvom, pogledajte dokumentaciju klikom na link ispod.
+          Da pogledate sva dokumenta, koja su vezana za upis u našu predškolsku ustanovu, kliknite na dugme ispod. Klikom na dugme možete pronaći 
         </p>
+        <li> - Upis u novu radnu godinu</li>
+        <li> - Spiskove primljene dece</li>
       </div>
 
       <a href="/dokumenti" target="_blank"
          class="inline-block bg-primary hover:bg-primary_hover text-background py-3 px-6 rounded-lg shadow-md mb-4 mt-10 transition"
          aria-label="Pogledajte dokumentaciju za upis">
-        Dokumentacija za upis
+        Pogledaj dokumenta
       </a>
 
-      <p class="text-sm mt-4 text-gray-600">
-        Klikom na link bićete preusmereni na stranicu koja sadrži sve potrebne informacije za upis.
+      <p class="text-sm mt-4 text-gray-600 mb-5">
+        Klikom na dugme bićete preusmereni na stranicu koja sadrži sve potrebne informacije za upis.
       </p>
     </div>
   </section>

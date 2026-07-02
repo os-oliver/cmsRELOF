@@ -456,7 +456,7 @@
             <a href="/" class="flex items-center gap-3 flex-shrink-0">
                 <div
                     class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <img src="" alt="" style="width:75px;height:auto;" />
+                    <img src="/assets/img/logo_pu_sm.jpg" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block font-heading text-primary_text">
                     <div class="text-xl leading-tight">PU "Pčelica"</div>
@@ -895,7 +895,7 @@
                 <div>
                     <a href="/" class="flex items-center mb-6">
                         <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                            <img src="" alt="" style="width:75px;height:auto;" />
+                            <img src="/assets/img/logo_pu_sm.jpg" alt="" style="width:75px;height:auto;" />
                         </div>
                         <h3 class="text-xl font-heading font-bold">PU "Pčelica"</h3>
                     </a>
