@@ -40,6 +40,7 @@ class SeminarPageBuilder extends BasePageBuilder
             'catalog_number' => 'Kataloški broj',
             'subject_area' => 'Oblast',
             'learn_more' => 'Saznaj više',
+            'signup' => 'Prijavi se',
             'search_button' => 'Pretraži',
             'all_categories' => 'Sve kategorije',
             'date_and_time' => 'Datum i vreme',
@@ -181,7 +182,7 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
 PHP;
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
-        <div class="glass-card rounded-lg p-6">
+        <div class="flex flex-col h-full glass-card rounded-lg p-6">
             <div class="flex items-start justify-between gap-4">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-full bg-background flex items-center justify-center">
@@ -201,7 +202,8 @@ PHP;
 
             <h3 class="mt-4 text-xl font-bold text-primary_text">{{title}}</h3>
 
-            <div class="mt-6 flex gap-3">
+            <div class="mt-auto flex gap-3">
+                {{signup_block}}
                 <a href="{{link}}" target="_blank"
                 class="inline-flex items-center px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg
                         text-sm font-medium text-gray-700 hover:bg-primary/5 hover:border-primary
@@ -221,15 +223,31 @@ HTML;
     $catalogNumber = htmlspecialchars((string) ($item['fields']['catalogNumber'][$locale] ?? $item['fields']['catalogNumber'] ?? ''), ENT_QUOTES, 'UTF-8');
     $area = htmlspecialchars((string) ($item['fields']['area'][$locale] ?? $item['fields']['area'] ?? ''), ENT_QUOTES, 'UTF-8');
     $link = (string) ($item['fields']['link'][$locale] ?? $item['fields']['link'] ?? '');
+    $prijava = (string) ($item['fields']['prijava'][$locale] ?? $item['fields']['prijava'] ?? '');
 
+    if (!empty($prijava)) {
+        $safePrijava = htmlspecialchars($prijava, ENT_QUOTES, 'UTF-8');
+        $signupText = $texts['signup'] ?? 'Sign up';
+        $signupBlock = "<a href='{$safePrijava}' target='_blank'"
+            . " class='inline-flex items-center px-4 py-2.5 bg-primary text-white rounded-lg"
+            . " text-sm font-medium hover:bg-primary_hover hover:border-primary"
+            . " transition-colors duration-200'>"
+            . htmlspecialchars($signupText, ENT_QUOTES, 'UTF-8')
+            . "</a>";
+    } else {
+        $signupBlock = '';
+    }
 
     // Replace placeholders
     $replacements = [
         '{{title}}' => $title,
         '{{catalogNumber}}' => $catalogNumber,
         '{{link}}' => $link,
+        '{{prijava}}' => $prijava,
         '{{area}}' => $area,
         '{{learnMore}}' => $texts['learn_more'] ?? 'Learn more',
+        '{{signup}}' => $texts['signup'] ?? 'Sign up',
+        '{{signup_block}}' => $signupBlock,
         '{{subjectArea}}' => $texts['subject_area'] ?? 'Subject area',
         '{{catalogNumberLabel}}' => $texts['catalog_number'] ?? 'Catalog number',
         '{{eventDetails}}' => $texts['event_details'] ?? 'Details'
@@ -302,8 +320,8 @@ PHP;
 <main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-heading font-bold text-primary_text mb-2">Seminari</h1>
-            <p class="text-secondary_text">Seminari čiju je akreditaciju institucionalno podržao centar za obrazovanje</p>
+            <h1 class="text-3xl font-heading font-bold text-primary_text mb-2">Stručno usavršavanje</h1>
+            <p class="text-secondary_text">Seminari čiju je akreditaciju institucionalno podržao Centar za stručno usavršavanje Niš</p>
         </div>
 
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
@@ -386,6 +404,7 @@ $latinTexts = [
     'catalog_number' => 'Kataloški broj',
     'subject_area' => 'Oblast',
     'learn_more' => 'Saznaj više',
+    'signup' => 'Prijavi se',
     'search_button' => 'Pretraži',
     'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Datum i vreme',

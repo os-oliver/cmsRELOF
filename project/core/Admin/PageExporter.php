@@ -50,6 +50,7 @@ use App\Admin\PageBuilders\TimoviPageBuilder;
 use App\Admin\PageBuilders\UpisPageBuilder;
 use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
+use App\Admin\PageBuilders\NaucniKlubPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\RadniProstorPageBuiler;
 use App\Admin\PageBuilders\ResursiPageBuilder;
@@ -687,8 +688,8 @@ class PageExporter
                 return new ProjektiPageBuilder('projekti');
             case 'obavestenja':
                 return new ObavestenjaZaRoditeljePageBuilder('Obavestenja');
-            case 'seminari':
-                return new SeminarPageBuilder('Seminari');
+            case 'strucno-usavrsavanje':
+                return new SeminarPageBuilder('StrucnoUsavrsavanje', $this->data);
             case 'zaposleni':
                 return new EmployeesPageBuilder($name, $this->data);
             case 'programi-obuke':
@@ -775,6 +776,8 @@ class PageExporter
                 return new ResursiPageBuilder('Resursi', $this->data);
             case 'radni-prostor':
                 return new RadniProstorPageBuiler('RadniProstor', $this->data);
+            case 'naucni-klub':
+                return new NaucniKlubPageBuilder('NaucniKlub', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -808,8 +811,8 @@ class PageExporter
             return 'projekti';
         } elseif (strpos($name, 'obavestenja') !== false) {
             return 'obavestenja';
-        } elseif (strpos($name, 'seminari') !== false) {
-            return 'seminari';
+        } elseif (strpos($name, 'strucno-usavrsavanje') !== false) {
+            return 'strucno-usavrsavanje';
         } elseif (strpos($name, 'primer') !== false) {
             return 'primer';
         } elseif (strpos($name, 'cilj') !== false) {
@@ -900,6 +903,8 @@ class PageExporter
             return 'resursi';
         }elseif (strpos($name, 'radni-prostor') !== false) {
             return 'radni-prostor';
+        }else if(strpos($name, 'naucni-klub') !== false) {
+            return 'naucni-klub';
         }
 
         return 'basic';

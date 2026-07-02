@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Admin\PageBuilders;
 
 use App\Controllers\ContentController;
 use App\Controllers\LanguageMapperController;
 
-class EventsPageBuilder extends BasePageBuilder
+class NaucniKlubPageBuilder extends BasePageBuilder
 {
     protected string $slug;
     private LanguageMapperController $translator;
@@ -93,35 +94,34 @@ PHP;
 
     protected string $cardTemplate = <<<'HTML'
     $cardTemplate = <<<'PHP'
-        <div class="flex flex-col h-full glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
-            <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-white to-white/60">
-                {{imageSection}}
-                <div class="absolute top-4 left-4">
-                    <span class="category-chip bg-secondary text-white">{{kategorija}}</span>
+    <div class="flex flex-col h-full glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:-translate-y-1">
+    <div class="p-6 flex flex-col flex-1 justify-between">
+            <div>
+                <div class="text-xs font-semibold text-secondary-text uppercase tracking-wider mb-2">
+                    {{datum}}
                 </div>
-            </div>
-            <div class="p-6 flex flex-col flex-1 justify-between">
+                
                 <h3 class="text-xl font-bold text-primary-text mb-4 line-clamp-2 group-hover:text-primary transition-colors">
                     {{naslov}}
                 </h3>
-                <div class="space-y-3 mb-4">
-                    {{dateTimeRow}}
-                    {{locationRow}}
-                </div>
+                
                 <div class="mb-5 p-4 bg-surface rounded-xl border border-white/30">
-                    <p class="text-sm text-secondary-text leading-relaxed">{{opis}}</p>
+                    <p class="text-sm text-secondary-text leading-relaxed line-clamp-3">
+                        {{tekst}}
+                    </p>
                 </div>
-                <a href="/sadrzaj?id={{itemId}}&tip=generic_element" class="block w-full text-center bg-primary text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl mt-auto">
-                    <span class="flex items-center justify-center gap-2">
-                        <i class="fas fa-ticket-alt"></i>
-                        <span>{{eventDetails}}</span>
-                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </a>
             </div>
+
+            <a href="/sadrzaj?id={{itemId}}&tip=generic_element" class="block w-full text-center bg-primary text-white text-sm font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl mt-auto">
+                <span class="flex items-center justify-center gap-2">
+                    <span>Pročitaj više</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </span>
+            </a>
         </div>
+    </div>
     PHP;
 HTML;
 
@@ -129,53 +129,24 @@ HTML;
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, string $cardTemplate = ''): string
 {
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
-    $naslov = htmlspecialchars($item['fields']['title'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $opis = htmlspecialchars(mb_substr($item['fields']['description'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
-    $lokacija = htmlspecialchars($item['fields']['location'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $naslov = htmlspecialchars($item['fields']['naslov'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $tekst = htmlspecialchars(mb_substr($item['fields']['tekst'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
     $rawDatum = $item['fields']['datum'][$locale] ?? '';
     $formattedDatum = LocaleManager::formatDateFromRawString($rawDatum);
     $datum = htmlspecialchars($formattedDatum, ENT_QUOTES, 'UTF-8');
-    $vreme = htmlspecialchars($item['fields']['time'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['fields']['main_category'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
 
     $imageSection = $imageUrl
         ? "<img src='{$imageUrl}' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' alt='Event image'>"
         : "<div class='absolute inset-0 flex items-center justify-center'><i class='fas fa-calendar-star text-6xl text-secondary'></i></div>";
 
-    $dateTimeRow = ($datum || $vreme)
-        ? "<div class='flex items-start gap-3'>
-               <div class='flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center'>
-                   <i class='fas fa-calendar-alt text-primary'></i>
-               </div>
-               <div class='flex-1'>
-                   <div class='text-xs font-semibold text-secondary-text uppercase tracking-wide mb-0.5'>{$texts['date']}</div>
-                   <div class='text-sm font-semibold text-primary-text'>{$datum}" . ($datum && $vreme ? " • " : "") . "{$vreme}</div>
-               </div>
-           </div>"
-        : '';
-
-    $locationRow = $lokacija
-        ? "<div class='flex items-start gap-3'>
-               <div class='flex-shrink-0 w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center'>
-                   <i class='fas fa-map-marker-alt text-secondary'></i>
-               </div>
-               <div class='flex-1 min-w-0'>
-                   <div class='text-xs font-semibold text-secondary-text uppercase tracking-wide mb-0.5'>{$texts['location']}</div>
-                   <div class='text-sm font-semibold text-primary-text truncate'>{$lokacija}</div>
-               </div>
-           </div>"
-        : '';
-
     $replacements = [
         '{{naslov}}' => $naslov,
-        '{{opis}}' => $opis,
+        '{{tekst}}' => $tekst,
         '{{imageSection}}' => $imageSection,
-        '{{dateTimeRow}}' => $dateTimeRow,
-        '{{locationRow}}' => $locationRow,
+        '{{datum}}' => $datum,
         '{{itemId}}' => $itemId,
-        '{{kategorija}}' => $kategorija,
         '{{eventDetails}}' => $texts['event_details'] ?? 'Details'
     ];
 
@@ -228,8 +199,7 @@ PHP;
 <main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-primary-text mb-2">Događaji</h1>
-            <p class="text-secondary-text">Najnoviji događaji i najave u našoj organizaciji.</p>
+            <h1 class="text-3xl font-bold text-primary-text mb-2">Naučni klub</h1>
         </div>
 
         <?php echo renderTopbar($categories, $locale, $search, $categoryId, $texts); ?>

@@ -51,8 +51,9 @@
           },
           "options": [
             "Vesti",
-            "Naučni klub",
-            "Park znanja",
+            "Stručno usavršavanje",
+            "Stručno osposobljavanje",
+            "Vannastavne aktivnosti",
             "Erazmus+"
           ],
           "coded_options": [
@@ -61,12 +62,16 @@
               "translations": { "sr": "Vesti", "en": "News", "sr-Cyrl": "Вести" }
             },
             {
-              "code": "Naučni klub",
-              "translations": { "sr": "Naučni klub", "en": "Scientific club", "sr-Cyrl": "Научни клуб" }
+              "code": "Stručno usavršavanje",
+              "translations": { "sr": "Stručno usavršavanje", "en": "Professional development", "sr-Cyrl": "Стручно усавршавање" }
             },
             {
-              "code": "Park znanja",
-              "translations": { "sr": "Park znanja", "en": "Knowledge park", "sr-Cyrl": "Парк знања" }
+              "code": "Stručno osposobljavanje",
+              "translations": { "sr": "Stručno osposobljavanje", "en": "Professional training", "sr-Cyrl": "Стручно оспошљавање" }
+            },
+            {
+              "code": "Vannastavne aktivnosti",
+              "translations": { "sr": "Vannastavne aktivnosti", "en": "Extra-curricular activities", "sr-Cyrl": "Ваннаставне активности" }
             },
             {
               "code": "Erazmus+",
@@ -98,11 +103,124 @@
         }
       ]
     },
-    "Seminari": {
-      "code": "Seminari",
-      "sr": "Akreditovani seminari",
-      "en": "Accredited seminars",
-      "sr-Cyrl": "Акредитовани семинари",
+    "Dogadjaji": {
+      "code": "dogadjaji",
+      "sr": "Događaji",
+      "en": "Events",
+      "sr-Cyrl": "Догађаји",
+      "icon": "fas fa-calendar-days",
+      "fields": [
+        {
+          "code": "title",
+          "name": "title",
+          "type": "text",
+          "label": {
+            "sr": "Naslov događaja",
+            "en": "Event title",
+            "sr-Cyrl": "Наслов догађаја"
+          },
+          "required": true
+        },
+        {
+          "code": "datum",
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum održavanja",
+            "en": "Event date",
+            "sr-Cyrl": "Датум одржавања"
+          },
+          "required": true
+        },
+        {
+          "code": "description",
+          "name": "description",
+          "type": "textarea",
+          "label": {
+            "sr": "Opis događaja",
+            "en": "Event description",
+            "sr-Cyrl": "Опис догађаја"
+          }
+        },
+        {
+          "code": "slika",
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika događaja",
+            "en": "Event image",
+            "sr-Cyrl": "Насловна слика догађаја"
+          }
+        }
+      ]
+    },
+    "NaucniKlub": {
+      "code": "NaucniKlub",
+      "sr": "Naučni klub",
+      "en": "Scientific club",
+      "sr-Cyrl": "Научни клуб",
+      "icon": "fas fa-graduation-cap",
+      "fields": [
+        {
+          "code": "slika",
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika",
+            "en": "Cover image",
+            "sr-Cyrl": "Насловна слика"
+          }
+        },
+        {
+          "code": "autor",
+          "name": "autor",
+          "type": "text",
+          "label": {
+            "sr": "Autor",
+            "en": "Author",
+            "sr-Cyrl": "Аутор"
+          }
+        },
+        {
+          "code": "datum",
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum",
+            "en": "Date",
+            "sr-Cyrl": "Датум"
+          },
+          "required": true,
+          "property": "auto"
+        },
+        {
+          "code": "naslov",
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
+          },
+          "required": true
+        },
+        {
+          "code": "tekst",
+          "name": "tekst",
+          "type": "textarea",
+          "label": {
+            "sr": "Tekst",
+            "en": "Article text",
+            "sr-Cyrl": "Текст"
+          }
+        }
+      ]
+    },
+    "StrucnoUsavrsavanje": {
+      "code": "StrucnoUsavrsavanje",
+      "sr": "Stručno usavršavanje",
+      "en": "Professional development",
+      "sr-Cyrl": "Стручно усавршавање",
       "icon": "fas fa-people-group",
       "fields": [
         {
@@ -148,6 +266,16 @@
             "sr-Cyrl": "ЗУОВ линк"
           },
           "required": true
+        },
+        {
+          "code": "prijava",
+          "name": "prijava",
+          "type": "url",
+          "label": {
+            "sr": "Prijava na seminar",
+            "en": "Registration link",
+            "sr-Cyrl": "Пријава на семинар"
+          }
         }
       ]
     },
@@ -156,7 +284,7 @@
       "sr": "Stručno osposobljavanje",
       "en": "Professional development",
       "sr-Cyrl": "Стручно оспоobljавање",
-      "icon": "fas fa-graduation-cap",
+      "icon": "fas fa-user-graduate",
       "fields": [
         {
           "code": "title",
