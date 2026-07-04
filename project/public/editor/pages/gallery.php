@@ -11,7 +11,7 @@ $locale = LocaleManager::get();
 $sort = $_GET['sort'] ?? 'date_desc';
 $search = $_GET['search'] ?? '';
 // pagination as before
-$limit = 3;
+$limit = max(9, (int) ($_GET['pageSize'] ?? 9));
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 $documentModal = new Gallery();
