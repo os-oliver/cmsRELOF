@@ -765,6 +765,12 @@ class PageExporter
                 return new DynamicPageBuilder('Filmovi');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
+            case 'ansambal-doma-kulture':
+                return new DynamicPageBuilder('AnsambalDomaKulture', $this->data);
+            case 'folklorni-ansambal':
+                return new DynamicPageBuilder('folklorniAnsambal');
+            case 'sekcije-doma-kulture':
+                return new DynamicPageBuilder('sekcijeDomaKulture');
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -884,8 +890,13 @@ class PageExporter
             return 'koncerti';
         }elseif (strpos($name, 'filmovi') !== false) {
             return 'filmovi';
+        }elseif (strpos($name, 'ansambal-doma-kulture') !== false) {
+            return 'ansambal-doma-kulture';
+        }elseif (strpos($name, 'folklorni-ansambal') !== false) {
+            return 'folklorni-ansambal';
+        }elseif (strpos($name, 'sekcije-doma-kulture') !== false) {
+            return 'sekcije-doma-kulture';
         }
-
         return 'basic';
     }
 

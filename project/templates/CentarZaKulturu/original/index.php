@@ -471,7 +471,7 @@
                         class="nav-link text-primary_text font-semibold hover:text-accent transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
                         <i
                             class="fas fa-info-circle mr-2 text-secondary group-hover:text-accent transition-colors text-sm"></i>
-                        <span class="hidden xl:inline text-sm">O nama</span>
+                        <span class="hidden xl:inline">O nama</span>
                         <i
                             class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
