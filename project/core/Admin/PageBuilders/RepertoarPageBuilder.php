@@ -37,7 +37,6 @@ class RepertoarPageBuilder extends BasePageBuilder
         $latinTexts = [
             'search_placeholder' => 'Pretraži...',
             'apply_button' => 'Primeni',
-            'all_categories' => 'Sve kategorije',
             'date_and_time' => 'Datum i vreme',
             'duration' => 'Trajanje',
             'genre' => 'Žanr',
@@ -89,23 +88,12 @@ class RepertoarPageBuilder extends BasePageBuilder
 }
 
 .glass-search {
-    background: color-mix(in srgb, var(--color-secondary_background) 90%, transparent);
-    backdrop-filter: blur(14px);
-    border: 1px solid color-mix(in srgb, var(--color-secondary) 18%, transparent);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.category-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.375rem 0.875rem;
-    background: color-mix(in srgb, var(--color-secondary) 92%, transparent);
-    color: var(--color-primarybtntxt);
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.025em;
-    box-shadow: 0 8px 16px color-mix(in srgb, var(--color-secondary) 22%, transparent);
-}
 
 .fields-container {
     display: grid;
@@ -156,33 +144,21 @@ class RepertoarPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
 
-    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-3xl shadow-xl mb-10 gap-4 border border-secondary/20'>";
+    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
 
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
         <input type='text' name='search' value='{$safeSearchValue}'
                placeholder='{$texts['search_placeholder']}'
-               class='w-full border border-secondary/30 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm bg-background text-primary_text placeholder-secondary_text font-body'>
+               class='w-full rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm'>
         <button type='submit'
-                class='bg-primary hover:bg-primary_hover text-primarybtntxt px-6 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl font-semibold font-body'>
+                class='px-6 py-3 rounded-xl transition-all shadow-md font-medium bg-primary hover:bg-primary_hover text-white'>
             {$texts['apply_button']}
         </button>
     </div>";
-
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category'
-                class='w-full sm:w-64 border border-secondary/30 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all shadow-sm bg-background text-primary_text font-body appearance-none cursor-pointer'>
-            <option value=''>{$texts['all_categories']}</option>";
-
-    foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
-    }
 
     $html .= "</select></div></form>";
 
@@ -399,9 +375,9 @@ PHP;
             <p class="text-secondary_text max-w-2xl">Pregled naših predstava i izvođenja</p>
         </div>
 
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($search, $categoryId, $texts); ?>
 
-        <div class="performances-grid">
+        <div class="performances-grid bg-white">
             <?php
             if ($itemsList['success'] && !empty($itemsList['items'])) {
                 echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
@@ -413,7 +389,7 @@ PHP;
                 $totalPages = ceil($itemsList['total'] / $itemsPerPage);
                 echo renderPagination($currentPage, $totalPages, $paginationRange);
             } else {
-                echo "<div class='glass-card rounded-3xl p-12 text-center border border-secondary/20'>
+                echo "<div class='glass-card rounded-3xl p-12 text-center border border-secondary/20 bg-white'>
                     <i class='fas fa-inbox text-5xl text-secondary mb-4'></i>
                     <p class='text-secondary_text'>{$texts['no_items_found']}</p>
                 </div>";
@@ -454,7 +430,6 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => []];
@@ -471,7 +446,6 @@ $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži...',
     'apply_button' => 'Primeni',
-    'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Datum i vreme',
     'duration' => 'Trajanje',
     'genre' => 'Žanr',

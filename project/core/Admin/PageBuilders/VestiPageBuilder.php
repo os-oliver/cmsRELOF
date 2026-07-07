@@ -33,12 +33,12 @@ class VestiPageBuilder extends BasePageBuilder
         $latinTexts = [
             'search_placeholder' => 'Pretraži...',
             'apply_button' => 'Primeni',
-            'all_categories' => 'Sve kategorije',
             'date_and_time' => 'Datum i vreme',
             'location' => 'Lokacija',
             'event_details' => 'Detalji događaja',
             'no_items_found' => 'Nema pronađenih stavki',
-            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+            'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec'],
+            'read_more' => 'Pročitaj više',
         ];
 
         if ($locale === 'sr-Cyrl') {
@@ -257,7 +257,7 @@ class VestiPageBuilder extends BasePageBuilder
     left: 0;
     right: 0;
     height: 70%;
-    background: linear-gradient(to top, rgba(17, 24, 39, 0.95) 0%, rgba(17, 24, 39, 0.3) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(175, 197, 245, 0.95) 0%, rgba(148, 178, 244, 0.3) 60%, transparent 100%);
     z-index: 1;
     pointer-events: none;
 }
@@ -413,7 +413,7 @@ class VestiPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $locale, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(string $locale, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
@@ -423,17 +423,7 @@ function renderTopbar(array $categories, string $locale, string $searchValue = '
             {$texts['apply_button']}
         </button>
     </div>";
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category' class='w-full sm:w-64 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-            <option value=''>{$texts['all_categories']}</option>";
 
-    foreach ($categories as $cat) {
-        $translations = $cat['translations'];
-        $code = $cat['option_value'];
-        $name = $translations[$locale] ?? $translations['sr'];
-        $selected = ($selectedCategoryId == $cat['option_value']) ? 'selected' : '';
-        $html .= "<option value='{$code}' {$selected}>{$name}</option>";
-    }
 
     $html .= "</select></div></form>";
     return $html;
@@ -444,7 +434,7 @@ PHP;
 
     protected string $cardRender = <<<'HTML'
 
-function cardRender(array $item, array $fieldLabels, string $locale): string
+function cardRender(array $item, array $fieldLabels, string $locale, array $texts = []): string
 {
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     // Sanitizacija podataka
@@ -502,11 +492,15 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     // Generisanje HTML kartice
     $html = "<div class='news-card-modern'>";
 
-    if ($imageUrl) {
         $html .= "
-        <div class='news-hero-image'>
-            <img src='{$imageUrl}' alt='{$naslov}'>
-            <div class='news-gradient-overlay'></div>";
+        <div class='news-hero-image'>";
+
+        if ($imageUrl) {
+            $html .= "<img src='{$imageUrl}' alt='{$naslov}'>";
+        }
+
+        $html .= "
+                <div class='news-gradient-overlay'></div>";
 
         // Kategorijska traka
         if ($kategorija) {
@@ -530,12 +524,11 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
         $targetLink = "/sadrzaj?id={$itemId}&tip=vesti";
         $html .= "
                 <a href='{$targetLink}' class='bg-primary news-cta-button hover:bg-primary_hover'>
-                    <span>Pročitaj više</span>
+                    <span>{$texts['read_more']}</span>
                     <i class='fas fa-arrow-right'></i>
                 </a>
             </div>
         </div>";
-    }
 
     // Meta footer sa datumom i autorom
     if ($datum || $autor) {
@@ -616,14 +609,14 @@ PHP;
             <p class="text-lg text-secondary_text">Istražite našu bogatu ponudu kulturnih događaja</p>
         </div>
 
-        <?php echo renderTopbar($categories, $locale, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($locale, $search, $categoryId, $texts); ?>
 
         <div class="performances-grid">
             <?php
             if (!empty($itemsList['success']) && !empty($itemsList['items'])) {
                 echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
                 foreach ($itemsList['items'] as $item) {
-                    echo cardRender($item, $fieldLabels, $locale);
+                    echo cardRender($item, $fieldLabels, $locale, $texts);
                 }
                 echo '</div>';
                 $totalPages = max(1, (int) ceil($itemsList['total'] / $itemsPerPage));
@@ -675,7 +668,6 @@ $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
     : null;
 $search = $_GET['search'] ?? '';
 
-$categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale, 'datum', 'DESC')
     : ['success' => false, 'items' => [], 'total' => 0];
@@ -691,12 +683,12 @@ $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži...',
     'apply_button' => 'Primeni',
-    'all_categories' => 'Sve kategorije',
     'date_and_time' => 'Datum i vreme',
     'location' => 'Lokacija',
     'event_details' => 'Detalji događaja',
     'no_items_found' => 'Nema pronađenih stavki',
-    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
+    'months' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec'],
+    'read_more' => 'Pročitaj više',
 ];
 
 $texts = ($locale === 'sr-Cyrl')

@@ -37,7 +37,6 @@ class AnsambalPageBuilder extends BasePageBuilder
         $latinTexts = [
             'search_placeholder' => 'Pretraži...',
             'apply_button' => 'Primeni',
-            'all_categories' => 'Sve kategorije',
             // Promenjeno: date_and_time -> member_since (Primer: 'Datum učlanjenja')
             'member_since' => 'Datum učlanjenja',
             // Promenjeno: location -> role (Primer: 'Uloga u ansamblu')
@@ -92,20 +91,6 @@ class AnsambalPageBuilder extends BasePageBuilder
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.category-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.375rem 0.875rem;
-    background: rgba(107, 114, 128, 0.9);
-    backdrop-filter: blur(10px);
-    color: white;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.025em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
 /* Improved field layout */
 .fields-container {
     display: grid;
@@ -157,14 +142,14 @@ class AnsambalPageBuilder extends BasePageBuilder
 }
 CSS;
 
-    protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
+protected string $topBar = <<<'PHP'
+function renderTopbar(string $searchValue = '', array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
 
-    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
+    $html = "<form method='GET' action='' class='glass-search flex items-center p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
 
-    $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
+    $html .= "<div class='flex w-full gap-3'>
         <input type='text' name='search' value='{$safeSearchValue}'
                placeholder='{$texts['search_placeholder']}'
                class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
@@ -173,22 +158,6 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
             {$texts['apply_button']}
         </button>
     </div>";
-
-    $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category'
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
-            <option value=''>{$texts['all_categories']}</option>";
-
-    foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
-    }
-
-    $html .= "</select></div></form>";
-
-    return $html;
 }
 PHP;
 
@@ -318,14 +287,14 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<main class="bg-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Članovi ansambla</h1>
             <p class="text-gray-600">Pregled svih članova ansambla</p>
         </div>
 
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($search, $texts); ?>
 
         <div class="performances-grid">
             <?php
@@ -378,15 +347,8 @@ $descriptionMaxLength = __DESC_MAX_LENGTH__;
 $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
-$categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category'])
-        ? (int) $_GET['category']
-        : trim((string) $_GET['category'])
-      )
-    : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
 $itemsList = $slug
     ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => []];
@@ -403,7 +365,6 @@ $translator = new LanguageMapperController();
 $latinTexts = [
     'search_placeholder' => 'Pretraži...',
     'apply_button' => 'Primeni',
-    'all_categories' => 'Sve kategorije',
     // Promenjeno: date_and_time -> member_since
     'member_since' => 'Datum učlanjenja',
     // Promenjeno: location -> role

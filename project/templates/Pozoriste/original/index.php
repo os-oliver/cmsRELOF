@@ -111,8 +111,8 @@
                 background: linear-gradient(
                     to bottom,       
                     rgb(247, 241, 237) 0%,      
-                    rgb(239, 178, 178) 50%,     
-                    rgba(255, 255, 255, 0.96) 100%     
+                    rgb(30, 58, 110) 40%, 
+                    rgba(255, 255, 255, 0.96) 100% 
                 );
                 text-align: left;
                 padding-top: 8rem;
@@ -406,7 +406,7 @@
         </button>
     </div>
 
-    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm ">
+    <header class="fixed w-full z-50 transition-all duration-300 py-3 bg-header backdrop-blur-md shadow-sm ">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo Section -->
             <a href="/" class="flex items-center space-x-3 flex-shrink-0">
@@ -576,10 +576,10 @@
                     <div class="mb-8 text-left">
                         <h1 class="text-5xl md:text-6xl leading-tight mb-8">
                             <span class="block font-heading text-primary_text">Dobrodošli na zvaničan sajt</span>
-                            <span class="block mt-2 text-secondary_text font-body">Narodnog pozorišta Dobrica Milutinović</span>
-                            <span class="block mt-2 text-secondary_text font-body">U Sremskoj Mitrovici</span>
+                            <span class="block mt-2 text-hero_text font-body">Narodnog pozorišta Dobrica Milutinović</span>
+                            <span class="block mt-2 text-hero_text font-body">U Sremskoj Mitrovici</span>
                         </h1>
-                        <p class="mb-10 text-2xl">
+                        <p class="mb-10 text-2xl text-hero_text">
                             Pronađite predstavu koju želite pogledati i vidimo se u pozorištu!
                         </p>
                         <a href="/o-nama/istorijat"
@@ -926,7 +926,7 @@
             theme: {
                 extend: {
                     colors: {
-                        background: '#F7F2EA',       // warm parchment
+                        background: '#ffffff',       // warm parchment
                         secondary_background: '#faf0ca',
                         primary: '#8B1E3F',    // velvet red
                         primary_hover: '#701932',
@@ -939,6 +939,8 @@
                         primarybtntxt: '#FFF7E6',    // soft ivory on red/navy
                         surface: '#8B1E3F1A',       // translucent velvet for cards
                         footerbg: '#EFE3D6',         // creamy footer
+                        header: '#e9f0fd',
+                        hero_text: '#eaf0fb', 
                     },
                     fontFamily: {
                         heading: ['"Bodoni Moda"', 'serif'], // headings (classic & dramatic)
@@ -1028,15 +1030,6 @@
                 searchInputContainer.classList.add('hidden');
                 searchInput.value = '';
             }, 300);
-        });
-        // Header scroll effect
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-            } else {
-                header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-            }
         });
 
         // Animation for cards on hover
