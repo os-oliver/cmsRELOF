@@ -104,7 +104,7 @@ PHP;
             </div>
 
             <div class="p-5">
-                <h3 class="text-lg md:text-xl font-semibold text-primary-text mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                <h3 class="text-lg md:text-xl font-semibold text-primary_text mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                     {{naziv}}
                 </h3>
 
@@ -186,7 +186,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
                                 <svg class='w-12 h-12 opacity-60' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
                                     <path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M8 3h8l1 4H7l1-4z'/>
                                 </svg>
-                                <div class='text-xs text-secondary-text'>{$texts['no_image_alt']}</div>
+                                <div class='text-xs text-secondary_text'>{$texts['no_image_alt']}</div>
                             </div>
                         </div>";
     }
@@ -216,7 +216,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}' class='px-4 py-2 rounded-xl hover:shadow font-medium bg-white/80 backdrop-blur-sm border border-white/30'>
-            <i class='fas fa-chevron-left text-secondary-text'></i>
+            <i class='fas fa-chevron-left text-secondary_text'></i>
         </a>";
     }
     $start = max(1, $currentPage - $range);
@@ -224,7 +224,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
         $html .= "<a href='{$url}' class='px-4 py-2 rounded-xl font-medium bg-white/80 backdrop-blur-sm border border-white/30'>1</a>";
-        if ($start > 2) $html .= "<span class='px-2 text-secondary-text'>...</span>";
+        if ($start > 2) $html .= "<span class='px-2 text-secondary_text'>...</span>";
     }
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
@@ -234,14 +234,14 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
     if ($end < $totalPages) {
-        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-secondary-text'>...</span>";
+        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-secondary_text'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
         $html .= "<a href='{$url}' class='px-4 py-2 rounded-xl font-medium bg-white/80 backdrop-blur-sm border border-white/30'>{$totalPages}</a>";
     }
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}' class='px-4 py-2 rounded-xl hover:shadow font-medium bg-white/80 backdrop-blur-sm border border-white/30'>
-            <i class='fas fa-chevron-right text-secondary-text'></i>
+            <i class='fas fa-chevron-right text-secondary_text'></i>
         </a>";
     }
     $html .= "</div>";
@@ -253,8 +253,8 @@ PHP;
 <main class="bg-gradient-to-br from-secondary_background to-background min-h-screen mt-20">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-primary-text mb-2">Izložbe</h1>
-            <p class="text-secondary-text">Istražite izložbe</p>
+            <h1 class="text-3xl font-bold text-primary_text mb-2">Izložbe</h1>
+            <p class="text-secondary_text">Istražite izložbe</p>
         </div>
 
         <?php echo renderTopbar($categories, $locale, $search, $categoryId, $texts); ?>
@@ -272,7 +272,7 @@ PHP;
             } else {
                 echo "<div class='glass-card rounded-lg p-12 text-center'>
                     <i class='fas fa-inbox text-5xl text-secondary'></i>
-                    <p class='text-secondary-text mt-4'>{$texts['no_items_found']}</p>
+                    <p class='text-secondary_text mt-4'>{$texts['no_items_found']}</p>
                 </div>";
             }
             ?>

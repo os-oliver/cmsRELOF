@@ -494,7 +494,7 @@ class Content
             }
 
             if ($fieldType === 'date') {
-                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, 'Y-m-d');
+                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, 'Y-m-d'); // date from form should always be received in this format
                 continue;
             }
 
@@ -583,7 +583,7 @@ class Content
         }
     }
 
-    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = ''): void
+    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = 'Y-m-d'): void
     {
         if (empty($dateString)) {
             $date = null;
