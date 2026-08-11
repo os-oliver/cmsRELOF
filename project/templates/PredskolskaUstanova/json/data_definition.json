@@ -88,7 +88,10 @@
             "Maja",
             "Đurđevak",
             "Čuperak",
-            "Lane"
+            "Lane",
+            "Sela",
+            "Stručni saradnici",
+            "Uopšteno"
           ],
           "coded_options": [
             {
@@ -126,6 +129,17 @@
             {
               "code": "lane",
               "translations": { "sr": "Lane", "en": "Lane", "sr-Cyrl": "Лане" }
+            },
+            {
+              "code": "Sela",
+              "translations": { "sr": "Sela", "en": "Villages", "sr-Cyrl": "Села" }
+            },
+            {
+              "code": "Stručni saradnici",
+              "translations": { "sr": "Stručni saradnici", "en": "Professional associates", "sr-Cyrl": "Стручни сарадници" }
+            },{
+              "code": "Uopšteno",
+              "translations": { "sr": "Uopšteno", "en": "General", "sr-Cyrl": "Уопштено" }
             }
           ]
         }
