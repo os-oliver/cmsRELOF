@@ -102,11 +102,15 @@ class ZnacajaStranica extends BasePageBuilder
         <section class="mt-4">
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
+<<<<<<< HEAD
             <p><strong>Za upravu i nacionalne zajednice</strong><br>Ime Prezime — 021/000-00-00 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:kontakt@centarmostzr.com">kontakt@centarmostzr.com</a></p>
             <hr class="border-t border-secondary/30 my-3">
             <p><strong>Za oblast obrazovanja</strong><br>Ime Prezime — 021/000-00-01 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer2@vas-domen.rs">primer2@vas-domen.rs</a></p>
             <hr class="border-t border-secondary/30 my-3">
             <p><strong>Za oblast finansija</strong><br>Ime Prezime — 021/000-00-02 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:primer3@vas-domen.rs">primer3@vas-domen.rs</a></p>
+=======
+            <p><strong>Lice ovlašćeno za zaštitu podataka o ličnosti</strong><br>Ime Prezime — 021/123-123 i 021/123-123 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:mail@example.rs">mail@example.rs</a></p>
+>>>>>>> 040420d3ce87274be3d4cd84a4b9ed9e9160e33f
           </div>
         </section>
       </article>
@@ -130,15 +134,25 @@ class ZnacajaStranica extends BasePageBuilder
 
             <div class="mt-3">
               <div class="flex items-center justify-between gap-2 bg-white border border-secondary/30 rounded-xl px-3 py-2">
+<<<<<<< HEAD
                 <span class="truncate text-primary_text" data-translate="off">kontakt@centarmostzr.com</span>
                 <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
                         onclick="navigator.clipboard.writeText('kontakt@centarmostzr.com')">
+=======
+                <span class="truncate text-primary_text" data-translate="off">mail@example.rs</span>
+                <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
+                        onclick="navigator.clipboard.writeText('mail@example.rs')">
+>>>>>>> 040420d3ce87274be3d4cd84a4b9ed9e9160e33f
                   Kopiraj
                 </button>
               </div>
               <p class="mt-2">
                 <a class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
+<<<<<<< HEAD
                    href="mailto:kontakt@centarmostzr.com?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+=======
+                   href="mailto:mail@example.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+>>>>>>> 040420d3ce87274be3d4cd84a4b9ed9e9160e33f
                   Otvori e-poštu
                 </a>
               </p>

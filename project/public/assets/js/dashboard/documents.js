@@ -124,6 +124,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = updateQueryString(page);
       };
     }
+    if ((page == '' || isNaN(page)) && button.hasAttribute('data-gotopage')) {
+      button.onclick = (e) => {
+        e.preventDefault();
+        window.location.href = updateQueryString(button.getAttribute('data-gotopage'));
+      };
+    }
   });
 
   // Handle previous/next buttons

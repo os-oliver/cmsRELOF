@@ -558,7 +558,7 @@
                 <!-- Search Container -->
                 <div class="relative">
                     <button id="searchButton"
-                        class="text-text_secondary hover:text-terracotta transition-all duration-200 focus:outline-none p-2 sm:p-2.5 rounded-full hover:bg-background"
+                        class="text-secondary_text hover:text-terracotta transition-all duration-200 focus:outline-none p-2 sm:p-2.5 rounded-full hover:bg-background"
                         aria-label="Search">
                         <i class="fas fa-search text-sm sm:text-base"></i>
                     </button>
@@ -571,12 +571,12 @@
                                 id="searchInput" required />
                             <div class="flex items-center space-x-1 ml-2">
                                 <button type="submit"
-                                    class="text-text_secondary hover:text-terracotta transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-background_hover w-9 h-9 flex items-center justify-center"
+                                    class="text-secondary_text hover:text-terracotta transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-background_hover w-9 h-9 flex items-center justify-center"
                                     aria-label="Submit search">
                                     <i class="fas fa-search text-sm"></i>
                                 </button>
                                 <button type="button"
-                                    class="text-text_secondary hover:text-primary transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-background_hover w-9 h-9 flex items-center justify-center"
+                                    class="text-secondary_text hover:text-primary transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-background_hover w-9 h-9 flex items-center justify-center"
                                     id="closeSearch" aria-label="Close search">
                                     <i class="fas fa-times text-sm"></i>
                                 </button>
@@ -672,7 +672,7 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Uspešno završen projekat podrške mladima</h3>
-                        <p class="text-text_secondary mb-4">Program podrške mladima u riziku uspešno je završen uz učešće preko 50 korisnika naših usluga.</p>
+                        <p class="text-secondary_text mb-4">Program podrške mladima u riziku uspešno je završen uz učešće preko 50 korisnika naših usluga.</p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-text_secondary">
@@ -698,7 +698,7 @@
                         <div class="flex items-center mb-3">
                         </div>
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Nova saradnja sa lokalnim organizacijama</h3>
-                        <p class="text-text_secondary mb-4">Potpisani su sporazumi o saradnji sa pet lokalnih nevladinih organizacija za unapređenje socijalne zaštite.</p>
+                        <p class="text-secondary_text mb-4">Potpisani su sporazumi o saradnji sa pet lokalnih nevladinih organizacija za unapređenje socijalne zaštite.</p>
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="flex items-center text-sm text-text_secondary">

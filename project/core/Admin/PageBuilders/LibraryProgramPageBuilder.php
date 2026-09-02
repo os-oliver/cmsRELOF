@@ -247,7 +247,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
         $html .= "<a href='{$prevUrl}' class='px-4 py-2 rounded-xl hover:shadow font-medium bg-white/80 backdrop-blur-sm border border-white/30'>
-            <i class='fas fa-chevron-left text-secondary-text'></i>
+            <i class='fas fa-chevron-left text-secondary_text'></i>
         </a>";
     }
     $start = max(1, $currentPage - $range);
@@ -255,7 +255,7 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
         $html .= "<a href='{$url}' class='px-4 py-2 rounded-xl font-medium bg-white/80 backdrop-blur-sm border border-white/30'>1</a>";
-        if ($start > 2) $html .= "<span class='px-2 text-secondary-text'>...</span>";
+        if ($start > 2) $html .= "<span class='px-2 text-secondary_text'>...</span>";
     }
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
@@ -265,14 +265,14 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
     if ($end < $totalPages) {
-        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-secondary-text'>...</span>";
+        if ($end < $totalPages - 1) $html .= "<span class='px-2 text-secondary_text'>...</span>";
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
         $html .= "<a href='{$url}' class='px-4 py-2 rounded-xl font-medium bg-white/80 backdrop-blur-sm border border-white/30'>{$totalPages}</a>";
     }
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
         $html .= "<a href='{$nextUrl}' class='px-4 py-2 rounded-xl hover:shadow font-medium bg-white/80 backdrop-blur-sm border border-white/30'>
-            <i class='fas fa-chevron-right text-secondary-text'></i>
+            <i class='fas fa-chevron-right text-secondary_text'></i>
         </a>";
     }
     $html .= "</div>";
@@ -284,8 +284,8 @@ PHP;
 <main class="bg-gradient-to-br from-secondary_background to-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-primary-text mb-2">Događaji</h1>
-            <p class="text-secondary-text">Istražite našu bogatu ponudu kulturnih događaja</p>
+            <h1 class="text-3xl font-bold text-primary_text mb-2">Događaji</h1>
+            <p class="text-secondary_text">Istražite našu bogatu ponudu kulturnih događaja</p>
         </div>
 
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
@@ -303,7 +303,7 @@ PHP;
             } else {
                 echo "<div class='glass-card rounded-lg p-12 text-center'>
                     <i class='fas fa-inbox text-5xl text-secondary'></i>
-                    <p class='text-secondary-text mt-4'>{$texts['no_items_found']}</p>
+                    <p class='text-secondary_text mt-4'>{$texts['no_items_found']}</p>
                 </div>";
             }
             ?>

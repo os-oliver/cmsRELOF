@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\LanguageMapperController;
 use App\Models\SearchModal;
 
 // Pokreni sesiju ako nije pokrenuta
@@ -17,10 +18,15 @@ $searchResults = [];
 if ($term !== '') {
     $searchModel = new SearchModal();
 
-    // Pretrazi translations tabelu
+    // Pretrazi translations tabelu (stari sadrzaj)
     $translations = $searchModel->searchTranslations($term, $lang);
 
+    // pretrazi cfvalues (novi sadrzaj)
+    $cfContent = $searchModel->searchCustomFieldValues($term, $lang);
+
     // Grupiši rezultate po tabelama
+    $searchResultsCF = $searchModel->groupByContentType($cfContent, $lang);
+
     $searchResults = $searchModel->groupTranslationResults($translations);
 }
 
@@ -75,7 +81,7 @@ if ($term !== '') {
                 <p class="text-gray-500">Unesite pojam u polje iznad da biste pretražili sajt</p>
             </div>
 
-        <?php elseif (empty($searchResults)): ?>
+        <?php elseif (empty($searchResults) && empty($searchResultsCF)): ?>
             <!-- No Results State -->
             <div class="text-center py-20">
                 <div class="text-6xl mb-4">😕</div>
@@ -92,6 +98,9 @@ if ($term !== '') {
                 foreach ($searchResults as $records) {
                     $totalResults += count($records);
                 }
+                foreach ($searchResultsCF as $records) {
+                    $totalResults += count($records);
+                }
                 ?>
                 <p class="text-gray-600">
                     Pronađeno <strong class="text-blue-600"><?= $totalResults ?></strong> rezultata za:
@@ -100,6 +109,44 @@ if ($term !== '') {
             </div>
 
             <!-- Dynamic Results by Table -->
+            <?php foreach ($searchResultsCF as $ctCode => $records): ?>
+                <section class="mb-10">
+                    <!-- Section Header -->
+                    <div class="flex items-center gap-3 mb-5 pb-3 border-b-2 border-gray-200">
+                        <span class="text-3xl"><?= $searchModel->getTableIcon($ctCode) ?></span>
+                        <h2 class="text-2xl font-bold text-gray-800">
+                            <?= htmlspecialchars($records[0]['label']) ?>
+                        </h2>
+                        <span class="ml-auto bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                            <?= count($records) . (count($records) != 1 ? ' rezultata' : ' rezultat') ?>
+                        </span>
+                    </div>
+                    <!-- Records Grid -->
+                    <div class="grid gap-4">
+                        <?php foreach ($records as $record): ?>
+                            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 border border-gray-100">
+                                <!-- Record Content -->
+                                <div class="space-y-3">
+                                    <div class="border-l-4 border-blue-400 pl-4">
+                                        <p class="text-gray-800 leading-relaxed">
+                                            <?= nl2br(htmlspecialchars($record['content'])) ?>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-4 border-t border-gray-100">
+                                    <div class="flex flex-wrap gap-2 text-xs text-gray-500">
+                                        <a href="<?= '/sadrzaj?id=' . $record['id'] . '&tip=' . $record['type'] ?>">
+                                            <span class="bg-gray-100 px-2 py-1 rounded">
+                                                ID: <?= htmlspecialchars($record['id']) ?>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </section>
+            <?php endforeach ?>
             <?php foreach ($searchResults as $tableName => $records): ?>
                 <section class="mb-10">
                     <!-- Section Header -->

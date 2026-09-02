@@ -21,9 +21,16 @@ class SearchModal
      */
     public function searchTranslations(string $term, string $lang): array
     {
+        $allowedTables = [ 'aboutus', 'employee', 'gallery', 'document', 'userdefinedpages' ];
+        $ids = '';
+        foreach ($allowedTables as $key => $tableName) {
+            $ids .= $ids ? ',' : '';
+            $ids .= ':t' . $key;
+        }
+
         $search = '%' . $term . '%';
 
-        $sql = "SELECT 
+        $sql = "SELECT
                     t.id,
                     t.source_id,
                     t.source_table,
@@ -37,9 +44,14 @@ class SearchModal
                     t.content LIKE :search1
                     OR t.label LIKE :search2
                 )
+                AND t.source_table IN ($ids)
                 ORDER BY t.source_table, t.source_id, t.field_name";
 
         $stmt = $this->pdo->prepare($sql);
+        foreach ($allowedTables as $key => $tableName) {
+            $id = ':t'.$key;
+            $stmt->bindValue($id, $tableName, PDO::PARAM_STR);
+        }
         $stmt->bindValue(':lang', $lang, PDO::PARAM_STR);
         $stmt->bindValue(':search1', $search, PDO::PARAM_STR);
         $stmt->bindValue(':search2', $search, PDO::PARAM_STR);
@@ -75,6 +87,52 @@ class SearchModal
                 'field_name' => $trans['field_name'],
                 'content' => $trans['content'],
                 'label' => $trans['label']
+            ];
+        }
+
+        return $grouped;
+    }
+
+    public function searchCustomFieldValues(string $term, string $lang): array
+    {
+        $search = '%' . $term . '%';
+
+        $sql = "SELECT
+                    DISTINCT c.id,
+                    c.content_type_code,
+                    ct.translations AS ct_translations,
+                    cfv.content
+                FROM content c
+                INNER JOIN custom_field_value cfv ON c.id = cfv.content_id
+                INNER JOIN content_type ct ON ct.code = c.content_type_code
+                WHERE cfv.language = :lang
+                AND cfv.content LIKE :search
+                ORDER BY c.content_type_code";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':lang', $lang, PDO::PARAM_STR);
+        $stmt->bindValue(':search', $search, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function groupByContentType(array $cfContent, string $language): array
+    {
+        $grouped = [];
+
+        foreach ($cfContent as $item) {
+            $code = $item['content_type_code'];
+            if (!isset($grouped[$code])) {
+                $grouped[$code] = [];
+            }
+
+            $translations = json_decode($item['ct_translations'], true);
+            $grouped[$code][] = [
+                'id' => $item['id'],
+                'type' => $code,
+                'label' => $translations[$language],
+                'content' => $item['content']
             ];
         }
 
@@ -164,9 +222,11 @@ class SearchModal
             'aboutus' => '🏢',
             'document' => '📄',
             'events' => '📅',
+            'dogadjaji' => '📅',
             'gallery' => '🖼️',
             'employee' => '👥',
             'news' => '📰',
+            'vesti' => '📰',
             'services' => '⚙️',
             'contacts' => '📞'
         ];

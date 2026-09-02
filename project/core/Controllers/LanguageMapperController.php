@@ -75,6 +75,20 @@ class LanguageMapperController
         'š' => 'ш'
     ];
 
+    private array $nodiacritics = [
+        'Đ' => 'DJ',
+        'Ž' => 'Z',
+        'Ć' => 'C',
+        'Č' => 'C',
+        'Š' => 'S',
+
+        'đ' => 'dj',
+        'ž' => 'z',
+        'ć' => 'c',
+        'č' => 'c',
+        'š' => 's'
+    ];
+
     public function latin_to_cyrillic(string $text): string
     {
         return strtr($text, $this->map);
@@ -110,5 +124,10 @@ class LanguageMapperController
     public function detectScript(string $text): string
     {
         return preg_match('/\p{Cyrillic}/u', $text) ? 'cyrillic' : 'latin';
+    }
+
+    public function strip_diacritics(string $text): string
+    {
+        return strtr($text, $this->nodiacritics);
     }
 }

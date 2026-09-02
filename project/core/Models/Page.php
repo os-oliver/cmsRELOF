@@ -89,7 +89,7 @@ class Page
         JOIN gallery g ON g.id = page_gallery.id
         JOIN text t ON t.source_id = g.id
             AND t.source_table = 'gallery'
-            AND t.lang = :lang COLLATE utf8mb4_unicode_ci
+            AND t.lang = :lang
         {$whereClause}
         ORDER BY {$order};
     ";

@@ -153,7 +153,8 @@ class DocumentController
         echo json_encode(['created' => true]);
     }
 
-
+    
+    
     public function update(int $id): void
     {
         error_log("caooo");

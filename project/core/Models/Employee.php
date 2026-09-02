@@ -151,8 +151,14 @@ class Employee
     }
     private function processTextField(int $contentID, string $fieldName, string $value, string $locale, bool $isUpdate, string $type = ''): void
     {
-        $variants = TextHelper::transliterateVariants($value, $locale);
-
+        if ($fieldName === 'email'){
+            $variants = [
+            'sr'      => $value,
+            'sr-Cyrl' => $value
+            ];
+        }else {
+            $variants = TextHelper::transliterateVariants($value, $locale);
+        }
         if ($isUpdate) {
             TextHelper::updateTextEntries($this->pdo, $contentID, $fieldName, $variants, 'employee');
         } else {
