@@ -275,10 +275,10 @@ class Content
         }
 
         $sql = "
-        SELECT generic_category.id 
+        SELECT generic_category.id
         FROM generic_category
-        JOIN text 
-            ON text.source_id = generic_category.id 
+        JOIN text
+            ON text.source_id = generic_category.id
             AND text.source_table = 'generic_category'
             AND text.lang = 'sr'
         WHERE text.content = :categoryName
@@ -496,7 +496,7 @@ class Content
             }
 
             if ($fieldType === 'date') {
-                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, 'Y-m-d');
+                $this->processDateField($contentId, $customField, $cfValueVariants, $post[$fieldCode] ?? null, 'Y-m-d'); // date from form should always be received in this format
                 continue;
             }
 
@@ -585,7 +585,7 @@ class Content
         }
     }
 
-    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = ''): void
+    private function processDateField(int $contentId, array $customField, array | null $cfValueVariants, string | null $dateString, string $format = 'Y-m-d'): void
     {
         if (empty($dateString)) {
             $date = null;
@@ -1008,9 +1008,9 @@ class Content
     {
         $in = implode(',', array_fill(0, count($ids), '?'));
         $sql = "
-            SELECT 
-                ge.id AS element_id, 
-                gc.id AS category_id, 
+            SELECT
+                ge.id AS element_id,
+                gc.id AS category_id,
                 gc.type AS category_type,
                 COALESCE(txt.content, txt_fallback.content) AS category_content
             FROM generic_element ge
@@ -1210,8 +1210,8 @@ class Content
 
     private function fetchItemFields(int $id, $lang = null): array
     {
-        $sql = "SELECT field_name, lang, content 
-            FROM text 
+        $sql = "SELECT field_name, lang, content
+            FROM text
             WHERE source_table = 'generic_element' AND source_id = ?";
 
         // If a specific language is provided, add it to the WHERE clause

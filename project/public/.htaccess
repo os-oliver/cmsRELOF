@@ -9,18 +9,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
 
-#----------------------------------------------------------------cp:ppd
-# Section managed by cPanel: Password Protected Directories     -cp:ppd
-# - Do not edit this section of the htaccess file!              -cp:ppd
-#----------------------------------------------------------------cp:ppd
-AuthType Basic
-AuthName "Protected 3"
-AuthUserFile "/home/relof/.htpasswds/public_html/zr-most.relof/public/passwd"
-Require valid-user
-#----------------------------------------------------------------cp:ppd
-# End section managed by cPanel: Password Protected Directories -cp:ppd
-#----------------------------------------------------------------cp:ppd
-
 # BEGIN cPanel-generated php ini directives, do not edit
 # Manual editing of this file may result in unexpected behavior.
 # To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
