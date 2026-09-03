@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const res = await fetch(endpoint.value, fetchOptions);
       if (!res.ok) throw new Error(`Status: ${res.status}`);
-      console.log(res.text());
+      await res.text();
       alert("Dokument uspešno sačuvan!");
       form.reset();
       closeModal();

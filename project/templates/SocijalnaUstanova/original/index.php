@@ -843,7 +843,7 @@
                             <span>
                                 Osoba zadužena za slobodan pristup informacijama od javnog značaja
                                 <br>
-                                <p data-translate="off">nevena.montresor@centarmostzr.com</p>
+                                <p data-translate="off">andrijana.stojanovic@centarmostzr.com</p>
                             </span>
                         </li>
                         <li class="flex items-start">

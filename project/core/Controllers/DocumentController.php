@@ -68,6 +68,7 @@ class DocumentController
             }
         } else {
             error_log("Nema fajla u \$_FILES['documetFile']");
+        }
 
         if ($contentLength > 0 && $contentLength > $maxSizeBytes && empty($_POST) && empty($_FILES)) {
             http_response_code(413);
@@ -151,10 +152,11 @@ class DocumentController
 
         http_response_code(201);
         echo json_encode(['created' => true]);
+
     }
 
-    
-    
+
+
     public function update(int $id): void
     {
         error_log("caooo");
@@ -189,7 +191,12 @@ class DocumentController
 
         try {
             error_log("Updating document: " . $id);
-            (new Document())->update($id, $data);
+            $updated = (new Document())->update($id, $data);
+            if (!$updated) {
+                http_response_code(500);
+                echo json_encode(['error' => 'Dokument nije izmenjen u bazi.']);
+                return;
+            }
         } catch (\RuntimeException $e) {
             error_log("Error updating document: " . $e->getMessage());
             http_response_code(400);

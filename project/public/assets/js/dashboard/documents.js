@@ -1,27 +1,33 @@
 const createLoaderOverlay = () => {
   const overlay = document.createElement("div");
-  overlay.className = "fixed inset-0 bg-black/70 z-[9999] flex items-center justify-center";
+  overlay.className =
+    "fixed inset-0 bg-black/70 z-[9999] flex items-center justify-center";
   overlay.id = "loader-overlay";
 
   const spinnerContainer = document.createElement("div");
   spinnerContainer.id = "spinner-container";
-  spinnerContainer.className = "border-[5px] border-white/15 border-t-white rounded-full w-[60px] h-[60px] animate-spin";
+  spinnerContainer.className =
+    "border-[5px] border-white/15 border-t-white rounded-full w-[60px] h-[60px] animate-spin";
 
   overlay.appendChild(spinnerContainer);
   return overlay;
 };
 
 const showSuccessCheck = (overlay) => {
-  const spinner = overlay.querySelector('#spinner-container');
+  const spinner = overlay.querySelector("#spinner-container");
   if (!spinner) return;
 
-  spinner.className = "w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-[0_8px_25px_rgba(16,185,129,0.4)] animate-[scaleIn_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)]";
+  spinner.className =
+    "w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-[0_8px_25px_rgba(16,185,129,0.4)] animate-[scaleIn_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)]";
 
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("class", "w-[52px] h-[52px]");
   svg.setAttribute("viewBox", "0 0 52 52");
 
-  const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  const circle = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "circle",
+  );
   circle.setAttribute("class", "stroke-white stroke-2 fill-none");
   circle.setAttribute("cx", "26");
   circle.setAttribute("cy", "26");
@@ -45,10 +51,10 @@ const showSuccessCheck = (overlay) => {
 };
 
 const injectStyles = () => {
-  if (document.getElementById('document-loader-styles')) return;
+  if (document.getElementById("document-loader-styles")) return;
 
-  const style = document.createElement('style');
-  style.id = 'document-loader-styles';
+  const style = document.createElement("style");
+  style.id = "document-loader-styles";
   style.innerHTML = `
     @keyframes scaleIn {
       0% { transform: scale(0); }
@@ -85,14 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
           label.classList.remove(
             "bg-white",
             "border-gray-200",
-            "text-gray-700"
+            "text-gray-700",
           );
           label.classList.add("bg-blue-50", "border-blue-200", "text-blue-700");
         } else {
           label.classList.remove(
             "bg-blue-50",
             "border-blue-200",
-            "text-blue-700"
+            "text-blue-700",
           );
           label.classList.add("bg-white", "border-gray-200", "text-gray-700");
         }
@@ -124,10 +130,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = updateQueryString(page);
       };
     }
-    if ((page == '' || isNaN(page)) && button.hasAttribute('data-gotopage')) {
+    if ((page == "" || isNaN(page)) && button.hasAttribute("data-gotopage")) {
       button.onclick = (e) => {
         e.preventDefault();
-        window.location.href = updateQueryString(button.getAttribute('data-gotopage'));
+        window.location.href = updateQueryString(
+          button.getAttribute("data-gotopage"),
+        );
       };
     }
   });
@@ -249,8 +257,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (fileSizeMB > MAX_FILE_SIZE_MB) {
         alert(
           `Greška! Fajl je prevelik.\n\nMaksimalna dozvoljena veličina: ${MAX_FILE_SIZE_MB.toFixed(2)}MB\nVaš fajl: ${fileSizeMB.toFixed(
-            2
-          )}MB\n\nMolimo izaberite manji fajl.`
+            2,
+          )}MB\n\nMolimo izaberite manji fajl.`,
         );
         fileInput.value = ""; // Čisti fajl input
         formEls.nameInput.value = "";
@@ -307,23 +315,23 @@ document.addEventListener("DOMContentLoaded", () => {
         res = await fetch(formEls.endpoint.value, fetchOptions);
       }
 
-      if (!res.ok) {
-        let errorMsg = "Greška pri čuvanju dokumenta";
-        try {
-          const errorData = await res.json();
-          if (errorData.error) {
-            errorMsg = errorData.error;
-          }
-        } catch (e) {
-          const errorText = await res.text();
-          if (errorText) {
-            errorMsg = errorText;
-          }
-        }
-        throw new Error(errorMsg);
+      const responseText = await res.text();
+      let responseData = {};
+      try {
+        responseData = responseText ? JSON.parse(responseText) : {};
+      } catch {
+        // Server may return plain text for an unexpected error.
       }
 
-      alert(" Dokument uspešno sačuvan!");
+      if (!res.ok) {
+        throw new Error(responseData.error || responseText || "Greška pri čuvanju dokumenta");
+      }
+
+      if (responseData.created !== true && responseData.updated !== true) {
+        throw new Error(responseData.error || "Server nije potvrdio čuvanje dokumenta.");
+      }
+
+      alert("Dokument uspešno sačuvan!");
       location.reload();
       formEls.form.reset();
       closeForm();
