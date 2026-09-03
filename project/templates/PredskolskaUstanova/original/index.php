@@ -391,10 +391,6 @@
                                 class="flex items-center py-2 px-4 transition-colors hover:text-secondary_hover">
                                 <i class="fas fa-user-shield mr-2 text-primary"></i>Zakon o zaštiti podataka o ličnosti
                             </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors hover:text-secondary_hover">
-                                <i class="fas fa-users mr-2 text-primary"></i>Službe
-                            </a>
                         </div>
                     </div>
                     <div class="mobile-dropdown text-primary hover:text-primary_hover">
@@ -427,10 +423,6 @@
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors hover:text-secondary_hover">
                                 <i class="fas fa-users mr-2 text-primary"></i>Savet roditelja
-                            </a>
-                            <a href="#"
-                                class="flex items-center py-2 px-4 transition-colors hover:text-secondary_hover">
-                                <i class="fas fa-users mr-2 text-primary"></i>Vaspitno obrazovno veće
                             </a>
                         </div>
                     </div>
@@ -517,10 +509,6 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-user-shield mr-2 text-primary hover:text-primary_hover"></i>Zakon o zaštiti podataka o ličnosti
                         </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-users mr-2 text-primary hover:text-primary_hover"></i>Službe
-                        </a>
                     </div>
                 </div>
                 <div class="dropdown relative group transition-colors">
@@ -551,10 +539,6 @@
                         <a static="true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-users mr-2 text-primary hover:text-primary_hover"></i>Savet roditelja
-                        </a>
-                        <a static="true" href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-users mr-2 text-primary hover:text-primary_hover"></i>Vaspitno obrazovno veće
                         </a>
                     </div>
                 </div>
@@ -825,6 +809,14 @@
                         <p>Lorem ipsum</p>
                     </div>
                 </div>
+                <div class="gallery-item rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80"
+                        alt="Workshop" class="w-full h-full object-cover">
+                    <div class="overlay-content text-background">
+                        <h3>Lorem ipsum</h3>
+                        <p>Lorem ipsum</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -887,7 +879,7 @@
                         class="w-full max-w-md md:max-w-lg h-auto mb-4">
                     <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
                 </div>
-                <p class="pt-6">&copy; Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                <p class="pt-6">&copy; Dečja radost Babušnica, sva prava zadržana</p>
             </div>
         </div>
     </footer>

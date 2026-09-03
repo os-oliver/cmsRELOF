@@ -19,11 +19,25 @@ class IstorijatPageBuilder extends BasePageBuilder
     <div class="absolute inset-0 z-0"></div>
     <div class="relative z-10 w-full max-w-5xl mx-auto text-center font-body text-secondary_text">
       <h1 class="text-primary_text text-5xl font-heading font-bold mt-10 mb-4">Istorijat naše ustanove</h1>
-      <h2 class="text-3xl mx-5 italic mb-4 text-justify font-body">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-    Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-</h2>
+      <h2 class="text-3xl mx-5 italic mb-4 text-justify font-body">
+        Naša predškolska ustanova svedok je davnih vremena, učitelj sadašnjih i putokaz
+        budućih. Naša istorija je duga preko 45 godina. Izgradnja prvog namenskog „Dečjeg
+        vrtića“ (današnji objekat „Dečja radost“) započeo je 1975. godine, a završen je 1977.
+        godine. Odbor za osnivanje vrtića donosi jula 1978. godine odluku o prijemu prvih
+        radnika, a vrata vrtića ostvorena su za prvu generaciju od 7 predškolaca. Od te godine
+        broj dece se iz dana u dan povećavao, a ustanova je proširivala svoje kapacitete, kao i
+        broj zaposlenih.
+        Danas je naš vrtić savremena predškolska ustanova koja deci pruža bezbedno,
+        podsticajno i inspirativno okruženje za odrastanje, igru i učenje. Tokom godina objekat
+        je kontinuirano unapređivan i prilagođavan potrebama dece i savremenim standardima
+        predškolskog vaspitanja i obrazovanja. Dugi niz godina vrtić je bio namenjen deci
+        uzrasta od tri godine do polaska u školu, a od 2022. godine proširio je svoje kapacitete
+        otvaranjem jaslenih grupa, čime je omogućena briga i vaspitno-obrazovni rad sa decom
+        najmlađeg uzrasta.
+        Danas naš vrtić predstavlja mesto u kojem deca rastu, uče, istražuju i razvijaju
+        svoje potencijale u atmosferi poverenja, uvažavanja i partnerstva sa porodicom i
+        lokalnom zajednicom.
+      </h2>
     </div>
   </section>
 </main>
