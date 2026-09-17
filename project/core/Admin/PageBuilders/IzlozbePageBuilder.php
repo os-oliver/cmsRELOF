@@ -161,19 +161,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     // Image handling: common shapes -> file array with 'url', or string URL, or nested structure
         $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
 
-    // Datum početka - try to parse ISO date and format to dd/mm/YYYY
     $rawDatum = $getField('datum') ?? '';
-    $formattedDatum = '';
-    if ($rawDatum) {
-        try {
-            $dt = new DateTime($rawDatum);
-            // format: 1. Jan 2025 -> 01/01/2025 (local-friendly)
-            $formattedDatum = $dt->format(LocaleManager::DATE_FORMAT_STRING);
-        } catch (Exception $e) {
-            // fallback to raw string sanitized
-            $formattedDatum = htmlspecialchars($rawDatum, ENT_QUOTES, 'UTF-8');
-        }
-    }
 
     $itemId = htmlspecialchars($item['id'] ?? ($item['_id'] ?? ''), ENT_QUOTES, 'UTF-8');
 
@@ -195,7 +183,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     $replacements = [
         '{{imageSection}}' => $imageSection,
         '{{naziv}}' => $naziv,
-        '{{datum}}' => htmlspecialchars($formattedDatum, ENT_QUOTES, 'UTF-8'),
+        '{{datum}}' => htmlspecialchars($rawDatum, ENT_QUOTES, 'UTF-8'),
         '{{itemId}}' => $itemId,
         '{{startDateLabel}}' => htmlspecialchars($texts['start_date_label'], ENT_QUOTES, 'UTF-8'),
         '{{viewLabel}}' => htmlspecialchars($texts['view'], ENT_QUOTES, 'UTF-8'),
