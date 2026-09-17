@@ -1,1 +1,7 @@
+#Rewrite rule to forward all requests to /httpdocs/public folder instead of /httpdocs
 
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^scpirot.rs$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.scpirot.rs$
+RewriteCond %{REQUEST_URI} !relof/public/
+RewriteRule (.*) /relof/public/$1 [L]
