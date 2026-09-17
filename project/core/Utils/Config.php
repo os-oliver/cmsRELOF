@@ -65,7 +65,8 @@ final class Config
             if (!is_array($entry))
                 continue;
             foreach ($entry as $key => $val) {
-                if (strcasecmp((string) $key, $type) === 0)
+                $typeCode = empty($val['code']) ? $key : $val['code'];
+                if (strcasecmp((string) $typeCode, $type) === 0)
                     return is_array($val) ? $val : null;
             }
         }
