@@ -50,6 +50,7 @@ use App\Admin\PageBuilders\TimoviPageBuilder;
 use App\Admin\PageBuilders\UpisPageBuilder;
 use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
+use App\Admin\PageBuilders\LazarPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
 use App\Utils\Config;
@@ -765,6 +766,8 @@ class PageExporter
                 return new DynamicPageBuilder('Filmovi');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
+            case 'lazar-vozarevic':
+                return new LazarPageBuilder('Lazar Vozarevic', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -884,6 +887,8 @@ class PageExporter
             return 'koncerti';
         }elseif (strpos($name, 'filmovi') !== false) {
             return 'filmovi';
+        }elseif (strpos($name, 'lazar-vozarevic') !== false) {
+            return 'lazar-vozarevic';
         }
 
         return 'basic';

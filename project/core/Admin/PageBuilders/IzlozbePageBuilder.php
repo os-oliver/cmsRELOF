@@ -159,7 +159,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     $naziv = htmlspecialchars(trim($rawNaziv), ENT_QUOTES, 'UTF-8');
 
     // Image handling: common shapes -> file array with 'url', or string URL, or nested structure
-        $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
+        $imageUrl = $getField('slika') ?? '';
 
     $rawDatum = $getField('datum') ?? '';
 
@@ -167,7 +167,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
 
     // imageSection: show image or placeholder icon
     if ($imageUrl) {
-        $imageSection = "<img src='{$imageUrl}' alt='" . ($naziv ?: $texts['no_image_alt']) . "' class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' />";
+        $imageSection = "<img src='{$imageUrl}' alt='" . ($naziv ?: $texts['no_image_alt']) . "' class='h-full object-fit mx-auto transition-transform duration-300 group-hover:scale-105' />";
     } else {
         $imageSection = "<div class='w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50'>
                             <div class='flex flex-col items-center gap-2 text-center'>

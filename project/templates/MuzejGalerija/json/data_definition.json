@@ -55,27 +55,16 @@
             "sr-Cyrl": "Категорија вести"
           },
           "options": [
-            "Vesti",
-            "Naučni klub",
-            "Seminari",
-            "Radionice"
+            "Vesti"
           ],
           "coded_options": [
             {
               "code": "vesti",
-              "translations": { "sr": "Vesti", "sr-Cyrl": "Вести", "en": "News"}
-            },
-            {
-              "code": "naucni-klub",
-              "translations": { "sr": "Naučni klub", "sr-Cyrl": "Научни клуб", "en": "Science club"}
-            },
-            {
-              "code": "seminari",
-              "translations": { "sr": "Seminari", "sr-Cyrl": "Семинари", "en": "Seminars"}
-            },
-            {
-              "code": "radionice",
-              "translations": { "sr": "Radionice", "sr-Cyrl": "Радионице", "en": "Workshops"}
+              "translations": {
+                "sr": "Vesti",
+                "sr-Cyrl": "Вести",
+                "en": "News"
+              }
             }
           ],
           "required": true
@@ -99,163 +88,6 @@
             "sr": "Tekst vesti",
             "en": "Article text",
             "sr-Cyrl": "Текст вести"
-          }
-        }
-      ]
-    },
-    "Projekti": {
-      "code": "projekti",
-      "sr": "Projekti",
-      "en": "Projects",
-      "sr-Cyrl": "Пројекти",
-      "icon": "fas fa-diagram-project",
-      "categories": [
-        "Muzika",
-        "Pozoriste",
-        "Likovna umetnost",
-        "Kreativne radionice",
-        "Literatura",
-        "Film"
-      ],
-      "fields": [
-        {
-          "code": "slika",
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika projekta",
-            "en": "Project image",
-            "sr-Cyrl": "Насловна слика пројекта"
-          },
-          "required": true
-        },
-        {
-          "code": "naziv",
-          "name": "naziv",
-          "type": "text",
-          "label": {
-            "sr": "Naziv projekta",
-            "en": "Project name",
-            "sr-Cyrl": "Назив пројекта"
-          },
-          "required": true
-        },
-        {
-          "code": "datum",
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum vesti",
-            "en": "News date",
-            "sr-Cyrl": "Датум вести"
-          },
-          "required": true,
-          "property": "auto"
-        },
-        {
-          "code": "main_category",
-          "name": "kategorije",
-          "type": "options",
-          "label": {
-            "sr": "Kategorija",
-            "en": "Category",
-            "sr-Cyrl": "Категорија"
-          },
-          "options": [
-            "Muzika",
-            "Pozoriste",
-            "Likovna umetnost",
-            "Kreativne radionice",
-            "Literatura",
-            "Film"
-          ],
-          "coded_options": [
-            {
-              "code": "muzika",
-              "translations": { "sr": "Muzika", "sr-Cyrl": "Музика", "en": "Music"}
-            },
-            {
-              "code": "pozoriste",
-              "translations": { "sr": "Pozorište", "sr-Cyrl": "Позориште", "en": "Theater"}
-            },
-            {
-              "code": "likovna-umetnost",
-              "translations": { "sr": "Likovna umetnost", "sr-Cyrl": "Ликовна уметност", "en": "Fine Art"}
-            },
-            {
-              "code": "kreativne-radionice",
-              "translations": { "sr": "Kreativne Radionice", "sr-Cyrl": "Креативне Радионице", "en": "Creative workshops"}
-            },
-            {
-              "code": "literatura",
-              "translations": { "sr": "Literatura", "sr-Cyrl": "Литература", "en": "Literature"}
-            },
-            {
-              "code": "film",
-              "translations": { "sr": "Film", "sr-Cyrl": "Филм", "en": "Movie"}
-            }
-          ],
-          "required": true
-        },
-        {
-          "code": "vodja",
-          "name": "vodja",
-          "type": "text",
-          "label": {
-            "sr": "Vođa projekta",
-            "en": "Project lead",
-            "sr-Cyrl": "Вођа пројекта"
-          }
-        },
-        {
-          "code": "opis",
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
-          }
-        },
-        {
-          "code": "datumPocetka",
-          "name": "datumPocetka",
-          "type": "date",
-          "label": {
-            "sr": "Datum početka",
-            "en": "Start date",
-            "sr-Cyrl": "Датум почетка"
-          },
-          "required": true
-        },
-        {
-          "code": "budzet",
-          "name": "budzet",
-          "type": "text",
-          "label": {
-            "sr": "Budžet (u evrima)",
-            "en": "Budget (EUR)",
-            "sr-Cyrl": "Буџет (у евриима)"
-          }
-        },
-        {
-          "code": "link",
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Zvanični link projekta",
-            "en": "Official project link",
-            "sr-Cyrl": "Званични линк пројекта"
-          }
-        },
-        {
-          "code": "sekcija",
-          "name": "sekcija",
-          "type": "text",
-          "label": {
-            "sr": "Sekcija centra",
-            "en": "Center section",
-            "sr-Cyrl": "Секција центра"
           }
         }
       ]
@@ -294,27 +126,52 @@
             "sr-Cyrl": "Тип"
           },
           "options": [
-            "Arheologija",
-            "Etnologija",
-            "Istorija",
-            "Istorija umetnosti"
+            "Likovna umetnost",
+            "Fotografija",
+            "Skulptura",
+            "Multimedija",
+            "Digitalna umetnost"
           ],
           "coded_options": [
             {
-              "code": "arheologija",
-              "translations": { "sr": "Arheologija", "sr-Cyrl": "Археологија", "en": "Archeology"}
+              "code": "likovna-umetnost",
+              "translations": {
+                "sr": "Likovna umetnost",
+                "sr-Cyrl": "Ликовна уметност",
+                "en": "Fine arts"
+              }
             },
             {
-              "code": "etnologija",
-              "translations": { "sr": "Etnologija", "sr-Cyrl": "Етнологија", "en": "Ethnology"}
+              "code": "fotografija",
+              "translations": {
+                "sr": "Fotografija",
+                "sr-Cyrl": "Фотографија",
+                "en": "Photography"
+              }
             },
             {
-              "code": "istorija",
-              "translations": { "sr": "Istorija", "sr-Cyrl": "Историја", "en": "History"}
+              "code": "skulptura",
+              "translations": {
+                "sr": "Skulptura",
+                "sr-Cyrl": "Скулптура",
+                "en": "Sculpture"
+              }
             },
             {
-              "code": "istorija-umetnosti",
-              "translations": { "sr": "Istorija umetnosti", "sr-Cyrl": "Историја уметности", "en": "Art history"}
+              "code": "multimedija",
+              "translations": {
+                "sr": "Multimedija",
+                "sr-Cyrl": "Мултимедија",
+                "en": "Multimedia"
+              }
+            },
+            {
+              "code": "digitalna-umetnost",
+              "translations": {
+                "sr": "Digitalna umetnost",
+                "sr-Cyrl": "Дигитална уметност",
+                "en": "Digital arts"
+              }
             }
           ],
           "required": true
@@ -381,34 +238,6 @@
             "en": "End date",
             "sr-Cyrl": "Датум завршетка"
           }
-        },
-        {
-          "name": "lokacija",
-          "type": "text",
-          "label": {
-            "sr": "Lokacija izložbe",
-            "en": "Exhibition location",
-            "sr-Cyrl": "Локација изложбе"
-          }
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Zvanični link izložbe",
-            "en": "Official exhibition link",
-            "sr-Cyrl": "Званични линк изложбе"
-          }
-        },
-        {
-          "name": "sekcija",
-          "type": "relation",
-          "label": {
-            "sr": "Sekcija centra",
-            "en": "Center section",
-            "sr-Cyrl": "Секција центра"
-          },
-          "related_to": "Sekcije"
         }
       ]
     }

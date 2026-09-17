@@ -31,19 +31,19 @@ $colorKeys = [
 // Predefinisane color palete
 $colorPalettes = [
     'default' => [
-        'name' => 'Plava (Default)',
+        'name' => 'Zelena (Default)',
         'colors' => [
-            'primary' => '#3B82F6',
-            'primary_hover' => '#2563EB',
-            'secondary' => '#64748B',
-            'secondary_hover' => '#475569',
-            'accent' => '#8B5CF6',
-            'accent_hover' => '#7C3AED',
-            'primary_text' => '#1E293B',
-            'secondary_text' => '#64748B',
-            'background' => '#FFFFFF',
-            'secondary_background' => '#F8FAFC',
-            'surface' => '#F1F5F9'
+            'primary' => '#3F6B68',
+            'primary_hover' => '#315654',
+            'secondary' => '#C9B79C',
+            'secondary_hover' => '#B8A486',
+            'accent' => '#A66A4A',
+            'accent_hover' => '#8C583C',
+            'surface' => '#FFFFFF',
+            'primary_text' => '#2F4F4F',
+            'secondary_text' => '#696969',
+            'background' => '#F8F7F4',
+            'secondary_background' => '#EFECE6',
         ]
     ],
     'green' => [

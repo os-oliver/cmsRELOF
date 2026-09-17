@@ -16,17 +16,17 @@
       theme: {
         extend: {
           colors: {
-            primary: '#8B4513',
-            primary_hover: '#654321',
-            secondary: '#2F4F4F',
-            secondary_hover: '#1E3A3A',
-            accent: '#DAA520',
-            accent_hover: '#B8860B',
+            primary: '#3F6B68',
+            primary_hover: '#315654',
+            secondary: '#C9B79C',
+            secondary_hover: '#B8A486',
+            accent: '#A66A4A',
+            accent_hover: '#8C583C',
+            surface: '#FFFFFF',
             primary_text: '#2F4F4F',
             secondary_text: '#696969',
-            background: '#FAF0E6',
-            secondary_background: '#FFFFFF',
-            surface: '#F5F5F5'
+            background: '#F8F7F4',
+            secondary_background: '#EFECE6',
           },
           fontFamily: {
             'heading': ['Playfair Display', 'serif'],
@@ -193,6 +193,7 @@
 
     .line-clamp-2 {
       display: -webkit-box;
+      line-clamp: 2;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
@@ -200,6 +201,7 @@
 
     .line-clamp-3 {
       display: -webkit-box;
+      line-clamp: 3;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
@@ -270,95 +272,62 @@
         <nav id="navBarIDm" class="space-y-3">
           <a href="index.html"
             class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all">
-            <i class="fas fa-home mr-3 text-primary"></i>Početna
+            Početna
           </a>
           <div class="mobile-dropdown">
             <button
-              class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all"
+              class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-primary_hover rounded-lg transition-all"
               id="mobileAboutToggle">
-              <div class="flex items-center">
-                <i class="fas fa-info-circle mr-3 text-secondary"></i>O nama
-              </div>
-              <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
+              <span class="font-medium tracking-wide">O nama</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-200"
+                id="mobileAboutIcon"></i>
             </button>
-            <div class="ml-6 mt-2 space-y-2 mobile-dropdown-content">
-              <a href="about.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Uvod
-              </a>
-              <a href="mission.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+            <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
+              <a href="#"
+                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary_hover transition-colors">
                 Misija i vizija
               </a>
-              <a href="history.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+              <a href="#"
+                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary_hover transition-colors">
                 Istorijat
               </a>
-              <a href="management.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Rukovodstvo
+              <a href="#"
+                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary_hover transition-colors">
+                Lazar Vozarević
               </a>
-              <a href="facility.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Objekat
+              <a href="#"
+                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary_hover transition-colors">
+                Organi upravljanja
               </a>
-              <a href="donations.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Donacije i podrška
+              <a href="#"
+                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary_hover transition-colors">
+                Organizaciona struktura
               </a>
-              <a href="partners.html"
+              <a href="#"
                 class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Partneri
-              </a>
-            </div>
-          </div>
-          <div class="mobile-dropdown">
-            <button
-              class="flex items-center justify-between w-full py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all"
-              id="mobileExhibitionsToggle">
-              <div class="flex items-center">
-                <i class="fas fa-palette mr-3 text-accent"></i>Izložbe
-              </div>
-              <i class="fas fa-chevron-down text-sm transition-transform duration-200 mobile-dropdown-chevron"></i>
-            </button>
-            <div class="ml-6 mt-2 space-y-2 mobile-dropdown-content">
-              <a href="current-exhibitions.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Trenutne izložbe
-              </a>
-              <a href="upcoming-exhibitions.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Najavljene izložbe
-              </a>
-              <a href="archive.html"
-                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                Arhiva izložbi
+                Informacije
               </a>
             </div>
           </div>
-          <a href="artists.html"
+          <a href="#"
             class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all">
-            <i class="fas fa-user mr-3 text-accent"></i>Umetnici
-          </a>
-          <a href="programs.html"
-            class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all">
-            <i class="fas fa-calendar-alt mr-3 text-secondary"></i>Programi i događaji
-          </a>
-          <a href="projects.html"
-            class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all">
-            <i class="fas fa-project-diagram mr-3 text-primary"></i>Projekti
-          </a>
-          <a href="publications.html"
-            class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all">
-            <i class="fas fa-book mr-3 text-accent"></i>Publikacije
+            Izložbe
           </a>
           <a href="news.html"
             class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all">
-            <i class="fas fa-newspaper mr-3 text-secondary"></i>Vesti
+            Vesti
+          </a>
+          <a href="#"
+            class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all">
+            Galerija
+          </a>
+          <a href="#"
+            class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all">
+            Dokumenti
           </a>
           <a href="contact.html"
             class="flex items-center py-3 px-4 text-primary_text hover:text-primary hover:bg-surface rounded-lg transition-all">
-            <i class="fas fa-phone mr-3 text-primary"></i>Kontakt
+            Kontakt
           </a>
         </nav>
       </div>
@@ -376,39 +345,36 @@
   <header
     class="fixed w-full z-50 transition-all duration-300 py-2 sm:py-3 backdrop-blur-md shadow-lg bg-secondary_background/95 border-b border-surface">
     <div class="px-3 sm:px-4 lg:px-6 flex justify-between items-center">
-      <div class="flex items-center space-x-3 flex-shrink-0">
-        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
-          <i class="fas fa-landmark text-lg"></i>
+      <a href="/" class="flex items-center space-x-3 flex-shrink-0">
+        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+          <img src="" alt="" style="width:75px;height:auto;" />
         </div>
 
         <div class="hidden sm:block">
           <h1
-            class="text-sm sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
-            KULTURNI NEXUS
+            class="text-lg sm:text-base lg:text-lg font-heading text-primary_text font-bold tracking-wide leading-tight">
+            Galerija
           </h1>
           <p
-            class="text-xs sm:text-xs lg:text-sm text-secondary tracking-widest hidden md:block opacity-80 font-medium">
-            CENTAR ZA UMETNOST I BAŠTINU
+            class="text-base sm:text-xs lg:text-sm text-secondary tracking-widest hidden md:block opacity-80 font-medium">
+            Lazar Vozarević
           </p>
         </div>
 
         <div class="block sm:hidden">
-          <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">NEXUS</h1>
+          <h1 class="text-xs sm:text-sm font-heading text-primary_text font-bold tracking-wide">Galerija Lazar Vozarević</h1>
         </div>
-      </div>
+      </a>
 
-      <nav id="navBarID" class="hidden lg:flex items-center space-x-1 xl:space-x-3">
+      <nav id="navBarID" class="hidden lg:flex gap-7 items-center space-x-1 xl:space-x-3">
         <a href="#"
           class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i class="fas fa-home mr-2 text-primary group-hover:text-accent transition-colors text-sm"></i>
           <span class="hidden xl:inline text-sm">Početna</span>
         </a>
 
         <div class="dropdown relative group">
           <button
             class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-            <i
-              class="fas fa-info-circle mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
             <span class="hidden xl:inline text-sm">O nama</span>
             <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
           </button>
@@ -416,108 +382,58 @@
             class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
             <a href="#" static="true"
               class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-book mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Uvod</span>
-            </a>
-            <a href="#" static="true"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-flag mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
               <span class="font-medium">Misija i vizija</span>
             </a>
             <a href="#" static="true"
               class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-history mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
               <span class="font-medium">Istorijat</span>
             </a>
-            <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-users-cog mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Rukovodstvo</span>
-            </a>
-            <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-building mr-3 text-secondary_text flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Objekat</span>
-            </a>
             <a href="#" static="true"
               class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-hand-holding-heart mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Donacije i podrška</span>
+              <span class="font-medium">Lazar Vozarević</span>
             </a>
-            <a href="#" static="true"
+            <a href="#"
               class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-handshake mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Partneri</span>
+              <span class="font-medium">Organi upravljanja</span>
+            </a>
+            <a href="#"
+              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+              <span class="font-medium">Organizaciona struktura</span>
+            </a>
+            <a href="#"
+              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
+              <span class="font-medium">Informacije</span>
             </a>
           </div>
         </div>
 
         <a
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i class="fas fa-palette mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Izložbe</span>
-        </a>
-
-        <a
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i
-            class="fas fa-project-diagram mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Projekti</span>
+          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group">
+          <span class="hidden xl:inline text-sm tracking-wide">Izložbe</span>
         </a>
 
         <a href="#"
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i class="fas fa-images mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Galerija</span>
+          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group">
+          <span class="hidden xl:inline text-sm tracking-wide">Vesti</span>
         </a>
 
         <a href="#"
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-surface">
-          <i class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Dokumenti</span>
-        </a>
-        <a href="#"
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group flex items-center px-3 py-2 rounded-lg hover:bg-surface">
-          <i class="fas fa-folder-open mr-2 text-accent group-hover:text-accent_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">informacije</span>
+          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group">
+          <span class="hidden xl:inline text-sm tracking-wide">Galerija</span>
         </a>
 
-        <div class="dropdown relative group">
-          <button
-            class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-            <i class="fas fa-bullhorn mr-2 text-primary group-hover:text-primary_hover transition-colors text-sm"></i>
-            <span class="hidden xl:inline text-sm">Aktivnosti</span>
-            <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
-          </button>
-
-          <div
-            class="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 min-w-max max-w-xs w-auto bg-secondary_background rounded-xl shadow-2xl border border-surface opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-3 backdrop-blur-sm">
-
-            <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-newspaper mr-3 text-primary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Vesti</span>
-            </a>
-
-            <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-calendar-alt mr-3 text-secondary flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Događaji</span>
-            </a>
-
-            <a href="#"
-              class="dropdown-item flex items-center px-5 py-3 hover:bg-gradient-to-r hover:from-surface hover:to-surface text-sm whitespace-nowrap transition-all duration-200 rounded-lg mx-2">
-              <i class="fas fa-poll mr-3 text-accent flex-shrink-0 w-4 text-sm"></i>
-              <span class="font-medium">Ankete</span>
-            </a>
-          </div>
-        </div>
+        <a href="#"
+          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group">
+          <span class="hidden xl:inline text-sm tracking-wide">Dokumenti</span>
+        </a>
 
         <a href="#"
-          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-surface group">
-          <i
-            class="fas fa-address-book mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
-          <span class="hidden xl:inline text-sm">Kontakt</span>
+          class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 group">
+          <span class="hidden xl:inline text-sm tracking-wide">Kontakt</span>
+        </a>
+
+        <a href="#" class="hidden">
+          Ankete
         </a>
 
         <?php
@@ -596,74 +512,46 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center overflow-hidden pt-20 artistic-pattern">
-    <div class="absolute inset-0 z-0 bg-gradient-to-br from-surface via-transparent to-primary opacity-10"></div>
+  <section class="relative overflow-hidden pt-28 pb-24 artistic-pattern">
+    <div class="absolute inset-0 bg-gradient-to-b from-white/85 via-background/90 to-surface/95"></div>
+    <div class="absolute -top-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"></div>
+    <div class="absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl"></div>
 
-    <div class="container mx-auto px-4 py-24 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="max-w-2xl">
-          <span class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-medium mb-6 shadow-md">
-            <i class="fas fa-star mr-2"></i>ISTAKNUTO OVOG MESECA
-          </span>
-          <h1 class="text-5xl md:text-6xl font-heading font-bold leading-tight text-primary_text mb-6">
-            <span class="block">SVET UMETNOSTI</span>
-            <span class="block text-primary mt-2">I KULTURNE BAŠTINE</span>
-          </h1>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="mx-auto max-w-5xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.35em] text-secondary mb-5">Galerija Lazar Vozarević</p>
+        <h1 class="text-5xl md:text-7xl font-heading font-bold leading-[0.95] text-primary_text mb-6">
+          <span class="block">OTKRIJTE UMETNOST</span>
+          <span class="block text-primary">DOŽIVITE KULTURU</span>
+        </h1>
+        <p class="mx-auto max-w-3xl text-lg md:text-xl leading-8 text-secondary_text">
+        Istražite aktuelne izložbe, radionice i kulturne događaje u Galeriji "Lazar Vozearević"
+        </p>
 
-          <div class="mb-10">
-            <p class="text-xl text-primary_text leading-relaxed mb-6">
-              Doživite bogatstvo kulturnog nasleđa kroz izložbe, edukativne programe i umetničke događaje u srcu grada.
-            </p>
-            <p class="text-primary_text italic text-lg border-l-4 border-primary pl-4">
-              "Umetnost je laž koja nam omogućava da shvatimo istinu."
-              <span class="block font-medium text-accent mt-2">— Pablo Picasso</span>
-            </p>
-          </div>
-
-          <div class="flex flex-wrap gap-4 mb-8">
-            <a href="/izlozbe"
-              class="bg-primary hover:bg-primary_hover text-white px-8 py-4 rounded-lg font-medium shadow-lg transition-all transform hover:scale-105">
-              <i class="fas fa-eye mr-2"></i>Trenutne izložbe
-            </a>
-            <a href="/aktivnosti/dogadjaji"
-              class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-lg font-medium transition-all">
-              <i class="fas fa-calendar mr-2"></i>Program događaja
-            </a>
-          </div>
-
-          <div class="grid grid-cols-3 gap-6 mt-12">
-            <div class="text-center">
-              <div class="text-3xl font-heading font-bold text-primary mb-2">50+</div>
-              <p class="text-secondary_text font-medium text-sm">Godina postojanja</p>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl font-heading font-bold text-primary mb-2">200+</div>
-              <p class="text-secondary_text font-medium text-sm">Izložbi godišnje</p>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl font-heading font-bold text-primary mb-2">10K+</div>
-              <p class="text-secondary_text font-medium text-sm">Posetilaca</p>
-            </div>
-          </div>
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+          <a href="/izlozbe"
+            class="bg-primary hover:bg-primary_hover text-white px-8 py-4 rounded-2xl font-medium shadow-lg transition-all transform hover:-translate-y-0.5 hover:shadow-xl">
+            <i class="fas fa-palette mr-2"></i>Pogledaj izložbe
+          </a>
+          <a href="/galerija"
+            class="border border-primary/30 bg-white/80 text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-2xl font-medium transition-all backdrop-blur">
+            <i class="fas fa-images mr-2"></i>Pogledaj galeriju
+          </a>
         </div>
 
-        <div class="relative hidden lg:block">
-          <div class="artistic-frame rounded-xl overflow-hidden shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80"
-              alt="Galerija prostor" class="rounded-xl w-full">
+        <div class="mt-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] items-center text-left">
+          <div class="rounded-[2rem] border border-primary/10 bg-secondary_background p-8 shadow-2xl">
+            <h2 class="text-3xl font-heading font-bold text-primary_text mb-4">O galeriji</h2>
+            <p class="text-secondary_text leading-7">
+            Galerija „Lazar Vozarević“ u Sremskoj Mitrovici je ustanova kulture posvećena očuvanju, proučavanju i predstavljanju likovne baštine, sa posebnim fokusom na stvaralaštvo jednog od najznačajnijih srpskih slikara 20. veka – Lazara Vozarevića. Kroz izložbe, stručne programe, radionice i savremene projekte, Galerija povezuje umetničko nasleđe sa savremenim stvaralaštvom. Galerija doprinosi razvoju kulturnog života Sremske Mitrovice i neguje umetnost kao univerzalni jezik koji povezuje zajednicu.
+            </p>
           </div>
-          <div
-            class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent rounded-full flex items-center justify-center text-white text-4xl font-heading font-bold shadow-xl">
-            <i class="fas fa-paint-brush"></i>
+
+          <div class="rounded-[2rem] overflow-hidden border border-white/70 bg-white shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1200&q=80"
+              alt="Galerija prostor" class="h-[340px] w-full object-cover">
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Scrolling indicator -->
-    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-      <div class="animate-bounce w-8 h-14 rounded-full border-2 border-primary flex justify-center p-1">
-        <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
       </div>
     </div>
   </section>
@@ -674,11 +562,11 @@
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-          Predstojeće Izložbe
+          Predstojeće izložbe
           <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></span>
         </h2>
         <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
-          Istražite najnovija umetnička dela i postavke u našem centru.
+          Istražite najnovija umetnička dela i postavke u našoj galeriji.
         </p>
       </div>
 
@@ -715,8 +603,8 @@
 
 
               <a id="g-ovise" href="#"
-                class="mt-4 block text-center bg-accent text-white font-bold py-3 rounded-xl hover:bg-accent/90 transition-colors duration-300">
-                Pogledajte Detaljnije
+                class="mt-4 block text-center bg-secondary text-white font-bold py-3 rounded-xl hover:bg-secondary_hover transition-colors duration-300">
+                Pogledajte detaljnije
                 <i class="fas fa-external-link-alt ml-2"></i>
               </a>
             </div>
@@ -743,11 +631,10 @@
           O GALERIJI
         </span>
         <h2 class="text-4xl font-heading font-bold text-primary_text mb-4">
-          Naša Priča i Misija
+          Naša priča
         </h2>
         <p class="text-lg text-secondary_text max-w-3xl mx-auto">
-          Galerija i muzej posvećeni očuvanju, istraživanju i promovisanju umetničkog nasleđa i savremene umetničke
-          prakse
+        Galerija „Lazar Vozarević“ čuva, proučava i predstavlja umetničko nasleđe Lazara Vozarevića i drugih značajnih autora, podstiče savremeno umetničko stvaralaštvo i razvija kreativni potencijal kroz izložbe, edukativne programe i inovativne projekte. Kao otvorena i dostupna ustanova kulture, teži da inspiriše različite generacije, neguje kreativnost i doprinosi razvoju kulturnog života Sremske Mitrovice i šire zajednice.
         </p>
       </div>
 
@@ -757,51 +644,52 @@
             <div>
               <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Istorijat</h3>
               <p class="text-secondary_text leading-relaxed">
-                Osnovana 1972. godine, naša galerija je tokom decenija postala jedno od najznačajnijih kulturnih
-                središta u regionu.
-                Kroz svoju bogatu istoriju, galerija je predstavila radove preko hiljadu umetnika iz zemlje i
-                inostranstva.
+              Galerija „Lazar Vozarević“ u Sremskoj Mitrovici osnovana je 17. novembra 1973. godine, kada je svečano otvorena izložbom slika i crteža jednog od najznačajnijih srpskih slikara 20. veka – Lazara Vozarevića (1925–1968). Osnivanje Galerije predstavljalo je ostvarenje ideje da se u umetnikovom rodnom gradu trajno sačuva i predstavi njegovo bogato stvaralaštvo, ali i da se stvori prostor za razvoj savremene likovne umetnosti.
+
+              Galerija je smeštena u delu zgrade nekadašnje Srpske narodne škole u Gradskom parku, u istorijskom jezgru Sremske Mitrovice. Njeno jezgro čini memorijalna zbirka sa delima Lazara Vozarevića – slikama, crtežima, kolažima i dokumentarnom građom koja svedoči o njegovom umetničkom razvoju i stvaralačkom putu.
+
+              Tokom više od pet decenija rada, Galerija je izrasla iz memorijalne ustanove u savremen centar vizuelne umetnosti. Pored stalne postavke, organizuje samostalne i kolektivne izložbe domaćih i međunarodnih umetnika, stručna vođenja, predavanja, radionice, promocije publikacija i brojne edukativne programe namenjene deci, mladima i odraslima. Posebno mesto u programskoj delatnosti zauzimaju izložbe savremene umetnosti, kao i tradicionalne manifestacije koje afirmišu likovno stvaralaštvo i kulturno nasleđe Srema.
+
+
+              Danas Galerija „Lazar Vozarević“ predstavlja važnu ustanovu kulture grada Sremske Mitrovice i Republike Srbije, koja čuva umetničko nasleđe svog znamenitog sugrađanina i istovremeno podržava savremene umetničke prakse.
               </p>
             </div>
 
             <div>
               <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Misija</h3>
               <p class="text-secondary_text leading-relaxed">
-                Naša misija je da očuvamo i promovišemo umetničko nasleđe, podstaknemo kreativnost i kritičko
-                razmišljanje,
-                i omogućimo široj publici pristup raznovrsnim umetničkim iskustvima kroz edukaciju i druženje.
+                Naša misija je da kroz izložbe, kulturne programe i saradnju sa umetnicima promovišemo umetnost i učinimo je dostupnom široj publici. 
               </p>
             </div>
 
             <div>
               <h3 class="text-2xl font-heading font-bold text-primary_text mb-4">Vizija</h3>
               <p class="text-secondary_text leading-relaxed">
-                Težimo ka tome da postanemo vodeća kulturna institucija koja podstiče dijalog između tradicije i
-                savremenosti,
-                povezuje umetnike i publiku, i doprinosi kulturnom životu zajednice kroz inovativne programe i izložbe.
+              Težimo da galerija bude prepoznata kao mesto inspiracije, obrazovanja i kulturne razmene. Želimo da svojim radom doprinosimo razvoju umetničke scene i jačanju kulturnog identiteta zajednice.
               </p>
             </div>
           </div>
         </div>
 
         <div class="relative">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="space-y-4">
-              <div class="h-48 bg-gradient-to-br from-primary to-secondary rounded-xl shadow-lg"></div>
-              <div class="h-64 bg-gradient-to-br from-accent to-primary rounded-xl shadow-lg"></div>
-            </div>
-            <div class="space-y-4 mt-8">
-              <div class="h-64 bg-gradient-to-br from-secondary to-primary rounded-xl shadow-lg"></div>
-              <div class="h-48 bg-gradient-to-br from-primary to-accent rounded-xl shadow-lg"></div>
-            </div>
+          <div class="overflow-hidden rounded-[2rem] border border-white/70 bg-white shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80"
+              alt="Unutrašnjost galerije" class="h-[420px] w-full object-cover">
           </div>
 
-          <div
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white rounded-full flex items-center justify-center shadow-2xl">
-            <div class="text-center p-6">
-              <i class="fas fa-university text-5xl text-primary mb-4"></i>
-              <h3 class="font-heading text-xl font-bold text-primary_text">GALERIJA</h3>
-              <p class="text-secondary_text mt-2 text-sm">Od 1972. godine</p>
+          <div class="-mt-10 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-primary/10 bg-secondary_background p-6 shadow-lg">
+              <h3 class="text-2xl font-heading font-bold text-primary_text mb-2">O galeriji</h3>
+              <p class="text-secondary_text leading-7">
+                Savremeni izložbeni prostor posvećen promociji umetnosti, kulture i dijaloga između umetnika i publike.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-primary/10 bg-primary text-white p-6 shadow-lg">
+              <h3 class="text-2xl font-heading font-bold mb-2">Događaji i program</h3>
+              <p class="text-white/90 leading-7">
+                Pratite otvaranja izložbi, vođenja kroz postavke, razgovore sa umetnicima i kreativne radionice tokom cele godine.
+              </p>
             </div>
           </div>
         </div>
@@ -812,13 +700,13 @@
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-          Najnovije Vesti
+          Najnovije vesti
           <div
-            class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
+            class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary rounded-full">
           </div>
         </h2>
         <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
-          Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
+          Budite u toku sa najnovijim dešavanjima iz sveta kulture
         </p>
       </div>
 
@@ -869,12 +757,12 @@
       </div>
 
       <div class="text-center mt-16">
-        <button id="vestiView"
-          class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
+        <a href="/vesti"
+          class="w-fit bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
           <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
           Pogledaj sve vesti
           <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-        </button>
+        </a>
       </div>
     </div>
   </section>
@@ -885,31 +773,22 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
         <div>
           <div class="flex items-center mb-6">
-            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mr-3">
-              <i class="fas fa-landmark text-xl"></i>
+            <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+              <img src="" alt="" style="width:75px;height:auto;" />
             </div>
-            <h3 class="text-2xl font-heading font-bold">KULTURNI NEXUS</h3>
+            <h3 class="text-2xl font-heading font-bold">Galerija Lazar Vozarević</h3>
           </div>
-          <p class="text-gray-300 mb-4 leading-relaxed">
-            Vodeća kulturna institucija posvećena očuvanju, istraživanju i promovisanju umetničkog nasleđa i savremene
-            umetničke prakse.
+          <p class="text-white mb-4 leading-relaxed">
+            Zapratite nas na društvenim mrežama i budite u toku sa najnovijim izložbama, događajima i vestima iz sveta umetnosti.
           </p>
           <div class="flex space-x-3">
-            <a href="#"
+            <a href="https://www.facebook.com/lazarvozarevic"
               class="w-10 h-10 bg-primary hover:bg-primary_hover rounded-full flex items-center justify-center text-white transition-colors">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#"
+            <a href="https://www.instagram.com/galerijalazarvozarevic/"
               class="w-10 h-10 bg-primary hover:bg-primary_hover rounded-full flex items-center justify-center text-white transition-colors">
               <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#"
-              class="w-10 h-10 bg-primary hover:bg-primary_hover rounded-full flex items-center justify-center text-white transition-colors">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#"
-              class="w-10 h-10 bg-primary hover:bg-primary_hover rounded-full flex items-center justify-center text-white transition-colors">
-              <i class="fab fa-youtube"></i>
             </a>
           </div>
         </div>
@@ -917,13 +796,9 @@
         <div>
           <h4 class="text-lg font-heading font-bold mb-6">Brzi Linkovi</h4>
           <ul class="space-y-3">
-            <li><a href="index.html" class="text-gray-300 hover:text-accent transition-colors">Početna</a></li>
-            <li><a href="about.html" class="text-gray-300 hover:text-accent transition-colors">O nama</a></li>
-            <li><a href="current-exhibitions.html" class="text-gray-300 hover:text-accent transition-colors">Izložbe</a>
-            </li>
-            <li><a href="artists.html" class="text-gray-300 hover:text-accent transition-colors">Umetnici</a></li>
-            <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors">Programi</a></li>
-            <li><a href="projects.html" class="text-gray-300 hover:text-accent transition-colors">Projekti</a></li>
+            <li><a href="/ankete" class="text-white hover:text-accent transition-colors">Ankete o zadovoljstvu korisnika</a></li>
+            <li><a href="/izlozbe" class="text-white hover:text-accent transition-colors">Izložbe</a></li>
+            <li><a href="https://www.kultura.gov.rs/" class="text-white hover:text-accent transition-colors">Ministarstvo kulture Republike Srbije</a></li>
           </ul>
         </div>
 
@@ -932,21 +807,21 @@
           <ul class="space-y-3">
             <li class="flex items-start">
               <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-              <span>Trg slobode 15, 11000 Beograd</span>
+              <span> Gradski park 4, 22000 Sremska Mitrovica</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-phone text-accent mt-1 mr-3"></i>
-              <span>+381 11 123 4567</span>
+              <span>022/621-492</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-              <span>info@kulturninexus.rs</span>
+              <span data-translate="off">galerijalazarvozarevic@gmail.com</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-clock text-accent mt-1 mr-3"></i>
               <span>
-                Utorak - Nedelja: 10:00 - 20:00<br>
-                Ponedeljak: zatvoreno
+                Utorak - Petak: 09:00 - 19:00<br>
+                Subota: 10:00 - 15:00<br>
               </span>
             </li>
           </ul>
@@ -954,22 +829,29 @@
 
         <div>
           <h4 class="text-lg font-heading font-bold mb-6">Lokacija</h4>
-          <div class="bg-white/10 rounded-xl overflow-hidden aspect-w-16 aspect-h-9 h-48">
+          <div class="rounded-xl overflow-hidden" style="aspect-ratio: 16/9;">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sTrg%20slobode%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.825005430709!2d19.607286199999997!3d44.9675492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475ba4d7d4f42de5%3A0x3556ff745226b3a8!2z0JPQsNC70LXRgNC40ZjQsCAi0JvQsNC30LDRgCDQktC-0LfQsNGA0LXQstC40Zsi!5e0!3m2!1ssr!2srs!4v1783684883657!5m2!1ssr!2srs"
               class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
       </div>
 
-      <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-        <p>&copy; 2024 Kulturni Nexus. Sva prava zadržana.</p>
+      <div class="flex flex-col items-center border-t border-white pt-8 text-center text-white text-sm">
+        <img src="/assets/img/SECO-logo-640px-white.png" alt="SECO logo"
+          class="w-full max-w-md md:max-w-lg h-auto mb-4">
+        <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno
+          zvanični stav Vlade Švajcarske.</p>
+      </div>
+
+      <div class="pt-8 text-center text-white">
+        <p>&copy; 2026 Galerija Lazar Vozarević. Sva prava zadržana.</p>
       </div>
     </div>
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
       // Mobile menu functionality
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
@@ -979,7 +861,7 @@
       const mobileExhibitionsToggle = document.getElementById('mobileExhibitionsToggle');
 
       // Toggle mobile menu
-      hamburger.addEventListener('click', function () {
+      hamburger.addEventListener('click', function() {
         mobileMenu.classList.remove('hidden');
         setTimeout(() => {
           document.getElementById('mobileMenuPanel').classList.remove('translate-x-full');
@@ -999,32 +881,63 @@
       closeMobileMenu.addEventListener('click', closeMenu);
       mobileMenuOverlay.addEventListener('click', closeMenu);
 
-      // Toggle mobile dropdowns
-      mobileAboutToggle.addEventListener('click', function () {
-        const dropdownContent = this.parentElement.querySelector('.mobile-dropdown-content');
-        dropdownContent.classList.toggle('hidden');
-        this.parentElement.classList.toggle('active');
-      });
+      // Function to toggle mobile about submenu
+      function toggleMobileAbout() {
+        const isHidden = mobileAboutMenu.classList.contains('hidden');
 
-      mobileExhibitionsToggle.addEventListener('click', function () {
-        const dropdownContent = this.parentElement.querySelector('.mobile-dropdown-content');
-        dropdownContent.classList.toggle('hidden');
-        this.parentElement.classList.toggle('active');
-      });
+        if (isHidden) {
+          // Show submenu
+          mobileAboutMenu.classList.remove('hidden');
+          mobileAboutIcon.style.transform = 'rotate(180deg)';
+        } else {
+          // Hide submenu
+          mobileAboutMenu.classList.add('hidden');
+          mobileAboutIcon.style.transform = 'rotate(0deg)';
+        }
+      }
+
+      if (mobileAboutToggle) {
+        mobileAboutToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleMobileAbout();
+        });
+      }
+
+      // Function to toggle mobile about submenu
+      function toggleMobileCollection() {
+        const isHidden = mobileCollectionMenu.classList.contains('hidden');
+
+        if (isHidden) {
+          // Show submenu
+          mobileCollectionMenu.classList.remove('hidden');
+          mobileCollectionIcon.style.transform = 'rotate(180deg)';
+        } else {
+          // Hide submenu
+          mobileCollectionMenu.classList.add('hidden');
+          mobileCollectionIcon.style.transform = 'rotate(0deg)';
+        }
+      }
+
+      if (mobileCollectionToggle) {
+        mobileCollectionToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleMobileCollection();
+        });
+      }
 
       // Search functionality
       const searchButton = document.getElementById('searchButton');
       const searchInputContainer = document.getElementById('searchInputContainer');
       const closeSearch = document.getElementById('closeSearch');
 
-      searchButton.addEventListener('click', function () {
+      searchButton.addEventListener('click', function() {
         searchInputContainer.classList.toggle('hidden');
         setTimeout(() => {
           searchInputContainer.classList.toggle('opacity-0');
         }, 10);
       });
 
-      closeSearch.addEventListener('click', function () {
+      closeSearch.addEventListener('click', function() {
         searchInputContainer.classList.add('opacity-0');
         setTimeout(() => {
           searchInputContainer.classList.add('hidden');
@@ -1035,7 +948,7 @@
       const increaseFontBtn = document.getElementById('increaseFontBtn');
       let fontSizeIncreased = false;
 
-      increaseFontBtn.addEventListener('click', function () {
+      increaseFontBtn.addEventListener('click', function() {
         const body = document.body;
         if (!fontSizeIncreased) {
           body.style.fontSize = '1.1rem';
@@ -1050,7 +963,7 @@
 
       // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
           e.preventDefault();
           const target = document.querySelector(this.getAttribute('href'));
           if (target) {
