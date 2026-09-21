@@ -67,6 +67,7 @@ class PageController
 
     public function buildWizard()
     {
+        AuthController::requireAdmin();
         require PUBLIC_ROOT . '/admin/buildWizard/index.php';
         return;
     }
