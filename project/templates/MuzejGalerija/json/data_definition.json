@@ -362,8 +362,8 @@
           }
         },
         {
-          "code": "datumPocetka",
-          "name": "datumPocetka",
+          "code": "datum",
+          "name": "datum",
           "type": "date",
           "label": {
             "sr": "Datum početka",
