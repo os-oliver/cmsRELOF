@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Controllers\AuthController;
 
 class UserController
 {
@@ -10,6 +11,7 @@ class UserController
      */
     public function create(): void
     {
+        AuthController::requireAdmin();
         header('Content-Type: application/json');
 
         // 1) Read the raw request body and decode JSON
@@ -38,6 +40,7 @@ class UserController
      */
     public function update(int $id): void
     {
+        AuthController::requireAdmin();
         // PHP doesn’t populate $_POST on PUT; grab the raw JSON body:
         $payload = json_decode(file_get_contents('php://input'), true) ?: [];
 
@@ -63,6 +66,7 @@ class UserController
      */
     public function delete(int $id): void
     {
+        AuthController::requireAdmin();
         $model = new User();
         $result = $model->delete($id);
 
