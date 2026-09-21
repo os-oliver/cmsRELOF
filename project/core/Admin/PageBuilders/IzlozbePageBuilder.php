@@ -98,7 +98,7 @@ PHP;
                 <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-60 transition-opacity"></div>
                 <div class="absolute left-4 bottom-4">
                     <div class="px-3 py-1 rounded-full bg-black/50 text-white text-xs font-semibold backdrop-blur-sm">
-                        {{startDateLabel}}: <span class="ml-2 font-bold">{{datumPocetka}}</span>
+                        {{startDateLabel}}: <span class="ml-2 font-bold">{{datum}}</span>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
         return $item[$name] ?? null;
     };
 
-    // Required fields according to schema: slika, naziv, datumPocetka
+    // Required fields according to schema: slika, naziv, datum
     $rawNaziv = $getField('naziv') ?? '';
     // If naziv is an array with localized value inside ['value'] or similar, try to extract string
     if (is_array($rawNaziv)) {
@@ -161,19 +161,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     // Image handling: common shapes -> file array with 'url', or string URL, or nested structure
         $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
 
-    // Datum početka - try to parse ISO date and format to dd/mm/YYYY
-    $rawDatum = $getField('datumPocetka') ?? '';
-    $formattedDatum = '';
-    if ($rawDatum) {
-        try {
-            $dt = new DateTime($rawDatum);
-            // format: 1. Jan 2025 -> 01/01/2025 (local-friendly)
-            $formattedDatum = $dt->format(LocalManager::DATE_FORMAT_STRING);
-        } catch (Exception $e) {
-            // fallback to raw string sanitized
-            $formattedDatum = htmlspecialchars($rawDatum, ENT_QUOTES, 'UTF-8');
-        }
-    }
+    $rawDatum = $getField('datum') ?? '';
 
     $itemId = htmlspecialchars($item['id'] ?? ($item['_id'] ?? ''), ENT_QUOTES, 'UTF-8');
 
@@ -195,7 +183,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     $replacements = [
         '{{imageSection}}' => $imageSection,
         '{{naziv}}' => $naziv,
-        '{{datumPocetka}}' => htmlspecialchars($formattedDatum, ENT_QUOTES, 'UTF-8'),
+        '{{datum}}' => htmlspecialchars($rawDatum, ENT_QUOTES, 'UTF-8'),
         '{{itemId}}' => $itemId,
         '{{startDateLabel}}' => htmlspecialchars($texts['start_date_label'], ENT_QUOTES, 'UTF-8'),
         '{{viewLabel}}' => htmlspecialchars($texts['view'], ENT_QUOTES, 'UTF-8'),
@@ -253,7 +241,7 @@ PHP;
 <main class="bg-gradient-to-br from-secondary_background to-background min-h-screen">
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-primary_text mb-2">Izložbe</h1>
+            <h1 class="text-3xl font-bold text-primary_text mb-2 font-heading">Izložbe</h1>
             <p class="text-secondary_text">Istražite izložbe</p>
         </div>
 
@@ -318,7 +306,7 @@ $search = $_GET['search'] ?? '';
 
 $categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale, 'datum', 'DESC')
     : ['success' => false, 'items' => [], 'total' => 0];
 
 $config = $fieldLabels = [];
