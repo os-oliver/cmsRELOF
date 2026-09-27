@@ -5,6 +5,7 @@ session_start();
 
 use App\Models\Contact;
 use App\Utils\FileUploader;
+use App\Controllers\AuthController;
 
 class ContactController
 {
@@ -20,8 +21,10 @@ class ContactController
             echo json_encode((new Contact())->list($limit, $offset));
         }
     }
-    public function delete($id): void
+
+    public function delete(int $id): void
     {
+        AuthController::requireEditor();
         if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
             http_response_code(405);
             echo json_encode(['error' => 'Method Not Allowed, use DELETE']);
@@ -40,6 +43,7 @@ class ContactController
         http_response_code(200);
         echo json_encode(['deleted' => true]);
     }
+
     public function create(): void
     {
         // Read raw JSON body
@@ -78,7 +82,5 @@ class ContactController
             echo json_encode(['error' => 'Greška pri čuvanju poruke.']);
         }
     }
-
-
 
 }
