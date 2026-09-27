@@ -33,7 +33,6 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $registerRoute('GET', '/kontrolna-tabla/zalbe', 'PageController@complaints');
     $registerRoute('GET', '/kontrolna-tabla', 'PageController@dashboard');
     $registerRoute('GET', '/kontrolna-tabla/dokumenti', 'PageController@documents');
-    // $registerRoute('GET', '/kontrolna-tabla/dogadjaji', 'PageController@events'); // obsolete -> moved to editorDynamic
     $registerRoute('GET', '/kontrolna-tabla/stranice', 'PageController@StaticPageEditor');
     $registerRoute('GET', '/kontrolna-tabla/poruke', 'PageController@chats');
     $registerRoute('GET', '/kontrolna-tabla/o-nama', 'PageController@aboutUS');
@@ -98,12 +97,6 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
 
     $registerRoute('POST', '/login', 'AuthController@auth');
     $registerRoute('GET', '/logout', 'AuthController@logout');
-
-    $registerRoute('GET', '/events', 'EventController@list');
-    $registerRoute('GET', '/events/{id:\d+}', 'EventController@show');
-    $registerRoute('POST', '/events', 'EventController@create');
-    $registerRoute('PUT', '/events/{id:\d+}', 'EventController@update');
-    $registerRoute('DELETE', '/events/{id:\d+}', 'EventController@delete');
 
     $registerRoute('PUT', '/aboutus/{id:\d+}', 'AboutUSController@aboutUs');
     $registerRoute('POST', '/employees', 'AboutUSController@employees');
