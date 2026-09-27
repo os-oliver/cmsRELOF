@@ -1,12 +1,14 @@
 <?php
 namespace App\Controllers;
 
+use App\Controllers\AuthController;
+
 class ComponentController
 {
 
     public function saveLandigPageComponent()
     {
-
+        AuthController::requireEditor();
         $path = $_POST['cmp'] ?? '';
         $html = $_POST['html'] ?? '';
         $bytes = file_put_contents(PUBLIC_ROOT . $path, $html);
@@ -24,6 +26,7 @@ class ComponentController
     }
     public function saveComponent(): void
     {
+        AuthController::requireEditor();
         $componentName = $_POST['name'] ?? '';
         $componentContent = $_POST['content'] ?? '';
 
