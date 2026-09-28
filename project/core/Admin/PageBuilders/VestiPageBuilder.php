@@ -413,7 +413,7 @@ class VestiPageBuilder extends BasePageBuilder
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(array $categories, string $locale, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-md mb-8 gap-4'>";
@@ -428,21 +428,11 @@ function renderTopbar(array $categories, string $searchValue = '', int|string|nu
             <option value=''>{$texts['all_categories']}</option>";
 
     foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-
-        $isSelected = false;
-
-        if ($selectedCategoryId !== null) {
-            if (is_numeric($selectedCategoryId) && (int)$selectedCategoryId === (int)$cat['id']) {
-                $isSelected = true;
-            } elseif (is_string($selectedCategoryId) && strtolower($selectedCategoryId) === strtolower($cat['name'])) {
-                $isSelected = true;
-            }
-        }
-
-        $selected = $isSelected ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
+        $translations = $cat['translations'];
+        $code = $cat['option_value'];
+        $name = $translations[$locale] ?? $translations['sr'];
+        $selected = ($selectedCategoryId == $cat['option_value']) ? 'selected' : '';
+        $html .= "<option value='{$code}' {$selected}>{$name}</option>";
     }
 
     $html .= "</select></div></form>";
@@ -456,6 +446,7 @@ PHP;
 
 function cardRender(array $item, array $fieldLabels, string $locale): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     // Sanitizacija podataka
     $naslov = htmlspecialchars(trim($item['fields']['naslov'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
     $opis = htmlspecialchars(trim($item['fields']['opis'][$locale] ?? ''), ENT_QUOTES, 'UTF-8');
@@ -467,7 +458,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     $autor = htmlspecialchars($item['fields']['autor'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = !empty($item['image']) ? htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') : null;
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
+    $kategorija = htmlspecialchars($item['fields']['main_category'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
 
     // Kategorijske ikone
     $categoryIcons = [
@@ -536,7 +527,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
             $html .= "<p class='news-description-hero'>{$shortDescription}</p>";
         }
 
-        $targetLink = "sadrzaj?id={$itemId}&tip=Vesti";
+        $targetLink = "/sadrzaj?id={$itemId}&tip=vesti";
         $html .= "
                 <a href='{$targetLink}' class='bg-primary news-cta-button hover:bg-primary_hover'>
                     <span>Pročitaj više</span>
@@ -625,7 +616,7 @@ PHP;
             <p class="text-lg text-secondary_text">Istražite našu bogatu ponudu kulturnih događaja</p>
         </div>
 
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
+        <?php echo renderTopbar($categories, $locale, $search, $categoryId, $texts); ?>
 
         <div class="performances-grid">
             <?php
@@ -655,7 +646,9 @@ HTML;
         $additionalPHP = <<<'PHP'
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
+use App\Models\ContentType;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -682,9 +675,9 @@ $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
     : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
+$categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
 $itemsList = $slug
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale, 'datum', 'DESC')
     : ['success' => false, 'items' => [], 'total' => 0];
 
 $config = $fieldLabels = [];

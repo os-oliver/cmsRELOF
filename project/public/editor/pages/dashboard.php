@@ -19,7 +19,7 @@ $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
 $views = (new VisitCounterController())->getVisitCount();
 [$_, $totalUsers] = (new User())->list();
 $news_raw = (new Content())->fetchListData('Vesti', '', 0, 3, null, $locale)['items'];
-$news = HashMapTransformer::transform($news_raw, $locale);
+$news = HashMapTransformer::transformNew($news_raw, $locale);
 
 $documentModal = new Document();
 [$documents, $totalDocuments] = $documentModal->list(

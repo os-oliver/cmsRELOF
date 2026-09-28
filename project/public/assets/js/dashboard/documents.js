@@ -55,12 +55,12 @@ const injectStyles = () => {
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-    
+
     @keyframes checkmark {
       0% { stroke-dashoffset: 48; }
       100% { stroke-dashoffset: 0; }
     }
-    
+
     @keyframes circleGrow {
       0% { stroke-dashoffset: 166; }
       100% { stroke-dashoffset: 0; }
@@ -120,6 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
       button.onclick = (e) => {
         e.preventDefault();
         window.location.href = updateQueryString(page);
+      };
+    }
+    if ((page == '' || isNaN(page)) && button.hasAttribute('data-gotopage')) {
+      button.onclick = (e) => {
+        e.preventDefault();
+        window.location.href = updateQueryString(button.getAttribute('data-gotopage'));
       };
     }
   });
@@ -222,7 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fileInput = document.getElementById("documetFile");
   const dropzone = document.getElementById("fileDropzone");
-  const MAX_FILE_SIZE_MB = 50;
+  const maxBytes = Number(formEls.form?.dataset?.maxBytes || 0);
+  const MAX_FILE_SIZE_MB = maxBytes > 0 ? maxBytes / 1024 / 1024 : 50;
 
   if (fileInput && dropzone) {
     fileInput.addEventListener("change", () => {
@@ -233,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (fileSizeMB > MAX_FILE_SIZE_MB) {
         alert(
-          `Greška! Fajl je prevelik.\n\nMaksimalna dozvoljena veličina: ${MAX_FILE_SIZE_MB}MB\nVaš fajl: ${fileSizeMB.toFixed(
+          `Greška! Fajl je prevelik.\n\nMaksimalna dozvoljena veličina: ${MAX_FILE_SIZE_MB.toFixed(2)}MB\nVaš fajl: ${fileSizeMB.toFixed(
             2
           )}MB\n\nMolimo izaberite manji fajl.`
         );
@@ -430,8 +437,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  modalEls.close.addEventListener("click", hideModal);
-  modalEls.modal.addEventListener("click", (e) => {
-    if (e.target === modalEls.modal) hideModal();
-  });
+  if (modalEls.close) {
+    modalEls.close.addEventListener("click", hideModal);
+  }
+  if (modalEls.modal) {
+    modalEls.modal.addEventListener("click", (e) => {
+      if (e.target === modalEls.modal) hideModal();
+    });
+  }
 });

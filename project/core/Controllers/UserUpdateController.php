@@ -1,8 +1,4 @@
 <?php
-// U ruteru
-
-
-// UserUpdateController.php
 namespace App\Controllers;
 
 use DOMDocument;
@@ -10,11 +6,13 @@ use DOMNode;
 use DOMXPath;
 use Exception;
 use App\Models\Text;
+use App\Controllers\AuthController;
 
 class UserUpdateController
 {
     public function saveComponent()
     {
+        AuthController::requireAdmin();
         try {
             if (!isset($_POST['componentFileName']) || !isset($_POST['htmlContent'])) {
                 throw new Exception('Nedostaju obavezni parametri');
@@ -104,8 +102,6 @@ class UserUpdateController
         return $this->processContent($content, $pageSlug);
     }
 
-
-
     private function generateTextId(string $text, string $path, string $pageSlug): string
     {
         $pathHash = substr(md5($path), 0, 6);
@@ -113,7 +109,7 @@ class UserUpdateController
         return "t_{$pageSlug}_{$pathHash}_{$textHash}";
     }
 
-        private function shouldMakeDynamic(string $text, \DOMNode $node): bool
+    private function shouldMakeDynamic(string $text, \DOMNode $node): bool
     {
 
         // Trim the text for checking
@@ -196,8 +192,6 @@ class UserUpdateController
         return preg_match('/^[\p{L}\p{N}\s\p{P}]+$/u', $text);
     }
 
-
-
     private function getElementPath(DOMNode $node): string
     {
         $path = [];
@@ -273,6 +267,7 @@ class UserUpdateController
         // Fallback: for elements, reuse getElementPath
         return $this->getElementPath($node);
     }
+
     private function generatePathHash(string $elementPath): string
     {
         // You can use sha256 or md5; sha256 is stronger

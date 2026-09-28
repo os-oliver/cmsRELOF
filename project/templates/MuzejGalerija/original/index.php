@@ -698,7 +698,7 @@
 
                 <div class="flex items-center gap-2">
                   <i class="fas fa-calendar-check"></i>
-                  Početak: <span id="g-datumPocetka">20. Decembar 2025</span>
+                  Početak: <span id="g-datum">20. Decembar 2025</span>
                 </div>
 
                 <i class="fas fa-arrow-right"></i>

@@ -60,6 +60,8 @@ class Gallery
         ?string $search = null,
         string $lang = 'sr-Cyrl'
     ): array {
+        $lang = $this->resolveLang($lang ?: ($_SESSION['locale'] ?? 'sr-Cyrl'));
+
         $params = [
             ':lang' => $lang,
             ':offset' => $offset,
@@ -89,7 +91,7 @@ class Gallery
         JOIN gallery g ON g.id = page_gallery.id
         JOIN text t ON t.source_id = g.id
             AND t.source_table = 'gallery'
-            AND t.lang = :lang COLLATE utf8mb4_unicode_ci
+            AND t.lang = :lang
         {$whereClause}
         ORDER BY {$order};
     ";
@@ -285,19 +287,25 @@ class Gallery
      */
     public function search(string $term, string $lang = 'sr-Cyrl'): array
     {
+        $lang = $this->resolveLang($lang ?: ($_SESSION['locale'] ?? 'sr-Cyrl'));
+
         $sql = "
             SELECT g.id, g.image_file_path, g.uploaded_at, t.field_name, t.content
             FROM gallery g
             JOIN text t ON t.source_id = g.id
               AND t.source_table = 'gallery'
-              AND t.lang = :lang COLLATE utf8mb4_unicode_ci
+              AND t.lang = :lang
             WHERE t.content LIKE :search
             ORDER BY g.uploaded_at DESC
         ";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':lang' => $lang, ':search' => "%{$term}%"]);
+        $stmt->execute([
+            ':lang' => $lang,
+            ':search' => "%{$term}%"
+        ]);
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         return (new Pivoter('field_name', 'content', 'id'))->pivot($rows);
     }
 }

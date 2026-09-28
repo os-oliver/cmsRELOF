@@ -58,6 +58,7 @@ class ColorsController
 
     private function handleUpdate(): void
     {
+        AuthController::requireEditor();
         try {
             if (!$this->commonScriptPath || !is_writable($this->commonScriptPath)) {
                 throw new \RuntimeException('commonScript.js missing or not writable');
@@ -161,6 +162,7 @@ class ColorsController
      */
     private function replaceColors(string $js, array $newColors): ?string
     {
+        AuthController::requireEditor();
         // Nalazimo colors blok
         if (!preg_match('/(colors:\s*\{)([^}]+)(\})/s', $js, $match, PREG_OFFSET_CAPTURE)) {
             return null;
