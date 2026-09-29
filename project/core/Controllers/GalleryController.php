@@ -3,10 +3,10 @@ namespace App\Controllers;
 
 session_start();
 
-
 use App\Models\Gallery;
 use App\Utils\LocaleManager;
 use App\Utils\FileUploader;
+use App\Controllers\AuthController;
 
 class GalleryController
 {
@@ -24,6 +24,7 @@ class GalleryController
 
     public function newImage(): void
     {
+        AuthController::requireEditor();
         $data = [];
         $data['title'] = $_POST['galleryTitle'] ?? null;
         $data['description'] = $_POST['galleryDescription'] ?? null;
@@ -56,6 +57,7 @@ class GalleryController
 
     public function update(int $id): void
     {
+        AuthController::requireEditor();
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
         if (!in_array($method, ['PUT', 'POST'])) {
@@ -114,8 +116,9 @@ class GalleryController
         echo json_encode(['updated' => true]);
     }
 
-    public function delete($id): void
+    public function delete(int $id): void
     {
+        AuthController::requireEditor();
         if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
             http_response_code(405);
             echo json_encode(['error' => 'Method Not Allowed, use DELETE']);
