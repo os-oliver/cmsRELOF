@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers;
 
-session_start();
-
 use App\Models\News;
 use App\Utils\Validator;
 use App\Controllers\AuthController;

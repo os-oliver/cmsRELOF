@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers;
 
-session_start();
-
 use App\Models\Contact;
 use App\Utils\FileUploader;
 use App\Controllers\AuthController;

@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers;
 
-session_start();
-
 use App\Models\Gallery;
 use App\Utils\LocaleManager;
 use App\Utils\FileUploader;
