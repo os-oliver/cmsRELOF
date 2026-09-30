@@ -3,8 +3,6 @@ namespace App\Controllers;
 
 use App\Utils\LocaleManager;
 
-session_start();
-
 use App\Controllers\AuthController;
 use App\Models\Employee;
 use App\Models\AboutUs;
