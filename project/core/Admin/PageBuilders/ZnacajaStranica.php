@@ -82,8 +82,8 @@ class ZnacajaStranica extends BasePageBuilder
               koje informacije ili dokumente tražite, kao i period na koji se zahtev odnosi.</li>
             <li><strong>Pošaljite popunjen zahtev</strong>&nbsp;na adresu elektronske pošte:&nbsp;
               <a data-translate="off" class="text-accent hover:text-accent_hover underline-offset-2 hover:underline"
-                 href="mailto:mail@example.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
-                 mail@example.rs
+                 href="mailto:galerijalazarvozarevic@gmail.com?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                 galerijalazarvozarevic@gmail.com
               </a>. Možete poslati i poštom ili lično, u pisarnici.</li>
             <li><strong>Odgovor</strong>: nakon obrade, dobićete e-poruku sa adresom ili linkom,
               sa koje možete preuzeti tražene informacije, ili obrazloženje ako zahtev nije moguće u celosti uvažiti.</li>
@@ -102,7 +102,8 @@ class ZnacajaStranica extends BasePageBuilder
         <section class="mt-4">
           <h2 class="font-heading2 text-2xl md:text-3xl text-primary_text mb-2">Ovlašćena lica / Kontakt</h2>
           <div class="bg-surface border border-secondary/20 rounded-2xl p-6">
-            <p><strong>Lice ovlašćeno za zaštitu podataka o ličnosti</strong><br>Ime Prezime — 021/123-123 i 021/123-123 — <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:mail@example.rs">mail@example.rs</a></p>
+            <p><strong>Lice ovlašćeno za zaštitu podataka o ličnosti</strong><br>Biljana Nikolić — 022/621-492 — 
+            <a class="text-accent hover:text-accent_hover" data-translate="off" href="mailto:galerijalazarvozarevic@gmail.com">&nbsp;galerijalazarvozarevic@gmail.com</a></p>
           </div>
         </section>
       </article>
@@ -126,15 +127,15 @@ class ZnacajaStranica extends BasePageBuilder
 
             <div class="mt-3">
               <div class="flex items-center justify-between gap-2 bg-white border border-secondary/30 rounded-xl px-3 py-2">
-                <span class="truncate text-primary_text" data-translate="off">mail@example.rs</span>
+                <span class="truncate text-primary_text" data-translate="off">galerijalazarvozarevic@gmail.com</span>
                 <button class="inline-flex items-center gap-2 rounded-full px-3 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                        onclick="navigator.clipboard.writeText('mail@example.rs')">
+                        onclick="navigator.clipboard.writeText('galerijalazarvozarevic@gmail.com')">
                   Kopiraj
                 </button>
               </div>
               <p class="mt-2">
                 <a class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-secondary hover:bg-secondary_hover text-white font-semibold"
-                   href="mailto:mail@example.rs?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
+                   href="mailto:galerijalazarvozarevic@gmail.com?subject=Zahtev%20za%20pristup%20informacijama%20od%20javnog%20zna%C4%8Daja">
                   Otvori e-poštu
                 </a>
               </p>
