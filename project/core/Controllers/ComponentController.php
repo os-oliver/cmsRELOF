@@ -59,6 +59,7 @@ class ComponentController
 
     public function loadComponent(): void
     {
+        AuthController::requireEditor();
         $name = $_GET['cmp'] ?? '';
         if ($name == 'index') {
             $path = PUBLIC_ROOT . '/exportedPages/' . $name . '.php';
