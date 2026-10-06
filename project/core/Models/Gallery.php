@@ -91,7 +91,11 @@ class Gallery
         JOIN gallery g ON g.id = page_gallery.id
         JOIN text t ON t.source_id = g.id
             AND t.source_table = 'gallery'
+<<<<<<< HEAD
             AND t.lang = :lang 
+=======
+            AND t.lang = :lang
+>>>>>>> 972214f4d0a302e3fef257173ce5ee42247a29cc
         {$whereClause}
         ORDER BY {$order};
     ";
@@ -294,7 +298,11 @@ class Gallery
             FROM gallery g
             JOIN text t ON t.source_id = g.id
               AND t.source_table = 'gallery'
+<<<<<<< HEAD
               AND t.lang = :lang 
+=======
+              AND t.lang = :lang
+>>>>>>> 972214f4d0a302e3fef257173ce5ee42247a29cc
             WHERE t.content LIKE :search
             ORDER BY g.uploaded_at DESC
         ";

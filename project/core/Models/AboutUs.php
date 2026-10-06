@@ -76,7 +76,11 @@ class AboutUs
             FROM aboutus a
             LEFT JOIN text t ON t.source_id = a.id
               AND t.source_table = 'aboutus'
+<<<<<<< HEAD
               AND t.lang = :lang 
+=======
+              AND t.lang = :lang
+>>>>>>> 972214f4d0a302e3fef257173ce5ee42247a29cc
             ORDER BY a.id
         ";
         $stmt = $this->pdo->prepare($sql);
@@ -91,16 +95,21 @@ class AboutUs
     public function get(int $id, $lang): ?array
     {
         $sql = "
-            SELECT 
+            SELECT
             a.*,
             COALESCE(t1.field_name, t2.field_name) AS field_name,
             COALESCE(t1.content, t2.content) AS content
         FROM aboutus a
-        LEFT JOIN text t1 
+        LEFT JOIN text t1
             ON t1.source_id = a.id
             AND t1.source_table = 'aboutus'
+<<<<<<< HEAD
             AND t1.lang = :lang 
         LEFT JOIN text t2 
+=======
+            AND t1.lang = :lang
+        LEFT JOIN text t2
+>>>>>>> 972214f4d0a302e3fef257173ce5ee42247a29cc
             ON t2.source_id = a.id
             AND t2.source_table = 'aboutus'
             AND t2.lang = 'sr-Cyrl'
@@ -214,8 +223,8 @@ class AboutUs
 
             // Obriši samo mission i goal, ne title
             $stmtDel = $this->pdo->prepare("
-            DELETE FROM text 
-            WHERE source_id = :id 
+            DELETE FROM text
+            WHERE source_id = :id
               AND source_table = 'aboutus'
               AND field_name IN ('mission', 'goal')
         ");
