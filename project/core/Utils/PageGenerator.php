@@ -119,7 +119,7 @@ $dynamicText = $textModel->getDynamicText($locale);
 
 [$events, $totalEvents] = (new Event)->all(lang:$locale);
 use App\Models\Gallery;
-[$images, $totalEvents] = (new Gallery)->list();
+[$images, $totalEvents] = (new Gallery)->list(lang:$locale);
 ?>
 PHP;
     }

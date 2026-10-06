@@ -6,6 +6,8 @@ namespace App\Controllers;
 use App\Models\Content;
 use App\Models\Event;
 use App\Admin\PageBuilders\BasicPageBuilder;
+use App\Models\ContentType;
+use App\Models\CustomFieldValue;
 use App\Utils\CardRenderer;
 use App\Utils\LocaleManager;
 
@@ -1259,7 +1261,7 @@ class PersonalContentController
             return $this->getNotFoundContent($type);
         }
 
-        $data = $contentController->fetchItem($id, $locale);
+        $data = $contentController->fetchItemNew($id, $locale);
 
         if (!$data['success'] || !isset($data['item'])) {
             return $this->getNotFoundContent($type);
@@ -1272,43 +1274,43 @@ class PersonalContentController
         $docExtensions = ['pdf', 'xls', 'xlsx', 'doc', 'docx'];
 
         // Fetch all attached files/images
-        $allFiles = \App\Models\Image::fetchByElement($id);
+        $allFiles = CustomFieldValue::findFileCFVsByContentId($id);
 
         // Separate images and documents
         $images = array_filter($allFiles, function ($file) use ($docExtensions) {
-            $ext = strtolower(pathinfo($file['file_path'], PATHINFO_EXTENSION));
+            $ext = strtolower(pathinfo($file['filepath'], PATHINFO_EXTENSION));
             return !in_array($ext, $docExtensions);
         });
 
         $files = array_filter($allFiles, function ($file) use ($docExtensions) {
-            $ext = strtolower(pathinfo($file['file_path'], PATHINFO_EXTENSION));
+            $ext = strtolower(pathinfo($file['filepath'], PATHINFO_EXTENSION));
             return in_array($ext, $docExtensions);
         });
 
         // Also check for file URLs inside fields
+        // This is probably not needed anymore, since we collect filepaths from the CFVs now
+        /*
         foreach ($fields as $fieldValues) {
-            foreach ($fieldValues as $value) {
-                if (!is_string($value))
-                    continue;
-                $ext = strtolower(pathinfo($value, PATHINFO_EXTENSION));
-                if (in_array($ext, $docExtensions)) {
-                    $files[] = ['file_path' => $value];
-                }
+            $ext = strtolower(pathinfo($fieldValues['textValue'], PATHINFO_EXTENSION));
+            if (in_array($ext, $docExtensions)) {
+                $files[] = ['filepath' => $fieldValues['textValue']];
             }
         }
+        */
 
         // Get labels and icons
-        $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        // $labels = $this->getLabelsFromStructure($type, $structure, $locale);
+        $labels = array_map(fn($item) => $item['label'], $fields);
         $fieldIcons = $this->getFieldIcons($type, $structure);
-        $typeData = $this->getTypeData($type, $structure, $locale);
+        $typeData = $this->getTypeData($type, $structure, $locale); // moze sadrzati i ikonu
         $typeName = $typeData['name'] ?? $type;
 
         // Find title field
         $title = '';
         $titleField = null;
         foreach ($fields as $field => $values) {
-            if (in_array(strtolower($field), ['title', 'name', 'heading', 'naziv', 'naslov']) && isset($values[$locale])) {
-                $title = htmlspecialchars($values[$locale], ENT_QUOTES, 'UTF-8');
+            if (in_array($values['code'], ['title', 'name', 'heading', 'naziv', 'naslov'])) {
+                $title = htmlspecialchars($values['textValue'], ENT_QUOTES, 'UTF-8');
                 $titleField = $field;
                 break;
             }
@@ -1330,15 +1332,18 @@ class PersonalContentController
 
         // Display fields in grid
         foreach ($fields as $field => $values) {
-            if ($field === $titleField || !isset($values[$locale]))
+            if ($field === $titleField || !isset($values['textValue']))
                 continue;
+            if (isset($values['imageUrl'])) { // ne stampaj CFV koji je tipa file
+                continue;
+            }
 
-            $value = $values[$locale];
+            $value = $values['textValue'];
             if (empty(trim($value)))
                 continue;
 
-            $displayLabel = $labels[$field] ?? ucwords(str_replace('_', ' ', $field));
-            $icon = $this->getFieldIcon($field, $fieldIcons);
+            $displayLabel = $values['label'] ?? ucwords(str_replace('_', ' ', $values['label']));
+            $icon = $this->getFieldIcon($values['code'], $fieldIcons);
             $escapedValue = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 
             // Determine if this is a long text field
@@ -1402,7 +1407,7 @@ class PersonalContentController
             <div class="gallery-grid">';
 
             foreach ($images as $img) {
-                $imgPath = htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8');
+                $imgPath = htmlspecialchars($img['filepath'], ENT_QUOTES, 'UTF-8');
                 $html .= '
                 <div class="gallery-item">
                     <a href="' . $imgPath . '" class="gallery-image-link block">
@@ -1524,23 +1529,16 @@ class PersonalContentController
 
     private function getTypeData(string $type, array $structure, string $locale): array
     {
-        if (empty($structure) || !is_array($structure)) {
+        $typeData = ContentType::fetchByCode($type, true);
+        if (empty($typeData) || !is_array($typeData)) {
             return ['name' => $type];
         }
 
-        $structureData = $structure[0] ?? [];
-
-        if (!isset($structureData[$type])) {
-            return ['name' => $type];
-        }
-
-        $typeInfo = $structureData[$type];
-
-        $typeName = $typeInfo[$locale] ?? $typeInfo['sr'] ?? $typeInfo['en'] ?? $type;
+        $typeName = $typeData['translations'][$locale] ?? $type;
 
         return [
             'name' => $typeName,
-            'icon' => $typeInfo['icon'] ?? 'fas fa-file-alt'
+            'icon' => $typeData['icon'] ?? 'fas fa-file-alt'
         ];
     }
 

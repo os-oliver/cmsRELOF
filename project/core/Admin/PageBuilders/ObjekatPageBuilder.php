@@ -11,7 +11,7 @@ class ObjekatPageBuilder extends BasePageBuilder
     <div class="container mx-auto px-6 max-w-5xl">
 
       <!-- Naslov sekcije sa linijom -->
-      <h2 class="text-4xl font-extrabold text-text_primary mb-6 relative inline-block">
+      <h2 class="text-4xl font-extrabold text-primary_text mb-6 relative inline-block">
         Naš Objekat
         <span class="block w-24 h-1 bg-primary mt-2 rounded-full"></span>
       </h2>
@@ -29,11 +29,11 @@ class ObjekatPageBuilder extends BasePageBuilder
 
         <!-- Desna strana: tekst -->
         <div class="md:w-2/3 flex flex-col justify-start">
-          <p class="text-text_secondary text-base leading-relaxed mb-4">
+          <p class="text-secondary_text text-base leading-relaxed mb-4">
             Ovaj objekat predstavlja funkcionalan i kvalitetno opremljen prostor, koncipiran tako da zadovolji profesionalne standarde i bezbednosne propise. Njegova lokacija omogućava odličnu povezanost sa centralnim tačkama, dok unutrašnja infrastruktura pruža pouzdanost i efikasnost u svakodnevnom radu.
           </p>
 
-          <p class="text-text_secondary text-base leading-relaxed mb-4">
+          <p class="text-secondary_text text-base leading-relaxed mb-4">
             Struktura objekta je jasno definisana, sa logičnim rasporedom prostorija i pristupačnim komunikacionim putevima, što doprinosi produktivnosti i jednostavnom korišćenju.
           </p>
 

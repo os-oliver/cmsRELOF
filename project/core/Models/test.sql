@@ -8,16 +8,16 @@ CREATE PROCEDURE paginate_documents(
 )
 BEGIN
     -- Glavni SELECT sa LIMIT pre join-a
-    SELECT 
+    SELECT
         d.id,
         d.category_id,
         d.filepath,
         d.extension,
         d.datetime,
         d.fileSize,
-        te.field_name, 
-        te.content, 
-        tc.content AS name, 
+        te.field_name,
+        te.content,
+        tc.content AS name,
         k.color_code
     FROM (
         SELECT id
@@ -26,15 +26,15 @@ BEGIN
         LIMIT p_offset, p_limit
     ) AS page_docs
     JOIN document d ON d.id = page_docs.id
-    JOIN text te 
+    JOIN text te
         ON te.source_id = d.id
        AND te.source_table = 'document'
-       AND te.lang = p_lang COLLATE utf8mb4_unicode_ci
+       AND te.lang = p_lang
     JOIN category_document k ON k.id = d.category_id
-    JOIN text tc 
+    JOIN text tc
         ON tc.source_id = k.id
        AND tc.source_table = 'category_document'
-       AND tc.lang = p_lang COLLATE utf8mb4_unicode_ci
+       AND tc.lang = p_lang
     ORDER BY d.datetime DESC;
 
     -- Ukupan broj redova
