@@ -654,7 +654,7 @@
                             <span class="block mt-2 text-secondary_text font-heading2">Babušnica</span>
                         </h1>
                         <p class="mx-4 md:mx-20 mb-10 text-xl">
-                            Predškolska ustanova <strong>„Dečja radost“</strong> dostupna je svakom detetu predškolskog uzrasta na teritoriji naše opštine imajući u vidu i decu sa razvojnim smetnjama i obezbeđuje aktivno učešće deteta u zajednici dece slične sebi. Vaspitno-obrazovni rad i brigu o deci vodi iskusno i kvalifikovano osoblje, koje kroz saradnju sa roditeljima radi na opštu dobrobit svakog deteta.
+                            Predškolska ustanova <strong class="ml-1 mr-1">„Dečja radost“</strong> dostupna je svakom detetu predškolskog uzrasta na teritoriji naše opštine imajući u vidu i decu sa razvojnim smetnjama i obezbeđuje aktivno učešće deteta u zajednici dece slične sebi. Vaspitno-obrazovni rad i brigu o deci vodi iskusno i kvalifikovano osoblje, koje kroz saradnju sa roditeljima radi na opštu dobrobit svakog deteta.
                         </p>
                         <div class="flex flex-col sm:flex-row justify-center gap-4">
                             <a href="/o-nama/istorijat"
