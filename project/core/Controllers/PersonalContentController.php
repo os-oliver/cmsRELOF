@@ -1373,7 +1373,7 @@ class PersonalContentController
                 <div class="documents-grid">';
 
             foreach ($files as $file) {
-                $filePath = $file['file_path'];
+                $filePath = $file['filepath'];
                 $fileName = basename($filePath);
                 $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
                 $iconData = $this->getDocumentIcon($extension);

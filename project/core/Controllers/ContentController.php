@@ -120,7 +120,7 @@ class ContentController
     public function contentTypes(): void
     {
         AuthController::requireAdmin();
-        ContentTypeManager::createTypes('Turizam');
+        ContentTypeManager::createTypes('ObrazovnaUstanova');
     }
 
 }
