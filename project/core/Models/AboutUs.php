@@ -76,11 +76,7 @@ class AboutUs
             FROM aboutus a
             LEFT JOIN text t ON t.source_id = a.id
               AND t.source_table = 'aboutus'
-<<<<<<< HEAD
-              AND t.lang = :lang 
-=======
               AND t.lang = :lang
->>>>>>> 972214f4d0a302e3fef257173ce5ee42247a29cc
             ORDER BY a.id
         ";
         $stmt = $this->pdo->prepare($sql);
@@ -103,13 +99,8 @@ class AboutUs
         LEFT JOIN text t1
             ON t1.source_id = a.id
             AND t1.source_table = 'aboutus'
-<<<<<<< HEAD
-            AND t1.lang = :lang 
-        LEFT JOIN text t2 
-=======
             AND t1.lang = :lang
         LEFT JOIN text t2
->>>>>>> 972214f4d0a302e3fef257173ce5ee42247a29cc
             ON t2.source_id = a.id
             AND t2.source_table = 'aboutus'
             AND t2.lang = 'sr-Cyrl'
