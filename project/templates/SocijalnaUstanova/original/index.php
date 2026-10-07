@@ -690,7 +690,7 @@
                 <!-- Search Container -->
                 <div class="relative">
                     <button id="searchButton"
-                        class="text-text_secondary hover:text-terracotta transition-all duration-200 focus:outline-none p-2 sm:p-2.5 rounded-full hover:bg-background"
+                        class="text-secondary_text hover:text-terracotta transition-all duration-200 focus:outline-none p-2 sm:p-2.5 rounded-full hover:bg-background"
                         aria-label="Search">
                         <i class="fas fa-search text-sm sm:text-base"></i>
                     </button>
@@ -703,12 +703,12 @@
                                 id="searchInput" required />
                             <div class="flex items-center space-x-1 ml-2">
                                 <button type="submit"
-                                    class="text-text_secondary hover:text-terracotta transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-background_hover w-9 h-9 flex items-center justify-center"
+                                    class="text-secondary_text hover:text-terracotta transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-background_hover w-9 h-9 flex items-center justify-center"
                                     aria-label="Submit search">
                                     <i class="fas fa-search text-sm"></i>
                                 </button>
                                 <button type="button"
-                                    class="text-text_secondary hover:text-primary transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-background_hover w-9 h-9 flex items-center justify-center"
+                                    class="text-secondary_text hover:text-primary transition-all duration-200 focus:outline-none p-2 rounded-full hover:bg-background_hover w-9 h-9 flex items-center justify-center"
                                     id="closeSearch" aria-label="Close search">
                                     <i class="fas fa-times text-sm"></i>
                                 </button>
@@ -768,7 +768,7 @@
                     Najnovije vesti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary_light to-info_bg"></span>
                 </h2>
-                <p class="text-lg text-text_secondary max-w-2xl mx-auto mt-4">
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
                     Pratite najnovije vesti i obaveštenja iz našeg centra. Ostanite informisani o svim važnim dešavanjima.
                 </p>
             </div>
@@ -788,9 +788,9 @@
                         </div>
                         <h3 id="g-naslov" class="text-xl font-display font-bold text-slate mb-2">Nova usluga Centra za socijalni rad
                         </h3>
-                        <p id="g-tekst" class="text-text_secondary mb-4 line-clamp-3 md:line-clamp-2">Centar za socijalni rad proširuje ponudu usluga novim programom podrške porodicama.</p>
+                        <p id="g-tekst" class="text-secondary_text mb-4 line-clamp-3 md:line-clamp-2">Centar za socijalni rad proširuje ponudu usluga novim programom podrške porodicama.</p>
                         <div class="flex justify-between items-center">
-                            <div class="flex items-center text-sm text-text_secondary">
+                            <div class="flex items-center text-sm text-secondary_text">
                                 <i class="fas fa-calendar-days mr-2"></i>
                                 <span id="g-datum">15. novembar 2024.</span>
                             </div>
@@ -816,9 +816,9 @@
                             <span class="text-success font-bold">PROJEKAT</span>
                         </div>
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Uspešno završen projekat podrške mladima</h3>
-                        <p class="text-text_secondary mb-4">Program podrške mladima u riziku uspešno je završen uz učešće preko 50 korisnika naših usluga.</p>
+                        <p class="text-secondary_text mb-4">Program podrške mladima u riziku uspešno je završen uz učešće preko 50 korisnika naših usluga.</p>
                         <div class="flex justify-between items-center">
-                            <div class="flex items-center text-sm text-text_secondary">
+                            <div class="flex items-center text-sm text-secondary_text">
                                 <i class="fas fa-calendar-days mr-2"></i>
                                 <span >15. novembar 2024.</span>
                             </div>
@@ -845,9 +845,9 @@
                             <span class="text-accent_orange font-bold">SARADNJA</span>
                         </div>
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Nova saradnja sa lokalnim organizacijama</h3>
-                        <p class="text-text_secondary mb-4">Potpisani su sporazumi o saradnji sa pet lokalnih nevladinih organizacija za unapređenje socijalne zaštite.</p>
+                        <p class="text-secondary_text mb-4">Potpisani su sporazumi o saradnji sa pet lokalnih nevladinih organizacija za unapređenje socijalne zaštite.</p>
                         <div class="flex justify-between items-center">
-                            <div class="flex items-center text-sm text-text_secondary">
+                            <div class="flex items-center text-sm text-secondary_text">
                                 <i class="fas fa-calendar-days mr-2"></i>
                                 <span>15. novembar 2024.</span>
                             </div>
@@ -879,7 +879,7 @@
                     Programi obuke
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-success_bg to-info_bg"></span>
                 </h2>
-                <p class="text-lg text-text_secondary max-w-2xl mx-auto mt-4">
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
                     Učestvujte u našim programima obuke i unapredite svoje veštine. Svi programi su besplatni i prilagođeni različitim grupama korisnika.
                 </p>
             </div>
@@ -898,9 +898,9 @@
                             <span id="g-naziv" class="text-success font-bold">RODITELJSTVO</span>
                         </div>
                         <h3 id="g-naslov" class="text-xl font-display font-bold text-slate mb-2">Program obuke „Roditeljske veštine"</h3>
-                        <p id="g-kratakOpis" class="text-text_secondary mb-4">Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.</p>
+                        <p id="g-kratakOpis" class="text-secondary_text mb-4">Ovaj program namenjen je roditeljima koji žele da unaprede svoje veštine u odgajanju dece i rešavanju porodičnih problema.</p>
                         <div class="flex justify-between items-center">
-                            <div class="text-sm text-text_secondary">
+                            <div class="text-sm text-secondary_text">
                                 <div class="flex items-center mb-1">
                                     <i class="fas fa-calendar mr-2"></i>
                                     <span id="g-ucestalost">Svake nedelje</span>
@@ -932,9 +932,9 @@
                             <span class="text-info font-bold">KOMUNIKACIJA</span>
                         </div>
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Efikasna komunikacija sa decom</h3>
-                        <p class="text-text_secondary mb-4">Naučite tehnike konstruktivnog razgovora sa decom različitih uzrasta i kako da rešavate konflikte u porodici.</p>
+                        <p class="text-secondary_text mb-4">Naučite tehnike konstruktivnog razgovora sa decom različitih uzrasta i kako da rešavate konflikte u porodici.</p>
                         <div class="flex justify-between items-center">
-                            <div class="text-sm text-text_secondary">
+                            <div class="text-sm text-secondary_text">
                                 <div class="flex items-center mb-1">
                                     <i class="fas fa-calendar mr-2"></i>
                                     <span>Mesečno</span>
@@ -966,9 +966,9 @@
                             <span class="text-accent_orange font-bold">STARIJI</span>
                         </div>
                         <h3 class="text-xl font-display font-bold text-slate mb-2">Nega i podrška starijih osoba</h3>
-                        <p class="text-text_secondary mb-4">Program obuke za članove porodice koji brinu o starijim osobama, sa fokusom na praktične veštine i emocionalnu podršku.</p>
+                        <p class="text-secondary_text mb-4">Program obuke za članove porodice koji brinu o starijim osobama, sa fokusom na praktične veštine i emocionalnu podršku.</p>
                         <div class="flex justify-between items-center">
-                            <div class="text-sm text-text_secondary">
+                            <div class="text-sm text-secondary_text">
                                 <div class="flex items-center mb-1">
                                     <i class="fas fa-calendar mr-2"></i>
                                     <span>Kvartalno</span>
@@ -1005,7 +1005,7 @@
                     Službe
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-info_bg to-success_bg"></span>
                 </h2>
-                <p class="text-lg text-text_secondary max-w-2xl mx-auto mt-4">
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-4">
                     Centar za socijalni rad pruža širok spektar usluga namenjenih različitim kategorijama građana koji se nalaze u stanju socijalne potrebe.
                 </p>
             </div>
@@ -1017,8 +1017,8 @@
                         <div class="w-16 h-16 bg-info_light group-hover:bg-info_ring rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-shield-alt text-info text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Sigurna dečja kuća</h3>
-                        <p class="text-sm text-text_secondary">Zaštićeno stanovanje za decu</p>
+                        <h3 class="text-lg font-semibold text-primary_text mb-2">Sigurna dečja kuća</h3>
+                        <p class="text-sm text-secondary_text">Zaštićeno stanovanje za decu</p>
                     </button>
                 </div>
 
@@ -1028,8 +1028,8 @@
                         <div class="w-16 h-16 bg-success_light group-hover:bg-success_lightest rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-child text-success text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Zaštita dece i omladine</h3>
-                        <p class="text-sm text-text_secondary">Sveobuhvatna zaštita maloletnika</p>
+                        <h3 class="text-lg font-semibold text-primary_text mb-2">Zaštita dece i omladine</h3>
+                        <p class="text-sm text-secondary_text">Sveobuhvatna zaštita maloletnika</p>
                     </button>
                 </div>
 
@@ -1039,8 +1039,8 @@
                         <div class="w-16 h-16 bg-accent_orange_light group-hover:bg-accent_orange_border rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-home text-accent_orange text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Dnevni boravak za decu</h3>
-                        <p class="text-sm text-text_secondary">Dnevna briga i aktivnosti</p>
+                        <h3 class="text-lg font-semibold text-primary_text mb-2">Dnevni boravak za decu</h3>
+                        <p class="text-sm text-secondary_text">Dnevna briga i aktivnosti</p>
                     </button>
                 </div>
 
@@ -1050,8 +1050,8 @@
                         <div class="w-16 h-16 bg-accent_purple_light group-hover:bg-accent_purple_border rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-user-friends text-accent_purple text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Zaštita odraslih i starih</h3>
-                        <p class="text-sm text-text_secondary">Podrška za odrasle i starije</p>
+                        <h3 class="text-lg font-semibold text-primary_text mb-2">Zaštita odraslih i starih</h3>
+                        <p class="text-sm text-secondary_text">Podrška za odrasle i starije</p>
                     </button>
                 </div>
 
@@ -1061,8 +1061,8 @@
                         <div class="w-16 h-16 bg-warning_light group-hover:bg-warning_hover rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-coins text-warning text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Novčana socijalna pomoć</h3>
-                        <p class="text-sm text-text_secondary">Finansijska podrška porodicama</p>
+                        <h3 class="text-lg font-semibold text-primary_text mb-2">Novčana socijalna pomoć</h3>
+                        <p class="text-sm text-secondary_text">Finansijska podrška porodicama</p>
                     </button>
                 </div>
 
@@ -1072,8 +1072,8 @@
                         <div class="w-16 h-16 bg-accent_pink_light group-hover:bg-accent_pink_hover rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-heart text-accent_pink text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Sigurna ženska kuća</h3>
-                        <p class="text-sm text-text_secondary">Zaštićeno stanovanje za žene</p>
+                        <h3 class="text-lg font-semibold text-primary_text mb-2">Sigurna ženska kuća</h3>
+                        <p class="text-sm text-secondary_text">Zaštićeno stanovanje za žene</p>
                     </button>
                 </div>
 
@@ -1083,8 +1083,8 @@
                         <div class="w-16 h-16 bg-accent_teal_light group-hover:bg-accent_teal_lightest rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-comments text-accent_teal text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Savetovalište</h3>
-                        <p class="text-sm text-text_secondary">Stručno savetovanje i podrška</p>
+                        <h3 class="text-lg font-semibold text-primary_text mb-2">Savetovalište</h3>
+                        <p class="text-sm text-secondary_text">Stručno savetovanje i podrška</p>
                     </button>
                 </div>
 
@@ -1094,8 +1094,8 @@
                         <div class="w-16 h-16 bg-accent_indigo_light group-hover:bg-accent_indigo_hover rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                             <i class="fas fa-building text-accent_indigo text-2xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-text_primary mb-2">Odeljenja</h3>
-                        <p class="text-sm text-text_secondary">Specijalizovana odeljenja</p>
+                        <h3 class="text-lg font-semibold text-primary_text mb-2">Odeljenja</h3>
+                        <p class="text-sm text-secondary_text">Specijalizovana odeljenja</p>
                     </button>
                 </div>
             </div>
