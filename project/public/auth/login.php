@@ -1,3 +1,12 @@
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$token = $_SESSION['csrf_token'];
+?>
 <!DOCTYPE html>
 <html lang="sr">
 
@@ -299,6 +308,10 @@
                             </svg>
                         </button>
                     </div>
+                    <div>
+                        <input id="csrf" name="csrf" type="text" value="<?= $_SESSION['csrf_token'] ?? '' ?>" class="hidden">
+                    </div>
+
                 </div>
 
                 <!-- Enhanced Login Button -->
@@ -366,6 +379,7 @@
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            const csrf = document.getElementById('csrf')?.value ?? '';
             const btn = event.target.querySelector('button[type="submit"]');
 
             if (username && password) {
@@ -377,7 +391,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ username: username, password: password })
+                    body: JSON.stringify({ username: username, password: password, csrf_token: csrf })
                 })
                     .then(response => response.text())  // Read raw response as text first
                     .then(text => {

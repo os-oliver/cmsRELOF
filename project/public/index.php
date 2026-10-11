@@ -1,5 +1,5 @@
 <?php
-
+header_remove('X-Powered-By');
 require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../core/Utils/translations.php';
 use FastRoute\RouteCollector;
