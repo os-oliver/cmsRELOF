@@ -180,13 +180,18 @@ class User
 
     public function auth(array $data): array
     {
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+
         $username = $data['username'] ?? '';
         $password = $data['password'] ?? '';
+        $token = $data['csrf_token'] ?? '';
 
         // Fetch user row
         $stmt = $this->pdo->prepare(
             'SELECT id, password, role,name, surname
-         FROM users 
+         FROM users
          WHERE username = :username'
         );
         $stmt->execute([':username' => $username]);
@@ -206,12 +211,28 @@ class User
             ];
         }
 
+        if (!hash_equals($_SESSION['csrf_token'], $token)) {
+            return [
+                'success' => false,
+                'message' => 'Invalid login parameters.',
+            ];
+        }
+        if (empty($_SESSION['csrf_token']) || empty($token)) {
+            return [
+                'success' => false,
+                'message' => 'Wrong login parameters.',
+            ];
+        }
+        unset($_SESSION['csrf_token']);
+        session_destroy();
+
         // Set session cookie params BEFORE starting the session
         session_set_cookie_params([
             'lifetime' => 86400,
             'path' => '/',
             'httponly' => true,
             'samesite' => 'Strict',
+            'secure' => true,
         ]);
 
         session_start();
