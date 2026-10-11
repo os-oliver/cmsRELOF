@@ -31,6 +31,20 @@ class EmployeesPageBuilder extends BasePageBuilder
                         class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                     >
                 </div>
+                <select
+                    name="organizational_unit"
+                    class="w-full md:w-64 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                >
+                    <option value="">Sve organizacione jedinice</option>
+                    <?php foreach ($organizationalUnits as $unit): ?>
+                        <option
+                            value="<?= htmlspecialchars($unit, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                            <?= ($_GET['organizational_unit'] ?? '') === $unit ? 'selected' : '' ?>
+                        >
+                            <?= htmlspecialchars($unit, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
                 <button type="submit" class="bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-lg transition">
                     Primena
                 </button>
@@ -55,6 +69,11 @@ class EmployeesPageBuilder extends BasePageBuilder
                                         <p class="font-medium text-secondary_text">
                                             <?= htmlspecialchars($employee['position'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
                                         </p>
+                                        <?php if (!empty($employee['organizational_unit'])): ?>
+                                        <p class="text-sm text-secondary_text">
+                                            <?= htmlspecialchars($employee['organizational_unit'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                                        </p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <button type="button" 
@@ -65,6 +84,7 @@ class EmployeesPageBuilder extends BasePageBuilder
                                         data-employee-biography="<?= htmlspecialchars($employee['biography'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
                                         data-employee-email="<?= htmlspecialchars($employee['email'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
                                         data-employee-position="<?= htmlspecialchars($employee['position'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        data-employee-organizational-unit="<?= htmlspecialchars($employee['organizational_unit'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
                                         >
                                     <i class="fas fa-eye text-2xl"></i>
                                 </button>
@@ -147,6 +167,7 @@ class EmployeesPageBuilder extends BasePageBuilder
         
         <div class="space-y-3 mb-6">
             <p><strong class="text-primary_text">Pozicija:</strong> <span id="modal-employee-position"></span></p>
+            <p><strong class="text-primary_text">Organizaciona jedinica:</strong> <span id="modal-employee-organizational-unit"></span></p>
             <p id="modal-email-container"><strong class="text-primary_text">E-pošta:</strong> <a id="modal-employee-email" href="" class="text-primary hover:underline"></a></p>
         </div>
 
@@ -168,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(employee) {
         document.getElementById('modal-employee-name').textContent = employee.name;
         document.getElementById('modal-employee-position').textContent = employee.position;
+        document.getElementById('modal-employee-organizational-unit').textContent = employee.organizationalUnit;
         
         const email = employee.email.trim();
         const emailLink = document.getElementById('modal-employee-email');
@@ -202,7 +224,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 name: this.dataset.employeeName,
                 biography: this.dataset.employeeBiography,
                 email: this.dataset.employeeEmail,
-                position: this.dataset.employeePosition
+                position: this.dataset.employeePosition,
+                organizationalUnit: this.dataset.employeeOrganizationalUnit
             };
             openModal(employeeData);
         });
@@ -240,11 +263,14 @@ $page = max(1, (int)($_GET['page'] ?? 1));
 $offset = ($page - 1) * $limit;
 
 $employeeModel = new Employee();
+$organizationalUnit = trim((string) ($_GET['organizational_unit'] ?? ''));
+$organizationalUnits = $employeeModel->organizationalUnits($locale);
 [$employees, $totalCount] = $employeeModel->list(
     limit: $limit,
     offset: $offset,
     search: $search,
-    locale: $locale
+    locale: $locale,
+    organizationalUnit: $organizationalUnit
 );
 
 $totalPages = (int) ceil($totalCount / $limit);

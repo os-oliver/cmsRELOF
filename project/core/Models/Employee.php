@@ -25,14 +25,20 @@ class Employee
     /**
      * Fetch a paginated list of employees.
      */
-    public function list(int $limit, int $offset, string $search = '', ?string $locale = null): array
+    public function list(
+        int $limit,
+        int $offset,
+        string $search = '',
+        ?string $locale = null,
+        ?string $organizationalUnit = null
+    ): array
     {
         $params = [];
-        $whereClause = '';
+        $conditions = [];
 
         if (!empty($search)) {
             $params[':search'] = '%' . $search . '%';
-            $whereClause = "WHERE e.id IN (
+            $conditions[] = "e.id IN (
             SELECT source_id
             FROM text t
             WHERE t.source_table = 'employee'
@@ -43,6 +49,24 @@ class Employee
                 $params[':locale_sub'] = $locale;
             }
         }
+
+        if ($organizationalUnit !== null && $organizationalUnit !== '') {
+            $params[':organizational_unit'] = $organizationalUnit;
+            $conditions[] = "EXISTS (
+                SELECT 1
+                FROM text ou
+                WHERE ou.source_id = e.id
+                  AND ou.source_table = 'employee'
+                  AND ou.field_name = 'organizational_unit'
+                  AND ou.content = :organizational_unit
+                  " . ($locale !== null ? "AND ou.lang = :organizational_unit_locale" : "") . "
+            )";
+            if ($locale !== null) {
+                $params[':organizational_unit_locale'] = $locale;
+            }
+        }
+
+        $whereClause = $conditions ? 'WHERE ' . implode(' AND ', $conditions) : '';
 
         // prvo biramo ID-jeve zaposlenih sa limit i offset
         $idSql = "SELECT e.id FROM employee e $whereClause ORDER BY e.id desc LIMIT :limit OFFSET :offset";
@@ -100,6 +124,34 @@ class Employee
         $totalCount = (int) $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
 
         return [$employees, $totalCount];
+    }
+
+    /**
+     * Fetch distinct organizational-unit values available for the selected language.
+     */
+    public function organizationalUnits(?string $locale = null): array
+    {
+        $sql = "
+            SELECT DISTINCT t.content
+            FROM text t
+            WHERE t.source_table = 'employee'
+              AND t.field_name = 'organizational_unit'
+              AND t.content IS NOT NULL
+              AND TRIM(t.content) <> ''
+        ";
+
+        if ($locale !== null) {
+            $sql .= " AND t.lang = :locale";
+        }
+
+        $sql .= " ORDER BY t.content";
+        $stmt = $this->pdo->prepare($sql);
+        if ($locale !== null) {
+            $stmt->bindValue(':locale', $locale, PDO::PARAM_STR);
+        }
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
 

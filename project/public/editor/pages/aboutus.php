@@ -410,6 +410,10 @@ $activeTab = 'settings';
                                                 <?= __("settings.position") ?>
                                             </th>
                                             <th
+                                                class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                                                <?= __("settings.organizational_unit") ?>
+                                            </th>
+                                            <th
                                                 class="px-6 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider">
                                                 <?= __("settings.actions") ?>
                                             </th>
@@ -428,6 +432,9 @@ $activeTab = 'settings';
                                                     <span
                                                         class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200"><?= htmlspecialchars($member['position']) ?></span>
                                                 </td>
+                                                <td class="px-6 py-4 text-sm text-gray-600">
+                                                    <?= htmlspecialchars($member['organizational_unit'] ?? '') ?>
+                                                </td>
                                                 <td class="px-6 py-4">
                                                     <div class="flex justify-center gap-2">
                                                         <button
@@ -436,6 +443,7 @@ $activeTab = 'settings';
                                                             data-name="<?= htmlspecialchars($member['name']) ?>"
                                                             data-surname="<?= htmlspecialchars($member['surname']) ?>"
                                                             data-position="<?= htmlspecialchars($member['position']) ?>"
+                                                            data-organizational-unit="<?= htmlspecialchars($member['organizational_unit'] ?? '') ?>"
                                                             data-biography="<?= isset($member['biography']) ? htmlspecialchars($member['biography']) : '' ?>"
                                                             data-email="<?= isset($member['email']) ? htmlspecialchars($member['email']) : '' ?>"
                                                             title="<?= __("settings.edit") ?>">
@@ -558,6 +566,17 @@ $activeTab = 'settings';
                               class="w-full rounded-xl border-2 border-light-200 bg-light-50 px-3 md:px-4 py-3 md:py-3.5 text-light-900 placeholder-light-400 focus:border-primary-500 focus:bg-white focus:ring-4 focus:ring-primary-100 transition-all outline-none text-base">
                         </div>
             </div>
+
+                                    <div class="group">
+                        <label for="organizational_unit" class="block text-sm font-semibold text-light-700 mb-2 flex items-center">
+                              <div class="w-7 h-7 md:w-8 md:h-8 bg-light-100 rounded-lg flex items-center justify-center mr-2 flex-shrink-0">
+                                    <i class="fas fa-sitemap text-light-600 text-xs md:text-sm"></i>
+                              </div>
+                              <span class="truncate"><?= __("settings.organizational_unit") ?></span>
+                        </label>
+                        <input type="text" id="organizational_unit" name="organizational_unit"
+                              class="w-full rounded-xl border-2 border-light-200 bg-light-50 px-3 md:px-4 py-3 md:py-3.5 text-light-900 placeholder-light-400 focus:border-primary-500 focus:bg-white focus:ring-4 focus:ring-primary-100 transition-all outline-none text-base">
+                  </div>
 
                                     <div class="group">
                         <label for="biography" class="block text-sm font-semibold text-light-700 mb-2 flex items-center">
@@ -691,6 +710,7 @@ $activeTab = 'settings';
                 document.getElementById('name').value = '';
                 document.getElementById('surname').value = '';
                 document.getElementById('position').value = '';
+                document.getElementById('organizational_unit').value = '';
                 document.getElementById('biography').value = '';
                 modal.classList.remove('hidden');
             });
@@ -703,6 +723,7 @@ $activeTab = 'settings';
                     document.getElementById('name').value = btn.dataset.name ?? '';
                     document.getElementById('surname').value = btn.dataset.surname ?? '';
                     document.getElementById('position').value = btn.dataset.position ?? '';
+                    document.getElementById('organizational_unit').value = btn.dataset.organizationalUnit ?? '';
                     document.getElementById('biography').value = btn.dataset.biography ?? '';
                     document.getElementById('email').value = btn.dataset.email ?? '';
                     modal.classList.remove('hidden');
@@ -736,6 +757,7 @@ $activeTab = 'settings';
                 form.append('name', document.getElementById('name').value.trim());
                 form.append('surname', document.getElementById('surname').value.trim());
                 form.append('position', document.getElementById('position').value.trim());
+                form.append('organizational_unit', document.getElementById('organizational_unit').value.trim());
                 form.append('biography', document.getElementById('biography').value.trim());
                 form.append('email', document.getElementById('email').value.trim());
                 if (fileInput && fileInput.files && fileInput.files[0]) {

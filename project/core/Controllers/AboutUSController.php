@@ -242,6 +242,7 @@ class AboutUSController
                 'name' => $data['name'],
                 'surname' => $data['surname'],
                 'position' => $data['position'] ?? null,
+                'organizational_unit' => $data['organizational_unit'] ?? null,
                 'biography' => $data['biography'] ?? null,
                 'email' => $data['email'] ?? null,
             ];
@@ -271,7 +272,7 @@ class AboutUSController
             }
 
             $updateData = [];
-            foreach (['name', 'surname', 'position', 'biography','email'] as $field) {
+            foreach (['name', 'surname', 'position', 'organizational_unit', 'biography', 'email'] as $field) {
                 if (isset($payload[$field])) {
                     $updateData[$field] = trim($payload[$field]);
                 }
