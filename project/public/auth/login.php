@@ -208,7 +208,7 @@ $token = $_SESSION['csrf_token'];
                 </div>
             </div>
             <h3 class="text-lg sm:text-xl font-bold text-white text-center mb-2">Greška prilikom prijave</h3>
-            <p class="text-white/90 text-center mb-6 text-sm sm:text-base">Neispravna šifra ili korisničko ime</p>
+            <p class="text-white/90 text-center mb-6 text-sm sm:text-base js-error-description">Neispravna šifra ili korisničko ime</p>
             <button onclick="closeAlert()"
                 class="w-full bg-white/20 hover:bg-white/30 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 border border-white/30 hover:border-white/50 focus:outline-none focus:ring-2 focus:ring-white/50">
                 U redu
@@ -403,6 +403,8 @@ $token = $_SESSION['csrf_token'];
                         if (data.success) {
                             window.location = "/kontrolna-tabla";
                         } else {
+                            const description = document.querySelector('.js-error-description');
+                            description.textContent = data.message;
                             showAlert();
                         }
                     })
