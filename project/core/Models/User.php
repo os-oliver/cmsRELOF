@@ -184,6 +184,26 @@ class User
             session_start();
         }
 
+        $maxAttempts = 5;
+        $lockoutTime = 60; // seconds
+
+        if (!isset($_SESSION['failed_attempts'])) {
+            $_SESSION['failed_attempts'] = 0;
+        }
+
+        if (!isset($_SESSION['lockout_until'])) {
+            $_SESSION['lockout_until'] = 0;
+        }
+
+        if (time() < $_SESSION['lockout_until']) {
+            $remaining = $_SESSION['lockout_until'] - time();
+
+            return [
+                'success' => false,
+                'message' => 'Previše neispravnih pokušaja. Probajte ponovo nakon ' . $remaining . ' sekundi.',
+            ];
+        }
+
         $username = $data['username'] ?? '';
         $password = $data['password'] ?? '';
         $token = $data['csrf_token'] ?? '';
@@ -197,30 +217,34 @@ class User
         $stmt->execute([':username' => $username]);
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        if (!$user) {
-            return [
-                'success' => false,
-                'message' => 'Invalid username or password.',
-            ];
-        }
+        if (!$user || !password_verify($password, $user['password'])) {
+            $_SESSION['failed_attempts']++;
 
-        if (!password_verify($password, $user['password'])) {
+            if ($_SESSION['failed_attempts'] >= $maxAttempts) {
+                $_SESSION['lockout_until'] = time() + $lockoutTime;
+
+                return [
+                    'success' => false,
+                    'message' => 'Previše neispravnih pokušaja. Vaša prijava je blokirana u narednih 60 sekundi.',
+                ];
+            }
+
             return [
                 'success' => false,
-                'message' => 'Invalid username or password.',
+                'message' => 'Neispravna šifra ili korisničko ime.',
             ];
         }
 
         if (!hash_equals($_SESSION['csrf_token'], $token)) {
             return [
                 'success' => false,
-                'message' => 'Invalid login parameters.',
+                'message' => 'Neispravni parametri za pristup.',
             ];
         }
         if (empty($_SESSION['csrf_token']) || empty($token)) {
             return [
                 'success' => false,
-                'message' => 'Wrong login parameters.',
+                'message' => 'Pogrešni parametri za pristup.',
             ];
         }
         unset($_SESSION['csrf_token']);
@@ -242,6 +266,8 @@ class User
         $_SESSION['role'] = $user['role'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['surname'] = $user['surname'];
+        $_SESSION['failed_attempts'] = 0;
+        $_SESSION['lockout_until'] = 0;
 
         return [
             'success' => true,
