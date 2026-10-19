@@ -575,6 +575,7 @@ $activeTab = 'settings';
                               <span class="truncate"><?= __("settings.organizational_unit") ?></span>
                         </label>
                         <input type="text" id="organizational_unit" name="organizational_unit"
+                              required
                               class="w-full rounded-xl border-2 border-light-200 bg-light-50 px-3 md:px-4 py-3 md:py-3.5 text-light-900 placeholder-light-400 focus:border-primary-500 focus:bg-white focus:ring-4 focus:ring-primary-100 transition-all outline-none text-base">
                   </div>
 
@@ -764,7 +765,7 @@ $activeTab = 'settings';
                     form.append('icon', fileInput.files[0]);
                 }
 
-                if (!form.get('name') || !form.get('surname') || !form.get('position')) return showToast('<?= __("settings.required_fields_msg") ?>', 'error');
+                if (!form.get('name') || !form.get('surname') || !form.get('position') || !form.get('organizational_unit')) return showToast('<?= __("settings.required_fields_msg") ?>', 'error');
 
                 try {
                     const url = id ? `/employees/${id}` : '/employees';

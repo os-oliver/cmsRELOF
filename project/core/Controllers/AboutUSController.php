@@ -196,9 +196,13 @@ class AboutUSController
                 $data = json_decode(file_get_contents('php://input'), true) ?? [];
             }
 
-            if (empty($data['name']) || empty($data['surname'])) {
+            if (
+                empty($data['name']) ||
+                empty($data['surname']) ||
+                trim((string) ($data['organizational_unit'] ?? '')) === ''
+            ) {
                 http_response_code(400);
-                echo json_encode(['error' => 'Name and surname required']);
+                echo json_encode(['error' => 'Name, surname and organizational unit required']);
                 return;
             }
 
@@ -307,6 +311,15 @@ class AboutUSController
                 if (in_array($maybeExt, $allowed)) {
                     $updateData['icon'] = '/assets/icons/' . basename($payload['title']);
                 }
+            }
+
+            if (
+                !isset($updateData['organizational_unit']) ||
+                trim($updateData['organizational_unit']) === ''
+            ) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Organizational unit required']);
+                return;
             }
 
             if (empty($updateData)) {

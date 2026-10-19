@@ -17,6 +17,42 @@ class EmployeesPageBuilder extends BasePageBuilder
             </p>
         </div>
 
+        <div id="organizational-units" class="scroll-mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <?php foreach ($organizationalUnits as $unit): ?>
+                <?php
+                $unitName = $unit['name'];
+                $isSelectedUnit = $organizationalUnit === $unitName;
+                ?>
+                <a
+                    href="?<?= http_build_query(['organizational_unit' => $unitName]) ?>"
+                    class="group rounded-xl p-6 min-h-32 flex flex-col justify-between transition-all shadow-md border-2 <?= $isSelectedUnit ? 'bg-primary text-white border-primary' : 'bg-white text-primary_text border-transparent hover:border-primary hover:shadow-lg' ?>"
+                >
+                    <div class="flex items-start justify-between gap-4">
+                        <i class="fas fa-users text-2xl <?= $isSelectedUnit ? 'text-white' : 'text-primary' ?>"></i>
+                        <span class="rounded-full px-3 py-1 text-sm font-semibold <?= $isSelectedUnit ? 'bg-white/20 text-white' : 'bg-primary/10 text-primary' ?>">
+                            <?= (int) $unit['employee_count'] ?> <?= __('employees.count_label') ?>
+                        </span>
+                    </div>
+                    <span class="mt-4 text-lg font-bold">
+                        <?= htmlspecialchars($unitName, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                    </span>
+                    <span class="mt-2 text-sm font-medium <?= $isSelectedUnit ? 'text-white' : 'text-primary' ?>">
+                        <?= __('employees.view') ?> &gt;
+                    </span>
+                </a>
+            <?php endforeach; ?>
+        </div>
+
+        <?php if ($organizationalUnit !== ''): ?>
+        <section id="employee-results" class="scroll-mt-24">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+            <h2 class="text-2xl font-bold text-primary_text">
+                <?= htmlspecialchars($organizationalUnit, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+            </h2>
+            <a href="#organizational-units" class="text-primary hover:text-primary_hover font-medium">
+                Promeni organizacionu jedinicu
+            </a>
+        </div>
         <form method="GET" class="bg-white rounded-xl shadow-md p-6 mb-8">
             <div class="flex flex-col md:flex-row gap-4">
                 <div class="relative flex-grow">
@@ -31,27 +67,21 @@ class EmployeesPageBuilder extends BasePageBuilder
                         class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                     >
                 </div>
-                <select
-                    name="organizational_unit"
-                    class="w-full md:w-64 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                >
-                    <option value="">Sve organizacione jedinice</option>
-                    <?php foreach ($organizationalUnits as $unit): ?>
-                        <option
-                            value="<?= htmlspecialchars($unit, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
-                            <?= ($_GET['organizational_unit'] ?? '') === $unit ? 'selected' : '' ?>
-                        >
-                            <?= htmlspecialchars($unit, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+                <input type="hidden" name="organizational_unit" value="<?= htmlspecialchars($organizationalUnit, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
                 <button type="submit" class="bg-primary hover:bg-primary_hover text-white px-6 py-3 rounded-lg transition">
                     Primena
                 </button>
             </div>
         </form>
+        </section>
+        <?php endif; ?>
 
-        <?php if (count($employees) > 0): ?>
+        <?php if ($organizationalUnit === ''): ?>
+            <div class="bg-white rounded-xl shadow-md p-12 text-center">
+                <h3 class="text-2xl font-bold text-primary_text mb-4">Izaberite organizacionu jedinicu</h3>
+                <p>Izaberite jednu od organizacionih jedinica da biste videli zaposlene.</p>
+            </div>
+        <?php elseif (count($employees) > 0): ?>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach ($employees as $employee): ?>
                     <div class="bg-surface rounded-xl shadow-md overflow-hidden card-hover fade-in" 
@@ -155,6 +185,18 @@ class EmployeesPageBuilder extends BasePageBuilder
         <?php echo renderPerPageDropdown($limit) ?>
     </div>
 </main>
+
+<?php if ($organizationalUnit !== ''): ?>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const employeeResults = document.getElementById('employee-results');
+    employeeResults?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+});
+</script>
+<?php endif; ?>
 
 <div id="employee-details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4">
     <div class="bg-white rounded-xl p-8 max-w-lg w-full m-4 shadow-2xl">

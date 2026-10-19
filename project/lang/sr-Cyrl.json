@@ -30,6 +30,8 @@
   "settings.member_last_name": "Презиме члана",
   "settings.member_position": "Позиција члана",
   "settings.organizational_unit": "Организациона јединица",
+  "employees.count_label": "запослених",
+  "employees.view": "Погледај запослене",
   "settings.biography": "Биографија",
   "settings.cancel": "Откажи",
   "settings.save": "Сачувај",

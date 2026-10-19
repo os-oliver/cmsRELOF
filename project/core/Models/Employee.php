@@ -132,7 +132,7 @@ class Employee
     public function organizationalUnits(?string $locale = null): array
     {
         $sql = "
-            SELECT DISTINCT t.content
+            SELECT t.content AS name, COUNT(DISTINCT t.source_id) AS employee_count
             FROM text t
             WHERE t.source_table = 'employee'
               AND t.field_name = 'organizational_unit'
@@ -144,14 +144,14 @@ class Employee
             $sql .= " AND t.lang = :locale";
         }
 
-        $sql .= " ORDER BY t.content";
+        $sql .= " GROUP BY t.content ORDER BY t.content";
         $stmt = $this->pdo->prepare($sql);
         if ($locale !== null) {
             $stmt->bindValue(':locale', $locale, PDO::PARAM_STR);
         }
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 

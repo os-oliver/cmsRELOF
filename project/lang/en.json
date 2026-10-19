@@ -35,6 +35,8 @@
   "settings.member_last_name": "Member Last Name",
   "settings.member_position": "Member Position",
   "settings.organizational_unit": "Organizational Unit",
+  "employees.count_label": "employees",
+  "employees.view": "View employees",
   "settings.biography": "Biography",
   "settings.cancel": "Cancel",
   "settings.save": "Save",
