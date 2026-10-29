@@ -1,19 +1,14 @@
 [
   {
     "Fondovi": {
+      "code": "fondovi",
       "sr": "Fondovi",
       "en": "Funds",
       "sr-Cyrl": "Фондови",
       "icon": "fas fa-piggy-bank",
-      "categories": [
-        "Stipendije",
-        "Grantovi",
-        "Investicioni fondovi",
-        "Istraživački fondovi",
-        "Fondovi za startape"
-      ],
       "fields": [
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -24,6 +19,7 @@
           "required": true
         },
         {
+          "code": "main_category",
           "name": "kategorija",
           "type": "categories",
           "label": {
@@ -38,9 +34,32 @@
             "Istraživački fondovi",
             "Fondovi za startape"
           ],
+          "coded_options": [
+            {
+              "code": "stipendije",
+              "translations": { "sr": "Stipendije", "en": "Scholarships", "sr-Cyrl": "Стипендије" }
+            },
+            {
+              "code": "grantovi",
+              "translations": { "sr": "Grantovi", "en": "Grants", "sr-Cyrl": "Грантови" }
+            },
+            {
+              "code": "investicioni_fondovi",
+              "translations": { "sr": "Investicioni fondovi", "en": "Investment funds", "sr-Cyrl": "Инвестициони фондови" }
+            },
+            {
+              "code": "istrazivacki_fondovi",
+              "translations": { "sr": "Istraživački fondovi", "en": "Research funds", "sr-Cyrl": "Истраживачки фондови" }
+            },
+            {
+              "code": "fondovi_za_startape",
+              "translations": { "sr": "Fondovi za startape", "en": "Startup funds", "sr-Cyrl": "Фондови за стартапе" }
+            }
+          ],
           "required": true
         },
         {
+          "code": "organizacija",
           "name": "organizacija",
           "type": "text",
           "label": {
@@ -51,6 +70,7 @@
           "required": true
         },
         {
+          "code": "rok",
           "name": "rok",
           "type": "date",
           "label": {
@@ -61,6 +81,7 @@
           "required": true
         },
         {
+          "code": "iznos",
           "name": "iznos",
           "type": "text",
           "label": {
@@ -70,6 +91,7 @@
           }
         },
         {
+          "code": "uslovi",
           "name": "uslovi",
           "type": "textarea",
           "label": {
@@ -79,6 +101,7 @@
           }
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -88,6 +111,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -97,6 +121,7 @@
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
