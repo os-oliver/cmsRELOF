@@ -324,19 +324,19 @@ main {
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
-    
+
     .glass-card {
         margin-bottom: 1rem;
     }
-    
+
     .project-content {
         padding: 1rem;
     }
-    
+
     .project-title {
         font-size: 0.9rem;
     }
-    
+
     .project-meta {
         font-size: 0.7rem;
     }
@@ -344,47 +344,48 @@ main {
 CSS;
 
     protected string $topBar = <<<'PHP'
-function renderTopbar(array $categories, string $searchValue = '', ?int $selectedCategoryId = null, array $texts = []): string
+function renderTopbar(array $categories, string $locale, string $searchValue = '', int|string|null $selectedCategoryId = null, array $texts = []): string
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
-    
+
     $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
-    
+
     // Pretraga i dugme
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
-        <input type='text' 
-               name='search' 
-               value='{$safeSearchValue}' 
-               placeholder='{$texts['search_placeholder']}' 
-               class='w-full border border-gray-300 rounded-xl px-5 py-3 
-                      focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent 
+        <input type='text'
+               name='search'
+               value='{$safeSearchValue}'
+               placeholder='{$texts['search_placeholder']}'
+               class='w-full border border-gray-300 rounded-xl px-5 py-3
+                      focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
                       transition-all shadow-sm bg-white/80 backdrop-blur-sm
                       text-primary_text placeholder-secondary_text'>
-        <button type='submit' 
-                class='bg-primary hover:bg-primary_hover text-white px-6 py-3 
+        <button type='submit'
+                class='bg-primary hover:bg-primary_hover text-white px-6 py-3
                        rounded-xl transition-all shadow-md hover:shadow-lg font-semibold'>
             {$texts['apply_button']}
         </button>
     </div>";
-    
+
     // Kategorija select
     $html .= "<div class='flex items-center w-full sm:w-auto'>
-        <select name='category' 
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 
-                       focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent 
+        <select name='category'
+                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3
+                       focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
                        transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer
                        text-primary_text'>
             <option value=''>{$texts['all_categories']}</option>";
-    
+
     foreach ($categories as $cat) {
-        $id = htmlspecialchars($cat['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8');
-        $selected = ($selectedCategoryId == $cat['id']) ? 'selected' : '';
-        $html .= "<option value='{$id}' {$selected}>{$name}</option>";
+        $translations = $cat['translations'];
+        $code = $cat['option_value'];
+        $name = $translations[$locale] ?? $translations['sr'];
+        $selected = ($selectedCategoryId == $cat['option_value']) ? 'selected' : '';
+        $html .= "<option value='{$code}' {$selected}>{$name}</option>";
     }
-    
+
     $html .= "</select></div></form>";
-    
+
     return $html;
 }
 PHP;
@@ -425,7 +426,7 @@ $cardTemplate = <<<'PHP'
         {{clickableLink}}
 
         <!-- CTA dugme -->
-        <a href="sadrzaj?id={{itemId}}&tip=generic_element" class="bg-primary project-cta hover:bg-primary_hover">
+        <a href="/sadrzaj?id={{itemId}}&tip=projekti" class="bg-primary project-cta hover:bg-primary_hover">
             <i class="fas fa-info-circle"></i>
             <span>{{projectDetails}}</span>
             <i class="fas fa-arrow-right"></i>
@@ -438,6 +439,7 @@ HTML;
     protected string $cardRender = <<<'HTML'
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, $cardTemplate=''): string
 {
+    $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     // Osnovni podaci
     $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? $item['fields']['naziv'] ?? '', ENT_QUOTES, 'UTF-8');
     $vodja = htmlspecialchars($item['fields']['vodja'][$locale] ?? $item['fields']['vodja'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -446,8 +448,10 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
     if (mb_strlen($rawOpis) > $descMaxLength) {
         $opis .= '...';
     }
-    
-    $datumPocetka = htmlspecialchars($item['fields']['datumPocetka'][$locale] ?? $item['fields']['datumPocetka'] ?? '', ENT_QUOTES, 'UTF-8');
+
+    $rawDatumPocetka = $item['fields']['datumPocetka'][$locale] ?? $item['fields']['datumPocetka'] ?? '';
+    $formattedStart = LocaleManager::formatDateFromRawString($rawDatumPocetka);
+    $datumPocetka = htmlspecialchars($formattedStart, ENT_QUOTES, 'UTF-8');
     $budzet = htmlspecialchars((string)($item['fields']['budzet'][$locale] ?? $item['fields']['budzet'] ?? ''), ENT_QUOTES, 'UTF-8');
     $linkRaw = $item['fields']['link'][$locale] ?? $item['fields']['link'] ?? '';
     $linkEsc = htmlspecialchars((string)$linkRaw, ENT_QUOTES, 'UTF-8');
@@ -511,27 +515,27 @@ HTML;
 function renderPagination(int $currentPage, int $totalPages, int $range = 2): string
 {
     if ($totalPages <= 1) return '';
-    
+
     $html = "<div class='flex justify-center items-center gap-2 mt-10'>";
-    
+
     // Prethodna strana
     if ($currentPage > 1) {
         $prevUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage - 1]));
-        $html .= "<a href='{$prevUrl}' 
+        $html .= "<a href='{$prevUrl}'
                    class='px-4 py-2 bg-surface border border-gray-300 rounded-xl
                           hover:bg-secondary_background hover:border-primary
                           transition-all shadow-sm hover:shadow text-secondary_text'>
             <i class='fas fa-chevron-left'></i>
         </a>";
     }
-    
+
     $start = max(1, $currentPage - $range);
     $end = min($totalPages, $currentPage + $range);
-    
+
     // Prva strana + trotačka
     if ($start > 1) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => 1]));
-        $html .= "<a href='{$url}' 
+        $html .= "<a href='{$url}'
                    class='px-4 py-2 bg-surface border border-gray-300 rounded-xl
                           hover:bg-secondary_background hover:border-primary
                           transition-all shadow-sm hover:shadow font-medium text-primary_text'>1</a>";
@@ -539,41 +543,41 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
             $html .= "<span class='px-2 text-secondary_text'>...</span>";
         }
     }
-    
+
     // Brojevi stranica
     for ($i = $start; $i <= $end; $i++) {
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $i]));
-        $class = $i === $currentPage 
-            ? 'px-4 py-2 bg-primary text-white rounded-xl font-semibold shadow-md' 
+        $class = $i === $currentPage
+            ? 'px-4 py-2 bg-primary text-white rounded-xl font-semibold shadow-md'
             : 'px-4 py-2 bg-surface border border-gray-300 rounded-xl hover:bg-secondary_background hover:border-primary transition-all shadow-sm hover:shadow font-medium text-primary_text';
         $html .= "<a href='{$url}' class='{$class}'>{$i}</a>";
     }
-    
+
     // Poslednja strana + trotačka
     if ($end < $totalPages) {
         if ($end < $totalPages - 1) {
             $html .= "<span class='px-2 text-secondary_text'>...</span>";
         }
         $url = '?' . http_build_query(array_merge($_GET, ['page' => $totalPages]));
-        $html .= "<a href='{$url}' 
+        $html .= "<a href='{$url}'
                    class='px-4 py-2 bg-surface border border-gray-300 rounded-xl
                           hover:bg-secondary_background hover:border-primary
                           transition-all shadow-sm hover:shadow font-medium text-primary_text'>{$totalPages}</a>";
     }
-    
+
     // Sledeća strana
     if ($currentPage < $totalPages) {
         $nextUrl = '?' . http_build_query(array_merge($_GET, ['page' => $currentPage + 1]));
-        $html .= "<a href='{$nextUrl}' 
+        $html .= "<a href='{$nextUrl}'
                    class='px-4 py-2 bg-surface border border-gray-300 rounded-xl
                           hover:bg-secondary_background hover:border-primary
                           transition-all shadow-sm hover:shadow text-secondary_text'>
             <i class='fas fa-chevron-right'></i>
         </a>";
     }
-    
+
     $html .= "</div>";
-    
+
     return $html;
 }
 PHP;
@@ -586,10 +590,10 @@ PHP;
             <h1 class="text-4xl font-bold font-heading text-primary_text mb-2">Projekti</h1>
             <p class="text-lg text-secondary_text">Istražite naše aktuelne i završene projekte</p>
         </div>
-        
+
         <!-- Pretraga i filteri -->
-        <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
-        
+        <?php echo renderTopbar($categories, $locale, $search, $categoryId, $texts); ?>
+
         <!-- Grid sa projektima -->
         <div class="performances-grid">
             <?php
@@ -599,7 +603,7 @@ PHP;
                     echo cardRender($item, $fieldLabels, $locale, $texts, $descriptionMaxLength, $cardTemplate);
                 }
                 echo '</div>';
-                
+
                 // Paginacija
                 $totalPages = ceil($itemsList['total'] / $itemsPerPage);
                 echo renderPagination($currentPage, $totalPages, $paginationRange);
@@ -621,7 +625,9 @@ HTML;
         $additionalPHP = <<<'PHP'
 use App\Models\Content;
 use App\Controllers\LanguageMapperController;
+use App\Models\ContentType;
 use App\Models\GenericCategory;
+use App\Utils\HashMapTransformer;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -642,16 +648,16 @@ $paginationRange = __PAGINATION_RANGE__;
 
 $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && $_GET['category'] !== ''
-    ? (is_numeric($_GET['category']) 
-        ? (int) $_GET['category'] 
+    ? (is_numeric($_GET['category'])
+        ? (int) $_GET['category']
         : trim((string) $_GET['category'])
       )
     : null;
 $search = $_GET['search'] ?? '';
 
-$categories = GenericCategory::fetchAll($slug, $locale);
-$itemsList = $slug 
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId) 
+$categories = ContentType::fetchMainCategoriesByContentTypeCode($slug, true);
+$itemsList = $slug
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
     : ['success' => false, 'items' => []];
 
 $config = $fieldLabels = [];
@@ -675,8 +681,8 @@ $latinTexts = [
     'view_more' => 'Saznaj više'
 ];
 
-$texts = ($locale === 'sr-Cyrl') 
-    ? $translator->latin_to_cyrillic_array($latinTexts) 
+$texts = ($locale === 'sr-Cyrl')
+    ? $translator->latin_to_cyrillic_array($latinTexts)
     : $latinTexts;
 PHP;
 

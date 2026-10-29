@@ -9,7 +9,7 @@
                 <?= __('news.latest_from_library') ?>
             </h3>
         </div>
-        <a href="/kontrolna-tabla/Vesti"
+        <a href="/kontrolna-tabla/vesti"
             class="text-primary-600 hover:text-primary-800 flex items-center text-sm font-semibold hover:gap-2 transition-all group">
             <span><?= __('news.view_all') ?></span>
             <i class="fas fa-chevron-right ml-1 text-xs group-hover:translate-x-1 transition-transform"></i>
@@ -19,10 +19,13 @@
     <!-- Scrollable container, now a vertical flex column (gap-3 for compactness) -->
     <div
         class="flex flex-col gap-3 max-h-[18rem] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-        <?php if (!empty($news) && is_iterable($news)): ?>
+        <?php
+            use App\Utils\LocaleManager;
+
+ if (!empty($news) && is_iterable($news)): ?>
             <?php foreach ($news as $item):
                 $category = htmlspecialchars($item->naziv ?? '');
-                $date = !empty($item->datum) ? date('d.m.Y.', strtotime($item->datum)) : '';
+                $date = !empty($item->datum) ? date(LocaleManager::DATE_FORMAT_STRING, strtotime($item->datum)) : '';
                 $author = htmlspecialchars($item->autor ?? 'Nepoznat autor');
                 $desc = htmlspecialchars($item->opis ?? '');
                 $url = !empty($item->link) ? htmlspecialchars($item->link) : "/sadrzaj?id={$item->id}&tip=vesti";

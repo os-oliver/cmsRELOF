@@ -52,7 +52,7 @@ use App\Admin\PageBuilders\RepertoarPageBuilder;
 use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
-
+use App\Utils\Config;
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
@@ -73,7 +73,7 @@ class PageExporter
     public function __construct(array $data)
     {
         $this->data = $data;
-        $this->baseDir = dirname(__DIR__) . '/../public/exportedPages';
+        $this->baseDir = Config::getPublicRoot() . '/exportedPages';
         $this->compDir = "{$this->baseDir}/landingPageComponents";
         $this->pagesDir = "{$this->baseDir}/pages";
         $this->ensureDirectories();
@@ -400,7 +400,7 @@ class PageExporter
             $generatedPhpCount++;
 
             $newNode = $dom->createTextNode($placeholder);
-            $logFile = __DIR__ . "/../../public/exportedPages/log.txt";
+            $logFile = Config::getPublicRoot() . "/exportedPages/log.txt";
             $logMessage = "Replacing text node: '$text' with PHP code: $phpCode" . PHP_EOL;
 
             // Append poruku u log fajl
@@ -541,7 +541,7 @@ class PageExporter
     {
         $phpString = '';
 
-        $jsonDir = __DIR__ . '/../../public/assets/data/structure.json';
+        $jsonDir = Config::getPublicRoot() . '/assets/data/structure.json';
         $jsonData = json_decode(file_get_contents($jsonDir), true);
 
         $structure = $jsonData[0] ?? [];
@@ -567,8 +567,8 @@ class PageExporter
                 $keyForFetch = $key ?? ''; // first parameter
                 $sixthParam = isset($parts[1]) ? "'{$parts[0]}'" : "null"; // use parts[1] if exists, else null
                 $id = str_replace(" ", '_', $id);
-                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale)['items'];\n";
-                $phpString .= "\$$id = HashMapTransformer::transform(\$$id" . "_raw, \$locale);\n\n";
+                $phpString .= "\$$id" . "_raw = (new Content())->fetchListData('$keyForFetch', '', 0, 9, $sixthParam, \$locale, 'datum', 'DESC')['items'];\n";
+                $phpString .= "\$$id = HashMapTransformer::transformNew(\$$id" . "_raw, \$locale);\n\n";
             }
 
             error_log("Entry: '$entry', ID: '$id', Key: '$key', Passed: " . (isset($structureLower[$key]) ? "YES" : "NO"));
@@ -603,7 +603,7 @@ class PageExporter
         $dynamicText = $textModel->getDynamicText($locale);
         {{dynamicLandigPageElements}}
 
-        [$images, $totalEvents] = (new Gallery)->list();
+        [$images, $totalEvents] = (new Gallery)->list(lang: $locale);
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -674,13 +674,13 @@ class PageExporter
             case 'predstave':
                 return new DynamicPageBuilder('predstave');
             case 'vesti':
-                return new VestiPageBuilder('Vesti');
+                return new VestiPageBuilder('vesti');
             case 'vrtici':
                 return new VrticiPageBuilder('Vrtici');
             case 'timovi':
                 return new TimoviPageBuilder('Timovi');
             case 'projekti':
-                return new ProjektiPageBuilder('Projekti');
+                return new ProjektiPageBuilder('projekti');
             case 'obavestenja':
                 return new ObavestenjaZaRoditeljePageBuilder('Obavestenja');
             case 'seminari':
@@ -714,17 +714,17 @@ class PageExporter
             case 'ansambl':
                 return new AnsambalPageBuilder('Ansambl');
             case 'projekti':
-                return new ProjektiPageBuilder('Projekti');
+                return new ProjektiPageBuilder('projekti');
             case stripos($name, 'uvod') !== false:
                 return new UvodPageBuilder('Uvod', $this->data);
             case stripos($name, 'projekti') !== false:
-                return new ProjektiPageBuilder('Projekti');
+                return new ProjektiPageBuilder('projekti');
             case 'organizaciona-struktura':
                 return new EmployeesPageBuilder('Organizaciona Struktura', $this->data);
             case 'ankete':
-                return new AnketePageBuilder('Ankete');
+                return new AnketePageBuilder('ankete');
             case 'repertoar':
-                return new RepertoarPageBuilder('Repertoar');
+                return new RepertoarPageBuilder('repertoar');
             case 'repertoar':
                 return new LibraryProgramPageBuilder('repertoar');
             case 'izlozbe':
@@ -740,7 +740,7 @@ class PageExporter
             case 'sportovi':
                 return new SportoviPageBuilder('sportovi');
             case 'pitanja':
-                return new FAQPageBuilder('Pitanja');
+                return new FAQPageBuilder('pitanja');
             case 'jelovnik':
                 return new JelovnikPageBuilder('Jelovnik', $this->data);
             case 'cenovnik':
@@ -976,7 +976,7 @@ $processedContent
 </main>
 HTML;
 
-        $directory = __DIR__ . '/../../public/exportedPages/pages/';
+        $directory = PUBLIC_ROOT . '/exportedPages/pages/';
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
@@ -1043,7 +1043,7 @@ CSS;
             $this->processTree($node, $createdFiles, $pagesData);
         }
 
-        $dataDir = dirname(__DIR__) . '/../public/assets/data';
+        $dataDir = Config::getPublicRoot() . '/assets/data';
         if (!is_dir($dataDir)) {
             mkdir($dataDir, 0775, true);
         }

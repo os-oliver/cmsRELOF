@@ -89,7 +89,7 @@ class Page
         JOIN gallery g ON g.id = page_gallery.id
         JOIN text t ON t.source_id = g.id
             AND t.source_table = 'gallery'
-            AND t.lang = :lang COLLATE utf8mb4_unicode_ci
+            AND t.lang = :lang
         {$whereClause}
         ORDER BY {$order};
     ";
@@ -181,7 +181,7 @@ class Page
                 $stmtOld->execute([':id' => $id]);
                 $old = $stmtOld->fetchColumn();
                 if ($old) {
-                    $fullOld = __DIR__ . '/../../public' . $old;
+                    $fullOld = PUBLIC_ROOT . $old;
                     if (file_exists($fullOld))
                         unlink($fullOld);
                 }
@@ -238,7 +238,7 @@ class Page
             $stmtFile->execute([':id' => $id]);
             $path = $stmtFile->fetchColumn();
             if ($path) {
-                $full = __DIR__ . '/../../public' . $path;
+                $full = PUBLIC_ROOT . $path;
                 if (file_exists($full))
                     unlink($full);
             }

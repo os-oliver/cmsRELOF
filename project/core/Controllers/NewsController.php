@@ -1,10 +1,9 @@
 <?php
 namespace App\Controllers;
 
-session_start();
-
 use App\Models\News;
 use App\Utils\Validator;
+use App\Controllers\AuthController;
 
 class NewsController
 {
@@ -30,6 +29,7 @@ class NewsController
     // POST /news
     public function create(): void
     {
+        AuthController::requireEditor();
         $data = [
             'title' => trim($_POST['title'] ?? ''),
             'category_id' => (int) ($_POST['category_id'] ?? 0),
@@ -71,6 +71,7 @@ class NewsController
     // PUT /news/{id}
     public function update(int $id): void
     {
+        AuthController::requireEditor();
         if ($_SERVER['REQUEST_METHOD'] !== 'PUT') {
             http_response_code(405);
             echo json_encode(['error' => 'Method Not Allowed, use PUT']);
@@ -103,6 +104,7 @@ class NewsController
     // DELETE /news/{id}
     public function delete(int $id): void
     {
+        AuthController::requireEditor();
         if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
             http_response_code(405);
             echo json_encode(['error' => 'Method Not Allowed, use DELETE']);

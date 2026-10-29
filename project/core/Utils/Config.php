@@ -6,17 +6,26 @@ use RuntimeException;
 final class Config
 {
     private static ?array $structure = null;
-    private static string $defaultStructurePath = __DIR__ . '/../../public/assets/data/structure.json';
 
     private function __construct()
     {
     }
 
+    public static function getPublicRoot(): string
+    {
+        return dirname(__DIR__, 2) . '/public';
+    }
+
+    private static function getDefaultStructurePath(): string
+    {
+        return self::getPublicRoot() . '/assets/data/structure.json';
+    }
+
     private static function resolvePath(): string
     {
-        $real = realpath(self::$defaultStructurePath);
+        $real = realpath(self::getDefaultStructurePath());
         if ($real === false)
-            throw new RuntimeException("structure.json not found at: " . self::$defaultStructurePath);
+            throw new RuntimeException("structure.json not found at: " . self::getDefaultStructurePath());
         return $real;
     }
 
@@ -56,7 +65,8 @@ final class Config
             if (!is_array($entry))
                 continue;
             foreach ($entry as $key => $val) {
-                if (strcasecmp((string) $key, $type) === 0)
+                $typeCode = empty($val['code']) ? $key : $val['code'];
+                if (strcasecmp((string) $typeCode, $type) === 0)
                     return is_array($val) ? $val : null;
             }
         }

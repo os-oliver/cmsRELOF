@@ -3,8 +3,6 @@ namespace App\Controllers;
 
 use App\Utils\LocaleManager;
 
-session_start();
-
 use App\Controllers\AuthController;
 use App\Models\Employee;
 use App\Models\AboutUs;
@@ -22,6 +20,7 @@ class AboutUSController
     //
     public function settings(): void
     {
+        AuthController::requireEditor();
         $model = new AboutUs();
 
         // Accept JSON PUT or POST with _method=PUT
@@ -35,7 +34,7 @@ class AboutUSController
 
             $iconPath = null;
             $allowed = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'ico'];
-            $destDir = __DIR__ . '/../../public/assets/icons';
+            $destDir = PUBLIC_ROOT . '/assets/icons';
             $finalIconName = 'icon.png'; // always overwrite this
 
             if (!is_dir($destDir)) {
@@ -189,6 +188,7 @@ class AboutUSController
 
         // Create new employee (accept JSON or multipart/form-data with file)
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_REQUEST['_method'])) {
+            AuthController::requireEditor();
             // Accept either form fields (POST) or JSON body
             if (!empty($_POST) || !empty($_FILES)) {
                 $data = $_POST;
@@ -216,7 +216,7 @@ class AboutUSController
                     echo json_encode(['error' => 'Invalid icon type']);
                     return;
                 }
-                $destDir = __DIR__ . '/../../public/assets/icons';
+                $destDir = PUBLIC_ROOT . '/assets/icons';
                 if (!is_dir($destDir)) {
                     mkdir($destDir, 0775, true);
                 }
@@ -262,7 +262,7 @@ class AboutUSController
                 ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_REQUEST['_method']) && strtoupper($_REQUEST['_method']) === 'PUT')
             ) && $id !== null
         ) {
-
+            AuthController::requireEditor();
             // Accept either form fields (POST multipart/form-data) or JSON body
             if (!empty($_POST) || !empty($_FILES)) {
                 $payload = $_POST;
@@ -288,7 +288,7 @@ class AboutUSController
                     echo json_encode(['error' => 'Invalid icon type']);
                     return;
                 }
-                $destDir = __DIR__ . '/../../public/assets/icons';
+                $destDir = PUBLIC_ROOT . '/assets/icons';
                 if (!is_dir($destDir)) {
                     mkdir($destDir, 0775, true);
                 }
@@ -322,6 +322,7 @@ class AboutUSController
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && $id !== null) {
+            AuthController::requireEditor();
             $model->delete((int) $id);
             echo json_encode(['deleted' => true]);
             return;

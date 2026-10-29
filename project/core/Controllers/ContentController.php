@@ -6,6 +6,9 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 use App\Models\Content;
+use App\Models\ContentType;
+use App\Utils\ContentTypeManager;
+use App\Controllers\AuthController;
 use Throwable;
 
 class ContentController
@@ -23,6 +26,7 @@ class ContentController
      */
     public function createFromRequest(): void
     {
+        AuthController::requireEditor();
         header('Content-Type: application/json; charset=utf-8');
         try {
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
@@ -41,6 +45,7 @@ class ContentController
      */
     public function listFromRequest(): void
     {
+        AuthController::requireEditor();
         header('Content-Type: application/json; charset=utf-8');
         $type = $_GET['type'] ?? null;
         $q = trim((string) ($_GET['q'] ?? ''));
@@ -93,6 +98,7 @@ class ContentController
      */
     public function deleteFromRequest(): void
     {
+        AuthController::requireEditor();
         header('Content-Type: application/json; charset=utf-8');
         $id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
         if ($id <= 0) {
@@ -102,7 +108,7 @@ class ContentController
         }
 
         try {
-            $res = $this->model->deleteById($id);
+            $res = $this->model->deleteContentById($id);
             echo json_encode($res, JSON_UNESCAPED_UNICODE);
         } catch (Throwable $e) {
             error_log('DeleteFromRequest failed: ' . $e->getMessage());
@@ -110,4 +116,11 @@ class ContentController
             echo json_encode(['success' => false, 'message' => 'Server error'], JSON_UNESCAPED_UNICODE);
         }
     }
+
+    public function contentTypes(): void
+    {
+        AuthController::requireAdmin();
+        ContentTypeManager::createTypes('Turizam');
+    }
+
 }

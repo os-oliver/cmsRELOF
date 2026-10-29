@@ -1,26 +1,14 @@
 <?php
-// src/Controllers/PageController.php
-
 namespace App\Controllers;
 
 use App\Controllers\PersonalContentController;
+use App\Controllers\AuthController;
 use Exception;
 
 class PageController
 {
     private const TEMPLATE_SLUG_MAP = [
-        // 'biblioteka' => 'Biblioteka',
-        // 'centar-za-kulturu' => 'CentarZaKulturu',
         'informacije-od-javnog-znacaja' => 'InformacijeOdJavnogZnacaja',
-        // 'istorijski-arhiv' => 'IstorijskiArhiv',
-        // 'muzej-galerija' => 'MuzejGalerija',
-        // 'obrazovna-ustanova' => 'ObrazovnaUstanova',
-        // 'omladinski-centar' => 'OmladinskiCentar',
-        // 'pozoriste' => 'Pozoriste',
-        // 'predskolska-ustanova' => 'PredskolskaUstanova',
-        // 'socijalna-ustanova' => 'SocijalnaUstanova',
-        // 'sport' => 'Sport',
-        // 'turizam' => 'Turizam',
     ];
 
     private function loadTemplate(string $templateName): void
@@ -40,11 +28,13 @@ class PageController
 
     public function createPage()
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/admin/createPage.php';
         return;
     }
     public function test()
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/test.php';
         return;
     }
@@ -67,6 +57,7 @@ class PageController
 
     public function buildWizard()
     {
+        AuthController::requireAdmin();
         require PUBLIC_ROOT . '/admin/buildWizard/index.php';
         return;
     }
@@ -86,6 +77,7 @@ class PageController
     }
     public function StaticPageEditor()
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/editor/pages/StaticPageEditor.php';
         return;
     }
@@ -101,33 +93,39 @@ class PageController
     }
     public function adminStyle()
     {
+        AuthController::requireAdmin();
         require PUBLIC_ROOT . '/superAdmin/pages/style.php';
         return;
     }
     public function userStyle()
     {
+        AuthController::requireAdmin();
         require PUBLIC_ROOT . '/superAdmin/pages/users.php';
         return;
     }
     public function editorDynamic($params)
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/editor/pages/dynamicPage.php';
         return;
     }
     public function colors()
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/pages/color-scheme.php';
         return;
     }
     public function categoryStyle()
     {
+        AuthController::requireAdmin();
         require PUBLIC_ROOT . '/superAdmin/pages/categories.php';
         return;
     }
     public function savePagesjson()
     {
+        AuthController::requireAdmin();
         $jsonFile = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/pages.json';
-        $exportBase = dirname(__DIR__) . '/../public/exportedPages/';
+        $exportBase = PUBLIC_ROOT . '/exportedPages/';
 
         // 1) Load old data
         $oldData = [];
@@ -181,7 +179,7 @@ class PageController
 
             if ($isStatic) {
                 // Handle static pages
-                $staticBase = dirname(__DIR__) . '/../public/pages/';
+                $staticBase = PUBLIC_ROOT . '/pages/';
                 $full = $staticBase . $page['file'];
 
                 $dir = dirname($full);
@@ -279,11 +277,13 @@ class PageController
     }
     public function complaints()
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/editor/pages/complaints.php';
         return;
     }
     public function dashboard()
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/editor/pages/dashboard.php';
         return;
     }
@@ -295,7 +295,6 @@ class PageController
     }
     public function template()
     {
-
         $tip = isset($_GET['tipUstanove'])
             ? preg_replace('/[^\w]/', '', $_GET['tipUstanove'])
             : '';
@@ -325,11 +324,13 @@ class PageController
 
     public function style()
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/admin/style.php';
         return;
     }
     public function savePage()
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/admin/savePage.php';
         return;
     }
@@ -350,11 +351,12 @@ class PageController
 
         // Render the content with header and footer
         echo $contentController->renderContent($id, $type);
-        echo require_once __DIR__ . '/../../public/exportedPages/landingPageComponents/landingPage/header.php';
+        echo require_once PUBLIC_ROOT . '/exportedPages/landingPageComponents/landingPage/header.php';
 
     }
     public function componentSave()
     {
+        AuthController::requireEditor();
         try {
             // Provera da li su poslati potrebni parametri
             if (!isset($_POST['componentFileName']) || !isset($_POST['htmlContent'])) {
@@ -373,7 +375,7 @@ class PageController
             }
 
             // Putanja do direktorijuma sa komponentama
-            $componentsDir = realpath(__DIR__ . '/../../public/exportedPages/landingPageComponents/landingPage');
+            $componentsDir = realpath(PUBLIC_ROOT . '/exportedPages/landingPageComponents/landingPage');
 
             if (!$componentsDir || !is_dir($componentsDir)) {
                 throw new Exception('Direktorijum komponenti ne postoji');
@@ -464,6 +466,7 @@ class PageController
     }
     public function deletePage()
     {
+        AuthController::requireEditor();
         require PUBLIC_ROOT . '/admin/deletePage.php';
         return;
     }

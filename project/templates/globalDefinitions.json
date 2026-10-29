@@ -1,12 +1,14 @@
 [
   {
     "Ankete": {
+      "code": "ankete",
       "sr": "Ankete",
       "en": "Surveys",
       "sr-Cyrl": "Анкете",
       "icon": "fas fa-poll",
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -17,6 +19,7 @@
           "required": true
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -29,12 +32,14 @@
       ]
     },
     "Pitanja": {
-      "sr": "Često postavljena pitanja",
+      "code": "pitanja",
+      "sr": "Često postavljana pitanja",
       "en": "Frequently asked questions",
-      "sr-Cyrl": "Често постављена питања",
+      "sr-Cyrl": "Често постављана питања",
       "icon": "fa-solid fa-circle-question",
       "fields": [
         {
+          "code": "question",
           "name": "question",
           "type": "text",
           "label": {
@@ -45,6 +50,7 @@
           "required": true
         },
         {
+          "code": "answer",
           "name": "answer",
           "type": "textarea",
           "label": {
@@ -57,12 +63,14 @@
       ]
     },
     "OrganiUpravljanja": {
+      "code": "organi-upravljanja",
       "sr": "Organi upravljanja",
       "en": "Management bodies",
       "sr-Cyrl": "Органи управљања",
       "icon": "fas fa-users-cog",
       "fields": [
         {
+          "code": "ime",
           "name": "ime",
           "type": "text",
           "label": {
@@ -73,6 +81,7 @@
           "required": true
         },
         {
+          "code": "pozicija",
           "name": "pozicija",
           "type": "text",
           "label": {
@@ -83,15 +92,17 @@
           "required": true
         },
         {
+          "code": "biografija",
           "name": "biografija",
           "type": "textarea",
           "label": {
             "sr": "Biografija",
             "en": "biography",
-            "sr-Cyrl": "Биографиј"
+            "sr-Cyrl": "Биографија"
           }
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -101,6 +112,7 @@
           }
         },
         {
+          "code": "kontakt",
           "name": "kontakt",
           "type": "email",
           "label": {
