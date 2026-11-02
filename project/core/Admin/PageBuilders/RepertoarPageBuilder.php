@@ -204,7 +204,7 @@ HTML;
 {
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
     $nazivPredstave = htmlspecialchars($item['fields']['nazivPredstave'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $datumVreme = htmlspecialchars($item['fields']['datumVreme'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $trajanjeMin = htmlspecialchars($item['fields']['trajanjeMin'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $zanr = htmlspecialchars($item['fields']['zanr'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -218,14 +218,14 @@ HTML;
                 <i class='fas fa-theater-masks text-6xl text-secondary'></i>
            </div>";
 
-    $dateTimeRow = $datumVreme
+    $dateTimeRow = $datum
         ? "<div class='flex items-start gap-3'>
                <div class='flex-shrink-0 w-11 h-11 bg-surface rounded-xl flex items-center justify-center text-primary'>
                    <i class='fas fa-calendar-alt'></i>
                </div>
                <div class='flex-1'>
                    <div class='text-xs font-semibold text-secondary_text uppercase tracking-[0.15em] mb-0.5'>{$texts['date_and_time']}</div>
-                   <div class='text-sm font-semibold text-primary_text'>{$datumVreme}</div>
+                   <div class='text-sm font-semibold text-primary_text'>{$datum}</div>
                </div>
            </div>"
         : '';
@@ -430,9 +430,12 @@ $currentPage = max(1, (int) ($_GET['page'] ?? 1));
 $categoryId = isset($_GET['category']) && is_numeric($_GET['category']) ? (int) $_GET['category'] : null;
 $search = $_GET['search'] ?? '';
 
+
+$sort = ($_GET['sort'] ?? 'asc') === 'desc' ? 'DESC' : 'ASC';
+
 $itemsList = $slug
-    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId)
-    : ['success' => false, 'items' => []];
+    ? (new Content())->fetchListData($slug, $search, $currentPage, $itemsPerPage, $categoryId, $locale, 'datum', $sort)
+    : ['success' => false, 'items' => [], 'total' => 0];
 
 $config = $fieldLabels = [];
 if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {

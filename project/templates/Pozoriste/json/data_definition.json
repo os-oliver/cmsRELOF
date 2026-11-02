@@ -87,17 +87,18 @@
           "required": true
         },
         {
-          "code": "datumVreme",
-          "name": "datumVreme",
-          "type": "text",
-          "label": {
-            "sr": "Datum i vreme",
-            "en": "Date & time",
-            "sr-Cyrl": "Датум и време"
-          },
+          "code": "datum",
+          "name": "datum",
+          "type": "date",
+          "label": { "sr": "Datum", "en": "Date", "sr-Cyrl": "Датум" },
           "required": true
         },
-
+        {
+          "code": "vreme",
+          "name": "vreme",
+          "type": "time",
+          "label": { "sr": "Vreme početka", "en": "Start time", "sr-Cyrl": "Време почетка" }
+        },
         {
           "code": "main_category",
           "name": "Žanr",

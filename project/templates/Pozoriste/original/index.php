@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="sr" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -410,17 +410,14 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo Section -->
             <a href="/" class="flex items-center space-x-3 flex-shrink-0">
-                <div
-                    class="w-12 h-12 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <img src="" alt="" style="width:75px;height:auto;" />
+                <div class="w-12 h-12 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    <img src="/images/logo.png" alt="Logo Narodnog pozorišta"
+                        class="w-full h-full object-contain" />
                 </div>
-
+            </a>
                 <div class="hidden sm:block font-body text-primary_text mr-2">
-                    <h1 class="text-xl lg:text-2xl tracking-wider font-heading">Dobrica Milutinović</h1>
-                    <p class="text-l tracking-widest hidden md:block">Narodno pozorište</p>
-                </div>
-                <div class="block sm:hidden">
-                    <h1 class="text-lg text-primary_text font-heading">Narodno pozorište</h1>
+                    <a href="/" class="text-xl lg:text-2xl tracking-wider font-heading">Dobrica Milutinović</a>
+                    <p class="text-l font-heading tracking-widest hidden md:block">Narodno pozorište</p>
                 </div>
             </a>
 
@@ -569,36 +566,67 @@
 
 
     <!-- Enhanced Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondary_text">
-        <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-1 items-center gap-8">
-                <div>
-                    <div class="mb-8 text-left">
-                        <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Dobrodošli na zvaničan sajt</span>
-                            <span class="block mt-2 text-hero_text font-body">Narodnog pozorišta Dobrica Milutinović</span>
-                            <span class="block mt-2 text-hero_text font-body">U Sremskoj Mitrovici</span>
-                        </h1>
-                        <p class="mb-10 text-2xl text-hero_text">
-                            Pronađite predstavu koju želite pogledati i vidimo se u pozorištu!
-                        </p>
-                        <a href="/o-nama/istorijat"
-                            class="bg-primary mr-5 text-background px-6 py-4 rounded-full text-lg md:text-xl hover:bg-primary_hover transition-colors w-fit">
-                            <strong>O nama</strong>
-                        </a>
-                        <a href="/repertoar"
-                            class="bg-primary text-background px-6 py-4 rounded-full text-lg md:text-xl hover:bg-primary_hover transition-colors w-fit">
-                            <strong>Pogledajte repertoar</strong>
-                        </a>
-                    </div>
-                </div>
-                <div class="hidden md:flex justify-center">
-                    <img class="dark:hidden"
-                        src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/girl-shopping-list.svg"
-                        alt="shopping illustration" />
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 text-white">
+        <!-- Pozadinska slika -->
+        <img src="assets/img/hero-pozoriste.jpg"
+            alt="Narodno pozorište Dobrica Milutinović"
+            class="absolute inset-0 w-full h-full object-cover scale-105 motion-safe:animate-[slowzoom_20s_ease-out_forwards]" />
+
+        <!-- Tamni gradijent overlay radi čitljivosti -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20"></div>
+        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent"></div>
+
+        <div class="container relative z-10 mx-auto px-6 md:px-12 py-24">
+            <div class="max-w-3xl">
+                <!-- Naslov -->
+                <h1 class="mb-6 leading-[1.05]">
+                    <span class="block text-lg md:text-xl font-body tracking-[0.3em] uppercase text-white/70 mb-3">
+                        Dobrodošli na zvaničan sajt
+                    </span>
+                    <span class="block font-heading text-5xl md:text-7xl lg:text-8xl font-bold">
+                        Narodno pozorište
+                    </span>
+                    <span class="block font-heading text-4xl md:text-6xl lg:text-7xl italic text-primary">
+                        Dobrica Milutinović
+                    </span>
+                    <span class="block mt-3 text-xl md:text-2xl font-body text-white/80">
+                        Sremska Mitrovica
+                    </span>
+                </h1>
+
+                <p class="mb-10 max-w-xl text-lg md:text-xl text-white/80">
+                    Pronađite predstavu koju želite pogledati i vidimo se u pozorištu!
+                </p>
+
+                <!-- Dugmad -->
+                <div class="flex flex-wrap gap-4">
+                    <a href="/repertoar"
+                    class="group inline-flex items-center gap-2 bg-primary text-background
+                            px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-primary/30
+                            hover:bg-primary_hover hover:-translate-y-0.5 transition-all">
+                        Pogledajte repertoar
+                        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                    </a>
+                    <a href="/o-nama/istorijat"
+                    class="inline-flex items-center px-8 py-4 rounded-full text-lg font-semibold
+                            border border-white/40 text-white backdrop-blur-sm
+                            hover:bg-white hover:text-black hover:-translate-y-0.5 transition-all">
+                        O nama
+                    </a>
                 </div>
             </div>
         </div>
+
+        <!-- Scroll indikator -->
+        <a href="#repertoar" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors">
+            <span class="text-l tracking-widest uppercase">Skrolujte</span>
+            <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+        </a>
     </section>
 
 <!-- Repertoar -->
@@ -945,7 +973,10 @@
                     fontFamily: {
                         heading: ['"Bodoni Moda"', 'serif'], // headings (classic & dramatic)
                         body: ['Inter', 'sans-serif']  
-                    }
+                    },
+                    keyframes: {
+                        slowzoom: { '0%': { transform: 'scale(1.05)' }, '100%': { transform: 'scale(1.15)' } },
+                    },
                 }
             }
         }
