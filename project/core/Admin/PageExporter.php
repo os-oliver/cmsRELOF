@@ -671,8 +671,6 @@ class PageExporter
                 return new MissionPageBuilder($name, $this->data);
             case 'cilj':
                 return new GoalPageBuilder($name, $this->data);
-            case 'predstave':
-                return new DynamicPageBuilder('predstave');
             case 'vesti':
                 return new VestiPageBuilder('vesti');
             case 'vrtici':
@@ -727,6 +725,8 @@ class PageExporter
                 return new RepertoarPageBuilder('repertoar');
             case 'repertoar':
                 return new LibraryProgramPageBuilder('repertoar');
+            case 'predstave':
+                return new PredstavePageBuilder('predstave');
             case 'izlozbe':
                 return new IzlozbePageBuilder('izlozbe');
             case 'informacije':

@@ -206,10 +206,10 @@ HTML;
     $nazivPredstave = htmlspecialchars($item['fields']['nazivPredstave'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $datum = htmlspecialchars($item['fields']['datum'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $trajanjeMin = htmlspecialchars($item['fields']['trajanjeMin'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $zanr = htmlspecialchars($item['fields']['zanr'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
+    $zanr = htmlspecialchars($item['fields']['main_category'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
-    $kategorija = htmlspecialchars($item['category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
+    $kategorija = htmlspecialchars($item['main_category']['content'] ?? '', ENT_QUOTES, 'UTF-8');
 
     // Preformatted sections
     $imageSection = $imageUrl
@@ -242,17 +242,17 @@ HTML;
            </div>"
         : '';
 
-    $genreRow = $kategorija
-    ? "<div class='flex items-start gap-3'>
-            <div class='flex-shrink-0 w-11 h-11 bg-surface rounded-xl flex items-center justify-center text-primary'>
-                <i class='fas fa-theater-masks'></i>
-            </div>
-            <div class='flex-1 min-w-0'>
-                <div class='text-xs font-semibold text-secondary_text uppercase tracking-[0.15em] mb-0.5'>{$texts['genre']}</div>
-                <div class='text-sm font-semibold text-primary_text truncate'>{$kategorija}</div>
-            </div>
-        </div>"
-    : '';
+    $genreRow = $zanr
+        ? "<div class='flex items-start gap-3'>
+                <div class='flex-shrink-0 w-11 h-11 bg-surface rounded-xl flex items-center justify-center text-primary'>
+                    <i class='fas fa-theater-masks'></i>
+                </div>
+                <div class='flex-1 min-w-0'>
+                    <div class='text-xs font-semibold text-secondary_text uppercase tracking-[0.15em] mb-0.5'>{$texts['genre']}</div>
+                    <div class='text-sm font-semibold text-primary_text truncate'>{$zanr}</div>
+                </div>
+            </div>"
+        : '';
 
     // Replace placeholders
     $replacements = [

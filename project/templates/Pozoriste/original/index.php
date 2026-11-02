@@ -351,6 +351,11 @@
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                             </a>
+
+                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-theater-masks mr-2 text-primary"></i>Ansambl
+                            </a>
+
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
                             </a>
@@ -369,10 +374,10 @@
                         </div>
                     </div>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-theater-masks mr-3 text-primary"></i>Ansambl
+                        <i class="fas fa-address-book mr-3 text-primary"></i>Repertoar
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-address-book mr-3 text-primary"></i>Repertoar
+                        <i class="fas fa-address-book mr-3 text-primary"></i>Predstave
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-calendar-alt mr-3 text-primary"></i>Vesti
@@ -441,6 +446,13 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-history mr-2 text-primary"></i>Istorijat
                         </a>
+
+                        <a href="#" 
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            <i class="fas fa-theater-masks mr-2 text-primary"></i>
+                            <span class="hidden xl:inline">Ansambl</span>
+                        </a>
+
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
@@ -464,12 +476,12 @@
                     </div>
                 </div>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-theater-masks mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Ansambl</span>
+                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
+                    <span class="hidden xl:inline">Repertoar</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-calendar-alt mr-2 text-primary"></i>
-                    <span class="hidden xl:inline">Repertoar</span>
+                    <span class="hidden xl:inline">Predstave</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-calendar-alt mr-2 text-primary"></i>
@@ -898,7 +910,7 @@
                     <ul class="space-y-3">
                         <li><a href="/o-nama/istorijat" class="text-logocolor2/90 hover:text-primary_text transition-colors">Istorijat</a></li>
                         <li><a href="/repertoar" class="text-logocolor2/90 hover:text-primary_text transition-colors">Repertoar</a></li>
-                        <li><a href="/ansambl" class="text-logocolor2/90 hover:text-primary_text transition-colors">Ansambl</a></li>
+                        <li><a href="/o-nama/ansambl" class="text-logocolor2/90 hover:text-primary_text transition-colors">Ansambl</a></li>
                         <li><a href="/kontakt" class="text-logocolor2/90 hover:text-primary_text transition-colors">Kontakt</a></li>
                         <li><a href="/dokumenti" class="text-logocolor2/90 hover:text-primary_text transition-colors">Dokumenti</a></li>
                     </ul>

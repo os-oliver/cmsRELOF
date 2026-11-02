@@ -437,6 +437,394 @@
         }
       ]
     },
+    "Predstave": {
+      "code": "Predstave",
+      "sr": "Predstave",
+      "en": "Shows",
+      "sr-Cyrl": "Представе",
+      "icon": "fas fa-theater-masks",
+      "fields": [
+        {
+          "code": "Scena",
+          "name": "Scena",
+          "type": "categories",
+          "label": {
+            "sr": "Scena",
+            "en": "Scene",
+            "sr-Cyrl": "Сцена"
+          },
+          "options": [
+            "Večernja scena",
+            "Scena za decu"
+          ],
+          "coded_options": [
+            {
+              "code": "Večernja scena",
+              "translations": {
+                "sr": "Večernja scena",
+                "en": "Evening scene",
+                "sr-Cyrl": "Вечерња сцена"
+              }
+            },
+            {
+              "code": "Scena za decu",
+              "translations": {
+                "sr": "Scena za decu",
+                "en": "Scene for kids",
+                "sr-Cyrl": "Сцена за децу"
+              }
+            }
+          ]
+        },
+        {
+          "code": "nazivPredstave",
+          "name": "nazivPredstave",
+          "type": "text",
+          "label": {
+            "sr": "Naziv predstave",
+            "en": "Play title",
+            "sr-Cyrl": "Назив представе"
+          },
+          "required": true
+        },
+        {
+          "code": "main_category",
+          "name": "Žanr",
+          "type": "categories",
+          "label": {
+            "sr": "Žanr",
+            "en": "Genre",
+            "sr-Cyrl": "Жанр"
+          },
+          "options": [
+            "Komedija",
+            "Drama",
+            "Tragedija",
+            "Tragikomedija",
+            "Melodrama",
+            "Farsa",
+            "Satira",
+            "Mjuzikl",
+            "Opera",
+            "Balet",
+            "Pantomima",
+            "Monodrama",
+            "Lutkarska predstava",
+            "Dječija predstava",
+            "Eksperimentalna predstava",
+            "Dokumentarna predstava",
+            "Improvizacijska predstava",
+            "Istorijska",
+            "Biografska",
+            "Kriminalistička",
+            "Romantična",
+            "Horor",
+            "Naučnofantastična",
+            "Fantastična",
+            "Avanturistička",
+            "Psihološka",
+            "Porodična",
+            "Edukativna",
+            "Politička",
+            "Religijska"
+          ],
+          "coded_options": [
+            {
+              "code": "Komedija",
+              "translations": {
+                "sr": "Komedija",
+                "en": "Comedy",
+                "sr-Cyrl": "Комедија"
+              }
+            },
+            {
+              "code": "Drama",
+              "translations": {
+                "sr": "Drama",
+                "en": "Drama",
+                "sr-Cyrl": "Драма"
+              }
+            },
+            {
+              "code": "Tragedija",
+              "translations": {
+                "sr": "Tragedija",
+                "en": "Tragedy",
+                "sr-Cyrl": "Трагедија"
+              }
+            },
+            {
+              "code": "Tragikomedija",
+              "translations": {
+                "sr": "Tragikomedija",
+                "en": "Tragicomedy",
+                "sr-Cyrl": "Трагикомедија"
+              }
+            },
+            {
+              "code": "Melodrama",
+              "translations": {
+                "sr": "Melodrama",
+                "en": "Melodrama",
+                "sr-Cyrl": "Мелодрама"
+              }
+            },
+            {
+              "code": "Farsa",
+              "translations": {
+                "sr": "Farsa",
+                "en": "Farce",
+                "sr-Cyrl": "Фарса"
+              }
+            },
+            {
+              "code": "Satira",
+              "translations": {
+                "sr": "Satira",
+                "en": "Satire",
+                "sr-Cyrl": "Сатира"
+              }
+            },
+            {
+              "code": "Mjuzikl",
+              "translations": {
+                "sr": "Mjuzikl",
+                "en": "Musical",
+                "sr-Cyrl": "Мјузикл"
+              }
+            },
+            {
+              "code": "Opera",
+              "translations": {
+                "sr": "Opera",
+                "en": "Opera",
+                "sr-Cyrl": "Опера"
+              }
+            },
+            {
+              "code": "Balet",
+              "translations": {
+                "sr": "Balet",
+                "en": "Ballet",
+                "sr-Cyrl": "Балет"
+              }
+            },
+            {
+              "code": "Pantomima",
+              "translations": {
+                "sr": "Pantomima",
+                "en": "Pantomime",
+                "sr-Cyrl": "Пантомима"
+              }
+            },
+            {
+              "code": "Monodrama",
+              "translations": {
+                "sr": "Monodrama",
+                "en": "Monodrama",
+                "sr-Cyrl": "Монодрама"
+              }
+            },
+            {
+              "code": "Lutkarska predstava",
+              "translations": {
+                "sr": "Lutkarska predstava",
+                "en": "Puppet Show",
+                "sr-Cyrl": "Луткарска представа"
+              }
+            },
+            {
+              "code": "Dječija predstava",
+              "translations": {
+                "sr": "Dječija predstava",
+                "en": "Children's Play",
+                "sr-Cyrl": "Дјечија представа"
+              }
+            },
+            {
+              "code": "Eksperimentalna predstava",
+              "translations": {
+                "sr": "Eksperimentalna predstava",
+                "en": "Experimental Theatre",
+                "sr-Cyrl": "Експериментална представа"
+              }
+            },
+            {
+              "code": "Dokumentarna predstava",
+              "translations": {
+                "sr": "Dokumentarna predstava",
+                "en": "Documentary Theatre",
+                "sr-Cyrl": "Документарна представа"
+              }
+            },
+            {
+              "code": "Improvizacijska predstava",
+              "translations": {
+                "sr": "Improvizacijska predstava",
+                "en": "Improvisational Theatre",
+                "sr-Cyrl": "Импровизацијска представа"
+              }
+            },
+            {
+              "code": "Istorijska",
+              "translations": {
+                "sr": "Istorijska",
+                "en": "Historical",
+                "sr-Cyrl": "Историјска"
+              }
+            },
+            {
+              "code": "Biografska",
+              "translations": {
+                "sr": "Biografska",
+                "en": "Biographical",
+                "sr-Cyrl": "Биографска"
+              }
+            },
+            {
+              "code": "Kriminalistička",
+              "translations": {
+                "sr": "Kriminalistička",
+                "en": "Crime",
+                "sr-Cyrl": "Криминалистичка"
+              }
+            },
+            {
+              "code": "Romantična",
+              "translations": {
+                "sr": "Romantična",
+                "en": "Romance",
+                "sr-Cyrl": "Романтична"
+              }
+            },
+            {
+              "code": "Horor",
+              "translations": {
+                "sr": "Horor",
+                "en": "Horror",
+                "sr-Cyrl": "Хорор"
+              }
+            },
+            {
+              "code": "Naučnofantastična",
+              "translations": {
+                "sr": "Naučnofantastična",
+                "en": "Science Fiction",
+                "sr-Cyrl": "Научнофантастична"
+              }
+            },
+            {
+              "code": "Fantastična",
+              "translations": {
+                "sr": "Fantastična",
+                "en": "Fantasy",
+                "sr-Cyrl": "Фантастична"
+              }
+            },
+            {
+              "code": "Avanturistička",
+              "translations": {
+                "sr": "Avanturistička",
+                "en": "Adventure",
+                "sr-Cyrl": "Авантуристичка"
+              }
+            },
+            {
+              "code": "Psihološka",
+              "translations": {
+                "sr": "Psihološka",
+                "en": "Psychological",
+                "sr-Cyrl": "Психолошка"
+              }
+            },
+            {
+              "code": "Porodična",
+              "translations": {
+                "sr": "Porodična",
+                "en": "Family",
+                "sr-Cyrl": "Породична"
+              }
+            },
+            {
+              "code": "Edukativna",
+              "translations": {
+                "sr": "Edukativna",
+                "en": "Educational",
+                "sr-Cyrl": "Едукативна"
+              }
+            },
+            {
+              "code": "Politička",
+              "translations": {
+                "sr": "Politička",
+                "en": "Political",
+                "sr-Cyrl": "Политичка"
+              }
+            },
+            {
+              "code": "Religijska",
+              "translations": {
+                "sr": "Religijska",
+                "en": "Religious",
+                "sr-Cyrl": "Религијска"
+              }
+            }
+          ],
+          "required": true
+        },
+        {
+          "code": "trajanjeMin",
+          "name": "trajanjeMin",
+          "type": "text",
+          "label": {
+            "sr": "Trajanje (min)",
+            "en": "Duration (min)",
+            "sr-Cyrl": "Трајање (мин)"
+          }
+        },
+        {
+          "code": "opisPredstave",
+          "name": "opisPredstave",
+          "type": "text",
+          "label": {
+            "sr": "Opis predstave",
+            "en": "Play description",
+            "sr-Cyrl": "Опис представе"
+          },
+          "required": true
+        },
+        {
+          "code": "glumci",
+          "name": "glumci",
+          "type": "text",
+          "label": {
+            "sr": "Glumci",
+            "en": "Actors",
+            "sr-Cyrl": "Глумци"
+          }
+        },
+        {
+          "code": "rezija",
+          "name": "rezija",
+          "type": "text",
+          "label": {
+            "sr": "Režija",
+            "en": "Director",
+            "sr-Cyrl": "Режија"
+          }
+        },
+        {
+          "code": "slika",
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika predstave",
+            "en": "Play cover image",
+            "sr-Cyrl": "Насловна слика представе"
+          }
+        }
+      ]
+    },
     "Ansambl": {
       "code": "Ansambl",
       "sr": "Ansambl",
