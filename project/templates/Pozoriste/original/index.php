@@ -108,12 +108,10 @@
             }
 
             .hero-gradient {
-                background: linear-gradient(
-                    to bottom,       
-                    rgb(247, 241, 237) 0%,      
-                    rgb(30, 58, 110) 40%, 
-                    rgba(255, 255, 255, 0.96) 100% 
-                );
+                background: linear-gradient(to bottom,
+                        rgb(247, 241, 237) 0%,
+                        rgb(30, 58, 110) 40%,
+                        rgba(255, 255, 255, 0.96) 100%);
                 text-align: left;
                 padding-top: 8rem;
                 padding-bottom: 6rem;
@@ -411,18 +409,18 @@
         </button>
     </div>
 
-    <header class="fixed w-full z-50 transition-all duration-300 py-3 bg-header backdrop-blur-md shadow-sm ">
+    <header class="fixed w-full z-50 transition-all duration-300 py-3 bg-header backdrop-blur-md shadow-sm">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <!-- Logo Section -->
-            <a href="/" class="flex items-center space-x-3 flex-shrink-0">
+
+            <!-- Logo + naziv zajedno -->
+            <a href="/" class="flex items-center gap-3 flex-shrink-0">
                 <div class="w-12 h-12 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
                     <img src="/images/logo.png" alt="Logo Narodnog pozorišta"
                         class="w-full h-full object-contain" />
                 </div>
-            </a>
-                <div class="hidden sm:block font-body text-primary_text mr-2">
-                    <a href="/" class="text-xl lg:text-2xl tracking-wider font-heading">Dobrica Milutinović</a>
-                    <p class="text-l font-heading tracking-widest hidden md:block">Narodno pozorište</p>
+                <div class="hidden sm:block font-body text-primary_text leading-tight">
+                    <span class="block text-xl lg:text-2xl tracking-wider font-heading">Dobrica Milutinović</span>
+                    <span class="hidden md:block text-base font-heading tracking-widest">Narodno pozorište</span>
                 </div>
             </a>
 
@@ -442,12 +440,12 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-flag mr-2 text-primary"></i>Misija
                         </a>
-                        <a static = "true" href="#"
+                        <a static="true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-history mr-2 text-primary"></i>Istorijat
                         </a>
 
-                        <a href="#" 
+                        <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-theater-masks mr-2 text-primary"></i>
                             <span class="hidden xl:inline">Ansambl</span>
@@ -459,8 +457,8 @@
                         </a>
 
                         <a data-page="OrganizacionaStruktura" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
+                            class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
+                            <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                         </a>
 
                         <a href="#"
@@ -613,17 +611,17 @@
                 <!-- Dugmad -->
                 <div class="flex flex-wrap gap-4">
                     <a href="/repertoar"
-                    class="group inline-flex items-center gap-2 bg-primary text-background
+                        class="group inline-flex items-center gap-2 bg-primary text-background
                             px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-primary/30
                             hover:bg-primary_hover hover:-translate-y-0.5 transition-all">
                         Pogledajte repertoar
                         <svg class="w-5 h-5 transition-transform group-hover:translate-x-1"
                             fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6" />
                         </svg>
                     </a>
                     <a href="/o-nama/istorijat"
-                    class="inline-flex items-center px-8 py-4 rounded-full text-lg font-semibold
+                        class="inline-flex items-center px-8 py-4 rounded-full text-lg font-semibold
                             border border-white/40 text-white backdrop-blur-sm
                             hover:bg-white hover:text-black hover:-translate-y-0.5 transition-all">
                         O nama
@@ -636,12 +634,12 @@
         <a href="#repertoar" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors">
             <span class="text-l tracking-widest uppercase">Skrolujte</span>
             <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
         </a>
     </section>
 
-<!-- Repertoar -->
+    <!-- Repertoar -->
     <section id="repertoar" class="py-20 text-secondary_text">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-body">
@@ -657,8 +655,8 @@
             <div id="repertoarCards" class="flex justify-center gap-8 flex-wrap">
                 <!-- repertoar card 1 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="h-48 relative overflow-hidden">
+                        <img id="g-slika" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="Naslovna slika predstave" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -672,14 +670,13 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </a>
-
                     </div>
                 </div>
 
                 <!-- repertoar card 2 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="h-48 relative overflow-hidden">
+                        <img id="g-slika" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="Naslovna slika predstave" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -687,21 +684,19 @@
                         </div>
                         <h3 id="g-nazivPredstave" class="text-xl mb-4">Naslov predstave</h3>
                         <h2 id="g-naziv" class="text-xl mb-4">Kategorija predstave</h2>
-
                         <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
                             Saznajte više
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </a>
-
                     </div>
                 </div>
 
                 <!-- repertoar card 3 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="h-48 relative overflow-hidden">
+                        <img id="g-slika" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="Naslovna slika predstave" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -709,21 +704,18 @@
                         </div>
                         <h3 id="g-nazivPredstave" class="text-xl mb-4">Naslov predstave</h3>
                         <h2 id="g-naziv" class="text-xl mb-4">Kategorija predstave</h2>
-
                         <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
                             Saznajte više
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </a>
-
                     </div>
                 </div>
 
-                <!-- repertoar card 4 -->
                 <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                    <div class="h-48 relative overflow-hidden">
+                        <img id="g-slika" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="Naslovna slika predstave" />
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -731,14 +723,12 @@
                         </div>
                         <h3 id="g-nazivPredstave" class="text-xl mb-4">Naslov predstave</h3>
                         <h2 id="g-naziv" class="text-xl mb-4">Kategorija predstave</h2>
-
                         <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
                             Saznajte više
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </a>
-
                     </div>
                 </div>
 
@@ -928,7 +918,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate = "off"></span>
+                            <span data-translate="off"></span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
@@ -936,7 +926,7 @@
                                 Radno vreme:<br>
                                 Ponedeljak - Petak: <br>
                                 Subota: <br>
-                                Nedelja: 
+                                Nedelja:
                             </span>
                         </li>
                     </ul>
@@ -966,28 +956,35 @@
             theme: {
                 extend: {
                     colors: {
-                        background: '#ffffff',       // warm parchment
+                        background: '#ffffff', // warm parchment
                         secondary_background: '#faf0ca',
-                        primary: '#8B1E3F',    // velvet red
+                        primary: '#8B1E3F', // velvet red
                         primary_hover: '#701932',
-                        secondary: '#2D3047',  // deep navy
+                        secondary: '#2D3047', // deep navy
                         secondary_hover: '#24273B',
-                        primary_text: '#1F1A1A',      // charcoal
-                        secondary_text: '#5D4E4E',    // warm gray
-                        logocolor1: '#8B1E3F',       // gold
-                        logocolor2: '#2D3047',       // pairs with gold
-                        primarybtntxt: '#FFF7E6',    // soft ivory on red/navy
-                        surface: '#8B1E3F1A',       // translucent velvet for cards
-                        footerbg: '#EFE3D6',         // creamy footer
+                        primary_text: '#1F1A1A', // charcoal
+                        secondary_text: '#5D4E4E', // warm gray
+                        logocolor1: '#8B1E3F', // gold
+                        logocolor2: '#2D3047', // pairs with gold
+                        primarybtntxt: '#FFF7E6', // soft ivory on red/navy
+                        surface: '#8B1E3F1A', // translucent velvet for cards
+                        footerbg: '#EFE3D6', // creamy footer
                         header: '#e9f0fd',
-                        hero_text: '#eaf0fb', 
+                        hero_text: '#eaf0fb',
                     },
                     fontFamily: {
                         heading: ['"Bodoni Moda"', 'serif'], // headings (classic & dramatic)
-                        body: ['Inter', 'sans-serif']  
+                        body: ['Inter', 'sans-serif']
                     },
                     keyframes: {
-                        slowzoom: { '0%': { transform: 'scale(1.05)' }, '100%': { transform: 'scale(1.15)' } },
+                        slowzoom: {
+                            '0%': {
+                                transform: 'scale(1.05)'
+                            },
+                            '100%': {
+                                transform: 'scale(1.15)'
+                            }
+                        },
                     },
                 }
             }
@@ -995,11 +992,11 @@
 
         const btn = document.getElementById('increaseFontBtn');
 
-        let currentSize = 16;       // initial font size in px
-        let step = 2;               // px to increase or decrease per click
-        let maxSteps = 3;           // max increments before toggling direction
-        let count = 0;              // how many increments or decrements done
-        let increasing = true;      // track if currently increasing font size
+        let currentSize = 16; // initial font size in px
+        let step = 2; // px to increase or decrease per click
+        let maxSteps = 3; // max increments before toggling direction
+        let count = 0; // how many increments or decrements done
+        let increasing = true; // track if currently increasing font size
 
         btn.addEventListener('click', () => {
             if (increasing) {
@@ -1029,7 +1026,7 @@
                 dropdown.classList.toggle('active');
             });
         });
-        document.getElementById('searchButton').addEventListener('click', function () {
+        document.getElementById('searchButton').addEventListener('click', function() {
             const container = document.getElementById('searchInputContainer');
             const input = document.getElementById('searchInput');
 
@@ -1042,7 +1039,7 @@
             }
         });
 
-        document.getElementById('closeSearch').addEventListener('click', function () {
+        document.getElementById('closeSearch').addEventListener('click', function() {
             const container = document.getElementById('searchInputContainer');
             container.classList.add('opacity-0');
             setTimeout(() => {
@@ -1050,7 +1047,7 @@
             }, 300);
         });
 
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
             const searchContainer = document.getElementById('searchInputContainer');
             const searchButton = document.getElementById('searchButton');
 
@@ -1140,7 +1137,7 @@
 
         // Event listeners
         if (hamburger) {
-            hamburger.addEventListener('click', function (e) {
+            hamburger.addEventListener('click', function(e) {
                 e.stopPropagation();
                 if (mobileMenu.classList.contains('hidden')) {
                     openMobileMenu();
@@ -1159,7 +1156,7 @@
         }
 
         if (mobileAboutToggle) {
-            mobileAboutToggle.addEventListener('click', function (e) {
+            mobileAboutToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 toggleMobileAbout();
             });
@@ -1168,21 +1165,21 @@
         // Close menu when clicking on menu links (except dropdown toggle)
         const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
         menuLinks.forEach(link => {
-            link.addEventListener('click', function () {
+            link.addEventListener('click', function() {
                 // Close menu after a short delay to allow for navigation
                 setTimeout(closeMobileMenuFunc, 150);
             });
         });
 
         // Close menu on window resize if screen becomes large
-        window.addEventListener('resize', function () {
+        window.addEventListener('resize', function() {
             if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
         });
 
         // Handle escape key to close menu
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
@@ -1190,7 +1187,7 @@
 
         // Prevent menu panel clicks from closing the menu
         if (mobileMenuPanel) {
-            mobileMenuPanel.addEventListener('click', function (e) {
+            mobileMenuPanel.addEventListener('click', function(e) {
                 e.stopPropagation();
             });
         }
@@ -1202,7 +1199,9 @@
                     entry.target.classList.add('fade-in');
                 }
             });
-        }, { threshold: 0.1 });
+        }, {
+            threshold: 0.1
+        });
 
         document.querySelectorAll('.repertoar-card, .gallery-item, .section-divider').forEach(el => {
             observer.observe(el);
