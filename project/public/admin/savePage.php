@@ -355,10 +355,7 @@ try {
             json_encode([$dataArray], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
         );
 
-<<<<<<< HEAD
-=======
         ContentTypeManager::createTypes($data['typeOfInstitution']);
->>>>>>> f2f232e5990a330eba655e3f457bc840bbe83010
 
     } else {
         error_log("Single page export mode — skipping structure and categories.");

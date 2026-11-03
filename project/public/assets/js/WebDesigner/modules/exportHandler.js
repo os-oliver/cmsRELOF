@@ -82,8 +82,8 @@ const showMessage = (type, title, message, options = {}) => {
         </button>
 
         <div class="p-8 bg-gradient-to-br ${bgColors[type]} border-b ${
-    borderColors[type]
-  }">
+          borderColors[type]
+        }">
           <div class="flex items-center justify-center mb-4">
             <div class="flex items-center justify-center w-20 h-20 rounded-full bg-white/60 shadow-inner">
               ${icons[type]}
@@ -101,7 +101,7 @@ const showMessage = (type, title, message, options = {}) => {
                 ? actions
                     .map(
                       (a, i) =>
-                        `<button data-action-index="${i}" class="action-btn px-4 py-2 rounded-lg text-sm font-semibold border">${a.label}</button>`
+                        `<button data-action-index="${i}" class="action-btn px-4 py-2 rounded-lg text-sm font-semibold border">${a.label}</button>`,
                     )
                     .join("")
                 : ""
@@ -168,7 +168,7 @@ const showMessage = (type, title, message, options = {}) => {
     btnOk.removeEventListener("click", onOk);
     btnCloseX.removeEventListener("click", onCloseX);
     actionButtons.forEach((b, i) =>
-      b.removeEventListener("click", onActionClick)
+      b.removeEventListener("click", onActionClick),
     );
 
     // remove element & restore scroll/focus
@@ -306,7 +306,7 @@ async function exportComponent(editor, komponenta) {
       showMessage(
         "error",
         "Greška pri čuvanju",
-        `Server je vratio grešku: ${res.status}`
+        `Server je vratio grešku: ${res.status}`,
       );
       return;
     }
@@ -315,7 +315,7 @@ async function exportComponent(editor, komponenta) {
     showMessage(
       "success",
       "Uspešno sačuvano!",
-      "Komponenta je uspešno sačuvana."
+      "Komponenta je uspešno sačuvana.",
     );
     console.log("Component saved:", text);
   } catch (err) {
@@ -412,19 +412,21 @@ function exportFullPage(editor, tipUstanove) {
       saveComponents: true,
     }),
   })
-    .then((response) => {
+    .then(async (response) => {
       hideLoader();
+      const text = await response.text();
       if (!response.ok) {
-        throw new Error(`HTTP greška! Status: ${response.status}`);
+        console.error("Server odgovor:", text);
+        throw new Error(`HTTP ${response.status}: ${text.slice(0, 300)}`);
       }
-      return response.text();
+      return text;
     })
     .then((msg) => {
       console.log("Export successful:", msg);
       showMessage(
         "success",
         "Stranica uspešno sačuvana!",
-        "Svi fajlovi su uspešno eksportovani."
+        "Svi fajlovi su uspešno eksportovani.",
       );
     })
     .catch((err) => {

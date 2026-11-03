@@ -602,6 +602,7 @@ class PageExporter
         $textModel = new Text();
         $dynamicText = $textModel->getDynamicText($locale);
         {{dynamicLandigPageElements}}
+        $vesti = $vesti ?? [];
 
         [$images, $totalEvents] = (new Gallery)->list(lang: $locale);
         ?>
@@ -1053,4 +1054,3 @@ CSS;
 
     }
 }
-
