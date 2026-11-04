@@ -13,6 +13,7 @@ use App\Admin\PageBuilders\MissionPageBuilder;
 use App\Admin\PageBuilders\ObjekatPageBuilder;
 use App\Admin\PageBuilders\OrganizacijaPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
+use App\Admin\PageBuilders\DelatnostPageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\SportoviPageBuilder;
 use App\Admin\PageBuilders\SavetovalistePageBuilder;
@@ -159,7 +160,6 @@ class PageExporter
         // Trim the text for checking
         $text = trim($text);
         if (stripos($text, "slov") !== false) {
-
         }        // Skip if empty or too short
         if (empty($text) || strlen($text) < 3) {
 
@@ -534,7 +534,6 @@ class PageExporter
                 file_put_contents($jsFilePath, $jsCode);
             }
         }
-
     }
 
     private function generateIndexHeader(): string
@@ -624,7 +623,6 @@ class PageExporter
         $header = str_replace('{{dynamicLandigPageElements}}', $phpString, $header);
 
         return $header;
-
     }
 
     private function generateIndexBody(): string
@@ -746,6 +744,8 @@ class PageExporter
                 return new JelovnikPageBuilder('Jelovnik', $this->data);
             case 'cenovnik':
                 return new CenovnikPageBuilder('Cenovnik', $this->data);
+            case 'delatnost':
+                return new DelatnostPageBuilder('Delatnost', $this->data);
             case 'raspored-aktivnosti':
                 return new RasporedAktivnostiPageBuilder('RasporedAktivnosti', $this->data);
             case 'istorijat':
@@ -764,6 +764,8 @@ class PageExporter
                 return new DynamicPageBuilder('Koncerti');
             case 'filmovi':
                 return new DynamicPageBuilder('Filmovi');
+            case 'arhive':
+                return new DynamicPageBuilder('Arhive');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
             default:
@@ -881,12 +883,15 @@ class PageExporter
             return 'organi-upravljanja';
         } elseif (strpos($name, 'publikacije') !== false) {
             return 'publikacije';
-        }elseif (strpos($name, 'koncerti') !== false) {
+        } elseif (strpos($name, 'koncerti') !== false) {
             return 'koncerti';
-        }elseif (strpos($name, 'filmovi') !== false) {
+        } elseif (strpos($name, 'filmovi') !== false) {
             return 'filmovi';
+        } elseif (strpos($name, 'delatnost') !== false) {
+            return 'delatnost';
+        } elseif (strpos($name, 'arhive') !== false) {
+            return 'arhive';
         }
-
         return 'basic';
     }
 
@@ -1051,6 +1056,5 @@ CSS;
 
         $pagesJsonPath = "$dataDir/pages.json";
         file_put_contents($pagesJsonPath, json_encode($pagesData, JSON_PRETTY_PRINT));
-
     }
 }

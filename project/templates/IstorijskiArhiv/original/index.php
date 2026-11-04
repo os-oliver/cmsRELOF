@@ -519,22 +519,22 @@
                             </span>
                             <i class="fas fa-chevron-down text-sm transition-transform duration-300" data-accordion-icon></i>
                         </button>
-                        <div class="hidden ml-6 mt-1 mb-2 space-y-1 border-l-2 border-secondary_background pl-2" data-accordion-panel>
-                            <a href="/o-arhivu/misija-i-vizija" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
-                                <i class="fas fa-flag w-5 mr-3 text-center text-secondary_text"></i>Misija i vizija</a>
-                            <a href="/o-arhivu/istorijat" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                        <div static="true" class="hidden ml-6 mt-1 mb-2 space-y-1 border-l-2 border-secondary_background pl-2" data-accordion-panel>
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                                <i class="fas fa-flag w-5 mr-3 text-center text-secondary_text"></i>Misija</a>
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-history w-5 mr-3 text-center text-accent"></i>Istorijat</a>
-                            <a href="/o-arhivu/organizaciona-struktura" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-users-cog w-5 mr-3 text-center text-secondary_text"></i>Organizaciona struktura</a>
-                            <a href="/o-arhivu/organi-upravljanja" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-sitemap w-5 mr-3 text-center text-primary"></i>Organi upravljanja</a>
-                            <a href="/o-arhivu/delatnost" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-archive w-5 mr-3 text-center text-accent"></i>Delatnost</a>
-                            <a href="/o-arhivu/arhive" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-images w-5 mr-3 text-center text-primary"></i>Arhive</a>
-                            <a href="/o-arhivu/pitanja" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-question-circle w-5 mr-3 text-center text-primary"></i>Pitanja</a>
-                            <a href="/o-arhivu/informacije" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-lightbulb w-5 mr-3 text-center text-primary"></i>Informacije</a>
                         </div>
                     </div>
@@ -549,11 +549,11 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-300" data-accordion-icon></i>
                         </button>
                         <div class="hidden ml-6 mt-1 mb-2 space-y-1 border-l-2 border-secondary_background pl-2" data-accordion-panel>
-                            <a href="/arhivska-grada/fondovi-i-zbirke" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-layer-group w-5 mr-3 text-center text-primary"></i>Fondovi i zbirke</a>
-                            <a href="/arhivska-grada/zbirka-povelja-i-diploma" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-scroll w-5 mr-3 text-center text-accent"></i>Zbirka povelja i diploma</a>
-                            <a href="/arhivska-grada/list-zrenjanin" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-newspaper w-5 mr-3 text-center text-secondary_text"></i>List Zrenjanin</a>
                         </div>
                     </div>
@@ -597,11 +597,11 @@
                 <a href="/" class="flex items-center gap-3 flex-shrink-0">
                     <div
                         class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <img src="assets/img/logo.png" alt="" style="width:75px;height:auto;" />
+                        <img src="/assets/img/logo.png" alt="" style="width:75px;height:auto;" />
                     </div>
                     <div class="hidden sm:block font-heading text-primary_text">
-                        <div class="text-xl leading-tight">Istorijski arhiv</div>
-                        <div class="text-xs tracking-wide hidden md:block">Zrenjanin</div>
+                        <div class="text-2xl leading-tight">Istorijski arhiv</div>
+                        <div class="text-xl tracking-wide hidden md:block">Zrenjanin</div>
                     </div>
                 </a>
             </div>
@@ -615,63 +615,61 @@
                         <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
 
-                    <!-- pt-2 popunjava razmak između dugmeta i menija, da se meni ne zatvori pri pomjeranju miša -->
                     <div class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-2 min-w-max
-                        opacity-0 invisible group-hover:opacity-100 group-hover:visible
-                        transition-all duration-300 z-50">
-                        <div class="bg-white rounded-xl shadow-lg border border-secondary/10 py-3">
+        opacity-0 invisible group-hover:opacity-100 group-hover:visible
+        transition-all duration-300 z-50">
 
-                            <a href="/o-arhivu/misija-i-vizija"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-flag mr-4 w-5 text-center text-secondary_text"></i>
-                                <span class="font-medium">Misija i vizija</span>
-                            </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-flag mr-4 w-5 text-center text-secondary_text"></i>
+                            <span class="font-medium">Misija</span>
+                        </a>
 
-                            <a href="/o-arhivu/istorijat"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-history mr-4 w-5 text-center text-accent"></i>
-                                <span class="font-medium">Istorijat</span>
-                            </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-history mr-4 w-5 text-center text-accent"></i>
+                            <span class="font-medium">Istorijat</span>
+                        </a>
 
-                            <a href="/o-arhivu/organizaciona-struktura"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-users-cog mr-4 w-5 text-center text-secondary_text"></i>
-                                <span class="font-medium">Organizaciona struktura</span>
-                            </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-users-cog mr-4 w-5 text-center text-secondary_text"></i>
+                            <span class="font-medium">Organizaciona struktura</span>
+                        </a>
 
-                            <a href="/o-arhivu/organi-upravljanja"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-sitemap mr-4 w-5 text-center text-primary"></i>
-                                <span class="font-medium">Organi upravljanja</span>
-                            </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-sitemap mr-4 w-5 text-center text-primary"></i>
+                            <span class="font-medium">Organi upravljanja</span>
+                        </a>
 
-                            <a href="/o-arhivu/delatnost"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-archive mr-4 w-5 text-center text-accent"></i>
-                                <span class="font-medium">Delatnost</span>
-                            </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-archive mr-4 w-5 text-center text-accent"></i>
+                            <span class="font-medium">Delatnost</span>
+                        </a>
 
-                            <a href="/o-arhivu/arhive"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-images mr-4 w-5 text-center text-primary"></i>
-                                <span class="font-medium">Arhive</span>
-                            </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-images mr-4 w-5 text-center text-primary"></i>
+                            <span class="font-medium">Arhive</span>
+                        </a>
 
-                            <a href="/o-arhivu/pitanja"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-question-circle mr-4 w-5 text-center text-primary"></i>
-                                <span class="font-medium">Pitanja</span>
-                            </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-question-circle mr-4 w-5 text-center text-primary"></i>
+                            <span class="font-medium">Pitanja</span>
+                        </a>
 
-                            <a href="/o-arhivu/informacije"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-lightbulb mr-4 w-5 text-center text-primary"></i>
-                                <span class="font-medium">Informacije</span>
-                            </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-lightbulb mr-4 w-5 text-center text-primary"></i>
+                            <span class="font-medium">Informacije</span>
+                        </a>
 
-                        </div>
                     </div>
                 </div>
+
 
                 <!-- Arhivska građa -->
                 <div class="dropdown relative group">
@@ -685,27 +683,26 @@
                     <div class="dropdown-menu absolute top-full left-0 pt-2 min-w-max
                         opacity-0 invisible group-hover:opacity-100 group-hover:visible
                         transition-all duration-300 z-50">
-                        <div class="bg-white rounded-xl shadow-lg border border-secondary/10 py-3">
 
-                            <a href="/arhivska-grada/fondovi-i-zbirke"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-layer-group mr-4 w-5 text-center text-primary"></i>
-                                <span class="font-medium">Fondovi i zbirke</span>
-                            </a>
 
-                            <a href="/arhivska-grada/zbirka-povelja-i-diploma"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-scroll mr-4 w-5 text-center text-accent"></i>
-                                <span class="font-medium">Zbirka povelja i diploma</span>
-                            </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-layer-group mr-4 w-5 text-center text-primary"></i>
+                            <span class="font-medium">Fondovi i zbirke</span>
+                        </a>
 
-                            <a href="/arhivska-grada/list-zrenjanin"
-                                class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
-                                <i class="fas fa-newspaper mr-4 w-5 text-center text-secondary_text"></i>
-                                <span class="font-medium">List Zrenjanin</span>
-                            </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-scroll mr-4 w-5 text-center text-accent"></i>
+                            <span class="font-medium">Zbirka povelja i diploma</span>
+                        </a>
 
-                        </div>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
+                            <i class="fas fa-newspaper mr-4 w-5 text-center text-secondary_text"></i>
+                            <span class="font-medium">List Zrenjanin</span>
+                        </a>
+
                     </div>
                 </div>
 
@@ -851,25 +848,25 @@
         <div class="container relative z-10 mx-auto px-4 md:px-6">
 
             <!-- Staklena kartica -->
-            <div class="max-w-5xl rounded-3xl border border-white/10 bg-black/30 backdrop-blur-sm
+            <div class="max-w-6xl rounded-3xl border border-white/10 bg-black/30 backdrop-blur-sm
                     p-8 md:p-14 shadow-2xl">
 
                 <!-- Naslov -->
-                <h1 class="font-heading font-bold text-white leading-[1.05] mb-8
-                       text-5xl md:text-7xl lg:text-8xl">
-                    Историјски архив
+                <h1 class="font-heading font-bold text-white leading-[1.15] mb-8
+                    text-4xl md:text-6xl lg:text-7xl">
+                    Istorijski arhiv
                     <span class="block bg-gradient-to-r from-amber-500 via-stone-400 to-blue-700
-                             bg-clip-text text-transparent">
-                        Зрењанин
+                        bg-clip-text pb-[0.08em] text-transparent">
+                        Zrenjanin
                     </span>
                 </h1>
 
                 <!-- Opis -->
                 <p class="max-w-3xl mb-10 text-lg md:text-2xl leading-relaxed text-white">
-                    Историјски архив Зрењанин је установа културе од регионалног значаја која се бави
-                    заштитом, прикупљањем, сређивањем, обрадом и чувањем архивске грађе.
-                    Архив, такође, омогућује доступност архивских докумената у научно – истраживачке,
-                    приватноправне и јавноправне сврхе.
+                    Istorijski arhiv Zrenjanin je ustanova kulture od regionalnog značaja koja se bavi
+                    zaštitom, prikupljanjem, sređivanjem, obradom i čuvanjem arhivske građe.
+                    Arhiv, takođe, omogućuje dostupnost arhivskih dokumenata u naučno – istraživačke,
+                    privatnopravne i javnopravne svrhe.
                 </p>
 
                 <!-- Dugme -->
@@ -879,7 +876,7 @@
                       shadow-lg shadow-primary/40 hover:shadow-xl hover:shadow-primary/50
                       hover:-translate-y-0.5 transition-all duration-300">
                     <i class="fas fa-book-open"></i>
-                    Истражи збирке
+                    Istraži zbirke
                 </a>
 
             </div>
@@ -1030,7 +1027,7 @@
                     <a href="/" class="flex items-center gap-4 mb-5">
                         <div class="w-14 h-14 rounded-xl bg-primary flex items-center justify-center shrink-0">
 
-                            <img src="assets/img/logo.png" alt="" style="width:75px;height:auto;" />
+                            <img src="/assets/img/logo.png" alt="" style="width:75px;height:auto;" />
 
                         </div>
                         <h3 class="text-xl font-heading font-bold text-primary_text">Istorijski Arhiv</h3>
@@ -1120,7 +1117,7 @@
 
                 <!-- Švajcarski logotipi -->
                 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                    <img src="assets/img/SECO-logo-640px.png" alt="Swiss Confederation" class="h-24 w-auto">
+                    <img src="/assets/img/SECO-logo-640px.png" alt="Swiss Confederation" class="h-24 w-auto">
                 </div>
 
                 <!-- Autorska prava -->
@@ -1137,80 +1134,85 @@
         <i class="fas fa-arrow-up text-lg md:text-xl text-white"></i>
     </button>
 
-<script>
-(function () {
+    <script>
+        (function() {
 
-    // ---------- Mobilni meni ----------
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileMenuPanel = document.getElementById('mobileMenuPanel');
-    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    const hamburger = document.getElementById('hamburger');
-    const closeMobileMenu = document.getElementById('closeMobileMenu');
+            // ---------- Mobilni meni ----------
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const hamburger = document.getElementById('hamburger');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
 
-    function toggleMobileMenu(show) {
-        if (!mobileMenu || !mobileMenuPanel) return;
-        if (show) {
-            mobileMenu.classList.remove('hidden');
-            setTimeout(() => { mobileMenuPanel.style.transform = 'translateX(0)'; }, 50);
-        } else {
-            mobileMenuPanel.style.transform = 'translateX(100%)';
-            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-        }
-    }
+            function toggleMobileMenu(show) {
+                if (!mobileMenu || !mobileMenuPanel) return;
+                if (show) {
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenuPanel.style.transform = 'translateX(0)';
+                    }, 50);
+                } else {
+                    mobileMenuPanel.style.transform = 'translateX(100%)';
+                    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                }
+            }
 
-    hamburger?.addEventListener('click', () => toggleMobileMenu(true));
-    closeMobileMenu?.addEventListener('click', () => toggleMobileMenu(false));
-    mobileMenuOverlay?.addEventListener('click', () => toggleMobileMenu(false));
+            hamburger?.addEventListener('click', () => toggleMobileMenu(true));
+            closeMobileMenu?.addEventListener('click', () => toggleMobileMenu(false));
+            mobileMenuOverlay?.addEventListener('click', () => toggleMobileMenu(false));
 
-    // Harmonike
-    document.querySelectorAll('#mobileMenu [data-accordion]').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const wrapper = btn.closest('.mobile-dropdown');
-            const panel = wrapper.querySelector('[data-accordion-panel]');
-            const icon = wrapper.querySelector('[data-accordion-icon]');
-            const opening = panel.classList.contains('hidden');
+            // Harmonike
+            document.querySelectorAll('#mobileMenu [data-accordion]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const wrapper = btn.closest('.mobile-dropdown');
+                    const panel = wrapper.querySelector('[data-accordion-panel]');
+                    const icon = wrapper.querySelector('[data-accordion-icon]');
+                    const opening = panel.classList.contains('hidden');
 
-            document.querySelectorAll('#mobileMenu .mobile-dropdown').forEach(other => {
-                if (other === wrapper) return;
-                other.querySelector('[data-accordion-panel]').classList.add('hidden');
-                other.querySelector('[data-accordion-icon]').classList.remove('rotate-180');
+                    document.querySelectorAll('#mobileMenu .mobile-dropdown').forEach(other => {
+                        if (other === wrapper) return;
+                        other.querySelector('[data-accordion-panel]').classList.add('hidden');
+                        other.querySelector('[data-accordion-icon]').classList.remove('rotate-180');
+                    });
+
+                    panel.classList.toggle('hidden', !opening);
+                    icon.classList.toggle('rotate-180', opening);
+                });
             });
 
-            panel.classList.toggle('hidden', !opening);
-            icon.classList.toggle('rotate-180', opening);
-        });
-    });
+            // ---------- Glatko skrolovanje ----------
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const id = this.getAttribute('href');
+                    if (id.length < 2) return; // href="#" ne radi ništa
+                    const target = document.querySelector(id);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
 
-    // ---------- Glatko skrolovanje ----------
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const id = this.getAttribute('href');
-            if (id.length < 2) return;          // href="#" ne radi ništa
-            const target = document.querySelector(id);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
+            // ---------- Pretraga ----------
+            const searchButton = document.getElementById('searchButton');
+            const searchInputContainer = document.getElementById('searchInputContainer');
+            const closeSearch = document.getElementById('closeSearch');
 
-    // ---------- Pretraga ----------
-    const searchButton = document.getElementById('searchButton');
-    const searchInputContainer = document.getElementById('searchInputContainer');
-    const closeSearch = document.getElementById('closeSearch');
+            searchButton?.addEventListener('click', () => {
+                searchInputContainer.classList.toggle('hidden');
+                setTimeout(() => searchInputContainer.classList.toggle('opacity-0'), 10);
+            });
 
-    searchButton?.addEventListener('click', () => {
-        searchInputContainer.classList.toggle('hidden');
-        setTimeout(() => searchInputContainer.classList.toggle('opacity-0'), 10);
-    });
+            closeSearch?.addEventListener('click', () => {
+                searchInputContainer.classList.toggle('opacity-0');
+                setTimeout(() => searchInputContainer.classList.toggle('hidden'), 300);
+            });
 
-    closeSearch?.addEventListener('click', () => {
-        searchInputContainer.classList.toggle('opacity-0');
-        setTimeout(() => searchInputContainer.classList.toggle('hidden'), 300);
-    });
-
-})();
-</script>
+        })();
+    </script>
 
 </body>
 

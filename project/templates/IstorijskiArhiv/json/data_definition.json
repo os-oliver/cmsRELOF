@@ -326,11 +326,11 @@
         }
       ]
     },
-    "IstorijskiArhiv": {
-      "code": "IstorijskiArhiv",
-      "sr": "Istorijski arhiv",
-      "en": "Historical Archive",
-      "sr-Cyrl": "Историјски архив",
+    "Arhive": {
+      "code": "Arhive",
+      "sr": "Arhive",
+      "en": "Archives",
+      "sr-Cyrl": "Архиве",
       "icon": "fas fa-landmark",
       "fields": [
         {

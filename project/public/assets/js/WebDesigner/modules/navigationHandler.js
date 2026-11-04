@@ -170,32 +170,30 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
           tree.push(current);
         }
         if (tag === "div" && current) {
-          ch.components().forEach((link) => {
-            if (link.get("tagName") === "a") {
-              if (isExternalLink(link)) {
-                return;
-              }
-
-              const el = link.view.el;
-              let txt = normalizeText(el.textContent);
-              let text = txt
-                .trim()
-                .replace(/ /g, "-")
-                .replace(/[^\x00-\x7F]/g, "");
-              text = normalizeText(text);
-              console.log("text:" + text);
-              link.addAttributes({
-                href: ("/" + current.root + "/" + text)
-                  .toLowerCase()
-                  .replace(/ /g, "-"),
-              });
-              link.view.render();
-              current.elements.push({
-                root: text,
-                static: isComponentStatic(link),
-                movable: isMovable(link),
-              });
+          ch.find("a").forEach((link) => {
+            if (isExternalLink(link)) {
+              return;
             }
+
+            const el = link.view.el;
+            let txt = normalizeText(el.textContent);
+            let text = txt
+              .trim()
+              .replace(/ /g, "-")
+              .replace(/[^\x00-\x7F]/g, "");
+            text = normalizeText(text);
+            console.log("text:" + text);
+            link.addAttributes({
+              href: ("/" + current.root + "/" + text)
+                .toLowerCase()
+                .replace(/ /g, "-"),
+            });
+            link.view.render();
+            current.elements.push({
+              root: text,
+              static: isComponentStatic(link),
+              movable: isMovable(link),
+            });
           });
         }
       });
