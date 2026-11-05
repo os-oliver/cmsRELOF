@@ -149,11 +149,11 @@
         }
       ]
     },
-    "Zbirke": {
-      "code": "Zbirke",
-      "sr": "Zbirke",
-      "en": "Collections",
-      "sr-Cyrl": "Збирке",
+    "ZbirkaPoveljaIDiploma": {
+      "code": "ZbirkaPoveljaIDiploma",
+      "sr": "Zbirka povelja i diploma",
+      "en": "Collection of Letters and Diplomas",
+      "sr-Cyrl": "Збирка пovelja и диплома",
       "icon": "fas fa-layer-group",
       "fields": [
         {

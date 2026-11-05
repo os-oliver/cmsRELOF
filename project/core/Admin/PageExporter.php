@@ -769,6 +769,8 @@ class PageExporter
                 return new DynamicPageBuilder('Filmovi');
             case 'arhive':
                 return new DynamicPageBuilder('Arhive');
+            case 'zbirka-povelja-i-diploma':
+                return new DynamicPageBuilder('Zbirka povelja i diploma');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
             default:
@@ -896,6 +898,8 @@ class PageExporter
             return 'delatnost';
         } elseif (strpos($name, 'arhive') !== false) {
             return 'arhive';
+        } elseif (strpos($name, 'zbirka-povelja-i-diploma') !== false) {
+            return 'zbirka-povelja-i-diploma';
         }
         return 'basic';
     }
