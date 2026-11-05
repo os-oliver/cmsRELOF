@@ -190,11 +190,11 @@
         }
       ]
     },
-    "Novine": {
-      "code": "Novine",
-      "sr": "Novine",
-      "en": "Newspapers",
-      "sr-Cyrl": "Новине",
+    "ListZrenjanin": {
+      "code": "ListZrenjanin",
+      "sr": "List Zrenjanin",
+      "en": "List Zrenjanin",
+      "sr-Cyrl": "Лист Зренјанин",
       "icon": "fas fa-newspaper",
       "fields": [
         {

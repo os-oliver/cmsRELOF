@@ -14,6 +14,7 @@ use App\Admin\PageBuilders\ObjekatPageBuilder;
 use App\Admin\PageBuilders\OrganizacijaPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\DelatnostPageBuilder;
+use App\Admin\PageBuilders\CitaonicaPageBuilder;
 use App\Admin\PageBuilders\FondoviIZbirkePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\SportoviPageBuilder;
@@ -773,6 +774,10 @@ class PageExporter
                 return new DynamicPageBuilder('Zbirka povelja i diploma');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
+            case 'list-zrenjanin':
+                return new DynamicPageBuilder('List Zrenjanin');
+            case 'citaonica':
+                return new CitaonicaPageBuilder($name, $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -900,6 +905,10 @@ class PageExporter
             return 'arhive';
         } elseif (strpos($name, 'zbirka-povelja-i-diploma') !== false) {
             return 'zbirka-povelja-i-diploma';
+        } elseif (strpos($name, 'list-zrenjanin') !== false) {
+            return 'list-zrenjanin';
+        } elseif (strpos($name, 'itaonica') !== false) {
+            return 'citaonica';
         }
         return 'basic';
     }
