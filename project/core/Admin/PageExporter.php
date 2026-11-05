@@ -14,6 +14,7 @@ use App\Admin\PageBuilders\ObjekatPageBuilder;
 use App\Admin\PageBuilders\OrganizacijaPageBuilder;
 use App\Admin\PageBuilders\PredstavePageBuilder;
 use App\Admin\PageBuilders\DelatnostPageBuilder;
+use App\Admin\PageBuilders\FondoviIZbirkePageBuilder;
 use App\Admin\PageBuilders\ProjektiPageBuilder;
 use App\Admin\PageBuilders\SportoviPageBuilder;
 use App\Admin\PageBuilders\SavetovalistePageBuilder;
@@ -734,6 +735,8 @@ class PageExporter
                 return new ObjekatPageBuilder('Objekat', $this->data);
             case 'objekti':
                 return new SportsObjectsPageBuilder('Objekti');
+            case 'fondovi-i-zbirke':
+                return new FondoviIZbirkePageBuilder($name, $this->data);
             case 'fondovi':
                 return new DynamicPageBuilder('fondovi');
             case 'sportovi':
@@ -861,6 +864,8 @@ class PageExporter
             return 'informacije';
         } elseif (strpos($name, 'objekat') !== false) {
             return 'objekat';
+        } elseif (strpos($name, 'fondovi-i-zbirke') !== false) {
+            return 'fondovi-i-zbirke';
         } elseif (strpos($name, 'fondovi') !== false) {
             return 'fondovi';
         } elseif (strpos($name, 'sportovi') !== false) {
