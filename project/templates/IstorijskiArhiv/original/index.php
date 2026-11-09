@@ -1074,23 +1074,23 @@
                     <ul class="space-y-3 text-base">
                         <li class="flex items-start gap-3">
                             <i class="fas fa-map-marker-alt w-5 text-center text-primary mt-1"></i>
-                            <span>Adresa: <strong class="text-primary_text">Trg Slobode 10, 23000 Zrenjanin</strong></span>
+                            <span>Adresa: &nbsp;<strong class="text-primary_text">Trg Slobode 10, 23000 Zrenjanin</strong>&nbsp;</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-phone w-5 text-center text-primary"></i>
-                            <span>Kontakt: <a href="tel:+38123564322" class="font-semibold text-primary_text hover:text-primary">+381 23 564 322</a></span>
+                            <span>Kontakt: &nbsp;<a href="tel:+38123564322" class="font-semibold text-primary_text hover:text-primary">+381 23 564 322</a>&nbsp;</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-envelope w-5 text-center text-primary"></i>
-                            <a href="mailto:arhivzr.sekretarijat@gmail.com" class="hover:text-primary break-all" data-translate="off">arhivzr.sekretarijat@gmail.com</a>
+                            <span>Email: &nbsp;<a href="mailto:arhivzr.sekretarijat@gmail.com" class="hover:text-primary break-all" data-translate="off">arhivzr.sekretarijat@gmail.com</a>&nbsp;</span>
                         </li>
                         <li class="flex items-center gap-3 pt-2">
                             <i class="fas fa-clock w-5 text-center text-primary"></i>
-                            <span><strong class="text-primary_text">Čitaonica:</strong> 8-14h</span>
+                            <span><strong class="text-primary_text">Čitaonica:&nbsp;</strong> 8-14h</span>&nbsp;
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="far fa-clock w-5 text-center text-primary"></i>
-                            <span><strong class="text-primary_text">Sekretarijat:</strong> 7-15h</span>
+                            <span><strong class="text-primary_text">Sekretarijat:&nbsp;</strong> 7-15h</span>
                         </li>
                     </ul>
                 </div>
