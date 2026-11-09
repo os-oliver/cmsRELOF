@@ -539,7 +539,7 @@ class PageExporter
     }
 
     private function generateIndexHeader(): string
-    {
+    {        
         $phpString = '';
 
         $jsonDir = Config::getPublicRoot() . '/assets/data/structure.json';
@@ -604,6 +604,7 @@ class PageExporter
         $dynamicText = $textModel->getDynamicText($locale);
         {{dynamicLandigPageElements}}
         $vesti = $vesti ?? [];
+        $fondovi = $fondovi ?? [];
 
         [$images, $totalEvents] = (new Gallery)->list(lang: $locale);
         ?>
