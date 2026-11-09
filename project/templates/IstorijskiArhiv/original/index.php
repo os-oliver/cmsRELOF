@@ -549,7 +549,7 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-300" data-accordion-icon></i>
                         </button>
                         <div class="hidden ml-6 mt-1 mb-2 space-y-1 border-l-2 border-secondary_background pl-2" data-accordion-panel>
-                            <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
+                            <a href="#" static="true" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-layer-group w-5 mr-3 text-center text-primary"></i>Fondovi i zbirke</a>
                             <a href="#" class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-primary transition-colors">
                                 <i class="fas fa-scroll w-5 mr-3 text-center text-accent"></i>Zbirka povelja i diploma</a>
@@ -559,7 +559,7 @@
                     </div>
 
                     <!-- Pojedinačne stranice -->
-                    <a href="#" class="flex items-center py-3 px-4 text-primary_text font-semibold hover:text-primary hover:bg-secondary_background rounded-lg transition-all duration-300">
+                    <a href="#" static="true"f class="flex items-center py-3 px-4 text-primary_text font-semibold hover:text-primary hover:bg-secondary_background rounded-lg transition-all duration-300">
                         <i class="fas fa-book w-6 mr-3 text-center text-primary"></i>Čitaonica</a>
                     <a href="#" class="flex items-center py-3 px-4 text-primary_text font-semibold hover:text-primary hover:bg-secondary_background rounded-lg transition-all duration-300">
                         <i class="fas fa-images w-6 mr-3 text-center text-primary"></i>Galerija</a>
@@ -583,7 +583,7 @@
                         </div>
                     </div>
 
-                    <a href="#" class="flex items-center py-3 px-4 text-primary_text font-semibold hover:text-primary hover:bg-secondary_background rounded-lg transition-all duration-300">
+                    <a href="#" static="true" class="flex items-center py-3 px-4 text-primary_text font-semibold hover:text-primary hover:bg-secondary_background rounded-lg transition-all duration-300">
                         <i class="fas fa-address-book w-6 mr-3 text-center text-primary"></i>Kontakt</a>
                 </nav>
             </div>
@@ -685,7 +685,7 @@
                         transition-all duration-300 z-50">
 
 
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-5 py-3 mx-2 rounded-lg text-sm whitespace-nowrap text-primary_text hover:bg-secondary_background transition-all duration-200">
                             <i class="fas fa-layer-group mr-4 w-5 text-center text-primary"></i>
                             <span class="font-medium">Fondovi i zbirke</span>
@@ -706,7 +706,7 @@
                     </div>
                 </div>
 
-                <a href="#"
+                <a href="#" static="true"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
                     <i class="fas fa-book mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
                     <span class="hidden xl:inline text-sm">Čitaonica</span>
@@ -752,7 +752,7 @@
                     </div>
                 </div>
 
-                <a href="#"
+                <a href="#" static="true"
                     class="nav-link text-primary_text font-semibold hover:text-primary transition-all duration-200 flex items-center px-3 py-2 rounded-lg hover:bg-secondary_background group">
                     <i
                         class="fas fa-address-book mr-2 text-secondary group-hover:text-secondary_hover transition-colors text-sm"></i>
