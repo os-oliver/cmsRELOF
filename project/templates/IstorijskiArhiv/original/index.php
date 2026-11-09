@@ -870,7 +870,7 @@
                 </p>
 
                 <!-- Dugme -->
-                <a href="/zbirke"
+                <a href="/arhivska-gradja/fondovi-i-zbirke"
                     class="inline-flex items-center gap-3 px-8 py-4 rounded-full
                       bg-primary hover:bg-primary_hover text-white text-base md:text-lg font-semibold
                       shadow-lg shadow-primary/40 hover:shadow-xl hover:shadow-primary/50

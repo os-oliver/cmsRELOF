@@ -1,10 +1,10 @@
 [
   {
-    "Fondovi": {
-      "code": "fondovi",
-      "sr": "Fondovi",
-      "en": "Funds",
-      "sr-Cyrl": "Фондови",
+    "FondoviIZbirke": {
+      "code": "FondoviIZbirke",
+      "sr": "Fondovi i zbirke",
+      "en": "Funds and Collections",
+      "sr-Cyrl": "Фондови и збирке",
       "icon": "fas fa-piggy-bank",
       "fields": [
         {
