@@ -939,7 +939,7 @@
             </div>
 
             <div class="text-center mt-8 md:mt-12">
-                <a href="/fondovi" id="fondsView"
+                <a href="/arhivska-gradja/fondovi-i-zbirke" id="fondsView"
                     class="bg-primary hover:bg-primary_hover text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto text-sm md:text-base">
                     <i class="fas fa-archive mr-3"></i>
                     Pogledaj sve fondove
@@ -1007,12 +1007,12 @@
             </div>
 
             <div class="text-center mt-16">
-                <button id="vestiView"
-                    class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
+                <a id="vestiView" href="/aktivnosti/vesti"
+                    class="bg-primary hover:bg-primary_hover text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-medium hover:opacity-90 transition-all flex items-center justify-center shadow-lg mx-auto max-w-xs w-auto text-sm md:text-base">
                     <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
                     Pogledaj sve vesti
                     <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-                </button>
+                </a>
             </div>
         </div>
     </section>
