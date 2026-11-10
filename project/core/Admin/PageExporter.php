@@ -649,6 +649,7 @@ class PageExporter
         }
 
         $content .= '<script src="/exportedPages/commonScript.js?v=<?php echo time(); ?>"></script>' . "\n";
+        $content .= '<script src="/assets/js/image-zoom.js?v=<?php echo time(); ?>"></script>' . "\n";
 
 
         $content .= "\n</div>\n</body>\n</html>";

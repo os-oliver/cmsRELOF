@@ -257,7 +257,10 @@ class PageController
                 if (isset($page['static']) && $page['static'] === true) {
                     $staticPath = PUBLIC_ROOT . '/pages/' . $page['file'];
                     if (file_exists($staticPath)) {
+                        ob_start();
                         include $staticPath;
+                        $html = ob_get_clean();
+                        echo $this->addImageZoomScript($html === false ? '' : $html);
                         return;
                     }
                 }
@@ -265,7 +268,10 @@ class PageController
                 // If not static or static file doesn't exist, try exported pages
                 $exportPath = PUBLIC_ROOT . '/exportedPages/' . $page['path'];
                 if (file_exists($exportPath)) {
+                    ob_start();
                     include $exportPath;
+                    $html = ob_get_clean();
+                    echo $this->addImageZoomScript($html === false ? '' : $html);
                     return;
                 }
             }
@@ -275,6 +281,21 @@ class PageController
         http_response_code(404);
         include PUBLIC_ROOT . '/pages/404.php';
     }
+
+    private function addImageZoomScript(string $html): string
+    {
+        $scriptPath = PUBLIC_ROOT . '/assets/js/image-zoom.js';
+        if (!is_file($scriptPath) || stripos($html, 'image-zoom.js') !== false || stripos($html, '</body>') === false) {
+            return $html;
+        }
+
+        $version = filemtime($scriptPath);
+        $src = '/assets/js/image-zoom.js' . ($version !== false ? '?v=' . $version : '');
+        $script = '<script src="' . htmlspecialchars($src, ENT_QUOTES, 'UTF-8') . '"></script>';
+
+        return preg_replace('~</body\\s*>~i', $script . '</body>', $html, 1) ?? $html;
+    }
+
     public function complaints()
     {
         AuthController::requireEditor();

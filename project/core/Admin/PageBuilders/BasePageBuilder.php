@@ -120,6 +120,7 @@ HTML;
         $content .= "?>\n\n";
 
         $content .= '<script src="/exportedPages/commonScript.js?v=<?php echo time(); ?>"></script>' . "\n";
+        $content .= '<script src="/assets/js/image-zoom.js?v=<?php echo time(); ?>"></script>' . "\n";
 
 
         $content .= "</body>\n</html>\n";
