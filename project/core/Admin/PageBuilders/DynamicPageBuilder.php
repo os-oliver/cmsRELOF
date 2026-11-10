@@ -7,10 +7,12 @@ use App\Controllers\ContentController;
 class DynamicPageBuilder extends BasePageBuilder
 {
     protected string $slug;
+    protected ?string $displayTitle;
 
-    public function __construct(string $slug)
+    public function __construct(string $slug, ?string $displayTitle = null)
     {
         $this->slug = $slug;
+        $this->displayTitle = $displayTitle;
     }
 
     protected string $css = <<<CSS
@@ -423,9 +425,10 @@ HTML;
             $locale = $_SESSION['locale'] ?? 'sr-Cyrl';
             $slug = '__SLUG__';
 
+
             $pageTitle = ($locale === 'sr-Cyrl')
-                ? $translator->latin_to_cyrillic(ucfirst($slug))
-                : ucfirst($slug);
+                ? $translator->latin_to_cyrillic(ucfirst('__DISPLAY_TITLE__'))
+                : ucfirst('__DISPLAY_TITLE__');
 
             $pageDescription = ($locale === 'sr-Cyrl')
                 ? $translator->latin_to_cyrillic('Pregled svih stavki')
@@ -484,6 +487,12 @@ HTML;
         $additionalPHP .= "\n" . $this->functions;
         $additionalPHP = str_replace('{{SLUG}}', $this->slug, $additionalPHP);
         $additionalPHP = str_replace('__SLUG__', addslashes($this->slug), $additionalPHP);
+        
+        $additionalPHP = str_replace(
+            '__DISPLAY_TITLE__',
+            addslashes($this->displayTitle ?? $this->slug),
+            $additionalPHP
+        );
 
         $content = $this->getHeader($this->css, $additionalPHP);
         $content .= $this->getCommonIncludes();

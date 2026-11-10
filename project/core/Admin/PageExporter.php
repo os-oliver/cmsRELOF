@@ -772,11 +772,14 @@ class PageExporter
             case 'arhive':
                 return new DynamicPageBuilder('Arhive');
             case 'zbirka-povelja-i-diploma':
-                return new DynamicPageBuilder('Zbirka povelja i diploma');
+                return new DynamicPageBuilder(
+                    'ZbirkaPoveljaIDiploma',
+                    'Zbirka povelja i diploma'
+                );
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
             case 'list-zrenjanin':
-                return new DynamicPageBuilder('List Zrenjanin');
+                return new DynamicPageBuilder('ListZrenjanin', 'List Zrenjanin');
             case 'citaonica':
                 return new CitaonicaPageBuilder($name, $this->data);
             default:
