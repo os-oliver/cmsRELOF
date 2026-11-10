@@ -453,7 +453,15 @@ HTML;
             if ($slug && file_exists($structurePath = __DIR__ . '/../../assets/data/structure.json')) {
                 $parsed = json_decode(file_get_contents($structurePath), true);
                 $config = $parsed[0][$slug] ?? [];
-                $fieldLabels = array_column($config['fields'] ?? [], null, 'name');
+                $fieldLabels = [];
+                foreach ($config['fields'] ?? [] as $field) {
+                    if (isset($field['code'])) {
+                        $fieldLabels[$field['code']] = $field;
+                    }
+                    if (isset($field['name'])) {
+                        $fieldLabels[$field['name']] ??= $field;
+                    }
+                }
             }
 
 
