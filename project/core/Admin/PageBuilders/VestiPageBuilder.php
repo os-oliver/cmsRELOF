@@ -502,7 +502,7 @@ function cardRender(array $item, array $fieldLabels, string $locale): string
     // Generisanje HTML kartice
     $html = "<div class='news-card-modern'>";
 
-    if ($imageUrl) {
+    if ($naslov) {
         $html .= "
         <div class='news-hero-image'>
             <img src='{$imageUrl}' alt='{$naslov}'>
