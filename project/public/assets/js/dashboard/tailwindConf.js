@@ -29,6 +29,9 @@ tailwind.config = {
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
+        heading: ["Fredoka", "sans-serif"],
+        heading2: ["Nunito", "sans-serif"],
+        body: ["Nunito", "sans-serif"],
       },
     },
   },

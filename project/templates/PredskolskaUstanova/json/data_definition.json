@@ -1,183 +1,28 @@
 [
   {
-    "Dogadjaji": {
-      "sr": "Događaji",
-      "en": "Events",
-      "sr-Cyrl": "Догађаји",
-      "icon": "fas fa-calendar-days",
-      "categories": [
-        "Konferencije",
-        "Seminari",
-        "Radionice",
-        "Takmičenja",
-        "Kultura"
-      ],
-      "fields": [
-        {
-          "name": "title",
-          "type": "text",
-          "label": {
-            "sr": "Naslov događaja",
-            "en": "Event title",
-            "sr-Cyrl": "Наслов догађаја"
-          },
-          "required": true
-        },
-        {
-          "name": "naziv",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija događaja",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија догађаја"
-          },
-          "options": [
-            "Konferencije",
-            "Seminari",
-            "Radionice",
-            "Takmičenja",
-            "Kultura"
-          ],
-          "required": true
-        },
-        {
-          "name": "datum",
-          "type": "date",
-          "label": {
-            "sr": "Datum održavanja",
-            "en": "Event date",
-            "sr-Cyrl": "Датум одржавања"
-          },
-          "required": true
-        },
-        {
-          "name": "time",
-          "type": "time",
-          "label": {
-            "sr": "Vreme početka",
-            "en": "Start time",
-            "sr-Cyrl": "Време почетка"
-          },
-          "required": true
-        },
-        {
-          "name": "location",
-          "type": "text",
-          "label": {
-            "sr": "Lokacija događaja",
-            "en": "Event location",
-            "sr-Cyrl": "Локација догађаја"
-          },
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis događaja",
-            "en": "Event description",
-            "sr-Cyrl": "Опис догађаја"
-          }
-        },
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika događaja",
-            "en": "Event image",
-            "sr-Cyrl": "Насловна слика догађаја"
-          }
-        }
-      ]
-    },
-    "Projekti": {
-      "sr": "Projekti",
-      "en": "Projects",
-      "sr-Cyrl": "Пројекти",
-      "icon": "fas fa-diagram-project",
-      "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika projekta",
-            "en": "Project image",
-            "sr-Cyrl": "Насловна слика пројекта"
-          },
-          "required": true
-        },
-        {
-          "name": "naziv",
-          "type": "text",
-          "label": {
-            "sr": "Naziv projekta",
-            "en": "Project name",
-            "sr-Cyrl": "Назив пројекта"
-          },
-          "required": true
-        },
-        {
-          "name": "vodja",
-          "type": "text",
-          "label": {
-            "sr": "Vođa projekta",
-            "en": "Project lead",
-            "sr-Cyrl": "Вођа пројекта"
-          }
-        },
-        {
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
-          }
-        },
-        {
-          "name": "datumPocetka",
-          "type": "date",
-          "label": {
-            "sr": "Datum početka",
-            "en": "Start date",
-            "sr-Cyrl": "Датум почетка"
-          },
-          "required": true
-        },
-        {
-          "name": "budzet",
-          "type": "number",
-          "label": {
-            "sr": "Budžet (u evrima)",
-            "en": "Budget (EUR)",
-            "sr-Cyrl": "Буџет (у евриима)"
-          }
-        },
-        {
-          "name": "link",
-          "type": "url",
-          "label": {
-            "sr": "Zvanični link projekta",
-            "en": "Official project link",
-            "sr-Cyrl": "Званични линк пројекта"
-          }
-        }
-      ]
-    },
     "Vesti": {
+      "code": "vesti",
       "sr": "Vesti",
       "en": "News",
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
       "categories": [
-        "Kultura",
-        "Obrazovanje",
-        "Inovacije",
-        "Zdravlje",
-        "Tehnologija"
+        "Zvezdica",
+        "Maslačak",
+        "Bubamara",
+        "Cvrčak",
+        "Leptirić",
+        "Maja",
+        "Đurđevak",
+        "Čuperak",
+        "Lane",
+        "Sela",
+        "Stručni saradnici",
+        "Uopšteno"
       ],
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -188,6 +33,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -197,6 +43,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -207,6 +54,7 @@
           "required": true
         },
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -216,6 +64,7 @@
           }
         },
         {
+          "code": "link",
           "name": "link",
           "type": "url",
           "label": {
@@ -223,16 +72,182 @@
             "en": "News link",
             "sr-Cyrl": "Линк вести"
           }
+        },
+        {
+          "code": "main_category",
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Vrtić na koji se vest odnosti",
+            "en": "Kindergarten to which the news refers",
+            "sr-Cyrl": "Вртић на који се вест односи"
+          },
+          "options": [
+            "Zvezdica",
+            "Maslačak",
+            "Bubamara",
+            "Cvrčak",
+            "Leptirić",
+            "Maja",
+            "Đurđevak",
+            "Čuperak",
+            "Lane",
+            "Sela",
+            "Stručni saradnici",
+            "Uopšteno"
+          ],
+          "coded_options": [
+            {
+              "code": "zvezdica",
+              "translations": { "sr": "Zvezdica", "en": "Zvezdica", "sr-Cyrl": "Звездица" }
+            },
+            {
+              "code": "maslacak",
+              "translations": { "sr": "Maslačak", "en": "Maslačak", "sr-Cyrl": "Маслачак" }
+            },
+            {
+              "code": "bubamara",
+              "translations": { "sr": "Bubamara", "en": "Bubamara", "sr-Cyrl": "Бубамара" }
+            },
+            {
+              "code": "cvrcak",
+              "translations": { "sr": "Cvrčak", "en": "Cvrčak", "sr-Cyrl": "Цврчак" }
+            },
+            {
+              "code": "leptiric",
+              "translations": { "sr": "Leptirić", "en": "Leptirić", "sr-Cyrl": "Лептирић" }
+            },
+            {
+              "code": "maja",
+              "translations": { "sr": "Maja", "en": "Maja", "sr-Cyrl": "Маја" }
+            },
+            {
+              "code": "djurdjevak",
+              "translations": { "sr": "Đurđevak", "en": "Đurđevak", "sr-Cyrl": "Ђурђевак" }
+            },
+            {
+              "code": "cuperak",
+              "translations": { "sr": "Čuperak", "en": "Čuperak", "sr-Cyrl": "Чуперак" }
+            },
+            {
+              "code": "lane",
+              "translations": { "sr": "Lane", "en": "Lane", "sr-Cyrl": "Лане" }
+            },
+            {
+              "code": "Sela",
+              "translations": { "sr": "Sela", "en": "Villages", "sr-Cyrl": "Села" }
+            },
+            {
+              "code": "Stručni saradnici",
+              "translations": { "sr": "Stručni saradnici", "en": "Professional associates", "sr-Cyrl": "Стручни сарадници" }
+            },{
+              "code": "Uopšteno",
+              "translations": { "sr": "Uopšteno", "en": "General", "sr-Cyrl": "Уопштено" }
+            }
+          ]
+        }
+      ]
+    },
+    "Manifestacije": {
+      "code": "Manifestacije",
+      "sr": "Manifestacije",
+      "en": "Events",
+      "sr-Cyrl": "Манифестације",
+      "icon": "fas fa-calendar-alt",
+      "categories": [
+        "Karneval",
+        "Nova godina",
+        "Vidovdan",
+        "Završna manifestacija"
+      ],
+      "fields": [
+        {
+          "code": "naslov",
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov manifestacije",
+            "en": "Event title",
+            "sr-Cyrl": "Наслов манифестације"
+          },
+          "required": true
+        },
+        {
+          "code": "opis",
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "code": "datum",
+          "name": "datum",
+          "type": "date",
+          "label": {
+            "sr": "Datum manifestacije",
+            "en": "Event date",
+            "sr-Cyrl": "Датум манифестације"
+          },
+          "required": true
+        },
+        {
+          "code": "slika",
+          "name": "slika",
+          "type": "file",
+          "label": {
+            "sr": "Naslovna slika manifestacije",
+            "en": "Event image",
+            "sr-Cyrl": "Насловна слика манифестације"
+          }
+        },
+        {
+          "code": "main_category",
+          "name": "kategorija",
+          "type": "categories",
+          "label": {
+            "sr": "Kategorija manifestacije",
+            "en": "Event category",
+            "sr-Cyrl": "Категорија манифестације"
+          },
+          "options": [
+            "Karneval",
+            "Nova godina",
+            "Vidovdan",
+            "Završna manifestacija"
+          ],
+          "coded_options": [
+            {
+              "code": "Karneval",
+              "translations": { "sr": "Karneval", "en": "Karneval", "sr-Cyrl": "Карневал" }
+            },
+            {
+              "code": "Nova godina",
+              "translations": { "sr": "Nova godina", "en": "New Year", "sr-Cyrl": "Нова година" }
+            },
+            {
+              "code": "Vidovdan",
+              "translations": { "sr": "Vidovdan", "en": "Vidovdan", "sr-Cyrl": "Видовдан" }
+            },
+            {
+              "code": "Završna manifestacija",
+              "translations": { "sr": "Završna manifestacija", "en": "Final event", "sr-Cyrl": "Завршна манифестација" }
+            }
+          ]
         }
       ]
     },
     "Vrtici": {
+      "code": "vrtici",
       "sr": "Vrtići",
       "en": "Kindergarten",
       "sr-Cyrl": "Вртићи",
       "icon": "fas fa-school",
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
@@ -242,6 +257,7 @@
           }
         },
         {
+          "code": "title",
           "name": "title",
           "type": "text",
           "label": {
@@ -252,52 +268,17 @@
           "required": true
         },
         {
+          "code": "location",
           "name": "location",
           "type": "text",
           "label": {
             "sr": "Lokacija vrtića",
             "en": "Kindergarten location",
             "sr-Cyrl": "Локација вртића"
-          },
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "textarea",
-          "label": {
-            "sr": "Opis",
-            "en": "Description",
-            "sr-Cyrl": "Опис"
-          }
-        }
-      ]
-    },
-    "Timovi": {
-      "sr": "Timovi",
-      "en": "Teams",
-      "sr-Cyrl": "Тимови",
-      "icon": "fas fa-users",
-      "fields": [
-        {
-          "name": "slika",
-          "type": "file",
-          "label": {
-            "sr": "Naslovna slika tima",
-            "en": "Team image",
-            "sr-Cyrl": "Насловна слика тима"
           }
         },
         {
-          "name": "title",
-          "type": "text",
-          "label": {
-            "sr": "Naziv tima",
-            "en": "Team name",
-            "sr-Cyrl": "Назив тима"
-          },
-          "required": true
-        },
-        {
+          "code": "description",
           "name": "description",
           "type": "textarea",
           "label": {
@@ -309,22 +290,24 @@
       ]
     },
     "Obavestenja": {
+      "code": "obavestenja",
       "sr": "Obaveštenja za roditelje",
       "en": "Notifications for Parents",
       "sr-Cyrl": "Обавештења за родитеље",
       "icon": "fas fa-bell",
       "fields": [
         {
+          "code": "slika",
           "name": "slika",
           "type": "file",
           "label": {
             "sr": "Naslovna slika оbaveštenja",
             "en": "Notification image",
             "sr-Cyrl": "Насловна слика обавештења"
-          },
-          "required": true
+          }
         },
         {
+          "code": "naziv",
           "name": "naziv",
           "type": "text",
           "label": {
@@ -335,6 +318,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -344,6 +328,7 @@
           }
         },
         {
+          "code": "datum",
           "name": "datum",
           "type": "date",
           "label": {
@@ -357,12 +342,14 @@
       ]
     },
     "Jelovnik": {
+      "code": "jelovnik",
       "sr": "Jelovnik",
       "en": "Menu",
       "sr-Cyrl": "Јеловник",
       "icon": "fas fa-newspaper",
       "fields": [
         {
+          "code": "naslov",
           "name": "naslov",
           "type": "text",
           "label": {
@@ -373,6 +360,7 @@
           "required": true
         },
         {
+          "code": "opis",
           "name": "opis",
           "type": "textarea",
           "label": {
@@ -382,12 +370,53 @@
           }
         },
         {
+          "code": "fajl",
           "name": "Fajl",
           "type": "file",
           "label": {
             "sr": "PDF jelovnik",
             "en": "PDF Menu",
             "sr-Cyrl": "ПДФ јеловник"
+          }
+        }
+      ]
+    },
+    "Cenovnik": {
+      "code": "cenovnik",
+      "sr": "Cenovnik",
+      "en": "Pricelist",
+      "sr-Cyrl": "Ценовник",
+      "icon": "fas fa-newspaper",
+      "fields": [
+        {
+          "code": "naslov",
+          "name": "naslov",
+          "type": "text",
+          "label": {
+            "sr": "Naslov",
+            "en": "Title",
+            "sr-Cyrl": "Наслов"
+          },
+          "required": true
+        },
+        {
+          "code": "opis",
+          "name": "opis",
+          "type": "textarea",
+          "label": {
+            "sr": "Kratak opis",
+            "en": "Short description",
+            "sr-Cyrl": "Кратак опис"
+          }
+        },
+        {
+          "code": "fajl",
+          "name": "Fajl",
+          "type": "file",
+          "label": {
+            "sr": "PDF cenovnik",
+            "en": "PDF pricelist",
+            "sr-Cyrl": "ПДФ ценовник"
           }
         }
       ]
