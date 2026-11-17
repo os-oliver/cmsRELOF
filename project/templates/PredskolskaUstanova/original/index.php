@@ -17,6 +17,31 @@
             margin-top: 6px;
         }
 
+        .preschool-hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .preschool-hero::before,
+        .preschool-hero::after {
+            position: absolute;
+            z-index: -1;
+            content: '';
+            inset: 0;
+        }
+
+        .preschool-hero::before {
+            inset: -8px;
+            background: url('https://images.unsplash.com/photo-1740635341299-3b8e3490f546?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D') center / cover no-repeat;
+            filter: blur(10px);
+            transform: scale(1.02);
+        }
+
+        .preschool-hero::after {
+            background: rgba(255, 255, 255, 0.24);
+        }
+
         .search-container {
             position: relative;
             display: flex;
@@ -115,13 +140,277 @@
             }
 
             .hero-gradient {
-                background: linear-gradient(to bottom,
-                        #F1F7ED 0%,
-                        #a4d1aaff 50%,
-                        #F1F7ED 100%);
-                text-align: left;
-                padding-top: 8rem;
-                padding-bottom: 6rem;
+                position: relative;
+                isolation: isolate;
+                overflow: hidden;
+                background:
+                    radial-gradient(ellipse at 82% 18%, rgba(255, 255, 255, 0.8), transparent 28%),
+                    linear-gradient(135deg, #f3faf5 0%, #e4f0e7 52%, #f6eced 100%);
+            }
+
+            .hero-container {
+                width: min(1240px, 100%);
+                margin: 0 auto;
+                padding: 8.5rem 1.5rem 5rem;
+                display: grid;
+                grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+                align-items: center;
+                gap: clamp(2rem, 5vw, 4.5rem);
+            }
+
+            .hero-copy {
+                max-width: 610px;
+            }
+
+            .hero-kicker {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.55rem;
+                margin-bottom: 1.4rem;
+                padding: 0.55rem 0.9rem;
+                border: 1px solid rgba(110, 126, 204, 0.14);
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.76);
+                color: #536da9;
+                font-size: 0.92rem;
+                font-weight: 800;
+                letter-spacing: 0.01em;
+                box-shadow: 0 8px 24px rgba(58, 83, 91, 0.06);
+            }
+
+            .hero-kicker-dot {
+                width: 0.55rem;
+                height: 0.55rem;
+                border-radius: 50%;
+                background: #f3b84b;
+                box-shadow: 0 0 0 4px rgba(243, 184, 75, 0.18);
+            }
+
+            .hero-title {
+                margin: 0;
+                color: #294c55;
+                font-family: 'Fredoka', sans-serif;
+                font-size: clamp(3.2rem, 6.2vw, 5.35rem);
+                font-weight: 600;
+                letter-spacing: -0.045em;
+                line-height: 0.99;
+            }
+
+            .hero-title-accent {
+                display: block;
+                margin-top: 0.12em;
+                color: #6e7ecc;
+            }
+
+            .hero-description {
+                max-width: 35rem;
+                margin: 1.5rem 0 0;
+                color: #557177;
+                font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+                line-height: 1.75;
+            }
+
+            .hero-actions {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 0.85rem;
+                margin-top: 2rem;
+            }
+
+            .hero-button {
+                display: inline-flex;
+                min-height: 3.35rem;
+                align-items: center;
+                justify-content: center;
+                gap: 0.65rem;
+                padding: 0.85rem 1.35rem;
+                border-radius: 999px;
+                font-size: 1rem;
+                font-weight: 800;
+                text-decoration: none;
+                transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+            }
+
+            .hero-button:hover {
+                transform: translateY(-2px);
+            }
+
+            .hero-button-primary {
+                background: #6e7ecc;
+                color: #fff;
+                box-shadow: 0 12px 24px rgba(93, 112, 190, 0.24);
+            }
+
+            .hero-button-primary:hover {
+                background: #5f70bf;
+                box-shadow: 0 16px 28px rgba(93, 112, 190, 0.3);
+            }
+
+            .hero-button-secondary {
+                border: 1px solid rgba(85, 113, 119, 0.17);
+                background: rgba(255, 255, 255, 0.64);
+                color: #45636a;
+            }
+
+            .hero-button-secondary:hover {
+                background: #fff;
+                box-shadow: 0 10px 24px rgba(58, 83, 91, 0.09);
+            }
+
+            .hero-visual {
+                position: relative;
+                width: 100%;
+                max-width: 570px;
+                justify-self: end;
+                padding: 1.1rem;
+            }
+
+            .hero-art-card {
+                overflow: hidden;
+                border: 8px solid rgba(255, 255, 255, 0.82);
+                border-radius: 2.5rem;
+                background: #fffaf0;
+                box-shadow: 0 28px 70px rgba(62, 91, 91, 0.16);
+                transform: rotate(1.5deg);
+            }
+
+            .hero-illustration {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            .hero-float {
+                position: absolute;
+                z-index: 1;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.6rem;
+                padding: 0.8rem 1rem;
+                border: 1px solid rgba(255, 255, 255, 0.9);
+                border-radius: 1rem;
+                background: rgba(255, 255, 255, 0.95);
+                color: #45636a;
+                font-size: 0.88rem;
+                font-weight: 800;
+                box-shadow: 0 12px 30px rgba(54, 80, 84, 0.13);
+            }
+
+            .hero-float-top {
+                top: 2.4rem;
+                right: -0.35rem;
+            }
+
+            .hero-float-bottom {
+                bottom: 1.9rem;
+                left: -0.45rem;
+            }
+
+            .hero-float-icon {
+                display: grid;
+                width: 2rem;
+                height: 2rem;
+                place-items: center;
+                border-radius: 0.7rem;
+                background: #fff0c7;
+                color: #b77821;
+            }
+
+            .hero-float-dots {
+                display: flex;
+                gap: 0.2rem;
+            }
+
+            .hero-float-dots span {
+                width: 0.55rem;
+                height: 0.55rem;
+                border-radius: 50%;
+            }
+
+            @media (max-width: 900px) {
+                .hero-container {
+                    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+                    gap: 1.5rem;
+                }
+
+                .hero-visual {
+                    padding: 0.65rem;
+                }
+
+                .hero-float {
+                    font-size: 0.78rem;
+                }
+            }
+
+            @media (max-width: 720px) {
+                .hero-container {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                    padding-top: 7.5rem;
+                    padding-bottom: 3.5rem;
+                }
+
+                .hero-copy {
+                    max-width: 600px;
+                    text-align: center;
+                    margin: 0 auto;
+                }
+
+                .hero-description {
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+
+                .hero-actions {
+                    justify-content: center;
+                }
+
+                .hero-visual {
+                    width: min(100%, 520px);
+                    justify-self: center;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .hero-container {
+                    padding-right: 1.1rem;
+                    padding-left: 1.1rem;
+                }
+
+                .hero-title {
+                    font-size: clamp(2.8rem, 13vw, 4rem);
+                }
+
+                .hero-kicker {
+                    font-size: 0.82rem;
+                }
+
+                .hero-float {
+                    padding: 0.6rem 0.7rem;
+                    font-size: 0.72rem;
+                }
+
+                .hero-float-top {
+                    top: 0.5rem;
+                    right: -0.2rem;
+                }
+
+                .hero-float-bottom {
+                    bottom: 0.6rem;
+                    left: -0.2rem;
+                }
+
+                .hero-art-card {
+                    border-width: 5px;
+                    border-radius: 1.8rem;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .hero-button {
+                    transition: none;
+                }
             }
 
 
@@ -460,15 +749,9 @@
     <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm bg-background/95">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo Section -->
-            <a href="/" class="flex items-center gap-3 flex-shrink-0">
-                <div
-                    class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <img src="/assets/img/logo.png" alt="" style="width:75px;height:auto;" />
-                </div>
-                <div class="hidden sm:block font-heading text-primary_text">
-                    <span class="block text-xl leading-tight">Lorem ipsum dolor</span>
-                    <span class="text-xs tracking-wide hidden md:block">Lorem ipsum dolor sit amet consectetu</span>
-                </div>
+            <a href="/" class="flex items-center flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <img src="/assets/img/logo.png" alt="Naziv institucije"
+                    class="h-12 sm:h-14 md:h-16 w-auto block" />
             </a>
             <!-- Desktop Navigation -->
             <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-8 font-heading2 text-secondary_text hover:text-primary_text">
@@ -660,32 +943,59 @@
             </div>
         </div>
     </header>
-    <!-- Enhanced Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondary_text">
-        <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
-            <div class="grid items-center">
-                <div>
-                    <div class="mb-8 text-center">
-                        <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondary_text font-heading2">Lorem ipsum dolor sit</span>
-                        </h1>
-                        <p class="mx-4 md:mx-20 mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                        </p>
-                        <a href="/o-nama/cilj"
-                            class="bg-primary text-background px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors w-fit">
-                            Saznajte o nama
-                        </a>
-                    </div>
+     <section class="preschool-hero relative">
+        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent"></div>
+
+        <div class="container relative z-10 mx-auto px-6 md:px-12 py-24">
+            <div class="max-w-3xl">
+                <!-- Naslov -->
+                <h1 class="mb-6 leading-[1.05]">
+                    <span class="block md:text-2xl font-body tracking-[0.3em] uppercase text-white/70 mb-3 mt-10">
+                        Dobrodošli na zvaničan sajt
+                    </span>
+                    <span class="block font-heading text-5xl text-primary_text md:text-5xl lg:text-5xl font-bold">
+                        Predškolska ustanova
+                    </span>
+                    <span class="block font-heading text-5xl md:text-6xl lg:text-7xl italic text-primary_text">
+                        Dečja radost
+                    </span>
+                    <span class="block mt-3 text-xl md:text-2xl font-body text-white/80">
+                        Ćuprija, Srbija
+                    </span>
+                </h1>
+
+                <p class="mb-10 max-w-xl text-lg md:text-xl text-white/80">
+                    Mestko na kome se neguje i razvija kreativnost, znanje i socijalne veštine kod dece, pružajući im sigurno i podsticajno okruženje za rast i učenje.
+                </p>
+
+                <!-- Dugmad -->
+                <div class="flex flex-wrap gap-4">
+                    <a href="/0-nama/misija"
+                        class="group inline-flex items-center gap-2 bg-primary text-background
+                            px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-primary/30
+                            hover:bg-primary_hover hover:-translate-y-0.5 transition-all">
+                        Saznajte o nama
+                        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </a>
+                    <a href="/za-roditelje/jelovnik"
+                        class="inline-flex items-center px-8 py-4 rounded-full text-lg font-semibold
+                            border border-white/40 text-white backdrop-blur-sm
+                            hover:bg-white hover:text-black hover:-translate-y-0.5 transition-all">
+                        Aktuelan jelovnik
+                    </a>
                 </div>
             </div>
         </div>
+
+        <!-- Scroll indikator -->
+        <a href="#repertoar" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors">
+            <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </a>
     </section>
     <!-- vesti -->
     <section id="vesti" class="py-20 bg-gradient-to-br from-surface to-background">
@@ -757,7 +1067,7 @@
         </div>
     </section>
     <!-- objekti -->
-    <section id="vrtici" class="bg-background text-secondary_text font-heading2">
+    <section id="vrtici" class="bg-secondary_background text-secondary_text font-heading2">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
                 <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">Objekti
@@ -875,7 +1185,7 @@
         </div>
     </section>
     <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-background text-secondary_text font-heading2">
+    <section id="gallery" class="py-20 bg-secondary_background text-secondary_text font-heading2">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-heading text-primary_text mb-4 relative inline-block">
@@ -923,12 +1233,12 @@
             </div>
         </div>
     </section>
-    <footer class="bg-secondary_background text-secondary_text font-heading2 pt-20 pb-10">
+    <footer class="bg-background text-primary_text font-heading2 pt-20 pb-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
+                        <div class="w-36 h-36 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -974,7 +1284,7 @@
                 <div>
                     <h4 class="mb-6">Informacije</h4>
                     <ul class="space-y-3">
-                        <li><a href="/ankete" class="hover:text-secondary transition-colors">Ankete o zadovoljstvu korisnika</a></li>
+                        <li><a href="/ankete" class="text-logocolor2/90 hover:text-primary_text transition-colors">Ankete o zadovoljstvu korisnika</a></li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
                             <span>Lorem ipsum dolor</span>
@@ -1018,19 +1328,19 @@
             theme: {
                 extend: {
                     colors: {
-                        logocolor1: 'rgba(233, 168, 3, 1)',
-                        logocolor2: '#2D6A4F',
-                        primary: '#e9a803ff',
-                        primary_hover: '#d39802ff',
-                        secondary: '#32604dff',
-                        secondary_hover: '#255943ff',
-                        accent: "#e9a803ff",
-                        accent_hover: "#d39802ff",
-                        primary_text: '#1B4332',
-                        secondary_text: '#2a644aff',
-                        background: '#F1F7ED',
-                        secondary_background: '#e5cc8c6b',
-                        surface: "#e5cc8c6b",
+                        logocolor1: '#809bce',
+                        logocolor2: '#809bce',
+                        primary: '#809bce',
+                        primary_hover: '#6e7ecc',
+                        secondary: '#95b8d1',
+                        secondary_hover: '#81afd0',
+                        accent: "#6e7ecc",
+                        accent_hover: "#809bce",
+                        primary_text: '#6e7ecc',
+                        secondary_text: '#72aad1',
+                        background: '#d6eadf',
+                        secondary_background: '#fcfcfc',
+                        surface: "#eadce2",
                     },
                     fontFamily: {
                         heading: ['Fredoka', 'sans-serif'],
