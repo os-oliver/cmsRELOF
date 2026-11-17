@@ -336,10 +336,6 @@
                     </button>
                 </div>
                 <nav id="navBarIDm" class="space-y-4">
-                    <a href="#"
-                        class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-home mr-3 text-primary"></i>Početna
-                    </a>
                     <div class="mobile-dropdown">
                         <button
                             class="flex items-center justify-between w-full py-3 px-4 rounded-lg transition-all"
@@ -467,20 +463,15 @@
             <a href="/" class="flex items-center gap-3 flex-shrink-0">
                 <div
                     class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <img src="" alt="" style="width:75px;height:auto;" />
+                    <img src="/assets/img/logo.png" alt="" style="width:75px;height:auto;" />
                 </div>
                 <div class="hidden sm:block font-heading text-primary_text">
-                    <div class="text-xl leading-tight">Lorem ipsum dolor</div>
-                    <div class="text-xs tracking-wide hidden md:block">Lorem ipsum dolor sit amet consectetu</div>
+                    <span class="block text-xl leading-tight">Lorem ipsum dolor</span>
+                    <span class="text-xs tracking-wide hidden md:block">Lorem ipsum dolor sit amet consectetu</span>
                 </div>
             </a>
             <!-- Desktop Navigation -->
             <nav id="navBarID" class="hidden lg:flex space-x-4 xl:space-x-8 font-heading2 text-secondary_text hover:text-primary_text">
-                <a href="#"
-                    class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-home mr-2 text-primary transition-colors"></i>
-                    <span class="hidden xl:inline">Početna</span>
-                </a>
                 <div class="dropdown relative group transition-colors">
                     <button
                         class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -696,83 +687,72 @@
             </div>
         </div>
     </section>
-    <!-- VESTI -->
-    <section id="events" class="py-20 bg-background text-secondary_text">
+    <!-- vesti -->
+    <section id="vesti" class="py-20 bg-gradient-to-br from-surface to-background">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16 font-heading2">
-                <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                    Lorem ipsum
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
+                    Najnovije Vesti
+                    <div
+                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
+                    </div>
                 </h2>
-                <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
+                    Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
                 </p>
             </div>
-            <div id="eventsCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Event 1 -->
-                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
-                    <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
+
+            <div id="vestiCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php for ($i = 0; $i < 3; $i++): ?>
+                    <article
+                        class="bg-secondary_background rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                        <div class="h-56 relative overflow-hidden">
+                            <img id="g-slika"
+                                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
+                                alt="Vest"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
                         </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
-                        </h3>
-                        <a id="g-ovise" href="#"
-                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
-                            Pročitaj
-                        </a>
-                    </div>
-                </div>
-                <!-- Event 2 -->
-                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
-                    <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent_hover flex items-center justify-center text-white shadow-md">
+                                    <i class="fas fa-newspaper text-lg"></i>
+                                </div>
+                                <div class="flex items-center text-sm text-secondary_text">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span id="g-datum">15. Oktobar 2025</span>
+                                </div>
+                            </div>
+
+                            <h3 id="g-naslov"
+                                class="text-xl font-heading font-bold text-primary_text mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                                Naslov
+                            </h3>
+
+                            <p id="g-opis" class="text-secondary_text mb-5 line-clamp-3 leading-relaxed">
+                                Opis
+                            </p>
+
+                            <a id="g-ovise" href="#"
+                                class="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all group/link">
+                                Pročitaj više
+                                <i class="fas fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
                         </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
-                        </h3>
-                        <button
-                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
-                            Pročitaj
-                        </button>
-                    </div>
-                </div>
-                <!-- Event 3 -->
-                <div class="event-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl">
-                    <div class="h-48 relative">
-                        <img id="g-image"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-naziv" class="text-primary_text">Otvoren novi vrtić</span>
-                        </div>
-                        <h3 id="g-title" class="text-xl mb-2">Novo mesto za učenje i igru
-                        </h3>
-                        <button
-                            class="bg-secondary text-background px-4 py-2 rounded-full hover:bg-secondary_hover transition-colors">
-                            Pročitaj
-                        </button>
-                    </div>
-                </div>
+                    </article>
+                <?php endfor; ?>
             </div>
-            <div class="text-center mt-12">
-                <a href="/vesti" id="eventsView"
-                    class="bg-primary text-background px-8 py-4 text-lg rounded-full hover:bg-primary_hover transition-colors flex items-center shadow-lg mx-auto w-fit">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve
-                </a>
+
+            <div class="text-center mt-16">
+                <button id="vestiView"
+                    class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
+                    <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
+                    Pogledaj sve vesti
+                    <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -789,15 +769,18 @@
                 </p>
             </div>
             <div id="vrticiCards" class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-                <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
-                    <a href="#" class="w-1/4 h-full">
+                <!-- Kartica 1 -->
+                <div class="vrtici-card group flex items-center bg-surface rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 h-48 overflow-hidden">
+                    <a href="#" class="w-1/4 h-full relative overflow-hidden flex-shrink-0">
                         <img
                             id="g-image"
-                            class="w-full h-full object-cover rounded-l-lg"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            alt="Objekat">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </a>
                     <div class="p-5 w-3/4">
-                        <h3 class="text-primary_text font-heading text-2xl">
+                        <h3 class="text-primary_text font-heading text-2xl group-hover:text-accent transition-colors">
                             <p id="g-title" class="text-3xl">Lorem ipsum</p>
                         </h3>
                         <p id="g-description" class="mt-3 mb-4">
@@ -805,45 +788,57 @@
                         </p>
                     </div>
                 </div>
-                <div class="vrtici-card flex  items-center bg-surface rounded-lg shadow h-48">
-                    <div class="h-48 relative">
-                        <img id="g-image"
+
+                <!-- Kartica 2 -->
+                <div class="vrtici-card group flex items-center bg-surface rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 h-48 overflow-hidden">
+                    <a href="#" class="w-1/4 h-full relative overflow-hidden flex-shrink-0">
+                        <img
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
+                            alt="Objekat">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </a>
                     <div class="p-5 w-3/4">
-                        <h3 class="text-primary_text tracking-tight text-2xl">
-                            <p id="g-naslov">Lorem ipsum</p>
+                        <h3 class="text-primary_text font-heading text-2xl group-hover:text-accent transition-colors">
+                            <p class="text-3xl">Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
                 </div>
-                <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
-                    <a href="#" class="w-1/4 h-full">
+
+                <!-- Kartica 3 -->
+                <div class="vrtici-card group flex items-center bg-surface rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 h-48 overflow-hidden">
+                    <a href="#" class="w-1/4 h-full relative overflow-hidden flex-shrink-0">
                         <img
-                            class="w-full h-full object-cover rounded-l-lg"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            alt="Objekat">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </a>
                     <div class="p-5 w-3/4">
-                        <h3 class="text-primary_text tracking-tight text-2xl">
-                            <p>Lorem ipsum</p>
+                        <h3 class="text-primary_text font-heading text-2xl group-hover:text-accent transition-colors">
+                            <p class="text-3xl">Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
                 </div>
-                <div class="vrtici-card flex items-center bg-surface rounded-lg shadow h-48">
-                    <a href="#" class="w-1/4 h-full">
+
+                <!-- Kartica 4 -->
+                <div class="vrtici-card group flex items-center bg-surface rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 h-48 overflow-hidden">
+                    <a href="#" class="w-1/4 h-full relative overflow-hidden flex-shrink-0">
                         <img
-                            class="w-full h-full object-cover rounded-l-lg"
-                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80">
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+                            alt="Objekat">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary_text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </a>
                     <div class="p-5 w-3/4">
-                        <h3 class="text-primary_text tracking-tight text-2xl">
-                            <p>Lorem ipsum</p>
+                        <h3 class="text-primary_text font-heading text-2xl group-hover:text-accent transition-colors">
+                            <p class="text-3xl">Lorem ipsum</p>
                         </h3>
                         <p class="mt-3 mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
