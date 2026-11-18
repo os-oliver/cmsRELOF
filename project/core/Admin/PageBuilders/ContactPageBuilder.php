@@ -164,7 +164,7 @@ HTML;
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800 mb-2">Adresa</h3>
-                                    <p class="text-gray-600 leading-relaxed">PU De;ja radost<br>Bregalnička BB, <br>35230 Ćuprija, Srbija</p>
+                                    <p class="text-gray-600 leading-relaxed">PU Dečja radost<br>Bregalnička BB, <br>35230 Ćuprija, Srbija</p>
                                 </div>
                             </div>
 
