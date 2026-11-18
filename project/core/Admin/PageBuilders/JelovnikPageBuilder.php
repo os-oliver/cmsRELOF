@@ -128,10 +128,31 @@ PHP;
     <section class="container mx-auto px-4 py-12">
         <div class="mb-8 font-body text-secondary_text text-center">
             <h1 class="text-3xl font-heading text-primary_text mb-2">Jelovnik</h1>
-            <p class="text-lg leading-relaxed mb-4 text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-            <p class="text-lg leading-relaxed mb-4 text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
             <p class="font-heading2">Pregled dostupnih jelovnika.</p>
         </div>
+
+        <section class="glass-card max-w-4xl mx-auto rounded-2xl p-6 mb-8 font-body text-secondary_text">
+            <h2 class="text-2xl font-heading text-primary_text mb-4">Ciljevi i zadaci ishrane</h2>
+            <p class="leading-relaxed mb-4">
+                Pravilna ishrana je faktor koji uslovljava fizički i psihički razvoj dece, a sa tim i zdravlje dece, pa će zbog toga planiranje ishrane, odnos namirnica, biti pravilno raspoređeno, tako da se obezbede svi potrebni nutritivni elementi.
+            </p>
+            <p class="leading-relaxed mb-4">
+                Deca u poludnevnom boravku obuhvaćena su ishranom jednom dnevno. U celodnevnom boravku obezbeđuju se tri obroka: doručak 8:00 – 8:30, užina 11:00 – 11:30, ručak 13:00 – 13:45.
+            </p>
+            <p class="leading-relaxed mb-2">
+                U ishrani se vodi računa da se ispoštuju energetske potrebe. Pri tome se posebna pažnja pridaje:
+            </p>
+            <ul class="list-disc list-inside space-y-1">
+                <li>Izboru jela i izradi jelovnika</li>
+                <li>Kvalitetu namirnica</li>
+                <li>Ispravnosti namirnica</li>
+                <li>Načinu u obradi namirnica</li>
+                <li>Ličnoj higijeni osoblja koje obrađuju namirnice</li>
+                <li>Higijeni prostorija u kojima se pripremaju obroci</li>
+                <li>Pravilnoj podeli i serviranju obroka</li>
+                <li>Nastojanju vaspitnog osoblja da dete konzumira hranu</li>
+            </ul>
+        </section>
 
         <div class="menu-grid">
             <?php
