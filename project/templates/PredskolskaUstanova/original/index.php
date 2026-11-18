@@ -966,7 +966,7 @@
                         class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
                     </div>
                 </h2>
-                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
+                <p class="text-2xl max-w-2xl mx-auto text-secondary_text">
                     Budite u toku sa najnovijim dešavanjima iz sveta kulture, obrazovanja i inovacija
                 </p>
             </div>
@@ -1029,10 +1029,10 @@
     <section id="vrtici" class="bg-secondary_background text-secondary_text font-heading2">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">Objekti
+                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">Objekti
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
-                <p class="lg:mb-16 sm:text-xl">
+                <p class="text-2xl max-w-2xl mx-auto">
                     Pregledajte naše objekte i saznajte više o našim vrtićima, njihovim programima i uslugama koje pružaju.
                 </p>
             </div>
@@ -1146,7 +1146,7 @@
     <section id="gallery" class="py-20 bg-secondary_background text-secondary_text font-heading2">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading text-primary_text mb-4 relative inline-block">
+                <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
                     Galerija
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
@@ -1246,10 +1246,10 @@
                 </div>
                 <div>
                     <h4 class="mb-6">Mapa lokacije</h4>
-                    <div class="relative w-full overflow-hidden rounded-xl" style="aspect-ratio: 16 / 9;">
+                    <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2873.4615852141787!2d21.370586000000003!3d43.92912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4756bf5a676f2e43%3A0x13e2e169c0ffc60!2z0J_RgNC10LTRiNC60L7Qu9GB0LrQsCDRg9GB0YLQsNC90L7QstCwINCU0LXRh9GY0LAg0YDQsNC00L7RgdGC!5e0!3m2!1ssr!2srs!4v1794928639267!5m2!1ssr!2srs"
-                            class="absolute inset-0 block h-full w-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
