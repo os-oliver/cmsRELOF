@@ -768,7 +768,7 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-question mr-2 text-primary"></i>Pitanja
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                         </a>
