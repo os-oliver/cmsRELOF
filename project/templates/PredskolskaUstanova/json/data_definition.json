@@ -380,46 +380,6 @@
           }
         }
       ]
-    },
-    "Cenovnik": {
-      "code": "cenovnik",
-      "sr": "Cenovnik",
-      "en": "Pricelist",
-      "sr-Cyrl": "Ценовник",
-      "icon": "fas fa-newspaper",
-      "fields": [
-        {
-          "code": "naslov",
-          "name": "naslov",
-          "type": "text",
-          "label": {
-            "sr": "Naslov",
-            "en": "Title",
-            "sr-Cyrl": "Наслов"
-          },
-          "required": true
-        },
-        {
-          "code": "opis",
-          "name": "opis",
-          "type": "textarea",
-          "label": {
-            "sr": "Kratak opis",
-            "en": "Short description",
-            "sr-Cyrl": "Кратак опис"
-          }
-        },
-        {
-          "code": "fajl",
-          "name": "Fajl",
-          "type": "file",
-          "label": {
-            "sr": "PDF cenovnik",
-            "en": "PDF pricelist",
-            "sr-Cyrl": "ПДФ ценовник"
-          }
-        }
-      ]
     }
   }
 ]
