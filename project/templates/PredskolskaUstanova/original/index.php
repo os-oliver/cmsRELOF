@@ -1151,7 +1151,7 @@
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-2xl max-w-2xl mx-auto">
-                    Lorem ipsum dolor amet consectetur adipiscing
+                    Nekoliko trenutaka iz naših vrtića i manifestacija koje organizujemo, zabeleženih kroz objektiv naših fotografa.
                 </p>
             </div>
             <div id="galleryCards" class="gallery-grid gap-6">
