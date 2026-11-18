@@ -32,10 +32,10 @@ class CenovnikPageBuilder extends BasePageBuilder
       </p>
 
       <ul class="text-left list-disc list-inside max-w-3xl mx-auto mb-6">
-        <li class="mb-2"><strong>Celodnevni program:</strong> od 7:00 do 17:00 – uključuje tri obroka i sve aktivnosti u toku dana.</li>
-        <li class="mb-2"><strong>Poludnevni program:</strong> od 7:00 do 12:00 – uključuje doručak i užinu, uz osnovni vaspitno–obrazovni rad.</li>
-        <li class="mb-2"><strong>Jaslice:</strong> poseban program prilagođen deci od 1 do 3 godine, sa individualnim pristupom i stručnim osobljem.</li>
-        <li class="mb-2"><strong>Dodatne aktivnosti:</strong> engleski jezik, ritmika, kreativne radionice, sportske sekcije i logoped.</li>
+        <li class="mb-2">&nbsp;<strong>Celodnevni program:&nbsp;</strong> od 7:00 do 17:00 – uključuje tri obroka i sve aktivnosti u toku dana.</li>
+        <li class="mb-2">&nbsp;<strong>Poludnevni program:&nbsp;</strong> od 7:00 do 12:00 – uključuje doručak i užinu, uz osnovni vaspitno–obrazovni rad.</li>
+        <li class="mb-2">&nbsp;<strong>Jaslice:&nbsp;</strong> poseban program prilagođen deci od 1 do 3 godine, sa individualnim pristupom i stručnim osobljem.</li>
+        <li class="mb-2">&nbsp;<strong>Dodatne aktivnosti:&nbsp;</strong> engleski jezik, ritmika, kreativne radionice, sportske sekcije i logoped.</li>
       </ul>
 
       <div class="flex items-center justify-center gap-4">
