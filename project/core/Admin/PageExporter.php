@@ -54,6 +54,7 @@ use App\Admin\PageBuilders\FAQPageBuilder;
 use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SaradnjaSaPorodicomPageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
+use App\Admin\PageBuilders\InformatorORaduPageBuilder;
 use App\Utils\Config;
 use DOMDocument;
 use DOMNode;
@@ -767,6 +768,8 @@ class PageExporter
                 return new DynamicPageBuilder('Filmovi');
             case 'donacije-i-podrska':
                 return new DynamicPageBuilder('Donacije I Podrska');
+            case 'informator-o-radu':
+                return new InformatorORaduPageBuilder('InformatorORadu', $this->data);
             case 'saradnja-sa-porodicom':
                 return new SaradnjaSaPorodicomPageBuilder('SaradnjaSaPorodicom', $this->data);
             default:
@@ -890,6 +893,8 @@ class PageExporter
             return 'filmovi';
         } elseif (strpos($name, 'saradnja-sa-porodicom') !== false) {
             return 'saradnja-sa-porodicom';
+        } elseif (strpos($name, 'informator-o-radu') !== false) {
+            return 'informator-o-radu';
         }
 
         return 'basic';

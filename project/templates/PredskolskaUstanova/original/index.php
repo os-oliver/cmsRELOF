@@ -386,7 +386,11 @@
                             </a>
                             <a href="#"
                                 class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
+                                <i class="fas fa-file-alt mr-2 text-primary"></i>Informacije
+                            </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-file-lines mr-2 text-primary"></i>Informator o radu
                             </a>
                         </div>
                     </div>
@@ -501,6 +505,10 @@
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
+                        </a>
+                        <a href="#"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            <i class="fas fa-file-lines mr-2 text-primary"></i>Informator o radu
                         </a>
                     </div>
                 </div>
