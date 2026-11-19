@@ -55,6 +55,7 @@ use App\Admin\PageBuilders\PublikacijePageBuilder;
 use App\Admin\PageBuilders\SaradnjaSaPorodicomPageBuilder;
 use App\Admin\PageBuilders\SeminarPageBuilder;
 use App\Admin\PageBuilders\InformatorORaduPageBuilder;
+use App\Admin\PageBuilders\ZastitaPodatakaPageBuilder;
 use App\Utils\Config;
 use DOMDocument;
 use DOMNode;
@@ -772,6 +773,8 @@ class PageExporter
                 return new InformatorORaduPageBuilder('InformatorORadu', $this->data);
             case 'saradnja-sa-porodicom':
                 return new SaradnjaSaPorodicomPageBuilder('SaradnjaSaPorodicom', $this->data);
+            case 'zastita-podataka-o-licnosti':
+                return new ZastitaPodatakaPageBuilder('ZastitaPodatakaOListnosti', $this->data);
             default:
                 return new BasicPageBuilder($name, $this->data);
         }
@@ -895,6 +898,10 @@ class PageExporter
             return 'saradnja-sa-porodicom';
         } elseif (strpos($name, 'informator-o-radu') !== false) {
             return 'informator-o-radu';
+        } elseif (strpos($name, 'zastita-podataka-o-licnosti') !== false) {
+            return 'zastita-podataka-o-licnosti';
+        } else {
+            error_log("Unknown page type for name: $name. Defaulting to 'basic'.");
         }
 
         return 'basic';

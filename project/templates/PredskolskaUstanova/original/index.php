@@ -392,6 +392,10 @@
                                 class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-file-lines mr-2 text-primary"></i>Informator o radu
                             </a>
+                            <a href="#"
+                                class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-shield-halved mr-2 text-primary"></i>Zaštita podataka o ličnosti
+                            </a>
                         </div>
                     </div>
                     <div class="mobile-dropdown">
@@ -506,9 +510,13 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-file-lines mr-2 text-primary"></i>Informator o radu
+                        </a>
+                        <a href="#" static="true"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            <i class="fas fa-shield-halved mr-2 text-primary"></i>Zaštita podataka o ličnosti
                         </a>
                     </div>
                 </div>
