@@ -838,7 +838,7 @@
                 $stats = [
                     ['number' => '9', 'label' => 'Objekata'],
                     ['number' => 'bezbroj', 'label' => 'Osmeha'],
-                    ['number' => '290', 'label' => 'Zaposlenih'],
+                    ['number' => '321', 'label' => 'Zaposlenih'],
                     ['number' => 'od 1944. godine', 'label' => 'Tradicija']
                 ];
                 foreach ($stats as $index => $stat): ?>
