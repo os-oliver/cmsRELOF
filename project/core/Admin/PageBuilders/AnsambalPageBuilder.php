@@ -61,20 +61,6 @@ class AnsambalPageBuilder extends BasePageBuilder
     main{
         padding-top: 50px;
     }
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    border-radius: 8px;
-    overflow: hidden;
-}
 
 /* Enhanced Glassmorphism effect */
 .glass-card {
@@ -92,65 +78,9 @@ class AnsambalPageBuilder extends BasePageBuilder
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.category-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.375rem 0.875rem;
-    background: rgba(107, 114, 128, 0.9);
-    backdrop-filter: blur(10px);
-    color: white;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.025em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Improved field layout */
-.fields-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-.card-field {
-    position: relative;
-    padding: 0.75rem;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 0.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    transition: all 0.3s ease;
-    min-height: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.card-field:hover {
-    background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.card-image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%);
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .fields-container {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-    }
-
     .glass-card {
         margin-bottom: 1rem;
     }
@@ -162,21 +92,21 @@ function renderTopbar(array $categories, string $searchValue = '', ?int $selecte
 {
     $safeSearchValue = htmlspecialchars($searchValue, ENT_QUOTES, 'UTF-8');
 
-    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-2xl shadow-lg mb-8 gap-4'>";
+    $html = "<form method='GET' action='' class='glass-search flex flex-col sm:flex-row items-center justify-between p-6 rounded-3xl shadow-xl mb-10 gap-4 border border-secondary/20'>";
 
     $html .= "<div class='flex w-full sm:w-auto flex-1 gap-3'>
         <input type='text' name='search' value='{$safeSearchValue}'
                placeholder='{$texts['search_placeholder']}'
                class='w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm'>
         <button type='submit'
-                class='bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium'>
+            class='bg-primary hover:bg-primary_hover text-background px-6 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl font-semibold font-body'>
             {$texts['apply_button']}
         </button>
     </div>";
 
     $html .= "<div class='flex items-center w-full sm:w-auto'>
         <select name='category'
-                class='w-full sm:w-64 border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all shadow-sm bg-white/80 backdrop-blur-sm appearance-none cursor-pointer'>
+            class='w-full sm:w-64 border border-secondary/30 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all shadow-sm bg-background text-primary_text font-body appearance-none cursor-pointer'>
             <option value=''>{$texts['all_categories']}</option>";
 
     foreach ($categories as $cat) {
@@ -197,23 +127,15 @@ PHP;
     <div class="relative group">
         <div class="absolute -inset-0.5 bg-gradient-to-br from-secondary via-accent to-primary rounded-2xl blur-sm opacity-0 group-hover:opacity-30 transition duration-500"></div>
         <div class="relative bg-surface rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300">
-            <div class="relative w-full h-56 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
+            <div class="relative w-full h-96 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
                 {{imageSection}}
-                <div class="absolute inset-0 bg-gradient-to-t from-primary_text/80 via-secondary_text/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-secondary/80 to-transparent"></div>
             </div>
             <div class="p-6 space-y-5">
                 <div class="space-y-2">
                     <h3 class="text-xl font-bold text-primary_text mb-1 line-clamp-2 group-hover:text-secondary transition-colors duration-300">
-                        {{naziv}}
+                        {{name}}
                     </h3>
                     <div class="w-12 h-0.5 bg-gradient-to-r from-accent to-transparent"></div>
-                </div>
-                <div class="relative">
-                    <div class="absolute -left-1 top-0 bottom-0 w-1 bg-gradient-to-b from-accent via-secondary to-primary rounded-full"></div>
-                    <div class="pl-5 pr-4 py-4 bg-background/60 backdrop-blur-sm rounded-lg border border-accent/20">
-                        <p class="text-sm text-secondary_text leading-relaxed">{{opis}}</p>
-                    </div>
                 </div>
                 <a href="sadrzaj?id={{itemId}}&tip=generic_element"
                    class="group/btn relative block w-full text-center overflow-hidden rounded-xl transition-all duration-300 hover:shadow-lg">
@@ -241,8 +163,7 @@ HTML;
 function cardRender(array $item, array $fieldLabels, string $locale, array $texts = [], int $descMaxLength = 120, $cardTemplate=''): string
 {
     $item = HashMapTransformer::remapToOldItemStructure($item, $locale);
-    $naziv = htmlspecialchars($item['fields']['naziv'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
-    $opis = htmlspecialchars(mb_substr($item['fields']['opis'][$locale] ?? '', 0, $descMaxLength), ENT_QUOTES, 'UTF-8');
+    $name = htmlspecialchars($item['fields']['name'][$locale] ?? '', ENT_QUOTES, 'UTF-8');
     $itemId = htmlspecialchars($item['id'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($item['image'] ?? '', ENT_QUOTES, 'UTF-8');
 
@@ -256,8 +177,7 @@ function cardRender(array $item, array $fieldLabels, string $locale, array $text
            </div>";
 
     $replacements = [
-        '{{naziv}}' => $naziv,
-        '{{opis}}' => $opis,
+        '{{name}}' => $name,
         '{{imageSection}}' => $imageSection,
         '{{itemId}}' => $itemId,
         // Promenjeno: ensemble_details iz $texts
@@ -318,11 +238,10 @@ function renderPagination(int $currentPage, int $totalPages, int $range = 2): st
 PHP;
 
     protected string $html = <<<'HTML'
-<main class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<main class="bg-background min-h-screen font-body">
     <section class="container mx-auto px-4 py-12">
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Članovi ansambla</h1>
-            <p class="text-gray-600">Pregled svih članova ansambla</p>
+        <div class="mb-10 text-center md:text-left">
+            <h1 class="text-3xl md:text-4xl font-bold text-primary_text font-heading mb-2">Ansambl</h1>
         </div>
 
         <?php echo renderTopbar($categories, $search, $categoryId, $texts); ?>
@@ -339,9 +258,9 @@ PHP;
                 $totalPages = ceil($itemsList['total'] / $itemsPerPage);
                 echo renderPagination($currentPage, $totalPages, $paginationRange);
             } else {
-                echo "<div class='glass-card rounded-lg p-12 text-center border border-white/40'>
-                    <i class='fas fa-inbox text-5xl text-gray-400 mb-4'></i>
-                    <p class='text-gray-500'>{$texts['no_items_found']}</p>
+                echo "<div class='glass-card rounded-lg p-12 text-center border border-secondary/20'>
+                    <i class='fas fa-inbox text-5xl text-secondary mb-4'></i>
+                    <p class='text-secondary_text'>{$texts['no_items_found']}</p>
                 </div>";
             }
             ?>
