@@ -22,7 +22,11 @@ class LocaleManager
             $_SESSION['locale'] = self::normalizeLocale($requestedLocale);
         }
 
-        return $_SESSION['locale'] ?? self::$defaultLocale;
+        if (!isset($_SESSION['locale'])) {
+            $_SESSION['locale'] = self::$defaultLocale;
+        }
+
+        return $_SESSION['locale'];
     }
 
     public static function normalizeLocale(string $locale): string
