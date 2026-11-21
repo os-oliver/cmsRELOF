@@ -108,12 +108,10 @@
             }
 
             .hero-gradient {
-                background: linear-gradient(
-                    to bottom,       
-                    rgb(247, 241, 237) 0%,      
-                    rgb(239, 178, 178) 50%,     
-                    rgba(255, 255, 255, 0.96) 100%     
-                );
+                background: linear-gradient(to bottom,
+                        rgb(247, 241, 237) 0%,
+                        rgb(239, 178, 178) 50%,
+                        rgba(255, 255, 255, 0.96) 100%);
                 text-align: left;
                 padding-top: 8rem;
                 padding-bottom: 6rem;
@@ -347,40 +345,37 @@
 
                         <div class="ml-6 mt-2 space-y-2 hidden" id="mobileAboutMenu">
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-flag mr-2 text-primary"></i>Misija
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Istorija
-                            </a>
-                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Partneri
+                                <i class="fas fa-history mr-2 text-primary"></i>Istorijat
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
                                 <i class="fas fa-flag mr-2 text-primary"></i>Organizaciona struktura
                             </a>
                             <a href="#" class="flex items-center py-2 px-4 transition-colors">
-                                <i class="fas fa-flag mr-2 text-primary"></i>Organi Upravljanja
+                                <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
+                            </a>
+                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-question mr-2 text-primary"></i>Pitanja
+                            </a>
+                            <a href="#" class="flex items-center py-2 px-4 transition-colors">
+                                <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                             </a>
                         </div>
 
                     </div>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-images mr-3 text-primary"></i>Ansambl
+                        <i class="fas fa-users mr-3 text-primary"></i>Ansambl
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-folder-open mr-3 text-primary"></i>Predstave
+                        <i class="fas fa-theater-masks mr-3 text-primary"></i>Predstave
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-address-book mr-3 text-primary"></i>Repertoar
+                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Repertoar
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Vesti
+                        <i class="fas fa-newspaper mr-3 text-primary"></i>Vesti
                     </a>
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-images mr-3 text-primary"></i>Galerija
@@ -391,13 +386,6 @@
                     <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
                         <i class="fas fa-address-book mr-3 text-primary"></i>Kontakt
                     </a>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Pitanja
-                    </a>
-                    <a href="#" class="flex items-center py-3 px-4 rounded-lg transition-all">
-                        <i class="fas fa-calendar-alt mr-3 text-primary"></i>Informacije
-                    </a>
-
                 </nav>
             </div>
         </div>
@@ -411,36 +399,32 @@
         </button>
     </div>
 
-    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm ">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-
-
+    <header class="fixed w-full z-50 transition-all duration-300 py-3 backdrop-blur-md shadow-sm bg-background">
+        <div class="container mx-auto flex justify-between items-center">
             <!-- Logo Section -->
-            <div class="flex items-center space-x-3 flex-shrink-0">
-                <div
-                    class="w-11 h-11 bg-gradient-to-br from-[#CC8B3C] via-[#C85A3E] to-[#E07856] rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <a href="/" class="flex items-center pr-4 flex-shrink-0">
+                <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
                     <img src="" alt="" style="width:75px;height:auto;" />
                 </div>
-
-                <div class="hidden sm:block font-body text-primary_text">
-                    <h1 class="text-xl lg:text-2xl tracking-wider">Lorem ipsum dolor</h1>
-                    <p class="text-xs tracking-widest hidden md:block">Lorem ipsum dolor sit amet consectetu</p>
+                <div class="hidden sm:block">
+                    <h1 class="text-xl lg:text-2xl font-heading text-primary font-bold tracking-wider">Regionalno pozorište</h1>
+                    <p class="text-xs text-barn_red tracking-widest hidden md:block">Novi Pazar</p>
                 </div>
                 <div class="block sm:hidden">
-                    <h1 class="text-lg text-primary_text">Lorem ipsum</h1>
+                    <h1 class="text-lg font-heading text-primary font-bold">RPNP</h1>
                 </div>
-            </div>
+            </a>
 
 
             <!-- Desktop Navigation -->
             <nav id="navBarID"
                 class="hidden lg:flex space-x-4 xl:space-x-8 font-body text-secondary_text hover:text-primary_text">
-                <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
+                <a href="#" class="hover:text-primary_hover transition-colors flex items-center whitespace-nowrap">
                     <i class="fas fa-home mr-2 text-primary transition-colors"></i>
                     <span class="hidden xl:inline">Početna</span>
                 </a>
                 <div class="dropdown relative group transition-colors">
-                    <button class="nav-link transition-colors flex items-center whitespace-nowrap">
+                    <button class="nav-link transition-colors flex items-center px-3 py-2 whitespace-nowrap">
                         <i class="fas fa-info-circle mr-2 text-primary"></i>
                         <span class="hidden xl:inline">O nama</span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
@@ -448,53 +432,41 @@
                     <div
                         class="dropdown-menu absolute top-full left-0 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <a href="#"
-                            class="transition-colors dropdown-item flex items-center px-4 py-2 rounded-md text-sm">
-                            <i class="fas fa-bullseye mr-2 text-primary"></i>Cilj
-                        </a>
-                        <a href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-sitemap mr-2 text-primary"></i>Zaposleni
-                        </a>
-                        <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-flag mr-2 text-primary"></i>Misija
                         </a>
-                        <a static = "true" href="#"
+                        <a static="true" href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Istorija
-                        </a>
-                        <a static = "true" href="#"
-                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Partneri
+                            <i class="fas fa-history mr-2 text-primary"></i>Istorijat
                         </a>
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Organi Upravljanja
+                            <i class="fas fa-users-cog mr-2 text-primary"></i>Organi Upravljanja
                         </a>
 
-                        <a data-page="OrganizacionaStruktura" href="#"
-                                class="flex items-center py-2 px-4 text-sm text-primary_text hover:text-accent transition-colors">
-                                <i class="fas fa-sitemap mr-2 text-secondary"></i>Organizaciona struktura
+                        <a data-page="#" href="#"
+                            class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
+                            <i class="fas fa-sitemap mr-2 text-primary"></i>Organizaciona struktura
                         </a>
 
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Pitanja
+                            <i class="fas fa-question mr-2 text-primary"></i>Pitanja
                         </a>
 
                         <a href="#"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
-                            <i class="fas fa-flag mr-2 text-primary"></i>Informacije
+                            <i class="fas fa-bullhorn  mr-2 text-primary"></i>Informacije
                         </a>
 
                     </div>
                 </div>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
+                    <i class="fas fa-users mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Ansambl</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
+                    <i class="fas fa-theater-masks mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Predstave</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -502,7 +474,7 @@
                     <span class="hidden xl:inline">Repertoar</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
-                    <i class="fas fa-calendar-alt mr-2 text-primary"></i>
+                    <i class="fas fa-newspaper mr-2 text-primary"></i>
                     <span class="hidden xl:inline">Vesti</span>
                 </a>
                 <a href="#" class="nav-link transition-colors flex items-center whitespace-nowrap">
@@ -597,44 +569,66 @@
 
 
     <!-- Enhanced Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-gradient text-secondary_text">
-        <div class="container max-w-full mx-10 px-4 py-24 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-                <div>
-                    <div class="mb-8 text-left">
-                        <h1 class="text-5xl md:text-6xl leading-tight mb-8">
-                            <span class="block font-heading text-primary_text">Lorem ipsum dolor</span>
-                            <span class="block mt-2 text-secondary_text font-body">Lorem ipsum dolor sit</span>
-                        </h1>
-                        <p class="mb-10">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                            Quisque faucibus ex sapien vitae pellentesque sem placerat.
-                            In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-                        </p>
-                        <button
-                            class="bg-primary text-primarybtntxt px-6 py-4 rounded-full text-lg hover:bg-primary_hover transition-colors">
-                            Pogledajte repertoar
-                        </button>
-                    </div>
+    <section class="hero relative flex items-center z-10 w-full min-h-[600px] h-[85vh] overflow-hidden text-white">
+
+        <!-- Background image: keep as a direct img element for CMS editing -->
+        <img
+            src="https://picsum.photos/1600/900"
+            alt="Pozadinska slika aktuelne pozorišne predstave"
+            class="absolute inset-0 w-full h-full object-cover object-center z-10">
+
+        <!-- Dark gradient overlay -->
+        <div class="absolute inset-0 z-20 bg-gradient-to-r from-black/85 via-black/50 to-black/10 pointer-events-none"></div>
+        <div class="absolute inset-0 z-20 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none"></div>
+
+        <!-- Hero content -->
+        <div class="container max-w-full mx-10 px-4 py-24 relative z-30 w-full">
+
+            <div class="max-w-2xl text-left">
+
+                <span class="inline-block text-sm tracking-[0.25em] uppercase mb-6 text-white/80">
+                    Na repertoaru
+                </span>
+
+                <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl leading-tight mb-6">
+                    KUĆA NA GRANICI
+                </h1>
+
+                <p class="text-base md:text-lg leading-relaxed text-white/85 mb-9 max-w-xl">
+                    Predstava se bavi aktuelnim temama i u pitanju je teatar apsurda koji govori o apsurdima današnje svetske politike i povlačenja granica kroz priču čoveka kome se to dešava u sopstvenoj kući
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4">
+
+                    <a
+                        href="/predstave"
+                        class="inline-flex items-center px-7 py-4 rounded-full
+                           bg-primary text-white
+                           hover:bg-primary_hover transition-colors">
+                        Pogledajte predstave
+                    </a>
+
+                    <a
+                        href="/repertoar"
+                        class="inline-flex items-center text-white font-semibold hover:text-white/70 transition-colors px-7 py-4 rounded-full border border-white/20  hover:bg-white/10">
+                        Celokupan repertoar
+                    </a>
+
                 </div>
-                <div class="hidden md:flex justify-center">
-                    <img class="dark:hidden"
-                        src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/girl-shopping-list.svg"
-                        alt="shopping illustration" />
-                </div>
+
             </div>
+
         </div>
     </section>
 
+
+
     <!-- Repertoar -->
-    <section id="repertoar" class="py-20 text-secondary_text">
+    <section id="repertoar" class="pt-20 text-secondary_text bg-background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-body">
                 <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                    Naš Repertoar
+                    Sledeće na repertoaru
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
                 </h2>
                 <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4">
@@ -642,101 +636,206 @@
                 </p>
             </div>
 
-            <div id="repertoarCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+            <div id="repertoarCards" class="flex justify-center gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
                 <!-- repertoar card 1 -->
-                <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-datumVreme" class="text-primary_text text-sm">15. Decembar 2024</span>
-                        </div>
-                        <h3 id="g-nazivPredstave" class="text-xl mb-4">Naslov predstave</h3>
-                        <h2 id="g-naziv" class="text-xl mb-4">Kategorija predstave</h2>
-                        <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
-                            Saznajte više
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
+                <div class="repertoar-card group bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0 w-80 flex flex-col border border-black/5">
 
+                    <!-- Image Container with Genre Badge -->
+                    <div class="w-full aspect-[4/5] relative overflow-hidden">
+                        <img
+                            id="g-slika"
+                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                            alt="Slika predstave"
+                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                        <!-- Category moved to a clean badge over the image -->
+                        <span id="g-naziv" class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm text-background text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                            Komedija
+                        </span>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 flex flex-col flex-1">
+                        <!-- Date & Time with subtle icons -->
+                        <div class="flex items-center text-primary_text/75 text-xs font-medium mb-2.5">
+                            <svg class="w-3.5 h-3.5 mr-1.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span id="g-datum">17/11/2026</span>
+                            <span class="mx-2 opacity-40">•</span>
+                            <svg class="w-3.5 h-3.5 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span id="g-vreme">20:00</span>
+                        </div>
+
+                        <!-- Performance Title -->
+                        <h3 id="g-naslov" class="text-xl font-bold text-primary_text leading-snug mb-4 line-clamp-2 group-hover:text-primary transition-colors">
+                            Lorem ipsum dolor sit amet
+                        </h3>
+
+                        <!-- Bottom Action Link (pinned to bottom) -->
+                        <div class="mt-auto pt-3 border-t border-black/5">
+                            <a id="g-ovise" href="#" class="inline-flex items-center text-sm text-primary font-semibold hover:text-accent transition-colors">
+                                Saznajte više
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- repertoar card 2 -->
-                <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                <div class="repertoar-card group bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0 w-80 flex flex-col border border-black/5">
+
+                    <!-- Image Container with Genre Badge -->
+                    <div class="w-full aspect-[4/5] relative overflow-hidden">
+                        <img
+                            id="g-slika"
+                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                            alt="Slika predstave"
+                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                        <!-- Category moved to a clean badge over the image -->
+                        <span id="g-naziv" class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm text-background text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                            Komedija
+                        </span>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-datumVreme" class="text-primary_text text-sm">15. Decembar 2024</span>
-                        </div>
-                        <h3 id="g-nazivPredstave" class="text-xl mb-4">Naslov predstave</h3>
-                        <h2 id="g-naziv" class="text-xl mb-4">Kategorija predstave</h2>
 
-                        <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
-                            Saznajte više
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    <!-- Card Content -->
+                    <div class="p-6 flex flex-col flex-1">
+                        <!-- Date & Time with subtle icons -->
+                        <div class="flex items-center text-primary_text/75 text-xs font-medium mb-2.5">
+                            <svg class="w-3.5 h-3.5 mr-1.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                        </a>
+                            <span id="g-datum">17/11/2026</span>
+                            <span class="mx-2 opacity-40">•</span>
+                            <svg class="w-3.5 h-3.5 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span id="g-vreme">20:00</span>
+                        </div>
 
+                        <!-- Performance Title -->
+                        <h3 id="g-naslov" class="text-xl font-bold text-primary_text leading-snug mb-4 line-clamp-2 group-hover:text-primary transition-colors">
+                            Lorem ipsum dolor sit amet
+                        </h3>
+
+                        <!-- Bottom Action Link (pinned to bottom) -->
+                        <div class="mt-auto pt-3 border-t border-black/5">
+                            <a id="g-ovise" href="#" class="inline-flex items-center text-sm text-primary font-semibold hover:text-accent transition-colors">
+                                Saznajte više
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- repertoar card 3 -->
-                <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                <div class="repertoar-card group bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0 w-80 flex flex-col border border-black/5">
+
+                    <!-- Image Container with Genre Badge -->
+                    <div class="w-full aspect-[4/5] relative overflow-hidden">
+                        <img
+                            id="g-slika"
+                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                            alt="Slika predstave"
+                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                        <!-- Category moved to a clean badge over the image -->
+                        <span id="g-naziv" class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm text-background text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                            Komedija
+                        </span>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-datumVreme" class="text-primary_text text-sm">15. Decembar 2024</span>
-                        </div>
-                        <h3 id="g-nazivPredstave" class="text-xl mb-4">Naslov predstave</h3>
-                        <h2 id="g-naziv" class="text-xl mb-4">Kategorija predstave</h2>
 
-                        <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
-                            Saznajte više
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    <!-- Card Content -->
+                    <div class="p-6 flex flex-col flex-1">
+                        <!-- Date & Time with subtle icons -->
+                        <div class="flex items-center text-primary_text/75 text-xs font-medium mb-2.5">
+                            <svg class="w-3.5 h-3.5 mr-1.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                        </a>
+                            <span id="g-datum">17/11/2026</span>
+                            <span class="mx-2 opacity-40">•</span>
+                            <svg class="w-3.5 h-3.5 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span id="g-vreme">20:00</span>
+                        </div>
 
+                        <!-- Performance Title -->
+                        <h3 id="g-naslov" class="text-xl font-bold text-primary_text leading-snug mb-4 line-clamp-2 group-hover:text-primary transition-colors">
+                            Lorem ipsum dolor sit amet
+                        </h3>
+
+                        <!-- Bottom Action Link (pinned to bottom) -->
+                        <div class="mt-auto pt-3 border-t border-black/5">
+                            <a id="g-ovise" href="#" class="inline-flex items-center text-sm text-primary font-semibold hover:text-accent transition-colors">
+                                Saznajte više
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- repertoar card 4 -->
-                <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                <div class="repertoar-card group bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0 w-80 flex flex-col border border-black/5">
+
+                    <!-- Image Container with Genre Badge -->
+                    <div class="w-full aspect-[4/5] relative overflow-hidden">
+                        <img
+                            id="g-slika"
+                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                            alt="Slika predstave"
+                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                        <!-- Category moved to a clean badge over the image -->
+                        <span id="g-naziv" class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm text-background text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                            Komedija
+                        </span>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span id="g-datumVreme" class="text-primary_text text-sm">15. Decembar 2024</span>
-                        </div>
-                        <h3 id="g-nazivPredstave" class="text-xl mb-4">Naslov predstave</h3>
-                        <h2 id="g-naziv" class="text-xl mb-4">Kategorija predstave</h2>
 
-                        <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
-                            Saznajte više
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    <!-- Card Content -->
+                    <div class="p-6 flex flex-col flex-1">
+                        <!-- Date & Time with subtle icons -->
+                        <div class="flex items-center text-primary_text/75 text-xs font-medium mb-2.5">
+                            <svg class="w-3.5 h-3.5 mr-1.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                        </a>
+                            <span id="g-datum">17/11/2026</span>
+                            <span class="mx-2 opacity-40">•</span>
+                            <svg class="w-3.5 h-3.5 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span id="g-vreme">20:00</span>
+                        </div>
 
+                        <!-- Performance Title -->
+                        <h3 id="g-naslov" class="text-xl font-bold text-primary_text leading-snug mb-4 line-clamp-2 group-hover:text-primary transition-colors">
+                            Lorem ipsum dolor sit amet
+                        </h3>
+
+                        <!-- Bottom Action Link (pinned to bottom) -->
+                        <div class="mt-auto pt-3 border-t border-black/5">
+                            <a id="g-ovise" href="#" class="inline-flex items-center text-sm text-primary font-semibold hover:text-accent transition-colors">
+                                Saznajte više
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="text-center mt-12">
                 <a href="/repertoar" id="repertoarView"
                     class="bg-primary text-background px-8 py-4 text-lg rounded-full hover:bg-primary_hover transition-colors flex items-center shadow-lg mx-auto w-fit">
                     <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sav repertoar
+                    Ceo repertoar
                 </a>
             </div>
 
@@ -745,7 +844,7 @@
 
 
     <!-- Vesti -->
-    <section id="vesti" class="py-20 text-secondary_text">
+    <section id="vesti" class="py-20 text-secondary_text bg-background">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 font-body">
                 <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
@@ -757,129 +856,190 @@
                 </p>
             </div>
 
-            <div id="vestiCards" class="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-                
+            <div id="vestiCards" class="flex justify-center gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+
                 <!-- vest 1 -->
-                <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                <div class="news-card group bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0 w-80 flex flex-col border border-black/5">
+
+                    <!-- Image Container -->
+                    <div class="h-48 relative overflow-hidden">
+                        <img
+                            id="g-slika"
+                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                            alt="Slika vesti"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <div class="p-6">
 
+                    <!-- Card Content -->
+                    <div class="p-6 flex flex-col flex-1">
+
+                        <!-- Date Row -->
                         <div class="flex items-center mb-3">
-                            <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
-                        </div>
-                        
-                        <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
-
-                        <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
-
-                        <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
-                            Saznajte više
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            <svg class="w-3.5 h-3.5 mr-1.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                        </a>
+                            <span id="g-datum" class="text-primary_text/70 text-xs font-medium whitespace-nowrap">
+                                15. Decembar 2024
+                            </span>
+                        </div>
+
+                        <!-- News Headline -->
+                        <h3 id="g-naslov" class="text-lg font-bold text-primary_text leading-snug mb-5 line-clamp-3 group-hover:text-primary transition-colors">
+                            Naslov vesti
+                        </h3>
+
+                        <!-- Bottom Action Link (pinned to bottom) -->
+                        <div class="mt-auto pt-3 border-t border-black/5">
+                            <a id="g-ovise" href="#" class="inline-flex items-center text-sm text-primary font-semibold hover:text-accent transition-colors">
+                                Saznajte više
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
 
                     </div>
                 </div>
 
                 <!-- vest 2 -->
-                <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                <div class="news-card group bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0 w-80 flex flex-col border border-black/5">
+
+                    <!-- Image Container -->
+                    <div class="h-48 relative overflow-hidden">
+                        <img
+                            id="g-slika"
+                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                            alt="Slika vesti"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <div class="p-6">
 
+                    <!-- Card Content -->
+                    <div class="p-6 flex flex-col flex-1">
+
+                        <!-- Date Row -->
                         <div class="flex items-center mb-3">
-                            <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
-                        </div>
-                        
-                        <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
-
-                        <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
-
-                        <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
-                            Saznajte više
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            <svg class="w-3.5 h-3.5 mr-1.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                        </a>
+                            <span id="g-datum" class="text-primary_text/70 text-xs font-medium whitespace-nowrap">
+                                15. Decembar 2024
+                            </span>
+                        </div>
+
+                        <!-- News Headline -->
+                        <h3 id="g-naslov" class="text-lg font-bold text-primary_text leading-snug mb-5 line-clamp-3 group-hover:text-primary transition-colors">
+                            Naslov vesti
+                        </h3>
+
+                        <!-- Bottom Action Link (pinned to bottom) -->
+                        <div class="mt-auto pt-3 border-t border-black/5">
+                            <a id="g-ovise" href="#" class="inline-flex items-center text-sm text-primary font-semibold hover:text-accent transition-colors">
+                                Saznajte više
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
 
                     </div>
                 </div>
 
                 <!-- vest 3 -->
-                <div class="repertoar-card bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl flex-shrink-0 w-80">
-                    <div class="h-48 relative">
-                        <img id="g-slika" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="shopping illustration" />
+                <div class="news-card group bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0 w-80 flex flex-col border border-black/5">
+
+                    <!-- Image Container -->
+                    <div class="h-48 relative overflow-hidden">
+                        <img
+                            id="g-slika"
+                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                            alt="Slika vesti"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <div class="p-6">
 
+                    <!-- Card Content -->
+                    <div class="p-6 flex flex-col flex-1">
+
+                        <!-- Date Row -->
                         <div class="flex items-center mb-3">
-                            <span id="g-datum" class="text-primary_text text-sm">15. Decembar 2024</span>
-                        </div>
-                        
-                        <h3 id="g-naslov" class="text-xl mb-4">Naslov vestu</h3>
-
-                        <h2 id="g-naziv" class="text-xl mb-4">Kategorija vesti</h2>
-
-                        <a id="g-ovise" href="#" class="inline-flex items-center text-primary font-medium hover:text-accent transition">
-                            Saznajte više
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            <svg class="w-3.5 h-3.5 mr-1.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                        </a>
+                            <span id="g-datum" class="text-primary_text/70 text-xs font-medium whitespace-nowrap">
+                                15. Decembar 2024
+                            </span>
+                        </div>
+
+                        <!-- News Headline -->
+                        <h3 id="g-naslov" class="text-lg font-bold text-primary_text leading-snug mb-5 line-clamp-3 group-hover:text-primary transition-colors">
+                            Naslov vesti
+                        </h3>
+
+                        <!-- Bottom Action Link (pinned to bottom) -->
+                        <div class="mt-auto pt-3 border-t border-black/5">
+                            <a id="g-ovise" href="#" class="inline-flex items-center text-sm text-primary font-semibold hover:text-accent transition-colors">
+                                Saznajte više
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
 
                     </div>
                 </div>
 
-                
+                <div class="news-card group bg-surface rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0 w-80 flex flex-col border border-black/5">
+
+                    <!-- Image Container -->
+                    <div class="h-48 relative overflow-hidden">
+                        <img
+                            id="g-slika"
+                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                            alt="Slika vesti"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 flex flex-col flex-1">
+
+                        <!-- Date Row -->
+                        <div class="flex items-center mb-3">
+                            <svg class="w-3.5 h-3.5 mr-1.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span id="g-datum" class="text-primary_text/70 text-xs font-medium whitespace-nowrap">
+                                15. Decembar 2024
+                            </span>
+                        </div>
+
+                        <!-- News Headline -->
+                        <h3 id="g-naslov" class="text-lg font-bold text-primary_text leading-snug mb-5 line-clamp-3 group-hover:text-primary transition-colors">
+                            Naslov vesti
+                        </h3>
+
+                        <!-- Bottom Action Link (pinned to bottom) -->
+                        <div class="mt-auto pt-3 border-t border-black/5">
+                            <a id="g-ovise" href="#" class="inline-flex items-center text-sm text-primary font-semibold hover:text-accent transition-colors">
+                                Saznajte više
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
 
             <div class="text-center mt-12">
                 <a href="/vesti" id="eventsView"
                     class="bg-primary text-background px-8 py-4 text-lg rounded-full hover:bg-primary_hover transition-colors flex items-center shadow-lg mx-auto w-fit">
                     <i class="fas fa-calendar-alt mr-3"></i>
-                    Pogledaj sve
+                    Sve vesti
                 </a>
             </div>
         </div>
     </section>
-
-    <!-- Prijatelji -->
-    <section class="py-16 text-secondary_text">
-        <div class="text-center mb-16 font-body">
-            <h2 class="text-4xl font-heading mb-4 relative inline-block text-primary_text">
-                Prijatelji pozorista
-                <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
-            </h2>
-        </div>
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <?php
-                $stats = [
-                    ['label' => 'Knjaz Milos'],
-                    ['label' => 'Vlada Republike Srbije'],
-                    ['label' => 'AikBanka'],
-                    ['label' => 'Firma4'],
-                ];
-                foreach ($stats as $index => $stat): ?>
-                    <div class="bg-surface p-6 rounded-xl shadow-lg transform transition hover:scale-105"
-                        style="animation-delay: <?= $index * 0.2 ?>s">
-
-                        <!-- Added image -->
-                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
-                            alt="<?= htmlspecialchars($stat['label'], ENT_QUOTES) ?>"
-                            class="w-full h-24 object-cover rounded-md mb-4" loading="lazy" />
-
-                        <div><?= $stat['label'] ?></div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
 
     <!-- FOOTER -->
     <footer class="bg-surface text-secondary_text font-body pt-20 pb-10">
@@ -887,78 +1047,64 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div
-                            class="w-12 h-12 bg-logocolor2 rounded-lg flex items-center justify-center text-background mr-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-logocolor2" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
+                            <img src="" alt="" style="width:75px;height:auto;" />
                         </div>
-                        <h3 class="text-xl">Lorem ipsum dolor</h3>
+                        <h3 class="text-xl font-heading font-bold">Regionalno pozorište <br>Novi Pazar</h3>
                     </div>
-                    <p class="mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit
-                    </p>
                     <div class="flex space-x-3">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                        <a href="https://www.facebook.com/RegionalnoPozoristeNoviPazar/"
+                            class="w-10 h-10 rounded-full bg-accent hover:bg-accent_hover flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                        <a href="https://www.instagram.com/regionalnopozoriste"
+                            class="w-10 h-10 rounded-full bg-accent hover:bg-accent_hover flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
+                        <a href="https://www.youtube.com/@regpoznp"
+                            class="w-10 h-10 rounded-full bg-accent hover:bg-accent_hover flex items-center justify-center text-background transition-colors">
                             <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-logocolor2/70 hover:bg-logocolor2 flex items-center justify-center text-background transition-colors">
-                            <i class="fab fa-spotify"></i>
                         </a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="mb-6">Brzi linkovi</h4>
+                    <h4 class="text-lg font-heading font-bold mb-6">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
-                        <li><a href="#" class="text-logocolor2/90 hover:text-primary_text transition-colors">Lorem</a></li>
+                        <li><a href="https://www.kcnovipazar.rs/" class="hover:text-primary_text transition-colors">Kulturni centar Novi Pazar</a></li>
+                        <li><a href="/predstave" class="hover:text-primary_text transition-colors">Predstave</a></li>
+                        <li><a href="/repertoar" class="hover:text-primary_text transition-colors">Repertoar</a></li>
 
                     </ul>
                 </div>
                 <div>
-                    <h4 class="mb-6">Informacije</h4>
+                    <h4 class="text-lg font-heading font-bold mb-6">Informacije</h4>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-logocolor2 mt-1 mr-3"></i>
-                            <span>adresa adresa adresa</span>
+                            <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
+                            <span>Stevana Nemanje 2, Novi Pazar, Srbija, 36300</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-phone text-logocolor2 mt-1 mr-3"></i>
-                            <span>+38121231231</span>
+                            <i class="fas fa-phone text-accent mt-1 mr-3"></i>
+                            <span>+381 64 0919293</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-envelope text-logocolor2 mt-1 mr-3"></i>
-                            <span data-translate = "off">info@pozoriste.rs</span>
+                            <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
+                            <span data-translate="off">regionalnopozoristenp@gmail.com</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-clock text-logocolor2 mt-1 mr-3"></i>
+                            <i class="fas fa-clock text-accent mt-1 mr-3"></i>
                             <span>
                                 Radno vreme:<br>
-                                Ponedeljak - Petak: 10:00 - 18:00<br>
-                                Subota: 10:00 - 14:00<br>
-                                Nedelja: 10:00 - 14:00
+                                Ponedeljak - Petak: 08:00 - 15:00<br>
                             </span>
                         </li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="mb-6">Mapa lokacije</h4>
-                    <div class="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+                    <h4 class="text-lg font-heading font-bold mb-6">Mapa lokacije</h4>
+                    <div class="rounded-xl overflow-hidden" style="aspect-ratio: 16/9;">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.565652849707!2d20.4541920155352!3d44.81407657909868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9e7a3e0f5%3A0x534b0b3d3a3b7d4c!2sKnez%20Mihailova%2C%20Beograd!5e0!3m2!1sen!2srs!4v1623426789043!5m2!1sen!2srs"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1029.288703283759!2d20.51835539739654!3d43.140899429970595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47562812ee381053%3A0x492685d7fb12acf9!2sStevana%20Nemanje%202%2C%20Novi%20Pazar%2036300!5e0!3m2!1sen!2srs!4v1794926906574!5m2!1sen!2srs"
                             class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -978,23 +1124,26 @@
             theme: {
                 extend: {
                     colors: {
-                        background: '#F7F2EA',       // warm parchment
-                        secondary_background: '#faf0ca',
-                        primary: '#8B1E3F',    // velvet red
+                        primary: '#8B1E3F', // velvet burgundy
                         primary_hover: '#701932',
-                        secondary: '#2D3047',  // deep navy
-                        secondary_hover: '#24273B',
-                        primary_text: '#1F1A1A',      // charcoal
-                        secondary_text: '#5D4E4E',    // warm gray
-                        logocolor1: '#8B1E3F',       // gold
-                        logocolor2: '#2D3047',       // pairs with gold
-                        primarybtntxt: '#FFF7E6',    // soft ivory on red/navy
-                        surface: '#8B1E3F1A',       // translucent velvet for cards
-                        footerbg: '#EFE3D6',         // creamy footer
+
+                        secondary: '#292124', // theater charcoal
+                        secondary_hover: '#1E181B',
+
+                        accent: '#C5A46D', // antique gold
+                        accent_hover: '#AD8B55',
+
+                        primary_text: '#292124', // warm charcoal
+                        secondary_text: '#68595A', // warm taupe
+
+                        background: '#F7F2EA', // warm ivory
+                        secondary_background: '#EAE0D4', // champagne beige
+
+                        surface: '#8B1E3F1A', // translucent burgundy
                     },
                     fontFamily: {
                         heading: ['"Bodoni Moda"', 'serif'], // headings (classic & dramatic)
-                        body: ['Inter', 'sans-serif']  
+                        body: ['Inter', 'sans-serif']
                     }
                 }
             }
@@ -1002,11 +1151,11 @@
 
         const btn = document.getElementById('increaseFontBtn');
 
-        let currentSize = 16;       // initial font size in px
-        let step = 2;               // px to increase or decrease per click
-        let maxSteps = 3;           // max increments before toggling direction
-        let count = 0;              // how many increments or decrements done
-        let increasing = true;      // track if currently increasing font size
+        let currentSize = 16; // initial font size in px
+        let step = 2; // px to increase or decrease per click
+        let maxSteps = 3; // max increments before toggling direction
+        let count = 0; // how many increments or decrements done
+        let increasing = true; // track if currently increasing font size
 
         btn.addEventListener('click', () => {
             if (increasing) {
@@ -1036,7 +1185,7 @@
                 dropdown.classList.toggle('active');
             });
         });
-        document.getElementById('searchButton').addEventListener('click', function () {
+        document.getElementById('searchButton').addEventListener('click', function() {
             const container = document.getElementById('searchInputContainer');
             const input = document.getElementById('searchInput');
 
@@ -1049,7 +1198,7 @@
             }
         });
 
-        document.getElementById('closeSearch').addEventListener('click', function () {
+        document.getElementById('closeSearch').addEventListener('click', function() {
             const container = document.getElementById('searchInputContainer');
             container.classList.add('opacity-0');
             setTimeout(() => {
@@ -1057,7 +1206,7 @@
             }, 300);
         });
 
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
             const searchContainer = document.getElementById('searchInputContainer');
             const searchButton = document.getElementById('searchButton');
 
@@ -1082,7 +1231,7 @@
             }, 300);
         });
         // Header scroll effect
-        window.addEventListener('scroll', function () {
+        window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
@@ -1156,7 +1305,7 @@
 
         // Event listeners
         if (hamburger) {
-            hamburger.addEventListener('click', function (e) {
+            hamburger.addEventListener('click', function(e) {
                 e.stopPropagation();
                 if (mobileMenu.classList.contains('hidden')) {
                     openMobileMenu();
@@ -1175,7 +1324,7 @@
         }
 
         if (mobileAboutToggle) {
-            mobileAboutToggle.addEventListener('click', function (e) {
+            mobileAboutToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 toggleMobileAbout();
             });
@@ -1184,21 +1333,21 @@
         // Close menu when clicking on menu links (except dropdown toggle)
         const menuLinks = document.querySelectorAll('#mobileMenu nav a:not(#mobileAboutToggle)');
         menuLinks.forEach(link => {
-            link.addEventListener('click', function () {
+            link.addEventListener('click', function() {
                 // Close menu after a short delay to allow for navigation
                 setTimeout(closeMobileMenuFunc, 150);
             });
         });
 
         // Close menu on window resize if screen becomes large
-        window.addEventListener('resize', function () {
+        window.addEventListener('resize', function() {
             if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
         });
 
         // Handle escape key to close menu
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
                 closeMobileMenuFunc();
             }
@@ -1206,7 +1355,7 @@
 
         // Prevent menu panel clicks from closing the menu
         if (mobileMenuPanel) {
-            mobileMenuPanel.addEventListener('click', function (e) {
+            mobileMenuPanel.addEventListener('click', function(e) {
                 e.stopPropagation();
             });
         }
@@ -1218,7 +1367,9 @@
                     entry.target.classList.add('fade-in');
                 }
             });
-        }, { threshold: 0.1 });
+        }, {
+            threshold: 0.1
+        });
 
         document.querySelectorAll('.repertoar-card, .gallery-item, .section-divider').forEach(el => {
             observer.observe(el);

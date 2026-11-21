@@ -6,7 +6,7 @@ use App\Models\Gallery;
 
 class IstorijatPageBuilder extends BasePageBuilder
 {
-    protected string $html = <<<'HTML'
+  protected string $html = <<<'HTML'
 <main>
   <div>
     <button id="increaseFontBtn"
@@ -15,30 +15,27 @@ class IstorijatPageBuilder extends BasePageBuilder
     </button>
   </div>
 
-  <section class="relative min-h-screen flex items-center overflow-hidden pt-16 bg-background">
-    <div class="absolute inset-0 z-0"></div>
+  <section class="relative min-h-screen flex items-start overflow-hidden pt-16 bg-background">
     <div class="relative z-10 w-full max-w-5xl mx-auto text-center font-body text-secondary_text">
       <h1 class="text-primary_text text-5xl font-heading font-bold mt-10 mb-4">Istorijat naše ustanove</h1>
-      <h2 class="text-3xl mx-5 italic mb-4 text-justify font-body">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-    Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-</h2>
+      <p class="text-3xl mx-5 italic mt-8 text-justify font-body">
+        Regionalno pozorište Novi Pazar je jedno od najmlađih pozorišnih institucija u zemlji, otvoreno je 2003. u istoj zgradi sa Kulturnim centrom Novi Pazar godine i podržano je od Ministarstva kulture Republike Srbije. Pozorište svake godine učestvuje na prestižnim pozorišnim festivalima, i dobitnik je mnogih nagrada, od kojih je najbitnija Sterijina nagrada za najbolju predstavu na 66. Pozorju u Novom Sadu ( 18–26. jun 2021.) za delo „Ako dugo gledaš u ponor”.
+      </p>
     </div>
   </section>
 </main>
 HTML;
 
-    public function buildPage(): string
-    {
-        $additionalPHP = <<<'PHP'
+  public function buildPage(): string
+  {
+    $additionalPHP = <<<'PHP'
     $dataAboutUS = new AboutUs();
 PHP;
 
-        $content = $this->getHeader(additionalPhp: $additionalPHP);
-        $content .= $this->getCommonIncludes();
-        $content .= $this->html;
-        $content .= $this->getFooter();
-        return $content;
-    }
+    $content = $this->getHeader(additionalPhp: $additionalPHP);
+    $content .= $this->getCommonIncludes();
+    $content .= $this->html;
+    $content .= $this->getFooter();
+    return $content;
+  }
 }
