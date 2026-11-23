@@ -6,20 +6,6 @@
       "en": "News",
       "sr-Cyrl": "Вести",
       "icon": "fas fa-newspaper",
-      "categories": [
-        "Zvezdica",
-        "Maslačak",
-        "Bubamara",
-        "Cvrčak",
-        "Leptirić",
-        "Maja",
-        "Đurđevak",
-        "Čuperak",
-        "Lane",
-        "Sela",
-        "Stručni saradnici",
-        "Uopšteno"
-      ],
       "fields": [
         {
           "code": "naslov",
@@ -72,79 +58,6 @@
             "en": "News link",
             "sr-Cyrl": "Линк вести"
           }
-        },
-        {
-          "code": "main_category",
-          "name": "kategorija",
-          "type": "categories",
-          "label": {
-            "sr": "Vrtić na koji se vest odnosti",
-            "en": "Kindergarten to which the news refers",
-            "sr-Cyrl": "Вртић на који се вест односи"
-          },
-          "options": [
-            "Zvezdica",
-            "Maslačak",
-            "Bubamara",
-            "Cvrčak",
-            "Leptirić",
-            "Maja",
-            "Đurđevak",
-            "Čuperak",
-            "Lane",
-            "Sela",
-            "Stručni saradnici",
-            "Uopšteno"
-          ],
-          "coded_options": [
-            {
-              "code": "zvezdica",
-              "translations": { "sr": "Zvezdica", "en": "Zvezdica", "sr-Cyrl": "Звездица" }
-            },
-            {
-              "code": "maslacak",
-              "translations": { "sr": "Maslačak", "en": "Maslačak", "sr-Cyrl": "Маслачак" }
-            },
-            {
-              "code": "bubamara",
-              "translations": { "sr": "Bubamara", "en": "Bubamara", "sr-Cyrl": "Бубамара" }
-            },
-            {
-              "code": "cvrcak",
-              "translations": { "sr": "Cvrčak", "en": "Cvrčak", "sr-Cyrl": "Цврчак" }
-            },
-            {
-              "code": "leptiric",
-              "translations": { "sr": "Leptirić", "en": "Leptirić", "sr-Cyrl": "Лептирић" }
-            },
-            {
-              "code": "maja",
-              "translations": { "sr": "Maja", "en": "Maja", "sr-Cyrl": "Маја" }
-            },
-            {
-              "code": "djurdjevak",
-              "translations": { "sr": "Đurđevak", "en": "Đurđevak", "sr-Cyrl": "Ђурђевак" }
-            },
-            {
-              "code": "cuperak",
-              "translations": { "sr": "Čuperak", "en": "Čuperak", "sr-Cyrl": "Чуперак" }
-            },
-            {
-              "code": "lane",
-              "translations": { "sr": "Lane", "en": "Lane", "sr-Cyrl": "Лане" }
-            },
-            {
-              "code": "Sela",
-              "translations": { "sr": "Sela", "en": "Villages", "sr-Cyrl": "Села" }
-            },
-            {
-              "code": "Stručni saradnici",
-              "translations": { "sr": "Stručni saradnici", "en": "Professional associates", "sr-Cyrl": "Стручни сарадници" }
-            },{
-              "code": "Uopšteno",
-              "translations": { "sr": "Uopšteno", "en": "General", "sr-Cyrl": "Уопштено" }
-            }
-          ]
         }
       ]
     },
@@ -154,12 +67,6 @@
       "en": "Events",
       "sr-Cyrl": "Манифестације",
       "icon": "fas fa-calendar-alt",
-      "categories": [
-        "Karneval",
-        "Nova godina",
-        "Vidovdan",
-        "Završna manifestacija"
-      ],
       "fields": [
         {
           "code": "naslov",
@@ -202,40 +109,6 @@
             "en": "Event image",
             "sr-Cyrl": "Насловна слика манифестације"
           }
-        },
-        {
-          "code": "main_category",
-          "name": "kategorija",
-          "type": "categories",
-          "label": {
-            "sr": "Kategorija manifestacije",
-            "en": "Event category",
-            "sr-Cyrl": "Категорија манифестације"
-          },
-          "options": [
-            "Karneval",
-            "Nova godina",
-            "Vidovdan",
-            "Završna manifestacija"
-          ],
-          "coded_options": [
-            {
-              "code": "Karneval",
-              "translations": { "sr": "Karneval", "en": "Karneval", "sr-Cyrl": "Карневал" }
-            },
-            {
-              "code": "Nova godina",
-              "translations": { "sr": "Nova godina", "en": "New Year", "sr-Cyrl": "Нова година" }
-            },
-            {
-              "code": "Vidovdan",
-              "translations": { "sr": "Vidovdan", "en": "Vidovdan", "sr-Cyrl": "Видовдан" }
-            },
-            {
-              "code": "Završna manifestacija",
-              "translations": { "sr": "Završna manifestacija", "en": "Final event", "sr-Cyrl": "Завршна манифестација" }
-            }
-          ]
         }
       ]
     },
