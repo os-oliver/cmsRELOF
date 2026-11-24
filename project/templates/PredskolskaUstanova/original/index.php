@@ -33,7 +33,7 @@
 
         .preschool-hero::before {
             inset: -8px;
-            background: url('https://images.unsplash.com/photo-1740635341299-3b8e3490f546?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D') center / cover no-repeat;
+            background: url('https://images.unsplash.com/photo-1761403942462-04b8b97f1fe9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D') center / cover no-repeat;
             filter: blur(10px);
             transform: scale(1.02);
         }
@@ -730,7 +730,7 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo Section -->
             <a href="/" class="flex items-center flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                <img src="/assets/img/logo.jpg" alt="Naziv institucije"
+                <img src="/assets/img/logo-slika.jpg" alt="Naziv institucije"
                     class="h-12 sm:h-14 md:h-16 w-auto block" />
             </a>
             <!-- Desktop Navigation -->
@@ -768,7 +768,7 @@
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-question mr-2 text-primary"></i>Pitanja
                         </a>
-                        <a href="#"
+                        <a href="#" static="true"
                             class="dropdown-item flex items-center px-4 py-2 transition-colors rounded-md text-sm">
                             <i class="fas fa-bullhorn mr-2 text-primary"></i>Informacije
                         </a>
@@ -848,7 +848,7 @@
                 ?>
                 <div class="locale dropdown nonPage relative group">
                     <button class="nav-link transition-colors flex items-center whitespace-nowrap">
-                        <span class="mr-2 text-secondary_text hover:text-primary_text"><?= $languages[$locale]['flag'] ?></span>
+                        <span class="mr-2 text-primary_text hover:text-secondary_text"><?= $languages[$locale]['flag'] ?></span>
                         <span class="hidden xl:inline"><?= $languages[$locale]['label'] ?></span>
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
@@ -906,25 +906,40 @@
         <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent"></div>
 
         <div class="container relative z-10 mx-auto px-6 md:px-12 py-24">
-            <div class="max-w-3xl">
-                <!-- Naslov -->
-                <h1 class="mb-6 leading-[1.05]">
-                    <span class="block md:text-2xl font-body tracking-[0.3em] uppercase text-white/70 mb-3 mt-10">
+            <!-- Dekorativni krugovi u pozadini -->
+            <div class="pointer-events-none absolute -top-10 -right-10 w-72 h-72 rounded-full bg-primary/20 blur-3xl"></div>
+            <div class="pointer-events-none absolute bottom-0 left-1/3 w-56 h-56 rounded-full bg-white/10 blur-3xl"></div>
+
+            <div class="relative max-w-3xl">
+                <!-- Značka iznad naslova -->
+                <div class="inline-flex items-center gap-3 mb-8 mt-10 px-5 py-2 rounded-full
+                            bg-white/10 border border-white/20 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    <span class="text-xs md:text-sm font-body tracking-[0.25em] uppercase text-white/80">
                         Dobrodošli na zvaničan sajt
                     </span>
-                    <span class="block font-heading text-5xl text-primary_text md:text-5xl lg:text-5xl font-bold">
+                </div>
+
+                <!-- Naslov -->
+                <h1 class="mb-6 leading-[1.05]">
+                    <span class="block font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary_text">
                         Predškolska ustanova
                     </span>
-                    <span class="block font-heading2 text-5xl md:text-6xl lg:text-7xl italic text-primary_text">
-                        Dečja radost
+                    <span class="block font-heading2 text-6xl md:text-7xl lg:text-8xl italic text-primary_text mt-1">
+                        Čuperak
                     </span>
-                    <span class="block mt-3 text-xl md:text-2xl font-body text-white/80">
-                        Ćuprija, Srbija
+
+                    <!-- Linija + lokacija -->
+                    <span class="flex items-center gap-4 mt-5">
+                        <span class="h-[3px] w-14 rounded-full bg-primary"></span>
+                        <span class="text-lg md:text-2xl font-body text-white/80">
+                            Kraljevo, Srbija
+                        </span>
                     </span>
                 </h1>
 
-                <p class="mb-10 max-w-xl text-lg md:text-xl text-white/80">
-                    Mesto na kome se neguje i razvija kreativnost, znanje i socijalne veštine kod dece, pružajući im sigurno i podsticajno okruženje za rast i učenje.
+                <p class="mb-10 max-w-xl text-lg md:text-xl leading-relaxed text-white/80 border-l-4 border-primary/70 pl-5">
+                    Mesto gde svaki dečji osmeh, ideja i korak predstavljaju početak velikih mogućnosti, a igra, znanje i kreativnost put ka srećnom odrastanju.
                 </p>
 
                 <!-- Dugmad -->
@@ -941,9 +956,15 @@
                     </a>
                     <a href="/za-roditelje/jelovnik"
                         class="inline-flex items-center px-8 py-4 rounded-full text-lg font-semibold
-                            border border-white/40 text-white backdrop-blur-sm
+                            bg-white/10 border border-white/40 text-white backdrop-blur-sm
                             hover:bg-white hover:text-black hover:-translate-y-0.5 transition-all">
                         Aktuelan jelovnik
+                    </a>
+                    <a href="/manifestacije"
+                        class="group inline-flex items-center gap-2 bg-primary text-background
+                            px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-primary/30
+                            hover:bg-primary_hover hover:-translate-y-0.5 transition-all">
+                        Naše manifestacije
                     </a>
                 </div>
             </div>
@@ -961,7 +982,7 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
-                    Najnovije Vesti
+                    Najnovije vesti
                     <div
                         class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
                     </div>
@@ -1019,7 +1040,7 @@
                 <button id="vestiView"
                     class="bg-gradient-to-r from-primary via-primary_hover to-primary text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center mx-auto group shadow-xl">
                     <i class="fas fa-newspaper mr-3 group-hover:rotate-12 transition-transform"></i>
-                    Pogledaj sve vesti
+                    Pogledajte sve vesti
                     <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1 transition-transform"></i>
                 </button>
             </div>
@@ -1029,13 +1050,11 @@
     <section id="vrtici" class="bg-secondary_background text-secondary_text font-heading2">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl tracking-tight font-heading text-primary_text relative inline-block">Objekti
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
+                <h2 <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">Objekti
+                    <div
+                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
+                    </div>
                 </h2>
-                <p class="lg:mb-16 sm:text-xl">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
             </div>
             <div id="vrticiCards" class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                 <!-- Kartica 1 -->
@@ -1147,12 +1166,14 @@
     <section id="gallery" class="py-20 bg-secondary_background text-secondary_text font-heading2">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading text-primary_text mb-4 relative inline-block">
+                <h2 <h2 class="text-4xl font-heading font-bold text-primary_text mb-4 relative inline-block">
                     Galerija
-                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></span>
+                    <div
+                        class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary rounded-full">
+                    </div>
                 </h2>
-                <p class="text-2xl max-w-2xl mx-auto">
-                    Lorem ipsum dolor amet consectetur adipiscing
+                <p class="text-lg text-secondary_text max-w-2xl mx-auto mt-6">
+                    Nekoliko fotografija iz naše ustanove
                 </p>
             </div>
             <div id="galleryCards" class="gallery-grid gap-6">
@@ -1198,12 +1219,12 @@
                 <div>
                     <div class="flex items-center mb-6">
                         <a href="/" class="flex items-center flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                            <img src="/assets/img/logo.jpg" alt="Naziv institucije"
+                            <img src="/assets/img/logo-slika.jpg" alt="Naziv institucije"
                                 class="h-12 sm:h-14 md:h-16 w-auto block" />
                         </a>
                     </div>
                     <p class="mb-4">
-                        Ćuprija, Srbija
+                        Kraljevo, Srbija
                     </p>
                     <div class="flex space-x-3">
                         <a href="https://www.facebook.com/pudecjaradost.cuprija/?locale=sr_RS"
@@ -1249,8 +1270,8 @@
                     <h4 class="mb-6">Mapa lokacije</h4>
                     <div class="relative w-full overflow-hidden rounded-xl" style="aspect-ratio: 16 / 9;">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2873.4615852141787!2d21.370586000000003!3d43.92912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4756bf5a676f2e43%3A0x13e2e169c0ffc60!2z0J_RgNC10LTRiNC60L7Qu9GB0LrQsCDRg9GB0YLQsNC90L7QstCwINCU0LXRh9GY0LAg0YDQsNC00L7RgdGC!5e0!3m2!1ssr!2srs!4v1794928639267!5m2!1ssr!2srs"
-                            class="absolute inset-0 block h-full w-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d539414.6606786619!2d19.954245878904146!3d43.673838441214045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47570131a3dab72b%3A0xdb47d37d816e319e!2z0J_RgNC10LTRiNC60L7Qu9GB0LrQtSDRg9GB0YLQsNC90L7QstCwICws0KfRg9C_0LXRgNCw0LonJw!5e0!3m2!1ssr!2srs!4v1795523693449!5m2!1ssr!2srs"
+                            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -1262,7 +1283,7 @@
                         class="w-full max-w-md md:max-w-lg h-auto mb-4">
                     <p> Izradu ovog veb-sajta omogućila je Vlada Švajcarske. Objavljeni sadržaj ne predstavlja nužno zvanični stav Vlade Švajcarske.</p>
                 </div>
-                <p class="pt-6 text-secondary_text">&copy; Predškosla ustanova Dečja radost, Ćuprija, Srbija</p>
+                <p class="pt-6 text-secondary_text">&copy; Predškosla ustanova Čuperak, Kraljevo, Srbija</p>
             </div>
         </div>
     </footer>
@@ -1273,15 +1294,15 @@
                     colors: {
                         logocolor1: '#809bce',
                         logocolor2: '#809bce',
-                        primary: '#809bce',
-                        primary_hover: '#6e7ecc',
-                        secondary: '#95b8d1',
-                        secondary_hover: '#81afd0',
+                        primary: '#8090ce',
+                        primary_hover: '#6979cd',
+                        secondary: '#85bad0',
+                        secondary_hover: '#6fa9d3',
                         accent: "#6e7ecc",
                         accent_hover: "#809bce",
                         primary_text: '#6e7ecc',
                         secondary_text: '#72aad1',
-                        background: '#d6eadf',
+                        background: '#eae9d6',
                         secondary_background: '#fcfcfc',
                         surface: "#eadce2",
                     },
