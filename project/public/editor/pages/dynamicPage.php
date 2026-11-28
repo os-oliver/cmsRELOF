@@ -2,7 +2,6 @@
 
 use App\Models\Content;
 use App\Models\GenericCategory;
-session_start();
 if (isset($_GET['locale']))
     $_SESSION['locale'] = $_GET['locale'];
 $locale = $_SESSION['locale'] ?? 'sr-Cyrl';

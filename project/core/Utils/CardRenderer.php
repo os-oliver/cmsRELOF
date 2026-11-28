@@ -4,10 +4,7 @@ namespace App\Utils;
 use App\Utils\LocaleManager;
 
 if (session_status() === PHP_SESSION_NONE) {
-    // Session has not started
     session_start();
-} else {
-    // Session is already started
 }
 
 class CardRenderer

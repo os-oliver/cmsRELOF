@@ -1,3 +1,12 @@
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$token = $_SESSION['csrf_token'];
+?>
 <!DOCTYPE html>
 <html lang="sr">
 
@@ -199,7 +208,7 @@
                 </div>
             </div>
             <h3 class="text-lg sm:text-xl font-bold text-white text-center mb-2">Greška prilikom prijave</h3>
-            <p class="text-white/90 text-center mb-6 text-sm sm:text-base">Neispravna šifra ili korisničko ime</p>
+            <p class="text-white/90 text-center mb-6 text-sm sm:text-base js-error-description">Neispravna šifra ili korisničko ime</p>
             <button onclick="closeAlert()"
                 class="w-full bg-white/20 hover:bg-white/30 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 border border-white/30 hover:border-white/50 focus:outline-none focus:ring-2 focus:ring-white/50">
                 U redu
@@ -299,6 +308,10 @@
                             </svg>
                         </button>
                     </div>
+                    <div>
+                        <input id="csrf" name="csrf" type="text" value="<?= $_SESSION['csrf_token'] ?? '' ?>" class="hidden">
+                    </div>
+
                 </div>
 
                 <!-- Enhanced Login Button -->
@@ -366,6 +379,7 @@
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            const csrf = document.getElementById('csrf')?.value ?? '';
             const btn = event.target.querySelector('button[type="submit"]');
 
             if (username && password) {
@@ -377,7 +391,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ username: username, password: password })
+                    body: JSON.stringify({ username: username, password: password, csrf_token: csrf })
                 })
                     .then(response => response.text())  // Read raw response as text first
                     .then(text => {
@@ -389,6 +403,8 @@
                         if (data.success) {
                             window.location = "/kontrolna-tabla";
                         } else {
+                            const description = document.querySelector('.js-error-description');
+                            description.textContent = data.message;
                             showAlert();
                         }
                     })

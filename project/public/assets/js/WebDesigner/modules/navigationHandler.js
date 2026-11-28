@@ -22,6 +22,16 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
     }
   };
 
+  const isExternalLink = (c) => {
+    try {
+      const attrs = c.getAttributes ? c.getAttributes() : c.attributes || {};
+      const value = attrs["link-external"];
+      return value === true || value === "true" || value === "1" || value === 1;
+    } catch (e) {
+      return false;
+    }
+  };
+
   const normalizeText = (text) =>
     text
       .trim()
@@ -126,6 +136,10 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
 `;
       comp.replaceWith({ type: "textnode", content: phpLocaleCode });
     } else if (comp.get("tagName") === "a") {
+      if (isExternalLink(comp)) {
+        return;
+      }
+
       const el = comp.view.el;
       let txt = normalizeText(el.textContent);
       let text = txt
@@ -158,6 +172,10 @@ export function generateNavTree(target, tree, navID, dropDownclass) {
         if (tag === "div" && current) {
           ch.components().forEach((link) => {
             if (link.get("tagName") === "a") {
+              if (isExternalLink(link)) {
+                return;
+              }
+
               const el = link.view.el;
               let txt = normalizeText(el.textContent);
               let text = txt

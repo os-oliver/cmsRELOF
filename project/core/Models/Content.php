@@ -227,16 +227,19 @@ class Content
         }
 
         $joinText = "INNER JOIN custom_field_value cfv ON cfv.content_id = c.id";
+
+        $searchJoinText = $joinText;
+        
         if ($q !== '') {
-            $joinText .= " AND cfv.content LIKE :q";
+            $searchJoinText .= " AND cfv.content LIKE :q";
             $params[':q'] = '%' . $q . '%';
         }
 
         $customField = CustomField::fetchByCode($type, $orderingFieldCode);
         $orderingColumn = CustomField::decideColumnBasedOnCFtype($customField['type'] ?? '');
 
-        $total = $this->fetchTotalCountNew($where, $joinText, $params);
-        $contentIds = $this->fetchContentIdsNew($where, $joinText, $params, $per, $offset, $orderingColumn, $sortingDirection);
+        $total = $this->fetchTotalCountNew($where, $searchJoinText, $params);
+        $contentIds = $this->fetchContentIdsNew($where, $searchJoinText, $params, $per, $offset, $orderingColumn, $sortingDirection);
         $cfvs = $this->fetchContentCFVsNew($contentIds, $whereForCFV, $joinText, $params, $locale);
 
         if (empty($cfvs)) {

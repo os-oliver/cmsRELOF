@@ -1,7 +1,12 @@
 ErrorDocument 403 /pages/forbidden.html
 
 RewriteEngine On
+
 RewriteBase /
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteRule \.log$ - [F,L]
 
 RewriteRule ^pages/forbidden\.html$ - [L]
 

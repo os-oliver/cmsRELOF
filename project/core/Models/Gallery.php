@@ -91,7 +91,7 @@ class Gallery
         JOIN gallery g ON g.id = page_gallery.id
         JOIN text t ON t.source_id = g.id
             AND t.source_table = 'gallery'
-            AND t.lang = :lang COLLATE utf8mb4_unicode_ci
+            AND t.lang = :lang
         {$whereClause}
         ORDER BY {$order};
     ";
@@ -294,7 +294,7 @@ class Gallery
             FROM gallery g
             JOIN text t ON t.source_id = g.id
               AND t.source_table = 'gallery'
-              AND t.lang = :lang COLLATE utf8mb4_unicode_ci
+              AND t.lang = :lang
             WHERE t.content LIKE :search
             ORDER BY g.uploaded_at DESC
         ";

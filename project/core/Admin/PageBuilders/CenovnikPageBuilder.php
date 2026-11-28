@@ -32,29 +32,26 @@ class CenovnikPageBuilder extends BasePageBuilder
       </p>
 
       <ul class="text-left list-disc list-inside max-w-3xl mx-auto mb-6">
-        <li class="mb-2"><strong>Celodnevni program:</strong> od 7:00 do 17:00 – uključuje tri obroka i sve aktivnosti u toku dana.</li>
-        <li class="mb-2"><strong>Poludnevni program:</strong> od 7:00 do 12:00 – uključuje doručak i užinu, uz osnovni vaspitno–obrazovni rad.</li>
-        <li class="mb-2"><strong>Jaslice:</strong> poseban program prilagođen deci od 1 do 3 godine, sa individualnim pristupom i stručnim osobljem.</li>
-        <li class="mb-2"><strong>Dodatne aktivnosti:</strong> engleski jezik, ritmika, kreativne radionice, sportske sekcije i logoped.</li>
+        <li class="mb-2">&nbsp;<strong>Celodnevni program:&nbsp;</strong> od 7:00 do 17:00 – uključuje tri obroka i sve aktivnosti u toku dana.</li>
+        <li class="mb-2">&nbsp;<strong>Poludnevni program:&nbsp;</strong> od 7:00 do 12:00 – uključuje doručak i užinu, uz osnovni vaspitno–obrazovni rad.</li>
+        <li class="mb-2">&nbsp;<strong>Jaslice:&nbsp;</strong> poseban program prilagođen deci od 1 do 3 godine, sa individualnim pristupom i stručnim osobljem.</li>
+        <li class="mb-2">&nbsp;<strong>Dodatne aktivnosti:&nbsp;</strong> engleski jezik, ritmika, kreativne radionice, sportske sekcije i logoped.</li>
       </ul>
 
       <div class="flex items-center justify-center gap-4">
-        <a id="downloadMenuBtn" href="#" download
+        <a id="downloadMenuBtn" href="/dokumenti?search=&amp;sort=date_desc&amp;categories%5B%5D=8" target="_blank" rel="noopener noreferrer"
            class="inline-flex items-center gap-2 bm-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-5 rounded-lg shadow-md focus:outline-none focus:ring-4 focus:ring-green-300"
-           aria-label="Preuzmi cenovnik">
+           aria-label="Pogledajte cenovnik">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v10a1 1 0 11-2 0V5H4v10a1 1 0 11-2 0V3z" clip-rule="evenodd"/>
             <path d="M7 11a1 1 0 011.707-.707L9 11.586V2a1 1 0 112 0v9.586l.293-.293A1 1 0 0113 11l-3 3-3-3z"/>
           </svg>
-          Preuzmi PDF cenovnik
+          Pogledajte cenovnik
         </a>
 
         <a href="/kontakt" class="inline-block underline">Kontaktirajte nas za više informacija</a>
       </div>
 
-      <p class="text-xs mt-4 text-gray-600">
-        Napomena: Ako preuzimanje ne počne automatski, kliknite desni taster miša na dugme i izaberite "Sačuvaj link kao...".
-      </p>
     </div>
   </section>
 
@@ -70,11 +67,6 @@ class CenovnikPageBuilder extends BasePageBuilder
         container.style.transition = 'transform 200ms ease';
       });
 
-      const dl = document.getElementById('downloadMenuBtn');
-      dl?.addEventListener('click', (e) => {
-        const href = dl.getAttribute('href');
-        if (!href) return;
-      });
     })();
   </script>
 </main>

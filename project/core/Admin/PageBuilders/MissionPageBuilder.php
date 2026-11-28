@@ -22,7 +22,7 @@ class MissionPageBuilder extends BasePageBuilder
     <section class="relative pt-28 pb-16 bg-background text-center">
         <div class="container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-heading font-bold text-primary_text mb-3 tracking-tight">
-                Misija i Vizija
+                Misija i vizija
             </h1>
             <p class="text-lg md:text-xl text-secondary_text/80 max-w-2xl mx-auto font-body">
                 Načela koja nas vode i ciljevi kojima težimo.
@@ -37,7 +37,7 @@ class MissionPageBuilder extends BasePageBuilder
             <!-- Misija -->
             <div class="bg-surface border border-secondary/20 rounded-2xl p-10 transition">
                 <header class="border-b border-secondary/30 pb-4 mb-6">
-                    <h2 class="text-3xl font-heading font-semibold text-primary mb-2">Naša Misija</h2>
+                    <h2 class="text-3xl font-heading font-semibold text-primary mb-2">Naša misija</h2>
                     <p class="text-secondary_text/70 text-sm uppercase tracking-widest font-medium">
                         Svrha i posvećenost
                     </p>
@@ -50,7 +50,7 @@ class MissionPageBuilder extends BasePageBuilder
             <!-- Vizija -->
             <div class="bg-surface border border-secondary/20 rounded-2xl p-10 transition">
                 <header class="border-b border-secondary/30 pb-4 mb-6">
-                    <h2 class="text-3xl font-heading font-semibold text-accent mb-2">Naša Vizija</h2>
+                    <h2 class="text-3xl font-heading font-semibold text-accent mb-2">Naša vizija</h2>
                     <p class="text-secondary_text/70 text-sm uppercase tracking-widest font-medium">
                         Pogled ka budućnosti
                     </p>

@@ -2,7 +2,6 @@
 
 use App\Models\Content;
 use App\Utils\HashMapTransformer;
-session_start();
 use App\Controllers\AuthController;
 use App\Controllers\VisitCounterController;
 use App\Models\Document;
